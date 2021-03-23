@@ -1,0 +1,81 @@
+- name: Azure RTOS ThreadX belgeleri
+  href: index.yml
+- name: ThreadX 'e genel bakış
+  href: overview-threadx.md
+- name: ThreadX Kullanıcı Kılavuzu
+  expanded: true
+  items:
+    - name: Bu kılavuz hakkında
+      href: about-this-guide.md
+    - name: Denetleyebilirsiniz. 1-ThreadX 'e giriş
+      href: chapter1.md
+    - name: Denetleyebilirsiniz. 2-ThreadX yükleme ve kullanımı
+      href: chapter2.md
+    - name: Denetleyebilirsiniz. 3-ThreadX işlev bileşenleri
+      href: chapter3.md
+    - name: Denetleyebilirsiniz. 4-ThreadX hizmetlerinin açıklaması
+      href: chapter4.md
+    - name: Denetleyebilirsiniz. 5-ThreadX için cihaz sürücüleri
+      href: chapter5.md
+    - name: Denetleyebilirsiniz. 6-ThreadX için tanıtım sistemi
+      href: chapter6.md
+    - name: Uygulamanızda. A-ThreadX API hizmetleri
+      href: appendix-a.md
+    - name: Uygulamanızda. B-ThreadX sabitleri
+      href: appendix-b.md
+    - name: Uygulamanızda. C-ThreadX veri türleri
+      href: appendix-c.md
+    - name: Uygulamanızda. D-ASCII karakter kodları
+      href: appendix-d.md
+- name: ThreadX SMP Kullanıcı Kılavuzu
+  items:
+    - name: Bu Kılavuz Hakkında
+      href: ./threadx-smp/about-this-guide.md
+    - name: Denetleyebilirsiniz. 1-ThreadX SMP 'e giriş
+      href: ./threadx-smp/chapter1.md
+    - name: Denetleyebilirsiniz. 2-ThreadX SMP 'in yükleme & kullanımı
+      href: ./threadx-smp/chapter2.md
+    - name: Denetleyebilirsiniz. 3-ThreadX SMP bileşenleri
+      href: ./threadx-smp/chapter3.md
+    - name: Denetleyebilirsiniz. 4-ThreadX SMP hizmetlerinin açıklaması
+      href: ./threadx-smp/chapter4.md
+    - name: Denetleyebilirsiniz. 5-ThreadX SMP için cihaz sürücüleri
+      href: ./threadx-smp/chapter5.md
+    - name: Denetleyebilirsiniz. 6-ThreadX SMP için tanıtım sistemi
+      href: ./threadx-smp/chapter6.md
+    - name: Uygulamanızda. A-ThreadX SMP API hizmetleri
+      href: ./threadx-smp/appendix-a.md
+    - name: Uygulamanızda. B-ThreadX SMP sabitleri
+      href: ./threadx-smp/appendix-b.md
+    - name: Uygulamanızda. C-ThreadX SMP veri türleri
+      href: ./threadx-smp/appendix-c.md
+    - name: Uygulamanızda. D-ASCII karakter kodları
+      href: ./threadx-smp/appendix-d.md
+- name: ThreadX deposu
+  href: 'https://github.com/azure-rtos/threadx'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Microsoft Azure RTOS bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml

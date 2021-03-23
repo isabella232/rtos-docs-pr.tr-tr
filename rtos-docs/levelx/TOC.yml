@@ -1,0 +1,45 @@
+- name: Azure RTOS LevelX belgeleri
+  href: index.yml
+- name: Azure RTOS LevelX Kullanıcı Kılavuzu
+  expanded: true
+  items:
+    - name: Denetleyebilirsiniz. 1-LevelX 'e genel bakış
+      href: chapter1.md
+    - name: Denetleyebilirsiniz. 2-LevelX yükleme ve kullanımı
+      href: chapter2.md
+    - name: Denetleyebilirsiniz. 3-LevelX nve desteği
+      href: chapter3.md
+    - name: Denetleyebilirsiniz. 4-LevelX nve API 'Leri
+      href: chapter4.md
+    - name: Denetleyebilirsiniz. 5-LevelX veya desteği
+      href: chapter5.md
+    - name: Denetleyebilirsiniz. 6-LevelX ve API 'Ler
+      href: chapter6.md
+- name: LevelX deposu
+  href: 'https://github.com/azure-rtos/levelx'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Microsoft Azure RTOS bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml

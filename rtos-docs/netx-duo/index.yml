@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Azure RTOS NetX Duo belgeleri
+summary: Azure RTOS NetX Duo, özellikle de gömülü gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanan bir gelişmiş, endüstriyel sınıf TCP/IP ağ yığını.
+metadata:
+  title: Azure RTOS NetX Duo nedir?
+  description: Azure RTOS NetX Duo, özellikle de gömülü gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanan bir gelişmiş, endüstriyel sınıf TCP/IP ağ yığını.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 6eca4b135a5cfa3413fc0828de4caeffa734d90a
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104798033"
+landingContent:
+- title: Azure RTOS NetX Duo 'e giriş
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure RTOS NetX Duo nedir?
+      url: overview-netx-duo.md
+- title: Azure RTOS NetX Duo ile çalışmaya başlama
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS NetX Duo Kullanıcı Kılavuzu
+      url: about-this-guide.md

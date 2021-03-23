@@ -1,0 +1,159 @@
+- name: NetX belgeleri
+  href: index.yml
+- name: NetX 'e genel bakış
+  href: overview-netx.md
+- name: NetX Kullanıcı Kılavuzu
+  expanded: true
+  items:
+    - name: Bu Kılavuz Hakkında
+      href: about-this-guide.md
+    - name: Denetleyebilirsiniz. 1-NetX 'e giriş
+      href: chapter1.md
+    - name: Denetleyebilirsiniz. 2-NetX yükleme ve kullanımı
+      href: chapter2.md
+    - name: Denetleyebilirsiniz. NetX için 3 işlevsel bileşenler
+      href: chapter3.md
+    - name: Denetleyebilirsiniz. 4-NetX hizmetlerinin açıklaması
+      href: chapter4.md
+    - name: Denetleyebilirsiniz. 5-NetX ağ sürücüleri
+      href: chapter5.md
+    - name: Uygulamanızda. A-NetX Hizmetleri
+      href: appendix-a.md
+    - name: Uygulamanızda. B-NetX sabitleri
+      href: appendix-b.md
+    - name: Uygulamanızda. C-NetX veri türleri
+      href: appendix-c.md
+    - name: Uygulamanızda. D-BSD uyumlu yuva API 'SI
+      href: appendix-d.md
+    - name: Uygulamanızda. E-ASCII karakter kodları
+      href: appendix-e.md
+- name: NetX eklentileri
+  items:
+    - name: NetX Oto IP Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX oto 'ya giriş
+          href: netx-auto-ip/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX Oto IP 'yi yükleme ve kullanma
+          href: netx-auto-ip/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX Oto IP hizmetlerinin açıklaması
+          href: netx-auto-ip/chapter3.md
+    - name: NetX BSD Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX BSD 'ye giriş
+          href: netx-bsd/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX BSD yüklemesi ve kullanımı
+          href: netx-bsd/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX BSD Hizmetleri
+          href: netx-bsd/chapter3.md
+    - name: NetX DHCP istemcisi
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX DHCP istemcisine giriş
+          href: netx-dhcp-client/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX DHCP istemcisinin yüklenmesi ve kullanımı
+          href: netx-dhcp-client/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX DHCP istemci hizmetlerinin açıklaması
+          href: netx-dhcp-client/chapter3.md
+        - name: Uygulamanızda. Bir-geri yükleme durumu özelliğinin açıklaması
+          href: netx-dhcp-client/appendix-a.md
+    - name: NetX DHCP sunucusu Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX DHCP sunucusuna giriş
+          href: netx-dhcp-server/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX DHCP sunucusunu yükleme ve kullanma
+          href: netx-dhcp-server/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX DHCP sunucusu hizmetlerinin açıklaması
+          href: netx-dhcp-server/chapter3.md
+    - name: NetX DNS İstemcisi Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX DNS istemcisine giriş
+          href: netx-dns/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX DNS istemcisinin yüklenmesi ve kullanımı
+          href: netx-dns/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX DNS istemci hizmetlerinin açıklaması
+          href: netx-dns/chapter3.md
+    - name: NetX FTP Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX FTP 'ye giriş
+          href: netx-ftp/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX FTP yüklemesi ve kullanımı
+          href: netx-ftp/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX FTP hizmetlerinin açıklaması
+          href: netx-ftp/chapter3.md
+    - name: NetX HTTP
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX HTTP 'ye giriş
+          href: netx-http/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX HTTP 'nin yüklenmesi ve kullanımı
+          href: netx-http/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX HTTP hizmetlerinin açıklaması
+          href: netx-http/chapter3.md
+    - name: NetX LWM2M Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX LWM2M 'a giriş
+          href: netx-lwm2m/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX LWM2M yükleme ve kullanımı
+          href: netx-lwm2m/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX LWM2M 'ın işlevsel açıklaması
+          href: netx-lwm2m/chapter3.md
+        - name: Denetleyebilirsiniz. 4-NetX LWM2M hizmetlerinin açıklaması
+          href: netx-lwm2m/chapter4.md
+    - name: NetX POP3 istemcisi Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX POP3 'e giriş
+          href: netx-pop3-client/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX POP3 istemcisinin yüklenmesi ve kullanımı
+          href: netx-pop3-client/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX POP3 istemci hizmetlerinin açıklaması
+          href: netx-pop3-client/chapter3.md
+    - name: NetX PPP Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX Noktadan Noktaya Protokolü giriş (PPP)
+          href: netx-ppp/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX Noktadan Noktaya Protokolü yüklemesi ve kullanımı (PPP)
+          href: netx-ppp/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
+          href: netx-ppp/chapter3.md
+    - name: NetX PPPoE istemci Kullanıcı Kılavuzu
+      items:
+        - name: Bölüm 1-NetX PPPoE istemcisine giriş
+          href: netx-pppoe-client/chapter1.md
+        - name: Bölüm 2-NetX PPPoE istemcisinin yüklenmesi ve kullanımı
+          href: netx-pppoe-client/chapter2.md
+        - name: Bölüm 3-NetX PPPoE istemci hizmetlerinin açıklaması
+          href: netx-pppoe-client/chapter3.md
+    - name: NetX PPPoE sunucusu Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX PPPoE sunucusuna giriş
+          href: netx-pppoe-server/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX PPPoE sunucusunun yüklenmesi ve kullanımı
+          href: netx-pppoe-server/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX PPPoE sunucu hizmetlerinin açıklaması
+          href: netx-pppoe-server/chapter3.md
+- name: NetX deposu
+  href: 'https://github.com/azure-rtos/netx'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: /azure/asc-for-iot
+- name: Microsoft bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml

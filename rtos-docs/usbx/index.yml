@@ -1,0 +1,33 @@
+### YamlMime:Landing
+title: Azure RTOS USBX belgeleri
+summary: Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. Azure RTOS USBX, Azure RTOS ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX tarafından desteklenen işlemciler için kullanılabilir.
+metadata:
+  title: Azure RTOS USBX nedir?
+  description: Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. Azure RTOS USBX, Azure RTOS ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX tarafından desteklenen işlemciler için kullanılabilir.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 05ff41048304d3cb66b74cbf342de664e8ad88ab
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104798084"
+landingContent:
+- title: Azure RTOS USBX 'e giriş
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure RTOS USBX nedir?
+      url: overview-usbx.md
+- title: Azure RTOS USBX ile çalışmaya başlama
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS USBX cihaz yığını Kullanıcı Kılavuzu
+      url: usbx-device-stack-about.md
+    - text: Azure RTOS USBX konak yığını Kullanıcı Kılavuzu
+      url: usbx-host-stack-about.md

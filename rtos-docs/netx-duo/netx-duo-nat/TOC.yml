@@ -1,0 +1,10 @@
+- name: Azure RTOS NetX Duo ağ adresi çevirisi Kullanıcı Kılavuzu
+  items:
+    - name: Denetleyebilirsiniz. 1-ağ adresi çevirisine giriş
+      href: chapter1.md
+    - name: Denetleyebilirsiniz. 2-NAT yükleme ve kullanımı
+      href: chapter2.md
+    - name: Denetleyebilirsiniz. 3-NAT yapılandırma seçenekleri
+      href: chapter3.md
+    - name: Denetleyebilirsiniz. 4-NAT hizmetlerinin açıklaması
+      href: chapter4.md

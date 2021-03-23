@@ -1,0 +1,67 @@
+- name: Azure RTOS TraceX belgeleri
+  href: index.yml
+- name: TraceX 'e genel bakış
+  href: overview-tracex.md
+- name: Trackingex Kullanıcı Kılavuzu
+  expanded: true
+  items:
+    - name: Bu kılavuz hakkında
+      href: about-this-guide.md
+    - name: Denetleyebilirsiniz. 1-TraceX 'a giriş
+      href: chapter1.md
+    - name: Denetleyebilirsiniz. 2-TraceX yükleme ve kullanımı
+      href: chapter2.md
+    - name: Denetleyebilirsiniz. 3-TraceX açıklaması
+      href: chapter3.md
+    - name: Denetleyebilirsiniz. 4-TraceX performans analizi
+      href: chapter4.md
+    - name: Denetleyebilirsiniz. 5-izleme arabellekleri oluşturma
+      href: chapter5.md
+    - name: Denetleyebilirsiniz. 6-ThreadX izleme olayları
+      href: chapter6.md
+    - name: Denetleyebilirsiniz. 7-FileX izleme olayları
+      href: chapter7.md
+    - name: Denetleyebilirsiniz. 8-NetX izleme olayları
+      href: chapter8.md
+    - name: Denetleyebilirsiniz. 9-USBX izleme olayları
+      href: chapter9.md
+    - name: Denetleyebilirsiniz. 10-müşteri Kullanıcı Etkinlikleri
+      href: chapter10.md
+    - name: Denetleyebilirsiniz. 11-olay izleme arabelleğinin biçimi
+      href: chapter11.md
+    - name: Uygulamanızda. A-örnek tx_port. h
+      href: appendix-a.md
+    - name: Uygulamanızda. B-tx_trace. h dosyası
+      href: appendix-b.md
+    - name: Uygulamanızda. C-DOS komut satırı yardımcı programları
+      href: appendix-c.md
+    - name: Uygulamanızda. D-döküm ve izleme arabelleği
+      href: appendix-d.md
+- name: Trackingex 'ı indir
+  href: 'https://aka.ms/azrtos-tracex-installer'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Microsoft Azure RTOS bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml
