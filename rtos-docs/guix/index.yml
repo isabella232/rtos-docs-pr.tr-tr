@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Azure RTOS Gux belgeleri
+summary: Azure RTOS Gux, katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak için oluşturulmuş bir profesyonel kalite paketidir.
+metadata:
+  title: Azure RTOS Gux nedir?
+  description: Azure RTOS Gux, katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak için oluşturulmuş bir profesyonel kalite paketidir.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 5/19/2020
+  ms.openlocfilehash: 5e3215a54a9d1d23e7f238e4bc6ffeafffdc75b4
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104798021"
+landingContent:
+- title: Azure RTOS Gux 'e giriş
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure RTOS Gux nedir?
+      url: overview-guix.md
+- title: Azure RTOS Gux ile çalışmaya başlama
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS Gux Kullanıcı Kılavuzu
+      url: about-guix.md
+- title: Azure RTOS Gux Studio 'Yu kullanmaya başlama
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS Gux Studio hızlı başlangıç kılavuzu
+      url: guix-studio-quick-start.md
+    - text: Azure RTOS Gux Studio Kullanıcı Kılavuzu
+      url: about-guix-studio.md
+    - text: Azure RTOS Gux Studio yükleyicisi
+      url: https://aka.ms/azrtos-guix-installer

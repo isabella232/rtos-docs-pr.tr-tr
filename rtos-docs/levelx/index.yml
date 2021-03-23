@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Azure RTOS LevelX belgeleri
+summary: Azure RTOS LevelX, gömülü uygulamalara NAND ve Flash giyme seviyelendirme olanakları sağlar.
+metadata:
+  title: Azure RTOS LevelX nedir?
+  description: Azure RTOS LevelX, gömülü uygulamalara NAND ve Flash giyme seviyelendirme olanakları sağlar.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 07/10/2020
+  ms.openlocfilehash: 27ce4d34d53b2a6daec651dd83c648024aad0291
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104798009"
+landingContent:
+- title: Azure RTOS LevelX 'e giriş
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure RTOS LevelX nedir?
+      url: chapter1.md
+- title: Azure RTOS LevelX 'i yükleyip kullanın
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS LevelX Kullanıcı Kılavuzu
+      url: chapter2.md

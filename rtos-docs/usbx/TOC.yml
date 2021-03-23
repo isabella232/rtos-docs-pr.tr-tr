@@ -1,0 +1,86 @@
+- name: Azure RTOS USBX belgeleri
+  href: index.yml
+- name: USBX 'e genel bakış
+  href: overview-usbx.md
+- name: USBX cihaz yığını Kullanıcı Kılavuzu
+  items:
+    - name: Bu kılavuz hakkında
+      href: usbx-device-stack-about.md
+    - name: Denetleyebilirsiniz. 1-USBX 'e giriş
+      href: usbx-device-stack-1.md
+    - name: Denetleyebilirsiniz. 2-USBX yüklemesi
+      href: usbx-device-stack-2.md
+    - name: Denetleyebilirsiniz. USBX cihaz yığınının 3 işlevsel bileşenleri
+      href: usbx-device-stack-3.md
+    - name: Denetleyebilirsiniz. 4-USBX cihaz hizmetlerinin açıklaması
+      href: usbx-device-stack-4.md
+    - name: Denetleyebilirsiniz. 5-USBX cihaz sınıfı değerlendirmeleri
+      href: usbx-device-stack-5.md
+- name: USBX cihaz yığını ek
+  items:
+    - name: Denetleyebilirsiniz. 1-USBX cihaz yığını Kullanıcı Kılavuzu Eki 'ne giriş
+      href: usbx-device-stack-supplemental-1.md
+    - name: Denetleyebilirsiniz. 2-USBX cihaz sınıfı değerlendirmeleri
+      href: usbx-device-stack-supplemental-2.md
+    - name: Denetleyebilirsiniz. 3-USBX DPUMP sınıfı değerlendirmeleri
+      href: usbx-device-stack-supplemental-3.md
+    - name: Denetleyebilirsiniz. 4-USBX PictBridge uygulama
+      href: usbx-device-stack-supplemental-4.md
+    - name: Denetleyebilirsiniz. 5-USBX OTG
+      href: usbx-device-stack-supplemental-5.md
+- name: USBX konak yığını Kullanıcı Kılavuzu
+  items:
+    - name: Bu kılavuz hakkında
+      href: usbx-host-stack-about.md
+    - name: Denetleyebilirsiniz. 1-USBX 'e giriş
+      href: usbx-host-stack-1.md
+    - name: Denetleyebilirsiniz. 2-USBX yüklemesi
+      href: usbx-host-stack-2.md
+    - name: Denetleyebilirsiniz. USBX konak yığınının 3 işlevsel bileşenleri
+      href: usbx-host-stack-3.md
+    - name: Denetleyebilirsiniz. 4-USBX konak hizmetlerinin açıklaması
+      href: usbx-host-stack-4.md
+    - name: Denetleyebilirsiniz. 5-USBX konak sınıfları API 'SI
+      href: usbx-host-stack-5.md
+    - name: Denetleyebilirsiniz. 6-USBX CDC-ECD sınıf kullanımı
+      href: usbx-host-stack-6.md
+- name: USBX konak yığını ek
+  items:
+    - name: Denetleyebilirsiniz. 1-USBX konak yığını Kullanıcı Kılavuzu Eki 'ne giriş
+      href: usbx-host-stack-supplemental-1.md
+    - name: Denetleyebilirsiniz. 2-USBX konak sınıfları API 'SI
+      href: usbx-host-stack-supplemental-2.md
+    - name: Denetleyebilirsiniz. 3-USBX DPUMP sınıfı değerlendirmeleri
+      href: usbx-host-stack-supplemental-3.md
+    - name: Denetleyebilirsiniz. 4-USBX PictBridge uygulama
+      href: usbx-host-stack-supplemental-4.md
+    - name: Denetleyebilirsiniz. 5-USBX OTG
+      href: usbx-host-stack-supplemental-5.md
+- name: USBX deposu
+  href: 'https://github.com/azure-rtos/usbx/'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Microsoft Azure RTOS bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml

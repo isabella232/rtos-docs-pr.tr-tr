@@ -1,0 +1,31 @@
+### YamlMime:Landing
+title: Azure RTOS FileX belgeleri
+summary: Azure RTOS FileX, Azure RTOS ThreadX ile tam olarak tümleştirilmiş ve desteklenen tüm işlemciler için kullanılabilen yüksek performanslı, dosya ayırma tablosu (FAT) ile uyumlu bir dosya sistemidir. Azure RTOS ThreadX gibi Azure RTOS FileX, küçük bir ayak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da dosya yönetimi işlemleri gerektiren, günümüzün derin eklenmiş uygulamalar için idealdir. FileX, RAM, Azure RTOS USBX, SD kartı ve nve/veya Flash anıları dahil olmak üzere çoğu fiziksel medyayı Azure RTOS LevelX aracılığıyla destekler.
+metadata:
+  title: Azure RTOS FileX nedir?
+  description: Azure RTOS FileX, Azure RTOS ThreadX ile tam olarak tümleştirilmiş ve desteklenen tüm işlemciler için kullanılabilen yüksek performanslı, dosya ayırma tablosu (FAT) ile uyumlu bir dosya sistemidir. Azure RTOS ThreadX gibi Azure RTOS FileX, küçük bir ayak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da dosya yönetimi işlemleri gerektiren, günümüzün derin eklenmiş uygulamalar için idealdir. FileX, RAM, Azure RTOS USBX, SD kartı ve nve/veya Flash anıları dahil olmak üzere çoğu fiziksel medyayı Azure RTOS LevelX aracılığıyla destekler.
+  services: rtos
+  ms.service: rtos
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 05/19/2020
+  ms.openlocfilehash: bf7fd9f842c363b753f8acd52f54b9f8e462616c
+  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104798027"
+landingContent:
+- title: Azure RTOS FileX 'e giriş
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure RTOS FileX nedir?
+      url: overview-filex.md
+- title: Azure RTOS FileX ile çalışmaya başlama
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure RTOS FileX Kullanıcı Kılavuzu
+      url: about-this-guide.md

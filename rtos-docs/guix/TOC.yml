@@ -1,0 +1,93 @@
+- name: Azure RTOS Gux belgeleri
+  href: index.yml
+- name: GUX 'e genel bakış
+  href: overview-guix.md
+- name: GUX Studio Hızlı Başlangıç Kılavuzu
+  href: guix-studio-quick-start.md
+- name: GUX Kullanıcı Kılavuzu
+  expanded: true
+  items:
+    - name: Bu kılavuz hakkında
+      href: about-guix.md
+    - name: Denetleyebilirsiniz. 1-Gux 'e giriş
+      href: chapter-1.md
+    - name: Denetleyebilirsiniz. 2-Gux yükleme ve kullanımı
+      href: chapter-2.md
+    - name: Denetleyebilirsiniz. 3-Gux 'e işlevsel genel bakış
+      href: chapter-3.md
+    - name: Denetleyebilirsiniz. 4-Gux hizmetlerinin açıklaması
+      href: chapter-4.md
+    - name: Denetleyebilirsiniz. 5-Gux görüntü sürücüleri
+      href: chapter-5.md
+    - name: GUX örneği
+      href: guix-example.md
+    - name: Uygulamanızda. A-Gux renk tanımları
+      href: appendix-a.md
+    - name: Uygulamanızda. B-Gux renk biçimleri
+      href: appendix-b.md
+    - name: Uygulamanızda. C-Gux pencere öğesi stilleri
+      href: appendix-c.md
+    - name: 'Uygulamanızda. D-Gux fırçası, tuval ve gradyan öznitelikleri'
+      href: appendix-d.md
+    - name: Uygulamanızda. E-GUıDX olayı açıklaması
+      href: appendix-e.md
+    - name: Uygulamanızda. F-Gux RTOS bağlama hizmetleri
+      href: appendix-f.md
+    - name: Uygulamanızda. G-Gux yazı tipi yapısı
+      href: appendix-g.md
+    - name: Uygulamanızda. H-Gux derleme zamanı yapılandırma bayrakları
+      href: appendix-h.md
+    - name: Uygulamanızda. I-Gux bilgi yapıları
+      href: appendix-i.md
+- name: GUX Studio Kullanıcı Kılavuzu
+  items:
+    - name: GUX Studio hakkında
+      href: about-guix-studio.md
+    - name: Denetleyebilirsiniz. 1-Gux Studio 'ya giriş
+      href: guix-studio-1.md
+    - name: Denetleyebilirsiniz. 2-Gux Studio 'nun yüklenmesi ve kullanımı
+      href: guix-studio-2.md
+    - name: Denetleyebilirsiniz. 3-Gux Studio açıklaması
+      href: guix-studio-3.md
+    - name: Denetleyebilirsiniz. 4-Gux Studio kaynakları
+      href: guix-studio-4.md
+    - name: Denetleyebilirsiniz. 5-Gux Studio ekran Tasarımcısı
+      href: guix-studio-5.md
+    - name: Denetleyebilirsiniz. 6-GUıDX Studio tarafından oluşturulan kod
+      href: guix-studio-6.md
+    - name: Denetleyebilirsiniz. 7-ekran akışını tanımlama
+      href: guix-studio-7.md
+    - name: Denetleyebilirsiniz. 8-belirli pencere öğesi türlerini düzenlemeyle ilgili notlar
+      href: guix-studio-8.md
+    - name: Denetleyebilirsiniz. 9-Gux Studio komut satırı
+      href: guix-studio-9.md
+    - name: Denetleyebilirsiniz. 10-basit örnek proje
+      href: guix-studio-10.md
+- name: GUX deposu
+  href: 'https://github.com/azure-rtos/guix'
+- name: İlgili hizmetler
+  items:
+    - name: IoT için Defender-RTOS (Önizleme)
+      href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
+- name: Microsoft Azure RTOS bileşenleri
+  items:
+    - name: Microsoft Azure RTOS
+      href: ../index.yml
+    - name: ThreadX
+      href: ../threadx/index.yml
+    - name: ThreadX modülleri
+      href: ../threadx-modules/index.yml
+    - name: NetX Duo
+      href: ../netx-duo/index.yml
+    - name: NetX
+      href: ../netx/index.yml
+    - name: GUX
+      href: ../guix/index.yml
+    - name: Dosya x
+      href: ../filex/index.yml
+    - name: LevelX
+      href: ../levelx/index.yml
+    - name: USBX
+      href: ../usbx/index.yml
+    - name: Trackingex
+      href: ../tracex/index.yml
