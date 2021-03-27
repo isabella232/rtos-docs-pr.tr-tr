@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 3c3769c3ddf0eef73546627f1f50fa3d11b16948
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7dd3485f112bce379ab7d6b11a808605bca191a0
+ms.sourcegitcommit: 1d90854d1da01f4b65e54d732ee9190b57a531e1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827155"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105569006"
 ---
 # <a name="chapter-4-guix-studio-resources"></a>Bölüm 4: Gux Studio kaynakları
 
@@ -193,6 +193,24 @@ Tüm seçenekler istendiği gibi ayarlandıktan sonra, yeni bir piksel eşleme k
 Kaynak Görünümü bölümündeki yeni bir piksel eşleme kaynağı eklemek için `Pixelmaps` aşağıdaki düğmeyi seçin: 
 
 ![Yeni piksel eşleme düğmesi ekleyin.](./media/guix-studio/image50.jpg)
+
+**Batch pixelmap düzenleme**
+
+Bir veya daha fazla pixelmaps 'ın özelliklerini değiştirmek için, pixelmap grubuna veya klasöre sağ tıklayın ve pixelmap **'leri Düzenle iletişim kutusunu** çağırmak için pixelmap **(s) menüsünü Düzenle** ' yi seçin.
+
+![Çok pikselli haritalar düzenleme iletişim kutusunun ekran görüntüsü.](./media/guix-studio/batch_pixelmap_edit.jpg)
+
+CheckBox durum açıklaması:
+
+![İşaretli düğme.](./media/guix-studio/checkbox_checked.jpg)
+Bu durum tüm pixelmaps özelliğinin işaretli olduğu anlamına gelir, tüm pixelmaps için özelliği değiştirmek üzere düğmenin işaretini kaldırabilirsiniz.
+
+![İşaretlenmemiş düğme.](./media/guix-studio/checkbox_unchecked.jpg)
+Bu durum tüm pixelmaps özelliğinin işaretlenmediği anlamına gelir, tüm pixelmaps için özelliği değiştirmek üzere düğmeyi kontrol edebilirsiniz.
+
+![Belirlenmeyen düğme.](./media/guix-studio/checkbox_undetermined.jpg)
+Bu durum, pixelmaps özelliğinin özelliği için farklı bir duruma sahip olduğu anlamına gelir, bu durumda tüm pixelmaps için özelliği değiştirmek üzere düğmeyi denetleyebilir veya işaretini kaldırabilirsiniz, aksi takdirde Özellik değişmeden kalır.
+
 
 ## <a name="string-resources"></a>Dize kaynakları
 
