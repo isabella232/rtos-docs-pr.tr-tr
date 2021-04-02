@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8104f00e192486f57fe9c22b2c83aa9a22954739
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 035492644a911eba3b1c62a79572bc7d4c55f6dd
+ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828414"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106082226"
 ---
 # <a name="chapter-2---usbx-device-class-considerations"></a>Bölüm 2-USBX cihaz sınıfı konuları
 
@@ -220,7 +220,7 @@ Bu örnekte, DFU tanımlayıcısı diğer sınıflarla ilişkili değildir. Basi
 
 DFU yeteneklerinin açıklaması aşağıdaki gibidir.
 
-| Name             | Uzaklık  | Boyut | tür      | Açıklama |
+| Name             | Uzaklık  | Boyut | tür      | Description |
 |------------------|----------|------|-----------|------------|
 | bmAttributes  | 2     | 1   | Bit alanı | Bit 3: cihaz, bir DFU_DETACH isteği aldığında bir veri yolu ayırma-iliştirme sırası gerçekleştirir. Konağın USB sıfırlaması yayınlamamalıdır. (bitWillDetach) 0 = Hayır 1 = Evet bit 2: cihaz, bildirim aşamasından sonra USB üzerinden iletişim kurabilir. (Bitbildirimli Estationdayanıklı) 0 = Hayır, veri yolu sıfırlaması 1 = Evet bit 1: karşıya yükleme özellikli (bitCanUpload) 0 = Hayır 1 = Evet bit 0: indirme özelliği (bitCanDnload) 0 = Hayır 1 = Evet  |
 | Wçıkarılabilir zaman aşımı  | 3      | 2  | sayı    | Milisaniye cinsinden, cihazın DFU_DETACH isteği alındıktan sonra bekleyeceği süre. Bu süre USB sıfırlaması olmadan geçtiğinde cihaz, yeniden yapılandırma aşamasını sonlandırır ve normal işleme geri döndürülür. Bu, cihazın bekleneceği maksimum süreyi (zamanlayıcılar, vb.) temsil eder. USBX bu değeri 1000 ms olarak ayarlar.  |
@@ -514,7 +514,7 @@ UINT ux_device_class_pima_object_add(
     ULONG object_handle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının bir nesne eklemesi ve Konağı bilgilendirilmesi gerektiğinde çağrılır.
 
@@ -543,7 +543,7 @@ UINT ux_device_class_pima_object_number_get(
     ULONG *object_number);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının yerel sistemdeki nesne sayısını alması ve konağa geri göndermek için gerektiğinde çağrılır.
 
@@ -578,7 +578,7 @@ UINT **ux_device_class_pima_object_handles_get**(
     ULONG object_handles_max_number);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının, yerel sistemde nesne işleyicileri dizisini alması ve konağa geri gönderebilmesi gerektiğinde çağrılır.
 
@@ -649,7 +649,7 @@ UINT ux_device_class_pima_object_info_get(
     UX_SLAVE_CLASS_PIMA_OBJECT **object);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının, yerel sistemde nesne işleyicileri dizisini alması ve konağa geri gönderebilmesi gerektiğinde çağrılır.
 
@@ -709,7 +709,7 @@ UINT ux_device_class_pima_object_info_get(
     ULONG *object_actual_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının, yerel sistemdeki nesne verilerini alması ve konağa geri gönderilmesi gerektiğinde çağrılır.
 
@@ -827,7 +827,7 @@ UINT ux_device_class_pima_object_info_send(
     ULONG *object_handle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının daha sonra depolama için yerel sistemdeki nesne bilgilerini alması gerektiğinde çağrılır.
 
@@ -933,7 +933,7 @@ UINT ux_device_class_pima_object_data_send(
     ULONG object_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının depolama için yerel sistemdeki nesne verilerini alması gerektiğinde çağrılır.
 
@@ -1010,7 +1010,7 @@ UINT ux_device_class_pima_object_delete(
     ULONG object_handle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, PIMA sınıfının yerel depolamadaki bir nesneyi silmesi gerektiğinde çağrılır.
 
@@ -1228,7 +1228,7 @@ Ses sınıfının başlatılması aşağıdaki parçaları bekler.
        .ux_device_class_audio_control_process = demo_audio20_request_process;
 
    /* Initialize the device Audio class. This class owns interfaces starting with 0. */
-   status = ux_device_stack_class_register(_ux_system_slave_class_cdc_acm_name,
+   status = ux_device_stack_class_register(_ux_system_slave_class_audio_name,
        ux_device_class_audio_entry, 1, 0, &audio_parameter);
    if(status!=UX_SUCCESS)
        return;
@@ -1256,7 +1256,7 @@ Ses işlevine yönelik verileri okumak için iş parçacığı girişi.
 VOID ux_device_class_audio_read_thread_entry(ULONG audio_stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, konaktan ses okuma isteniyorsa ses akışı başlatma parametresine geçirilir. Dahili olarak, bu işlevle giriş işlevi olarak bir iş parçacığı oluşturulur; iş parçacığı, ses işlevindeki zaman aralıklı çıkış uç noktası aracılığıyla ses verilerini okur.
 
@@ -1282,7 +1282,7 @@ Ses işlevine veri yazmak için iş parçacığı girişi
 VOID ux_device_class_audio_write_thread_entry(ULONG audio_stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, konağa ses yazılması isteniyorsa ses akışı başlatma parametresine geçirilir. Dahili olarak, bu işlevle giriş işlevi olarak bir iş parçacığı oluşturulur; iş parçacığı, ses işlevindeki zaman aralıklı olarak ses verileri yazar.
 
@@ -1311,7 +1311,7 @@ UINT ux_device_class_audio_stream_get(
     UX_DEVICE_CLASS_AUDIO_STREAM **stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ses sınıfının akış örneğini almak için kullanılır.
 
@@ -1346,7 +1346,7 @@ Ses akışı için ses verilerini almayı Başlat
 UINT ux_device_class_audio_reception_start(UX_DEVICE_CLASS_AUDIO_STREAM *stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ses akışında okuma ses verilerini başlatmak için kullanılır.
 
@@ -1383,7 +1383,7 @@ UINT ux_device_class_audio_sample_read8(
     UCHAR *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, belirtilen akıştan 8 bit ses örnek verilerini okur.
 
@@ -1424,7 +1424,7 @@ UINT ux_device_class_audio_sample_read16(
     USHORT *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, belirtilen akıştan 16 bit ses örnek verilerini okur.
 
@@ -1465,7 +1465,7 @@ UINT ux_device_class_audio_sample_read24(
     ULONG *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, belirtilen akıştan alınan 24 bit ses örnek verilerini okur.
 
@@ -1506,7 +1506,7 @@ UINT ux_device_class_audio_sample_read32(
     ULONG *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, belirtilen akıştan 32 bitlik ses örnek verilerini okur.
 
@@ -1548,7 +1548,7 @@ UINT ux_device_class_audio_read_frame_get(
     ULONG *frame_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ilk ses çerçevesi arabelleğini ve belirtilen akışın FıFO uzunluğunu döndürür. Uygulama verileri işlemeyi tamamladıktan sonra FıFO 'daki çerçeve arabelleğini serbest bırakmak için ux_device_class_audio_read_frame_free kullanılmalıdır.
 
@@ -1586,7 +1586,7 @@ Ses akışında ses çerçevesi arabelleğini serbest bırakma
 UINT ux_device_class_audio_read_frame_free(UX_DEVICE_CLASS_AUDIO_STREAM *stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ana bilgisayardan veri alabilmesi için belirtilen akışın FıFO önünde ses çerçevesi arabelleğini serbest bırakır.
 
@@ -1622,7 +1622,7 @@ Ses akışı için ses veri aktarımını Başlat
 UINT ux_device_class_audio_transmission_start(UX_DEVICE_CLASS_AUDIO_STREAM *stream);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ses sınıfında FıFO 'ya yazılmış ses verileri göndermeye başlamak için kullanılır.
 
@@ -1661,7 +1661,7 @@ UINT ux_device_class_audio_frame_write(
     ULONG frame_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ses akışının FıFO ' a bir çerçeve yazar. Çerçeve verileri, konağa gönderilebilmesi için FıFO 'daki kullanılabilir arabelleğe kopyalanır.
 
@@ -1702,7 +1702,7 @@ UINT ux_device_class_audio_write_frame_get(
     ULONG *frame_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, FıFO 'nun son ses çerçevesi arabelleğinin adresini alır; Ayrıca, ses çerçevesi arabelleğinin uzunluğunu da alır. Uygulama, ses çerçevesi arabelleğini istenen verilerle doldurduktan sonra, ***ux_device_class_audio_write_frame_commit*** kare arabelleği eklemek/FIFO 'ya uygulamak için kullanılmalıdır.
 
@@ -1742,7 +1742,7 @@ UINT ux_device_class_audio_write_frame_commit(
     ULONG length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, arabellek konağa aktarılmaya hazırlandığından, son ses çerçevesi arabelleğini FıFO 'ya ekler/kaydeder; son ses çerçevesi arabelleğinin ux_device_class_write_frame_get ile doldurulmuş olması gerektiğini göz önünde bulabilirsiniz.
 
@@ -1782,7 +1782,7 @@ UINT ux_device_class_audio10_control_process(
     UX_DEVICE_CLASS_AUDIO10_CONTROL_GROUP *group);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, denetim uç noktasındaki ana bilgisayar tarafından gönderilen temel istekleri, USB ses 1,0 'e özgü bir türle yönetir.
 
@@ -1840,7 +1840,7 @@ UINT ux_device_class_audio20_control_process(
     UX_DEVICE_CLASS_AUDIO20_CONTROL_GROUP *group);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, denetim uç noktasındaki ana bilgisayar tarafından gönderilen temel istekleri, USB ses 2,0 'e özgü bir türle yönetir.
 
