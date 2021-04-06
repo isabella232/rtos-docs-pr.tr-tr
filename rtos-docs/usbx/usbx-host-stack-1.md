@@ -1,17 +1,17 @@
 ---
 title: Bölüm 1-Azure RTOS USBX konak yığınına giriş
-description: USBX, derin eklenmiş uygulamalar için tam özellikli bir USB yığınıdır. Bu bölümde, uygulamaları ve avantajları açıklanarak USBX tanıtılmıştır.
+description: Bu bölümde, uygulamaları ve avantajları açıklanarak USBX konak yığını tanıtılmaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 9ee49903e764e20316438be16b47d2d9208b1363
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a9fdd86d47bd4680409cc550c87bc6f456d146a9
+ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828546"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106377059"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-usbx-host-stack"></a>Bölüm 1-Azure RTOS USBX konak yığınına giriş
 
