@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1e1e1a1dbd844d811c7ee3122113f28162639fb4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a94344a7079e3f0e3e451bc678c369fee543aef6
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825534"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550176"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-filex"></a>Bölüm 3-Azure RTOS FileX 'in Işlevsel bileşenleri
 
@@ -42,6 +42,7 @@ Medyanın mantıksal sektör görünümündeki diğer alanların tam kesim boşl
 - **Küme başına kesim sayısı** Medya önyükleme kaydındaki *küme başına kesim* alanı, bir kümeye atanan kesimlerin sayısını tanımlar. Küme, bir FAT uyumlu dosya sistemindeki temel ayırma öğesidir. Tüm dosya bilgileri ve alt dizinleri, dosya ayırma tablosu (FAT) tarafından belirlendiği şekilde medyanın kullanılabilir kümelerinden ayrılır.
 
     **TABLO 1. FileX medya önyükleme kaydı**
+    
     |Uzaklık  |Alan  |Bayt sayısı|
     |----------|-----------|------------|
     |-|Atma yönergesi (E9, xx, xx veya EB, xx, 90)|3|
@@ -161,6 +162,7 @@ FAT tablosundaki ilk iki giriş kullanılmaz ve genellikle aşağıdaki içeriğ
 FAT giriş numarası 2, medyanın veri alanındaki ilk kümeyi temsil eder. Her küme girişinin içeriği, bir dosya veya alt dizin için ayrılmış kümelerin bağlı listesinin boş veya bir parçası olup olmadığını belirler. Küme girişi başka bir geçerli küme girişi içeriyorsa, küme ayrılır ve değeri küme zincirinde ayrılan sonraki kümeye işaret eder.
 
 Olası küme girdileri aşağıdaki gibi tanımlanmıştır.
+
 |Anlamı|12 bit FAT|16 bit FAT|32-bit FAT| exFAT|
 |----------|-----------|------------|-------|------|
 |Boş küme|0x000|0x0000|0x00000000|0x00000000|
@@ -283,26 +285,26 @@ FileX, hem 8,3 hem de Windows Long dosya adı (LFN) ad biçimlerini destekler. A
 
     **TABLO 4. Uzun dosya adı Dizin girişi**
 
-    |Uzaklık|Alan|Bayt sayısı|
+    | Uzaklık | Alan | Bayt sayısı |
     |------------|-----------|------------|
-    -|Ordinal alanı|1|
-    0x01|Unicode karakter 1|2|
-    0x03|Unicode karakter 2|2|
-    0x05|Unicode karakter 3|2|
-    0x07|Unicode karakter 4|2|
-    0x09|Unicode karakter 5|2|
-    0x0B|LFN öznitelikleri|1|
-    0x0C|LFN türü (ayrılmış her zaman 0)|1|
-    0x0D|LFN sağlama toplamı|1|
-    0x0E|Unicode karakteri 6|2|
-    0x10|Unicode karakter 7|2|
-    0x12|Unicode karakter 8|2|
-    0x14|Unicode karakter 9|2|
-    0x16|Unicode karakter 10|2|
-    0x18|Unicode karakter 11|2|
-    0x1A|LFN kümesi (kullanılmamış her zaman 0)|2|
-    0x1C|Unicode karakter 12|2|
-    Dosyasında|Unicode karakteri |13|2|
+    | - | Ordinal alanı | 1 |
+    | 0x01 | Unicode karakter 1 | 2 |
+    | 0x03 | Unicode karakter 2 | 2 |
+    | 0x05 | Unicode karakter 3 | 2 |
+    | 0x07 | Unicode karakter 4 | 2 |
+    | 0x09 | Unicode karakter 5 | 2 |
+    | 0x0B | LFN öznitelikleri | 1 |
+    | 0x0C | LFN türü (ayrılmış her zaman 0) | 1 |
+    | 0x0D | LFN sağlama toplamı | 1 |
+    | 0x0E | Unicode karakteri 6 | 2 | 
+    | 0x10 | Unicode karakter 7 | 2 |
+    | 0x12 | Unicode karakter 8 | 2 |
+    | 0x14 | Unicode karakter 9 | 2 |
+    | 0x16 | Unicode karakter 10 | 2 |
+    | 0x18 | Unicode karakter 11 | 2 |
+    | 0x1A | LFN kümesi (kullanılmamış her zaman 0) | 2 |
+    | 0x1C | Unicode karakter 12 | 2 |
+    | Dosyasında | Unicode karakter 13 | 2 |
 
 - **Unicode karakteri**
 
@@ -472,6 +474,7 @@ Akış uzantısı dizin girişinin açıklaması ve içeriği aşağıdaki tablo
 - **Larına**
 
     Bu alan, çeşitli özellikleri belirten bir bit serisi içerir:
+    
     |Bayrak biti|Anlamı    |
     |-----------------|-----------|
     |0x01            |Bu alan, kümelerin ayrılmasının mümkün olup olmadığını gösterir. Bu alan 1 olmalıdır.|

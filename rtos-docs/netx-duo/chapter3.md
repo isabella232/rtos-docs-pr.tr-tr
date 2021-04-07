@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 07e51643c828afc8e6c0b968e78380316e84ccd7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 31900c7b822c88079e4b9fe28a8a388d20f819aa
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826212"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106549853"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx-duo"></a>Bölüm 3-Azure RTOS NetX Duo 'un Işlevsel bileşenleri
 
@@ -204,7 +204,7 @@ Paket üstbilgisinin alanları aşağıdaki gibi tanımlanır. Bu tablonun *NX_P
 > [!CAUTION]
 > *NETX Duo, performans nedenleriyle iletim için NETX Duo hizmetlerine geçirildiğinde, önüne işaretçisinin uzun sözcük hizalı adrese işaret ettiğini varsayar.*
 
-|   |   |
+| Paket üst bilgisi | Amaç |
 |---|---|
 |***nx_packet_append_ptr** _|Bu alan, şu anda paket yükü alanındaki verilerin sonunu işaret eder. _Nx_packet_prepend_ptr * ve nx_packet_data_end tarafından işaret edilen bellek konumu arasında olmalıdır *.* Bu alan ile *nx_packet_prepend_ptr* alanı arasındaki fark, bu paketteki veri miktarını temsil eder.|
 |***nx_packet_packet_pad** _|Bu alanlar, istenen hizalama gereksinimini elde etmek için 4 baytlık sözcüklerdeki doldurma uzunluğunu tanımlar. _*_NX_PACKET_HEADER_PAD_*_ tanımlanmamışsa Bu alan kaldırılır. Alternatif olarak, _nx_packet_header_pad tanımlamak yerine _*_NX_PACKET_ALIGNMENT_*_ kullanılabilir. *|

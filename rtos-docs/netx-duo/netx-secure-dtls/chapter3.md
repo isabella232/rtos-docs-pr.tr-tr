@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 468f1dc8a8334dc89064594b29dc8cfabd7d8fae
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 347bd83fa8c72ced2e8678a92ec5c5f8393c136d
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826980"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550210"
 ---
 # <a name="chapter-3-functional-description-of-azure-rtos-netx-secure-dtls"></a>Bölüm 3: Azure RTOS NetX güvenli DTLS 'nin Işlevsel açıklaması
 
@@ -64,14 +64,14 @@ Tüm geçerli DTLS el sıkışma kayıtları, Şekil 2 ' de gösterildiği gibi 
 
 DTLS el sıkışma kayıt üstbilgisinin alanları aşağıdaki gibi tanımlanır:
 
-| TLS üst bilgi alanı | Amaç |
+| TLS üst bilgi alanı | Amaç  |
 | ---------------- | ------------------------------------------------ |
 | **8 bit Ileti türü** | Bu alan, gönderilmekte olan DTLS kaydının türünü içerir. Geçerli türler şunlardır:<br />-Changecbir spec: 0x14<br />-Uyarı: 0x15<br />-Handshake: 0x16<br />-Uygulama verileri: 0x17 |
 |  **16 bit dönem** | Bu alan, şifreleme durumunun her değiştirildiği her seferinde arttırılan bir sayaç olan DTLS "dönemini" içerir (örneğin, yeni oturum anahtarları oluştururken). |
 |  **48-bit sıra numarası** | Bu alan, bu özel kaydı tanımlayan bir sıra numarası içerir. Kayıt sıralamasını sürdürmek ve yeniden aktarım gereksinimini denetlemek için DTLS tarafından kullanılır. |
 |  **16 bit protokol sürümü** | Bu alan DTLS protokol sürümünü içerir. Geçerli değerler aşağıdaki gibidir:<br />-DTLS 1,1:0xFEFD |
 | **16 bit uzunluğu** | Bu alan, DTLS kaydında kapsüllenmiş verilerin uzunluğunu içerir. |
-| **8 bit el sıkışma türü** | Bu alan, el sıkışma ileti türünü içerir. Geçerli değerler aşağıdaki gibidir:<br />-Merhaba Istek: 0x00<br />-ClientHello: 0x01<br />-ServerHello: 0x02<br />-Sertifika: 0x0B<br />-ServerKeyExchange: 0x0C<br />-CertificateRequest: 0x0D<br />-ServerHelloDone: 0x0E<br />-CertificateVerify: 0x0F<br />-ClientKeyExchange: 0x10<br />- Tamamlandı | 0x14 |
+| **8 bit el sıkışma türü** | Bu alan, el sıkışma ileti türünü içerir. Geçerli değerler aşağıdaki gibidir:<br />-Merhaba Istek: 0x00<br />-ClientHello: 0x01<br />-ServerHello: 0x02<br />-Sertifika: 0x0B<br />-ServerKeyExchange: 0x0C<br />-CertificateRequest: 0x0D<br />-ServerHelloDone: 0x0E<br />-CertificateVerify: 0x0F<br />-ClientKeyExchange: 0x10<br />-Tamamlandı: 0x14 |
 | **24 bit uzunluğu** | Bu alan, el sıkışma ileti verilerinin uzunluğunu içerir. |
 | **16 bit sıra numarası** | Bu alan bir sıra numarası içerir. |
 

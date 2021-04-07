@@ -1,17 +1,17 @@
 ---
 title: Bölüm 4-USBX PictBridge uygulama
-description: UBSX hem konakta hem de cihazda tam PictBridge uygulamasını destekler. PictBridge, her iki tarafta da USBX PIMA sınıfının üstünde yer alır.
+description: UBSX hem cihaz hem de ana bilgisayar üzerinde tam PictBridge uygulamasını destekler. PictBridge, her iki tarafta da USBX PIMA sınıfının üstünde yer alır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2ef1809dac046d49b15aba000cabed6c9fd458a3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4fdf1e46a7123c10d17e11d09c1b16c2f68f4a31
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828553"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550244"
 ---
 # <a name="chapter-4---usbx-pictbridge-implementation"></a>Bölüm 4-USBX PictBridge uygulama
 

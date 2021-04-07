@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 53d73789d93cac7bed241a54b1dde20b8610ef13
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cc352ebd7965c84c341d25dfa7bff2671dfb5e66
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826567"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550261"
 ---
 # <a name="chapter-2---installation--use-of-azure-rtos-threadx-smp"></a>Bölüm 2-Azure RTOS ThreadX SMP 'in yükleme & kullanımı
 
@@ -51,7 +51,7 @@ Bu PDF, belirli bir hedef işlemci/Pano ve belirli geliştirme araçları üzeri
 
 Hedef işlemci ve geliştirme araçları hakkında bilgiler de dahil olmak üzere ThreadX SMP bağlantı noktasıyla ilgili belirli bilgileri içeren metin dosyası.
 
-|                 |                     |
+| Araç | Açıklama |
 | -------------- | ------------------------------------------------------------------------------------------------- |
 | **tx_api. h**  | Tüm sistem eşlerini, veri yapılarını ve hizmet prototiplerini içeren C üstbilgi dosyası.             |
 | **tx_port. h** | Tüm geliştirme araçlarını ve targetspecific veri tanımlarını ve yapılarını içeren C üstbilgi dosyası. |

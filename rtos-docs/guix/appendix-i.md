@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 03a10aeb65017befaf5e7b440046dbff9f9252ef
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: dc7775cdde8f1aa89ca650561713f54ac6c069eb
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827209"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550227"
 ---
 # <a name="appendix-i---guix-information-structures"></a>Ek I-Gux bilgi yapıları 
 
@@ -27,10 +27,7 @@ typedef struct GX_BIDI_TEXT_INFO_STRUCT
     GX_VALUE  gx_bidi_text_info_display_width;
 } GX_BIDI_TEXT_INFO;
 ```
-
-### <a name="members"></a>Üyeler
-
-|                                    |                                                            |
+| Üyeler | Açıklama |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_text_info_text**               | Yeniden sıralama için metin |
 | **gx_bidi_text_info_font**               | Metni göstermek için kullanılan yazı tipi, satır sonu gerekmiyorsa GX_NULL olarak ayarlayın |
@@ -49,9 +46,7 @@ typedef struct GX_BIDI_RESOLVED_TEXT_INFO_STRUCT
 } GX_BIDI_RESOLVED_TEXT_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                    |                                                            |
+| Üyeler | Açıklama |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_resolved_text_info_text**             | Yeniden sıralanan bidi metni dizisine yönelik işaretçi |
 | **gx_bidi_resolved_text_info_total_lines**      | Tek bir paragraf için çözülen çift yönlü metnin toplam satırları |
@@ -73,9 +68,8 @@ typedef struct GX_CIRCULAR_GAUGE_INFO_STRUCT
     GX_RESOURCE_ID  gx_circular_gauge_info_needle_pixelmap;
 } GX_CIRCULAR_GAUGE_INFO;
 ```
-### <a name="members"></a>Üyeler
 
-|                                                  |                                              |
+| Üyeler | Açıklama |
 | ------------------------------------------------ | -------------------------------------------- |
 | **gx_circular_gauge_info_animation_steps**       | Geçerli iğne açısına göre yeni, atanan iğne açısına geçiş yaparken, iğne 'nin hareket ettirme toplam adım sayısı |
 | **gx_circular_gauge_info_animation_delay**       | Animasyon adımları arasındaki gecikmede Gux saat Ticks sayısı |
@@ -112,9 +106,7 @@ typedef struct GX_LINE_CHART_INFO_STRUCT
 } GX_LINE_CHART_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                    |                                                            |
+| Üyeler | Açıklama |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_line_chart_min_val**          | Ölçeklendirmeyi hesaplamak için kullanılan minimum veri değeri
 | **gx_line_chart_max_val**          | Ölçeklendirmeyi hesaplamak için kullanılan maksimum veri değeri |
@@ -140,9 +132,7 @@ typedef struct GX_MOUSE_CURSOR_INFO_STRUCT
 } GX_MOUSE_CURSOR_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                    |                                                            |
+| Üyeler | Açıklama |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_mouse_cursor_image_id**       | Fare resminin kaynak KIMLIĞI |
 | **gx_mouse_cursor_hotspot_x**      | Fare resminin solundaki fare resmi etkin noktası arasındaki fark |
@@ -160,9 +150,7 @@ typedef struct GX_PEN_CONFIGURATION_STRUCT
 }GX_PEN_CONFIGURATION;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                              |                                                  |
+| Üyeler | Açıklama |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_pen_configuration_min_drag_dist**       | Bir hareket olayı tetiklemek için Gux süreölçeri başına en az sürükleme uzaklığı. Sabit bir nokta veri türü değeri oluşturmak için GX_FIXED_VAL_MAKE çağırın |
 | **gx_pen_configuration_max_pen_speed_ticks** | Bir hareket olayı tetiklemek için Gux süreölçer işaretleri cinsinden maksimum sürükleme hızı | 
@@ -180,9 +168,7 @@ typedef struct GX_PIXELMAP_SLIDER_INFO_STRUCT
 } GX_PIXELMAP_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                                       |                                          |
+| Üyeler | Açıklama |
 | ----------------------------------------------------- | ---------------------------------------- |
 | **gx_pixelmap_slider_info_lower_background_pixelmap** | İğne 'dan önce arka planı doldurmak için pixelmap 'in kaynak KIMLIĞI. Üst arka plan pixelmap ayarlanmamışsa, arka planı yalnızca iğne 'den önce ve sonra doldurmak için kullanılır |
 | **gx_pixelmap_slider_info_upper_background_pixelmap** | İğne 'tan sonra arka planı doldurmak için pixelmap 'in kaynak KIMLIĞI |
@@ -206,9 +192,7 @@ typedef struct GX_PROGRESS_BAR_INFO_STRUCT
 } GX_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                              |                                                  |
+| Üyeler | Açıklama |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_progress_bar_info_min_val**             | Raporlanan en düşük değer |
 | **gx_progress_bar_info_max_val**             | Raporlanan en yüksek değer |
@@ -242,9 +226,7 @@ typedef struct GX_RADIAL_PROGRESS_BAR_INFO_STRUCT
 } GX_RADIAL_PROGRESS_BAR_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                                   |                                              |
+| Üyeler | Açıklama |
 | ------------------------------------------------- | -------------------------------------------- |
 | **gx_radial_progress_bar_info_xcenter**           | X koordinatı içindeki pencere öğesi konumu |
 | **gx_radial_progress_bar_info_ycenter**           | Y koordinatı pencere öğesi konumu  |
@@ -281,9 +263,7 @@ typedef struct GX_RADIAL_SLIDER_INFO_STRUCT
 } GX_RADIAL_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                               |                                                  |
+| Üyeler | Açıklama |
 | --------------------------------------------- | ------------------------------------------------ |
 **gx_radial_slider_info_xcenter**               | Kaydırıcı pencere öğesinin sol tarafında bulunan kaydırıcı iğne 'nin ortasına mesafe |
 | **gx_radial_slider_info_ycenter**             | Kaydırıcı pencere öğesinin üstünden kaydırıcı iğne 'nin ortasına kadar uzaklık |
@@ -311,9 +291,7 @@ typedef struct GX_RECTANGLE_STRUCT
 } GX_RECTANGLE;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                  |                         |
+| Üyeler | Açıklama |
 | -------------------------------- | ------------------------|
 | **gx_rectangle_left**            | Dikdörtgenin sol tarafında   |  
 | **gx_rectangle_top**             | Dikdörtgenin üstü    | 
@@ -334,9 +312,7 @@ typedef struct GX_RICH_TEXT_FONTS_STRUCT
 } GX_RICH_TEXT_FONTS;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                    |                                                            |
+| Üyeler | Açıklama |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_rich_text_fonts_normal_id**   | Normal metin yazı tipinin kaynak KIMLIĞI |
 | **gx_rich_text_fonts_bold_id**     | Kalın metin yazı tipinin kaynak KIMLIĞI |
@@ -357,9 +333,7 @@ typedef struct GX_SCROLL_INFO_STRUCT
 } GX_SCROLL_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                         |                               |
+| Üyeler | Açıklama |
 | ----------------------- | ----------------------------- |
 | **gx_scroll_value**     | Geçerli kaydırma konumu       |
 | **gx_scroll_minimum**   | Raporlanan en düşük konum     |
@@ -389,9 +363,7 @@ typedef struct GX_SCROLLBAR_APPEARANCE_STRUCT
 } GX_SCROLLBAR_APPEARANCE;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                          |                                                       |
+| Üyeler | Açıklama |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_scroll_width**                      | ScrollBar pencere öğesinin piksel cinsinden genişliği |
 | **gx_scroll_thumb_width**                | Kaydırma çubuğu üzerindeki slaytları piksel cinsinden gösteren Thumb düğmesinin genişliği. Bu değer genellikle toplam kaydırma çubuğu genişliğinden az sayıda piksel daha küçüktür |
@@ -426,9 +398,7 @@ typedef struct GX_SLIDER_INFO_STRUCT
 } GX_SLIDER_INFO;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                         |                                                        |
+| Üyeler | Açıklama |
 | --------------------------------------- | ------------------------------------------------------ |
 | **gx_slider_info_min_val**              | Raporlanan en düşük değer |
 | **gx_slider_info_max_val**              | Raporlanan en yüksek değer |
@@ -456,9 +426,7 @@ typedef struct GX_SPRITE_FRAME_STRUCT
 } GX_SPRITE_FRAME;
 ```
 
-### <a name="members"></a>Üyeler
-
-|                                          |                                                       |
+| Üyeler | Açıklama |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_sprite_frame_pixelmap**             | Bu çerçeve için görüntülenecek pixelmap 'in kaynak KIMLIĞI. KIMLIK 0 olabilir. |
 | **gx_sprite_frame_x_offset**             | Pixelmap 'i göstermek için sprite pencere öğesinin sol tarafındaki boşluğu |

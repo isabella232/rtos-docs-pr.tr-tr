@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b44822b9d8f16208cf470a84013be5a5ff833325
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8f2ef697f68a269b24a34147a4bc076b8a2b1660
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826537"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550091"
 ---
 # <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Bölüm 5-Azure RTOS FileX için g/ç sürücüleri
 
@@ -93,8 +93,7 @@ FileX, g/ç sürücüsüne bir yazma isteği vererek fiziksel medyaya bir veya d
 |fx_media_driver_sectors|Yazılacak kesim sayısı|
 |fx_media_driver_buffer|Yazılacak kesimler için kaynak arabelleği|
 |fx_media_driver_system_write| Bir sistem kesimi isteniyorsa (FAT veya dizin sektörü) FX_TRUE olarak ayarlayın. Aksi takdirde, bir dosya veri kesimi isteniyorsa FX_FALSE.|
-|fx_media_driver_sector_type|İstenen kesime ait açık türü aşağıdaki şekilde tanımlar:
-FX_FAT_SECTOR (2) FX_DIRECTORY_SECTOR (3) FX_DATA_SECTOR (4) |
+|fx_media_driver_sector_type|İstenen kesime ait açık türü aşağıdaki şekilde tanımlar:<br> <br>FX_FAT_SECTOR (2) <br> FX_DIRECTORY_SECTOR (3) <br>FX_DATA_SECTOR (4).|
 
 ### <a name="driver-flush"></a>Sürücü temizleme
 

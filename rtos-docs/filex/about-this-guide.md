@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0ebcebdd2b227ed8d9ccf8b3078b716f90f35bef
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 640d9ed4c8037d3af6c5f45158c9496ad1258a3c
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825559"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550108"
 ---
 # <a name="about-this-filex-user-guide"></a>Bu FileX Kullanıcı Kılavuzu hakkında
 
@@ -56,6 +56,7 @@ Bu kılavuz, Microsoft 'un yüksek performanslı ve gerçek zamanlı katıştır
 Özel Azure RTOS FileX denetim yapısı veri türlerine ek olarak, Azure RTOS FileX hizmet çağrı arabirimlerinde kullanılan bir dizi özel veri türü vardır. Bu özel veri türleri, temel alınan C derleyicisinin veri türleriyle doğrudan eşlenir. Bu, farklı C derleyicileri arasında taşınabilirliği sağlamak için yapılır. Tam uygulama Azure RTOS ThreadX 'ten devralınmıştır ve Azure RTOS ThreadX dağıtımına eklenen tx_port. h dosyasında bulunabilir.
 
 Aşağıda, Azure RTOS FileX hizmeti çağrı veri türleri ve bunlarla ilişkili anlamlarıyla ilgili bir liste verilmiştir.
+
 | Tür  | Açıklama  |
 |---|---|
 | **U** | Temel işaretsiz tamsayı. Bu tür 8 bit işaretsiz verileri desteklemelidir; Ancak, en uygun imzasız veri türüne eşlenir. |

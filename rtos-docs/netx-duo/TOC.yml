@@ -137,6 +137,16 @@
           href: netx-duo-mdns/chapter3.md
         - name: Denetleyebilirsiniz. 4-mDNS hizmetlerinin açıklaması
           href: netx-duo-mdns/chapter4.md
+    - name: NetX Duo LWM2M Istemcisi Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-LWM2M istemcisine giriş
+          href: netx-duo-lwm2m/chapter1.md
+        - name: Denetleyebilirsiniz. 2-LWM2M istemcisi yükleme ve kullanma
+          href: netx-duo-lwm2m/chapter2.md
+        - name: Denetleyebilirsiniz. 3-LWM2M istemcisinin işlevsel açıklaması
+          href: netx-duo-lwm2m/chapter3.md
+        - name: Denetleyebilirsiniz. 4-LWM2M istemci hizmetlerinin açıklaması
+          href: netx-duo-lwm2m/chapter4.md
     - name: NetX Duo MQTT istemci Kullanıcı Kılavuzu
       items:
         - name: Denetleyebilirsiniz. 1-NetX Duo MQTT istemcisine giriş
@@ -171,6 +181,14 @@
           href: netx-duo-ppp/chapter2.md
         - name: Denetleyebilirsiniz. 3-NetX Duo PPP hizmetlerinin açıklaması
           href: netx-duo-ppp/chapter3.md
+    - name: NetX Duo PTP Kullanıcı Kılavuzu
+      items:
+        - name: Denetleyebilirsiniz. 1-NetX Duo MTP istemcisine giriş
+          href: netx-duo-ptp-client/chapter1.md
+        - name: Denetleyebilirsiniz. 2-NetX Duo MTP istemcisinin yüklenmesi ve kullanımı
+          href: netx-duo-ptp-client/chapter2.md
+        - name: Denetleyebilirsiniz. 3-NetX Duo MTP istemci hizmetlerinin açıklaması
+          href: netx-duo-ptp-client/chapter3.md
     - name: NetX Duo SMTP istemcisi Kullanıcı Kılavuzu
       items:
         - name: Denetleyebilirsiniz. 1-NetX Duo SMTP istemcisine giriş

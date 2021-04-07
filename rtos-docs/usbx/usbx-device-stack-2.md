@@ -1,17 +1,17 @@
 ---
 title: Bölüm 2-Azure RTOS USBX cihaz yığını yüklemesi
-description: USBX cihaz yığınını yüklemeyi öğrenin.
+description: "' Yi yüklemeden önce göz önünde bulundurmanız gereken önemli ana bilgisayar konularını ve Azure RTOS USBX cihaz yığınını yüklemeyi öğrenin."
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 62f036af27c5da29baf9cba58b5b26631167c3a1
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: dd58f77130fa252be9163bd70c29f7deee400d30
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377161"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106549785"
 ---
 # <a name="chapter-2---azure-rtos-usbx-device-stack-installation"></a>Bölüm 2-Azure RTOS USBX cihaz yığını yüklemesi
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 457eca2144bb0cba7cae63aa007e9cb658bbcd96
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8ee9d16c71d6c207de2098d688d49e6482c8b780
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827029"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550159"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Bölüm 2-Azure RTOS NetX Duo yüklemesi ve kullanımı
 
@@ -71,6 +71,7 @@ NetX Duo kullanmak kolaydır. Temel olarak, uygulama kodu derleme sırasında **
 NetX Duo uygulaması oluşturmak için gereken dört kolay adım aşağıda verilmiştir:
 
 [!div class="mx-tdCol2BreakAll"]
+
 | Adım  | Açıklama  |
 |---|---|
 |&nbsp;1. Adım: |NetX Duo Hizmetleri veya veri yapıları kullanan tüm uygulama dosyalarına ***nx_api. h*** dosyasını dahil edin.|

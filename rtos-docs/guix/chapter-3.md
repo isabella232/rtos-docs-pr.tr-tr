@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2057b86e6f44912fe8ca349cdf0ad2cc10f5c4cd
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 53ffc900debd3bfaa1a38d792ddf294b2ce92461
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827202"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550312"
 ---
 # <a name="chapter-3---functional-overview-of-guix"></a>Bölüm 3-Gux 'e Işlevsel genel bakış
 
@@ -310,7 +310,7 @@ Son olarak, GUıDX ekranları ve pencere öğeleri için denetim blokları stati
 
 GUX API 'Leri bölünür ve Gux sisteminin temel bileşenlerine karşılık gelen çeşitli temel gruplar halinde düzenlenir. Temel bileşenler şunlardır:
 
-| <!-- -->    | <!-- -->    |
+| Bileşenler  | Açıklama  |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | GX_SYSTEM  | GUX sistem bileşeni, başlatma, olaylar, zamanlayıcılar, dize tabloları ve görünür pencere öğesi hiyerarşi yönetiminden sorumludur.                                                                                                                                                                                                                                                                      |
 | GX_CANVAS  | Bir çizim alanı. Bir tuval, donanım çerçeve arabelleğinin ince bir soyutlaması olabilir veya bir saf bellek tuvali de olabilir. Tuval türü gx_canvas_create API işlevine geçirilen parametrelere göre belirlenir.                                                                                                                                                                                   |

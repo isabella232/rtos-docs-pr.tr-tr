@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b54b8b094e608052fdbfc392d93a57ebb34515ed
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c2324a2057bf2ddb2d255b2ff611d34fc664560a
+ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827401"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106549819"
 ---
 # <a name="appendix---port-specific-examples"></a>Ek-bağlantı noktasına özgü örnekler
 
@@ -542,6 +542,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x80000000 --first tx_i
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Dış bellek öznitelikleri A7 Cortex için API 'YI etkinleştirir-AC5 kullanarak
 
 Aşağıdaki öznitelikler, paylaşılan bellek ayarlarını ayarlamak için kullanılabilir:
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MMU_ATTRIBUTE_XN | Hiçbir şekilde Çalıştır |
@@ -684,6 +685,7 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Dış bellek öznitelikleri AC5 kullanarak Cortex için API 'YI etkinleştirir-m3
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -800,6 +802,7 @@ Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Dış bellek öznitelikleri AC6 kullanarak Cortex için API 'YI etkinleştirir-m3
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -1137,6 +1140,7 @@ arm-none-eabi-ld -A cortex-m3 -ereset_handler -T sample_threadx.ld tx_simulator_
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Dış bellek öznitelikleri, GNU kullanarak Cortex için API 'YI etkinleştirir-m3
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -1316,6 +1320,7 @@ place in RAM_region   { block RWPI };
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Dış bellek öznitelikleri, ıAR kullanarak Cortex için API 'YI etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -1804,6 +1809,7 @@ armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac5"></a>Dış bellek öznitelikleri M4 Cortex için API 'YI etkinleştirir-AC5 kullanarak
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -1920,6 +1926,7 @@ Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-ac6"></a>Dış bellek öznitelikleri M4 Cortex için API 'YI etkinleştirir-AC6 kullanarak
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -2257,6 +2264,7 @@ arm-none-eabi-gcc -g -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=vfpv4 -mthumb -T sam
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-gnu"></a>Dış bellek öznitelikleri, GNU kullanarak Cortex için API 'YI etkinleştirir-M4
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -2436,6 +2444,7 @@ place in RAM_region   { block RWPI };
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak Cortex için API 'YI etkinleştirir-M4
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -2618,6 +2627,7 @@ Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Dış bellek öznitelikleri M7 Cortex için API 'YI etkinleştirir-AC6 kullanarak
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -2891,6 +2901,7 @@ arm-none-eabi-gcc -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -no
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Dış bellek öznitelikleri, GNU kullanarak Cortex için API 'YI etkinleştirir-M7
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -3064,6 +3075,7 @@ place in RAM_region   { block RWPI };
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak Cortex için API 'YI etkinleştirir-M7
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -3191,6 +3203,7 @@ armlink -d -o demo_threadx_module_manager.axf --elf --scatter=demo_threadx.scat 
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-ac6"></a>Dış bellek öznitelikleri R4 Cortex için API 'YI etkinleştirir-AC6 kullanarak
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
@@ -3348,6 +3361,7 @@ place in RAM_region   { block RWPI };
 #### <a name="attributes-for-external-memory-enable-api-for-cortex-r4-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak Cortex için API 'YI etkinleştirir-R4
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
+
 | Öznitelik parametresi | Anlamı |
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
