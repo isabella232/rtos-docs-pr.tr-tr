@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c9e91244856b322d53f85bdd572bd317a055776a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 948adff65a080649db0870e35bc75ee774775cb7
+ms.sourcegitcommit: 4cbe92b337e82124bb5a86d319b787eb05b4ea76
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826543"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108067021"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Bölüm 4-Azure RTOS FileX hizmetlerinin açıklaması
 
@@ -30,7 +30,7 @@ UINT fx_directory_attributes_read (
     UINT *attributes_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dizinin özniteliklerini belirtilen medyadan okur.
 
@@ -111,7 +111,7 @@ UINT fx_directory_attributes_set(
     UINT *attributes);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dizinin özniteliklerini çağıran tarafından belirtilen şekilde ayarlar.
 
@@ -194,7 +194,7 @@ UINT fx_directory_create(
     FX_MEDIA *media_ptr,
     CHAR *directory_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde veya dizin adında sağlanan yolda bir alt dizin oluşturur. Kök dizinden farklı olarak, alt dizinlerin tutabilecekleri dosya sayısı için bir sınır yoktur. Kök dizin yalnızca önyükleme kaydı tarafından belirlenen girdi sayısını tutabilirler.
 
@@ -271,7 +271,7 @@ UINT fx_directory_default_get(
     CHAR **return_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ***fx_directory_default_set*** tarafından en son ayarlanan yola yönelik işaretçiyi döndürür. Varsayılan dizin ayarlanmamışsa veya geçerli varsayılan dizin kök dizin ise FX_NULL değeri döndürülür.
 
@@ -342,7 +342,7 @@ UINT fx_directory_default_set(
     CHAR *new_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyanın varsayılan dizinini ayarlar. FX_NULL değeri sağlanırsa, varsayılan dizin medyanın kök dizinine ayarlanır. Açıkça bir yol belirtmeyen tüm sonraki dosya işlemleri bu dizine varsayılan olarak uygulanır.
 
@@ -414,7 +414,7 @@ UINT fx_directory_delete(
     CHAR *directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen dizini siler. Silmek için dizinin boş olması gerektiğini unutmayın.
 
@@ -490,7 +490,7 @@ UINT fx_directory_first_entry_find(
     CHAR *return_entry_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, varsayılan dizindeki ilk giriş adını alır ve belirtilen hedefe kopyalar.
 
@@ -746,7 +746,7 @@ Varsayılan yerel yolu temizler
 UINT fx_directory_local_path_clear(FX_MEDIA *media_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, çağıran iş parçacığı için ayarlanan önceki yerel yolu temizler.
 
@@ -810,7 +810,7 @@ UINT fx_directory_local_path_clear(
     CHAR **return_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen medyanın yerel yol işaretçisini döndürür. Yerel bir yol ayarlanmamışsa, çağırana bir NULL döndürülür.
 
@@ -877,7 +877,7 @@ UINT fx_directory_local_path_restore(
     FX_LOCAL_PATH *local_path_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet daha önce ayarlanmış bir yerel yolu geri yükler. Bu yerel yolda yapılan dizin arama konumu da geri yüklenir, bu da bu yordamı uygulama tarafından özyinelemeli Dizin traversals ' de yararlı hale getirir.
 
@@ -947,7 +947,7 @@ UINT fx_directory_local_path_set(
     CHAR *new_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ***new_path_string** _ tarafından belirtilen bir iş parçacığına özgü yol ayarlar. Bu yordamın başarıyla tamamlanmasından sonra, _ *_local_path_ptr_** içinde depolanan yerel yol bilgileri, bu iş parçacığı tarafından yapılan tüm dosya ve dizin işlemleri için genel medya yolundan öncelikli olur. Bu, sistemdeki diğer iş parçacıklarını etkilemez 
 > [!IMPORTANT]
@@ -1027,7 +1027,7 @@ UINT fx_directory_long_name_get(
     CHAR *long_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan kısa (8,3 biçim) adıyla ilişkili uzun adı (varsa) alır. Kısa ad, bir dosya adı ya da dizin adı olabilir.
 
@@ -1101,7 +1101,7 @@ UINT fx_directory_long_name_get_extended(
     UINT long_file_name_buffer_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan kısa (8,3 biçim) adıyla ilişkili uzun adı (varsa) alır. Kısa ad, bir dosya adı ya da dizin adı olabilir.
 
@@ -1177,7 +1177,7 @@ UINT fx_directory_name_test(
     CHAR *directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen adın bir dizin olup olmadığını sınar. Öyleyse, bir FX_SUCCESS döndürülür.
 
@@ -1251,7 +1251,7 @@ UINT fx_directory_next_entry_find(
     CHAR *return_entry_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizindeki bir sonraki giriş adını döndürür.
 
@@ -1337,7 +1337,7 @@ UINT fx_directory_next_full_entry_find(
     UINT *second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, varsayılan dizindeki bir sonraki giriş adını alır ve belirtilen hedefe kopyalar. Ayrıca, ek giriş parametreleriyle belirtilen girdi hakkında tam bilgileri döndürür.
 
@@ -1443,7 +1443,7 @@ UINT fx_directory_rename(
     CHAR *new_directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet dizin adını belirtilen yeni dizin adıyla değiştirir. Yeniden adlandırma işlemi, belirtilen yola veya varsayılan yola göre de yapılır. Yeni Dizin adında bir yol belirtilmişse, yeniden adlandırılan dizin, belirtilen yola etkili bir şekilde taşınır. Yol belirtilmemişse, yeniden adlandırılan dizin geçerli varsayılan yola yerleştirilir.
 
@@ -1525,7 +1525,7 @@ UINT fx_directory_short_name_get(
     CHAR *short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan uzun adla ilişkili kısa (8,3 biçim) adı alır. Uzun ad, bir dosya adı ya da dizin adı olabilir.
 
@@ -1604,7 +1604,7 @@ UINT fx_directory_short_name_get_extended(
     UINT short_file_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan uzun adla ilişkili kısa (8,3 biçim) adı alır. Uzun ad, bir dosya adı ya da dizin adı olabilir.
 
@@ -1683,7 +1683,7 @@ UINT fx_fault_tolerant_enable(
     UINT memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, hataya dayanıklı modüle izin vermez. Başlamadan sonra, hataya dayanıklı modül dosya sisteminin FileX hataya dayanıklı koruma altında olup olmadığını algılar. Aksi takdirde, hizmet, dosya sistemi işlemlerinde günlükleri depolamak için dosya sisteminde kullanılabilir kesimleri bulur. Dosya sistemi, FileX hataya dayanıklı koruma altındaysa, bütünlüğünü sürdürmek için günlükleri dosya sistemine uygular.
 
@@ -1755,7 +1755,7 @@ UINT fx_file_allocate(
     FX_FILE *file_ptr, 
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır.
 
@@ -1838,7 +1838,7 @@ Dosya özniteliklerini okur
     CHAR *file_name,
     UINT *attributes_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın özniteliklerini belirtilen medyadan okur.
 
@@ -1929,7 +1929,7 @@ UINT fx_file_attributes_set(
     CHAR *file_name,
     UINT attributes);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın özniteliklerini çağıran tarafından belirtilen olanlarla ayarlar.
 
@@ -2025,7 +2025,7 @@ UINT fx_file_best_effort_allocate(
     ULONG size,
     ULONG *actual_size_allocated);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır. Medyada yeterli sayıda ardışık küme yoksa, bu hizmet birbirini izleyen en büyük küme bloğunu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
 
@@ -2110,7 +2110,7 @@ Dosyayı kapatır
 ```c
 UINT fx_file_close(FX_FILE *file_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı kapatır. Dosya yazmak için açıksa ve değiştirilmişse, bu hizmet Dizin girişini yeni boyut ve geçerli sistem saati ve tarihi ile güncelleştirerek dosya değiştirme işlemini tamamlar.
 
@@ -2185,7 +2185,7 @@ UINT fx_file_create(
     FX_MEDIA *media_ptr,
     CHAR *file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı varsayılan dizinde veya dosya adıyla sağlanan dizin yolunda oluşturur.
 
@@ -2282,7 +2282,7 @@ UINT fx_file_date_time_set(
     UINT minute, 
     UINT second);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın tarih ve saatini ayarlar.
 
@@ -2384,7 +2384,7 @@ UINT fx_file_delete(
     FX_MEDIA *media_ptr, 
     CHAR *file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı siler.
 
@@ -2469,7 +2469,7 @@ UINT fx_file_extended_allocate(
     FX_FILE *file_ptr, 
     ULONG64 size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır.
 
@@ -2555,7 +2555,7 @@ UINT fx_file_extended best_effort_allocate(
     ULONG64 size,
     ULONG64 *actual_size_allocated);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır. Medyada yeterli sayıda ardışık küme yoksa, bu hizmet birbirini izleyen en büyük küme bloğunu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
 
@@ -2643,7 +2643,7 @@ UINT fx_file_extended_relative_seek(
     ULONG64 byte_offset,
     UINT seek_from);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
 
@@ -2731,7 +2731,7 @@ UINT fx_file_extended_seek(
     FX_FILE *file_ptr, 
     ULONG64 byte_offset);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen bayt uzaklığa konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
 
@@ -2809,7 +2809,7 @@ UINT fx_file_truncate(
     FX_FILE *file_ptr,
     ULONG64 size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri serbest bırakıldı.
 
@@ -2894,7 +2894,7 @@ UINT fx_file_extended_truncate_release(
     ULONG64 size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. ***Fx_file_extended_truncate*** hizmetinden farklı olarak, bu hizmet kullanılmayan kümeleri serbest bırakabilir.
 
@@ -2982,7 +2982,7 @@ UINT fx_file_open(
     CHAR *file_name,
     UINT open_type);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı okuma ya da yazma için açar. Bir dosya birden çok kez okumak için açılabilir, ancak bir dosya yalnızca yazıcı dosyayı kapatana kadar bir kez yazmak üzere açılabilir.
 
@@ -3080,7 +3080,7 @@ UINT fx_file_read(
     ULONG request_size, 
     ULONG *actual_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyadaki baytları okur ve bunları sağlanan arabellekte depolar. Okuma işlemi tamamlandıktan sonra dosyanın iç okuma işaretçisi, dosyadaki bir sonraki bayta işaret etmek üzere ayarlanır. İstekte daha az bayt kaldığında, yalnızca kalan baytlar arabellekte depolanır. Herhangi bir durumda, arabelleğe yerleştirilmiş baytların toplam sayısı çağırana döndürülür.
 
@@ -3168,7 +3168,7 @@ UINT fx_file_relative_seek(
     ULONG byte_offset,
     UINT seek_from);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
 
@@ -3259,7 +3259,7 @@ UINT fx_file_rename(
     CHAR *old_file_name,
     CHAR *new_file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet *old_file_name* tarafından belirtilen dosyanın adını değiştirir. Yeniden adlandırma işlemi, belirtilen yola veya varsayılan yola göre de yapılır. Yeni dosya adında bir yol belirtilmişse, yeniden adlandırılan dosya belirtilen yola etkili bir şekilde taşınır. Hiçbir yol belirtilmemişse, yeniden adlandırılan dosya geçerli varsayılan yola yerleştirilir.
 
@@ -3347,7 +3347,7 @@ UINT fx_file_seek(
     FX_FILE *file_ptr,
     ULONG byte_offset);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen bayt uzaklığa konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
 
@@ -3425,7 +3425,7 @@ UINT fx_file_truncate(
     ULONG size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri serbest bırakıldı.
 
@@ -3509,7 +3509,7 @@ UINT fx_file_truncate(
     FX_FILE *file_ptr,
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. ***Fx_file_truncate*** hizmetinden farklı olarak, bu hizmet kullanılmayan kümeleri serbest bırakabilir.
 
@@ -3596,7 +3596,7 @@ UINT fx_file_write(
     VOID *buffer_ptr,
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın geçerli konumundan başlayarak belirtilen arabellekteki baytları yazar. Yazma işlemi tamamlandıktan sonra dosyanın iç okuma işaretçisi, dosyadaki bir sonraki bayta işaret etmek üzere ayarlanır.
 
@@ -3680,7 +3680,7 @@ UINT fx_file_write_notify_set(
     FX_FILE *file_ptr,
     VOID (*file_write_notify)(FX_FILE*));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, başarılı bir dosya yazma işleminden sonra çağrılan geri çağırma işlevini yüklüyor.
 
@@ -3744,7 +3744,7 @@ Medya etkinliklerini iptal eder
 ```c
 UINT fx_media_abort(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, tüm açık dosyaları kapatma, ilişkili sürücüye bir iptal isteği gönderme ve medyayı durdurulmuş duruma yerleştirme dahil olmak üzere medyayla ilişkili tüm geçerli etkinlikleri iptal eder. Bu hizmet genellikle g/ç hataları algılandığında çağrılır.
 
@@ -3810,7 +3810,7 @@ Mantıksal kesim önbelleğini geçersiz kılar
 UINT fx_media_cache_invalidate(FX_MEDIA *media_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önbellekteki tüm kirli kesimleri temizler ve sonra mantıksal kesim önbelleğinin tamamını geçersiz kılar.
 
@@ -3877,7 +3877,7 @@ UINT fx_media_check(
     ULONG error_correction_option,
     ULONG *errors_detected_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosya/dizin çapraz bağlantı, geçersiz FAT zincirleri ve kayıp kümeler dahil olmak üzere temel yapısal hatalar için belirtilen medyayı denetler. Bu hizmet, algılanan hataları düzeltme yeteneği de sağlar.
 
@@ -3967,7 +3967,7 @@ Medyayı kapatır
 ```c
 UINT fx_media_close(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen medyayı kapatır. Medyayı kapatma sürecinde, tüm açık dosyalar kapatılır ve kalan arabellekler fiziksel medyaya silinir.
 
@@ -4032,7 +4032,7 @@ UINT fx_media_close_notify_set(
     VOID (*media_close_notify)(FX_MEDIA*));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir medya başarıyla kapatıldıktan sonra çağrılacak bir bildirim geri arama işlevi ayarlar.
 
@@ -4099,12 +4099,15 @@ UINT fx_media_exFAT_format(
     UINT volume_serial_number, 
     UINT boundary_unit);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet verilen medyayı sağlanan parametrelere göre exFAT ile uyumlu bir şekilde biçimlendirir. Medyayı açmadan önce bu hizmetin çağrılması gerekir.
 
 > [!WARNING]
 > *Zaten biçimlendirilmiş bir medyanın biçimlendirilmesi, medyadaki tüm dosya ve dizinleri etkin bir şekilde siler.*
+
+> [!IMPORTANT]
+> *ExFAT birim boyutu bölümün boyutuyla (MBR veya GPT düzeni varsa) veya bölüm düzeni yoksa (MBR veya GPT) tüm cihazın boyutuna eşleşmelidir. Windows 'da, bazı toplam sektörlerinin, aviblebleler sektörden daha az sayıda değeri ile biçimlendirildiyse, exFAT diskinin bir kısıtlaması yoktur*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -4189,7 +4192,7 @@ UINT fx_media_extended_space_available(
     FX_MEDIA *media_ptr,
     ULONG64 *available_bytes_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyada kullanılabilir olan bayt sayısını döndürür.
 
@@ -4254,7 +4257,7 @@ Fiziksel medyada verileri boşaltır
 ```c
 UINT fx_media_flush(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, herhangi bir değiştirilen dosyanın tüm önbelleğe alınan kesimlerini ve dizin girdilerini fiziksel medyada boşaltır.
 
@@ -4337,7 +4340,7 @@ UINT fx_media_format(
     UINT heads,
     UINT sectors_per_track);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet verilen medyayı sağlanan parametrelere göre FAT 12/16/32 ile uyumlu bir şekilde biçimlendirir. Medyayı açmadan önce bu hizmetin çağrılması gerekir.
 
@@ -4434,7 +4437,7 @@ UINT fx_media_open(
     VOID *memory_ptr, 
     ULONG memory_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan g/ç sürücüsünü kullanarak dosya erişimi için bir medya açar.
 
@@ -4510,7 +4513,7 @@ UINT fx_media_open_notify_set(
     FX_MEDIA *media_ptr,
     VOID (*media_open_notify)(FX_MEDIA*));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir medya başarıyla açıldıktan sonra çağrılacak bir bildirim geri arama işlevi ayarlar.
 
@@ -4569,7 +4572,7 @@ UINT fx_media_read(
     ULONG logical_sector, 
     VOID *buffer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyadan bir mantıksal kesim okur ve sağlanan arabelleğe koyar.
 
@@ -4636,7 +4639,7 @@ UINT fx_media_space_available(
     ULONG *available_bytes_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyada kullanılabilir olan bayt sayısını döndürür.
 
@@ -4704,7 +4707,7 @@ UINT fx_media_volume_get(
     CHAR *volume_name,
     UINT volume_source);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılmış medyanın birim adını alır.
 
@@ -4776,7 +4779,7 @@ UINT fx_media_volume_get_extended(
     UINT volume_name_buffer_length,
     UINT volume_source);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılmış medyanın birim adını alır.
 
@@ -4852,7 +4855,7 @@ UINT fx_media_volume_set(
     FX_MEDIA *media_ptr, 
     CHAR *volume_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılmış medyanın birim adını ayarlar.
 
@@ -4920,7 +4923,7 @@ UINT fx_media_write(
     ULONG logical_sector,
     VOID *buffer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet verilen arabelleği belirtilen mantıksal kesime yazar.
 
@@ -4992,7 +4995,7 @@ UINT fx_system_date_get(
     UINT *month, 
     UINT *day);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli sistem tarihini döndürür.
 
@@ -5046,7 +5049,7 @@ UINT fx_system_date_set(
     UINT day);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sistem tarihini belirtilen şekilde ayarlar.
 
@@ -5100,7 +5103,7 @@ Tüm sistemi başlatır
 VOID fx_system_initialize(void);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, tüm önemli dosya x veri yapılarını başlatır. ***Tx_application_define*** veya belki de bir başlatma iş parçacığından çağrılmalıdır ve başka bir FileX hizmeti kullanılmadan önce çağrılmalıdır.
 
@@ -5161,7 +5164,7 @@ UINT fx_system_time_get(
     UINT *second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet geçerli sistem saatini alır.
 
@@ -5213,7 +5216,7 @@ Geçerli sistem saatini ayarlar
 UINT fx_system_time_set(UINT hour, UINT minute, UINT second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli sistem saatini giriş parametreleri tarafından belirtilen şekilde ayarlar.
 
@@ -5269,7 +5272,7 @@ UINT fx_unicode_directory_create(
     ULONG source_unicode_length, 
     CHAR *short_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir alt dizin oluşturur; Unicode kaynak adı parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, yeni oluşturulan Unicode alt dizininin kısa adı (8,3 biçimi) hizmet tarafından döndürülür.
 
@@ -5359,7 +5362,7 @@ UINT fx_unicode_directory_rename(
     ULONG new_unicode_length,
     CHAR *new_short_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Unicode adlı bir alt dizini geçerli çalışma dizininde belirtilen yeni Unicode adına değiştirir. Unicode ad parametreleri yol bilgilerine sahip olmamalıdır.
 
@@ -5444,7 +5447,7 @@ UINT fx_unicode_file_create(
     CHAR *short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir dosya oluşturur; Unicode kaynak adı parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, yeni oluşturulan Unicode dosyanın kısa adı (8,3 biçimi) hizmet tarafından döndürülür.
 
@@ -5539,7 +5542,7 @@ UINT fx_unicode_file_rename(
     CHAR *new_short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir dosya adını belirtilen yeni Unicode adı olarak değiştirir. Unicode ad parametreleri yol bilgilerine sahip olmamalıdır.
 
@@ -5626,7 +5629,7 @@ Unicode adının uzunluğunu alır
 ```c
 ULONG fx_unicode_length_get(UCHAR *unicode_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan Unicode adının uzunluğunu belirler. Unicode bir karakter iki bayt ile temsil edilir. Unicode adı, iki baytlık bir Unicode karakter olan ve iki boş bayt (0 değeri 0 değeri) tarafından sonlandırılan bir serisidir.
 
@@ -5701,7 +5704,7 @@ UINT fx_unicode_length_get_extended(
     UCHAR *unicode_name,
     UINT buffer_length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan Unicode adının uzunluğunu alır. Unicode bir karakter iki bayt ile temsil edilir. Unicode adı, iki boş bayt (iki bayt 0 değeri) tarafından sonlandırılan bir dizi TWA Unicode karakter dizisidir.
 
@@ -5783,7 +5786,7 @@ UINT fx_unicode_name_get(
     ULONG *destination_unicode_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizin içinde sağlanan kısa ad (8,3 biçimi) ile ilişkili Unicode adını alır; kısa ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından kısa adla ilişkili Unicode adı döndürülür.
 
@@ -5872,7 +5875,7 @@ UINT fx_unicode_name_get_extended(
     ULONG *destination_unicode_length,
     ULONG unicode_name_buffer_length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizin içinde sağlanan kısa ad (8,3 biçimi) ile ilişkili Unicode adını alır; kısa ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından kısa adla ilişkili Unicode adı döndürülür.
 
@@ -6056,7 +6059,7 @@ UINT fx_unicode_short_name_get_extended(
     ULONG short_name_buffer_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizin içindeki UNICODE adı ile ilişkili kısa adı (8,3 biçimi) alır; Unicode ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından Unicode adıyla ilişkili kısa ad döndürülür.
 
