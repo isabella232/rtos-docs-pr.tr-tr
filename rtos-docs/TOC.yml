@@ -1,6 +1,6 @@
 - name: Microsoft Azure RTOS belgeleri
   href: index.yml
-- name: Microsoft Azure RTOS 'a genel bakış
+- name: Microsoft Azure RTOScd genel bakış
   href: overview-rtos.md
 - name: Başlangıç kılavuzları
   href: getting-started.md
