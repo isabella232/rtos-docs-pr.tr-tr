@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 2339da391e52b437a2111ae439cccf41e038bdcf
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e3fe3bcc602f409cc76f3be47aca865bf8116697
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826926"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171344"
 ---
 # <a name="overview-of-azure-rtos-netx-duo"></a>Azure RTOS NetX Duo 'e genel bakış
 
@@ -23,13 +23,11 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 
 * Mesajlaşma kuyruğu telemetri aktarımı (MQTT)
 * En az 2,7 KB FLASH
-* Sezgisel MQTT API 'Leri: *nx_mqtt_*\*
 
 ### <a name="auto-ip"></a>Otomatik IP
 
 * Otomatik IPv4 adresi ataması
 * En az 1,2 KB, 300 bayt RAM
-* Sezgisel Oto IP API 'Leri *: \* nx_autoip_*
 
 ### <a name="http-https"></a>HTTP, HTTPS
 
@@ -38,7 +36,6 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Köprü Metni Aktarım Protokolü (HTTP)
 * Minimum 2,8 KB-4,8 KB, FLASH/0,4 KB ile 1,0 KB arasında
 * İstemci ve sunucu desteği
-* Sezgisel API 'Ler *: \* nx_http_*
 
 #### <a name="httphttps-11"></a>HTTP/HTTPS 1,1
 
@@ -50,14 +47,12 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Kalıcı bağlantı desteği
 * Çok parçalı dosya yükleme
 * Azure RTOS NetX güvenli TLS ile tam olarak tümleşik
-* Sezgisel API 'Ler *: \* nx_web_http*
 
 ### <a name="smtp"></a>SMTP
 
 * Basit küçük/küçük Aktarım Protokolü (SMTP)
 * En az 4,1 KB ve 0,6 KB RAM ayak izi
 * İstemci desteği
-* Sezgisel SMTP API 'Leri *: \* nx_smtp_*
 
 ### <a name="dhcp"></a>DHCP
 
@@ -65,14 +60,12 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Minimum 3,6 KB-4,6 KB FLASH, 2,7 KB RAM ayak izi
 * İstemci ve sunucu desteği
 * IPv4 ve IPv6 desteği
-* Sezgisel DHCP API 'Leri *: \* nx_dhcp_*
 
 ### <a name="nat"></a>NAT
 
 * Ağ Adresi Çevirisi (NAT)
 * Minimum 3,5 K6 ve 0,6 KB RAM ayak izi
 * IPv4 adresi desteği
-* Sezgisel NAT API 'Leri *: \* nx_nat_*
 * NAT yalnızca Azure RTOS NetX Duo ile kullanılabilir
 
 ### <a name="snmp"></a>SNMP
@@ -80,7 +73,6 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Basit Ağ Yönetim Protokolü (SNMP)
 * En az 10,9 KB ve 2,6 KB RAM ayak izi
 * VI, v2 ve v3 için aracı desteği
-* Sezgisel SNMP API 'Leri *: \* nx_snmp_*
 
 ### <a name="dns-mdns-dns-sd"></a>DNS, mDNS, DNS-SD
 
@@ -89,7 +81,6 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * DNS tabanlı hizmet bulma (DNS-SD)
 * DNS en az 2,4 KB-3 KB FLASH, 1 KB RAM ayak
 * İstemci desteği
-* Sezgisel API 'Ler *: \* nx_dns_*
 * mDNS ve DNS-SD yalnızca Azure RTOS NetX Duo ile kullanılabilir
 
 ### <a name="p0p3"></a>P0P3
@@ -97,7 +88,6 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Postane Protokolü sürüm 3 (POP3)
 * En az 8,1 KB ve 1,4 KB RAM ayak izi
 * İstemci desteği
-* Sezgisel P0P3 API 'Leri *: \* nx_pop3_*
 
 ### <a name="telnet"></a>Sun
 
@@ -265,55 +255,12 @@ Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de dah
 * Sezgisel IPSec API 'Leri *: \* nx_ipsec_*
 * IPSec yalnızca Azure RTOS NetX Duo ile kullanılabilir
 
-## <a name="small-footprint"></a>Küçük ayak izi
-
-Azure RTOS NetX Duo, temel IP ve UDP desteği için 9 KB 'den 15 KB 'a kadar bir renetme sahiptir. TCP işlevselliği için 10 KB ila 13 KB 'lık yönerge alanı belleği gerekir. Azure RTOS NetX Duo RAM kullanımı, genellikle 2,6 KB 'den 3,6 KB 'ye ve uygulama tarafından tanımlanan paket havuzu belleğine göre değişir. Azure RTOS ThreadX gibi Azure RTOS NetX Duo boyutu, uygulama tarafından kullanılan hizmetlere göre otomatik olarak ölçeklendirilir. Bu, karmaşık yapılandırma ve derleme parametrelerine gerek duymayı neredeyse ortadan kaldırır, böylece geliştirici daha kolay hale getirir.
-
-## <a name="fast-execution"></a>Hızlı yürütme
-
-Azure RTOS NetX Duo, en hızlı olası performansı elde etmek için Azure RTOS ThreadX ile yüksek düzeyde tümleştirilmiş, sıfır kopya bir paket gönderme/alma uygulamasını sağlar. Örneğin, Azure RTOS NetX Duo, genellikle işlemci döngülerinin yalnızca küçük bir yüzdesini kullanarak 80 MHz (veya daha az) bir işlemcide neredeyse Won 'a yönelik veri aktarımları elde edebilir.
-
-## <a name="simple-easy-to-use"></a>Basit, kullanımı kolay
-
-Azure RTOS NetX Duo API 'SI sezgisel, kolay ve yüksek işlevselliğe sahiptir.
-
-API adları, diğer ağ ürünlerinde yaygın olarak kullanılan "alfabe dışı" veya son derece kısaltılmış adlarla değil, gerçek sözcüklerden oluşur. Tüm Azure RTOS NetX Duo API 'Lerinde önde gelen bir *nx_* ve bir ad fiil adlandırma kuralı takip ediyoruz. Ayrıca, API 'nin tamamında işlevsel bir tutarlılık vardır. Örneğin, askıya aldığı tüm API işlevlerinin aynı şekilde çalışan isteğe bağlı bir zaman aşımı vardır.
-
-Eski uygulamalar için, Azure RTOS NetX Duo, ek bir BSD soketi uyumlu katman sağlar. Bu katman, geliştiricilerin büyük ağ uygulamalarını kolayca geçirmelerine yardımcı olur.
-
 ## <a name="safe-and-secure"></a>Güvenli ve güvenli
 
 Azure RTOS NetX Duo güvenlidir. Bu güvenlik, IPSec, SSL, TLS ve DTLS dahil eklenti güvenlik ürünleri aracılığıyla sağlanır. Ayrıca, uygulamanın Azure RTOS NetX Duo 'e yönelik tüm dış erişimlere yönelik tümüyle denetimi vardır ve güvenlik riski belirleme çok daha kolay hale getirir.
 
 Microsoft Azure RTOS, OEM 'Lere iletişim sağlamak ve temel alınan MCU/MPU donanım koruma mekanizmalarını kullanarak kod ve veri yalıtımı oluşturmak için bileşenleri sağlar. Cihazın, belirli kullanım durumuyla ilişkili gelişen güvenlik gereksinimlerini tam olarak karşıladığından emin olmak için, bu son olarak cihaz oluşturucunun sorumluluğundadır.
 
-## <a name="pre-certified--by-tuv-and-ul-to-many-safety-standards"></a>TUV ve UL ile birçok güvenlik standartlarına ön sertifikalı
-
-Azure RTOS NetX Duo, SGS-TUV Saar tarafından, ıEC-61508 SIL 4, ıEC-62304 SW Safety Class C, ISO 26262 asıl D ve EN 50128 'e göre güvenlik açısından kritik sistemlerde kullanılmak üzere sertifikalandırilmiştir. Sertifika, Azure RTOS NetX Duo 'un, "elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili sistemlerin Işlevsel güvenliği" için, ıEC-61508, ıEC-62304, ISO 26262 ve 50128 EN yüksek güvenlik bütünlüğü düzeyleri için güvenlikle ilgili yazılımlar geliştirmede kullanılabileceğini onaylar. Almanya 'nın SGS-Group ve TUV Saarland 'ın Birleşik bir tezi aracılığıyla oluşturulan SGS-TUV Saar, dünya çapındaki güvenlikle ilgili sistemler için eklenmiş yazılımları test etmek, denetlemek, doğrulamak ve sertifika almak için önde gelen acalacaklandırılan şirkete gelmiştir. Endüstriyel güvenlik standardı IEC 61508 ve bundan türetilmiş tüm standartlar, IEC-62304, ISO 26262 ve en 50128 dahil, elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili tıbbi cihazların, işlem denetim sistemlerinin, endüstriyel makinelerin, otomobil ve demiryolu denetim sistemlerinin işlevsel güvenlik düzeyini güvence altına almak için kullanılır.
-
-:::image type="content" source="media/overview-netx-duo/partener-logo-sgs-tuv-saar.png" alt-text="SGS-TUV sertifikası":::
-
-Azure RTOS NetX Duo, UL 60730-1 Ek H, CSA E60730-1 Ek H, ıEC 60730-1 Ek H, UL 60335-1 ek R, ıEC 60335-1 ek R ve, programlanabilir bileşenlerde yazılım için ul 1998 güvenlik standartları ile uyumlu bir şekilde tanınıyor. UL, en fazla uzman sürmek güvenlik çözümleri sunan küresel, bağımsız bir güvenlik bilimi şirketidir. Bu, elektrik, yenilenebilir enerji ve Nanotechnology için genel olarak elektrik 'yi benimseme özelliğine sahiptir.
-
-:::image type="content" source="media/overview-netx-duo/cru-logo-certification.png" alt-text="CRU UL sertifikası":::
-
-TUV ve UL sertifikalarıyla ilişkili yapıtlar (sertifika, güvenlik el kitabı, test raporu vb.) satış için kullanılabilir.
-
-Uygulamanın ek sertifikaya ihtiyacı olduğu durumlarda, gerçek donanım platformunu kullanarak ve hatta uygulama kodunu kapsayan çeşitli standartlara anahtar sertifikası sağlamak için Microsoft aracılığıyla bir sertifika hizmeti kullanılabilir. Sertifika hizmetimiz hakkında daha fazla bilgi için bizimle iletişime geçin.
-
-## <a name="eal4-common-criteria-security-certification"></a>EAL4 + ortak ölçütler güvenlik sertifikası
-
-Azure RTOS, EAL4 + ortak ölçütler güvenlik sertifikası elde etti. Evalution (TOE) hedefi Azure RTOS ThreadX, Azure RTOS NetX Duo, Azure RTOS NetX güvenli TLS ve Azure RTOS NetX MQTT ' i içerir. Bu, derin eklenmiş sensörler, cihazlar, uç yönlendiriciler ve ağ geçitleri için gereken en yaygın IoT protokollerini temsil eder.
-
-:::image type="content" source="media/overview-netx-duo/eal-logo-certification.png" alt-text="EAL sertifikası":::
-
-Microsoft Azure RTOS SC güvenlik sertifikası için kullanılan BT güvenlik değerlendirme olanağı, en parlama BV ' dir ve sertifika yetkilisi de bir Ttıt.
-
-## <a name="fips-140-2-validated"></a>FIPS 140-2 doğrulanan
-
-Azure RTOS NetX şifre kitaplıkları, şifreleme modülleri için gereksinimleri belirten, yazılım için Federal bilgi Işleme standartlaştırma 140-2 (FIPS 140-2) sertifikası elde edin. FIPS 140-2, şifreleme gücü ve özellikleri ile ilgili belirli standartları karşılamak için şifreleme tabanlı güvenlik kullanan tüm federal kamu kuruluşlarını ve departmanları gerektirir. Bu şifreleme tabanlı güvenlik standartları, Kanada ve Avrupa Birliği 'nde de tanınır.
-
-Azure RTOS NetX şifre kitaplıkları için kullanılan bilgi güvenliği değerlendirme laboratuvarı atsec idi ve sertifika yetkilisi ulusal standartlar ve Teknoloji Enstitüsü (NıST). Ek ayrıntılar için [NIST Web sitesini](https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3394) gözden geçirin.
 
 ## <a name="interoperability-verification"></a>Birlikte çalışabilirlik doğrulaması
 
@@ -325,7 +272,7 @@ Azure RTOS NetX Duo, kapsamlı IPv6-Ready logo sertifikasına ulaşmak için yal
 
 ## <a name="comprehensive-iot-solution"></a>Kapsamlı IoT çözümü
 
-Azure RTOS NetX Duo, temel IP ve UDP desteği için 9 KB 'den 15 KB 'a kadar bir renetme sahiptir. NetX Duo, derin eklenmiş IoT uygulamaları için en kapsamlı TCP/IP ağıyla biridir. Bu destek, aşağıdaki eklenti protokol ürünlerini içerir:
+NetX Duo, derin eklenmiş IoT uygulamaları için en kapsamlı TCP/IP ağıyla biridir. Bu destek, aşağıdaki eklenti protokol ürünlerini içerir.
 
 MQTT, CoAP, LWM2M, 6LoWPAN, SSL/TLS/DTLS, IPSec, Oto IP, DHCP, DNS, mDNS, DNS-SD, FTP, HTTP, IPSec, NAT, POP3, PPP, PPPoE, SMTP, SNMP v1/2/3, Telnet, TFTP
 
@@ -344,69 +291,6 @@ Azure RTOS NetX Duo, şunları içeren gelişmiş bir teknolojidir:
 * IPsec
 * SSL/TLS/DTLS
 * Azure RTOS TraceX sistem analizi desteği
-
-## <a name="fastest-time-to-market"></a>En hızlı pazar süresi
-
-Azure RTOS NetX Duo yüklemek, öğrenmek, kullanmak, hata ayıklamak, doğrulamak, onaylamak ve sürdürmek kolaydır. Sonuç olarak, NetX Duo, Broadcom ve Gainspan gibi birçok SoCs dahil olmak üzere, gömülü IoT cihazları için en popüler TCP/IP yığınlarından biridir. Tutarlı Pazar süresi avantajımız, şu şekilde oluşturulmuştur:
-
-* Kalite belgeleri: lütfen [Azure RTOS NetX Duo Kullanıcı Kılavuzumuzu](about-this-guide.md) gözden geçirin ve kendiniz görün!
-* Tüm kaynak kodu kullanılabilirliği
-* Kullanımı kolay API
-* Kapsamlı ve gelişmiş özellik kümesi
-
-## <a name="one-simple-license"></a>Tek bir basit lisans
-
-Önceden lisanslanmış cihazlara dağıtıldığında, diğer tüm cihazların basit bir yıllık lisansa sahip olması için, kaynak kodu ve test lisansları için ücret ve maliyet kullanımı maliyeti yoktur.
-
-## <a name="full-highest-quality-source-code"></a>Tam, en yüksek kaliteli kaynak kodu
-
-Yıl boyunca, Azure RTOS NetX Duo kaynak kodu, çubuğun kalitesini ve anlamayı kolay bir şekilde ayarladı. Ayrıca, dosya başına bir işleve sahip olma kuralı, kolay kaynak gezintisi için sağlar.
-
-## <a name="supports-most-popular-architectures"></a>Popüler mimarilerin çoğunu destekler
-
-Azure RTOS NetX Duo, aşağıdaki gelişmiş mimariler de dahil olmak üzere en popüler 32/64 bit mikro işlemciler üzerinde çalışır ve tamamen sınanmış ve tam olarak desteklenmektedir:
-
-**Analog cihazlar**: parça, BlackICE, CM4xx
-
-**Andes Core**: RISC-V
-
-**Ambiqmicro**: Pollo MCUs
-
-**ARM**: RM7, ARM9, ARM11, Cortex-M0/m3/M4/M7/A15/a5/A7/A8/A9/A5X 64-bı/A7x 64-bit/R4/R5, TrustZone ARMv8-ı
-
-**Temposunda**: xtensa, elmas
-
-**Ceva**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0 +, FM3, MF4, Werwifi
-
-**Cypress**: RISC-V
-
-**Ensilica**: ESI-RISC
-
-**Infineon**: XMC1000, XMC4000, kanore
-
-**Intel & Intel FPGA**: X36/Pentium, XSCALE, NIOS II, Cyclone, varış a 10
-
-**Mikro yonga**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/ZF, PIC24/PIC32
-
-**Mikro yarı**: RISC-V
-
-**NXP**: LPC, ARM7, ARM9, PowerPC, 68 K, I.MX, ColdFire, Kinetis Cortex-M3/M4
-
-**Renesas**: SH, HS, v850, RX, Rz, Synergy
-
-**Silicon** Labs: EFM32
-
-**Synopsys**: Arc 600, 700, Arc Em, Arc HS
-
-**St**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
-
-**TL**: C5xxx, C6xxx, Stellardo, Sitara, Tiva-C
-
-**Dalga bilgi işlem**: MIPS32 4k, 24 K, 34 k, 1004 k, ver 5k, mikro Aptiv, ınteraptiv, Proaptiv, M-class
-
-**Xilinx**: mikro Blaze, PowerPC 405, zynq, Zynq UltraSCALE
-
-*Listelenen tüm zamanlama ve boyut rakamları tahminlerdir ve geliştirme platformunuzun farklı olabilir.*
 
 ## <a name="related-services"></a>İlgili hizmetler
 

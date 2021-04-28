@@ -6,26 +6,18 @@ ms.author: philmea
 ms.date: 6/9/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: acee58d9c48cb7a66993aaa5dc4a565dfe96234d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e786e5bf1f434ec9543823dee8784b677a2b371f
+ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827346"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108171395"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX 'e genel bakış
 
 Azure RTOS ThreadX, özellikle derin gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan, Microsoft 'un gelişmiş endüstriyel sınıf Real-Time Işletim sistemidir (RTOS). Azure RTOS ThreadX, Gelişmiş zamanlama, iletişim, eşitleme, süreölçer, bellek yönetimi ve kesme yönetim olanakları sağlar. Ayrıca, Azure RTOS ThreadX 'in picokernel™ mimarisi, önalım-Threshold™ zamanlama, olay zincirleme,™ yürütme profili oluşturma, performans ölçümleri ve sistem olay izleme dahil birçok gelişmiş özelliği vardır. En üstün kullanım kolaylığıyla birlikte, Azure RTOS ThreadX, katıştırılmış uygulamaların en zorlu kullanımı için ideal seçenektir. 2017 itibariyle, Azure RTOS ThreadX, tüketici cihazları, tıbbi elektronik ve endüstriyel denetim ekipmanı dahil olmak üzere çok çeşitli ürünlerde 6.200.000.000 ' den fazla dağıtıma sahiptir.
 
 ## <a name="api-protocols"></a>API protokolleri
-
-### <a name="azure-rtos-threadx-api"></a>Azure RTOS ThreadX API 'SI
-
-* Sezgisel ve tutarlı API
-* İsim-fiil adlandırma kuralı
-* Tüm API 'Lerde Azure RTOS ThreadX olarak kolayca tanımlanabilmesi için önde gelen *tx_* vardır
-* API 'Lerin engellenmesi isteğe bağlı iş parçacığı zaman aşımına uğradı
-* Birçok API uygulama ISRs 'den doğrudan kullanılabilir
 
 ### <a name="azure-rtos-threadx-services"></a>Azure RTOS ThreadX Hizmetleri
 
@@ -183,7 +175,7 @@ Azure RTOS ThreadX, önde gelen 'U M2M Market Intelligence firması, VDC Researc
 
 Azure RTOS ThreadX, en az bir kaplama için remarkalı küçük 2KB yönerge alanı ve 1KB RAM gerektirir. Bu, büyük bir olasılıkla katmanlı olmayan picokernel™ mimarisi ve otomatik ölçeklendirmesinden kaynaklanır. Otomatik ölçeklendirme, uygulama tarafından kullanılan hizmetlerin (ve destekleyici altyapının) bağlantı zamanında son görüntüye dahil olduğu anlamına gelir.
 
-Bazı tipik Azure RTOS ThreadX boyut özellikleri aşağıda verilmiştir:
+Bazı tipik Azure RTOS ThreadX boyut özellikleri aşağıda verilmiştir.
 
 |Azure RTOS ThreadX hizmeti  |Bayt cinsinden normal boyut  |
 |---------|---------|
@@ -220,39 +212,11 @@ Azure RTOS ThreadX 'in bazı tipik performans özellikleri aşağıda verilmişt
 
     **200 MHz hızında çalışan normal işlemciyi temel alan performans rakamları*.
 
-## <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>TUV ve UL ile birçok güvenlik standartlarına ön sertifikalı
-
-Azure RTOS ThreadX ve Azure RTOS ThreadX SMP, SGS-TUV Saar tarafından, ıEC-61508 SIL 4, ıEC-62304 SW Safety Class C, ISO 26262 asıl D ve EN 50128 'e göre güvenlik açısından kritik sistemlerde kullanılmak üzere sertifikalandırilmiştir. Sertifika, Azure RTOS ThreadX ve Azure RTOS ThreadX SMP 'in, "elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili sistemlerin Işlevsel güvenliği" için ıEC-61508, ıEC-62304, ISO 26262 ve 50128 EN yüksek güvenlik bütünlüğü düzeyleri için güvenlikle ilgili yazılımlar geliştirmesinde kullanılabileceğini onaylar. Almanya 'nın SGS-Group ve TUV Saarland 'ın Birleşik bir tezi aracılığıyla oluşturulan SGS-TUV Saar, dünya çapındaki güvenlikle ilgili sistemler için eklenmiş yazılımları test etmek, denetlemek, doğrulamak ve sertifika almak için önde gelen acalacaklandırılan şirkete gelmiştir. Endüstriyel güvenlik standardı IEC 61508 ve bundan türetilmiş tüm standartlar, IEC-62304, ISO 26262 ve en 50128 dahil olmak üzere, elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili tıbbi cihazların, işlem denetim sistemlerinin, endüstriyel makinelerin, otomobil ve demiryolu denetim sistemlerinin işlevsel güvenliğini sağlamak için kullanılır.
-
-:::image type="content" source="media/overview-threadx/partener-logo-sgs-tuv-saar-2.png" alt-text="SGS TUV SAAR sertifikası":::
-
-Azure RTOS ThreadX ve Azure RTOS ThreadX SMP, UL tarafından, ınım60730-1 Ek H, CSA E60730-1 Ek H, ıEC 60730-1 Ek H, UL 60335-1 ek R, ıEC 60335-1 ek R 1998 ve programlanabilir. UL, en fazla uzman sürmek güvenlik çözümleri sunan küresel, bağımsız bir güvenlik bilimi şirketidir. Bu, elektrik, yenilenebilir enerji ve Nanotechnology için genel olarak elektrik 'yi benimseme özelliğine sahiptir.
-
-:::image type="content" source="media/overview-threadx/cru-logo-certification.png" alt-text="UL sertifikası":::
-
-TUV ve UL sertifikalarıyla ilişkili yapıtlar (sertifika, güvenlik el kitabı, test raporu vb.) satış için kullanılabilir.
-
-## <a name="eal4-common-criteria-security-certification"></a>EAL4 + ortak ölçütler güvenlik sertifikası
-
-Azure RTOS, EAL4 + ortak ölçütler güvenlik sertifikası elde etti. Evalution (TOE) hedefi Azure RTOS ThreadX, Azure RTOS NetX-Duo, Azure RTOS NetX güvenli TLS ve Azure RTOS NetX MQTT 'yi kapsamaktadır. Bu, derin eklenmiş sensörler, cihazlar, uç yönlendiriciler ve ağ geçitleri için gereken en yaygın IoT protokollerini temsil eder.
-
-:::image type="content" border="false" source="media/overview-threadx/eal-logo-certification.png" alt-text="EAL sertifikası":::
-
-Azure RTOS güvenlik sertifikası için kullanılan BT güvenlik değerlendirmesi özelliği, en parlama BV ve sertifika yetkilisi de en iyi şekilde kullanılır.
-
-## <a name="simple-easy-to-use"></a>Basit, kullanımı kolay
-
-Azure RTOS ThreadX kullanımı çok basittir. Azure RTOS ThreadX API 'SI sezgisel ve yüksek işlevselliğe sahiptir. API adları, diğer RTOS ürünlerinde ortak olan çok sayıda kısaltılmış adlardan oluşan alfabeden değil, gerçek sözcüklerden oluşur. Tüm Azure RTOS ThreadX API 'Lerinin lideri vardır `tx_` ve bir ad fiil adlandırma kuralını izler. Ayrıca, API 'nin tamamında işlevsel bir tutarlılık vardır. Örneğin, askıya aldığı tüm API 'lerde API 'Ler için aynı şekilde işlev gören isteğe bağlı bir zaman aşımı vardır.
-
-Azure RTOS ThreadX uygulaması oluşturmak kolaydır. Uygulamanın *tx_api. h*, `tx_kernel_enter` Main 'ten çağrı, `tx_application_define` işlevi tanımlama ve bir iş parçacığı oluşturma, iş parçacığı giriş noktası işlevini tanımlama ve Azure RTOS threadx kitaplığı (genellikle *TX. a*) ile bağlantı içermesi gerekir.
-
-Azure RTOS ThreadX, sunulan en yüksek Caliber belgelerini de botrın. 
-
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
 Azure RTOS ThreadX, en önemli özelliği önalım-Threshold zamanlaması olan gelişmiş bir teknolojidir. Bu özellik Azure RTOS ThreadX için benzersizdir ve kapsamlı akademik araştırma konusu. Örneğin, bkz. [önalım Threshold ile Fixed-Priority görevleri zamanlama](https://www.cs.utah.edu/~regehr/reading/open_papers/preempt_thresh.pdf), Yıun Wang, Concorçya University ve Manas Saksena, tas haburi Üniversitesi.
 
-Azure RTOS ThreadX 'in yeteneklerini göz önünde bulundurun:
+Azure RTOS ThreadX 'in yeteneklerini göz önünde bulundurun.
 
 * Eksiksiz ve kapsamlı çoklu görev olanakları
   * İş parçacıkları, uygulama zamanlayıcılar, ileti kuyrukları, sayma semaforları, zaman uyumu sağlayıcılar, olay bayrakları, blok ve bayt bellek havuzları
@@ -307,27 +271,6 @@ Modüller, büyük uygulamaların yalnızca etkin iş parçacıkları tarafında
 
 Modüller Ayrıca Azure RTOS ThreadX öğesinden tamamen ayrı bir adres alanına sahiptir. Bu, Azure RTOS ThreadX 'in, modülün dışında yanlışlıkla erişiminin diğer yazılım bileşenlerini bozmayacak şekilde bellek korumasını (MPU veya MMU aracılığıyla) yerleştirmesini sağlar.
 
-## <a name="fastest-time-to-market"></a>En hızlı pazar süresi
-
-Azure RTOS ThreadX 'i yüklemek, öğrenmek, kullanmak, hata ayıklamak, doğrulamak, onaylamak ve sürdürmek kolaydır. Sonuç olarak, Azure RTOS ThreadX, gömülü Pazar öngörülebilir (EMF) anketlere göre son yedi yılda en önde gelen pazar saati RTOS ' dır. Anketler sürekli olarak Azure RTOS ThreadX 'i kullanan tasarımların %70 ' ını, diğer tüm Rtolar aracılığıyla elde edeceğiniz şekilde gösterir.
-
-Aşağıda, tutarlı bir pazarlama süresi avantajımız için nedenler verilmiştir:
-
-* Kalite belgeleri
-* Tüm kaynak kodu kullanılabilirliği
-* Kullanımı kolay API
-* Kapsamlı ve gelişmiş özellik kümesi
-* Geniş üçüncü taraf araçları tümleştirmesi – özellikle ıAR 'ın Embedded çalışma ekranı™
-
-## <a name="royalty-free"></a>Ücretsiz lisanslı
-
-Önceden lisanslanmış cihazlara dağıtıldığında, diğer tüm cihazların basit bir yıllık lisansa sahip olması için, kaynak kodu ve test lisansları için ücret ve maliyet kullanımı maliyeti yoktur.
-
-## <a name="full-highest-quality-source-code"></a>Tam, en yüksek kaliteli kaynak kodu
-
-Azure RTOS ThreadX, çok başından başlayarak tam C kaynak kodla dağıtılan bir endüstriyel sınıf RTOS olacak şekilde tasarlanmıştır. Azure RTOS ThreadX kaynak kodu, çubuğun kalitesini ve kolayca anlaşılmasına ayarlı. Ayrıca, dosya başına bir işleve sahip olma kuralı, kolay kaynak gezintisi için sağlar.
-
-Azure RTOS ThreadX, her C kodu satırının anlamlı bir yorumu olan gereksinimi dahil olmak üzere katı kodlama kurallarına uyar. Ayrıca, Azure RTOS ThreadX kaynağı en yüksek standartlara sertifikalıdır.
 
 ## <a name="misra-compliant"></a>Hatalı ra uyumlu
 
