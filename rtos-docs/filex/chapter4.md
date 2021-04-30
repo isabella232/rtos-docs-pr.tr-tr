@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 948adff65a080649db0870e35bc75ee774775cb7
-ms.sourcegitcommit: 4cbe92b337e82124bb5a86d319b787eb05b4ea76
+ms.openlocfilehash: f70b8890be6b12f917ac1724a29559afab33b88d
+ms.sourcegitcommit: 0520b2afb6b7f8ae1ea48581e160459fc9292ca7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108067021"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108297505"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Bölüm 4-Azure RTOS FileX hizmetlerinin açıklaması
 
@@ -4107,7 +4107,7 @@ Bu hizmet verilen medyayı sağlanan parametrelere göre exFAT ile uyumlu bir ş
 > *Zaten biçimlendirilmiş bir medyanın biçimlendirilmesi, medyadaki tüm dosya ve dizinleri etkin bir şekilde siler.*
 
 > [!IMPORTANT]
-> *ExFAT birim boyutu bölümün boyutuyla (MBR veya GPT düzeni varsa) veya bölüm düzeni yoksa (MBR veya GPT) tüm cihazın boyutuna eşleşmelidir. Windows 'da, bazı toplam sektörlerinin, aviblebleler sektörden daha az sayıda değeri ile biçimlendirildiyse, exFAT diskinin bir kısıtlaması yoktur*
+> *ExFAT birim boyutu bölümün boyutuyla (MBR veya GPT düzeni varsa) veya bölüm düzeni yoksa (MBR veya GPT) tüm cihazın boyutuna eşleşmelidir. Windows üzerinde, kullanılabilir sektörden daha az sayıda toplam sektörde biçimlendirildiyse exFAT diskinin bir kısıtlaması yoktur*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
