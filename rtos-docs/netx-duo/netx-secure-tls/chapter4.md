@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 89761ec3438b1b16c1a603764bf7d4e1eac1b4ea
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 80ec22058ab64ed0c6258bb3d9364ec44f9a741b
+ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826950"
+ms.lasthandoff: 05/20/2021
+ms.locfileid: "110223401"
 ---
 # <a name="chapter-4---description-of-azure-rtos-netx-secure-services"></a>Bölüm 4-Azure RTOS NetX güvenli hizmetlerinin açıklaması
 
@@ -34,25 +34,25 @@ Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kal�
 - [nx_secure_tls_local_certificate_find](#nx_secure_tls_local_certificate_find)
   - Ortak ad ile bir NetX güvenli TLS oturumunda yerel bir sertifika bulun
 - [nx_secure_tls_local_certificate_remove](#nx_secure_tls_local_certificate_remove)
-  - Yerel sertifikayı NetX güvenli TLS oturumundan kaldır
+  - NetX Secure TLS Oturumundan yerel sertifikayı kaldırma
 - [nx_secure_tls_metadata_size_calculate](#nx_secure_tls_metadata_size_calculate)
-  - NetX güvenli TLS oturumunun şifreleme meta verilerinin boyutunu hesaplama
+  - NetX Güvenli TLS Oturumu için şifreleme meta verisi boyutunu hesaplama
 - [nx_secure_tls_packet_allocate](#nx_secure_tls_packet_allocate)
-  - NetX güvenli TLS oturumu için bir paket ayırın
+  - NetX Güvenli TLS Oturumu için paket ayırma
 - [nx_secure_tls_psk_add](#nx_secure_tls_psk_add)
-  - NetX güvenli TLS oturumuna Pre_Shared anahtarı ekleme
+  - NetX Pre_Shared TLS Oturumuna Bir Anahtar Ekleme
 - [nx_secure_tls_remote_certificate_allocate](#nx_secure_tls_remote_certificate_allocate)
-  - Uzak bir TLS ana bilgisayarı tarafından belirtilen sertifika için alan ayır
+  - Uzak bir TLS ana bilgisayarı tarafından sağlanan sertifika için alan ayırma
 - [nx_secure_tls_remote_certificate_buffer_allocate](#nx_secure_tls_remote_certificate_buffer_allocate)
-  - Uzak bir TLS ana bilgisayarı tarafından belirtilen tüm sertifikalar için alan ayır
+  - Uzak bir TLS ana bilgisayarı tarafından sağlanan tüm sertifikalar için alan ayırma
 - [nx_secure_tls_remote_certificate_free_all](#nx_secure_tls_remote_certificate_free_all)
   - Gelen sertifikalar için ayrılan boş alan
 - [nx_secure_tls_server_certificate_add](#nx_secure_tls_server_certificate_add)
-  - Sayısal bir tanımlayıcı kullanarak TLS sunucuları için özel olarak bir sertifika ekleyin
+  - Sayısal tanımlayıcı kullanan TLS sunucuları için özel olarak sertifika ekleme
 - [nx_secure_tls_server_certificate_find](#nx_secure_tls_server_certificate_find)
   - Sayısal tanımlayıcı kullanarak sertifika bulma
 - [nx_secure_tls_server_certificate_remove](#nx_secure_tls_server_certificate_remove)
-  - Sayısal tanımlayıcıyı kullanarak yerel sunucu sertifikasını kaldırma
+  - Sayısal tanımlayıcı kullanarak yerel sunucu sertifikasını kaldırma
 - [nx_secure_tls_session_certificate_callback_set](#nx_secure_tls_session_certificate_callback_set)
   - Ek sertifika doğrulaması için kullanılacak TLS için bir geri çağırma ayarlayın
 - [nx_secure_tls_session_client_callback_set](#nx_secure_tls_session_client_callback_set)
@@ -74,25 +74,25 @@ Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kal�
 - [nx_secure_tls_session_protocol_version_override](#nx_secure_tls_session_protocol_version_override)
   - NetX güvenli TLS oturumu için varsayılan TLS protokol sürümünü geçersiz kılın
 - [nx_secure_tls_session_receive](#nx_secure_tls_session_receive)
-  - NetX güvenli TLS oturumundan veri alma
+  - NetX Güvenli TLS Oturumundan veri alma
 - [nx_secure_tls_session_renegotiate_callback_set](#nx_secure_tls_session_renegotiate_callback_set)
-  - Oturum yeniden anlaşması başlangıcında çağrılacak bir geri çağırma atayın
+  - Oturum yeniden görüşmenin başında çağrılan bir geri çağırma at atama
 - [nx_secure_tls_session_renegotiate](#nx_secure_tls_session_renegotiate)
-  - Uzak konakla oturum yeniden anlaşma anlaşmasını başlatma
+  - Uzak konakla oturum yeniden anlaşma başlatma
 - [nx_secure_tls_session_reset](#nx_secure_tls_session_reset)
-  - NetX güvenli TLS oturumunu Temizleme ve sıfırlama
+  - NetX Secure TLS Oturumunu temizleme ve sıfırlama
 - [nx_secure_tls_session_send](#nx_secure_tls_session_send)
-  - NetX güvenli TLS oturumu aracılığıyla veri gönderme
+  - NetX Güvenli TLS Oturumu aracılığıyla veri gönderme
 - [nx_secure_tls_session_server_callback_set](#nx_secure_tls_session_server_callback_set)
-  - TLS sunucusu el sıkışmasının başlangıcında çağırmak üzere TLS için bir geri çağırma ayarlayın
+  - TLS Sunucusu el sıkışması başlangıcında çağırmak için TLS için bir geri çağırma ayarlayın
 - [nx_secure_tls_session_sni_extension_parse](#nx_secure_tls_session_sni_extension_parse)
-  - TLS Istemcisinden alınan Sunucu Adı Belirtme (SNı) uzantısını ayrıştırma
+  - TLS İstemcisi Sunucu Adı Belirtme alınan bir Sunucu Adı Belirtme (SNI) uzantısını ayrıştırma
 - [nx_secure_tls_session_sni_extension_set](#nx_secure_tls_session_sni_extension_set)
-  - Bir Sunucu Adı Belirtme (SNı) uzantısı DNS adını uzak bir sunucuya göndermek üzere ayarla
+  - Uzak Sunucu Adı Belirtme (SNI) uzantısı DNS adı ayarlama
 - [nx_secure_tls_session_start](#nx_secure_tls_session_start)
-  - NetX güvenli TLS oturumu başlatma
+  - NetX Güvenli TLS Oturumu Başlatma
 - [nx_secure_tls_session_time_function_set](#nx_secure_tls_session_time_function_set)
-  - NetX güvenli TLS oturumuna zaman damgası işlevi atama
+  - NetX Güvenli TLS Oturumuna zaman damgası işlevi atama
 - [nx_secure_tls_trusted_certificate_add](#nx_secure_tls_trusted_certificate_add)
   - NetX güvenli TLS oturumuna güvenilen sertifika ekleme
 - [nx_secure_tls_trusted_certificate_remove](#nx_secure_tls_trusted_certificate_remove)
@@ -124,35 +124,35 @@ UINT nx_secure_crypto_table_self_test(
                                   VOID *metadata, UINT metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, doğrulamak üzere kendi kendini test eden şifreleme yöntemi aracılığıyla çalışır. Self test yalnızca NetX güvenli kitaplığı tanımlı NX_SECURE_POWER_ON_SELF_TEST_MODULE_INTEGRITY_CHECK simgesiyle derlenip kullanılabilir.
+Bu hizmet, doğrulamak üzere kendi kendini test eden şifreleme yöntemi aracılığıyla çalışır. Kendi kendine test yalnızca NetX Secure kitaplığı tanımlandığı gibi sembolüyle NX_SECURE_POWER_ON_SELF_TEST_MODULE_INTEGRITY_CHECK kullanılabilir.
 
-Desteklenen her şifreleme yöntemi için, self test önceden tanımlanmış giriş verileri sağlar ve çıktının önceden tanımlanmış beklenen değerle eşleştiğini doğruladı.
+Desteklenen her şifreleme yöntemi için, kendi kendine test önceden tanımlanmış giriş verileri sağlar ve çıkışın önceden tanımlanmış beklenen değerle eşleştirildi.
 
-NetX güvenli şifreleme self test aşağıdaki algoritmaları ve anahtar boyutlarını destekler:
+NetX Secure şifreleme kendi kendine testi aşağıdaki algoritmaları ve anahtar boyutlarını destekler:
 
 - DES: şifreleme ve şifre çözme
 - Üçlü DES (3DES): şifreleme ve şifre çözme
-- AES: 128-, 192-, 256-bit anahtar boyutu, şifreleme ve şifre çözme, CBC modunda ve sayaç modunda.
-- HMAC-MD5: kimlik doğrulama ve karma hesaplama
-- HMAC-SHA: SHA1-96, SHA1-160, SHA2-256, SHA2-384, SHA2-512, kimlik doğrulama ve karma hesaplama
+- AES: CBC modunda ve sayaç modunda 128, 192,256 bit anahtar boyutu, şifreleme ve şifre çözme.
+- HMAC-MD5: kimlik doğrulaması ve karma hesaplama
+- HMAC-SHA: SHA1-96, SHA1-160, SHA2-256, SHA2-384, SHA2- 512, kimlik doğrulaması ve karma hesaplama
 - MD5: kimlik doğrulaması
-- Sözde rastgele Işlev (PRF): PRF_HMAC_SHA1 ve PRF_HMAC_SHA2-256
-- RSA: 1024-, 2048-, 4096-bit RSA güç-mod işlemi
-- SHA: SHA1 (96-ve 160-bit), SHA2 (256bit, 384bit, 512bit) kimlik doğrulaması
+- Sözde rastgele İşlev (PRF): PRF_HMAC_SHA1 ve PRF_HMAC_SHA2-256
+- RSA: 1024-, 2048-, 4096 bit RSA güç modulus işlemi
+- SHA: SHA1 (96 ve 160 bit), SHA2 (256 bit, 384 bit, 512 bit) kimlik doğrulaması
 
-Bu işlev, yukarıda listelenen şifre algoritmalarına yönelik yerleşik vektörlerine sahiptir. Ancak, yalnızca bu işleve geçirilen *cipher_table* listelenen olanları sınar. Örneğin, bir TLS oturumu yalnızca ciphersuite TLS_RSA_WITH_AES_128_CBC_SHA kullandığında, bu işlev RSA (1024-, 2048-, 4096-bit), AES-CBC (128-bit) ve SHA1 üzerinde kendi kendine test gerçekleştirir.
+Bu işlev, yukarıda listelenen şifreleme algoritmaları için yerleşik vektörlere sahiptir. Ancak yalnızca bu işleve geçirilen cipher_table *testlerini* içerir. Örneğin TLS oturumunda yalnızca şifreleme TLS_RSA_WITH_AES_128_CBC_SHA için bu işlev RSA (1024-, 2048-, 4096 bit), AES-CBC (128 bit) ve SHA1 üzerinde kendi kendine test gerçekleştirecek.
 
 ### <a name="parameters"></a>Parametreler
 
-- **crypto_table** TLS oturumu tarafından kullanılan şifre tablosunun işaretçisi. Bu, **_nx_secure_tls_session_create ()_** çağrısına geçirilen crypto_table aynıdır.
-- **meta veriler** Şifreleme meta verileri alanı için boşluk işaretçisi. .
+- **crypto_table** TLS oturumu tarafından kullanılan şifreleme tablosu işaretçisi. Bu, crypto_table() çağrısına geçirilen **_nx_secure_tls_session_create aynıdır._**
+- **meta veriler** Şifreleme meta veri alanı için alan işaretçisi. .
 - **metadata_size** Meta veri arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SECURE_TLS_SUCCESS** (0x00), belirtilen şifreleme yöntemlerini başarıyla test edildi.
+- **NX_SECURE_TLS_SUCCESS** (0x00) Sağlanan şifreleme yöntemleri başarıyla test edildi.
 - **NX_PTR_ERROR** (0x07) geçersiz şifreleme yöntemi yapısı
 - **NX_NOT_SUCCESSFUL** (0x43) şifreleme self test başarısız oluyor.
 
@@ -204,7 +204,7 @@ UINT nx_secure_module_hash_compute(
                       UINT *actual_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, sağlanan HMAC şifre yöntemini ve anahtar dizesini kullanarak belirtilen bellek alanındaki veri akışının karma değerini hesaplar. Modül karma işlem işlevi yalnızca NetX güvenli kitaplığı tanımlanmakta olan şu sembol ile derleniyorsa kullanılabilir: NX_SECURE_POWER_ON_SELF_TEST_MODULE_INTEGRITY_CHECK
 
@@ -223,12 +223,12 @@ Bu işlev, sağlanan HMAC şifre yöntemini ve anahtar dizesini kullanarak belir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **0** , karma değeri başarıyla hesaplandı.
-- **1** karma hesaplama başarısız oldu.
+- **0** Karma değeri başarıyla hesaplandı.
+- **1** Karma hesaplama başarısız oldu.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -284,7 +284,7 @@ nx_secure_module_hash_compute(&hmac_sha256,
 
 ## <a name="nx_secure_tls_active_certificate_set"></a>nx_secure_tls_active_certificate_set
 
-NetX güvenli TLS oturumu için etkin kimlik sertifikası ayarlama
+NetX Secure TLS Oturumu için etkin kimlik sertifikasını ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -294,25 +294,25 @@ UINT  nx_secure_tls_active_certificate_set(
                    NX_SECURE_X509_CERT *certificate);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmetin bir oturum geri çağırması içinden çağrılması amaçlanmıştır (bkz. nx_secure_tls_session_client_callback_set ve nx_secure_tls_session_server_callback_set). Daha önce başlatılmış bir NX_SECURE_X509_CERT yapısıyla çağrıldığında, bu sertifika varsayılan kimlik sertifikası yerine kullanılacaktır. Çoğu durumda, sertifika yerel depoya eklenmiş olmalıdır (bkz. nx_secure_tls_local_certificate_add) veya TLS el sıkışması başarısız olabilir.
+Bu hizmetin bir oturum geri çağırma içinde çağrılma amacı vardır (bkz. nx_secure_tls_session_client_callback_set ve nx_secure_tls_session_server_callback_set). Daha önce başlatılmış bir NX_SECURE_X509_CERT ile çağrıldık, bu sertifika varsayılan kimlik sertifikası yerine kullanılır. Çoğu durumda sertifikanın yerel depoya eklenmiş olması gerekir (bkz. nx_secure_tls_local_certificate_add) veya TLS el sıkışması başarısız olabilir.
 
-Bu hizmet, TLS 'nin birden çok kimlik sertifikasını desteklemesini sağlamak için tasarlanmıştır. Bu, birden çok ağ adresine hizmet veren bir TLS sunucusu için yararlıdır, böylece sunucu, istemcinin giriş noktasına bağlı olarak uzak istemciye sağlamak üzere uygun bir sertifika seçebilir. TLS istemcisi için, bu yordam, bir uzak sunucuya gönderilen sertifikayı, sunucu bir TLS el sıkışmasından tanımladıktan sonra (TLS sunucusu kullanım örneği 'nden daha nadir) değiştirmek üzere kullanılabilir.
+Bu hizmet, TLS'nin birden çok kimlik sertifikasını desteklemesine izin vermek için tasarlanmıştır. Bu, sunucunun istemcinin giriş noktası bağlı olarak uzak istemciye sağılacak uygun bir sertifika seçerek birden çok ağ adresine hizmet sağlayan bir TLS sunucusu için yararlıdır. Bir TLS istemcisi için bu yordam, sunucu TLS el sıkışması içinde kendisini belirledikten sonra çalışma zamanında uzak bir sunucuya gönderilen sertifikayı değiştirmek için kullanılabilir (bu, TLS sunucusunun kullanım örneğinden daha nadirdir).
 
-Birden çok sertifikanın aynı X. 509.952 ayırt edici adını paylaştığı durumlarda, sertifikaların, sertifikadan ayrı bir sayısal tanımlayıcı sunan nx_secure_tls_server_certificate_add kullanılarak eklenmesi gerekecektir.
+Birden çok sertifikanın aynı X.509 ayırt edici adını paylaşması durumunda, sertifikaların sertifikadan ayrı bir sayısal tanımlayıcıyı tanıtan nx_secure_tls_server_certificate_add kullanılarak ekleniyor olması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Oturum geri çağırmaya geçilen bir TLS oturum örneği işaretçisi.
-- **sertifika** Geçerli oturum için kullanılacak bir başlatılmış X. 509.440 sertifikasına yönelik işaretçi.
+- **session_ptr** Oturum geri çağırmaya geçirilen BIR TLS Oturumu örneğinin işaretçisi.
+- **sertifika** Geçerli oturum için kullanılacak, başlatılan bir X.509 sertifikasının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sertifikanın oturumun başarıyla atanması.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturumu veya sertifika işaretçisi.
+- **NX_SUCCESS** (0x00) Sertifikanın oturuma başarıyla ataması.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturumu veya sertifika işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -470,7 +470,7 @@ UINT  nx_secure_tls_client_psk_set(NX_SECURE_TLS_SESSION *session_ptr,
                               UCHAR *hint, UINT hint_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturum denetim bloğuna önceden paylaşılan anahtar (PSK), kimlik dizesi ve kimlik ipucu ekler ve bu PSK 'yi sonraki TLS Istemci bağlantılarında kullanılacak şekilde ayarlar. PSK ciphersuites etkin ve kullanıldığında, bir dijital sertifika yerine PSK kullanılır.
 
@@ -489,10 +489,10 @@ Bu durumda, PSK, TLS Istemcisinin iletişim kurmasını istediği belirli bir uz
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_SUCCESS** (0x00) PSK 'nin başarılı bir şekilde eklenmesi.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
-- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0x125) başka bir PSK eklenemiyor.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
+- **NX_SECURE_TLS_NO_MORE_PSK_SPACE** (0x125) Başka bir PSK ek olamaz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -520,7 +520,7 @@ status =  nx_secure_tls_client_psk_set(&tls_session, psk, sizeof(psk), “psk_1�
 
 ## <a name="nx_secure_tls_initialize"></a>nx_secure_tls_initialize
 
-NetX güvenli TLS modülünü başlatır
+NetX Secure TLS modülünü başlatıyor
 
 ### <a name="prototype"></a>Prototype
 
@@ -528,9 +528,9 @@ NetX güvenli TLS modülünü başlatır
 VOID nx_secure_tls_initialize(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet NetX güvenli TLS modülünü başlatır. Diğer NetX güvenli hizmetlere erişilebilmesi için önce bu adı çağrılmalıdır.
+Bu hizmet NetX Secure TLS modülünü başlatıyor. Diğer NetX Güvenli hizmetlere erişilmeden önce çağrılmaları gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -538,11 +538,11 @@ Hiçbiri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-Yok
+Hiçbiri
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -557,7 +557,7 @@ Nx_secure_tls_initialize();
 
 ## <a name="nx_secure_tls_local_certificate_add"></a>nx_secure_tls_local_certificate_add
 
-NetX güvenli TLS oturumuna yerel sertifika ekleme
+NetX Secure TLS Oturumuna yerel sertifika ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -567,11 +567,11 @@ UINT  nx_secure_tls_local_certificate_add(
               NX_SECURE_X509_CERT *certificate_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir TLS oturumunun yerel deposuna başlatılmış bir NX_SECURE_X509_CERT yapısı örneği ekler. Bu sertifika, TLS el sıkışması sırasında (nx_secure_x509_certificate_initialize kullanarak sertifika yapısının başlatılması sırasında kimlik sertifikası olarak işaretlenmişse) veya TLS el sıkışma sırasında uzak ana bilgisayara sağlanmış bir Sertifika zincirinin parçası olarak bir veren olarak, TLS yığını tarafından kullanılır.
+Bu hizmet, bir TLS NX_SECURE_X509_CERT yerel deposuna başlatılmış bir uygulama yapısı örneği ekler. Bu sertifika, TLS yığını tarafından TLS el sıkışması sırasında cihazı tanımlamak için (nx_secure_x509_certificate_initialize kullanılarak sertifika yapısının başlatılmış olması sırasında kimlik sertifikası olarak işaretlenmişse) veya TLS el sıkışması sırasında uzak ana bilgisayara sağlanan bir sertifika zincirinin parçası olarak bir sertifikayı verir olarak kullanabilir.
 
-Aynı ortak ada sahip birden çok yerel sertifika gerekiyorsa, Sertifikalar *nx_secure_tls_server_certificate_add* hizmeti kullanılarak eklenebilir (aşağıdaki uyarıya bakın).
+Aynı Ortak Ad ile birden çok yerel sertifika gerekirse, sertifikalar nx_secure_tls_server_certificate_add hizmeti kullanılarak eklenebilir (aşağıdaki uyarıya bakın). 
 
 TLS sunucu modu için bir sertifika **gereklidir** .
 
@@ -630,29 +630,29 @@ UINT  nx_secure_tls_local_certificate_find(NX_SECURE_TLS_SESSION
                         name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturumunun yerel cihaz sertifika deposundaki bir sertifikayı bulur ve depodaki NX_SECURE_X509_CERT yapısına bir işaretçi döndürür. Common_name parametresi ve uzunluğu (name_length), sertifikanın X. 509.440 konusunun ortak ad alanıyla eşleşen sertifikayı tanımlamak için kullanılır.
 
 Aynı ortak ada sahip birden fazla sertifika varsa, yalnızca ilki döndürülür – bunun yerine *nx_secure_tls_server_certificate_find* kullanın.
 
 > [!IMPORTANT]
-> *Bu API, nx_secure_tls_server_certificate_add kullanırken aynı TLS oturumuyla kullanılmamalıdır. Sunucu sertifikası API 'SI her sertifika için benzersiz bir sayısal tanımlayıcı kullanır ve X. 509.440 ortak adına göre dizinleri nx_secure_tls_local_certificate_add. Yerel Sertifika Hizmetleri, yalnızca tek bir kimlik sertifikası kullanan uygulamalar için sayısal tanımlayıcıya uygun bir alternatif sağlar: ortak adı kullanarak, uygulamanın sayısal tanımlayıcıları izlememek zorunda olmaması gerekir.*
+> *Bu API, uygulama kullanılırken aynı TLS oturumuyla nx_secure_tls_server_certificate_add. Sunucu sertifikası API'si her sertifika için benzersiz bir sayısal tanımlayıcı kullanır nx_secure_tls_local_certificate_add X.509 Ortak Adını temel alan dizinleri kullanır. Yerel sertifika hizmetleri, yalnızca tek bir kimlik sertifikası kullanan uygulamalar için sayısal tanımlayıcıya uygun bir alternatif sağlar. Ortak Ad'ı kullanarak uygulamanın sayısal tanımlayıcıları izlemesi gerekli değildir.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **sertifika** Eşleşen sertifikaya yönelik Işaretçiyi döndürün.
-- **common_name** Eşleştirilecek ortak ad dizesi (DNS adı).
-- **name_length** Common_name dize verisinin uzunluğu.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **sertifika** İşaretçiyi, eşlene sertifikaya geri dön.
+- **common_name** Eşecek Ortak Ad dizesi (DNS adı).
+- **name_length** Dize common_name uzunluğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- "Certificate" parametresinde **NX_SUCCESS** (0x00) sertifikası bulundu ve işaretçi döndürüldü.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) sağlanan ortak ada sahip bir sertifika bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturumu, sertifika işaretçisi veya ortak ad dizesi.
+- **NX_SUCCESS** (0x00) Sertifika bulundu ve işaretçi "certificate" parametresinde döndürüldü.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Sağlanan Ortak Ad ile sertifika bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturumu, sertifika işaretçisi veya ortak ad dizesi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -688,7 +688,7 @@ status = nx_secure_tls_local_certificate_find(&tls_session, &certificate_ptr,
 
 ## <a name="nx_secure_tls_local_certificate_remove"></a>nx_secure_tls_local_certificate_remove
 
-Yerel sertifikayı NetX güvenli TLS oturumundan kaldır
+NetX Secure TLS Oturumundan yerel sertifikayı kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -698,12 +698,12 @@ UINT  nx_secure_tls_local_certificate_remove(NX_SECURE_TLS_SESSION
                   common_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sertifikadaki ortak ad alanına girilen bir TLS oturumundan yerel sertifika örneğini kaldırır.
+Bu hizmet, sertifikadaki Ortak Ad alanına anahtarlanan bir TLS oturumundan yerel sertifika örneğini kaldırır.
 
 > [!IMPORTANT]
-> *Bu API, nx_secure_tls_server_certificate_add kullanırken aynı TLS oturumuyla kullanılmamalıdır. Sunucu sertifikası API 'SI her sertifika için benzersiz bir sayısal tanımlayıcı kullanır ve X. 509.440 ortak adına göre dizinleri nx_secure_tls_local_certificate_add. Yerel Sertifika Hizmetleri, yalnızca tek bir kimlik sertifikası kullanan uygulamalar için sayısal tanımlayıcıya uygun bir alternatif sağlar: ortak adı kullanarak, uygulamanın sayısal tanımlayıcıları izlememek zorunda olmaması gerekir.*
+> *Bu API, uygulama kullanılırken aynı TLS oturumuyla nx_secure_tls_server_certificate_add. Sunucu sertifikası API'si her sertifika için benzersiz bir sayısal tanımlayıcı kullanır nx_secure_tls_local_certificate_add X.509 Ortak Adını temel alan dizinleri kullanır. Yerel sertifika hizmetleri, yalnızca tek bir kimlik sertifikası kullanan uygulamalar için sayısal tanımlayıcıya uygun bir alternatif sağlar. Ortak Ad'ı kullanarak uygulamanın sayısal tanımlayıcıları izlemesi gerekli değildir.*
 
 ### <a name="parameters"></a>Parametreler
 
@@ -751,7 +751,7 @@ UINT  nx_secure_tls_metadata_size_calculate(
                         ULONG *metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirli bir TLS oturumu ve TLS şifreleme tablosu için gereken şifreleme meta verilerinin boyutunu hesaplar ve döndürür (şifreleme şifresi tablosu hakkında daha fazla bilgi için "şifreleme yöntemleriyle TLS başlatılıyor" bölümüne bakın.
 
@@ -793,46 +793,9 @@ status =  nx_secure_tls_metadata_size_calculate(&nx_crypto_tls_ciphers,
 
 - nx_secure_tls_session_create
 
-## <a name="nx_secure_module_hash_compute"></a>nx_secure_module_hash_compute
-
-NetX güvenli kitaplık yordamlarının karma değerini hesaplama
-
-### <a name="prototype"></a>Prototype
-
-```C
-VOID nx_secure_module_hash_compute(VOID);
-```
-
-### <a name="description"></a>Açıklama
-
-Bu hizmet NetX güvenli TLS modülünü başlatır. Diğer NetX güvenli hizmetlere erişilebilmesi için önce bu adı çağrılmalıdır.
-
-### <a name="parameters"></a>Parametreler
-
-Hiçbiri
-
-### <a name="return-values"></a>Dönüş Değerleri
-
-Yok
-
-### <a name="allowed-from"></a>İzin verilen
-
-Başlatma, Iş parçacıkları
-
-### <a name="example"></a>Örnek
-
-```C
-/* Initializes the TLS module. */
-Nx_secure_tls_initialize();
-```
-
-### <a name="see-also"></a>Ayrıca Bkz.
-
-- nx_secure_tls_session_create
-
 ## <a name="nx_secure_tls_packet_allocate"></a>nx_secure_tls_packet_allocate
 
-NetX güvenli TLS oturumu için bir paket ayırın
+NetX Güvenli TLS Oturumu için paket ayırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -843,26 +806,26 @@ UINT  nx_secure_tls_packet_allocate(NX_SECURE_TLS_SESSION *session_ptr,
                                     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen NX_PACKET_POOL belirtilen etkin TLS oturumu için bir NX_PACKET ayırır. Bu hizmet, bir TLS bağlantısı üzerinden gönderilecek veri paketleri ayırmak için uygulama tarafından çağrılmalıdır. Bu hizmet çağrılmadan önce TLS oturumunun başlatılmış olması gerekir.
+Bu hizmet, belirtilen NX_PACKET TLS oturumu için belirtilen oturumdan bir NX_PACKET_POOL. Bu hizmet, bir TLS bağlantısı üzerinden gönderilecek veri paketlerini ayırmak için uygulama tarafından çağrılmalı. Bu hizmet çağrılmadan önce TLS oturumunun başlatılması gerekir.
 
-Ayrılan paket, paket verileri doldurulduktan sonra TLS üstbilgi ve altbilgi verilerinin eklenebilmesi için düzgün şekilde başlatılmış olur. Davranış, *nx_packet_allocate* benzer şekilde benzerdir.
+Ayrılan paket düzgün şekilde başlatılır, böylece paket verileri doldurulduğunda TLS üst bilgisi ve alt bilgi verileri eklenebilir. Aksi takdirde davranış, ile *nx_packet_allocate.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **pool_ptr** Paketin ayırabileceği bir NX_PACKET_POOL işaretçisi.
-- **packet_ptr** Yeni ayrılmış pakete çıkış işaretçisi.
-- **wait_option** Paket ayırması için askıya alma seçeneği.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **pool_ptr** Paketin ayrıl NX_PACKET_POOL bir uygulamanın işaretçisi.
+- **packet_ptr** Yeni ayrılan paketin çıkış işaretçisi.
+- **wait_option** Paket ayırma için askıya alma seçeneği.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı paket ayırması.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) temel alınan paket ayırması başarısız oldu.
-- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) sağlanan TLS oturumu başlatılmadı.
+- **NX_SUCCESS** (0x00) Başarılı paket ayırma.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Temel paket ayırma başarısız oldu.
+- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) Sağlanan TLS oturumu başlatılmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -905,7 +868,7 @@ UINT  nx_secure_tls_psk_add(NX_SECURE_TLS_SESSION *session_ptr,
                             hint_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturum denetim bloğuna önceden paylaşılan anahtar (PSK), kimlik dizesi ve kimlik ipucu ekler. PSK ciphersuites etkin ve kullanıldığında, bir dijital sertifika yerine PSK kullanılır.
 
@@ -953,7 +916,7 @@ status =  nx_secure_tls_psk_add(&tls_session, psk, sizeof(psk), “psk_1”, 4,
 
 ## <a name="nx_secure_tls_remote_certificate_allocate"></a>nx_secure_tls_remote_certificate_allocate
 
-Uzak bir TLS ana bilgisayarı tarafından belirtilen sertifika için alan ayır
+Uzak bir TLS ana bilgisayarı tarafından sağlanan sertifika için alan ayırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -965,22 +928,22 @@ UINT  nx_secure_tls_remote_certificate_allocate(
                  UINT raw_buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir TLS oturumu sırasında uzak bir ana bilgisayar tarafından sunulan sertifikalara alan ayırma amacıyla bir TLS oturumuna başlatılmamış bir NX_SECURE_X509_CERT yapısı örneği ekler. Uzak sertifika verileri NetX güvenli TLS tarafından ayrıştırılır ve bu işleve sunulan sertifika yapısı örneğini doldurmak için bu bilgiler kullanılır. Bu şekilde eklenen sertifikalar, bağlantılı bir listeye yerleştirilir.
+Bu hizmet, TLS oturumu NX_SECURE_X509_CERT uzak konak tarafından sağlanan sertifikalar için alan ayrım yapmak amacıyla bir TLS oturumuna başlatlanmamış bir NX_SECURE_X509_CERT yapısı örneği ekler. Uzak sertifika verileri NetX Secure TLS tarafından ayrıştırıldı ve bu bilgiler bu işleve sağlanan sertifika yapısı örneğini doldurmak için kullanılır. Bu şekilde eklenen sertifikalar bağlantılı bir listeye yerleştirilir.
 
-Uzak konağın birden çok sertifika sağlayabilmesi bekleniyorsa, tüm sertifikalar için alan ayırmak üzere bu işlevin tekrar tekrar çağrılması gerekir. Ek sertifikalar, sertifika bağlantılı listesinin sonuna eklenir.
+Uzak ana bilgisayarın birden çok sertifika sağlaması bekleniyorsa, tüm sertifikalar için alan ayırmak için bu işlev tekrar tekrar çağrılır. Ek sertifikalar, sertifika bağlantılı listesinin sonuna eklenir.
 
-Bir uzak sertifika ayrılmaması, önceden paylaşılan anahtar (PSK) ciphersuite kullanımda olmadığı takdirde TLS el sıkışması sırasında TLS Istemci modunun başarısız olmasına neden olur.
+Uzak sertifikanın ayrılamaz olması, ÖNCEDEN Paylaşılan Anahtar (PSK) şifrelemesi kullandıkça TLS İstemci modunun TLS el sıkışması sırasında başarısız olmasına neden olur.
 
-*Raw_certificate_buffer* parametresi, gelen uzak sertifikayı depolamak için ayrılan alana işaret eder. İmzalar için SHA-256 kullanan 2048 bitin RSA anahtarlarına sahip tipik sertifikalar, 1000-2000 bayt aralığındadır. Arabellek en az bu boyutu tutabilecek kadar büyük olmalıdır, ancak uzak ana bilgisayar sertifikalarına bağlı olarak, önemli ölçüde daha küçük veya daha büyük olabilir. Arabellek gelen sertifikayı tutmak için çok küçük olduğunda, TLS el sıkışması bir hatayla sona erdirmek için kullanılır.
+Bu *raw_certificate_buffer* parametresi, gelen uzak sertifikayı depolamak için ayrılan alanı belirtir. İmzalar için SHA-256 kullanan 2048 bit RSA anahtarları olan tipik sertifikalar 1000-2000 bayt aralığındadır. Arabellek en azından bu boyutu tutacak kadar büyük olmalı, ancak uzak konak sertifikalara bağlı olarak önemli ölçüde daha küçük veya daha büyük olabilir. Arabellek gelen sertifikayı tutmayacak kadar küçükse TLS el sıkışması bir hatayla sona erer.
 
-TLS sunucu modu için, yalnızca istemci sertifikası kimlik doğrulaması etkinse bir uzak sertifika ayırması gerekir.
+TLS Sunucusu modu için, uzak sertifika ayırma yalnızca istemci sertifikası kimlik doğrulaması etkinse gereklidir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **certificate_ptr** Başlatılmamış X. 509.440 sertifika örneğine yönelik işaretçi.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **certificate_ptr** Uninitialized X.509 Sertifika örneğinin işaretçisi.
 - **raw_certificate_buffer** Uzak ana bilgisayardan alınan ayrıştırılmamış sertifikayı tutan bir arabellek işaretçisi.
 - **raw_buffer_size** Ham sertifika arabelleğinin boyutu.
 
@@ -1031,7 +994,7 @@ UINT  nx_secure_tls_remote_certificate_buffer_allocate(
                   ULONG buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS Istemci örneğinde X. 509.440 kimlik doğrulaması ve doğrulama gerçekleştirmek için uzak sunucu konaklarından gelen sertifika zincirlerini işlemek üzere alan ayırır. TLS sunucu modu için, uzak sertifika ayırma yalnızca Client X. 509.440 sertifikası kimlik doğrulaması etkinse gereklidir – TLS sunucu örnekleri için, bunun yerine hizmet *nx_secure_tls_session_x509_client_verify_configure* kullanılmalıdır.
 
@@ -1044,23 +1007,23 @@ buffer_size = (<expected max number of certificates in chain>) *
                  (sizeof(NX_SECURE_X509_CERT) + <max cert size>)
 ```
 
-İmzalar için SHA-256 kullanan 2048 bitin RSA anahtarlarına sahip tipik sertifikalar, 1000-2000 bayt aralığındadır. Arabellek, her sertifika için en az sayıda tutmaya yetecek kadar büyük olmalıdır, ancak uzak ana bilgisayar sertifikalarına bağlı olarak, önemli ölçüde daha küçük veya daha büyük olabilir. Arabellek gelen sertifikayı tutmak için çok küçük olduğunda, TLS el sıkışması bir hatayla sona erdirmek için kullanılır.
+İmzalar için SHA-256 kullanan 2048 bitin RSA anahtarlarına sahip tipik sertifikalar, 1000-2000 bayt aralığındadır. Arabellek, her sertifika için en az sayıda tutmaya yetecek kadar büyük olmalıdır, ancak uzak ana bilgisayar sertifikalarına bağlı olarak, önemli ölçüde daha küçük veya daha büyük olabilir. Arabellek gelen sertifikayı tutmayacak kadar küçükse TLS el sıkışması bir hatayla sona erer.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **certs_number** Belirtilen arabellekten ayrılacak sertifika sayısı.
-- **certificate_buffer** Uzak bir ana bilgisayardan alınan sertifikaları tutan arabellek işaretçisi.
-- **Buffer_size** Sertifika arabelleğinin boyutu.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **certs_number** Sağlanan arabellekten ayrılacak sertifika sayısı.
+- **certificate_buffer** Uzak bir konaktan alınan sertifikaları tutmak için bir arabelleğe işaretçi.
+- **buffer_size** Sertifika arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sertifikanın başarıyla ayrılması.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturumu veya arabellek işaretçisi.
-- **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) sağlanan arabellek çok küçük.
-- **NX_INVALID_PARAMETERS** (0x4D) Arabellek istenen sayıda sertifikayı tutmak için çok küçük.
+- **NX_SUCCESS** (0x00) Sertifikanın başarıyla tahsisi.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturumu veya arabellek işaretçisi.
+- **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) Sağlanan arabellek çok küçüktü.
+- **NX_INVALID_PARAMETERS** (0x4D) Arabellek istenen sayıda sertifikayı tutmak için çok küçüktü.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1100,20 +1063,20 @@ UINT  nx_secure_tls_remote_certificate_free_all(
                   NX_SECURE_TLS_SESSION *session_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli bir TLS oturumuna ayrılan tüm sertifika arabelleklerinin bu oturumu bu oturum boş sertifika alanına döndürerek nx_secure_tls_remote_certificate_allocated tarafından serbest bırakmak için kullanılır. Bir uygulama, bir TLS oturum nesnesini silmeden yeniden kullanıyorsa ve nx_secure_tls_session_delete ve nx_secure_tls_session_create yeniden oluşturmadan bu gerekli olabilir.
+Bu hizmet, belirli bir TLS Oturumuna ayrılmış olan tüm sertifika arabelleklerini nx_secure_tls_remote_certificate_allocated oturumun boş sertifika alanlarına döndürerek bu arabellekleri serbest bırakarak kullanılabilir. Bu, bir uygulamanın tlS oturum nesnesini silmeden yeniden kullanması ve bir tls ile yeniden oluşturması nx_secure_tls_session_delete nx_secure_tls_session_create.
 
-Nx_secure_tls_session_end, çoğu uygulamanın bu hizmeti çağırması gerekmemesi için, TLS oturumu sıfırlandığında, uzak sertifika alanının otomatik olarak kurtarıldığını unutmayın.
+TLS oturumu oturumda olduğu gibi sıfırlanır ve bu nedenle çoğu uygulamanın bu hizmeti nx_secure_tls_session_end uzak sertifika alanı otomatik olarak kurtarılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı işlemi.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) Başarılı işlem.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
 - **NX_INVALID_PARAMETERS** (0x4D) iç hata – sertifika deposu muhtemelen bozuk.
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -1165,7 +1128,7 @@ UINT  nx_secure_tls_server_certificate_add(
                   NX_SECURE_X509_CERT *certificate, UINT cert_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturumunun yerel deposuna bir sertifika eklemek için kullanılır (bkz. nx_secure_tls_local_certificate_add) sertifikanın içindeki X. 509.952 Subject (ortak ad) kullanarak depoyu dizinlemek yerine bir sayısal tanımlayıcı kullanarak. Sayısal tanımlayıcı sertifikadan ayrıdır ve birden çok sertifikanın bir TLS sunucusuna kimlik sertifikası olarak eklenmesine izin verir, ayrıca aynı ortak ada sahip birden çok sertifikanın aynı TLS oturumu yerel deposuna eklenmesine izin verir. Aynı hizmet istemci sertifikaları için kullanılabilir, ancak bir TLS istemcisinde birden çok kimlik sertifikası olması nadir bir durumdur.
 
@@ -1178,17 +1141,17 @@ Cert_id parametresi, uygulama tarafından atanan sıfır olmayan pozitif bir tam
 
 - **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
 - **sertifika** Daha önce başlatılmış bir X. 509.440 sertifika örneğine yönelik işaretçi.
-- **cert_id** Pozitif, sıfır olmayan, görece benzersiz sertifika KIMLIĞI numarası.
+- **cert_id** Pozitif, sıfır olmayan, görece benzersiz sertifika kimliği numarası.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı işlemi.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturumu orcertificate işaretçisi.
-- **NX_SECURE_TLS_CERT_ID_INVALID** (0x138) BELIRTILEN sertifika kimliğinde geçersiz bir değer (olası 0) vardı.
-- **NX_SECURE_TLS_CERT_ID_DUPLICATE** (0x139) BELIRTILEN sertifika kimliği yerel depoda zaten var.
-- **NX_INVALID_PARAMETERS (0x4D)** İç hata – sertifika deposu muhtemelen bozuk.
+- **NX_SUCCESS** (0x00)Başarılı işlem.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturumu veya sertifika işaretçisi.
+- **NX_SECURE_TLS_CERT_ID_INVALID** (0x138) Sağlanan sertifika kimliğinin Geçersiz bir değeri vardı (büyük olasılıkla 0).
+- **NX_SECURE_TLS_CERT_ID_DUPLICATE** (0x139) Sağlanan sertifika kimliği yerel depoda zaten mevcut.
+- **NX_INVALID_PARAMETERS(0x4D)** İç hata – sertifika deposu büyük olasılıkla bozuk.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1227,20 +1190,20 @@ UINT  nx_secure_tls_server_certificate_find(
                   NX_SECURE_X509_CERT **certificate, UINT cert_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir TLS oturumunun yerel deposundaki bir sertifikayı bulmak için kullanılır (bkz. nx_secure_tls_local_certificate_add) sertifikanın içindeki X. 509.952 Subject (ortak ad) kullanarak depoyu dizinlemek yerine bir sayısal tanımlayıcı kullanarak.
+Bu hizmet, sertifika içindeki X.509 Konu (Ortak Ad) kullanarak depo dizini oluşturma yerine sayısal tanımlayıcı kullanarak TLS oturumunun yerel depolama (bkz. nx_secure_tls_local_certificate_add) içinde bir sertifika bulmak için kullanılır.
 
-Cert_id parametresi, sertifika, nx_secure_tls_server_certificate_add kullanılarak TLS oturumu yerel deposuna eklendiğinde, uygulama tarafından atanan sıfır olmayan pozitif bir tamsayıdır.
+Cert_id parametresi, sertifika tlS oturumu yerel deposuna kullanılarak ekleniyorsa uygulama tarafından atanan sıfır olmayan bir pozitif tamsayıdır nx_secure_tls_server_certificate_add.
 
 > [!IMPORTANT]
-> *Bu API, nx_secure_tls_local_certificate_add kullanırken aynı TLS oturumuyla kullanılmamalıdır. Nx_secure_tls_server_certificate_add API 'SI her sertifika için benzersiz bir sayısal tanımlayıcı ve X. 509.440 ortak adına göre yerel sertifika hizmetleri dizini kullanır. Sunucu sertifikası Hizmetleri, aynı yerel depoda paylaşılan verileri olan birden çok sertifikanın (özellikle ortak ad) bulunmasına izin verir. Bu, birden çok kimliği olan bir sunucu için faydalıdır.*
+> *Bu API, uygulama kullanılırken aynı TLS oturumuyla nx_secure_tls_local_certificate_add. Uygulama nx_secure_tls_server_certificate_add API'si, her sertifika için benzersiz bir sayısal tanımlayıcı ve X.509 Ortak Adı'nın temel alınan yerel sertifika hizmetleri dizinini kullanır. Sunucu sertifika hizmetleri, paylaşılan verilere sahip birden çok sertifikanın (özellikle Ortak Ad) aynı yerel depoda var olmasına olanak sağlar. Bu, birden çok kimli sunucu için yararlıdır.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **sertifika** Bulunan sertifikaya bir başvuru döndürecek bir X. 509.440 sertifika işaretçisine yönelik işaretçi.
-- **cert_id** Sıfır olmayan pozitif sertifika KIMLIĞI değeri.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **sertifika** Bulunan sertifikaya başvuru dönmek için X.509 sertifika işaretçisinin işaretçisi.
+- **cert_id** Sıfır olmayan pozitif sertifika kimliği değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -1285,7 +1248,7 @@ UINT  nx_secure_tls_server_certificate_remove(
                   NX_SECURE_TLS_SESSION *session_ptr, UINT cert_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir sertifikayı bir TLS oturumunun yerel deposundan kaldırmak için kullanılır (bkz. nx_secure_tls_local_certificate_add) sertifikanın içindeki X. 509.952 Subject (ortak ad) kullanarak depoyu dizinlemek yerine sayısal bir tanımlayıcı kullanarak.
 
@@ -1334,7 +1297,7 @@ status =  nx_secure_tls_server_certificate_remove(&tls_session, 0x12);
 
 ## <a name="nx_secure_tls_session_alert_value_get"></a>nx_secure_tls_session_alert_value_get
 
-Uzak ana bilgisayar tarafından gönderilen TLS uyarı değerini ve düzeyini al
+Uzak konak tarafından gönderilen TLS uyarı değerini ve düzeyini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -1344,22 +1307,22 @@ UINT  nx_secure_tls_session_alert_value_get(
                    UINT *alert_level, UINT *alert_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uzak ana bilgisayar bir sorun veya hataya yanıt olarak bir uyarı gönderdiğinde TLS uyarı düzeyini ve değerini almak için kullanılır.
+Bu hizmet, uzak konak bir soruna veya hataya yanıt olarak uyarı gönderdiğinde TLS uyarı düzeyini ve değerini almak için kullanılır.
 
-Alert_level ve alert_value parametrelerinin değerleri yalnızca, bu işlev, uzak konaktan bir uyarının alındığını belirten NX_SECURE_TLS_ALERT_RECEIVED (0x114) durumunu döndüren bir TLS API çağrısından hemen sonra çağrılırsa geçerlidir.
+alert_level ve alert_value parametrelerinin değerleri yalnızca bu işlev, uzak konaktan bir uyarı alınarak uyarı alınarak NX_SECURE_TLS_ALERT_RECEIVED (0x114) durumu döndürülen bir TLS API çağrısından hemen sonra çağrılsa geçerlidir.
 
-Yerel ana bilgisayar TLS bir uyarı gönderirse, döndürülen hata kodları, belirli türde saldırı yapılmasını engellemek için kasıtlı olarak doğru bir şekilde (örneğin, bir "Oracle" saldırısı veya benzer) karşı belirsiz şekilde ayrıldığından TLS uyarısının kendisinden daha fazla tanımlayıcı olduğunu unutmayın.
+Yerel ana bilgisayar TLS bir uyarı gönderirse, TLS uyarı değerleri belirli saldırı türlerini (örneğin, "doldurma kahini" saldırısı veya benzeri) önlemek için kasıtlı olarak belirsiz bırakılana kadar, döndürülen hata kodları gerçek hatayı TLS uyarısının kendisine göre çok daha açıklayıcıdır.
 
-Uyarı düzeyi yalnızca iki değerden birini alır: NX_SECURE_TLS_ALERT_LEVEL_WARNING (0x1) veya NX_SECURE_TLS_ALERT_LEVEL_FATAL (0x2). Genel olarak, yalnızca CloseNotify uyarısına (bir TLS oturumunun başarılı bir şekilde bitmesi için kullanılır), bazı uzantı yapılandırma durumlarında de uyarı olarak kabul edilebilir. Uyarıların büyük çoğunluğu olası bir güvenlik hatasını belirten ve TLS bağlantısının (el sıkışma veya oturum) doğrudan kapatılmasını elde eden "önemli" olacaktır.
+Uyarı düzeyi yalnızca iki değerden birini alır: NX_SECURE_TLS_ALERT_LEVEL_WARNING (0x1) veya NX_SECURE_TLS_ALERT_LEVEL_FATAL (0x2). Bazı uzantı yapılandırma durumlarında uyarı olarak da düşünülebilir ancak genel olarak yalnızca CloseNotify Uyarısına (TLS oturumunun başarılı bir şekilde son verildiğini belirtmek için kullanılır) "Uyarı" düzeyi verilir. Uyarıların büyük çoğunluğu olası bir güvenlik hatasına işaret eden "Önemli" olur ve TLS bağlantısının (el sıkışma veya oturum) hemen kapatılmasına neden olur.
 
-TLS uyarı değerleri TLS RFC 'lerde tanımlanmıştır, aşağıdaki başvuru için RFC 5246 (TLSv 1.2) listesidir:
+TLS uyarı değerleri TLS RFC'lerde tanımlanmıştır; rfc 5246 (TLSv1.2) listesinden başvuru için:
 
 | Uyarı Adı                     | Değer | Açıklama                                                                                                                                                  |
 | ---------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| close_notify                  | 0     | Hata yok, başarılı oturum sonu olduğunu belirtir                                                                                                                   |
-| unexpected_message            | 10    | TLS beklenmeyen veya bir sıra dışı ileti aldı                                                                                                           |
+| close_notify                  | 0     | Hata yok, oturum sonunun başarılı olduğunu gösteriyor                                                                                                                   |
+| unexpected_message            | 10    | TLS beklenmeyen veya sıranın dışında iletisi aldı                                                                                                           |
 | bad_record_mac               | 20    | Şifre çözme ve/veya MAC doğrulaması başarısız oldu                                                                                                                    |
 | decryption_failed_RESERVED   | 21    | **Kullanım dışı** Şifre çözme başarısız oldu (Oracle saldırılarını doldurma nedeniyle kullanım dışı)                                                                                      |
 | record_overflow               | 22    | En fazla TLS kayıt boyutundan daha büyük olan bir kayıt alındı                                                                                        |
@@ -1371,16 +1334,16 @@ TLS uyarı değerleri TLS RFC 'lerde tanımlanmıştır, aşağıdaki başvuru i
 | certificate_revoked           | 44    | Sertifika durumu (bir CRL veya OCSP tarafından sağlandığı gibi) "iptal edildi" olarak belirtilmiştir                                                                       |
 | certificate_expired           | 45    | Alınan sertifika geçerli bir tarih aralığı dışındaydı (henüz geçerli değil veya kullanım tarihi belirtilmemiş)                                                                 |
 | certificate_unknown           | 46    | Diğer uyarıların kapsamadığı bilinmeyen bir sertifika sorunuyla karşılaşıldı                                                                          |
-| illegal_parameter             | 47    | TLS el sıkışmasındaki bazı yapılandırma veya anlaşmalı değer geçersiz veya Aralık dışında                                                                      |
-| unknown_ca                    | 48    | Alınan kimlik sertifikası, bir sertifika zinciri aracılığıyla güvenilen bir kök CA sertifikasına izyüklenemedi.                                              |
-| access_denied                 | 49    | Geçerli bir sertifika alındığını gösterir, ancak uygulama erişim denetimi, sertifikanın istenen kaynaklar için geçersiz olduğunu belirtti.            |
-| decode_error                  | 50    | Bir TLS üstbilgisindeki veya el sıkışma iletisindeki bazı alan veya değerler Aralık dışındaydı veya geçersiz, bir TLS kaydının kodunu çözerken hata verdi.                      |
-| decrypt_error                 | 51    | TLS el sıkışması sırasında imza veya tamamlanan ileti karması doğrulanamadı.                                                                         |
-| export_restriction_RESERVED  | 60    | TLSv 1.2 'de kullanım DıŞı                                                                                                                                        |
-| protocol_version              | 70    | El sıkışma sırasında anlaşılan TLS protokol sürümü tanınıyor ancak desteklenmez (örneğin, TLSv 1.0 sunuluyor ancak etkinleştirilmemiş).                       |
-| insufficient_security         | 71    | Güvenli şifrelemelerin olmaması nedeniyle bir el sıkışma olduğunda gönderilir (örn. anahtar boyutu uygulama gereksinimleri için çok küçük)                                |
-| internal_error                | 80    | Bazı TLS olmayan hatalar (örneğin, bellek ayırma sorunları, uygulama sorunları), bozuk bir TLS oturumuna neden oldu.                                         |
-| user_canceled                 | 90    | El sıkışma tamamlanmadan önce TLS oturumu bir kullanıcı veya uygulama tarafından iptal edildiğinde (CloseNotify 'a benzer) döndürülür.                                 |
+| illegal_parameter             | 47    | TLS el sıkışması içinde bazı yapılandırma veya anlaşmalı değer geçersiz veya aralık dışında                                                                      |
+| unknown_ca                    | 48    | Alınan kimlik sertifikası, güvenilen bir kök CA sertifikasına bir sertifika zinciri aracılığıyla izlenmedi.                                              |
+| access_denied                 | 49    | Geçerli bir sertifikanın alınmıştır ancak uygulama erişim denetimi, istenen kaynaklar için sertifikanın geçersiz olduğunu gösterir.            |
+| decode_error                  | 50    | TLS üst bilgisinde veya el sıkışma iletisinde yer alan bir alan veya değer aralık dışında veya geçersizdi ve bu da TLS kaydının kodunun çözülerek hataya neden oldu.                      |
+| decrypt_error                 | 51    | TLS el sıkışması sırasında bir imza veya Tamamlandı ileti karması doğrulanamadı.                                                                         |
+| export_restriction_RESERVED  | 60    | TLSv1.2'de KULLANıM DıŞı                                                                                                                                        |
+| protocol_version              | 70    | El sıkışma sırasında anlaştırılacak TLS protokol sürümü tanınıyor ancak desteklenmiyor (örneğin TLSv1.0 sunulsa da etkinleştirilmedi).                       |
+| insufficient_security         | 71    | Güvenli şifrelemelerin olmaması nedeniyle el sıkışması başarısız olduğunda gönderilir (örneğin, anahtar boyutu uygulama gereksinimleri için çok küçüktür)                                |
+| internal_error                | 80    | TLS olmayan bazı hata (örneğin bellek ayırma sorunları, uygulama sorunları) bir TLS oturumunun bozuk olarak ortaya çıktı.                                         |
+| user_canceled                 | 90    | El sıkışma işlemi tamamlanmadan önce TLS oturumu bir kullanıcı veya uygulama tarafından iptal edilirse döndürülür (CloseNotify'a benzer).                                 |
 | no_renegotiation              | 100   | Uzak konağın, bir yeniden anlaşma isteğine yanıt olarak TLS yeniden anlaşma el sıkışmaları gerçekleştirmesini istemediğinden bağımsız olarak.                                 |
 | unsupported_extension         | 110   | Bir TLS Istemcisi ilk ClientHello (sunucuda bir sorun olduğunu gösterir) için açıkça sorulmayan uzantıları içeren bir ServerHello alırsa gönderilir. |
 
@@ -1446,7 +1409,7 @@ UINT  nx_secure_tls_ session_certificate_callback_set (
                                     NX_SECURE_X509_CERT *certificate));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uzak bir ana bilgisayardan bir sertifika alındığında, uygulamanın DNS doğrulaması, sertifika iptali ve sertifika ilkesi zorlaması gibi doğrulama denetimleri gerçekleştirmesine izin veren TLS oturumuna bir işlev işaretçisi atar.
 
@@ -1457,14 +1420,14 @@ Geri arama, TLS oturum işaretçisini ve uzak ana bilgisayar kimliği sertifikas
 ### <a name="parameters"></a>Parametreler
 
 - **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **func_ptr** Sertifika doğrulama geri çağırma işlevine yönelik işaretçi.
+- **func_ptr** Sertifika doğrulama geri çağırma işlevinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Işlev işaretçisinin başarılı bir şekilde ayrılması **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) İşlev işaretçisinin başarıyla ayırması.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1497,7 +1460,7 @@ ULONG certificate_callback(NX_SECURE_TLS_SESSION *session, NX_SECURE_X509_CERT
 
 ## <a name="nx_secure_tls_session_client_callback_set"></a>nx_secure_tls_session_client_callback_set
 
-TLS Istemcisi el sıkışmasının başlangıcında çağırmak üzere TLS için bir geri çağırma ayarlayın
+TLS İstemci el sıkışması başlangıcında çağırmak için TLS için bir geri çağırma ayarlayın
 
 ### <a name="prototype"></a>Prototype
 
@@ -1509,22 +1472,22 @@ UINT  nx_secure_tls_ session_client_callback_set (
                                     *extensions, UINT num_extensions));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, TLS Istemcisi el sıkışması bir ServerHelloDone iletisi aldığında tls oturumuna bir işlev işaretçisi atar. Geri arama işlevi, bir uygulamanın giriş veya karar verme gerektiren alınan ServerHello iletisinden herhangi bir TLS uzantısını işlemesini sağlar.
+Bu hizmet, BIR TLS İstemci el sıkışması ServerHelloDone iletisi aldığı zaman TLS'nin çağıracak olduğu bir TLS oturumuna işlev işaretçisi atar. Geri çağırma işlevi, bir uygulamanın alınan ServerHello iletilerinden giriş veya karar alma gerektiren tüm TLS uzantılarını işlemesini sağlar.
 
-Geri çağırma, TLS oturum denetim bloğu ve NX_SECURE_TLS_HELLO_EXTENSION nesnelerinden oluşan bir dizi ile yürütülür. Uzantı nesnelerinin dizisi, belirli bir uzantıyı bulacak ve ayrıştıracak bir yardımcı işleve geçirilmesi amaçlanmıştır. Şu anda NetX güvenli içinde TLS Istemci girişi gerektiren belirli Uzantılar yoktur, ancak uygulama tasarımcılarının kullanılabilir olabilecek özel veya yeni uzantıları işlemesi için geri çağırma kullanılabilir. Merhaba iletilerde sunulan TLS uzantılarını ayrıştırır örnek bir yardımcı işlev için bkz. *nx_secure_tls_session_sni_extension_parse*.
+Geri çağırma TLS oturum denetim bloğu ve bir dizi farklı nesne NX_SECURE_TLS_HELLO_EXTENSION yürütülür. Uzantı nesneleri dizisinin, belirli bir uzantıyı bulup ayrıştıracak bir yardımcı işleve geçirileme amacı vardır. Şu anda NetX Secure'de TLS İstemcisi girişi gerektiren belirli uzantılar yoktur, ancak uygulama tasarımcılarının kullanılabilir hale gelen özel veya yeni uzantıları işlemesi için geri çağırma kullanılabilir. Merhaba iletilerde sağlanan TLS uzantılarını ayrıştıran örnek bir yardımcı işlev için bkz. *nx_secure_tls_session_sni_extension_parse.*.
 
-İstemci geri çağırması, uzak sunucunun bir sertifika istediği ve TLS Istemcisinin belirli bir sertifikayı seçmesini sağlamak üzere bilgi sağlamış olduğu olaydaki TLS Istemcisi için *nx_secure_tls_active_certificate_set* kullanarak etkin kimlik sertifikasını seçmek için de kullanılabilir. Daha fazla bilgi için bkz. nx_secure_tls_active_certificate_set başvurusu.
+İstemci geri çağırma, uzak sunucunun bir sertifika  isteğinde bulunuyor olması ve TLS İstemcisi'nin belirli bir sertifikayı seçmesine izin vermek için bilgi sağladığında TLS İstemcisi için nx_secure_tls_active_certificate_set kullanarak etkin kimlik sertifikasını seçmek için de kullanılabilir. Daha fazla bilgi için nx_secure_tls_active_certificate_set için başvuruya bakın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **func_ptr** TLS Istemci geri çağırma işlevine yönelik işaretçi.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **func_ptr** TLS İstemci geri çağırma işlevinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- İşlev işaretçisinin başarılı bir şekilde ayrılması **NX_SUCCESS** (0x00).
+- **NX_SUCCESS** (0x00) İşlev işaretçisinin başarıyla ayırması.
 - **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -1586,7 +1549,7 @@ UINT  nx_secure_tls_session_x509_client_verify_configure(
                   ULONG buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS sunucu örneği için isteğe bağlı X. 509.440 Istemci kimlik doğrulamasını sunar. Ayrıca, uzak istemci konaktan gelen sertifika zincirlerini işlemek için gereken alanı ayırır. Uzak istemci tarafından sağlanan sertifikalar, hizmet nx_secure_tls_trusted_certificate_add atanmış olan TLS sunucusu örneğinin güvenilen sertifikalarına karşı doğrulanır *.*
 
@@ -1604,18 +1567,18 @@ buffer_size = (<expected max number of certificates in chain>) *
 ### <a name="parameters"></a>Parametreler
 
 - **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **certs_number** Belirtilen arabellekten ayrılacak sertifika sayısı.
-- **certificate_buffer** Uzak bir ana bilgisayardan alınan sertifikaları tutan arabellek işaretçisi.
-- **Buffer_size** Sertifika arabelleğinin boyutu.
+- **certs_number** Sağlanan arabellekten ayrılacak sertifika sayısı.
+- **certificate_buffer** Uzak bir konaktan alınan sertifikaları tutmak için bir arabelleğe işaretçi.
+- **buffer_size** Sertifika arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sertifikanın başarıyla ayrılması.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturumu veya arabellek işaretçisi.
-- **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) sağlanan arabellek çok küçük.
-- **NX_INVALID_PARAMETERS** (0x4D) Arabellek istenen sayıda sertifikayı tutmak için çok küçük.
+- **NX_SUCCESS** (0x00)Başarılı sertifika ayırma.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturumu veya arabellek işaretçisi.
+- **NX_SECURE_TLS_INSUFFICIENT_CERT_SPACE** (0x12D) Sağlanan arabellek çok küçüktü.
+- **NX_INVALID_PARAMETERS** (0x4D) Arabellek istenen sayıda sertifikayı tutmak için çok küçüktü.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1648,7 +1611,7 @@ status =  nx_secure_tls_session_x509_client_verify_configure(&tls_session,
 
 ## <a name="nx_secure_tls_session_client_verify_disable"></a>nx_secure_tls_session_client_verify_disable
 
-NetX güvenli TLS oturumu için Istemci sertifikası kimlik doğrulamasını devre dışı bırakma
+NetX Güvenli TLS Oturumu için İstemci Sertifikası Kimlik Doğrulamasını Devre Dışı Bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1657,20 +1620,20 @@ UINT  nx_secure_tls_session_client_verify_disable(
                               NX_SECURE_TLS_SESSION *session_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli bir TLS oturumu için Istemci sertifikası kimlik doğrulamasını devre dışı bırakır. Daha fazla bilgi için bkz. nx_secure_tls_session_client_verify_enable.
+Bu hizmet, belirli bir TLS oturumu için İstemci Sertifikası Kimlik Doğrulamasını devre dışı bırakıyor. Daha fazla nx_secure_tls_session_client_verify_enable için bkz. Nx_secure_tls_session_client_verify_enable.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı durum değişikliği.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) Başarılı durum değişikliği.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1701,7 +1664,7 @@ UINT  nx_secure_tls_session_client_verify_enable(
                                 NX_SECURE_TLS_SESSION *session_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirli bir TLS oturumu için Istemci sertifikası kimlik doğrulamasını mümkün bir şekilde sunar. Bir TLS sunucu örneği için Istemci sertifikası kimlik doğrulamasını etkinleştirme, TLS sunucusunun ilk TLS el sıkışması sırasında herhangi bir uzak TLS Istemcisinden sertifika istemesine neden olur. Uzak TLS Istemcisinden alınan sertifikaya, TLS sunucusunun Istemcinin sertifikaya sahip olduğunu doğrulamak için kullandığı bir CertificateVerify iletisi (Bu sertifikayla ilişkili özel anahtara erişimi vardır) ile birlikte gönderilir.
 
@@ -1757,27 +1720,27 @@ UINT  nx_secure_tls_session_create(NX_SECURE_TLS_SESSION *session_ptr
                                    ULONG encryption_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir ağ bağlantısı üzerinden güvenli TLS iletişimleri kurmak için kullanılmak üzere bir NX_SECURE_TLS_SESSION yapısı örneğini başlatır.
+Bu hizmet, bir NX_SECURE_TLS_SESSION üzerinden güvenli TLS iletişimleri kurmada kullanmak üzere bir ağ yapısı örneği başlatıyor.
 
-Yöntemi, TLS için kullanılacak kullanılabilir şifreleme yöntemleriyle doldurulmuş bir NX_SECURE_TLS_CRYPTO nesnesi alır. *Encryption_metadata_area* , hesaplamalar için NX_SECURE_TLS_CRYPTO tablosundaki şifreleme yöntemleri tarafından kullanılan "meta veriler" için TLS tarafından kullanılmak üzere ayrılmış bir arabelleğe işaret eder. Tablonun boyutu nx_secure_tls_metadata_size_calculate hizmeti kullanılarak belirlenebilir. Daha fazla bilgi için, Bölüm 3 ' teki "NetX güvenli TLS 'de şifreleme" bölümüne bakın.
+yöntemi, TLS NX_SECURE_TLS_CRYPTO kullanılabilen şifreleme yöntemleriyle doldurulan bir nesne alır. Bu *encryption_metadata_area,* hesaplamalar için tablodaki şifreleme yöntemleri tarafından kullanılan "meta veriler" için TLS tarafından NX_SECURE_TLS_CRYPTO bir arabelleğe gösterir. Tablonun boyutu, nx_secure_tls_metadata_size_calculate kullanılarak belirlenecektir. Daha fazla ayrıntı için Bölüm 3'te "NetX Secure TLS'de Şifreleme" bölümüne bakın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **cipher_table** TLS şifreleme yöntemlerine yönelik işaretçi.
-- **encryption_metadata_area** Şifreleme meta verileri için boşluk işaretçisi.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **cipher_table** TLS şifreleme yöntemlerinin işaretçisi.
+- **encryption_metadata_area** Şifreleme meta verileri için alan işaretçisi.
 - **encryption_metadata_size** Meta veri arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TLS oturumunun başarıyla başlatılmasından **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
-- **NX_INVALID_PARAMETERS** (0x4D) belirtilen metotlar için meta veri arabelleği çok küçük.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) ŞIFRELEME tablosunda TLS 'nin etkinleştirilmiş sürümü Için gerekli bir şifre yöntemi sağlanmadı.
+- **NX_SUCCESS** (0x00)TLS oturumunun başarıyla başlatılıyor.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
+- **NX_INVALID_PARAMETERS** (0x4D) Meta veri arabelleği verilen yöntemler için çok küçüktü.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) TLS'nin etkin sürümü için gerekli bir şifreleme yöntemi, şifreleme tablosunda sağlanmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1823,7 +1786,7 @@ NetX güvenli TLS oturumunu silme
 UINT  nx_secure_tls_session_delete(NX_SECURE_TLS_SESSION *session_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir NX_SECURE_TLS_SESSION yapısı örneğiyle temsil edilen bir TLS oturumunu siler ve o oturum örneğine ait tüm sistem kaynaklarını serbest bırakır.
 
@@ -1871,26 +1834,26 @@ UINT  nx_secure_tls_session_end(NX_SECURE_TLS_SESSION *session_ptr,
                                     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, TLS CloseNotify iletisini uzak ana bilgisayara göndererek bir NX_SECURE_TLS_SESSION yapısı örneği tarafından temsil edilen bir TLS oturumunu sonlandırır. Daha sonra hizmet, uzak konağın kendi CloseNotify iletisiyle yanıt vermesini bekler.
+Bu hizmet, TLS CloseNotify iletisini uzak ana bilgisayara göndererek bir NX_SECURE_TLS_SESSION yapısı örneği tarafından temsil edilen bir TLS oturumunu sonlandırır. Ardından hizmet, uzak ana bilgisayarın kendi CloseNotify iletisiyle yanıt vermesini bekler.
 
-Uzak ana bilgisayar bir CloseNotify iletisi göndermezse, TLS bu hatayı ve olası bir güvenlik ihlalini kabul eder; bu nedenle, güvenli bir bağlantı için dönüş değerinin denetlenmesi önemlidir. **Wait_option** parametresi, hizmetin çağıran iş parçacığına denetim döndürmeden önce Yanıt beklemesi gereken süreyi denetlemek için kullanılabilir.
+Uzak konak bir CloseNotify iletisi göndermse TLS bunu bir hata ve olası bir güvenlik ihlali olarak kabul ederek güvenli bağlantı için dönüş değerinin denetlen önemlidir. wait_option  parametresi, çağrıyı çağıran iş parçacığına denetim döndürmeden önce hizmetin yanıt için ne kadar beklemesi gerektiğini kontrol etmek için kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **wait_option** Hizmetin uzak ana bilgisayardan Yanıt beklemesi gereken süreyi belirtir.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **wait_option** Hizmetin uzak konaktan ne kadar süreyle yanıt beklemesi gerektiğini gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TLS oturumunun başarıyla başlatılmasından **NX_SUCCESS** (0x00).
-- **NX_SECURE_TLS_NO_CLOSE_RESPONSE** (0x113), zaman aşımından önce uzak ana bilgisayardan bir yanıt almadı.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111), CloseNotify iletisini göndermek için bir paket ayıramadı.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109), CloseNotify iletisini TCP yuvası üzerinden gönderemiyor.
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
+- **NX_SUCCESS** (0x00) TLS oturumunun başarıyla başlatılıyor.
+- **NX_SECURE_TLS_NO_CLOSE_RESPONSE** (0x113) Zaman dışından uzak konaktan yanıt almadı.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) CloseNotify iletisi göndermek için bir paket ayrılamadı.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) TCP yuvası üzerinden CloseNotify iletisi gönderildi.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1916,7 +1879,7 @@ status =  nx_secure_tls_session_end(&tls_session, NX_WAIT_FOREVER);
 
 ## <a name="nx_secure_tls_session_packet_buffer_set"></a>nx_secure_tls_session_packet_buffer_set
 
-NetX güvenli TLS oturumu için paket yeniden birleştirme arabelleğini ayarlama
+NetX Güvenli TLS Oturumu için paket yeniden değerlendirme arabelleği ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1927,7 +1890,7 @@ UINT  nx_secure_tls_session_packet_buffer_set(
                                     ULONG buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir paket yeniden birleştirme arabelleğini bir TLS oturumuyla ilişkilendirir. Gelen TLS kayıtlarının şifresini çözmek ve ayrıştırmak için, her bir kayıttaki verilerin temel alınan TCP paketlerinden bir araya gelmelidir. TLS kayıtlarının boyutu 16KB 'a kadar olabilir (genellikle çok daha küçüktür), bu nedenle tek bir TCP paketine uyamayabilir.
 
@@ -1974,7 +1937,7 @@ status =  nx_secure_tls_session_packet_buffer_set(&tls_session, tls_packet_buffe
 
 ## <a name="nx_secure_tls_session_protocol_version_override"></a>nx_secure_tls_session_protocol_version_override
 
-NetX güvenli TLS oturumu için varsayılan TLS protokol sürümünü geçersiz kılın
+NetX Güvenli TLS Oturumu için varsayılan TLS protokol sürümünü geçersiz kılma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1984,21 +1947,21 @@ UINT  nx_secure_tls_session_protocol_version_override(
                               USHORT protocol_version);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli bir oturum tarafından kullanılan varsayılan (en yeni) TLS protokol sürümünü geçersiz kılar. Bu, NetX güvenli TLS 'in, derleme zamanında daha yeni TLS sürümlerini devre dışı bırakmadan belirli bir TLS oturumu için daha eski bir TLS sürümünü kullanmasını sağlar. Bu, en yeni TLS sürümünü desteklemeyen daha eski bir konakla iletişim kurması gerekebilecek uygulamalarda yararlı olabilir.
-
-> [!IMPORTANT]
-> *Sürüm 5.11 SP3 itibariyle NetX Secure TLS, RFC 7507 ' i (aşağıdaki nota bakın) destekler ve bu API ile daha eski bir sürüme yönelik tüm geçersiz kılma, ClientHello içinde bir geri dönüş SCSV gönderilmesine neden olur. Sunucu, TLS 'in daha yeni bir sürümünü destekliyorsa ve geri dönüş SCSV, ClientHello içinde yer alıyorsa, bu sunucu "uygunsuz geri dönüş" uyarısıyla TLS el sıkışması işlemini iptal eder. SCSV yalnızca sürüm geçersiz kılma özelliği, etkin olandan daha eski bir TLS sürümü olduğunda gönderilir (örn. sürümü TLS 1,2 olarak geçersiz kılarsınız, hiçbir SCSV gönderilmez).*
-
-Protocol_version parametresi için geçerli değerler şu makrolardır: NX_SECURE_TLS_VERSION_TLS_1_0, NX_SECURE_TLS_VERSION_TLS_1_1 ve NX_SECURE_TLS_VERSION_TLS_1_2.
-
-NX_SECURE_TLS_DISABLE_TLS_1_1 ve NX_SECURE_TLS_ENABLE_TLS_1_0 makrolar, uygulamaya derlenen TLS sürümlerini denetlemek için kullanılabilir. TLS sürüm 1,2 her zaman etkindir.
-
-Uzak ana bilgisayar sağlanan sürümü desteklemiyorsa bağlantı başarısız olur – yalnızca belirtilen geçersiz kılma sürümü NetX güvenli TLS tarafından görüşülecektir.
+Bu hizmet, belirli bir oturum tarafından kullanılan varsayılan (en yeni) TLS protokol sürümünü geçersiz kılar. Bu, NetX Secure TLS'nin derleme zamanında daha yeni TLS sürümlerini devre dışı bırakmadan belirli bir TLS Oturumu için daha eski bir TLS sürümünü kullanmasına olanak sağlar. Bu, TLS'nin en yeni sürümünü desteklemeen eski bir ana bilgisayarla iletişim kurması gerektirilen uygulamalarda yararlı olabilir.
 
 > [!IMPORTANT]
-> RFC 7507: TLS geri dönüş SCSV. Bu RFC, protokol düşürme anlaşmasını yanlış bir şekilde işlenmiş olan ve bunun yerine geçerli ClientHello iletilerini reddettiği sunuculardan kaynaklanan bir güvenlik sorununu hafifletmek üzere sunulmuştur. Bu eski sunucularla uyumlu olmaya devam etmek için bazı TLS istemci uygulamaları başarısız el sıkışmaları ve daha eski TLS sürümü ile yeniden denemeye başlamıştır (örneğin, TLS 1,2 başarısız oldu, TLS 1,1 ' yi deneyin). Bu geçici çözüm, yeni bir sorun ortaya sunmuştur; bir saldırgan, sunucu daha yeni TLS sürümünü desteklense bile, sunucu bağlantısının başarısız olmasına neden olan bir ağ veya paket hatası ile yapay bir istemciyi indirgemeye zorlayabilir. Daha eski bir sürüme indirgenerek saldırgan, söz konusu sürümdeki zayıf yönleriyle yararlanabilir (SSLv3<sup>21</sup> , özellıkle de çıkış saldırılarına karşı zayıfdır). Bu durumu engellemek için, RFC 7507 ' de, bir TLS istemcisi desteklediği en yeni sürüm olmayan bir TLS<sup></sup> sürümünü kullanırken TLS sunucusuna bildiren "GERI dönüş SCSV" bir ClientHello Bu şekilde, daha yeni bir sürümü destekleyen bir sunucu, geri dönüş SCSV 'i içeren bir ClientHello reddedebilir ve düşürme saldırılarının başarılı olmasını önler.
+> *Sürüm 5.11SP3'te NetX Secure TLS RFC 7507'yi destekler (aşağıdaki nota bakın) ve bu API ile eski bir sürümde yapılan geçersiz kılmalar ClientHello'da geri dönüş SCSV'si gönderilir. Sunucu daha yeni bir TLS sürümünü destekliyorsa ve ClientHello'ya geri dönüş SCSV'si dahil edilirse, bu sunucu TLS el sıkışmayı "Uygunsuz Geri Dönüş" uyarısıyla iptal eder. SCSV yalnızca sürüm geçersiz kılma özelliği tlS'nin etkin olandan eski bir sürümü olduğunda gönderilir (örneğin, sürümü TLS 1.2 olarak geçersiz kılarsanız, SCSV gönderilmez).*
+
+protocol_version parametresi için geçerli değerler şu makrolardır: NX_SECURE_TLS_VERSION_TLS_1_0, NX_SECURE_TLS_VERSION_TLS_1_1 ve NX_SECURE_TLS_VERSION_TLS_1_2.
+
+Bu NX_SECURE_TLS_DISABLE_TLS_1_1 NX_SECURE_TLS_ENABLE_TLS_1_0, uygulamaya derlenmiş TLS sürümlerini kontrol etmek için kullanılabilir. TLS sürüm 1.2 her zaman etkindir.
+
+Uzak ana bilgisayar sağlanan sürümü desteklemezse bağlantının başarısız olacağını unutmayın. Yalnızca verilen geçersiz kılma sürümü NetX Secure TLS tarafından anılacaktır.
+
+> [!IMPORTANT]
+> RFC 7507: TLS Geri Dönüş SCSV. Bu RFC, başlangıçta protokol eski sürüm düşürme anlaşmalarını hatalı bir şekilde ele alan ve bunun yerine geçerli olmayan ClientHello iletilerini reddeden sunuculardan kaynaklanan bir güvenlik sorununu azaltmak için tanıtıldı. Bu eski sunucularla uyumlu olmaya devam etmek için bazı TLS istemci uygulamaları ile başarısız el sıkışmalarını ve eski TLS sürümünü yeniden denemeye başladı (örneğin TLS 1.2 başarısız oldu, bu nedenle TLS 1.1'i deneyin). Bu geçici çözüm, yeni bir sorun ortaya sunmuştur; bir saldırgan, sunucu daha yeni TLS sürümünü desteklense bile, sunucu bağlantısının başarısız olmasına neden olan bir ağ veya paket hatası ile yapay bir istemciyi indirgemeye zorlayabilir. Daha eski bir sürüme indirgenerek saldırgan, söz konusu sürümdeki zayıf yönleriyle yararlanabilir (SSLv3<sup>21</sup> , özellıkle de çıkış saldırılarına karşı zayıfdır). Bu durumu engellemek için, RFC 7507 ' de, bir TLS istemcisi desteklediği en yeni sürüm olmayan bir TLS<sup></sup> sürümünü kullanırken TLS sunucusuna bildiren "GERI dönüş SCSV" bir ClientHello Bu şekilde, daha yeni bir sürümü destekleyen bir sunucu, geri dönüş SCSV 'i içeren bir ClientHello reddedebilir ve düşürme saldırılarının başarılı olmasını önler.
 
 21. NetX Secure, POOıDLE gibi bilinen ciddi zayıf yanlar nedeniyle SSLv3 uygulamaz.
 
@@ -2048,31 +2011,31 @@ UINT  nx_secure_tls_session_receive(NX_SECURE_TLS_SESSION *session_ptr,
                                     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen etkin TLS oturumundan verileri alır ve bu verilerin şifresini, NX_PACKET parametresindeki çağırana sağlamadan önce işleme alır. Belirtilen oturumda hiçbir veri sıraya alınmaz, çağrı sağlanan bekleme seçeneğine göre askıya alınır.
 
 > [!IMPORTANT]
-> *NX_SUCCESS döndürülürse, uygulama artık gerekli olmadığında alınan paketi serbest bırakmaktan sorumludur.*
+> *Bir NX_SUCCESS döndürülürse, uygulama artık gerekli olmadığı zaman alınan paketi serbest bırakmakla sorumludur.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **packet_ptr** Ayrılmış bir TLS paket işaretçisine yönelik işaretçi.
-- **wait_option** Hizmetin, döndürmeden önce uzak ana bilgisayardan bir paket için bekleyeceği süreyi belirtir.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **packet_ptr** Ayrılmış bir TLS paket işaretçisinin işaretçisi.
+- **wait_option** Hizmetin, geri dönmeden önce uzak konaktan bir paket için ne kadar beklemesi gerektiğini gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TLS oturumunun başarıyla başlatılmasından **NX_SUCCESS** (0x00).
-- **NX_NO_PACKET** (0x01) veri alınmadı.
-- **NX_NOT_CONNECTED** (0x38) temel alınan TCP yuvası artık bağlı değil.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) alınan bir ileti, kimlik doğrulama karma denetiminde başarısız oldu.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) alınan bir ileti üstbilgisinde bilinmeyen bir protokol sürümü içeriyordu.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) uzak ana BILGISAYARDAN bir TLS uyarısı aldı.
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
-- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) sağlanan TLS oturumu başlatılmadı.
+- **NX_SUCCESS** (0x00) TLS oturumunun başarıyla başlatılıyor.
+- **NX_NO_PACKET** (0x01) Veri alınmamıştır.
+- **NX_NOT_CONNECTED** (0x38) Temel ALıNAN TCP yuvası artık bağlı değil.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Alınan ileti kimlik doğrulaması karma denetimi başarısız oldu.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Alınan ileti üst bilgisinde bilinmeyen bir protokol sürümü içeriyordu.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Uzak konaktan bir TLS uyarısı alındı.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
+- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) Sağlanan TLS oturumu başlatılmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2113,7 +2076,7 @@ UINT  nx_secure_tls_ session_renegotiate_callback_set (
                   *session));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uzak ana bilgisayardan bir oturum yeniden anlaşma el sıkışma iletisi alındığında çağrılacak bir TLS oturumuna geri çağırma işlemi atar.
 
@@ -2171,7 +2134,7 @@ status = nx_secure_tls_session_renegotiate_callback_set(&tls_session,
 
 ## <a name="nx_secure_tls_session_renegotiate"></a>nx_secure_tls_session_renegotiate
 
-Uzak konakla oturum yeniden anlaşma anlaşmasını başlatma
+Uzak konakla oturum yeniden anlaşma başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2181,31 +2144,31 @@ UINT  nx_secure_tls_ session_renegotiate (
                   UINT wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bağlı bir uzak TLS ana bilgisayarıyla oturum yeniden *anlaşma* anlaşmasını başlatır. Yeniden anlaşma, daha önce oluşturulmuş bir TLS oturumunun bağlamı içindeki ikinci bir TLS el sıkışmasını içerir. Yeni oturum anahtarları üretilene ve Changeccrypspec iletileri alınıp, tüm iletileri şifrelemek için yeni anahtarların kullanıldığı zamana kadar her yeni el sıkışma iletisi, TLS oturumu kullanılarak şifrelenir.
+Bu hizmet, bağlı uzak TLS *ana bilgisayarıyla* oturum yeniden anlaşmaları başlatıyor. Yeniden anlaşma, önceden kurulmuş bir TLS oturumu bağlamında ikinci bir TLS el sıkışması oluşur. Yeni oturum anahtarları oluşturulana ve ChangeCipherSpec iletileri değiştirilene kadar yeni el sıkışma iletilerinin her biri TLS oturumu kullanılarak şifrelenir ve bu sırada tüm iletileri şifrelemek için yeni anahtarlar kullanılır.
 
-Bir yeniden anlaşma, bir TLS oturumu kurulduktan sonra herhangi bir zamanda başlatılabilir. Bir TLS el sıkışması sırasında veya bir TLS oturumu oluşturulmadan önce yeniden anlaşma denendiğinde hiçbir işlem yapılmaz.
+TLS oturumu kurulduktan sonra herhangi bir zamanda yeniden görüşme başlatabilirsiniz. TLS el sıkışması sırasında veya TLS oturumu kurulmadan önce yeniden anlaşma denenirse hiçbir işlem olmaz.
 
 > [!NOTE]
-> *Bu hizmet çağrıldığında tüm TLS el sıkışması gerçekleştirilecek ve geri döndürülen durum geçerli TLS ayarlarına ve oturum parametrelerine göre farklılık gösterecektir.*
+> *Bu hizmet çağrıldığında tüm TLS el sıkışması gerçekleştirilir, bu nedenle tamamlanma süresi ve döndürülen durum geçerli TLS ayarlarına ve oturum parametrelerine bağlı olarak değişir.*
 
-NetX güvenli TLS, yeniden anlaşma el sıkışmaları 'nın ortadaki adam saldırılarına maruz olmamasını sağlamak için, RFC 5746 ' den güvenli yeniden anlaşma alma uzantısını uygular.
+NetX Secure TLS, yeniden anlaşma el sıkışmalarının ortadaki adam saldırılarına maruz olmadığını güvence altına almak için RFC 5746'dan Güvenli Yeniden Anlaşma Kimlik Doğrulama Uzantısı'nın uygulanmasını sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** TLS oturum örneği işaretçisi.
-- **wait_option** Hizmetin, döndürmeden önce uzak ana bilgisayardan bir paket için bekleyeceği süreyi belirtir. Bu, TLS içindeki tüm NetX hizmetlerine geçirilir.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **wait_option** Hizmetin, geri dönmeden önce uzak konaktan bir paket için ne kadar beklemesi gerektiğini gösterir. Bu, TLS içindeki tüm NetX hizmetlerine geçirildi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yeniden anlaşma.
-- **NX_NO_PACKET** (0x01) veri alınmadı.
-- **NX_NOT_CONNECTED** (0x38) temel alınan TCP yuvası artık bağlı değil.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) alınan bir ileti, kimlik doğrulama karma denetiminde başarısız oldu.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) alınan bir ileti üstbilgisinde bilinmeyen bir protokol sürümü içeriyordu.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) uzak ana BILGISAYARDAN bir TLS uyarısı aldı.
-- **NX_SECURE_TLS_RENEGOTIATION_SESSION_INACTIVE** (0x134) yerel veya uzak TLS oturumu etkin değil, yeniden anlaşma olanaksız hale yapılıyor.
+- **NX_SUCCESS** (0x00) Başarılı yeniden yapılanma.
+- **NX_NO_PACKET** (0x01) Veri alınmamıştır.
+- **NX_NOT_CONNECTED** (0x38) Temel ALıNAN TCP yuvası artık bağlı değil.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Alınan ileti kimlik doğrulaması karma denetimi başarısız oldu.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) Alınan ileti üst bilgisinde bilinmeyen bir protokol sürümü içeriyordu.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Uzak konaktan bir TLS uyarısı alındı.
+- **NX_SECURE_TLS_RENEGOTIATION_SESSION_INACTIVE** (0x134) Yerel veya uzak TLS oturumu devre dışıdır ve bu da yeniden görüşmeyi imkansız hale gelir.
 - **NX_SECURE_TLS_RENEGOTIATION_FAILURE** (0x13a) uzak ana BILGISAYAR, SCSV veya güvenli yeniden anlaşma uzantısı sağlamadı ve bu nedenle yeniden anlaşma yapılamaz.
 - **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
 - **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) sağlanan TLS oturumu başlatılmadı.
@@ -2273,7 +2236,7 @@ NetX güvenli TLS oturumunu Temizleme ve sıfırlama
 UINT  nx_secure_tls_session_reset (NX_SECURE_TLS_SESSION *session_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir TLS oturumunu temizler ve mevcut bir TLS oturum nesnesinin yeni bir oturum için yeniden kullanılabilmesi için oturum oluşturulmuşdaymışsınız gibi durumu sıfırlar.
 
@@ -2313,7 +2276,7 @@ status =  nx_secure_tls_session_reset(&tls_session);
 
 ## <a name="nx_secure_tls_session_send"></a>nx_secure_tls_session_send
 
-NetX güvenli TLS oturumu aracılığıyla veri gönderme
+NetX Güvenli TLS Oturumu aracılığıyla veri gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2323,29 +2286,29 @@ UINT  nx_secure_tls_session_send(NX_SECURE_TLS_SESSION *session_ptr,
                                     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen etkin TLS oturumunu kullanarak ve bu verilerin uzak ana bilgisayara gönderilmeden önce şifrelemesini işleyerek, sağlanan NX_PACKET verileri gönderir. Alıcının en son tanıtılan pencere boyutu bu istekten azsa, hizmet isteğe bağlı olarak, belirtilen bekleme seçeneklerine göre askıya alınır.
+Bu hizmet, belirtilen etkin TLS NX_PACKET kullanarak ve uzak ana bilgisayara göndermeden önce bu verilerin şifrelemesi işlemesi için sağlanan hizmette verileri gönderir. Alıcının son tanıtan pencere boyutu bu istekten küçükse, hizmet belirtilen bekleme seçeneklerine göre isteğe bağlı olarak askıya alır.
 
 > [!IMPORTANT]
-> *Bir hata döndürülmediği takdirde, uygulama bu çağrıdan sonra paketi serbest bırakmamalıdır. Bunu yapmak öngörülemeyen sonuçlara neden olur çünkü ağ sürücüsü iletim sonrasında paketi serbest bırakacaktır.*
+> *Bir hata döndürül olmadığı sürece, uygulama bu çağrıdan sonra paketi serbest bırakmamalı. Ağ sürücüsü iletimden sonra paketi serbest bıraktıracak olduğundan, bunu yapmak öngörülemeyen sonuçlara neden olur.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **packet_ptr** Gönderilecek verileri içeren TLS paketine yönelik işaretçi.
-- **wait_option** İstek alıcının pencere boyutundan fazlaysa hizmetin nasıl davranacağını tanımlar.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **packet_ptr** Gönderilecek verileri içeren bir TLS paketinin işaretçisi.
+- **wait_option** İstek, alıcının pencere boyutundan büyükse hizmetin nasıl davranacağını tanımlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TLS oturumunun başarıyla başlatılmasından **NX_SUCCESS** (0x00).
-- **NX_NO_PACKET** (0x01) veri alınmadı.
-- **NX_NOT_CONNECTED** (0x38) temel alınan TCP yuvası artık bağlı değil.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) temel alınan TCP yuvası gönderme başarısız oldu.
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
-- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) sağlanan TLS oturumu başlatılmadı.
+- **NX_SUCCESS** (0x00) TLS oturumunun başarıyla başlatılıyor.
+- **NX_NO_PACKET** (0x01) Veri alınmamıştır.
+- **NX_NOT_CONNECTED** (0x38) Temel ALıNAN TCP yuvası artık bağlı değil.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Temel ALıNAN TCP yuvası gönderme işlemi başarısız oldu.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
+- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) Sağlanan TLS oturumu başlatılmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2386,7 +2349,7 @@ UINT  nx_secure_tls_ session_server_callback_set (
                                    *extensions, UINT num_extensions));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, TLS sunucusu el sıkışması bir ClientHello iletisi aldığında TLS 'nin çağıracağı bir TLS oturumuna bir işlev işaretçisi atar. Geri arama işlevi, bir uygulamanın giriş veya karar verme gerektiren alınan ClientHello iletisindeki TLS uzantılarını işlemesini sağlar.
 
@@ -2397,14 +2360,14 @@ Sunucu geri çağırması, TLS sunucusu için *nx_secure_tls_active_certificate_
 ### <a name="parameters"></a>Parametreler
 
 - **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **func_ptr** TLS sunucusu geri çağırma işlevine yönelik işaretçi.
+- **func_ptr** TLS Sunucusu geri çağırma işlevinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Işlev işaretçisinin başarılı bir şekilde ayrılması **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) İşlev işaretçisinin başarıyla ayırması.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2511,7 +2474,7 @@ UINT tls_setup(NX_SECURE_TLS_SESSION *tls_session)
 
 ## <a name="nx_secure_tls_session_sni_extension_parse"></a>nx_secure_tls_session_sni_extension_parse
 
-TLS Istemcisinden alınan Sunucu Adı Belirtme (SNı) uzantısını ayrıştırma
+TLS İstemcisi Sunucu Adı Belirtme alınan bir Sunucu Adı Belirtme (SNI) uzantısını ayrıştırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2524,17 +2487,17 @@ UINT  nx_secure_tls_session_sni_extension_parse(
                                     NX_SECURE_X509_DNS_NAME *dns_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmetin, nx_secure_tls_session_server_callback_set kullanarak bir TLS oturumuna eklenen bir TLS sunucusu oturumu geri çağırması içinden çağrılması amaçlanmıştır. Geri çağırma, uzak bir TLS istemcisinden bir ClientHello iletisinin alınması sonrasında çağrılır ve kullanılabilir uzantıların bir dizisi (ve dizideki uzantı sayısı) sağlanır. Bu dizi ve uzunluğu, mevcut bir SNı uzantısı olup olmadığını belirtmek için doğrudan bu yordama geçirilebilir. yoksa, istemcinin SNı uzantısını hiçbir şekilde kabul etmedi (Bu bir hata değil) olarak NX_SECURE_TLS_EXTENSION_NOT_FOUND döndürülür.
+Bu hizmetin, bir TLS Sunucusu oturum geri çağırması içinde çağrılarak bir TLS oturumuna çağrıl nx_secure_tls_session_server_callback_set. Geri çağırma, uzak bir TLS istemcisinde ClientHello iletisinin alımından sonra çağrılır ve bir dizi kullanılabilir uzantı (ve dizide uzantı sayısı) sağlanır. Bu dizi ve uzunluğu, mevcut bir SNI uzantısı olup olmadığını belirlemek için doğrudan bu yordama geçirebilirsiniz; yoksa NX_SECURE_TLS_EXTENSION_NOT_FOUND yalnızca istemcinin SNI uzantısını provice almayı tercih etmiş olduğunu gösterir (bu bir hata değildir).
 
-SNı uzantısı bulunursa, TLS istemcisi tarafından sağlanan X. 509.440 DNS adı dns_name yapısında döndürülür. Şu anda SNı uzantısı yalnızca, uzak istemciye hangi kimlik sertifikasının gönderileceğini belirleyebilmek için TLS sunucusu tarafından kullanılabilen tek bir DNS ad girişi sağlar. * *
+SNI uzantısı bulunursa TLS istemcisi tarafından sağlanan X.509 DNS adı, dns_name döndürülür. Şu anda SNI uzantısı yalnızca tek bir DNS adı girişi sağlar ve bu giriş TLS sunucusu tarafından uzak istemciye hangi kimlik sertifikasının gönderileceğini belirlemek için kullanılabilir.**
 
-NX_SECURE_X509_DNS_NAME yapısı, DNS adını alan *nx_secure_x509_dns_name* BIR uşar dizesi olarak ve *nx_secure_x509_dns_name_length* ad dizesinin uzunluğu olarak içerir. Makro NX_SECURE_X509_DNS_NAME_MAX nx_secure_x509_dns_name arabelleğinin boyutunu denetler.
+Bu NX_SECURE_X509_DNS_NAME, dns adını yalnızca nx_secure_x509_dns_name alanında UCHAR dizesi  olarak ve *nx_secure_x509_dns_name_length.* Makro NX_SECURE_X509_DNS_NAME_MAX arabelleğinin boyutunu nx_secure_x509_dns_name sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
 - **Uzantılar** Bir TLS Merhaba uzantısı dizisine yönelik işaretçi (oturum geri çağırmada).
 - **num_extensions** Dizideki uzantı sayısı (oturum geri çağrısından).
 - **dns_name** SNı uzantısında sağlanan DNS adını döndürür.
@@ -2571,26 +2534,26 @@ UINT  nx_secure_tls_session_sni_extension_set(
                                     NX_SECURE_X509_DNS_NAME *dns_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS Istemci uygulamasının, Sunucu Adı Belirtme (SNı) TLS uzantısını kullanarak uzak bir TLS sunucusuna tercih edilen sunucu DNS adı sağlamasına izin verir. SNı uzantısı, sunucunun belirtilen sunucu tercihini temel alarak uygun kimlik sertifikası ve parametrelerini seçmesine olanak tanır. SNı uzantısı Şu anda yalnızca gönderilecek tek bir DNS adını, dolayısıyla tekil ad parametresini destekliyor. Dns_name parametresi *nx_secure_x509_dns_name_initialize* birlikte başlatılmalıdır ve istemcinin tercih edilen sunucusunu içerecek şekilde olmalıdır. Uzantı adını kaldırmak için bu hizmeti NX_NULL bir "dns_name" parametre değeri ile çağırmanız yeterlidir.
 
-NX_SECURE_X509_DNS_NAME yapısı, DNS adını alan  *nx_secure_x509_dns_name* BIR uşar dizesi olarak ve *nx_secure_x509_dns_name_length* ad dizesinin uzunluğu olarak içerir. Makro NX_SECURE_X509_DNS_NAME_MAX nx_secure_x509_dns_name arabelleğinin boyutunu denetler.
+NX_SECURE_X509_DNS_NAME yapısı, DNS adını alan  *nx_secure_x509_dns_name* BIR uşar dizesi olarak ve *nx_secure_x509_dns_name_length* ad dizesinin uzunluğu olarak içerir. Makro NX_SECURE_X509_DNS_NAME_MAX arabelleğinin boyutunu nx_secure_x509_dns_name sağlar.
 
 > [!NOTE]
-> *Nx_secure_tls_session_start çağrılmadan önce bu yordamın çağrılması gerekir veya ClientHello SNı uzantısını içermemelidir.*
+> *Bu yordam, çağrılmadan nx_secure_tls_session_start veya ClientHello SNI uzantısını içermez.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
 - **dns_name** Uygulama tarafından sağlanan DNS adı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- DNS sunucusu adının başarıyla eklenmesi **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz DNS adı veya TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) DNS sunucusu adı başarıyla ekleme.
+- **NX_PTR_ERROR** (0x07) Geçersiz DNS adı veya TLS oturum işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2632,7 +2595,7 @@ void main()
 
 ## <a name="nx_secure_tls_session_start"></a>nx_secure_tls_session_start
 
-NetX güvenli TLS oturumu başlatma
+NetX Güvenli TLS Oturumu Başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2642,24 +2605,24 @@ UINT  nx_secure_tls_session_start(NX_SECURE_TLS_SESSION *session_ptr,
                                   ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan TLS oturum denetim bloğunu ve bağlı bir TCP yuvasını kullanarak bir TLS oturumu başlatır. Nx_tcp_client_socket_connect veya nx_tcp_server_socket_accept başarılı bir çağrıdan sonra TCP bağlantısının zaten tamamlanmış olması gerekir.
+Bu hizmet, sağlanan TLS oturum denetim bloğu ve bağlı bir TCP yuvası kullanarak bir TLS oturumu başlatır. Tcp bağlantısının başarılı bir çağrıdan sonra ya nx_tcp_client_socket_connect veya nx_tcp_server_socket_accept.
 
-Bu hizmet, TCP yuvasından TLS oturumunun (Istemci veya sunucu) türünü belirleyecek.
+Bu hizmet, TCP yuvasından TLS oturumunun türünü (İstemci veya Sunucu) belirler.
 
-Bekle seçeneği, TLS el sıkışması sürerken hizmetin nasıl davranacağını tanımlar.
+Bekleme seçeneği, TLS el sıkışması devam ederken hizmetin nasıl davranacağını tanımlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Bir TLS oturum örneği işaretçisi.
-- **tcp_socket_ptr** Bağlı TCP yuvasına yönelik işaretçi.
-- **wait_option** TLS el sıkışması sürerken hizmetin nasıl davranacağını tanımlar.
+- **session_ptr** TLS Oturumu örneğinin işaretçisi.
+- **tcp_socket_ptr** Bağlı bir TCP yuvasının işaretçisi.
+- **wait_option** TLS el sıkışması devam ederken hizmetin nasıl davranacağını tanımlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TLS oturumunun başarıyla başlatılmasından **NX_SUCCESS** (0x00).
-- **NX_NOT_CONNECTED** (0x38) temel alınan TCP yuvası artık bağlı değil.
+- **NX_SUCCESS** (0x00) TLS oturumunun başarıyla başlatılıyor.
+- **NX_NOT_CONNECTED** (0x38) Temel ALıNAN TCP yuvası artık bağlı değil.
 - **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) ALıNAN bir TLS ileti türü yanlış.
 - **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) uzak ana bilgisayar tarafından sağlanmış bir şifre desteklenmez.
 - TLS el sıkışması sırasında **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) ileti işleme başarısız oldu.
@@ -2802,7 +2765,7 @@ nx_tcp_socket_delete(&tcp_socket);
 
 ## <a name="nx_secure_tls_session_time_function_set"></a>nx_secure_tls_session_time_function_set
 
-NetX güvenli TLS oturumuna zaman damgası işlevi atama
+NetX Secure TLS Oturumuna zaman damgası işlevi atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2812,9 +2775,9 @@ UINT  nx_secure_tls_time_function_set(
                               ULONG (*time_func_ptr)(void));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, farklı TLS el iletilerinde kullanılan ve sertifikaların doğrulanması için geçerli zamanı alması gerektiğinde TLS 'nin çağıracağı bir işlev işaretçisi ayarlar.
+Bu işlev, ÇEŞITLI TLS el sıkışma iletilerinde ve sertifikaların doğrulanmasında kullanılan geçerli saati almak için TLS'nin çağıracak bir işlev işaretçisi ayarlar.
 
 Bu işlevin, TLS RFC 5246 ' de ClientHello gereksinimlere göre geçerli GMT 'yi UNIX 32 bit biçiminde (gece yarısından itibaren 1, 1970, UTC, daha fazla saniyeler yok saydıktan sonra saniye) döndürmesi beklenir.
 
@@ -2876,7 +2839,7 @@ UINT  nx_secure_tls_trusted_certificate_add(NX_SECURE_TLS_SESSION
                             *session_ptr, NX_SECURE_X509_CERT *certificate_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturumuna başlatılmış bir NX_SECURE_X509_CERT yapısı örneği ekler. Bu sertifika, TLS el sıkışması sırasında uzak ana bilgisayar tarafından sağlanan sertifikaları doğrulamak için TLS yığını tarafından kullanılır.
 
@@ -2886,16 +2849,16 @@ Güvenilen sertifikalar yalnızca istemci sertifikası kimlik doğrulaması etki
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **certificate_ptr** Başlatılmış bir TLS sertifikası örneğinin işaretçisi.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **certificate_ptr** Başlatılan bir TLS Sertifika örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Sertifikanın başarılı bir şekilde eklenmesi **NX_SUCCESS** (0x00).
-- **NX_INVALID_PARAMETERS** (0x4D) geçersiz bir sertifika eklemeye çalıştı.
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
+- **NX_SUCCESS** (0x00) Sertifika başarıyla eksildi.
+- **NX_INVALID_PARAMETERS** (0x4D) Geçersiz sertifika eklemeye çalıştı.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2924,7 +2887,7 @@ status =  nx_secure_tls_trusted_certificate_add(&tls_session, &certificate);
 
 ## <a name="nx_secure_tls_trusted_certificate_remove"></a>nx_secure_tls_trusted_certificate_remove
 
-Güvenilen sertifikayı NetX güvenli TLS oturumundan kaldır
+NetX Secure TLS Oturumundan güvenilen sertifikayı kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2935,23 +2898,23 @@ UINT  nx_secure_tls_trusted_certificate_remove(
                                     UINT common_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, güvenilen bir sertifikayı, sertifikadaki ortak ad alanına girilen bir TLS oturumundan kaldırır.
+Bu hizmet, sertifikadaki Ortak Ad alanına anahtarlanan bir TLS oturumundan güvenilen bir sertifikayı kaldırır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir TLS oturum örneğine yönelik işaretçi.
-- **common_name** Kaldırılacak sertifikanın ortak ad değeri.
-- **common_name_length** Ortak ad dizesinin uzunluğu.
+- **session_ptr** Daha önce oluşturulmuş bir TLS Oturumu örneğinin işaretçisi.
+- **common_name** Kaldırılacak sertifikanın Ortak Ad değeri.
+- **common_name_length** Ortak Ad dizesinin uzunluğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Sertifikanın başarılı bir şekilde eklenmesi **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz TLS oturum işaretçisi.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) sertifikası bulunamadı.
+- **NX_SUCCESS** (0x00) Sertifika başarıyla eksildi.
+- **NX_PTR_ERROR** (0x07) Geçersiz TLS oturum işaretçisi.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Sertifikası bulunamadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2991,7 +2954,7 @@ UINT  nx_secure_x509_certificate_initialize(
                   UINT private_key_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir TLS oturumunda kullanılmak üzere ikili kodlanmış X. 509.952 dijital sertifikasından bir NX_SECURE_X509_CERT yapısını başlatır.
 
@@ -3001,23 +2964,23 @@ Sertifika verileri, DER kodlu ikili biçimde geçerli bir X. 509.952 dijital ser
 
 Özel anahtar parametresi yerel kimlik sertifikalarına yöneliktir. özel anahtar, sunucular tarafından bir istemciden gelen anahtar verilerinin şifresini çözmek (sunucunun ortak anahtarı kullanılarak şifrelenir) ve istemciler tarafından sunucu istemci sertifikası istediğinde bir sunucuya kimliklerini doğrulamak için kullanılır. Bu API 'ye özel anahtar eklemek, ilişkili sertifikayı bir TLS uygulaması için kimlik sertifikası olarak otomatik olarak işaretler. Sertifikaları diğer amaçlar için başlatırken (örn. güvenilen mağaza), *private_key_data* parametresi null, 0 olarak *private_key_data_length* ve *private_key_type* NX_SECURE_X509_KEY_TYPE_NONE olarak geçirilmelidir.
 
-*Private_key_type* parametresi, özel anahtarın biçimlendirmesini belirtir. Örneğin, özel anahtar DER ile kodlanmış bir PKCS # 1-Format RSA özel anahtarılüdür, private_key_type NX_SECURE_X509_KEY_TYPE_RSA_PKCS1_DER olarak geçirilmelidir ve daha sonra kullanılmak üzere hemen ayrıştırılacak ve daha sonra kullanılmak üzere kaydedilecek NetX güvenli olarak bilinen bir tür.
+*Private_key_type* parametresi, özel anahtarın biçimlendirmesini belirtir. Örneğin, özel anahtar DER ile kodlanmış PKCS#1 biçimli bir RSA özel anahtarı ise, netx secure olarak bilinen bir tür olan private_key_type, hemen ayrıştıracak ve daha sonra kullanmak üzere kaydedecek olan NX_SECURE_X509_KEY_TYPE_RSA_PKCS1_DER olarak geçirilmelidir.
 
-Private_key_type, belirli anahtar biçimlerine veya diğer gereksinimlere sahip platformlar ve uygulamalar için<sup>23</sup> Kullanıcı tanımlı anahtar türlerini de destekler. Örneğin, donanım tabanlı bir şifreleme altyapısı NetX güvenli yazılım tarafından anlaşılmayan belirli bir biçimi kullanabilir veya bir özel anahtar, bir Güvenilir Platform Modülü (TPM) veya PKCS # 11 şifreleme donanımında olduğu gibi bir şifreleme belirteci tarafından şifrelenmiş veya temsil edilebilir. Kullanıcı tanımlı anahtar türü kullanıldığında, anahtar veriler uygun şifreleme yordamına doğru iletilir. Örneğin, bir RSA özel anahtarı, herhangi bir ayrıştırma veya işleme olmadan, doğrudan ciphersuite tablosunda TLS için sunulan RSA şifreleme yordamına geçirilir. Kullanıcı tanımlı anahtar türü de şifreleme yordamına geçirilir (RSA durumunda, bu "op" parametresidir).
+Bu private_key_type, belirli anahtar biçimlerine veya diğer ihtiyaçlarına sahip platformlar ve uygulamalar için kullanıcı tanımlı anahtar türleri<sup>23'ü</sup> de destekler. Örneğin, donanım tabanlı bir şifreleme altyapısı NetX Secure yazılımı tarafından anlaşılmayan belirli bir biçim kullanabilir veya bir özel anahtar şifrelenir veya bir şifreleme belirteci ile temsil edilir. Bu durum Güvenilir Platform Modülü (TPM) veya PKCS#11 şifreleme donanımıyla da olabilir. Kullanıcı tanımlı bir anahtar türü kullanılırken, anahtar verileri uygun şifreleme yordamına tam olarak geçirılır. Örneğin, herhangi bir ayrıştırma veya işleme olmadan doğrudan şifreleme tablosunda TLS'ye sağlanan RSA şifreleme yordamına bir RSA özel anahtarı geçirilebilirsiniz. Kullanıcı tanımlı anahtar türü de şifreleme yordamına geçirildi (RSA söz konusu ise bu "op" parametresidir).
 
-Kullanıcı tanımlı anahtarların aralığı, 32 bitlik işaretsiz tamsayının en üst yarısını (0x0001 0000-0xFFFF FFFF) içerir. 0x0001 0000 'tan küçük değerler NetX güvenli kullanımı için ayrılmıştır.
+Kullanıcı tanımlı anahtar aralığı, 0000-0xFFFF FFFF aralığından 32 bitlik bir imzasız tamsayının üst 0x0001 kapsar. 0000'0x0001 küçük değerler NetX Secure kullanımı için ayrılmıştır.
 
-Kullanıcı tanımlı anahtar türleri, ham özel anahtar verilerini işlemek için özel şifreleme yordamları gerektiren gelişmiş bir özelliktir. Bu özelliğe ihtiyacınız varsa lütfen Express Logic temsilcisiyle iletişime geçin.
+Kullanıcı tanımlı anahtar türleri, ham özel anahtar verilerini işlemek için özel şifreleme yordamları gerektiren gelişmiş bir özelliktir. Bu özel şeye ihtiyacınız varsa lütfen Express Logic temsilcinize başvurun.
 
 ### <a name="parameters"></a>Parametreler
 
-- **certificate_ptr** Başlatılmamış X. 509.440 sertifika örneğine yönelik işaretçi.
-- **certificate_data** DER ile kodlanmış X. 509.440 ikili verileri işaretçisi.
-- **raw_data_buffer** İsteğe bağlı adanmış sertifika veri arabelleği işaretçisi.
-- **Buffer_size** İsteğe bağlı ayrılmış sertifika veri arabelleğinin boyutu.
-- **certificate_data_length** Bayt cinsinden sertifika ikili verilerinin uzunluğu.
-- **private_key_data** İsteğe bağlı özel anahtar verilerine yönelik işaretçi.
-- **private_key_data_length** Özel anahtar verileri uzunluğu.
+- **certificate_ptr** Uninitialized X.509 Sertifika örneğinin işaretçisi.
+- **certificate_data** DER ile kodlanmış X.509 ikili verileri işaretçisi.
+- **raw_data_buffer** İsteğe bağlı ayrılmış sertifika veri arabelleği işaretçisi.
+- **buffer_size** İsteğe bağlı ayrılmış sertifika veri arabelleğinin boyutu.
+- **certificate_data_length** Sertifika ikili verilerinin bayt cinsinden uzunluğu.
+- **private_key_data** İsteğe bağlı özel anahtar verilerine işaretçi.
+- **private_key_data_length** Özel anahtar verisi uzunluğu.
 - **private_key_type** Anahtar türü tanımlayıcısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -3067,27 +3030,27 @@ UINT  nx_secure_x509_common_name_dns_check(
                         const UCHAR *dns_tld, UINT dns_tld_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uzak bir ana bilgisayarın DNS doğrulaması amacıyla arayan tarafından belirtilen bir üst etki alanı adına (TLD) karşı bir sertifikanın ortak adını denetler. Bu yardımcı program işlevi, uygulama tarafından verilen bir sertifika doğrulama geri çağırma yordamının içinden çağrılması amaçlanmıştır. TLD adı, uzak ana bilgisayara erişmek için kullanılan URL 'nin en üst bölümü olmalıdır ("." ilk eğik çizgiden önce ayrılmış dize). Ortak ad bir joker karakter (örn *. example.com) içeriyorsa, joker karakter aynı soneke sahip herhangi biriyle eşleşir. Joker karakter eşleştirmesi için yalnızca ilk joker ("*") ile karşılaşılan (sağdan sola okuma) değerlendirildiğini unutmayın; Örneğin, ABC. *. example. com, ". example.com" ile biten *Tüm* ad ile eşleşir.
 
 Ortak ad, belirtilen dizeyle eşleşmezse, "subjectAltName" uzantısı ayrıştırılır (sertifikada varsa) ve herhangi bir DNSName girdisi de karşılaştırılır. Bu girdilerden hiçbiri eşleşmezse bir hata döndürülür.
 
-Beklenen sertifikalarda ortak ad (ve subjectAltName girişlerinin) biçiminin anlaşılması önemlidir. Örneğin, bazı sertifikalar bir ham IP adresi veya bir joker karakter kullanabilir. DNS TLD dizesinin, alınan sertifikalarda beklenen değerlerle eşleşecek şekilde biçimlendirilmesi gerekir.
+Beklenen sertifikalarda ortak adın (ve subjectAltName girdilerinin) biçimini anlamak önemlidir. Örneğin, bazı sertifikalar ham IP adresi veya joker karakter kullanabilir. DNS TLD dizesi, alınan sertifikalarda beklenen değerlerle eş olacak şekilde biçimlendirildi olmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **certificate_ptr** X. 509.440 sertifika örneği işaretçisi.
-- Karşılaştırılacak etki alanı adı Top-Level **dns_tld** .
+- **certificate_ptr** X.509 Sertifika örneğinin işaretçisi.
+- **dns_tld** Top-Level etki alanı adını seçin.
 - **dns_tld_length** TLD dizesinin uzunluğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Ortak ad veya subjectAltName ile başarılı bir karşılaştırma **NX_SUCCESS** (0x00).
-- **NX_SECURE_X509_CERTIFICATE_DNS_MISMATCH** (0x195) eşleşen ad bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
+- **NX_SUCCESS** (0x00) Ortak Ad veya subjectAltName ile başarılı karşılaştırma.
+- **NX_SECURE_X509_CERTIFICATE_DNS_MISMATCH** (0x195) Eşleşen ad bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3130,7 +3093,7 @@ status =  nx_secure_tls_session_certificate_callback_set(&tls_session,
 
 ## <a name="nx_secure_x509_crl_revocation_check"></a>nx_secure_x509_crl_revocation_check
 
-Sağlanan sertifika Iptal listesine (CRL) göre X. 509.440 sertifikasını denetle
+Sağlanan bir Sertifika İptal Listesi (CRL) için X.509 Sertifikasını denetleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3141,13 +3104,13 @@ UINT  nx_secure_x509_crl_revocation_check(const UCHAR *crl_data,
                               NX_SECURE_X509_CERT *certificate);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DER kodlu bir sertifika Iptal listesi alır ve bu listedeki belirli bir sertifikayı arar. CRL veren, sağlanan sertifika deposuna göre doğrulandıktan sonra, CRL veren, denetlenen sertifikayla aynı olacak şekilde onaylanır ve iptal edilen sertifikalar listesinde aramak için söz konusu sertifikanın seri numarası kullanılır. Verenler eşleşiyorsa imza kontrol eder ve sertifika **listede yoksa,** çağrı başarılı olur. Tüm diğer durumlar hata döndürülmesine neden olur.
+Bu hizmet DER kodlanmış Sertifika İptal Listesi alır ve bu listede belirli bir sertifikayı arar. CRL'nin sertifikayı teslim alan kişi, sağlanan bir sertifika deposuna göre doğrulanır, CRL'nin sertifikayı teslim alanla aynı olduğu doğrulanır ve iptal edilen sertifika listesinde arama yapmak için söz konusu sertifikanın seri numarası kullanılır. Sertifikayı alanlar eşlenirse, imza  onaylar ve sertifika listede yoksa, çağrı başarılı olur. Diğer tüm durumlar bir hatanın döndürül yollarına neden olur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **crl_data** DER kodlu CRL işaretçisi.
+- **crl_data** DER ile kodlanmış CRL'nin işaretçisi.
 - **crl_length** CRL verilerinin bayt cinsinden uzunluğu.
 - **Mağaza** X. 509.440 sertifika deposuna yönelik işaretçi.
 - **certificate_ptr** X. 509.440 sertifika örneği işaretçisi.
@@ -3241,23 +3204,23 @@ UINT  nx_secure_x509_dns_name_initialize(
                         const UCHAR *name_string, UINT length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet belirli bir ad biçimi gerektiren belirli API hizmetleriyle kullanılmak üzere bir X. 509.440 DNS adı başlatır. Örneğin, *nx_secure_tls_sni_extension_parse* HIZMETI, TLS anlaşması sırasında sunucu adı belirtme uzantısında uzak bir ana bilgisayar tarafından girilen adı eşleştirmek için bir NX_SECURE_X509_DNS_NAME nesnesi bekler. DNS adı yalnızca uzunluğu olan bir charater dizesidir; bir DNS adı için izin verilen uzunluk üst sınırı (ve NX_SECURE_X509_DNS_NAME içindeki iç arabelleğin boyutu), makro NX_SECURE_X509_DNS_NAME_MAX (varsayılan 100 bayt) tarafından denetlenir.
+Bu hizmet belirli bir ad biçimi gerektiren belirli API hizmetleriyle kullanılmak üzere bir X. 509.440 DNS adı başlatır. Örneğin, *nx_secure_tls_sni_extension_parse* hizmeti, TLS el sıkışması sırasında NX_SECURE_X509_DNS_NAME uzantısında uzak bir ana bilgisayar tarafından sağlanan adla eşleşmesi için Sunucu Adı Belirtme nesnesi bekler. DNS adı yalnızca uzunluğu olan bir karakter dizesidir. Bir DNS adının izin verilen en uzun uzunluğu (ve NX_SECURE_X509_DNS_NAME'daki iç arabelleğin boyutu) makro NX_SECURE_X509_DNS_NAME_MAX (varsayılan 100 bayt) tarafından denetlenmektedir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dns_name** Başlatılacak DNS ad yapısı.
-- **name_string** DNS adı dize verileri.
+- **dns_name** Başlat için DNS ad yapısı.
+- **name_string** DNS ad dizesi verileri.
 - **uzunluk** Ad dizesinin uzunluğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarıyla başlatıldı.
-- **NX_SECURE_X509_NAME_STRING_TOO_LONG** (0x19e) verilen ad dizesi NX_SECURE_X509_DNS_NAME_MAX aştı.
-- **NX_PTR_ERROR** (0x07) geçersiz bir Işaretçi kullanmaya çalıştı.
+- **NX_SUCCESS** (0x00) Başarılı başlatma.
+- **NX_SECURE_X509_NAME_STRING_TOO_LONG** (0x19E) Verilen ad dizesi NX_SECURE_X509_DNS_NAME_MAX.
+- **NX_PTR_ERROR** (0x07) Geçersiz bir işaretçi kullanmayı denedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3283,7 +3246,7 @@ status = nx_secure_tls_session_sni_extension_set(&tls_session, &dns_name);
 
 ## <a name="nx_secure_x509_extended_key_usage_extension_parse"></a>nx_secure_x509_extended_key_usage_extension_parse
 
-X. 509.440 sertifikası içindeki X. 509.952 genişletilmiş anahtar kullanımı uzantısını bulma ve ayrıştırma
+X.509 sertifikasında X.509 genişletilmiş anahtar kullanımı uzantısını bulma ve ayrıştırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3293,41 +3256,41 @@ UINT  nx_secure_x509_extended_key_usage_extension_parse(
                         UINT key_usage);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmetin bir sertifika doğrulama geri çağırması içinden çağrılması amaçlanmıştır (bkz. *nx_secure_tls_session_certificate_callback_set)*. Bu, bir X. 509.440 sertifikası içinde belirli bir genişletilmiş anahtar kullanımı OID 'sini arar ve OID 'nin mevcut olup olmadığını döndürür. Key_usage parametresi, değişken uzunluklu OID dizelerinin parametre olarak geçirilmesini önlemek için NetX güvenli X. 509.440 ve TLS tarafından dahili olarak kullanılan OID 'lerin bir tamsayı eşlemesidir.
+Bu hizmetin bir sertifika doğrulama geri çağırma içinde çağrılma amacı vardır (bkz. *nx_secure_tls_session_certificate_callback_set).* Bir X.509 sertifikası içinde belirli bir genişletilmiş anahtar kullanımı OID'sını aratır ve OID'nin mevcut olup olmadığını gösterir. key_usage parametresi, değişken uzunluklu OID dizelerini parametre olarak geçirmemek için NetX Secure X.509 ve TLS tarafından dahili olarak kullanılan OID'lere bir tamsayı eşlemesidir.
 
-Genişletilmiş anahtar kullanımı uzantısı için ilgili OID 'ler aşağıdaki tabloda verilmiştir. Alınan bir TLS Sunucu sertifikasında genişletilmiş anahtar kullanımını denetlemek isteyen tipik bir TLS Istemci uygulamasının, OID 'nin varlığını denetlemesi NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH – uzantı varsa ancak bu OID yoksa, sertifika identifiying için geçersiz kabul edilir ve sertifika doğrulama geri araması bir hata döndürmelidir. Uzantının kendisi eksikse, TLS el sıkışması ile devam edilip edilmeyeceğini uygulamaya göre yapılır.
+Genişletilmiş anahtar kullanım uzantısı için ilgili OID'ler aşağıdaki tabloda verilmiştir. Alınan bir TLS sunucu sertifikasında genişletilmiş anahtar kullanımını kontrol etmek isteyen tipik bir TLS İstemcisi uygulaması, uzantı mevcutsa ancak OID mevcutsa NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH, sertifikanın ana bilgisayarı TLS sunucusu olarak tanımlay için geçersiz olarak kabul edilir ve sertifika doğrulama geri çağırma bir hata döndürür. Uzantının kendisi eksikse, TLS el sıkışması ile devam edilip edilmeyeceğini uygulamaya göre yapılır.
 
 Sertifika doğrulama geri çağrısında hata dönüş kodu NX_SECURE_X509_KEY_USAGE_ERROR, uygulama kullanımı için ayrılmıştır. Anahtar kullanımını denetlerken bir hata oluşursa, hatanın nedenini göstermek için bu değer geri aramadan döndürülür.
 
-| NetX güvenli tanımlayıcısı                                | OID değeri         | Açıklama                                      |
+| NetX güvenli tanımlayıcısı                                | OID değeri         | Description                                      |
 | --------------------------------------------------------- | --------------------- | ---------------------------------------------------- |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_SERVER_AUTH   | 1.3.6.1.5.5.7.3.1 | Sertifika, bir TLS sunucusunu tanımlamak için kullanılabilir |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_CLIENT_AUTH   | 1.3.6.1.5.5.7.3.2 | Sertifika, bir TLS istemcisini tanımlamak için kullanılabilir |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_CODE_SIGNING  | 1.3.6.1.5.5.7.3.3 | Sertifika, kodu imzalamak için kullanılabilir             |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_EMAIL_PROTECT | 1.3.6.1.5.5.7.3.4 | Sertifika, e-postaları imzalamak için kullanılabilir           |
 | NX_SECURE_TLS_X509_TYPE_PKIX_KP_TIME_STAMPING | 1.3.6.1.5.5.7.3.8 | Sertifika, zaman damgalarını imzalamak için kullanılabilir       |
-| NX_SECURE_TLS_X509_TYPE_PKIX_KP_OCSP_SIGNING  | 1.3.6.1.5.5.7.3.9 | Sertifika, OCSP yanıtlarını imzalamak için kullanılabilir   |
+| NX_SECURE_TLS_X509_TYPE_PKIX_KP_OCSP_SIGNING  | 1.3.6.1.5.5.7.3.9 | OCSP yanıtlarını imzalamak için sertifika kullanılabilir   |
 
-X. 509.440 genişletilmiş anahtar kullanımı uzantısı için OID ve eşlemeler
+X.509 Genişletilmiş Anahtar Kullanımı Uzantısı için OID'ler ve eşlemeler
 
 ### <a name="parameters"></a>Parametreler
 
-- **sertifika** Doğrulanan sertifikaya yönelik işaretçi.
-- **key_usage** Yukarıdaki tablodan OID tamsayı eşleme.
+- **sertifika** Doğrulanan sertifikanın işaretçisi.
+- **key_usage** Yukarıdaki tablodan OID tamsayı eşlemesi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) belirtilen anahtar kullanımı OID 'i bulundu.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN. 1 Multi-Byte etiketiyle karşılaşıldı (desteklenmeyen sertifika).
-- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN. 1 alanla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) geçersiz ASN. 1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) geçersiz uzantıyla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19b) uzatılmış anahtar kullanımı uzantısı, belirtilen sertifikada bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz sertifika işaretçisi.
+- **NX_SUCCESS** (0x00) Belirtilen anahtar kullanımı OID bulundu.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN.1 çoklu bayt etiketiyle karşılaşıldı (desteklenmeyen sertifika).
+- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN.1 alanıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Geçersiz ASN.1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Geçersiz uzantıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B) Genişletilmiş Anahtar Kullanımı uzantısı sağlanan sertifikada bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz sertifika işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3385,7 +3348,7 @@ UINT  nx_secure_x509_extension_find(
                         USHORT extension_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmetin bir sertifika doğrulama geri çağırması içinden çağrılması amaçlanmıştır (bkz. *nx_secure_tls_session_certificate_callback_set)* ve gelişmiş bir X. 509.440 hizmetidir.
 
@@ -3404,45 +3367,45 @@ NetX Secure X. 509.440 sürümünün geçerli sürümü, X. 509.440 uzantıları
 > [!IMPORTANT]
 > *Bu hizmet, X. 509.440 uzantılarına ve DER kodlu ASN. 1 ' i bilen kullanıcılara yönelik gelişmiş bir özelliktir. Bu kullanıcıların, NetX Secure X. 509.952 'in Şu anda yardımcı işlevler sağlamayan uzantılara erişmesini sağlamak için sağlanmıştır. Yardımcı işlevleri olmayan bu uzantılar için ham DER kodlu ASN. 1 ' i kendiniz ayrıştırmanıza gerek olacaktır.*
 
-| NetX güvenli tanımlayıcısı                              | OID değeri | Açıklama                                                                    | Yardımcı işlevi? |
+| NetX güvenli tanımlayıcısı                              | OID değeri | Description                                                                    | Yardımcı işlevi? |
 | ------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------- | -------------------- |
-| NX_SECURE_TLS_X509_TYPE_DIRECTORY_ATTRIBUTES  | 2.5.29.9  | Dizin öznitelikleri – sertifika konusu hakkında temel bilgi öznitelikleri  | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_SUBJECT_KEY_ID       | 2.5.29.14 | Belirli bir ortak anahtarı tanımlamak için kullanılır                                         | Hayır               |
+| NX_SECURE_TLS_X509_TYPE_DIRECTORY_ATTRIBUTES  | 2.5.29.9  | Dizin öznitelikleri – sertifika konusu hakkında temel bilgi öznitelikleri  | No               |
+| NX_SECURE_TLS_X509_TYPE_SUBJECT_KEY_ID       | 2.5.29.14 | Belirli bir ortak anahtarı tanımlamak için kullanılır                                         | No               |
 | NX_SECURE_TLS_X509_TYPE_KEY_USAGE             | 2.5.29.15 | Sertifika ortak anahtarı için geçerli kullanımlar hakkında bilgi sağlar              | Yes              |
 | NX_SECURE_TLS_X509_TYPE_SUBJECT_ALT_NAME     | 2.5.29.17 | Sertifikayı tanımlamak için alternatif DNS adları sağlar                     | Evet<sup>24</sup>        |
-| NX_SECURE_TLS_X509_TYPE_ISSUER_ALT_NAME      | 2.5.29.18 | Sertifikanın vereni tanımlamak için alternatif DNS adları sağlar            | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_BASIC_CONSTRAINTS     | 2.5.29.19 | Temel sertifika kullanım kısıtlaması bilgilerini sağlar                        | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_NAME_CONSTRAINTS      | 2.5.29.30 | Sertifika adlarını belirli etki alanlarına kısıtlamak için kullanılır                        | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_CRL_DISTRIBUTION      | 2.5.29.31 | CRL dağıtımı için URI 'Ler sağlar                                             | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_CERTIFICATE_POLICIES  | 2.5.29.32 | Büyük PKI sistemleri için sertifika ilkeleri listesi                             | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_CERT_POLICY_MAPPINGS | 2.5.29.33 | CA sertifika ilkelerinin listesi                                                | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_AUTHORITY_KEY_ID     | 2.5.29.35 | Bir sertifika imzasıyla ilişkili belirli bir ortak anahtarı tanımlamak için kullanılır | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_POLICY_CONSTRAINTS    | 2.5.29.36 | CA ilkesi kısıtlamaları                                                          | Hayır               |
+| NX_SECURE_TLS_X509_TYPE_ISSUER_ALT_NAME      | 2.5.29.18 | Sertifikayı vereni tanımlamak için alternatif DNS adları sağlar            | No               |
+| NX_SECURE_TLS_X509_TYPE_BASIC_CONSTRAINTS     | 2.5.29.19 | Temel sertifika kullanım kısıtlaması bilgilerini sağlar                        | No               |
+| NX_SECURE_TLS_X509_TYPE_NAME_CONSTRAINTS      | 2.5.29.30 | Sertifika adlarını belirli etki alanlarıyla sınırlamak için kullanılır                        | No               |
+| NX_SECURE_TLS_X509_TYPE_CRL_DISTRIBUTION      | 2.5.29.31 | CRL dağıtımı için URL'ler sağlar                                             | No               |
+| NX_SECURE_TLS_X509_TYPE_CERTIFICATE_POLICIES  | 2.5.29.32 | Büyük PKI sistemleri için sertifika ilkeleri listesi                             | No               |
+| NX_SECURE_TLS_X509_TYPE_CERT_POLICY_MAPPINGS | 2.5.29.33 | CA sertifika ilkelerinin listesi                                                | No               |
+| NX_SECURE_TLS_X509_TYPE_AUTHORITY_KEY_ID     | 2.5.29.35 | Bir sertifika imzasıyla ilişkili belirli bir ortak anahtarı tanımlamak için kullanılır | No               |
+| NX_SECURE_TLS_X509_TYPE_POLICY_CONSTRAINTS    | 2.5.29.36 | CA ilkesi kısıtlamaları                                                          | No               |
 | NX_SECURE_TLS_X509_TYPE_EXTENDED_KEY_USAGE   | 2.5.29.37 | Ek OID tabanlı anahtar kullanımı bilgileri                                     | Yes              |
-| NX_SECURE_TLS_X509_TYPE_FRESHEST_CRL          | 2.5.29.46 | Delta CRL 'Leri alma hakkında bilgi sağlar                                  | Hayır               |
-| NX_SECURE_TLS_X509_TYPE_INHIBIT_ANYPOLICY     | 2.5.29.54 | AnyPolicy 'in kullanılamayacağını gösteren CA sertifikası alanı                  | Hayır               |
+| NX_SECURE_TLS_X509_TYPE_FRESHEST_CRL          | 2.5.29.46 | Delta CRL 'Leri alma hakkında bilgi sağlar                                  | No               |
+| NX_SECURE_TLS_X509_TYPE_INHIBIT_ANYPOLICY     | 2.5.29.54 | AnyPolicy 'in kullanılamayacağını gösteren CA sertifikası alanı                  | No               |
 
-X. 509.440 uzantıları için OID ve eşlemeler
+X.509 Uzantıları için OID'ler ve eşlemeler
 
-24. SubjectAltName uzantısı, hizmet nx_secure_x509_common_name_dns_check DNS adı denetiminin bir parçası olarak ayrıştırılır.
+24. SubjectAltName uzantısı, hizmet hizmet denetiminde DNS adı denetimi kapsamında ayrıştır nx_secure_x509_common_name_dns_check.
 
 ### <a name="parameters"></a>Parametreler
 
-- **sertifika** Doğrulanan sertifikaya yönelik işaretçi.
-- **uzantı** Uzantı verisi işaretçisi ve uzunluğu içeren dönüş yapısı.
-- **extension_id** Yukarıdaki tablodan OID tamsayı eşleme.
+- **sertifika** Doğrulanan sertifikanın işaretçisi.
+- **uzantı** Uzantı veri işaretçisi ve uzunluğu içeren dönüş yapısı.
+- **extension_id** Yukarıdaki tablodan OID tamsayı eşlemesi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) BELIRTILEN uzantı OID 'si bulundu ve döndürülen veriler.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN. 1 Multi-Byte etiketiyle karşılaşıldı (desteklenmeyen sertifika).
-- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN. 1 alanla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) geçersiz ASN. 1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) geçersiz uzantıyla karşılaşıldı
-- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19b) VERILEN uzantı OID 'si sağlanan sertifikada bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz sertifika veya uzantı işaretçisi.
+- **NX_SUCCESS** (0x00) Belirtilen uzantı OID bulundu ve veriler döndürüldü.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN.1 çoklu bayt etiketiyle karşılaşıldı (desteklenmeyen sertifika).
+- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN.1 alanıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Geçersiz ASN.1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Geçersiz uzantıyla karşılaşıldı
+- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B) Verilen uzantı OID'i sağlanan sertifikada bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz sertifika veya uzantı işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3488,7 +3451,7 @@ NX_SECURE_X509_EXTENSION extension_data;
 
 ## <a name="nx_secure_x509_key_usage_extension_parse"></a>nx_secure_x509_key_usage_extension_parse
 
-X. 509.440 sertifikasında X. 509.440 anahtar kullanımı uzantısını bulma ve ayrıştırma
+X.509 sertifikasında X.509 Anahtar Kullanımı uzantısını bulma ve ayrıştırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3498,7 +3461,7 @@ UINT  nx_secure_x509_key_usage_extension_parse(
                         USHORT *bitfield);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmetin bir sertifika doğrulama geri çağırması içinden çağrılması amaçlanmıştır (bkz. *nx_secure_tls_session_certificate_callback_set)*. Anahtar kullanımı uzantısını arar ve bulunursa "bit alanından" parametresindeki anahtar kullanımı bitalanını döndürür.
 
@@ -3508,34 +3471,34 @@ Bit alanından 'ın der-Encoding değeri, diğer sıfırları ortadan kaldırdı
 
 Sertifika doğrulama geri çağrısında hata dönüş kodu NX_SECURE_X509_KEY_USAGE_ERROR, uygulama kullanımı için ayrılmıştır. Anahtar kullanımını denetlerken bir hata oluşursa, hatanın nedenini göstermek için bu değer geri aramadan döndürülür.
 
-| NetX güvenli tanımlayıcısı                            | Bit konumu | Açıklama                                                                                                                                                  |
+| NetX güvenli tanımlayıcısı                            | Bit konumu | Description                                                                                                                                                  |
 | ----------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | NX_SECURE_X509_KEY_USAGE_DIGITAL_SIGNATURE  | 0            | Sertifika, dijital imzalar için kullanılabilir                                                                                                               |
 | NX_SECURE_X509_KEY_USAGE_NON_REPUDIATION    | 1            | Sertifika, sertifikalar ve CRL 'Ler dışında dijital imzaları doğrulamak için kullanılabilir                                                              |
 | NX_SECURE_X509_KEY_USAGE_KEY_ENCIPHERMENT   | 2            | Sertifika, simetrik anahtarları şifrelemek için kullanılabilir (anahtar aktarımı)                                                                                            |
 | NX_SECURE_X509_KEY_USAGE_DATA_ENCIPHERMENT  | 3            | Sertifika, ham Kullanıcı verilerini doğrudan şifrelemek için kullanılabilir (seyrek)                                                                                         |
 | NX_SECURE_X509_KEY_USAGE_KEY_AGREEMENT      | 4            | Sertifika, anahtar anlaşması için kullanılabilir (Diffie-Hellman ' de olduğu gibi)                                                                                           |
-| NX_SECURE_X509_KEY_USAGE_KEY_CERT_SIGN     | 5            | Sertifika, diğer sertifikaları imzalamak ve doğrulamak için kullanılabilir (sertifika bir CA veya ICA sertifikası).                                                  |
-| NX_SECURE_X509_KEY_USAGE_CRL_SIGN           | 6            | CRL 'lerde imzaları doğrulamak için sertifika ortak anahtarı kullanılır                                                                                                  |
-| NX_SECURE_X509_KEY_USAGE_ENCIPHER_ONLY      | 7            | Anahtar anlaşması biti (bit 4) ile birlikte kullanıldığında – ayarlandığında, sertifika anahtarı yalnızca anahtar anlaşması sırasında şifrelemek için kullanılabilir. Anahtar anlaşması biti ayarlanmamışsa tanımsız. |
-| NX_SECURE_X509_KEY_USAGE_DECIPHER_ONLY      | 8            | Anahtar anlaşması biti (bit 4) ile birlikte kullanıldığında – ayarlandığında, sertifika anahtarı yalnızca anahtar anlaşması sırasında şifre çözme için kullanılabilir. Anahtar anlaşması biti ayarlanmamışsa tanımsız. |
+| NX_SECURE_X509_KEY_USAGE_KEY_CERT_SIGN     | 5            | Sertifika, diğer sertifikaları imzalamak ve doğrulamak için kullanılabilir (sertifika bir CA veya ICA sertifikasıdır).                                                  |
+| NX_SECURE_X509_KEY_USAGE_CRL_SIGN           | 6            | CRL'lerde imzaları doğrulamak için sertifika ortak anahtarı kullanılır                                                                                                  |
+| NX_SECURE_X509_KEY_USAGE_ENCIPHER_ONLY      | 7            | Anahtar Sözleşmesi biti (bit 4) ile kullanılır– ayar olduğunda, sertifika anahtarı yalnızca anahtar sözleşmesi sırasında şifrelemek için kullanılabilir. Anahtar Sözleşmesi biti ayarlanmamışsa tanımsız. |
+| NX_SECURE_X509_KEY_USAGE_DECIPHER_ONLY      | 8            | Anahtar Sözleşmesi biti (bit 4) ile kullanılır– ayar olduğunda, sertifika anahtarı yalnızca anahtar sözleşmesi sırasında şifresini çözmek için kullanılabilir. Anahtar Sözleşmesi biti ayarlanmamışsa tanımsız. |
 
-X. 509.440 anahtar kullanımı uzantısı için bit maskeleri ve değerler
+X.509 Anahtar Kullanımı Uzantısı için Bit maskeleri ve değerleri
 
 ### <a name="parameters"></a>Parametreler
 
-- **sertifika** Doğrulanan sertifikaya yönelik işaretçi.
-- **bit alanından** Uzantıdan tüm bit alanından 'ı döndürün.
+- **sertifika** Doğrulanan sertifikanın işaretçisi.
+- **bitfield** Uzantıdan bitfield'in tamamını iade.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) anahtar kullanımı uzantısı bulundu ve bit alanından döndürüldü.
-- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN. 1 Multi-Byte etiketiyle karşılaşıldı (desteklenmeyen sertifika).
-- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN. 1 alanla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) geçersiz ASN. 1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) geçersiz uzantıyla karşılaşıldı (geçersiz sertifika).
-- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19b) anahtar kullanımı uzantısı, belirtilen sertifikada bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz sertifika veya bit alanından işaretçisi.
+- **NX_SUCCESS** (0x00) Anahtar kullanım uzantısı bulundu ve bitfield döndürüldü.
+- **NX_SECURE_X509_MULTIBYTE_TAG_UNSUPPORTED** (0x181) ASN.1 çoklu bayt etiketiyle karşılaşıldı (desteklenmeyen sertifika).
+- **NX_SECURE_X509_ASN1_LENGTH_TOO_LONG** (0x182) Invaild ASN.1 alanıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_TAG_CLASS** (0x190) Geçersiz ASN.1 etiket sınıfıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_INVALID_EXTENSION_SEQUENCE** (0x192) Geçersiz uzantıyla karşılaşıldı (geçersiz sertifika).
+- **NX_SECURE_X509_EXTENSION_NOT_FOUND** (0x19B)Anahtar Kullanımı uzantısı sağlanan sertifikada bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz sertifika veya bitfield işaretçisi.
 
 ### <a name="allowed-from"></a>İzin verilen
 
