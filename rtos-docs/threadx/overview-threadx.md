@@ -1,29 +1,29 @@
 ---
-title: Azure RTOS ThreadX 'i anlama
-description: Azure ThreadX, özellikle derin eklenmiş uygulamalar için tasarlanan gelişmiş bir gerçek zamanlı işletim sistemidir (RTOS).
+title: ThreadX Azure RTOS anlama
+description: Azure ThreadX, özellikle derinden eklenmiş uygulamalar için tasarlanmış gelişmiş bir gerçek zamanlı işletim sistemidir (RTOS).
 author: philmea
 ms.author: philmea
 ms.date: 6/9/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: e786e5bf1f434ec9543823dee8784b677a2b371f
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 0fb861c2291046c2ac6edf1d03014996daa09a8e
+ms.sourcegitcommit: c1b00341e0c5ab71372f3d9cc4ee3bdd3702b805
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171395"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111988371"
 ---
-# <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX 'e genel bakış
+# <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX'e genel bakış
 
-Azure RTOS ThreadX, özellikle derin gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan, Microsoft 'un gelişmiş endüstriyel sınıf Real-Time Işletim sistemidir (RTOS). Azure RTOS ThreadX, Gelişmiş zamanlama, iletişim, eşitleme, süreölçer, bellek yönetimi ve kesme yönetim olanakları sağlar. Ayrıca, Azure RTOS ThreadX 'in picokernel™ mimarisi, önalım-Threshold™ zamanlama, olay zincirleme,™ yürütme profili oluşturma, performans ölçümleri ve sistem olay izleme dahil birçok gelişmiş özelliği vardır. En üstün kullanım kolaylığıyla birlikte, Azure RTOS ThreadX, katıştırılmış uygulamaların en zorlu kullanımı için ideal seçenektir. 2017 itibariyle, Azure RTOS ThreadX, tüketici cihazları, tıbbi elektronik ve endüstriyel denetim ekipmanı dahil olmak üzere çok çeşitli ürünlerde 6.200.000.000 ' den fazla dağıtıma sahiptir.
+Azure RTOS ThreadX, Microsoft'un ayrıntılı, gerçek zamanlı Real-Time IoT uygulamaları için tasarlanmış gelişmiş endüstriyel sınıf işletim sistemidir (RTOS). Azure RTOS ThreadX gelişmiş zamanlama, iletişim, eşitleme, zamanlayıcı, bellek yönetimi ve kesme yönetimi özellikleri sağlar. Ayrıca Azure RTOS ThreadX'in picokernel™ mimarisi™ preemption-threshold™ scheduling, event-chaining, ™ execution profiling, performance metrics ve system event tracing gibi birçok gelişmiş özelliği vardır. Azure RTOS ThreadX, üstün kullanım kolaylığıyla birlikte en zorlu tümleşik uygulamalar için ideal seçimdir. Azure RTOS ThreadX, 2017 yılında tüketici cihazları, tıbbi elektronik cihazlar ve endüstriyel kontrol ekipmanları gibi çok çeşitli ürünlerde 6,2 milyardan fazla dağıtıma sahiptir.
 
-## <a name="api-protocols"></a>API protokolleri
+## <a name="api-protocols"></a>API Protokolleri
 
-### <a name="azure-rtos-threadx-services"></a>Azure RTOS ThreadX Hizmetleri
+### <a name="azure-rtos-threadx-services"></a>Azure RTOS ThreadX Services
 
 * Dinamik iş parçacığı oluşturma
-* İş parçacığı sayısında sınırsız
-* Ana iş parçacığı API 'Leri şunları içerir:
+* İş parçacığı sayısıyla ilgili sınır yok
+* Ana iş parçacığı API'leri şunlardır:
   * tx_thread_create
   * tx_thread_delete
   * tx_thread_preemption_change
@@ -35,94 +35,94 @@ Azure RTOS ThreadX, özellikle derin gömülü, gerçek zamanlı ve IoT uygulama
   * tx_thread_suspend
   * tx_thread_terminate
   * tx_thread_wait_abort
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
-### <a name="message-queues"></a>İleti kuyrukları
+### <a name="message-queues"></a>İleti Kuyrukları
 
-* Dinamik sıra oluşturma
-* Sıra sayısında sınırlama yoktur
-* Değer (veya işaretçi aracılığıyla başvuruya göre) tarafından kopyalanmış iletiler
-* 1 ile 16 32 bitlik sözcüklerden oluşan ileti boyutları
-* Empty ve Full üzerinde isteğe bağlı iş parçacığı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* Ana ileti kuyruğu API 'Leri şunları içerir:
+* Dinamik kuyruk oluşturma
+* Kuyruk sayısıyla ilgili sınır yok
+* Değere (veya işaretçi aracılığıyla başvuruya göre) kopyalanan iletiler
+* 1 ile 16 32 bit sözcük arasında ileti boyutları
+* Boş ve dolu isteğe bağlı iş parçacığı askıya alındı
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* Ana ileti kuyruğu API'leri şunlardır:
   * tx_queue_create
   * tx_queue_delete
   * tx_queue_flush
   * tx_queue_front_send
   * tx_queue_receive
   * tx_queue_send_notify
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
-### <a name="counting-semaphores"></a>Semafor sayma
+### <a name="counting-semaphores"></a>Semaforları Sayma
 
 * Dinamik semafor oluşturma
-* Semafor sayısında sınırsız
-* 32-bit sayma semaforları (0-4.294.967.295)
-* Tüketici-üretici veya kaynak korumasını destekler
-* Semafor kullanılamadığında isteğe bağlı iş parçacığı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* Ana semafor API 'Leri şunlardır:
+* Semafor sayısına sınırlama yoktur
+* 32 bit sayma semaforları (0-4.294.967.295)
+* Tüketici üreticisini veya kaynak korumasını destekler
+* Semafor kullanılamıyorsa isteğe bağlı iş parçacığının askıya alınması
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* Ana semafor API'leri şunlardır:
   * tx_semaphore_create
   * tx_semaphore_delete
   * tx_semaphore_get
   * tx_semaphore_put
   * tx_semaphore_put_notify
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
 ### <a name="mutexes"></a>Zaman Uyumu Sağlayıcılar
 
 * Dinamik mutex oluşturma
-* Birbirini kapsamayan sayısında sınırsız
-* İç içe kaynak koruması destekleniyor
-* İsteğe bağlı öncelikli devralma destekleniyor
-* Mutex kullanılamadığında isteğe bağlı iş parçacığı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* Ana mutex API 'Leri şunları içerir:
+* Mutex sayısı için sınır yok
+* İç içe kaynak koruması desteği
+* desteklenen isteğe bağlı öncelik devralma
+* Mutex kullanılamıyorsa isteğe bağlı iş parçacığının askıya alınması
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* Ana mutex API'leri şunlardır:
   * tx_mutex_create
   * tx_mutex_delete
   * tx_mutex_get
   * tx_mutex_put
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
-### <a name="event-flags"></a>Olay bayrakları
+### <a name="event-flags"></a>Olay Bayrakları
 
-* Dinamik olay bayrağı Grup oluşturma
-* Olay bayrak grupları sayısında sınırlama yok
-* Bir iş parçacığının veya birden çok iş parçacığının eşitlenmesi
-* Atomik get ve Clear destekleniyor
-* İsteğe bağlı çoklu iş parçacığı açma ve/veya olay kümesi askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* Ana olay bayrağı API 'Leri şunları içerir:
+* Dinamik olay bayrağı grubu oluşturma
+* Olay bayrağı gruplarının sayısıyla ilgili sınır yok
+* Bir iş parçacığını veya birden çok iş parçacığını eşitleme
+* Atomik get ve clear desteği
+* AND/OR olay kümesi üzerinde isteğe bağlı çok iş parçacıklı askıya alma
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* Ana olay bayrağı API'leri şunlardır:
   * tx_event_flags_create
   * tx_event_flags_delete
   * tx_event_flags_get
   * tx_event_flags_set
   * tx_event_flags_set_notify
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
-### <a name="block-memory-pools"></a>Bellek havuzlarını engelle
+### <a name="block-memory-pools"></a>Bellek Havuzlarını Engelleme
 
 * Dinamik blok havuzu oluşturma
-* Blok havuzları sayısında sınırsız
-* Sabit boyutlu blokların boyutu veya havuzun boyutu için sınır yok
-* En hızlı olası bellek ayırma/anlaşma konumu
-* Boş havuz üzerinde isteğe bağlı iş parçacığı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* Ana blok havuzu API 'Leri şunları içerir:
+* Blok havuzu sayısıyla ilgili sınır yok
+* Sabit boyutlu blokların veya havuzun boyutuyla ilgili sınır yok
+* Mümkün olan en hızlı bellek ayırma/anlaşma konumu
+* Boş havuzda isteğe bağlı iş parçacığının askıya alınması
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* Ana blok havuzu API'leri şunlardır:
   * tx_block_pool_create
   * tx_block_pool_delete
   * tx_block_allocate
   * tx_block_release
-* Ek bilgi ve performans API 'Leri
+* Ek bilgiler ve performans API'leri
 
-### <a name="byte-memory-pools"></a>Bayt bellek havuzları
+### <a name="byte-memory-pools"></a>Byte Memory Pools
 
-* Dinamik bayt havuzu oluşturma
-* Bayt havuzları sayısında sınır yoktur
-* Bayt havuzunun boyutu için sınır yok
-* En esnek değişken uzunluklu bellek ayırma/ayırmayı kaldırma
-* Ayırma boyutu yerleşim destekleniyor
+* Dinamik byte havuzu oluşturma
+* Byte havuzlarının sayısına sınırlama yoktur
+* Byte havuzunun boyutuyla ilgili sınır yok
+* En esnek değişken uzunluklu bellek ayırma/ayırma
+* Ayırma boyutu yerelliği destekle
 * Boş havuz üzerinde isteğe bağlı iş parçacığı askıya alma
 * Tüm askıya alma sırasında isteğe bağlı zaman aşımı
 * Ana bayt havuzu API 'Leri şunları içerir:
@@ -219,43 +219,43 @@ Azure RTOS ThreadX, en önemli özelliği önalım-Threshold zamanlaması olan g
 Azure RTOS ThreadX 'in yeteneklerini göz önünde bulundurun.
 
 * Eksiksiz ve kapsamlı çoklu görev olanakları
-  * İş parçacıkları, uygulama zamanlayıcılar, ileti kuyrukları, sayma semaforları, zaman uyumu sağlayıcılar, olay bayrakları, blok ve bayt bellek havuzları
-* Priority-Based preemptive zamanlaması
-* Öncelik esnekliği – 1024 öncelik düzeyine kadar
-* Cooperative zamanlaması
-* Önalım-Threshold™ – Azure RTOS ThreadX için benzersizdir, bağlam anahtarlarının azaltılmasına yardımcı olur ve schedulability (akademik araştırma başına) garantisi sağlar
-* Azure RTOS ThreadX MODÜLLERI aracılığıyla bellek koruması
-* Tam belirleyici
-* Olay Izleme – son *n* sistem/uygulama olaylarını yakala
-* Olay zincirleme™ – her bir Azure RTOS ThreadX iletişimi veya eşitleme nesnesi için uygulamaya özgü "bildirim" geri çağırma işlevini kaydetme
-* Isteğe bağlı bellek koruması ile Azure RTOS ThreadX MODÜLLERI
-* Run-Time performans ölçümleri
-  * İş parçacığı bağlantının sürdürülmesi sayısı
-  * İş parçacığı getirilmesi sayısı
-  * İstek iş parçacığı preemptions sayısı
-  * Zaman uyumsuz iş parçacığı kesme preemptions sayısı
-  * İş parçacığı önceliği ınsürümlerin sayısı
-  * İş parçacığı relinkler sayısı
-* Yürütme profili seti (EPK)
-* Kesme yığınını ayır
-* Run-Time Stack Analizi
-* İyileştirilmiş Zamanlayıcı kesme Işlemi
+  * İş parçacıkları, uygulama süreçleri, ileti kuyrukları, semaforları sayma, mutex'ler, olay bayrakları, blok ve byte bellek havuzları
+* Priority-Based Ön Zamanlama
+* Öncelik Esnekliği – En fazla 1024 Öncelik Düzeyi
+* İşbirlikçi Zamanlama
+* Preemption-Threshold™ – Azure RTOS ThreadX'e özeldir, bağlam geçişlerini azaltmaya ve zamanlanabilirliği garanti etmeye yardımcı olur (akademik araştırma başına)
+* Azure RTOS ThreadX MODULES aracılığıyla Bellek Koruması
+* Tam Belirleyici
+* Olay İzleme – Son *n sistem/uygulama* olaylarını yakalama
+* Olay Zincirleme™ – ThreadX iletişimini veya eşitleme nesnesini her bir Azure RTOS uygulamaya özgü "notify" geri çağırma işlevini kaydetme
+* Azure RTOS İsteğe Bağlı Bellek Koruması ile ThreadX MODÜLLERI
+* Run-Time Performans Ölçümleri
+  * İş parçacığı yeniden dizilerinin sayısı
+  * İş parçacığı askıya alma sayısı
+  * İstenen iş parçacığı önhizmelerinin sayısı
+  * Zaman uyumsuz iş parçacığı kesme önemptions sayısı
+  * İş parçacığı öncelik ters çevirme sayısı
+  * İş parçacığı ilinquishes sayısı
+* Yürütme Profili Seti (EPK)
+* Kesme Yığınını Ayırma
+* Run-Time Yığını Analizi
+* Zamanlayıcı Kesme İşleme İyileştirilmiş
 
-## <a name="multicore-support-amp--smp"></a>Birden çok Ore desteği (AMP & SMP)
+## <a name="multicore-support-amp--smp"></a>Çok çekirdekli destek (AMP & SMP)
 
-Standart Azure RTOS ThreadX genellikle asimetrik çoklu Işlem (AMP) ile birlikte kullanılır, burada Azure RTOS ThreadX ve uygulamanın (veya Linux) her çekirdek üzerinde yürütülür ve paylaşılan bellek aracılığıyla birbirleriyle iletişim kurar veya OpenAMP (Azure RTOS ThreadX, OpenAMP gibi işlemciler arası bir iletişim mekanizması) vardır. Bu, Azure RTOS ThreadX kullanan en yaygın çok sayıda yapılandırmadır ve uygulama, işlemcileri etkin bir şekilde yükleyebiliyor olması halinde en etkili olabilir.
+Standart Azure RTOS ThreadX genellikle ayrı bir Azure RTOS ThreadX kopyasının ve uygulamanın (veya Linux'ın) her çekirdekte yürütülür ve paylaşılan bellek veya OpenAMP gibi bir işlemciler arası iletişim mekanizması aracılığıyla birbirleriyle iletişim kurarak OpenAMP (Azure RTOS ThreadX OpenAMP'ı destekler) asimetrik Çok İşlemcili (AMP) bir şekilde kullanılır. Bu, Azure RTOS ThreadX kullanan en tipik çok çekirdekli yapılandırmadır ve uygulama işlemcileri etkili bir şekilde yükleyene kadar en verimli yapılandırma olabilir.
 
-İşlemcilerin yüklenmesi çok dinamik olduğundan, aşağıdaki işlemci aileleri için Azure RTOS ThreadX Symetric çok Işlem (SMP) kullanılabilir:
+İşlemcileri yüklemenin yüksek oranda dinamik olduğu ortamlar için Azure RTOS ThreadX Symetric Multiprocessing (SMP) aşağıdaki işlemci aileleri için kullanılabilir:
 
 * ARM Cortex-Ax
 * ARM Cortex-Rx
 * ARM Cortex-A5x 64 bit
-* MIPS 34K, 1004K ve ınteraptiv
+* MIPS 34K, 1004K ve interAptiv
 * PowerPC
-* Synopsys ARC HS
+* Özet ARC HS
 * x86
 
-Azure RTOS ThreadX SMP, *n* işlemciler genelinde dinamik yük dengeleme gerçekleştirir ve tüm Azure RTOS threadx kaynaklarına (kuyruklar, Semaforlar, olay bayrakları, bellek havuzları vb.) tüm çekirdeklerde herhangi bir iş parçacığı tarafından erişilmesine izin verir. Azure RTOS ThreadX SMP tüm çekirdekler için tam Azure RTOS ThreadX API 'sini sağlar ve SMP işlemi için geçerli olan aşağıdaki yeni API 'yi tanıtır:
+Azure RTOS ThreadX *SMP, n* işlemci arasında dinamik yük dengeleme gerçekleştirir ve tüm Azure RTOS ThreadX kaynaklarına (kuyruklar, semaforlar, olay bayrakları, bellek havuzları vb.) herhangi bir çekirdek üzerindeki herhangi bir iş parçacığı tarafından erişim sağlar. Azure RTOS ThreadX SMP, tüm çekirdeklerde Azure RTOS ThreadX API'sini tam olarak sağlar ve aşağıdaki yeni API'nin SMP işlemi için geçerli olduğunu gösterir:
 
 * `UINT tx_thread_smp_core_exclude(TX_THREAD *thread_ptr, ULONG exclusion_map);`
 * `UINT tx_thread_smp_core_exclude_get(TX_THREAD *thread_ptr, ULONG *exclusion_map_ptr);`
@@ -263,46 +263,49 @@ Azure RTOS ThreadX SMP, *n* işlemciler genelinde dinamik yük dengeleme gerçek
 * `UINT tx_timer_smp_core_exclude(TX_TIMER *timer_ptr, ULONG exclusion_map);`
 * `UINT tx_timer_smp_core_exclude_get(TX_TIMER *timer_ptr, ULONG *exclusion_map_ptr);`
 
-## <a name="memory-protection-via-azure-rtos-threadx-modules"></a>Azure RTOS ThreadX modülleri aracılığıyla bellek koruması
+## <a name="memory-protection-via-azure-rtos-threadx-modules"></a>Azure RTOS ThreadX Modülleri aracılığıyla bellek koruması
 
-Azure RTOS ThreadX MODÜLLERI adlı bir eklenti ürünü, bir veya daha fazla uygulama iş parçacığının, hedefte dinamik olarak yüklenebilen ve çalıştırılabilen (veya yerinde yürütülen) bir "Module" içine paketlenmiş olmasını sağlar.
+Azure RTOS ThreadX MODULES adlı bir eklenti ürünü, bir veya daha fazla uygulama iş parçacığının dinamik olarak hedefte dinamik olarak yüklenemiyor ve çalıştırılana (veya yerinde yürütülebilir) bir "Modül" içinde paketlenesine olanak sağlar.
 
-Modüller, büyük uygulamaların yalnızca etkin iş parçacıkları tarafından gereken belleği kaplamasına izin vermek için alan yükseltmeyi, hata düzeltmeyi ve program bölümlemesini etkinleştirir.
+Modüller, büyük uygulamaların yalnızca etkin iş parçacıklarının ihtiyaç sahip olduğu belleği kaplayacak şekilde alan yükseltme, hata düzeltme ve program bölümlelene olanak sağlar.
 
-Modüller Ayrıca Azure RTOS ThreadX öğesinden tamamen ayrı bir adres alanına sahiptir. Bu, Azure RTOS ThreadX 'in, modülün dışında yanlışlıkla erişiminin diğer yazılım bileşenlerini bozmayacak şekilde bellek korumasını (MPU veya MMU aracılığıyla) yerleştirmesini sağlar.
+Ayrıca modüller, ThreadX'in kendi kendine Azure RTOS adres alanı içerir. Bu Azure RTOS ThreadX'in Modül'e bellek koruması (MPU veya MMU aracılığıyla) yüklemesini sağlar; böylece modülün dışından yanlışlıkla erişim başka bir yazılım bileşenini bozmaz.
 
+## <a name="misra-compliant"></a>MISRA uyumlu
 
-## <a name="misra-compliant"></a>Hatalı ra uyumlu
+Azure RTOS ThreadX ve Azure RTOS ThreadX SMP souce kodu MISRA-C:2004 ve MISRA C:2012 ile uyumludur. MISRA C, C programlama dilini kullanan kritik sistemler için bir dizi programlama kılavuzudur. Özgün MISRA C yönergeleri öncelikli olarak otomotiv uygulamalarına yönelikti; ancak, MISRA C artık güvenlik açısından kritik herhangi bir uygulama için geçerli olduğu geniş ölçüde kabul ediliyor. Azure RTOS ThreadX, MISRA-C:2004 ve MISRA C:2012'nin tüm gerekli ve zorunlu kurallarıyla uyumludur.
 
-Azure RTOS ThreadX ve Azure RTOS ThreadX SMP souce Code yanlış ra-C:2004 ve MISRA C:2012 uyumludur. MISRA C, C programlama dilini kullanan kritik sistemler için bir programlama yönergeleri kümesidir. Özgün MISRA C yönergeleri öncelikli olarak, ilk olarak bir oto ve uygulamaları hedeflenmiştir; Ancak, MISRA C artık güvenlik açısından kritik uygulamalar için geçerli olduğu şekilde çok daha tanınır. Azure RTOS ThreadX, tüm gerekli ve zorunlu, MISRA-C:2004 ve MISRA c:2012'nin tüm kuralları ile uyumludur.
+:::image type="content" source="media/overview-threadx/misra-logo-certification.png" alt-text="Misra sertifikası":::
 
-:::image type="content" source="media/overview-threadx/misra-logo-certification.png" alt-text="Hatalı ra sertifikası":::
+## <a name="supports-most-popular-architectures"></a>En popüler mimarileri destekler
 
-## <a name="supports-most-popular-architectures"></a>Popüler mimarilerin çoğunu destekler
+Azure RTOS ThreadX, en popüler 32/64 bit mikro işlemciler, hazır, tam olarak test edilmiş ve tam olarak desteklenen mikro işlemcilerde çalışır. Aşağıdakiler de dahil olmak üzere:
 
-Azure RTOS ThreadX, en popüler 32/64 bit mikro işlemciler üzerinde çalışır, kullanıma hazır, tamamen sınanmış ve aşağıdakiler dahil olmak üzere tam olarak desteklenmektedir:
-
-* Analog cihazlar: parça, BlackICE, CM4xx
-* Andes Core: RıSC-V
-* Ambiqmicro: Apollo MCUs
-* ARM: ARM7, ARM9, ARM11, Cortex-M0/m3/M4/M7/A15/a5/A7/A8/A9/A5X 64-bı/A7x 64-bit/R4/R5, TrustZone ARMv8-ı
-* Temposunda: Xtensa, elmas
-* CEVA: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0 +, FM3, MF4, WERWIFI
-* Cypress: RıSC-V
-* EnSilica: eSi-RıSC
-* Infineon: XMC1000, XMC4000, Kanore
-* Intel & Intel FPGA: x36/Pentium, XScale, NIOS II, Cyclone, varış a 10
-* Mikro yonga: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/ZF, PIC24/PIC32
-* Mikro yarı: RıSC-V
+* Analog Cihazlar: SHARC, Blackfin, CM4xx
+* Andes Core: RISC-V
+* Ambiqmicro: Apollo MUS
+* ARM: ARM7, ARM9, ARM11, Cortex-M0/M3/M4/M7/A15/A5/A7/A8/A9/A5x 64-bi/A7x 64-bit/R4/R5, TrustZone ARMv8-M
+* Tempo: Xtensa, Diamond
+* CEVA: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0+, FM3, MF4, WICED WiFi
+* Cypress: RISC-V
+* EnSilica: eSi-RISC
+* Infineon: XMC1000, XMC4000, TriCore
+* Intel & Intel FPGA: x36/Pentium, XScale, NIOS II, Cyclone, Arria 10
+* Microchip: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/SV, PIC24/PIC32
+* Microsemi: RISC-V
 * NXP: LPC, ARM7, ARM9, PowerPC, 68K, i.MX, ColdFire, Kinetis Cortex-M3/M4
-* Renesas: SH, HS, v850, RX, RZ, Synergy
-* Silicon Labs: EFM32
-* Synopsys: ARC 600, 700, ARC EM, ARC HS
+* Renesas: SH, HS, V850, RX, RZ, Synergy
+* Silikon Laboratuvarları: EFM32
+* Özetler: ARC 600, 700, ARC EM, ARC HS
 * ST: STM32, ARM7, ARM9, Cortex-M3/M4/M7
-* TL: C5xxx, C6xxx, Stellardo, Sitara, Tiva-C
-* Dalga Bilgi Işlem: MıPS32 4K, 24K, 34K, 1004K, ver 5K, mikro Aptiv, ınteraptiv, proAptiv, M sınıfı
-* Xilinx: mikro Blaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
+* Tl: C5xxx, C6xxx,Xxxris, Sitara, Tiva-C
+* Dalga Bilişimi: MIPS32 4K, 24K, 34K, 1004K, MIPS64 5K, microAptiv, interApula, proAptiv, M Sınıfı
+* Xilinx: MicroBlaze, PowerPC 405, ZYNQ, ZYNQ UltraSCALE
 
-## <a name="supports-most-popular-tools"></a>Popüler araçların çoğunu destekler
+## <a name="supports-most-popular-tools"></a>En popüler araçları destekler
 
-Azure RTOS ThreadX, en kapsamlı Azure RTOS ThreadX çekirdek tanıma 'yı de içeren ıAR 'ın Embedded çalışma ekranı™ dahil olmak üzere en popüler katıştırılmış geliştirme araçlarını destekler. Ek araç tümleştirmesi, GNU (GCC), ARM DS-5/uVision®, yeşil Tepls MULTI®, Rüzgar River çalışma ekranı™, hayal Codescape, Renesas e2studio, Metaware SeeCode™, NXP CodeWarrior, Defterbach TRACE32®, TI Code-Composer Studio, çapraz puan ve tüm örneksel cihazları içerir.
+Azure RTOS ThreadX, kullanılabilir en kapsamlı Azure RTOS ThreadX çekirdek farkındalığını da içeren IAR Embedded Workbench™ dahil olmak üzere en popüler tümleşik geliştirme araçlarını destekler. Ek araç tümleştirmesi GNU (GCC), ARM DS-5/uVision®, Green Multi®, Wind River Workbench™, Imagination Codescape, Renesas e2studio, Metaware SeeCode™, NXP CodeWarrior, Lauteruter TRACE32®, TI Code-Composer Studio, CrossCore ve tüm analog cihazları içerir.
+
+## <a name="adaptation-layer-for-threadx"></a>ThreadX için uyarlama katmanı
+
+Azure RTOS ThreadX, özellikle sağlam bir şekilde eklenmiş uygulamalar için tasarlanan gelişmiş bir gerçek zamanlı işletim sistemidir (RTOS). ThreadX, Auzre RTOS'a uygulama [](https://github.com/azure-rtos/threadx/tree/master/utility/rtos_compatibility_layers) geçişini kolaylaştırmanıza yardımcı olmak için çeşitli eski RTOS API'leri (FreeRTOS, POSIX, OSEK vb.) için uyarlama katmanları sağlar
