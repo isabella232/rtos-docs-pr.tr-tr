@@ -1,116 +1,116 @@
 ---
-title: Azure RTOS Gux ve Azure RTOS Gux Studio 'Yu anlama
-description: Azure RTOS Gux, katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak için oluşturulmuş bir profesyonel kalite paketidir.
+title: GUIX Azure RTOS GUIX Studio'Azure RTOS anlama
+description: Azure RTOS GUIX, ekli sistem geliştiricilerinin ihtiyaçlarını karşılamak için oluşturulmuş profesyonel kaliteli bir pakettir.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 8f4a1578fcabdabfb213ced9c6593f6cffc964aa
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 0a6ac2c7a76893d516b9beae9b893c9764de60ba
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171412"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754939"
 ---
-# <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>Azure RTOS Gux ve Azure RTOS Gux Studio 'ya genel bakış
+# <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>GUIX Azure RTOS GUIX Studio'Azure RTOS genel bakış
 
-Azure Gux Embedded GUI, özellikle derin gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan Microsoft 'un gelişmiş, endüstriyel sınıf GUI çözümüdür. Microsoft ayrıca, Azure RTOS Gux Studio adlı tam özellikli bir WYSıWYG masaüstü tasarım aracı sağlar. bu sayede, geliştiricilerin masaüstündeki GUI 'sini tasarlamalarını ve hedefe aktarılabilecek Azure RTOS Gux Embedded GUI kodunu oluşturmasını sağlar. Azure RTOS Gux Azure RTOS ThreadX RTOS ile tamamen tümleşiktir ve Azure RTOS ThreadX tarafından desteklenen işlemcilerin birçoğu için kullanılabilir. Bunun hepsi son derece küçük bir ayak izi, Hızlı yürütme ve üstün kullanım kolaylığıyla, Azure RTOS Gux 'i bir kullanıcı arabirimi gerektiren en zorlu eklenmiş IoT uygulamalarına yönelik ideal seçim haline getirir. 
+Azure GUIX embedded GUI, Microsoft'un derinden eklenmiş, gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış gelişmiş, endüstriyel sınıf GUI çözümüdür. Microsoft ayrıca, geliştiricilerin GUI'lerini masaüstünde tasarlamalarına ve daha sonra hedefe aktarılamayacak Azure RTOS GUIX ekli GUI kodu oluşturmalarına olanak sağlayan Azure RTOS GUIX Studio adlı tam özellikli WYSIWYG masaüstü tasarım aracı sağlar. Azure RTOS GUIX, Azure RTOS ThreadX RTOS ile tamamen tümleşiktir ve Azure RTOS ThreadX tarafından desteklenen birçok işlemcide kullanılabilir. Bunların hepsi son derece küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığı ile birlikte, Azure RTOS GUIX'i kullanıcı arabirimi gerektiren en zorlu tümleşik IoT uygulamaları için ideal seçenek yapın. 
 
-## <a name="azure-rtos-guix-api"></a>Azure RTOS Gux API 'SI
+## <a name="azure-rtos-guix-api"></a>Azure RTOS GUIX API'si
 
-### <a name="powerful-apis"></a>Güçlü API 'Ler
+### <a name="powerful-apis"></a>Güçlü API'ler
 
 * Gerektiğinde doğrudan tuval çizimi için tam destek
-* Azure RTOS Gux Studio tarafından üretilen kodla kolay bir şekilde etkileşim kurma
-* Çizgi, dikdörtgen, çokgen vb. için API 'Ler
-* Daire, yay, pasta, kii, elips, vb. için API 'Ler.
-* Metin çizme ve konumlandırma için API 'Ler
-* Kenar yumuşatma, doku dolguları ve düz dolgular
-* Ekranları ve pencere öğelerini oluşturmak ve yeniden oluşturmak için API 'Ler
+* GUIX Studio tarafından Azure RTOS basit etkileşim kurma
+* Çizgi, dikdörtgen, çokgen vb. için API'ler.
+* Daire, yay, pasta, chord, üç nokta gibi API'ler
+* Metin çizme ve konumlandırma api'leri
+* Diğer ad koruma, doku dolguları ve düz dolgular
+* Ekranlar ve pencere öğeleri oluşturmaya ve bu öğeleri değiştiren API'ler
 
-### <a name="azure-rtos-guix-studio-generated-files"></a>Azure RTOS Gux Studio tarafından oluşturulan dosyalar
+### <a name="azure-rtos-guix-studio-generated-files"></a>Azure RTOS GUIX Studio Tarafından Oluşturulan Dosyalar
 
 * Otomatik olarak oluşturulan ANSI C kaynak dosyaları
-* Düzen ayrıntılarından uygulama yazılımını yalıtılmış olarak
-* Kullanıcı arabirimi tasarımı için gereken yazı tiplerini ve görüntüleri içerir
-* Uygulama koduyla derlenen oluşturulan dosyalar
-* Ekran düzeni, uygulama mantığını etkilemeden güncelleştirilebilen
-* Kaynak kimlikleri dil ve tema bağımsızlık oluşturma
+* Uygulama yazılımını düzen ayrıntılarından uzaktır
+* Ui tasarımı için gereken yazı tiplerini ve görüntüleri içerir
+* Uygulama koduyla derlenmiş oluşturulan dosyalar
+* Ekran düzeni, uygulama mantığını etkilemeden güncelleştirilebilir
+* Kaynak kimlikleri dil ve tema bağımsızlığı oluşturma
 * Kullanıcı tarafından sağlanan özel çizim ve olay işleme işlevleri
 
 ### <a name="widget-library"></a>Pencere öğesi kitaplığı
 
-* Önceden tanımlanmış ancak özelleştirilebilir ortak arabirim öğeleri kümesi
-* Son derece küçük, kompakt ve verimli
-* Kitaplık, düğme, ölçer, liste, pencere, kaydırma, kaydırıcı, ilerleme çubuğu, istem ve çok daha fazlasını içerir
+* Ortak arabirim öğelerinin önceden tanımlanmış ancak özelleştirilebilir kümesi
+* Son derece küçük, sıkıştırılmış ve verimli
+* Kitaplık düğme, ölçer, liste, pencere, kaydırma, kaydırıcı, ilerleme çubuğu, istemi ve çok daha fazlasını içerir
 * Tamamen özelleştirilebilir çizim ve görünüm
 * Tamamen özelleştirilebilir işlem ve olay işleme
-* Yalnızca kullanılan pencere öğeleri uygulama yazılımıyla bağlantılı
+* Yalnızca kullanılan pencere öğeleri uygulama yazılımıyla bağlantılıdır
 
 ### <a name="math-and-utilities"></a>Matematik ve yardımcı programlar
 
-* Sin, cos, Arcsin, arccos, tanjant, kare kök işlevleri
-* Ekran bölgelerini düzenleme işlevleri
-* Sistem Yapılandırması ve başlangıç
+* Sin, cos, arcsin, arccos, tangent, square root işlevleri
+* Ekran bölgelerini işleye işlevler
+* Sistem yapılandırması ve başlatma
 * Bellek havuzu tanımı (isteğe bağlı)
-* Zamanlayıcı yönetimi
-* Animasyon yönetimi
-* Kirli liste Bakımı
+* Zamanlayıcı Yönetimi
+* Animasyon Yönetimi
+* Kirli liste bakımı
 
 ### <a name="image-processing"></a>Görüntü işleme
 
-* JPEG ve PNG görüntülerinin çalışma zamanı kodunu çözme işlevleri
-* Titreme ve renk alanı dönüştürmeyi Uygula
+* Jpeg ve png görüntülerinin çalışma zamanı kodunu çözme işlevleri
+* Dithering ve renk alanı dönüştürme uygulama
 * Görüntü döndürme
 * Görüntü ölçeklendirme
 * Görüntü karıştırma
 
 ### <a name="event-processing"></a>Olay işleme
 
-* Boştayken Azure RTOS Gux iş parçacığını otomatik olarak askıya alır
-* UI tasarımında popüler olay odaklı programlama modeli
-* Azure RTOS Gux çizim iş parçacığından giriş sürücülerini yalıtılmış olarak
-* Olayları gönderme ve alma işlevleri
-* Tüm Azure RTOS Gux pencere öğesi türleri için önceden tanımlanmış olay türleri
-* Kullanıcı tanımlı özel olaylar destekleniyor
+* Boştayken GUIX Azure RTOS iş parçacığını otomatik olarak askıya alır
+* Kullanıcı arabirimi tasarımında popüler olan olay odaklı programlama modeli
+* GuiX çizim iş parçacığından Azure RTOS sürücülerini zorlar
+* Olay gönderme ve alma işlevleri
+* GuiX pencere öğesi türleri için tüm Azure RTOS önceden tanımlanmış olay türleri
+* Desteklenen kullanıcı tanımlı özel olaylar
 
 ### <a name="canvas-processing"></a>Tuval işleme
 
-* Kırpma ve Z düzeninde bakım
-* Donanım ayrıntılarından pencere öğesi kitaplığını yalıtılmış olarak
-* Uygulamanın donanım ayrıntılarından yalıtılmış olması
+* Kırpma ve Z Düzeni bakımı
+* Donanım ayrıntılarından pencere öğesi kitaplığını sağlar
+* Uygulamayı donanım ayrıntılarından uzaktır
 * Kirli alanların otomatik arka plan yenilemesi
-* Katmanlama ve karıştırma desteği ile birden çok canvaya
-* Uygulama yazılımı tarafından doğrudan çağrılabilir
+* Katmanlama ve karıştırma desteğine sahip birden çok tuval
+* Doğrudan uygulama yazılımı tarafından çağrılabilir
 
-### <a name="input-device-drivers"></a>Giriş cihazı sürücüleri
+### <a name="input-device-drivers"></a>Giriş cihazı sürücülerini
 
-* Donanıma özel destek, Azure RTOS Gux ve donanım ayrıntılarından yalıtılmış uygulama
-* Dirensel dokunma, uç Touch ve tuş takımı destekleniyor
-* Azure RTOS Gux olay kuyruğuna geçirilen giriş olayları
+* Donanıma özgü destek, Azure RTOS ayrıntılarından uzak GUIX ve uygulama
+* Touch, Cap Touch ve tuş takımı desteği
+* GUIX olay kuyruğuna Azure RTOS giriş olayları
 
-### <a name="display-drivers"></a>Görüntü sürücüleri
+### <a name="display-drivers"></a>Sürücüleri görüntüleme
 
 * Donanıma özgü destek
-* Tüm renk derinliği ve biçimleri için sunulan genel sürücüler
-* Kullanılabilir grafik hızlandırıcılarını kullanacak şekilde özelleştirilmiş
+* Tüm renk derinliği ve biçimleri için sağlanan genel sürücüler
+* Kullanılabilir grafik hızlandırıcılarını kullanmak için özelleştirilmiş
 
 ### <a name="target-hardware"></a>Hedef donanım
 
-* Grafik çıkışı yapabilen neredeyse tüm donanımlar, GUıDX ile uyumludur
-* Birden çok fiziksel görüntüleme destekleniyor
-* En az RAM ve Flash gereksinimleri
+* Grafik çıkış özellikli neredeyse tüm donanımlar GUIX ile uyumludur
+* Desteklenen birden çok fiziksel ekran
+* Minimum RAM ve Flash gereksinimleri
 
-## <a name="create-elegant-user-interfaces"></a>Zarif Kullanıcı arabirimleri oluşturma
+## <a name="create-elegant-user-interfaces"></a>Şık Kullanıcı Arabirimleri Oluşturma
 
-Azure RTOS Gux ve Azure RTOS Gux Studio, benzersiz şekilde zarif Kullanıcı arabirimleri oluşturmak için gereken tüm özellikleri sağlar. Standart Azure RTOS Gux paketi, tıbbi cihaz başvurusu, akıllı bir izleme başvurusu, bir giriş otomasyon başvurusu, endüstriyel denetim başvurusu, bir otomatik Molem başvurusu ve çeşitli sprite ve animasyon örnekleri dahil olmak üzere çeşitli örnek kullanıcı arabirimlerini içerir. Lütfen aşağıda gösterilen başvuru örneklerine tıklayın.
+Azure RTOS GUIX ve Azure RTOS GUIX Studio, benzersiz şekilde zarif kullanıcı arabirimleri oluşturmak için gereken tüm özellikleri sağlar. Standart Azure RTOS GUIX paketi tıbbi cihaz başvurusu, akıllı saat başvurusu, ev otomasyonu başvurusu, endüstriyel denetim başvurusu, otomobil başvurusu ve çeşitli sprite ve animasyon örnekleri gibi çeşitli örnek kullanıcı arabirimlerini içerir. Lütfen aşağıda gösterilen başvuru örneklerine tıklayın.
 
-### <a name="home-automation"></a>Ana Otomasyon
+### <a name="home-automation"></a>Ev Otomasyonu
 
 <img alt="Screenshot of the GUIX home automation" class="img-responsive" src="./media/overview/guix_home_automation.png"/>
 
-### <a name="medical"></a>Birinin
+### <a name="medical"></a>Tıbbi
 
 <img alt="Screenshot of the GUIX medical device" class="img-responsive" src="./media/overview/demo_guix_medical.png"/>
 
@@ -118,7 +118,7 @@ Azure RTOS Gux ve Azure RTOS Gux Studio, benzersiz şekilde zarif Kullanıcı ar
 
 <img alt="Screenshot of the GUIX Consumer smart watch" class="img-responsive" src="./media/overview/demo_guix_smart_watch.png"/>
 
-### <a name="white-goods"></a>Beyaz mallar
+### <a name="white-goods"></a>Beyaz Ürünler
 
 <img alt="Screenshot of the GUIX white goods exaample" class="img-responsive" src="./media/overview/demo_guix_white_goods.png"/>
 
@@ -126,31 +126,31 @@ Azure RTOS Gux ve Azure RTOS Gux Studio, benzersiz şekilde zarif Kullanıcı ar
 
 <img alt="Screenshot of the GUIX automotive" class="img-responsive" src="./media/overview/demo_guix_infotainment.png"/>
 
-### <a name="industrial"></a>Sanayi
+### <a name="industrial"></a>Endüstriyel
 
 <img alt="Screenshot of the GUIX industrial control" class="img-responsive" src="./media/overview/demo_guix_industrial.png"/>
 
-Her Azure RTOS Gux başvurusunda, başvuru tasarımının tüm grafik öğelerini tanımlayan karşılık gelen bir Azure RTOS Gux Studio projesi bulunur. Başvuru tasarımını değiştirmek kolaydır. Yalnızca ilgili Azure RTOS Gux projesini açın, istenen değişiklikleri yapın, projeyi kaydedin ve *Proje*' yi seçin.
+Her Azure RTOS GUIX başvurusu, başvuru Azure RTOS tüm grafik öğelerini tanımlayan ilgili bir GUIX Studio projesine sahiptir. Başvuru tasarımını değiştirmek kolaydır. İlgili GUIX Azure RTOS ilgili dosyayı açın, istediğiniz değişiklikleri yapın, projeyi kaydedin ve ardından *Project.*
 
-Azure RTOS Gux için C kodu oluşturmak üzere tüm çıkış dosyalarını oluşturun. Ardından hedef uygulamayı yeniden oluşturup değiştirilen başvuru tasarımını gözlemleyecek şekilde çalıştırın.
+GUIX için C kodunu oluşturmak için Tüm Çıkış Azure RTOS oluştur. Ardından, değiştirilmiş başvuru tasarımını gözlemlemek için hedef uygulamayı yeniden oluşturmanız ve çalıştırmanız gerekir.
 
-### <a name="memory-footprint"></a>Bellek ayak izi
+### <a name="guix-memory-footprint"></a>GUIX Bellek ayak izi
 
-Azure RTOS Gux, bir tuval için gereken belleği dahil etmez ve temel destek için 13.2 KB 'lık FLASH ve 4KB RAM 'in daha az küçük bir ayak izine sahiptir.
+Azure RTOS GUIX,tuval için gereken bellek dahil olmak üzere temel destek için 13,2 KB FLASH ve 4 KB RAM olmak üzere oldukça küçük bir ayak izine sahip.
 
-Dahili GRAM ve kendi kendini yenileme teknolojisine sahip bir ekran için tuval belleği gerekli değildir. Ancak, çizim performansını artırmak veya görüntüleme için yerel olarak kullanılan bir görüntüleme yapılandırması için, uygulama tarafından bir tuval bellek alanı tanımlanmıştır.
+İç GRAM ve kendi kendine yenileme teknolojisine sahip bir ekran için tuval belleği gerekmez. Ancak, çizim performansını geliştirmek için veya ekranda yerel GRAM kullanmaan bir görüntü yapılandırması için, uygulama tarafından bir tuval bellek alanı tanımlanır.
 
-Tuval bellek gereksinimleri, Tuval boyutunun ve renk derinliğinin bir işlevidir ve formül tarafından tanımlanır:
+Tuval belleği gereksinimleri, tuval boyutunun yanı sıra renk derinliğine sahip bir işlevdir ve formülle tanımlanır:
 
-<i>Tuval RAM (bayt) = (x * y * (BPP/8))</i>
+<i>Tuval RAM'i (bayt) = (x * y * (bpp/8))</i>
 
-Burada "x" ve "y", tuvalin boyutlarıdır (görüntü).
+Burada "x" ve "y" tuvalin boyutlarıdır (display).
 
-Çoğu uygulama, temel Azure RTOS Gux kitaplığı depolama gereksinimlerine dahil olmayan grafik kaynakları da kullanır. Bu kaynaklar, yazı tiplerini, grafik simgelerini (pixelmaps) ve statik dizeleri içerir. Bu veriler, const bellek bölümünde (örn. FLASH) depolanabilir.
+Çoğu uygulama, GUIX kitaplığı depolama gereksinimlerinin temel gereksinimlerine dahil Azure RTOS grafik kaynaklarını da kullanır. Bu kaynaklar yazı tiplerini, grafik simgelerini (piksel haritaları) ve statik dizeleri içerir. Bu veriler sabit bellek bölümünde (flash) depolanmış olabilir.
 
-Bu bellek alanının boyutu, kullanılan benzersiz yazı tiplerinin sayısını ve boyutunu, kullanılan grafik simgelerinin sayısını ve boyutunu, çıkış rengi biçimini ve her bir kaynağın sıkıştırılmış verileri kullanıp kullanmadığını, her iki yazı tipinin ve pixelmap verilerinin RLE sıkıştırmasını desteklediğinden bu yana bir dizi etkene bağımlıdır. Her kaynak için depolama gereksinimleri, Azure RTOS Gux Studio uygulamasında görüntülenir ve kullanıcının uygulama kaynakları tarafından tüketilen Flash bellek miktarını izlemesine ve izlemesine olanak sağlar.
+Azure RTOS GUIX hem yazı tipi hem de piksel haritası verilerinde RLE sıkıştırmasını desteklediği için bu bellek alanı boyutu, kullanılan benzersiz yazı tiplerinin sayısı ve boyutu, kullanılan grafik simgelerinin sayısı ve boyutu, çıkış rengi biçimi ve her kaynağın sıkıştırılmış veri kullanıp kullanmama gibi çeşitli faktörlere bağlıdır. Her kaynağın depolama gereksinimleri Azure RTOS GUIX Studio uygulamasında görüntülenir ve bu da kullanıcının uygulama kaynakları tarafından tüketilen flash bellek miktarını izlemesi ve izlemesi için kullanılabilir.
 
-Azure RTOS ThreadX gibi Azure RTOS Gux boyutu, uygulama tarafından gerçekten kullanılan hizmetlere göre otomatik olarak ölçeklendirilir. Bu, karmaşık yapılandırma ve derleme parametrelerine gerek duymayı neredeyse ortadan kaldırır, böylece geliştirici daha kolay hale getirir.
+ThreadX Azure RTOS de olduğu gibi GUIX Azure RTOS nin boyutu da uygulama tarafından gerçekten kullanılan hizmetlere göre otomatik olarak ölçeklendirilir. Bu, karmaşık yapılandırma ve derleme parametrelerine olan ihtiyacı neredeyse ortadan kaldırarak geliştirici için işleri kolaylaştırır.
 
 #### <a name="simple-easy-to-use"></a>Basit, kullanımı kolay
 
@@ -251,7 +251,7 @@ GUX Studio hakkında daha fazla bilgi
 
 ### <a name="complete-win32-simulation"></a>Win32 simülasyonu
 
-Azure RTOS Gux, hedef panoda çalışan tam olarak aynı çizim kitaplığını kullanarak bir Windows bilgisayarında çalışır. Azure RTOS Gux ile, bılgısayarda GUI uygulaması oluşturup çalıştırabilir ve hata ayıklama, hızlı prototipleme, tanıtım ve WYSıWYG hedefi işlemi için Hedefinizdeki aynı uygulama kodunu kullanabilirsiniz.
+Azure rtos gux, hedef panoda çalışan tam olarak aynı çizim kitaplığını kullanarak Windows bir bilgisayarda çalışır. Azure RTOS Gux ile, bılgısayarda GUI uygulaması oluşturup çalıştırabilir ve hata ayıklama, hızlı prototipleme, tanıtım ve WYSıWYG hedefi işlemi için Hedefinizdeki aynı uygulama kodunu kullanabilirsiniz.
 
 ### <a name="advanced-technology"></a>Gelişmiş teknoloji
 

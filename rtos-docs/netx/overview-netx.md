@@ -1,169 +1,170 @@
 ---
-title: Azure RTOS NetX 'i anlama
-description: Azure RTOS NetX, Azure RTOS ThreadX ile tam olarak tümleştirilmiş ve desteklenen tüm işlemciler için kullanılabilen TCP/IP protokol standartlarının yüksek performanslı bir uygulamasıdır.
+title: NetX Azure RTOS anlama
+description: Azure RTOS NetX, Azure RTOS ThreadX ile tamamen tümleştirilmiş ve desteklenen tüm işlemciler için kullanılabilen, TCP/IP protokolü standartlarının yüksek performanslı bir uygulamasıdır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 7c864c23f019e4841ddb3096fde663c8039baf44
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: 63fd212249da6154926684f9bc844d2c2a78e84e
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171327"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754854"
 ---
-# <a name="overview-of-azure-rtos-netx"></a>Azure RTOS NetX 'e genel bakış
+# <a name="overview-of-azure-rtos-netx"></a>Azure RTOS NetX'e genel bakış
 
-Azure RTOS NetX, özellikle derin gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan bir endüstriyel sınıf TCP/IP IPv4 Embedded ağ yığınıdır. Azure RTOS NetX, Microsoft 'un özgün IPv4 ağ yığınıdır ve aslında Azure RTOS 'ın bir alt kümesidir. NetX, IPv4, TCP ve UDP gibi çekirdek ağ protokollerine ve ek ve daha üst düzey eklenti protokollerinin eksiksiz bir paketine sahip gömülü uygulamalar sağlar. Küçük bir kaplama, Hızlı yürütme ve üstün kullanım kolaylığı, Azure RTOS NetX 'i en zorlu ekli IoT uygulamaları için ideal bir seçenek haline getirir.
+Azure RTOS NetX, özellikle derin katıştırılmış, gerçek zamanlı ve IoT uygulamaları için tasarlanmış bir endüstriyel sınıf TCP/IP IPv4 tümleşik ağ yığınıdır. Azure RTOS NetX, Microsoft'un özgün IPv4 ağ yığınıdır ve temel olarak bir ağ Azure RTOS. NetX; IPv4, TCP ve UDP gibi temel ağ protokollerinin yanı sıra ek, üst düzey eklenti protokollerinin eksiksiz bir paketini içeren katıştırılmış uygulamalar sağlar. Küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığı, NetX Azure RTOS en zorlu tümleşik IoT uygulamaları için ideal bir seçenektir.
 
 ## <a name="api-protocols"></a>API protokolleri
+Azure RTOS NetX aşağıdakiler için destek sağlar.
 
-### <a name="telnet"></a>Sun
+### <a name="telnet"></a>Telnet
 
-* Minimum 0,5 KB ve 0,3 KB RAM parmak izi.
+* En az 0,5 KB ve 0,3 KB RAM ayak izi.
 * İstemci ve sunucu desteği.
 
 ### <a name="auto-ip"></a>Otomatik IP
 
-* Otomatik IPv4 adresi ataması.
-* Minimum 1,2 KB, 300 bayt RAM.
+* Otomatik IPv4 adres ataması.
+* En az 1,2 KB, 300 bayt RAM.
 
-### <a name="http---hypertext-transfer-protocolhttp"></a>HTTP-Köprü Metni Aktarım Protokolü (HTTP)
+### <a name="http---hypertext-transfer-protocolhttp"></a>HTTP - Köprü Metni Aktarım Protokolü (HTTP)
 
-* En az 2,8 KB-4.8 KBFLASH, 0,4 KB-1,0 KB-RAM ayak izi.
+* En az 2,8 KB ile 4,8KBFLASH, 0,4 KB ile 1,0 KB RAM ayak izi.
 * İstemci ve sunucu desteği.
 
-### <a name="smtp---simple-mail-transfer-protocol-smtp"></a>SMTP-Basit Posta Aktarım Protokolü (SMTP)
+### <a name="smtp---simple-mail-transfer-protocol-smtp"></a>SMTP - Basit Posta Aktarım Protokolü (SMTP)
 
 * En az 4,1 KB ve 0,6 KB RAM ayak izi
 * İstemci desteği
 
-### <a name="dhcp---dynamic-host-configuration-protocol-dhcp"></a>DHCP-dinamik ana bilgisayar Yapılandırma Protokolü (DHCP)
+### <a name="dhcp---dynamic-host-configuration-protocol-dhcp"></a>DHCP - Dinamik Ana Bilgisayar Yapılandırma Protokolü (DHCP)
 
-* Minimum 3,6 KB-4,6 KB FLASH, 2,7 KB RAM ayak izi
+* En az 3,6 KB ile 4,6 KB FLASH, 2,7 KB RAM ayak izi
 * İstemci ve sunucu desteği
 * IPv4 desteği
 
-### <a name="p0p3---post-office-protocol-version-3-pop3"></a>P0P3-Postane Protokolü sürüm 3 (POP3)
+### <a name="p0p3---post-office-protocol-version-3-pop3"></a>P0P3 - Office Protokolü Sürüm 3 (POP3) Sonrası
 
 * En az 8,1 KB ve 1,4 KB RAM ayak izi
 * İstemci desteği
 
-### <a name="snmp---simple-network-management-protocol-snmp"></a>SNMP-basit ağ Yönetim Protokolü (SNMP)
+### <a name="snmp---simple-network-management-protocol-snmp"></a>SNMP - Basit Ağ Yönetimi Protokolü (SNMP)
 
 * En az 10,9 KB ve 2,6 KB RAM ayak izi
-* VI, v2 ve v3 için aracı desteği
+* VI, V2 ve V3 için aracı desteği
 
-### <a name="ftp-tftp---file-transfer-protocol-ftp-trivial-file-transfer-protocol-tftp"></a>FTP, TFTP-Dosya Aktarım Protokolü (FTP), Önemsiz Dosya Aktarım Protokolü (TFTP)
+### <a name="ftp-tftp---file-transfer-protocol-ftp-trivial-file-transfer-protocol-tftp"></a>FTP, TFTP - Dosya Aktarım Protokolü (FTP), Önemsiz Dosya Aktarım Protokolü (TFTP)
 
-* FTP en az 1,8 KB-7.2 KBFLASH, 0,6 KB-2,1 KB RAM ayak izi
-* TFTP en az 1,7 KB-2,4 KBFLASH, 0,3 KB-1,8 KB RAM ayak
+* FTP En Az 1,8 KB ile 7,2KBFLASH, 0,6 KB ile 2,1 KB RAM ayak izi
+* TFTP Minimal 1,7 KB ile 2,4KBFLASH, 0,3 KB ile 1,8 KB RAM ayak izi
 * İstemci ve sunucu desteği
 
-### <a name="ppp---polnt-to-point-protocol-ppp"></a>PPP-POlNT noktadan noktaya Protokolü (PPP)
+### <a name="ppp---polnt-to-point-protocol-ppp"></a>PPP - Polnt-To-PoInt Protokolü (PPP)
 
 * En az 7,1 KB ve 3,8 KB RAM ayak izi
 * Güvenilir ve güvenilir.
 
-### <a name="sntp---simple-network-time-protocol-sntp"></a>SNTP-basit ağ zaman Protokolü (SNTP)
+### <a name="sntp---simple-network-time-protocol-sntp"></a>SNTP - Basit Ağ Zamanı Protokolü (SNTP)
 
 * En az 4 KB ve 0,5 KB RAM
 * İstemci desteği
 
-### <a name="azure-rtos-netx-api"></a>Azure RTOS NetX API 'SI
+### <a name="azure-rtos-netx-api"></a>Azure RTOS NetX API'si
 
-* Hızlı, sıfır kopya API 'SI uygulama
-* Eski yuva kodu taşıma için isteğe bağlı BSD katmanı
+* Hızlı, sıfır kopya API'si uygulaması
+* Eski yuva kodunun taşınabilirliği için isteğe bağlı BSD katmanı
 
-### <a name="igmp---internet-group-management-protocol-igmp"></a>IGMP-Internet Grup Yönetimi Protokolü (ıGMP)
+### <a name="igmp---internet-group-management-protocol-igmp"></a>IGMP - İnternet Grup Yönetimi Protokolü (IGMP)
 
 * En az 2,5 KB FLASH
 * IPv4 çok noktaya yayın grubu desteği
-* IXIA IxANVL doğrulanan
-* İsteğe bağlı ıGMP istatistikleri
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme
+* I HIP IxANVL Doğrulandı
+* İsteğe bağlı IGMP istatistikleri
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
 
-### <a name="udp---user-datagram-protocol-udp"></a>UDP-Kullanıcı veri birimi Protokolü (UDP)
+### <a name="udp---user-datagram-protocol-udp"></a>UDP - Kullanıcı Veri Birimi Protokolü (UDP)
 
-* Yuva başına en az 2,5 KB FLASH, 124 yuva baytı
-* Hızlı, neredeyse wıned TCP paket işleme:
-* 100 Mbps Ethernet, MCU @100MHz , 14% MCU kullanımı ÜZERINDE RX 95 Mbps
-* TX 94 Mbps, 100 Mbps Ethernet, MCU @100MHz , 10% MCU kullanımı
-* UDP hızlı yol™ teknolojisi
+* Yuva başına en az 2,5 KB FLASH, 124 yuva bayt RAM
+* Hızlı, kabloya yakın TCP paketi işleme:
+* 100 Mb/sn Ethernet üzerinde RX 95 Mb/sn, MCU @100MHz , %14 MCU Kullanımı
+* 100 Mb/sn Ethernet üzerinde TX 94 Mb/sn, MCU @100MHz , %10 MCU Kullanımı
+* UDP Hızlı Yolu™ teknolojisi
 * UDP sayısıyla ilgili sınır yok
-* IXIA IxANVL doğrulanan
-* Yuva alma sırasında isteğe bağlı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
+* I HIP IxANVL Doğrulandı
+* Yuva almada isteğe bağlı askıya alma
+* Tüm askıya almada isteğe bağlı zaman aşımı
 * İsteğe bağlı UDP istatistikleri
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
 
-### <a name="tcp---transmission-control-protocol-tcp"></a>TCP-Iletim Denetim Protokolü (TCP)
+### <a name="tcp---transmission-control-protocol-tcp"></a>TCP - İletim Denetimi Protokolü (TCP)
 
-* Minimum 10,5 K8-12,5 KB FLASH, her yuva için 280 bayt RAM
+* En az 10,5K8 ile 12,5 KB FLASH, yuva başına 280 bayt RAM
 * Hızlı, neredeyse wlrespeed TCP paket işleme:
-* 100 Mbps Ethernet, MCU @100MHz , 20% MCU ÜZERINDE RX 93 Mbps
-* TX 94 Mbps, 100 Mbps Ethernet, MCU @100MHz , 27% MCU kullanımı
+* 100 Mb/sn Ethernet üzerinde RX 93 Mb/sn, MCU @100MHz , %20 MCU Kullanımı
+* 100 Mb/sn Ethernet üzerinde TX 94 Mb/sn, MCU @100MHz , %27 MCU Kullanımı
 * Güvenilir bağlantı
-* TCP yuvaları sayısında sınırsız
-* IXIA IxANVL doğrulanan
-* Yuva alma/iletme sırasında isteğe bağlı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
+* TCP yuvalarının sayısıyla ilgili sınır yok
+* I HIP IxANVL Doğrulandı
+* Yuva alma/iletmede isteğe bağlı askıya alma
+* Tüm askıya almada isteğe bağlı zaman aşımı
 * İsteğe bağlı TCP istatistikleri
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
 
-### <a name="icmp---internet-control-message-protocol-icmp"></a>ICMP-Internet Denetim Iletisi Protokolü (ıCMP)
+### <a name="icmp---internet-control-message-protocol-icmp"></a>ICMP - İnternet Denetim İletisi Protokolü (ICMP)
 
 * En az 2,5 KB FLASH
 * IPv4 desteği
-* IXIA IxANVL doğrulanan
+* I HIP IxANVL Doğrulandı
 * Ping isteği ve ping yanıtı
-* Ping isteklerinde isteğe bağlı iş parçacığı askıya alma
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
-* İsteğe bağlı ıCMP istatistikleri
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme
+* Ping istekleri üzerinde isteğe bağlı iş parçacığının askıya alınması
+* Tüm askıya almada isteğe bağlı zaman aşımı
+* İsteğe bağlı ICMP istatistikleri
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
 
-### <a name="ipv4---internet-protocol-ip"></a>IPv4-Internet Protokolü (IP)
+### <a name="ipv4---internet-protocol-ip"></a>IPv4 - İnternet Protokolü (IP)
 
-* Minimum 3,5 KB-8,5 KB FLASH, 2 KB-3 KB RAM ayak.
-* Piconet™ mimarisi.
-* Hızlı, neredeyse wafklu performans.
+* En az 3,5 KB ile 8,5 KB FLASH, 2 KB ile 3 KB RAM ayak izi.
+* Piconet™ Mimarisi.
+* Hızlı, kablolara yakın performans.
 * Birden çok arabirim desteği.
-* Çoklu bilgisayarlı destek.
+* Çok girişli destek.
 * Statik yönlendirme desteği.
-* IP parçalama/yeniden birleştirme desteği.
-* IPv4 desteği.
-* IXIA IxANVL doğrulanmadı.
-* Aşama II Ready Logo sertifikası.
+* IP parçalanması/yeniden değerlendirme desteği.
+* IPv4 Desteği.
+* I HIP IxANVL Doğrulandı.
+* Aşama II Hazır Logo Sertifikası.
 * İsteğe bağlı IP istatistikleri.
-* İyi tanımlanmış, sezgisel fiziksel katman sürücüsü arabirimi.
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme.
+* İyi tanımlanmış, sezgisel fiziksel katman sürücü arabirimi.
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme.
 
-### <a name="arprarp---address-resolution-protocol-arp-reverse-address-resolution-protocol-rarp"></a>ARP/RARP-Adres Çözümleme Protokolü (ARP), ters Adres Çözümleme Protokolü (RARP)
+### <a name="arprarp---address-resolution-protocol-arp-reverse-address-resolution-protocol-rarp"></a>ARP/RARP - Adres Çözümleme Protokolü (ARP), Ters Adres Çözümleme Protokolü (RARP)
 
-* Minimum 1,7 KB FLASH, RAM boyutu.
-* 32-blt IPv4 ve 48-blt MAC adreslerinin dinamik çözünürlüğü.
-* IXIA IxANVL doğrulanmadı.
-* Esnek, Kullanıcı tanımlı ARP önbelleği.
-* Gereksiz ARP desteği.
-* Uygulamaya göre belirlenen isteğe bağlı ARP/RARP istatistikleri.
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme.
+* En az 1,7 KB FLASH, RAM boyutu.
+* 32 blt IPv4 ve 48 blt MAC adreslerinin dinamik çözünürlüğü.
+* I HIP IxANVL Doğrulandı.
+* Esnek, kullanıcı tanımlı ARP önbelleği.
+* Gratuitous ARP desteği.
+* Uygulama tarafından belirlenen isteğe bağlı ARP/RARP istatistikleri.
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme.
 
-### <a name="ethernet-wifi-bluetooth-le-154-etc"></a>ETHERNET, WiFi, BLUETOOTH LE, 15,4, vb.
+### <a name="ethernet-wifi-bluetooth-le-154-etc"></a>ETHERNET, WiFi, BLUETOOTH LE, 15.4 vb.
 
 ## <a name="interoperability-verification"></a>Birlikte çalışabilirlik doğrulaması
 
-Azure RTOS NetX, RFC standartlarına uyar ve çoğu satıcının cihazlarıyla birlikte çalışabilirlik desteği sunar. Azure RTOS NetX, Azure RTOS NetX Core TCP/IP protokol uygulamasının endüstri standardı IxANVL (otomatik ağ doğrulama kitaplığı) kullanır.
+Azure RTOS NetX, RFC standartlarına uygundur ve çoğu satıcının cihazlarında tam birlikte çalışabilirlik sunar. Azure RTOS NetX, NetX çekirdek TCP/IP protokolü uygulaması için sektör standardı IxANVL (Otomatik Ağ Doğrulama Kitaplığı) Azure RTOS kullanır.
 
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
-Azure RTOS NetX, aşağıdakileri içeren gelişmiş bir teknolojidir.
-* Piconet™ mimarisi.
+Azure RTOS NetX, aşağıdakilere sahip gelişmiş bir teknolojidir.
+* Piconet™ mimari.
 * Otomatik ölçeklendirme.
-* UDP Fast-Path teknolojisi™.
+* UDP Fast-Path Technology™.
 * Esnek paket yönetimi.
-* Sıfır-API ve uygulama kopyalama.
-* Çoklu bilgisayarlı destek.
-* Tüm askıya alma sırasında isteğe bağlı zaman aşımı.
+* Sıfır kopya API'si ve uygulaması.
+* Çok girişli destek.
+* Tüm askıya almada isteğe bağlı zaman aşımı.
 * Statik yönlendirme desteği.
 * Azure RTOS TraceX sistem analizi desteği.

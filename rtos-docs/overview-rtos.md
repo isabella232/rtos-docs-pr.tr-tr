@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure RTOS nedir?
+title: Microsoft Azure rtos nedir?
 description: Azure RTOS, mikro denetleyici birimleri (MCUs) tarafından desteklenen IoT ve Edge cihazları için gerçek zamanlı bir işletim sistemidir (RTOS).
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: c902289b487c439da4ef5138319fe09d74a2347f
-ms.sourcegitcommit: 19d50693d8f5287ba6938ae1d23eef88435ed7b1
+ms.openlocfilehash: b099a5f18accfbe467a2a8fa680c0c76666a9ff3
+ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108171284"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113754922"
 ---
-# <a name="what-is-microsoft-azure-rtos"></a>Microsoft Azure RTOS nedir?
+# <a name="what-is-microsoft-azure-rtos"></a>Microsoft Azure rtos nedir?
 
 Azure RTOS, mikro denetleyici birimleri (MCUs) tarafından desteklenen Nesnelerin İnterneti (IoT) ve Edge cihazları için gerçek zamanlı bir işletim sistemidir (RTOS). Azure RTOS, en yüksek düzeyde kısıtlanmış cihazları desteklemek için tasarlanmıştır (pil gücüyle ve 64 KB 'den az Flash belleği vardır).
 
@@ -27,43 +27,49 @@ Azure RTOS platformu, Azure RTOS ThreadX, Azure RTOS FileX, Azure RTOS Gux, Azur
 
 ### <a name="azure-rtos-threadx"></a>Azure RTOS ThreadX
 
-Azure RTOS ThreadX, özellikle sağlam bir şekilde eklenmiş uygulamalar için tasarlanan gelişmiş bir Gerçek Zamanlı İşletim Sistemidir (RTOS). Azure RTOS ThreadX 'in sunduğu birçok avantaj arasında gelişmiş zamanlama olanakları, ileti geçirme, kesme yönetimi ve mesajlaşma hizmetleri sağlanmaktadır. Azure RTOS ThreadX, picokernel mimarisi, önalım-Threshold zamanlaması, olay zincirleme ve zengin bir sistem hizmeti kümesi gibi birçok gelişmiş özelliğe sahiptir.
+Azure [RTOS ThreadX](threadx/overview-threadx.md) , özellikle derin eklenmiş uygulamalar için tasarlanan gelişmiş bir Real-Time işletim sistemidir (RTOS). Azure RTOS ThreadX 'in sunduğu birçok avantaj arasında gelişmiş zamanlama olanakları, ileti geçirme, kesme yönetimi ve mesajlaşma hizmetleri sağlanmaktadır. Azure RTOS ThreadX, picokernel mimarisi, önalım-Threshold zamanlaması, olay zincirleme ve zengin bir sistem hizmeti kümesi gibi birçok gelişmiş özelliğe sahiptir.
 
 ### <a name="azure-rtos-filex"></a>Azure RTOS FileX
 
-Azure RTOS FileX, yüksek performanslı bir FAT uyumlu dosya sistemidir. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS FileX, küçük bir kaplama ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da dosya işlemleri gerektiren, günümüzün derin eklenmiş uygulamalar için ideal hale getirir. Azure RTOS FileX, Azure RTOS LevelX aracılığıyla RAM disk, USBX, SD kartı ve nve/veya Flash anıları dahil olmak üzere çoğu fiziksel medyayı destekler.
+Azure [RTOS FileX](filex/overview-filex.md) , yüksek PERFORMANSLı bir FAT uyumlu dosya sistemidir. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS FileX, küçük bir kaplama ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da dosya işlemleri gerektiren, günümüzün derin eklenmiş uygulamalar için ideal hale getirir. Azure RTOS FileX, Azure RTOS LevelX aracılığıyla RAM disk, USBX, SD kartı ve nve/veya Flash anıları dahil olmak üzere çoğu fiziksel medyayı destekler.
 
 ### <a name="azure-rtos-guix"></a>Azure RTOS GUIX
 
-Azure RTOS Gux, katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak üzere oluşturulan, profesyonel kalitede bir grafik kullanıcı arabirimi paketidir. Alternatiflerden farklı olarak, Azure RTOS Gux küçük, hızlı ve grafiksel çıktıyı destekleyebilen neredeyse her türlü donanım yapılandırmasına kolayca eklenir. Azure RTOS Gux Ayrıca, uygulama düzeyinde kullanıcı arabirimi geliştirmesi için olağanüstü bir görsel bakış ve sezgisel ve güçlü bir API sunar.
+Azure [RTOS Gux](guix/overview-guix.md) , katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak üzere oluşturulan, profesyonel kalitede bir grafik kullanıcı arabirimi paketidir. Alternatiflerden farklı olarak, Azure RTOS Gux küçük, hızlı ve grafiksel çıktıyı destekleyebilen neredeyse her türlü donanım yapılandırmasına kolayca eklenir. Azure RTOS Gux Ayrıca, uygulama düzeyinde kullanıcı arabirimi geliştirmesi için olağanüstü bir görsel bakış ve sezgisel ve güçlü bir API sunar.
 
 ### <a name="azure-rtos-netx"></a>Azure RTOS NetX
 
-Azure RTOS NetX, TCP/IP protokol standartlarının yüksek performanslı bir uygulamasıdır. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS NetX 'in benzersiz bir piconet mimarisi vardır. Sıfır kopyalama API 'siyle birlikte kullanıldığında, bu, ağ bağlantısı gerektiren son derece eklenmiş uygulamalar için mükemmel bir uyum sağlar.
+Azure [RTOS NetX](netx/overview-netx.md) , TCP/IP protokol standartlarının yüksek performanslı bir uygulamasıdır. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS NetX 'in benzersiz bir piconet mimarisi vardır. Sıfır kopyalama API 'siyle birlikte kullanıldığında, bu, ağ bağlantısı gerektiren son derece eklenmiş uygulamalar için mükemmel bir uyum sağlar.
 
 ### <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTOS NetX Duo, özellikle de gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan, gelişmiş, endüstriyel bir TCP/IP ağı yığınlarıdır. Azure RTOS NetX Duo, iki IPv4 ve IPv6 ağ yığınıdır. NetX, temel olarak Azure RTOS NetX Duo bir alt kümesi olan özgün IPv4 ağ yığınıdır.
+Azure [RTOS NetX](netx-duo/overview-netx-duo.md) Duo, özellikle de gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan, gelişmiş, ENDÜSTRIYEL bir TCP/IP ağı yığınlarıdır. Azure RTOS NetX Duo, iki IPv4 ve IPv6 ağ yığınıdır. NetX, temel olarak Azure RTOS NetX Duo bir alt kümesi olan özgün IPv4 ağ yığınıdır.
 
 ### <a name="azure-rtos-usbx"></a>Azure RTOS USBX
 
-Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX desteklenen işlemcilerde kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS USBX, küçük bir parmak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla bir arabirim gerektiren çok sayıda gömülü uygulama için idealdir.
+Azure [RTOS USBX](usbx/overview-usbx.md) , yüksek PERFORMANSLı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX desteklenen işlemcilerde kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS USBX, küçük bir parmak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla bir arabirim gerektiren çok sayıda gömülü uygulama için idealdir.
 
 ### <a name="windows-tools"></a>Windows araçları
 
-Azure RTOS Gux Studio, uygulamanın GUI 'si içindeki tüm grafik öğelerinin oluşturulmasını ve bakımını kolaylaştırmanın yanı sıra, tümüyle bir GUI uygulama tasarım ortamı sağlar. Azure RTOS Gux Studio otomatik olarak Azure RTOS Gux kitaplığı ile uyumlu C kodu oluşturur ve hedefte derlenmeye ve çalıştırılmaya çalışır.
+Azure [RTOS Gux Studio](guix/about-guix-studio.md) , uygulamanın GUI 'si içindeki tüm grafik öğelerinin oluşturulmasını ve bakımını kolaylaştırmanın yanı sıra, tümüyle bir GUI uygulama tasarım ortamı sağlar. Azure RTOS Gux Studio otomatik olarak Azure RTOS Gux kitaplığı ile uyumlu C kodu oluşturur ve hedefte derlenmeye ve çalıştırılmaya çalışır.
 
-Azure RTOS TraceX, geliştiricilere gerçek zamanlı sistem olaylarının grafik bir görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmesini ve daha iyi anlamasına olanak tanıyan ana bilgisayar tabanlı bir analiz aracıdır.
+Azure [RTOS TraceX](tracex/overview-tracex.md) , geliştiricilere gerçek zamanlı sistem olaylarının grafik bir görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmesini ve daha iyi anlamasına olanak tanıyan ana bilgisayar tabanlı bir analiz aracıdır.
 
 ## <a name="the-azure-rtos-advantage"></a>Azure RTOS avantajı
 Azure RTOS, diğer gerçek zamanlı işletim sistemleri için aşağıdaki avantajları sağlar.
+
+### <a name="most-deployed-rtos"></a>En çok dağıtılan RTOS
+
+Önde gelen 'U M2M Market Intelligence firması, VDC Research 'e göre Azure RTOS 'ın dünya genelinde 6.200.000.000 dağıtımı vardır. Azure RTOS 'ın popülerliği, güvenilirliği, kalitesi, boyutu, performansı, gelişmiş özellikler, kullanım kolaylığı ve genel kullanım süresi avantajına yönelik bir testdir.
+
+> *"Şirketin temelleri ile bu yana kablosuz ve IoT pazarlarında THREADX 'in büyüme tratrumuzu izliyoruz ve THREADX 'in yaygın sektör benimsemesi tarafından giderek daha da artmaktadır."* – Chris Rommel, Executive Başkan Yardımcısı, VDC Research
 
 ### <a name="intuitive-and-consistent-api-design"></a>Sezgisel ve tutarlı API tasarımı
 
 * Sezgisel ve tutarlı API.
 * Ad-fiil adlandırma kuralı.
-* Tüm API 'Lerin, ait oldukları Azure RTOS bileşenini kolayca belirlemek için ThreadX *nx_* ve filex için *tx_* gibi önde gelen öneki vardır.
-* API 'Lerin engellenmesi isteğe bağlı iş parçacığı zaman aşımına uğradı
+* Tüm API 'Lerin, ait oldukları Azure RTOS bileşenini kolayca belirlemek için ThreadX *fx_* ve filex için *tx_* gibi önde gelen öneki vardır.
+* API 'Ler genelinde işlevsel tutarlılık. Örneğin, askıya aldığı tüm API işlevlerinin aynı şekilde işlev gösteren isteğe bağlı bir zaman aşımı vardır.
 * Birçok API, uygulama ISRs 'den doğrudan kullanılabilir.
 - Medya ve dosya işlemleri için isteğe bağlı Kullanıcı bildirimi geri çağırmaları.
 * Olay odaklı programlama modeli (API).
@@ -73,7 +79,7 @@ Azure RTOS, diğer gerçek zamanlı işletim sistemleri için aşağıdaki avant
 - Küçük kod parmak izi.
 - Kullanılan Hizmetleri temel alan ölçeklenebilir kod kaplama.
 - TUV ve UL-ıEC 61508 SIL 4, ıEC 62304 Class C, ISO 26262 asıl D ve EN 50128 SW-SIL4 tarafından önceden onaylanmış.
-- Hızlı yürütme.
+- Hızlı yürütme. Azure RTOS hız için tasarlanmıştır ve en hızlı olası performansa ulaşmak için en az sayıda iç işlev çağrısı katmanlanıyor.
 
 ### <a name="fastest-time-to-market"></a>En hızlı pazar süresi
 
@@ -82,6 +88,7 @@ Azure RTOS 'ın yüklenmesi, öğrenilmesi, kullanılması, hata ayıklaması, d
 * Tüm kaynak kodu kullanılabilirliği.
 * Kullanımı kolay API.
 * Kapsamlı ve gelişmiş özellik kümesi.
+* Kalite belgeleri.
 
 ### <a name="one-simple-license"></a>Tek bir basit lisans
 
@@ -101,7 +108,7 @@ Azure RTOS, bir ınımı 60730-1 Ek H, CSA E60730-1 Ek H, ıEC 60730-1 Ek H, UL 
 
 :::image type="content" source="media/cru-logo-certification.png" alt-text="CRU UL sertifikası":::
 
-TUV ve UL sertifikalarıyla ilişkili yapıtlar (sertifika, güvenlik el kitabı, test raporu vb.) satış için kullanılabilir.
+tuv ve UL sertifikalarla ilişkili Artifacts (sertifika, güvenlik el kitabı, Test raporu vb.) satış için kullanılabilir.
 
 Uygulamanın ek sertifikaya ihtiyacı olduğu durumlarda, gerçek donanım platformunu kullanarak ve hatta uygulama kodunu kapsayan çeşitli standartlara anahtar sertifikası sağlamak için Microsoft aracılığıyla bir sertifika hizmeti kullanılabilir. Sertifika hizmetimiz hakkında daha fazla bilgi için bizimle iletişime geçin.
 
@@ -111,7 +118,7 @@ Azure RTOS, EAL4 + ortak ölçütler güvenlik sertifikası elde etti. Değerlen
 
 :::image type="content" source="media/eal-logo-certification.png" alt-text="EAL sertifikası":::
 
-Microsoft Azure RTOS SC güvenlik sertifikası için kullanılan BT güvenlik değerlendirme olanağı, en parlama BV ' dir ve sertifika yetkilisi de bir Ttıt.
+Microsoft Azure rtos SC güvenlik sertifikası için kullanılan bt güvenlik değerlendirme olanağı, en parlama BV ' dir ve sertifika yetkilisi de bir ttıt.
 
 ### <a name="fips-140-2-validated"></a>FIPS 140-2 doğrulanan
 
@@ -121,47 +128,47 @@ Azure RTOS şifre kitaplıkları için kullanılan bilgi güvenliği değerlendi
 
 ### <a name="supports-most-popular-architectures"></a>Popüler mimarilerin çoğunu destekler
 
-Aşağıdaki gelişmiş mimarilere dahil olmak üzere en popüler 32/64 bit mikro işlemcilerin, kullanıma hazır, tam olarak sınanmış ve tam olarak desteklenen Azure RTOS:
+Aşağıdaki gelişmiş mimarilere dahil olmak üzere en popüler 32/64 bit mikro işlemcilerin, kullanıma hazır, tam olarak sınanmış ve tam olarak desteklenen Azure RTOS.
 
-**Analog cihazlar**: parça, BlackICE, CM4xx
+- **Analog cihazlar**: parça, BlackICE, CM4xx
 
-**Andes Core**: RISC-V
+- **Andes Core**: RISC-V
 
-**Ambiqmicro**: Apollo MCUs
+- **Ambiqmicro**: Apollo MCUs
 
-**ARM**: ARM7, ARM9, ARM11, Cortex-M0/m3/M4/M7/A15/a5/A7/A8/A9/A5X 64-bı/A7x 64-bit/R4/R5, TrustZone ARMv8-ı
+- **ARM**: ARM7, ARM9, ARM11, Cortex-M0/m3/M4/M7/A15/a5/A7/A8/A9/A5X 64-bı/A7x 64-bit/R4/R5, TrustZone ARMv8-ı
 
-**Temposunda**: xtensa, elmas
+- **Temposunda**: xtensa, elmas
 
-**Ceva**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0 +, FM3, MF4, Werwifi
+- **Ceva**: PSoC, PSoC 4, PSoC 5, PSoC 6, FM0 +, FM3, MF4, Werwifi
 
-**Cypress**: RISC-V
+- **Cypress**: RISC-V
 
-**Ensilica**: ESI-RISC
+- **Ensilica**: ESI-RISC
 
-**Infineon**: XMC1000, XMC4000, kanore
+- **Infineon**: XMC1000, XMC4000, kanore
 
-**Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, varış a 10
+- **Intel; Intel FPGA**: x36/Pentium, XScale, NIOS II, Cyclone, varış a 10
 
-**Mikro yonga**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/ZF, PIC24/PIC32
+- **Mikro yonga**: AVR32, ARM7, ARM9, Cortex-M3/M4/M7, SAM3/4/7/9/A/C/D/E/G/L/ZF, PIC24/PIC32
 
-**Mikro yarı**: RISC-V
+- **Mikro yarı**: RISC-V
 
-**NXP**: LPC, ARM7, ARM9, PowerPC, 68 K, I.MX, ColdFire, Kinetis Cortex-M3/M4
+- **nxp**: LPC, ARM7, ARM9, PowerPC, 68 K, i.MX, coldfire, Kinetis cortex-M3/M4
 
-**Renesas**: SH, HS, v850, RX, Rz, Synergy
+- **Renesas**: SH, HS, v850, RX, Rz, Synergy
 
-**Silicon Labs**: EFM32
+- **Silicon Labs**: EFM32
 
-**Synopsys**: Arc 600, 700, Arc Em, Arc HS
+- **Synopsys**: Arc 600, 700, Arc Em, Arc HS
 
-**St**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
+- **St**: STM32, ARM7, ARM9, Cortex-M3/M4/M7
 
-**TL**: C5xxx, C6xxx, Stellardo, Sitara, Tiva-C
+- **TL**: C5xxx, C6xxx, Stellardo, Sitara, Tiva-C
 
-**Dalga bilgi işlem**: MIPS32 4k, 24 K, 34 k, 1004 k, ver 5k, mikro Aptiv, ınteraptiv, Proaptiv, M-class
+- **Dalga bilgi işlem**: MIPS32 4k, 24 K, 34 k, 1004 k, ver 5k, mikro Aptiv, ınteraptiv, Proaptiv, M-class
 
-**Xilinx**: mikro Blaze, PowerPC 405, zynq, Zynq UltraSCALE
+- **xilinx**: mikro blaze, PowerPC 405, zynq, zynq UltraSCALE
 
 *Listelenen tüm zamanlama ve boyut rakamları tahminlerdir ve geliştirme platformunuzun farklı olabilir.*
 
