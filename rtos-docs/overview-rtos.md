@@ -1,132 +1,132 @@
 ---
-title: Microsoft Azure rtos nedir?
-description: Azure RTOS, mikro denetleyici birimleri (MCUs) tarafından desteklenen IoT ve Edge cihazları için gerçek zamanlı bir işletim sistemidir (RTOS).
+title: RTOS Microsoft Azure nedir?
+description: Azure RTOS, mikrodenetleyici birimleri (MCU) tarafından desteklenen IoT ve uç cihazlar için gerçek zamanlı bir işletim sistemidir (RTOS).
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: b099a5f18accfbe467a2a8fa680c0c76666a9ff3
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: a6f9cfd772c81340a90b7dc217c0ccc160c7f957
+ms.sourcegitcommit: 7993d2c3b0711ae2c246561a0c8bf963d8e0324a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754922"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114661207"
 ---
-# <a name="what-is-microsoft-azure-rtos"></a>Microsoft Azure rtos nedir?
+# <a name="what-is-microsoft-azure-rtos"></a>RTOS Microsoft Azure nedir?
 
-Azure RTOS, mikro denetleyici birimleri (MCUs) tarafından desteklenen Nesnelerin İnterneti (IoT) ve Edge cihazları için gerçek zamanlı bir işletim sistemidir (RTOS). Azure RTOS, en yüksek düzeyde kısıtlanmış cihazları desteklemek için tasarlanmıştır (pil gücüyle ve 64 KB 'den az Flash belleği vardır).
+Azure RTOS, mikrodenetleyici birimleri (MCU) tarafından desteklenen Nesnelerin İnterneti (IoT) ve uç cihazlar için gerçek zamanlı bir işletim sistemidir (RTOS). Azure RTOS, en fazla kısıtlanmış cihazları (pil destekli ve 64 KB'tan az flash belleğe sahip) destekleyecek şekilde tasarlanmıştır.
 
-Azure RTOS, çeşitli güvenlik standartları için önceden sertifikalandırilmiştir. Bunlar, ıEC 61508 SIL 4, ıEC 62304 Class C ve ISO 26262 asıl D sertifikalarını içerir. Azure RTOS ThreadX de DO-178 sertifikalıdır.
+Azure RTOS çeşitli güvenlik standartları için önceden sertifikalıdır. Bunlar IEC 61508 SIL 4, IEC 62304 Sınıf C ve ISO 26262 ISO D sertifikalarını içerir.
 
-Azure RTOS, TLS ve DTLS aracılığıyla IPSec ve yuva katmanı güvenliği aracılığıyla tam IP katmanı güvenliği de dahil olmak üzere, EAL4 + ortak ölçütlere sahip güvenlik sertifikalı bir ortam sağlar. Yazılım şifreleme kitaplığımız FIPS 140-2 sertifikası elde etti. Ayrıca, donanım şifreleme özellikleri, ThreadX MODÜLLERI ile bellek koruması ve ARM 'nin TrustZone ARMv8-msecurity özellikleri için destek de faydalanır.
+Azure RTOS, IPsec aracılığıyla tam IP katmanı güvenliği ve TLS ve DTLS aracılığıyla yuva katmanı güvenliği de dahil olmak üzere EAL4+ Ortak Ölçütler güvenlik sertifikalı bir ortam sağlar. Yazılım şifreleme kitaplığımız FIPS 140-2 sertifikası elde etti. Ayrıca donanım şifreleme özelliklerinden, ThreadX MODULES aracılığıyla bellek koruması ve ARM'nin TrustZone ARMv8-M güvenlik özelliklerine yönelik destekten de yararlaniyoruz.
 
-## <a name="components-of-azure-rtos"></a>Azure RTOS bileşenleri
+## <a name="components-of-azure-rtos"></a>Components of Azure RTOS
 
-Azure RTOS platformu, Azure RTOS ThreadX, Azure RTOS FileX, Azure RTOS Gux, Azure RTOS NetX, Azure RTOS NetX Duo ve Azure RTOS USBX gibi çalışma zamanı çözümlerinin koleksiyonudur.
+Azure RTOS platformu, Azure RTOS ThreadX, Azure RTOS FileX, Azure RTOS GUIX, Azure RTOS NetX, Azure RTOS NetX Duo ve Azure RTOS USBX gibi çalışma zamanı çözümleri koleksiyonudur.
 
 ### <a name="azure-rtos-threadx"></a>Azure RTOS ThreadX
 
-Azure [RTOS ThreadX](threadx/overview-threadx.md) , özellikle derin eklenmiş uygulamalar için tasarlanan gelişmiş bir Real-Time işletim sistemidir (RTOS). Azure RTOS ThreadX 'in sunduğu birçok avantaj arasında gelişmiş zamanlama olanakları, ileti geçirme, kesme yönetimi ve mesajlaşma hizmetleri sağlanmaktadır. Azure RTOS ThreadX, picokernel mimarisi, önalım-Threshold zamanlaması, olay zincirleme ve zengin bir sistem hizmeti kümesi gibi birçok gelişmiş özelliğe sahiptir.
+Azure [RTOS ThreadX,](threadx/overview-threadx.md) özellikle derin Real-Time için tasarlanmış gelişmiş bir İşletim Sistemi (RTOS) işletim sistemidir. ThreadX'in sağladığı Azure RTOS arasında gelişmiş zamanlama özellikleri, ileti geçirme, kesinti yönetimi ve mesajlaşma hizmetleri yer alır. Azure RTOS ThreadX'in picokernel mimarisi, ön üretim eşiği zamanlaması, olay zincirleme ve zengin bir sistem hizmetleri kümesi gibi birçok gelişmiş özelliği vardır.
 
 ### <a name="azure-rtos-filex"></a>Azure RTOS FileX
 
-Azure [RTOS FileX](filex/overview-filex.md) , yüksek PERFORMANSLı bir FAT uyumlu dosya sistemidir. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS FileX, küçük bir kaplama ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da dosya işlemleri gerektiren, günümüzün derin eklenmiş uygulamalar için ideal hale getirir. Azure RTOS FileX, Azure RTOS LevelX aracılığıyla RAM disk, USBX, SD kartı ve nve/veya Flash anıları dahil olmak üzere çoğu fiziksel medyayı destekler.
+Azure [RTOS FileX,](filex/overview-filex.md) yüksek performanslı FAT ile uyumlu bir dosya sistemidir. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. ThreadX Azure RTOS gibi Azure RTOS FileX de küçük bir ayak izine ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu nedenle dosya işlemleri gerektiren günümüzün derin tümleşik uygulamaları için idealdir. Azure RTOS FileX, LevelX aracılığıyla RAM diski, USBX, SD CARD ve NAND/NOR flash bellekler dahil olmak üzere çoğu fiziksel medyayı Azure RTOS destekler.
 
 ### <a name="azure-rtos-guix"></a>Azure RTOS GUIX
 
-Azure [RTOS Gux](guix/overview-guix.md) , katıştırılmış sistem geliştiricilerin ihtiyaçlarını karşılamak üzere oluşturulan, profesyonel kalitede bir grafik kullanıcı arabirimi paketidir. Alternatiflerden farklı olarak, Azure RTOS Gux küçük, hızlı ve grafiksel çıktıyı destekleyebilen neredeyse her türlü donanım yapılandırmasına kolayca eklenir. Azure RTOS Gux Ayrıca, uygulama düzeyinde kullanıcı arabirimi geliştirmesi için olağanüstü bir görsel bakış ve sezgisel ve güçlü bir API sunar.
+Azure [RTOS GUIX,](guix/overview-guix.md) tümleşik sistem geliştiricilerinin ihtiyaçlarını karşılamak için oluşturulmuş profesyonel bir grafik kullanıcı arabirimi paketidir. Alternatiflerin aksine, Azure RTOS GUIX küçüktür, hızlıdır ve grafik çıkış desteğine sahip neredeyse tüm donanım yapılandırmalarına kolayca taşınabilir. Azure RTOS GUIX ayrıca olağanüstü bir görsel çekicilik ve uygulama düzeyinde kullanıcı arabirimi geliştirme için sezgisel ve güçlü bir API sunar.
 
 ### <a name="azure-rtos-netx"></a>Azure RTOS NetX
 
-Azure [RTOS NetX](netx/overview-netx.md) , TCP/IP protokol standartlarının yüksek performanslı bir uygulamasıdır. Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS NetX 'in benzersiz bir piconet mimarisi vardır. Sıfır kopyalama API 'siyle birlikte kullanıldığında, bu, ağ bağlantısı gerektiren son derece eklenmiş uygulamalar için mükemmel bir uyum sağlar.
+Azure [RTOS NetX,](netx/overview-netx.md) TCP/IP protokolü standartlarının yüksek performanslı bir uygulamasıdır. Bu, Azure RTOS ThreadX ile tamamen tümleşiktir ve desteklenen tüm işlemciler için kullanılabilir. Azure RTOS NetX'in benzersiz bir Piconet mimarisi vardır. Sıfır kopya api'si ile birlikte, ağ bağlantısı gerektiren, günümüzün derinden eklenmiş uygulamaları için mükemmel bir uyum sağlar.
 
 ### <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure [RTOS NetX](netx-duo/overview-netx-duo.md) Duo, özellikle de gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan, gelişmiş, ENDÜSTRIYEL bir TCP/IP ağı yığınlarıdır. Azure RTOS NetX Duo, iki IPv4 ve IPv6 ağ yığınıdır. NetX, temel olarak Azure RTOS NetX Duo bir alt kümesi olan özgün IPv4 ağ yığınıdır.
+Azure [RTOS NetX](netx-duo/overview-netx-duo.md) Duo, derin katıştırılmış, gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış gelişmiş, Endüstriyel Sınıf TCP/IP ağ yığınlarıdır. Azure RTOS NetX Duo ikili bir IPv4 ve IPv6 ağ yığınıyken NetX, Azure RTOS NetX Duo'nın bir alt kümesi olan özgün IPv4 ağ yığınıdır.
 
 ### <a name="azure-rtos-usbx"></a>Azure RTOS USBX
 
-Azure [RTOS USBX](usbx/overview-usbx.md) , yüksek PERFORMANSLı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX desteklenen işlemcilerde kullanılabilir. Azure RTOS ThreadX gibi Azure RTOS USBX, küçük bir parmak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla bir arabirim gerektiren çok sayıda gömülü uygulama için idealdir.
+Azure [RTOS USBX,](usbx/overview-usbx.md) yüksek performanslı bir USB ana bilgisayarı, cihaz ve On-The-The-Go (OTG) tümleşik yığınıdır. ThreadX ile tamamen tümleşiktir ve ThreadX tarafından desteklenen tüm Azure RTOS kullanılabilir. ThreadX Azure RTOS gibi, Azure RTOS USBX de küçük bir ayak izine ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla arabirim gerektiren derin tümleşik uygulamalar için idealdir.
 
 ### <a name="windows-tools"></a>Windows araçları
 
-Azure [RTOS Gux Studio](guix/about-guix-studio.md) , uygulamanın GUI 'si içindeki tüm grafik öğelerinin oluşturulmasını ve bakımını kolaylaştırmanın yanı sıra, tümüyle bir GUI uygulama tasarım ortamı sağlar. Azure RTOS Gux Studio otomatik olarak Azure RTOS Gux kitaplığı ile uyumlu C kodu oluşturur ve hedefte derlenmeye ve çalıştırılmaya çalışır.
+Azure [RTOS GUIX Studio,](guix/about-guix-studio.md) uygulamanın GUI'sinde tüm grafik öğelerinin oluşturulmasını ve bakımını kolaylaştıran eksiksiz bir GUI uygulaması tasarım ortamı sağlar. Azure RTOS GUIX Studio, otomatik olarak Azure RTOS GUIX kitaplığıyla uyumlu C kodu üretir ve hedefte derlenir ve çalışır hale gelir.
 
-Azure [RTOS TraceX](tracex/overview-tracex.md) , geliştiricilere gerçek zamanlı sistem olaylarının grafik bir görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmesini ve daha iyi anlamasına olanak tanıyan ana bilgisayar tabanlı bir analiz aracıdır.
+Azure [RTOS TraceX,](tracex/overview-tracex.md) geliştiricilere gerçek zamanlı sistem olaylarının grafik görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmelerine ve daha iyi anlamalarına olanak sağlayan konak tabanlı bir analiz aracıdır.
 
-## <a name="the-azure-rtos-advantage"></a>Azure RTOS avantajı
-Azure RTOS, diğer gerçek zamanlı işletim sistemleri için aşağıdaki avantajları sağlar.
+## <a name="the-azure-rtos-advantage"></a>Azure RTOS Avantajı
+Azure RTOS gerçek zamanlı işletim sistemlerine göre aşağıdaki avantajları sağlar.
 
 ### <a name="most-deployed-rtos"></a>En çok dağıtılan RTOS
 
-Önde gelen 'U M2M Market Intelligence firması, VDC Research 'e göre Azure RTOS 'ın dünya genelinde 6.200.000.000 dağıtımı vardır. Azure RTOS 'ın popülerliği, güvenilirliği, kalitesi, boyutu, performansı, gelişmiş özellikler, kullanım kolaylığı ve genel kullanım süresi avantajına yönelik bir testdir.
+Azure RTOS M2M pazar zekası firması VDC Research'e göre dünya çapında 6,2 milyardan fazla dağıtım var. Bu Azure RTOS popülerliği güvenilirlik, kalite, boyut, performans, gelişmiş özellikler, kullanım kolaylığı ve genel pazara satış süresi avantajlarının bir dezavantajıdır.
 
-> *"Şirketin temelleri ile bu yana kablosuz ve IoT pazarlarında THREADX 'in büyüme tratrumuzu izliyoruz ve THREADX 'in yaygın sektör benimsemesi tarafından giderek daha da artmaktadır."* – Chris Rommel, Executive Başkan Yardımcısı, VDC Research
+> *"Şirketin kurulduğundan bu yana kablosuz ve IoT pazarlarında THREADX'in büyüme rotası takip edildi ve THREADX'in sektör genelinde benimsenmesi giderek daha çok etkileniyor."* – Chris Rommel, VDC Research Başkan Yardımcısı
 
 ### <a name="intuitive-and-consistent-api-design"></a>Sezgisel ve tutarlı API tasarımı
 
 * Sezgisel ve tutarlı API.
-* Ad-fiil adlandırma kuralı.
-* Tüm API 'Lerin, ait oldukları Azure RTOS bileşenini kolayca belirlemek için ThreadX *fx_* ve filex için *tx_* gibi önde gelen öneki vardır.
-* API 'Ler genelinde işlevsel tutarlılık. Örneğin, askıya aldığı tüm API işlevlerinin aynı şekilde işlev gösteren isteğe bağlı bir zaman aşımı vardır.
-* Birçok API, uygulama ISRs 'den doğrudan kullanılabilir.
-- Medya ve dosya işlemleri için isteğe bağlı Kullanıcı bildirimi geri çağırmaları.
+* İsim-fiil adlandırma kuralı.
+* Tüm API'ler, ait *olduğu tx_* kolayca  tanımlamak için ThreadX için fx_ ve FileX için Azure RTOS ön eke sahip olur.
+* API'ler genelinde işlevsel tutarlılık. Örneğin, askıya alan tüm API işlevleri aynı şekilde işlev alan isteğe bağlı bir zaman aşımına sahiptir.
+* Birçok API doğrudan uygulama ISR'lerinden kullanılabilir.
+- Medya ve dosya işlemleri için isteğe bağlı kullanıcı bildirimi geri çağırmaları.
 * Olay odaklı programlama modeli (API).
 
 ### <a name="high-efficiency"></a>Yüksek verimlilik
 
-- Küçük kod parmak izi.
-- Kullanılan Hizmetleri temel alan ölçeklenebilir kod kaplama.
-- TUV ve UL-ıEC 61508 SIL 4, ıEC 62304 Class C, ISO 26262 asıl D ve EN 50128 SW-SIL4 tarafından önceden onaylanmış.
-- Hızlı yürütme. Azure RTOS hız için tasarlanmıştır ve en hızlı olası performansa ulaşmak için en az sayıda iç işlev çağrısı katmanlanıyor.
+- Küçük kod ayak izi.
+- Kullanılan hizmetlere göre ölçeklenebilir kod ayak izi.
+- TTROP ve UL tarafından IEC 61508 SIL 4, IEC 62304 Sınıf C, ISO 26262 SONA D ve EN 50128 SW-SIL4 için önceden sertifikalıdır.
+- Hızlı yürütme. Azure RTOS hız için tasarlanmıştır ve mümkün olan en hızlı performansı elde etmeye yardımcı olmak için minimum iç işlev çağrısı katmanına sahiptir.
 
-### <a name="fastest-time-to-market"></a>En hızlı pazar süresi
+### <a name="fastest-time-to-market"></a>En hızlı pazara satış süresi
 
-Azure RTOS 'ın yüklenmesi, öğrenilmesi, kullanılması, hata ayıklaması, doğrulanması, onaylamak ve bakımını yapmak kolaydır. Sonuç olarak, Azure RTOS, farklı bir deyişle, Broadcom, Gainspan ve benzeri birçok SoCs dahil olmak üzere, yerleşik IoT cihazları için en popüler gerçek zamanlı işletim sistemlerinden biridir. Tutarlı Pazar süresi avantajımız, şu şekilde oluşturulmuştur:
+Azure RTOS yüklemek, öğrenmek, kullanmak, hata ayıklamak, doğrulamak, onaylamak ve bakımını yapmak kolaydır. Sonuç olarak Azure RTOS, Broadcom, Gainspan ve benzeri birçok SoC dahil olmak üzere tümleşik IoT cihazları için en popüler gerçek zamanlı işletim sistemlerinden biri. Tutarlı pazara satış süresi avantajımız şu şekildedir:
 
-* Tüm kaynak kodu kullanılabilirliği.
+* Kaynak kodu kullanılabilirliğini tamamlama.
 * Kullanımı kolay API.
 * Kapsamlı ve gelişmiş özellik kümesi.
 * Kalite belgeleri.
 
-### <a name="one-simple-license"></a>Tek bir basit lisans
+### <a name="one-simple-license"></a>Tek Bir Basit Lisans
 
-Önceden lisanslanmış cihazlara dağıtıldığında, diğer tüm cihazların basit bir yıllık lisansa sahip olması için, kaynak kodu ve test lisansları için ücret ve maliyet kullanımı maliyeti yoktur.
+Kaynak kodu kullanmanın ve test etmek için bir maliyeti ve önceden lisanslı cihazlara dağıtıldığında üretim lisansları için maliyet yoktur, diğer tüm cihazların basit bir yıllık lisansı olması gerekir.
 
 ### <a name="full-highest-quality-source-code"></a>Tam, en yüksek kaliteli kaynak kodu
 
-Yıl boyunca Azure RTOS kaynak kodu, çubuğun kalitesini ve anlamayı kolay bir şekilde ayarladı. Ayrıca, dosya başına bir işleve sahip olma kuralı, kolay kaynak gezintisi için sağlar.
+Yıllar boyunca Azure RTOS kodu, kalite ve anlama kolaylığı çıtasını ayarladı. Ayrıca, dosya başına bir işleve sahip olmak, kolay kaynak gezintisi sağlar.
 
-### <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>TUV ve UL ile birçok güvenlik standartlarına ön sertifikalı
+### <a name="pre-certified-by-tuv-and-ul-to-many-safety-standards"></a>T ÖNLEMLERI VE UL tarafından birçok güvenlik standartlarına önceden onaylandı
 
-Azure RTOS, SGS-TUV Saar tarafından, ıEC-61508 SIL 4, ıEC-62304 SW Safety Class C, ISO 26262 asıl D ve EN 50128 'e göre güvenlik açısından kritik sistemlerde kullanılmak üzere sertifikalandırilmiştir. Sertifika, Azure RTOS 'ın, "elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili sistemlerin Işlevsel güvenliği" için ıEC-61508, ıEC-62304, ISO 26262 ve 50128 EN yüksek güvenlik bütünlüğü düzeyleri için güvenlikle ilgili yazılımların geliştirilmesinde kullanılabileceğini onaylar. Almanya 'nın SGS-Group ve TUV Saarland 'ın Birleşik bir tezi aracılığıyla oluşturulan SGS-TUV Saar, dünya çapındaki güvenlikle ilgili sistemler için eklenmiş yazılımları test etmek, denetlemek, doğrulamak ve sertifika almak için önde gelen acalacaklandırılan şirkete gelmiştir. Endüstriyel güvenlik standardı IEC 61508 ve bundan türetilmiş tüm standartlar, IEC-62304, ISO 26262 ve en 50128 dahil, elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili tıbbi cihazların, işlem denetim sistemlerinin, endüstriyel makinelerin, otomobil ve demiryolu denetim sistemlerinin işlevsel güvenlik düzeyini güvence altına almak için kullanılır.
+Azure RTOS, IEC-61508 SIL 4, IEC-62304 SW Safety Class C, ISO 26262 SATıR D ve EN 50128'e göre güvenlik açısından kritik sistemlerde kullanım için VEZİP-TTROP Saar tarafından sertifikalandı. Sertifikasyon, Azure RTOS'nin IEC-61508, IEC-62304, ISO 26262 ve EN 50128'in "Elektrik, elektronik ve programlanabilir elektronik güvenlikle ilgili sistemlerin işlevsel güvenliği" için en yüksek güvenlik bütünlüğü düzeyleri için güvenlikle ilgili yazılımların geliştirilmesinde kullanılablı olduğunu onaylar. Almanya'nın SGS-Group ve TTAB Saarland'ın ortak girişimiyle oluşturulan VEPÜS-TTAB Saar, dünya çapında güvenlikle ilgili sistemler için ekli yazılımları test etme, denetleme, doğrulama ve onaylama konusunda yetkilendirilmiş, bağımsız lider şirket haline gelmiştir. Endüstriyel güvenlik standardı IEC 61508 ve IEC-62304, ISO 26262 ve EN 50128 dahil olmak üzere bu standarttan türetilen tüm standartlar elektrik, elektronik ve programlanabilir elektronik güvenlikle ilgili tıbbi cihazların, işlem kontrol sistemlerinin, endüstriyel makinelerin, otomobillerin ve demir yolu kontrol sistemlerinin işlevsel güvenliğini sağlamak için kullanılır.
 
-:::image type="content" source="media/partener-logo-sgs-tuv-saar.png" alt-text="SGS-TUV sertifikası":::
+:::image type="content" source="media/partener-logo-sgs-tuv-saar.png" alt-text="YERİNE-TUV sertifikası":::
 
-Azure RTOS, bir ınımı 60730-1 Ek H, CSA E60730-1 Ek H, ıEC 60730-1 Ek H, UL 60335-1 ek R, ıEC 60335-1 ek R ve, programlanabilir bileşenlerinde yazılım için UL 1998 güvenlik standartları ile uyumlu bir şekilde tanınıyor. UL, en fazla uzman sürmek güvenlik çözümleri sunan küresel, bağımsız bir güvenlik bilimi şirketidir. Bu, elektrik, yenilenebilir enerji ve Nanotechnology için genel olarak elektrik 'yi benimseme özelliğine sahiptir.
+Azure RTOS UL tarafından UL 60730-1 Ek H, CSA E60730-1 Ek H, IEC 60730-1 Ek H, UL 60335-1 Ek R, IEC 60335-1 Ek R ve PROGRAMlanabilir bileşenlerde yazılım için UL 1998 güvenlik standartları ile uyumluluk için kabul edilmiştir. UL, elektriğin genel olarak benimsenmesinden sürdürülebilirlik, yenilenebilir enerji ve nanoteknolojiye kadar uzanan, asırlık bir uzmanlık alanında yenilikçi güvenlik çözümlerine sahip küresel, bağımsız bir güvenlik bilimi şirketidir.
 
 :::image type="content" source="media/cru-logo-certification.png" alt-text="CRU UL sertifikası":::
 
-tuv ve UL sertifikalarla ilişkili Artifacts (sertifika, güvenlik el kitabı, Test raporu vb.) satış için kullanılabilir.
+Artifacts (Sertifika, Güvenlik Kılavuzu, Test Raporu vb.) ve UL sertifikaları satışa sunuldu.
 
-Uygulamanın ek sertifikaya ihtiyacı olduğu durumlarda, gerçek donanım platformunu kullanarak ve hatta uygulama kodunu kapsayan çeşitli standartlara anahtar sertifikası sağlamak için Microsoft aracılığıyla bir sertifika hizmeti kullanılabilir. Sertifika hizmetimiz hakkında daha fazla bilgi için bizimle iletişime geçin.
+Uygulamanın ek sertifikasyona ihtiyacı olduğu durumlarda, gerçek donanım platformunu kullanarak ve hatta uygulama kodunu kapsayan çeşitli standartlara anahtar teslim sertifikasyonu sağlamak için Microsoft aracılığıyla bir sertifika hizmeti kullanılabilir. Sertifikasyon hizmetimiz hakkında daha fazla bilgi için bizimle iletişime geçin.
 
-### <a name="eal4-common-criteria-security-certification"></a>EAL4 + ortak ölçütler güvenlik sertifikası
+### <a name="eal4-common-criteria-security-certification"></a>EAL4+ Ortak Ölçütler güvenlik sertifikası
 
-Azure RTOS, EAL4 + ortak ölçütler güvenlik sertifikası elde etti. Değerlendirme hedefi (TOE), Azure RTOS ThreadX, Azure RTOS NetX Duo, Azure RTOS NetX güvenli TLS ve Azure RTOS NetX MQTT 'yi içerir. Bu, derin eklenmiş sensörler, cihazlar, uç yönlendiriciler ve ağ geçitleri için gereken en yaygın IoT protokollerini temsil eder.
+Azure RTOS EAL4+ Ortak Ölçütler güvenlik sertifikası elde etti. Değerlendirme Hedefi (TOE), Azure RTOS, Azure RTOS NetX Duo, Azure RTOS NetX Secure TLS ve NetX MQTT Azure RTOS kapsar. Bu, derin katıştırılmış algılayıcılar, cihazlar, uç yönlendiriciler ve ağ geçitleri için gereken en tipik IoT protokollerini temsil eder.
 
 :::image type="content" source="media/eal-logo-certification.png" alt-text="EAL sertifikası":::
 
-Microsoft Azure rtos SC güvenlik sertifikası için kullanılan bt güvenlik değerlendirme olanağı, en parlama BV ' dir ve sertifika yetkilisi de bir ttıt.
+RTOS SC güvenlik sertifikası için Microsoft Azure IT Güvenlik Değerlendirme Tesisi Brightsight BV, Sertifika Yetkilisi ise SERTIT'tir.
 
-### <a name="fips-140-2-validated"></a>FIPS 140-2 doğrulanan
+### <a name="fips-140-2-validated"></a>FIPS 140-2 Doğrulandı
 
-Azure RTOS şifre kitaplıkları, şifreleme modülleri için gereksinimleri belirten, yazılım için Federal bilgi Işleme standartlaştırma 140-2 (FIPS 140-2) sertifikası elde edin. FIPS 140-2, şifreleme gücü ve özellikleri ile ilgili belirli standartları karşılamak için şifreleme tabanlı güvenlik kullanan tüm federal kamu kuruluşlarını ve departmanları gerektirir. Bu şifreleme tabanlı güvenlik standartları, Kanada ve Avrupa Birliği 'nde de tanınır.
+Azure RTOS Şifreleme kitaplıkları, şifreleme modüllerinin gereksinimlerini belirten yazılım için Federal Bilgi İşleme Standartlaştırma 140-2 (FIPS 140-2) Sertifikası elde etti. FIPS 140-2, şifreleme gücü ve özellikleriyle ilgili belirli standartları karşılamak için şifreleme tabanlı güvenlik kullanan tüm federal kamu kurumları ve departmanlarını gerektirir. Bu şifreleme tabanlı güvenlik standartları Kanada ve Avrupa Birliği'nde de tanınır.
 
-Azure RTOS şifre kitaplıkları için kullanılan bilgi güvenliği değerlendirme laboratuvarı atsec idi ve sertifika yetkilisi [ulusal standartlar ve Teknoloji Enstitüsü (NIST)](https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3394).
+Şifreleme kitaplıkları için kullanılan Information Security Azure RTOS laboratuvarı güvenli, sertifika yetkilisi ise Ulusal Standartlar ve Teknoloji Enstitüsü ['dü (NIST).](https://csrc.nist.gov/projects/cryptographic-module-validation-program/Certificate/3394)
 
-### <a name="supports-most-popular-architectures"></a>Popüler mimarilerin çoğunu destekler
+### <a name="supports-most-popular-architectures"></a>En popüler mimarileri destekler
 
 Aşağıdaki gelişmiş mimarilere dahil olmak üzere en popüler 32/64 bit mikro işlemcilerin, kullanıma hazır, tam olarak sınanmış ve tam olarak desteklenen Azure RTOS.
 
