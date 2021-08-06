@@ -1,23 +1,23 @@
 ---
-title: Bölüm 5-USBX cihaz sınıfı konuları
-description: USBX cihaz sınıfı değerlendirmeleri hakkında bilgi edinin.
+title: Bölüm 5 - USBX Cihaz Sınıfı Konuları
+description: USBX Cihaz Sınıfı ile ilgili dikkat edilmesi gerekenler hakkında bilgi alın.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 84f215ad990a2fe185a08f3876276528787ef8bc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ea348d94e83863c0e2652df29f92d952f2242661
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826542"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178026"
 ---
-# <a name="chapter-5---usbx-device-class-considerations"></a>Bölüm 5-USBX cihaz sınıfı konuları
+# <a name="chapter-5---usbx-device-class-considerations"></a>Bölüm 5 - USBX Cihaz Sınıfı Konuları
 
-## <a name="device-class-registration"></a>Cihaz sınıfı kaydı
+## <a name="device-class-registration"></a>Cihaz Sınıfı kaydı
 
-Her cihaz sınıfı, kayıt için aynı prensibi izler. Sınıf Initialize işlevine belirli bir sınıf parametreleri içeren bir yapı geçirilir.
+Her cihaz sınıfı kayıt için aynı ilkeyi izler. Belirli sınıf parametrelerini içeren bir yapı, sınıf başlatma işlevine geçirildi.
 
 ```c
 /* Set the parameters for callback when insertion/extraction of a HID device. */
@@ -40,9 +40,9 @@ status = ux_device_stack_class_register(_ux_system_slave_class_hid_name,
     ux_device_class_hid_entry,1,0, (VOID *)&hid_parameter);
 ```
 
-Sınıfın bir örneği etkinleştirildiğinde her bir sınıf, isteğe bağlı olarak bir geri çağırma işlevi kaydedebilir. Geri arama daha sonra, uygulamayı bir örneğin oluşturulduğunu bilgilendirmek için cihaz yığını tarafından çağrılır.
+Sınıfın bir örneği etkinleştirildiğinde her sınıf isteğe bağlı olarak bir geri çağırma işlevi kaydedilebilir. Ardından geri çağırma, cihaz yığını tarafından uygulamanın bir örneğin oluşturularak ilgili bilgi vermek için çağrılır.
 
-Uygulamanın, aşağıdaki örnekte gösterildiği gibi, etkinleştirme ve devre dışı bırakma için 2 işlevi gövdesinde olması gerekir.
+Aşağıdaki örnekte gösterildiği gibi uygulamanın gövdesinde etkinleştirme ve devre dışı bırakma için 2 işlev olabilir.
 
 ```c
 VOID tx_demo_hid_instance_activate(VOID *hid_instance)
@@ -58,15 +58,21 @@ VOID tx_demo_hid_instance_deactivate(VOID *hid_instance)
 }
 ```
 
-Bu işlevler içinde herhangi bir şey yapmanız önerilmez, ancak sınıfın örneğini yeniden yüklemek ve uygulamanın geri kalanı ile eşitlemek için önerilir.
+Bu işlevlerin içinde bir şey yapmak değil, sınıfın örneğini ezberlemek ve uygulamanın geri kalanıyla eşitlemek önerilmez.
 
-## <a name="usb-device-storage-class"></a>USB cihaz depolama sınıfı
+## <a name="general-considerations-for-bulk-transfer"></a>Toplu Aktarımda Dikkat Edilmesi Gereken Genel Noktalar
 
-USB cihaz depolama sınıfı, sistemde gömülü bir depolama cihazının USB ana bilgisayarına görünür hale getirilmesini sağlar.
+USB 2.0 belirtimine göre, uç nokta her zaman veri yüklerini uç noktanın bildirilen wMaxPacketSize değerinden küçük veya buna eşit bir veri alanıyla ilettiği gerekir. Veri paketinin boyutu bMaxPacketSize ile sınırlıdır. Aktarım aşağıdaki durumlarla tamamlanır
+1. Uç nokta tam olarak beklenen veri miktarını aktardı
+2. Bir cihaz veya konak uç noktası boyut üst paket boyutundan (wMaxPacketSize) küçük bir paket alır. Bu kısa paket, daha fazla veri paketi olmadığını ve aktarımın tamamlandıktan sonra ya da aktaracak veri paketlerinin hepsi wMaxPacketSize'a eşit olduğunda aktarım sonu belirlenemedi. Aktarımın tamamlanması için Bir Sıfır Uzunluk Paketi(ZLP) Kısa paketler ve Sıfır Uzunluk Paketleri toplu veri aktarımının sonuna işaret ediyor olmalıdır. Yukarıdaki önemli noktalar ham toplu veri aktarımı API'leri (örneğin, ux_device_class_cdc_acm_read() için geçerlidir.
 
-USB cihaz depolama sınıfı kendi kendine bir depolama çözümü sağlamaz. Yalnızca konaktan gelen SCSI isteklerini kabul eder ve yorumlar. Bu isteklerden biri bir okuma veya yazma komutu olduğunda, bir ATA cihaz sürücüsü veya bir Flash cihaz sürücüsü gibi gerçek bir depolama cihazı işleyicisine önceden tanımlanmış bir çağrı çağırır.
+## <a name="usb-device-storage-class"></a>USB Cihaz Depolama Sınıfı
 
-Cihaz depolama sınıfı başlatılırken, gerekli tüm bilgileri içeren sınıfa bir işaretçi yapısı verilir. Aşağıda bir örnek verilmiştir.
+USB cihazı depolama sınıfı, sisteme eklenmiş bir depolama cihazının BIR USB ana bilgisayarı tarafından görünür halelanmasına olanak sağlar.
+
+USB cihazı depolama sınıfı tek başına bir depolama çözümü sağlamaz. Yalnızca konaktan gelen SCSI isteklerini kabul eder ve yorumlar. Bu isteklerden biri okuma veya yazma komutu olduğunda, ATA cihaz sürücüsü veya Flash cihaz sürücüsü gibi gerçek bir depolama cihazı işleyicisine önceden tanımlanmış bir çağrı çağırır.
+
+Cihaz depolama sınıfı başlatken, gerekli tüm bilgileri içeren sınıfa bir işaretçi yapısı verilir. Aşağıda bir örnek verilmiştir.
 
 ```c
 /* Initialize the storage class parameters to customize vendor strings. */
@@ -113,13 +119,13 @@ status = ux_device_stack_class_register(_ux_system_slave_class_storage_name,
     ux_device_class_storage_entry, ux_device_class_storage_thread, 0, (VOID *)&storage_parameter);
 ```
 
-Bu örnekte, sürücü depolama dizeleri karşılık gelen parametreye dize işaretçileri atayarak özelleştirilir. Dize işaretçisinden herhangi biri UX_NULL bırakılırsa, varsayılan Azure RTOS dizesi kullanılır.
+Bu örnekte, sürücü depolama dizeleri, karşılık gelen parametreye dize işaretçileri atanarak özelleştirilebilir. Dize işaretçilerinden herhangi biri dosyanın içinde UX_NULL varsayılan Azure RTOS kullanılır.
 
-Bu örnekte, sürücünün son blok adresi veya LBA, mantıksal kesim boyutu ile birlikte verilir. LBA, medyada bulunan kesimlerin sayısıdır – 1. Blok uzunluğu normal depolama medyasında 512 olarak ayarlanır. Bu, optik sürücüler için 2048 olarak ayarlanabilir.
+Bu örnekte, sürücünün son blok adresi veya LBA'sı ve mantıksal kesim boyutu verilmiştir. LBA, medya –1'de kullanılabilen kesimlerin sayısıdır. Blok uzunluğu normal depolama medyası içinde 512 olarak ayarlanır. Optik sürücüler için 2048 olarak ayarlanmıştır.
 
-Uygulamanın, depolama sınıfının medya için durum okumasına, yazmasına ve almasına izin vermek üzere üç geri çağırma işlevi işaretçisi geçmesi gerekir.
+Depolama sınıfının medya için okumasına, yazmasına ve durumunu eldesına izin vermek için uygulamanın üç geri çağırma işlevi işaretçisi geçmesi gerekir.
 
-Okuma ve yazma işlevlerine yönelik prototipler aşağıdaki örnekte gösterilmiştir.
+Okuma ve yazma işlevlerinin prototipleri aşağıdaki örnekte gösterilmiştir.
 
 ```c
 UINT media_read( 
@@ -141,16 +147,16 @@ UINT media_write(
 
 Konum:
 
-- *depolama* , depolama sınıfının örneğidir.
-- *LUN* , komutun yönlendirildiği LUN 'dur.
-- *data_pointer* , okuma veya yazma için kullanılacak arabelleğin adresidir.
-- *number_blocks* okunacak/yazılacak kesimlerin sayısıdır.
-- *LBA* , okunan kesim adresidir.
-- *media_status* , tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
+- *depolama,* depolama sınıfının örneğidir.
+- *lun,* komutun yönlendir olduğu LUN'dır.
+- *data_pointer,* okuma veya yazma için kullanılacak arabelleğin adresidir.
+- *number_blocks,* okunacak/yazacak kesimlerin sayısıdır.
+- *lba,* okunacak kesim adresidir.
+- *media_status* tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
 
-Dönüş değeri UX_SUCCESS veya başarılı ya da başarısız bir işlemi gösteren UX_ERROR olabilir. Bu işlemlerin herhangi bir hata kodunu döndürmesi gerekmez. Herhangi bir işlemde hata varsa, depolama sınıfı durum geri çağırma işlevini çağırır.
+Dönüş değeri, başarılı veya başarısız UX_SUCCESS veya UX_ERROR bir değere sahip olabilir. Bu işlemlerin başka bir hata kodu dönmesine gerek yoktur. Herhangi bir işlemde hata varsa depolama sınıfı durum çağrısı işlevini çağırır.
 
-Bu işlev aşağıdaki prototipi içerir.
+Bu işlev aşağıdaki prototipe sahiptir.
 
 ```c
 ULONG media_status( 
@@ -160,61 +166,61 @@ ULONG media_status(
     ULONG *media_status);
 ```
 
-Çağıran parametre media_id Şu anda kullanılmıyor ve her zaman 0 olmalıdır. Gelecekte birden çok depolama cihazını veya depolama cihazlarını birden çok SCSI LUN ile ayırt etmek için kullanılabilir. Depolama sınıfının bu sürümü, birden fazla SCSI LUN ile depolama sınıfının veya depolama cihazlarının birden çok örneğini desteklemez.
+Çağrı parametresi media_id şu anda kullanılmaz ve her zaman 0 olmalıdır. Gelecekte, birden çok depolama cihazı veya birden çok SCSI LUN'a sahip depolama cihazlarını ayırt etmek için kullanılabilir. Depolama sınıfının bu sürümü, depolama sınıfının veya birden çok SCSI LUN'a sahip depolama cihazlarının birden çok örneğini desteklemez.
 
-Dönüş değeri, aşağıdaki biçime sahip olabilir bir SCSI hata kodudur.
+Dönüş değeri, aşağıdaki biçime sahip bir SCSI hata kodudur.
 
-- **Bıts 0-7** Sense_key
-- **Bıts 8-15** Ek algılama kodu
-- **Bıts 16-23** Ek algılama kod niteleyicisi
+- **Bit 0-7** Sense_key
+- **Bit 8-15** Ek Sense Code
+- **Bit 16-23** Ek Sense Code Niteleyicisi
 
-Aşağıdaki tabloda olası Sense/ASC/ASCQ birleşimleri sağlanmıştır.
+Aşağıdaki tablo olası Sense/ASC/ASCQ birleşimlerini sağlar.
 
-| Algılama anahtarı | ASC | YOKQ | Açıklama                                       |
+| Sense Key | ASC | ASCQ | Description                                       |
 | --------- | --- | ---- | ------------------------------------------------- |
-| 00        | 00  | 00   | FIKIR YOK                                          |
-| 01        | 17  | 01   | YENIDEN DENEMELER IÇEREN KURTARıLAN VERILER                       |
+| 00        | 00  | 00   | ANLAMI YOK                                          |
+| 01        | 17  | 01   | YENIDEN DENEMELERLE KURTARıLAN VERILER                       |
 | 01        | 18  | 00   | ECC ILE KURTARıLAN VERILER                           |
-| 02        | 04  | 01   | MANTıKSAL SÜRÜCÜ, HAZıRLAMA IÇIN HAZıRLANMA          |
-| 02        | 04  | 02   | MANTıKSAL SÜRÜCÜ KULLANıMA ALıNAMADı-BAŞLATMA GEREKIYOR |
-| 02        | 04  | 04   | MANTıKSAL BIRIM READY-FORMAT DEVAM EDIYOR       |
-| 02        | 04  | BENZERI   | MANTıKSAL SÜRÜCÜ READY-CIHAZ MEŞGUL          |
+| 02        | 04  | 01   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - HAZıR OLMA          |
+| 02        | 04  | 02   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - BAŞLATMA GEREKIYOR |
+| 02        | 04  | 04   | MANTıKSAL BIRIM HAZıR DEĞIL - BIÇIM DEVAM EDIYOR       |
+| 02        | 04  | Ff   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - CIHAZ MEŞGUL          |
 | 02        | 06  | 00   | BAŞVURU KONUMU BULUNAMADı                       |
 | 02        | 08  | 00   | MANTıKSAL BIRIM ILETIŞIM HATASı                |
-| 02        | 08  | 01   | MANTıKSAL BIRIM ILETIŞIM ZAMAN AŞıMı               |
+| 02        | 08  | 01   | MANTıKSAL BIRIM ILETIŞIM ZAMAN OUT               |
 | 02        | 08  | 80   | MANTıKSAL BIRIM ILETIŞIM TAŞMASı                |
-| 02        | 3A  | 00   | ORTA YOK                                |
-| 02        | 54  | 00   | USB 'DEN KONAĞA SISTEM ARABIRIMI HATASı              |
-| 02        | 80  | 00   | YETERSIZ KAYNAK                            |
-| 02        | BENZERI  | BENZERI   | BILINMEYEN HATA                                     |
-| 03        | 02  | 00   | ARAMA TAMAM                                  |
+| 02        | 3a  | 00   | ORTA YOK                                |
+| 02        | 54  | 00   | USB-KONAK SISTEM ARABIRIMI HATASı              |
+| 02        | 80  | 00   | YETERSIZ KAYNAKLAR                            |
+| 02        | Ff  | Ff   | BILINMEYEN HATA                                     |
+| 03        | 02  | 00   | ARAMA TAMAMLANMADı                                  |
 | 03        | 03  | 00   | YAZMA HATASı                                       |
-| 03        | 10  | 00   | KIMLIK CRC HATASı                                      |
-| 03        | 11  | 00   | KURTARıLAN OKUMA HATASı                            |
+| 03        | 10  | 00   | ID CRC ERROR                                      |
+| 03        | 11  | 00   | KURTARıLMAMıŞ OKUMA HATASı                            |
 | 03        | 12  | 00   | KIMLIK ALANı IÇIN ADRES IŞARETI BULUNAMADı               |
 | 03        | 13  | 00   | VERI ALANı IÇIN ADRES IŞARETI BULUNAMADı             |
-| 03        | 14  | 00   | KAYDEDILEN VARLıK BULUNAMADı                         |
-| 03        | 30  | 01   | ORTA BILINMEYEN BIÇIM OKUNAMıYOR               |
-| 03        | 31  | 01   | BIÇIMLENDIRME KOMUTU BAŞARıSıZ                             |
-| 04        | 40  | NN   | NN BILEŞENINDE TANıLAMA HATASı (80H-FFH)      |
-| 05        | 1A  | 00   | PARAMETRE LISTESI UZUNLUĞU HATASı                       |
-| 05        | 20  | 00   | GEÇERSIZ KOMUT IŞLEMI KODU                    |
+| 03        | 14  | 00   | KAYıTLı VARLıK BULUNAMADı                         |
+| 03        | 30  | 01   | ORTA OKUNAMAZ - BILINMEYEN BIÇIM               |
+| 03        | 31  | 01   | FORMAT KOMUTU BAŞARıSıZ OLDU                             |
+| 04        | 40  | Nn   | BILEŞEN NN'DE TANıLAMA HATASı (80H-FFH)      |
+| 05        | 1A  | 00   | PARAMETRE LISTESI UZUNLUK HATASı                       |
+| 05        | 20  | 00   | GEÇERSIZ KOMUT IŞLEM KODU                    |
 | 05        | 21  | 00   | MANTıKSAL BLOK ADRESI ARALıK DıŞıNDA                |
 | 05        | 24  | 00   | KOMUT PAKETINDE GEÇERSIZ ALAN                   |
 | 05        | 25  | 00   | MANTıKSAL BIRIM DESTEKLENMIYOR                        |
 | 05        | 26  | 00   | PARAMETRE LISTESINDE GEÇERSIZ ALAN                   |
 | 05        | 26  | 01   | PARAMETRE DESTEKLENMIYOR                           |
 | 05        | 26  | 02   | PARAMETRE DEĞERI GEÇERSIZ                           |
-| 05        | 39  | 00   | PARAMETRELERI KAYDETME DESTEĞI YOK                     |
-| 06        | 28  | 00   | BAŞLAMAYA HAZıRLANMA – MEDYA DEĞIŞTIRILDI     |
-| 06        | 29  | 00   | SıFıRLAMA VEYA VERI YOLU CIHAZıNı SıFıRLAMA SıRASıNDA GÜÇ GERÇEKLEŞTI       |
-| 06        | 2F  | 00   | BAŞKA BIR BAŞLATıCı TARAFıNDAN TEMIZLENMIŞ KOMUTLAR             |
+| 05        | 39  | 00   | PARAMETRELERI KAYDETME DESTEKLENMIYOR                     |
+| 06        | 28  | 00   | HAZıR DEĞIL GEÇIŞI – MEDYA DEĞIŞTIRILDI     |
+| 06        | 29  | 00   | SıFıRLAMA VEYA BUS CIHAZı SıFıRLAMANıN GÜCÜ OLUŞTU       |
+| 06        | 2f  | 00   | BAŞKA BIR BAŞLATıCı TARAFıNDAN TEMIZLI KOMUTLAR             |
 | 07        | 27  | 00   | KORUMALı MEDYA YAZMA                             |
-| 0B        | 4E  | 00   | ÇAKıŞAN KOMUT DENENDI                      |
+| 0B        | 4e  | 00   | ÇAKıŞAN KOMUT DENENDI                      |
 
-Uygulamanın uygulayamayacağı iki ek, isteğe bağlı geri çağırma vardır; biri **GET_STATUS_NOTIFICATION** komutuna yanıt vermek ve diğeri **SYNCHRONIZE_CACHE** komutuna yanıt vermek içindir.
+Uygulamanın uygulayabiliyor olduğu iki ek, isteğe bağlı geri çağırma vardır; Biri bir GET_STATUS_NOTIFICATION **komutuna** yanıt, diğeri de SYNCHRONIZE_CACHE **için.**
 
-Uygulama konaktan GET_STATUS_NOTIFICATION komutu işlemek istiyorsanız, aşağıdaki prototiple bir geri çağırma uygulamalıdır.
+Uygulama, ana bilgisayar GET_STATUS_NOTIFICATION işlemek için aşağıdaki prototiple bir geri çağırma gerçekleştirebilir.
 
 ```c
 UINT ux_slave_class_storage_media_notification( 
@@ -228,18 +234,18 @@ UINT ux_slave_class_storage_media_notification(
 
 Konum:
 
-- *depolama* , depolama sınıfının örneğidir.
-- *media_id* Şu anda kullanılmıyor. notification_class bildirim sınıfını belirtir.
-- *media_notification* , uygulama tarafından bildirimin yanıtını içeren arabelleğe ayarlanmalıdır.
-- *media_notification_length* , yanıt arabelleğinin uzunluğunu içermesi için uygulama tarafından ayarlanmalıdır.
+- *depolama,* depolama sınıfının örneğidir.
+- *media_id* şu anda kullanılmadı. notification_class bildirim sınıfını belirtir.
+- *media_notification,* uygulama tarafından bildirime verilen yanıtı içeren arabelleğe ayar gerekir.
+- *media_notification_length,* uygulama tarafından yanıt arabelleğinin uzunluğunu içermesi için ayar olmalıdır.
 
-Dönüş değeri, komutun başarılı olup olmadığını gösterir – **UX_SUCCESS** veya **UX_ERROR** olmalıdır.
+Dönüş değeri, komutun başarılı olup olmadığını gösterir; komutun UX_SUCCESS **veya UX_ERROR.**
 
-Uygulama bu geri aramayı uygulamadıklarında, **GET_STATUS_NOTIFICATION** komutu alındıktan sonra, USBX ana bilgisayara komutun uygulanmadığından haberdar olur.
+Uygulama bu geri çağırmayı uygulamazsa, **GET_STATUS_NOTIFICATION** aldıktan sonra USBX, komutun uygulanmadığını ana bilgisayara bildirecek.
 
-Uygulama konaktan yazma işlemleri için bir önbellek kullanıyorsa, **SYNCHRONIZE_CACHE** komutu işlenmelidir. Depolama cihazının bağlantısının kesilmek üzere olduğunu biliyorsa, bir ana bilgisayar bu komutu gönderebilir. Örneğin, Windows 'ta, araç çubuğunda bir flash sürücü simgesine sağ tıklayıp " \[ depolama cihazı adını çıkar" seçeneğini belirlerseniz \] , Windows bu cihazda **SYNCHRONIZE_CACHE** komutunu ister.
+**Uygulama SYNCHRONIZE_CACHE** konaktan yazmalar için önbellekten faydalanıyorsa, SYNCHRONIZE_CACHE komutu iş gerekir. Depolama aygıtının bağlantısının kesilecek olduğunu bilen bir konak bu komutu gönderebilir, örneğin Windows'da, araç çubuğunda bir flash sürücü simgesine sağ tıklar ve "Depolama cihazı adını çıkar"ı seçerse, Windows bu cihaza SYNCHRONIZE_CACHE komutunu \[ \] verir. 
 
-Uygulama konaktan **GET_STATUS_NOTIFICATION** komutu işlemek istiyorsanız, aşağıdaki prototiple bir geri çağırma uygulamalıdır.
+Uygulama, ana bilgisayar GET_STATUS_NOTIFICATION **işlemek** için aşağıdaki prototiple bir geri çağırma gerçekleştirebilir.
 
 ```c
 UINT ux_slave_class_storage_media_flush(
@@ -252,17 +258,17 @@ UINT ux_slave_class_storage_media_flush(
 
 Konum:
 
-- *depolama* , depolama sınıfının örneğidir.
-- *LUN* parametresi, komutun yönlendirildiği LUN 'u belirtir.
-- *number_blocks* eşitleyeceğiniz blokların sayısını belirtir.
-- *LBA* , eşitlenmesi yapılacak ilk bloğun kesim adresidir.
-- *media_status* , tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
+- *depolama,* depolama sınıfının örneğidir.
+- *lun* parametresi komutun hangi LUN'a yönlendir olduğunu belirtir.
+- *number_blocks* eşitlenecek blok sayısını belirtir.
+- *lba,* eşitlenecek ilk bloğun kesim adresidir.
+- *media_status* tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
 
-Dönüş değeri, komutun başarılı olup olmadığını gösterir – **UX_SUCCESS** veya **UX_ERROR** olmalıdır.
+Dönüş değeri, komutun başarılı olup olmadığını gösterir; komutun UX_SUCCESS **veya UX_ERROR.**
 
-### <a name="multiple-scsi-lun"></a>Birden çok SCSI LUN
+### <a name="multiple-scsi-lun"></a>Birden çok SCSI LUN'u
 
-USBX cihaz depolama sınıfı birden çok LUN 'yi destekler. Bu nedenle, aynı anda bir CD-ROM ve flash disk görevi gören bir depolama cihazı oluşturmak mümkündür. Böyle bir durumda, başlatma biraz farklı olacaktır. Flash disk ve CD-ROM için bir örnek aşağıda verilmiştir:
+USBX cihaz depolama sınıfı birden çok LUN'u destekler. Bu nedenle, aynı anda CD-ROM ve Flash disk gibi davranan bir depolama cihazı oluşturmak mümkündür. Böyle bir durumda başlatma biraz farklı olabilir. Flash Disk ve CD-ROM örneği:
 
 ```c
 /* Store the number of LUN in this device storage instance. */
@@ -303,11 +309,11 @@ storage_parameter.ux_slave_class_storage_parameter_lun[1].ux_slave_class_storage
     ux_device_class_storage_thread,0, (VOID *) &storage_parameter);
 ```
 
-## <a name="usb-device-cdc-acm-class"></a>USB cihazı CDC-ACM sınıfı
+## <a name="usb-device-cdc-acm-class"></a>USB Cihazı CDC-ACM Sınıfı
 
-USB aygıtı CDC-ACM sınıfı, USB konak sisteminin cihazla bir seri cihaz olarak iletişim kurmasına olanak tanır. Bu sınıf, USB standardını temel alır ve CDC standardının bir alt kümesidir.
+USB cihazı CDC-ACM sınıfı, usb konak sisteminin cihazla seri cihaz olarak iletişim kurmasına olanak sağlar. Bu sınıf USB standardını temel alan bir sınıftır ve CDC standardını temel alan bir alt kümedir.
 
-CDC-ACM uyumlu bir cihaz çerçevesinin cihaz yığını tarafından bildirilmesine ihtiyacı vardır. Aşağıda aşağıda bir örnek bulunur.
+CDC-ACM uyumlu bir cihaz çerçevesinin cihaz yığını tarafından bildiriliyor olması gerekir. Aşağıda bir örnek bulabilirsiniz.
 
 ```c
 unsigned char device_framework_full_speed[] = {
@@ -365,11 +371,11 @@ unsigned char device_framework_full_speed[] = {
 };
 ```
 
-CDC-ACM sınıfı, arabirimleri gruplamak için bir bileşik cihaz çerçevesi kullanır (denetim ve veri). Bir sonuç olarak, cihaz tanımlayıcısı tanımlanırken alınması gerekir. USBX, dahili olarak arabirimlerin nasıl bağlanacağını öğrenmek için ıAD tanımlayıcısını kullanır. IAD tanımlayıcısı arabirimlerden önce bildirilmelidir ve CDC-ACM sınıfının ilk arabirimini ve kaç arabirimin iliştirildiğine sahip olmalıdır.
+CDC-ACM sınıfı, arabirimleri (denetim ve veriler) gruplama için bileşik bir cihaz çerçevesi kullanır. Sonuç olarak, cihaz tanımlayıcısı tanımlarken dikkat gerekir. USBX, arabirimlerin nasıl bağlanacağını dahili olarak bilmek için IAD tanımlayıcısına sahiptir. IAD tanımlayıcısı arabirimlerden önce bildirilmiş olmalı ve CDC-ACM sınıfının ilk arabirimini ve kaç arabirimin ekli olduğunu içermeli.
 
-CDC-ACM sınıfı ayrıca, daha yeni ıAD tanımlayıcısı ile aynı işlevi gerçekleştiren bir bileşim işlev tanımlayıcısı kullanır. Bir birleşim Işlevsel tanımlayıcısının geçmiş nedenlerle bildirilmesini ve konak tarafında uyumluluğu olması gerekse de, bu, USBX tarafından kullanılmaz.
+CDC-ACM sınıfı, yeni IAD tanımlayıcısıyla aynı işlevi gerçekleştiren bir birleşim işlev tanımlayıcısı da kullanır. Geçmiş nedenlerle ve konak tarafıyla uyumluluk nedeniyle bir Birleşim İşlevi tanımlayıcısı bildiriliyor olsa da, USBX tarafından kullanılmaz.
 
-CDC-ACM sınıfının başlatılması aşağıdaki parametreleri bekler.
+CDC-ACM sınıfının başlatması aşağıdaki parametreleri bekler.
 
 ```c
 /* Set the parameters for callback when insertion/extraction of a CDC device. */
@@ -385,11 +391,11 @@ status = ux_device_stack_class_register(_ux_system_slave_class_cdc_acm_name,ux_d
     1,0, &parameter);
 ```
 
-Tanımlanan 2 parametresi, yığın bu sınıfı etkinleştirdiğinde veya devre dışı bırakıldığında çağrılacak Kullanıcı uygulamalarına geri çağırma işaretçileridir.
+Tanımlanan 2 parametre, yığın bu sınıfı etkinleştirirken veya devre dışı bırakıldığında çağrılır kullanıcı uygulamalarına geri çağırma işaretçileridir.
 
-Tanımlı üçüncü parametre, satır kodlama veya satır durumları parametre değişikliği olduğunda çağrılacak Kullanıcı uygulamasına yönelik bir geri çağırma işaretçisidir. Örneğin, konaktan DTR durumunu **true** olarak değiştirmek için bir istek olduğunda, geri çağırma çağrılır, BT Kullanıcı uygulamasında, bir Işlev için IOCTL işlevi aracılığıyla satır durumlarını kontrol edebilir.
+Tanımlanan üçüncü parametre, satır kodlaması veya satır durumları parametre değişikliği olduğunda çağrılacak kullanıcı uygulamasına yönelik bir geri çağırma işaretçisidir. Örneğin, konaktan DTR durumunu **TRUE** olarak değiştirme isteği olduğunda geri çağırma çağrılır, içinde kullanıcı uygulaması IOCTL işlevi aracılığıyla satır durumlarını ana bilgisayar iletişim için hazır olarak kontrol eder.
 
-CDC-ACM, bir USB-IF standardını temel alır ve MACOs ve Linux işletim sistemleri tarafından otomatik olarak tanınır. Windows platformlarında, bu sınıf 10 ' dan önceki Windows sürümü için bir. inf dosyası gerektirir. Windows 10 ' da herhangi bir. inf dosyası gerekmez. CDC-ACM sınıfı için bir şablon sağlamamız ve ***usbx_windows_host_files*** dizininde bulunabilir. Windows 'un daha yeni sürümü için CDC_ACM_Template_Win7_64bit. inf dosyası kullanılmalıdır (win10 dışında). Bu dosyanın, cihaz tarafından kullanılan PID/VıD 'yi yansıtacak şekilde değiştirilmesi gerekir. Şirket ve ürün USB-IF ile kaydettirilirse, PID/VıD son müşteriye özgü olacaktır. INF dosyasında, değiştirilecek alanlar burada bulunur.
+CDC-ACM bir USB-IF standardını temel almaktadır ve MACO'lar ve Linux işletim sistemleri tarafından otomatik olarak tanınır. Bu Windows, 10'dan önceki bir sürüm için bir .inf Windows gerektirir. Windows 10 herhangi bir .inf dosyası gerektirmez. CDC-ACM sınıfı için bir şablon sağlaruz ve bu şablon usbx_windows_host_files ***bulunabilir.*** Daha yeni bir sürüm Windows CDC_ACM_Template_Win7_64bit.inf dosyası kullanılmalıdır (Win10 hariç). Bu dosya, cihaz tarafından kullanılan PID/VID'i yansıtacak şekilde değiştirilmelidir. PiD/VID, şirket ve ürün USB-IF kaydı olduğunda son müşteriye özgü olur. Inf dosyasında değiştirilen alanlar burada bulunur.
 
 ```INF
 [DeviceList]
@@ -399,15 +405,15 @@ CDC-ACM, bir USB-IF standardını temel alır ve MACOs ve Linux işletim sisteml
 %DESCRIPTION%=DriverInstall, USB\VID_8484&PID_0000
 ```
 
-CDC-ACM cihazının cihaz çerçevesinde, PID/VıD cihaz tanımlayıcısına depolanır (yukarıda belirtilen cihaz tanımlayıcısına bakın).
+CDC-ACM cihazın cihaz çerçevesinde PID/VID, cihaz tanımlayıcısında depolanır (yukarıda bildirilen cihaz tanımlayıcısına bakın).
 
-USB ana bilgisayar sistemleri, USB CDC-ACM cihazını bulduğunda, bir seri sınıf bağlayacaktır ve cihaz herhangi bir seri Terminal programıyla birlikte kullanılabilir. Başvuru için konak Işletim sistemine bakın.
+USB ana bilgisayar sistemleri USB CDC-ACM cihazını bulasa, bir seri sınıf bağlar ve cihaz herhangi bir seri terminal programıyla kullanılabilir. Başvuru için bkz. konak İşletim Sistemi.
 
 CDC-ACM sınıfı API işlevleri aşağıda tanımlanmıştır.
 
 ### <a name="ux_device_class_cdc_acm_ioctl"></a>ux_device_class_cdc_acm_ioctl
 
-CDC-ACM arabiriminde ıOCTL gerçekleştirme
+CDC-ACM arabiriminde IOCTL gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -418,20 +424,20 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın CDC ACM arabirimine çeşitli IOCTL çağrıları gerçekleştirmesi gerektiğinde çağrılır
+Bu işlev, bir uygulamanın cdc acm arabirimine çeşitli ioctl çağrıları gerçekleştirmesi gerekirken çağrılır
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: gerçekleştirilecek IOCTL işlevi.
-- **Parameter**: IOCTL çağrısına özgü bir parametreye yönelik işaretçi.
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** Gerçekleştirilecek Ioctl işlevi.
+- **parameter:** ioctl çağrısına özgü bir parametrenin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -445,7 +451,7 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-### <a name="ioctl-functions"></a>IOCTL işlevleri:
+### <a name="ioctl-functions"></a>Ioctl işlevleri:
 
 | İşlev                                        | Değer |
 | ----------------------------------------------- | - |
@@ -459,7 +465,7 @@ if(status != UX_SUCCESS)
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_set_line_coding"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_CODING
 
-CDC-ACM arabiriminde ıOCTL kümesi satırı kodlaması gerçekleştirme
+CDC-ACM arabiriminde IOCTL Set Line Kodlaması gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -470,15 +476,15 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın satır kodlama parametrelerini ayarlaması gerektiğinde çağrılır.
+Bu işlev, bir uygulamanın Satır Kodlama parametrelerini ayarlaması gerekirken çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_CODING
-- **Parameter**: bir satır parametre yapısına yönelik işaretçi:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_CODING
+- **parameter:** Bir çizgi parametre yapısının işaretçisi:
 
 ```c
 typedef struct UX_SLAVE_CLASS_CDC_ACM_LINE_CODING_PARAMETER_STRUCT
@@ -517,7 +523,7 @@ if (status != UX_SUCCESS)
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_get_line_coding"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_CODING
 
-CDC-ACM arabiriminde ıOCTL Get satırı kodlaması gerçekleştirme
+CDC-ACM arabiriminde IOCTL Satır Kodlaması Al gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -528,15 +534,15 @@ device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın satır kodlama parametrelerini alması gerektiğinde çağrılır.
+Bu işlev, bir uygulamanın Satır Kodlama parametrelerini ala ihtiyacı olduğunda çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_ LINE_CODING
-- **Parameter**: bir satır parametre yapısına yönelik işaretçi:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_ LINE_CODING
+- **parameter:** Bir çizgi parametre yapısının işaretçisi:
 
 ```c
 typedef struct UX_SLAVE_CLASS_CDC_ACM_LINE_CODING_PARAMETER_STRUCT
@@ -587,7 +593,7 @@ if (status == UX_SUCCESS)
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_get_line_state"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_STATE
 
-CDC-ACM arabiriminde ıOCTL al satır durumu gerçekleştirme
+CDC-ACM arabiriminde IOCTL Satır Durumunu Al işlemini gerçekleştirme
 
 ## <a name="prototype"></a>Prototype
 
@@ -598,15 +604,15 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın satır durumu parametrelerini alması gerektiğinde çağrılır.
+Bu işlev, bir uygulamanın Satır Durumu parametrelerini ala ihtiyacı olduğunda çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_STATE
-- **Parameter**: bir satır parametre yapısına yönelik işaretçi:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_GET_LINE_STATE
+- **parameter:** Bir çizgi parametre yapısının işaretçisi:
 
 ```c
 typedef struct UX_SLAVE_CLASS_CDC_ACM_LINE_STATE_PARAMETER_STRUCT
@@ -642,7 +648,7 @@ if (status == UX_SUCCESS)
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_set_line_state"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_STATE
 
-CDC-ACM arabiriminde ıOCTL kümesi satırı durumu gerçekleştirme
+CDC-ACM arabiriminde IOCTL Set Line State gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -653,15 +659,15 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın satır durumu parametrelerini alması gerektiğinde çağrılır
+Bu işlev, bir uygulamanın Satır Durumu parametrelerini ala ihtiyacı olduğunda çağrılır
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_STATE
-- **Parameter**: bir satır parametre yapısına yönelik işaretçi:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_SET_LINE_STATE
+- **parameter:** Bir çizgi parametre yapısının işaretçisi:
 
 ```c
 typedef struct UX_SLAVE_CLASS_CDC_ACM_LINE_STATE_PARAMETER_STRUCT
@@ -689,7 +695,7 @@ status = _ux_device_class_cdc_acm_ioctl(cdc_acm_slave,
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_abort_pipe"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_ABORT_PIPE
 
-CDC-ACM arabiriminde ıOCTL Iptal kanalı gerçekleştirin
+CDC-ACM arabiriminde IOCTL ABORT PIPE gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -700,15 +706,15 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın bir kanalı iptal etmek gerektiğinde çağrılır. Örneğin, devam eden bir yazma işlemini durdurmak için UX_SLAVE_CLASS_CDC_ACM_ENDPOINT_XMIT parametresi olarak geçirilmelidir.
+Bu işlev, bir uygulamanın kanal durdurması gereken bir durumda çağrılır. Örneğin, devam eden bir yazma işlemi durdurmak UX_SLAVE_CLASS_CDC_ACM_ENDPOINT_XMIT parametresi olarak geçir gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_ABORT_PIPE
-- **parametre**: kanal yönü:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_ABORT_PIPE
+- **parametresi:** Kanal yönü:
 
 ```c
 UX_SLAVE_CLASS_CDC_ACM_ENDPOINT_XMIT 1
@@ -719,7 +725,7 @@ UX_SLAVE_CLASS_CDC_ACM_ENDPOINT_RCV 2
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ENDPOINT_HANDLE_UNKNOWN** (0x53) geçersiz kanal yönü.
+- **UX_ENDPOINT_HANDLE_UNKNOWN** (0x53) Geçersiz kanal yönü.
 
 ### <a name="example"></a>Örnek
 
@@ -735,7 +741,7 @@ status = _ux_device_class_cdc_acm_ioctl(cdc_acm_slave,
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_transmission_start"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSION_START
 
-CDC-ACM arabiriminde ıOCTL Iletimi gerçekleştirme
+CDC-ACM arabiriminde IOCTL İletim Başlangıcı gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -746,15 +752,15 @@ UINT ux_device_class_cdc_acm_ioctl (
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulama geri çağırma ile iletim kullanmak istediğinde çağrılır.
+Bu işlev, bir uygulama geri arama ile iletim kullanmak istediği zaman çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSION_START
-- **parametre**: başlangıç iletimi parametre yapısına yönelik işaretçi:
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSION_START
+- **parameter:** Start Transmission parametre yapısının işaretçisi:
 
 ```c
 typedef struct UX_SLAVE_CLASS_CDC_ACM_CALLBACK_PARAMETER_STRUCT
@@ -769,8 +775,8 @@ typedef struct UX_SLAVE_CLASS_CDC_ACM_CALLBACK_PARAMETER_STRUCT
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0xFF) iletimi zaten başlatılmış.
-- **UX_MEMORY_INSUFFICIENT** (0x12) bir bellek ayırma başarısız oldu.
+- **UX_ERROR** (0xFF) İletim zaten başlatıldı.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Bellek ayırma başarısız oldu.
 
 ### <a name="example"></a>Örnek
 
@@ -792,7 +798,7 @@ status = _ux_device_class_cdc_acm_ioctl(cdc_acm_slave,
 
 ### <a name="ux_device_class_cdc_acm_ioctl-ux_slave_class_cdc_acm_ioctl_transmission_stop"></a>ux_device_class_cdc_acm_ioctl: UX_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSION_STOP
 
-CDC-ACM arabiriminde ıOCTL Iletimi gerçekleştirmeyi durdur
+CDC-ACM arabiriminde IOCTL İletimi Durdurma gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -803,20 +809,20 @@ UINT ux_device_class_cdc_acm_ioctl(
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulama geri çağırma ile iletim kullanmayı durdurmak istediğinde çağrılır.
+Bu işlev, bir uygulama geri arama ile iletimi kullanmayı durdurmak istediği zaman çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: ux_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSI ON_STOP
-- **parametre**: kullanılmıyor
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **ioctl_function:** ux_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSI ON_STOP
+- **parameter**: Kullanılmaz
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0xFF) devam eden iletim yok.
+- **UX_ERROR** (0xFF) Devam eden iletim yok.
 
 ### <a name="example"></a>Örnek
 
@@ -831,7 +837,7 @@ status = _ux_device_class_cdc_acm_ioctl(cdc_acm_slave,
 
 ### <a name="ux_device_class_cdc_acm_read"></a>ux_device_class_cdc_acm_read
 
-CDC-ACM kanalından oku
+CDC-ACM kanaldan okuma
 
 ### <a name="prototype"></a>Prototype
 
@@ -843,21 +849,24 @@ UINT ux_device_class_cdc_acm_read(
     ULONG *actual_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın çıkış veri kanalından okuması gerektiğinde çağrılır (cihazdan içinden konaktan). Engelliyor.
+Bu işlev, bir uygulamanın OUT veri kanallarından (konaktan OUT, cihazdan IN) okuması gereken zaman çağrılır. Engelliyor.
+
+> [!Note]
+> Bu işlevler konaktan ham toplu verileri okur, bu nedenle arabellek dolu olana veya konak aktarımı kısa bir paketle (Sıfır Uzunluk Paketi dahil) sonlandırana kadar beklemede tutar. Diğer ayrıntılar için toplu aktarımla ilgili [**genel konular bölümüne bakın.**](#general-considerations-for-bulk-transfer)
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm**: CDC sınıfı örneğine yönelik işaretçi.
-- **arabellek**: verilerin depolanacağı arabellek adresi.
-- **requested_length**: beklediğimiz maksimum uzunluk.
-- **actual_length**: arabelleğe döndürülen uzunluk.
+- **cdc_acm:** cdc sınıfı örneğinin işaretçisi.
+- **buffer:** Verilerin depolandığı arabellek adresi.
+- **requested_length:** Beklediğiniz maksimum uzunluk.
+- **actual_length:** Arabelleğe döndürülen uzunluk.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) cihaz artık yapılandırılmış durumda değil.
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Cihaz artık yapılandırılmış durumda değil.
 - **UX_TRANSFER_NO_ANSWER** (0x22) cihazdan yanıt yok. Aktarım beklenirken cihazın bağlantısı kesilmiş olabilir.
 
 ### <a name="example"></a>Örnek
@@ -884,7 +893,7 @@ UINT ux_device_class_cdc_acm_write(
     ULONG *actual_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir uygulamanın veri kanalına (konaktan, cihazdan) yazması gerektiğinde çağrılır. Engelliyor.
 
@@ -924,7 +933,7 @@ UINT ux_device_class_cdc_acm_write_with_callback(
     ULONG requested_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir uygulamanın veri kanalına (konaktan, cihazdan) yazması gerektiğinde çağrılır. Bu işlev engellenmeyen ve tamamlanma UX_SLAVE_CLASS_CDC_ACM_IOCTL_TRANSMISSION_START bir geri çağırma aracılığıyla yapılır.
 
@@ -1086,7 +1095,7 @@ ux_network_driver_init();
 
 USB ağ yığınının yalnızca bir kez etkinleştirilmesi ve CDCECD 'ye özgü olmaması gerekir, ancak NetX hizmetleri gerektiren herhangi bir USB sınıfı için gereklidir.
 
-CDC-ECD sınıfı, MAC OS ve Linux konakları tarafından tanınır. Ancak Microsoft Windows tarafından CDC-ECD tanımak için bir sürücü sağlanmaz. Bazı ticari ürünler Windows platformları için mevcuttur ve kendi. inf dosyalarını sağlar. Bu dosyanın, USB ağ cihazının PID/VıD 'SI ile eşleşmesi için CDC-ACM INF şablonuyla aynı şekilde değiştirilmesi gerekir.
+CDC-ECD sınıfı, MAC OS ve Linux konakları tarafından tanınır. ancak Microsoft Windows tarafından CDC-ecd ' y i tanımak için bir sürücü sağlanmaz. Windows platformları için bazı ticari ürünler mevcuttur ve kendi. inf dosyalarını sağlarlar. Bu dosyanın, USB ağ cihazının PID/VıD 'SI ile eşleşmesi için CDC-ACM INF şablonuyla aynı şekilde değiştirilmesi gerekir.
 
 ## <a name="usb-device-hid-class"></a>USB cihaz HID sınıfı
 
@@ -1170,7 +1179,7 @@ UINT ux_device_class_hid_event_set(
     UX_SLAVE_CLASS_HID_EVENT *hid_event);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir uygulamanın bir HID olayını konağa geri gönderebilmesi gerektiğinde çağrılır. İşlev engellenmiyor, yalnızca raporu dairesel bir sıraya koyar ve uygulamaya döndürür.
 
@@ -1217,7 +1226,7 @@ UINT hid_callback(
     UX_SLAVE_CLASS_HID_EVENT *hid_event);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ana bilgisayar uygulamaya bir HID raporu gönderdiğinde çağrılır.
 

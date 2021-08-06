@@ -7,12 +7,12 @@ ms.date: 6/9/2021
 ms.service: rtos
 ms.topic: overview
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8c0bec2bb3b699b3a8d39d85eb322f3bbd95515a
-ms.sourcegitcommit: 8b03df42920bdd544fb4195ab818043f6c71969e
+ms.openlocfilehash: 4b6c8df5133f16cf3ed4006c12433ac426453cb5
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436755"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178213"
 ---
 # <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX'e genel bakış
 
@@ -36,7 +36,7 @@ Burada bazı tipik Azure RTOS ThreadX boyutu özellikleri vetir.
 
 ## <a name="threadx-execution-speed"></a>ThreadX yürütme hızı
 
-Azure RTOS ThreadX, en popüler işlemcilerde bir altmiksercond bağlam anahtarına ulaşıyor ve genel olarak diğer ticari RTOS'lara göre daha hızlıdır. ThreadX, hızlı olmanın Azure RTOS yüksek oranda belirleyicidir. Hazır 200 iş parçacığı veya yalnızca bir tane olsa da aynı hızlı performansı elde ediyor.
+Azure RTOS ThreadX, en popüler işlemcilerde mikrosaniyenin altında bir bağlam anahtarına sahip olur ve genel olarak diğer ticari RTOS'lara göre daha hızlıdır. ThreadX, hızlı olmanın Azure RTOS yüksek oranda belirleyicidir. Hazır 200 iş parçacığı veya yalnızca bir tane olsa da aynı hızlı performansı elde ediyor.
 
 Azure RTOS ThreadX'in tipik performans Azure RTOS vardır:
 
@@ -61,7 +61,7 @@ Azure RTOS ThreadX'in tipik performans Azure RTOS vardır:
 
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
-Azure RTOS ThreadX, ön eşik zamanlaması için önemli bir değerdir. Bu özellik, Azure RTOS ThreadX için benzersizdir ve kapsamlı akademik araştırmalara konudur. Yun Wang (Wangia Üniversitesi) ve Manas Saksena (University of Pittsburgh) tarafından kaleme alan [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://www.cs.utah.edu/~regehr/reading/open_papers/preempt_thresh.pdf)(Zamanlama Görevleri) makalesinde daha fazla bilgi bulunabilir.
+Azure RTOS ThreadX, ön eşik zamanlaması için önemli bir değerdir. Bu özellik, Azure RTOS ThreadX için benzersizdir ve kapsamlı akademik araştırmalara konudur. Yun Wang (Wangia Üniversitesi) ve Manas Saksena (University of Pittsburgh) tarafından kaleme alan [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://ieeexplore.ieee.org/document/811269)(Zamanlama Görevleri) makalesinde daha fazla bilgi bulunabilir.
 
 Azure RTOS ThreadX'in temel özellikleri:
 
@@ -102,7 +102,7 @@ Standart Azure RTOS ThreadX genellikle ayrı bir Azure RTOS ThreadX kopyasının
 * Özet ARC HS
 * x86
 
-Azure RTOS ThreadX SMP, n işlemci arasında dinamik *yük dengeleme* gerçekleştirir. Tüm ThreadX Azure RTOS (kuyruklar, semaforlar, olay bayrakları, bellek havuzları vb.) herhangi bir çekirdek üzerinde herhangi bir iş parçacığı tarafından erişilsin. Azure RTOS ThreadX SMP, tüm çekirdeklerde Azure RTOS ThreadX API'sini tam olarak sağlar ve SMP işlemi için geçerli olan aşağıdaki yeni API'leri içerir:
+Azure RTOS ThreadX SMP, n işlemci arasında dinamik *yük dengeleme* gerçekleştirir. Tüm ThreadX Azure RTOS (kuyruklar, semaforlar, olay bayrakları, bellek havuzları vb.) herhangi bir çekirdek üzerinde herhangi bir iş parçacığı tarafından erişilsin. Azure RTOS ThreadX SMP tüm çekirdekler için tam Azure RTOS ThreadX API 'sini sağlar ve SMP işlemi için geçerli olan aşağıdaki yeni API 'Leri tanıtır:
 
 * `UINT tx_thread_smp_core_exclude(TX_THREAD *thread_ptr, ULONG exclusion_map);`
 * `UINT tx_thread_smp_core_exclude_get(TX_THREAD *thread_ptr, ULONG *exclusion_map_ptr);`
@@ -110,27 +110,27 @@ Azure RTOS ThreadX SMP, n işlemci arasında dinamik *yük dengeleme* gerçekle�
 * `UINT tx_timer_smp_core_exclude(TX_TIMER *timer_ptr, ULONG exclusion_map);`
 * `UINT tx_timer_smp_core_exclude_get(TX_TIMER *timer_ptr, ULONG *exclusion_map_ptr);`
 
-## <a name="memory-protection-via-azure-rtos-threadx-modules"></a>Azure RTOS ThreadX Modülleri aracılığıyla bellek koruması
+## <a name="memory-protection-via-azure-rtos-threadx-modules"></a>Azure RTOS ThreadX modülleri aracılığıyla bellek koruması
 
-Azure RTOS ThreadX Modülleri adlı bir eklenti ürünü, bir veya daha fazla uygulama iş parçacığının dinamik olarak hedefte dinamik olarak yüklenemiyor ve çalıştırılana (veya yerinde yürütülebilir) bir "Modül" içinde paketlenesine olanak sağlar.
+Azure RTOS ThreadX modülleri adlı bir eklenti ürünü, bir veya daha fazla uygulama iş parçacığının, hedefte dinamik olarak yüklenebilen ve çalıştırılabilen (veya yerinde yürütülen) bir "Module" içine paketlenmiş olmasını sağlar.
 
-Modüller, büyük uygulamaların yalnızca etkin iş parçacıklarının ihtiyaç sahip olduğu belleği kaplayacak şekilde alan yükseltme, hata düzeltme ve program bölümlelene olanak sağlar.
+Modüller, büyük uygulamaların yalnızca etkin iş parçacıkları tarafından gereken belleği kaplamasına izin vermek için alan yükseltmeyi, hata düzeltmeyi ve program bölümlemesini etkinleştirir.
 
-Modüller ayrıca ThreadX'in kendisinde ayrı Azure RTOS alana sahiptir. Bu Azure RTOS ThreadX'in Modül'e bellek koruması (MPU veya MMU aracılığıyla) yüklemesini sağlar; böylece modülün dışından yanlışlıkla erişim başka bir yazılım bileşenini bozmaz.
+Modüller Ayrıca Azure RTOS ThreadX öğesinden ayrı bir adres alanına sahiptir. Bu, Azure RTOS ThreadX 'in, modülün dışında yanlışlıkla erişiminin diğer yazılım bileşenlerini bozmayacak şekilde bellek korumasını (MPU veya MMU aracılığıyla) yerleştirmesini sağlar.
 
-## <a name="misra-compliant"></a>MISRA uyumlu
+## <a name="misra-compliant"></a>Hatalı ra uyumlu
 
-Azure RTOS ThreadX ve Azure RTOS ThreadX SMP kaynak kodu MISRA-C: 2004 ve MISRA C:2012 ile uyumludur. MISRA C, C programlama dilini kullanan kritik sistemler için bir dizi programlama kılavuzudur. Özgün MISRA C yönergeleri öncelikli olarak otomotiv uygulamalarına yönelikti; ancak, MISRA C artık güvenlik açısından kritik herhangi bir uygulama için geçerli olduğu geniş ölçüde kabul ediliyor. Azure RTOS ThreadX, MISRA-C: 2004 ve MISRA C:2012'nin tüm gerekli ve zorunlu kurallarıyla uyumludur.
+Azure RTOS ThreadX ve Azure RTOS ThreadX SMP kaynak kodu hatalı ra-C: 2004 ve MISRA C:2012 uyumludur. MISRA C, C programlama dilini kullanan kritik sistemler için bir programlama yönergeleri kümesidir. Özgün MISRA C yönergeleri öncelikli olarak, ilk olarak bir oto ve uygulamaları hedeflenmiştir; Ancak, MISRA C artık güvenlik açısından kritik uygulamalar için geçerli olduğu şekilde çok daha tanınır. Azure RTOS ThreadX, tüm gerekli ve zorunlu, MISRA-C: 2004 ve MISRA c:2012ile uyumludur.
 
-:::image type="content" source="media/overview-threadx/misra-logo-certification.png" alt-text="Misra sertifikası":::
+:::image type="content" source="media/overview-threadx/misra-logo-certification.png" alt-text="Hatalı ra sertifikası":::
 
-## <a name="supports-most-popular-tools"></a>En popüler araçları destekler
+## <a name="supports-most-popular-tools"></a>Popüler araçların çoğunu destekler
 
-Azure RTOS ThreadX, kullanılabilir en kapsamlı iş parçacığı Azure RTOS sahip IAR Embedded Workbench dahil olmak üzere en popüler tümleşik geliştirme araçlarını destekler. Diğer araç tümleştirmesi GNU (GCC), ARM DS-5/uVision®, Green Multi®, Wind River Workbench, Imagination Codescape, Renesas e2studio, Metaware SeeCode, NXP CodeWarrior, Lauteruter TRACE32®, TI Code-Composer Studio, CrossCore ve tüm analog cihazları içerir.
+Azure RTOS ThreadX, en kapsamlı Azure RTOS ThreadX çekirdek tanıma 'yı de içeren ıAR 'ın Embedded çalışma ekranı dahil olmak üzere en popüler Embedded geliştirme araçlarının çoğunu destekler. diğer araç tümleştirmesi, GNU (GCC), ARM DS-5/uvision®, yeşil tepls MULTI®, rüzgar river çalışma ekranı, hayal Codescape, Renesas e2studio, metaware seecode, nxp CodeWarrior, defterbach TRACE32®, tı Code-Composer Studio, çapraz puan ve tüm örneksel cihazları içerir.
 
 ## <a name="adaptation-layer-for-threadx"></a>ThreadX için uyarlama katmanı
 
-Çeşitli eski RTOS API'leri (FreeRTOS, POSIX, OSEK vb.) için [ThreadX](https://github.com/azure-rtos/threadx/tree/master/utility/rtos_compatibility_layers) uyarlama katmanlarını kullanarak uygulama geçiş sorunlarını daha kolay bir şekilde Azure RTOS'ye kolaylaştırabilirsiniz
+Çeşitli eski RTOS API 'Leri (FreeRTOS, POSIX, OSEK vb.) için ThreadX [uyarlayan katmanlarını](https://github.com/azure-rtos/threadx/tree/master/utility/rtos_compatibility_layers) kullanarak, uygulama geçişi sorunlarını Azure RTOS 'a kolayca izleyebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure RTOS ThreadX'e giriş](chapter1.md)
+> [Azure RTOS ThreadX 'e giriş](chapter1.md)

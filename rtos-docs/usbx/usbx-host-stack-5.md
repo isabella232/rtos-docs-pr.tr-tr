@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: bf5876042e08a59979adcd429917bfc3fbfdbc20
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828619"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115177754"
 ---
 # <a name="chapter-5---usbx-host-classes-api"></a>Bölüm 5-USBX konak sınıfları API 'SI
 
@@ -35,7 +35,7 @@ UINT ux_host_class_hid_client_register(
     (struct UX_HOST_CLASS_HID_CLIENT_COMMAND_STRUCT *));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir HID istemcisini HID sınıfına kaydetmek için kullanılır. HID sınıfının, bu cihazdan veri istenmeden önce bir HID aygıtı ile HID istemcisi arasında bir eşleşme bulması gerekir.
 
@@ -80,7 +80,7 @@ UINT ux_host_class_hid_report_callback_register(
     UX_HOST_CLASS_HID_REPORT_CALLBACK *call_back);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir rapor alındığında, HID sınıfından bir geri çağırma işlemini HID istemcisine kaydetmek için kullanılır.
 
@@ -125,7 +125,7 @@ Bir HID sınıf örneği için dönemsel uç noktayı başlatın.
 UINT ux_host_class_hid_periodic_report_start(UX_HOST_CLASS_HID *hid);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bu HID istemcisine bağlanan HID sınıfının örneği için dönemsel (kesme) uç noktasını başlatmak için kullanılır. HID sınıfı, HID istemcisi etkinleştirilinceye kadar düzenli bitiş noktasını başlatamıyor ve bu nedenle bu uç noktayı rapor almak için başlatmak üzere HID istemcisine bırakılır.
 
@@ -162,7 +162,7 @@ Bir HID sınıf örneği için dönemsel uç noktayı durdurun.
 UINT ux_host_class_hid_periodic_report_stop(UX_HOST_CLASS_HID *hid);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bu HID istemcisine bağlanan HID sınıfının örneği için periyodik (kesme) uç noktasını durdurmak üzere kullanılır. HID istemcisi devre dışı bırakılana kadar HID sınıfı, tüm kaynakları serbest bırakılıncaya ve bu nedenle bu uç noktayı durdurmak için HID istemcisine bırakılıncaya kadar, düzenli bitiş noktasını durduramıyor.
 
@@ -200,7 +200,7 @@ UINT ux_host_class_hid_report_get(
     UX_HOST_CLASS_HID_CLIENT_REPORT *client_report);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, düzenli bitiş noktasına bağlı olmadan doğrudan cihazdan rapor almak için kullanılır. Bu rapor, denetim uç noktasından geliyor, ancak işlemi, düzenli uç noktada gelmekle aynı.
 
@@ -247,7 +247,7 @@ UINT ux_host_class_hid_report_set(
     UX_HOST_CLASS_HID_CLIENT_REPORT *client_report);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bir raporu doğrudan cihaza göndermek için kullanılır.
 
@@ -292,7 +292,7 @@ UINT ux_host_class_hid_mouse_buttons_get(
     ULONG *mouse_buttons);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, fare düğmelerini almak için kullanılır
 
@@ -303,8 +303,8 @@ Bu işlev, fare düğmelerini almak için kullanılır
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) fare düğmesi başarıyla alındı.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) HID sınıfı örneği yok.
+- **UX_SUCCESS** (0x00) Fare düğmesi başarıyla alındı.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) GIZLI SıNıF örneği yok.
 
 ### <a name="example"></a>Örnek
 
@@ -333,20 +333,20 @@ UINT ux_host_class_hid_mouse_position_get(
     SLONG *mouse_y_position);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, x & y koordinatlarındaki fare konumunu almak için kullanılır.
+Bu işlev, x ve y koordinatlarında fare & için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mouse_instance** HID fare örneğine yönelik işaretçi.
-- **mouse_x_position** X koordinatı işaretçisi.
-- **mouse_y_position** Y koordinatı işaretçisi.
+- **mouse_instance** MOUSE fare örneğinin işaretçisi.
+- **mouse_x_position** x koordinatı işaretçisi.
+- **mouse_y_position** y koordinatı işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) X &amp; Y koordinatları başarıyla alındı.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) HID sınıfı örneği yok.
+- **UX_SUCCESS** (0x00) X Y &amp; koordinatları başarıyla alındı.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) GIZLI SıNıF örneği yok.
 
 ### <a name="example"></a>Örnek
 
@@ -366,7 +366,7 @@ status = ux_host_class_hid_mouse_position_get(mouse_instance,
 
 ## <a name="ux_host_class_hid_keyboard_key_get"></a>ux_host_class_hid_keyboard_key_get
 
-Klavye anahtarını ve durumunu alın.
+Klavye anahtarını ve durumunu al.
 
 ### <a name="prototype"></a>Prototype
 
@@ -377,21 +377,21 @@ UINT ux_host_class_hid_keyboard_key_get(
     ULONG *keyboard_state);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, klavye anahtarını ve durumunu almak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **keyboard_instance** HID Klavye örneğine yönelik işaretçi.
-- **keyboard_key** Klavye anahtar kapsayıcısı işaretçisi.
-- **keyboard_state** Klavye durumu kapsayıcısının işaretçisi.
+- **keyboard_instance** THE KLAVYE örneğinin işaretçisi.
+- **keyboard_key** Klavye tuşu kapsayıcısı işaretçisi.
+- **keyboard_state** Klavye durumu kapsayıcısı işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) anahtar ve durum başarıyla alındı.
-- Raporlanacak hiçbir şey **UX_ERROR** (0xFF).
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) HID sınıfı örneği yok.
+- **UX_SUCCESS** (0x00) Anahtarı ve durumu başarıyla alındı.
+- **UX_ERROR** (0xff) Bildirecek bir şey yok.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) GIZLI SıNıF örneği yok.
 
 Klavye durumu aşağıdaki değerlere sahip olabilir.
 
@@ -405,7 +405,7 @@ Klavye durumu aşağıdaki değerlere sahip olabilir.
 - **UX_HID_KEYBOARD_STATE_SHIFT** 0x0300
 - **UX_HID_KEYBOARD_STATE_LEFT_ALT** 0x0400
 - **UX_HID_KEYBOARD_STATE_RIGHT_ALT** 0x0800
-- **UX_HID_KEYBOARD_STATE_ALT** 0x0A00
+- **UX_HID_KEYBOARD_STATE_ALT** 0x0a00
 - **UX_HID_KEYBOARD_STATE_LEFT_CTRL** 0x1000
 - **UX_HID_KEYBOARD_STATE_RIGHT_CTRL** 0x2000
 - **UX_HID_KEYBOARD_STATE_CTRL** 0x3000
@@ -452,7 +452,7 @@ while (1)
 
 ## <a name="ux_host_class_hid_keyboard_ioctl"></a>ux_host_class_hid_keyboard_ioctl
 
-HID klavyesi için bir ıOCTL işlevi gerçekleştirin.
+KEYBOARD klavyesi için bir IOCTL işlevi gerçekleştirin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -462,20 +462,20 @@ UINT ux_host_class_hid_keyboard_ioctl(
     ULONG ioctl_function, VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, HID klavyesi için belirli bir IOCTL işlevi gerçekleştirir. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da komut tamamlandığında döndürülür.
+Bu işlev, BELIRLI bir ioctl işlevini KEYBOARD klavyesi üzerinde gerçekleştirir. Çağrı engelliyor ve yalnızca bir hata olduğunda veya komut tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **keyboard_instance** HID Klavye örneğine yönelik işaretçi.
-- gerçekleştirilecek **ioctl_function** IOCTL işlevi. İzin verilen IOCTL işlevlerinden biri için aşağıdaki tabloya bakın.
-- **parametre** IOCTL 'ye özgü bir parametreye yönelik işaretçi.
+- **keyboard_instance** THE KLAVYE örneğinin işaretçisi.
+- **ioctl_function** ioctl işlevini kullanın. İzin verilen ioctl işlevlerinden biri için aşağıdaki tabloya bakın.
+- **parametre** ioctl'ye özgü bir parametrenin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) IOCTL işlevi başarıyla tamamlandı.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) bilinmeyen IOCTL işlevi
+- **UX_SUCCESS** (0x00) ioctl işlevi başarıyla tamamlandı.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Bilinmeyen IOCTL işlevi
 
 ### <a name="ioctl-functions"></a>IOCTL işlevleri
 
@@ -483,7 +483,7 @@ Bu işlev, HID klavyesi için belirli bir IOCTL işlevi gerçekleştirir. Çağr
 - UX_HID_KEYBOARD_IOCTL_KEY_DECODING_ENABLE
 - UX_HID_KEYBOARD_IOCTL_KEY_DECODING_DISABLE
 
-### <a name="example--change-keyboard-layout"></a>Örnek – Klavye yerleşimini değiştirme
+### <a name="example--change-keyboard-layout"></a>Örnek – klavye düzenini değiştirme
 
 ```c
 UINT status;
@@ -580,7 +580,7 @@ status = ux_host_class_hid_keyboard_ioctl(keyboard,
 /* If status equals UX_SUCCESS, the operation was successful. */
 ```
 
-### <a name="example--disable-keyboard-key-decode"></a>Örnek – klavye anahtar kodunu çöz devre dışı bırak
+### <a name="example--disable-keyboard-key-decode"></a>Örnek – klavye tuşu kodunu devre dışı bırakma
 
 ```c
 UINT status;
@@ -594,7 +594,7 @@ status = ux_host_class_hid_keyboard_ioctl(keyboard,
 
 ## <a name="ux_host_class_hid_remote_control_usage_get"></a>ux_host_class_hid_remote_control_usage_get
 
-Uzaktan denetim kullanımı al
+Uzaktan denetim kullanımını al
 
 ### <a name="prototype"></a>Prototype
 
@@ -605,23 +605,23 @@ UINT ux_host_class_hid_remote_control_usage_get(
     ULONG *value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, uzaktan denetim kullanımlarını almak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **remote_control_instance** HID uzaktan denetim örneğine yönelik işaretçi.
-- **kullanım** Kullanım işaretçisi.
-- **değer** Kullanım için değer işaretçisi.
+- **remote_control_instance** UZAKTAN UZAKTAN denetim örneğinin işaretçisi.
+- **kullanım** Kullanımın işaretçisi.
+- **value (değer)** Kullanım değerinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- Raporlanacak hiçbir şey **UX_ERROR** (0xFF).
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) HID sınıfı örneği yok.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_ERROR** (0xff) Bildirecek bir şey yok.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) GIZLI SıNıF örneği yok.
 
-Olası tüm kullanımların listesi bu kullanıcı kılavuzuna sığamayacak kadar uzun. Tam bir açıklama için ux_host_class_hid. h tüm olası değerler kümesine sahiptir.
+Tüm olası kullanımların listesi bu kullanıcı kılavuzuna sığmayacak kadar uzundur. Tam bir açıklama için ux_host_class_hid.h tüm olası değerler kümesine sahiptir.
 
 ### <a name="example"></a>Örnek
 
@@ -682,16 +682,19 @@ UINT ux_host_class_cdc_acm_read(
     ULONG *actual_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev cdc_acm arabiriminden okur. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
+Bu işlev, cdc_acm okur. Çağrı engelliyor ve yalnızca bir hata olduğunda veya aktarım tamamlandığında döndürür.
+
+> [!Note]
+> Bu işlevler, ham toplu verileri cihazdan okur, bu nedenle arabellek dolu olana veya cihaz aktarımı kısa bir paketle (Sıfır Uzunluk Paketi dahil) sonlandırana kadar beklemede tutar. Daha fazla ayrıntı için lütfen Toplu [**Aktarımda Dikkat Edilmesi Gereken Genel Noktalar'a bakın.**](usbx-device-stack-5.md#general-considerations-for-bulk-transfer)
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm** Cdc_acm sınıfı örneğine yönelik işaretçi.
-- **data_pointer** Veri yükünün arabellek adresine yönelik işaretçi.
-- **requested_length** Alınacak uzunluk.
-- **actual_length** Gerçekte alınan uzunluk.
+- **cdc_acm** Cdc_acm sınıfı örneğine işaretçi.
+- **data_pointer** Veri yükünün arabellek adresinin işaretçisi.
+- **requested_length** Alınan uzunluk.
+- **actual_length** Aslında uzunluk alındı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -726,7 +729,7 @@ UINT ux_host_class_cdc_acm_write(
     ULONG *actual_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev cdc_acm arabirimine yazar. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
 
@@ -769,7 +772,7 @@ UINT ux_host_class_cdc_acm_ioctl(
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev cdc_acm arabirimine belirli bir IOCTL işlevi gerçekleştirir. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da komut tamamlandığında döndürülür.
 
@@ -820,7 +823,7 @@ UINT ux_host_class_cdc_acm_reception_start(
     UX_HOST_CLASS_CDC_ACM_RECEPTION *cdc_acm_reception);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, USBX 'in arka planda Cihazdaki verileri sürekli okuyamasına neden olur. Her bir işlemin tamamlanmasından sonra, **cdc_acm_reception** ' de belirtilen geri çağırma çağrılır, böylece uygulama işlemin verilerinin daha fazla işlenmesini gerçekleştirebilir.
 
@@ -892,7 +895,7 @@ UINT ux_host_class_cdc_acm_reception_stop(
     UX_HOST_CLASS_CDC_ACM_RECEPTION *cdc_acm_reception);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, USBX 'in daha önce **ux_host_class_cdc_acm_reception_start** tarafından başlatılan arka plan alımını durdurmasına neden olur.
 

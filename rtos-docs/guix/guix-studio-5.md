@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 318e68ab5ab7d841057d65565dfda263597d03e4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 91377a663dfb605caa33ab019f437f2c3ed1adc7
+ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826332"
+ms.lasthandoff: 08/05/2021
+ms.locfileid: "115178315"
 ---
 # <a name="chapter-5-guix-studio-screen-designer"></a>Bölüm 5: GUıDX Studio ekran Tasarımcısı
 
@@ -19,13 +19,13 @@ Uygulama ekranları tasarlamak, GUıDX Studio 'nun birincil amacıdır. Ekran ta
 
 ## <a name="creatingconfiguring-projects"></a>Projeleri oluşturma/yapılandırma
 
-GUX Studio 'da proje oluşturma basittir. yalnızca ***Yeni proje** _ düğmesini veya menü seçimi _*_projesini, yeni projeyi_*_ seçin. Ardından, GUıDX Studio, _ *_projeyi Yapılandır_** iletişim kutusunu gösterir. Bu iletişim kutusunda, temel görüntü ayarlarının yanı sıra, GUıDX Studio tarafından oluşturulan kodun yerini almak için yol bilgileri belirtilir.
+gux Studio 'da proje oluşturma basittir. yalnızca ***yeni Project** _ düğmesini veya menü seçimini _*_Project yeni Project_*_ seçmeniz yeterlidir. ardından, guıdx Studio _ *_Configure Project_** iletişim kutusunu gösterir. Bu iletişim kutusunda, temel görüntü ayarlarının yanı sıra, GUıDX Studio tarafından oluşturulan kodun yerini almak için yol bilgileri belirtilir.
 
-Yeni bir proje oluşturulduğunda, projeyi Yapılandır iletişim kutusu görüntülenir. Geliştirici, hedefte kullanılabilen donanım görüntüleme sayısını ve her bir görüntüleme özelliğini belirtir. Özellikler, ekran mantıksal adı, x/y çözünürlüğü, renk derinliği ve biçimi ve diğer görüntü özelliklerini içerir. GUX Studio aynı projede birden çok ekranları destekler. Ek ekranlar gerekliyse, ***ekran sayısı** _ alanının gömülü cihazdaki ekran sayısıyla eşleşecek şekilde değiştirilmesi gerekir. Bir projedeki en fazla ekran sayısı 4 ' dir. _ *_Şekil 21_** projeyi Yapılandır iletişim kutusunu gösterir.
+Yeni bir proje oluşturulduğunda, projeyi Yapılandır iletişim kutusu görüntülenir. Geliştirici, hedefte kullanılabilen donanım görüntüleme sayısını ve her bir görüntüleme özelliğini belirtir. Özellikler, ekran mantıksal adı, x/y çözünürlüğü, renk derinliği ve biçimi ve diğer görüntü özelliklerini içerir. GUX Studio aynı projede birden çok ekranları destekler. Ek ekranlar gerekliyse, ***ekran sayısı** _ alanının gömülü cihazdaki ekran sayısıyla eşleşecek şekilde değiştirilmesi gerekir. Bir projedeki en fazla ekran sayısı 4 ' dir. _ *_şekil 21_** yapılandırma Project iletişim kutusunu gösterir.
 
-Proje ve/veya görüntü ayarlarını değiştirmek, menü seçeneği ***yapılandırma, proje/görüntüleme** _ veya proje ya da görüntüleme, sağ tıklama ve _*_Yapılandır, proje/görüntü_*_ seçeneklerini belirleyerek gerçekleştirilir. Her iki durumda da, proje ayarları ve/veya görüntüleme değişikliklerini kolaylaştırmak için _ *_projeyi Yapılandır_** iletişim kutusu gösterilir.
+proje ve/veya görüntü ayarlarını değiştirmek, menü seçeneği ***yapılandır, Project/display** _ veya proje ya da görüntüleme, sağ tıklama ve _*_yapılandır, Project/display_*_ seçeneklerini belirleyerek gerçekleştirilir. her iki durumda da, _ *_Configure Project_** iletişim kutusu, proje ayarları ve/veya görüntüleme değişikliklerini kolaylaştırmak için sunulur.
 
-![Projeyi Yapılandır iletişim kutusunun ekran görüntüsü.](./media/guix-studio/config_project.png)
+![yapılandırma Project iletişim kutusunun ekran görüntüsü.](./media/guix-studio/config_project.png)
 
 **Şekil 21**
 
@@ -37,7 +37,7 @@ Studio "uygulama oluşturma" veya "kaynak oluşturma" komutlarını çağırdı�
 
 ## <a name="selecting-widgets"></a>Pencere öğelerini seçme
 
-Pencere öğelerinin seçilmesi, ***proje görünümü** _ pencere öğesi ağacındaki pencere öğesine tıklayarak ya da _*_hedef görünüm_*_ alanında görünür pencere öğesine tıklayarak yapılır. Tek bir pencere öğesi seçildiğinde, özellikleri _*_Özellik görünümü_*_ alanında görüntülenir. _*_Şekil 22_*_ "_ *_Button_* *" öğesinin seçili pencere öğesini gösterir.
+pencere öğelerinin seçilmesi, ***Project View** _ pencere öğesi ağacındaki pencere öğesine tıklayarak ya da _*_hedef görünüm_*_ alanında görünür pencere öğesine tıklayarak yapılır. Tek bir pencere öğesi seçildiğinde, özellikleri _*_Özellik görünümü_*_ alanında görüntülenir. _*_Şekil 22_*_ "_ *_Button_* *" öğesinin seçili pencere öğesini gösterir.
 
 ![Seçilen pencere öğesinin ekran görüntüsü.](./media/guix-studio/select_button.png)
 
@@ -81,7 +81,7 @@ Metin pencere öğeleri, metin hizalama stilleriyle birlikte bir dize KIMLIĞI a
 
 ## <a name="manipulating-widgets"></a>Pencere öğelerini düzenleme
 
-Bir pencere öğesini işlemek için önce ' nin seçilmesi gerekir. Bu işlem, ***hedef görünümü** _ ' de doğrudan pencere öğesine tıklanarak veya _ *_proje görünümü_** pencere öğesi ağacı içinde seçilerek yapılır. Seçildikten sonra pencere öğesi kesikli bir anahatta sahip olur. Bu durumda, yalnızca pencere öğesine tıklanarak taşınabilir ve onun üst öğesinde istenen konuma sürüklenerek taşınmış olabilir. Pencere öğesi üst düzey pencere öğesi ise pencere öğesini sürüklemek, hedef ekranda pencere öğesinin ilk konumunu etkin bir şekilde ayarlıyor. Kuşkusuz, her zaman pencere öğesi Gux API 'sini kullanarak herhangi bir pencere öğesini taşımak veya yeniden boyutlandırmak mümkündür.
+Bir pencere öğesini işlemek için önce ' nin seçilmesi gerekir. bu, ***hedef görünümü** _ ' de doğrudan pencere öğesine tıklanarak veya _ *_Project görünümü_** pencere öğesi ağacı içinde seçilerek yapılır. Seçildikten sonra pencere öğesi kesikli bir anahatta sahip olur. Bu durumda, yalnızca pencere öğesine tıklanarak taşınabilir ve onun üst öğesinde istenen konuma sürüklenerek taşınmış olabilir. Pencere öğesi üst düzey pencere öğesi ise pencere öğesini sürüklemek, hedef ekranda pencere öğesinin ilk konumunu etkin bir şekilde ayarlıyor. Kuşkusuz, her zaman pencere öğesi Gux API 'sini kullanarak herhangi bir pencere öğesini taşımak veya yeniden boyutlandırmak mümkündür.
 
 Pencere öğesinin yüksekliğini yeniden boyutlandırmak için, fareyi pencere öğesinin üst kenarına konumlandırın ve fare işaretçisinin aşağı doğru bir oka değiştirilmesini bekleyin. Bu noktada pencere öğesi yüksekliği, sağ fare düğmesi basılı durumdayken fare hareket ettirilerek değiştirilebilir. Fare işaretçisini pencere öğesinin sol kenarına konumlandırarak farenin genişliği benzer bir biçimde yeniden boyutlandırılabilir. ***Şekil 24** _ "_ *_Button_* *" pencere öğesinin yeniden boyutlandırıldığını ve üst pencerenin sol/üst bölgesine taşındığını gösterir.
 
@@ -89,96 +89,96 @@ Pencere öğesinin yüksekliğini yeniden boyutlandırmak için, fareyi pencere 
 
 **Şekil 24**
 
-## <a name="manipulating-multiple-widgets"></a>Birden çok pencere öğesini düzenleme
+## <a name="manipulating-multiple-widgets"></a>Birden Çok Pencere Öğesi'nin Manipüle Ing
 
-Birden çok pencere öğesi seçilmesi, ***CTRL*** tuşunu basılı tutarken hedef görünümde birden çok pencere öğesine tıklanarak gerçekleştirilir. Bunu yapmak, her bir pencere öğesinin etrafında kesik çizgili bir anahatlarla seçili olduğunu gösterir. Birden çok pencere öğesi seçerken seçim grubundaki her bir pencere öğesinin aynı üst öğenin alt öğesi olması gerektiğini unutmayın.
+Birden çok pencere öğesinin seçimi, Ctrl tuşunu basılı tutarak hedef görünümde birden çok pencere öğesi ***tıklar.*** Bunu yapmak, seçili pencere öğelerinin her biri çevresinde kesikli bir ana hat ile birlikte gösterir. Birden çok pencere öğesi seçerek seçim grubu içindeki her pencere öğesinin aynı üst öğenin alt öğesi olması gerektiğini unutmayın.
 
-Birden çok pencere öğesi seçildikten sonra, seçilen Pencere öğelerinin içine tıklanarak ve fareyi sağ fare düğmesi aşağı doğru hareket ettirilerek aynı anda taşınmış olabilir. Ayrıca, ***araç çubuğu** _ üzerindeki hizalama düğmeleri Seçilen pencere öğelerinin grubunu hizalamak için kullanılabilir. _*_Şekil 25_*_ ' i "_*_Button_*_" ve "_*_New Button_*_" seçili pencere öğelerinin her ikisini de gösterir ve _*_Şekil 26_*_ , bu pencere öğeleri seçiliyken _ *_ALIGN-Left_** düğme seçiminin sonucunu gösterir.
+Birden çok pencere öğesi seçildikten sonra, seçilen pencere öğelerinin içine tıklar ve farenin sağ fare düğmesi aşağı doğru hareket ettirilir. Ayrıca* Araç Çubuğu _ üzerindeki hizalama **düğmeleri,** seçili pencere öğeleri grubunu hizalamak için kullanılabilir. _*_Şekil 25'te_*_ _*_hem_*_" düğmesi " hem de "_*_yeni_*_ düğme " pencere öğeleri seçili ve _*_Şekil 26'da_*_ bu pencere öğeleri seçiliyken _ *_Sola_* Hizala * düğme seçiminin sonucu görüntülenir.
 
-![Düğme ve yeni düğme pencere öğeleri seçiliyken ekran görüntüsü](./media/guix-studio/multiple_select.png)
+![Düğmenin ve yeni düğme pencere öğelerinin seçili olduğu ekran görüntüsü](./media/guix-studio/multiple_select.png)
 
 **Şekil 25**
 
-![Align-Left düğmesi seçiminin sonucunun ekran görüntüsü.](./media/guix-studio/align_left.png)
+![Uygulama düğmesinin seçiminin Align-Left görüntüsü.](./media/guix-studio/align_left.png)
 
 **Şekil 26**
 
-## <a name="cutcopypaste-operations"></a>Kesme/kopyalama/yapıştırma Işlemleri
+## <a name="cutcopypaste-operations"></a>Kesme/Kopyalama/Yapıştırma İşlemleri
 
-***Target View** _ içindeki seçili bir pencere öğesi kesilebilir, kopyalanabilir ve standart biçimde yapıştırılabiliriz. Pencere öğeleri ve ekranlar bir proje içinde kopyalanabilir veya bir projeden kopyalanıp diğerine yapıştırılamaz. _*_Araç çubuğunda_*_ kes, Kopyala ve Yapıştır düğmeleri vardır. Ayrıca, Düzenle menü seçeneğinde aynı seçenekler de vardır. Pencere öğesi yapıştırırken, yeni pencere öğesi yapıştırmadan önce üst pencere öğesinin seçilmesi gerektiğini unutmayın. _*_Şekil 27_*_ , "_ *_Button_* *" pencere öğesinin seçilmesi, kopyalanmasını ve kopyanın aynı pencerede yapıştırılması sonucunu gösterir.
+* Hedef Görünümde _ **seçili bir pencere** öğesi standart şekilde kesilmelidir, kopyalanır ve yapıştırılabilmelidir. Pencere öğeleri ve ekranlar bir proje içinde kopyalanır veya bir projeden kopyalanır ve başka bir projeye yapıştırabilirsiniz. Araç _*_Çubuğunda kesme,_*_ kopyalama ve yapıştırma düğmeleri bulunur. Düzenle menü seçeneğinde de aynı seçenekler vardır. Bir pencere öğesi yapıştırırken, yeni pencere öğesi yapıştırılamadan önce üst pencere öğesi seçilmelidir. _*_Şekil 27'de_*_ "_* düğmesi**" pencere öğesinin seçerek, kopyalayıp kopyayı aynı pencereye yapıştırarak elde edilen sonuç gösterilir.
 
 ![Kes/kopyala/yapıştır işlemlerinin ekran görüntüsü.](./media/guix-studio/copy_paste_button.png)
 
 **Şekil 27**
 
-Tek bir projede çalışırken, kopyalanmış pencere öğesi (ler) için gerekli olabilecek kaynaklar her zaman mevcut olduğundan, bir proje içinde kopyalama/yapıştırma işlemi genellikle basittir. Ancak, projeden bir pencere öğesi kopyalarsanız ve bu pencere öğesini proje B 'ye yapıştırırsanız, kaynak bağımlılıklarıyla ilgili bazı sorunlar ortaya çıkabilir.
+Bir proje içinde çalışırken kopyalanan pencere öğeleri için gerekli olan kaynaklar her zaman mevcut olduğundan, bir proje içinde kopyalama/yapıştırma genellikle basittir. Ancak, A projesinden bir pencere öğesi kopyalayıp bu pencere öğesi B projesine yapıştırıyorsanız kaynak bağımlılıkları ile ilgili bazı sorunlar ortaya çıkabilir.
 
-Studio 'daki pencere öğelerini kopyaladığınızda, Studio uygulaması kopyalanmış pencere öğeleri için gereken kaynakların bir listesini yapar ve Windows panosuna kopyalanmış olan XML biçiminde taşınabilir bir kaynak bağımlılığı tablosu oluşturur ve bu, gerçek kopyalanmış pencere öğesi bilgileri ile birlikte kopyalanır. Pencere öğeleri farklı bir projeye yapıştırdığınızda, önce bu kaynak bağımlılığı listesini inceler ve gerekli kaynakları henüz yoksa açık projeye ekler. Studio, kaynak KIMLIĞI adlarına göre eşleşen kaynakları tanımlar ve dize kaynakları için de dize içeriğini karşılaştırır. Eşleşen kaynaklar bulunursa, yeni projedeki kaynakları düzgün şekilde kullanmak için Studio, yapıştırılan Pencere öğelerinin kaynak kimliklerini güncelleştirir. Kaynaklar bulunamazsa, bunlar eklenir.
+Studio'nun içinde pencere öğelerini kopyalayarak, Studio uygulaması kopyalanan pencere öğeleri için gereken kaynakların listesini yapar ve xml biçiminde, windows panosuna kopyalanan ve kopyalanan gerçek pencere öğesi bilgileriyle birlikte taşınabilir bir kaynak bağımlılık tablosu üretir. Pencere öğelerini farklı bir projeye yapıştırsanız, Studio ilk olarak kaynak bağımlılık listesini inceler ve henüz mevcut olmayan açık projeye gerekli kaynakları ekler. Studio eşleşen kaynakları kaynak kimliği adlarına göre tanımlar ve dize kaynakları için Studio da dize içeriğini karşılar. Eşleşen kaynaklar bulunursa Studio, yapıştırilen pencere öğelerinin kaynak kimliklerini yeni projede kaynakları düzgün şekilde kullanmak için günceller. Kaynaklar bulunamasa eklenir.
 
-Studio, bir pencere öğesi yapıştırma işleminin bir parçası olarak projenize bir kaynak eklediğinde, yazı tipi ve pixelmap kaynakları söz konusu olduğunda Studio gerçekten kaynağa bir bağlantı ekliyor. Bu bağlantı, kaynak projeden oluşturulur ve bu kaynaklar, yapıştırdığınız projenin proje konumuna göre bulunamazsa uyarı iletileri alırsınız. Kaynak bağlantıları projeye ne olursa olsun eklenir, ancak kaynak yükleme hatalarını ortadan kaldırmak için yazı tiplerini ve resim dosyalarını yeni proje ağacınızdaki doğru konumlara el ile kopyalamanız gerekebilir. Studio. ttf,. png veya. jpg dosyalarını bir konumdan diğerine kopyalamaz.
+Studio, pencere öğesi yapıştırma işlemi kapsamında projenize bir kaynak eklerken, Studio yazı tipi ve piksel haritası kaynakları söz olduğunda kaynağa bir bağlantı ekler. Bu bağlantı kaynak projeden oluşturulur ve bu kaynaklar yapıştırmakta olan projenin proje konumuyla ilgili olarak bulunamazsa uyarı iletileri alırsınız. Kaynak bağlantıları projeye ne olursa olsun eklenir, ancak kaynak yükleme hatalarını ortadan kaldırmak için yazı tiplerini ve görüntü dosyalarını yeni proje ağacınız altındaki uygun konumlara el ile kopyalamanız gerekebilir. Studio .ttf, .png veya .jpg bir konumdan diğerine kopyalamaz.
 
-Bu şekilde herhangi bir problemi önlemenin kolay yolu, paylaşmak istediğiniz projeler arasında tutarlı bir dizin yapısı tutmaktır. Proje A 'dan proje B 'ye kolayca taşımak istiyorsanız, her iki proje klasörü için tutarlı bir alt dizinde bulunan grafik görüntülerini ve yazı tiplerini saklayın.
+Bu konuda herhangi bir sorundan kaçınmanın kolay yolu, paylaşmak istediğiniz projeler arasında tutarlı bir dizin yapısı tutmaktır. A'dan B'ye Project kolayca Project, her iki proje tarafından kullanılan grafik görüntülerini ve yazı tiplerini her proje klasörünün tutarlı bir alt dizininde tutabilirsiniz.
 
-## <a name="changing-z-order"></a>Z düzenini değiştirme
+## <a name="changing-z-order"></a>Z Sıralamayı Değiştirme
 
-Pencere öğeleri, diğer pencere öğelerinin önüne veya arkasına kolayca taşınabilir. Bu, pencere öğesi seçilerek ve _*_araç çubuğundaki_*_***öne taşı** _ veya _*_Geri düğmelerine git_*_ seçilerek gerçekleştirilir. _ *_Şekil 28_** İkinci düğmenin geri taşınmasını gösterir.
+Pencere öğeleri, diğer pencere öğelerinin önüne veya arkasına kolayca taşınabilir. Bu, pencere öğesi seçerek ve Araç Çubuğunda ***** Öne Taşı _ veya Geri Taşı _*_düğmeleri_*_ seçerek _*_başarılı olur._*_ _ *_Şekil 28_** ikinci düğmeyi geri taşımayı gösterir.
 
-![Düğme z düzeninin ekran görüntüsü.](./media/guix-studio/change_z_order.png)
+![z-order düğmesinin ekran görüntüsü.](./media/guix-studio/change_z_order.png)
 
 **Şekil 28**
 
-## <a name="assigning-colors-fonts-and-pixelmaps"></a>Renkler, yazı tipleri ve pixelmaps atama
+## <a name="assigning-colors-fonts-and-pixelmaps"></a>Renkleri, Yazı Tiplerini ve Piksel Haritalarını Atama
 
-Seçili bir pencere öğesi için Özellikler görünümünde renkler, yazı tipleri ve pixelmaps seçmeye ek olarak, pencere öğeleri için kaynak atamaya yönelik bir tam sürükleme ve bırakma yöntemi de desteklenir. Bu özelliği kullanmak için, kaynak görünümündeki bir yazı tipi rengi gibi bir kaynağa sağ tıklayıp kaynağı hedef görünümde istenen pencere öğesi üzerine sürükleyin. Sol fare düğmesini pencere öğesi üzerine bırakarak kaynağı bırakın.
+Seçili bir pencere öğesi için Özellikler Görünümünde renkleri, yazı tiplerini ve piksel haritalarını seçmeye ek olarak, pencere öğelerine kaynak atamanın kısa bir sürükle ve bırak yöntemi de de de kullanılabilir. Bu özelliği kullanmak için kaynak görünümünde yazı tipi rengi gibi bir kaynağa sol tıklamanız ve kaynağı hedef görünümde istenen pencere öğesinin üzerine sürüklemeniz gerekir. Sol fare düğmesini pencere öğesi üzerine bırakarak kaynağı bırakın.
 
-Sürükleme ve bırakma yöntemi kullanılırken, renk kaynakları her zaman pencere öğesi normal arka plan rengine atanır. Seçilen renk veya seçili metin rengi gibi diğer renkler Özellikler Görünümü kullanılarak atanmalıdır.
+Sürükleme ve bırakma yöntemi kullanırken renk kaynakları her zaman pencere öğesi normal arka plan rengine atanır. Seçilen renk veya seçili metin rengi gibi diğer renkler, Özellikler Görünümü kullanılarak atanabilir.
 
-Benzer şekilde, pixelmap kaynakları, pixelmap görüntüsünü destekleyen bir pencere öğesinin "normal" veya "Fill" pixelmap alanına atanır. Birden çok pixelmaps destekleyen bir pencere öğesine başka alanlar atamak için Özellikler görünümünü kullanmanız gerekir.
+Benzer şekilde, piksel haritası kaynakları piksel haritası görüntülemeyi destekleyen bir pencere öğesinde "normal" veya "dolgu" piksel haritası alanına atanır. Birden çok piksel haritasını destekleyen bir pencere öğesine başka alanlar atamak için Özellikler Görünümü'ne sahipsiniz.
 
 ## <a name="using-templates"></a>Şablonları kullanma
 
-Studio 'da tasarlamanızı sağlayan herhangi bir ekran veya alt pencere öğesi koleksiyonu, yeni ekranlar ve yeni alt denetimler için şablon olarak kullanılabilir. Şablon kullanmak, bir pencere öğesini kopyalamaya ve yapıştırmaya benzer, ancak bir şablondan türetilmiş her şey, temel aldığı şablon değiştirildiğinde otomatik olarak değiştirilir. Türetilmiş bir ekranla veya şablonun devralınmış örneğiyle çalışırken şablon pencere öğesi özelliklerini değiştirmenize izin verilmiyor. Bununla birlikte, şablon özelliklerini herhangi bir şekilde değiştirdiğinizde, şablona başvuran tüm örnekler bu şablondan türetildiklerinden otomatik olarak güncelleştirilir.
+Studio'da tasarlasanız herhangi bir ekran veya alt pencere öğesi koleksiyonu, yeni ekranlar ve yeni alt denetimler için şablon olarak kullanılabilir. Bir şablonu, normal kullanım durumu olan Pencere türü pencere öğesi veya diğer pencere öğesi türlerine göre oluşturabilirsiniz. Şablon kullanmak, temel alınan şablon değiştirildiğinde şablondan türetilen her şeyin otomatik olarak değiştirilmeleri dışında pencere öğesi kopyalayıp yapıştırarak benzerdir. Türetilmiş bir ekranla veya şablonun devralınmış örneğiyle çalışırken şablon pencere öğesi özelliklerini değiştirmenize izin verilmez. Ancak, şablon özelliklerini herhangi bir şekilde değiştirerek şablona başvurulan tüm örnekler otomatik olarak güncelleştirilir çünkü bunlar bu şablondan türetilir.
 
-Yinelenen öğeler için şablon kullanmanın başka bir avantajı da, her kullanıldıkları zaman yinelenen öğeleri yeniden oluşturduysanız, Studio tarafından üretilen belirtim dosyasının boyut olarak daha küçük olmasını sağlayacaktır.
+Yinelenen öğeler için şablonları kullanmanın bir diğer avantajı, Studio tarafından oluşturulan belirtimler dosyasının genellikle her kullanıldıklarında yinelenen öğeleri yeniden oluşturmanızdan daha küçük olmasıdır.
 
-Bir ekran veya alt pencere öğesi koleksiyonunun şablon olarak kullanılacağını belirlemek için pencere öğesi özellikleri görünümünde "şablon" onay kutusunu açın. "Şablon" onay kutusunu açtığınızda, şablon pencere öğesi ***ekleme | Şablon*** çekme menüsü (ler).
+Bir ekran veya alt pencere öğesi koleksiyonunun şablon olarak kullanılabını görmek için pencere öğesi özellikleri görünümünde "Şablon" onay kutusunu açabilirsiniz. "Şablon" onay kutusunu açsanız, şablon pencere öğesi Ekle'de ***görünür| Şablon*** aşağı çekme menüleri.
 
-Şablon kullanmanın bir örneği olarak, düğme çubuğu olarak kullanılan bir pencere tanımlayabilirsiniz. Bu pencere tek başına birkaç alt düğme içerebilir ve bu düğme çubuğu sık sık çeşitli ekranlarda kullanılır. Studio projenizde gerekli alt düğmeleri tutan ve bu pencereye "button_bar" adını veren küçük bir tek başına pencere tanımlayabilirsiniz. Sonra bu pencereyi seçin ve "şablon" özelliğini açın. Ardından, bu düğme çubuğunu eklemek istediğiniz bir ekran seçin. Ekle | Ekranınızdaki button_bar penceresinin bir örneğini eklemek için şablon | button_bar menü komutu. Düğme çubuğunun konumunu değiştirebileceğinizi, ancak çoğu özelliği değiştirmenize izin verilmeyeceğini unutmayın. Ancak, önceden tanımlanmış diğer bir Gux pencere öğesi türü gibi button_bar pencere öğesini (ve tüm alt öğeleri) kullanabilirsiniz. Button_bar değiştirmek için, değişikliklerinizi yapmak üzere button_bar şablonunu seçmeniz gerekir.
+Şablon kullanma örneği olarak, düğme çubuğu olarak kullanılan bir pencere tanımlayabilirsiniz. Bu pencerenin kendisi birkaç alt düğme içerebilir ve bu düğme çubuğu çeşitli ekranlarda sık kullanılır. Studio projenizin içinde gerekli alt düğmeleri tutan küçük bir tek başına pencere tanımlayabilir ve bu pencereye "button_bar". Ardından bu pencereyi seçin ve "Template" özelliğini açın. Ardından bu düğme çubuğunu eklemek istediğiniz ekranı seçin. Ekle'yi kullanın| Template|button_bar menü komutuyla ekran button_bar bir örneğini ekleyebilirsiniz. Düğme çubuğunu yeniden konumlandırabilirsiniz ancak çoğu özelliği değiştirme iznine sahip olmadığınız unutmayın. Ancak, diğer önceden button_bar GUIX pencere öğesi türleri gibi bir pencere öğesi (ve herhangi bir button_bar) kullanabilirsiniz. Değişiklik button_bar, değişikliklerinizi yapmak için button_bar şablonu seçmeniz gerekir.
 
-Tipik şablon kullanımının başka bir örneği de birçok benzer ekran içeren bir uygulamadır. Örneğin, uygulamanın tüm ortak bir başlık çubuğunu, Fill rengini, boyutunu, vb. paylaştığı 10 farklı ekranı olabilir. Bu durumda, başlık çubuğu alt pencere öğelerinizi içeren bir şablon ekranı tanımlayabilir ve ekran boyutunu, Fill rengini ve diğer özellikleri yapılandırabilirsiniz. Bu şablon ekranı tanımlandıktan sonra, bu şablondan 10 farklı ekranınızdan türetebilirsiniz. INSERT 'i kullandığınızda | Şablon | \<base_screen> menü komutu, ekranınız, şablon ekranınızın tüm alt pencere öğeleri ve ayarları ile başlatılır. Şablon ekranından türettiğiniz her ekran şablonun bir kopyası değildir ancak şablon ekranının gerçekten türetilmiş bir örneğidir. Daha sonra her bir türetilmiş ekranı, ek içeriğin gerekli olduğu her şeyi içerecek şekilde özelleştirebilirsiniz.
+Tipik bir şablon kullanımına bir diğer örnek de birçok benzer ekran içeren bir uygulamadır. Örneğin uygulamanın ortak başlık çubuğunu, dolgu rengini, boyutunu, vb. paylaştığı 10 farklı ekran olabilir. Bu durumda, başlık çubuğu alt pencere öğelerinizi içeren ve ekran boyutunu, dolgu rengini ve diğer özellikleri yapılandıran bir şablon ekranı tanımlayabilirsiniz. Bu şablon ekranı tanımlandığı zaman bu şablondan 10 farklı ekran türetebilirsiniz. Ekle'yi kullanırken| Şablon| \<base_screen> menü komutuyla ekranınız, şablon ekranınız için tüm alt pencere öğeleri ve ayarlarla başlar. Şablon ekranından türetilen her ekranın, şablonun bir kopyası olmadığını, ancak şablon ekranından türetilmiş bir örnek olduğunu unutmayın. Ardından, türetilen her ekranı, gerekli ek içerikleri tutmak için özelleştirebilirsiniz.
 
-Oluşturulan belirtim dosyasının boyutunun kaydedilmesine ek olarak, şablonların kullanılması uygulama görünümünüzdeki değişikliklerin yönetimini kolaylaştırabilir. Yukarıdaki örnekte, 10 benzer ekranlarınızın arka plan rengini değiştirmeniz gerektiğini varsayalım. Her bir ekranı seçmek ve renk dolgusu ayarlarını değiştirmek zorunda olmak yerine, yalnızca temel şablonu seçmeniz ve onun doldur rengini değiştirmeniz yeterlidir ve bu değişiklik tüm türetilmiş ekranlarda anında yansıtılır.
+Oluşturulan belirtimler dosyasının boyutunu kaydetmeye ek olarak şablonların kullanımı, uygulama görünümünüzde yapılan değişiklikleri yönetmeyi kolaylaştıracaktır. Yukarıdaki örnekte, benzer 10 ekran için arka plan rengini değiştirmenizin gerekli olduğunu varsayalım. Her ekranı seçmek ve dolgu rengi ayarlarını değiştirmek için gerekli olmak yerine yalnızca temel şablonu seçmeniz ve dolgu rengini değiştirmeniz gerekir ve bu değişiklik hemen tüm türetilmiş ekranlara yansıtılmalıdır.
 
-Şablonlarla ilgili daha fazla yorum: olay işleme akışının korunduğundan emin olmanız gerekir, yani hem temel ekran için (ortak pencere öğesi olaylarını işlemek için) hem de türetilmiş bir ekran için bir olay işleyicisi sağlarsanız, türetilen ekran olay işleyicisi varsayılan durumda base_screen olay işleyicisini çağırmalıdır. Bu, temel ekran olay işleyicisinin bu şablon tabanından türetilmiş tüm ekranlarda ortak pencere öğeleri tarafından oluşturulan olayları işlemesini sağlar.
+Şablonlarla ilgili başka bir açıklama: Olay işleme akışının korunarak, yani hem temel ekran (ortak pencere öğesi olaylarını işleme için) hem de türetilmiş bir ekran için olay işleyicisi sağlarsanız türetilmiş ekran olay işleyicisi varsayılan durumda base_screen olay işleyicisini çağıracak. Bu, temel ekran olayı işleyicinin bu şablon tabanından türetilen tüm ekranlarda ortak pencere öğeleri tarafından oluşturulan olayları işlemesine olanak sağlar.
 
-## <a name="record-and-playback-macro"></a>Kayıt ve kayıttan yürütme makrosu
+## <a name="record-and-playback-macro"></a>Kayıt ve Kayıttan Yürütme Makrosu
 
-Makro kaydı ve kayıttan yürütme işlevleri, tuş vuruşlarını ve fare olaylarını kaydetmenize ve oynatgetirmenize yardımcı olur.
+Makro kaydı ve kayıttan yürütme işlevleri, tuş vuruşlarını ve fare olaylarını kaydetmenizi ve kayıttan yürütmenizi sağlar.
 
-Makro dosyasına kaydetme işlemi, ***makroyu kaydet** _ araç çubuğu düğmesine veya _*_Düzenle, Kaydet makrosunu_*_ seçen menü kullanılarak gerçekleştirilir. GUX Studio, makro dosyanız için yol adını belirtmenize olanak sağlayan _*_kayıt makrosu_*_ iletişim kutusunu gösterir. Bu seçimi yaptıktan sonra, kayda başlamak için _*_Kaydet_*_ düğmesine tıklayın. Kaydetmeyi bitirdikten sonra, _*_makro kayıt_*_ çubuğunu yeniden seçin veya _ *_Düzenle, makroyu Sonlandır * ' ı_* seçerek Makro kaydını sona erdirmek için açılan menüyü kullanın.
+Bir makro dosyasına kayıt,***** Makroyu Kayıt _ araç çubuğu düğmesi veya Düzenle, Makroyu _*_Kayded'i seçerek musunuz?_*_ GUIX Studio, makro _*_dosyanız_*_ için yol adını belirtmenize olanak sağlayan Kayıt Makrosu iletişim kutusunu sunar. Bu seçimi yaptıktan sonra kaydı _*_başlatmak için_*_ Kayıt düğmesine tıklayın. Kaydı tamamladikten sonra, _**_ makro kaydını sona ererken makroyu kaydetmek için Makroyu Kayded araç çubuğu düğmesini yeniden seçin veya _ *_Düzenle, Makroyu_* Sona Bırak * seçeneğini belirleyin.
 
-Makro dosyasını kayıttan yürütme işlemi _*_,_*_ ana açılan menü menüsünü kullanarak ***Kayıttan** yürütme makrosu _ araç çubuğu düğmesi seçilerek gerçekleştirilir. GUX Studio, daha önce kaydedilen makro dosyasını belirtmenizi sağlayan _ *_oynatma makrosu_** iletişim kutusunu gösterir.
+Makro dosyasının kayıttan yürütmesi,**ana** açılır menüyü kullanarak * Makroyu Kayıttan Yürüt _ araç çubuğu düğmesi seçerek Ve makroyu Düzenle, Makroyu Yürüt _*_komutu seçerek_*_ musunuz? GUIX Studio,*_çalıştıracak önceden kaydedilmiş_* makro dosyasını belirtmenize olanak sağlayan _ Kayıttan Yürütme Makrosu * iletişim kutusunu sunar.
 
-Yazı tipi veya resim ekleme gibi giriş veya çıkış dosyalarını seçerek makroları kaydederken, dosya tarayıcısından seçmek için fareyi kullanmak yerine, klavyeyi kullanmak önemlidir. Makro kaydedicisi fare ve klavye olaylarını kaydettiği ve dosya tarayıcınız zaman içinde değişebileceğinden, dosyayı grafik olarak seçenden daha güvenilir bir dosya adı yazmak daha güvenilirdir.
+Yazı tipi veya görüntü ekleme gibi giriş veya çıkış dosyalarını seçen makroları kaydederken, dosya tarayıcısını seçmek için fare kullanmak yerine klavyeyi kullanarak dosya adını yazmanız önemlidir. Makro kaydedici fare ve klavye olaylarını kaydettikten ve dosya tarayıcınız zaman içinde değişene kadar dosya adını yazmanın, dosyayı grafiksel olarak seçmekten daha güvenilir olmasıdır.
 
-## <a name="zooming-target-view"></a>Yakınlaştırma hedefi görünümü
+## <a name="zooming-target-view"></a>Hedef Görünümü Yakınlaştırma
 
-Yakınlaştırma işlevi, hedef ekranın yakından bir görünümünü almanıza yardımcı olur.
+Yakınlaştırma işlevi, hedef ekranın yakın bir görünümünü elde etmeye yardımcı olur.
 
-* Yapılandır | ' da istediğiniz yakınlaştırma ayarını seçebilirsiniz.**Hedef görünüm | Yakınlaştır** _ menü seçeneği. _ *_Araç çubuğunun_** yakınlaştırma/kapatma düğmeleri de vardır.
+* Yapılandır'da istediğiniz yüzde yakınlaştırma ayarını **seçebilirsiniz| Hedef Görünüm| Yakınlaştırma** _ menü seçeneği. _ *_Araç Çubuğu_** ayrıca yakınlaştırma/uzaklaştırma düğmelerine de sahip.
 
-## <a name="gridsnap-settings"></a>Kılavuz/yaslama ayarları
+## <a name="gridsnap-settings"></a>Kılavuz/Yas Ayarlar
 
-***Grid ve Snap Settings** _ iletişim kutusu, Grid ve Snap için bazı ayarları ve seçenekleri içerir. _*_Şekil 29_*_ , menü _ _*_congiayarınızı yaparken kılavuz ve yapışma ayarı_*_ iletişim kutusunu gösterir.*_Hedef görünüm | Grid/Snap_** seçilidir.
+* Kılavuz **ve Yasla Ayarlar** _ iletişim kutusunda kılavuz ve yasla için bazı ayarlar ve seçenekler yer alıyor. _*_Şekil 29'da_*_ _*_menü_*_ _ Congigure olduğunda Kılavuz ve *_Yasla Ayarı iletişim kutusu görüntülenir| Hedef Görünüm| Kılavuz/Yasla_** seçilidir.
 
-![Kılavuz ve yaslama ayarlarının ekran görüntüsü.](./media/guix-studio/image63.jpg)
+![Kılavuz ve Yasla ekran Ayarlar.](./media/guix-studio/image63.jpg)
 
 **Şekil 29**
 
-Aç ***Kılavuzu göster** _ seçeneği, kılavuzu hedef ekranda görüntüleyecektir, ızgara _*_aralığı_*_ alanında ızgara artışı (piksel cinsinden) belirtebilirsiniz. _ *_Kılavuza yapış_** seçeneği bir pencere öğesini doğru konuma almanıza yardımcı olur. bu seçeneği etkinleştirmek etkin olacak şekilde yaslanır.
+* Kılavuzu **Göster** _ seçeneğinin açık olduğu kılavuz hedef ekranda görüntülenir; Kılavuz Aralığı alanında kılavuz artışını (piksel cinsinden) _*_belirtebilirsiniz._*_ _ *_Kılavuza Yasla_** seçeneği, bir pencere öğesinin doğru konumunu alamanıza yardımcı olur; bu seçeneğin aç olması anlık ekleri etkin olarak belirler.
 
-***Kılavuz ve yaslama*** seçeneği etkin olduğunda:
+Kılavuz ***ve Yasla*** seçeneği etkinleştirildiğinde:
 
-- Bir nesneyi hedef görünümde fareyle sürüklerseniz, nesne ızgara artışını taşır.
-- Yeniden boyutlandırmak için bir nesnenin kenarını sürüklerseniz, sürüklediğiniz kenar kılavuz konumuna yaslanacak.
-- Bir nesne seçer ve yukarı/aşağı/aşağı/sağ tuşlarını kullanıyorsanız, seçilen pencere öğesi yapışma artışına göre hareket edebilir, yaslama artışını (piksel cinsinden) ***yaslama boşluğu*** alanında belirtebilirsiniz.
+- Fareyle hedef görünümde bir nesneyi sürüklersiniz, nesne kılavuz artırımına göre hareket eder.
+- Yeniden boyutlandırmak için bir nesnenin kenarını sürüklersiniz, sürüklersiniz kenar kılavuz konuma yaslar.
+- Bir nesneyi seçer ve yukarı/sol/aşağı/sağ anahtarları kullanırsanız, seçili pencere öğesi yaslama artışa göre hareket eder, Yaslama Aralığı alanında yaslama artışını (piksel cinsinden) ***belirtebilirsiniz.***
