@@ -1,51 +1,51 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
-description: Bu bölüm, tüm Azure RTOS NetX PPP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
+description: Bu bölümde, tüm NetX PPP Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f24d7366d27a8223b069a54ef7b93f6b3e38bf3a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 980348b5c50acfb82b2d8fda8786a1d48bf59c69e7949b6f62b64515b59bf42d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826651"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798767"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-point-to-point-protocol-ppp-services"></a>Bölüm 3-Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-point-to-point-protocol-ppp-services"></a>Bölüm 3 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX PPP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde, tüm NetX PPP Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_ppp_byte_receive**: *seri ISR 'den bayt alma*
-- **nx_ppp_chap_challenge**: *CHAP sınaması oluşturma*
-- **nx_ppp_chap_enable**: *CHAP kimlik doğrulamasını etkinleştir*
-- **nx_ppp_create**: *bir PPP örneği oluşturma*
-- **nx_ppp_delete**: *bir PPP örneğini silme*
-- **nx_ppp_dns_address_get**: *DNS IP adresini al*
-- **nx_ppp_dns_address_set**:*DNS sunucusu IP adresini ayarla*
-- **nx_ppp_secondary_dns_address_get**: *IKINCIL DNS sunucusu IP adresini al*
-- **nx_ppp_secondary_dns_address_set**: *Secondary_DNS sunucusu IP adresini ayarla*
-- **nx_ppp_interface_index_get**: *IP arabirimi dizinini al*
-- **nx_ppp_ip_address_assign**: *IPCP için IP adresleri atama*
-- **nx_ppp_link_down_notify**: *bağlantıyı aşağı bağlantıda bilgilendir*
-- **nx_ppp_link_up_notify**: *uygulamayı bağlantıda bilgilendir*
-- **nx_ppp_nak_authentication_notify**: *Authentication nak alınmışsa uygulamayı bilgilendir*
-- **nx_ppp_pap_enable**: *PAP kimlik doğrulamasını etkinleştir*
-- **nx_ppp_ping_request**: *bir LCP yankı isteği gönder*
-- **nx_ppp_raw_string_send**: *PPP olmayan dize gönder*
-- **nx_ppp_restart**: *PPP işlemeyi yeniden Başlat*
-- **nx_ppp_start**: *PPP işlemeyi Başlat*
-- **nx_ppp_status_get**: *geçerli PPP durumunu Al*
-- **nx_ppp_stop**: *PPP işlemesini durdur*
-- **nx_ppp_packet_receive**: *PPP paketi alma*
-- **nx_ppp_packet_send_set**: *PPP paketi gönderme işlevini ayarla*
+- **nx_ppp_byte_receive:** *Seri ISR'den bir byte alma*
+- **nx_ppp_chap_challenge:** CHAP *challenge oluşturma*
+- **nx_ppp_chap_enable:** CHAP *kimlik doğrulamasını etkinleştirme*
+- **nx_ppp_create:** *PPP örneği oluşturma*
+- **nx_ppp_delete:** *PPP örneğini silme*
+- **nx_ppp_dns_address_get:** DNS *IP adresini al*
+- **nx_ppp_dns_address_set:***DNS Sunucusu IP adresini ayarlama*
+- **nx_ppp_secondary_dns_address_get:** *İkincil DNS Sunucusu IP adresini al*
+- **nx_ppp_secondary_dns_address_set:** Secondary_DNS *Sunucusu IP adresini ayarlayın*
+- **nx_ppp_interface_index_get:** IP *arabirimi dizinini al*
+- **nx_ppp_ip_address_assign:** *IPCP için IP adresleri atama*
+- **nx_ppp_link_down_notify:** Bağlantıyı *kapatarak uygulamayı bilgilendirme*
+- **nx_ppp_link_up_notify:** *Uygulamayı bağlantı durumuna bildirme*
+- **nx_ppp_nak_authentication_notify:** KIMLIK *doğrulaması ALıNDı ise uygulamaya bildirme*
+- **nx_ppp_pap_enable:** *PAP kimlik doğrulamasını etkinleştirme*
+- **nx_ppp_ping_request:** *LCP yankı isteği gönderme*
+- **nx_ppp_raw_string_send:** *PPP olmayan dize gönderme*
+- **nx_ppp_restart:** *PPP işlemeyi yeniden başlatın*
+- **nx_ppp_start:** *PPP işlemeyi başlatma*
+- **nx_ppp_status_get:** *Geçerli PPP durumunu al*
+- **nx_ppp_stop:** *PPP işlemeyi durdurma*
+- **nx_ppp_packet_receive:** *PPP paketini alma*
+- **nx_ppp_packet_send_set:** *PPP paket gönderme işlevini ayarlama*
 
 ## <a name="nx_ppp_byte_receive"></a>nx_ppp_byte_receive
 
-Seri ıSR 'den bayt al
+Seri ISR'den bir byte alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -53,24 +53,24 @@ Seri ıSR 'den bayt al
 UINT nx_ppp_byte_receive(NX_PPP *ppp_ptr, UCHAR byte);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet genellikle uygulamanın seri sürücü kesme hizmeti yordamından (ıSR), alınan bir baytı PPP 'ye aktarmak için çağrılır. Çağrıldığında, bu yordam alınan baytı bir dairesel bayt arabelleğine koyar ve uygun PPP iş parçacığını işlemeye bildirir.
+Bu hizmet genellikle alınan bir bayta PPP'ye aktarım için uygulamanın seri sürücüsü Kesme Hizmeti Yordamı'dan (ISR) çağrılır. Çağrıldık, bu yordam alınan bayta döngüsel bir byte arabelleğine yer ve işleme için uygun PPP iş parçacığını bilgi sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **byte**: seri cihazdan alınan bayt
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **byte:** Seri cihazdan alınan byte
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP bayt alma.
-- **NX_PPP_BUFFER_FULL**: (0Xb1) PPP seri arabelleği zaten dolu.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı PPP bayt alma.
+- **NX_PPP_BUFFER_FULL:**(0xB1) PPP seri arabelleği zaten dolu.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, ISRs
+İş Parçacıkları, ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -84,7 +84,7 @@ status =  nx_ppp_byte_receive(&my_ppp, new_byte);
 
 ## <a name="nx_ppp_chap_challenge"></a>nx_ppp_chap_challenge
 
-CHAP sınaması oluşturma
+CHAP challenge oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -92,23 +92,23 @@ CHAP sınaması oluşturma
 UINT nx_ppp_chap_challenge(NX_PPP *ppp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPP bağlantısı zaten çalışır durumda olduktan sonra bir CHAP sınaması başlatır. Bu, uygulamaya düzenli aralıklarla bağlantının orijinalliğini doğrulama olanağı sağlar. Sınama başarısız olursa, PPP bağlantısı kapatılır.
+Bu hizmet, PPP bağlantısı zaten çalışıyor durumda olduktan sonra bir CHAP zorluk başlatıyor. Bu, uygulamaya bağlantının orijinalliğini düzenli aralıklarla doğrulama olanağı sağlar. Zorluk başarısız olursa PPP bağlantısı kapatılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP sınaması başlatıldı.
-- **NX_PPP_FAILURE**: (0Xb0) geçersiz PPP SıNAMASı, CHAP yalnızca yanıt için etkinleştirildi.
-- **NX_NOT_IMPLEMENTED**: (0x80) CHAP mantığı NX_PPP_DISABLE_CHAP ile devre dışı bırakıldı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı PPP challenge başlatıldı.
+- **NX_PPP_FAILURE:**(0xB0) Geçersiz PPP, CHAP yalnızca yanıt için etkinleştirildi.
+- **NX_NOT_IMPLEMENTED:**(0x80) CHAP mantığı, NX_PPP_DISABLE_CHAP.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -124,7 +124,7 @@ initiated. */
 
 ## <a name="nx_ppp_chap_enable"></a>nx_ppp_chap_enable
 
-CHAP kimlik doğrulamasını etkinleştir
+CHAP kimlik doğrulamasını etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -135,32 +135,32 @@ UINT nx_ppp_chap_enable(NX_PPP *ppp_ptr,
                         UINT (*get_verification_values)(CHAR *system,CHAR *name,CHAR *secret)); 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen PPP örneği için Challenge-Handshake kimlik doğrulama protokolü (CHAP) sunar.
+Bu hizmet, Challenge-Handshake PPP örneği için Kimlik Doğrulama Protokolü'ne (CHAP) olanak sağlar.
 
-"***Get_challenge_values**_" ve "_ * _get_verification_values_* *" işlev işaretçileri belirtilmişse, bu PPP örneği için CHAP gereklidir. Aksi halde, CHAP yalnızca eşin sınama isteklerine yanıt verir.
+"***get_challenge_values**_" ve "_ get_verification_values **" işlev işaretçileri belirtilirse, bu PPP örneği IÇIN CHAP * gereklidir. Aksi takdirde CHAP yalnızca eşlerin zorluk isteklerine yanıt verir.
 
-Gerekli geri çağırma işlevlerinde aşağıda başvurulan birkaç veri öğesi vardır. Veri öğeleri *gizli*, *adı* ve *sisteminin* , en fazla NX_PPP_NAME_SIZE-1 boyutuna sahip null ile sonlandırılmış dizeler olması beklenir. *Rand_value* veri öğesi, en fazla NX_PPP_VALUE_SIZE-1 boyutuna sahip null ile sonlandırılmış bir dize olması beklenir. Veri öğesi *kimliği* , bir basit işaretsiz karakter türüdür.
+Gerekli geri çağırma işlevlerinde aşağıda başvurulan çeşitli veri öğeleri vardır. Gizli dizi *,* ad  ve *sistem* veri öğelerinin, en fazla NX_PPP_NAME_SIZE-1 boyutuna sahip NULL sonlandırıldı dizeleri olması beklenir. Veri *rand_value,* en fazla NX_PPP_VALUE_SIZE-1 boyutuna sahip NULL sonlandırmalı bir dize olması beklenir. Veri öğesi *kimliği,* basit bir imzasız karakter t type'dır.
 
 >[!NOTE]
-> Bu işlev, *nx_ppp_create* sonra, nx_ip_create veya *nx_ip_interface_attach* önce çağrılmalıdır.
+> Bu işlev, nx_ppp_create *sonra ancak* nx_ip_create veya nx_ip_interface_attach. 
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **get_challenge_values**: zorluk için kullanılan değerleri almak için uygulama işlevine yönelik işaretçi. *Rand_value*, *kimlik* ve *gizli* değerlerinin sağlanan hedeflere kopyalanması gerektiğini unutmayın.
-- **get_responder_values**: bir Challenge 'a yanıt vermek için kullanılan değerleri alan uygulama işlevi işaretçisi. *System*, *Name* ve *Secret* değerlerinin sağlanan hedeflere kopyalanması gerektiğini unutmayın.
-- **get_verification_values**: sınama yanıtını doğrulamak için kullanılan değerleri alan uygulama işlevi işaretçisi. *System*,*Name* ve *Secret* değerlerinin sağlanan hedeflere kopyalanması gerektiğini unutmayın.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **get_challenge_values:** Zorluk için kullanılan değerleri almak için uygulama işlevinin işaretçisi. Rand_value *,* *id* ve secret *değerlerinin* sağlanan hedeflere kopyalanmalıdır.
+- **get_responder_values:** Bir soruna yanıt vermek için kullanılan değerleri alan uygulama işlevinin işaretçisi. Sistem, *ad* *ve gizli* *değerlerin sağlanan* hedeflere kopyalanmalıdır.
+- **get_verification_values:** Test yanıtını doğrulamak için kullanılan değerleri alan uygulama işlevinin işaretçisi. Sistem, *ad**ve gizli* *değerlerin sağlanan* hedeflere kopyalanmalıdır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP CHAP etkinleştir
-- **NX_NOT_IMPLEMENTED**: (0x80) CHAP mantığı NX_PPP_DISABLE_CHAP ile devre dışı bırakıldı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi veya geri çağırma işlevi işaretçisi. *Get_challenge_values* belirtilmişse *get_verification_values* işlevinin da sağlanması gerektiğini unutmayın.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı PPP CHAP etkinleştirmesi
+- **NX_NOT_IMPLEMENTED:**(0x80) CHAP mantığı, NX_PPP_DISABLE_CHAP.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi veya geri çağırma işlevi işaretçisi. Bir *get_challenge_values* belirtilirse, get_verification_values *işlevinin* de sağlanmalıdır.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -254,7 +254,7 @@ UINT  get_verification_values(CHAR *system, CHAR *name, CHAR *secret)
 ```
 ## <a name="nx_ppp_create"></a>nx_ppp_create
 
-Bir PPP örneği oluşturma
+PPP örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -266,33 +266,33 @@ UINT  nx_ppp_create(NX_PPP *ppp_ptr, CHAR *name, NX_IP *ip_ptr,
                     void (*ppp_byte_send)(UCHAR byte));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen NetX IP örneği için bir PPP örneği oluşturur.
 
 >[!NOTE]
-> Genellikle NetX IP iş parçacığını, PPP iş parçacığı önceliğinden daha yüksek bir önceliğe göre oluşturmak iyi bir fikirdir. IP iş parçacığı önceliğini belirtme hakkında daha fazla bilgi için lütfen *nx_ip_create* hizmetine bakın.
+> NetX IP iş parçacığını PPP iş parçacığı önceliklerinden daha yüksek bir önceliğe sahip olarak oluşturmak genellikle iyi bir fikirdir. IP iş parçacığı *nx_ip_create* belirtme hakkında daha fazla bilgi için lütfen nx_ip_create hizmetine bakın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **ad**: bu PPP örneğinin adı.
-- **ip_ptr**: henüz oluşturulmamış IP örneği için denetim bloğuna yönelik işaretçi.
-- **stack_memory_ptr**: PPP iş parçacığının yığın alanının başlangıcı işaretçisi.
-- **stack_size**: iş parçacığının yığınında bayt cinsinden boyut.
-- **pool_ptr**: varsayılan paket havuzuna yönelik işaretçi.
-- **thread_priority**: iç PPP iş parçacıklarının önceliği (1-31).
-- **ppp_invalid_packet_handler**: tüm PPP olmayan paketler için uygulamanın işleyicisine yönelik işlev işaretçisi. NetX PPP, genellikle başlatma sırasında bu yordamı çağırır. Bu, uygulamanın modem komutlarına yanıt verebildiği veya Windows XP söz konusu olduğunda, NetX PPP uygulamasının "ISTEMCI sunucusu" ile Windows XP tarafından gönderilen ilk "ISTEMCI" ile yanıt vererek PPP başlatabilir.
-- **ppp_byte_send**: uygulamanın seri baytlık çıkış yordamına yönelik işlev işaretçisi.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **name:** Bu PPP örneğinin adı.
+- **ip_ptr:** Henüz oluşturulmamış IP örneği için denetim bloğuna işaretçi.
+- **stack_memory_ptr:** PPP iş parçacığının yığın alanı başlangıç işaretçisi.
+- **stack_size:** İş parçacığı yığınında bayt cinsinden boyut.
+- **pool_ptr:** Varsayılan paket havuzunun işaretçisi.
+- **thread_priority:** İç PPP iş parçacıklarının önceliği (1-31).
+- **ppp_invalid_packet_handler:** PPP olmayan tüm paketler için uygulamanın işleyicisine işlev işaretçisi. NetX PPP genellikle başlatma sırasında bu yordamı arar. Burası, uygulamanın modem komutlarına yanıt verebiliyor veya Windows XP'de NetX PPP uygulaması, Windows XP tarafından gönderilen ilk "CLIENT" istemci sunucusuna yanıt olarak PPP'yi başlatabiliyor.
+- **ppp_byte_send:** Uygulamanın seri bayt çıkış yordamına işlev işaretçisi.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP oluştur.
-- NX_PTR_ERROR: (0x07) geçersiz PPP, IP veya Byte çıkış işlevi işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı PPP oluşturma.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP, IP veya byte çıkış işlevi işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -309,7 +309,7 @@ status =  nx_ppp_create(&my_ppp, “my PPP”, &my_ip, stack_start, 1024, 2,
 
 ## <a name="nx_ppp_delete"></a>nx_ppp_delete
 
-Bir PPP örneğini silme
+PPP örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -317,21 +317,21 @@ Bir PPP örneğini silme
 UINT nx_ppp_delete(NX_PPP *ppp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş PPP örneğini siler.
+Bu hizmet, daha önce oluşturulan PPP örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP silme.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) PpP silme işlemi başarılı.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -346,7 +346,7 @@ status =  nx_ppp_delete(&my_ppp);
 
 ## <a name="nx_ppp_dns_address_get"></a>nx_ppp_dns_address_get
 
-DNS IP adresini al
+DNS IP adresi al
 
 ### <a name="prototype"></a>Prototype
 
@@ -354,24 +354,24 @@ DNS IP adresini al
 UINT nx_ppp_dns_address_get(NX_PPP *ppp_ptr, ULONG *dns_address_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, eş tarafından sağlanan DNS IP adresini alır. Eş tarafından bir IP adresi sağlanmadığında, 0 IP adresi döndürülür.
+Bu hizmet, eş tarafından sağlanan DNS IP adresini almaktadır. Eş tarafından ip adresi sağlanmadı ise 0 IP adresi döndürülür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **dns_address_ptr**: DNS IP adresi hedefi
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **dns_address_ptr:** DNS IP adresi hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP adresi Get.
-- **NX_PPP_NOT_ESTABLISHED**: (0xb5) PPP, eş ile anlaşmayı tamamlamadı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı PPP adresi get.
+- **NX_PPP_NOT_ESTABLISHED:**(0xB5) PPP eşle anlaşmayı tamamlanmadı.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar, ISRs
+Başlatma, iş parçacıkları, süreerler, ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -388,7 +388,7 @@ status =  nx_ppp_dns_address_get(&my_ppp, &my_dns_address);
 
 ## <a name="nx_ppp_secondary_dns_address_get"></a>nx_ppp_secondary_dns_address_get
 
-Ikincil DNS sunucusu IP adresini al
+İkincil DNS Sunucusu IP adresini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -396,24 +396,24 @@ Ikincil DNS sunucusu IP adresini al
 UINT nx_ppp_secondary_dns_address_get(NX_PPP *ppp_ptr, ULONG *dns_address_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir ıPCP el sıkışmasının eşi tarafından sağlanan ikincil DNS IP adresini alır. Eş tarafından bir IP adresi sağlanmadığında, 0 IP adresi döndürülür.
+Bu hizmet, IPCP el sıkışması içinde eş tarafından sağlanan ikincil DNS IP adresini alın. Eş tarafından ip adresi sağlanmadı ise 0 IP adresi döndürülür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **dns_address_ptr**: ikincil DNS sunucusu adresi için hedef
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **dns_address_ptr:** İkincil DNS sunucusu adresi hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DNS adresi Get.
-- **NX_PPP_NOT_ESTABLISHED**: (0xb5) PPP, eş ile anlaşmayı tamamlamadı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı DNS adresi get.
+- **NX_PPP_NOT_ESTABLISHED:**(0xB5) PPP eşle anlaşmayı tamamlanmadı.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar, ISRs
+Başlatma, iş parçacıkları, süreerler, ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -428,7 +428,7 @@ status =  nx_ppp_secondary_dns_address_get(&my_ppp, &my_dns_address);
 
 ## <a name="nx_ppp_dns_address_set"></a>nx_ppp_dns_address_set
 
-Birincil DNS sunucusu IP adresini ayarla
+Birincil DNS Sunucusu IP adresini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -436,22 +436,22 @@ Birincil DNS sunucusu IP adresini ayarla
 UINT nx_ppp_dns_address_set(NX_PPP *ppp_ptr, ULONG dns_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DNS sunucusu IP adresini ayarlar. Eş, ıPCP durumunda bir DNS sunucusu seçenek isteği gönderirse, bu ana bilgisayar bu bilgileri sağlar.
+Bu hizmet DNS Sunucusu IP adresini ayarlar. Eş IPCP durumuna bir DNS Sunucusu seçenek isteği gönderirse, bu konak bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **dns_address**: DNS sunucusu adresi
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **dns_address:** DNS sunucusu adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DNS adresi kümesi.
-- **NX_PPP_NOT_ESTABLISHED**: (0xb5) PPP, eş ile anlaşmayı tamamlamadı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı DNS adresi kümesi.
+- **NX_PPP_NOT_ESTABLISHED:**(0xB5) PPP eşle anlaşmayı tamamlanmadı.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -470,7 +470,7 @@ status =  nx_ppp_dns_address_set(&my_ppp, my_dns_address);
 
 ## <a name="nx_ppp_secondary_dns_address_set"></a>nx_ppp_secondary_dns_address_set
 
-İkincil DNS sunucusu IP adresini ayarla
+İkincil DNS Sunucusu IP adresini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -478,22 +478,22 @@ status =  nx_ppp_dns_address_set(&my_ppp, my_dns_address);
 UINT nx_ppp_secondary_dns_address_set(NX_PPP *ppp_ptr, ULONG dns_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ikincil DNS sunucusu IP adresini ayarlar. Eş, ıPCP durumunda ikincil bir DNS sunucusu seçenek isteği gönderirse bu konak bilgileri sağlar.
+Bu hizmet ikincil DNS Sunucusu IP adresini ayarlar. Eş IPCP durumda ikincil bir DNS Sunucusu seçenek isteği gönderirse, bu konak bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **dns_address**: ikincil DNS sunucusu adresi
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **dns_address:** İkincil DNS sunucusu adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DNS adresi kümesi. 
-- **NX_PPP_NOT_ESTABLISHED**: (0xb5) PPP, eş ile anlaşmayı tamamlamadı.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı DNS adresi kümesi. 
+- **NX_PPP_NOT_ESTABLISHED:**(0xB5) PPP eşle anlaşmayı tamamlanmadı.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -518,9 +518,9 @@ IP arabirimi dizinini al
 UINT nx_ppp_interface_index_get(NX_PPP *ppp_ptr, UINT *index_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu PPP örneğiyle ilişkili IP arabirimi dizinini alır. Bu, yalnızca PPP örneği bir IP örneğinin birincil arabirimi olmadığında yararlıdır.
+Bu hizmet, bu PPP örneğiyle ilişkili IP arabirimi dizinini almaktadır. Bu, yalnızca PPP örneği bir IP örneğinin birincil arabirimi olmadığında yararlıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -560,7 +560,7 @@ UINT nx_ppp_ip_address_assign(NX_PPP *ppp_ptr, ULONG local_ip_address,
             ULONG peer_ip_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Internet Protokolü Denetim Protokolü 'nde (ıPCP) kullanılmak üzere yerel ve eş IP adreslerini ayarlar. PPP uygulaması bu hizmeti, kendisi ve diğer eşdüzey için geçerli IP adreslerine sahip bir PPP örneğinde çağırmalıdır.  Bir PPP örneğiyle kayıtlı geçerli bir adres yoksa, IP adresini tanımlamak için PPP eşine güvenmelidir.
 
@@ -603,7 +603,7 @@ UINT nx_ppp_link_down_notify(NX_PPP *ppp_ptr,
                              VOID (*link_down_callback)(NX_PPP *ppp_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamanın bağlantı azaltma bildirimi geri aramasını belirtilen PPP örneğiyle kaydeder. NULL değilse, bağlantının geri çağırma işlevi, bağlantı her gittiğinde çağrılır.
 
@@ -649,7 +649,7 @@ Bağlantı üzerinde uygulamayı bilgilendir
 UINT nx_ppp_link_up_notify(NX_PPP *ppp_ptr, 
                            VOID (*link_up_callback)(NX_PPP *ppp_ptr));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamanın bağlantı bildirimi geri aramasını belirtilen PPP örneğiyle kaydeder. NULL olmadığında, bağlantının geri çağırma işlevi bağlantı her geldiğinde çağrılır.
 
@@ -696,7 +696,7 @@ UINT    nx_ppp_nak_authentication_notify(NX_PPP *ppp_ptr,
                                          void (*nak_authentication_notify)(void));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamanın kimlik doğrulama nak Notification geri aramasını belirtilen PPP örneğiyle kaydeder. NULL değilse, bu geri çağırma işlevi, bir authentiaction sırasında her bir bir NAK aldığında çağırılır.
 
@@ -744,7 +744,7 @@ UINT  nx_ppp_pap_enable(NX_PPP *ppp_ptr,
                         UINT (*verify_login)(CHAR *name, CHAR *password));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPP örneği için parola kimlik doğrulama protokolü 'Nü (PAP) sunar. "***Verify_login***" işlev işaretçisi belirtilmişse, bu PPP ÖRNEĞI için PAP gereklidir. Aksi halde, PAP yalnızca LCP anlaşması sırasında belirtildiği gibi eşin PAP gereksinimlerine yanıt verir.
 
@@ -821,7 +821,7 @@ UINT  nx_ppp_ping_request(NX_PPP *ppp_ptr, CHAR *data,
                           UINT data_size, ULONG wait_opion);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir LCP ping isteği gönderir ve PPP cihazının yankı yanıtı beklediğini belirten bir bayrak ayarlar. İstek gönderildikten hemen sonra hizmet döndürülür. Yanıt beklemez. 
 
@@ -877,7 +877,7 @@ Ham ASCII dizesi gönder
 UINT  nx_ppp_raw_sting_send(NX_PPP *ppp_ptr, CHAR *string_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPP arabiriminden doğrudan PPP olmayan bir ASCII dizesi gönderir. PPP, modem denetimi bilgilerini içeren PPP olmayan bir paket aldıktan sonra genellikle kullanılır.
 
@@ -916,7 +916,7 @@ PPP işlemesini yeniden Başlat
 UINT  nx_ppp_restart(NX_PPP *ppp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPP işlemini yeniden başlatır. Genellikle bağlantının bir bağlantı geri çağrısından veya iletişimin kaybedilmediğini belirten PPP olmayan bir modem iletisiyle yeniden oluşturulması gerektiğinde çağrılır.
 
@@ -953,7 +953,7 @@ PPP işlemesini Başlat
 UINT  nx_ppp_start(NX_PPP *ppp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPP işlemini başlatır. Genellikle nx_ppp_stop () çağrıldıktan sonra çağrılır.
 
@@ -993,7 +993,7 @@ Geçerli PPP durumunu al
 ```c
 UINT  nx_ppp_status_get(NX_PPP *ppp_ptr, UINT *status_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPP örneğinin geçerli durumunu alır.
 
@@ -1038,7 +1038,7 @@ status =  nx_ppp_status_get(&my_ppp, &ppp_status);
 ```
 ## <a name="nx_ppp_stop"></a>nx_ppp_stop
 
-PPP işlemesini Başlat
+PPP işlemeyi başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1046,22 +1046,22 @@ PPP işlemesini Başlat
 UINT  nx_ppp_stop(NX_PPP *ppp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPP işlemini durduruyor. Kullanıcı ayrıca, gerekirse PPP işlemini başlatmak için nx_ppp_start () öğesini de çağırır.
+Bu hizmet PPP işlemini durdurur. Kullanıcı gerekirse PPP işlemini başlatmak için nx_ppp_start() çağrısı da kullanabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP başlatması başlatıldı. 
-- **NX_PPP_ALREADY_STOPPED**: (0xB8) PPP zaten durduruldu.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı PPP başlangıcı başlatıldı. 
+- **NX_PPP_ALREADY_STOPPED:**(0xb8) PPP zaten durduruldu.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1075,7 +1075,7 @@ status =  nx_ppp_stop(&my_ppp);
 ```
 ## <a name="nx_ppp_packet_receive"></a>nx_ppp_packet_receive
 
-PPP paketi al
+PPP paketi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1084,21 +1084,21 @@ UINT  nx_ppp_packet_receive(NX_PPP *ppp_ptr, NX_PACKET *packet_ptr);
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPP paketini alır.
+Bu hizmet PPP paketini alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **packet_ptr**: PPP paketine yönelik işaretçi.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **packet_ptr:** PPP paketinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP durum isteği.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı PPP durum isteği.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -1114,7 +1114,7 @@ status =  nx_ppp_packet_receive(&my_ppp, packet_ptr);
 ```
 ## <a name="nx_ppp_packet_send_set"></a>nx_ppp_packet_send_set
 
-PPP paketi gönderme işlevini ayarlama
+PPP paket gönderme işlevini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1124,21 +1124,21 @@ UINT  nx_ppp_packet_send_set(NX_PPP *ppp_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPP paketi gönderme funcıton 'i ayarlar.
+Bu hizmet, PPP paketi gönderme funciton'larını ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ppp_ptr**: PPP denetim bloğu işaretçisi.
-- **nx_ppp_packet_send**: PPP paketi gönderme yordamı.
+- **ppp_ptr:** PPP denetim bloğuna işaretçi.
+- **nx_ppp_packet_send:** PPP paketi gönderme yordamı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı PPP durum isteği.
-- NX_PTR_ERROR: (0x07) geçersiz PPP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı PPP durum isteği.
+- NX_PTR_ERROR: (0x07) Geçersiz PPP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 

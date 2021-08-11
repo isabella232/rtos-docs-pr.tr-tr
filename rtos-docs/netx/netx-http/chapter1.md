@@ -1,126 +1,126 @@
 ---
-title: Bölüm 1-NetX HTTP 'ye giriş
-description: Bu belge, HTTP 'nin Web 'de içerik aktarmak için tasarlanan bir protokol olduğunu açıklayacak.
+title: Bölüm 1 - NetX HTTP'ye Giriş
+description: Bu belgede, HTTP'nin Web'de içerik aktarmak için tasarlanmış bir protokol olduğu açıklayacak.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6137cc0d8deb753d784be844d5abc7778dd62295
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1e37328ab9cff0ab635a00113a83ee256c39303ce24b0cb292b6c2eaa71236f5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826717"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799396"
 ---
-# <a name="chapter-1---introduction-to-netx-http"></a>Bölüm 1-NetX HTTP 'ye giriş
+# <a name="chapter-1---introduction-to-netx-http"></a>Bölüm 1 - NetX HTTP'ye Giriş
 
-Köprü Metni Aktarım Protokolü (HTTP), Web üzerinde içerik aktarmak için tasarlanan bir protokoldür. HTTP, içerik aktarım işlevini gerçekleştirmek için güvenilir Iletim Denetimi Protokolü (TCP) hizmetlerinden yararlanan basit bir protokoldür. Bu nedenle, HTTP son derece güvenilir bir içerik aktarım protokolüdür. HTTP, en çok kullanılan uygulama protokollerinden biridir. Web 'deki tüm işlemler HTTP protokolünü kullanır.
+Köprü Metni Aktarım Protokolü (HTTP), Web'de içerik aktarmak için tasarlanmış bir protokoldür. HTTP, içerik aktarım işlevini gerçekleştirmek için güvenilir İletim Denetimi Protokolü (TCP) hizmetlerini kullanan basit bir protokoldür. Bu nedenle, HTTP son derece güvenilir bir içerik aktarım protokolüdür. HTTP, en çok kullanılan uygulama protokollerindendir. Web'de yapılan tüm işlemler HTTP protokolünü kullanır.
 
-## <a name="http-requirements"></a>HTTP gereksinimleri
+## <a name="http-requirements"></a>HTTP Gereksinimleri
 
-NetX HTTP paketi, düzgün çalışması için bir NetX (sürüm 5,2 veya üzeri) yüklü olmasını gerektirir. Buna ek olarak, bir IP örneği zaten oluşturulmalı ve TCP 'nin aynı IP örneğinde etkinleştirilmesi gerekir. Bölüm **2** ' de "küçük örnek sistem" bölümündeki tanıtım dosyası bunun nasıl yapıldığını gösterir.
+NetX HTTP paketinin düzgün çalışması için bir NetX (sürüm 5.2 veya sonrası) yüklü olması gerekir. Ayrıca, bir IP örneği zaten oluşturularak aynı IP örneğinde TCP etkinleştirilmelidir. Bölüm **2'nin** "Küçük Örnek Sistem" bölümünde yer alan tanıtım dosyası bunun nasıl tamam olduğunu gösteriyor.
 
-NetX HTTP paketinin HTTP Istemci bölümünün başka gereksinimi yoktur.
+NetX HTTP paketinin HTTP İstemcisi bölümünün başka bir gereksinimleri yoktur.
 
-NetX HTTP paketinin HTTP Sunucusu bölümünde birkaç ek gereksinim vardır. İlk olarak, tüm Istemci HTTP isteklerini işlemek için TCP 'nin *iyi bilinen bağlantı noktası 80* ' e tam erişim gerektirir. HTTP sunucusu Ayrıca, FileX Embedded dosya sistemiyle kullanılmak üzere tasarlanmıştır. FileX yoksa, Kullanıcı kendi ortamlarında kullanılan FileX bölümlerinin bağlantı noktasını alabilir. Bu, bu kılavuzun sonraki bölümlerinde ele alınmıştır.
+NetX HTTP paketinin HTTP Sunucusu bölümünün birkaç ek gereksinimleri vardır. İlk olarak, tüm İstemci HTTP isteklerinin işlenmesi için iyi bilinen *80* tcp bağlantı noktasına tam erişim gerektirir. HTTP Sunucusu, FileX ekli dosya sistemiyle kullanım için de tasarlanmıştır. FileX kullanılamıyorsa, kullanıcı kullanılan FileX bölümlerini kendi ortamına taşınabilir. Bu, bu kılavuzun sonraki bölümlerinde ele alınmıştır.
 
-## <a name="http-constraints"></a>HTTP kısıtlamaları 
+## <a name="http-constraints"></a>HTTP Kısıtlamaları 
 
-NetX HTTP protokolü, HTTP 1,0 standardını uygular. Ancak, aşağıdaki kısıtlamalar vardır:
+NetX HTTP protokolü HTTP 1.0 standardını uygulamaya almaktadır. Ancak, aşağıdaki kısıtlamalar vardır:
 
 1.  Kalıcı bağlantılar desteklenmiyor
 
-2.  İstek ardışık düzen oluşturma desteklenmiyor
+2.  İstek yöneltme desteklenmiyor
 
-3.  HTTP sunucusu hem temel hem de MD5 Özet kimlik doğrulamasını destekler, ancak MD5-sess içermez. Mevcut olduğunda, HTTP Istemcisi yalnızca temel kimlik doğrulamasını destekler.
+3.  HTTP Sunucusu hem temel hem de MD5 özet kimlik doğrulamasını destekler, ancak MD5-sess'i desteklemez. Şu anda HTTP İstemcisi yalnızca temel kimlik doğrulamasını destekler.
 
-4.  İçerik sıkıştırması desteklenmez.
+4.  İçerik sıkıştırması desteklenmiyor.
 
-5.  Izleme, Seçenekler ve bağlantı istekleri desteklenmez.
+5.  TRACE, OPTIONS ve CONNECT istekleri desteklenmiyor.
 
-6.  HTTP sunucusu veya Istemcisiyle ilişkili paket havuzu, HTTP üst bilgisinin tamamını tutabilecek kadar büyük olmalıdır.
+6.  HTTP Sunucusu veya İstemcisi ile ilişkili paket havuzu, tam HTTP üst bilgisini tutacak kadar büyük olmalı.
 
-7.  HTTP Istemci Hizmetleri yalnızca içerik aktarımına yöneliktir; Bu pakette sunulan bir görüntüleme yardımcı programı yoktur.
+7.  HTTP İstemci hizmetleri yalnızca içerik aktarımına açıktır; bu pakette hiçbir görüntü yardımcı programı sağlanamıyor.
 
-## <a name="http-url-resource-names"></a>HTTP URL 'SI (kaynak adları)
+## <a name="http-url-resource-names"></a>HTTP URL'si (Kaynak Adları)
 
-HTTP protokolü, Web 'de içerik aktarmak için tasarlanmıştır. İstenen içerik Evrensel Kaynak Bulucu (URL) tarafından belirtilir. Bu, her HTTP isteğinin birincil bileşenidir. URL 'Ler her zaman bir "/" karakteriyle başlar ve genellikle HTTP sunucusundaki dosyalara karşılık gelir. Ortak HTTP dosya uzantıları aşağıda gösterilmiştir:
+HTTP protokolü, Web'de içerik aktarımı için tasarlanmıştır. İstenen içerik Evrensel Kaynak Bulucu (URL) tarafından belirtilir. Bu, her HTTP isteğinin birincil bileşenidir. URL'ler her zaman "/" karakteriyle başlar ve genellikle HTTP Sunucusundaki dosyalara karşılık gelen dosyalardır. Yaygın HTTP dosya uzantıları aşağıda gösterilmiştir:
 
-- **. htm (veya. html)** Köprü Metni Biçimlendirme Dili (HTML)
-- **. txt** Düz ASCII metni
-- **. gif** İkili GIF resmi
-- **. XBM** İkili Xbit eşlem resmi
+- **.htm (veya .html)** Köprü Metni Biçimlendirme Dili (HTML)
+- **.txt** Düz ASCII metni
+- **.gif** İkili GIF görüntüsü
+- **.xbm** İkili Xbitmap görüntüsü
 
-## <a name="http-client-requests"></a>HTTP Istemci Istekleri
+## <a name="http-client-requests"></a>HTTP İstemci İstekleri
 
-HTTP, Web içeriği istemek için basit bir mekanizmaya sahiptir. Temel olarak *BILINEN TCP bağlantı noktası 80*' de bir bağlantı başarıyla kurulduktan sonra istemci tarafından VERILEN standart http komutları kümesi vardır. Aşağıdakiler, temel HTTP komutlarının bazılarını göstermektedir:
+HTTP, Web içeriği isteği için basit bir mekanizmaya sahiptir. Temel olarak, iyi bilinen TCP bağlantı noktası *80'de* başarıyla bağlantı kurulduktan sonra İstemci tarafından verilen bir dizi standart HTTP komutu vardır. Aşağıda temel HTTP komutlarının bazıları ve ardından aşağıdakiler ve daha fazla bilgi ve açıklama yer alazıdır:
 
-- Kaynağı al HTTP/1.0 *belirtilen kaynağı al*
-- Kaynak SONRASı HTTP/1.0 *belirtilen kaynağı al ve ekli GIRIŞI http sunucusuna geçir*
-- BAŞ kaynak HTTP/1.0 *, http sunucusu tarafından BIR Get, ancak içerik döndürülmüyor gibi değerlendirildi*
-- Kaynak YERLEŞTIRME HTTP/1.0 *kaynak kaynağı http sunucusuna*
-- Kaynağı SIL HTTP/1.0 *sunucuda kaynağı Sil*
+- GET kaynağı HTTP/1.0 *Belirtilen kaynağı al*
+- POST kaynağı HTTP/1.0 *Belirtilen kaynağı al ve HTTP Sunucusuna eklenmiş girişi geç*
+- HEAD kaynağı HTTP/1.0 GET olarak kabul edilir, ancak içerik *HTTP Sunucusu tarafından döndürülz*
+- PUT kaynağı HTTP/1.0 *HTTP Sunucusuna kaynak koyma*
+- DELETE kaynağı HTTP/1.0 *Sunucuda kaynağı silme*
 
-Bu ASCII komutları, HTTP sunucusu ile HTTP işlemleri gerçekleştirmek için Web tarayıcıları ve NetX HTTP Istemci Hizmetleri tarafından dahili olarak oluşturulur.
-
->[!NOTE] 
-> HTTP Istemci uygulaması varsayılan bağlantı noktası 80 ' dir. Ancak, *nx_http_client_set_connect_port* hizmetini kullanarak çalışma zamanında bağlantı bağlantı noktasını http sunucusu ile değiştirebilir. Bu hizmetin daha fazla ayrıntı için bkz. Bölüm 4. Bu, zaman zaman Istemci bağlantıları için alternatif bağlantı noktaları kullanan Web sunucularına uyum sağlar.
-
-## <a name="http-server-responses"></a>HTTP sunucusu yanıtları
-
-HTTP sunucusu, Istemci komut yanıtlarını göndermek için *TANıNMıŞ TCP bağlantı noktası 80* ' ü kullanır. HTTP sunucusu Client komutunu işlediğinde, 3 basamaklı bir sayısal durum kodu içeren bir ASCII yanıt dizesi döndürür. Sayısal yanıt, HTTP Istemci yazılımı tarafından işlemin başarılı veya başarısız olup olmadığını tespit etmek için kullanılır. Istemci komutlarına yönelik çeşitli HTTP sunucu yanıtlarının listesi aşağıda verilmiştir:
-
-- 200 *isteği başarılı* oldu
-- 400 *isteği düzgün biçimlendirilmemiş*
-- 401 *yetkisiz istek, istemcinin kimlik doğrulaması gönderebilmesi gerekir*
-- 404 *belirtilen kaynak bulunamadı*
-- 500 *Iç http sunucusu hatası*
-- 501 *ISTEğI http sunucusu tarafından uygulanmadı*
-- 502 *hizmeti kullanılamıyor*
-
-Örneğin, "test.htm" dosyasını yERLEşTIRMEk için başarılı bir Istemci isteği "HTTP/1.0 200 Tamam" iletisiyle yanıt verdi.
-
-## <a name="http-communication"></a>HTTP Iletişimi
-
-Daha önce belirtildiği gibi, HTTP sunucusu, Istemci isteklerini alan *iyi BILINEN TCP bağlantı noktası 80* ' ü kullanır. HTTP Istemcileri, kullanılabilir herhangi bir TCP bağlantı noktasını kullanabilir. HTTP olaylarının genel sırası aşağıdaki gibidir:
-
-**Http get isteği**:
-
-1.  İstemci, 80 numaralı sunucu bağlantı noktasına TCP Connect sorunları.
-
-2.  İstemci "**Get Resource http/1.0**" isteği gönderir (diğer üst bilgi bilgileriyle birlikte).
-
-3.  Sunucu "**http/1.0 200 Tamam**" iletisini, daha sonra kaynak içeriği (varsa) tarafından hemen izlenir.
-
-4.  Sunucu bir bağlantı kesmeyi gerçekleştiriyor.
-
-5.  İstemci bir bağlantı kesilmesi gerçekleştirir.
-
-**Http put isteği**:
-
-1. İstemci, 80 numaralı sunucu bağlantı noktasına TCP Connect sorunları.
-
-2. İstemci "**PUT Resource http/1.0**" isteği ve diğer başlık bilgilerini ve ardından kaynak içeriğini gönderir.
-
-3. Sunucu, daha sonra kaynak içeriği tarafından izlenen ek bilgiler içeren bir "**http/1.0 200 Tamam**" iletisi oluşturur.
-
-4. Sunucu bir bağlantı kesmeyi gerçekleştiriyor.
-
-5. İstemci bir bağlantı kesilmesi gerçekleştirir.
+Bu ASCII komutları, bir HTTP Sunucusu ile HTTP işlemleri gerçekleştirmek için Web tarayıcıları ve NetX HTTP İstemcisi hizmetleri tarafından dahili olarak oluşturulur.
 
 >[!NOTE] 
-> Daha önce bahsedildiği gibi, HTTP Istemcisi varsayılan bağlantı bağlantı noktasını 80 ' dan başka bir bağlantı noktasına değiştirerek istemcilere bağlanmak için alternatif bağlantı noktaları kullanan Web sunucularının *nx_http_client_set_connect_port* .
+> HTTP İstemcisi uygulaması varsayılan olarak 80 bağlantı noktasını kullanır. Ancak, nx_http_client_set_connect_port hizmetini kullanarak çalışma zamanında HTTP Sunucusu'nda *bağlantı nx_http_client_set_connect_port* değiştirebilir. Bu hizmetin diğer ayrıntıları için 4. Bölüm'e bakın. Bu, ara sıra İstemci bağlantıları için alternatif bağlantı noktaları kullanan web sunucularını barındırıyor.
 
-## <a name="http-authentication"></a>HTTP kimlik doğrulaması
+## <a name="http-server-responses"></a>HTTP Sunucusu Yanıtları
 
-HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web istekleri için gerekli değildir. *Temel* ve *Özet* gibi iki kimlik doğrulama özelliği vardır. Temel kimlik doğrulaması, birçok protokolde bulunan *ad* ve *parola* kimlik doğrulamasına eşdeğerdir. HTTP temel kimlik doğrulamasında ad ve parolalar, Base64 biçiminde birleştirilir ve kodlanır. Temel kimlik doğrulamasının ana dezavantajı, bu ad ve parolanın istekte openly olarak aktarılmasıdır. Bu, ad ve parolanın çalınabilmesini kolaylaştırır. Özet kimlik doğrulaması, istekte hiçbir şekilde adı ve parolayı ileterek bu sorunu giderir. Bunun yerine, ad, parola ve diğer bilgilerden 128 bitlik bir anahtar veya Özet türetmek için bir algoritma kullanılır. NetX HTTP sunucusu standart MD5 Özet algoritmasını destekler.
+HTTP Sunucusu, İstemci komut yanıtlarını göndermek için aynı iyi bilinen TCP bağlantı noktası *80'i* kullanır. HTTP Sunucusu İstemci komutunu işlemenin ardından, 3 basamaklı sayısal durum kodu içeren bir ASCII yanıt dizesi döndürür. Sayısal yanıt HTTP İstemcisi yazılımı tarafından, işlemi başarılı veya başarısız olup olmadığını belirlemek için kullanılır. Aşağıda, İstemci komutlarına çeşitli HTTP Sunucusu yanıtlarının listesi ve ardından yer almaktadır:
 
-Kimlik doğrulaması ne zaman gerekir? Temel olarak, HTTP sunucusu, istenen bir kaynağın kimlik doğrulaması gerektirip gerektirmediğini belirler. Kimlik doğrulaması gerekliyse ve Istemci isteği uygun kimlik doğrulamasını içermiyorsa, gerekli kimlik doğrulama türüne sahip "HTTP/1.0 401 Yetkisiz" yanıtı Istemciye gönderilir. Daha sonra Istemci, doğru kimlik doğrulamasıyla yeni bir istek oluşturacak şekilde beklenir.
+- 200 *İstek başarılı oldu*
+- 400 *İstek düzgün şekilde oluşturulmuş değil*
+- 401 *Yetkisiz istek, istemcinin kimlik doğrulaması göndermesi gerekiyor*
+- 404 *İstekte belirtilen kaynak bulunamadı*
+- 500 *İç HTTP Sunucusu hatası*
+- 501 *İstek HTTP Sunucusu tarafından uygulanmadı*
+- 502 *Hizmeti kullanılamıyor*
 
-## <a name="http-authentication-callback"></a>HTTP kimlik doğrulaması geri araması
+Örneğin, "test.htm" dosyasını PUT'a yapılan başarılı bir İstemci isteği"HTTP/1.0 200 Tamam" iletisiyle yanıt verir.
 
-Daha önce belirtildiği gibi, HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web aktarımları için gerekli değildir. Ayrıca, kimlik doğrulama genellikle kaynağa bağımlıdır. Sunucu üzerindeki bazı kaynaklara erişim için kimlik doğrulaması gerekir, diğerleri desteklemez. NetX HTTP sunucu paketi, uygulamanın, her HTTP Istemci isteğini işlemenin başlangıcında çağrılan bir kimlik doğrulama geri çağırma yordamı ( ***nx_http_server_create*** çağrısı aracılığıyla) belirtmesini sağlar.
+## <a name="http-communication"></a>HTTP İletişimi
+
+Daha önce belirtildiği gibi, HTTP Sunucusu İstemci isteklerini alan için *iyi bilinen TCP bağlantı noktası 80'i* kullanır. HTTP İstemcileri kullanılabilir herhangi bir TCP bağlantı noktasını kullanabilir. HTTP olaylarının genel sırası aşağıdaki gibidir:
+
+**HTTP GET İsteği:**
+
+1.  İstemci, SUNUCU bağlantı noktası 80'e TCP bağlantısı verir.
+
+2.  İstemci , "**GET resource HTTP/1.0**" isteğini (diğer üst bilgi bilgileriyle birlikte) gönderir.
+
+3.  Sunucu, ek bilgilerle birlikte hemen ardından kaynak içeriği (varsa) gelen bir "**HTTP/1.0 200 Tamam"** iletisi derler.
+
+4.  Sunucu bağlantıyı keser.
+
+5.  İstemci bağlantıyı keser.
+
+**HTTP PUT İsteği:**
+
+1. İstemci, SUNUCU bağlantı noktası 80'e TCP bağlantısı verir.
+
+2. İstemci diğer üst bilgi bilgileriyle birlikte " PUT kaynağı **HTTP/1.0**" isteğini ve ardından kaynak içeriğini gönderir.
+
+3. Sunucu, ek bilgilerle birlikte hemen kaynak içeriğinin takip ettiği bir "**HTTP/1.0 200 Tamam"** iletisi derleme.
+
+4. Sunucu bağlantıyı keser.
+
+5. İstemci bağlantıyı keser.
+
+>[!NOTE] 
+> Daha önce belirtildiği gibi HTTP İstemcisi, istemcilere bağlanmak için alternatif  bağlantı noktaları kullanan web sunucularının nx_http_client_set_connect_port bağlantı noktasını kullanarak varsayılan bağlantı noktasını 80'den başka bir bağlantı noktasına değiştirebilir.
+
+## <a name="http-authentication"></a>HTTP Kimlik Doğrulaması
+
+HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web istekleri için gerekli değildir. Kimlik doğrulamasının iki çeşidi vardır: temel *ve özet.*  Temel kimlik doğrulaması, birçok *protokolde bulunan* *ad ve* parola kimlik doğrulaması ile eşdeğerdir. HTTP temel kimlik doğrulamasında ad ve parolalar base64 biçiminde bir olur ve kodlanmış olur. Temel kimlik doğrulamasının temel dezavantajı, istekte açık bir şekilde iletilen ad ve paroladır. Bu, ad ve parolanın çalınmalarını biraz kolaylaştırır. Özet kimlik doğrulaması, istekte adı ve parolayı hiçbir zaman ileterek bu sorunu çözmektedir. Bunun yerine, ad, parola ve diğer bilgilerden 128 bitlik bir anahtar veya özet türetmek için bir algoritma kullanılır. NetX HTTP Sunucusu standart MD5 özet algoritmasını destekler.
+
+Kimlik doğrulaması ne zaman gereklidir? Temelde HTTP Sunucusu istenen bir kaynağın kimlik doğrulaması gerektir olup olduğuna karar verir. Kimlik doğrulaması gerekli ise ve İstemci isteği doğru kimlik doğrulamasını içermezse, gerekli kimlik doğrulaması türüne sahip bir "HTTP/1.0 401 Yetkisiz" yanıtı İstemciye gönderilir. İstemcinin daha sonra uygun kimlik doğrulamasıyla yeni bir istek oluşturması beklenir.
+
+## <a name="http-authentication-callback"></a>HTTP Kimlik Doğrulaması Geri Çağırma
+
+Daha önce belirtildiği gibi HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web aktarımları için gerekli değildir. Ayrıca kimlik doğrulaması genellikle kaynağa bağımlıdır. Sunucu üzerindeki bazı kaynaklara erişim için kimlik doğrulaması gerekir, diğerleri desteklemez. NetX HTTP sunucu paketi, uygulamanın, her HTTP Istemci isteğini işlemenin başlangıcında çağrılan bir kimlik doğrulama geri çağırma yordamı ( ***nx_http_server_create*** çağrısı aracılığıyla) belirtmesini sağlar.
 
 Geri arama yordamı, NetX HTTP sunucusunu kaynakla ilişkili Kullanıcı adı, parola ve bölge dizeleri sağlar ve gereken kimlik doğrulaması türünü döndürür. Kaynak için kimlik doğrulaması gerekli değilse, kimlik doğrulama geri araması **NX_HTTP_DONT_AUTHENTICATE** değerini döndürmelidir. Aksi halde, belirtilen kaynak için temel kimlik doğrulaması gerekliyse, yordam **NX_HTTP_BASIC_AUTHENTICATE** döndürmelidir. Son olarak, MD5 Özet kimlik doğrulaması gerekliyse, geri arama yordamı **NX_HTTP_DIGEST_AUTHENTICATE** döndürmelidir. HTTP sunucusu tarafından sunulan herhangi bir kaynak için kimlik doğrulaması gerekmiyorsa, geri çağırma gerekmez ve HTTP sunucusu oluşturma çağrısına boş bir işaretçi sağlanması gerekir.
 

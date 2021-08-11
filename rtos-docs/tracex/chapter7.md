@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: c3cbc945e33b87b6759c56ec1429d6bf57259bd9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8668f0867e205afdeab112dfedd257998a5f5b7ff256f27298072dde3e9019b0
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827491"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116803299"
 ---
 # <a name="chapter-7---azure-rtos-filex-trace-events"></a>Bölüm 7-Azure RTOS FileX izleme olayları
 
@@ -70,109 +70,109 @@ Aşağıda her bir olay açıklanmaktadır:
 | ![Dosya okuma simgesi](./media/user-guide/fx-events/image43.png)    | **Dosya okuma** (*fx_file_read*) |
 | ![Dosya göreli arama simgesi](./media/user-guide/fx-events/image44.png)    | **Dosya göreli arama** (*fx_file_relative_seek*) |
 | ![Dosya yeniden adlandırma simgesi](./media/user-guide/fx-events/image45.png)    | **Dosya yeniden adlandırma** (*fx_file_rename*) |
-| ![Dosya arama simgesi](./media/user-guide/fx-events/image46.png)    | **Dosya ara** (*fx_file_seek*) |
-| ![Dosya kesme simgesi](./media/user-guide/fx-events/image47.png)    | **Dosya Kes** (*fx_file_truncate*) |
-| ![Dosya kesme sürümü simgesi](./media/user-guide/fx-events/image48.png)    | **Dosya kesme sürümü** (*fx_file_truncate_release*) |
-| ![Dosya yazma simgesi](./media/user-guide/fx-events/image49.png)    | **Dosya yazma** (*fx_file_write*) |
-| ![Medya Iptali simgesi](./media/user-guide/fx-events/image50.png)    | **Medya iptali** (*fx_media_abort*) |
-| ![Medya önbelleği geçersiz kıl simgesi](./media/user-guide/fx-events/image51.png)    | **Medya önbelleği geçersiz kıl** (*fx_media_cache_invalidate*) |
-| ![Medya onay simgesi](./media/user-guide/fx-events/image52.png)    | **Medya denetimi** (*fx_media_check*) |
-| ![* Medya kapatma simgesi](./media/user-guide/fx-events/image53.png)    | **Medya kapatma** (*fx_media_close*) |
-| ![Medya Temizleme simgesi](./media/user-guide/fx-events/image54.png)    | **Medya Temizleme** (*fx_media_flush*) |
-| ![Medya biçimi simgesi](./media/user-guide/fx-events/image55.png)    | **Medya biçimi** (*fx_media_format*) |
-| ![Medya açma simgesi](./media/user-guide/fx-events/image56.png)    | **Medya açık** (*fx_media_open*) |
-| ![Medya okuma simgesi](./media/user-guide/fx-events/image57.png)    | **Medya okuma** (*fx_media_read*) |
-| ![Medya alanı kullanılabilir simgesi](./media/user-guide/fx-events/image58.png)    | **Kullanılabilir medya alanı** (*fx_media_space_available*) |
-| ![Medya birimi al simgesi](./media/user-guide/fx-events/image59.png)    | **Medya hacmi al** (*fx_media_volume_get*) |
-| ![Medya birimi kümesi simgesi](./media/user-guide/fx-events/image60.png)    | **Medya birimi kümesi** (*fx_media_volume_set*) |
-| ![Medya yazma simgesi](./media/user-guide/fx-events/image61.png)    | **Medya yazma** (*fx_media_write*) |
-| ![Sistem tarihi al simgesi](./media/user-guide/fx-events/image62.png)    | **Sistem tarihi al** (*fx_system_date_get*) |
-| ![Sistem tarihi kümesi simgesi](./media/user-guide/fx-events/image63.png)    | **Sistem tarihi kümesi** (*fx_system_date_set*) |
-| ![Sistem başlatma simgesi](./media/user-guide/fx-events/image64.png)    | **Sistem başlatma** (*fx_system_initialize*) |
-| ![Sistem saati al simgesi](./media/user-guide/fx-events/image65.png)    | **Sistem saati al** (*fx_system_time_get*) |
-| ![Sistem zaman kümesi simgesi](./media/user-guide/fx-events/image66.png)    | **Sistem zaman kümesi** (*fx_system_time_set*) |
-| ![Unicode dizin oluşturma simgesi](./media/user-guide/fx-events/image67.png)    | **Unicode dizin oluşturma** (*fx_unicode_directory_create*) |
-| ![Unicode dizin yeniden adlandırma simgesi](./media/user-guide/fx-events/image68.png)    | **Unicode dizin yeniden adlandırma** (*fx_unicode_directory_rename*) |
-| ![Unicode dosya oluştur simgesi](./media/user-guide/fx-events/image69.png)    | **Unicode dosya oluşturma** (*fx_unicode_file_create*) |
-| ![Unicode dosya yeniden adlandırma simgesi](./media/user-guide/fx-events/image70.png)    | **Unicode dosya yeniden adlandırma** (*fx_unicode_file_rename*) |
-| ![Unicode Lensağ al simgesi](./media/user-guide/fx-events/image71.png)    | **Unicode Lenlen al** (*fx_unicode_length_get*) |
-| ![Unicode ad Al simgesi](./media/user-guide/fx-events/image72.png)    | **Unicode adı Al** (*fx_unicode_name_get*) |
-| ![Unicode kısa ad Al simgesi](./media/user-guide/fx-events/image73.png)    | **Unicode kısa adı Get** (*fx_unicode_short_name_get*) |
+| ![Dosya arama simgesi](./media/user-guide/fx-events/image46.png)    | **Dosya Arama** (*fx_file_seek*) |
+| ![Dosya Kesme simgesi](./media/user-guide/fx-events/image47.png)    | **Dosya Kesilmesi** (*fx_file_truncate*) |
+| ![Dosya Kesme Yayın simgesi](./media/user-guide/fx-events/image48.png)    | **Dosya Kesme Sürümü** (*fx_file_truncate_release*) |
+| ![Dosya Yazma simgesi](./media/user-guide/fx-events/image49.png)    | **Dosya Yazma** (*fx_file_write*) |
+| ![Medya Durdurma simgesi](./media/user-guide/fx-events/image50.png)    | **Medya Durdurma** (*fx_media_abort*) |
+| ![Medya Önbelleği Geçersiz Kılın simgesi](./media/user-guide/fx-events/image51.png)    | **Medya Önbelleği Geçersiz Kılındı** (*fx_media_cache_invalidate*) |
+| ![Medya Denetimi simgesi](./media/user-guide/fx-events/image52.png)    | **Medya Denetimi** (*fx_media_check*) |
+| ![*MedyaYı Kapat simgesi](./media/user-guide/fx-events/image53.png)    | **Medya Kapatma** (*fx_media_close*) |
+| ![Medya Boşaltma simgesi](./media/user-guide/fx-events/image54.png)    | **Medya Boşaltma** (*fx_media_flush*) |
+| ![Medya Biçimi simgesi](./media/user-guide/fx-events/image55.png)    | **Medya Biçimi** (*fx_media_format*) |
+| ![Medya Aç simgesi](./media/user-guide/fx-events/image56.png)    | **Media Open** (*fx_media_open*) |
+| ![Medya Okuma simgesi](./media/user-guide/fx-events/image57.png)    | **Medya Okuma** (*fx_media_read*) |
+| ![Medya Alanı Kullanılabilir simgesi](./media/user-guide/fx-events/image58.png)    | **Kullanılabilir Medya Alanı** (*fx_media_space_available*) |
+| ![Medya Birimi Al simgesi](./media/user-guide/fx-events/image59.png)    | **Medya Birimi Al** (*fx_media_volume_get*) |
+| ![Medya Birim Kümesi simgesi](./media/user-guide/fx-events/image60.png)    | **Medya Birim Kümesi** (*fx_media_volume_set*) |
+| ![Medya Yazma simgesi](./media/user-guide/fx-events/image61.png)    | **Medya Yazma** (*fx_media_write*) |
+| ![Sistem Tarihi Al simgesi](./media/user-guide/fx-events/image62.png)    | **Sistem Tarih Al** (*fx_system_date_get*) |
+| ![Sistem Tarih Kümesi simgesi](./media/user-guide/fx-events/image63.png)    | **Sistem Tarih Kümesi** (*fx_system_date_set*) |
+| ![Sistem Başlatma simgesi](./media/user-guide/fx-events/image64.png)    | **Sistem Başlatma** (*fx_system_initialize*) |
+| ![Sistem Saati Al simgesi](./media/user-guide/fx-events/image65.png)    | **Sistem Zamanı Al** (*fx_system_time_get*) |
+| ![Sistem Zaman Kümesi simgesi](./media/user-guide/fx-events/image66.png)    | **Sistem Zaman Kümesi** (*fx_system_time_set*) |
+| ![Unicode Dizini Oluştur simgesi](./media/user-guide/fx-events/image67.png)    | **Unicode Dizin Oluşturma** (*fx_unicode_directory_create*) |
+| ![Unicode Dizini Yeniden Adlandırma simgesi](./media/user-guide/fx-events/image68.png)    | **Unicode Dizin Yeniden Adlandırma** (*fx_unicode_directory_rename*) |
+| ![Unicode Dosya Oluştur simgesi](./media/user-guide/fx-events/image69.png)    | **Unicode Dosya Oluşturma** (*fx_unicode_file_create*) |
+| ![Unicode Dosya Yeniden Adlandırma simgesi](./media/user-guide/fx-events/image70.png)    | **Unicode Dosya Yeniden Adlandırma** (*fx_unicode_file_rename*) |
+| ![Unicode Lenght Get simgesi](./media/user-guide/fx-events/image71.png)    | **Unicode Lenght Get** (*fx_unicode_length_get*) |
+| ![Unicode Adı Al simgesi](./media/user-guide/fx-events/image72.png)    | **Unicode Ad Get** (*fx_unicode_name_get*) |
+| ![Unicode Kısa Adı Al simgesi](./media/user-guide/fx-events/image73.png)    | **Unicode Kısa Adı Al** (*fx_unicode_short_name_get*) |
 
 ## <a name="event-descriptions"></a>Olay Açıklamaları
 
-Aşağıda her bir olay açıklanmaktadır.
+Aşağıda her bir olay açık bir şekilde açık almaktadır.
 
-### <a name="internal-logical-sector-cache-miss"></a>İç mantıksal kesim önbelleği Isabetsizlik 
+### <a name="internal-logical-sector-cache-miss"></a>İç Mantıksal Kesim Önbellek Isabeti 
 
-#### <a name="internal-logical-sector-cache-miss"></a>İç mantıksal kesim önbelleği isabetsizlik
+#### <a name="internal-logical-sector-cache-miss"></a>İç mantıksal kesim önbelleği isabet isabetli değil
 
-**Simge** ![ İç mantıksal kesim önbelleğinde isabetsizlik simgesi](./media/user-guide/fx-events/image1.png)
+**Simge** ![ İç mantıksal kesim önbelleği isabet isabeti simgesi](./media/user-guide/fx-events/image1.png)
 
 **Açıklama**
 
-Bu olay bir iç FileX mantıksal sektör önbelleğinin isabetsiz olduğunu temsil eder.
+Bu olay, iç FileX mantıksal kesim önbelleği isabeti temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: sektör.
-- Bilgi alanı 3: Toplam isabetsizlik sayısı.
-- Bilgi alanı 4: önbellek boyutu.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Kesim.
+- Bilgi Alanı 3: Toplam kaçırma sayısı.
+- Bilgi Alanı 4: Önbellek boyutu.
 
-### <a name="internal-directory-cache-miss"></a>İç dizin önbelleğinde Isabetsizlik
+### <a name="internal-directory-cache-miss"></a>İç Dizin Önbelleği Isabeti
 
-#### <a name="internal-directory-cache-miss"></a>İç dizin önbelleğinde isabetsizlik
+#### <a name="internal-directory-cache-miss"></a>İç dizin önbelleği isabet isabeti
 
-**Simge** ![ İç dizin önbelleği isabetsizlik simgesi](./media/user-guide/fx-events/image2.png)
+**Simge** ![ İç dizin önbelleği isabet yok simgesi](./media/user-guide/fx-events/image2.png)
 
 **Açıklama** 
 
-Bu olay bir iç FileX dizin önbelleğinin isabetsiz olduğunu temsil eder.
+Bu olay bir iç FileX dizin önbelleği isabeti temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Toplam isabetsizlik sayısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Toplam kaçırma sayısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="internal-media-flush"></a>İç medya Temizleme 
+### <a name="internal-media-flush"></a>İç Medya Boşaltma 
 
-#### <a name="internal-media-flush"></a>İç medya Temizleme
+#### <a name="internal-media-flush"></a>İç medya boşaltma
 
-**Simge** ![ İç medya Temizleme simgesi](./media/user-guide/fx-events/image3.png)
+**Simge** ![ İç medya boşaltma simgesi](./media/user-guide/fx-events/image3.png)
 
 **Açıklama**
 
-Bu olay bir iç FileX medyası temizleme işlemini temsil eder.
+Bu olay bir iç FileX medya boşaltmasını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: kirli kesimlerin sayısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Kirli kesimlerin sayısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
 
-### <a name="internal-directory-entry-read"></a>İç dizin girişi okundu 
+### <a name="internal-directory-entry-read"></a>İç Dizin Girişi Okuma 
 
-#### <a name="internal-directory-entry-read"></a>İç dizin girişi okundu
+#### <a name="internal-directory-entry-read"></a>İç dizin girişi okuma
 
 **Simge** ![ İç dizin girişi okuma simgesi](./media/user-guide/fx-events/image4.png)
 
 **Açıklama**
 
-Bu olay bir iç FileX Dizin girişi okuma olayını temsil eder.
+Bu olay bir iç FileX dizin girişi okuma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="internal-directory-entry-write"></a>İç dizin girişi yazma
+### <a name="internal-directory-entry-write"></a>İç Dizin Girişi Yazma
 
 #### <a name="internal-directory-entry-write"></a>İç dizin girişi yazma
 
@@ -351,25 +351,25 @@ Bu olay iç bir FileX g/ç sürücüsü başlatma kaldırma olayını temsil ede
 
 **Açıklama** 
 
-Bu olay, bir dizin özniteliklerini oku olayını temsil eder.
+Bu olay, bir dizin öznitelikleri okuma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: öznitelikler bit eşlemesi:
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Öznitelikler bit eşlemesi:
 
   | Öznitelik                         | Değer        |
   |---------------------------------- | --------|
-  |  Salt Okunur                        | 0x01  |
-  |  Gizli                           | 0x02 şeklindedir  |
+  |  Salt Okunur                        | (0x01)  |
+  |  Gizli                           | (0x02)  |
   |  Sistem                           | (0x04)  |
   |  Birim                           | (0x08)  |
-  |  Dizin                        | 0x10  |
-  |  Arşiv                          | 0x20  |
-- Bilgi alanı 4: kullanılmıyor.
+  |  Dizin                        | (0x10)  |
+  |  Arşiv                          | (0x20)  |
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-attributes-set"></a>Dizin öznitelikleri kümesi 
+### <a name="directory-attributes-set"></a>Dizin Öznitelikleri Kümesi 
 
 #### <a name="fx_directory_attributes_set"></a>fx_directory_attributes_set 
 
@@ -377,23 +377,23 @@ Bu olay, bir dizin özniteliklerini oku olayını temsil eder.
 
 **Açıklama** 
 
-Bu olay Dizin özniteliklerini ayarlama olayını temsil eder.
+Bu olay dizin öznitelik kümesi olayı dizinini temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: öznitelikler bit eşlemesi:
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Öznitelikler bit eşlemesi:
 
   |  Öznitelik                        | Değer        |
   |---------------------------------- | --------|
-  |  Salt Okunur                        | 0x01  |
-  |  Gizli                           | 0x02 şeklindedir  |
+  |  Salt Okunur                        | (0x01)  |
+  |  Gizli                           | (0x02)  |
   |  Sistem                           | (0x04)  |
-  |  Arşiv                          | 0x20  |
-- Bilgi alanı 4: kullanılmıyor.
+  |  Arşiv                          | (0x20)  |
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-create"></a>Dizin oluşturma 
+### <a name="directory-create"></a>Dizin Oluşturma 
 
 #### <a name="fx_directory_create"></a>fx_directory_create
 
@@ -401,33 +401,33 @@ Bu olay Dizin özniteliklerini ayarlama olayını temsil eder.
 
 **Açıklama** 
 
-Bu olay bir dizin oluşturma olayını temsil eder.
+Bu olay bir dizin oluşturma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-default-get"></a>Dizin varsayılan Get 
+### <a name="directory-default-get"></a>Dizin Varsayılanı Al 
 
 #### <a name="fx_directory_default_get"></a>fx_directory_default_get 
 
-**Simge** ![ Dizin varsayılanı al simgesi](./media/user-guide/fx-events/image18.png)
+**Simge** ![ Dizin varsayılanı get simgesi](./media/user-guide/fx-events/image18.png)
 
 **Açıklama** 
 
-Bu olay, dizin varsayılan kümesi olayını temsil eder.
+Bu olay bir dizin varsayılan kümesi olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: dönüş yolu adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dönüş yolu adı işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-default-set"></a>Dizin varsayılan kümesi 
+### <a name="directory-default-set"></a>Dizin Varsayılan Kümesi 
 
 #### <a name="fx_directory_default_set"></a>fx_directory_default_set 
 
@@ -435,16 +435,16 @@ Bu olay, dizin varsayılan kümesi olayını temsil eder.
 
 **Açıklama** 
 
-Bu olay, dizin varsayılan kümesi olayını temsil eder.
+Bu olay bir dizin varsayılan kümesi olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: yeni varsayılan yol adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Yeni varsayılan yol adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-delete"></a>Dizin silme 
+### <a name="directory-delete"></a>Dizin Silme 
 
 #### <a name="fx_directory_delete"></a>fx_directory_delete
 
@@ -452,46 +452,46 @@ Bu olay, dizin varsayılan kümesi olayını temsil eder.
 
 **Açıklama** 
 
-Bu olay bir dizin silme olayını temsil eder.
+Bu olay bir dizin silme olayıdır.
 
-**Bilgi alanları**
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+**Bilgi Alanları**
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-first-entry-find"></a>Dizin Ilk giriş bulma 
+### <a name="directory-first-entry-find"></a>Dizin İlk Giriş Bul 
 
 #### <a name="fx_directory_first_entry_find"></a>fx_directory_first_entry_find
 
-**Simge** ![ Dizin ilk girişi bul simgesi](./media/user-guide/fx-events/image21.png)
+**Simge** ![ Dizin ilk girdisi bul simgesi](./media/user-guide/fx-events/image21.png)
 
 **Açıklama** 
 
-Bu olay bir dizin ilk girdi bul olayını temsil eder.
+Bu olay bir dizin ilk girdi bulma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-first-full-entry-find"></a>Dizinin Ilk tam girişi bulma 
+### <a name="directory-first-full-entry-find"></a>Dizin İlk Tam Giriş Bul 
 
 #### <a name="fx_directory_first_full_entry_find"></a>fx_directory_first_full_entry_find
 
-**Simge** ![ Dizinin ilk tam giriş bul simgesi](./media/user-guide/fx-events/image22.png)
+**Simge** ![ Dizin ilk tam giriş bul simgesi](./media/user-guide/fx-events/image22.png)
 
 **Açıklama** 
 
-Bu olay, bir dizinin ilk tam girdi bul olayını temsil eder.
+Bu olay, dizin ilk tam giriş bulma olayıdır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: Dizin adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dizin adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
 - Bilgi alanı 4: kullanılmıyor.
 
 ### <a name="directory-information-get"></a>Dizin bilgileri al 
@@ -662,26 +662,26 @@ Bu olay bir dizin yeniden adlandırma olayını temsil eder.
 - Bilgi alanı 1: medyaya yönelik Işaretçi.
 - Bilgi alanı 2: eski dizin adı Işaretçisi.
 - Bilgi alanı 3: yeni dizin adı Işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="directory-short-name-get"></a>Dizin kısa adı Al 
+### <a name="directory-short-name-get"></a>Dizin Kısa Adı Al 
 
 #### <a name="fx_directory_short_name_get"></a>fx_directory_short_name_get
 
-**Simge** ![ Dizin kısa adı Al simgesi](./media/user-guide/fx-events/image33.png)
+**Simge** ![ Dizin kısa adı al simgesi](./media/user-guide/fx-events/image33.png)
 
 **Açıklama**
 
-Bu olay bir dizin kısa adı Get olayını temsil eder.
+Bu olay bir dizin kısa adı get olayı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: uzun dosya adı Işaretçisi.
-- Bilgi alanı 3: kısa dosya adı Işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Uzun dosya adının işaretçisi.
+- Bilgi Alanı 3: Kısa dosya adının işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-allocate"></a>Dosya ayırma 
+### <a name="file-allocate"></a>Dosya Ayırma 
 
 #### <a name="fx_file_allocate"></a>fx_file_allocate
 
@@ -689,16 +689,16 @@ Bu olay bir dizin kısa adı Get olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir dosya ayırma olayını temsil eder.
+Bu olay bir dosya ayırma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: dosya Işaretçisi.
-- Bilgi alanı 2: Istenen boyut.
-- Bilgi alanı 3: geçerli boyut.
-- Bilgi alanı 4: yeni boyut.
+- Bilgi Alanı 1: Dosyanın işaretçisi.
+- Bilgi Alanı 2: İstenen boyut.
+- Bilgi Alanı 3: Geçerli boyut.
+- Bilgi Alanı 4: Yeni boyut.
 
-### <a name="file-attributes-read"></a>Okunan dosya öznitelikleri 
+### <a name="file-attributes-read"></a>Okunan Dosya Öznitelikleri 
 
 #### <a name="fx_file_attributes_read"></a>fx_file_attributes_read
 
@@ -706,25 +706,25 @@ Bu olay bir dosya ayırma olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir dosya öznitelikleri okuma olayını temsil eder.
+Bu olay, bir dosya özniteliklerini okuma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi. 
-- Bilgi alanı 2: öznitelikler bit eşlemesi:
+- Bilgi Alanı 1: Medyanın işaretçisi. 
+- Bilgi Alanı 2: Öznitelikler bit eşlemesi:
 
-  |  Attriancak                         | Değer        |
+  |  Attribut                         | Değer        |
   |---------------------------------- | --------|
-  |  Salt Okunur                        | 0x01  |
-  |  Gizli                           | 0x02 şeklindedir  |
+  |  Salt Okunur                        | (0x01)  |
+  |  Gizli                           | (0x02)  |
   |  Sistem                           | (0x04)  |
   |  Birim                           | (0x08)  |
-  |  Dizin                        | 0x10  |
-  |  Arşiv                          | 0x20  |
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+  |  Dizin                        | (0x10)  |
+  |  Arşiv                          | (0x20)  |
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-attributes-set"></a>Dosya öznitelikleri kümesi 
+### <a name="file-attributes-set"></a>Dosya Öznitelikleri Kümesi 
 
 #### <a name="fx_file_attributes_set"></a>fx_file_attributes_set
 
@@ -732,57 +732,57 @@ Bu olay bir dosya öznitelikleri okuma olayını temsil eder.
 
 **Açıklama** 
 
-Bu olay bir dosya öznitelikleri ayarlama olayını temsil eder.
+Bu olay, bir dosya öznitelikleri kümesi olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: dosya adı Işaretçisi. 
-- Bilgi alanı 3: öznitelikler bit eşlemesi:
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dosya adının işaretçisi. 
+- Bilgi Alanı 3: Öznitelikler bit eşlemesi:
 
   | Öznitelik                         | Değer        |
   |---------------------------------- | --------|
-  |  Salt Okunur                        | 0x01  |
-  |  Gizli                           | 0x02 şeklindedir  |
+  |  Salt Okunur                        | (0x01)  |
+  |  Gizli                           | (0x02)  |
   |  Sistem                           | (0x04)  |
-  |  Arşiv                          | 0x20  |
-- Bilgi alanı 4: kullanılmıyor.
+  |  Arşiv                          | (0x20)  |
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-best-effort-allocate"></a>Dosya En Iyi çaba ayırma 
+### <a name="file-best-effort-allocate"></a>Dosya Ayırma için En İyi Çaba 
 
 #### <a name="fx_file_best_effort_allocate"></a>fx_file_best_effort_allocate
 
-**Simge** ![ Dosya en iyi çaba ayırma simgesi](./media/user-guide/fx-events/image37.png)
+**Simge** ![ Dosya en iyi çabayı ayırma simgesi](./media/user-guide/fx-events/image37.png)
 
 **Açıklama** 
 
-Bu olay bir dosya en iyi çaba ayırma olayını temsil eder.
+Bu olay, olayı ayırmak için en iyi çabayı gösteren bir dosyayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: dosya Işaretçisi.
-- Bilgi alanı 2: Istenen boyut.
-- Bilgi alanı 3: ayrılan gerçek boyut.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Dosyanın işaretçisi.
+- Bilgi Alanı 2: İstenen boyut.
+- Bilgi Alanı 3: Ayrılan gerçek boyut.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-close"></a>Dosya Kapat 
+### <a name="file-close"></a>Dosya Kapatma 
 
 #### <a name="fx_file_close"></a>fx_file_close
 
-**Simge** ![ Dosya Kapat simgesi](./media/user-guide/fx-events/image38.png)
+**Simge** ![ Dosya kapatma simgesi](./media/user-guide/fx-events/image38.png)
 
 **Açıklama** 
 
-Bu olay bir dosya kapatma olayını temsil eder.
+Bu olay bir dosya kapatma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: dosya Işaretçisi.
-- Bilgi alanı 2: dosya boyutu.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Dosyanın işaretçisi.
+- Bilgi Alanı 2: Dosya boyutu.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-create"></a>Dosya oluşturma
+### <a name="file-create"></a>Dosya Oluşturma
 
 #### <a name="fx_file_create"></a>fx_file_create
 
@@ -790,24 +790,24 @@ Bu olay bir dosya kapatma olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir dosya oluşturma olayını temsil eder.
+Bu olay bir dosya oluşturma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: dosya adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Dosya adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="file-date-time-set"></a>Dosya tarih saat kümesi 
+### <a name="file-date-time-set"></a>Dosya Tarih Saat Kümesi 
 
 #### <a name="fx_file_date_time_set"></a>fx_file_date_time_set
 
-**Simge** ![ Dosya tarih saat kümesi simgesi](./media/user-guide/fx-events/image40.png)
+**Simge** ![ Dosya tarihi saat kümesi simgesi](./media/user-guide/fx-events/image40.png)
 
 **Açıklama**
 
-Bu olay bir dosya tarih/saat kümesi olayını temsil eder.
+Bu olay bir dosya tarihi/saat kümesi olayı temsil eder.
 
 **Bilgi alanları**
 
@@ -1121,11 +1121,11 @@ Bu olay bir medya okuma olayını temsil eder.
 **Bilgi alanları**
 
 - Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: mantıksal kesim.
-- Bilgi alanı 3: arabellek işaretçisi.
-- Bilgi alanı 4: okunan baytlar.
+- Bilgi Alanı 2: Mantıksal kesim.
+- Bilgi Alanı 3: Arabellek işaretçisi.
+- Bilgi Alanı 4: Okunan bayt.
 
-### <a name="media-space-available"></a>Kullanılabilir medya alanı 
+### <a name="media-space-available"></a>Kullanılabilir Medya Alanı 
 
 #### <a name="fx_media_space_available"></a>fx_media_space_available
 
@@ -1133,16 +1133,16 @@ Bu olay bir medya okuma olayını temsil eder.
 
 **Açıklama**
 
-Bu olay, kullanılabilir bir medya alanı olayını temsil eder.
+Bu olay, kullanılabilir medya alanı olaylarını temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: kullanılabilir bayt işaretçisi.
-- Bilgi alanı 3: boş küme sayısı.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Kullanılabilir bayt işaretçisi.
+- Bilgi Alanı 3: Ücretsiz küme sayısı.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="media-volume-get"></a>Medya birimi al 
+### <a name="media-volume-get"></a>Medya Birimi Al 
 
 #### <a name="fx_media_volume_get"></a>fx_media_volume_get
 
@@ -1150,16 +1150,16 @@ Bu olay, kullanılabilir bir medya alanı olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir medya birimi Get olayını temsil eder.
+Bu olay bir medya birimi get olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: birim adı Işaretçisi.
-- Bilgi alanı 3: birim kaynağı.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Birim adının işaretçisi.
+- Bilgi Alanı 3: Birim kaynağı.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="media-volume-set"></a>Medya birimi kümesi 
+### <a name="media-volume-set"></a>Medya Birim Kümesi 
 
 #### <a name="fx_media_volume_set"></a>fx_media_volume_set
 
@@ -1167,15 +1167,15 @@ Bu olay bir medya birimi Get olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir medya birimi ayarlama olayını temsil eder.
+Bu olay bir medya birim kümesi olayı temsil eder.
 
-**Bilgi alanları** 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: birim adı Işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+**Bilgi Alanları** 
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Birim adının işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="media-write"></a>Medya yazma 
+### <a name="media-write"></a>Medya Yazma 
 
 #### <a name="fx_media_write"></a>fx_media_write
 
@@ -1183,16 +1183,16 @@ Bu olay bir medya birimi ayarlama olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir medya yazma olayını temsil eder.
+Bu olay bir medya yazma olayıdır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
-- Bilgi alanı 2: mantıksal kesim.
-- Bilgi alanı 3: arabellek işaretçisi.
-- Bilgi alanı 4: yazılan baytlar.
+- Bilgi Alanı 1: Medyanın işaretçisi.
+- Bilgi Alanı 2: Mantıksal kesim.
+- Bilgi Alanı 3: Arabellek işaretçisi.
+- Bilgi Alanı 4: Yazılan bayt sayısı.
 
-### <a name="system-date-get"></a>Sistem tarihi al 
+### <a name="system-date-get"></a>Sistem Tarihi Al 
 
 #### <a name="fx_system_date_get"></a>fx_system_date_get 
 
@@ -1200,33 +1200,33 @@ Bu olay bir medya yazma olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir sistem tarihi al olayını temsil eder.
+Bu olay bir sistem tarihi get olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: yıl.
-- Bilgi alanı 2: ay.
-- Bilgi alanı 3: gün.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Yıl.
+- Bilgi Alanı 2: Ay.
+- Bilgi Alanı 3: Gün.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="system-date-set"></a>Sistem tarihi kümesi 
+### <a name="system-date-set"></a>Sistem Tarih Kümesi 
 
 #### <a name="fx_system_date_set"></a>fx_system_date_set 
 
-**Simge** ![ Sistem tarihi kümesi simgesi](./media/user-guide/fx-events/image63.png)
+**Simge** ![ Sistem tarih kümesi simgesi](./media/user-guide/fx-events/image63.png)
 
 **Açıklama**
 
-Bu olay bir sistem tarihi kümesi olayını temsil eder.
+Bu olay bir sistem tarih kümesi olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: yıl.
-- Bilgi alanı 2: ay.
-- Bilgi alanı 3: gün.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Yıl.
+- Bilgi Alanı 2: Ay.
+- Bilgi Alanı 3: Gün.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="system-initialize"></a>Sistem başlatma 
+### <a name="system-initialize"></a>Sistem Başlatma 
 
 #### <a name="fx_system_initialize"></a>fx_system_initialize 
 
@@ -1234,16 +1234,16 @@ Bu olay bir sistem tarihi kümesi olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir sistem başlatma olayını temsil eder.
+Bu olay bir sistem başlatma olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="system-time-get"></a>Sistem saati al 
+### <a name="system-time-get"></a>Sistem Zamanı Al 
 
 #### <a name="fx_system_time_get"></a>fx_system_time_get 
 
@@ -1251,16 +1251,16 @@ Bu olay bir sistem başlatma olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir sistem saati al olayını temsil eder.
+Bu olay bir sistem zamanı get olayı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: Saat.
-- Bilgi alanı 2: dakika.
-- Bilgi alanı 3: saniye.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Saat.
+- Bilgi Alanı 2: Dakika.
+- Bilgi Alanı 3: saniye.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="system-time-set"></a>Sistem zaman kümesi 
+### <a name="system-time-set"></a>Sistem Zaman Kümesi 
 
 #### <a name="fx_system_time_set"></a>fx_system_time_set 
 
@@ -1268,28 +1268,28 @@ Bu olay bir sistem saati al olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir sistem zaman kümesi olayını temsil eder.
+Bu olay bir sistem zaman kümesi olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: Saat.
-- Bilgi alanı 2: dakika.
-- Bilgi alanı 3: saniye.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Saat.
+- Bilgi Alanı 2: Dakika.
+- Bilgi Alanı 3: saniye.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="unicode-directory-create"></a>Unicode dizin oluşturma 
+### <a name="unicode-directory-create"></a>Unicode Dizin Oluşturma 
 
 #### <a name="fx_unicode_directory_create"></a>fx_unicode_directory_create 
 
-**Simge** ![ Unicode dizin oluşturma simgesi](./media/user-guide/fx-events/image67.png)
+**Simge** ![ Unicode dizini oluşturma simgesi](./media/user-guide/fx-events/image67.png)
 
 **Açıklama**
 
-Bu olay bir Unicode dizin oluşturma olayını temsil eder.
+Bu olay bir Unicode dizin oluşturma olayı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: medyaya yönelik Işaretçi.
+- Bilgi Alanı 1: Medyanın işaretçisi.
 - Bilgi alanı 2: Unicode adı Işaretçisi.
 - Bilgi alanı 3: Unicode adının boyutu.
 - Bilgi alanı 4: kısa ad Işaretçisi.

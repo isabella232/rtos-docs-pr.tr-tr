@@ -1,28 +1,28 @@
 ---
-title: Bölüm 3-Modül Yöneticisi gereksinimleri
-description: Bu makale, ThreadX modül yöneticisini oluşturmak için gereken adımların bir açıklamasıdır.
+title: Bölüm 3 - Modül Yöneticisi gereksinimleri
+description: Bu makale, ThreadX Modül Yöneticisi'ni inşa için gereken adımların bir açıklamasıdır.
 author: philmea
 ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e8ea1a05096b5975de203648fddfb19c1a6105e0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6c4d0993284c8e0b8264020d721ac12bdfe8117df4480fb54ee4d5b20a1f677e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826596"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799192"
 ---
-# <a name="chapter-3---module-manager-requirements"></a>Bölüm 3-Modül Yöneticisi gereksinimleri
+# <a name="chapter-3---module-manager-requirements"></a>Bölüm 3 - Modül Yöneticisi gereksinimleri
 
-ThreadX Modül Yöneticisi, ThreadX RTOS ile birlikte uygulamanın yerleşik bölümünde bulunur. Modülün başlatılmasının yanı sıra ThreadX API hizmetleri için tüm modül isteklerini alan ve gönderen bir sorumludur.
+ThreadX Modül Yöneticisi, ThreadX RTOS ile birlikte uygulamanın yerleşik bölümünde bulunur. Modülü başlatmanın yanı sıra ThreadX API hizmetleri için tüm modül isteklerinin sahasını oluşturmak ve gönderme sorumluluğundadır.
 
 > [!NOTE]
-> ThreadX modül **Yöneticisi** kaynak dosyaları (C ve derleme), threadx kitaplığı projesine "**TX**" eklenmelidir.
+> ThreadX Modül **Yöneticisi kaynak** dosyaları (C ve derleme) ThreadX kitaplık projesi " tx "**eklenmiştir.**
 
-ThreadX modül yöneticisini oluşturmak için aşağıdaki adımlar gereklidir (her adım aşağıda daha ayrıntılı olarak açıklanmıştır).
+ThreadX Modül Yöneticisi'ni derlerken aşağıdaki adımlar gereklidir (her adım aşağıda daha ayrıntılı olarak açıklanmıştır).
 
-1. **TX_THREAD** denetim bloğu modül bilgilerini içerecek şekilde genişletilmelidir. Bunu yapmanın en kolay yolu, **_tx_port. h_*_ dosyasındaki*** **TX_THREAD_EXTENSION_2** tanımını **_txm_module_port. h_** içinde bulunan _ TX_THREAD_EXTENSION_2 değiştirecek şekilde kullanmaktır. Bkz. bağlantı noktasına özgü uzantılar için [ek](appendix.md) .
+1. Denetim **TX_THREAD** modül bilgilerini içerecek şekilde genişletiliyor olması gerekir. Bunu yapmanın en kolay yolu, tx_port.h _ **dosyasındaki** **_TX_THREAD_EXTENSION_2 tanımını txm_module_port.h_** dosyasında bulunan _ TX_THREAD_EXTENSION_2 **_ile değiştirmektir._** Bağlantı [noktasına özgü](appendix.md) uzantılar için eke bakın.
 
 Örnek uzantı:
 
@@ -42,7 +42,7 @@ ThreadX modül yöneticisini oluşturmak için aşağıdaki adımlar gereklidir 
        VOID     *tx_thread_module_reserved;
    ```
 
-   Aşağıdaki uzantıların ***tx_port. h*** içinde tanımlanması gerekir.
+   aşağıdaki uzantılar ***tx_port.h içinde tanımlanmalıdır.***
 
    ```c
    #define TX_EVENT_FLAGS_GROUP_EXTENSION  VOID    *tx_event_flags_group_module_instance; \
@@ -58,65 +58,65 @@ ThreadX modül yöneticisini oluşturmak için aşağıdaki adımlar gereklidir 
         VOID   (*tx_timer_module_expiration_function)(ULONG id);
    ```
 
-2. Tüm ***txm_module_manager_ \**** C ve derleme dosyalarını threadx kitaplığı proje **_TX_** öğesine ekleyin.
-3. Tüm kitaplıkları ve yürütülebilir projeleri yeniden derleyin. NetX Duo gerekliyse, tüm modül ve Modül Yöneticisi C kodu, **TXM_MODULE_ENABLE_NETX_DUO** tanımlanmış olarak oluşturulmalıdır.
+2. C ve ***txm_module_manager_ \**** tüm dosyaları ThreadX kitaplık projesi **_tx'e ekleyin._**
+3. Tüm kitaplıkları ve yürütülebilir projeleri yeniden oluşturma. NetX Duo gerekli ise, tüm Module ve Module Manager C kodu tanımlanmış **bir** TXM_MODULE_ENABLE_NETX_DUO gerekir.
 
-## <a name="module-manager-sources"></a>Modül Yöneticisi Kaynakları
+## <a name="module-manager-sources"></a>Modül Yöneticisi kaynakları
 
-ThreadX Modül Yöneticisi, bağlantılı ve doğrudan yerleşik ThreadX kodu ile konumlandırılabilir şekilde tasarlanan bir kaynak dosyalar kümesine sahiptir. Bu dosyalar modülden bir modül ve alan izleyen ThreadX API istekleri başlatma yeteneği sağlar. Modül Yöneticisi dosyaları aşağıdaki gibidir.
+ThreadX Modül Yöneticisi, bağlantılı olacak ve yerleşik ThreadX koduyla doğrudan birlikte olacak şekilde tasarlanmış bir kaynak dosya kümesine sahip. Bu dosyalar, modülden sonraki ThreadX API isteklerini bir modül başlatma ve alan özelliği sağlar. Modül yöneticisi dosyaları aşağıdaki gibidir.
 
-| **Dosya adı** |  **İçerik** |
+| **Dosya Adı** |  **İçerik** |
 |-------------- | ------------- |
-| ***txm_module. h*** | Modül bilgilerini tanımlayan dosyayı (modül kaynak koduna da dahil) içerir. |
-| ***txm_module_manager_dispatch. h*** | Dağıtım Yardımcısı işlevlerini tanımlayan içerme dosyası.|
-| ***txm_module_manager_util. h*** | İç yardımcı program Yardımcısı makrolarını & işlevleri tanımlayan dosya ekleme. |
-| ***txm_module_port. h*** | Bağlantı noktasına özgü modül bilgilerini tanımlayan dosyayı (modül kaynak koduna da dahil olmak üzere) içerir. |
-| ***tx_initialize_low_level. \[ s, S, 68 \]** _ | Var olan ThreadX kitaplık dosyasının yerini alır. Modül Yöneticisi ve bellek özel durumları için güncelleştirilmiş vektör tablosu ve ek vektör işleyicileri. _This dosya yalnızca Cortex-A7/ARM, Cortex-M7/ARM, Cortex-R4/ARM, Cortex-R4/IAR, MCF544xx/GHS, RX63/IAR, RX65N/IAR. *|
-| ***tx_thread_context_restore. s** _ | Var olan ThreadX kitaplık dosyasının yerini alır. Kesme işleminden sonra iş parçacığı bağlamını geri yükleyin. _This dosya yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içinde. *|
-| ***tx_thread_schedule. \[ s, S, 68\]*** | Var olan ThreadX kitaplık dosyasının yerini alır. Bu durumda bellek yönetimi kayıtlarını güncelleştirmek için kullanılan genişletilmiş Zamanlayıcı kodu. |
-| ***tx_thread_stack_build. s** _ | Var olan ThreadX kitaplık dosyasının yerini alır. Bir iş parçacığının yığın çerçevesini oluşturur. _This dosya yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içinde. *|
-| ***txm_module_manager_thread_stack_build. \[ s, S, 68\]*** | Tüm modül ilk yığınlarını oluşturur, konuma bağımsız veri erişimi için kurulum 'u içerir. |
-| ***txm_module_manager_user_mode_entry. \[ s, S \]** _ | Modülün çekirdek moduna girmesine izin verir. _This dosya yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içinde. *|
-| ***txm_module_manager_alignment_adjust. c*** | Bağlantı noktasına özgü hizalama gereksinimlerini işler.|
-| ***txm_module_manager_application_request. c*** | Yerleşik koda uygulamaya özgü istekleri işler. |
-| ***txm_module_manager_callback_request. c*** | Bir modüle geri çağırma isteği gönderir. |
-| ***txm_module_manager_event_flags_notify_trampoline. c*** | Etkinlik bayraklarını, ThreadX 'den bildirim çağrısını ayarla olarak işler. |
-| ***txm_module_manager_external_memory_enable. c*** | Modülün erişebileceği paylaşılan bellek alanı için bellek yönetimi tablosunda bir giriş oluşturur. |
-| ***txm_module_manager_file_load. c*** | Modül bellek alanına bir ikili modül dosyası ayırır ve yükler ve yürütülmek üzere hazırlar. |
-| ***txm_module_manager_in_place_load. c*** | Modül veri alanını ayırır ve sağlanan kod adresinden modül yürütmesi için hazırlar. |
-| ***txm_module_manager_initialize. c*** | Modülleri yüklemek ve çalıştırmak için kullanılabilir modül belleği alanının belirtimi dahil olmak üzere modül yöneticisini başlatır. |
-| ***txm_module_manager_initialize_mmu. c** _ | MMU 'i başlatın. Kullanıcılar, bu dosyayı bellek haritalarına göre düzenleyebilir. _This dosya yalnızca Cortex-A7/ARM * |
-| ***txm_module_manager_mm_initialize. c** _ | MPU/MMU 'i başlatın. Kullanıcılar, bu dosyayı bellek haritalarına göre düzenleyebilir. _This dosya yalnızca Cortex-A7/ARM * |
-| ***txm_module_manager_kernel_dispatch. c*** | İstek KIMLIĞINE göre modül API 'SI isteklerini işler. |
-| ***txm_module_manager_maximum_module_priority_set. c*** | Bir modülde izin verilen en fazla iş parçacığı önceliğini ayarlar. |
-| ***txm_module_manager_memory_fault_handler. c*** | Yürütülen modülde algılanan bellek hatalarını işler. |
-| ***txm_module_manager_memory_fault_notify. c*** | Bir bellek hatası oluştuğunda uygulama bildirimi geri aramasını kaydeder. |
-| ***txm_module_manager_memory_load. c*** | Modülün kodunu ve verilerini ayırır ve yükler ve modülü yürütülmek üzere hazırlar. |
-| ***txm_module_manager_mm_register_setup. c*** | Modül için kod ve verilerin yüklendiği yere bağlı olarak, modül için MPU/MMU yazmaçlarını ayarlar. |
-| ***txm_module_manager_object_allocate. c*** | Bir modül nesnesi için belleği ayırır. |
-| ***txm_module_manager_object_deallocate. c*** | Modül nesnesi için belleği ayırır. |
-| ***txm_module_manager_object_pointer_get. c*** | Sağlanan nesne türünü ve adını arar ve bulunursa, nesne işaretçisini döndürür. |
-| ***txm_module_manager_object_pointer_get_extended. c*** | Sağlanan nesne türünü ve adını arar ve bulunursa, nesne işaretçisini döndürür. Güvenlik için ad uzunluğu belirtildi. |
-| ***txm_module_manager_object_pool_create. c***  | Modül uygulamalarının ayırabilecek modül veri alanı dışında bir nesne havuzu oluşturur. |
-| ***txm_module_manager_properties_get. c*** | Belirtilen modülün özelliklerini alır. |
-| ***txm_module_manager_queue_notify_trampoline. c*** | ThreadX 'den kuyruk bildirim çağrısını işler. |
-| ***txm_module_manager_semaphore_notify_trampoline. c*** | ThreadX 'ten semafor put bildirim çağrısını işler.|
-| ***txm_module_manager_start. c*** | Bir modülün yürütülmesini başlatır. |
-| ***txm_module_manager_stop. c*** | Modülün yürütülmesini durduruyor. |
-| ***txm_module_manager_thread_create. c*** | Tüm modül iş parçacıklarını oluşturur. |
-| ***txm_module_manager_thread_notify_trampoline. c*** | ThreadX iş parçacığı giriş/çıkış bildirimi çağrısını işler. |
-| ***txm_module_manager_thread_reset. c*** | Modül iş parçacığını sıfırlayın. |
-| ***txm_module_manager_timer_notify_trampoline. c*** | ThreadX 'den süreölçer süre sonlarını işler. |
-| ***txm_module_manager_unload. c*** | Modülü modül bellek alanından kaldırır. |
-| ***txm_module_manager_util. c*** | Yöneticinin iç yardımcı işlevleri. |
+| ***txm_module.h*** | Modül bilgilerini tanımlayan dosyayı dahil edin (modül kaynak koduna da dahildir). |
+| ***txm_module_manager_dispatch.h*** | Gönderme yardımcı işlevlerini tanımlayan dosyayı dahil edin.|
+| ***txm_module_manager_util.h*** | İşlevler için dahili yardımcı makroları tanımlayan & dahil edin. |
+| ***txm_module_port.h*** | Bağlantı noktasına özgü modül bilgilerini tanımlayan dosyayı dahil edin (modül kaynak koduna da dahildir). |
+| ***tx_initialize_low_level. \[ s,S,68 \]** _ | Mevcut ThreadX kitaplık dosyasını değiştirir. Modül yöneticisi ve bellek özel durumları için vektör tablosu ve ek vektör işleyicileri güncelleştirildi. _This dosyası yalnızca Cortex-A7/ARM, Cortex-M7/ARM, Cortex-R4/ARM, Cortex-R4/IAR, MCF544xx/GHS, RX63/IAR, RX65N/IAR içindedir.*|
+| ***tx_thread_context_restore.s** _ | Mevcut ThreadX kitaplık dosyasını değiştirir. Kesme işlemeden sonra iş parçacığı bağlamını geri yükleme. _This dosyası yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içindedir.*|
+| ***tx_thread_schedule. \[ s,S,68\]*** | Mevcut ThreadX kitaplık dosyasını değiştirir. Bu durumda bellek yönetimi kayıtlarını güncelleştirmek için kullanılan genişletilmiş zamanlayıcı kodu. |
+| ***tx_thread_stack_build.s** _ | Mevcut ThreadX kitaplık dosyasını değiştirir. Bir iş parçacığının yığın çerçevesini derleme. _This dosyası yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içindedir.*|
+| ***txm_module_manager_thread_stack_build. \[ s,S,68\]*** | Tüm modül ilk yığınlarını derlemek, konumdan bağımsız veri erişimi için kurulum içerir. |
+| ***txm_module_manager_user_mode_entry. \[ s,S \]** _ | Modülün çekirdek moduna girmelerini sağlar. _This dosyası yalnızca Cortex-A7/ARM, Cortex-R4/ARM, Cortex-R4/IAR içindedir.*|
+| ***txm_module_manager_alignment_adjust.c*** | Bağlantı noktasına özgü hizalama gereksinimlerini işleme.|
+| ***txm_module_manager_application_request.c*** | Yerleşik koda yönelik uygulamaya özgü istekleri işleme. |
+| ***txm_module_manager_callback_request.c*** | Bir modüle geri çağırma isteği gönderir. |
+| ***txm_module_manager_event_flags_notify_trampoline.c*** | ThreadX'den olay bayrakları ayarlanmış bildirim çağrısını işleme. |
+| ***txm_module_manager_external_memory_enable.c*** | Modülün erişebilirsiniz paylaşılan bir bellek alanı için bellek yönetim tablosunda bir giriş oluşturur. |
+| ***txm_module_manager_file_load.c*** | Bir ikili modül dosyasını ayırarak modül bellek alanına yükler ve yürütme için hazırlar. |
+| ***txm_module_manager_in_place_load.c*** | Modül veri alanı ayırır ve sağlanan kod adreslerinden modül yürütmeye hazırlar. |
+| ***txm_module_manager_initialize.c*** | Modül yükleme ve çalıştırma için kullanılabilen modül bellek alanı belirtimi de dahil olmak üzere Modül Yöneticisi'ni başlatılır. |
+| ***txm_module_manager_initialize_mmu.c** _ | MMU'su başlatma. Kullanıcılar bu dosyayı bellek eşlemelerine göre düzenleyebilir. _This dosyası yalnızca Cortex-A7/ARM'de* |
+| ***txm_module_manager_mm_initialize.c** _ | MPU/MMU'su başlat. Kullanıcılar bu dosyayı bellek eşlemelerine göre düzenleyebilir. _This dosyası yalnızca Cortex-A7/ARM'de* |
+| ***txm_module_manager_kernel_dispatch.c*** | İstek kimliğine bağlı olarak modül API isteklerini işleme. |
+| ***txm_module_manager_maximum_module_priority_set.c*** | Bir modülde izin verilen en yüksek iş parçacığı önceliğini ayarlar. |
+| ***txm_module_manager_memory_fault_handler.c*** | Yürütme modülünde algılanan bellek hatalarını işleme. |
+| ***txm_module_manager_memory_fault_notify.c*** | Bellek hatası oluştuğunda bir uygulama bildirimi geri aramasını kaydeden. |
+| ***txm_module_manager_memory_load.c*** | Modülün kodunu ve verilerini ayırarak yükler ve modülü yürütmeye hazırlar. |
+| ***txm_module_manager_mm_register_setup.c*** | Kodun ve verilerin yükleniyor olduğu yere göre modül için MPU/MMU yazmacalarını ayarlar. |
+| ***txm_module_manager_object_allocate.c*** | Modül nesnesi için bellek ayırır. |
+| ***txm_module_manager_object_deallocate.c*** | Bir modül nesnesi için belleğin taşınmasını sağlar. |
+| ***txm_module_manager_object_pointer_get.c*** | Sağlanan nesne türünü ve adını arar ve bulunursa nesne işaretçisini döndürür. |
+| ***txm_module_manager_object_pointer_get_extended.c*** | Sağlanan nesne türünü ve adını arar ve bulunursa nesne işaretçisini döndürür. Güvenlik için belirtilen ad uzunluğu. |
+| ***txm_module_manager_object_pool_create.c***  | Modülün veri alanı dışında modül uygulamalarının ayıra bir nesne havuzu oluşturur. |
+| ***txm_module_manager_properties_get.c*** | Belirtilen modülün özelliklerini alır. |
+| ***txm_module_manager_queue_notify_trampoline.c*** | ThreadX'den gelen kuyruk bildirim çağrısını işleme. |
+| ***txm_module_manager_semaphore_notify_trampoline.c*** | ThreadX'den semafor koy bildirim çağrısını işleme.|
+| ***txm_module_manager_start.c*** | Bir modülün yürütülmesini başlatır. |
+| ***txm_module_manager_stop.c*** | Modülün yürütülmesini durdurur. |
+| ***txm_module_manager_thread_create.c*** | Tüm modül iş parçacıklarını oluşturur. |
+| ***txm_module_manager_thread_notify_trampoline.c*** | ThreadX'den iş parçacığı giriş/çıkış bildirim çağrısını işleme. |
+| ***txm_module_manager_thread_reset.c*** | Modül iş parçacığını sıfırlama. |
+| ***txm_module_manager_timer_notify_trampoline.c*** | ThreadX'den zamanlayıcı süre sonu işlemlerini işleme. |
+| ***txm_module_manager_unload.c*** | Modülü modül bellek alanından kaldırıyor. |
+| ***txm_module_manager_util.c*** | Yönetici için iç yardımcı işlevleri. |
 
 ## <a name="module-manager-initialization"></a>Modül Yöneticisi başlatma
 
-Uygulamanın yerleşik bölümü, ***Txm_module_manager_initialize*** Modül Yöneticisi başlatma işlevinin çağrılmasından sorumludur. Bu işlev, modül belleği ayırmak için kullanılan bellek alanını ayarlama da dahil olmak üzere modülleri yükleme ve kaldırma için iç yapıları ayarlar.
+Uygulamanın yerleşik bölümü, modül yöneticisi başlatma işlevinin çağrısından ***txm_module_manager_initialize.*** Bu işlev, modül belleğini ayrı ayrı bulunduracak bellek alanı ayarlama da dahil olmak üzere modülleri yükleme ve kaldırma için iç yapıları ayarlar.
 
-## <a name="module-manager-loading"></a>Modül Yöneticisi yükleniyor
+## <a name="module-manager-loading"></a>Modül Yöneticisi yüklemesi
 
-Modül Yöneticisi, ikili modül dosyalarından veya yerleşik kod alanında zaten mevcut olan bir modül kodu bölümünden modül belleğine dinamik olarak modül yükleyebilir. Ayrıca, Modül Yöneticisi kodu yerinde yürütebilir, diğer bir deyişle modül belleğinde yalnızca modül verileri ayrılır ve kod yürütme yerinde yapılır. Aşağıdaki Modül Yöneticisi yük API işlevleri kullanılabilir.
+Modül Yöneticisi, ikili modül dosyalarından veya yerleşik kod alanında zaten mevcut olan bir modül kodu bölümünden modülleri modül belleğine dinamik olarak yük bindirebilirsiniz. Buna ek olarak, modül yöneticisi yerinde kod yürütebilirsiniz, yani modül belleğinde yalnızca modül verileri ayrılır ve kod yürütmesi yerinde yapılır. Aşağıdaki Modül Yöneticisi yükleme API'si işlevleri kullanılabilir.
 
 * ***txm_module_manager_file_load***
 
@@ -124,31 +124,31 @@ Modül Yöneticisi, ikili modül dosyalarından veya yerleşik kod alanında zat
 
 * ***txm_module_manager_memory_load***
 
-Modül yöneticisinin bellek korumalı sürümü aynı zamanda modülün uygun hizalamayla yüklendiğinden ve bellek yönetimi saklayıcıları her modül için doğru şekilde kurulduğundan emin olur. Bellek koruması modül girişi seçenekleri aracılığıyla etkinleştirildiğinde modül belleği erişimi modül kodu ve veri alanlarıyla kısıtlıdır.
+Modül Yöneticisi'nin bellek korumalı sürümü ayrıca modülün düzgün hizalamayla yüklendiğinden ve bellek yönetimi yazmaylarının her modül için düzgün şekilde ayarlanmalarını sağlar. Modül ön ek seçenekleri aracılığıyla bellek koruması etkinleştirildiğinde, modül belleği erişimi modül kodu ve veri alanlarıyla kısıtlanır.
 
-## <a name="module-manager-starting"></a>Modül Yöneticisi başlatılıyor
+## <a name="module-manager-starting"></a>Modül Yöneticisi başlatiliyor
 
-Modül Yöneticisi, ***txm_module_manager_start*** API işlevi aracılığıyla önceden yüklenmiş bir modülün yürütülmesini başlatır. Modül yürütmeyi başlatmak için, bu işlev modül girişi içinde belirtilen başlangıç konumunda modülü giren bir iş parçacığı oluşturur. Bu iş parçacığının öncelik ve yığın boyutu Ayrıca modül girişi içinde de belirtilir.
+Modül Yöneticisi, daha önce yüklenmiş bir modülün yürütülmesini api işlevi ***txm_module_manager_start*** başlatılır. Bu işlev, modül yürütmeyi başlatmak için modülü modül ön sırasında belirtilen başlangıç konuma giren bir iş parçacığı oluşturur. Bu iş parçacığının öncelik ve yığın boyutu da modül önamble içinde belirtilir.
 
 ## <a name="module-manager-stopping"></a>Modül Yöneticisi durduruluyor
 
-Modül Yöneticisi, ***txm_module_manager_stop*** işlevi aracılığıyla daha önce yüklenmiş ve yürütülen bir modülün yürütülmesini sonlandırır. Bu API işlevi ilk olarak sonlanır ve başlangıç iş parçacığını siler. Modül girişi bir durdurma iş parçacığını belirtiyorsa, bu iş parçacığı oluşturulup yürütülür. Modül Yöneticisi durdurma iş parçacığının tamamlaması için sabit bir süre bekler. Tamamlandıktan sonra, modül tarafından oluşturulan tüm sistem kaynakları silinir ve modül, yeniden başlatılabilir veya bellekten kaldırılabileceği bir etkin durumdan konur.
+Modül Yöneticisi, daha önce yüklenmiş ve yürütülen bir modülün yürütülmesini txm_module_manager_stop ***sonlandırılır.*** Bu API işlevi ilk olarak başlangıç iş parçacığını sonlandırılır ve siler. Modül ön ekli bir durdurma iş parçacığı belirtirse, bu iş parçacığı oluşturulur ve yürütülür. Modül Yöneticisi, durdurma iş parçacığının tamamlanması için sabit bir süre bekler. Tamamlandıktan sonra, modül tarafından oluşturulan tüm sistem kaynakları silinir ve modül, yeniden başlatılacak veya kaldırılacak şekilde uyku durumuna yerleştirilir.
 
-## <a name="module-manager-unloading"></a>Modül yöneticisini kaldırma
+## <a name="module-manager-unloading"></a>Modül Yöneticisi'ni kaldırma
 
-Modül Yöneticisi, daha önce yüklenmiş ancak ***txm_module_manager_unload*** işlevi aracılığıyla bir modül yürütmez modülünü kaldırır. Bu API, modülle ilişkili tüm belleği yayınlar ve gelecekte başka bir modülle kullanılmak üzere serbest bırakır.
+Modül Yöneticisi, daha önce yüklenmiş olan ancak modülünü txm_module_manager_unload ***yürütmez.*** Bu API, modülle ilişkili tüm belleği serbest bırakarak gelecekte başka bir modülle birlikte kullanmak üzere serbest bıraktır.
 
 ## <a name="module-manager-requests"></a>Modül Yöneticisi istekleri
 
-Modül Yöneticisi 'ne modüller tarafından yapılan istekler, Modül Yöneticisi tarafından modüle sağlanan bir işlev işaretçisi aracılığıyla Modül Yöneticisi gönderme işlevini çağıran ***txm_module. h*** içindeki makrolar aracılığıyla yapılır.
+Modül Yöneticisi'ne modüller tarafından yapılan istekler, modüle Modül Yöneticisi tarafından sağlanan bir işlev işaretçisi aracılığıyla Module Manager dispatch işlevini çağıran tüm ThreadX çağrılarını eşleten ***txm_module.h'de*** makrolar aracılığıyla yapılır.
 
-***Txm_module_application_request*** çağıran modül aracılığıyla yapılan uygulamaya özgü ek hizmetler, THREADX API 'si için kullanılan aynı makro mekanizması tarafından işlenir. Varsayılan olarak, modül yöneticisindeki bu işleme işlevi boştur ve uygulamanın uygulamaya özgü istekleri işlemek için gerekli kodu eklemesi için tasarlanmıştır.
+İş parçacığını çağıran modül  aracılığıyla txm_module_application_request uygulamaya özgü ek hizmetler, ThreadX API'si için kullanılan makro mekanizması tarafından kullanılmaktadır. Varsayılan olarak, Module Manager'daki bu işleme işlevi boştur ve uygulamanın uygulamaya özgü istekleri işlemesi için gerekli kodu ekleyen şekilde tasarlanmıştır.
 
-İstek Modül Yöneticisi tarafından uygulanmadığından, Modül Yöneticisi tarafından **TX_NOT_AVAILABLE** hata durumu değeri döndürülür. Modül erişimi kapsamı dışında bir işlem isterse, bu hata kodu da döndürülür. Örneğin, bir modülün, Zamanlayıcı denetim bloğu veya geri çağırma adresiyle modülün kod alanı dışında bir Zamanlayıcı oluşturmasına izin verilmez.
+İstek Modül Yöneticisi tarafından uygulanmazsa, Modül Yöneticisi **TX_NOT_AVAILABLE** hata durumu değeri döndürülür. Modül, modülün erişiminin kapsamı dışında bir işlem isteğinde bulunursa da bu hata kodu döndürülür. Örneğin, modülün, modülün kod alanı dışında zamanlayıcı denetim bloğu veya geri çağırma adresiyle zamanlayıcı oluşturmasına izin verilmez.
 
 ## <a name="module-manager-example"></a>Modül Yöneticisi örneği
 
-Aşağıda, Bölüm 2 ' de daha önce tanımlanan örnek modülünü Başlatan modül yöneticisi kodunun bir örneği verilmiştir. Modülün zaten yüklü olduğu varsayılır, bu da hata ayıklayıcının, 0x00800000 ROM adresidir.
+Aşağıda, daha önce Bölüm 2'de tanımlanan örnek modülü başlatan bir Modül Yöneticisi kodu örneği yer almaktadır. Modülün büyük ihtimalle hata ayıklayıcısı tarafından ROM adresine yüklenmiş olduğu varsayılır 0x00800000.
 
 ```c
 #include "tx_api.h"
@@ -261,8 +261,8 @@ void module_manager_entry(ULONG thread_input)
 }
 ```
 
-## <a name="module-manager-building"></a>Modül Yöneticisi oluşturma
+## <a name="module-manager-building"></a>Modül Yöneticisi bina
 
-***Txm_module_manager_ \**** kaynak dosyaları threadx kitaplığına eklenmelidir.
+İş ***txm_module_manager_ \**** dosyaları ThreadX kitaplığına eklenmiştir.
 
-Bir ThreadX Modül Yöneticisi uygulaması, bir veya daha fazla uygulama dosyası olan ThreadX Kitaplığı ***TX. a*** ile birlikte bağlantılı bir standart threadx uygulamasıyla aynı şekilde aynıdır. Modül Yöneticisi uygulaması derleme, kullanılan araç zincirine bağımlıdır. Bkz. bağlantı noktasına özgü örnekler için [ek](appendix.md) .
+ThreadX Module Manager uygulaması, ***tx.a*** ThreadX kitaplığıyla bağlantılı bir veya daha fazla uygulama dosyası olan standart ThreadX uygulamasıyla etkili bir şekilde aynıdır. Modül yöneticisi uygulaması, kullanılan araç zincirine bağlıdır. Bağlantı [noktasına özgü](appendix.md) örnekler için eke bakın.

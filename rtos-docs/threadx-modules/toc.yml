@@ -1,25 +1,25 @@
-- name: Azure RTOS ThreadX modülleri belgeleri
+- name: Azure RTOS ThreadX Modülleri belgeleri
   href: index.yml
-- name: ThreadX modülleri Kullanıcı Kılavuzu
+- name: ThreadX Modülleri kullanıcı kılavuzu
   expanded: true
   items:
-    - name: Denetleyebilirsiniz. 1-genel bakış
+    - name: Caner. 1 - Genel Bakış
       href: chapter1.md
-    - name: Denetleyebilirsiniz. 2 Modüllü gereksinimler
+    - name: Caner. 2 - Modül gereksinimleri
       href: chapter2.md
-    - name: Denetleyebilirsiniz. 3 modüllü yönetici gereksinimleri
+    - name: Caner. 3 - Modül Yöneticisi gereksinimleri
       href: chapter3.md
-    - name: Denetleyebilirsiniz. 4 modüllü API 'Ler
+    - name: Caner. 4 - Modül API'leri
       href: chapter4.md
-    - name: Denetleyebilirsiniz. 5-Modül Yöneticisi API 'Leri
+    - name: Caner. 5 - Modül Yöneticisi API'leri
       href: chapter5.md
-    - name: Ek-bağlantı noktasına özgü örnekler
+    - name: Ek - Bağlantı noktasına özgü örnekler
       href: appendix.md
 - name: ThreadX deposu
   href: 'https://github.com/azure-rtos/threadx'
 - name: İlgili hizmetler
   items:
-    - name: IoT için Defender-RTOS (Önizleme)
+    - name: IoT için Defender - RTOS (önizleme)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
@@ -27,19 +27,19 @@
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
-    - name: ThreadX modülleri
+    - name: ThreadX Modülleri
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
     - name: NetX
       href: ../netx/index.yml
-    - name: GUX
+    - name: GUIX
       href: ../guix/index.yml
-    - name: Dosya x
+    - name: FileX
       href: ../filex/index.yml
     - name: LevelX
       href: ../levelx/index.yml
     - name: USBX
       href: ../usbx/index.yml
-    - name: Trackingex
+    - name: TraceX
       href: ../tracex/index.yml

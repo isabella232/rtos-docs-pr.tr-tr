@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 86e132daf96f9039631234f10c8e239b61ad5126
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 35a7487720578ce8da578c490d96aa3c444ee818167b1bbd10833556e34b3dce
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826734"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799481"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-ftp"></a>Bölüm 1-Azure RTOS NetX FTP 'ye giriş
 
@@ -111,95 +111,95 @@ FTP sunucusu, Istemci isteklerini alan *iyi BILINEN TCP bağlantı noktası 21* 
 1. İstemci ikili aktarım için "tür I" iletisi gönderir.
 1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
 1. İstemci, IP adresi ve bağlantı noktası içeren "bağlantı noktası" iletisi gönderir.
-1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
-1. İstemci, okunan dosya adına sahip "RETR" iletisi gönderir.
-1. Sunucu, "PORT" komutunda belirtilen istemci veri bağlantı noktasıyla veri yuvası oluşturur ve bağlar.
-1. Sunucu, okunan sinyal dosyası "125" yanıtını gönderiyor.
-1. Sunucu, veri bağlantısı aracılığıyla dosyanın içeriğini gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
-1. İşiniz bittiğinde, sunucu veri bağlantısını keser.
-1. Sunucu "250" yanıtını "" olarak göndererek okunan sinyal dosyası başarılı olur.
+1. Sunucu başarı sinyaline "200" yanıtı gönderir.
+1. İstemci, okumak için dosya adıyla "RETR" iletisi gönderir.
+1. Sunucu veri yuvası oluşturur ve "PORT" komutunda belirtilen istemci veri bağlantı noktasına bağlanır.
+1. Sunucu, dosya okumanın başlat olduğunu sinyale "125" yanıtını gönderir.
+1. Sunucu, dosyanın içeriğini veri bağlantısı üzerinden gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
+1. Tamamlandığında, Sunucu veri bağlantısını keser.
+1. Sunucu, dosya okumanın başarılı olduğunu sinyale "250" yanıtını gönderir.
 1. İstemciler FTP bağlantısını sonlandırmak için "QUIT" gönderir.
-1. Sunucu "221" sinyal bağlantısını kesme yanıtı başarılı oldu.
-1. Sunucu FTP bağlantısının bağlantısını keser.
+1. Sunucu bağlantıyı kesmenin başarılı olduğunu sinyale "221" yanıtını gönderir.
+1. Sunucu FTP bağlantısını keser.
 
-Daha önce belirtildiği gibi, IPv4 ve IPv6 üzerinden çalışan FTP arasındaki tek fark bağlantı noktası komutunun, IPv6 için EPRT komutuyla değiştirilmiştir
+Daha önce belirtildiği gibi, IPv4 ve IPv6 üzerinde çalışan FTP arasındaki tek fark PORT komutunun IPv6 için EPRT komutuyla değiştirilmesidir
 
-FTP Istemcisi pasif Aktarım modunda bir okuma isteği yapıyorsa, komut sırası aşağıdaki gibidir (**kalın** çizgiler, etkin aktarım modundan farklı bir adım gösterir):
+FTP İstemcisi pasif aktarım modunda okuma isteğinde bulunuyorsa, komut sırası aşağıdaki gibidir **(kalın** çizgiler etkin aktarım modundan farklı bir adım olduğunu gösterir):
 
-1. İstemci, sunucu bağlantı noktası 21 ' e TCP bağlantısı verir.
-1. Sunucu, "220" yanıtını sinyal başarısına gönderir.
-1. İstemci "username" ile "Kullanıcı" iletisi gönderir.
-1. Sunucu, "331" yanıtını sinyal başarısına gönderir.
-1. İstemci "parola" ile "PASS" iletisi gönderir.
-1. Sunucu, "230" yanıtını sinyal başarısına gönderir.
-1. İstemci ikili aktarım için "tür I" iletisi gönderir.
-1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
+1. İstemci, SUNUCU bağlantı noktası 21'e TCP bağlantısı verir.
+1. Sunucu başarı sinyaline "220" yanıtı gönderir.
+1. İstemci , "username" ile "USER" iletisi gönderir.
+1. Sunucu başarı sinyaline "331" yanıtı gönderir.
+1. İstemci , "parola" ile "PASS" iletisi gönderir.
+1. Sunucu başarı sinyaline "230" yanıtı gönderir.
+1. İstemci, ikili aktarım için "TYPE I" iletisi gönderir.
+1. Sunucu başarı sinyaline "200" yanıtı gönderir.
 1. **İstemci "PASV" iletisi gönderir.**
-1. **Sunucu, Istemciye Bağlanılacak "227" yanıtını ve IP adresini ve bağlantı noktasını başarılı bir şekilde sinyaline gönderir.**
-1. İstemci, okunan dosya adına sahip "RETR" iletisi gönderir.
-1. **Sunucu, veri sunucusu yuvası oluşturur ve "227" yanıtında belirtilen bağlantı noktasını kullanarak bu yuvadaki Istemci bağlantı isteğini dinler.**
-1. **Sunucu, okunan dosyayı işaret eden denetim soketine "150" yanıtı gönderir.**
-1. Sunucu, veri bağlantısı aracılığıyla dosyanın içeriğini gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
-1. İşiniz bittiğinde, sunucu veri bağlantısını keser.
-1. **Sunucu, okuma sinyali almak için denetim yuvasında "226" yanıtı gönderir.**
-1. İstemci, FTP bağlantısını sonlandırmak için "QUIT" iletisi gönderir.
-1. Sunucu "221" sinyal bağlantısını kesme yanıtı başarılı oldu.
-1. Sunucu FTP bağlantısının bağlantısını keser.
+1. **Sunucu, başarılı olduğunu işaret etmek için İstemcinin bağlanması için "227" yanıtını ve IP adresini ve bağlantı noktasını gönderir.**
+1. İstemci, okumak için dosya adıyla "RETR" iletisi gönderir.
+1. **Sunucu veri sunucusu yuvası oluşturur ve "227" yanıtta belirtilen bağlantı noktasını kullanarak bu yuvada İstemci bağlantı isteğini dinler.**
+1. **Sunucu, dosyanın okundu olarak işaret etmek için denetim yuvasında "150" yanıtı gönderir.**
+1. Sunucu, dosyanın içeriğini veri bağlantısı üzerinden gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
+1. Tamamlandığında, Sunucu veri bağlantısını keser.
+1. **Sunucu, dosya okumanın başarılı olduğunu işaret etmek için denetim yuvasında "226" yanıtı gönderir.**
+1. İstemci, FTP bağlantısını sonlandırmak için "QUIT" gönderir.
+1. Sunucu bağlantıyı kesmenin başarılı olduğunu sinyale "221" yanıtını gönderir.
+1. Sunucu FTP bağlantısını keser.
 
-### <a name="ftp-write-requests"></a>FTP yazma Istekleri
+### <a name="ftp-write-requests"></a>FTP Yazma İstekleri
 
-1. İstemci, sunucu bağlantı noktası 21 ' e TCP bağlantısı verir.
-1. Sunucu, "220" yanıtını sinyal başarısına gönderir.
-1. İstemci "username" ile "Kullanıcı" iletisi gönderir.
-1. Sunucu, "331" yanıtını sinyal başarısına gönderir.
-1. İstemci "parola" ile "PASS" iletisi gönderir.
-1. Sunucu, "230" yanıtını sinyal başarısına gönderir.
-1. İstemci ikili aktarım için "tür I" iletisi gönderir.
-1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
-1. İstemci, IP adresi ve bağlantı noktası içeren "bağlantı noktası" iletisi gönderir.
-1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
-1. İstemci, yazılacak dosya adına sahip "STOR" iletisi gönderir.
-1. Sunucu, "PORT" komutunda belirtilen istemci veri bağlantı noktasıyla veri yuvası oluşturur ve bağlar.
-1. Sunucu, "125" yanıtını sinyal dosyası yazma işlemi için gönderir.
-1. İstemci, veri bağlantısı aracılığıyla dosyanın içeriğini gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
-1. İşiniz bittiğinde, Istemci veri bağlantısını keser.
-1. Sunucu, "250" sinyal dosyası yazma yanıtı başarılı oldu.
+1. İstemci, SUNUCU bağlantı noktası 21'e TCP bağlantısı verir.
+1. Sunucu başarı sinyaline "220" yanıtı gönderir.
+1. İstemci , "username" ile "USER" iletisi gönderir.
+1. Sunucu başarı sinyaline "331" yanıtı gönderir.
+1. İstemci , "parola" ile "PASS" iletisi gönderir.
+1. Sunucu başarı sinyaline "230" yanıtı gönderir.
+1. İstemci, ikili aktarım için "TYPE I" iletisi gönderir.
+1. Sunucu başarı sinyaline "200" yanıtı gönderir.
+1. İstemci, IP adresi ve bağlantı noktası ile "PORT" iletisi gönderir.
+1. Sunucu başarı sinyaline "200" yanıtı gönderir.
+1. İstemci, yazacak dosya adıyla "STOR" iletisi gönderir.
+1. Sunucu veri yuvası oluşturur ve "PORT" komutunda belirtilen istemci veri bağlantı noktasına bağlanır.
+1. Sunucu, dosya yazmanın başlat sinyaline "125" yanıtını gönderir.
+1. İstemci, dosyanın içeriğini veri bağlantısı üzerinden gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
+1. Tamamlandığında İstemci, veri bağlantısını keser.
+1. Sunucu, dosya yazmanın başarılı olduğunu sinyale "250" yanıtını gönderir.
 1. İstemciler FTP bağlantısını sonlandırmak için "QUIT" gönderir.
-1. Sunucu "221" sinyal bağlantısını kesme yanıtı başarılı oldu.
-1. Sunucu FTP bağlantısının bağlantısını keser.
+1. Sunucu bağlantıyı kesmenin başarılı olduğunu sinyale "221" yanıtını gönderir.
+1. Sunucu FTP bağlantısını keser.
 
-FTP Istemcisi pasif Aktarım modunda bir yazma isteği yapıyorsa, komut sırası aşağıdaki gibidir (**kalın** çizgiler, etkin aktarım modundan farklı bir adım gösterir):
+FTP İstemcisi pasif aktarım modunda bir yazma isteğinde bulunuyorsa, komut sırası aşağıdaki gibidir **(kalın** çizgiler etkin aktarım modundan farklı bir adım olduğunu gösterir):
 
-1. İstemci, sunucu bağlantı noktası 21 ' e TCP bağlantısı verir.
-1. Sunucu, "220" yanıtını sinyal başarısına gönderir.
-1. İstemci "username" ile "Kullanıcı" iletisi gönderir.
-1. Sunucu, "331" yanıtını sinyal başarısına gönderir.
-1. İstemci "parola" ile "PASS" iletisi gönderir.
-1. Sunucu, "230" yanıtını sinyal başarısına gönderir.
-1. İstemci ikili aktarım için "tür I" iletisi gönderir.
-1. Sunucu, "200" yanıtını sinyal başarısına gönderir.
+1. İstemci, SUNUCU bağlantı noktası 21'e TCP bağlantısı verir.
+1. Sunucu başarı sinyaline "220" yanıtı gönderir.
+1. İstemci , "username" ile "USER" iletisi gönderir.
+1. Sunucu başarı sinyaline "331" yanıtı gönderir.
+1. İstemci , "parola" ile "PASS" iletisi gönderir.
+1. Sunucu başarı sinyaline "230" yanıtı gönderir.
+1. İstemci, ikili aktarım için "TYPE I" iletisi gönderir.
+1. Sunucu başarı sinyaline "200" yanıtı gönderir.
 1. **İstemci "PASV" iletisi gönderir.**
-1. **Sunucu, Istemciye Bağlanılacak "227" yanıtını ve IP adresini ve bağlantı noktasını başarılı bir şekilde sinyaline gönderir.**
-1. İstemci, yazılacak dosya adına sahip "STOR" iletisi gönderir.
-1. **Sunucu, veri sunucusu yuvası oluşturur ve "227" yanıtında belirtilen bağlantı noktasını kullanarak bu yuvadaki Istemci bağlantı isteğini dinler.**
-1. **Sunucu, denetim soketine dosya yazmayı işaret eden "150" yanıtı gönderir.**
-1. İstemci, veri bağlantısı aracılığıyla dosyanın içeriğini gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
-1. İşiniz bittiğinde, Istemci veri bağlantısını keser.
-1. **Sunucu, "226" yanıtını denetim soketine dosya yazmayı işaret etmek için gönderir.**
-1. İstemci, FTP bağlantısını sonlandırmak için "QUIT" iletisi gönderir.
-1. Sunucu "221" sinyal bağlantısını kesme yanıtı başarılı oldu.
-1. Sunucu FTP bağlantısının bağlantısını keser.
+1. **Sunucu, başarılı olduğunu işaret etmek için İstemcinin bağlanması için "227" yanıtını ve IP adresini ve bağlantı noktasını gönderir.**
+1. İstemci, yazacak dosya adıyla "STOR" iletisi gönderir.
+1. **Sunucu veri sunucusu yuvası oluşturur ve "227" yanıtta belirtilen bağlantı noktasını kullanarak bu yuvada İstemci bağlantı isteğini dinler.**
+1. **Sunucu, dosya yazmanın başlat olduğunu işaret etmek için denetim yuvasında "150" yanıtı gönderir.**
+1. İstemci, dosyanın içeriğini veri bağlantısı üzerinden gönderir. Bu işlem, dosya tamamen aktarılana kadar devam eder.
+1. Tamamlandığında İstemci, veri bağlantısını keser.
+1. **Sunucu, dosya yazmanın başarılı olduğunu işaret etmek için denetim yuvasında "226" yanıtı gönderir.**
+1. İstemci, FTP bağlantısını sonlandırmak için "QUIT" gönderir.
+1. Sunucu bağlantıyı kesmenin başarılı olduğunu sinyale "221" yanıtını gönderir.
+1. Sunucu FTP bağlantısını keser.
 
 ## <a name="ftp-authentication"></a>FTP Kimlik Doğrulaması
 
-FTP bağlantısı gerçekleştiğinde, Istemcinin sunucuya bir *Kullanıcı adı* ve *parola* sağlaması gerekir. Bazı FTP siteleri, *anonım FTP* olarak adlandırılan, belirli bir Kullanıcı adı ve parola olmadan FTP erişimine izin verir. Bu bağlantı türü için, Kullanıcı adı için "anonim" belirtilmelidir ve parola, tüm e-posta adresi olmalıdır.
+Bir FTP bağlantısı her gerçekleşti mi, İstemci Sunucuya kullanıcı adı ve *parola* *sağlasa gerekir.* Bazı FTP siteleri, belirli bir kullanıcı adı *ve parola olmadan FTP* erişimine izin veren Anonim FTP olarak adlandırılanlara izin verir. Bu tür bir bağlantı için kullanıcı adı için "anonim" sağlanmalıdır ve parola tam bir e-posta adresidir.
 
-Kullanıcı, oturum açma ve oturum kapatma kimlik doğrulama yordamlarına sahip NetX FTP sağlamaktan sorumludur. Bunlar, ***nx_ftp_server_create** _ işlevi sırasında sağlanır ve parola işlemeden çağırılır. _Login * işlevi NX_SUCCESS döndürürse, bağlantı doğrulanır ve FTP işlemlerine izin verilir. Aksi takdirde, *oturum açma* işlevi NX_SUCCESS dışında bir şey döndürürse bağlantı girişimi reddedilir.
+Kullanıcı, oturum açma ve oturum açma kimlik doğrulaması yordamları ile NetX FTP sağlamakla sorumludur. Bunlar * nx_ftp_server_create **_** işlevi sırasında sağlanır ve parola işlemeden çağrılır. _login* işlevi NX_SUCCESS, bağlantının kimliği doğrulanır ve FTP işlemlerine izin verilir. Aksi takdirde, *oturum açma* işlevi NX_SUCCESS başka bir şey döndürürse bağlantı girişimi reddedilir.
 
-## <a name="ftp-multi-thread-support"></a>FTP çoklu Iş parçacığı desteği
+## <a name="ftp-multi-thread-support"></a>FTP Çoklu İş Parçacığı Desteği
 
-NetX FTP Istemci Hizmetleri birden çok iş parçacığından aynı anda çağrılabilir. Ancak, belirli bir FTP Istemcisi örneği için okuma veya yazma istekleri aynı iş parçacığından sırayla yapılmalıdır.
+NetX FTP İstemcisi hizmetleri aynı anda birden çok iş parçacığından çağrılabilirsiniz. Ancak, belirli bir FTP İstemcisi örneği için okuma veya yazma istekleri aynı iş parçacığından sırasıyla yapılmalı.
 
-## <a name="ftp-rfcs"></a>FTP RFC 'Leri
+## <a name="ftp-rfcs"></a>FTP RFC'leri
 
-NetX FTP, RFC959 ve ilgili RFC 'lerle uyumludur.
+NetX FTP, RFC959 ve ilgili RFC'ler ile uyumludur.

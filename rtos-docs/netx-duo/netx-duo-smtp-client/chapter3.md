@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f590ba5a4c020b4a0aec6628a89c0e5f0f8579d9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: bc54e7763c4a3977ef4d760bc92025b1cda792b979d741fc7b82f8f1a3f2901b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825787"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797829"
 ---
 # <a name="chapter-3---client-description-of-smtp-client-services"></a>Bölüm 3-SMTP Istemci hizmetlerinin Istemci açıklaması
 
@@ -37,7 +37,7 @@ UINT nxd_smtp_client_create(NX_SMTP_CLIENT *client_ptr,
     UINT port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneğinde bir SMTP Istemci örneği oluşturur.
 
@@ -118,7 +118,7 @@ SMTP Istemci örneğini silme
 UINT nx_smtp_client_delete(NX_SMTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş bir SMTP Istemci örneğini siler.
 
@@ -161,7 +161,7 @@ UINT nx_smtp_mail_send(NX_SMTP_CLIENT *client_ptr,
     UINT mail_body_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir SMTP posta öğesi oluşturur ve gönderir. SMTP Istemcisi SMTP sunucusuyla bir TCP bağlantısı kurar ve bir dizi SMTP komutu gönderir. Herhangi bir hatayla karşılaşılmaz, posta iletisini sunucuya iletir. Posta başarıyla gönderiliyorsa bağımsız olarak TCP bağlantısını sonlandırır ve posta aktarımının sonucunu gösteren bir durum döndürür. Uygulama, sınır olmadan gönderilmesi gereken çok sayıda posta iletisi için bu hizmeti çağırabilir.
 

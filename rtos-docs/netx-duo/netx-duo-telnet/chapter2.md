@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d5b24690db6ccbc582387dd9dba5b0471e6f278d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4781f45dc37f8c48a9f491d6cb67299432f3ae6743d12d9d92134298474182a5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825726"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799362"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-telnet"></a>Bölüm 2-Azure RTOS NetX Duo Telnet yüklemesi ve kullanımı
 

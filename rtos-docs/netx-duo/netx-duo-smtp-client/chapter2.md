@@ -1,46 +1,46 @@
 ---
-title: Bölüm 2-NetX Duo SMTP istemcisinin yüklenmesi ve kullanımı
-description: Bu bölümde, NetX Duo SMTP Istemci bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Duo SMTP istemcisi yükleme ve kullanma
+description: Bu bölümde NetX Duo SMTP İstemcisi bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 86f324935ba32aab010b81f825be0a6564983a2e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ba4d50048adba4ac992f6bbe90d236445546a5929ace74899833c686a90dadd9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825786"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797849"
 ---
-# <a name="chapter-2---installation-and-use-of-netx-duo-smtp-client"></a>Bölüm 2-NetX Duo SMTP istemcisinin yüklenmesi ve kullanımı
+# <a name="chapter-2---installation-and-use-of-netx-duo-smtp-client"></a>Bölüm 2 - NetX Duo SMTP istemcisi yükleme ve kullanma
 
-Bu bölümde, NetX Duo SMTP Istemci bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde NetX Duo SMTP İstemcisi bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 
-## <a name="netx-duo-smtp-client-installation"></a>NetX Duo SMTP Istemcisi yüklemesi
+## <a name="netx-duo-smtp-client-installation"></a>NetX Duo SMTP İstemci Yüklemesi
 
-NetX Duo SMTP Istemcisi adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Paket aşağıdaki dosyaları içerir:
+NetX Duo SMTP İstemcisi şu adreste [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) kullanılabilir: . Paket aşağıdaki dosyaları içerir:
 
-- **nxd_smtp_client. c** NetX Duo SMTP Istemcisi API 'SI için C kaynak dosyası
-- **nxd_smtp_client. h** NetX Duo SMTP Istemcisi API 'SI için C üstbilgi dosyası
-- **demo_netxduo_smtp_client. c** NetX Duo SMTP Istemcisi tanıtımı
-- **İçinnxd_smtp_client.pdf Kullanıcı Kılavuzu** NetX Duo SMTP Istemcisi API 'SI
+- **nxd_smtp_client.c** NetX Duo SMTP İstemci API'si için C Kaynak dosyası
+- **nxd_smtp_client.h** NetX Duo SMTP İstemci API'si için C Üst Bilgi dosyası
+- **demo_netxduo_smtp_client.c** NetX Duo SMTP İstemcisi Tanıtım
+- **nxd_smtp_client.pdf Kullanıcı Kılavuzu** NetX Duo SMTP İstemci API'si
 
-NetX Duo SMTP Istemcisi API 'sini kullanmak için, daha önce bahsedilen tüm dağıtım, NetX Duo yüklendiği dizine kopyalanabilir. Örneğin, "c:*\MyProject*" dizininde NETX Duo yüklüyse, *nxd_smtp_client. h ve nxd_smtp_client. c* dosyaları bu dizine kopyalanmalıdır.
+NetX Duo SMTP İstemci API'sini kullanmak için daha önce bahsedilen dağıtımın tamamı NetX Duo'nın yüklü olduğu dizine kopyalanmış olabilir. Örneğin, "c:*\myproject*" dizinine NetX Duo *yüklüyse, nxd_smtp_client.h ve nxd_smtp_client.c* dosyalarının bu dizine kopyalanmış olması gerekir.
 
-## <a name="using-netx-duo-smtp-client"></a>NetX Duo SMTP Istemcisini kullanma
+## <a name="using-netx-duo-smtp-client"></a>NetX Duo SMTP İstemcisini Kullanma
 
-NetX Duo SMTP Istemci uygulamasını oluşturmak için öncelikle ThreadX ve NetX Duo kitaplıklarını oluşturmalı ve bunları Build projesine dahil etmelidir. Uygulamanın, uygulama kaynak kodunda TX *_api. h* ve *nx_api. h*'yi içermesi gerekir. Bu, ThreadX ve NetX Duo hizmetlerini etkinleştirir. Ayrıca, *SMTP istemci hizmetlerini kullanmak için* *tx_api. h* ve nx_api. h sonrasında *nxd_smtp_client. c* ve *nxd_smtp_client. h* içermelidir.
+NetX Duo SMTP İstemcisi uygulamasını oluşturmak için önce ThreadX ve NetX Duo kitaplıklarını oluşturması ve derleme projesine dahil olması gerekir. Daha sonra uygulamanın uygulama kaynak *koduna tx _api.h* *ve nx_api.h içermesi gerekir.* Bu, ThreadX ve NetX Duo hizmetlerini etkinleştirir. SMTP İstemcisi hizmetlerini *kullanmak için nxd_smtp_client.c* *ve nxd_smtp_client.h'den* *sonra tx_api.h* ve *nx_api.h'yi de içermesi gerekir.*
 
-Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne kodu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, bir NetX Duo SMTP Istemci uygulaması oluşturmak için gereklidir.
+Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne kodunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX Duo SMTP İstemci uygulaması oluşturmak için gerekenler bunlardır.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX Duo SMTP Istemcisini kullanmanın bir örneği aşağıda gösterilen Şekil 1 ' de açıklanmıştır. IP örneği için paket havuzu, 68 satırındaki nx_packet_pool_create hizmeti kullanılarak oluşturulur ve çok küçük bir paket yüküne sahiptir. Bunun nedeni, IP örneğinin yalnızca fazla yük gerektirmeyen denetim paketlerini göndermesi içindir. 84. satırda oluşturulan SMTP Istemcisi paket havuzu ve SMTP Istemci iletilerini sunucuya ve ileti verilerine iletmek için kullanılır. Paket yükü çok daha büyük. IP örneği, aynı paket havuzunu kullanan 118. satırda oluşturulur. SMTP protokolü için gereken TCP, 130. satırdaki IP örneğinde etkinleştirilmiştir.
+NetX Duo SMTP İstemcisi'ni kullanma örneği aşağıda görünen Şekil 1'de açıklanmıştır. IP örneğinin paket havuzu, 68. satırda nx_packet_pool_create hizmeti kullanılarak oluşturulur ve çok küçük bir paket yüküne sahiptir. Bunun nedeni, IP örneğinin yalnızca çok fazla yük gerektirmeyen denetim paketleri göndermesidir. SMTP İstemcisi paket havuzu 84. satırda oluşturulur ve SMTP İstemcisi iletilerini sunucuya ve ileti verilerine göndermek için kullanılır. Paket yükü çok daha büyüktür. IP örneği aynı paket havuzu kullanılarak 118. satırda oluşturulur. SMTP protokolü için gereken TCP, 130. satırda IP örneğinde etkindir.
 
-Uygulama iş parçacığında, SMTP Istemcisi *nxd_smtp_client_create* hizmeti kullanılarak oluşturulur, satır 170. *Nxd_smtp_client_create* hizmeti IPv4 ve IPv6 SMTP sunucusu bağlantılarını destekler, ancak bu örnek IPv4 ile sınırlıdır. Ardından posta iletisi, *nx_smtp_mail_send* hizmeti kullanılarak 184. satırda ıletım Için SMTP istemcisine gönderilir. Posta içeriği üst bilgisine sahip konu satırının ileti gövdesinden ayrı olarak oluşturulduğunu unutmayın. Ayrıca, e-posta isteği yalnızca, sözdizimsel olarak doğru olarak kabul edilen tek bir alıcı posta adresini kabul ettiğini unutmayın.
+Uygulama iş parçacığında SMTP İstemcisi,  nxd_smtp_client_create 170. satırda oluşturulur. Bu *nxd_smtp_client_create* IPv4 ile sınırlı olsa da, bu hizmet hem IPv4 hem de IPv6 SMTP sunucu bağlantılarını destekler. Ardından posta iletisi, nx_smtp_mail_send hizmeti kullanılarak 184. satırda iletim için SMTP *İstemcisi'ne* gönderebilirsiniz. Posta içeriği üst bilgisi olan konu satırı, ileti gövdesinden ayrı olarak oluşturulur. Ayrıca, gönderme posta isteğinin, yalnızca bir alıcı posta adresini kabul eder ve bu adresin bozulmamış olduğu varsayılır.
 
-Ardından, uygulama SMTP Istemcisini 200. satırda sonlandırır. *Nx_smtp_client_delete* hizmeti yuva bağlantısının kapalı olduğunu ve bağlantı noktasının ilişkisiz olduğunu denetler. Bu, daha önce kullanımda değilse, paket havuzunu silmek için SMTP Istemci uygulamasına kadar olduğunu unutmayın.
+Ardından uygulama, 200. satırda SMTP İstemcisini sonlandırılır. Nx_smtp_client_delete  hizmeti, yuva bağlantısının kapalı ve bağlantı noktasının bağlantısız olduğunu denetler. Paket havuzunu artık kullanamasa da silmenin SMTP İstemcisi uygulamasına olduğunu unutmayın.
 
 ```c
 /*
@@ -257,20 +257,20 @@ void    demo_client_thread_entry(ULONG info)
 }
 ```
 
-**Şekil 1. NetX Duo ile SMTP Istemcisi kullanımı örneği**
+**Şekil 1. NetX Duo ile SMTP İstemcisi kullanımı örneği**
 
-## <a name="client-configuration-options"></a>İstemci yapılandırma seçenekleri
+## <a name="client-configuration-options"></a>İstemci Yapılandırma Seçenekleri
 
-NetX Duo SMTP Istemcisi API 'SI ile birkaç yapılandırma seçeneği vardır. Aşağıda, ayrıntılı olarak açıklanan tüm seçeneklerin bir listesi verilmiştir:
+NetX Duo SMTP İstemci API'si ile çeşitli yapılandırma seçenekleri vardır. Aşağıda ayrıntılı olarak açıklanan tüm seçeneklerin listesi velanmıştır:
 
-- **NX_SMTP_CLIENT_TCP_WINDOW_SIZE** Bu seçenek, Istemci TCP alma penceresinin boyutunu ayarlar. Bu, temel alınan Ethernet donanımının MTU boyutunun altına ayarlanmalıdır ve IP ve TCP üstbilgileri için odaya izin verir. Varsayılan NetX Duo SMTP Istemcisi TCP pencere boyutu 1460 ' dir.
-- **NX_SMTP_CLIENT_PACKET_TIMEOUT** Bu seçenek, NetX paket ayırması sırasında zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemcisi paket zaman aşımı 2 saniyedir.
-- **NX_SMTP_CLIENT_CONNECTION_TIMEOUT** Bu seçenek Istemci TCP yuvası bağlantı zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemcisi bağlantı zaman aşımı 10 saniyedir.
-- **NX_SMTP_CLIENT_DISCONNECT_TIMEOUT** Bu seçenek, Istemci TCP yuvası bağlantı kesme zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemcisi bağlantı kesme zaman aşımı 5 saniyedir *. SMTP Istemcisi bozuk bağlantı gibi bir iç hatayla karşılaşırsa, bağlantıyı sıfır bekleme zaman aşımıyla sonlandırabileceğini unutmayın.
-- **NX_SMTP_GREETING_TIMEOUT** Bu seçenek, Istemcinin, karşılamasına yönelik sunucu yanıtı alması için zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemci değeri 10 saniyedir.
-- **NX_SMTP_ENVELOPE_TIMEOUT** Bu seçenek, Istemci için sunucu yanıtı almak üzere Istemcinin zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemci değeri 10 saniyedir.
-- **NX_SMTP_MESSAGE_TIMEOUT** Bu seçenek, e-posta iletisi verilerini almak üzere Istemcinin sunucu yanıtı alması için zaman aşımını ayarlar. Varsayılan NetX Duo SMTP Istemcisi değeri 30 saniyedir.
-- **NX_SMTP_CLIENT_SEND_TIMEOUT** Bu seçenek, SMTP kimlik doğrulaması sırasında sunucu ile Kullanıcı parolasını depolamak için arabellek bekleme seçeneğini tanımlar. Varsayılan değer 20 bayttır.
-- **NX_SMTP_SERVER_CHALLENGE_MAX_STRING** Bu seçenek, SMTP kimlik doğrulaması sırasında sunucu sınamasını ayıklama için arabellek boyutunu tanımlar. Varsayılan değer 200 bayttır. OTURUM açma ve düz kimlik doğrulama için, SMTP Istemcisi muhtemelen daha küçük bir arabellek kullanabilir.
-- **NX_SMTP_CLIENT_MAX_PASSWORD** Bu seçenek, SMTP kimlik doğrulaması sırasında sunucu ile Kullanıcı parolasını depolamak için arabelleğin boyutunu tanımlar. Varsayılan değer 20 bayttır. 
-- **NX_SMTP_CLIENT_MAX_USERNAME** Bu seçenek, sunucu ile SMTP kimlik doğrulaması sırasında konak Kullanıcı adını depolamak için arabelleğin boyutunu tanımlar. Varsayılan değer 40 bayttır. 
+- **NX_SMTP_CLIENT_TCP_WINDOW_SIZE** Bu seçenek İstemci TCP alma penceresinin boyutunu ayarlar. Bu, temel Ethernet donanımının MTU boyutunun altına ayar olmalı ve IP ve TCP üst bilgilerine yer vermelisiniz. Varsayılan NetX Duo SMTP İstemcisi TCP penceresi boyutu 1460'tır.
+- **NX_SMTP_CLIENT_PACKET_TIMEOUT** Bu seçenek, NetX paket ayırma zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi paket zaman aşımı 2 saniyedir.
+- **NX_SMTP_CLIENT_CONNECTION_TIMEOUT** Bu seçenek İstemci TCP yuvası bağlantı zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi bağlantı zaman aşımı 10 saniyedir.
+- **NX_SMTP_CLIENT_DISCONNECT_TIMEOUT** Bu seçenek İstemci TCP yuvası bağlantı kesme zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi bağlantı kesme zaman aşımı 5 saniyedir*. SMTP İstemcisi bozuk bağlantı gibi bir iç hatayla karşılaşırsa, bağlantıyı sıfır bekleme zaman aşımı ile sonlandırabilirsiniz.
+- **NX_SMTP_GREETING_TIMEOUT** Bu seçenek, İstemcinin Sunucu yanıtını karşılaması için zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi değeri 10 saniyedir.
+- **NX_SMTP_ENVELOPE_TIMEOUT** Bu seçenek, İstemcinin bir İstemci komutuna Sunucu yanıtı alma zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi değeri 10 saniyedir.
+- **NX_SMTP_MESSAGE_TIMEOUT** Bu seçenek, İstemcinin posta iletisi verilerini almak için Sunucu yanıtını alma zaman aşımını ayarlar. Varsayılan NetX Duo SMTP İstemcisi değeri 30 saniyedir.
+- **NX_SMTP_CLIENT_SEND_TIMEOUT** Bu seçenek, Sunucu ile SMTP kimlik doğrulaması sırasında kullanıcı parolasını depolamak için arabelleğin bekleme seçeneğini tanımlar. Varsayılan değer 20 bayttır.
+- **NX_SMTP_SERVER_CHALLENGE_MAX_STRING** Bu seçenek, SMTP kimlik doğrulaması sırasında Sunucu zorluklarını ayıklamak için arabellek boyutunu tanımlar. Varsayılan değer 200 bayttır. LOGIN ve PLAIN kimlik doğrulaması için SMTP İstemcisi büyük olasılıkla daha küçük bir arabellek kullanabilir.
+- **NX_SMTP_CLIENT_MAX_PASSWORD** Bu seçenek, Sunucu ile SMTP kimlik doğrulaması sırasında kullanıcı parolasını depolamak için arabelleğin boyutunu tanımlar. Varsayılan değer 20 bayttır. 
+- **NX_SMTP_CLIENT_MAX_USERNAME** Bu seçenek, Sunucu ile SMTP kimlik doğrulaması sırasında konak kullanıcı adını depolamak için arabellek boyutunu tanımlar. Varsayılan değer 40 bayttır. 

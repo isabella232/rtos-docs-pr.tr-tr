@@ -6,12 +6,12 @@ description: Bu makale, bir modülün kullanabileceği ek API 'lerin bir özetid
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b5804e2dbb8d08a272abc85a583576f43b7204c1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1c7590d0ccddc606a6cacdfeb3b3a99631e125554b524c4ce65c8154e65a20ee
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825487"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799141"
 ---
 # <a name="chapter-4---module-apis"></a>Bölüm 4-modül API 'Leri
 
@@ -49,7 +49,7 @@ UINT txm_module_application_request(
     ULONG param_3);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen isteği uygulamanın yerleşik bölümüne yapar. İstek yapısının çağrıdan önce hazırlandığı varsayılır. İsteğin gerçek işleme, ***_txm_module_manager_application_request*** işlevindeki yerleşik kodda gerçekleşir. Varsayılan olarak, bu işlev boş bırakılır ve yerleşik uygulama geliştiricisinin değiştirmesi için tasarlanmıştır.
 
@@ -93,7 +93,7 @@ UINT txm_module_object_allocate(
    ULONG object_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, modülün dışında bir modül nesnesi için bellek ayırır, bu da modülün kodu tarafından nesne denetim bloğunun bozulmasını önlemeye yardımcı olur. Bellek korumalı sistemlerde, tüm nesne denetim bloklarının oluşturulabilmesi için önce bu API ile ayrılması gerekir.
 
@@ -142,7 +142,7 @@ status = txm_module_object_allocate(&queue_pointer, sizeof(TX_QUEUE));
 UINT txm_module_object_deallocate(VOID *object_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 ***Bu hizmet artık gerekli olmadığından kullanım dışı*** bırakıldı.
 
@@ -191,7 +191,7 @@ UINT txm_module_object_pointer_get(
    VOID **object_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirli bir ada sahip belirli bir türün nesne işaretçisini alır. Nesne bulunamazsa bir hata döndürülür. Aksi takdirde, nesne bulunursa, bu nesnenin adresi "object_ptr" içine yerleştirilir. Bu işaretçi daha sonra sistem hizmeti çağrıları yapmak, yerleşik kodla etkileşime geçmek ve/veya sistemdeki diğer yüklü modüller için kullanılabilir.
 
@@ -217,9 +217,9 @@ Bu hizmet belirli bir ada sahip belirli bir türün nesne işaretçisini alır. 
 
 - **TX_SUCCESS** (0x00) başarılı nesne Get.
 - **TX_OPTION_ERROR** (0x08) geçersiz nesne türü.
-- **TX_PTR_ERROR** (0x03) geçersiz hedef.
-- **TX_SIZE_ERROR** (0x05) geçersiz boyut.
-- **TX_NO_INSTANCE** (0x0D) nesne bulunamadı.
+- **TX_PTR_ERROR** (0x03) Geçersiz hedef.
+- **TX_SIZE_ERROR** (0x05) Geçersiz boyut.
+- **TX_NO_INSTANCE** (0x0D) Nesnesi bulunamadı.
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -248,7 +248,7 @@ status = txm_module_object_pointer_get(TXM_QUEUE_OBJECT,
 
 ## <a name="txm_module_object_pointer_get_extended"></a>txm_module_object_pointer_get_extended
 
-Sistem nesnesi bul ve nesne işaretçisini al
+Sistem nesnesini bulma ve nesne işaretçisini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -259,13 +259,13 @@ UINT txm_module_object_pointer_get_extended(UINT object_type,
                                             VOID **object_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet belirli bir ada sahip belirli bir türün nesne işaretçisini alır. Nesne bulunamazsa bir hata döndürülür. Aksi takdirde, nesne bulunursa, bu nesnenin adresi "object_ptr" içine yerleştirilir. Bu işaretçi daha sonra sistem hizmeti çağrıları yapmak, yerleşik kodla etkileşime geçmek ve/veya sistemdeki diğer yüklü modüller için kullanılabilir.
+Bu hizmet, belirli bir adla belirli bir türün nesne işaretçisini alın. Nesne bulunamasa bir hata döndürülür. Aksi takdirde, nesne bulunursa, bu nesnenin adresi "object_ptr." Bu işaretçi daha sonra sistem hizmeti çağrıları yapmak, yerleşik kodla ve/veya sistemde yüklü diğer modüllerle etkileşim kurmak için kullanılabilir.
 
 ### <a name="input-parameters"></a>Giriş parametreleri
 
-- **object_type** İstenen ThreadX nesnesi türü. Geçerli türler şunlardır:
+- **object_type** İstenen ThreadX nesnesinin türü. Geçerli türler aşağıdaki gibidir:
   - TXM_BLOCK_POOL_OBJECT
   - TXM_BYTE_POOL_OBJECT
   - TXM_EVENT_FLAGS_OBJECT
@@ -278,17 +278,17 @@ Bu hizmet belirli bir ada sahip belirli bir türün nesne işaretçisini alır. 
   - TXM_PACKET_POOL_OBJECT
   - TXM_UDP_SOCKET_OBJECT
   - TXM_TCP_SOCKET_OBJECT
-- **ad** Nesne oluşturulduğunda tanımlanan uygulamaya özgü nesne adı.
+- **name** Nesne oluşturulduğunda tanımlandığı şekilde uygulamaya özgü nesne adı.
 - **name_length** Ad uzunluğu.
-- **object_ptr** Nesne işaretçisinin hedefi.
+- **object_ptr** Nesne işaretçisi hedefi.
 
 ### <a name="return-values"></a>Dönüş değerleri
 
-- **TX_SUCCESS** (0x00) başarılı nesne Get.
-- **TX_OPTION_ERROR** (0x08) geçersiz nesne türü.
-- **TX_PTR_ERROR** (0x03) geçersiz hedef.
-- **TX_SIZE_ERROR** (0x05) geçersiz boyut.
-- **TX_NO_INSTANCE** (0x0D) nesne bulunamadı.
+- **TX_SUCCESS** (0x00) Başarılı nesne get.
+- **TX_OPTION_ERROR** (0x08) Geçersiz nesne türü.
+- **TX_PTR_ERROR** (0x03) Geçersiz hedef.
+- **TX_SIZE_ERROR** (0x05) Geçersiz boyut.
+- **TX_NO_INSTANCE** (0x0D) Nesnesi bulunamadı.
 
 ### <a name="allowed-from"></a>İzin verilen
 

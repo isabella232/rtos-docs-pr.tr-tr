@@ -1,58 +1,58 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo TFTP hizmetlerinin açıklaması
-description: Bu bölüm, tüm NetX Duo TFTP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
+description: Bu bölümde, tüm NetX Duo TFTP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 56f0d8edb991fff6ae30b6411e375ace58c544f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: db7b7469bda02597db6428ecbf080b37a095413411eef2abefb1c4804d7bb1d3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825708"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799073"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-tftp-services"></a>Bölüm 3-Azure RTOS NetX Duo TFTP hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-tftp-services"></a>Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
 
-Bu bölüm, tüm NetX Duo TFTP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir. Aksi belirtilmediği takdirde, tüm hizmetler IPv6 ve IPv4 iletişimini destekler.
+Bu bölümde, tüm NetX Duo TFTP hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır. Aksi belirtilmedikçe, tüm hizmetler IPv6 ve IPv4 iletişimlerini destekler.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nxd_tftp_client_file_open**: *Açık TFTP istemci dosyası*
+- **nxd_tftp_client_file_open:** *TFTP istemci dosyasını açın*
 
-- **nxd_tftp_client_create**: *TFTP istemci örneği oluşturma*
+- **nxd_tftp_client_create:** *TFTP istemci örneği oluşturma*
 
-- **nxd_tftp_client_delete**: *TFTP istemci örneğini silme*
+- **nxd_tftp_client_delete:** *TFTP istemci örneğini silme*
 
-- **nxd_tftp_client_error_info_get**: *istemci hata bilgilerini al*
+- **nxd_tftp_client_error_info_get:** *İstemci hata bilgilerini al*
 
-- **nxd_tftp_client_file_close**: *istemci dosyasını kapat*
+- **nxd_tftp_client_file_close:** İstemci *dosyasını kapatma*
 
-- **nxd_tftp_client_file_open**: *istemci dosyasını aç*
+- **nxd_tftp_client_file_open:** İstemci *dosyasını açın*
 
-- **nxd_tftp_client_file_read**: *istemci dosyasından bir blok oku*
+- **nxd_tftp_client_file_read:** *İstemci dosyasından bir bloğu okuma*
 
-- **nxd_tftp_client_file_write**: *istemci dosyasına blok yaz*
+- **nxd_tftp_client_file_write:** *Blokları istemci dosyasına yazma*
 
-- **nxd_tftp_client_packet_allocate**: *istemci dosyası yazma için paket ayır*
+- **nxd_tftp_client_packet_allocate:** İstemci *dosya yazma için paket ayırma*
 
-- **nxd_tftp_client_set_interface**: *TFTP istekleri için fiziksel arabirimi ayarla*
+- **nxd_tftp_client_set_interface:** *TFTP istekleri için fiziksel arabirimi ayarlama*
 
-- **nxd_tftp_server_create**: *TFTP sunucusu oluşturma*
+- **nxd_tftp_server_create:** *TFTP sunucusu oluşturma*
 
-- **nxd_tftp_server_delete**: *TFTP sunucusunu Sil*
+- **nxd_tftp_server_delete:** *TFTP sunucusunu silme*
 
-- **nxd_tftp_server_start**: *TFTP sunucusunu Başlat*
+- **nxd_tftp_server_start:** *TFTP sunucusunu başlatma*
 
-- **nxd_tftp_server_stop**: *TFTP sunucusunu durdur*
+- **nxd_tftp_server_stop:** *TFTP sunucusunu durdurun*
 
 > [!NOTE] 
-> Yukarıda listelenen tüm hizmetlerin IPv4 eşdeğerleri NetX Duo TFTP Istemcisinde ve sunucu gibi *nx_tftp_server_create* ve *nx_tftp_client_file_open* kullanılabilir. Aşağıdaki sayfalarda yalnızca ' Duo ' API açıklamaları, örneğin *nxd_* ile başlayan hizmetler verilmiştir. NXD_ADDRESS \* girişi belirtildiğinde, IPv4 EŞDEĞERI API, ulong girişi için çağırır. Aksi takdirde, API 'nin kullanılması fark yoktur.
+> Yukarıda listelenen tüm hizmetlerin IPv4 eşdeğerleri NetX Duo TFTP İstemcisi ve  Sunucusu'nx_tftp_server_create ve *nx_tftp_client_file_open.* Yalnızca 'Duo' API açıklamaları (nxd_ ile başlayan hizmetler gibi) aşağıdaki sayfalarda verilmektedir. Bir NXD_ADDRESS \* belirtiliyorsa, IPv4 eşdeğer API ULONG girişi için çağrır. Aksi takdirde API'yi kullanmanın hiçbir farkı yoktur.
 
 ## <a name="nxd_tftp_client_create"></a>nxd_tftp_client_create
 
-TFTP Istemci örneği oluşturma
+TFTP İstemci örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -61,42 +61,42 @@ UINT nxd_tftp_client_create(NX_TFTP_CLIENT *tftp_client_ptr,
      CHAR *tftp_client_name, NX_IP *ip_ptr, NX_PACKET_POOL *pool_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulan IP örneği için bir TFTP Istemci örneği oluşturur.
+Bu hizmet, daha önce oluşturulan IP örneği için bir TFTP İstemci örneği oluşturur.
 
 > [!IMPORTANT]
-> Uygulama, sağlanan IP ve paket havuzunun daha önce oluşturulduğundan emin olmalıdır. Buna ek olarak, bu hizmet çağrılmadan önce IP örneği için UDP 'nin etkinleştirilmesi gerekir.
+> Uygulama, sağlanan IP'nin ve paket havuzunun zaten oluşturulmuş olduğunu kesin olarak onaylar. Ayrıca, bu hizmeti çağırmadan önce IP örneği için UDP etkinleştirilmelidir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **tftp_client_ptr** TFTP Istemci denetim bloğu işaretçisi.
+- **tftp_client_ptr** TFTP İstemcisi denetim bloğu işaretçisi.
 
-- **tftp_client_name** Bu TFTP Istemci örneğinin adı
+- **tftp_client_name** Bu TFTP İstemci örneğinin adı
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
-- **pool_ptr** Paket havuzu TFTP Istemci örneği işaretçisi.
+- **pool_ptr** Paket havuzu TFTP İstemci örneği işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**(0x00) başarılı TFTP oluşturma.
+- **NX_SUCCESS**(0x00) Başarılı TFTP oluşturma.
 
-- **NX_TFTP_INVALID_IP_VERSION** (0x0C) geçersiz veya desteklenmeyen IP sürümü
+- **NX_TFTP_INVALID_IP_VERSION** (0x0C) Geçersiz veya desteklenmeyen IP sürümü
 
-- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) GEÇERSIZ sunucu IP adresi alındı
+- **NX_TFTP_INVALID_SERVER_ADDRESS** (0x08) Geçersiz Sunucu IP adresi alındı
 
-- **NX_TFTP_NO_ACK_RECEIVED** (0x09) sunucu onayı alınmadı
+- **NX_TFTP_NO_ACK_RECEIVED** (0x09) Sunucu ACK alınamadı
 
-- NX_PTR_ERROR (0x16) geçersiz IP, havuz veya TFTP işaretçisi.
+- NX_PTR_ERROR (0x16) Geçersiz IP, havuz veya TFTP işaretçisi.
 
-- NX_INVALID_PARAMETERS (0x4D) geçersiz işaretçi girişi
+- NX_INVALID_PARAMETERS (0x4D) İşaretçi olmayan giriş geçersiz
 
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma ve Iş parçacıkları
+Başlatma ve İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -111,7 +111,7 @@ status =  nxd_tftp_client_create(&my_tftp_client, “My TFTP Client”,
 
 ## <a name="nxd_tftp_client_delete"></a>nxd_tftp_client_delete
 
-TFTP Istemci örneğini silme
+TFTP İstemci örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -119,23 +119,23 @@ TFTP Istemci örneğini silme
 UINT nxd_tftp_client_delete(NX_TFTP_CLIENT *tftp_client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş bir TFTP Istemci örneğini siler.
+Bu hizmet, önceden oluşturulmuş bir TFTP İstemci örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **tftp_client_ptr** Daha önce oluşturulan TFTP istemci örneğine yönelik işaretçi.
+- **tftp_client_ptr** Daha önce oluşturulan TFTP istemci örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı TFTP istemcisi silme.
+- **NX_SUCCESS** (0x00) Başarılı TFTP İstemcisi silme.
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi.
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi.
 
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -160,27 +160,27 @@ UINT nxd_tftp_client_error_info_get(NX_TFTP_CLIENT *tftp_client_ptr,
                         UINT *error_code, CHAR **error_string);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, alınan son hata kodunu döndürür ve işaretçiyi istemcinin iç hata dizesine ayarlar. Hata koşullarında, Kullanıcı sunucu tarafından gönderilen son hatayı görüntüleyebilir. Null hata dizesi bir hata olduğunu gösterir.
+Bu hizmet alınan son hata kodunu döndürür ve işaretçiyi istemcinin iç hata dizesine ayarlar. Hata koşullarında, kullanıcı sunucu tarafından gönderilen son hatayı görüntülemeye devam ediyor. Null hata dizesi hiçbir hata olmadığını gösterir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **tftp_client_ptr** Daha önce oluşturulan TFTP Istemci örneğine yönelik işaretçi.
+- **tftp_client_ptr** Daha önce oluşturulan TFTP İstemci örneğinin işaretçisi.
 
-- **error_code** Hata kodu için hedef alan işaretçisi
+- **error_code** Hata kodu için hedef alana işaretçi
 
-- **error_string** Hata dizesi için hedef işaretçisi
+- **error_string** Hata dizesi için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı TFTP hata bilgileri al.  
+- **NX_SUCCESS** (0x00) Başarılı TFTP hata bilgileri alır.  
 
-- NX_PTR_ERROR (0x16) geçersiz TFTP Istemci işaretçisi.
+- NX_PTR_ERROR (0x16) Geçersiz TFTP İstemci işaretçisi.
 
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -196,7 +196,7 @@ status =  nxd_tftp_client_error_info_get(&my_tftp_client, &error_code,
 
 ## <a name="nxd_tftp_client_file_close"></a>nxd_tftp_client_file_close
 
-İstemci dosyasını kapat
+İstemci dosyasını kapatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -205,27 +205,27 @@ UINT nxd_tftp_client_file_close(NX_TFTP_CLIENT *tftp_client_ptr,
                                     UINT ip_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu TFTP Istemci örneği tarafından daha önce açılmış dosyayı kapatır. Bir TFTP Istemci örneğinin aynı anda yalnızca bir dosya açmasına izin verilir.
+Bu hizmet, bu TFTP İstemci örneği tarafından önceden açılmış olan dosyayı kapatır. Bir TFTP İstemci örneğinin aynı anda yalnızca bir dosya açmasına izin verilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **tftp_client_ptr** Daha önce oluşturulan TFTP Istemci örneğine yönelik işaretçi.
+- **tftp_client_ptr** Daha önce oluşturulan TFTP İstemci örneğinin işaretçisi.
 
-- **ip_type** Hangi IP protokolünün kullanılacağını belirtin. Geçerli seçenekler IPv4 (4) veya IPv6 (6).
+- **ip_type** Hangi IP protokolünün kullan kullanır olduğunu gösterme. Geçerli seçenekler IPv4 (4) veya IPv6 (6) seçenekleridir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı TFTP dosyası kapatma.
+- **NX_SUCCESS** (0x00) Başarılı TFTP dosyası kapatma.
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi.
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi.
 
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz.
 
-- NX_INVALID_PARAMETERS (0x4D) geçersiz işaretçi girişi.
+- NX_INVALID_PARAMETERS (0x4D) İşaretçi olmayan giriş geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -240,7 +240,7 @@ status =  nxd_tftp_client_file_close(&my_tftp_client);
 
 ## <a name="nx_tftp_client_file_open"></a>nx_tftp_client_file_open
 
-TFTP istemci dosyasını aç
+TFTP istemci dosyasını açma
 
 ### <a name="prototype"></a>Prototype
 
@@ -250,7 +250,7 @@ UINT nx_tftp_client_file_open(NX_TFTP_CLIENT *tftp_client_ptr,
             open_type, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen IP adresindeki TFTP sunucusunda belirtilen dosyayı açmaya çalışır. Dosya okuma ya da yazma için açılacak. 
 
@@ -340,7 +340,7 @@ UINT nxd_tftp_client_file_open(NX_TFTP_CLIENT *tftp_client_ptr,
         open_type, ULONG wait_option, UINT ip_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen bir IPv6 adresinde belirtilen dosyayı TFTP sunucusunda açmaya çalışır. Dosya okuma ya da yazma için açılacak.
 
@@ -431,7 +431,7 @@ UINT nxd_tftp_client_file_read(NX_TFTP_CLIENT *tftp_client_ptr,
                         UINT ip_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılan TFTP Istemci dosyasından 512 baytlık bir blok okur. 512 bayttan az bir blok içeren bir blok, dosyanın sonuna işaret eder.
 
@@ -506,7 +506,7 @@ UINT nxd_tftp_client_file_write(NX_TFTP_CLIENT *tftp_client_ptr,
             NX_PACKET *packet_ptr, ULONG wait_option, UINT ip_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılmış olan TFTP Istemci dosyasına 512 baytlık bir blok yazar. 512 bayttan daha az bir blok belirtmek dosyanın sonuna işaret eder.
 
@@ -578,7 +578,7 @@ UINT nxd_tftp_client_packet_allocate(NX_PACKET_POOL *pool_ptr,
                         UINT ip_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen paket havuzundan bir UDP paketi ayırır ve paket çağırana döndürülmeden önce 4 baytlık TFTP üst bilgisine yer açar. Çağıran daha sonra bir istemci dosyasına yazmak için bir arabellek oluşturabilir.
 
@@ -634,7 +634,7 @@ UINT nxd_tftp_client_set_interface(NX_TFTP_CLIENT *tftp_client_ptr,
                                     UINT if_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, TFTP Istemcisine yönelik fiziksel arabirimi TFTP paketleri gönderecek ve alacak şekilde ayarlamak için giriş arabirimi dizinini kullanır. Birincil arabirim için varsayılan değer sıfırdır.
 
@@ -683,7 +683,7 @@ UINT nxd_tftp_server_create(NX_TFTP_SERVER *tftp_server_ptr,
             NX_PACKET_POOL *pool_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, 69 numaralı bağlantı noktasında TFTP Istemci isteklerine yanıt veren bir TFTP sunucusu oluşturur. Sunucunun *nxd_tftp_server_start* sonraki bir çağrısıyla başlatılması gerekir.
 
@@ -743,7 +743,7 @@ TFTP sunucusunu Sil
 UINT nxd_tftp_server_delete(NX_TFTP_SERVER *tftp_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulmuş bir TFTP sunucusunu siler.
 
@@ -782,7 +782,7 @@ TFTP sunucusunu Başlat
 UINT nxd_tftp_server_start(NX_TFTP_SERVER *tftp_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulan TFTP sunucusunu başlatır.
 
@@ -819,7 +819,7 @@ TFTP sunucusunu durdur
 UINT nxd_tftp_server_stop(NX_TFTP_SERVER *tftp_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulan TFTP sunucusunu durduruyor.
 

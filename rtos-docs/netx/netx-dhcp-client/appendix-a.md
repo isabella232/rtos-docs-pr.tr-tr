@@ -1,33 +1,33 @@
 ---
-title: Ek A-geri yükleme durumu özelliğinin açıklaması
-description: Azure RTOS NetX DHDP Istemci yapılandırma seçeneği, NX_DHCP_CLIENT_RESTORE_STATE, sistemin önceden oluşturulmuş bir DHCP Istemci kaydını sistem yeniden başlatmalar arasında bir bağlantılı durumda geri yüklemesine olanak tanır.
+title: Ek A - Geri Yükleme Durumu Özelliğinin Açıklaması
+description: NetX DHDP Azure RTOS yapılandırma seçeneği olan NX_DHCP_CLIENT_RESTORE_STATE, sistemin sistem yeniden başlatmaları arasında daha önce oluşturulmuş bir DHCP İstemci Kaydını Bağlı durumda geri yüklemesini sağlar.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: be8b5dc4885951bee3dba38af6fe5e21b81aa767
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4b7286726eb6bfc666ba7a4b9983847da442fe212a45f4b28e184f70cf46e2b4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826807"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801249"
 ---
-# <a name="appendix-a---description-of-the-restore-state-feature"></a>Ek A-geri yükleme durumu özelliğinin açıklaması
+# <a name="appendix-a---description-of-the-restore-state-feature"></a>Ek A - Geri Yükleme Durumu Özelliğinin Açıklaması
 
-Azure RTOS NetX DHDP Istemci yapılandırma seçeneği, NX_DHCP_CLIENT_RESTORE_STATE, sistemin önceden oluşturulmuş bir DHCP Istemci kaydını sistem yeniden başlatmalar arasında bir bağlantılı durumda geri yüklemesine olanak tanır.
+NetX DHDP Azure RTOS yapılandırma seçeneği olan NX_DHCP_CLIENT_RESTORE_STATE, sistemin sistem yeniden başlatmaları arasında daha önce oluşturulmuş bir DHCP İstemci Kaydını Bağlı durumda geri yüklemesini sağlar.
 
-Bu seçenek etkinleştirildiğinde, uygulama DHCP Istemci iş parçacığını askıya alabilir ve sürdürebilir. DHCP Istemcisini, iş parçacığını askıya alma ve sürdürme arasındaki geçen süre ile güncelleştirmek için de bir hizmet vardır.
+Bu seçenek etkinleştirildiğinde, uygulama DHCP İstemcisi iş parçacığını askıya alabilir ve sürdürebilir. Ayrıca, DHCP İstemcisi'nin iş parçacığını askıya alma ve devam etme arasında geçen süreyle güncelleştirilen bir hizmet de vardır.
 
-## <a name="restoring-the-dhcp-client-between-reboots"></a>Yeniden başlatmalar arasında DHCP Istemcisini geri yükleme
+## <a name="restoring-the-dhcp-client-between-reboots"></a>Dhcp İstemcisini Yeniden Başlatmalar Arasında Geri Yükleme
 
-Yeniden başlatmadan sonra bir DHCP Istemcisini geri yüklemeden önce, daha önce oluşturulmuş bir DHCP Istemcisi, bağlantılı duruma ulaşmalıdır ve DHCP sunucusundan bir IP adresi atanır. Kapatmadan önce, DHCP uygulamasının geçerli DHCP Istemci kaydını geçici olmayan belleğe kaydetmesi gerekir. Bu güç durumu sırasında geçen süreyi izlemek için, sistemde başka bir yerde bağımsız bir ' Time Man ' olması gerekir. Uygulama, yeni bir DHCP Istemci örneği oluşturur ve daha önce oluşturulan DHCP Istemci kaydıyla günceller. Geçen süre, "zaman Man" kaynağından alınır ve DHCP Istemcisi kiralamasında kalan zamana uygulanır. Bu, DHCP Istemcisinin, örneğin, yenıleme göre, durumları değiştirmesine neden olabileceğini unutmayın. Bu noktada, uygulama DHCP Istemcisini sürdürür.
+Yeniden başlatıldıktan sonra BIR DHCP İstemcisini geri yüklemeden önce, Daha önce oluşturulmuş, Bağlı durumuna ulaşacak ve DHCP sunucusundan bir IP adresi atanacak bir DHCP İstemcisi. Çalışmadan önce, DHCP uygulamasının geçerli DHCP İstemcisi kaydını geçici olmayan belleğe kaydetmesi gerekir. Ayrıca, sistemin başka bir yerinde, bu güç kapatıldı durumu sırasında geçen zamanı takip etmek için bağımsız bir 'zaman tutma' da olması gerekir. Uygulama, güç sağlarken yeni bir DHCP İstemcisi örneği oluşturur ve ardından daha önce oluşturulan DHCP İstemcisi kaydıyla bunu günceller. Geçen süre "zaman ayırıcıdan" elde edilir ve ardından DHCP İstemci kirası üzerinde kalan süreye uygulanır. Bu durum DHCP İstemcisi'nin durumlarını (örneğin, BAĞLANTIDAN YenİLEME'ye) değiştirmesini neden olabilir. Bu noktada, uygulama DHCP İstemcisini sürdürebilir.
 
-Güç kapatma sırasında geçen süre DHCP Istemci durumunu yenıleme ya da yeniden bağlama durumuna geçirir, DHCP Istemcisi IP adresi kiralamasını yenilemek veya yeniden bağlamak isteyen DHCP iletilerini otomatik olarak başlatır. IP adresinin geçerliliği dolmuşsa, DHCP Istemcisi IP örneğindeki IP adresini otomatik olarak temizler ve yeni bir IP adresi isteyen başlangıç durumundan DHCP işlemine başlar.
+Güç kesintisi sırasında geçen süre DHCP İstemcisi durumunu YenİLE veya YenİLE durumuna koyarsa, DHCP İstemcisi IP adresi kiralamasını yenilemek veya yeniden başlatmak için istekte bulunduran DHCP iletilerini otomatik olarak başlatacaktır. IP adresinin süresi dolduğunda, DHCP İstemcisi IP örneğinde IP adresini otomatik olarak temizler ve INIT durumdan DHCP işlemini başlatarak yeni bir IP adresi talep eder.
 
-Bu şekilde, DHCP Istemcisi kesintisiz olarak yeniden başlatmalar arasında çalışabilir.
+Bu şekilde DHCP İstemcisi, yeniden başlatmalar arasında kesintisiz olarak çalışır.
 
-Bu özelliğin bir çizimi aşağıda verilmiştir. Bu, DHCP Istemcisinin yalnızca birincil arabirimde çalıştığını varsayar.
+Bu özelliğin bir çizimi aşağıda verilmiştir. Bu, DHCP İstemcisi'nin yalnızca birincil arabirimde çalıştırılı olduğunu varsayıyor.
 
 ```C
 /* On the power up, create an IP instance, DHCP Client, enable ICMP and UDP
@@ -101,13 +101,13 @@ else
 }
 ```
 
-## <a name="resuming-the-dhcp-client-thread-after-suspension"></a>Askıya alındıktan sonra DHCP Istemci Iş parçacığı sürdürülüyor 
+## <a name="resuming-the-dhcp-client-thread-after-suspension"></a>Askıya Alındıktan Sonra DHCP İstemci İş Parçacığını Devam Ediyor 
 
-Uygulamayı kapatmadan bir DHCP Istemci iş parçacığını askıya almak için, uygulama, bağlı durumu elde eden ve geçerli bir IP adresine sahip olan bir DHCP Istemcisinde *nx_dhcp_suspend* çağırır. DHCP Istemcisini sürdürmeye hazırlanıyorsa, ilk olarak DHCP adresi kiralamasında kalan süreyi (bağımsız bir saatten geçen süreyi elde) güncelleştirmek için *nx_dhcp_client_update_time_remaining* çağırır. Ardından, DHCP Istemci iş parçacığını sürdürmesini sağlamak için *nx_dhcp_resume* çağırır.
+Bir DHCP İstemcisi iş parçacığını kapatmadan  askıya almak için uygulama, NX_DHCP_SUSPEND durumuna ulaşan ve geçerli bir IP adresine sahip olan DHCP İstemcisi'ne çağrır. DHCP İstemcisini sürdürmeye hazır olduğunda, önce DHCP *nx_dhcp_client_update_time_remaining* kiralamada kalan zamanı (bağımsız bir zaman ayırıcıdan geçen süre) güncelleştirmek için nx_dhcp_client_update_time_remaining'yi arar. Ardından DHCP İstemcisi *nx_dhcp_resume* devam etmek için ağ sunucusunu arar.
 
-Geçen süre DHCP Istemci durumunu yenıleme veya yeniden bağlama durumuna geçirir, DHCP Istemcisi IP adresi kiralamasını yenilemek veya yeniden bağlamak isteyen DHCP iletilerini otomatik olarak başlatır. IP adresinin geçerliliği dolmuşsa, DHCP Istemcisi IP adresini otomatik olarak temizler ve yeni bir IP adresi isteyen başlangıç durumundan DHCP işlemine başlar.
+Geçen süre DHCP İstemcisi durumunu YenİLE veya YenİLE durumuna koyarsa, DHCP İstemcisi IP adresi kiralamasını yenilemek veya yeniden başlatmak için istekte bulundurarak DHCP iletilerini otomatik olarak başlatacaktır. IP adresinin süresi dolduğunda, DHCP İstemcisi IP adresini otomatik olarak temizler ve INIT durumdan DHCP işlemini başlatarak yeni bir IP adresi talep eder.
 
-Bu özelliğin kullanımına ilişkin bir çizim aşağıda verilmiştir.
+Bu özelliğin kullanımı aşağıdaki çizimde verilmiştir.
 
 ```C
 /* Create an IP instance, DHCP Client, enable ICMP and UDP
@@ -165,11 +165,11 @@ void    thread_dhcp_client_entry(ULONG thread_input)
 }
 ```
 
-Aşağıda, bir DHCP Istemci durumunun bellekten geri yüklenmesi ve DHCP Istemcisini askıya almak ve sürdürmek için hizmetlerin bir listesi verilmiştir.
+Aşağıda, bir DHCP İstemcisi durumunu bellekten geri yükleme ve DHCP İstemcisini askıya alma ve devam etme için hizmetlerin listesi verilmiştir.
 
 ## <a name="nx_dhcp_client_get_record"></a>nx_dhcp_client_get_record
 
-Geçerli DHCP Istemci durumunun bir kaydını oluştur
+Geçerli DHCP İstemcisi durumunun kaydını oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -178,29 +178,29 @@ ULONG nx_dhcp_ client_get_record(NX_DHCP *dhcp_ptr,
                                  NX_DHCP_CLIENT_RECORD *record_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP Istemci örneğinde bulunan DHCP için etkinleştirilen ilk arabirimde çalışan DHCP Istemcisini, record_ptr tarafından işaret edilen kayda kaydeder. Bu, DHCP Istemci uygulamasının DHCP Istemci durumunu, örneğin bir güç kapatma ve yeniden başlatma gibi geri yüklemesine olanak tanır.
+Bu hizmet, DHCP İstemcisi örneğinde bulunan DHCP için etkinleştirilen ilk arabirimde çalışan DHCP İstemcisini, dhcp istemcisinin record_ptr. Bu, DHCP İstemcisi uygulamasının, örneğin bir güç kesintisi ve yeniden başlatma sonrasında DHCP İstemcisi durumunu geri yüklemesini sağlar.
 
-DHCP için birden fazla arabirim etkinleştirilmişse, belirli bir arabirimdeki DHCP Istemci kaydını kaydetmek için *nx_dhcp_interface_client_get_record* hizmetini kullanın.
+DHCP için birden fazla arabirim etkinleştirilmişse belirli bir arabirimde DHCP İstemcisi kaydını kaydetmek için, dhcp *nx_dhcp_interface_client_get_record* kullanın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr** DHCP Istemcisi işaretçisi
+- **dhcp_ptr** DHCP İstemcisi İşaretçisi
 
-- **record_ptr** DHCP Istemci kaydı işaretçisi
+- **record_ptr** DHCP İstemcisi kaydının işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x0) istemci kaydı oluşturuldu
+- **NX_SUCCESS** (0x0) İstemci kaydı oluşturuldu
 
-- **NX_DHCP_NOT_BOUND** (0x94) Istemci, bağlantılı durumda değil
+- **NX_DHCP_NOT_BOUND** (0x94) İstemci Bağlı durumda değil
 
-- **NX_DHCP_NO_INTERFACES_ENABLED** (0xa5) DHCP için etkinleştirilen arabirim yok
+- **NX_DHCP_NO_INTERFACES_ENABLED** (0xA5) DHCP için etkinleştirilmiş arabirim yok
 
-- **NX_PTR_ERROR** (0x16) geçersiz işaretçi girişi
+- **NX_PTR_ERROR** (0x16) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -218,7 +218,7 @@ status=  nx_dhcp_client_get_record(dhcp_ptr, &dhcp_record);
 
 ## <a name="nx_dhcp_interface_client_get_record"></a>nx_dhcp_interface_client_get_record
 
-Belirtilen arabirimdeki geçerli DHCP Istemci durumunun bir kaydını oluştur
+Belirtilen arabirimde geçerli DHCP İstemcisi durumunun kaydını oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -227,31 +227,31 @@ ULONG nx_dhcp_interface_client_get_record(NX_DHCP *dhcp_ptr,
                                  UINT interface_index,
                                  NX_DHCP_CLIENT_RECORD *record_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen arabirimde çalışan DHCP Istemcisini record_ptr tarafından işaret edilen kayda kaydeder. Bu, DHCP Istemci uygulamasının DHCP Istemci durumunu, örneğin bir güç kapatma ve yeniden başlatma gibi geri yüklemesine olanak tanır.
+Bu hizmet, belirtilen arabirimde çalışan DHCP İstemcisini, belirtilen arabirimde çalışan DHCP İstemcisi'nin record_ptr. Bu, DHCP İstemcisi uygulamasının, örneğin bir güç kesintisi ve yeniden başlatma sonrasında DHCP İstemcisi durumunu geri yüklemesini sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr** DHCP Istemcisi işaretçisi
+- **dhcp_ptr** DHCP İstemcisi İşaretçisi
 
-- **interface_index** Kaydın alınacağı dizin
+- **interface_index** Kayıt almak için dizin
 
-- **record_ptr** DHCP Istemci kaydı işaretçisi
+- **record_ptr** DHCP İstemcisi kaydının işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x0) istemci kaydı oluşturuldu
+- **NX_SUCCESS** (0x0) İstemci kaydı oluşturuldu
 
-- **NX_DHCP_NOT_BOUND** (0x94) Istemci, bağlantılı durumda değil
+- **NX_DHCP_NOT_BOUND** (0x94) İstemci Bağlı durumda değil
 
-- **NX_DHCP_BAD_INTERFACE_INDEX_ERROR** (0x9A) geçersiz arabirim dizini
+- **NX_DHCP_BAD_INTERFACE_INDEX_ERROR** (0x9A) Geçersiz arabirim dizini
 
-- NX_PTR_ERROR (0x16) geçersiz DHCP işaretçisi.
+- NX_PTR_ERROR (0x16) Geçersiz DHCP işaretçisi.
 
-- NX_INVALID_INTERFACE (0x4C) geçersiz ağ arabirimi
+- NX_INVALID_INTERFACE (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -269,7 +269,7 @@ status=  nx_dhcp_interface_client_get_record(dhcp_ptr, 1, &dhcp_record);
 
 ## <a name="nx_dhcp_-client_restore_record"></a>nx_dhcp_ client_restore_record
 
-DHCP Istemcisini daha önce kaydedilen bir kayıttan geri yükleme
+Daha önce kaydedilen bir kayıttan DHCP İstemcisini geri yükleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -278,31 +278,31 @@ ULONG nx_dhcp_client_restore_record(NX_DHCP *dhcp_ptr,
                                     NX_DHCP_CLIENT_RECORD       
                                     *record_ptr, ULONG time_elapsed);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir uygulamanın DHCP istemcisini record_ptr tarafından işaret edilen DHCP Istemci kaydını kullanarak önceki bir oturumdan geri yüklemesine olanak sağlar. Time_elapsed girişi, DHCP Istemci kirası üzerinde kalan zamana uygulanır.
+Bu hizmet, bir uygulamanın dhcp istemcisi tarafından işaret ettiği DHCP İstemcisi kaydını kullanarak önceki bir oturumdan DHCP İstemcisini geri yüklemesini record_ptr. Bu time_elapsed, DHCP İstemci kiralamada kalan süreye uygulanır.
 
-Bu, DHCP Istemci uygulamasının kapatmadan önce DHCP Istemcisinin bir kaydını oluşturulmasını ve bu kaydı kalıcı belleğe kaydetmesidir.
+Bu, DHCP İstemcisi uygulamasının, kapatılana kadar DHCP İstemcisi'nin bir kaydını oluşturmasını ve bu kaydı uzun olmayan belleğe kaydetmesini gerektirir.
 
-DHCP Istemcisi için birden fazla arabirim etkinse, bu hizmet DHCP Istemci örneğinde bulunan ilk geçerli arabirime uygulanır.
+DHCP İstemcisi için birden fazla arabirim etkinse, bu hizmet DHCP İstemcisi örneğinde bulunan ilk geçerli arabirime uygulanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr** DHCP Istemcisi işaretçisi
+- **dhcp_ptr** DHCP İstemcisi İşaretçisi
 
-- **record_ptr** DHCP Istemci kaydı işaretçisi
+- **record_ptr** DHCP İstemcisi kaydının işaretçisi
 
-- **time_elapsed** Giriş istemci kaydında kalan kira zamanından çıkarma süresi
+- **time_elapsed** Giriş istemci kaydında kalan kira süresinden çıkarma süresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x0) istemci kaydı geri yüklendi
+- **NX_SUCCESS** (0x0) İstemci kaydı geri yüklendi
 
-- **NX_DHCP_NO_INTERFACES_ENABLED** (0xa5) DHCP çalıştıran arabirim yok
+- **NX_DHCP_NO_INTERFACES_ENABLED** (0xA5) DHCP çalıştıran arabirim yok
 
-- **NX_PTR_ERROR** (0x16) geçersiz işaretçi girişi
+- **NX_PTR_ERROR** (0x16) Geçersiz işaretçi Girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -324,7 +324,7 @@ status=  nx_dhcp_client_restore_record(client_ptr, &dhcp_record, time_elapsed);
 
 ## <a name="nx_dhcp_interace_client_restore_record"></a>nx_dhcp_interace_client_restore_record
 
-DHCP Istemcisini belirtilen arabirimdeki daha önce kaydedilmiş bir kayıttan geri yükle
+Belirtilen arabirimde daha önce kaydedilmiş bir kayıttan DHCP İstemcisini geri yükleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -333,31 +333,31 @@ ULONG nx_dhcp_interface_client_restore_record(NX_DHCP *dhcp_ptr,
                                               NX_DHCP_CLIENT_RECORD       
                                               *record_ptr, ULONG time_elapsed);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir uygulamanın DHCP istemcisini, record_ptr tarafından işaret edilen DHCP Istemci kaydını kullanarak belirtilen arabirime geri yüklemesine olanak sağlar. Time_elapsed girişi, DHCP Istemci kirası üzerinde kalan zamana uygulanır.
+Bu hizmet, uygulamanın dhcp istemcisi tarafından işaret ettiği DHCP İstemcisi kaydını kullanarak belirtilen arabirimde DHCP İstemcisini geri yüklemesini record_ptr. Bu time_elapsed, DHCP İstemci kiralamada kalan süreye uygulanır.
 
-Bu, DHCP Istemci uygulamasının kapatmadan önce DHCP Istemcisinin bir kaydını oluşturulmasını ve bu kaydı kalıcı belleğe kaydetmesidir.
+Bu, DHCP İstemcisi uygulamasının, kapatılana kadar DHCP İstemcisi'nin bir kaydını oluşturmasını ve bu kaydı uzun olmayan belleğe kaydetmesini gerektirir.
 
-DHCP Istemcisi için birden fazla arabirim etkinse, bu hizmet DHCP Istemci örneğinde bulunan ilk geçerli arabirime uygulanır.
+DHCP İstemcisi için birden fazla arabirim etkinse, bu hizmet DHCP İstemcisi örneğinde bulunan ilk geçerli arabirime uygulanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr** DHCP Istemcisi işaretçisi
+- **dhcp_ptr** DHCP İstemcisi İşaretçisi
 
-- **record_ptr** DHCP Istemci kaydı işaretçisi
+- **record_ptr** DHCP İstemcisi kaydının işaretçisi
 
-- **time_elapsed** Giriş istemci kaydında kalan kira zamanından çıkarma süresi
+- **time_elapsed** Giriş istemci kaydında kalan kira süresinden çıkarma süresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x0) istemci kaydı geri yüklendi
+- **NX_SUCCESS** (0x0) İstemci kaydı geri yüklendi
 
-- **NX_DHCP_NOT_BOUND** (0x94) istemci IP adresine bağlanmadı
+- **NX_DHCP_NOT_BOUND** (0x94) İstemciSI IP adresine bağlı değil
 
-- **NX_DHCP_BAD_INTERFACE_INDEX_ERROR** (0x9A) geçersiz arabirim dizini
+- **NX_DHCP_BAD_INTERFACE_INDEX_ERROR** (0x9A) Geçersiz arabirim dizini
 
-- NX_PTR_ERROR (0x16) geçersiz DHCP işaretçisi.
+- NX_PTR_ERROR (0x16) Geçersiz DHCP işaretçisi.
 
 - NX_INVALID_INTERFACE (0x4C) geçersiz ağ arabirimi
 
@@ -392,7 +392,7 @@ DHCP Istemcisi kiralamasında kalan süreyi Güncelleştir
 ULONG nx_dhcp_client_update_time_remaining(NX_DHCP *dhcp_ptr
                                            ULONG time_elapsed);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet DHCP istemci IP adresi kirası üzerinde kalan süreyi, DHCP Istemci örneğinde bulunan DHCP için etkinleştirilen ilk arabirimdeki time_elapsed girişi ile güncelleştirir. Uygulama, *nx_dhcp_suspend* kullanarak bu hizmeti kullanmadan önce DHCP istemci iş parçacığını askıya almalıdır. Bu hizmet çağrıldıktan sonra uygulama, *nx_dhcp_resume* çağırarak DHCP istemci iş parçacığını sürdürür.
 
@@ -446,7 +446,7 @@ ULONG nx_dhcp_interface_client_update_time_remaining(NX_DHCP *dhcp_ptr,
                                                      UINT interface_index,
                                                      ULONG time_elapsed);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet DHCP Istemci IP adresi kiralamasında kalan süreyi, bu arabirim DHCP için etkinleştirildiğinde belirtilen arabirimdeki time_elapsed girişi ile güncelleştirir. Uygulama, *nx_dhcp_suspend* kullanarak bu hizmeti kullanmadan önce DHCP istemci iş parçacığını askıya almalıdır. Bu hizmet çağrıldıktan sonra uygulama, *nx_dhcp_resume* çağırarak DHCP istemci iş parçacığını sürdürür. Bkz. DHCP Istemci iş parçacığını askıya alma ve sürdürme, DHCP için etkinleştirilen tüm arabirimler için geçerlidir.
 
@@ -502,7 +502,7 @@ DHCP Istemci iş parçacığını askıya alma
 ```C
 ULONG nx_dhcp_suspend(NX_DHCP *dhcp_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli DHCP Istemci iş parçacığını askıya alır. *Nx_dhcp_stop* farklı olarak, bu HIZMET çağrıldığında DHCP istemci durumunda hiçbir değişiklik olmadığını unutmayın.
 
@@ -543,7 +543,7 @@ Askıya alınmış bir DHCP Istemci iş parçacığını sürdürür
 ```C
 ULONG nx_dhcp_resume(NX_DHCP *dhcp_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, askıya alınmış bir DHCP Istemci iş parçacığını sürdürür. Istemci iş parçacığına devam ettikten sonra gerçek DHCP Istemci durumunda değişiklik olmadığını unutmayın. DHCP Istemci IP adresi kiralamasında kalan süreyi, *nx_dhcp_resume* çağrılmadan önce geçen süre ile güncelleştirmek için, daha önce açıklanan *nx_dhcp_client_update_time_remaining* bakın.
 

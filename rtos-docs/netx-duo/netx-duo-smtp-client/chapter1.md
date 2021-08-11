@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f58a0c235f5c2cd108ba97afe676ffa9b66e715c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: df8c6b6920577ebfc18ed9252761401c30822c034e30d7ae95b25778707f53d5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825793"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797832"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-smtp-client"></a>Bölüm 1-Azure RTOS NetX Duo SMTP istemcisine giriş
 
@@ -46,7 +46,7 @@ NetX Duo SMTP Istemcisi, bir SMTP sunucusu ile posta oturumu sırasında aşağ�
 - **Veri** Istemci, sunucuya posta iletisi verisi göndermeyi başlatmak istiyor.
 - **Çık** Istemci oturumu sonlandırmak istiyor.
 
-## <a name="getting-started"></a>Kullanmaya Başlama
+## <a name="getting-started"></a>Başlarken
 
 SMTP Istemci uygulaması bir IP örneği oluşturur ve bu IP örneği üzerinde TCP 'yi etkinleştirmesine izin vermez. Daha sonra aşağıdaki hizmeti kullanarak SMTP Istemcisini oluşturur:
 

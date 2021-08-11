@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 8f0ff03d112597371059d925f64b7511454e123c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9fefc43002d4e0d6df817ad56d79b3e41a3d649504be50f5a39f67c1896b2e9a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827556"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116800981"
 ---
 # <a name="chapter-6---azure-rtos-threadx-trace-events"></a>Bölüm 6-Azure RTOS ThreadX izleme olayları
 
@@ -239,78 +239,78 @@ Bu olay, Işparçacığıx ' te zaman dilimi işlemini gerçekleştiren iç işl
 Bu olay bir iş parçacığı bağlamı veya boşta sistem içinde çalışmayı temsil eder. Bir kesmenin sonucu olarak bağlamdaki sonraki değişiklikleri göstermek için kullanılır.
 
 **Bilgi alanları**
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-allocate"></a>Blok ayır 
+### <a name="block-allocate"></a>Ayırmayı Engelle 
 
 #### <a name="tx_block_allocate"></a>tx_block_allocate
 
-**Simge** ![ Blok ayırma simgesi](./media/user-guide/tx-events/image7.png)
+**Simge** ![ Ayırmayı engelle simgesi](./media/user-guide/tx-events/image7.png)
 
 **Açıklama**
 
-Bu olay tx_block_allocate aracılığıyla bir bellek bloğu ayırmayı temsil eder. Başarılı olursa, ayrılan bloğun adresi ikinci bilgi alanında döndürülür.
+Bu olay, bir bellek bloğu ile bellek bloğu tx_block_allocate. Başarılı olursa, ayrılan bloğun adresi ikinci bilgi alanında döndürülür.
 
-**Bilgi alanları**
-- Bilgi alanı 1: karşılık gelen blok havuzuna yönelik Işaretçi.
-- Bilgi alanı 2: döndürülen bellek bloğunun Işaretçisi (başarılıysa).
-- Bilgi alanı 3: tx_block_allocate çağrısına sağlanan bekleme seçeneği.
-- Bilgi alanı 4: Bu ayırdıktan sonra havuzda kalan kullanılabilir bloklar.
+**Bilgi Alanları**
+- Bilgi Alanı 1: İlgili blok havuzunun işaretçisi.
+- Bilgi Alanı 2: Döndürülen bellek bloğuna işaretçi (başarılı olursa).
+- Bilgi Alanı 3: Veri çağrısına sağlanan tx_block_allocate seçeneği.
+- Bilgi Alanı 4: Bu ayırmadan sonra havuzda kalan kullanılabilir bloklar.
 
-### <a name="block-pool-create"></a>Havuz oluşturmayı engelle
+### <a name="block-pool-create"></a>Blok Havuzu Oluşturma
 
 #### <a name="tx_block_pool_create"></a>tx_block_pool_create
 
-**Simge** ![ Blok Havuzu Oluştur simgesi](./media/user-guide/tx-events/image8.png)
+**Simge** ![ Havuz oluşturma simgesini engelle](./media/user-guide/tx-events/image8.png)
 
 **Açıklama**
 
-Bu olay, tx_block_pool_create aracılığıyla bir bellek blok havuzu oluşturmayı temsil eder.
+Bu olay, bir bellek bloğu havuzu oluşturmak için tx_block_pool_create.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: karşılık gelen blok havuzu denetim bloğuna yönelik Işaretçi.
-- Bilgi alanı 2: havuzun başlangıç belleği alanının Işaretçisi.
-- Bilgi alanı 3: havuzdaki blokların sayısı. Bilgi alanı 4: havuzdaki her bloğun bayt cinsinden boyutu.
+- Bilgi Alanı 1: İlgili blok havuzu denetim bloğuna işaretçi.
+- Bilgi Alanı 2: Havuzun başlangıç bellek alanına işaretçi.
+- Bilgi Alanı 3: Havuza blok sayısı. Bilgi Alanı 4: Havuza gelen her bloğun bayt cinsinden boyutu.
 
-### <a name="block-pool-delete"></a>Blok havuzunu silme
+### <a name="block-pool-delete"></a>Havuz Silmeyi Engelle
 
 #### <a name="tx_block_pool_delete"></a>tx_block_pool_delete
 
-**Simge** ![ Blok havuzunu silme simgesi](./media/user-guide/tx-events/image9.png)
+**Simge** ![ Havuz silmeyi engelle simgesi](./media/user-guide/tx-events/image9.png)
 
 **Açıklama**
 
-Bu olay, tx_block_pool_delete aracılığıyla bir bellek blok havuzunu silmeyi temsil eder.
+Bu olay, bir bellek bloğu havuzunun bir bellek bloğu havuzu aracılığıyla silinmesini tx_block_pool_delete.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: blok havuzu denetim bloğuna yönelik Işaretçi.
-- Bilgi alanı 2: çağrı sırasında yığın işaretçisi değeri.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Blok havuzu denetim bloğuna işaretçi.
+- Bilgi Alanı 2: Çağrı sırasında yığın işaretçisi değeri.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-pool-information-get"></a>Havuz bilgilerini engelle al 
+### <a name="block-pool-information-get"></a>Blok Havuzu Bilgileri Al 
 
 #### <a name="tx_block_pool_info_get"></a>tx_block_pool_info_get
 
-**Simge** ![ Havuz bilgilerini engelle al simgesi](./media/user-guide/tx-events/image10.png)
+**Simge** ![ Blok havuzu bilgileri al simgesi](./media/user-guide/tx-events/image10.png)
 
 **Açıklama**
 
-Bu olay, tx_block_pool_info_get aracılığıyla bir bellek blok havuzu hakkında bilgi almayı temsil eder.
+Bu olay, bir bellek bloğu havuzu hakkında veri alma bilgilerini tx_block_pool_info_get.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: blok havuzu denetim bloğuna yönelik Işaretçi.
-- Bilgi alanı 2: çağrı sırasında yığın işaretçisi değeri.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Blok havuzu denetim bloğuna işaretçi.
+- Bilgi Alanı 2: Çağrı sırasında yığın işaretçisi değeri.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-pool-performance-information-get"></a>Blok havuzu performans bilgileri Get
+### <a name="block-pool-performance-information-get"></a>Blok Havuzu Performans Bilgileri Al
 
 #### <a name="tx_block_pool_performance_info_get"></a>tx_block_pool_performance_info_get
 
@@ -318,84 +318,84 @@ Bu olay, tx_block_pool_info_get aracılığıyla bir bellek blok havuzu hakkınd
 
 **Açıklama**
 
-Bu olay, tx_block_pool_performance_info_get aracılığıyla bir bellek blok havuzu hakkında performans bilgilerini almayı temsil eder.
+Bu olay, bir bellek bloğu havuzuyla ilgili performans bilgilerini tx_block_pool_performance_info_get.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: blok havuzu denetim bloğuna yönelik Işaretçi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Blok havuzu denetim bloğuna işaretçi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-pool-performance-system-information-get"></a>Blok havuz performansı sistem bilgileri Get
+### <a name="block-pool-performance-system-information-get"></a>Havuz Performansı Sistem Bilgileri Get
 
 #### <a name="tx_block_pool_performance_system_info_get"></a>tx_block_pool_performance_system_info_get
 
-**Simge** ![ Blok havuz performansı sistem bilgileri al simgesi](./media/user-guide/tx-events/image12.png)
+**Simge** ![ Blok havuzu performans sistemi bilgileri al simgesi](./media/user-guide/tx-events/image12.png)
 
 **Açıklama**
 
-Bu olay, tüm bellek bloğu havuzları hakkında tx_block_pool_performance_system_info_get aracılığıyla performans bilgilerini almayı temsil eder.
+Bu olay, tüm bellek bloğu havuzlarına ilişkin performans bilgilerini tx_block_pool_performance_system_info_get.
 
-**Bilgi alanları**
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+**Bilgi Alanları**
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-pool-prioritize"></a>Blok havuzu önceliği belirleme
+### <a name="block-pool-prioritize"></a>Havuzun ÖncelilikLerini Engelleme
 
 #### <a name="tx_block_pool_prioritize"></a>tx_block_pool_prioritize
 
-**Simge** ![ Blok havuzu öncelik simgeleri simgesi](./media/user-guide/tx-events/image13.png)
+**Simge** ![ Havuz önceliklendirmeyi engelle simgesi](./media/user-guide/tx-events/image13.png)
 
 **Açıklama**
 
-Bu olay, HighestPriority askıya alınan iş parçacığını blok havuzunun askıya alma listesinin önüne yerleştirmeyi temsil eder. Tx_block_release çağrılmadan önce Bu yapıldığında, en yüksek önceliğe sahip iş parçacığı yayınlanan bloğu alır.
+Bu olay, en yüksek önceliğe sahip askıya alınmış iş parçacığını blok havuzu askıya alma listesinin önüne yerleştirmeyi temsil eder. Bu, iş parçacığı çağrıl tx_block_release önceliğe sahip olan askıya alınmış iş parçacığı tarafından yayımlanan bloğu alır.
 
-**Bilgi alanları**
-- Bilgi alanı 1: bellek blok havuz işaretçisi.
-- Bilgi alanı 2: Bu blok havuzunda askıya alınan iş parçacıklarının sayısı.
-- Bilgi alanı 3: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+**Bilgi Alanları**
+- Bilgi Alanı 1: Bellek blok havuzu işaretçisi.
+- Bilgi Alanı 2: Bu blok havuzunda askıya alınan iş parçacığı sayısı.
+- Bilgi Alanı 3: Çağrının zamanında yığın işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="block-release"></a>Yayını engelle 
+### <a name="block-release"></a>Yayın Engelleme 
 
 #### <a name="tx_block_release"></a>tx_block_release
 
-**Simge** ![ Blok yayını simgesi](./media/user-guide/tx-events/image14.png)
+**Simge** ![ Yayın simgesini engelle](./media/user-guide/tx-events/image14.png)
 
 **Açıklama**
 
-Bu olay, daha önce ayrılmış bir bloğu blok havuzuna geri bırakmayı temsil eder.
+Bu olay, daha önce ayrılmış bir bloğun blok havuzuna geri serbest bırakılan bir durum olduğunu gösterir.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: bellek blok havuz işaretçisi.
-- Bilgi alanı 2: serbest bırakmak için blok Işaretçisi.
-- Bilgi alanı 3: Bu blok havuzunda askıya alınan iş parçacığı sayısı.
-- Bilgi alanı 4: çağrı sırasında yığın işaretçisi.
+- Bilgi Alanı 1: Bellek blok havuzu işaretçisi.
+- Bilgi Alanı 2: Sürüme engelleme işaretçisi.
+- Bilgi Alanı 3: Bu blok havuzunda askıya alınan iş parçacığı sayısı.
+- Bilgi Alanı 4: Çağrının zamanında yığın işaretçisi.
 
-### <a name="byte-allocate"></a>Bayt ayırma 
+### <a name="byte-allocate"></a>Byte Allocate 
 
 #### <a name="tx_byte_allocate"></a>tx_byte_allocate
 
-**Simge** ![ Bayt ayırma simgesi](./media/user-guide/tx-events/image15.png)
+**Simge** ![ Byte allocate simgesi](./media/user-guide/tx-events/image15.png)
 
 **Açıklama**
 
-Bu olay tx_byte_allocate aracılığıyla bellek ayırmayı temsil eder. Başarılı olursa, ayrılan bellek adresi ikinci bilgi alanında döndürülür.
+Bu olay, bellek ile bellek tx_byte_allocate. Başarılı olursa, ayrılan belleğin adresi ikinci bilgi alanında döndürülür.
 
-**Bilgi alanları**
-- Bilgi alanı 1: karşılık gelen bayt havuzuna yönelik Işaretçi.
-- Bilgi alanı 2: döndürülen bellek Işaretçisi (başarılıysa).
-- Bilgi alanı 3: istenen bayt sayısı. Bilgi alanı 4: tx_byte_allocate çağrısına sağlanan bekleme seçeneği.
+**Bilgi Alanları**
+- Bilgi Alanı 1: karşılık gelen bayt havuzunun işaretçisi.
+- Bilgi Alanı 2: Döndürülen belleğin işaretçisi (başarılı olursa).
+- Bilgi Alanı 3: İstenen bayt sayısı. Bilgi Alanı 4: Bilgi alanı çağrısına tx_byte_allocate seçeneği.
 
-### <a name="byte-pool-create"></a>Bayt havuzu oluşturma
+### <a name="byte-pool-create"></a>Byte Pool Create
 
 #### <a name="tx_byte_pool_create"></a>tx_byte_pool_create
 
-**Simge** ![ Bayt havuzu oluşturma simgesi](./media/user-guide/tx-events/image16.png)
+**Simge** ![ Byte pool create simgesi](./media/user-guide/tx-events/image16.png)
 
 **Açıklama**
 
@@ -1067,108 +1067,108 @@ Bu olay, tx_semaphore_info_get aracılığıyla bir semafor hakkında bilgi edin
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="semaphore-performance-info-get"></a>Semafor performans bilgisi al 
+### <a name="semaphore-performance-info-get"></a>Semafor Performans Bilgileri Al 
 
 #### <a name="tx_semaphore_performance_info_get"></a>tx_semaphore_performance_info_get
 
-**Simge** ![ Semafor performans bilgisi al simgesi](./media/user-guide/tx-events/image56.png)
+**Simge** ![ Semafor performans bilgileri al simgesi](./media/user-guide/tx-events/image56.png)
 
 **Açıklama**
 
-Bu olay, tx_semaphore_performance_info_get aracılığıyla bir semafor hakkındaki performans bilgilerini elde eder.
+Bu olay, bir semaforla ilgili performans bilgilerini tx_semaphore_performance_info_get.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: semafor Işaretçisi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Semafor işaretçisi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="semaphore-performance-system-info"></a>Semafor performansı sistem bilgileri 
+### <a name="semaphore-performance-system-info"></a>Semafor Performans Sistemi Bilgileri 
 
 #### <a name="tx_semaphore_performance_system_info_get"></a>tx_semaphore_performance_system_info_get
 
-**Simge** ![ Semafor performansı sistem bilgisi simgesi](./media/user-guide/tx-events/image57.png)
+**Simge** ![ Semafor performans sistemi bilgileri simgesi](./media/user-guide/tx-events/image57.png)
 
 **Açıklama**
 
-Bu olay, tx_semaphore_performance_system_info_get aracılığıyla sistemdeki tüm Semaforlar hakkında performans bilgilerini elde eder.
+Bu olay, sistemde bulunan tüm semaforlar hakkında performans bilgilerini tx_semaphore_performance_system_info_get.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="semaphore-prioritize"></a>Semafor önceliği belirleme 
+### <a name="semaphore-prioritize"></a>Semaphore Önceliklerini Belirleme 
 
 #### <a name="tx_semaphore_prioritize"></a>tx_semaphore_prioritize
 
-**Simge** ![ Semafor önceliği belirleme simgesi](./media/user-guide/tx-events/image58.png)
+**Simge** ![ Semafor önceliklendirme simgesi](./media/user-guide/tx-events/image58.png)
 
 **Açıklama**
 
-Bu olay, tx_semaphore_prioritize aracılığıyla semafor askıya alma listesinin önceliklerini temsil eder.
+Bu olay, Semafor'un askıya alma listesine tx_semaphore_prioritize.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: karşılık gelen semafor Işaretçisi.
-- Bilgi alanı 2: semafor üzerinde şu anda askıya alınan iş parçacığı sayısı.
-- Bilgi alanı 3: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: karşılık gelen semafor işaretçisi.
+- Bilgi Alanı 2: Semaforda askıya alınmış olan iş parçacığı sayısı.
+- Bilgi Alanı 3: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="semaphore-put"></a>Semafor put 
+### <a name="semaphore-put"></a>Semaphore Put 
 
 #### <a name="tx_semaphore_put"></a>tx_semaphore_put
 
-**Simge** ![ Semafor put simgesi](./media/user-guide/tx-events/image59.png)
+**Simge** ![ Semafor koy simgesi](./media/user-guide/tx-events/image59.png)
 
 **Açıklama**
 
-Bu olay tx_semaphore_put aracılığıyla bir semafor örneği serbest bırakmayı temsil eder.
+Bu olay, bir semafor örneğini tx_semaphore_put.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: karşılık gelen semafor Işaretçisi. Bilgi alanı 2: geçerli semafor sayısı.
-- Bilgi alanı 3: semaforda askıya alınan iş parçacığı sayısı.
-- Bilgi alanı 4: çağrı sırasında yığın işaretçisi.
+- Bilgi Alanı 1: karşılık gelen semafor işaretçisi. Bilgi Alanı 2: Geçerli semafor sayısı.
+- Bilgi Alanı 3: Semaforda askıya alınan iş parçacığı sayısı.
+- Bilgi Alanı 4: Çağrı zamanında yığın işaretçisi.
 
-### <a name="semaphore-put-notify"></a>Semafor put bildirimi 
+### <a name="semaphore-put-notify"></a>Semaphore Put Notify 
 
 #### <a name="tx_semaphore_put_notify"></a>tx_semaphore_put_notify
 
-**Simge** ![ Semafor put bildirim simgesi](./media/user-guide/tx-events/image60.png)
+**Simge** ![ Semaphore put notify simgesi](./media/user-guide/tx-events/image60.png)
 
 **Açıklama**
 
-Bu olay, bir semafor örneği her gerçekleştiğinde çağrılan tx_semaphore_put_notify aracılığıyla geri çağırma kaydını temsil eder.
+Bu olay, bir semafor örneği tx_semaphore_put_notify çağrılır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: semafor Işaretçisi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Semafor işaretçisi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="thread-create"></a>İş parçacığı oluşturma 
+### <a name="thread-create"></a>İş Parçacığı Oluşturma 
 
 #### <a name="tx_thread_create"></a>tx_thread_create
 
-**Simge** ![ İş parçacığı Oluştur simgesi](./media/user-guide/tx-events/image61.png)
+**Simge** ![ İş parçacığı oluşturma simgesi](./media/user-guide/tx-events/image61.png)
 
 **Açıklama**
 
-Bu olay tx_thread_create aracılığıyla bir iş parçacığı oluşturmayı temsil eder.
+Bu olay, tx_thread_create aracılığıyla bir iş tx_thread_create.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: iş parçacığı denetim bloğu Işaretçisi.
-- Bilgi alanı 2: iş parçacığının önceliği.
-- Bilgi alanı 3: iş parçacığı için yığın işaretçisi.
-- NFO alanı 4: yığın boyutu bayt cinsinden.
+- Bilgi Alanı 1: İş parçacığı denetim bloğuna işaretçi.
+- Bilgi Alanı 2: İş parçacığının önceliği.
+- Bilgi Alanı 3: İş parçacığı için yığın işaretçisi.
+- nfo Alan 4: Yığın bayt cinsinden boyutu.
 
-### <a name="thread-delete"></a>İş parçacığı silme 
+### <a name="thread-delete"></a>İş Parçacığı Silme 
 
 #### <a name="tx_thread_delete"></a>tx_thread_delete
 
@@ -1176,50 +1176,50 @@ Bu olay tx_thread_create aracılığıyla bir iş parçacığı oluşturmayı te
 
 **Açıklama**
 
-Bu olay tx_thread_delete aracılığıyla bir iş parçacığını silmeyi temsil eder.
+Bu olay, bir iş parçacığının bir iş parçacığını tx_thread_delete.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İş parçacığı işaretçisi.
+- Bilgi Alanı 2: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="thread-entryexit-notify"></a>İş parçacığı giriş/çıkış bildirimi 
+### <a name="thread-entryexit-notify"></a>İş Parçacığı Girişi/Çıkış Bildirimi 
 
 #### <a name="tx_thread_entry_exit_notify"></a>tx_thread_entry_exit_notify
 
-**Simge** ![ İş parçacığı girişi/çıkış bildirimi simgesi](./media/user-guide/tx-events/image63.png)
+**Simge** ![ İş parçacığı girişi/çıkışı bildirim simgesi](./media/user-guide/tx-events/image63.png)
 
 **Açıklama**
 
-Bu olay, bir iş parçacığı girildiğinde veya çıktığında çağrılan tx_thread_entry_exit_notify aracılığıyla geri çağırma kaydını temsil eder.
+Bu olay, bir iş parçacığı girilir veya tx_thread_entry_exit_notify çağrılır bir geri çağırma aracılığıyla kaydetmeyi temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: kayıt sırasında Iş parçacığı durumu.
-- Bilgi alanı 3: çağrı sırasında yığın Işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İş parçacığı işaretçisi.
+- Bilgi Alanı 2: Kayıt sırasında iş parçacığı durumu.
+- Bilgi Alanı 3: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-#### <a name="thread-identify"></a>İş parçacığı tanımla 
+#### <a name="thread-identify"></a>İş Parçacığı Tanımlama 
 
 ##### <a name="tx_thread_identify"></a>tx_thread_identify
 
-**Simge** ![ İş parçacığı tanımla simgesi](./media/user-guide/tx-events/image64.png)
+**Simge** ![ İş parçacığı tanımlama simgesi](./media/user-guide/tx-events/image64.png)
 
 **Açıklama**
 
-Bu olay, geçerli iş parçacığı işaretçisinin tx_thread_identify aracılığıyla alınmasını temsil eder.
+Bu olay, iş parçacığı işaretçisi aracılığıyla geçerli iş parçacığı tx_thread_identify.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="thread-information-get"></a>İş parçacığı bilgileri al 
+### <a name="thread-information-get"></a>İş Parçacığı Bilgilerini Al 
 
 #### <a name="tx_thread_info_get"></a>tx_thread_info_get
 
@@ -1227,14 +1227,14 @@ Bu olay, geçerli iş parçacığı işaretçisinin tx_thread_identify aracılı
 
 **Açıklama**
 
-Bu olay, tx_thread_info_get aracılığıyla belirtilen iş parçacığı hakkında bilgi almayı temsil eder.
+Bu olay, belirtilen iş parçacığı hakkında bilgi almak için tx_thread_info_get.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: çağrı sırasında iş parçacığının durumu.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İş parçacığı işaretçisi.
+- Bilgi Alanı 2: çağrı zamanında iş parçacığının durumu.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
 #### <a name="thread-performance-information-get"></a>İş parçacığı performans bilgileri al 
 
@@ -1405,58 +1405,58 @@ Bu olay tx_thread_suspend aracılığıyla bir iş parçacığını askıya alma
 - Bilgi alanı 3: çağrı sırasında yığın işaretçisi.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="thread-terminate"></a>İş parçacığı Sonlandır 
+### <a name="thread-terminate"></a>İş Parçacığı Sonlandırma 
 
 #### <a name="tx_thread_terminate"></a>tx_thread_terminate
 
-**Simge** ![ İş parçacığı Sonlandır simgesi](./media/user-guide/tx-events/image76.png)
+**Simge** ![ İş parçacığı sonlandırma simgesi](./media/user-guide/tx-events/image76.png)
 
 **Açıklama**
 
-Bu olay bir iş parçacığının tx_thread_terminate aracılığıyla sonlandırılmasını temsil eder.
+Bu olay, bir iş parçacığını bir iş parçacığını tx_thread_terminate.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sonlandırılacak iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: Iş parçacığının çağrı sırasında durumu.
-- Bilgi alanı 3: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sonlandırılacak iş parçacığı işaretçisi.
+- Bilgi Alanı 2: İş parçacığının çağrı zamanında durumu.
+- Bilgi Alanı 3: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="thread-time-slice-change"></a>İş parçacığı Time-Slice değişikliği 
+### <a name="thread-time-slice-change"></a>İş Time-Slice Değişikliği 
 
 #### <a name="tx_thread_time_slice_change"></a>tx_thread_time_slice_change
 
-**Simge** ![ İş parçacığı zaman dilimi değişikliği simgesi](./media/user-guide/tx-events/image77.png)
+**Simge** ![ İş parçacığı zaman dilimi değişiklik simgesi](./media/user-guide/tx-events/image77.png)
 
 **Açıklama**
 
-Bu olay, bir iş parçacığının zaman dilimini tx_thread_time_slice_change aracılığıyla değiştirmeyi temsil eder.
+Bu olay, bir iş parçacığının zaman dilimini tx_thread_time_slice_change.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: yeni saat dilimi.
-- Bilgi alanı 3: önceki zaman dilimi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İş parçacığı işaretçisi.
+- Bilgi Alanı 2: Yeni zaman dilimi.
+- Bilgi Alanı 3: Önceki zaman dilimi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="thread-wait-abort"></a>İş parçacığı beklemeyi durdur 
+### <a name="thread-wait-abort"></a>İş Parçacığı BeklemeYi Durdurma 
 
 #### <a name="tx_thread_wait_abort"></a>tx_thread_wait_abort
 
-**Simge** ![ İş parçacığı beklemeyi durdur simgesi](./media/user-guide/tx-events/image78.png)
+**Simge** ![ İş parçacığı bekleme durdurma simgesi](./media/user-guide/tx-events/image78.png)
 
 **Açıklama**
 
-Bu olay, bir iş parçacığının askıya alınma tx_thread_wait_abort aracılığıyla iptal eder.
+Bu olay, bir iş parçacığının askıya alınması sırasında iş parçacığının tx_thread_wait_abort.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: iş parçacığına yönelik Işaretçi.
-- Bilgi alanı 2: Iş parçacığının çağrı sırasında durumu.
-- Bilgi alanı 3: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İş parçacığı işaretçisi.
+- Bilgi Alanı 2: İş parçacığının çağrı zamanında durumu.
+- Bilgi Alanı 3: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="time-get"></a>Zaman al 
+### <a name="time-get"></a>Zaman Al 
 
 #### <a name="tx_time_get"></a>tx_time_get
 
@@ -1464,16 +1464,16 @@ Bu olay, bir iş parçacığının askıya alınma tx_thread_wait_abort aracıl�
 
 **Açıklama**
 
-Bu olay, tx_time_get aracılığıyla geçerli süreölçer işaret sayısını almayı temsil eder.
+Bu olay, geçerli süreölçer saat işaretlerinin tx_time_get.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: geçerli süreölçer onay işaretleri sayısı.
-- Bilgi alanı 2: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Geçerli süreölçer sayısı.
+- Bilgi Alanı 2: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="time-set"></a>Zaman kümesi 
+### <a name="time-set"></a>Zaman Kümesi 
 
 #### <a name="tx_time_set"></a>tx_time_set
 
@@ -1481,67 +1481,67 @@ Bu olay, tx_time_get aracılığıyla geçerli süreölçer işaret sayısını 
 
 **Açıklama**
 
-Bu olay, tx_time_set aracılığıyla geçerli süreölçer işareti sayısını ayarlamayı temsil eder.
+Bu olay, geçerli süreölçer saat işaretlerinin tx_time_set.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: yeni süreölçer onay işaretleri sayısı.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Yeni zamanlayıcı tık sayısı.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="timer-activate"></a>Süreölçer etkinleştirme 
+### <a name="timer-activate"></a>Zamanlayıcı Etkinleştirme 
 
 #### <a name="tx_timer_activate"></a>tx_timer_activate
 
-**Simge** ![ Süreölçer etkinleştirme simgesi](./media/user-guide/tx-events/image81.png)
+**Simge** ![ Zamanlayıcı etkinleştirme simgesi](./media/user-guide/tx-events/image81.png)
 
 **Açıklama**
 
-Bu olay, tx_timer_activate aracılığıyla belirtilen süreölçeri etkinleştirmeyi temsil eder.
+Bu olay, belirtilen zamanlayıcının tx_timer_activate.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: zamanlayıcıya yönelik Işaretçi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Zamanlayıcı işaretçisi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="timer-change"></a>Süreölçer değişikliği 
+### <a name="timer-change"></a>Zamanlayıcı Değişikliği 
 
 #### <a name="tx_timer_change"></a>tx_timer_change
 
-**Simge** ![ Süreölçer değişikliği simgesi](./media/user-guide/tx-events/image82.png)
+**Simge** ![ Zamanlayıcı değiştirme simgesi](./media/user-guide/tx-events/image82.png)
 
 **Açıklama**
 
-Bu olay, tx_timer_change aracılığıyla belirtilen zamanlayıcının değiştirilmesini temsil eder.
+Bu olay, belirtilen zamanlayıcının bir süreölçer aracılığıyla değiştirilmesini tx_timer_change.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: zamanlayıcıya yönelik Işaretçi.
-- Bilgi alanı 2: Ilk süre sonu işaretleri.
-- Bilgi alanı 3: süre sonu işaretlerini yeniden zamanlayın.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Zamanlayıcı işaretçisi.
+- Bilgi Alanı 2: İlk sona erme onayları.
+- Bilgi Alanı 3: Süre sonu onay işaretlerini yeniden zamanla.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="timer-create"></a>Süreölçer oluşturma 
+### <a name="timer-create"></a>Zamanlayıcı Oluşturma 
 
 #### <a name="tx_timer_create"></a>tx_timer_create
 
-**Simge** ![ Süreölçer oluşturma simgesi](./media/user-guide/tx-events/image83.png)
+**Simge** ![ Zamanlayıcı oluşturma simgesi](./media/user-guide/tx-events/image83.png)
 
 **Açıklama**
 
-Bu olay tx_timer_create aracılığıyla bir Zamanlayıcı oluşturmayı temsil eder.
+Bu olay, tx_timer_create aracılığıyla zamanlayıcı oluşturmayı temsil tx_timer_create.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: Zamanlayıcı denetim bloğu Işaretçisi.
-- Bilgi alanı 2: Ilk süre sonu işaretleri.
-- Bilgi alanı 3: süre sonu işaretlerini yeniden zamanlayın.
-- Bilgi alanı 4: otomatik etkinleştir değeri — TX_AUTO_ACTIVATE (1) ya da TX_NO_ACTIVATE (0).
+- Bilgi Alanı 1: Zamanlayıcı denetim bloğuna işaretçi.
+- Bilgi Alanı 2: İlk sona erme onayları.
+- Bilgi Alanı 3: Süre sonu onay işaretlerini yeniden zamanla.
+- Bilgi Alanı 4: Otomatik etkinleştirme değeri—TX_AUTO_ACTIVATE (1) veya TX_NO_ACTIVATE (0).
 
-### <a name="timer-deactivate"></a>Zamanlayıcı devre dışı bırakma 
+### <a name="timer-deactivate"></a>Zamanlayıcıyı Devre Dışı Bırakma 
 
 #### <a name="tx_timer_deactivate"></a>tx_timer_deactivate
 
@@ -1549,31 +1549,31 @@ Bu olay tx_timer_create aracılığıyla bir Zamanlayıcı oluşturmayı temsil 
 
 **Açıklama**
 
-Bu olay, tx_timer_deactivate aracılığıyla bir süreölçeri devre dışı bırakma temsil eder.
+Bu olay, bir zamanlayıcının bir süreölçer aracılığıyla devre dışı tx_timer_deactivate.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: zamanlayıcıya yönelik Işaretçi.
-- Bilgi alanı 2: çağrı sırasında yığın işaretçisi.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Zamanlayıcı işaretçisi.
+- Bilgi Alanı 2: Çağrı zamanında yığın işaretçisi.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="timer-delete"></a>Süreölçer silme 
+### <a name="timer-delete"></a>Zamanlayıcı Silme 
 
 #### <a name="tx_timer_delete"></a>tx_timer_delete
 
-**Simge** ![ Süreölçer silme simgesi](./media/user-guide/tx-events/image85.png)
+**Simge** ![ Zamanlayıcı silme simgesi](./media/user-guide/tx-events/image85.png)
 
 **Açıklama**
 
-Bu olay, tx_timer_delete aracılığıyla bir süreölçeri silmeyi temsil eder.
+Bu olay, bir zamanlayıcının bir süreölçer aracılığıyla silinmesini tx_timer_delete.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: zamanlayıcıya yönelik Işaretçi.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Zamanlayıcı işaretçisi.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
 ### <a name="timer-information-get"></a>Süreölçer bilgilerini al 
 

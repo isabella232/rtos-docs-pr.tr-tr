@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f011b73217c7f413dd19c555e9c2d40dace305ee
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6e18906b6356bd8ff4efdc1ab0f2809d75493ad027c3d3e27e0536ee4b80f43b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825763"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798291"
 ---
 # <a name="chapter-2---installation-and-use-of-the-azure-rtos-netx-duo-snmp-agent"></a>Bölüm 2-Azure RTOS NetX Duo SNMP aracısını yükleme ve kullanma
 
@@ -594,4 +594,4 @@ NetX Duo için SNMP oluşturmaya yönelik birkaç yapılandırma seçeneği vard
 | **NX_SNMP_TIME_INTERVAL**      | Bu, alınan SNMP paketlerini işleme arasındaki SNMP iş parçacığı görevi tarafından alınan Zamanlayıcı onay işaretleri içindeki uyku aralığını belirler. Varsayılan değer 100’dür. Bu uyku aralığında, konak uygulamanın SNMP API hizmetlerine erişimi vardır.                                           |
 | **NX_SNMP_DISABLE_V1**         | Bu, *nxd_snmp. c* IÇINDEKI tüm SNMP sürüm 1 işlemesini kaldırır. Bu, varsayılan olarak tanımlı değildir.                                                                                                                                                                         |
 | **NX_SNMP_DISABLE_V2**         | Bu, *nxd_snmp. c* IÇINDEKI tüm SNMP sürüm 2 işlemesini kaldırır. Bu, varsayılan olarak tanımlı değildir.                                                                                                                                                                         |
-| **NX_SNMP_DISABLE_V3**         | Bu, *nxd_snmp. c* Içindeki tüm SNMPv3 işlemesini kaldırır. Bu, varsayılan olarak tanımlı değildir.                                                                                                                                                                                 |
+| **NX_SNMP_DISABLE_V3**         | Tanımlandı, bu işlem nxd_snmp.c'de SNMPv3 *işlemeyi kaldırır.* Varsayılan olarak bu tanımlanmamıştır.                                                                                                                                                                                 |

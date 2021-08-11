@@ -1,59 +1,59 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo SNTP Istemcisini yükleme ve kullanma
-description: Bu bölüm, NetX Duo SNTP Istemcisinin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların açıklamasını içerir.
+title: Bölüm 2 - NetX Duo SNTP Azure RTOS Yükleme ve Kullanma
+description: Bu bölümde NetX Duo SNTP İstemcisi'nin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cd917e7e70ce21dbff6c8081c2ff115c0acad8a8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2058875c08d64e2c16f67b48323814ec77ec96882eec26aaf2c9454459511db3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825750"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799072"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-sntp-client"></a>Bölüm 2-Azure RTOS NetX Duo SNTP Istemcisini yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-sntp-client"></a>Bölüm 2 - NetX Duo SNTP Azure RTOS Yükleme ve Kullanma
 
-Bu bölümde, Azure RTOS NetX Duo SNTP Istemcisinin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+Bu bölümde NetX Duo SNTP Client'ın yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS sorunların açıklaması yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX Duo için SNTP, adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Paket, aşağıdaki gibi, bu belgeyi içeren iki kaynak dosya ve bir PDF dosyası içerir:
+NetX Duo için SNTP'ye şu bağlantıdan [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) bakabilirsiniz: . Paket, aşağıdaki gibi iki kaynak dosya ve bu belgeyi içeren bir PDF dosyası içerir:
 
-- **nxd_sntp_client. c** SNTP Istemci C kaynak dosyası  
-- **nxd_sntp_client. h** SNTP Istemci üst bilgi dosyası  
-- **demo_netxduo_sntp_client. c** Demo SNTP Istemci uygulaması  
-- **nxd_sntp_client.pdf** NetX Duo SNTP Istemci Kullanıcı Kılavuzu  
+- **nxd_sntp_client.c** SNTP İstemcisi C kaynak dosyası  
+- **nxd_sntp_client.h** SNTP İstemci Üst Bilgisi dosyası  
+- **demo_netxduo_sntp_client.c** Tanıtım SNTP İstemci uygulaması  
+- **nxd_sntp_client.pdf** NetX Duo SNTP İstemciSi Kullanıcı Kılavuzu  
 
-## <a name="netx-duo-sntp-client-installation"></a>NetX Duo SNTP Istemci yüklemesi
+## <a name="netx-duo-sntp-client-installation"></a>NetX Duo SNTP İstemci Yüklemesi
 
-NetX Duo için SNTP kullanmak istiyorsanız, daha önce bahsedilen dağıtımın tamamı NetX Duo 'un yüklü olduğu dizine kopyalanmalıdır. Örneğin, "*\threadx\arm7\green*" dizininde NETX Duo yüklüyse, NETX Duo SNTP istemci dosyaları *nxd_sntp_client. c* ve *nxd_sntp_client. h* (*nx_sntp_client. c* ve *nx_sntp_client. h* ) bu dizine kopyalanmalıdır.
+NetX Duo için SNTP kullanmak üzere, daha önce bahsedilen dağıtımın tamamı NetX Duo'nun yüklü olduğu dizine kopyalanır. Örneğin,*"\threadx\arm7\green"* dizinine NetX Duo SNTP client files *nxd_sntp_client.c* ve *nxd_sntp_client.h* (*nx_sntp_client.c* ve NetX'te *nx_sntp_client.h)* dizinine kopyalanır.
 
-## <a name="using-netx-duo-sntp-client"></a>NetX Duo SNTP Istemcisini kullanma
+## <a name="using-netx-duo-sntp-client"></a>NetX Duo SNTP İstemcisini Kullanma
 
-NetX Duo SNTP Istemcisini kullanmak kolaydır. Temel olarak, uygulama kodu, sırasıyla ThreadX ve NetX Duo kullanmak için *tx_api. h, fx_api. h* ve *nx_api. h* dahil *nxd_sntp_client.* h içermelidir. *Nxd_sntp_client. h* dahil olduğunda, uygulama kodu daha sonra bu KıLAVUZDA belirtilen SNTP işlev çağrılarını yapabilir. Uygulama, yapı işlemine *nxd_sntp_client. c* de içermelidir. Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Duo SNTP Istemcisini kullanmak için gereklidir.
+NetX Duo SNTP Client'ı kullanmak kolaydır. Temel olarak, ThreadX ve NetX Duo kullanmak için uygulama kodu *sırasıyla tx_api.h, fx_api.h* ve *nx_api.h'yi içeren nxd_sntp_client.h'yi* içermesi gerekir.  Uygulama *nxd_sntp_client.h* ekli olduktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen SNTP işlev çağrılarını da tamamlar. Uygulamanın derleme sürecinde *nxd_sntp_client.c'yi* de içermesi gerekir. Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne formunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX Duo SNTP İstemcisi'ni kullanmak için gerekenler bunlardır.
 
 > [!NOTE]
-> NetX Duo SNTP Istemcisi NetX Duo UDP hizmetlerini kullandığından, SNTP hizmetlerini kullanmadan önce *nx_udp_enable* çağrısıyla UDP 'nin etkinleştirilmesi gerekir.
+> NetX Duo SNTP İstemcisi NetX Duo UDP hizmetlerini kullanıyorsa, SNTP hizmetlerini *kullanmadan* önce nx_udp_enable çağrısıyla UDP etkinleştirilmelidir.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX Duo SNTP kullanmanın bir örneği aşağıda gösterilmiştir. Bu **Örneğin, sisteminizde** olduğu gibi çalıştığını unutmayın. Belirli sistem ve donanımınız için ayarlamalar yapmanız gerekebilir. Örneğin, NetX RAM sürücüsünü gerçek sürücü işleviniz ile değiştirmeniz gerekir. Bu örnek, tam olarak tanıtım amaçlı amaçlıdır.
+Aşağıda NetX Duo SNTP'yi kullanma örneği gösterilmiştir. Bu örneğin **sisteminiz üzerinde** olduğu gibi çalışması garanti edilemez. Belirli sisteminiz ve donanımınız için ayarlamalar yapmak zorunda olabilir. Örneğin, NetX ram sürücüsünü gerçek sürücü işleviyle değiştirmeniz gerekir. Bu örnek yalnızca tanıtım amaçlıdır.
 
-Bu örnekte, SNTP üstbilgi dosyası *nxd_sntp_client. h* dahil edilmiştir. SNTP Istemcisi "*tx_application_define*" içinde oluşturulur. SNTP Istemcisini oluştururken, ölüm ve artık ikinci işleyici işlevlerinin KISS 'nin isteğe bağlı olduğunu unutmayın.
+Bu örnekte, *nxd_sntp_client.h* SNTP üst bilgi dosyası dahil edilir. SNTP İstemcisi " tx_application_define *oluşturulur.* SNTP İstemcisi oluşturulurken ölüm ve artık ikinci işleyici işlevlerinin isteğe bağlı olduğunu unutmayın.
 
-Bu tanıtım, IPv6 veya IPv4 ile kullanılabilir. SNTP Istemcisini IPv6 üzerinden çalıştırmak için USE_IPV6 tanımlayın. IPv6 'nın NetX Duo içinde de etkinleştirilmesi gerekir. SNTP Istemci Konağı, NetX Duo 'da IPv6 adres doğrulaması ve ICMPv6 ve IPv6 Hizmetleri için ayarlanır. NetX Duo 'daki IPv6 desteği hakkında daha ayrıntılı bilgi için bkz. NetX Duo Kullanıcı Kılavuzu.
+Bu tanıtım IPv6 veya IPv4 ile kullanılabilir. SNTP İstemcisini IPv6 üzerinden çalıştırmak için USE_IPV6. NetX Duo'da da IPv6 etkinleştirilmelidir. SNTP İstemcisi ana bilgisayarı, NetX Duo'da IPv6 adres doğrulaması ve ICMPv6 ve IPv6 hizmetleri için ayarlanır. NetX Duo'da IPv6 desteği hakkında daha fazla bilgi için bkz. NetX Duo Kullanıcı Kılavuzu.
 
-Ardından, tek noktaya yayın veya yayın modu için SNTP Istemcisinin başlatılmış olması gerekir.
+Ardından SNTP İstemcisi tek noktaya yayın veya yayın modu için başlatılmış olması gerekir.
 
-SNTP Istemcisi başlangıçta sunucu saati güncelleştirmelerini kendi iç veri yapısına yazar. Bu, cihaz yerel saati ile aynı değildir. Cihaz yerel saati, SNTP Istemci iş parçacığını başlatmadan önce SNTP Istemcisinde temel bir zaman olarak ayarlanabilir. Bu, SNTP Istemcisi yapılandırılmışsa (NX_SNTP_CLIENT_IGNORE_MAX_ADJUST_STARTUP NX_FALSE), ilk sunucu güncelleştirmesini NX_SNTP_CLIENT_MAX_ADJUSTMENT karşılaştırmak için (varsayılan değer 180 milisaniye) yararlıdır. Aksi takdirde, SNTP Istemcisi ilk yerel saati sunucudan ilk güncelleştirmeyi aldığında doğrudan ayarlar.
+SNTP İstemcisi başlangıçta Sunucu zamanı güncelleştirmelerini kendi iç veri yapısına yazar. Bu, cihazın yerel saatiyle aynı değildir. Cihazın yerel saati, SNTP İstemcisi iş parçacığını başlatmadan önce SNTP İstemcisi'ne temel saat olarak ayarlanır. İlk Sunucu güncelleştirmesini NX_SNTP_CLIENT_MAX_ADJUSTMENT (NX_SNTP_CLIENT_IGNORE_MAX_ADJUST_STARTUP varsayılan değer 180 milisaniye) karşılaştırmak için SNTP İstemcisi yapılandırılmışsa (NX_FALSE olarak ayarlanmıştır) bu yararlıdır. Aksi takdirde SNTP İstemcisi, Sunucudan ilk güncelleştirmeyi alan ilk yerel saati doğrudan ayarlar.
 
-Temel bir süre, *nx_sntp_client_set_local_time* HIZMETI kullanılarak SNTP istemcisine uygulanır.
+Nx_sntp_client_set_local_time hizmeti kullanılarak SNTP *İstemcisi'ne bir nx_sntp_client_set_local_time* uygulanır.
 
-SNTP Istemcisi, sırasıyla tek noktaya yayın ve yayın modu için başlatılır. Belirli bir Aralık (tek noktaya yayın yoklama aralığından biraz daha az) için uygulama, geçerli saatin saniye ve milisaniyesini artırdığımız "gerçek zaman saatinin" *nx_sntp_client_set_local_time* kullanarak SNTP istemci yerel saatini güncelleştirir. Her aralıktan sonra uygulama, SNTP sunucusundan güncelleştirmeleri düzenli olarak denetler. *Nx_sntp_client_receiving _updates* HIZMETI, SNTP istemcisinin Şu anda geçerli güncelleştirmeleri aldığını doğrular. Bu durumda, *nx_sntp_client_get_local_time_extended* hizmetini kullanarak en son güncelleştirme zamanı alınır.
+SNTP İstemcisi sırasıyla tek noktaya yayın ve yayın modu için açık olarak başlatıldı. Uygulama, belirli bir aralık için (tek noktaya yayın yoklama aralığından biraz daha az) SNTP İstemcisi yerel saatini, geçerli saatin saniyelerini ve milisaniyelerini artırarak benzetimini yapılan "gerçek zamanlı saat" ile nx_sntp_client_set_local_time kullanarak günceller. Her aralıktan sonra, uygulama SNTP sunucusundan güncelleştirmeleri düzenli aralıklarla denetler. Nx_sntp_client_receiving _updates  hizmeti SNTP İstemcisi'nin geçerli güncelleştirmeleri aldığını doğrular. Öyleyse, nx_sntp_client_get_local_time_extended hizmetini kullanarak en *son güncelleştirme nx_sntp_client_get_local_time_extended* alınır.
 
-SNTP istemcisi, *nx_sntp_client_stop* hizmeti kullanılarak herhangi bir zamanda durdurulabilir ve bu örnek, SNTP istemcisinin artık geçerli güncelleştirmeleri almadığını algılar. Istemciyi yeniden başlatmak için uygulama, tek noktaya yayın veya yayın başlatma hizmetini çağırmalıdır ve sonra tek noktaya yayın veya yayın çalıştırma Hizmetleri 'ni çağırmalıdır. SNTP Istemci iş parçacığı görevi durdurulduğunda, SNTP Istemcisi gerekirse SNTP sunucularını ve modlarını (tek noktaya yayın veya yayın) değiştirebilir, örneğin önceki SNTP sunucusu çalışmıyor gibi görünür.
+Örneğin, SNTP İstemcisi artık geçerli *güncelleştirmeleri* almıyorsa SNTP İstemcisi nx_sntp_client_stop hizmeti kullanılarak herhangi bir zamanda durdurulabilirsiniz. İstemciyi yeniden başlatmak için uygulamanın tek noktaya yayın veya yayın başlatma hizmetini çağırarak tek noktaya yayın veya yayın çalıştırma hizmetlerini çağırmış olması gerekir. SNTP İstemcisi iş parçacığı görevi durdurulurken, SNTP İstemcisi gerekirse SNTP sunucularını ve modlarını (tek noktaya yayın veya yayın) anahtar olarak kullanabilir. Örneğin, önceki SNTP sunucusu devredildi gibi görünür.
 
 ```c
 /* 
@@ -637,54 +637,54 @@ VOID time_update_callback(NX_SNTP_TIME_MESSAGE *time_update_ptr,
 
 ```
 
-Şekil 1 NetX Duo ile SNTP Istemcisini kullanma örneği
+Şekil 1 NetX Duo ile SNTP İstemcisi kullanma örneği
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX Duo SNTP Istemcisini tanımlamaya yönelik birkaç yapılandırma seçeneği vardır. Aşağıdaki listede her biri ayrıntılı açıklanmıştır:  
+NetX Duo SNTP İstemcisini tanımlamak için çeşitli yapılandırma seçenekleri vardır. Aşağıdaki listede her biri ayrıntılı olarak açıklanmaktadır:  
   
 
 **NX_SNTP_CLIENT_THREAD_STACK_SIZE**  
-Bu seçenek, Istemci iş parçacığı yığınının boyutunu ayarlar. Varsayılan NetX Duo SNTP Istemci boyutu 2048 ' dir.
+Bu seçenek, İstemci iş parçacığı yığınının boyutunu ayarlar. Varsayılan NetX Duo SNTP İstemci boyutu 2048'tir.
 
 **NX_SNTP_CLIENT_THREAD_TIME_SLICE**  
-Bu seçenek, Scheduler 'ın Istemci iş parçacığı yürütmeye izin verdiği zaman dilimini ayarlar. Varsayılan NetX Duo SNTP Istemci boyutu TX_NO_TIME_SLICE.
+Bu seçenek zamanlayıcının zaman dilimini İstemci iş parçacığı yürütmeye izin verir. Varsayılan NetX Duo SNTP İstemci boyutu TX_NO_TIME_SLICE.
 
 **NX_SNTP_CLIENT_ THREAD_PRIORITY**  
-Bu seçenek Istemci iş parçacığı önceliğini ayarlar. NetX Duo SNTP Istemci varsayılan değeri 2 ' dir.
+Bu seçenek İstemci iş parçacığı önceliğini ayarlar. NetX Duo SNTP İstemcisi varsayılan değeri 2'dir.
 
 **NX_SNTP_CLIENT_PREEMPTION_THRESHOLD**  
-Bu seçenek, Istemci iş parçacığının önalım izin verdiği öncelik düzeyini ayarlar. Varsayılan NetX Duo SNTP Istemci değeri olarak ayarlanır `NX_SNTP_CLIENT_ THREAD_PRIORITY` .
+Bu seçenek, İstemci iş parçacığının önserliğe izin verir öncelik düzeyini ayarlar. Varsayılan NetX Duo SNTP İstemcisi değeri olarak `NX_SNTP_CLIENT_ THREAD_PRIORITY` ayarlanır.
 
 **NX_SNTP_CLIENT_UDP_SOCKET_NAME**  
-Bu seçenek, UDP yuva adını ayarlar. NetX Duo SNTP Istemci UDP yuva adı varsayılan değer "SNTP Istemci soketi" dir.
+Bu seçenek UDP yuva adını ayarlar. NetX Duo SNTP İstemcisi UDP yuva adı varsayılan olarak "SNTP İstemci yuvası"dır.
 
 **NX_SNTP_CLIENT_UDP_PORT**  
-Bu, Istemci yuvasının bağlandığı bağlantı noktasını ayarlar. Varsayılan NetX Duo SNTP Istemci bağlantı noktası 123 ' dir.
+Bu, İstemci yuvasının bağlı olduğu bağlantı noktasını ayarlar. Varsayılan NetX Duo SNTP İstemcisi bağlantı noktası 123'tir.
 
 **NX_SNTP_SERVER_UDP_PORT**  
-Bu bağlantı noktası, Istemcinin SNTP sunucusuna SNTP iletileri gönderdiği bağlantı noktasıdır. Varsayılan NetX SNTP sunucu bağlantı noktası 123 ' dir.
+Bu, İstemcinin SNTP iletilerini SNTP Sunucusuna gönderdiği bağlantı noktasıdır. Varsayılan NetX SNTP Sunucusu bağlantı noktası 123'tir.
 
 **NX_SNTP_CLIENT_TIME_TO_LIVE**  
-Bir Istemci paketinin, atılmadan önce geçebilmesi gereken yönlendirici sayısını belirtir. Varsayılan NetX Duo SNTP Istemcisi, 0x80 olarak ayarlanır *.*
+Bir İstemci paketinin atmadan önce geçeceği yönlendirici sayısını belirtir. Varsayılan NetX Duo SNTP İstemcisi,*0x80.*
 
 **NX_SNTP_CLIENT_MAX_QUEUE_DEPTH**  
-NetX Duo SNTP Istemci yuvasında sıraya alınabilen en fazla UDP paketi sayısı (veri birimi). Alınan ek paketler, en eski paketlerin yayımlandığı anlamına gelir. Varsayılan NetX Duo SNTP Istemcisi 5 olarak ayarlanmıştır.
+NetX Duo SNTP İstemci yuvasında kuyruğa alınıp alına maksimum UDP paketi (veri birimi) sayısı. Alınan ek paketler, en eski paketlerin serbest bırak olduğu anlamına geliyor. Varsayılan NetX Duo SNTP İstemcisi 5 olarak ayarlanmıştır.
 
 **NX_SNTP_CLIENT_PACKET_TIMEOUT**  
-NetX Duo paket ayırması için zaman aşımı. Varsayılan NetX Duo SNTP Istemci paketi zaman aşımı değeri 1 saniyedir.
+NetX Duo paket ayırma için zaman out. Varsayılan NetX Duo SNTP İstemci paketi zaman aşımı 1 saniyedir.
 
 **NX_SNTP_CLIENT_NTP_VERSION**  
-Istemci tarafından kullanılan SNTP sürümü NetX Duo SNTP Istemci API 'SI sürüm 4 ' ü temel alır. Varsayılan değer 3 ' dir.
+İstemci tarafından kullanılan SNTP sürümü NetX Duo SNTP İstemci API'si Sürüm 4'ü temel aldı. Varsayılan değer 3'tir.
 
 **NX_SNTP_CLIENT_MIN_NTP_VERSION**  
-En eski SNTP sürümü Istemci ile çalışabilir. NetX Duo SNTP Istemcisi varsayılan sürüm 3 ' dir.
+İstemcinin çalışabilecek en eski SNTP sürümü. NetX Duo SNTP İstemcisi varsayılan sürüm 3'dür.
 
 **NX_SNTP_CLIENT_MIN_SERVER_STRATUM**  
-İstemcinin kabul edeceği en düşük düzey (en yüksek sayısal katman düzeyi) SNTP sunucu katman. NetX Duo SNTP Istemci varsayılanı 2 ' dir.
+İstemcinin kabul etmiş olduğu en düşük düzey (en yüksek sayısal katman düzeyi) SNTP Sunucusu katman. NetX Duo SNTP İstemcisi varsayılan değeri 2'dir.
 
 **NX_SNTP_CLIENT_MIN_TIME_ADJUSTMENT**  
-Istemcinin yerel saat saatinde yapması için milisaniye olarak en kısa süre ayarlaması. Bu, aşağıdaki zaman ayarlamaları yok sayılır. NetX Duo SNTP Istemci varsayılanı 10 ' dur.
+İstemcinin yerel saat saat ayarına milisaniye cinsinden en düşük saat ayarlaması. Bunun altındaki zaman ayarlamaları yoksayılır. NetX Duo SNTP İstemcisi varsayılan değeri 10'dır.
 
 **NX_SNTP_CLIENT_MAX_TIME_ADJUSTMENT**  
 Istemcinin yerel saat saatinde yapması için milisaniye olarak en uzun süre ayarlaması. Bu tutarın üzerindeki zaman ayarlamaları için, yerel saat ayarlaması en uzun süre ayarlamasıyla sınırlıdır. NetX Duo SNTP Istemci varsayılanı 180000 (3 dakika).

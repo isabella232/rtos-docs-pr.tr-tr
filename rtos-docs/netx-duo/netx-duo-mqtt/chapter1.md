@@ -1,74 +1,74 @@
 ---
-title: Bölüm 1-Azure RTOS NetX Duo MQTT 'ye giriş
-description: NetX Duo MQTT istemci paketi, NetX Duo (sürüm 5,10 veya üzeri) yüklü olmasını, düzgün şekilde yapılandırılmasını ve IP örneğinin oluşturulmasını gerektirir.
+title: Bölüm 1 - NetX Duo MQTT Azure RTOS ye giriş
+description: NetX Duo MQTT istemci paketi için NetX Duo (sürüm 5.10 veya sonrası) yüklü, düzgün yapılandırılmış ve IP örneği oluşturulmuş olmalıdır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2e13b997f987e2fd82569bcb1904218908313d70
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: be650186b233d0f1202beecc22f4bd8bc0af4dbe0f677704d09df057fcbc34fc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825912"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797747"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-mqtt"></a>Bölüm 1-Azure RTOS NetX Duo MQTT 'ye giriş
+# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-mqtt"></a>Bölüm 1 - NetX Duo MQTT Azure RTOS ye giriş
 
-## <a name="netx-duo-mqtt-requirements"></a>NetX Duo MQTT gereksinimleri
+## <a name="netx-duo-mqtt-requirements"></a>NetX Duo MQTT Gereksinimleri
 
-Azure RTOS NetX Duo MQTT istemci paketi, NetX Duo (sürüm 5,10 veya üzeri) yüklü olmasını, düzgün şekilde yapılandırılmasını ve IP örneğinin oluşturulmasını gerektirir. TCP modülünün sistemde etkinleştirilmiş olması gerekir. Ayrıca, TLS güvenliği gerekliyse, NetX güvenli TLS modülünün, aracı tarafından istenen güvenlik parametresine göre yapılandırılması gerekir.
+NetX Duo Azure RTOS MQTT istemci paketi için NetX Duo (sürüm 5.10 veya sonrası) yüklü, düzgün yapılandırılmış ve IP örneği oluşturulmuş olmalıdır. TCP modülü sistemde etkinleştirilmelidir. Ayrıca TLS güvenliği gerekli ise, NetX Secure TLS modülünün aracı tarafından gerekli olan güvenlik parametresine göre yapılandırılması gerekir.
 
-## <a name="netx-duo-mqtt-specification"></a>NetX Duo MQTT belirtimi
+## <a name="netx-duo-mqtt-specification"></a>NetX Duo MQTT Belirtimi
 
-NetX Duo MQTT Client uygulaması, OASSıS MQTT sürümü 3.1.1<sup>on</sup> 29 ' dan fazla 2014 ile uyumludur. Belirtimi şurada bulunabilir:
+NetX Duo MQTT istemci uygulaması, 29 Ekim 2014'te<sup></sup> 3.1.1 SÜRÜMÜ ILE uyumludur. Belirtim şu şekilde bulunabilir:
 
 - [http://mqtt.org/](http://mqtt.org/)
 
-## <a name="netx-duo-mqtt-basic-operation"></a>NetX Duo MQTT temel Işlemi
+## <a name="netx-duo-mqtt-basic-operation"></a>NetX Duo MQTT Temel İşlem
 
-MQTT (Ileti kuyruğu telemetri aktarımı) Yayımcı-abone modeline dayalıdır. İstemci, bir aracı aracılığıyla diğer istemcilere bilgi yayımlayabilir. Bir konuyla ilgileniyorsa bir istemci, aracı aracılığıyla konuya abone olabilir. Bir aracı, yayınlanmış iletileri konuya abone olan istemcilerine dağıtmaktan sorumludur. Bu Yayımcı-abone modelinde, birden çok istemci aynı konuyla veri yayımlayabilir. İstemci aynı konuya abone olursa istemci yayımladığı bir ileti alır.
+MQTT (İleti Sırası Telemetri Aktarımı), yayımcı-abone modelini temel alan bir modeldir. Bir istemci, aracı aracılığıyla diğer istemcilere bilgi yayımlar. Bir konu başlığıyla ilgilenen bir istemci, aracı aracılığıyla konuya abone olabilir. Bir aracı, yayımlanan iletileri konuya abone olan istemcilerine teslim etmekle sorumludur. Bu yayımcı-abone modelinde, birden çok istemci aynı konu başlığına sahip verileri yayımlar. İstemci, aynı konuya abone olursa yayımlayan bir ileti alır.
 
-Kullanım örneğine bağlı olarak, bir istemci bir ileti yayımlarken 3 QoS düzeyinden birini seçebilir:
+Kullanım durumuna bağlı olarak, bir istemci bir ileti yayımlarken 3 QoS düzeylerinden birini seçebilir:
 
-- **QoS 0**: ileti en fazla bir kez teslim edilir. QoS 0 ile gönderilen iletiler kaybolmuş olabilir.
-- **QoS 1**: ileti en az bir kez teslim edilir. QoS 1 ile gönderilen iletiler birden çok kez teslim edilebilir.
-- **QoS 2**: ileti tam olarak bir kez teslim edilir. QoS 2 ile gönderilen iletilerin, çoğaltma olmadan teslim edilmesi garanti edilir.
-
-> [!NOTE]
-> MQTT istemcisinin bu uygulama, QoS düzey 2 iletilerini desteklemez.
-
-QoS 1 ve QoS 2 ' nin teslim edileceği garanti edildiğinden, aracı, her istemciye gönderilen QoS 1 ve QoS 2 iletilerinin durumunu izler. Bu, özellikle QoS1 veya QoS 2 iletileri bekleyen istemciler için önemlidir. İstemcinin aracısıyla bağlantısı kesilebilir (örneğin, istemci yeniden başlatıldığında veya iletişim bağlantısı geçici olarak kaybedilmişse). Aracı, istemci aracısına yeniden bağlandığında iletilerin daha sonra teslim edilebilmesi için QoS 1 ve QoS 2 iletilerini depolamalıdır. Bununla birlikte, istemci yeniden bağlandıktan sonra aracıdan eski ileti almamayabilir. İstemci, *clean_session* bayrağı ***NX_TRUE** _ olarak ayarlanmış şekilde bağlantıyı başlatarak bunu yapabilir. Bu durumda, MQTT CONNECT iletisini aldıktan sonra, aracı bu istemciyle ilişkili oturum bilgilerini, teslim edilmemiş ya da onaylanmamış QoS 1 veya QoS 2 iletileri de dahil olmak üzere atar. _Clean_session * bayrağı ***NX_FALSE** Ise_, sunucu QoS 1 ve QoS 2 iletilerini yeniden gönderecektir. MQTT Istemcisi, _clean_session *, ***NX_TRUE *** olarak ayarlandıysa, kabul edilmeyen hiçbir iletiyi de yeniden sonlandırır. Bu onay, TCP katmanı ACK 'ten farklıdır, ancak aynı zamanda olur. MQTT istemcisi, aracıya bir bildirim gönderir.
-
-Uygulama, ***nxd_mqtt_client_create ()** _ öğesini çağırarak MQTT istemci örneği oluşturur. İstemci oluşturulduktan sonra uygulama, _*_nxd_mqtt_client_connect ()_*_ öğesini çağırarak aracıya bağlanabilir. Aracıya bağlandıktan sonra istemci, _*_nxd_mqtt_client_subscribe ()_*_ çağırarak bir konuya abone olabilir veya _ *_nxd_mqtt_client_publish ()_* * çağırarak bir konuyu yayımlayabilir.
-
-Gelen MQTT iletileri, MQTT istemci örneğindeki alma sırasında depolanır. Uygulama, ***nxd_mqtt_client_message_get ()*** çağırarak bu iletiyi alır. Alma kuyruğunda iletiler varsa, sıradaki ilk ileti (örneğin, en eski) çağırana döndürülür. İletideki konu dizesi de döndürülür.
+- **QoS 0:** İleti en çok bir kez teslim edilir. QoS 0 ile gönderilen iletiler kaybolabilir.
+- **QoS 1:** İleti en az bir kez teslim edilir. QoS 1 ile gönderilen iletiler birden çok kez teslim edilir.
+- **QoS 2:** İleti tam olarak bir kez teslim edilir. QoS 2 ile gönderilen iletilerin yinelemeden teslim edildiği garanti edilir.
 
 > [!NOTE]
-> ***Nxd_mqtt_client_message_get ()** _ IşLEVI MQTT istemcisi alma kuyruğu boş ise engellemez. İşlev, hemen dönüş kodu _ *_NXD_MQTT_NO_MESSAGE_* * ile döndürür. Uygulama, bu dönüş değerini alma sırasının bir hata değil boş olduğunu belirten bir gösterge olarak değerlendirir.
+> MQTT istemcisinin bu uygulaması QoS düzey 2 iletilerini desteklemez.
 
-Gelen iletiler için alma sırasının yoklanmaması için, uygulama ***nxd_mqtt_client_recieve_notify_set ()*** çağırarak MQTT istemcisiyle bir geri çağırma işlevi kaydedebilir. Geri çağırma işlevi şöyle bildirilmiştir:
+QoS 1 ve QoS 2'nin teslim edildiği garanti edildiği için, aracı her istemciye gönderilen QoS 1 ve QoS 2 iletilerinin durumunu takip ediyor. Bu, QoS1 veya QoS 2 iletileri beklediğiniz istemciler için özellikle önemlidir. İstemcinin aracıyla bağlantısı kesiliyor olabilir (örneğin, istemci yeniden başlatıldığında veya iletişim bağlantısı geçici olarak kesildiğinde). İstemci aracıya yeniden bağlandığınızda iletilerin daha sonra teslimi için aracı QoS 1 ve QoS 2 iletilerini depolamalı. Ancak, istemci yeniden bağlantıdan sonra aracıdan eski ileti almamayı seçebilir. İstemci, bağlantıyı * clean_session _ olarak *ayarlanmış* şekilde başlatarak **NX_TRUE** bunu NX_TRUE. Bu durumda, MQTT CONNECT iletisi aldıktan sonra, aracı teslim edilmeyen veya onaylanmamış QoS 1 ya da QoS 2 iletileri de dahil olmak üzere bu istemciyle ilişkili tüm oturum bilgilerini atılmalıdır. Clean_session* bayrağı * NX_FALSE ise, sunucu QoS 1 ve QoS 2 iletilerini yeniden gönderir. __ MQTT İstemcisi ayrıca* *_clean_session* olarak ayarlanırsa onaylanmamış **tüm iletileri NX_TRUE.** Bu bildirim TCP katmanı ACK'den farklıdır, ancak bu da gerçekleşir. MQTT istemcisi aracıya bir bildirim gönderir.
+
+Uygulama, * nxd_mqtt_client_create() _ çağrısıyla **bir MQTT istemci örneği** oluşturur. İstemci oluşturulduktan sonra uygulama, _*_nxd_mqtt_client_connect() çağrısıyla aracıya bağlanabilirsiniz._*_ Aracıya bağlanarak istemci _*_nxd_mqtt_client_subscribe()_*_ çağrısıyla bir konuya abone olabilir veya _*_nxd_mqtt_client_publish() ** çağrısıyla bir konu yayımlar._
+
+Gelen MQTT iletileri MQTT istemci örneğinde alma kuyruğunda depolanır. Uygulama bu iletiyi ***nxd_mqtt_client_message_get() çağrısıyla alır.*** Alma kuyruğunda iletiler varsa, kuyruktan ilk ileti (ör. en eski) çağırana döndürülür. İletiden konu dizesi de döndürülür.
+
+> [!NOTE]
+> MQTT **istemcisi alma kuyruğu boşsa*** nxd_mqtt_client_message_get() _ işlevi engellemez. İşlev , _* ve **dönüş _koduyla NXD_MQTT_NO_MESSAGE_ döndürür. Uygulama bu dönüş değerini, hata değil alma kuyruğunun boş olduğunu gösteren bir gösterge olarak kabul etmektir.
+
+Uygulama, gelen iletiler için alma kuyruğunun yoklamasını önlemek için nxd_mqtt_client_recieve_notify_set() çağrısıyla MQTT istemcisine ***bir geri çağırma işlevi kaydedebilir.*** Geri çağırma işlevi şu şekilde bildirildi:
 
 ```c
 VOID (*receive_notify_callback)(NXD_MQTT_CLIENT *client_ptr, 
     UINT message_count);
 ```
 
-MQTT istemcisi aracıdan ileti aldığında, işlev ayarlandıysa geri çağırma işlevini çağırır. Geri arama işlevi, işaretçiyi istemci denetim bloğuna ve bir ileti sayısı değerine geçirir. İleti sayısı değeri, alma sırasındaki MQTT iletilerinin sayısını gösterir. Bu geri çağırma işlevinin MQTT istemci iş parçacığı bağlamında yürütüldüğünü unutmayın. Bu nedenle, geri çağırma işlevi MQTT istemci iş parçacığını engelleyebilen herhangi bir yordam yürütmemelidir. Geri çağırma işlevi, iletileri almak için ***nxd_mqtt_client_message_get ()*** çağırmak üzere uygulama iş parçacığını tetiklemelidir.
+MQTT istemcisi aracıdan iletileri aldığından, işlev ayarlanırsa geri çağırma işlevini çağırır. Geri çağırma işlevi, işaretçiyi istemci denetim bloğuna ve ileti sayısı değerine iletir. İleti sayısı değeri, alma kuyruğunda MQTT iletilerinin sayısını gösterir. Bu geri çağırma işlevinin MQTT istemci iş parçacığı bağlamında yürütülmektedir. Bu nedenle, geri çağırma işlevi MQTT istemci iş parçacığını engellenmiş herhangi bir yordam yürütmez. Geri çağırma işlevi, iletileri almak için ***nxd_mqtt_client_message_get()*** çağrısı yapmak için uygulama iş parçacığını tetiklemeli.
 
-MQTT istemci hizmetinin bağlantısını kesmek ve sonlandırmak için uygulama, ***nxd_mqtt_client_disconnect ()** _ ve _*_nxd_mqtt_client_delete ()_*_ hizmetini kullanır. _*_Nxd_mqtt_client_disconnect ()_*_ çağırmak, yalnızca ARACıYA TCP bağlantısını keser. Alma kuyruğunda zaten alınmış ve depolanmış iletileri yayınlar. Ancak, iletme sırasında QoS düzey 1 iletileri serbest bırakmaz. _*_Clean_session_*_ bayrağının _ NX_FALSE olarak ayarlandığı varsayıldığında, QoS düzey 1 iletileri bağlantı kurulduğunda yeniden gönderilir *_._**
+MQTT istemci hizmetinin bağlantısını kesmek ve sonlandırmak için uygulama ***nxd_mqtt_client_disconnect()** _ ve _*_nxd_mqtt_client_delete() hizmetini kullandır._*_ nxd_mqtt_client_disconnect() _*_çağrısı_*_ yalnızca aracıyla TCP bağlantısını keser. Daha önce alınan ve alma kuyruğunda depolanan iletileri serbest bırakmıştır. Ancak, aktarım kuyruğunda QoS düzey 1 iletilerini serbest bırakmaz. Clean_session bayrağı _ NX_FALSE olarak ayarlanırsa QoS _*_düzey_*_ 1 *_iletileri bağlantıdan sonra NX_FALSE._**
 
-Aracı da istemciyle bağlantısını kesebilir. İstemci ve aracı arasındaki TCP bağlantısı sonlandırıldığında, uygulamaya bağlantıyı kes bildirim işlevi tarafından bildirim uygulanabilir. Uygulama bildirim mekanizmasını kullanmak için, ***nxd_mqtt_client_disconnect_notify_set *** çağırarak bağlantı kesme bildirme işlevini de yüklüyor. TCP bağlantısı kesildikten ve MQTT oturumu oluşturulduktan sonra, bildirim işlevi çağrılır.
+Aracı, istemciyle bağlantıyı da kes olabilir. İstemci ile aracı arasındaki TCP bağlantısı sonlandırılana kadar, disconnect notify işlevi uygulama hakkında bilgi edinebilir. Uygulama, bildirim mekanizmasını kullanmak için * nxd_mqtt_client_disconnect_notify_set* çağrısıyla disconnect notify **işlevini yüklemektedir.** TCP bağlantısının kesilmesi gözlemlendi ve MQTT oturumu oluşturulduktan sonra bildirim işlevi çağrılır.
 
-***Nxd_mqtt_client_delete ()*** çağrısı, iletme sırasındaki tüm ileti bloklarını ve alma sırasını yayınlar. Kabul edilmemiş QoS düzey 1 iletileri de silinir.
+nxd_mqtt_client_delete() ***çağrısı,*** aktarım kuyruğu ve alma kuyruğunda tüm ileti bloklarını serbest bıraktır. Doğrulanmamış QoS düzey 1 iletileri de silinir.
 
-## <a name="secure-mqtt-connection"></a>Güvenli MQTT bağlantısı
+## <a name="secure-mqtt-connection"></a>Güvenli MQTT Bağlantısı
 
-MQTT istemcisi, NetX güvenli TLS modülünü kullanarak aracıya güvenli bir bağlantı oluşturur. TLS 8883 güvenliği ile MQTT için varsayılan bağlantı noktası numarası ***NXD_MQTT_TLS_PORT*** tanımlanmıştır.
+MQTT istemcisi, NetX Secure TLS modülünü kullanarak aracıyla güvenli bir bağlantı sağlar. TLS güvenliğine sahip MQTT için varsayılan bağlantı noktası numarası 8883'tir ve NXD_MQTT_TLS_PORT.
 
-Aracıya güvenli bir MQTT bağlantısı oluşturmak için, bir TCP bağlantısı kurulduktan sonra, bir TLS oturumunun, ücret'e gönderilen MQTT CONNECT iletileri gönderilmeden önce anlaşması gerekir. TLS oturum ayarları, ***nxd_mqtt_client_secure_connect ()*** çağırarak ve Kullanıcı TANıMLı bir TLS Kurulumu geri arama işlevinde geçirilerek gerçekleştirilir. MQTT bağlantı aşamasında, TCP bağlantısı kurulduktan sonra istemci, doğru bir TLS el sıkışma işlemini başlatmak için TLS kurulum geri arama işlevini çağırır. TLS oturumu kurulduktan sonra istemci, güvenli kanal üzerinden MQTT CONNECT iletisini devam ettirir.
+Aracıyla güvenli bir MQTT bağlantısı oluşturmak için, MQTT CONNECT iletilerinin aracıya gönderilenemeden önce TCP bağlantısı kurulduktan sonra BIR TLS oturumu üzerinde anlaşma yapılması gerekir. TLS oturumu kurulumu, ***nxd_mqtt_client_secure_connect() çağrılarak*** ve kullanıcı tanımlı TLS kurulumu geri çağırma işlevi ileterek başarılı olur. MQTT bağlantı aşamasında, TCP bağlantısı kurulduktan sonra, istemci uygun bir TLS el sıkışma işlemi başlatmak için TLS kurulum geri çağırma işlevini çağırır. TLS oturumu kurulduktan sonra, istemci güvenli kanal üzerinden MQTT CONNECT iletisine devam eder.
 
-Kullanıcı tanımlı geri çağırma işlevi beş giriş değeri alır ve şu şekilde bildirilmiştir:
+Kullanıcı tanımlı geri çağırma işlevi beş giriş değeri alır ve şu şekilde tanımlanır:
 
 ```c
 UINT tls_Setup_callback(NXD_MQTT_CLIENT *client_ptr,
@@ -79,14 +79,14 @@ UINT tls_Setup_callback(NXD_MQTT_CLIENT *client_ptr,
 
 Giriş parametrelerinin açıklaması aşağıda verilmiştir:
 
-- **client_ptr**: MQTT istemci denetim bloğuna yönelik işaretçi.
-- **session_ptr**: TLS oturum denetim bloğuna yönelik işaretçi.
-- **certificate_ptr**: sertifika denetim bloğuna yönelik işaretçi. Kurulum işlevi bu sertifikayı aracıya göndermeden önce yapılandırır.
-- **trusted_certificate_ptr**: güvenilen sertifikaya yönelik işaretçi. TLS kurulum işlevi, sunucunun kimliğini doğrulamak için güvenilen sertifikayı yapılandırır.
+- **client_ptr:** MQTT istemci denetim bloğuna işaretçi.
+- **session_ptr:** TLS oturum denetim bloğuna işaretçi.
+- **certificate_ptr:** Sertifika denetim bloğuna işaretçi. Kurulum işlevi, aracıya göndermeden önce bu sertifikayı yapılandırıyor.
+- **trusted_certificate_ptr:** Güvenilen sertifikanın işaretçisi. TLS kurulum işlevi, sunucunun kimliğini doğrulamak için güvenilen sertifikayı yapılandırıyor.
 
-TLS kurulum işlevinde, uygulama bir TLS oturumu oluşturmaktan ve oturumu uygun bir sertifikayla yapılandırmadan sorumludur. Aşağıdaki sözde kod tipik bir TLS oturumu başlatma yordamını özetler. Okuyucu, TLS API 'Leri kullanma hakkında ayrıntılı bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na başvurulur.
+TLS kurulum işlevinde, uygulama bir TLS oturumu oluşturmak ve oturumu uygun bir sertifikayla yapılandırmakla sorumludur. Aşağıdaki sahte kod tipik bir TLS oturumu başlatma yordamını özetler. Okuyucu, TLS API'lerini kullanma hakkında ayrıntılı bilgi için NetX Secure TLS Kullanıcı Kılavuzu'ne başvurur.
 
-Aşağıda bir TLS kurulum geri çağırması verilmiştir:
+Aşağıda örnek bir TLS kurulum geri çağrısı verilmiştir:
 
 ```c
 UINT tls_setup_callback(NXD_MQTT_CLIENT *client_pt
@@ -115,7 +115,7 @@ UINT tls_setup_callback(NXD_MQTT_CLIENT *client_pt
 }
 ```
 
-## <a name="known-limitations-of-the-netx-duo-mqtt-client"></a>NetX Duo MQTT Istemcisinin bilinen sınırlamaları
+## <a name="known-limitations-of-the-netx-duo-mqtt-client"></a>NetX Duo MQTT İstemcisi'nin Bilinen Sınırlamaları
 
-- NetX Duo MQTT, QoS düzey 2 iletilerinin gönderilmesini veya alınmasını desteklemez.
-- NetX Duo MQTT, zincirleme paketleri desteklemez.
+- NetX Duo MQTT, QoS düzey 2 iletilerinin gönderilmesini veya gönderilmesini desteklemez.
+- NetX Duo MQTT zincirli paketleri desteklemez.

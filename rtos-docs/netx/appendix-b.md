@@ -1,21 +1,21 @@
 ---
-title: Ek B-Azure RTOS NetX sabitleri
-description: Azure RTOS NetX sabitleri listesini görüntüleyin.
+title: Ek B - Azure RTOS NetX Sabitleri
+description: NetX Sabitleri Azure RTOS görüntüleme.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d17736a613ca3cd69dcc7a00a5ec16ee680093b4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7f3b22675ea7bf98f653c9299fb3cef74b9b5f6588ff3328d46b989c96d77c4c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826902"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801283"
 ---
-# <a name="appendix-b---azure-rtos-netx-constants"></a>Ek B-Azure RTOS NetX sabitleri
+# <a name="appendix-b---azure-rtos-netx-constants"></a>Ek B - Azure RTOS NetX Sabitleri
 
-## <a name="alphabetic-listing"></a>Alfabetik listeleme
+## <a name="alphabetic-listing"></a>Alfabetik Listeleme
 
 | Sabit    | Değer   |
 | -------------------------- | ---------- |
@@ -38,7 +38,7 @@ ms.locfileid: "104826902"
 | NX_ARP_PROTOCOL_TYPE    | 0x0800     |
 | NX_ARP_TIMER_ERROR      | 0x18       |
 | NX_ARP_UPDATE_RATE      | 10         |
-| NX_ARP_TABLE_SIZE       | 0x2F       |
+| NX_ARP_TABLE_SIZE       | 0x2f       |
 | NX_ARP_TABLE_MASK       | 0x1F       |
 | NX_CALLER_ERROR          | 0x11       |
 | NX_CARRY_BIT             | 0x10000    |
@@ -105,7 +105,7 @@ ms.locfileid: "104826902"
 | NX_IP_ADDRESS_ERROR | 0x21 |
 | NX_IP_ADDRESS_RESOLVED | 0x0002 |
 | NX_IP_ALIGN_FRAGS | 8 |
-| NX_IP_ALL_EVENTS | Ffffffff |
+| NX_IP_ALL_EVENTS | 0xffffffff |
 | NX_IP_ARP_ENABLED | 0x0008 |
 | NX_IP_ARP_REC_EVENT | 0x00000010 |
 | NX_IP_CLASS_A_HOSTID | 0x00FFFFFF |
@@ -200,7 +200,7 @@ ms.locfileid: "104826902"
 | NX_MAX_LISTEN | 0x33 |
 | NX_MAX_LISTEN_REQUESTS | 10 |
 | NX_MAX_MULTICAST_GROUPS | 7 |
-| NX_MAX_PORT | 0xFFFF |
+| NX_MAX_PORT | 0xffff |
 | NX_MORE_FRAGMENTS | 0x00002000 |
 | NX_NO_FREE_PORTS | 0x45 |
 | NX_NO_MAPPING | 0x04 |
@@ -304,11 +304,11 @@ ms.locfileid: "104826902"
 | NX_UNHANDLED_COMMAND     | 0x44       |
 | NX_WAIT_ABORTED          | 0x1A       |
 | NX_WAIT_ERROR            | 0x08       |
-| NX_WAIT_FOREVER          | Ffffffff |
+| NX_WAIT_FOREVER          | 0xffffffff |
 | NX_WINDOW_OVERFLOW       | 0x39       |
 
 
-## <a name="listings-by-value"></a>Değere göre listeler
+## <a name="listings-by-value"></a>Değere Göre Listelemeler
 
 | Sabit | Değer |
 |----------|-------|
@@ -542,7 +542,7 @@ ms.locfileid: "104826902"
 | NX_IP_CLASS_B_HOSTID | 0x0000FFFF |
 | NX_IP_PACKET_SIZE_MASK | 0x0000FFFF |
 | NX_LOWER_16_MASK | 0x0000FFFF |
-| NX_MAX_PORT | 0xFFFF |
+| NX_MAX_PORT | 0xffff |
 | NX_IP_ICMP | 0x00010000 |
 | NX_TCP_FIN_BIT | 0x00010000 |
 | NX_CARRY_BIT | 0x10000 |
@@ -603,7 +603,7 @@ ms.locfileid: "104826902"
 | NX_ALL_HOSTS_ADDRESS | 0xFE000001 |
 | NX_IGMPV2_TYPE_MASK | 0xFF000000 |
 | NX_IP_TIME_TO_LIVE_MASK | 0xFF000000 |
-| NX_IP_ALL_EVENTS | Ffffffff |
-| NX_IP_LIMITIED_BROADCAST | Ffffffff |
-| NX_PACKET_FREE | Ffffffff |
-| NX_WAIT_FOREVER | Ffffffff |
+| NX_IP_ALL_EVENTS | 0xffffffff |
+| NX_IP_LIMITIED_BROADCAST | 0xffffffff |
+| NX_PACKET_FREE | 0xffffffff |
+| NX_WAIT_FOREVER | 0xffffffff |

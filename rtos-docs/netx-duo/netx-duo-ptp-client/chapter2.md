@@ -1,34 +1,34 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo MTP Istemcisini yükleme ve kullanma
-description: Bu bölümde, NetX Duo MTP istemci bileşeninin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Duo PTP Azure RTOS Yükleme ve Kullanma
+description: Bu bölümde NetX Duo PTP istemci bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: v-condav
 ms.author: v-condav
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cab2c31099bded953753fd530cef931cf0d7aaf7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: ee2e4184ce041679b5ae5368d91c436cf8a0bc2ac6f59deba67d996b318151bd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825799"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798036"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-ptp-client"></a>Bölüm 2-Azure RTOS NetX Duo MTP Istemcisini yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-ptp-client"></a>Bölüm 2 - NetX Duo PTP Azure RTOS Yükleme ve Kullanma
 
-Bu bölümde, NetX Duo MTP istemci bileşeninin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+Bu bölümde NetX Duo PTP istemci bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS NetX Duo, konumundaki ortak kaynak kodu deposundan elde edilebilir https://github.com/azure-rtos/netxduo/tree/master/addons/ptp .
+Azure RTOS NetX Duo, genel kaynak kodu deposundan https://github.com/azure-rtos/netxduo/tree/master/addons/ptp edinebilirsiniz.
 
-***nxd_ptp_client. h*** NETX Duo için PTP Client için bir üstbilgi dosyası ***nxd_ptp_client.*** netx Duo ***demo_netx_duo_ptp_client. c*** NETX Duo MTP istemci tanıtımı
+***nxd_ptp_client.h*** NetX Duo için PTP istemcisi üst bilgi dosyası ***nxd_ptp_client.c*** NetX Duo için PTP istemcisi kaynak dosyası ***demo_netx_duo_ptp_client.c*** NetX Duo PTP istemci gösterimi
 
 
-## <a name="using-ptp-client"></a>PTP Client kullanma
-NetX Duo için PTP Client kullanmak kolaydır. Temel olarak, uygulama kodu, sırasıyla ThreadX ve NetX Duo kullanmak için, _*_tx_api. h_*_ ve _*_nx_api. h_*_ dahil olmak üzere ***nxd_ptp_client. h** _ içermelidir. PTP istemci üstbilgi dosyası eklendikten sonra, uygulama kodu bu kılavuzda daha sonra belirtilen MTP istemci işlev çağrılarını yapabilir. Uygulamanın yapı sürecinde _ *_nxd_ptp_client. c_** de içermesi gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmelidir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Duo MTP istemcisini kullanmak için gereklidir.
+## <a name="using-ptp-client"></a>PTP İstemcisini Kullanma
+NetX Duo için PTP istemcisini kullanmak kolaydır. Temelde, ThreadX ve NetX Duo'nxd_ptp_client kullanmak için uygulama kodu _*_tx_api.h_*_ ve _*_nx_api.h_*_' yi içeren ***nxd_ptp_client.h** _ öğesini içermesi gerekir. PTP istemci üst bilgisi dosyası dahil edildiktan sonra uygulama kodu, bu kılavuzun ilerleyen adımlarında belirtilen PTP istemci işlevi çağrılarını da mümkün hale gelecektir. Uygulamanın derleme sürecinde _ *_nxd_ptp_client.c_** içermesi de gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmiş olmalı ve nesne formu uygulamanın dosyalarıyla birlikte bağlanacak. NetX Duo PTP istemcisini kullanmak için gerekenler bu kadardır.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
-NetX Duo MTP istemci hizmetlerinin nasıl kullanılacağına ilişkin bir örnek şekil 1 ' de aşağıda gösterilen şekilde açıklanmıştır.
+## <a name="small-example-system"></a>Küçük Örnek Sistem
+Aşağıda görünen Şekil 1'de NetX Duo PTP istemci hizmetlerini kullanma örneği açıklanmıştır.
 ```C
 /*
    This is a small demo of the NetX Duo PTP client on the high-performance NetX Duo TCP/IP stack.
@@ -303,11 +303,11 @@ ULONG   gw_address;
 #endif /* SAMPLE_DHCP_DISABLE  */
 ```
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
-NetX Duo MTP istemcisiyle birkaç yapılandırma seçeneği vardır. Aşağıda, ayrıntılı olarak açıklanan tüm seçeneklerin bir listesi verilmiştir:
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
+NetX Duo PTP istemcisiyle çeşitli yapılandırma seçenekleri vardır. Aşağıda ayrıntılı olarak açıklanan tüm seçeneklerin listesi velanmıştır:
 * **NX_PTP_CLIENT_THREAD_TIME_SLICE** Bu, PTP istemci iş parçacığı zaman dilimini tanımlar. Varsayılan değer zaman dilimi değildir.
-* **NX_PTP_CLIENT_TIMER_TICKS_PER_SECOND** Bu, PTP Client iç Zamanlayıcı sıklığını tanımlar. Varsayılan değer 10 ' dur ve 100 ms Zamanlayıcı olduğunu gösterir.
-* **NX_PTP_CLIENT_ANNOUNCE_RECEIPT_TIMEOUT** Bu, zaman aşımından önce eksik duyuru paketlerinin maksimum sayısını tanımlar. Varsayılan değer 3 ' dir.
-* **NX_PTP_CLIENT_LOG_ANNOUNCE_INTERVAL** Bu, günlük 2 olarak ifade edilen, ardışık duyuru paketi arasındaki zaman aralığını tanımlar. Bu değer bir etki alanı genelinde Tekdüzen olmalıdır. Varsayılan değer 1 ' dir ve 2 ' dir.
-* **NX_PTP_CLIENT_DELAY_REQ_INTERVAL** Bu, gecikme istek paketlerinin gönderilmesi için aralığı tanımlar. Varsayılan değer 2 saniyedir.
-* **NX_PTP_CLIENT_MAX_QUEUE_DEPTH** Bu, istemci soketi için sıra derinliği üst sınırını tanımlar. Varsayılan değer 5 ' tir.
+* **NX_PTP_CLIENT_TIMER_TICKS_PER_SECOND** Bu, PTP istemcisi iç zamanlayıcı sıklığını tanımlar. Varsayılan değer 10'dır ve 100ms zamanlayıcıyı ifade ediyor.
+* **NX_PTP_CLIENT_ANNOUNCE_RECEIPT_TIMEOUT** Bu, zaman aşımı öncesinde eksik olan En fazla Duyuru paketi sayısını tanımlar. Varsayılan değer 3'tir.
+* **NX_PTP_CLIENT_LOG_ANNOUNCE_INTERVAL** Bu, 2. günlük olarak ifade eden, başarılı Bir Duyuru paketi arasındaki zaman aralığını tanımlar. Bu değer bir etki alanı genelinde tekdüz olmalıdır. Varsayılan değer 1'tir ve 2'dir.
+* **NX_PTP_CLIENT_DELAY_REQ_INTERVAL** Bu, Gecikme isteği paketleri gönderme aralığını tanımlar. Varsayılan değer 2 saniyedir.
+* **NX_PTP_CLIENT_MAX_QUEUE_DEPTH** Bu, istemci yuvası için en yüksek kuyruk derinliğini tanımlar. Varsayılan değer 5'tir.

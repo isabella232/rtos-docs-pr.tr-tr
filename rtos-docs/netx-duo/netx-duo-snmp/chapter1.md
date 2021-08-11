@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 5760e35fdbe8d7b27e2ccc82abac37b1f6fb5118
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6bf18efacc5ff7773e038a5140fc886e978ebd1ca59cc9b861139b3ce2d9ada6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825781"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797882"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-snmp"></a>Bölüm 1-Azure RTOS NetX Duo SNMP 'ye giriş
 
@@ -125,9 +125,9 @@ NX_SNMP_OBJECT_DATA trap_data0;
 
 Temel kimlik doğrulamasının ana dezavantajı, Kullanıcı adı düz metin olarak iletilir. SNMPv3 Özet kimlik doğrulaması, Kullanıcı adını hiçbir şekilde düz metin halinde ileterek bu sorunu giderir. Bunun yerine, Kullanıcı adı, bağlam altyapısı ve diğer bilgilerden 96 bitlik bir ' Digest ' türetmek için bir algoritma kullanılır. NetX Duo SNMP Aracısı hem MD5 hem de SHA Özet algoritmalarını destekler.
 
-Kimlik doğrulamasını etkinleştirmek için SNMP aracısının, *nx_snmp_agent_context_engine_set* hizmetini kullanarak kendi bağlam motoru kimliğini ayarlaması gerekir. Bağlam altyapısı KIMLIĞI, kimlik doğrulama anahtarı oluşturulurken kullanılır.
+Kimlik doğrulamasını etkinleştirmek için SNMP aracısının, *nx_snmp_agent_context_engine_set* hizmetini kullanarak kendi bağlam motoru kimliğini ayarlaması gerekir. Bağlam Altyapısı Kimliği, kimlik doğrulama anahtarının oluşturulmasında kullanılır.
 
-SNMPv3 veri şifrelemesi DES algoritması kullanılarak kullanılabilir. Şifreleme, kimlik doğrulamasının etkinleştirilmesini gerektirir (bir tane, kimlik doğrulama parametreleri ayarlamadan verileri şifreleyemez).
+DES algoritması kullanılarak SNMPv3 verileri şifrelenir. Şifreleme için kimlik doğrulamasının etkinleştirilmesi gerekir (kimlik doğrulama parametrelerini ayarlamadan veriler şifrelenmez).
 
 Kimlik doğrulaması ve gizlilik anahtarları oluşturmak için aşağıdaki API kullanılır:
 
@@ -141,7 +141,7 @@ UINT  _nx_snmp_agent_sha_key_create(NX_SNMP_AGENT *agent_ptr,
                                    *destination_key)
 ```
 
-Daha sonra, SNMP aracısının bu anahtarları kullanacak şekilde yapılandırılması gerekir. SNMP aracısıyla bir anahtar kaydetmek için aşağıdaki API kullanılır:
+Ardından, SNMP aracısı bu anahtarları kullanmak üzere yapılandırıldı. SNMP aracısı ile bir anahtar kaydetmek için aşağıdaki API kullanılır:
 
 ```c
 UINT  _nx_snmp_agent_authenticate_key_use(NX_SNMP_AGENT *agent_ptr,
@@ -151,7 +151,7 @@ UINT  _nx_snmp_agent_privacy_key_use(NX_SNMP_AGENT *agent_ptr,
                                     NX_SNMP_SECURITY_KEY *key)
 ```
 
-Tuzak iletileri için ayrı anahtarlar oluşturulabilir. Tuzak iletileri için anahtar uygulamak için aşağıdaki API kullanılabilir:
+Yakalama iletileri için ayrı anahtarlar oluşturulabilir. Yakalama iletilerine anahtarları uygulamak için aşağıdaki API kullanılabilir:
 
 ```c
 UINT  _nx_snmp_agent_auth_trap_key_use(NX_SNMP_AGENT *agent_ptr,
@@ -161,19 +161,19 @@ UINT  _nx_snmp_agent_priv_trap_key_use(NX_SNMP_AGENT *agent_ptr,
                                        NX_SNMP_SECURITY_KEY *key)
 ```
 
-Yanıt iletileri ve tuzak göndermek için kimlik doğrulama veya şifrelemeyi devre dışı bırakmak için bu hizmetleri anahtar işaretçisi girişi NULL olarak ayarlanmış şekilde kullanın.
+Yanıt iletileri ve gönderme yakalamaları için kimlik doğrulamasını veya şifrelemeyi devre dışı bırakmak için bu hizmetleri anahtar işaretçisi girişi NULL olarak ayarlanmış şekilde kullanın.
 
-## <a name="netx-duo-snmp-community-strings"></a>NetX Duo SNMP topluluk dizeleri
+## <a name="netx-duo-snmp-community-strings"></a>NetX Duo SNMP Community Dizeleri
 
-NetX Duo SNMP Aracısı hem ortak hem de özel topluluk dizelerini destekler. Ortak dize, *nx_snmp_agent _public_string_set* hizmeti ile ayarlanır. NetX Duo SNMP Aracısı özel dizesi *nx_snmp_agent_private_string_set* hizmeti kullanılarak ayarlanır.
+NetX Duo SNMP Aracısı hem genel hem de özel topluluk dizelerini destekler. Ortak dize, nx_snmp_agent _public_string_set *ayarlanır.* NetX Duo SNMP Aracısı özel dizesi, nx_snmp_agent_private_string_set *ayarlanır.*
 
-## <a name="netx-duo-snmp-username-callback"></a>NetX Duo SNMP Kullanıcı adı geri araması
+## <a name="netx-duo-snmp-username-callback"></a>NetX Duo SNMP Kullanıcı Adı Geri Çağırma
 
-NetX Duo SNMP aracı paketi, uygulamanın, her SNMP Istemci isteğinin başlangıcında çağrılan bir Kullanıcı adı geri çağırması belirtmesini ( ***nx_snmp_agent_create*** çağrısı aracılığıyla) sağlar.
+NetX Duo SNMP Aracısı paketi, uygulamanın  her SNMP İstemci isteğini işlemenin başında çağrılacak bir kullanıcı adı geri çağırma (nx_snmp_agent_create çağrısı aracılığıyla) belirtmesini sağlar.
 
-Geri arama yordamı, NetX Duo SNMP aracısını Kullanıcı adıyla sağlar. Sağlanan Kullanıcı adı geçerliyse veya isteğe yanıt vermek için Kullanıcı adı denetimi gerekli değilse, Kullanıcı adı geri çağırması **NX_SUCCESS** değerini döndürmelidir. Aksi halde, belirtilen kullanıcı adının geçersiz olduğunu göstermek için yordam **NX_SNMP_ERROR** döndürmelidir.
+Geri çağırma yordamı, kullanıcı adı ile NetX Duo SNMP Aracısını sağlar. Sağlanan kullanıcı adı geçerli ise veya i isteğin yanıt vermesinde kullanıcı adı denetimi gerekli değilse, kullanıcı adı geri çağırma değeri **NX_SUCCESS.** Aksi takdirde, yordamın belirtilen **NX_SNMP_ERROR** geçersiz olduğunu belirtmek için yordam geri dönmeli.
 
-Uygulama Kullanıcı adı geri çağırma yordamının biçimi aşağıda tanımlanmıştır:
+Uygulama kullanıcı adı geri çağırma yordamının biçimi aşağıda tanımlanmıştır:
 
 ```c
 UINT nx_snmp_agent_username_process(NX_SNMP_AGENT *agent_ptr,
@@ -184,19 +184,19 @@ Giriş parametreleri aşağıdaki gibi tanımlanır:
 
 | Parametre | Anlamı                                              |
 |-----------|------------------------------------------------------|
-| *agent_ptr* | SNMP Aracısı çağırma işaretçisi                        |
-| username  | Gerekli Kullanıcı adına işaretçinin hedefi |
+| *agent_ptr* | SNMP aracılarını çağırma işaretçisi                        |
+| username  | Gerekli kullanıcı adı işaretçisi için hedef |
 
-SNMPv1 ve SNMPv2/v2C oturumları için, uygulama, SNMP isteğinin geçerli bir topluluk dizesine sahip olup olmadığını anlamak üzere gelen bir SNMP isteğindeki topluluk dizesini incelemek ister. SNMP uygulamasının bunu yapması için çeşitli hizmetler vardır.
+SNMPv1 ve SNMPv2/v2C oturumları için uygulama, SNMP isteğinin geçerli bir topluluk dizesine sahip olup olmadığını belirlemek üzere gelen bir SNMP isteği üzerinde topluluk dizesini incelemek ister. SNMP uygulamasının bunu yapmaları için çeşitli hizmetler vardır.
 
-SNMP uygulaması, geçerli SNMP Yöneticisi isteğinin bir GET (örn. GET, GETNEXT veya GETBULK) olduğunu veya bu hizmeti kullanarak istek türünü AYARLAMANıZı sağlayabilir:
+SNMP uygulaması, geçerli SNMP Yöneticisi isteğinin bir GET (ÖRNEĞIN GET, GETNEXT veya GETBULK) veya BU hizmeti kullanan SET istek türü olup olduğunu sorgular:
 
 ```c
 UINT nx_snmp_agent_request_get_type_test(NX_SNMP_AGENT *agent_ptr,
                                          UINT *is_get_type);
 ```
 
-İstek bir GET türüdür, uygulama, giriş topluluğu dizesini SNMP aracısının ortak dizesiyle karşılaştırmak ister:
+İstek bir GET türü ise, uygulama giriş topluluğu dizesini SNMP Aracısı'nın ortak dizesiyle karşılaştırmak ister:
 
 ```c
 UINT nx_snmp_agent_public_string_test(NX_SNMP_AGENT *agent_ptr,
@@ -204,7 +204,7 @@ UINT nx_snmp_agent_public_string_test(NX_SNMP_AGENT *agent_ptr,
                                       UINT *is_public);
 ```
 
-Benzer şekilde, istek bir küme türü ise, uygulama, giriş topluluğu dizesini SNMP aracısının özel dizesiyle karşılaştırmak ister:
+Benzer şekilde, istek bir SET türü ise, uygulama giriş topluluğu dizesini SNMP Aracısı'nın özel dizesiyle karşılaştırmak ister:
 
 ```c
 UINT nx_snmp_agent_private_string_test(NX_SNMP_AGENT *agent_ptr,
@@ -212,15 +212,15 @@ UINT nx_snmp_agent_private_string_test(NX_SNMP_AGENT *agent_ptr,
                                        UINT *is_private);
 ```
 
-İs_public ve is_private dönüş değerleri, giriş topluluk dizesi geçerli bir genel veya özel topluluk dizesi ise sırasıyla gösterir.
+Giriş is_public ve is_private değerleri sırasıyla giriş topluluğu dizesinin geçerli bir ortak veya özel topluluk dizesi olup olmadığını gösterir.
 
-Kullanıcı adı geri çağırma yordamının dönüş değeri, Kullanıcı adının geçerli olup olmadığını gösterir. **NX_SUCCESS** değeri, Kullanıcı adı geçerliyse veya Kullanıcı adı geçersiz ise **NX_SNMP_ERROR** döndürülür.
+Kullanıcı adı geri çağırma yordamının dönüş değeri, kullanıcı adı geçerli olup olmadığını gösterir. Kullanıcı **NX_SUCCESS** geçerli ise değer döndürülür veya NX_SNMP_ERROR **geçersizse** bu değer döndürülür.
 
-## <a name="netx-duo-snmp-agent-get-callback"></a>NetX Duo SNMP Aracısı geri arama al
+## <a name="netx-duo-snmp-agent-get-callback"></a>NetX Duo SNMP Aracısı GET Geri Çağırma
 
-Uygulamanın, SNMP yöneticisinden nesne al isteklerini işlemek için bir geri çağırma yordamı ayarlaması gerekir. Geri çağırma istekte belirtilen nesnenin değerini alır.
+Uygulamanın SNMP Yöneticisi'nde GET nesne isteklerini işlemeye uygun bir geri çağırma yordamı ayarlaması gerekir. Geri çağırma, istekte belirtilen nesnenin değerini verir.
 
-Uygulama GET isteği geri arama yordamı aşağıda tanımlanmıştır:
+Uygulama GET isteği geri çağırma yordamı aşağıda tanımlanmıştır:
 
 ```c
 UINT nx_snmp_agent_get_process(NX_SNMP_AGENT *agent_ptr,
@@ -232,33 +232,33 @@ Giriş parametreleri aşağıdaki gibi tanımlanır:
 
 | Parametre        | Anlamı |
 |------------------|----------------------------------|
-| *agent_ptr*        | SNMP Aracısı çağırma işaretçisi |
-| object_requested | GET işleminin için olduğu nesne KIMLIĞINI temsil eden ASCII dizesi. |
-| object_data      | Geri çağırma tarafından alınan değeri tutacak veri yapısı. Bu, aşağıda açıklanan bir dizi NetX Duo SNMP API 'SI ile ayarlanabilir. |
+| *agent_ptr*        | SNMP aracılarını çağırma işaretçisi |
+| object_requested | GET işlemi için nesne kimliğini temsil eden ASCII dizesi. |
+| object_data      | Geri çağırma tarafından alınan değeri tutmak için veri yapısı. Bu, aşağıda açıklanan bir dizi NetX Duo SNMP API'si ile ayarlanmıştır. |
 
 > [!NOTE]
-> *Sekizli dizeler için, nesnenin uzunluğu atanmalıdır; böylece iç işlev, geri aramanın bir length bağımsız değişkenine sahip olmadığı için uzunluğu ne kadar süreyle olduğunu bilir:*
+> *Sekizli dizeler için, geri çağırmanın kendisi bir uzunluk bağımsız değişkenine sahip olmadığını için iç işlevin uzunluğun ne kadar olduğunu bilmesi için nesneye uzunluk atanabilir:*
 
 ```c
 object_data -> nx_snmp_object_octet_string_size = mib2_mib[i].length;
 ```
 
-Veri türü GET geri çağırması tarafından bilinmediğinden, veri türünü denetlemeniz gerekmez. Uzunluk, boş ayrılmış sayısal türler veya dizeler üzerinde herhangi bir etkiye sahip olmayacaktır.
+Veri türü GET geri çağırması tarafından bilinmediği için veri türünü denetlemeye gerek yoktur. Uzunluğun sayısal türler veya null sınırlı dizeler üzerinde hiçbir etkisi olmaz.
 
-Ardından iç işlevi çağırın:
+Ardından iç işlevi çağır:
 
 ```c
 status = mib2_mib[i].object_get_callback)
                    (mib2_mib[i].object_value_ptr, object_data);
 ```
 
-Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** hata kodu döndürülmelidir. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürülmelidir.
+Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** kodu döndürülmeli. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürül gerekir.
 
-## <a name="netx-duo-snmp-agent-getnext-callback"></a>NetX Duo SNMP Aracısı GETNEXT geri çağırma
+## <a name="netx-duo-snmp-agent-getnext-callback"></a>NetX Duo SNMP Aracısı GETNEXT Geri Çağırma
 
-Uygulamanın, SNMP yöneticisinden GETNEXT nesne istekleri için geri çağırma yordamını da ayarlaması gerekir. GETNEXT geri çağırması, istek tarafından belirtilen sonraki nesnenin değerini alır.
+Uygulamanın ayrıca SNMP Yöneticisi'nde getNEXT nesne istekleri için geri çağırma yordamını ayarlaması gerekir. GETNEXT geri çağırma, istek tarafından belirtilen sonraki nesnenin değerini verir.
 
-Application GETNEXT istek geri çağırma yordamı aşağıda tanımlanmıştır:
+Uygulama GETNEXT istek geri çağırma yordamı aşağıda tanımlanmıştır:
 
 ```c
 UINT nx_snmp_agent_getnext_process(NX_SNMP_AGENT *agent_ptr,
@@ -270,32 +270,32 @@ Giriş parametreleri aşağıdaki gibi tanımlanır:
 
 | Parametre        | Anlamı |
 |------------------|-------------------------------------------|
-| *agent_ptr*        | SNMP Aracısı çağırma işaretçisi |
-| object_requested | GETNEXT işleminin için olduğu nesne KIMLIĞINI temsil eden ASCII dizesi. |
-| object_data      | Geri çağırma tarafından alınan değeri tutacak veri yapısı. Bu, aşağıda açıklanan bir dizi NetX Duo SNMP API 'SI ile ayarlanabilir. |
+| *agent_ptr*        | SNMP aracılarını çağırma işaretçisi |
+| object_requested | GETNEXT işlemi için nesne kimliğini temsil eden ASCII dizesi. |
+| object_data      | Geri çağırma tarafından alınan değeri tutmak için veri yapısı. Bu, aşağıda açıklanan bir dizi NetX Duo SNMP API'si ile ayarlanmıştır. |
 
-Geri çağırmalar için aynı ile aynı, iç işlevin uzunluğunun length bir bağımsız değişkeni olmadığından, dizenin ne kadar süreyle olduğunu bilmesi için, sekizli dize verilerine sahip nesneler uzunluğa atanmalıdır.
+GET geri çağırmaları için olduğu gibi, iç işlevin uzunluğun ne kadar uzun olduğunu bilmesi için, geri çağırmanın kendisi bir uzunluk bağımsız değişkenine sahip değil çünkü sekizli dize verilerine sahip nesnelere uzunluk atanabilir:
 
 ```c
 object_data -> nx_snmp_object_octet_string_size = mib2_mib[i].length;
 ```
 
-Veri türü GET geri çağırması tarafından bilinmediğinden, veri türünü denetlemeniz gerekmez. Uzunluk, boş ayrılmış sayısal türler veya dizeler üzerinde herhangi bir etkiye sahip olmayacaktır.
+Veri türü GET geri çağırması tarafından bilinmediği için veri türünü denetlemeye gerek yoktur. Uzunluğun sayısal türler veya null sınırlı dizeler üzerinde hiçbir etkisi olmaz.
 
-Ardından iç işlevi çağırın:
+Ardından iç işlevi çağır:
 
 ```c
 status = mib2_mib[i].object_get_callback)
                    (mib2_mib[i].object_value_ptr, object_data);
 ```
 
-Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** hata kodu döndürülmelidir. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürülmelidir.
+Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** kodu döndürülmeli. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürül gerekir.
 
-## <a name="netx-duo-snmp-agent-set-callback"></a>NetX Duo SNMP Aracısı KÜMESI geri araması
+## <a name="netx-duo-snmp-agent-set-callback"></a>NetX Duo SNMP Aracısı SET Geri Çağırma
 
-Uygulama, SNMP yöneticisinden SET nesne isteklerini işlemek için geri çağırma yordamını ayarlanmalıdır. SET callback, istek tarafından belirtilen nesnenin değerini ayarlar.
+Uygulama, SNMP Yöneticisi'nde SET nesnesi isteklerini işlemeye için geri çağırma yordamını ayarlaması gerekir. SET geri çağırma, istek tarafından belirtilen nesnenin değerini ayarlar.
 
-Uygulama KÜMESI isteği geri arama yordamı aşağıda tanımlanmıştır:
+Uygulama SET isteği geri çağırma yordamı aşağıda tanımlanmıştır:
 
 ```c
 UINT nx_snmp_agent_set_process(NX_SNMP_AGENT *agent_ptr,
@@ -307,11 +307,11 @@ Giriş parametreleri aşağıdaki gibi tanımlanır:
 
 | Parametre        | Anlamı |
 |------------------|-------- |
-| *agent_ptr*      | SNMP Aracısı çağırma işaretçisi |
-| object_requested | KÜME işleminin için olduğu nesne KIMLIĞINI temsil eden ASCII dizesi. |
-| object_data      | Belirtilen nesne için yeni değeri içeren veri yapısı. Gerçek işlem, aşağıda açıklanan NetX Duo SNMP API 'SI kullanılarak yapılabilir. |
+| *agent_ptr*      | SNMP aracılarını çağırma işaretçisi |
+| object_requested | SET işlemi için nesne kimliğini temsil eden ASCII dizesi. |
+| object_data      | Belirtilen nesne için yeni değeri içeren veri yapısı. Gerçek işlem, aşağıda açıklanan NetX Duo SNMP API'leri kullanılarak gerçek yapılabilir. |
 
-Sekizli dizeler için, küme geri çağrısının, SNMP Aracısı verileri ayrıştırdığından ve türü ve uzunluğu öğrendiğinden, MıB tablosunu verilerin uzunluğuyla güncelleştirmesi gerektiğini unutmayın:
+Sekizli dizeler için, SNMP Aracısı verileri ayrıştırmış ve türü ve uzunluğu bildiği için SET geri çağırmanın MIB tabloyu veri uzunluğuyla güncelleştirmesi gerektiğini unutmayın:
 
 ```c
 if (object_data -> nx_snmp_object_data_type ==
@@ -325,23 +325,23 @@ object_data -> nx_snmp_object_octet_string_size =
                                  mib2_mib[i].length;
 ```
 
-Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** hata kodu döndürülmelidir.
+Geri çağırma işlevi istenen nesneyi bulamazsa, **NX_SNMP_ERROR_NOSUCHNAME** kodu döndürülmeli.
 
-NetX Duo SNMP ana bilgisayarı özel topluluk dizeleri oluşturup, küme isteğinin SNMP göndericisi eşleşen özel dizeye sahip değilse, bir **NX_SNMP_ERROR_NOACCESS** hatası döndürebilir. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürülmelidir.
-
-> [!NOTE]
-> *NetX Duo SNMP Aracısı, dağıtıma sahip bir SNMP MıB veritabanı sağlamasına rağmen öncelikli olarak test ve geliştirme amaçlıdır. Geliştirici, büyük olasılıkla profesyonel SNMP uygulaması için özel bir MıB veritabanı gerektirir.*
-
-## <a name="changing-snmp-version-at-run-time"></a>Çalışma zamanında SNMP sürümünü değiştirme
-
-SNMP Aracısı ana makinesi, *nx_snmp_agent_set_version* hizmetini kullanarak, çalışma zamanında üç sürümün her bırı için SNMP sürümünü değiştirebilir. SNMP Aracısı, *NX_SNMP_AGENT_CREATE* SNMP Aracısı oluşturulduğunda varsayılan olarak üç sürüm için etkinleştirilmiştir. Ancak, uygulama bunu tüm sürümlerin bir alt kümesiyle sınırlayabilir.
+NetX Duo SNMP ana bilgisayarı özel topluluk dizeleri oluşturdu ve SET isteğinin SNMP göndereni eşleşen özel dizeye sahip değilse, özel bir **NX_SNMP_ERROR_NOACCESS** döndürür. Başka bir hata algılanırsa, **NX_SNMP_ERROR** döndürül gerekir.
 
 > [!NOTE]
-> *NX_SNMP_DISABLE_V1, NX_SNMP_DISABLE_V2 ve/veya NX_SNMP_DISABLE_V3 yapılandırma seçenekleri tanımlıysa, bu işlevin etkilenen sürümlerin etkinleştirilmesiyle hiçbir etkisi olmayacaktır.*
+> *NetX Duo SNMP Aracısı dağıtımla birlikte bir SNMP MIB veritabanı sağlar, ancak bu birincil olarak test ve geliştirme amaçlarına yöneliktir. Geliştirici büyük olasılıkla profesyonel bir SNMP uygulaması için özel bir MIB veritabanı gerektirir.*
 
-SNMP Aracısı, *nx_snmp_agent_get_current_version* hizmeti kullanılarak alınan en son SNMP paketinin SNMP sürümünü alabilir.
+## <a name="changing-snmp-version-at-run-time"></a>Çalışma Zamanında SNMP Sürümünü Değiştirme
 
-## <a name="snmpv3-discovery"></a>SNMPv3 bulma
+SNMP Aracısı ana bilgisayarı, nx_snmp_agent_set_version hizmetini kullanarak çalışma zamanında üç sürümün her biri *için SNMP nx_snmp_agent_set_version* değiştirebilir. SNMP Aracısı, 'de SNMP Aracısı oluşturulduğunda üç sürüm için de varsayılan olarak *nx_snmp_agent_create.* Ancak uygulama bunu tüm sürümlerin bir alt kümesiyle sınırlar.
+
+> [!NOTE]
+> *Yapılandırma seçenekleri NX_SNMP_DISABLE_V1, NX_SNMP_DISABLE_V2 ve/NX_SNMP_DISABLE_V3 tanımlanmışsa, bu işlevin etkilene sürümleri etkinleştirmesi herhangi bir etkisi olmaz.*
+
+SNMP Aracısı, nx_snmp_agent_get_current_version hizmeti kullanılarak alınan en son SNMP *paketinin SNMP sürümünü* alabilir.
+
+## <a name="snmpv3-discovery"></a>SNMPv3 Bulma
 
 SNMPv3 için etkinleştirildiyse SNMP Aracısı, SNMP yöneticisinden bulma isteklerine yanıt verir. Bu tür bir istek, yetkili altyapı KIMLIĞI, Kullanıcı adı, önyükleme sayısı ve önyükleme süresi için null değerleri olan güvenlik parametresi verileri içerir. Kimlik doğrulama parametreleri bulma iletisine uygulanmaz. İstekteki değişken bağlama listesi boş (sıfır öğe içeriyor). SNMP Aracısı, sıfır önyükleme süresi ve sayısı ile yanıt verir ve bilinmeyen (null) bir altyapı KIMLIĞIYLE alınan isteklerin sayısı olan 1 item, *Usmstatsunknownengineıds*' ı içeren değişken bağlama listesidir. Tarayıcıdan/yöneticisinden sonraki GETNEXT isteğinde, önyükleme verileri ve güvenlik parametreleri yalnızca güvenlik etkinse doldurulur. Bu durumda, PDU 'da NotInTime veri güncelleştirmesi de gönderilir. Güvenlik parametreleri, örneğin, kimlik doğrulama aracının yöneticinin kimliğini yöneticiye kanıtlamasını sağlar.
 

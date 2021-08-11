@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ca0fee443c23fd1bdd34651f4a7b31cf71f886f0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e8e4da0f9591fd0b5d6249292f00266d96ccb67923c42632a4cfd8c39fa1f129
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825486"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799124"
 ---
 # <a name="chapter-5---module-manager-apis"></a>Bölüm 5-Modül Yöneticisi API 'Leri
 
@@ -49,7 +49,7 @@ UINT txm_module_manager_external_memory_enable(
      UINT attributes);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, modülün erişebileceği paylaşılan bellek bölgesi için bellek yönetimi donanım tablosunda bir giriş oluşturur.
 
@@ -106,7 +106,7 @@ UINT txm_module_manager_file_load(
     CHAR *file_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyada bulunan modülün ikili görüntüsünü modül bellek alanına yükler ve yürütülmek üzere hazırlar. Belirtilen medyanın zaten açık olduğu varsayılır.
 
@@ -174,7 +174,7 @@ UINT txm_module_manager_in_place_load(
     VOID *location);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, modülün veri alanını yalnızca modül bellek alanına yükler ve yürütülmek üzere hazırlar. Modül kodu yürütme, belirtilen konumdaki modül girişi tarafından belirtilen adres uzaklığında yerinde olacaktır.
 
@@ -235,7 +235,7 @@ UINT txm_module_manager_initialize(
     ULONG module_memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet modül yöneticisinin iç kaynaklarını, modülleri yüklemek için kullanılan bellek alanı dahil olmak üzere başlatır.
 
@@ -277,7 +277,7 @@ Bellek yönetimi donanımını başlatın.
 UINT txm_module_manager_initialize_mmu(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, MMU başlatır.
 
@@ -318,7 +318,7 @@ UINT txm_module_manager_maximum_module_priority_set(
          UINT priority);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir modülde izin verilen en fazla iş parçacığı önceliğini ayarlar.
 
@@ -361,7 +361,7 @@ UINT txm_module_manager_memory_fault_notify(
      VOID (*notify_function)(TX_THREAD *, MODULE_INSTANCE *));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama belleği hata bildirimi geri arama işlevini Modül Yöneticisi ile kaydeder. Bir bellek hatası oluşursa, bu işlev sorunlu iş parçacığına ve soruna neden olan iş parçacığına karşılık gelen modül örneğine yönelik bir işaretçi ile çağırılır. Modül Yöneticisi işlemi, sorunlu iş parçacığını otomatik olarak sonlandırır, ancak modüldeki diğer iş parçacıklarını bırakır. Bellek hatası ile ilişkili modülle ne yapacağına karar vermek uygulamaya kadar yapılır.
 
@@ -404,7 +404,7 @@ UINT txm_module_manager_memory_load (
     VOID *location);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, modülün kodunu ve veri alanını ***txm_module_manager_initialize*** tarafından ayarlanan modül bellek alanına yükler ve yürütülmek üzere hazırlar.
 
@@ -462,7 +462,7 @@ UINT txm_module_manager_object_pool_create(
     ULONG pool_memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, modüllerin ThreadX/NetX nesneleri ayırabilecek bir modül Yöneticisi nesne bellek havuzu oluşturur ve bu sayede sistem nesnesini modülün bellek alanından ayırır.
 
@@ -510,7 +510,7 @@ UINT txm_module_manager_properties_get(
     ULONG *module_properties_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir modülün (giriş bölümünde belirtilen) özellikleri döndürür.
 
@@ -560,7 +560,7 @@ Modülün yürütülmesini başlatın.
 UINT txm_module_manager_start(TXM_MODULE_INSTANCE *module_instance);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen, zaten yüklü olan modülün yürütülmesini başlatır.
 
@@ -612,7 +612,7 @@ Modülün yürütülmesini durdurun.
 UINT txm_module_manager_stop(TXM_MODULE_INSTANCE *module_instance);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet daha önce yüklenmiş ve başlatılmış bir modülü durduruyor. Modül durdurulduğunda modülün isteğe bağlı durdurma iş parçacığını yürütme, tüm iş parçacıklarını sonlandırma ve modülle ilişkili tüm kaynakları silme dahildir.
 
@@ -664,7 +664,7 @@ Modülü kaldırın.
 UINT txm_module_manager_unload(TXM_MODULE_INSTANCE *module_instance);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce yüklenmiş ve durdurulmuş modülünü kaldırır ve tüm ilişkili modül bellek kaynaklarını serbest bırakır.
 

@@ -1,28 +1,28 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo MTP Istemci hizmetlerinin açıklaması
-description: Bu bölüm, tüm NetX Duo MTP istemci hizmetlerinin alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo PTP Azure RTOS Hizmetlerinin Açıklaması
+description: Bu bölümde, tüm NetX Duo PTP istemci hizmetlerinin alfabetik sırada bir açıklaması yer almaktadır.
 author: v-condav
 ms.author: v-condav
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b4cdeca81c157934e35a219cd5535ec38f2c0746
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 686db68181e3712f9f6a09a9f471626eff610fd7f45ec5b83ba56f8b7aa378cc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825804"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798019"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-ptp-client-services"></a>Bölüm 3-Azure RTOS NetX Duo MTP Istemci hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-ptp-client-services"></a>Bölüm 3 - NetX Duo PTP Azure RTOS Hizmetlerinin Açıklaması
 
-Bu bölüm, tüm NetX Duo MTP istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde, tüm NetX Duo PTP istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
 [!NOTE]
-> *Aşağıdaki API işlevi açıklamalarındaki **dönüş değerleri** bölümünde **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.*
+> *Aşağıdaki API **işlevi açıklamalarında** yer alan Dönüş Değerleri bölümünde, **KALıN** olmayan değerler tamamen devre dışı **bırakılırken,** BOLD NX_DISABLE_ERROR_CHECKING API hata denetimi devre dışı bırakmak için kullanılan tanımdan etkilenmez.*
 
 ## <a name="nx_ptp_client_create"></a>nx_ptp_client_create
 
-Bir PTP istemci örneği oluşturun.
+PTP istemci örneği oluşturun.
 
 ### <a name="prototype"></a>Prototype
 
@@ -38,32 +38,32 @@ UINT nx_ptp_client_create(
     VOID *clock_callback_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PTP Client 'ın bir örneğini oluşturur.
+Bu hizmet PTP istemcisinin bir örneğini oluşturur.
 
-Uygulamanın, bir IP örneği ve MTP istemcisinin paketleri aktarabilmesi için bir paket havuzu oluşturması gerektiğini unutmayın. Uygulama, paket havuzu için IP örneğinde aynı paket havuzunu kullanabilir. veya, PTP istemcisi için adanmış bir paket havuzu oluşturabilir.  Adanmış paket havuzu yaklaşımı, küçük paketleri (IPv6 kullanılıyorsa 128 bayt paketi veya yalnızca IPv4 için 108 bayt) kullanmanın avantajlarından yararlanır.
+Uygulamanın önce bir IP örneği ve PTP istemcisinin paketleri iletmesi için bir paket havuzu oluşturması gerektiğini unutmayın. Paket havuzu için, uygulama IP örneğinde aynı paket havuzunu kullanabilir; veya PTP istemcisi için ayrılmış bir paket havuzu oluşturabilir.  Ayrılmış paket havuzu yaklaşımı, küçük paketler (IPv6 kullanılıyorsa 128 bayt paket veya yalnızca IPv4 için 108 bayt) kullanma avantajına sahiptir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
-* **ip_ptr** IP örneği işaretçisi
-* **interface_index** PTP Network arabiriminin dizini
-* **packet_pool_ptr** İstemci paket havuzu işaretçisi
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
+* **ip_ptr** IP örneğine işaretçi
+* **interface_index** PTP ağ arabirimi dizini
+* **packet_pool_ptr** İstemci paket havuzunun işaretçisi
 * **thread_priority**  PTP iş parçacığının önceliği
 * **thread_stack** İş parçacığı yığını işaretçisi
 * **stack_size** İş parçacığı yığınının boyutu
-* **clock_callback** PTP Clock geri çağırma
-* **clock_callback_data** Saat geri çağırması için veriler
+* **clock_callback** PTP saat geri çağırma
+* **clock_callback_data** Saat geri arama verileri
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla oluşturuldu
-* **NX_PTP_CLIENT_INSUFFICIENT_PACKET_PAYLOAD** (0xd04) paket yükü çok küçük
-* **NX_PTP_CLIENT_CLOCK_CALLBACK_FAILURE** (0xd05) saat geri aramasında hata
-* **durum** NetX Duo ve ThreadX hizmeti çağrılarının durum bitimi
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
-* NX_INVALID_INTERFACE (0x4C) geçersiz arabirim
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla oluşturuldu
+* **NX_PTP_CLIENT_INSUFFICIENT_PACKET_PAYLOAD** (0xD04) Paket yükü çok küçük
+* **NX_PTP_CLIENT_CLOCK_CALLBACK_FAILURE** geri 0xD05 üzerinde hata (0xD05) hatası
+* **durum** NetX Duo ve ThreadX hizmet çağrılarının durum tamamlaması
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
+* NX_INVALID_INTERFACE (0x4C) Geçersiz arabirim
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -78,7 +78,7 @@ status = nx_ptp_client_create(&ptp_client, &ip_0, 0, &pool_0,
 
 ## <a name="nx_ptp_client_delete"></a>nx_ptp_client_delete
 
-Bir PTP istemci örneğini siler.
+PTP istemci örneğini siler.
 
 ### <a name="prototype"></a>Prototype
 
@@ -86,18 +86,18 @@ Bir PTP istemci örneğini siler.
 UINT nx_ptp_client_delete(NX_PTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PTP istemcisinin bir örneğini siler.
+Bu hizmet PTP istemcisinin bir örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Silinecek PTP Client işaretçisi
+* **client_ptr** PtP istemcisinin silinecek işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla silindi
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla silindi
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -110,7 +110,7 @@ status = nx_ptp_client_delete(&ptp_client);
 
 ## <a name="nx_ptp_client_master_info_get"></a>nx_ptp_client_master_info_get
 
-Ana saat bilgilerini alın.
+Ana saat bilgilerini alır.
 
 ### <a name="prototype"></a>Prototype
 
@@ -130,29 +130,29 @@ UINT nx_ptp_client_master_info_get(
     UCHAR *time_source);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet, ana saat bilgilerini alır. Ana denetim bloğu, olay geri çağırma işlevi aracılığıyla kullanıcı uygulamasına geçirilir.
+### <a name="description"></a>Description
+Bu hizmet ana saat bilgilerini alır. Ana denetim bloğu, olay geri çağırma işlevi aracılığıyla kullanıcı uygulamasına geçirildi.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 * **master_ptr** PTP ana saati işaretçisi
-* **Adres** Ana saatin adresi
+* **adres** Ana saatin adresi
 * **port_identity** PTP ana bağlantı noktası ve kimliği
-* **port_identity_length** PTP ana bağlantı noktasının ve kimliğin uzunluğu
-* **Priority1** Priority1 of PTP Master saati
-* **priority2** Priority2 of PTP Master saati
-* **clock_class** PTP Master saatinin sınıfı
-* **clock_accuracy** PTP Master saatinin doğruluğu
-* **clock_variance** PTP Master saatinin varyansı
-* **grandmaster_identity** Ana saatin kimliği
-* **grandmaster_identity_length** Ana kimliğin uzunluğu
-* **steps_removed** Adımlar, PTP başlığından kaldırıldı
-* **time_source** Ana saat tarafından kullanılan zamanlayıcı kaynağı
+* **port_identity_length** PTP ana bağlantı noktası ve kimliğinin uzunluğu
+* **priority1** PTP ana saatinin Priority1'i
+* **priority2** PTP ana saatinin Önceliği2
+* **clock_class** PTP ana saati sınıfı
+* **clock_accuracy** PTP ana saatinin doğruluğu
+* **clock_variance** PTP ana saatinin varyansı
+* **grandmaster_identity** 14. saatin kimliği
+* **grandmaster_identity_length** 1. Kimlik Uzunluğu
+* **steps_removed** PTP üst bilgilerinden kaldırılan adımlar
+* **time_source** Süreölçer tarafından kullanılan zamanlayıcı kaynağı
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) ana saat bilgilerini başarıyla alın
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) Ana saat bilgilerini başarıyla alın
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -194,7 +194,7 @@ UCHAR time_source;
 
 ## <a name="nx_ptp_client_packet_timestamp_notify"></a>nx_ptp_client_packet_timestamp_notify
 
-PTP Client 'ı paketin zaman damgasına bildirme.
+PTP istemcisine paketin zaman damgasını bildir.
 
 ### <a name="prototype"></a>Prototype
 
@@ -205,18 +205,18 @@ VOID nx_ptp_client_packet_timestamp_notify(
     NX_PTP_TIME *timestamp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet, PTP istemcisine paketin zaman damgasıyla iletildiğini bildirir. Bu hizmet ağ sürücüsü için tasarlanmıştır ve paket iletildiğinde çağrılır. Zaman damgası genellikle donanım tarafından oluşturulur.
+### <a name="description"></a>Description
+Bu hizmet, PTP istemcisine paketin zaman damgasıyla iletil olduğunu belirtir. Bu hizmet, ağ sürücüsü için tasarlanmıştır ve paket iletilirken çağrılır. Zaman damgası genellikle donanım tarafından oluşturulur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
-* **packet_ptr** Aktarılan PTP paketi işaretçisi
-* **timestamp_ptr** MTP paketinin zaman damgası işaretçisi
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
+* **packet_ptr** İletilen PTP paketi işaretçisi
+* **timestamp_ptr** PTP paketinin zaman damgasına işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
-Yok
+Hiçbiri
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -227,7 +227,7 @@ nx_ptp_client_packet_timestamp_notify(client_ptr, packet_ptr, &ts);
 
 ## <a name="nx_ptp_client_soft_clock_callback"></a>nx_ptp_client_soft_clock_callback
 
-Bir PTP saatinin yazılım uygulama.
+PTP saatinin yazılım uygulaması.
 
 ### <a name="prototype"></a>Prototype
 
@@ -240,28 +240,28 @@ UINT nx_ptp_client_soft_clock_callback(
     VOID *callback_data);
 ```
 
-### <a name="description"></a>Açıklama
-Bu geri çağırma işlevi, PTP için benzetimli düşük çözünürlüklü saat kaynağı olarak görev yapar. Bu yordam bir başvuru olarak sağlanır ve üretim için kullanılamaz.
+### <a name="description"></a>Description
+Bu geri çağırma işlevi, PTP için düşük çözünürlüklü bir saat kaynağı simülasyonu işlevi gösterir. Bu yordam bir başvuru olarak sağlanır ve üretim için kullanılamaz.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
-* **işlem** Geri çağırma işlemi, geçerli değerler şu şekilde tanımlanır:
-  * **NX_PTP_CLIENT_CLOCK_INIT** Saati başlatın.
-  * **NX_PTP_CLIENT_CLOCK_SET** Tarafından belirtilen geçerli zaman damgasını ayarla `time_ptr` .
-  * **NX_PTP_CLIENT_CLOCK_GET** Geçerli zaman damgasını döndürür `time_ptr` .
-  * **NX_PTP_CLIENT_CLOCK_PACKET_TS_EXTRACT** Zaman damgasını konumundan `packet_ptr` ayıklayın `time_ptr` .
-  * **NX_PTP_CLIENT_CLOCK_ADJUST** Geçerli zaman damgasını *1* saniyeden az ayarlayın.
-  * **NX_PTP_CLIENT_CLOCK_PACKET_TS_PREPARE** `packet_ptr` PTP Client ' ın aktarıldığı zaman damgasına bildirilmesini gerektiren öğesini işaretleyin.
-  * **NX_PTP_CLIENT_CLOCK_SOFT_TIMER_UPDATE** Geçici zamanlayıcıyı güncelleştir. Bu, donanım saati tarafından yoksayılabilir.
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
+* **işlemi** Geri çağırma işlemi, geçerli değerler şu şekilde tanımlanır:
+  * **NX_PTP_CLIENT_CLOCK_INIT** Saati başlatma.
+  * **NX_PTP_CLIENT_CLOCK_SET** tarafından belirtilen geçerli zaman damgasını `time_ptr` ayarlayın.
+  * **NX_PTP_CLIENT_CLOCK_GET** Geçerli zaman damgasını olarak `time_ptr` iade.
+  * **NX_PTP_CLIENT_CLOCK_PACKET_TS_EXTRACT** zaman damgasını 'den 'ye `packet_ptr` `time_ptr` ayıklar.
+  * **NX_PTP_CLIENT_CLOCK_ADJUST** Geçerli zaman damgasını *1 saniyenin altında ayarlayın.*
+  * **NX_PTP_CLIENT_CLOCK_PACKET_TS_PREPARE** İletilen `packet_ptr` zaman damgasını PTP istemcisine bildirmeyi gerektiren 'i işaretlendi.
+  * **NX_PTP_CLIENT_CLOCK_SOFT_TIMER_UPDATE** Yazılım zamanlayıcıyı güncelleştirin. Donanım saati tarafından yoksayılabilir.
 * **time_ptr** Zaman damgası işaretçisi.
 * **packet_ptr** Paket işaretçisi.
-* **callback_data** Donuk geri çağırma verileri işaretçisi.
+* **callback_data** Opak geri çağırma verilerine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* Işlem başarıyla **NX_SUCCESS** (0x00)
-* **NX_PTP_PARAM_ERROR** (0xd03) geçersiz parametre
+* **NX_SUCCESS** (0x00) İşlem başarıyla
+* **NX_PTP_PARAM_ERROR** (0xD03) Geçersiz parametre
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 PTP iç
 
 ### <a name="example"></a>Örnek
@@ -275,7 +275,7 @@ status = nx_ptp_client_create(&ptp_client, &ip_0, 0, &pool_0,
 
 ## <a name="nx_ptp_client_start"></a>nx_ptp_client_start
 
-PTP Client 'ı başlatın.
+PTP istemcisini başlatma.
 
 ### <a name="prototype"></a>Prototype
 
@@ -290,25 +290,25 @@ UINT nx_ptp_client_start(
     VOID *event_callback_data)
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet daha önce oluşturulmuş bir PTP istemci örneğini başlatır.
+### <a name="description"></a>Description
+Bu hizmet, önceden oluşturulmuş bir PTP istemci örneğini başlatır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
-* **client_port_identity_ptr** İstemci bağlantı noktası ve kimlik işaretçisi, NULL olabilir
-* **client_port_identity_length** İstemci bağlantı noktası ve kimlik uzunluğu. Client_port_identity_ptr NULL veya NX_PTP_CLOCK_PORT_IDENTITY_SIZE (10) ise 0 olmalıdır
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
+* **client_port_identity_ptr** İstemci bağlantı noktası ve kimliği işaretçisi, NULL olabilir
+* **client_port_identity_length** İstemci bağlantı noktası ve kimliği uzunluğu. NULL veya null ise client_port_identity_ptr (10) NX_PTP_CLOCK_PORT_IDENTITY_SIZE 0 olmalıdır
 * **etki alanı** PTP saat etki alanı
 * **transport_specific** 4 bit aktarıma özgü
-* **event_callback** Geri çağırma işlevi olayda çağrıldı
-* **event_callback_data** Olay geri çağırması için veriler
+* **event_callback** Olay üzerinde çağrılan geri çağırma işlevi
+* **event_callback_data** Olay geri çağırma verileri
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla başlatıldı
-* **NX_PTP_CLIENT_ALREADY_STARTED** (0xd02) MTP istemcisi zaten başlatılmış
-* **durum** NetX Duo ve ThreadX hizmeti çağrılarının durum bitimi
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla başlatıldı
+* **NX_PTP_CLIENT_ALREADY_STARTED** (0xD02) PTP istemcisi zaten başlatıldı
+* **durum** NetX Duo ve ThreadX hizmet çağrılarının durum tamamlaması
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -320,7 +320,7 @@ status = nx_ptp_client_start(&ptp_client, NX_NULL, 0, 0, 0, ptp_event_callback, 
 
 ## <a name="nx_ptp_client_stop"></a>nx_ptp_client_stop
 
-PTP Client 'ı durdurun.  PTP Client durdurulduktan sonra, PTP paketlerini işlemez veya PTP paketlerini iletmez.
+PTP istemcisini durdurun.  PTP istemcisi durdurulduktan sonra, PTP paketlerini işlemez ve PTP paketlerini iletmez.
 
 ### <a name="prototype"></a>Prototype
 
@@ -328,18 +328,18 @@ PTP Client 'ı durdurun.  PTP Client durdurulduktan sonra, PTP paketlerini işle
 UINT nx_ptp_client_stop(NX_PTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet daha önce oluşturulmuş ve başlatılmış bir PTP istemci örneğini durduruyor.
+### <a name="description"></a>Description
+Bu hizmet, önceden oluşturulmuş ve başlatılan bir PTP istemci örneğini durdurur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Durdurulacak PTP Client işaretçisi
+* **client_ptr** PtP istemcisinin durdurmak için işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla durduruldu
-* **NX_PTP_CLIENT_NOT_STARTED** (0xd01) istemci başlatılmadı
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla durduruldu
+* **NX_PTP_CLIENT_NOT_STARTED** (0xD01) İstemcisi başlamadı
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -351,7 +351,7 @@ status = nx_ptp_client_stop(&ptp_client);
 
 ## <a name="nx_ptp_client_sync_info_get"></a>nx_ptp_client_sync_info_get
 
-Eşitleme bilgilerini alın.
+Eşitleme bilgilerini al.
 
 ### <a name="prototype"></a>Prototype
 
@@ -362,19 +362,19 @@ UINT nx_ptp_client_sync_info_get(
     SHORT *utc_offset);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet, eşitleme iletisi bilgilerini alır. Eşitleme denetim bloğu, olay geri çağırma işlevi aracılığıyla kullanıcı uygulamasına geçirilir.
+### <a name="description"></a>Description
+Bu hizmet Eşitleme iletisi bilgilerini alır. Eşitleme denetim bloğu, olay geri çağırma işlevi aracılığıyla kullanıcı uygulamasına geçirildi.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
-* **bayraklar** Eşitleme iletisindeki bayraklar
-* **utc_offset** Day ile UTC arasındaki fark
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
+* **bayraklar** Eşitleme iletisinde bayraklar
+* **utc_offset** UTC ile UTC arasında uzaklık
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) eşitleme bilgilerini başarıyla alın
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) Eşitleme bilgilerini başarıyla al
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -410,18 +410,18 @@ UINT nx_ptp_client_time_get(
     NX_PTP_TIME *time_ptr);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet, PTP saatinin geçerli değerini alır. Her ne zaman bir PTP istemcisi ana saatle eşitlenmez.
+### <a name="description"></a>Description
+Bu hizmet PTP saatinin geçerli değerini alır. PTP istemcisi ana saatle eşitlenmiş veya eşitlenmese de kullanılabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
 * **time_ptr** PTP saati işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla oluşturuldu
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla oluşturuldu
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -442,19 +442,19 @@ UINT nx_ptp_client_time_set(
     NX_PTP_TIME *time_ptr);
 ```
 
-### <a name="description"></a>Açıklama
-Bu hizmet, PTP saatinin geçerli değerini ayarlar. PTP Client başlamadan önce çağrılması gerekir.
+### <a name="description"></a>Description
+Bu hizmet PTP saatinin geçerli değerini ayarlar. PTP istemcisi başlamadan önce çağrılmalı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
-* **client_ptr** Oluşturulacak PTP Client işaretçisi
+* **client_ptr** Oluşturmak için PTP istemcisi işaretçisi
 * **time_ptr** PTP saati işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
-* **NX_SUCCESS** (0x00) istemci başarıyla oluşturuldu
-* **NX_PTP_CLIENT_ALREADY_STARTED** (0xd02) MTP istemcisi zaten başlatılmış
-* NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+* **NX_SUCCESS** (0x00) İstemcisi başarıyla oluşturuldu
+* **NX_PTP_CLIENT_ALREADY_STARTED** (0xD02) PTP istemcisi zaten başlatıldı
+* NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
@@ -465,7 +465,7 @@ status = nx_ptp_client_time_set(&ptp_client, &tm);
 
 ## <a name="nx_ptp_client_utility_convert_time_to_date"></a>nx_ptp_client_utility_convert_time_to_date
 
-PTP Time saatini UTC Tarih ve saatine dönüştürür.
+PTP saat bir UTC tarih ve saat dönüştürme.
 
 ### <a name="prototype"></a>Prototype
 
@@ -476,7 +476,7 @@ UINT nx_ptp_client_utility_convert_time_to_date(
     NX_PTP_DATE_TIME *date_time_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 Bu hizmet, PTP Time süresini UTC Tarih ve saatine dönüştürür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
@@ -513,7 +513,7 @@ UINT nx_ptp_client_utility_time_diff(
     NX_PTP_TIME *result_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 Bu hizmet iki MTP saati arasındaki farkı hesaplar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c28ad0255f99986a4ddfe5faefad81e70840e5e0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 711195e60771ebd467c69df49ef7665f32e13a17c21ca839404e829449cf1401
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825685"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797976"
 ---
 # <a name="chapter-3---functional-description-of-azure-rtos-netx-secure"></a>Bölüm 3-Azure RTOS NetX güvenliği için Işlevsel açıklama
 
@@ -147,7 +147,7 @@ Her iki modda da NetX güvenli TLS, uzak ana bilgisayar ile bir TCP yuvası (***
 
 Bir TCP yuvasına ek olarak, NetX güvenli TLS sunucu modu, bağlanan TLS istemcisine TLS sunucusunu tanımlamak için kullanılan bir belge olan *dijital bir sertifika* ve genellikle RSA şifreleme algoritması için karşılık gelen *özel anahtarı* sertifikalar gerektirir. International Telekomünikasyon Birliği X. 509.440 standart, TLS tarafından kullanılan sertifika biçimini belirtir ve X. 509.952 dijital sertifikaları oluşturmak için çok sayıda yardımcı program vardır.
 
-NetX güvenli TLS için, X. 509.440 sertifikası ASN. 1 ' in Distinguished Encoding Rules (DER) biçimi kullanılarak ikili kodlanmış olmalıdır. DER, sertifikalar için Standart TLS-kablolu ikili biçimidir.
+netx güvenli TLS için, X. 509.440 sertifikası ASN. 1 ' in Distinguished Encoding Rules (DER) biçimi kullanılarak ikili kodlanmış olmalıdır. DER, sertifikalar için Standart TLS-kablolu ikili biçimidir.
 
 Belirtilen sertifikayla ilişkili özel anahtar DER-Encoded PKCS # 1 biçiminde olmalıdır. Özel anahtar yalnızca cihazda kullanılır ve hiçbir şekilde kablo üzerinden aktarılmaz. TLS iletişimleri için güvenlik sağlayan özel anahtarları güvende tutun!
 
@@ -179,182 +179,182 @@ NetX güvenli TLS uygulamaları, genellikle ThreadX RTOS altında çalışan uyg
 
 TLS, işlemci yoğunluklu işlemler olan şifreleme yordamlarının yoğun bir şekilde kullanılmasını sağlar. Genellikle, bu işlemler çağıran iş parçacığı bağlamında gerçekleştirilir.
 
-### <a name="tls-session-start"></a>TLS oturumu başlatma
+### <a name="tls-session-start"></a>TLS Oturumu Başlatma
 
-TLS, çalışması için temeldeki bir aktarım katmanı ağı Protokolü gerektirir. Genellikle kullanılan protokol TCP 'dir. NetX güvenli bir TLS oturumu oluşturmak için, NetX/NetXDuo TCP API 'SI kullanılarak bir TCP bağlantısı kurulması gerekir. Bir **NX_TCP_SOCKET** oluşturulmalı ve bir bağlantı oluşturulması gerekir **_nx_tcp_server_socket_listen_*_ ve _*_nx_tcp_server_socket_accept_*_ Hizmetleri (TLS sunucusu için) veya _*_nx_tcp_client_socket_connect_** hizmeti (TLS istemcisi için).
+TLS'nin çalışması için temel alınan bir aktarım katmanı ağ protokolü gerekir. Kullanılan protokol genellikle TCP'dir. NetX Güvenli TLS oturumu oluşturmak için NetX/NetXDuo TCP API'si kullanılarak bir TCP bağlantısı kurulması gerekir. Bir **NX_TCP_SOCKET** ve nx_tcp_server_socket_listen _ ve _ nx_tcp_server_socket_accept _ hizmetleri ***(TLS Sunucusu için)*** veya _ nx_tcp_client_socket_connect hizmeti (TLS İstemcisi için) kullanılarak bir bağlantı oluşturularak oluşturulmuş olması gerekir.
 
-TCP bağlantısı kurulduktan sonra, TCP yuvası ***nx_secure_tls_session_start*** hizmetine geçirilir.
+TCP bağlantısı kurulduktan sonra TCP yuvası, tcp nx_secure_tls_session_start ***geçirebilirsiniz.***
 
-### <a name="tls-packet-allocation"></a>TLS paket ayırma
+### <a name="tls-packet-allocation"></a>TLS Paket Ayırma
 
-NetX güvenli TLS, _*_nx_packet_allocate_*_ hizmetini çağırmak yerine NETX/NetXDuo TCP (***NX_PACKET** _) ile aynı paket yapısını kullanır. bu nedenle, TLS üstbilgisi için alanın doğru ayrılabileceği şekilde _ *_nx_secure_tls_packet_allocate_** hizmetinin çağrılması gerekir.
+NetX Secure TLS, NetX/NetXDuo TCP (***NX_PACKET** _) ile aynı paket yapısını kullanır. Tek tek _*_durum, nx_packet_allocate_*_ hizmetinin çağrılması yerine _ *_nx_secure_tls_packet_allocate_** hizmetinin çağrılması ve TLS üst bilgisi için alan doğru şekilde ayrılmış olmasıdır.
 
-### <a name="tls-session-send"></a>TLS oturumu gönderme
+### <a name="tls-session-send"></a>TLS Oturum Gönderme
 
-TLS oturumu başladıktan sonra uygulama, ***nx_secure_tls_session_send** _ hizmetini kullanarak veri gönderebilir. Gönderme hizmeti, gönderilen verileri içeren bir _*_NX_PACKET_*_ veri yapısı alarak _*_nx_tcp_socket_send_*_ hizmeti için kullanılan özdeş, yalnızca bu veriler GÖNDERILMEDEN önce NX güvenli TLS yığını tarafından şifrelenir ve bu paket _ *_nx_secure_tls_packet_allocate_* * kullanılarak ayrılmalıdır.
+TLS oturumu başlatıldıktan sonra uygulama , * nx_secure_tls_session_send _ **hizmetini** kullanarak veri gönderebilir. Gönderme hizmeti, gönderilen verileri içeren _*_bir NX_PACKET_*_ veri _**_ yapısını alarak nx_tcp_socket_send hizmetiyle aynıdır; yalnızca bu veriler gönderilmeden önce NX Güvenli TLS yığını tarafından şifrelenir ve paket _* nx_secure_tls_packet_allocate **_kullanılarak ayrılır._
 
-### <a name="tls-session-receive"></a>TLS oturum alma
+### <a name="tls-session-receive"></a>TLS Oturumu Alma
 
-TLS oturumu başladıktan sonra uygulama, ***nx_secure_tls_session_receive** _ hizmetini kullanarak veri almaya başlayabilir. TLS oturumu gönderme gibi, bu hizmet, gelen verilerin, paket yapısına döndürülmeden önce TLS yığını tarafından şifresinin çözülmesi ve doğrulanması dışında _ *_nx_tcp_socket_receive_* * ile aynıdır.
+TLS oturumu başlatıldıktan sonra uygulama , * nx_secure_tls_session_receive _ **hizmetini kullanarak veri almaya** başlayabilir. TLS Oturumu gönderme işlemi gibi bu hizmet de _*_nx_tcp_socket_receive_** ile aynıdır, ancak gelen verilerin şifresi çözülmüş ve paket yapısında döndürülmeden önce TLS yığını tarafından doğrulanmıştır.
 
-### <a name="tls-session-close"></a>TLS oturumu kapatma
+### <a name="tls-session-close"></a>TLS Oturumu Kapatma
 
-Bir TLS oturumu tamamlandıktan sonra, oturumu kapatmak için hem TLS istemcisi hem de sunucunun diğer tarafa bir CloseNotify uyarısı gönderebilmesi gerekir. Başarılı bir oturumun kapatılmasını sağlamak için her iki taraf da uyarıyı alıp işlemelidir.
+Bir TLS oturumu tamamlandıktan sonra hem TLS istemcisinin hem de sunucunun oturumu kapatmak için diğer tarafa bir CloseNotify uyarısı göndermesi gerekir. Oturumun başarıyla kapatılması için her iki taraf da uyarıyı almalı ve işlemeli.
 
-Uzak ana bilgisayar bir CloseNotify uyarısı gönderirse, ***nx_secure_tls_session_receive** _ hizmetine yapılan tüm çağrılar uyarıyı işler, karşılık gelen uyarıyı uzak ana bilgisayara geri gönderir ve _ *_NX_SECURE_TLS_SESSION_CLOSED_* * değerini döndürür. Oturum kapatıldıktan sonra, bu TLS oturumuyla veri gönderme veya alma girişimleri başarısız olur.
+Uzak konak bir CloseNotify uyarısı gönderirse, ***nx_secure_tls_session_receive** _ hizmetine yapılan çağrılar uyarıyı işler, ilgili uyarıyı uzak ana bilgisayara geri gönderir ve _* NX_SECURE_TLS_SESSION_CLOSED **_değerini_ geri gönderir. Oturum kapatıldıktan sonra, bu TLS oturumuyla başka veri gönderme veya alma girişimleri başarısız olur.
 
-Uygulama TLS oturumunu kapatmayı istiyorsa, ***nx_secure_tls_session_end** _ hizmeti çağrılmalıdır. Hizmet, CloseNotify uyarısını gönderir ve yanıt CloseNotify 'ı işler. Yanıt alınmıyorsa, TLS oturumunun düzgün kapatılmadığını belirten bir hata değeri olan _ *_NX_SECURE_TLS_SESSION_CLOSE_FAIL_** döndürülür.
+Uygulama TLS oturumunu kapatmak isterse ***** nx_secure_tls_session_end _ hizmetinin çağrılsı gerekir. Hizmet CloseNotify uyarıyı gönderir ve CloseNotify yanıtını işler. Yanıt alınmazsa, TLS *_oturumunun_* temiz bir şekilde kapatılamayarak olası bir güvenlik ihlali olduğunu belirten _ NX_SECURE_TLS_SESSION_CLOSE_FAIL * hata değeri döndürülür.
 
-### <a name="tls-alerts"></a>TLS uyarıları
+### <a name="tls-alerts"></a>TLS Uyarıları
 
-TLS, en yüksek güvenliği sağlamak üzere tasarlanmıştır, bu nedenle protokoldeki tüm hatalı davranışlar olası bir güvenlik ihlali olarak kabul edilir. Bu nedenle, ileti işleme veya şifreleme/şifre çözme işlemlerinin her türlü hatası, el sıkışma veya oturumu hemen sonlandıran önemli hatalar olarak değerlendirilir.
+TLS maksimum güvenlik sağlayacak şekilde tasarlanmıştır, bu nedenle protokolde herhangi bir hata davranışı olası bir güvenlik ihlali olarak kabul edilir. Bu nedenle, ileti işleme veya şifreleme/şifre çözme hataları el sıkışmayı veya oturumu hemen sonlandıran önemli hatalar olarak kabul edilir.
 
-Yerel bir uygulamadaki hataların işlenmesi oldukça basittir, uzak Konağın durumu düzgün bir şekilde işlemek ve olası güvenlik ihlallerinin oluşmasını engellemek için bir hata oluştuğunu bilmesi gerekir. Bu nedenle, TLS uzak ana bilgisayara herhangi bir hata üzerine bir *Uyarı* iletisi gönderir.
+Yerel bir uygulamanın hatalarını işlemek nispeten basit bir işlemdir ancak uzak ana bilgisayarın durumu düzgün bir şekilde ele almak ve olası güvenlik ihlallerini önlemek için bir hata olduğunu biliyor olması gerekir. Bu nedenle TLS, herhangi bir hata *üzerine* uzak ana bilgisayara bir Uyarı iletisi gönderir.
 
-Uyarılar, diğer TLS iletileriyle aynı şekilde değerlendirilir ve bir saldırganın, belirtilen uyarı türünden bilgi toplamasını engellemek için oturum sırasında şifrelenir. El sıkışma sırasında gönderilen uyarılar, olası bir saldırgan tarafından elde edilen bilgi miktarını sınırlamak için kapsamda sınırlanır.
+Uyarılar diğer TLS iletileriyle aynı şekilde ele alınarak, bir saldırganın sağlanan uyarı türünden bilgi toplamasını önlemek için oturum sırasında şifrelenir. El sıkışma sırasında, olası bir saldırgan tarafından elde edilecek bilgi miktarını sınırlamak için gönderilen uyarılar kapsamda sınırlıdır.
 
-TLS oturumunu kapatmak için kullanılan CloseNotify uyarısı, önemli olmayan tek uyarıdır. Bir uyarı olarak kabul edildiği ve uyarı iletisi olarak gönderildiği sürece bir CloseNotify, bir hata oluştuğunu belirtmeyen diğer uyarıların aksine.
+TLS oturumunu kapatmak için kullanılan CloseNotify uyarısı, önemli olmayan tek uyarıdır. Uyarı olarak kabul edilir ve uyarı iletisi olarak gönderilir ancak CloseNotify, hata olduğunu belirten diğer uyarılara benze değildir.
 
-Uyarı değeri ve "düzey" (düzeyler "uyarı" ve "önemli", TLS uyarıları en çok "önemli"), TLS RFC 'lerde tanımlanmıştır ve oluşan hata türünü gösterir. CloseNotify dışındaki çoğu TLS uyarısı, olası bir güvenlik sorunu göstergesi olarak düşünülebilir ve TLS oturumunun veya el sıkışmasının iptal edilmesine neden olur. Herhangi bir TLS API çağrısı **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) DÖNDÜRÜRSE, apı hizmeti **_Nx_secure_tls_session_alert_value_get_** (NETX güvenli TLS sürüm 5,12 ' de yenidir), güvenlik sorunlarına yönelik yanıtlarla ilgili herhangi bir kararta kullanılacak şekilde, uygulamanın TLS uyarı değerini ve düzeyini almak için kullanılabilir. Çoğu durumda, CloseNotify dışındaki uzak ana bilgisayardan alınan tüm uyarılar önemli bir hata olarak düşünülmelidir, ancak bazı excptions vardır. daha fazla bilgi için bkz. TLS RFC 'Leri.
+Uyarı değeri ve "düzey" (düzeyler "uyarı" ve "önemlidir" – çoğu TLS uyarısı "önemli") TLS RFC'lerinde tanımlanır ve meydana gelen hata türünü belirtir. CloseNotify dışında çoğu TLS Uyarısı olası bir güvenlik sorunu göstergesi olarak kabul edilir ve TLS oturumu veya el sıkışması durdurularak sonuçlandırılacaktır. Herhangi bir TLS API çağrısı **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) döndürürse, api hizmeti **_nx_secure_tls_session_alert_value_get_** (NetX Güvenli TLS sürüm 5.12'de yeni) uygulamanın güvenlik sorunlarına yanıtlarla ilgili kararlar için kullanabileceği TLS uyarı değerini ve düzeyini almak için kullanılabilir. Çoğu durumda CloseNotify dışında uzak konaktan alınan herhangi bir uyarı önemli bir hata olarak kabul edilir, ancak bazı alıntılar vardır; daha fazla bilgi için bkz. TLS RFC'leri.
 
-### <a name="tls-session-renegotiation"></a>TLS oturumu yeniden anlaşması
+### <a name="tls-session-renegotiation"></a>TLS Oturumu Yeniden Görüşme
 
-TLS, mevcut bir TLS oturumu bağlamında yalnızca TLS oturum parametrelerinin yeniden anlaşması olan "yeniden anlaşma" kavramını destekler. Bu yöntem, yeni el sıkışma iletilerinin mevcut oturum kullanılarak şifrelenme ve kimliğinin doğrulanmasıdır. Bir TLS ana bilgisayarı, mevcut oturumu tamamlamaya gerek kalmadan yeni oturum parametreleri (ör. yeni TLS oturum anahtarları oluşturma) oluşturmak istediğinde yeniden anlaşma kullanılır. Örneğin, bir uygulamanın güvenlik ilkeleri yalnızca sınırlı bir süre için kullanıldığında yeniden anlaşma istenebilir, ancak bu sürenin ötesinde bir TLS oturumu etkin kalır.
+TLS, tlS oturum parametrelerinin mevcut bir TLS oturumu bağlamında yeniden yapılan bir yeniden görüşme olduğu "yeniden görüşme" ifadesini destekler. Bu, uygulamada yeni el sıkışma iletilerinin mevcut oturum kullanılarak şifrelenir ve kimlik doğrulamasının doğrulandığı anlamına gelir. Yeniden görüşme, bir TLS ana bilgisayarı mevcut oturumu tamamlamak zorunda kalmadan yeni oturum parametreleri (örneğin, yeni TLS oturum anahtarları oluşturmak) oluşturmak istiyorsa kullanılır. Örneğin, bir uygulamanın güvenlik ilkeleri oturum anahtarlarının yalnızca sınırlı bir süre için kullanılmaya devam etmekle birlikte TLS oturumunun o sürenin ötesinde etkin kalmasını dikte ettiği zaman yeniden görüşme tercih edilebilir.
 
-Oturum yeniden anlaşması ile ilgili bir sorun, bir saldırganın bir sunucuyu yeni parametrelerle yeniden anlaşma başlatmaya ikna edebilmesine ve böylece saldırganın TLS oturumuna izin vermesini sağlayan belirli bir noktadan adam saldırısından yararlanmasına neden olur. Bu sorunu azaltmak için, güvenli yeniden anlaşma gösterge uzantısı eklenmiştir (bkz. bölüm **hatası! Başvuru kaynağı bulunamadı.** Bölüm).
+Oturum yeniden görüşmeyle ilgili sorunlardan biri, TLS'yi belirli bir Ortadaki Adam saldırısına karşı savunmasız hale gelen ve bir saldırganın bir sunucuyu yeni parametrelerle yeniden görüşme başlatmaya ikna etme ve böylece saldırganın TLS oturumunu ele geçirerek buna izin vermesidir. Bu sorunu gidermek için Güvenli Yeniden Yapılanma Göstergesi uzantısı tanıtıldı (bkz. **Hata! Başvuru kaynağı bulunamadı.** bölümünü seçin.
 
-NetX güvenli TLS, oturum yeniden anlaşmasını ve güvenli yeniden anlaşma gösterge uzantısını tamamen destekler.
+NetX Secure TLS, oturum yeniden anlaşması ve Güvenli Yeniden Görüşme Göstergesi uzantısını tamamen destekler.
 
-Uzak bir ana bilgisayardan veri alırken, renegotations (ve Extension), uygulama etkileşimi olmadan otomatik olarak işlenir. Oturum yeniden anlaşması hakkında bildirim istenirse *nx_secure_tls_session_renegotiate_callback_set* hizmetiyle bir yeniden anlaşma geri araması sağlanabilir. Geri çağırma, uzak ana bilgisayar tarafından her yeniden anlaşma istendiğinde, uygulamanın istenirse işlem yapmasına izin vermek için çağrılır.
+Uzak bir konaktan veri alırken, yeniden toplamalar (ve uzantı) uygulama etkileşimi olmadan otomatik olarak işlenir. Oturum yeniden görüşmeleriyle ilgili bildirim istenirse, nx_secure_tls_session_renegotiate_callback_set hizmetiyle yeniden *nx_secure_tls_session_renegotiate_callback_set* sağlanmalıdır. Uzak konak tarafından yeniden bir yeniden yapılanma istenğında geri çağırma çağrılır ve uygulamanın istenirse işlem uygulamasına izin verme.
 
-Etkin bir TLS oturumundan yeniden anlaşma başlatmak için, istenen TLS oturumunda *nx_secure_tls_session_renegotiate* hizmetini çağırmanız yeterlidir.
+Etkin bir TLS oturumundan yeniden görüşme başlatmak için, istenen TLS *oturumunda nx_secure_tls_session_renegotiate* hizmeti çağırman gerekir.
 
-### <a name="tls-session-resumption"></a>TLS oturum sürdürme
+### <a name="tls-session-resumption"></a>TLS Oturumu Yeniden Verme
 
-TLS oturum sürdürme, bazı benzerlikler olmasına rağmen oturum yeniden anlaşması ile karıştırılmamalıdır. Oturum yeniden *anlaşması* , mevcut bir TLS oturumunda yeni bir el sıkışma başlatmayı da içerir. oturum *sürdürme* , tam bir TLS el SıKıŞMASı yapmadan kapalı bir TLS oturumunun yeniden başlatılmasını içeren tamamen isteğe bağlı bir özelliktir. Bunu başarmak için bir TLS uygulama, oturum parametreleri ve anahtarlarını önbelleğe alabilir ve bunları bir *oturum kimliğiyle* ilişkilendirerek, özgün el sıkışma içinde sağlanan benzersiz bir tanımlayıcıdır. Bir TLS sunucusuna bir oturum KIMLIĞI sağlayarak, istemci, daha önce konaklar arasındaki önceki bir TLS oturumunun var olduğunu ve bir süre sonra tamamlandığını ve istemcinin daha düşük bir el sıkışması ile oturumu yeniden kurması için hala duruma sahip olduğunu gösterir. Oturum anahtarları teorik olarak hala gizli ve yalnızca iki iletişim kuran ana bilgisayar tarafından bilindiğinden, sunucu yeni bir TLS oturumu başlatabilir ve normal El sıkışmanın çoğunu atlayabilir.
+TlS oturumu yeniden verme, bazı benzerliklere rağmen oturum yeniden görüşmeleriyle karıştırılmamalıdır. Oturum *yeniden görüşmenin* mevcut bir TLS oturumunda yeni bir el  sıkışmayı başlatmayı içerdiği yerde, oturum yeniden başlatma tamamen isteğe bağlı bir özelliktir ve tam bir TLS el sıkışması yapmadan kapalı TLS oturumunun yeniden başlatılmasını içerir. Bunu başarmak için TLS uygulaması oturum parametrelerini ve anahtarlarını önbelleğe alarak  bunları özgün el sıkışmada sağlanan benzersiz bir tanımlayıcı olan oturum kimliğiyle eşler. Bir TLS sunucusuna oturum kimliği sağlamak, konaklar arasında önceki bir TLS oturumunun geçmişte var olduğunu ve bir süre tamamlandıktan sonra istemcinin hala azaltılmış bir el sıkışma ile oturumu yeniden kurma durumuna sahip olduğunu gösterir. Oturum anahtarları teorik olarak hala gizli ve yalnızca iletişimde olan iki konak tarafından bilindiği için sunucu yeni bir TLS oturumu başlatarak normal el sıkışmanın çoğunu atlar.
 
-Oturum sürdürme, anahtar oluşturma ana gizliliğini paylaşmak ve sertifika imzalarını doğrulamak için kullanılan, pahalı olabilecek ortak anahtar işlemlerini önlemek için kullanışlı olabilir, ancak aynı zamanda oturum parametreleri, anahtarlar ve crypotgraphic durumunun tüm olası oturumlar için bellekte tutulmasını (en azından yapılandırılabilir bir zaman penceresi için) gerekir.
+Oturum sürdürme, anahtar oluşturma ana gizli anahtarını paylaşmak ve sertifika imzalarını doğrulamak için kullanılan pahalı olabilecek ortak anahtar işlemlerini önlemek için yararlı olabilir, ancak aynı zamanda tüm olası oturumlar için oturum parametrelerinin, anahtarların ve şifreleme durumunun bellekte korunmasını gerektirir (en azından yapılandırılabilir bir zaman penceresi için).
 
-NetX güvenli TLS 'nin geçerli sürümü Session sürdürme 'ı desteklemez. oturum KIMLIĞI yalnızca TLS sunucuları tarafından yok sayılır ve TLS istemcileri her zaman sunucuya bir el sıkışma gerçekleştirmesini isteyen NULL bir oturum KIMLIĞI sağlar. Oturum sürdürme olmaması, tamamen isteğe bağlı bir özellik olduğundan ve tüm TLS uygulamalarının tam bir el sıkışma olması halinde, oturum KIMLIĞININ NULL veya tanınmayan olması gerekir.
+NetX Secure TLS'nin geçerli sürümü oturum sürdürmeyi desteklemez. Oturum kimliği TLS sunucuları tarafından yok sayılır ve TLS istemcileri her zaman tam bir el sıkışması gerçekleştirmesi için sunucudan bir NULL oturum kimliği sağlar. Tamamen isteğe bağlı bir özellik olduğu ve oturum kimliğinin NULL olması veya tanınmamış olması gerekirken tüm TLS uygulamaları varsayılan olarak tam bir el sıkışması olarak ayarlandıktan sonra oturum yeniden vermenin olmaması, işlenenler arası soruna neden olmamalıdır.
 
-### <a name="protocol-layering"></a>Protokol katmanlama
+### <a name="protocol-layering"></a>Protokol Katmanlama
 
-TLS protokolü, Aktarım Katmanı (örn. TCP) ve uygulama katmanı arasındaki ağ yığınına uyar. TLS bazen bir Aktarım Katmanı Protokolü (Bu nedenle *Aktarım katmanı* güvenliği) olarak kabul edilir, ancak temel ağ PROTOKOLLERIYLE (TCP gibi) ilgili bir uygulama gibi davrandığı için bazen uygulama katmanında gruplandırılmıştır.
+TLS protokolü, aktarım katmanı (tcp gibi) ile uygulama katmanı arasındaki ağ yığınına uyar. TLS bazen aktarım katmanı protokolü (dolayısıyla Aktarım Katmanı Güvenliği) olarak kabul edilir, ancak temel alınan ağ protokolleri (TCP gibi) açısından bir uygulama olarak hareket eder ve bazen uygulama katmanında gruplandırılan bir uygulamadır. 
 
-TLS, TCP gibi sıralı ve kayıpsız teslimi destekleyen bir aktarım katmanı protokolü gerektirir. Bu gereksinim nedeniyle, UDP veri birimlerinin teslimini garanti edemediğinden TLS UDP üzerinde çalıştırılamaz. TLS 'nin değiştirilmiş bir sürümü olan *DTLS* adlı ayrı bir protokol, UDP gibi bir veri birimi protokolü üzerinden TLS güvenliği gerektiren uygulamalar için kullanılır. NetX güvenliği DTLS 'yi destekler, ancak DTLS belgeleri bu belgeden ayrıdır.
+TLS, TCP gibi sırayla ve kayıpsız teslimi destekleyen bir aktarım katmanı protokolü gerektirir. UDP veri birimlerinin teslimi garanti edilemez çünkü bu gereksinim nedeniyle TLS UDP üzerinde çalıştıramaz. TLS'nin değiştirilmiş bir sürümü olan *DTLS* adlı ayrı bir protokol, UDP gibi bir veri birimi protokolü üzerinde TLS güvenliğine ihtiyaç olan uygulamalar için kullanılır. NetX Secure DTLS'i destekler, ancak DTLS belgeleri bu belgeden ayrıdır.
 
 ![TCP/IP ve TLS protokol katmanlarının diyagramı.](media/image6.png)
 
-Şekil 5-TCP/IP ve TLS protokol katmanları
+Şekil 5- TCP/IP ve TLS protokol katmanları
 
-## <a name="network-communications-security"></a>Ağ Iletişimi güvenliği
+## <a name="network-communications-security"></a>Ağ İletişimi Güvenliği
 
-Kamu ağları ve Internet üzerinden iletişimin güvenliğini sağlamak, çok sayıda kitap, makale ve çözüm konusunun önemli öneme sahip bir konudur. Bu konu göz önünde bulundurularak, ancak yalnızca hedeflenen hedefin bu bilgileri erişebileceği veya değiştirebilmesini sağlamak için bir ağ üzerinden bilgi gönderilirken daha kolay bir fikir olabilir. Bu üç önemli kavrama bölünür: Gizlilik, bütünlük ve kimlik doğrulama. TLS protokolü, her üç için çözüm sağlar.
+Ortak ağlar ve İnternet üzerinden iletişimin güvenliğini sağlamak, çok sayıda kitap, makale ve çözümün konusu ve kritik öneme sahip bir konudur. Bu konu oldukça karmaşıktır, ancak basit bir fikirle azaltabilirsiniz: yalnızca hedeflenen hedefin bu bilgilere erişmesi veya bu bilgileri değiştirerek bir ağ üzerinden bilgi gönderme. Bu, üç önemli kavrama neden olur: gizlilik, bütünlük ve kimlik doğrulaması. TLS protokolü üçü için de çözümler sağlar.
 
-### <a name="secrecy"></a>Gizliliğinin
+### <a name="secrecy"></a>Gizli -lik
 
-Ağ üzerinden veri gönderirken genellikle verilerin kötü amaçlı bir varlık tarafından alınmaması önemlidir. Veriler bir TCP/IP bağlantısı üzerinden gönderiliyorsa, ağa erişimi olan herkes, kolayca kullanılabilir ağ araçlarını kullanarak bu verileri okuyabilecektir. Bu verilerin elde edilmesine engel olmak için, hedeflenen hedef tarafından okunamayacak şekilde kodlanmalıdır: Bu Gizlilik *.* TLS 'de, RSA ve AES gibi şifreleme algoritmaları gizliliği sağlar.
+Bir ağ üzerinden veri gönderirken, verilerin kötü amaçlı bir varlık tarafından alınamaz olması genellikle önemlidir. Veriler bir TCP/IP bağlantısı üzerinden gönderilirse, ağa erişimi olan herkes kolayca kullanılabilir ağ araçlarını kullanarak bu verileri okuyabilir. Verilerin elde edepsini önlemek için, hedeflenen hedef dışında okunacak şekilde kodlanması *gerekir; bu gizliliktir.* TLS'de RSA ve AES gibi şifreleme algoritmaları gizlilik sağlar.
 
 ### <a name="integrity"></a>Bütünlük
 
-Bazen, gizlilik, ağ üzerinden veri gezini korumak için yeterli değildir. Bazı durumlarda, kötü amaçlı bir varlık bir TCP paketinin içeriğini, paketin neleri içerdiğini bilmeden değiştirmek mümkün olabilir. Şifrelenmiş veriler değiştirilebilir, şifre çözme işlemi geçersiz hale gelebilir veya ileti başındaki parametreler, saldırganın ilgilendiği herhangi bir sonuçla değiştirilebilir. Ağda, bir saldırganın geçiş sırasında verileri değiştirmesini engelleyemedik, ancak verilerin değiştirilip değiştirilmediğini bilen bir mekanizma sağlayabiliriz. Veriler aktarım sırasında değiştirildiğinde, bilinirler ve veriler reddedilebilir. Bu kavram *bütünlüğü*. TLS 'de, bütünlük, *Karma işlevler* olarak bilinen bir şifreleme yordamları sınıfı tarafından sağlanır. Karma işlevlere bazı örnekler MD5 ve SHA-1 ' dir.
+Bazen, gizlilik bir ağ üzerinden veri koruma için yeterli değildir. Bazı durumlarda kötü amaçlı bir varlığın, paketin ne içerdiğini bilmek zorunda kalmadan TCP paketinin içeriğini değiştirmesi mümkün olabilir. Şifrelenmiş veriler değiştirilemez, şifre çözme geçersiz hale gelir veya iletinin parametreleri değiştirerek saldırganın elde etmek ilgilenebilecekleri bir sonuç elde edilir. Ağ üzerinde, bir saldırganın taşımadaki verileri değiştirmesini engelleyene, ancak verilerin değişip değişmediğini bilmek için bir mekanizma s sağlamamız gerekir. Veriler taşıma sırasında değiştirilirse bu veriler bilinir ve reddedilir. Bu kavram *bütünlük kavramıdır.* TLS'de bütünlük, karma işlevler olarak bilinen bir şifreleme yordamları *sınıfı tarafından sağlanır.* Karma işlevlere bazı örnekler MD5 ve SHA-1'tir.
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Ağ iletişimi güvenliği açısından üçüncü önemli kavram, verilerin yalnızca amaçlanan hedefe bildirilmesi gerektiğine yönelik bir fikirdir. Saldırgan, başka bir konağa yönelik verileri almak için meşru bir varlık olarak hazırlanmanıza çalışabilir. Veriler, gizliliği ve bütünlük mekanizmalarına sahip olsa bile, saldırgan bu gözden geçir aracılığıyla istenen sonuca (güvenli iletişim güvenliğinin aşılmasına karşı) yine de ulaşabiliyor olabilir. Bunu engellemek için, herhangi bir hassas veri gönderilmeden önce uzak ana bilgisayarın kimliğini kanıtlamak için bir mekanizma gerekir. Bir uzak konağın kimliğini kanıtlama işlemi *kimlik doğrulaması olur.* TLS 'de kimlik doğrulaması, dijital sertifikalar, karma işlevler ve bir ortak anahtar şifreleme özelliğinden yararlanan *dijital imzalar* adlı bir mekanizma (aşağıda açıklanmıştır) kullanılarak sağlanır. Bir *önceden paylaşılan anahtar* (PSK) ile sınırlı ancak yararlı bir kimlik doğrulama biçimi de sağlayabilirsiniz.
+Ağ iletişim güvenliğinde üçüncü önemli kavram, verilerin yalnızca hedeflenen hedefle iletişim kurması gerektiği fikridir. Saldırgan, başka bir ana bilgisayar için amaçlanan verileri almak için meşru bir varlık olarak poz verebiliyor. Veriler gizlilik ve bütünlük mekanizmalarıyla gönderilebilirse bile, saldırgan bu yanılgı üzerinden istenen sonucu (güvenli iletişimlerin tehlikeye atarak) yine de elde etmiş olabilir. Bunu önlemek için, herhangi bir hassas veri gönderilmeden önce uzak bir ana bilgisayarın kimliğini kanıtlamak için bir mekanizma gerekir. Uzak ana bilgisayarın kimliğini kanıtlama işlemi kimlik *doğrulamasıdır.* TLS'de kimlik doğrulaması dijital sertifikalar, karma işlevler  ve ortak anahtar şifreleme özelliğini kullanan dijital imzalar adlı bir mekanizma kullanılarak sağlanır (aşağıda açıklanmıştır). Önceden paylaşılan bir anahtar (PSK) ile sınırlı ama *kullanışlı bir kimlik doğrulaması* biçimi de sağlanıyor.
 
-## <a name="tls-encryption"></a>TLS şifreleme
+## <a name="tls-encryption"></a>TLS Şifrelemesi
 
-TLS protokolü, şifreleme kullanan Internet üzerinden güvenli ağ iletişimleri sağlamaya yönelik bir çerçevedir. Şifreleme genellikle, verileri özgün verileri (veya ilgili veriler hakkındaki bilgileri) elde etmek için bir *anahtar* olmadan bu şekilde bir şekilde kodlama işlemi olarak tanımlanır. Bilgisayar sistemleri şifrelemesi, sınırlı alanlar gibi karmaşık matematik ve iki tür olarak sınıflandırılabilirler: *özel anahtar* (veya *simetrik şifreleme*) ve *ortak anahtar* (veya *asimetrik şifreleme*). Özel anahtar şifreleme örnekleri AES (Gelişmiş Şifreleme Standardı) ve RC4 (Rivest şifre 4). Ortak anahtar şifreleme örnekleri RSA (Rivest, Shamir, Adleson) ve Diffie-Hellman şifrelemeler.
+TLS protokolü, şifreleme kullanarak İnternet üzerinden güvenli ağ iletişimleri sağlamak için kullanılan bir çerçevedir. Şifreleme genellikle verileri özgün verileri (veya bu veriler hakkında bilgileri) almak için anahtar olmadan çok zor olacak şekilde kodlama işlemi olarak *tanımlanır.* Bilgisayar sistemlerinde şifreleme, sonlu alanlar gibi karmaşık matematikleri temel alır  ve iki tür olarak sınıflandırılabilir: özel anahtar (veya simetrik *şifreleme)* ve ortak anahtar *(veya* *asimetrik şifreleme).* Özel anahtar şifrelemesi örnekleri AES (Gelişmiş Şifreleme Standardı) ve RC4 (Rivest Cipher 4) örnekleridir. Ortak anahtar şifrelemesi örnekleri RSA (Rivest, Shamir, Adleson) ve Diffie-Hellman şifrelemedir.
 
-TLS protokolü, performans, güvenlik ve esneklik dengelemesi sağlamak için hem özel anahtar hem de ortak anahtar şifreleme yordamlarını kullanır.
+TLS protokolü, performans, güvenlik ve esneklik arasında bir denge sağlamak için hem özel anahtar hem de ortak anahtar şifreleme yordamlarını kullanır.
 
-### <a name="private-key-encryption"></a>Private-Key şifreleme
+### <a name="private-key-encryption"></a>Private-Key Şifrelemesi
 
-Özel anahtar şifreleme, binlerce yıl boyunca kullanımda. Temel değiştirme şifrelemeleri (bir harf veya sözcük başka bir ilgisiz harf veya Word tarafından değiştirilmiştir) en erken bilinen şifreleme örnekleridir, ancak bilgi yaşı özel anahtar şifrelemesi 'nin bir yandan büyük ölçüde iyileşmesi önerilir.
+Özel anahtar şifrelemesi binlerce yıldır kullanılır. Temel değiştirme şifrelemeleri (bir harfin veya sözcüğün başka bir ilgisiz harf veya sözcükle değiştirdiği), bilinen en eski şifreleme örnekleridir, ancak bilgi yaşı özel anahtar şifrelemesi gelişiyle birlikte önemli ölçüde geliştirilmiştir.
 
-Özel anahtar şifresi, bazı verileri bir arada kodlamak için kullanılan bir değer olan bir "anahtar" (genel durumda bir sözcük, tümcecik veya sayı olabilir) kullanır. böylece, yalnızca bu anahtara erişimi olan bir varlığın verileri anlamlı bir şekilde çözebilmesini sağlayabilirsiniz. Anahtar, verilerin şifrelenmesi ve şifresinin çözülmesi için kullanılır, bu nedenle diğer ad *simetrik şifreleme*.
+Özel anahtar şifrelemesi, yalnızca bu anahtara erişimi olan bir varlığın verilerin kodunu anlamlı bir şekilde çöze bir şekilde bazı verileri kodlamak için kullanılan bir değer (genel durumda bir sözcük, tümcecik veya sayı olabilir) olan bir "anahtar" kullanır. Anahtar, verilerin şifrelerinin şifrelerinin çözülmesi ve şifrelerinin çözülmesi için kullanılır; bu nedenle diğer adı *simetrik şifrelemedir.*
 
-Özel anahtar şifrelemeleri genellikle hızlı ve oldukça basittir. Bu, matematik ve ilgili karmaşık bir karmaşıksa bile uygulanır. Bu nedenle TLS, güvenli iletişimler toplu olarak özel anahtar şifrelemeleri kullanır.
+Özel anahtar şifrelemeleri, söz konusu matematikler çok karmaşık olsa bile genellikle hızlı ve oldukça basittir. Bu nedenle TLS, güvenli iletişimler için özel anahtar şifrelemeleri kullanır.
 
-Bununla birlikte, genel bilgisayar ağı iletişimine uygulamayı denerken özel anahtar şifrelemesi bir sorunla karşılaştı: anahtarın, iletişim kurmaya çalışan her iki makine arasında paylaşılması gerekir. Genel durumda, ağ trafiğinin Internet üzerinden yönlendirilirken yaptığı çeşitli tür varlıkların herhangi bir sayıda varlık tarafından alınabileceğini varsayabileceği için, Internet 'teki iki makine arasında güvenli bir şekilde iletişim kurmak pratik ve genellikle imkansızdır. Anahtar kötü amaçlı bir varlık tarafından elde edilirse, bu anahtar kullanılarak şifrelenen tüm verilerin güvenliği aşılmış olur. Internet üzerindeki makinelerin çoğu iletişim için yalnızca bir ağ bağlantısına sahip olduğu ve iletişim için başka bir güvenli kanal olmadığından, ağ üzerinden anahtar gönderilmesi, verileri şifrelenmemiş olarak göndermek için bir güvenlik sağlar.
+Ancak özel anahtar şifrelemesi, genel bilgisayar ağı iletişimleri için geçerli olmaya çalışılırken bir soruna neden olur: Anahtarın iletişim kurmaya çalışan her iki makine arasında paylaşılması gerekir. Genel durumda, İnternet'te iki makine arasında güvenli bir şekilde özel anahtar iletişim kurmak pratik değildir ve genellikle imkansızdır çünkü ağ trafiğinin, verilerin İnternet üzerinden yönlendirilen çeşitli atlamalarda yer alan çeşitli atlamalarda yer alan herhangi bir sayıda varlık tarafından alınıp alınalığa sahip olduğu varsayılır. Anahtar kötü amaçlı bir varlık tarafından elde edilirse, bu anahtar kullanılarak şifrelenen tüm verilerin güvenliği tehlikeye girer. İnternet'e bağlı makinelerin çoğu yalnızca bir ağ bağlantısına sahip olduğu için ve iletişim için başka bir güvenli kanala sahip değil, ağ üzerinden anahtar göndermek, verileri şifrelenmemiş olarak göndermek için bir yalıtılmaz; güvenlik sağlamaz.
 
-Bu nedenle, özel anahtar şifrelemesi, genel amaçlı bir ağ iletişimi güvenlik protokolü uygulamak için yeterli değildir. Bu, ortak anahtar şifrelemenin yardımcı olabilir.
+Bu nedenle, özel anahtar şifrelemesi genel amaçlı bir ağ iletişim güvenliği protokolü uygulamak için yeterli değildir. Ortak Anahtar şifrelemesi bu noktada yardımcı olabilir.
 
-NetX güvenli TLS, AES özel anahtar şifrelemesini destekler.
+NetX Secure TLS, AES özel anahtar şifrelemeyi destekler.
 
-### <a name="public-key-encryption"></a>Public-Key şifreleme
+### <a name="public-key-encryption"></a>Public-Key Şifrelemesi
 
-Özel anahtar şifrelemenin aksine, ortak anahtar şifrelemesi, 1970 ' te geliştirilen oldukça yeni bir kavramdır. "Tuzak kapısı işlevleri" olarak bilinen bir kavramı kullanarak, daha sonra şifrelenen verilerin güvenliğine güvenmeden bir ağ üzerinde bir anahtar paylaşmanın bir yolu vardı.
+Özel anahtar şifrelemeden farklı olarak, ortak anahtar şifrelemesi 1970'lerde geliştirilmiş olan oldukça yeni bir kavramdır. Matematikte "tuzak kapı işlevleri" olarak bilinen bir kavram kullanılarak, o zaman şifrelenmiş verilerin güvenliğinden ödün vermeden bir ağ üzerinden anahtar paylaşmanın bir yolu olduğu keşfedildi.
 
-Ortak anahtar şifrelemenin çalışma şekli, anahtarın (yukarıda açıklanan özel anahtar şifreleme algılaması) iki parçaya, *özel bir anahtara* *ve ortak anahtara*(ortak anahtar şifrelemeden) göre bölündüğü yerdir. Kavram şifre çözme için kullanıldığında, bu anahtarlardan biri şifreleme için kullanılır (genellikle ortak anahtardır). Bu anahtar asymmetry, ortak anahtar şifrelemesi için diğer adın nedenidir: *asimetrik şifreleme*.
+Ortak anahtar şifrelemenin çalışma yolu, anahtarın (yukarıda açıklanan özel anahtar şifreleme anlamlısı  içinde) ortak anahtar şifrelemenin adını alan özel anahtar ve ortak anahtar olmak üzere iki parçaya bölünmesidir. Bu anahtarlardan birinin (genellikle ortak anahtar) şifreleme için, diğer anahtar ise şifre çözme için kullanılır. Anahtarların bu asimetrisi, ortak anahtar şifrelemesi için diğer adıdır: *asimetrik şifreleme.*
 
-Ortak anahtar şifrelemesi, büyük bir karmaşıkdır, ancak genel anahtar şifreleme için *yalnızca* şifreleme için kullanılabilir ve bu anahtarın, şifrelenmiş verilerin elde etmesine izin vermez. Özel anahtar, sırasıyla ortak anahtar kullanılarak şifrelenmiş verilerin şifresinin çözülmesi için tek yoldur. Bu nedenle, özel anahtar gizliliğini koruyarak, bu özel anahtarın sahibi ile güvenli bir şekilde iletişim kurmak isteyen herkes yalnızca ilgili ortak anahtarla verilerini, yalnızca söz konusu özel anahtarı elinde bulunan birinin güvenli verileri elde edebilir.
+Ortak anahtar şifrelemenin ardındaki matematik oldukça karmaşıktır, ancak ortak  anahtarın yalnızca şifreleme için kullanıla biliyor olması ve bu anahtarın elde ediş şifrelenmiş verilerin elde edişlerine izin vermeyiş olmasıdır. Buna karşılık özel anahtar, ortak anahtar kullanılarak şifrelenmiş verilerin şifresini çözmenin tek yolu olur. Bu nedenle, özel anahtar gizli anahtarını saklayarak, bu özel anahtarın sahibiyle güvenli bir şekilde iletişim kurmak isteyen herkesin verilerini yalnızca ilgili ortak anahtarla şifrelemesi ve yalnızca bu özel anahtara sahip olan birinin güvenli verileri edine bilgisi olması gerekir.
 
-NetX güvenli TLS, RSA ortak anahtar şifrelemesini destekler.
+NetX Secure TLS, RSA ortak anahtar şifrelemeyi destekler.
 
 > [!IMPORTANT] 
-> *RSA, yazılım RSA uygulamasının kullanılması durumunda işlemciyi yoğun bir işlemdir. Daha büyük anahtar boyutları, anahtar boyutunda 2X artışla daha yavaş bir kare faktörü için gereken işlem gücünü artırır.*
+> *Yazılım RSA uygulaması kullanılıyorsa RSA çok işlemci yoğun bir işlemdir. Daha büyük anahtar boyutları, kare faktörü için gereken işleme gücünü artırarak anahtar boyutunun 2 kat artması için 4 kat daha yavaştır.*
 
-### <a name="public-key-authentication"></a>Public-Key kimlik doğrulaması
+### <a name="public-key-authentication"></a>Public-Key Kimlik Doğrulaması
 
-Ortak anahtar şifreleme kavramının ilgi çekici bir etkisi, işlemi tersten yaparak, kimlik doğrulamanın yanı sıra, *özel* anahtar kullanarak şifreleme ve *ortak* anahtar kullanarak şifre çözme sağlamak için de kullanılabilir. Bunu yapmanın gerçek mekanizması, kullanılan ortak anahtar algoritmasına bağlıdır, ancak kavram aynıdır.
+Ortak anahtar şifreleme kavramının ilginç bir yan etkisi, kimlik doğrulaması ve şifreleme sağlamak için kullanılabilir olmasıdır.  Bu işlem ters şekilde kullanılmaktadır: özel anahtarı kullanarak şifreleme ve ortak anahtarı kullanarak şifre *çözme.* Bunu yapmak için gerçek mekanizma kullanılan ortak anahtar algoritmasına bağlıdır, ancak kavram aynıdır.
 
-Ortak anahtar kimlik doğrulamasını kullanarak kimlik doğrulaması yapmak için, özel bir anahtarın sahibi, bu özel anahtarı kullanarak bazı veri parçasını (genellikle kimlik doğrulaması yapılacak verilerin bir şifreleme karması) şifreler. Daha sonra, verilerin şifresini çözmek için ilişkili ortak anahtarı kullanır. şifre çözme başarılı olursa ve kullanıcının bu ortak anahtarın geçerliliğini güvenilir kabul edersek, Kullanıcı, verilerin özel anahtar sahibinden geldiğinden emin olabilir ve bu durumda Kullanıcı, verilerin özel anahtarın sahibinden geldiğinden emin olabilir.
+Ortak anahtar kimlik doğrulaması kullanarak kimlik doğrulaması yapmak için, özel anahtarın sahibi bir veri parçasını (genellikle kimlik doğrulaması yapılan verilerin şifreleme karması) bu özel anahtarı kullanarak şifreler. Ardından, verilerin özel anahtarın sahibinden geldiğini doğrulamak isteyen birisi verilerin şifresini çözmek için ilişkili ortak anahtarı kullanır. Şifre çözme başarılı olursa ve kullanıcının bu ortak anahtarın geçerliliğine güvendiği varsayılacak olursa, kullanıcı verilerin özel anahtarın sahibinden geldiğinden emin olabilir.
 
-TLS 'de ortak anahtar kimlik doğrulaması, güvenilen sertifika deposundan ortak anahtarları kullanarak bir TLS sunucusu (ve isteğe bağlı olarak TLS istemcisi) tarafından belirtilen dijital sertifikanın geçerliliğini doğrulamak için kullanılır. Sertifika, depodaki bir ortak anahtara göre denetlenir ve sertifikadaki veriler sunucunun kimliğini denetlemek için kullanılır.
+TLS'de ortak anahtar kimlik doğrulaması, güvenilen sertifika deposu ortak anahtarlarını kullanarak bir TLS sunucusu (ve isteğe bağlı olarak TLS istemcisi) tarafından sağlanan bir dijital sertifikanın geçerliliğini doğrulamak için kullanılır. Sertifika, depoda ortak anahtara karşı denetlenir ve sertifikada bulunan veriler sunucunun kimliğini kontrol etmek için kullanılır.
 
-NetX güvenli TLS, RSA kimlik doğrulamasını destekler.
+NetX Secure TLS, RSA kimlik doğrulamasını destekler.
 
-### <a name="cryptographic-hashing"></a>Şifreleme karması
+### <a name="cryptographic-hashing"></a>Şifreleme Karması
 
-Şifreleme, TLS 'de kullanılan tek şifreleme işlemi değildir. Bir TLS oturumu sırasında ileti bütünlüğü sağlamak için ileti içeriğinin değiştirilmediğinden emin olmak için bir sağlama toplamı gerekir. Ancak, basit bir sağlama toplamı (TCP 'de kullanıldığı gibi), güvenli olmayan bir saldırgan tarafından kolayca bir şekilde sallandığından, kabul edilebilir bir bütünlük düzeyini güvence altına almak için yetersizdir. TLS tarafından ileti bütünlüğü sağlamak için kullanılan mekanizma *şifreleme karması* olarak bilinir.
+Şifreleme, TLS'de kullanılan tek şifreleme işlemi değildir. TLS oturumu sırasında ileti bütünlüğünü sağlamak için, ileti içeriklerinin üzerinde oynanmamasını sağlamak için sağlama tablosu gerekir. Ancak, bilgi sahibi bir saldırgan tarafından kolayca ters çevirilene kadar kabul edilebilir bir bütünlük düzeyini garanti etmek için basit sağlama sağlamalarının (TCP'de olduğu gibi) yeterli değildir. TLS tarafından ileti bütünlüğünü sağlamak için kullanılan mekanizma, şifreleme *karması olarak bilinir.*
 
-Şifreleme bir 1:1 kodlamadır. Yani, özgün verilerin tamamı şifrelenmiş verilerden elde edilebilir. Ancak, karma, bir sağlama toplamı gibi rastgele bir veri miktarını sabit boyutlu bir değere eşler. Basit bir sağlama sağlamasının aksine, karma özellikle, farklı giriş verilerinin aynı çıkışa neden olduğu *çarpışmaları* azaltmak için tasarlanmıştır. Basit bir sağlama toplamı içinde, bir bit 1 ' den 0 ' a ve 0 ' dan 1 ' e kadar bir bit 'e çevrilayarlanırsa, sağlama toplamı aynı olur. Bir şifreleme karması sayesinde, çıkış önemli ölçüde farklılık gösterir, böylece bir saldırgan karma verileri değiştirebilir ve değiştirilen verilerde karma işlemin yine de aynı değer elde edilmesine (ve bu sayede bu verilerin bütünlüğünü doğrulamaya) olanak sağlar.
+Şifreleme 1:1 kodlamadır; diğer bir ifadeyle özgün verilerin tamamı şifrelenmiş verilerden elde edilir. Ancak karma, tıpkı sağlama toplamları gibi rastgele bir veri miktarını sabit bir boyut değeriyle eşler. Basit sağlama toplamadan farklı olarak karma, farklı giriş verileriyle aynı çıkışa neden olan çakışmaları azaltmak için özel olarak tasarlanmıştır. Basit sağlama tam olarak, bir bit 1'den 0'a ve 0'dan 1'e başka bir bit çevrilse sağlamalar aynı olur. Şifreleme karması ile çıkış önemli ölçüde farklılık gösterebilir ve bu da saldırganın karma verileri değiştirmesini ve değiştirilen veriler üzerinde karma işlemi yine de aynı değere neden olur (ve bu nedenle bu verilerin bütünlüğünü hatalı bir şekilde doğrulamasını) zorlaştırabilir.
 
-TLS, her iki uygulama iletisi ve TLS denetim iletisi iletileri için bütünlük sağlamak üzere birçok farklı karma algoritma kullanır. Bunlara MD5, SHA-1 ve SHA-256 dahildir.
+TLS, iletilerin bütünlüğünü sağlamak için hem uygulama iletileri hem de TLS denetim iletileri olmak üzere bir dizi farklı karma algoritması kullanır. Bunlar MD5, SHA-1 ve SHA-256'dır.
 
-NetX güvenli TLS, MD5, SHA-1 ve SHA-256 karma 'ı destekler.
+NetX Secure TLS MD5, SHA-1 ve SHA-256 karmasını destekler.
 
-## <a name="tls-extensions"></a>TLS uzantıları
+## <a name="tls-extensions"></a>TLS Uzantıları
 
-TLS, belirli uygulamalar için ek işlevsellik sağlayan birkaç uzantı sağlar. Bu uzantılar tipik olarak, bir uzak ana bilgisayara bir uzantı kullanmayı veya güvenli TLS oturumu oluştururken kullanılmak üzere ek ayrıntılar sağlamayı belirten ClientHello veya ServerHello iletilerinin bir parçası olarak gönderilir.
+TLS, belirli uygulamalar için ek işlevsellik sağlayan bir dizi uzantı sağlar. Bu uzantılar genellikle ClientHello veya ServerHello iletilerinin bir parçası olarak gönderilir ve uzak bir ana bilgisayara uzantı kullanma isteğini ya da güvenli TLS oturumunun kurulması için ek ayrıntılar sağlamayı gösterir.
 
-Genel olarak, uzantılar, işlem işlemlerine kılavuzluk eden el sıkışma başlangıcında TLS için isteğe bağlı parametreler sağlar. Bazı uzantılar uygulama girişi veya karar oluşturma gerektirir, diğerleri otomatik olarak işlenir.
+Genel olarak uzantılar, devam işlemlerine yol sağlayan el sıkışmanın başında TLS'ye isteğe bağlı parametreler sağlar. Bazı uzantılar uygulama girişi veya karar verme gerektirirken diğerleri otomatik olarak işlenir.
 
-Aşağıdaki tabloda, şu anda NetX güvenli TLS tarafından desteklenen TLS uzantıları açıklanmaktadır:
+Aşağıdaki tabloda şu anda NetX Secure TLS tarafından desteklenen TLS uzantıları açıklandı:
 
-| **Uzantı adı**              | **Açıklama**              |
+| **Uzantı Adı**              | **Açıklama**              |
 | ------------------------------- |----------------------------- |
-| Güvenli yeniden anlaşma gösterimi | Bu uzantı, bir yeniden anlaşma el sıkışması sırasında oluşabilecek bir ortadaki adam saldırısı güvenlik açığını azaltır.|
-| Sunucu Adı Belirtme          | Bu uzantı, bir TLS Istemcisinin bir TLS sunucusuna belirli bir DNS adı sağlamasına izin vererek sunucunun doğru kimlik bilgilerini seçmesini sağlar (sunucunun birden çok kimlik sertifikası ve ağ entryPoints olduğunu varsayar). |
-| İmza algoritmaları            | Bu uzantı, TLS Istemcisinin kabul edilebilir imza ve karma algoritmalarının bir TLS sunucusuna bir listesini sağlamasını sağlar. |
+| Güvenli Yeniden Yapılanma Göstergesi | Bu uzantı, yeniden anlaşma sırasında ortaya çıkabilir bir Ortadaki Adam saldırı güvenlik açığını hafifletebilir.|
+| Sunucu Adı Belirtme          | Bu uzantı, bir TLS İstemcisi'nin TLS Sunucusuna belirli bir DNS adı sağlayarak sunucunun doğru kimlik bilgilerini seçmesini sağlar (sunucunun birden çok kimlik sertifikası ve ağ giriş noktası olduğu varsayılıyor). |
+| İmza Algoritmaları            | Bu uzantı, TLS İstemcisi'nin TLS Sunucusuna kabul edilebilir imza ve karma algoritmalarının listesini sağlamasını sağlar. |
 
-Desteklenen TLS uzantılarına genel bakış
+Desteklenen TLS Uzantılarına Genel Bakış
 
-### <a name="secure-renegotiation-indication"></a>Güvenli yeniden anlaşma gösterimi
+### <a name="secure-renegotiation-indication"></a>Güvenli Yeniden Yapılanma Göstergesi
 
-TLS, mevcut bir TLS oturumunda el sıkışma gerçekleştirme kavramını destekler, böylece el sıkışma iletilerini şifrelemek için belirlenen oturum vardır. Bu işlem, şifreleme oturumu anahtarlarının TLS oturumunu sonlandırmadan yeniden oluşturulmasına izin verir (bkz. "TLS oturumu yeniden anlaşması").
+TLS, mevcut bir TLS oturumunda el sıkışma gerçekleştirmeyi, böylece el sıkışma iletilerini şifrelemek için kurulan oturumu kullanmayı destekler. Bu işlem, şifreleme oturumu anahtarlarının TLS oturumunu sonlandırmadan yeniden kurulmasına olanak sağlar ("TLS Oturum Yeniden Görüşme" bölümüne bakın).
 
-Ne yazık ki, TLS yeniden anlaşma bir süre kullandıktan sonra, yeniden anlaşma özelliğinden yararlanan bir ortadaki adam saldırısında bir güvenlik açığı olduğunu bulmuştur. Güvenlik açığını kapatmak için, güvenli yeniden anlaşma gösterge uzantısı eklenmiştir. Temelde, güvenli yeniden anlaşma uzantısı, başlangıçtaki ana bilgisayarların yeniden anlaşma el sıkışmasına katıldığını doğrulamak için, oluşturulan bağlantıdan tamamlanmış ileti karmasını kullanır – aslında karma, bir saldırganın karmayı yasaklayacağından (oturum anahtarlarına erişim gerektirir) bir doğrulama belirteci olarak kullanılır.
+Ne yazık ki TLS bir süredir yeniden yapılanması kullandıktan sonra, yeniden yapılanma özelliğini kullanan OrtaDaki Adam saldırılarında bir güvenlik açığı olduğu keşfedildi. Güvenlik açığını kapatmak için Güvenli Yeniden Yapılanma Göstergesi uzantısı tanıtıldı. Temelde, Güvenli Yeniden Anlaşma uzantısı, özgün konakların yeniden anlaşma el sıkışmasına katıldığını doğrulamak için, kurulan bağlantıdan Bitti ileti karması kullanır; temelde karma, bir saldırganın karmayı (oturum anahtarları için erişim gerektirecektir) oluşturulamayacak varsayımı kapsamında doğrulama belirteci olarak kullanılır.
 
-NetX güvenli TLS yeniden anlaşmayı otomatik olarak işler ve varsayılan olarak güvenli yeniden anlaşma uzantısını kullanır. Uygulama etkileşimi gerekmez.
+NetX Secure TLS yeniden anlaşması otomatik olarak ele almaktadır ve Güvenli Yeniden Anlaşması Uzantısını varsayılan olarak kullanır. Uygulama etkileşimi gerekmez.
 
 ### <a name="server-name-indication"></a>Sunucu Adı Belirtme
 
-TLS anlaşması sırasında, bir TLS Istemcisi, istemcinin kimliğini doğrulayabilmesi için uzak sunucunun kimlik sertifikası sağlamasını bekler. Ancak, bir sunucunun benzersiz kimliklere sahip farklı "sanal" sunucularla birden çok farklı hizmet sağlayacağı bazı durumlar olabilir. Birden çok kimliği olan tek bir sunucu söz konusu olduğunda, bir TLS istemcisi sunucunun uygun kimlik bilgilerini seçmek için kullanacağı belirli bir DNS adı sağlayabilir. bu adı sağlamaya yönelik mekanizma Sunucu Adı Belirtme (SNı) uzantısıdır.
+TLS İstemcisi, TLS el sıkışması sırasında, istemcinin sunucunun kimliğini doğrulayana kadar bir kimlik sertifikası sağlamak için uzak bir sunucu bekler. Ancak, bir sunucunun her biri benzersiz kimliklere sahip farklı "sanal" sunuculara sahip birden çok farklı hizmet sağlaysa da bazı durumlar olabilir. Birden çok kimliği olan tek bir sunucu olması durumunda, TLS istemcisi sunucunun uygun kimlik bilgilerini seçmek için kullanabileceği belirli bir DNS adını sağlar; bu adı sağlamak için mekanizma Sunucu Adı Belirtme (SNI) uzantısıdır.
 
-SNı uzantısını kullanan bir uygulama için bazı etkileşimler gereklidir. TLS Istemcileri için, uygulamanın uzak sunucuya gönderilmesi için bir DNS adı sağlaması gerekir. TLS sunucuları için, uygulamanın uzantısından DNS adını okuması ve istemciye geri göndermek için uygun bir sertifika seçmeniz gerekir.
+SNI uzantısını kullanan bir uygulama için bazı etkileşimler gerekir. TLS İstemcileri için, uygulamanın uzak sunucuya gönderilecek bir DNS adı göndermesi gerekir. TLS Sunucuları için, uygulamanın uzantıdan DNS adını okuması ve istemciye geri göndermek için uygun bir sertifika seçmesi gerekir.
 
-Aşağıdaki bölümler NetX güvenli TLS 'de SNı uzantısının nasıl kullanılacağına ilişkin daha fazla ayrıntı sağlar.
+Aşağıdaki bölümlerde, NetX Secure TLS'de SNI uzantısının nasıl kullanımı hakkında daha fazla ayrıntı sağlanmıştır.
 
-### <a name="sni-extension--tls-client"></a>SNı uzantısı – TLS Istemcisi
+### <a name="sni-extension--tls-client"></a>SNI Uzantısı – TLS İstemcisi
 
-SNı uzantısını kullanmak isteyen bir NetX güvenli TLS Istemcisinin, el sıkışma sırasında sağlanacak bir DNS adını, TLS 'ye sağlaması gerekir. Uzantı, el sıkışma işlemini başlatan ClientHello iletisinde gönderildiği için, bir TLS oturumu başlatılmadan önce bu adın başlatılmış ve sağlanması gerekir.
+SNI uzantısını kullanmak isteyen bir NetX Güvenli TLS İstemcisi, el sıkışma sırasında TLS'ye sağlanmalıdır. Uzantı, el sıkışma işlemini başlatan ClientHello iletisinde gönderildiği için bu ad bir TLS oturumu başlatılmadan önce başlatılmış ve sağlanmalıdır.
 
-Aşağıdaki kod parçacığı, uzantısının kullanımını gösterir. İlk olarak, NX_SECURE_X509_DNS_NAME bir nesne istenen sunucu adı ile başlatılır. Daha sonra, TLS oturumuna başlamadan önce, adı SNı uzantısı API 'SI kullanılarak TLS olarak sağlanır. Ad ayarlandıktan sonra, başka bir eylem gerekmez. Bölüm 4 ' te API başvurusuna bakın  
+Aşağıdaki kod parçacığı uzantısının kullanımını göstermektedir. İlk olarak, NX_SECURE_X509_DNS_NAME sunucu adı ile bir nesne başlatılır. Ardından, TLS oturumu başlamadan önce ad, SNI uzantısı API'si kullanılarak TLS'ye sağlanır. Ad ayardan sonra başka bir eylem gerekmez. 4. Bölüm'de API başvurusuna bakın  
   
-Ayrı işlevler hakkında daha fazla bilgi için NetX güvenli hizmetlerinin açıklaması.
+Tek tek işlevler hakkında daha fazla bilgi için NetX Secure Services'ın açıklaması.
 
 ```C
 /* The dns_name variable will contain our desired server name. */
@@ -378,19 +378,19 @@ status = nx_tcp_client_socket_connect(&client_socket, IP_ADDRESS(1, 2, 3, 4), 44
 status = nx_secure_tls_session_start(&client_tls_session, &client_socket, 
                                      NX_WAIT_FOREVER);
 ```
-### <a name="sni-extension--tls-server"></a>SNı uzantısı – TLS sunucusu
+### <a name="sni-extension--tls-server"></a>SNI Uzantısı – TLS Sunucusu
 
-TLS sunucu tarafında, el sıkışma sırasında uzak istemciye sağlanacak uygun kimlik bilgilerini (örn. sertifika) seçmek için, SNı uzantısı uygulama tarafından işlenebilir. Bunu yapmak için, uygulamanın bir ClientHello iletisinin alındığını izleyerek çağrılan bir oturum geri çağırması sağlaması gerekir.
+TLS Sunucusu tarafında SNI uzantısı, el sıkışma sırasında uzak istemciye sağılacak uygun kimlik bilgilerini (örneğin sertifika) seçmek için uygulama tarafından işlenebilir. Bunu yapmak için uygulamanın ClientHello iletisinin alınmasından sonra çağrılan bir oturum geri çağırması göndermesi gerekir.
 
-Nx_secure_tls_session_server_callback_set API 'sinin örnek kodu (bkz. sayfa 122), bir sunucu geri çağırması kullanılarak gelen bir SNı uzantısının ayrıştırılmasını gösterir. Temelde, TLS sunucusu bir ClientHello alır ve geri çağırma işlemini çağırır. Ardından uygulama, SNı uzantısını bulmak için geri aramaya sağlanan uzantı verilerini ayrıştırmak ve sağlanan DNS adını döndürmek için *nx_secure_tls_session_sni_extension_parse* API 'sini kullanır (uzantının yalnızca tek bir DNS adını desteklediğini unutmayın). Ad alındıktan sonra uygulama, uygun sunucu kimlik sertifikasını (ve uygulanabilirse veren zincirini) bulmak ve göndermek için onu kullanır.
+nx_secure_tls_session_server_callback_set API'si (bkz. sayfa 122) için örnek kod, sunucu geri çağırma kullanarak gelen SNI uzantısının ayrıştırıcısını gösterir. Temelde TLS Sunucusu bir ClientHello alır ve geri çağırmayı çağırır. Ardından *uygulama, SNI* uzantısını bulmak ve sağlanan DNS adını geri dönmek için geri çağırmaya sağlanan uzantı verilerini ayrıştırmak için nx_secure_tls_session_sni_extension_parse API'sini kullanır (uzantının yalnızca tek bir DNS adını desteklediğini unutmayın). Ad alındıktan sonra, uygulama uygun sunucu kimliği sertifikasını (ve varsa sertifikayı verir zincirini) bulmak ve göndermek için bunu kullanır.
 
-### <a name="signature-algorithms-extension"></a>İmza algoritmaları uzantısı
+### <a name="signature-algorithms-extension"></a>İmza Algoritmaları Uzantısı
 
-Bu uzantı TLS 1,2 ' e özgüdür ve bir TLS Istemcisinin dijital imzaları oluşturma ve doğrulama için kabul edilebilir kabul edilebilir imza ve karma algoritma çiftlerinin bir listesini sağlamasına izin verir. Liste, *nx_secure_tls_session_create* için sağlanan şifre tablosunu kullanan TLS Istemcileri Için NETX güvenli TLS tarafından otomatik olarak oluşturulur. Uygulama etkileşimi gerekmez.
+Bu uzantı TLS 1.2'ye özeldir ve bir TLS İstemcisi'nin dijital imza oluşturma ve doğrulamada kullanım için kabul edilebilir kabul edilebilir imza ve karma algoritma çiftlerinin bir listesini sağlamasını sağlar. Liste, tls İstemcileri için NetX Secure TLS tarafından otomatik olarak oluşturulur ve bu, *nx_secure_tls_session_create.* Uygulama etkileşimi gerekmez.
 
 ## <a name="authentication-methods"></a>Kimlik Doğrulaması Yöntemleri
 
-TLS, güvenli olmayan bir ağ üzerinden iki cihaz arasında güvenli bir bağlantı kurmak için çerçeve sağlar, ancak sorunun bir parçası bu bağlantının diğer ucundaki cihazın kimliğini öğrenmektir. Uzak ana bilgisayarların kimliğini doğrulamak için bir mekanizma olmadan, saldırganın güvenilen bir cihaz olarak oluşturabileceği önemsiz bir işlem haline gelir.
+TLS, güvenli olmayan bir ağ üzerinden iki cihaz arasında güvenli bağlantı kurma çerçevesini sağlar, ancak sorunun bir parçası, bu bağlantının diğer ucundaki cihazın kimliğini bilmektir. Uzak ana bilgisayarların kimliğini doğrulamak için bir mekanizma olmadan, saldırganın güvenilen bir cihaz olarak oluşturabileceği önemsiz bir işlem haline gelir.
 
 Başlangıçta, IP adreslerini, donanım MAC adreslerini veya DNS 'yi kullanarak, bir ağdaki Konakları tanımlamak için görece yüksek düzeyde güven sağlayabilir, ancak TCP/IP teknolojisinin doğası ve adreslerin sızması ve DNS girdilerinin bozulmuş olması (örneğin, DNS önbelleği kirlenmesi aracılığıyla), TLS 'nin sahte kimliklere karşı ek bir koruma katmanı gerektirdiğinden emin olur.
 
@@ -503,7 +503,7 @@ Kimlik doğrulama amacıyla diğer sertifikaları veya verileri dijital olarak i
 
 Dijital sertifikalar yalnızca ASN. 1 sözdizimi kullanılarak kodlanan yapılandırılmış verileri içeren dosyalardır. Ancak, sertifikaların depolanabileceği çeşitli biçimler vardır ve bir sertifikayı NetX güvenli uygulamasına yüklemeden önce doğru biçime sahip olmak önemlidir.
 
-Sertifikalar için en yaygın biçimler DER ve Peg ' dir. DER ( *Distinguished Encoding Rules* IÇIN bir ASN. 1 biçimi), ilk el SıKıŞMA gerçekleştirilirken TLS tarafından kullanılan ikili biçimdir. Peg ( *Gizlilik Gelişmiş posta*'ten), Web 'de http üzerinden gönderme veya gönderme için uygun olan der biçiminin base-64 kodlu bir sürümüdür. Farklı satıcılar, sertifika için ". pek" veya ". CRT" gibi farklı dosya adı uzantılarını ve DER sertifikaları için ". der" kullanır. Bir sertifikanız varsa ve bu, hangi biçimin kullanıldığını temizleyemiyorsa, dosyayı bir metin düzenleyicisinde açmak, DER dosyaları kodlanmış ikiliden itibaren türü belirlemenizi sağlar ve pek dosyaları, "-----başlangıç SERTIFIKASı-----" üstbilgisiyle başlayan normal ASCII metinlerdir.
+Sertifikalar için en yaygın biçimler DER ve Peg ' dir. DER ( *Distinguished Encoding Rules* için bir ASN. 1 biçimi), ilk el sıkışma gerçekleştirilirken TLS tarafından kullanılan ikili biçimdir. Peg ( *Gizlilik Gelişmiş posta*'ten), Web 'de http üzerinden gönderme veya gönderme için uygun olan der biçiminin base-64 kodlu bir sürümüdür. Farklı satıcılar, sertifika için ". pek" veya ". CRT" gibi farklı dosya adı uzantılarını ve DER sertifikaları için ". der" kullanır. Bir sertifikanız varsa ve bu, hangi biçimin kullanıldığını temizleyemiyorsa, dosyayı bir metin düzenleyicisinde açmak, DER dosyaları kodlanmış ikiliden itibaren türü belirlemenizi sağlar ve pek dosyaları, "-----başlangıç SERTIFIKASı-----" üstbilgisiyle başlayan normal ASCII metinlerdir.
 
 NetX güvenli, sertifikanızın ikili DER biçiminde olmasını gerektirir, bu nedenle içeri aktarmadan önce sertifikanızı DER biçimine dönüştürmeniz gerekir. Bu, OpenSSL gibi kullanıma hazır araçlarla yapılabilir.
 
@@ -518,7 +518,7 @@ openssl rsa -inform PEM -in <private key> -outform DER -out private.key
 ```
 ### <a name="private-keys-and-certificates"></a>Özel anahtarlar ve sertifikalar
 
-Bir cihazı tanımlayan sertifikalar için, ilişkili özel anahtarın sertifikayla birlikte yüklenmesi gerekir. Özel anahtar (RSA, Diffie-Hellman veya Elliptic-Curve Cryptography gibi ortak anahtar algoritmalarından biri olabilir), bir TLS sunucusu tarafından, gelen anahtar malzemesinin ("Ana Gizlilik") bir TLS istemcisinden şifresini çözmek için kullanılır ve bu sayede istemcinin kimliğini kimlik doğrulamasını sağlar. Bir TLS Istemcisi için, bir kimlik sertifikası (ilişkili özel anahtarı olan bir sertifika) sağlanmışsa ve sunucu bir istemci sertifikası isterse, özel anahtar istemcinin kimliğini doğrulamak için kullanılır. RSA, istemci sertifikada belirtilen özel anahtarı kullanarak bir belirteci şifreler (Diffie-Hellman ve ECC kimlik doğrulaması benzer bir şekilde gerçekleşir, ancak Ayrıntılar bit farklıdır)).
+Bir cihazı tanımlayan sertifikalar için, ilişkili özel anahtarın sertifikayla birlikte yüklenmesi gerekir. Özel anahtar (RSA, Diffie-Hellman veya Elliptic-Curve Cryptography gibi ortak anahtar algoritmalarından biri olabilir), bir TLS sunucusu tarafından, gelen anahtar malzemesinin ("Ana Gizlilik") bir TLS istemcisinden şifresini çözmek için kullanılır ve bu sayede istemcinin kimliğini kimlik doğrulamasını sağlar. Bir TLS Istemcisi için, bir kimlik sertifikası (ilişkili özel anahtarı olan bir sertifika) sağlanmışsa ve bir sunucu bir istemci sertifikası isterse, istemcinin kimliğini doğrulamak için özel anahtar kullanılır. RSA, istemci, istemcinin ortak anahtarını kullanarak sunucu şifresini çözdüğü özel anahtarı kullanarak bir belirteci şifreler,  istemci sertifikasında belirtilen (Diffie-Hellman ve ECC kimlik doğrulaması benzer bir şekilde gerçekleşir, ancak Ayrıntılar biraz farklıdır).
 
 NetX güvenli ' te, Service *nx_secure_x509_certificate_initialize* bir X. 509.440 sertifikası başlatmak için kullanılır (daha fazla bilgi için bkz. "cihazınıza sertifika yükleme" bölümüne bakın) ve isteğe bağlı olarak özel bir anahtarı bu sertifikayla ilişkilendirin.
 
@@ -528,7 +528,7 @@ Aşağıdaki tabloda NetX güvenli olarak bilinen anahtar türleri ve *nx_secure
 
 | Tanımlayıcı                              | Algoritma | Biçimlendir   | Encoding | Değer |
 | --------------------------------------- | --------- | -------- | -------- | ----- |
-| NX_SECURE_X509_KEY_TYPE_NONE            | Yok      | Yok      | Yok      | 'dır   |
+| NX_SECURE_X509_KEY_TYPE_NONE            | Hiçbiri      | Yok      | Yok      | 'dır   |
 | NX_SECURE_X509_KEY_TYPE_RSA_PKCS1_DER   | RSA       | PKCS # 1   | CÜ      | 0x1   |
 | NX_SECURE_X509_KEY_TYPE_EC_DER          | ECDSA     | RFC 5915 | CÜ      | 0x2   |
 
@@ -592,49 +592,49 @@ Dönüştürülen dosyalar, yukarıdaki yönergeleri izleyerek uygulamanıza akt
 
 Ana bilgisayar tanımlama ve doğrulama için X. 509.440 sertifikalarıyla TLS kullanırken, bu sertifikaların gerçekten nasıl doğrulandığını anlamak önemlidir. TLS belirtimi bir sertifikanın nasıl doğrulanacağı hakkında ayrıntılı yönergeler sağlamıyorsa, bu, X. 509.440 belirtimine (RFC 5280) başvurur. Genel olarak, TLS 'nin gelen sertifikalarda en az temel doğrulama gerçekleştirmesini (TLS el sıkışması sırasında uzak ana bilgisayar tarafından sağlanan sertifikalar) ve NetX güvenli TLS 'in farklı olmaması beklenmektedir.
 
-### <a name="basic-x509-validation"></a>Temel X. 509.440 doğrulaması
+### <a name="basic-x509-validation"></a>Temel X.509 Doğrulaması
 
-Tüm gelen sertifikalar için NetX güvenli TLS, temel X. 509.440 yol doğrulamasını gerçekleştirir. İşlem, güvenilen sertifikaları içeri aktarma hakkında daha fazla bilgi için, her sertifikanın dijital imzasını veren sertifikasına karşı denetlemeyi içerir. Bu, uzak ana bilgisayar tarafından sağlanabiliyor veya güvenilen sertifika deposunda yer alıyor (güvenilen sertifikaları alma hakkında daha fazla bilgi için "X. 509.952 sertifikalarını NetX 'e aktarma" bölümüne bakın). Doğrulama işlemi, güvenilen sertifikaya ulaşılana veya zincir sona erene kadar (otomatik olarak imzalanan bir sertifika veya eksik veren sertifikayla) veren sertifikalarda yinelemeli olarak yinelenir. Güvenilen sertifikaya ulaşıldığında, sertifika doğrulanır, aksi takdirde reddedilir. Ayrıca, doğrulama işlemindeki her aşamada her bir sertifikanın sona erme tarihi, uygulama zaman damgası işlevi tarafından belirtilen zamana göre denetlenir (daha fazla bilgi için "nx_secure_tls_session_time_function_set" hizmetine bakın).
+Herhangi bir gelen sertifika için NetX Secure TLS temel X.509 yol doğrulamasını gerçekleştirecek. Bu işlem, her bir sertifikanın dijital imzasını, uzak konak tarafından sağlansa veya güvenilen sertifika depolamada yer alsa da sertifikayı sertifikayı içeren sertifikaya karşı denetlemeyi içerir (güvenilen sertifikaları içeri aktarma hakkında daha fazla bilgi için "X.509 sertifikalarını NetX Secure'ye aktarma" bölümüne bakın). Doğrulama işlemi, güvenilir bir sertifikaya ulaşıncaya veya zincir sona erinceye kadar (otomatik olarak imzalanan sertifika veya eksik bir sertifika ile) sertifikayı alan sertifikalarda özyinelemeli olarak yinelenir. Güvenilen bir sertifikaya ulaşıldı ise sertifika doğrulanır, aksi takdirde reddedilir. Ayrıca, doğrulama işleminin her aşamasında her sertifikanın sona erme tarihi, uygulama zaman damgası işlevi tarafından sağlanan süreye göre denetlenir (daha fazla bilgi için "nx_secure_tls_session_time_function_set" hizmetine bakın).
 
-X. 509.440 belirtimi, yol doğrulaması sırasında denetlenebilir bir X. 509.952 uzantısında bulunan tanımlayıcılar olan "ilkeleri" desteklemek için bir algoritma da sunar. NetX Secure Şu anda X. 509.440 sertifikalarını "anyPolicy" seçeneği tanımlanmış olsa da kabul eder; yani, tüm ilkeler kabul edilebilir ve isteğe bağlı ilke denetimi gerçekleştirilmez. NetX Secure X. 509.440 uygulamasının daha sonraki bir sürümde bu özellikle Genişletilebilir olması olabilir. Şimdilik, ilke uzantısı *nx_secure_x509_extension_find* API kullanarak bir sertifikadan elde edilebilir.
+X.509 belirtimi, yol doğrulaması sırasında denetlenen bir X.509 uzantısında bulunan tanımlayıcılar olan "ilkeleri" desteklemeye yönelik bir algoritma da sağlar. NetX Secure şu anda X.509 sertifikalarını "anyPolicy" seçeneği tanımlanmış gibi kabul eder; yani tüm ilkeler kabul edilebilir ve isteğe bağlı ilke denetimi gerçekleştirilemez. NetX Secure X.509 uygulaması, gelecek bir sürümde bu özellikle artırılmış olabilir. Şimdilik ilke uzantısı, api'sini kullanarak bir sertifikadan *nx_secure_x509_extension_find* olabilir.
 
-Temel yol doğrulaması tamamlandıktan sonra, TLS *nx_secure_tls_session_certificate_callback_set* API kullanılarak uygulama tarafından sağlanan sertifika doğrulama geri aramasını çağırır. Geri arama sağlanmadığında, sertifikanın başarılı yol doğrulamasından sonra güvenilir olduğu kabul edilir. Bir geri çağırma sağlanırsa, geri arama, uygulamanın gerektirdiği sertifikanın ek doğrulamasını gerçekleştirir. Geri aramadan gelen dönüş değeri, TLS el sıkışması ile devam edilip edilmeyeceğini veya bir doğrulama hatası nedeniyle el sıkışmasını durdurmayı belirlemekte kullanılır.
+Temel yol doğrulaması tamamlandıktan sonra TLS, uygulama tarafından sağlanan sertifika doğrulama geri çağrısını *api'sini nx_secure_tls_session_certificate_callback_set* çağırır. Geri arama sağlanmadı ise, başarılı yol doğrulamasının ardından sertifikaya güvenilir olarak kabul edilir. Bir geri çağırma sağlanırsa, geri çağırma uygulama için gereken sertifikanın ek doğrulamasını gerçekleştirecek. Geri çağırmadan dönüş değeri TLS el sıkışması ile devam etmek veya doğrulama hatası nedeniyle el sıkışmayı durdurmak için kullanılır.
 
-Geri çağırma, ilgili TLS oturumuna yönelik bir işaretçi ve doğrulanacak sertifikaya yönelik NX_SECURE_X509_CERT işaretçisi ile çağrılır. TLS oturumu ve sertifika arasında, uygulamanın ek doğrulama denetimleri gerçekleştirmesi için gereken tüm verileri TLS 'den yapması gerekir.
+Geri çağırma, ilgili TLS oturumunun işaretçisi ve doğrulanması NX_SECURE_X509_CERT bir işaretçisi ile çağrılır. TLS oturumu ile sertifika arasında, uygulama ek doğrulama denetimleri gerçekleştirmek için TLS'den gereken tüm verilere sahip olur.
 
-NetX Secure, ek doğrulamaya yardımcı olmak için DNS doğrulaması ve sertifika Iptal listesi denetimi dahil bazı yaygın doğrulama işlemleri için X. 509.440 yordamlarını sağlar. Bu yordamların hepsi, sertifika doğrulama geri aramasında kullanılmak üzere uygundur, ancak X. 509.440 sertifikalarının çevrimdışı denetimini gerçekleştirmek için de kullanılabilir.
+Ek doğrulamaya yardımcı olmak için NetX Secure, DNS doğrulaması ve Sertifika İptal Listesi denetimi de dahil olmak üzere bazı yaygın doğrulama işlemleri için X.509 yordamları sağlar. Bu yordamların hepsi sertifika doğrulama geri çağırmada kullanılmaya uygundur, ancak X.509 sertifikalarının satır dışı denetlenmelerini gerçekleştirmek için de kullanılabilir.
 
-Aşağıdaki tabloda X. 509.440 sertifika işleme için kullanılabilir yardımcı işlevler özetlenmektedir. İşlemler için daha ayrıntılı açıklamalar, Bölüm 4 ' te aşağıdaki bölümlerde ve API başvurusunda bulunabilir  
+Aşağıdaki tabloda, X.509 sertifika işleme için kullanılabilir yardımcı işlevler özetlenmiştir. İşlemler için daha ayrıntılı açıklamalar aşağıdaki bölümlerde ve 4. Bölümdeki API başvurusunda bulunabilir  
   
-NetX güvenli hizmetlerinin açıklaması, belirli yordamlar hakkında ek ayrıntılar sağlar.
+NetX Secure Services açıklaması, belirli yordamlarla ilgili ek ayrıntılar sağlar.
 
-| **API adı**                             | **Açıklama**                               |
+| **API Adı**                             | **Açıklama**                               |
 | ---------------------------------------- | -------------------------------------- |
-| nx_secure_x509_common_name_dns_check               | X. 509.952 Subject ortak adı ve SubjectAltName ' i beklenen bir DNS adına göre denetleyin |
-| nx_secure_x509_crl_revocation_check                 | Bir X. 509.440 sertifika Iptal listesindeki (CRL) iptal edilmiş bir sertifika olup olmadığını denetleyin       |
-| nx_secure_x509_extended_key_usage_extension_parse | Bir sertifikada belirli bir genişletilmiş anahtar kullanımı OID 'sini ayrıştırma ve bulma                   |
-| nx_secure_x509_key_usage_extension_parse           | Bir sertifikadaki anahtar kullanımı bitalanını ayrıştırın ve döndürün                            |
-| nx_secure_x509_extension_find                        | Belirli bir uzantı için ham DER kodlu ASN. 1 verilerini bulun ve döndürün.            |
+| nx_secure_x509_common_name_dns_check               | X.509 konu Ortak Adı ve SubjectAltName konularını beklenen bir DNS adıyla karşıdan kontrol edin |
+| nx_secure_x509_crl_revocation_check                 | X.509 Sertifika İptal Listesi'ne (CRL) iptal edilmiş bir sertifikayı denetleme       |
+| nx_secure_x509_extended_key_usage_extension_parse | Sertifikada belirli bir genişletilmiş anahtar kullanımı OID'lerini ayrıştırma ve bulma                   |
+| nx_secure_x509_key_usage_extension_parse           | Sertifikada anahtar kullanımı bit alanı ayrıştırma ve iade                            |
+| nx_secure_x509_extension_find                        | Belirli bir uzantı için ham DER ile kodlanmış ASN.1 verilerini bulup iade et.            |
 
-Sertifika doğrulama geri aramasında kullanılacak X. 509.440 yardımcı işlevleri
+Sertifika doğrulama geri çağırmada kullanmak için X.509 yardımcı işlevleri
 
-### <a name="x509-extensions"></a>X. 509.440 uzantıları
+### <a name="x509-extensions"></a>X.509 Uzantıları
 
-X. 509.440 belirtimi, sertifikaların Doğrulanmakta kullanılabilecek ek bilgiler sağlamak için kullanılabilen bir dizi "uzantıyı" tanımlar. Çoğu bölüm için bu uzantılar isteğe bağlıdır ve bir dijital sertifikanın güvenilen bir kök sertifikaya karşı güvenli doğrulanması için gerekli değildir. Ancak NetX Secure, bazı temel uzantıları destekler. Ek uzantılar için destek gelecekteki sürümlerde eklenebilir.
+X.509 belirtimi, sertifikaların doğrulanmasında kullanılmaktadır ek bilgi sağlamak için kullanılan bir dizi "uzantıyı" açıklar. Bu uzantılar çoğu zaman isteğe bağlıdır ve güvenilir bir kök sertifikaya karşı bir dijital sertifikanın güvenli doğrulaması için gerekli değildir. Ancak NetX Secure bazı temel uzantıları destekler. Gelecek sürümlerde ek uzantı desteği eklenebilir.
 
 Şu anda desteklenen uzantılar aşağıdaki tabloda listelenmiştir:
 
-| Uzantı adı           | Açıklama                                                                   | İlgili API                                             |
+| Uzantı Adı           | Description                                                                   | İlgili API                                             |
 | ------------------------ | ----------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Anahtar Kullanımı                | Bir bit alanından içindeki bir sertifikanın ortak anahtarı için kabul edilebilir kullanımlar sağlar         | nx_secure_x509_key_usage_extension_parse           |
-| Genişletilmiş Anahtar Kullanımı       | , Bir sertifikanın OID kullanarak ortak anahtarı için kabul edilebilir ek kullanımlar sağlar | nx_secure_x509_extended_key_usage_extension_parse |
+| Anahtar Kullanımı                | Bit araklı bir sertifikanın ortak anahtarı için kabul edilebilir kullanımlar sağlar         | nx_secure_x509_key_usage_extension_parse           |
+| Genişletilmiş Anahtar Kullanımı       | OID'leri kullanarak bir sertifikanın ortak anahtarı için ek kabul edilebilir kullanımlar sağlar | nx_secure_x509_extended_key_usage_extension_parse |
 | Konu Diğer Adı | Sertifika tarafından da temsil edilen alternatif DNS adları sağlar   | nx_secure_x509_common_name_dns_check               |
 
-### <a name="unsupported-x509-extensions"></a>Desteklenmeyen X. 509.440 uzantıları
+### <a name="unsupported-x509-extensions"></a>Desteklenmeyen X.509 Uzantıları
 
-NetX Secure 'ın X. 509.440, desteklenmeyen uzantıları ayıklamak için de bir hizmet sağlar: *nx_secure_x509_extension_find*. Bu API, döndürülen verileri ayrıştırmak için DER kodlu ASN. 1 bilgisine ihtiyaç duyan gelişmiş kullanıcılara yöneliktir. Bu BT, desteklenen uzantıları ayıklamak için dahili olarak kullanılır, ancak X. 509.440 uzantıları için özelleştirilmiş destek geliştirme konusunda kolaylık sağlaması için sağlanır.
+NetX Secure'in X.509 işlemesi desteklenmeyen uzantıları ayıklamak için de bir hizmet sağlar: *nx_secure_x509_extension_find.* Bu API, döndürülen verileri ayrıştırmak için DER ile kodlanmış ASN.1 bilgisi gerektirdiği için ileri düzey kullanıcılara yöneliktir. Desteklenen uzantıları ayıklamak için dahili olarak kullanılır, ancak X.509 uzantıları için özelleştirilmiş destek geliştirmede kolaylık sağlamak için sağlanır.
 
-Nx_secure_x509_extension_find kullanmak için, sertifika ve uzantı KIMLIĞIYLE birlikte bir NX_SECURE_X509_EXTENSION geçirilir. Bu, bilinen bir uzantı türü için değişken uzunluklu OID dizesinin tamsayı gösterimidir. X. 509.440 uzantıları için desteklenen OID 'lerin tamamı, sayfa 178 ' de nx_secure_x509_extension_find için API başvurusunda verilmiştir.
+Bu nx_secure_x509_extension_find için, NX_SECURE_X509_EXTENSION sertifika ve uzantı kimliği ile birlikte bilinen bir uzantı türü için değişken uzunluğu OID dizesinin tamsayı gösterimi olan bir uzantı kimliği geçirildi. X.509 uzantıları için desteklenen OID'lerin tam listesi, sayfa 178'deki nx_secure_x509_extension_find API başvurusunda sağlanır.
 
 NX_SECURE_X509_EXTENSION yapısı aşağıdaki gibi tanımlanır:
 
@@ -652,72 +652,72 @@ typedef struct NX_SECURE_X509_EXTENSION_STRUCT
     ULONG        nx_secure_x509_extension_data_length;
 } NX_SECURE_X509_EXTENSION;
 ```
-Hizmet başarıyla geri döndüğünde, yapı sertifikadaki ilgili verilerle doldurulur. Nx_secure_x509_extension_id alanı genellikle dahili amaçlar için kullanılır, ancak ilgili OID tamsayı temsili ile doldurulur. Nx_secure_x509_extension_critical alanı X. 509.440 kritik uzantı bayrak değerini (Boolean) kullanıma sunar. Nx_secure_x509_extension_data ve nx_secure_x509_extension_data_length alanları, uzantı için DER ile kodlanmış ASN. 1 verisi ve bu verilerin sırasıyla uzunluğu ile ilgili bir işaretçi içerir.
+Hizmet başarıyla döndüğünde yapı, sertifikadan gelen ilgili verilerle doldurulur. Nx_secure_x509_extension_id alanı genellikle iç amaçlar için kullanılır, ancak ilgili OID tamsayı gösterimiyle doldurulur. Nx_secure_x509_extension_critical alanı X.509 kritik uzantı bayrağı değerini (Boole) ortaya çıkarır. Nx_secure_x509_extension_data ve nx_secure_x509_extension_data_length alanları, uzantı için DER ile kodlanmış ASN.1 verilerine ve bu verilerin uzunluğuna bir işaretçi içerir.
 
-ASN. 1 veri uzantısının gerçek ayrıştırması bu belgenin kapsamının ötesinde, ancak NetX güvenli TLS kaynağına erişiminiz varsa, desteklenen uzantılar için nx_secure_x509_extension_find çağrıldığı her yerde ayrıştırmayı nasıl yapılacağını görebilirsiniz.
+Uzantı ASN.1 verilerini gerçek olarak ayrıştırma bu belgenin kapsamının dışındadır, ancak NetX Secure TLS kaynağına erişiminiz varsa, desteklenen uzantılar için her zaman her nx_secure_x509_extension_find ayrıştırmanın nasıl nx_secure_x509_extension_find olduğunu görebilirsiniz.
 
-### <a name="x509-dns-validation"></a>X. 509.440 DNS doğrulaması
+### <a name="x509-dns-validation"></a>X.509 DNS Doğrulaması
 
-TLS 'de ortak bir sertifika doğrulama işlemi, uzak bir ana bilgisayarın Top-Level etki alanı (TLD) adının TLS el sıkışması sırasında bu konak tarafından sağlanmış X. 509.440 sertifikasına göre denetlenmesini içerir. Bu işlem, DNS aramasına güvenildiğini varsayarak sertifikanın gerçekten onu sağlayan ana bilgisayar sunucusuyla eşleştiğinden emin olmaya yardımcı olur. NetX güvenli TLS 'de, bu işlevsellik, sertifikayı ve konağa erişmek için kullanılan URL 'nin TLD bölümünü içeren bir dizeyi alan hizmet **nx_secure_x509_common_name_dns_check** tarafından sağlanır. TLD, sertifikanın ortak ad alanıyla karşılaştırılır ve eşleşiyorsa NX_SUCCESS döndürülür. Ortak ad eşleşmiyorsa, yordam ayrıca X. 509.440 sertifika uzantısının *SubjectAltName* olup olmadığını denetler. Bir subjectAltName varsa, uzantıdaki herhangi bir DNSName girdisi de belirtilen TLD 'ye karşı denetlenir. Bir eşleşme varsa, NX_SUCCESS döndürülür. Eşleşme bulunmazsa, sertifika doğrulama geri çağrısından dönmek için uygun bir hata döndürülür.
+TLS'de yaygın bir sertifika doğrulama işlemi, uzak bir ana bilgisayarın Top-Level Etki Alanı (TLD) adını TLS el sıkışması sırasında bu konak tarafından sağlanan X.509 sertifikasıyla denetlemeyi içerir. Bu işlem, DNS aramanın güvenilir olduğu varsayıldık, sertifikanın gerçekten de sertifikayı sağlanan ana bilgisayar sunucusuyla eşleyemelerini sağlamaya yardımcı olur. NetX Secure TLS'de bu işlevsellik, sertifikayı **ve** ana bilgisayar erişimi için kullanılan URL'nin TLD bölümünü içeren bir dizeyi alan hizmet nx_secure_x509_common_name_dns_check tarafından sağlanır. TLD, sertifikanın Ortak Ad alanıyla karşılaştırıldı ve eşdüzdü NX_SUCCESS döndürülür. Ortak Ad eşleşmezse yordam, *subjectAltName* adlı X.509 sertifika uzantısının varlığını da kontrol eder. SubjectAltName varsa, uzantıda tüm DNSName girdileri de sağlanan TLD'ye karşı denetlenir. Yine, herhangi bir eşleşme NX_SUCCESS döndürülür. Eşleşme bulunamasa, sertifika doğrulama geri çağırmadan dönmek için uygun bir hata döndürülür.
 
-### <a name="x509-key-usage-and-extended-key-usage-extensions"></a>X. 509.440 anahtar kullanımı ve genişletilmiş anahtar kullanımı uzantıları
+### <a name="x509-key-usage-and-extended-key-usage-extensions"></a>X.509 Anahtar Kullanımı ve Genişletilmiş Anahtar Kullanımı Uzantıları
 
-X. 509.952 anahtar kullanımı ve genişletilmiş anahtar kullanımı uzantıları, sertifikanın kimliğini doğrularken sertifikanın ortak anahtarının nasıl kullanılabileceği hakkında bilgi sağlar. Anahtar kullanımı, sertifika imzalanmışsa ve verildiğinde sertifikanın veren tarafından sağlanır. Anahtar kullanımı, bir TLS ana bilgisayarı tarafından uzak bir TLS ana bilgisayarının kimliğini doğrulamak ve diğer işlemleri gerçekleştirmek için kullanılacak yetkiye sahip olup olmadığını denetlemek için kullanılabilir.
+X.509 Anahtar Kullanımı ve Genişletilmiş Anahtar Kullanımı uzantıları, bir sertifikanın ortak anahtarının bu sertifikanın kimlik doğrulamasını nasıl kullanılası hakkında bilgi sağlar. Anahtar kullanımı, sertifika imzalandı ve verildikleri zaman sertifikayı imzalayan tarafından sağlanır. Anahtar kullanımı, bir TLS ana bilgisayarı tarafından sertifikanın uzak BIR TLS ana bilgisayarının kimliğini doğrulamak ve diğer işlemleri gerçekleştirmek için kullanılma yetkisine sahip olup olamay için kullanılabilir.
 
-Anahtar kullanımı uzantısı, her bir bitlerin belirli bir anahtar kullanımını temsil ettiği bir basit bitalanından oluşur. Bu değerlerin tüm listesi, 183 sayfasında *nx_secure_x509_key_usage_extension_parse* için API başvurusunda verilmiştir. Anahtar kullanımı bitlerinin ve anlamları hakkında daha ayrıntılı bir açıklama için bkz. RFC 5280, Bölüm 4.2.1.3.
+Anahtar Kullanımı uzantısı, bitlerin her biri belirli bir anahtar kullanımını temsil eden basit bir bitfield'den oluşur. Bu değerlerin tam listesi, sayfa 183'te *nx_secure_x509_key_usage_extension_parse* API başvurusunda verilmektedir. Anahtar kullanım bitlerinin ve anlamlarının daha eksiksiz bir açıklaması için RFC 5280, bölüm 4.2.1.3'e bakın.
 
-Anahtar kullanımı uzantısı gibi genişletilmiş anahtar kullanımı uzantısı, kabul edilebilir anahtar kullanımı bilgilerini sağlar. Ancak, rastgele kullanımları desteklemek için, genişletilmiş anahtar kullanımı uzantısı bir bit alanı yerine OID 'leri kullanır. NetX güvenli X. 509.440 içinde genişletilmiş anahtar kullanımı uzantısını ayrıştırırken, uygulama tarafından OID 'yi temsil eden bir tamsayı sağlanır. *nx_secure_x509_extended_key_usage_extension_parse* hizmet daha sonra bu OID 'nin mevcut olup olmadığını döndürür. Genişletilmiş anahtar kullanımı için desteklenen OID 'lerin tamamı, sayfa 175 ' de *nx_secure_x509_extended_key_usage_extension_parse* için API başvurusunda verilmiştir. OID 'lerin ve anlamları hakkında daha ayrıntılı bir açıklama için, RFC 5280, Bölüm 4.2.1.12 bakın.
+Anahtar Kullanımı uzantısı gibi Genişletilmiş Anahtar Kullanımı uzantısı da kabul edilebilir anahtar kullanımı bilgileri sağlar. Ancak, Genişletilmiş Anahtar Kullanımı uzantısı rastgele kullanımları desteklemek için bit alanı yerine OID'leri kullanır. NetX Secure X.509'da Genişletilmiş Anahtar Kullanımı uzantısı ayrıştırılırken, uygulama tarafından OID'yi temsil eden bir tamsayı sağlanır; nx_secure_x509_extended_key_usage_extension_parse hizmeti bu *OID'nin* mevcut olup olmadığını döndürür. Genişletilmiş Anahtar kullanımı için desteklenen OID'lerin tam listesi,  sayfa 175'te nx_secure_x509_extended_key_usage_extension_parse API başvurusunda verilmektedir. OID'ler ve anlamlarının daha eksiksiz bir açıklaması için 4.2.1.12 bölümü olan RFC 5280 bölümüne bakın.
 
-### <a name="x509-crl-revocation-status-checking"></a>X. 509.440 CRL Iptal durumu denetimi
+### <a name="x509-crl-revocation-status-checking"></a>X.509 CRL İptal Durumu Denetimi
 
-X. 509.440, dijital bir sertifika imzalama yetkilisinin imzalandığı sertifikaların geçerliliğini iptal etmesine izin veren, *sertifika Iptal listesi* (CRL) adlı bir mekanizma sağlar. İmza yetkilisinden sertifikaları doğrulaması gereken herhangi bir uygulama, bir CRL alabilir ve bu yetkilinin (veren), belirli bir nedenden dolayı (güvenliği aşılmış özel anahtar gibi) durumunun iptal edilip edilmediğini görmek için CRL 'ye karşı imzalanan tüm sertifikaları karşılaştırabilir. Bu şekilde, uygulama diğer sertifika doğrulama denetimlerini geçiren potansiyel olarak tehlikeli sertifikaları kullanmaktan kaçınabilir.
+X.509, dijital sertifika  imzalama yetkilisinin imza verdiği sertifikaların geçerliliğini iptal etmelerini sağlayan Sertifika İptal Listesi (CRL) adlı bir mekanizma sağlar. İmzalama yetkililerinden sertifikaları doğrulaması gereken tüm uygulama bir CRL edinebilir ve herhangi bir nedenden dolayı durumlarının iptal edil olup (güvenliği tehlikeye atılmış özel anahtar gibi) olup o yetkili (sertifikayılayan) tarafından imzalanan sertifikaları CRL ile karşılaştırabilirsiniz. Bu şekilde, uygulama diğer sertifika doğrulama denetimlerini geçen tehlikeli olabilecek sertifikaları kullanmaktan kaçınabilirsiniz.
 
-Bir CRL alma, bir uygulama tarafından, önceden tanımlanmış bir sunucudan ya da başka bir yöntemle DER kodlu liste indirerek yapılır. Asıl kurulum, verenin sertifikayı verene göre farklılık gösterir. bu nedenle, NetX güvenliği CRL 'Leri almak için bir mekanizma sağlamaz, ancak bir CRL 'ye karşı sertifikayı denetlemek için bir yordam sağlar, **nx_secure_x509_crl_revocation_check**.
+CRL elde etmek, der kodlanmış listesini önceden tanımlanmış bir sunucudan veya başka bir şekilde indirerek bir uygulama tarafından yapılır. Gerçek kurulum, sertifikayı sağlayandan sertifikayı sağlayana kadar değişir, bu nedenle NetX Secure CRL'leri almak için bir mekanizma sağlamaz, ancak CRL'ye karşı sertifikayı denetlemeye yönelik bir yordam sağlar ve **nx_secure_x509_crl_revocation_check.**
 
-API, DER ile kodlanmış bir CRL, bir sertifika deposu (bir TLS oturumunda olduğu gibi) ve denetlenecek sertifikayı alır. Bu yordam ilk olarak CRL 'YI güvenilir depoya (uygulama tarafından belirtilen sertifika deposunun parçası) karşı doğrular. Bu, hizmet reddi saldırıları için kullanılan sahte CRL 'Lere karşı koruma için önemlidir ve CRL 'nin gerçekten uygun veren tarafından geldiğinden emin olur. CRL doğrulamasından sonra, veren denetlenir: CRL veren, sertifikanın verenle eşleşmiyorsa, CRL Bu sertifika için geçerli değildir ve bir hata döndürülür. Bu noktada TLS el sıkışma 'nın devam edip edemeyeceğini tespit etmek için uygulamaya gidin. Verenler eşleşiyorsa, doğrulanan sertifikanın seri numarası için CRL aranır. Listede seri numarası varsa, sertifikanın iptal edildiğini belirten bir hata döndürülür. Eşleşme bulunmazsa NX_SUCCESS döndürülür.
+API, denetlenecek DER kodlanmış CRL,sertifika deposu (TLS oturumunda bulunan gibi) ve denetlenecek sertifikayı alır. Yordam ilk olarak CRL'nin kendisini güvenilir depoya karşı doğrular (uygulama tarafından sağlanan sertifika deposunun bir parçası). Bu, Hizmet Reddi saldırılarında kullanılan sahte CRL'lere karşı koruma sağlar ve CRL'nin gerçekten uygun bir sağlayıcıdan olduğunu tespit etmektir. CRL doğrulamasının ardından, sertifikayı teslim eden denetlenir; CRL'nin sertifikayı teslim edenle eşleşmezse CRL bu sertifika için geçerli değildir ve bir hata döndürülür. TLS el sıkışması bu noktada devam edip edesin mi olduğunu belirlemek uygulamaya bağlı. Sertifikayı alanlar eşlese CRL, doğrulanmış olan sertifikanın seri numarası için aranır. Seri numarası listede varsa, sertifikanın iptal edildiğini belirten bir hata döndürülür. Eşleşme bulunamasa NX_SUCCESS döndürülür.
 
-## <a name="client-certificate-authentication-in-netx-secure-tls"></a>NetX güvenli TLS 'de istemci sertifikası kimlik doğrulaması
+## <a name="client-certificate-authentication-in-netx-secure-tls"></a>NetX Secure TLS'de İstemci Sertifikası Kimlik Doğrulaması
 
-X. 509.440 sertifika kimlik doğrulaması kullanılırken, TLS protokolü, TLS sunucu örneğinin tanımlama için bir sertifika sağlamasını gerektirir, ancak varsayılan olarak TLS Istemci örneğinin kimlik doğrulama için bir sertifika sağlaması gerekmez, bunun yerine başka bir kimlik doğrulama biçimi (örn. bir Kullanıcı adı/parola birleşimi) kullanın. Bu, Web siteleri için Internet 'te en yaygın TLS kullanımıyla eşleşir. Örneğin, bir çevrimiçi perakende sitesi, sunucunun meşru olduğunu bir Web tarayıcısı kullanarak potansiyel bir müşteriyi kanıtlamaları gerekir, ancak kullanıcı belirli bir hesaba erişmek için bir oturum açma/parola kullanacaktır.
+X.509 sertifika kimlik doğrulaması kullanılırken TLS protokolü, TLS Sunucusu örneğinin tanımlama için bir sertifika sağlamasını gerektirir, ancak varsayılan olarak TLS İstemci örneğinin kimlik doğrulaması için başka bir kimlik doğrulaması biçimi (kullanıcı adı/parola bileşimi gibi) kullanarak bir sertifika sağlaması gerekli değildir. Bu, Web siteleri için internet üzerinde en yaygın TLS kullanımıyla eştir. Örneğin, bir çevrimiçi perakende satış sitesi, web tarayıcısı kullanan potansiyel bir müşteriye sunucunun meşru olduğunu kanıtlamalı, ancak kullanıcı belirli bir hesaba erişmek için bir oturum açma/parola kullanır.
 
-Ancak, varsayılan durum her zaman tercih edilmez, bu nedenle TLS sunucu örneğinin uzak Istemciden bir sertifika istemesine izin verir. Bu özellik etkinleştirildiğinde, TLS sunucusu el sıkışma sırasında TLS Istemcisine bir CertificateRequest iletisi gönderir. Istemci kendi sertifikası ile yanıt vermelidir ve Istemcinin bu sertifikayla ilişkili eşleşen özel anahtara sahip olduğunu belirten bir şifreleme belirteci içeren bir CertificateVerify iletisi. Doğrulama başarısız olursa veya sertifika sunucuda güvenilir bir sertifikaya bağlı değilse, TLS el sıkışması başarısız olur.
+Ancak, varsayılan durum her zaman tercih edilmez, bu nedenle TLS isteğe bağlı olarak TLS Sunucusu örneğinin uzak İstemciden sertifika isteğine izin verir. Bu özellik etkinleştirildiğinde TLS Sunucusu, el sıkışma sırasında TLS İstemcisi'ne bir CertificateRequest iletisi gönderir. İstemci, kendi sertifikası ve İstemcinin bu sertifikayla ilişkilendirilmiş eşleşen özel anahtara sahip olduğunu kanıtlayan bir şifreleme belirteci içeren bir CertificateVerify iletisiyle yanıt ver ver versin. Doğrulama başarısız olursa veya sertifika Sunucu'da güvenilir bir sertifikaya bağlı olmazsa TLS el sıkışması başarısız olur.
 
-TLS 'de Istemci sertifikası kimlik doğrulaması için iki ayrı durum vardır: aşağıdaki bölümlerde her iki durum da ele alınmaktadır.
+TLS'de İstemci Sertifikası Kimlik Doğrulaması için iki ayrı durum vardır; aşağıdaki bölümlerde her iki durum da yer almaktadır.
 
-### <a name="client-certificate-authentication-for-tls-clients"></a>TLS Istemcileri için istemci sertifikası kimlik doğrulaması
+### <a name="client-certificate-authentication-for-tls-clients"></a>TLS İstemcileri için İstemci Sertifikası Kimlik Doğrulaması
 
-TLS Istemcisi, istemci kimlik doğrulaması için bir sertifika isteyen bir sunucuyla bağlantı kurmayı deneyebilir. Bu durumda, Istemcinin sunucuya bir sertifika sağlaması ve eşleşen özel anahtara sahip olduğunu doğrulaması gerekir ya da sunucu, TLS el sıkışmasını sonlandırır.
+TLS İstemcisi, istemci kimlik doğrulaması için sertifika talep etmek için sunucuyla bağlantı girişiminde olabilir. Bu durumda İstemcinin sunucuya bir sertifika sağlaması ve eşleşen özel anahtarın sahibi olduğunu doğrulaması gerekir, yoksa Sunucu TLS el sıkışmasını sonlandırılır.
 
-NetX güvenli TLS 'de, bu özelliği desteklemeye yönelik özel bir yapılandırma yoktur, ancak uygulamanın *nx_secure_tls_local_certificate_add* HIZMETINI kullanarak TLS istemci örneği için bir yerel kimlik sertifikası sağlaması gerekecektir. Uygulama tarafından bir sertifika sağlanmazsa ancak uzak sunucu Istemci sertifikası kimlik doğrulamasını kullanıyorsa ve bir sertifika isterse, TLS el sıkışması başarısız olur. *Nx_secure_tls_local_certificate_add* Ile tls oturumuna girilen SERTIFIKA, TLS el sıkışma 'nı tamamlayabilmeniz için uzak sunucu tarafından tanınmalıdır.
+NetX Secure TLS'de bu özelliği destekleyecek özel bir yapılandırma yoktur, ancak uygulamanın nx_secure_tls_local_certificate_add hizmetini kullanarak TLS İstemci örneği için yerel bir *kimlik sertifikası sağlaması* gerekir. Uygulama tarafından sertifika sağlanıyorsa ama uzak sunucu İstemci Sertifikası Kimlik Doğrulaması kullanıyorsa ve bir sertifika talep ediyorsa, TLS el sıkışması başarısız olur. TLS Oturumu'nx_secure_tls_local_certificate_add tls  el sıkışmasını tamamlamak için uzak sunucu tarafından tanınması gerekir.
 
-### <a name="client-certificate-authentication-for-tls-servers"></a>TLS sunucuları için istemci sertifikası kimlik doğrulaması
+### <a name="client-certificate-authentication-for-tls-servers"></a>TLS Sunucuları için İstemci Sertifikası Kimlik Doğrulaması
 
-Istemci sertifikası kimlik doğrulaması için TLS sunucu durumu, özelliğin isteğe bağlı olması nedeniyle TLS Istemci durumundan biraz daha karmaşıktır. Bu durumda, TLS sunucusunun özel olarak uzak TLS Istemcisinden bir sertifika istemesi, ardından uzak Istemcinin eşleşen özel anahtara sahip olduğunu doğrulamak için CertificateVerify iletisini işlemesi gerekir ve ardından sunucu, Istemci tarafından belirtilen sertifikanın, yerel güvenilen sertifika deposundaki bir sertifikaya izlenip izlenmeyeceğini denetmelidir.
+İstemci Sertifikası Kimlik Doğrulaması için TLS Sunucusu durumu, özelliğin isteğe bağlı olması nedeniyle TLS İstemcisi örneğinden biraz daha karmaşıktır. Bu durumda, TLS Sunucusunun özellikle uzak TLS İstemcisi'den bir sertifika isteğinde olması, ardından uzak İstemcinin eşleşen özel anahtara sahip olduğunu doğrulamak için CertificateVerify iletiyi işlemesi gerekir ve ardından Sunucu, İstemci tarafından sağlanan sertifikanın yerel güvenilen sertifika depolama alanı içinde bir sertifikaya izlenebilir olup olamı gerektiğini denetlemesi gerekir.
 
-NetX güvenli TLS sunucu örneklerinde Istemci sertifikası kimlik doğrulaması tarafından denetlenir <br>
-*NX <span class="underline"> _</span> güvenli <span class="underline">_</span>TLS <span class="underline"> _</span> oturumu <span class="underline">_</span>istemcisi <span class="underline"> _</span> doğrulama <span class="underline">_</span>etkinleştirme* ve<br>
-*NX <span class="underline"> _</span> güvenli <span class="underline">_</span>TLS <span class="underline"> _</span> oturum <span class="underline">_</span>istemcisi <span class="underline"> _</span> Doğrula <span class="underline">_</span>hizmetleri devre dışı bırak* .
+NetX Güvenli TLS Sunucusu örneklerde İstemci Sertifikası Kimlik Doğrulaması tarafından denetlenmektedir <br>
+*nx <span class="underline"> _</span> secure <span class="underline">_</span>tls <span class="underline"> _</span> oturum istemcisinin <span class="underline">_</span>etkinleştirme <span class="underline"> _</span> ve <span class="underline">_</span>doğrulama*<br>
+*nx <span class="underline"> _</span> secure <span class="underline">_</span>tls <span class="underline"> _</span> oturum istemcisi doğrulama <span class="underline">_</span>hizmetleri <span class="underline"> _</span> devre <span class="underline">_</span>dışı* bırak.
 
-Istemci sertifikası kimlik doğrulamasını etkinleştirmek için bir uygulamanın şunu çağırması gerekir<br>
-*NX <span class="underline"> _</span> güvenli <span class="underline">_</span>tls <span class="underline"> _</span> oturum <span class="underline">_</span>istemcisi <span class="underline"> _</span> Verify <span class="underline">_</span>* *nx_secure_tls_session_start* çağrılmadan önce TLS sunucusu oturum örneğiyle etkinleştirin. Bu hizmeti TLS Istemci bağlantıları için kullanılan bir TLS oturumunda çağırmanın hiçbir etkisi olmayacaktır.
+İstemci Sertifikası Kimlik Doğrulamasını etkinleştirmek için bir uygulamanın çağrısı gerekir<br>
+*nx <span class="underline"> _</span> secure <span class="underline">_</span>tls <span class="underline"> _</span> session client <span class="underline">_</span>verify <span class="underline"> _</span> enable <span class="underline">_</span>* with the TLS Server session instance before calling *nx_secure_tls_session_start.* Bu hizmeti TLS İstemci bağlantıları için kullanılan bir TLS Oturumunda çağırmanın hiçbir etkisi olmaz.
 
-Istemci sertifikası kimlik doğrulaması etkinleştirildiğinde, TLS sunucusu, TLS el sıkışması sırasında uzak TLS Istemcisinden bir sertifika ister. NetX güvenli TLS sunucusunda, Istemci sertifikası *nx <span class="underline"> _</span> <span class="underline">_ secure_tls</span>güvenilen <span class="underline"> _</span> <span class="underline">_ sertifika</span>* ile oluşturulan güvenilen sertifikaların deposuna göre denetlenir ve X. 509.440 veren zincirini aşağıdaki şekilde ekleyin. Uzak Istemci, kimlik sertifikasını Güvenilen depodaki bir sertifikaya bağlayan bir zincir sağlamalıdır veya TLS el sıkışması başarısız olur. Ayrıca, CertificateVerify iletisi işlemi başarısız olursa, TLS el sıkışması da başarısız olur.
+İstemci Sertifikası Kimlik Doğrulaması etkinleştirildiğinde, TLS Sunucusu, TLS el sıkışması sırasında uzak TLS İstemcisi'den bir sertifika talepte bulunduracak. NetX Güvenli TLS Sunucusu'da İstemci sertifikası, X.509 sertifikayı teslim eden zincirinin ardından *nx <span class="underline"> _</span> secure_tls <span class="underline">_</span><span class="underline"> _</span> <span class="underline">_</span>* güvenilen sertifika ekleme ile oluşturulan güvenilen sertifika deposuna karşı denetlenir. Uzak İstemcinin kimlik sertifikasını güvenilen depoda bir sertifikaya bağlayan bir zincir sağlaması gerekir, yoksa TLS el sıkışması başarısız olur. Ayrıca CertificateVerify ileti işlemesi başarısız olursa TLS el sıkışması da başarısız olur.
 
-CertificateVerify yöntemi için kullanılan imza yöntemleri TLS sürüm 1,0 ve TLS sürüm 1,1 için düzeltilir ve TLS sunucusu tarafından TLS sürümü 1,2 olarak belirtilir. TLS 1,2 için, desteklenen imza yöntemleri genellikle şifreleme yöntemi tablosunda sağlanan ilgili yöntemleri izler, ancak genellikle SHA-256 ile RSA (şifreleme yöntemleriyle TLS başlatma hakkında daha fazla bilgi için bkz. "NetX güvenli TLS 'de şifreleme" bölümüne bakın).
+CertificateVerify yöntemi için kullanılan imza yöntemleri TLS sürüm 1.0 ve TLS sürüm 1.1 için sabittir ve TLS sunucusu tarafından TLS sürüm 1.2'de belirtilir. TLS 1.2 için desteklenen imza yöntemleri genellikle şifreleme yöntemi tablosunda sağlanan ilgili yöntemleri kullanır, ancak genellikle SHA-256 ile RSA 'yı kullanır (şifreleme yöntemleriyle TLS'yi başlatma hakkında daha fazla bilgi için "NetX Secure TLS'de şifreleme" bölümüne bakın).
 
-## <a name="cryptography-in-netx-secure-tls"></a>NetX güvenli TLS 'de şifreleme
+## <a name="cryptography-in-netx-secure-tls"></a>NetX Secure TLS'de şifreleme
 
-TLS, ağ iletişimlerini güvenli hale getirmek için şifreleme kullanılabilecek bir protokol tanımlar. Bu nedenle, TLS kullanıcıları için oldukça geniş kapsamlı açık kullanılacak şekilde gerçek şifrelemeyi bırakır. Belirtim yalnızca tek bir ciphersuite 'in uygulanması için gereklidir; TLS 1,2 olması durumunda bu ciphersuite TLS_RSA_WITH_AES_128_CBC_SHA, ortak anahtar işlemleri için RSA kullanımını ve oturum şifreleme için 128 bit anahtarlarla CBC modunda AES modunu ve ileti kimlik doğrulama karmaları için SHA-1 ' i belirtir.
+TLS, şifrelemenin ağ iletişimlerini güvenli hale almak için kullanıla bir protokol tanımlar. Bu nedenle, kullanılacak gerçek şifrelemeyi TLS kullanıcıları için oldukça açık bırakır. Belirtim için yalnızca tek bir şifrelemenin uygulanması gerekir. TLS 1.2 olması durumunda bu şifreleme TLS_RSA_WITH_AES_128_CBC_SHA şeklindedir ve ortak anahtar işlemleri için RSA, oturum şifrelemesi için 128 bit anahtarlı CBC modunda AES ve ileti kimlik doğrulama karmaları için SHA-1 kullanılır.
 
-TLS 1,2 uyumlu olduğu, NetX güvenliği, zorunlu TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite 'i varsayılan olarak sağlar, ancak donanım özellikleri ve diğer hususlar nedeniyle her bir şifreleme yöntemi için olası uygulama sayısına veriliyorsa, NetX güvenliği, kullanıcının TLS ile hangi şifreleme yöntemlerinin kullanılacağını belirtmesini sağlayan bir genel şifreleme API 'SI sağlar.
+TLS 1.2 ile uyumlu olan NetX Secure, varsayılan olarak zorunlu TLS_RSA_WITH_AES_128_CBC_SHA şifrelemesini sağlar ancak donanım özellikleri ve diğer önemli noktalar nedeniyle şifreleme yöntemlerinin her biri için olası uygulama sayısı göz önünde bulundurularak NetX Secure, kullanıcının TLS ile hangi şifreleme yöntemlerinin kullanılamayacaklarını belirtmesini sağlayan genel bir şifreleme API'si sağlar.
 
-NOTE: genel şifreleme API mekanizması, kullanıcıların kendi cipherpaketlerini uygulamasına olanak tanır, ancak bu, TLS cipherpaketlerine ve uzantılarına alışkın olan ileri düzey kullanıcılar için önerilir. Kendi cipherpaketlerinizi desteklemeye ilgileniyorsanız lütfen hızlı mantık temsilcinizle iletişime geçin.
+NOT: Genel şifreleme API'si mekanizması kullanıcıların kendi şifrelerini uygulamasına da olanak sağlar, ancak bu, TLS şifre birimlerini ve uzantılarını bilen ileri düzey kullanıcılar için önerilir. Kendi şifrelerinizi desteklemekle ilgileniyorsanız lütfen Express Logic temsilcinize başvurun.
 
-### <a name="cryptographic-methods"></a>Şifreleme yöntemleri
+### <a name="cryptographic-methods"></a>Şifreleme Yöntemleri
 
-NetX güvenli TLS, belirli donanım platformları için donanım sürücüleri olan yazılımda DES, 3DES, AES, MD5, HMAC-MD5, SHA-1, HMAC-SHA1, SHA-256, HMAC-SHA256, RSA ve ECC (seçili eğrileri) uygular. Bir uygulama NetX güvenli ile birlikte sunulan şifreleme yordamlarını kullanabilir veya son kullanıcı ya da üçüncü taraflar tarafından sunulan özel yordamları kullanabilir.
+NetX Secure TLS, belirli donanım platformları için donanım sürücülerine sahip yazılımlarda DES, 3DES, AES, MD5, HMAC-MD5, SHA-1, HMAC-SHA1, SHA-256, HMAC-SHA256, RSA ve ECC (seçili eğriler) uygulamalarını sağlar. Bir uygulama, NetX Secure ile sağlanan şifreleme yordamlarını veya son kullanıcı veya üçüncü taraflar tarafından sağlanan özel yordamları kullanabilir.
 
-*NX_CRYPTO_METHOD* , bir uygulama Için, NETX güvenli TLS ile kullanılmak üzere bir şifreleme algoritmasının belirli bir uygulamasını açıklamaya yönelik olarak tasarlanmış bir denetim bloğudur. NX_CRYPTO_METHOD bir uygulama *,* kendi şifre uygulamasını güvenle NETX güvenli bir şekilde tümleştirebilir. *NX_CRYPTO_METHOD* yapısı şöyle bildirilmiştir:
+Bu *NX_CRYPTO_METHOD,* NetX Secure TLS ile kullanılacak şifreleme algoritmasının belirli bir uygulamasını açıklamak üzere bir uygulama için tasarlanmış bir denetim bloğu değildir. Uygulama, *NX_CRYPTO_METHOD kendi* şifreleme uygulamasını NetX Secure ile kolayca tümleştirebilir. NX_CRYPTO_METHOD  yapısı şu şekilde bildirildi:
 
 ```C
 typedef struct NX_CRYPTO_METHOD_STRUCT
@@ -784,9 +784,9 @@ typedef struct NX_CRYPTO_METHOD_STRUCT
 } NX_CRYPTO_METHOD;
 ```
 
-*NX_CRYPTO_METHOD* yapısındaki her öğenin açıklaması aşağıda verilmiştir:
+Aşağıda, veri yapısında yer alan her *öğenin NX_CRYPTO_METHOD* verilmiştir:
 
-- nx_crypto_algorithm: Bu alan, değişken *yönteminde* açıklanan algoritmayı tanımlar NETX güvenli TLS için bazı geçerli değerler aşağıdaki gibidir (belirli değerler için nx_crypto_const. h öğesine bakın):
+- nx_crypto_algorithm: Bu alan değişken yönteminde açıklanan  algoritmayı tanımlar NetX Secure TLS için bazı geçerli değerler aşağıdaki gibidir (belirli değerler için nx_crypto_const.h'ye bakın):
     
   - NX_CRYPTO_NONE    
   - NX_CRYPTO_ENCRYPTION_NULL    
@@ -800,17 +800,17 @@ typedef struct NX_CRYPTO_METHOD_STRUCT
 
 - nx_crypto_key_size_in_bits: Bu alan, yöntemi tarafından kullanılan gizli anahtarın boyutunu belirtir.
 
-- nx_crypto_IV_size_in_bits: Bu alan, başlatma vektörünün (IV) boyutunu belirtir. Çoğu durumda IV bloğunun yalnızca şifreleme/şifre çözme algoritmaları için kullanıldığını unutmayın. Kimlik doğrulama ve doğrulama algoritmaları nadiren bu alanı kullanır.
+- nx_crypto_IV_size_in_bits: Bu alan Başlatma Vektörü 'nin (IV) boyutunu belirtir. Çoğu durumda IV bloğu yalnızca şifreleme/şifre çözme algoritmaları için kullanılır. Kimlik doğrulama ve doğrulama algoritmaları bu alanı nadiren kullanır.
 
-- nx_crypto_ICV_size_in_bits: Bu alan, bütünlük denetim değeri (ıCV) bloğunun boyutunu belirtir. NOTE: Bu blok IPSec kullanımına yöneliktir ve TLS 'de kullanılmaz. Daha fazla bilgi için bkz. NetX Duo IPSec.
+- nx_crypto_ICV_size_in_bits: Bu alan, Bütünlük Denetimi Değeri (ICV) bloğu boyutunu belirtir. NOT: Bu blok IPsec kullanımına bağlıdır ve TLS'de kullanılmaz. Daha fazla bilgi için bkz. NetX Duo IPsec.
 
-- nx_crypto_block_size_in_bytes: Bu alan, blok tabanlı şifrelemeler için şifreleme algoritması bloğunun boyutunu bayt cinsinden belirtir. Çoğu durumda bu, şifreleme yordamları ve nadiren kimlik doğrulama yordamları tarafından kullanılır.
+- nx_crypto_block_size_in_bytes: Bu alan, blok tabanlı şifrelemeler için şifreleme algoritması bloğu boyutunu bayt cinsinden belirtir. Çoğu durumda bu, şifreleme yordamları tarafından ve nadiren kimlik doğrulama yordamları tarafından kullanılır.
 
-- nx_crypto_metadata_area_size: Bu alan, bu yöntemin gerektirdiği meta veri alanının boyutunu belirtir. Her uygulama, bazı belleğin durum bilgilerini depolamasını veya ara verileri (örneğin, anahtar dönüştürme malzemesi) depolamasını veya bir karalama alanı olarak kullanılmasını gerektirebilir. Bu alanda bir uygulama için gereken alan miktarı belirtilir. Uygulama, bir TLS oturumu oluştururken bellek alanı sağlar. Bu meta veri alanını yönetmeden şifreleme işlevi sorumludur.
+- nx_crypto_metadata_area_size: Bu alan, bu yöntemin gerektirdiği meta veri alanı boyutunu belirtir. Her uygulama, durum bilgilerini depolamak ya da ara verileri (anahtar dönüştürme malzemeleri gibi) depolamak veya karalama alanı olarak kullanmak için belirli bir bellek gerektirir. Bir uygulama için gereken alan miktarı bu alanda belirtilir. Uygulama, TLS oturumu oluştururken bellek alanı sağlar. Şifreleme işlevi bu meta veri alanı yönetiminden sorumludur.
 
-- nx_crypto_init: Bu, şifreleme algoritmasının başlatma işlevidir. Başlatma yordamına gerek gerektirmeyen bir uygulama için, bu alan NX_NULL olarak ayarlanabilir. Başlatma işlevinin tipik kullanımı, algoritmanın iç veri yapısını başlatmasıdır. NetX güvenli TLS, bu işlevi dahili olarak çağırarak şifreleme yordamının başlatılmasını işleymeyecektir.
+- nx_crypto_init: Şifreleme algoritması için başlatma işlevidir. Başlatma yordamı gerektiren bir uygulama için, bu alan bir NX_NULL. Başlatma işlevinin tipik bir kullanımı, algoritma için iç veri yapısını başlatmaktır. NetX Secure TLS, bu işlevi dahili olarak çağırarak şifreleme yordamının başlatmasını işlemektedir.
 
-Başlatma işlevinin prototipi şunlardır:
+Başlatma işlevinin prototipi şudur:
 
 ```C
 UINT crypto_init_function(NX_CRYPTO_METHOD *method, 
@@ -821,32 +821,32 @@ UINT crypto_init_function(NX_CRYPTO_METHOD *method,
                           ULONG crypto_metadata_area_size);
 ```
 
-  - yöntemi, şifreleme yöntemi denetim bloğunun bir işaretçisidir.
+  - yöntemi, şifreleme yöntemi denetim bloğuna bir işaretçidir.
 
-  - anahtar, veri paketlerini işlemek için gizli anahtar dizesidir.
+  - key, veri paketlerinin iş için gizli anahtar dizesidir.
 
-  - key_size_in_bits, gizli anahtarın bit cinsinden boyutunu tanımlar.
+  - key_size_in_bits gizli anahtarın boyutunu bitler olarak tanımlar.
 
-  - tanıtıcı, belirli bir şifre oturumunu tanımlayan uygulama tanımlı bir öğedir. Değer, başlatma yordamı tarafından oluşturulur ve çağırana geri geçirilir. Sonraki şifreleme işlemi veya temizleme yordamı, oturumu belirlemek için bu tanıtıcıyı kullanır.
+  - handle, belirli bir şifreleme oturumunu tanımlayan uygulama tanımlı bir öğedir. değer başlatma yordamı tarafından oluşturulur ve çağırana geri geçirilir. Sonraki şifreleme işlemi veya temizleme yordamı oturumu tanımlamak için bu tanıtıcıyı kullanır.
 
-  - crypto_metadata, bu algoritmanın uygulanması için gerekli olan meta veri alanına yönelik bir işaretçidir. Meta veri alanı gerektirmeyen algoritmalar için bu alan NX_NULL olarak ayarlanır ve başlatma yordamı meta veri alanına erişmemelidir.
+  - crypto_metadata, bu algoritmanın uygulanması için gereken meta veri alanına yönelik bir işaretçidir. Meta veri alanına ihtiyacı olan algoritmalar için bu alan NX_NULL olarak ayarlanır ve başlatma yordamı meta veri alanına erişmez.
 
-  - crypto_metadata_size meta veri alanının boyutunu belirtir. Meta veri alanı olmadan oluşturulan SAs için, bu alan sıfır olarak ayarlanır ve başlatma yordamı meta veri alanına erişmemelidir.
+  - crypto_metadata_size meta veri alanı boyutunu belirtir. Meta veri alanı olmadan oluşturulan SA'lar için bu alan sıfır olarak ayarlanır ve başlatma yordamının meta veri alanına erişmesi gerekir.
 
-  - Başlatma işlemi başarılı olursa bu yordam *NX_SUCCESS* döndürür. Çağıran, diğer tüm dönüş değerlerini hata olarak değerlendirir.
+  - Başlatma işlemi başarılı *NX_SUCCESS* bu yordamda geri dönüş gerekir. Çağıran, diğer herhangi bir dönüş değerini hata olarak davranır.
 
-- nx_crypto_cleanup: Bu, bir şifreleme algoritmasının uygulanması için tanımlanan Temizleme yordamlamasıdır. Bir TLS oturumu silindiğinde veya yeniden başlatıldığında çağrılır.
+- nx_crypto_cleanup: Bu, bir şifreleme algoritmasının uygulanması için tanımlanan temizleme yordamıdır. TlS oturumu silindiğinde veya yeniden başlatıldığında çağrılır.
 
-Temizleme işlevinin prototipi şunlardır:
+Temizleme işlevinin prototipi şudur:
 
 ```C
 UINT crypto_cleanup_function(VOID *handle);
 ```
-- tanıtıcı, çağıran tarafından Temizleme işlevine geçirilir. Tanıtıcı, şifreleme başlatma yordamı tarafından başlatılır ve şifreleme algoritması durumunu tanımlamak için kullanılır.
+- tanıtıcı, çağıranın temizleme işlevine geçirilir. Tanıtıcı, şifreleme başlatma yordamı tarafından başlatılır ve şifreleme algoritması durumunu tanımlamak için kullanılır.
 
-- Temizleme işlemi başarılı olursa bu yordam *NX_SUCCESS* döndürür. Çağıran, diğer tüm dönüş değerlerini hata olarak değerlendirir.
+- Temizleme işlemi başarılı *NX_SUCCESS* bu yordam geri dönüş yapabilir. Çağıran, diğer herhangi bir dönüş değerini hata olarak davranır.
 
-- nx_crypto_operation: Bu, gerçek şifreleme, şifre çözme ve kimlik doğrulama hizmetlerini gerçekleştiren bir yordamdır. İşlem yordamının işlev prototipi şunlardır:
+- nx_crypto_operation: Bu, gerçek şifreleme, şifre çözme ve kimlik doğrulama hizmetlerini gerçekleştiren yordamdır. İşlem yordamının işlev prototipi şöyledir:
 
 ```C
 UINT crypto_operation_function(UINT   op,
@@ -866,43 +866,43 @@ UINT crypto_operation_function(UINT   op,
                           *packet_ptr, UINT status));
 ```
 
-- Op, bu yordamın yürütülmesi beklenen işlem türünü gösterir. Geçerli değerler şunlardır:
+- op, bu yordamın gerçekleştireceği işlem türünü gösterir. Geçerli değerler:
     
     - NX_CRYPTO_ENCRYPT
     - NX_CRYPTO_DECRYPT
     - NX_CRYPTO_AUTHENTICATE
     - NX_CRYPTO_VERIFY
 
-- tanıtıcı, çağıran tarafından işlem işlevine geçirilir. Şifre başlatma yordamı tarafından oluşturulur.
-- Yöntem, şifreleme yöntemi denetim bloğuna işaret ediyor
-- anahtar, bu işlem için kullanılan gizli anahtara işaret ediyor
-- key_size_in_bits, bit cinsinden gizli anahtar boyutudur
-- Giriş, üzerinde çalışılan iletinin başlangıcına yönelik bir işaretçidir.
-- input_length_in_byte, üzerinde işletiedilecek iletinin boyutunu belirtmek için çağıran tarafından geçirilir.
-- iv_ptr, çağıran tarafından bir IV bloğunun başlangıcına işaret etmek üzere ayarlanır. IV bloğunun belleğinin arayan tarafından sağlandığını unutmayın. Şifreleme için, işlem işlevi bu bellek bloğuna IV bilgilerini yazmalıdır; şifre çözme için, işlem işlevi bu bellek bloğundan IV bilgilerini almalıdır. Kimlik doğrulama ve doğrulama işlemi algoritmaları genellikle başlatma vektörünü kullanmaz.
-- çıktı, çağrı tarafından çıkış arabelleğini işaret etmek üzere ayarlanır. Çıktı arabelleği için bellek, çağıran tarafından sağlanır. Şifreleme için, işlem işlevi şifre metnini çıkış arabelleğine yazmalıdır; şifre çözme için, işlem arabelleğe alınan metni (şifresiz metin) çıkış arabelleğine yazmalıdır; kimlik doğrulaması için, karma değeri çıkış arabelleğine yazılır. Doğrulama için, çıkış arabelleği karma bilgileri depolamak için kullanılır.
+- tanıtıcı, çağıranın işlem işlevine geçirilir. Şifreleme başlatma yordamı tarafından oluşturulur.
+- yöntem, şifreleme yöntemi denetim bloğuna
+- anahtar, bu işlem için kullanılan gizli anahtara yöneliktir
+- key_size_in_bits, bitler içinde gizli anahtarın boyutudur
+- input, üzerinde çalıştırılan iletinin başlangıcına bir işaretçidir.
+- input_length_in_byte, çalıştırılan iletinin boyutunu belirtmek için çağrıyı yapan tarafından geçirilir.
+- iv_ptr, bir IV bloğun başlangıcına işaret etmek için çağıranın ayarlamasıdır. IV bloğu için belleğin çağıranın sağladığını unutmayın. Şifreleme için, işlem işlevi IV bilgilerini bu bellek bloğuna yazmalı; şifre çözme için işlem işlevinin bu bellek bloğundan IV bilgilerini alması gerekir. Kimlik doğrulama ve doğrulama işlemi algoritmaları genellikle başlatma vektörü kullanmaz.
+- output, çağıranın bir çıkış arabelleğine işaret etmek için kurulumu sağlar. Çıkış arabelleğinin belleğinin çağıranın sağladığını unutmayın. Şifreleme için, işlem işlevinin çıkış arabelleğine şifreleme metnini yazması gerekir; şifre çözme için işlem, çıkış arabelleğine deşifre metni (şifresiz metin) yazmalı; kimlik doğrulaması için karma değeri çıkış arabelleğine yazıldığına göre. Doğrulama için, karma bilgileri depolamak için çıkış arabelleği kullanılır.
 - output_length_in_byte, çıkış arabelleğinin boyutunu gösterir
-- crypto_metadata, bu şifreleme işlemi tarafından kullanılacak meta veri alanına işaret eder. Şifreleme meta verileri alanı genellikle crypto_init_function tarafından başlatılır.
-- crypto_metadata_size meta veri alanının boyutunu gösterir.
-- İşlem işlemi başarılı olursa bu yordam *NX_SUCCESS* döndürür. Çağıran, diğer tüm dönüş değerlerini hata olarak değerlendirir.
-- packet_ptr: işlenmekte olan verileri içeren paket. NOTE: Bu parametre TLS tarafından kullanılmıyor ve NX_NULL olarak ayarlanmalıdır.
-- nx_crypto_hw_process_callback: şifreleme yöntemi tarafından sağlanmış bir geri çağırma işlevi. Bu, şifreleme işlevi donanım tarafından sağlandıysa ve bir geri çağırma yordamı gerektiriyorsa kullanılır.
+- crypto_metadata şifreleme işlemi tarafından kullanılacak meta veri alanına yöneliktir. Şifreleme meta verileri alanı genellikle veri kaynağı tarafından crypto_init_function.
+- crypto_metadata_size meta veri alanı boyutunu gösterir.
+- bu yordam, *NX_SUCCESS* başarılı olursa bu yordamın geri dönmesini sağlar. Çağıran, diğer herhangi bir dönüş değerini hata olarak davranır.
+- packet_ptr: İşlenen verileri içeren paket. NOT: Bu parametre TLS tarafından kullanılmamış ve bu parametre NX_NULL.
+- nx_crypto_hw_process_callback: Şifreleme yöntemi tarafından sağlanan bir geri çağırma işlevi. Şifreleme işlevi donanım tarafından sağlanıyorsa ve bir geri çağırma yordamı gerektiriyorsa bu kullanılır.
 
-NetX güvenli TLS aşağıdaki şifreleme yöntemlerini sağlar:
+NetX Secure TLS aşağıdaki şifreleme yöntemlerini sağlar:
 
 - *AES*  
-- *RSA*  
-- *DEĞER*
+- *Rsa*  
+- *Null*
 
-NetX güvenli TLS aşağıdaki kimlik doğrulama yöntemlerini sağlar:
+NetX Secure TLS aşağıdaki kimlik doğrulama yöntemlerini sağlar:
 
 - *HMAC-MD5*  
 - *HMAC-SHA1*  
 - *HMAC-SHA256*
 
-Aşağıdaki örneklerde, *NX_CRYPTO_METHOD* yapısının NETX Duo IPSec tarafından sunulan şifreleme ve kimlik doğrulama yöntemlerini kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
+Aşağıdaki örnekler, NetX Duo IPsec *NX_CRYPTO_METHOD* şifreleme ve kimlik doğrulama yöntemlerini kullanmak için yapılandırmayı göstermektedir.
 
-***AES***
+***Aes:***
 
 ```C
 /* AES-CBC 128. */
@@ -968,7 +968,7 @@ NX_CRYPTO_METHOD crypto_method_rsa =
 
 };
 ```
-***DEĞER***
+***Null***
 
 ```C
 /* NULL encryption method. */
@@ -1019,9 +1019,9 @@ NX_CRYPTO_METHOD crypto_method_hmac_sha1 =
     _nx_secure_crypto_method_hmac_sha1_operation   
 };
 ```
-***SEÇIM***
+***Hiçbiri***
 
-Şifreleme veya kimlik doğrulama hizmetinin gerekli olmadığı IPSec modülüne işaret etmek için **NX_CRYPTO_NONE** özel bir yöntem kullanılır. Aşağıdaki şekilde yapılandırılır:
+IPsec **NX_CRYPTO_NONE** şifreleme veya kimlik doğrulama hizmetinin gerekli olmadığının sinyallerini sağlamak için özel bir yöntem kullanılır. Aşağıdaki gibi yapılandırılır:
 
 ```C
 /* NX_CRYPTO_NONE means encryption or authentication
@@ -1039,9 +1039,9 @@ NX_CRYPTO_METHOD crypto_method_none =
     NX_NULL               /* NULL operation               */
 };                                               
 ```
-### <a name="initializing-tls-with-cryptographic-methods"></a>Şifreleme yöntemleriyle TLS başlatma
+### <a name="initializing-tls-with-cryptographic-methods"></a>Şifreleme Yöntemleriyle TLS'yi Başlatma
 
-Önceki bölümde açıklanan şifreleme yöntemi imzaları ile uyumlu olan şifreleme yordamlarınızı oluşturduktan sonra, bir NX_SECURE_TLS_SESSION denetim bloğu başlattığınızda bu uygulamaları TLS 'ye geçirmeniz gerekir. Bu işlem TLS hizmeti nx_secure_tls_session_create yapılır:
+Önceki bölümde açıklanan şifreleme yöntemi imzalarına uygun şifreleme yordamlarınızı oluşturduktan sonra, yeni bir denetim bloğu NX_SECURE_TLS_SESSION gerekir. Bu, TLS hizmet hizmet nx_secure_tls_session_create:
 
 ```C
 UINT  nx_secure_tls_session_create(
@@ -1051,42 +1051,42 @@ UINT  nx_secure_tls_session_create(
               ULONG                 encryption_metadata_size
 );
 ```
-- session_pointer, NX_SECURE_TLS_SESSION denetim blobunun bir işaretçisidir.
-- tls_cipher_table, aşağıda açıklanan NX_SECURE_TLS_CRYPTO denetim bloğunun bir işaretçisidir.
-- encryption_metadata_area, TLS 'de şifreleme yordamları tarafından kullanılan alana işaret eder.
-- encryption_metadata_size, meta veri alanının bayt cinsinden boyutudur.
+- session_pointer, denetim bloğuna NX_SECURE_TLS_SESSION işaretçidir.
+- tls_cipher_table, aşağıda açıklanan bir NX_SECURE_TLS_CRYPTO denetim bloğuna bir işaretçidir.
+- encryption_metadata_area TLS'de şifreleme yordamları tarafından kullanılan alana bakın.
+- encryption_metadata_size, meta veri alanı boyutunu bayt cinsinden belirtir.
 
-### <a name="elliptic-curve-cryptography-ecc-in-netx-secure-tls"></a>NetX güvenli TLS 'de Eliptik Eğri Şifreleme (ECC)
+### <a name="elliptic-curve-cryptography-ecc-in-netx-secure-tls"></a>NetX Secure TLS'de Eliptik Eğri Şifrelemesi (ECC)
 
-Eliptik Eğri Şifreleme (ECC), RSA yerine kullanılabilecek bir ortak anahtar şifreleme şeması sağlar. ECC genellikle daha hızlıdır ve RSA 'dan daha küçük anahtarlar kullanır, böylece gömülü TLS için değerli bir seçenek olabilir. Azure RTOS 6,0 ' den önceki X-Ware sürümlerinde ECC, ECC kaynak kodunun projenize yüklenmesini gerektiren bir eklenti olarak gönderilmiştir. Azure RTOS 6,0, ana hat kod tabanına tümleştirilmiş ECC dosyalarını yüklemek artık gerekli değildir. Ancak, ECC hala önceki sürümlerle aynı başlatmayı gerektirir.
+Eliptik Eğri Şifrelemesi (ECC), RSA yerine kullanılan bir ortak anahtar şifreleme şeması sağlar. ECC genellikle daha hızlıdır ve ekli TLS için değerli bir seçenek olması için RSA'dan daha küçük anahtarlar kullanır. Azure RTOS 6.0'dan önceki X-Ware sürümlerinde, ECC bir eklenti olarak gönderildi ve bu nedenle ECC kaynak kodunun projenize yüklenmesi gerektirildi. Azure RTOS 6.0 tümleşik ECC'nin ana satır kod tabanına yüklenmesine gerek kalmadan 6.0 ile tümleştirilmiştir. Ancak, ECC yine de önceki sürümlerle aynı başlatmayı gerektirir.
 
 ### <a name="supported-ecc-curves"></a>Desteklenen ECC eğrileri
 
-NetX Secure, eğrilerin parçalarını göre uygular <http://www.secg.org/sec2-v2.pdf> . Aşağıdaki eğriler desteklenir<sup>18</sup>:
+NetX Secure, eğrilerin bölümlerine göre <http://www.secg.org/sec2-v2.pdf> uygulanır. Aşağıdaki eğriler<sup>18'i destekler:</sup>
 
   - secp256r1 
   - secp384r1 
   - secp521r1 
 
-Diğer ECC eğrileri kullanılıyorsa, *nx_secure_tls_session_start ()* yordamı, desteklenmeyen eğrilerin kullanıldığını belirten NX_SECURE_TLS_NO_SUPPORTED_CIPHERS hata döndürür.
+Diğer ECC eğrileri kullanılırsa *nx_secure_tls_session_start()* yordamı, desteklenmeyen eğrilerin NX_SECURE_TLS_NO_SUPPORTED_CIPHERS hata iletisini döndürür.
 
-TLS sertifika zincirinin de ECC algoritmalarıyla şifrelendiğini unutmayın. TLS Istemcisi tarafından sunulan eğriler desteklense de, sertifika zincirinde kullanılan ECC eğrisi desteklenmez. Bu durumda, *nx_secure_tls_session_start* rutin NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER döndürür.
+TLS sertifika zincirinin ECC algoritmaları tarafından da şifrelenmiş olduğunu unutmayın. TLS İstemcisi tarafından sağlanan eğriler desteklenmiş olsa da, sertifika zincirinde kullanılan ECC eğrisi desteklenmiyor olabilir. Bu durumda, *nx_secure_tls_session_start* işlevi NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER.
 
-Nx_crypto_generic_ciphersuites. c ' de ECC için varsayılan ciphersuite tablosu örneği verilmiştir. Ciphersuite tabloları hakkında daha fazla bilgi için bkz. "TLS şifreleme şifre tablosu" bölümü.
+ECC için varsayılan bir şifreleme tablosu örneği nx_crypto_generic_ciphersuites.c.'de sağlanmıştır. Şifreleme tabloları hakkında daha fazla bilgi için "TLS Şifreleme Şifreleme Tablosu" bölümüne bakın.
 
-18. Secp192r1 ve secp224r1are eğrileri için uygulamaların eski uygulamalar için de sağlandığını unutmayın. Ancak bu eğriler artık zayıf olarak değerlendirilir ve yeni uygulama geliştirme için kullanılmamalıdır.
+18. Eski uygulamalar için secp192r1 ve secp224r1 eğrileri için uygulamaların da sağlanmıştır. Ancak bu eğriler artık zayıf olarak kabul edilir ve yeni uygulama geliştirme için KULLANIMMAMALI.
 
-### <a name="crypto-methods-for-ecc"></a>ECC için şifreleme yöntemleri
+### <a name="crypto-methods-for-ecc"></a>ECC için Şifreleme Yöntemleri
 
 Eliptik Eğri grupları için şifreleme yöntemleri:
 
-- NX_CRYPTO_METHOD crypto_method_ec_secp192<sup>15</sup>;  
-- NX_CRYPTO_METHOD crypto_method_ec_secp224<sup>15</sup>;  
+- NX_CRYPTO_METHOD crypto_method_ec_secp192<sup>15;</sup>  
+- NX_CRYPTO_METHOD crypto_method_ec_secp224<sup>15;</sup>  
 - NX_CRYPTO_METHOD crypto_method_ec_secp256;  
 - NX_CRYPTO_METHOD crypto_method_ec_secp384;  
 - NX_CRYPTO_METHOD crypto_method_ec_secp521;
 
-ECC eğrilerinin şifre yöntemleri nx_crypto_generic_ciphersuites. c ' de tanımlanmıştır.
+ECC eğrileri için şifreleme yöntemleri nx_crypto_generic_ciphersuites.c.
 
 ECDHE için şifreleme yöntemi:
 
@@ -1096,19 +1096,19 @@ ECDSA için şifreleme yöntemi:
 
 - NX_CRYPTO_METHOD crypto_method_ecdsa;
 
-ECDSA ve ECDHE şifreleme yöntemleri nx_crypto_generic_ciphersuites. c ' de tanımlanmıştır.
+ECDSA ve ECDHE şifreleme yöntemleri nx_crypto_generic_ciphersuites.c.
 
-RSA, SHA, AES gibi diğer şifre yöntemleriyle birlikte birleştirildiğinde, ciphersuite arama tablosu için yapı taşları olarak kullanılabilirler.
+RSA, SHA, AES gibi diğer şifreleme yöntemleriyle birlikte, şifreleme arama tablosu için yapı taşları olarak kullanılabilirler.
 
-### <a name="enabling-ecc-support-for-tls"></a>TLS için ECC desteğini etkinleştirme
+### <a name="enabling-ecc-support-for-tls"></a>TLS için ECC Desteğini Etkinleştirme
 
-ECC, TLS için varsayılan olarak etkindir. ECC desteğini devre dışı bırakmak için NX_SECURE_DISABLE_ECC_CIPHERSUITE sembol tanımlanmalıdır.
+TLS için ECC varsayılan olarak etkindir. ECC desteğini devre dışı bırakmak için NX_SECURE_DISABLE_ECC_CIPHERSUITE simgesi tanımlanmalıdır.
 
-Değişikliğin etkili olması için, NetX güvenli kitaplığını ve bu kitaplığı kullanan tüm uygulamaları yeniden oluşturmanız gerekir.
+Değişikliğin etkili olmak için NetX Güvenli Kitaplığını ve bu kitaplığı kullanan tüm uygulamaları yeniden oluşturmanız gerekir.
 
-Uygulama kodunda, TLS oturumu oluşturulduktan sonra API n *x_secure_tls_ecc_initialize ()* çağrılmalıdır. Bu API, TLS anahtar değişimi işlemleri ve sertifika doğrulaması için kullanılacak eğrilerin türünü TLS oturumuna bildirir. TLS el sıkışma aşamasında, bir ECC algoritması seçilirse, hangi eğrinin kullanılacağına karar vermek için istemci ve sunucu Exchange ECC eğrisi ile ilgili parametreleri seçilir.
+Uygulama kodunda, TLS *oturumu oluşturulduktan sonra* api n x_secure_tls_ecc_initialize() çağrılabilir. Bu API, TLS anahtar değişimi işlemleri ve sertifika doğrulaması için kullanılacak eğri türünün TLS oturumuna bilgi sağlar. TLS el sıkışması aşamasında, bir ECC algoritması seçilirse istemci ve sunucu, hangi eğriyi kullanmak üzere karar vermek için ECC eğrisi ile ilgili parametreleri kullanır.
 
-Aşağıdaki kod segmenti, API 'nin nasıl kullanılacağını gösterir. Bağımsız değişkenlerin (*nx_crypto_ecc_supported_groups, nx_crypto_ecc_supported_groups_size ve nx_crypto_ecc_curves)* tümünün *nx_crypto_generic_ciphersuites. c* içinde tanımlandığını unutmayın. Bu nedenle, bu semboller doğrudan kullanılabilir.
+Aşağıdaki kod kesimi, API'nin nasıl kullanıla bir şekilde gösterildiğini gösterir. bağımsız değişkenlerini *(nx_crypto_ecc_supported_groups, nx_crypto_ecc_supported_groups_size ve nx_crypto_ecc_curves)* *nx_crypto_generic_ciphersuites.c içinde tanımladı.* Bu nedenle bu semboller doğrudan kullanılabilir.
 
 ```C
 status = nx_secure_tls_ecc_initialize(&tls_session,     
@@ -1116,9 +1116,9 @@ status = nx_secure_tls_ecc_initialize(&tls_session,
                     nx_crypto_ecc_supported_groups_size,     
                     nx_crypto_ecc_curves);
 ```
-Nx_crypto_generic_ciphersuites. c ' deki örnek yapılandırma, ECC etkinleştirildiğinde kullanılan bir ECC ciphersuite arama tablosu içerir. ECC kullanmak için, nx_secure_tls_session_create ile TLS oturumları oluştururken nx_crypto_tls_ciphers_ecc ciphersuite tablo parametresi olarak geçirin. Örnek tablo hem ECC hem de ECC olmayan cipherpaketleri içerir.
+nx_crypto_generic_ciphersuites.c'de örnek yapılandırma, ECC etkinleştirildiğinde kullanılan bir ECC şifreleme arama tablosu içerir. ECC'yi kullanmak için, nx_crypto_tls_ciphers_ecc ile TLS oturumları oluştururken şifreleme tablosu parametresi olarak nx_secure_tls_session_create. Örnek tablo hem ECC hem de ECC olmayan şifrelemeleri içerir.
 
-### <a name="tls-cryptographic-cipher-table"></a>TLS şifreleme şifre tablosu
+### <a name="tls-cryptographic-cipher-table"></a>TLS Şifreleme Şifreleme Tablosu
 
 NX_SECURE_TLS_CRYPTO yapısı şu şekilde tanımlanır:
 
@@ -1153,9 +1153,9 @@ typedef struct NX_SECURE_METHODS_STRUCT
 
 } NX_SECURE_TLS_CRYPTO;
 ```
-Tablo, genellikle şifreleme yordamları ve modülleriyle bulunan NetX güvenli TLS projesinde bulunan statik bir Sabitte bu yapının girişlerini doldurarak oluşturulur.
+Tablo, bu yapı için girdileri NetX Secure TLS projesi içinde bulunan ve genellikle şifreleme yordamları ve modüllerle birlikte bulunan statik bir sabitte doldurularak oluşturulur.
 
-Örneğin, NetX güvenli ile birlikte sunulan yalnızca yazılım ("genel") şifreleme kitaplığı, aşağıdaki tablo tanımını içerir (ECC olmayan ciphersuite desteği için<sup>19</sup>):
+Örneğin, NetX Secure ile sağlanan yalnızca yazılım ("genel") şifreleme kitaplığı aşağıdaki tablo tanımını içerir (ECC dışı şifreleme desteği<sup>için 19):</sup>
 
 ```C
 /* Define the cipher table object we can pass into TLS. */
@@ -1189,27 +1189,27 @@ const NX_SECURE_TLS_CRYPTO nx_crypto_tls_ciphers =
 #endif
 };
 ```
-Yapıda, ilk giriş TLS ciphersuite tablosudur. NX_SECURE_TLS_CIPHERSUITE_INFO yapısı, şifreleme yordamlarını (NX_CRYPTO_METHOD işaretçileri biçiminde), TLS belirtimlerinde tanımlandığı şekilde belirli cipherpaketlerine eşler. İkinci değer, tablodaki ilk alan tarafından işaret edilen girdi sayısıdır.
+Yapıda ilk giriş TLS şifreleme tablosudur. Bu NX_SECURE_TLS_CIPHERSUITE_INFO, şifreleme yordamlarını (NX_CRYPTO_METHOD işaretçileri şeklinde) TLS belirtimleri içinde tanımlanan belirli şifrelemelere eşler. İkinci değer, tablodaki ilk alanın işaret ettiği giriş sayısıdır.
 
-Sonraki alan, dijital sertifikaları işlerken X. 509.440 tarafından kullanılan bir yordamlar tablosuna işaret eder ve yapı NX_SECURE_X509_CRYPTO, NX_SECURE_TLS_CIPHERSUITE_INFO biçiminde benzerdir. Aşağıdaki alan tablodaki girdi sayısıdır.
+Sonraki alan, X.509 tarafından dijital sertifikalar işleme sırasında kullanılan yordamların bir tablosuna ve NX_SECURE_X509_CRYPTO yapısı, X.509'a NX_SECURE_TLS_CIPHERSUITE_INFO. Aşağıdaki alan, tablodaki girdilerin sayısıdır.
 
-Aşağıdaki arama tablosu, belirli bir TLS sürümü için gereken bir dizi yordamlardır. Örneğin, TLS sürüm 1,2 ' den önce, anahtar oluşturma ve el sıkışma karma yordamları SHA-1 ve MD5 birleşimini kullanacak şekilde düzeltildi – Bu yordamlar için yöntemler özel cipherpaketlerine bağlı olmadıkları için özel olarak şifre yapısında çağırılır. TLS sürüm 1,2 ' de, anahtar oluşturma ve karma yordamlar ciphersuite tarafından seçilir, ancak kullanılacak yordamları belirtmeyen ciphersuites için SHA-256 karma yöntemi kullanılır ve şifre yapısı bu yordamı özellikle çağırır.
+Arama tablosunun ardından TLS'nin belirli sürümleri için gereken bir dizi yordam vardır. Örneğin TLS sürüm 1.2'den önce anahtar oluşturma ve el sıkışma karma yordamları SHA-1 ve MD5'in bir birleşimini kullanmak üzere düzeltildi. Bu yordamlara yönelik yöntemler, belirli şifrelere bağlı olmayan şifreleme yapısında özel olarak çağrılır. TLS sürüm 1.2'de anahtar oluşturma ve karma yordamları şifreleme tarafından seçilir, ancak kullanılacak yordamları belirtmeden şifrelemeler için SHA-256 karma yöntemi kullanılır ve şifreleme yapısı bu yordamı özellikle belirtir.
 
-TLS 1,3, çeşitli işlemler için birkaç ek özel şifre gerektirir.
+TLS 1.3, çeşitli işlemler için birkaç ek özel şifreleme gerektirir.
 
-19. TLS 1,3 desteğinin ECC gerektirdiğini, TLS 1,3 etkinse nx_crypto_tls_ciphers_ecc kullanın.
+19. TLS 1.3 desteğinin ECC gerektirdiğini unutmayın; TLS 1.3 nx_crypto_tls_ciphers_ecc etkinse bu desteği kullanın.
 
-### <a name="tls-ciphersuite-lookup-table"></a>TLS Ciphersuite arama tablosu
+### <a name="tls-ciphersuite-lookup-table"></a>TLS Şifreleme Arama Tablosu
 
-TLS için şifreleme tablosunu doldurmanız için, şifreleme yordamlarını belirli ciphersuite tanımlayıcılarıyla eşleyen bir ciphersuite arama tablosu da oluşturmanız gerekir. Tanımlayıcılar, evrensel olan ıANA kayıtlı değerlerdir. Daha fazla bilgi için bkz. TLS RFC 'Leri. Yordamlar her ciphersuite 'de kullanılan 5 ayrı yöntemi temsil eder (bazı cipherpaketleri 5 ' i kullanamaz): ortak şifre, ortak anahtar kimlik doğrulaması, oturum şifresi, oturum karması yordamı ve TLS Pseudo-Random Işlevi (PRF). Aşağıdaki tabloda 5 yöntemi açıklanmaktadır:
+TLS şifreleme tablosunu doldurmak için şifreleme yordamlarını belirli şifreleme tanımlayıcılarına eşleen bir şifreleme arama tablosu da oluşturmanız gerekir. Tanımlayıcılar, evrensel IANA'ya kayıtlı değerlerdir. Daha fazla bilgi için bkz. TLS RFC'leri. Yordamlar her bir şifrede kullanılan 5 ayrı yöntemi temsil ediyor (bazı şifrelemeler 5'ini de kullanmayabiliyor): ortak şifreleme, ortak anahtar kimlik doğrulaması, oturum şifrelemesi, oturum karma yordamı ve TLS Pseudo-Random İşlevi (PRF). Aşağıdaki tabloda 5 yöntemin her biri açık almaktadır:
 
 | **Rutin kategori**      | **Açıklama**                                                                                       | **Örnek algoritmalar**                                            |
 | ------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Ortak şifre             | TLS el sıkışması sırasında anahtar alışverişi yapmak için kullanılır                                                        | RSA, Diffie-Hellman, ECC                                          |
+| Genel şifreleme             | TLS el sıkışması sırasında anahtarları takas etmek için kullanılır                                                        | RSA, Diffie-Hellman, ECC                                          |
 | Ortak anahtar kimlik doğrulaması | TLS el sıkışması sırasında verilerin kimliğini doğrulamak veya imzalamak için kullanılır                                            | RSA, DSS                                                          |
-| Oturum şifresi            | TLS oturumu sırasında uygulama verilerini şifrelemek için kullanılan simetrik anahtar algoritması                       | AES, RC4                                                          |
-| Oturum karması              | TLS oturumu sırasında iletilerin bütünlüğünü korumak için kullanılır (verilerin değişmediğinden emin olmanızı sağlar) | SHA-1, SHA-256                                                    |
-| TLS PRF                   | TLS el sıkışma 'nda anahtar malzeme ve el sıkışma karmasında kullanılır                          | PRF, karma yordamlarını temel alır – SHA-1 + MD5, SHA-256, SHA-512 |
+| Oturum şifrelemesi            | TLS oturumu sırasında uygulama verilerini şifrelemek için kullanılan simetrik anahtar algoritması                       | AES, RC4                                                          |
+| Oturum karması              | TLS oturumu sırasında iletilerin bütünlüğünü korumak için kullanılır (verilerin değişmediğini garantiler) | SHA-1, SHA-256                                                    |
+| TLS PRF                   | TLS el sıkışması içinde anahtar malzeme ve el sıkışma karması oluşturmak için kullanılır                          | PRF karma yordamlarını temel almaktadır : SHA-1 + MD5, SHA-256, SHA-512 |
 
 NX_SECURE_TLS_CIPHERSUITE_INFO yapısı aşağıdaki gibi tanımlanır:
 
@@ -1245,11 +1245,11 @@ typedef struct NX_SECURE_TLS_CIPHERSUITE_INFO_struct
 
 } NX_SECURE_TLS_CIPHERSUITE_INFO;
 ```
-Nx_secure_tls_ciphersuite alanı ıANA ciphersuite değerini içerir ve NX_CRYPTO_METHOD işaretçileri, bu ciphersuite tarafından kullanılan 5 yöntemi temsil eder. Skaler değerler (nx_secure_tls_iv_size, nx_secure_tls_key_size ve nx_secure_tls_hash_size), NX_CRYPTO_METHOD girişlerinde kullanılamayan bilgiler sağlayan bilgilendirme amaçlıdır.
+Bu nx_secure_tls_ciphersuite IANA şifreleme değerini içerir ve NX_CRYPTO_METHOD işaretçileri bu şifreleme tarafından kullanılan 5 yöntemi temsil ediyor. Skaler değerler (nx_secure_tls_iv_size, nx_secure_tls_key_size ve nx_secure_tls_hash_size), veri girişlerinde mevcut NX_CRYPTO_METHOD sağlar.
 
-Örneğin, TLS için varsayılan ciphersuite, 128 bitlik anahtarlarla AES-CBC ve oturum karma için SHA-1 kullanımını belirten TLS_RSA_WITH_AES_128_CBC_SHA. Bu ciphersuite için TLS PRF belirtilmedi, bu nedenle TLSv 1.2 modunda, varsayılan SHA-256 PRF kullanır. Tüm ciphersuites 'in, tabloda belirtilen PRF 'ten bağımsız olarak, TLS 1,0 ve 1,1 ' de SHA-1 + MD5 PRF 'yi kullandığına unutmayın.
+Örneğin TLS, TLS_RSA_WITH_AES_128_CBC_SHA için varsayılan şifrelemeye bakarak RSA, 128 bit anahtarlı AES-CBC ve oturum karma için SHA-1 kullanımını belirtir. Bu şifreleme için TLS PRF belirtilmez, bu nedenle TLSv1.2 modunda varsayılan SHA-256 PRF'yi kullanır. Tabloda belirtilen PRF'den bağımsız olarak tüm şifrelemelerin TLS 1.0 ve 1.1'de SHA-1+MD5 PRF'lerini kullana olduğunu unutmayın.
 
-Genel şifreleme kitaplığındaki NX_SECURE_TLS_CIPHERSUITE_INFO tablosundaki giriş aşağıdaki gibi tanımlanır:
+Genel şifreleme NX_SECURE_TLS_CIPHERSUITE_INFO tablodaki giriş aşağıdaki gibi tanımlanır:
 
 ```C
 { 
@@ -1265,11 +1265,11 @@ Genel şifreleme kitaplığındaki NX_SECURE_TLS_CIPHERSUITE_INFO tablosundaki g
 },
 ```
 
-Oturum şifresi anahtar boyutunun ciphersuite tarafından belirlendiği, ancak ortak anahtar yöntemleri için anahtar boyutunun, el sıkışma sırasında alışverişi yapılan dijital sertifikalarda ortak anahtarlar bulunduğundan, TLS el sıkışması tamamlanana kadar bilinmediğini unutmayın.
+Oturum şifrelemesi için anahtar boyutunun şifreleme tarafından belirlendiği, ancak ortak anahtar yöntemleri için ortak anahtarlar el sıkışma sırasında alışveriş yapılan dijital sertifikalarda yer alan tlS el sıkışması devam edinceye kadar anahtar boyutu bilinmemektedir.
 
-### <a name="x509-cipher-lookup-table"></a>X. 509.440 şifre arama tablosu
+### <a name="x509-cipher-lookup-table"></a>X.509 Şifreleme Arama Tablosu
 
-NX_SECURE_TLS_CIPHERSUITE_INFO tablosu gibi, NX_SECURE_X509_CRYPTO yapısı şifreleme yordamlarını bilinen değerlerle eşler. X. 509.440 durumunda tanımlayıcılar aslında X. 509.440 tarafından tanımlanan ve ISO ve ITU standartları gövdelerinde kayıtlı olan OID 'ler vardır. OID 'ler, dijital sertifikalarda kullanılan şifreleme yordamları dahil çeşitli iletişim standartlarındaki çeşitli bilgileri benzersiz şekilde tanımlamak için tasarlanan değişken uzunlukta çok baytlı değerlerdir. OID 'lerin değişken uzunlukta olması nedeniyle, NetX güvenli TLS resmi OID değerlerini dahili olarak kullanılan sabit uzunluklu sabitlere eşler (bkz. nx_secure_x509. h). Bu sabitler, aşağıdaki gibi tanımlanan NX_SECURE_X509_CRYPTO yapısında kullanılır:
+Aşağıdaki tabloda NX_SECURE_TLS_CIPHERSUITE_INFO, şifreleme NX_SECURE_X509_CRYPTO bilinen değerlerle eşler. X.509 durumunda tanımlayıcılar aslında X.509 tarafından tanımlanan ve ISO ve ITU standartları gövdeleriyle kaydedilmiş OID'lerdir. OID'ler, dijital sertifikalarda kullanılan şifreleme yordamları da dahil olmak üzere çeşitli telekomünikasyon standartlarında çeşitli bilgileri benzersiz olarak tanımlamak için tasarlanmış değişken uzunluklu çoklu bayt değerleridir. OID'ler değişken uzunlukta olduğu için NetX Secure TLS, resmi OID değerlerini dahili olarak kullanılan sabit uzunluklu sabitlerle eşler (bkz. nx_secure_x509.h). Bu sabitler, NX_SECURE_X509_CRYPTO şekilde tanımlanan bir yapıda kullanılır:
 
 ```C
 /* Structure to hold X.509 cryptographic routine information. */
@@ -1288,24 +1288,24 @@ typedef struct NX_SECURE_X509_CRYPTO_struct
 } NX_SECURE_X509_CRYPTO;
 ```
 
-İlk alan *nx_secure_x509_crypto_identifier*, NETX güvenli tarafından kullanılan iç OID gösterimidir.
+İlk alan olan *nx_secure_x509_crypto_identifier,* NetX Secure tarafından kullanılan iç OID gösterimidir.
 
-İkinci ve üçüncü alanlar, bir karma yordamıyla eşleştirilmiş bir ortak anahtar işlemi olan OID tarafından tanımlanan şifreleme yöntemlerini temsil eden NX_CRYPTO_METHOD nesneleri işaret eder. Her dijital sertifikanın Şifreleme yordamları için birden fazla OID 'ye sahip olabileceğini unutmayın.
+İkinci ve üçüncü alanlar, NX_CRYPTO_METHOD bir karma yordamla eşleştirilmiş ortak anahtar işlemi olan OID tarafından tanımlanan şifreleme yöntemlerini temsil eden nesnelere işaret eder. Her dijital sertifikanın şifreleme yordamları için birden fazla OID'ye sahip olduğunu unutmayın.
 
-X. 509.440 için yöntem tablosu, ciphersuite arama tablosuyla aynı şekilde oluşturulur. Örnek olarak, RSA_SHA1 için OID 'ye bakacağız. RSA_SHA1 için gerçek OID aşağıdaki gibidir:
+X.509 için yöntem tablosu, şifreleme arama tablosuyla aynı şekilde oluşturulur. Örnek olarak, OID'ye RSA_SHA1. Bu durum için gerçek RSA_SHA1 OID şu şekildedir:
 
 ```C
 {iso(1) member-body(2) us(840) rsadsi(113549) pkcs(1) pkcs-1(1) sha1-with-rsa-
 signature(5)}
 ```
-OID, ASN. 1 sözdiziminde temsil edilir ve 1.2.840.113549.1.1.5 sayısal bir değere sahiptir. Bu değer daha sonra ikili biçimde kodlanır ve aşağıdaki baytları oluşturur:
+OID ASN.1 söz dizimsinde temsil edilen ve 1.2.840.113549.1.1.5 sayısal değerine sahip. Bu değer daha sonra ikili biçimde kodlanmış ve aşağıdaki baytlar oluşturulur:
 
 ```C
 UCHAR RSA_SHA1_OID = { 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x05 };
 ```
-ASN. 1 ' den ikili biçime gerçek dönüştürme, bu belgenin kapsamı dışındadır. Daha fazla bilgi için, OID 'ler için ASN. 1 için arama yapın. NetX güvenli tarafından desteklenen OID 'lerin ikili temsili *nx_secure_x509. c* dosyasında bulunabilir.
+ASN.1'den ikili biçime gerçek dönüştürme bu belgenin kapsamının dışındadır. Daha fazla bilgi için OID'ler için ASN.1 kodlamalarını ara. NetX Secure tarafından desteklenen OID'lerin ikili gösterimi, *nx_secure_x509.c dosyasında bulunabilir.*
 
-Gerçek OID 'yi dahili olarak tanınan bir sabit ile eşleştirdikten sonra, NX_SECURE_X509_CRYPTO tablosunda RSA_SHA1 için bir giriş oluşturuyoruz:
+Gerçek OID'nin dahili olarak tanınan bir sabitle eşlenimi oluşturdukktan sonra, aşağıdaki tabloda RSA_SHA1 için NX_SECURE_X509_CRYPTO oluşturabiliriz:
 
 ```C
 { 
@@ -1314,33 +1314,33 @@ Gerçek OID 'yi dahili olarak tanınan bir sabit ile eşleştirdikten sonra, NX_
     &crypto_method_sha1                   /* SHA-1 method (NX_CRYPTO_METHOD). */
 }, 
 ```
-### <a name="default-tls-routines"></a>Varsayılan TLS yordamları
+### <a name="default-tls-routines"></a>Varsayılan TLS Yordamları
 
-Yukarıda belirtildiği gibi TLS, el sıkışma sırasında anahtar oluşturma ve ileti doğrulama için bazı varsayılan yordamlar gerektirir. Birincil yordam, TLS Pseudo-Random Işlevi veya PRF 'dir. PRF, karma yordamlarını temel alır ve anahtar oluşturma veya başka amaçlar için rastgele bir sözde rastgele veri miktarı<sup>oluşturmak için kullanılabilir</sup> .
+Yukarıda belirtildiği gibi TLS, el sıkışma sırasında anahtar oluşturma ve ileti doğrulama için bazı varsayılan yordamlar gerektirir. Birincil yordam TLS Pseudo-Random İşlevi veya PRF'dir. PRF karma yordamları temel almaktadır ve anahtar oluşturma veya diğer amaçlar için rastgele miktarda sözde rastgele<sup>veri 20</sup> oluşturmak için kullanılabilir.
 
-PRF 'nin yanı sıra, her TLS sürümü de sağlanması gereken varsayılan karma yordamlar kullanır. 1,0 ve 1,1 TLS sürümleri için bu karma yordamlar, MD5 ve SHA-1 ' dir. TLS sürüm 1,2 yalnızca SHA-256 gerektirir.
+PRF'ye ek olarak, her TLS sürümü de sağlanacak varsayılan karma yordamları kullanır. TLS sürüm 1.0 ve 1.1 için bu karma yordamlar MD5 ve SHA-1'dir. TLS sürüm 1.2 yalnızca SHA-256 gerektirir.
 
-NX_SECURE_TLS_CRYPTO yapısında, MD5, SHA-1, SHA-256, TLS sürüm 1.0/1.1 PRF ve varsayılan TLS 1,2 PRF için NX_CRYPTO_METHOD işaretçiler vardır.
+NX_SECURE_TLS_CRYPTO yapısında MD5, SHA-1, SHA-256, TLS sürüm 1.0/1.1 PRF ve varsayılan TLS 1.2 PRF için NX_CRYPTO_METHOD işaretçileri vardır.
 
-TLS 1,3 desteği, HKDF (anahtar oluşturma), HMAC (el sıkışma sırasında kullanılan belirli karma işlemler için) ve ECDHE (TLS 1,3 işlevselliği için gereklidir) için alanlar ekler.
+TLS 1.3 desteği HKDF (anahtar oluşturma), HMAC (el sıkışma sırasında kullanılan belirli karma işlemleri için) ve ECDHE (TLS 1.3 işlevselliği için gereklidir) alanları ekler.
 
-Genel yazılım şifreleme kitaplığı 'nda belirtilen TLS PRF yazılım sürümleridir. TLS 1.0/1.1 için, bu işleve *nx_crypto_tls_prf_1* denir. TLS 1,2 için işlev *nx_secure_tls_prf_sha256* olarak adlandırılır. "1" soneki eski TLS 1,0 PRF 'yi temsil eder ve "SHA256" soneki, TLS 1,2 varsayılan PRF 'in SHA-256 ' ı temel aldığı olguyu ifade eder. Diğer PRF yordamları için destek gerektiğinde, bu yordamların soneki kullanılan karma yöntemi yansıtır. PRF yordamları karma yöntemlere dayalı olduğundan, temeldeki karma yordamlar farklı hedef platformlarda bağımsız donanım hızlandırmalı olabilir.
+Genel yazılım şifreleme kitaplığında sağlanan, TLS PRF'nin yazılım sürümleridir. TLS 1.0/1.1 için bu işlev *nx_crypto_tls_prf_1.* TLS 1.2 için işlevi *nx_secure_tls_prf_sha256.* "1" soneki eski TLS 1.0 PRF'yi temsil eder ve "sha256" soneki, TLS 1.2 varsayılan PRF'si SHA-256'yı temel alır. Diğer PRF yordamları için destek gerektiğinde, bu yordamların son eki kullanılan karma yöntemi yansıtacak. PRF yordamları karma yöntemleri temel alarak, temel karma yordamları farklı hedef platformlarda bağımsız olarak donanım hızlandırmalı olabilir.
 
-TLS ciphersuite ve X. 509.440 arama tablolarına ek olarak, NX_SECURE_TLS_CRYPTO yapısında doldurulan varsayılan PRF ve karma yordamlar, bir TLS oturumu başlatmak için doldurulabilir ve kullanılabilir.
+TLS şifrelemesi ve X.509 arama tablolarına ek olarak, varsayılan PRF ve karma yordamları NX_SECURE_TLS_CRYPTO yapısıyla doldurularak bir TLS oturumu başlatmak için kullanılabilir.
 
-20. "Sözde rastgele", PRF 'nin belirleyici olduğunu ifade eder, yani aynı girişe verilen çıktıyı her zaman üretir, ancak çıktının tahmin edilebilir olmadığı konusunda rastgele olur. TLS, bu PRF özelliğini kullanarak, el sıkışma sırasında RSA gibi bir ortak anahtar şifresi kullanılarak yapılan ana gizli dizi ile birleştirilmiş çeşitli genel verilerden oturum anahtarları oluşturur.
+20. "Sözde rastgele", PRF'nin belirlenimci olduğunu, yani her zaman aynı girişe göre aynı çıkışı üretecek ancak çıkışın tahmin edilebilir olmadığının rastgele olduğunu ifade eder. TLS, RSA gibi ortak anahtar şifrelemesi kullanılarak el sıkışma sırasında alışveriş yapılan ana gizli anahtarla birleştirilmiş çeşitli genel verilerden oturum anahtarlarını oluşturmak için PRF'nin bu özelliğini kullanır.
 
-### <a name="cryptographic-metadata"></a>Şifreleme meta verileri
+### <a name="cryptographic-metadata"></a>Şifreleme Meta Verileri
 
-NX_SECURE_TLS_CRYPTO tablosu ile TLS oturumunu başlatabilmemiz için, şifreleme yordamı meta verileri için arabellek alanı ayırdık. Meta veriler, denetim bloğu tarafından temsil edilen belirli bir yordam ile ilişkili tüm durumları depolamak için kullanılır. Her bir NX_CRYPTO_METHOD *nx_crypto_metadata_area_size* alanı, bu yordam ile ilişkili denetim yapısının boyutuna AYARLANMALıDıR veya TLS başlatması, gereken alana göre düzgün şekilde hesaba geçmeyecektir ve bu da arabellek taşması sorunlarına neden olabilir.
+NX_SECURE_TLS_CRYPTO tablosuyla TLS oturumunu başlatamadan önce şifreleme yordamı meta verileri için arabellek alanı ayırmamız gerekir. Meta veriler, denetim bloğuyla temsil edilen belirli bir yordamla ilişkili tüm durumu depolamak için kullanılır. Her *nx_crypto_metadata_area_size* alanı NX_CRYPTO_METHOD bu yordamla ilişkili denetim yapısının boyutuna ayar olmalıdır; yoksa TLS başlatması gereken alan için düzgün bir şekilde hesap başarısız olur ve bu da arabellek taşması sorunlarına neden olabilir.
 
-TLS oturumu oluşturulmadan önce, meta veri arabelleğinin ayrılmış olması gerekir. Arabellek nx_secure_tls_session_create tarafından otomatik olarak bölünür ve şifreleme yöntemi tablosunda sunulan yordamların her biri için boşluk ayrılır. Bir TLS oturumunda aynı anda yalnızca bir ciphersuite etkin olduğundan, desteklenen ciphersuite sayısı gerekli meta veri alanını etkilemez – boşluk, ciphersuite arama tablosunda bu kategori için maksimum denetim blok boyutunu kullanarak 5 ciphersuite yordamlarının her biri için ayrılır.
+TLS oturumu oluşturulmadan önce meta veri arabelleği ayrılarak. Arabelleğe otomatik olarak nx_secure_tls_session_create ve şifreleme yöntemi tablosunda sağlanan yordamların her biri için alan ayrılır. TLS oturumunda aynı anda yalnızca bir şifreleme etkin olduğu için desteklenen şifreleme sayısının gerekli meta veri alanını etkilemeyeceğini unutmayın. 5 şifreleme yordamının her biri için, şifreleme arama tablosunda bu kategoriye ait maksimum denetim bloğu boyutu kullanılarak alan ayrılmıştır.
 
-Meta veri arabellek boyutunu kolay hesaplamayı kolaylaştırmak için, hizmet *nx_secure_metadata_size_calculate* aynı hesaplamaları nx_secure_tls_session_create olarak gerçekleştirir ancak gereken toplam meta veri arabellek boyutunu bayt cinsinden döndürür.
+Meta veri arabelleği boyutunun kolayca hesaplanması için hizmet *nx_secure_metadata_size_calculate* aynı hesaplamaları nx_secure_tls_session_create yalnızca bayt cinsinden toplam gerekli meta veri arabelleği boyutunu döndürür.
 
-### <a name="initializing-the-tls-session"></a>TLS oturumu başlatılıyor
+### <a name="initializing-the-tls-session"></a>TLS oturumunu başlatma
 
-NX_CRYPTO_METHOD ve NX_SECURE_TLS_CRYPTO nesneleri oluşturulduktan ve meta veri alanı ayrıldıktan sonra, aşağıdaki gibi bir TLS oturumu başlatabiliriz (yukarıdaki örneklerden alınan değerler):
+Veri NX_CRYPTO_METHOD NX_SECURE_TLS_CRYPTO ve meta veri alanı ayrılmış olduktan sonra, aşağıdaki gibi bir TLS oturumu başlatabilirsiniz (yukarıdaki örneklerden alınan değerler):
 
 ```C
 /* Pointer to the platform-specific cipher table. */

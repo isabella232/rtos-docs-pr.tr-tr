@@ -1,23 +1,23 @@
 ---
-title: Bölüm 5 - USBX Cihaz Sınıfı Konuları
-description: USBX Cihaz Sınıfı ile ilgili dikkat edilmesi gerekenler hakkında bilgi alın.
+title: Bölüm 5-USBX cihaz sınıfı konuları
+description: USBX cihaz sınıfı değerlendirmeleri hakkında bilgi edinin.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: ea348d94e83863c0e2652df29f92d952f2242661
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: b8fcfa251df9140d23b50a99f13f2755d2bdfae0ca6b9529633f25e263c7edcc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178026"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116798750"
 ---
-# <a name="chapter-5---usbx-device-class-considerations"></a>Bölüm 5 - USBX Cihaz Sınıfı Konuları
+# <a name="chapter-5---usbx-device-class-considerations"></a>Bölüm 5-USBX cihaz sınıfı konuları
 
-## <a name="device-class-registration"></a>Cihaz Sınıfı kaydı
+## <a name="device-class-registration"></a>Cihaz sınıfı kaydı
 
-Her cihaz sınıfı kayıt için aynı ilkeyi izler. Belirli sınıf parametrelerini içeren bir yapı, sınıf başlatma işlevine geçirildi.
+Her cihaz sınıfı, kayıt için aynı prensibi izler. Sınıf Initialize işlevine belirli bir sınıf parametreleri içeren bir yapı geçirilir.
 
 ```c
 /* Set the parameters for callback when insertion/extraction of a HID device. */
@@ -40,9 +40,9 @@ status = ux_device_stack_class_register(_ux_system_slave_class_hid_name,
     ux_device_class_hid_entry,1,0, (VOID *)&hid_parameter);
 ```
 
-Sınıfın bir örneği etkinleştirildiğinde her sınıf isteğe bağlı olarak bir geri çağırma işlevi kaydedilebilir. Ardından geri çağırma, cihaz yığını tarafından uygulamanın bir örneğin oluşturularak ilgili bilgi vermek için çağrılır.
+Sınıfın bir örneği etkinleştirildiğinde her bir sınıf, isteğe bağlı olarak bir geri çağırma işlevi kaydedebilir. Geri arama daha sonra, uygulamayı bir örneğin oluşturulduğunu bilgilendirmek için cihaz yığını tarafından çağrılır.
 
-Aşağıdaki örnekte gösterildiği gibi uygulamanın gövdesinde etkinleştirme ve devre dışı bırakma için 2 işlev olabilir.
+Uygulamanın, aşağıdaki örnekte gösterildiği gibi, etkinleştirme ve devre dışı bırakma için 2 işlevi gövdesinde olması gerekir.
 
 ```c
 VOID tx_demo_hid_instance_activate(VOID *hid_instance)
@@ -58,21 +58,21 @@ VOID tx_demo_hid_instance_deactivate(VOID *hid_instance)
 }
 ```
 
-Bu işlevlerin içinde bir şey yapmak değil, sınıfın örneğini ezberlemek ve uygulamanın geri kalanıyla eşitlemek önerilmez.
+Bu işlevler içinde herhangi bir şey yapmanız önerilmez, ancak sınıfın örneğini yeniden yüklemek ve uygulamanın geri kalanı ile eşitlemek için önerilir.
 
-## <a name="general-considerations-for-bulk-transfer"></a>Toplu Aktarımda Dikkat Edilmesi Gereken Genel Noktalar
+## <a name="general-considerations-for-bulk-transfer"></a>Toplu aktarım için genel konular
 
-USB 2.0 belirtimine göre, uç nokta her zaman veri yüklerini uç noktanın bildirilen wMaxPacketSize değerinden küçük veya buna eşit bir veri alanıyla ilettiği gerekir. Veri paketinin boyutu bMaxPacketSize ile sınırlıdır. Aktarım aşağıdaki durumlarla tamamlanır
-1. Uç nokta tam olarak beklenen veri miktarını aktardı
-2. Bir cihaz veya konak uç noktası boyut üst paket boyutundan (wMaxPacketSize) küçük bir paket alır. Bu kısa paket, daha fazla veri paketi olmadığını ve aktarımın tamamlandıktan sonra ya da aktaracak veri paketlerinin hepsi wMaxPacketSize'a eşit olduğunda aktarım sonu belirlenemedi. Aktarımın tamamlanması için Bir Sıfır Uzunluk Paketi(ZLP) Kısa paketler ve Sıfır Uzunluk Paketleri toplu veri aktarımının sonuna işaret ediyor olmalıdır. Yukarıdaki önemli noktalar ham toplu veri aktarımı API'leri (örneğin, ux_device_class_cdc_acm_read() için geçerlidir.
+USB 2,0 belirtimine göre, bir uç nokta her zaman uç noktanın bildirilen wMaxPacketSize değerinden küçük veya buna eşit bir veri alanı ile veri yüklerini iletmelidir. Bir veri paketinin boyutu bMaxPacketSize ile sınırlıdır. Aktarım aşağıdaki durumlar ile tamamlanabilir
+1. Uç nokta, tam olarak beklenen veri miktarını aktardı
+2. Bir cihaz veya ana bilgisayar uç noktası, en fazla paket boyutundan (wMaxPacketSize) daha az boyuta sahip bir paket recieves. Bu kısa paket, daha fazla veri paketinin ayrılmadığını ve aktarımın tamamlandığını veya aktarılacak veri paketlerinin tamamen wMaxPacketSize 'e eşit olduğunu belirtir, sonra aktarım sonu belirlenemez. Aktarım işleminin tamamlanması için sıfır uzunluklu bir paket (ZLP) gönderilmesi gerekir ve bir toplu veri aktarımının sonuna sıfır uzunluğunda paketler işaret eder. Yukarıdaki konular ham toplu veri aktarımı API 'Leri için geçerlidir, örn. ux_device_class_cdc_acm_read ().
 
-## <a name="usb-device-storage-class"></a>USB Cihaz Depolama Sınıfı
+## <a name="usb-device-storage-class"></a>USB cihaz Depolama sınıfı
 
-USB cihazı depolama sınıfı, sisteme eklenmiş bir depolama cihazının BIR USB ana bilgisayarı tarafından görünür halelanmasına olanak sağlar.
+USB cihaz depolama sınıfı, sistemde gömülü bir depolama cihazının USB ana bilgisayarına görünür hale getirilmesini sağlar.
 
-USB cihazı depolama sınıfı tek başına bir depolama çözümü sağlamaz. Yalnızca konaktan gelen SCSI isteklerini kabul eder ve yorumlar. Bu isteklerden biri okuma veya yazma komutu olduğunda, ATA cihaz sürücüsü veya Flash cihaz sürücüsü gibi gerçek bir depolama cihazı işleyicisine önceden tanımlanmış bir çağrı çağırır.
+USB cihaz depolama sınıfı kendi kendine bir depolama çözümü sağlamaz. Yalnızca konaktan gelen SCSI isteklerini kabul eder ve yorumlar. Bu isteklerden biri bir okuma veya yazma komutu olduğunda, bir ATA cihaz sürücüsü veya bir Flash cihaz sürücüsü gibi gerçek bir depolama cihazı işleyicisine önceden tanımlanmış bir çağrı çağırır.
 
-Cihaz depolama sınıfı başlatken, gerekli tüm bilgileri içeren sınıfa bir işaretçi yapısı verilir. Aşağıda bir örnek verilmiştir.
+Cihaz depolama sınıfı başlatılırken, gerekli tüm bilgileri içeren sınıfa bir işaretçi yapısı verilir. Aşağıda bir örnek verilmiştir.
 
 ```c
 /* Initialize the storage class parameters to customize vendor strings. */
@@ -119,13 +119,13 @@ status = ux_device_stack_class_register(_ux_system_slave_class_storage_name,
     ux_device_class_storage_entry, ux_device_class_storage_thread, 0, (VOID *)&storage_parameter);
 ```
 
-Bu örnekte, sürücü depolama dizeleri, karşılık gelen parametreye dize işaretçileri atanarak özelleştirilebilir. Dize işaretçilerinden herhangi biri dosyanın içinde UX_NULL varsayılan Azure RTOS kullanılır.
+Bu örnekte, sürücü depolama dizeleri karşılık gelen parametreye dize işaretçileri atayarak özelleştirilir. Dize işaretçisinden herhangi biri UX_NULL bırakılırsa, varsayılan Azure RTOS dizesi kullanılır.
 
-Bu örnekte, sürücünün son blok adresi veya LBA'sı ve mantıksal kesim boyutu verilmiştir. LBA, medya –1'de kullanılabilen kesimlerin sayısıdır. Blok uzunluğu normal depolama medyası içinde 512 olarak ayarlanır. Optik sürücüler için 2048 olarak ayarlanmıştır.
+Bu örnekte, sürücünün son blok adresi veya LBA, mantıksal kesim boyutu ile birlikte verilir. LBA, medyada bulunan kesimlerin sayısıdır – 1. Blok uzunluğu normal depolama medyasında 512 olarak ayarlanır. Bu, optik sürücüler için 2048 olarak ayarlanabilir.
 
-Depolama sınıfının medya için okumasına, yazmasına ve durumunu eldesına izin vermek için uygulamanın üç geri çağırma işlevi işaretçisi geçmesi gerekir.
+Uygulamanın, depolama sınıfının medya için durum okumasına, yazmasına ve almasına izin vermek üzere üç geri çağırma işlevi işaretçisi geçmesi gerekir.
 
-Okuma ve yazma işlevlerinin prototipleri aşağıdaki örnekte gösterilmiştir.
+Okuma ve yazma işlevlerine yönelik prototipler aşağıdaki örnekte gösterilmiştir.
 
 ```c
 UINT media_read( 
@@ -147,16 +147,16 @@ UINT media_write(
 
 Konum:
 
-- *depolama,* depolama sınıfının örneğidir.
-- *lun,* komutun yönlendir olduğu LUN'dır.
-- *data_pointer,* okuma veya yazma için kullanılacak arabelleğin adresidir.
-- *number_blocks,* okunacak/yazacak kesimlerin sayısıdır.
-- *lba,* okunacak kesim adresidir.
-- *media_status* tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
+- *depolama* , depolama sınıfının örneğidir.
+- *LUN* , komutun yönlendirildiği LUN 'dur.
+- *data_pointer* , okuma veya yazma için kullanılacak arabelleğin adresidir.
+- *number_blocks* okunacak/yazılacak kesimlerin sayısıdır.
+- *LBA* , okunan kesim adresidir.
+- *media_status* , tam olarak medya durumu geri çağırma dönüş değeri gibi doldurulmalıdır.
 
-Dönüş değeri, başarılı veya başarısız UX_SUCCESS veya UX_ERROR bir değere sahip olabilir. Bu işlemlerin başka bir hata kodu dönmesine gerek yoktur. Herhangi bir işlemde hata varsa depolama sınıfı durum çağrısı işlevini çağırır.
+Dönüş değeri UX_SUCCESS veya başarılı ya da başarısız bir işlemi gösteren UX_ERROR olabilir. Bu işlemlerin herhangi bir hata kodunu döndürmesi gerekmez. Herhangi bir işlemde hata varsa, depolama sınıfı durum geri çağırma işlevini çağırır.
 
-Bu işlev aşağıdaki prototipe sahiptir.
+Bu işlev aşağıdaki prototipi içerir.
 
 ```c
 ULONG media_status( 
@@ -166,28 +166,28 @@ ULONG media_status(
     ULONG *media_status);
 ```
 
-Çağrı parametresi media_id şu anda kullanılmaz ve her zaman 0 olmalıdır. Gelecekte, birden çok depolama cihazı veya birden çok SCSI LUN'a sahip depolama cihazlarını ayırt etmek için kullanılabilir. Depolama sınıfının bu sürümü, depolama sınıfının veya birden çok SCSI LUN'a sahip depolama cihazlarının birden çok örneğini desteklemez.
+Çağıran parametre media_id Şu anda kullanılmıyor ve her zaman 0 olmalıdır. Gelecekte birden çok depolama cihazını veya depolama cihazlarını birden çok SCSI LUN ile ayırt etmek için kullanılabilir. Depolama sınıfının bu sürümü, birden fazla SCSI LUN ile depolama sınıfının veya depolama cihazlarının birden çok örneğini desteklemez.
 
-Dönüş değeri, aşağıdaki biçime sahip bir SCSI hata kodudur.
+Dönüş değeri, aşağıdaki biçime sahip olabilir bir SCSI hata kodudur.
 
-- **Bit 0-7** Sense_key
-- **Bit 8-15** Ek Sense Code
-- **Bit 16-23** Ek Sense Code Niteleyicisi
+- **Bıts 0-7** Sense_key
+- **Bıts 8-15** Ek algılama kodu
+- **Bıts 16-23** Ek algılama kod niteleyicisi
 
-Aşağıdaki tablo olası Sense/ASC/ASCQ birleşimlerini sağlar.
+Aşağıdaki tabloda olası Sense/ASC/ASCQ birleşimleri sağlanmıştır.
 
-| Sense Key | ASC | ASCQ | Description                                       |
+| Algılama anahtarı | ASC | YOKQ | Description                                       |
 | --------- | --- | ---- | ------------------------------------------------- |
-| 00        | 00  | 00   | ANLAMI YOK                                          |
-| 01        | 17  | 01   | YENIDEN DENEMELERLE KURTARıLAN VERILER                       |
+| 00        | 00  | 00   | FIKIR YOK                                          |
+| 01        | 17  | 01   | YENIDEN DENEMELER IÇEREN KURTARıLAN VERILER                       |
 | 01        | 18  | 00   | ECC ILE KURTARıLAN VERILER                           |
-| 02        | 04  | 01   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - HAZıR OLMA          |
-| 02        | 04  | 02   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - BAŞLATMA GEREKIYOR |
-| 02        | 04  | 04   | MANTıKSAL BIRIM HAZıR DEĞIL - BIÇIM DEVAM EDIYOR       |
-| 02        | 04  | Ff   | MANTıKSAL SÜRÜCÜ HAZıR DEĞIL - CIHAZ MEŞGUL          |
+| 02        | 04  | 01   | MANTıKSAL SÜRÜCÜ, HAZıRLAMA IÇIN HAZıRLANMA          |
+| 02        | 04  | 02   | MANTıKSAL SÜRÜCÜ KULLANıMA ALıNAMADı-BAŞLATMA GEREKIYOR |
+| 02        | 04  | 04   | MANTıKSAL BIRIM READY-FORMAT DEVAM EDIYOR       |
+| 02        | 04  | BENZERI   | MANTıKSAL SÜRÜCÜ READY-CIHAZ MEŞGUL          |
 | 02        | 06  | 00   | BAŞVURU KONUMU BULUNAMADı                       |
 | 02        | 08  | 00   | MANTıKSAL BIRIM ILETIŞIM HATASı                |
-| 02        | 08  | 01   | MANTıKSAL BIRIM ILETIŞIM ZAMAN OUT               |
+| 02        | 08  | 01   | MANTıKSAL BIRIM ILETIŞIM ZAMAN AŞıMı               |
 | 02        | 08  | 80   | MANTıKSAL BIRIM ILETIŞIM TAŞMASı                |
 | 02        | 3a  | 00   | ORTA YOK                                |
 | 02        | 54  | 00   | USB-KONAK SISTEM ARABIRIMI HATASı              |

@@ -1,25 +1,25 @@
 ### YamlMime:Landing
-title: Azure RTOS ThreadX modülleri belgeleri
-summary: Azure RTOS ThreadX modülleri bileşeni, uygulamaların, uygulamanın yerleşik bölümünden ayrı olarak oluşturulan modülleri dinamik olarak yüklemesi için bir altyapı sağlar.
+title: Azure RTOS ThreadX Modülleri belgeleri
+summary: Azure RTOS ThreadX Modülleri bileşeni, uygulamaların uygulamanın yerleşik kısmından ayrı olarak oluşturulmuş modülleri dinamik olarak yüklemesi için bir altyapı sağlar.
 metadata:
-  title: Azure RTOS ThreadX modülleri nedir?
-  description: Azure RTOS ThreadX modülleri, uygulamanızdan ayrı olarak oluşturulan dinamik olarak yüklenen modüller sağlar.
+  title: ThreadX Azure RTOS nedir?
+  description: Azure RTOS ThreadX Modülleri, uygulamanıza göre ayrı olarak oluşturulmuş dinamik olarak yüklenmiş modüller sağlar.
   services: rtos
   ms.service: rtos
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
   ms.date: 07/10/2020
-  ms.openlocfilehash: 40958716dfaa14813279fbce3b63d696e3dc21d2
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+  ms.openlocfilehash: 36fb45ffb348ce0807caffb9f6e8a09bae03a58ce51585e9f4e583e0f278796d
+  ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104797961"
+  ms.lasthandoff: 08/07/2021
+  ms.locfileid: "116799107"
 landingContent:
-- title: Azure RTOS ThreadX modüllerine giriş
+- title: Azure RTOS ThreadX Modüllerine Giriş
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure RTOS ThreadX modülleri nedir?
+    - text: ThreadX Azure RTOS nedir?
       url: chapter1.md

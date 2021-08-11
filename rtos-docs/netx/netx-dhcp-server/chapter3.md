@@ -1,35 +1,35 @@
 ---
-title: Bölüm 3-Azure RTOS NetX DHCP sunucu hizmetlerinin açıklaması
-description: Bu bölümde tüm Azure RTOS NetX DHCP sunucu hizmetlerinin açıklaması yer almaktadır.
+title: Bölüm 3 - NetX DHCP Azure RTOS hizmetlerinin açıklaması
+description: Bu bölümde, Tüm NetX DHCP Azure RTOS hizmetlerinin açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d24c69cf6b8c2bb84b7155e49a54e8296ee662f0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 702499184b12484fa5862ba83ff3fadb8fccea31089b6bf8b71daf267e8c84a3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826783"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799532"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-dhcp-server-services"></a>Bölüm 3-Azure RTOS NetX DHCP sunucu hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-dhcp-server-services"></a>Bölüm 3 - NetX DHCP Azure RTOS hizmetlerinin açıklaması
 
-Bu bölüm, tüm NetX DHCP sunucusu hizmetlerinin bir açıklamasını içerir.
+Bu bölümde tüm NetX DHCP Sunucusu hizmetlerinin açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_dhcp_server_create**: *DHCP sunucusu örneği oluşturma*
-- **nx_dhcp_set_interface_network_parameters**: *belirtilen arabirim için kritik ağ parametreleri için DHCP sunucusu seçeneklerini ayarla*
-- **nx_dhcp_create_server_ip_address_list**: *DHCP istemcileri ARABIRIMINE atanacak kullanılabilir IP adresleri havuzu oluştur*
-- **nx_dhcp_clear_client_record**: *sunucu veritabanındaki istemci kaydını kaldırma*
-- **nx_dhcp_server_delete**: *bir dhcpserver örneğini silme*
-- **nx_dhcp_server_start**: *DHCP sunucusu işlemeyi Başlat veya sürüyor*
-- **nx_dhcp_server_stop**: *DHCP sunucusu işlemesini durdur*
+- **nx_dhcp_server_create:** DHCP *Sunucusu örneği oluşturma*
+- **nx_dhcp_set_interface_network_parameters:** Belirtilen *arabirim için kritik ağ parametreleri için DHCP Sunucusu seçeneklerini ayarlayın*
+- **nx_dhcp_create_server_ip_address_list:** DHCP *İstemcileri arabirimine atamak için kullanılabilir IP adresleri havuzu oluşturma*
+- **nx_dhcp_clear_client_record:** Sunucu *veritabanındaki İstemci kaydını kaldırma*
+- **nx_dhcp_server_delete:** *DHCPServer örneğini silme*
+- **nx_dhcp_server_start:** *DHCP Sunucusu işlemeyi başlatma veya sürdürme*
+- **nx_dhcp_server_stop:** *DHCP sunucusu işlemeyi durdurma*
 
 ## <a name="nx_dhcp_server_create"></a>nx_dhcp_server_create
 
-DHCP sunucu örneği oluşturma
+DHCP Sunucusu örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -40,33 +40,33 @@ UINT nx_dhcp_server_create(NX_DHCP_SERVER *dhcp_ptr, NX_IP *ip_ptr,
                         NX_PACKET_POOL *packet_pool_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş bir IP örneğiyle bir DHCP sunucusu örneği oluşturur.
+Bu hizmet, daha önce oluşturulmuş bir IP örneği ile bir DHCP Sunucusu örneği oluşturur.
 
 > [!IMPORTANT]
-> Uygulama, IP oluşturma hizmeti için oluşturulan paket havuzunun UDP, IP ve Ethernet üst bilgilerini içermeyen bir minimum548 Byte yüküne sahip olduğundan emin olmalıdır.
+> Uygulama, IP oluşturma hizmeti için oluşturulan paket havuzunun UDP, IP ve Ethernet üst bilgileri dahil olmak üzere en az 548 bayt yüküne sahip olduğundan emin olması gerekir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP sunucusu denetim bloğu işaretçisi.  
-- **ip_ptr**: DHCP sunucusu IP örneğine yönelik işaretçi.
-- **stack_ptr**: Işaretçi DHCP sunucusu yığın konumu.
-- **stack_size**: DHCP sunucusu yığınının boyutu
-- **input_address_list**: sunucunun IP adresleri listesine yönelik işaretçi
-- **name_ptr**: DHCP sunucu adı işaretçisi
-- **packet_pool_ptr**: DHCP sunucusu paket havuzuna yönelik işaretçi
+- **dhcp_ptr:** DHCP Sunucusu denetim bloğuna işaretçi.  
+- **ip_ptr:** DHCP Sunucusu IP örneğinin işaretçisi.
+- **stack_ptr:** İşaretçi DHCP Sunucusu yığın konumu.
+- **stack_size:** DHCP Sunucusu yığınının boyutu
+- **input_address_list:** Sunucunun IP adresleri listesinin işaretçisi
+- **name_ptr:** DHCP Sunucusu adı işaretçisi
+- **packet_pool_ptr:** DHCP Sunucusu paket havuzunun işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sunucusu oluşturma.
-- **NX_DHCP_INADEQUATE_PACKET_POOL_PAYLOAD**: (0xA9) paket yükü çok küçük hata
-- **NX_DHCP_NO_SERVER_OPTION_LIST**: (0x96) sunucu seçenek listesi boş
-- NX_DHCP_PARAMETER_ERROR: (0x92) geçersiz işaretçi girişi
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi girişi.
+- **NX_SUCCESS:**(0x00) Başarılı DHCP Sunucusu oluşturma.
+- **NX_DHCP_INADEQUATE_PACKET_POOL_PAYLOAD:**(0xA9) Paket yükü çok küçük hatası
+- **NX_DHCP_NO_SERVER_OPTION_LIST:**(0x96) Sunucu seçeneği listesi boş
+- NX_DHCP_PARAMETER_ERROR: (0x92) İşaretçi olmayan giriş geçersiz
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi girişi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama
 
@@ -93,27 +93,27 @@ UINT nx_dhcp_create_server_ip_address_list(NX_DHCP_SERVER *dhcp_ptr,
                             ULONG end_ip_address, UINT *addresses_added);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen DHCP sunucusuna atanacak bir NetworkInterface 'e özgü IP adresleri havuzu oluşturur. Başlangıç ve bitiş IP adreslerinin belirtilen ağ arabirimiyle eşleşmesi gerekir. IP adresi listesi yeterince büyük değilse (Kullanıcı tarafından yapılandırılabilir *NX_DHCP_IP_ADDRESS_MAX_LIST_SIZE* parametresinde ayarlanır), eklenen IP adreslerinin gerçek sayısı toplam adresten daha az olabilir.
+Bu hizmet, ataması belirtilen DHCP sunucusu için kullanılabilir IP adreslerinin ağ arabirime özgü bir havuzunu oluşturur. Başlangıç ve bitiş IP adresleri belirtilen ağ arabirimiyle eşleşmeli. IP adresi listesi yeterince büyük (kullanıcı tarafından yapılandırılabilir ip adresi parametresinde ayarlanır) yoksa, eklenen gerçek IP adresi sayısı toplam *adreslerden NX_DHCP_IP_ADDRESS_MAX_LIST_SIZE* olabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr** DHCP sunucu denetim bloğu işaretçisi.  
-- **iface_index**: ağ arabirimine karşılık gelen dizin
-- **start_ip_address**: Ilk kullanılabilir IP adresi
-- **end_ip_address**: en son kullanılabilir IP adresi
-- **addresses_added**: LISTEYE eklenen IP adresi sayısı
+- **dhcp_ptr** DHCP Sunucusu denetim bloğu işaretçisi.  
+- **iface_index:** Ağ arabirimine karşılık gelen dizin
+- **start_ip_address:** İlk kullanılabilir IP adresi
+- **end_ip_address:** Kullanılabilir IP adresinin son tarihi
+- **addresses_added:** Listeye eklenen IP adresi sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sunucusu oluşturma.
-- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX**: (0xA1) dizin adreslerle eşleşmiyor
-- **NX_DHCP_INVALID_IP_ADDRESS_LIST**: (0x99) geçersiz adres girişi
-- NX_DHCP_INVALID_IP_ADDRESS: (0x9B) ıllogical başlangıç/bitiş adresleri
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi girişi.
+- **NX_SUCCESS:**(0x00) Başarılı DHCP Sunucusu oluşturma.
+- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX:**(0xA1) Dizin adresle eşle değil
+- **NX_DHCP_INVALID_IP_ADDRESS_LIST:**(0x99) Geçersiz adres girişi
+- NX_DHCP_INVALID_IP_ADDRESS: (0x9B) İllogical başlangıç/bitiş adresleri
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi girişi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama
 
@@ -130,7 +130,7 @@ addresses_added indicates how many IP addresses were actually added to the list.
 
 ## <a name="nx_dhcp_clear_client_record"></a>nx_dhcp_clear_client_record
 
-Istemci kaydını sunucu veritabanından kaldır
+Sunucu veritabanından İstemci kaydını kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -139,22 +139,22 @@ UINT nx_dhcp_clear_client_record (NX_DHCP_SERVER *dhcp_ptr,
                                 NX_DHCP_CLIENT *dhcp_client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci kaydını sunucu veritabanından temizler.
+Bu hizmet, Sunucu veritabanından İstemci kaydını temizler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP sunucusu denetim bloğu işaretçisi.  
-- **dhcp_client_ptr**: kaldırılacak DHCP istemcisine yönelik işaretçi
+- **dhcp_ptr:** DHCP Sunucusu denetim bloğuna işaretçi.  
+- **dhcp_client_ptr:** Kaldırmak için DHCP İstemcisi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sunucusu oluşturma.
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi girişi.
-- NX_CALLER_ERROR: (0x11) hizmet iş parçacığı olmayan çağrı
+- **NX_SUCCESS:**(0x00) Başarılı DHCP Sunucusu oluşturma.
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi girişi.
+- NX_CALLER_ERROR: (0x11) Hizmetin iş parçacığı çağıranı değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama
 
@@ -180,26 +180,26 @@ UINT nx_dhcp_set_interface_network_parameters(NX_DHCP_SERVER *dhcp_ptr,
                                     ULONG dns_server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen arabirim için ağ kritik parametrelerinin varsayılan değerlerini ayarlar. DHCP sunucusu, bu seçenekleri sunmak ve DHCP Istemcisine onay yanıtlarını içerecektir. Ana bilgisayar, bir DHCP sunucusunun çalıştığı arabirim parametreleri ayarlandıysa, parametreler varsayılan olarak aşağıdaki gibidir: yönlendirici, DHCP sunucusunun kendisi için birincil arabirim ağ geçidine, DHCP sunucusunun kendisi için de DNS sunucusu adresine ve DHCP sunucusu arabirimiyle aynı alt ağ maskesine ayarlanır.
+Bu hizmet, belirtilen arabirim için ağ kritik parametreleri için varsayılan değerleri ayarlar. DHCP sunucusu, TEKLIF'inde bu seçenekleri içerir ve ACK, DHCP İstemcisi'ne yanıtlar. Dhcp sunucusunun üzerinde çalıştırılan konak kümesi arabirim parametreleri, parametreler varsayılan olarak şu şekilde ayarlanır: yönlendirici DHCP sunucusunun kendisi için birincil arabirim ağ geçidine, DNS sunucusu adresi DHCP sunucusunun adresine ayarlanır ve alt ağ maskesi DHCP sunucu arabirimiyle aynı şekilde yapılandırılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP sunucusu denetim bloğu işaretçisi.  
-- **iface_index**: ağ arabirimine karşılık gelen dizin
-- **subnet_mask**: istemci ağı için alt ağ maskesi
-- **default_gateway_address**: ISTEMCININ yönlendirici IP adresi
-- **dns_server_address**: istemci ağı için DNS sunucusu
+- **dhcp_ptr:** DHCP Sunucusu denetim bloğuna işaretçi.  
+- **iface_index:** Ağ arabirimine karşılık gelen dizin
+- **subnet_mask:** İstemci ağı için alt ağ maskesi
+- **default_gateway_address:** İstemcinin yönlendirici IP adresi
+- **dns_server_address:** İstemci ağı için DNS sunucusu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sunucusu oluşturma.
-- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX**: (0xA1) dizin adreslerle eşleşmiyor
-- **NX_DHCP_INVALID_NETWORK_PARAMETERS**: (0xA3) geçersiz ağ parametreleri
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi girişi.
+- **NX_SUCCESS:**(0x00) Başarılı DHCP Sunucusu oluşturma.
+- **NX_DHCP_SERVER_BAD_INTERFACE_INDEX:**(0xA1) Dizin adresle eşle değil
+- **NX_DHCP_INVALID_NETWORK_PARAMETERS:**(0xA3) Geçersiz ağ parametreleri
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi girişi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama
 
@@ -216,7 +216,7 @@ status = nx_dhcp_set_interface_network_parameters(&dhcp_server, iface_index,
 
 ## <a name="nx_dhcp_server_delete"></a>nx_dhcp_server_delete
 
-DHCP sunucusu örneğini silme
+DHCP Sunucusu örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -224,9 +224,9 @@ DHCP sunucusu örneğini silme
 UINT nx_dhcp_server_delete(NX_DHCP_SERVER *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir DHCP sunucusu örneğini siler.
+Bu hizmet, daha önce oluşturulmuş bir DHCP Sunucusu örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -262,7 +262,7 @@ DHCP sunucusu işlemeyi Başlat
 UINT nx_dhcp_server_start(NX_DHCP_SERVER *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir sunucu UDP yuvası oluşturmayı, DHCP bağlantı noktasını bağlamayı ve Istemci DHCP isteklerini almayı beklemeyi içeren DHCP sunucusu işlemesini başlatır.
 
@@ -305,7 +305,7 @@ DHCP sunucusu işlemesini durduruyor
 UINT nx_dhcp_server_stop(NX_DHCP_SERVER *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP Istemci isteklerinin alınması dahil olmak üzere DHCP sunucusu işlemesini durduruyor.
 

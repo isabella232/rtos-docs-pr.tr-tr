@@ -1,25 +1,25 @@
 ---
-title: Ek-bağlantı noktasına özgü örnekler
-description: Bu makalede, ThreadX modülleri için bağlantı noktasına özgü örnekler gösterilmektedir.
+title: Ek - Bağlantı Noktasına Özgü Örnekler
+description: Bu makalede ThreadX Modülleri için bağlantı noktasına özgü örnekler açıklanmıştır.
 author: philmea
 ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c2324a2057bf2ddb2d255b2ff611d34fc664560a
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: bc4721431810d72a72d5bc69e8382378cb7f95935a8ac755c25a8cff985cd185
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549819"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116799379"
 ---
-# <a name="appendix---port-specific-examples"></a>Ek-bağlantı noktasına özgü örnekler
+# <a name="appendix---port-specific-examples"></a>Ek - Bağlantı noktasına özgü örnekler
 
 ## <a name="arm11-processor"></a>ARM11 işlemcisi
 
 ### <a name="arm11-using-gcc"></a>GCC kullanarak ARM11
 
-#### <a name="module-preamble-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modül girişi
+#### <a name="module-preamble-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modül GCC
 
 ```armasm
     .arm
@@ -69,12 +69,12 @@ _txm_module_preamble:
 
 #### <a name="module-properties-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | [23-0] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modül Bağlayıcısı
+#### <a name="module-linker-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modül GCC
 
 ```c
 MEMORY
@@ -288,9 +288,9 @@ SECTIONS
 }
 ```
 
-#### <a name="building-modules-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için modüller oluşturma
+#### <a name="building-modules-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için Modüller GCC
 
-GCC kullanarak ARM11 modülü oluşturmaya yönelik basit bir komut satırı örneği:
+Komut satırı kullanarak ARM11 modülü GCC:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=arm1136j-s -msingle-pic-base -fPIC -mpic-register=r9 txm_module_preamble.S
@@ -299,24 +299,24 @@ arm-none-eabi-gcc -c -g -mcpu=arm1136j-s -msingle-pic-base -fPIC -mpic-register=
 arm-none-eabi-ld -A arm1136j-s -T demo_threadx_module.ld txm_module_preamble.o gcc_setup.o demo_threadx_module.o txm.a txm.a -o demo_threadx_module.out -M > demo_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için iş parçacığı uzantısı GCC
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;  \
                                 VOID    *tx_thread_module_entry_info_ptr;
 ```
 
-#### <a name="building-module-manager-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için Modül Yöneticisi oluşturma
+#### <a name="building-module-manager-for-arm11-using-gcc"></a>GCC kullanarak ARM11 için Modül Yöneticisi GCC
 
-Örnek sağlanmaz.
+Örnek sağlanmıştır.
 
-#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-gcc"></a>Dış bellek öznitelikleri, GCC kullanarak ARM11 için API 'YI etkinleştirir
+#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-gcc"></a>Dış belleğin öznitelikleri arm11 için API'yi GCC
 
-Bu özellik bu bağlantı noktasında etkin değil.
+Bu özellik bu bağlantı noktası üzerinde etkinleştirilmedi.
 
 ### <a name="arm11-using-ac5"></a>AC5 kullanarak ARM11
 
-#### <a name="module-preamble-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için modül girişi
+#### <a name="module-preamble-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için modül önayak olabilir
 
 ```armasm
     AREA  Init, CODE, READONLY
@@ -377,20 +377,20 @@ __txm_module_preamble
         END
 ```
 
-#### <a name="module-properties-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için modül özellikleri
+#### <a name="module-properties-for-arm11-using-ac5"></a>AC5 kullanan ARM11 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | [23-0] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için modül Bağlayıcısı
+#### <a name="module-linker-for-arm11-using-ac5"></a>AC5 kullanan ARM11 için modül bağlantıcı
 
-Komut satırı üzerine inşa, bağlayıcı dosyası örneği yok.
+Komut satırı üzerinde yerleşiktir, bir bağlantı dosyası örneği yoktur.
 
-#### <a name="building-modules-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için modüller oluşturma
+#### <a name="building-modules-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için Modüller
 
-AC5 kullanarak ARM11 modülü oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak ARM11 modülü inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu ARM1136J-S --apcs /interwork --apcs /ropi --apcs /rwpi txm_module_preamble.s
@@ -398,16 +398,16 @@ armcc -g -c -O0 --cpu ARM1136J-S --apcs /interwork --apcs /ropi --apcs /rwpi dem
 armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list demo_threadx_module.map txm_module_preamble.o demo_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-arm11-using-ac5"></a>AC5 kullanan ARM11 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;  \
                                 VOID    *tx_thread_module_entry_info_ptr;
 ```
 
-#### <a name="building-module-manager-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için Modül Yöneticisi oluşturma
+#### <a name="building-module-manager-for-arm11-using-ac5"></a>AC5 kullanarak ARM11 için Modül Yöneticisi'ni bina
 
-AC5 kullanarak ARM11 modülü Yöneticisi oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak ARM11 modül yöneticisini inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu ARM1136J-S --apcs /interwork tx_initialize_low_level.s
@@ -416,15 +416,15 @@ armcc -g -c -O2 --cpu ARM1136J-S --apcs /interwork module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0 --first tx_initialize_low_level.o(Init) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-ac5"></a>Dış bellek öznitelikleri AC5 kullanarak ARM11 için API 'YI etkinleştirir
+#### <a name="attributes-for-external-memory-enable-api-for-arm11-using-ac5"></a>Dış bellek öznitelikleri, AC5 kullanarak ARM11 için API'yi etkinleştirir
 
-Bu özellik bu bağlantı noktasında etkin değil.
+Bu özellik bu bağlantı noktası üzerinde etkinleştirilmedi.
 
 ## <a name="cortex-a7-processor"></a>Cortex-A7 işlemcisi
 
-### <a name="cortex-a7-using-ac5"></a>Cortex-AC5 kullanarak A7
+### <a name="cortex-a7-using-ac5"></a>AC5 kullanarak Cortex-A7
 
-#### <a name="module-preamble-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex için modül girişi-A7
+#### <a name="module-preamble-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex-A7 için modül ön kullanılabilirlik
 
 ```armasm
     AREA  Init, CODE, READONLY
@@ -488,21 +488,21 @@ __txm_module_preamble
     END
 ```
 
-#### <a name="module-properties-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex-A7 için modül özellikleri
+#### <a name="module-properties-for-cortex-a7-using-ac5"></a>AC5 kullanan Cortex-A7 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
 | [23-1] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex için modül Bağlayıcısı-A7
+#### <a name="module-linker-for-cortex-a7-using-ac5"></a>AC5 kullanan Cortex-A7 için modül bağlantıcı
 
-Komut satırı üzerine inşa, bağlayıcı dosyası örneği yok.
+Komut satırı üzerinde yerleşiktir, bir bağlantı dosyası örneği yoktur.
 
-#### <a name="building-modules-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex için modüller oluşturma-A7
+#### <a name="building-modules-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex-A7 için Modüller Bina
 
-AC5 kullanarak Cortex-A7 modülü oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak Cortex-A7 modülü inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu=cortex-a7.no_neon --fpu=softvfp --apcs=/interwork/ropi/rwpi txm_module_preamble.s
@@ -510,7 +510,7 @@ armcc  -g --cpu=cortex-a7.no_neon --fpu=softvfp -c --apcs=/interwork/ropi/rwpi -
 armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list demo_threadx_module.map txm_module_preamble.o demo_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex için iş parçacığı uzantısı tanımı A7
+#### <a name="thread-extension-definition-for-cortex-a7-using-ac5"></a>AC5 kullanan Cortex-A7 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2   ULONG   tx_thread_vfp_enable;                   \
@@ -528,9 +528,9 @@ armlink -d -o demo_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex için Modül Yöneticisi oluşturma-A7
+#### <a name="building-module-manager-for-cortex-a7-using-ac5"></a>AC5 kullanarak Cortex-A7 için Modül Yöneticisi'ni bina
 
-AC5 kullanarak Cortex-A7 Module Manager oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak Cortex-A7 modül yöneticisini inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu=cortex-a7.no_neon --fpu=softvfp --apcs=interwork tx_initialize_low_level.s
@@ -539,25 +539,25 @@ armcc -g --cpu=cortex-a7.no_neon --fpu=softvfp -c module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x80000000 --first tx_initialize_low_level.o(VECTORS) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Dış bellek öznitelikleri A7 Cortex için API 'YI etkinleştirir-AC5 kullanarak
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-a7-using-ac5"></a>Dış bellek öznitelikleri, AC5 kullanarak Cortex-A7 için API'yi etkinleştirir
 
-Aşağıdaki öznitelikler, paylaşılan bellek ayarlarını ayarlamak için kullanılabilir:
+Paylaşılan bellek ayarlarını ayarlamak için aşağıdaki öznitelikler kullanılabilir:
 
 | Öznitelik parametresi | Anlamı |
 |---|---|
-| TXM_MMU_ATTRIBUTE_XN | Hiçbir şekilde Çalıştır |
+| TXM_MMU_ATTRIBUTE_XN | Hiçbir Zaman Yürütme |
 | TXM_MMU_ATTRIBUTE_B | B ayarı |
 | TXM_MMU_ATTRIBUTE_C | C ayarı |
 | TXM_MMU_ATTRIBUTE_AP | AP ayarı |
 | TXM_MMU_ATTRIBUTE_TEX | TEX ayarı |
 
-Bu ayarların nasıl yapılandırıldığı hakkında bilgi için bkz. ARM belgeleri.
+Bu ayarların nasıl yapılandırıldığından emin olmak için ARM belgelerine bakın.
 
-## <a name="cortex-m3-processor"></a>Cortex-M3 işlemcisi
+## <a name="cortex-m3-processor"></a>Cortex-M3 işlemci
 
-### <a name="cortex-m3-using-ac5"></a>Cortex-AC5 kullanarak m3
+### <a name="cortex-m3-using-ac5"></a>AC5 kullanarak Cortex-M3
 
-#### <a name="module-preamble-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex için modül girişi-m3
+#### <a name="module-preamble-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex-M3 için modül ön kullanılabilirlik
 
 ```armasm
     AREA Init, CODE, READONLY
@@ -630,23 +630,23 @@ __txm_module_preamble
 
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex için modül özellikleri-m3
+#### <a name="module-properties-for-cortex-m3-using-ac5"></a>AC5 kullanan Cortex-M3 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex için modül Bağlayıcısı-m3
+#### <a name="module-linker-for-cortex-m3-using-ac5"></a>AC5 kullanan Cortex-M3 için modül bağlantıcı
 
-Örnek bağlayıcı dosyası sağlanmaz; bağlantı, komut satırında yapılır. Sonraki bölüme bakın.
+Örnek bir linker dosyası sağlanmıştır; bağlantı, komut satırı üzerinde yapılır. Sonraki bölüme bakın.
 
-#### <a name="building-modules-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex için modüller oluşturma-m3
+#### <a name="building-modules-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex-M3 için Modüller Bina
 
-Örnek bir derleme betiği verilmiştir:
+Örnek bir derleme betiği sağlanmıştır:
 
 ```dos
 armasm -g --cpu=cortex-m3 --apcs=/interwork/ropi/rwpi txm_module_preamble.S
@@ -654,7 +654,7 @@ armcc  -g --cpu=cortex-m3 -c --apcs=/interwork/ropi/rwpi --lower_ropi -I../inc -
 armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list sample_threadx_module.map txm_module_preamble.o sample_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex-M3 için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-cortex-m3-using-ac5"></a>AC5 kullanan Cortex-M3 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -672,9 +672,9 @@ armlink -d -o sample_threadx_module.axf --elf --ro=0x30000 --rw=0x40000 --first 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex için Modül Yöneticisi oluşturma-m3
+#### <a name="building-module-manager-for-cortex-m3-using-ac5"></a>AC5 kullanarak Cortex-M3 için Modül Yöneticisi'ni bina
 
-Bkz. örnek build_threadx_module_manager_demo.bat:
+Bkz. build_threadx_module_manager_demo.bat:
 
 ```dos
 armasm -g --cpu=cortex-m3 --apcs=interwork tx_initialize_low_level.S
@@ -682,7 +682,7 @@ armcc -g --cpu=cortex-m3 -c -I../inc -I../../../../common_modules/inc -I../../..
 armlink -d -o sample_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_initialize_low_level.o(RESET) --remove --map --symbols --list sample_threadx_module_manager.map tx_initialize_low_level.o sample_threadx_module_manager.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Dış bellek öznitelikleri AC5 kullanarak Cortex için API 'YI etkinleştirir-m3
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac5"></a>Dış bellek öznitelikleri AC5 kullanarak Cortex-M3 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -690,9 +690,9 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-### <a name="cortex-m3-using-ac6"></a>Cortex-AC6 kullanarak m3
+### <a name="cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3
 
-#### <a name="module-preamble-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex için modül girişi-m3
+#### <a name="module-preamble-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3 için modül ön ekleri
 
 ```armasm
     .text
@@ -759,25 +759,25 @@ __txm_module_preamble:
     .dc.l   0                                                   // Reserved 15
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex için modül özellikleri-m3
+#### <a name="module-properties-for-cortex-m3-using-ac6"></a>AC6 kullanan Cortex-M3 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex için modül Bağlayıcısı-m3
+#### <a name="module-linker-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3 için modül bağlantıcı
 
-Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
+Hiçbir linker dosyası kullanılmaz. Bkz. proje ayarları.
 
-#### <a name="building-modules-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex için modüller oluşturma-m3
+#### <a name="building-modules-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3 için Modüller Bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, örnek Modül projesi ve örnek Module Manager projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, örnek modül projesini ve örnek modül yöneticisi projesini derleme.
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3 için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-cortex-m3-using-ac6"></a>AC6 kullanan Cortex-M3 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -795,11 +795,11 @@ Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex için Modül Yöneticisi oluşturma-m3
+#### <a name="building-module-manager-for-cortex-m3-using-ac6"></a>AC6 kullanarak Cortex-M3 için Modül Yöneticisi'ni bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, örnek Modül projesi ve örnek Module Manager projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, örnek modül projesini ve örnek modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Dış bellek öznitelikleri AC6 kullanarak Cortex için API 'YI etkinleştirir-m3
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-ac6"></a>Dış bellek öznitelikleri AC6 kullanarak Cortex-M3 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -807,9 +807,9 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-### <a name="cortex-m3-using-gnu"></a>Cortex-GNU kullanan m3
+### <a name="cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3
 
-#### <a name="module-preamble-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex için modül girişi-m3
+#### <a name="module-preamble-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için modül hazır
 
 ```armasm
     .text
@@ -873,17 +873,17 @@ __txm_module_preamble:
 
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex için modül özellikleri-m3
+#### <a name="module-properties-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex için modül Bağlayıcısı-m3
+#### <a name="module-linker-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için modül bağlantıcı
 
 ```c
 MEMORY
@@ -1097,9 +1097,9 @@ SECTIONS
 }
 ```
 
-#### <a name="building-modules-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex için modüller oluşturma-m3
+#### <a name="building-modules-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için ModülLer Bina
 
-build_threadx_module_sample.bat bkz:
+Bkz. build_threadx_module_sample.bat:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -fpie -fno-plt -mpic-data-is-text-relative -msingle-pic-base txm_module_preamble.s
@@ -1108,7 +1108,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -fpie -fno-plt -mpic-data-is-text-relati
 arm-none-eabi-ld -A cortex-m3 -T sample_threadx_module.ld txm_module_preamble.o gcc_setup.o sample_threadx_module.o -e _txm_module_thread_shell_entry txm.a -o sample_threadx_module.axf -M > sample_threadx_module.map
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-gnu"></a>GNU kullanan Cortex için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -1126,9 +1126,9 @@ arm-none-eabi-ld -A cortex-m3 -T sample_threadx_module.ld txm_module_preamble.o 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex için Modül Yöneticisi oluşturma-m3
+#### <a name="building-module-manager-for-cortex-m3-using-gnu"></a>GNU kullanarak Cortex-M3 için Modül Yöneticisi
 
-build_threadx_module_manager_sample.bat bkz:
+Bkz. build_threadx_module_manager_sample.bat:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -mthumb -I..\inc -I..\..\..\..\common\inc -I..\..\..\..\common_modules\inc sample_threadx_module_manager.c
@@ -1137,7 +1137,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m3 -mthumb cortexm_crt0.S
 arm-none-eabi-ld -A cortex-m3 -ereset_handler -T sample_threadx.ld tx_simulator_startup.o cortexm_crt0.o sample_threadx_module_manager.o tx.a  libc.a -o sample_threadx_module_manager.axf -M > sample_threadx_module_manager.map
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Dış bellek öznitelikleri, GNU kullanarak Cortex için API 'YI etkinleştirir-m3
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-gnu"></a>Dış bellek öznitelikleri GNU kullanarak Cortex-M3 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -1145,9 +1145,9 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-### <a name="cortex-m3-using-iar"></a>Cortex-ıAR kullanan m3
+### <a name="cortex-m3-using-iar"></a>IAR kullanarak Cortex-M3
 
-#### <a name="module-preamble-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex için modül girişi-m3
+#### <a name="module-preamble-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex-M3 için modül ön kullanılabilirlik
 
 ```c
     SECTION .text:CODE
@@ -1223,17 +1223,17 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-m3-using-iar"></a>Cortex için modül özellikleri-ıAR kullanılarak m3
+#### <a name="module-properties-for-cortex-m3-using-iar"></a>IAR kullanan Cortex-M3 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex için modül Bağlayıcısı-m3
+#### <a name="module-linker-for-cortex-m3-using-iar"></a>IAR kullanan Cortex-M3 için modül bağlantıcı
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -1290,11 +1290,11 @@ place in ROM_region   { block ROPI };
 place in RAM_region   { block RWPI };
 ```
 
-#### <a name="building-modules-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex için modüller oluşturma-m3
+#### <a name="building-modules-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex-M3 için ModülLer Bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="thread-extension-definition-for-cortex-m3-using-iar"></a>Cortex için iş parçacığı uzantısı tanımı-ıAR kullanılarak m3
+#### <a name="thread-extension-definition-for-cortex-m3-using-iar"></a>IAR kullanan Cortex-M3 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -1313,11 +1313,11 @@ place in RAM_region   { block RWPI };
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex için Modül Yöneticisi oluşturma-m3
+#### <a name="building-module-manager-for-cortex-m3-using-iar"></a>IAR kullanarak Cortex-M3 için Modül Yöneticisi
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Dış bellek öznitelikleri, ıAR kullanarak Cortex için API 'YI etkinleştirir
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m3-using-iar"></a>Dış bellek öznitelikleri IAR kullanarak Cortex-M3 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -1325,11 +1325,11 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-## <a name="cortex-m33-processor"></a>Cortex-M33 işlemcisi
+## <a name="cortex-m33-processor"></a>Cortex-M33 işlemci
 
-### <a name="cortex-m33-using-ac6"></a>Cortex-AC6 kullanarak M33
+### <a name="cortex-m33-using-ac6"></a>AC6 kullanarak Cortex-M33
 
-#### <a name="module-preamble-for-cortex-m33-using-ac6"></a>AC6 kullanarak Cortex için modül girişi-M33
+#### <a name="module-preamble-for-cortex-m33-using-ac6"></a>AC6 kullanarak Cortex-M33 için modül ön kullanılabilirlik
 
 ```c
     .text
@@ -1402,7 +1402,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-m33-using-ac6"></a>AC6 kullanarak Cortex-M33 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
 | 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
@@ -2439,9 +2439,9 @@ place in RAM_region   { block RWPI };
 
 #### <a name="building-module-manager-for-cortex-m4-using-iar"></a>IAR kullanarak Cortex için Modül Yöneticisi oluşturma-M4
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak Cortex için API 'YI etkinleştirir-M4
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m4-using-iar"></a>Dış bellek öznitelikleri IAR kullanarak Cortex-M4 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -2449,11 +2449,11 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-## <a name="cortex-m7-processor"></a>Cortex-M7 işlemcisi
+## <a name="cortex-m7-processor"></a>Cortex-M7 işlemci
 
-### <a name="cortex-m7-using-ac5"></a>Cortex-AC5 kullanarak M7
+### <a name="cortex-m7-using-ac5"></a>AC5 kullanarak Cortex-M7
 
-#### <a name="module-preamble-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex için modül girişi-M7
+#### <a name="module-preamble-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex-M7 için modül ön kullanılabilirlik
 
 ```c
     AREA Init, CODE, READONLY
@@ -2527,23 +2527,23 @@ __txm_module_preamble
     END
 ```
 
-#### <a name="module-properties-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex-M7 için modül özellikleri
+#### <a name="module-properties-for-cortex-m7-using-ac5"></a>AC5 kullanan Cortex-M7 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex için modül Bağlayıcısı-M7
+#### <a name="module-linker-for-cortex-m7-using-ac5"></a>AC5 kullanan Cortex-M7 için modül bağlantıcı
 
-Komut satırı üzerine inşa, bağlayıcı dosyası örneği yok.
+Komut satırı üzerinde yerleşiktir, bir bağlantı dosyası örneği yoktur.
 
-#### <a name="building-modules-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex için modüller oluşturma-M7
+#### <a name="building-modules-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex-M7 için Modüller Bina
 
-AC5 kullanarak Cortex-M7 modülü oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak Cortex-M7 modülü inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu=cortex-m7 --fpu=softvfp --apcs=/interwork/ropi/rwpi txm_module_preamble.s
@@ -2551,7 +2551,7 @@ armcc  -g --cpu=cortex-m7 --fpu=softvfp -c --apcs=/interwork/ropi/rwpi --lower_r
 armlink -d -o sample_threadx_module.axf --elf --ro 0 --first txm_module_preamble.o(Init) --entry=_txm_module_thread_shell_entry --ropi --rwpi --remove --map --symbols --list sample_threadx_module.map txm_module_preamble.o sample_threadx_module.o txm.a
 ```
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex için iş parçacığı uzantısı tanımı M7
+#### <a name="thread-extension-definition-for-cortex-m7-using-ac5"></a>AC5 kullanan Cortex-M7 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -2569,9 +2569,9 @@ armlink -d -o sample_threadx_module.axf --elf --ro 0 --first txm_module_preamble
                                 VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex için Modül Yöneticisi oluşturma-M7
+#### <a name="building-module-manager-for-cortex-m7-using-ac5"></a>AC5 kullanarak Cortex-M7 için Modül Yöneticisi'ni bina
 
-AC5 kullanarak Cortex-M7 Module Manager oluşturmaya yönelik basit bir komut satırı örneği:
+AC5 kullanarak Cortex-M7 modül yöneticisini inşa etmek için basit bir komut satırı örneği:
 
 ```dos
 armasm -g --cpu=cortex-m7 --fpu=softvfp --apcs=interwork tx_initialize_low_level.s
@@ -2580,29 +2580,29 @@ armcc -g --cpu=cortex-m7 --fpu=softvfp -c module_code.c
 armlink -d -o demo_threadx_module_manager.axf --elf --ro 0x00000000 --first tx_initialize_low_level.o(RESET) --remove --map --symbols --list demo_threadx_module_manager.map tx_initialize_low_level.o demo_threadx_module_manager.o module_code.o tx.a
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac5"></a>Dış bellek öznitelikleri M7 Cortex için API 'YI etkinleştirir-AC5 kullanarak
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac5"></a>Dış bellek öznitelikleri, AC5 kullanarak Cortex-M7 için API'yi etkinleştirir
 
-### <a name="cortex-m7-using-ac6"></a>Cortex-AC6 kullanarak M7
+### <a name="cortex-m7-using-ac6"></a>AC6 kullanarak Cortex-M7
 
-#### <a name="module-properties-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex-M7 için modül özellikleri
+#### <a name="module-properties-for-cortex-m7-using-ac6"></a>AC6 kullanan Cortex-M7 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex için modül Bağlayıcısı-M7
+#### <a name="module-linker-for-cortex-m7-using-ac6"></a>AC6 kullanan Cortex-M7 için modül bağlantıcı
 
-Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
+Hiçbir linker dosyası kullanılmaz. Bkz. proje ayarları.
 
-#### <a name="building-modules-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex için modüller oluşturma-M7
+#### <a name="building-modules-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex-M7 için Modüller Bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, örnek Modül projesi ve örnek Module Manager projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, örnek modül projesini ve örnek modül yöneticisi projesini derleme.
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex için iş parçacığı uzantısı tanımı M7
+#### <a name="thread-extension-definition-for-cortex-m7-using-ac6"></a>AC6 kullanan Cortex-M7 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2               VOID    *tx_thread_module_instance_ptr;         \
@@ -2620,11 +2620,11 @@ Bağlayıcı dosyası kullanılmaz. Bkz. proje ayarları.
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex için Modül Yöneticisi oluşturma-M7
+#### <a name="building-module-manager-for-cortex-m7-using-ac6"></a>AC6 kullanarak Cortex-M7 için Modül Yöneticisi'ni bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, örnek Modül projesi ve örnek Module Manager projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, örnek modül projesini ve örnek modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Dış bellek öznitelikleri M7 Cortex için API 'YI etkinleştirir-AC6 kullanarak
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-ac6"></a>Dış bellek öznitelikleri AC6 kullanarak Cortex-M7 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -2632,19 +2632,19 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-### <a name="cortex-m7-using-gnu"></a>Cortex-GNU kullanarak M7
+### <a name="cortex-m7-using-gnu"></a>GNU kullanarak Cortex-M7
 
 #### <a name="module-properties-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex-M7 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex için modül Bağlayıcısı-M7
+#### <a name="module-linker-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex-M7 için modül bağlantıcı
 
 ```c
 MEMORY
@@ -2858,9 +2858,9 @@ SECTIONS
 }
 ```
 
-#### <a name="building-modules-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex için modüller oluşturma-M7
+#### <a name="building-modules-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex-M7 için ModülLer Bina
 
-build_threadx_module_sample.bat bkz:
+Bkz. build_threadx_module_sample.bat:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -fpie -fno-plt -mpic-data-is-text-relative -msingle-pic-base txm_module_preamble.s
@@ -2887,9 +2887,9 @@ arm-none-eabi-ld -A cortex-m7 -T sample_threadx_module.ld txm_module_preamble.o 
                                             VOID    *tx_thread_module_reserved;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex için Modül Yöneticisi oluşturma-M7
+#### <a name="building-module-manager-for-cortex-m7-using-gnu"></a>GNU kullanarak Cortex-M7 için Modül Yöneticisi
 
-build_threadx_module_manager_sample.bat bkz:
+Bkz. build_threadx_module_manager_sample.bat:
 
 ```dos
 arm-none-eabi-gcc -c -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -I..\inc -I..\..\..\..\common\inc -I..\..\..\..\common_modules\inc sample_threadx_module_manager.c
@@ -2898,7 +2898,7 @@ arm-none-eabi-gcc -c -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb 
 arm-none-eabi-gcc -g -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -nostartfiles -ereset_handler -T sample_threadx.ld tx_simulator_startup.o cortexm_crt0.o sample_threadx_module_manager.o tx.a -o sample_threadx_module_manager.axf -Wl,-Map=sample_threadx_module_manager.map
 ```
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Dış bellek öznitelikleri, GNU kullanarak Cortex için API 'YI etkinleştirir-M7
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-gnu"></a>Dış bellek öznitelikleri GNU kullanarak Cortex-M7 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -2906,9 +2906,9 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-### <a name="cortex-m7-using-iar"></a>Cortex-ıAR kullanarak M7
+### <a name="cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7
 
-#### <a name="module-preamble-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex için modül girişi-M7
+#### <a name="module-preamble-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7 için modül ön kullanılabilirlik
 
 ```c
     SECTION .text:CODE
@@ -2984,17 +2984,17 @@ __txm_module_preamble:
     END
 ```
 
-#### <a name="module-properties-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7 için modül özellikleri
+#### <a name="module-properties-for-cortex-m7-using-iar"></a>IAR kullanan Cortex-M7 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x01<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x00<br />0x01<br />0x02 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
-#### <a name="module-linker-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex için modül Bağlayıcısı-M7
+#### <a name="module-linker-for-cortex-m7-using-iar"></a>IAR kullanan Cortex-M7 için modül bağlantıcı
 
 ```c
 /*###ICF### Section handled by ICF editor, don't touch! ****/
@@ -3045,11 +3045,11 @@ place in ROM_region   { block ROPI };
 place in RAM_region   { block RWPI };
 ```
 
-#### <a name="building-modules-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex için modüller oluşturma-M7
+#### <a name="building-modules-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7 için Modüller Bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="thread-extension-definition-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7 için iş parçacığı uzantısı tanımı
+#### <a name="thread-extension-definition-for-cortex-m7-using-iar"></a>IAR kullanan Cortex-M7 için iş parçacığı uzantısı tanımı
 
 ```c
 #define TX_THREAD_EXTENSION_2   VOID    *tx_thread_module_instance_ptr;         \
@@ -3068,11 +3068,11 @@ place in RAM_region   { block RWPI };
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex için Modül Yöneticisi oluşturma-M7
+#### <a name="building-module-manager-for-cortex-m7-using-iar"></a>IAR kullanarak Cortex-M7 için Modül Yöneticisi
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak Cortex için API 'YI etkinleştirir-M7
+#### <a name="attributes-for-external-memory-enable-api-for-cortex-m7-using-iar"></a>Dış bellek öznitelikleri IAR kullanarak Cortex-M7 için API'yi etkinleştirir
 
 Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 
@@ -3080,11 +3080,11 @@ Modülün paylaşılan belleğe her zaman okuma erişimi vardır.
 |---|---|
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 
-## <a name="cortex-r4-processor"></a>Cortex-R4 işlemcisi
+## <a name="cortex-r4-processor"></a>Cortex-R4 işlemci
 
-### <a name="cortex-r4-using-ac6"></a>Cortex-AC6 kullanarak R4
+### <a name="cortex-r4-using-ac6"></a>AC6 kullanarak Cortex-R4
 
-#### <a name="module-preamble-for-cortex-r4-using-ac6"></a>AC6 kullanarak Cortex için modül girişi-R4
+#### <a name="module-preamble-for-cortex-r4-using-ac6"></a>AC6 kullanarak Cortex-R4 için modül ön ekleri
 
 ```c
     .text
@@ -3148,7 +3148,7 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-cortex-r4-using-ac6"></a>AC6 kullanarak Cortex-R4 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
 | [23-1] | 0 | Ayrılmıştır
@@ -3589,15 +3589,15 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx63-using-iar"></a>IAR kullanarak RX63 için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />GNU |
+| [31-24] | <br />0x00<br />0x02 | **Derleyici Kimliği**<br />ıar<br />Gnu |
 
-#### <a name="module-linker-for-rx63-using-iar"></a>IAR kullanarak RX63 için modül Bağlayıcısı
+#### <a name="module-linker-for-rx63-using-iar"></a>IAR kullanarak RX63 için modül bağlantıcı
 
 ```c
 //-----------------------------------------------------------------------------
@@ -3680,9 +3680,9 @@ place in ROM_region32   { block ROPI };
 place in RAM_region16   { block RWPI };
 ```
 
-#### <a name="building-modules-for-rx63-using-iar"></a>IAR kullanarak RX63 için modüller oluşturma
+#### <a name="building-modules-for-rx63-using-iar"></a>IAR kullanarak RX63 için Modüller
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
 #### <a name="thread-extension-definition-for-rxrx635n-using-iar"></a>IAR kullanarak RXRX635N için iş parçacığı uzantısı tanımı
 
@@ -3702,15 +3702,15 @@ place in RAM_region16   { block RWPI };
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-rx63-using-iar"></a>IAR kullanarak RX63 için Modül Yöneticisi oluşturma
+#### <a name="building-module-manager-for-rx63-using-iar"></a>IAR kullanarak RX63 için Modül Yöneticisi'ni bina
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-rx63-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak RX63 için API 'YI etkinleştirir
+#### <a name="attributes-for-external-memory-enable-api-for-rx63-using-iar"></a>Dış bellek öznitelikleri IAR kullanarak RX63 için API'yi etkinleştirir
 
-| Öznitelik parametresi | Anlamı |
+| Öznitelik Parametresi | Anlamı |
 |---|---|
-| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Kodu Yürüt |
+| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Kodu yürütme |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_READ | Okuma erişimi |
 
@@ -3718,7 +3718,7 @@ place in RAM_region16   { block RWPI };
 
 ### <a name="rx65n-using-iar"></a>IAR kullanarak RX65N
 
-#### <a name="module-preamble-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modül girişi
+#### <a name="module-preamble-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modül ön kullanılabilirlik
 
 ```c
     /* Alignment of 4 (16-byte) */
@@ -3786,15 +3786,15 @@ __txm_module_preamble:
 
 #### <a name="module-properties-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modül özellikleri
 
-| Sürümleri | Değer | Anlamı |
+| Bit | Değer | Anlamı |
 |---|---|---|
 | 0 | 0<br />1 | Ayrıcalıklı mod yürütme<br />Kullanıcı modu yürütme |
-| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
-| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
+| 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (kullanıcı modunun seçili olması gerekir) |
+| 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırakma<br />Paylaşılan/dış bellek erişimini etkinleştirme |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />-<br />0x02 | **Derleyici KIMLIĞI**<br />IAR dili<br />GNU |
+| [31-24] | <br />0x00<br />0x02 | **Derleyici Kimliği**<br />ıar<br />Gnu |
 
-#### <a name="module-linker-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modül Bağlayıcısı
+#### <a name="module-linker-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modül bağlantıcı
 
 ```c
 //-----------------------------------------------------------------------------
@@ -3877,9 +3877,9 @@ place in ROM_region32   { block ROPI };
 place in RAM_region16   { block RWPI };
 ```
 
-#### <a name="building-modules-for-rx65n-using-iar"></a>IAR kullanarak RX65N için modüller oluşturma
+#### <a name="building-modules-for-rx65n-using-iar"></a>IAR kullanarak RX65N için Modüller
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
 #### <a name="thread-extension-definition-for-rx65n-using-iar"></a>IAR kullanarak RX65N için iş parçacığı uzantısı tanımı
 
@@ -3899,14 +3899,14 @@ place in RAM_region16   { block RWPI };
                                 VOID    *tx_thread_iar_tls_pointer;
 ```
 
-#### <a name="building-module-manager-for-rx65n-using-iar"></a>IAR kullanarak RX65N için Modül Yöneticisi oluşturma
+#### <a name="building-module-manager-for-rx65n-using-iar"></a>IAR kullanarak RX65N için Modül Yöneticisi
 
-Örnek çalışma alanı sağlanır. ThreadX kitaplığı, ThreadX modülleri kitaplığı, demo modülü projesi ve tanıtım modülü Yöneticisi projesi oluşturun.
+Örnek bir çalışma alanı sağlanmıştır. ThreadX kitaplığını, ThreadX Modülleri kitaplığını, tanıtım modülü projesini ve demo modül yöneticisi projesini derleme.
 
-#### <a name="attributes-for-external-memory-enable-api-for-rx65n-using-iar"></a>Dış bellek öznitelikleri ıAR kullanarak RX65N için API 'YI etkinleştirir
+#### <a name="attributes-for-external-memory-enable-api-for-rx65n-using-iar"></a>Dış bellek öznitelikleri IAR kullanarak RX65N için API'yi etkinleştirir
 
-| Öznitelik parametresi | Anlamı |
+| Öznitelik Parametresi | Anlamı |
 |---|---|
-| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Kodu Yürüt |
+| TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_EXECUTE | Kodu yürütme |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_WRITE | Yazma erişimi |
 | TXM_MODULE_MANAGER_SHARED_ATTRIBUTE_READ | Okuma erişimi |
