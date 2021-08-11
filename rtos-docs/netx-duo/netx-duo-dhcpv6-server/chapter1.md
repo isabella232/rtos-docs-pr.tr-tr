@@ -1,107 +1,107 @@
 ---
-title: Bölüm 1-Azure RTOS NetX Duo DHCPv6 sunucusuna giriş
-description: Bu belgede NetX Duo DHCPv6 sunucusunun, DHCPv6 Istemcilerine IPv6 adresleri nasıl atayacağı ayrıntılı olarak açıklanmaktadır.
+title: Bölüm 1 - NetX Duo Azure RTOS DHCPv6 sunucusuna giriş
+description: Bu belgede NetX Duo DHCPv6 Sunucusunun DHCPv6 İstemcilerine IPv6 adreslerini nasıl atadığınız ayrıntılı olarak açıklanmaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6cf7baa91b1804876b97b1d75d1872d1120ad028
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 14a9d76731d949e3556a019756caf38b4ef440abfa4cfb927c47607e5712d9ac
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826044"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783665"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcpv6-server"></a>Bölüm 1-Azure RTOS NetX Duo DHCPv6 sunucusuna giriş
+# <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcpv6-server"></a>Bölüm 1 - NetX Duo Azure RTOS DHCPv6 sunucusuna giriş
 
-IPv6 ağlarında, DHCPv6is Istemcilerinin IPv6 adreslerini alması gerekir. IPv4 adresi sunmadığından, IPv4in ile sınırlı olan DHCP 'yi değiştirmez. DHCPv6, DHCP ve birçok geliştirmelere benzer özelliklere sahiptir. IPv6 durum bilgisi olmayan adres otomatik yapılandırması olmayan veya kullanmayan bir Istemci, DHCPv6 sunucusundan benzersiz bir genel IPv6 adresi atamak için DHCPv6 kullanabilir.
+IPv6 ağlarında, İstemcilerin IPv6 adreslerini elde etmek için DHCPv6is gerekir. IPv4 adresleri sunmayarak IPv4in ile sınırlı olan DHCP'nin yerini değiştirmez. DHCPv6, DHCP'ye benzer özelliklere ve birçok geliştirmeye sahiptir. IPv6 durum bilgisiz adres otomatik yapılandırması kullanmayan veya kullanamamış bir İstemci, DHCPv6 Sunucusundan benzersiz bir genel IPv6 adresi atanacak DHCPv6 kullanabilir.
 
-NetX Duo, IPv6 ağ tabanlı uygulamaları ve DHCPv6 gibi ağ protokollerini destekleyecek şekilde geliştirilmiştir. Bu belgede NetX Duo DHCPv6 sunucusunun, DHCPv6 Istemcilerine IPv6 adresleri nasıl atayacağı ayrıntılı olarak açıklanmaktadır.
+NetX Duo, DHCPv6 gibi IPv6 ağ tabanlı uygulamaları ve ağ protokollerini desteklemek için geliştirilmiştir. Bu belgede NetX Duo DHCPv6 Sunucusunun DHCPv6 İstemcilerine IPv6 adreslerini nasıl atadığınız ayrıntılı olarak açıklanmaktadır.
 
-## <a name="dhcpv6-communication"></a>DHCPv6 Iletişimi
+## <a name="dhcpv6-communication"></a>DHCPv6 İletişimi
 
-**DHCPv6 Ileti yapısı**
+**DHCPv6 İleti yapısı**
 
-İleti içeriği temelde bir ileti üst bilgisi ve ardından bir veya daha fazla (genellikle daha fazla) seçenek bloğu gelir. Aşağıda, her bloğun bir baytı temsil ettiği temel yapı yer verilmiştir:
+İleti içeriği temelde bir veya daha fazla (genellikle daha fazla) seçenek bloğu tarafından takip edilen bir ileti üst bilgisidir. Her bloğun bir byte temsil ettiği temel yapı aşağıda verilmiştir:
 
-![DHCPv6 iletisini ve seçenek blok yapısını gösteren diyagram.](media/image2.jpg)
+![DHCPv6 ileti ve seçenek bloğu yapısını gösteren diyagram.](media/image2.jpg)
 
-**Şekil 1. DHCPv6 iletisi ve seçenek blok yapısı**
+**Şekil 1. DHCPv6 iletisi ve seçenek bloğu yapısı**
 
-1 baytlık Msg-Type alanı, DHCPv6 iletisi türünü gösterir. 3 baytlık Işlem KIMLIĞI alanı Istemci tarafından ayarlanır. Herhangi bir karakter dizisi olabilir, ancak sunucuya her Istemci iletisi için benzersiz olmalıdır (Istemci tarafından gönderilen yinelenen iletiler arasında sunulur). Sunucu, istemcinin geciktirilen veya ağda bırakılan paketlerin durumunda sunucu iletilerini eşleşmesini sağlamak için Istemciye her bir yanıt için bu Işlem KIMLIĞINI kullanır. Işlem KIMLIĞI alanını takip eden bir veya daha fazla DHCPv6 seçeneği, Istemcinin ne istediğini göstermek için kullanılır.
+1-byte Msg-Type alanı DHCPv6 iletisi türünü gösterir. 3-byte Transaction-ID alanı İstemci tarafından ayarlanır. Herhangi bir karakter dizisiyle olabilir, ancak sunucuya gönderilen her İstemci iletisi için benzersiz olmalıdır (İstemci tarafından gönderilen yinelenen iletiler arasında tutulmalıdır). Sunucu, istemcinin gecikmeli veya ağ üzerinde bırakılan paketler durumunda Sunucu iletileriyle eşleşmesini sağlamak için İstemciye her yanıt için bu İşlem Kimliği'nin kullanır. Transaction-ID alanını takip etmek, İstemcinin ne istediğini belirtmek için kullanılan bir veya daha fazla DHCPv6 seçeneğidir.
 
-DHCPv6 seçenek yapısı, bir seçenek kodundan oluşur, uzunluk veya kod alanlarını içermeyen bir seçenek uzunluğu alanıdır ve son olarak, Istemcinin istediği veriler için bir veya daha fazla 2 baytlık seçenek kodu alanı olan seçenek verileri.
+DHCPv6 seçenek yapısı bir seçenek kodu, uzunluk veya kod alanlarının yer almaması bir seçenek uzunluğu alanı ve son olarak istemcinin isteği veriler için bir veya daha fazla 2 bayt seçenek kodu alanı olan seçenek verilerinden oluşur.
 
-Bazı seçenek blokları iç içe seçeneklere sahiptir. Örneğin, *geçici olmayan adres (IANA) seçeneği için bir kimlik ilişkilendirmesi* , IPv6 adresleri istemek için bir veya daha fazla *KIMLIK ilişkilendirmesi (IA)* seçeneği içerir. Sunucu yanıt iletisinde döndürülen *IANA* seçeneği, sunucu tarafından verilen IPv6 adresi ve kira süreleriyle aynı *IA* seçeneğini ve istemci adresi isteğinde bir hata olup olmadığını belirten bir *durum* seçeneğini içerir.
+Bazı seçenek bloklarının iç içe geçmiş seçenekleri vardır. Örneğin, Geçici Olmayan Adresler için Kimlik İlişkisi *(IANA)* seçeneği, IPv6 adresleri isteğinde kullanılan bir veya daha fazla Kimlik İlişkisi *(IA)* seçeneği içerir. Sunucu Yanıtı iletisinde döndürülen *IANA* seçeneği, Sunucu tarafından verilen IPv6 adresi ve kira süreleriyle aynı *IA* seçeneğinin yanı sıra İstemci adresi isteğinde hata olup olmadığını belirten bir Durum seçeneği içerir. 
 
-Tüm seçenek bloklarının listesi ve açıklamaları **Ek A**' da verilmiştir.
+Tüm seçenek bloklarının listesi ve açıklamaları Ek **A'da sağlanmıştır.**
 
-**DHCPv6 Ileti türleri**
+**DHCPv6 İleti Türleri**
 
-DHCPv6, DHCP işlevlerini önemli ölçüde iyileştirse de DHCP ile aynı sayıda ileti kullanır ve DHCP ile aynı satıcı seçeneklerini destekler. DHCPv6 iletilerinin listesi aşağıdaki gibidir:
+DHCPv6, DHCP işlevselliğini büyük ölçüde geliştirse de, DHCP ile aynı sayıda ileti kullanır ve DHCP ile aynı satıcı seçeneklerini destekler. DHCPv6 iletilerinin listesi aşağıdaki gibidir:
 
-- ISTEME (1) (Istemci tarafından gönderilen)
-- TANıTMA (2) (sunucu tarafından gönderilen)
-- Istek (3) (Istemci tarafından gönderilen)
-- Yanıt (7) (sunucu tarafından gönderilen)
-- Onayla (4) (Istemci tarafından gönderilen)
-- YENILE (5) (Istemci tarafından gönderilen)
-- Yeniden bağlama (6) (Istemci tarafından gönderilen)
-- Yayın (8) (Istemci tarafından gönderilen)
-- Reddet (9) (Istemci tarafından gönderilen)
-- INFORM_REQUEST (11) (Istemci tarafından gönderilen)
-- YENIDEN YAPıLANDıR * (10) (sunucu tarafından gönderilen)
+- SOLICT (1) (İstemci tarafından gönderilir)
+- ADVERTISE (2) (Sunucu tarafından gönderilir)
+- REQUEST (3) (İstemci tarafından gönderilir)
+- REPLY (7) (Sunucu tarafından gönderilir)
+- CONFIRM (4) (İstemci tarafından gönderilir)
+- RENEW (5) (İstemci tarafından gönderilir)
+- REBIND (6) (İstemci tarafından gönderilir)
+- YAYıN (8) (İstemci tarafından gönderilir)
+- REDDİk (9) (İstemci tarafından gönderilir)
+- INFORM_REQUEST (11) (İstemci tarafından gönderilir)
+- RECONFIGURE* (10) (Sunucu tarafından gönderilir)
 
-* YENIDEN yapılandırın NetX Duo DHCPv6 sunucusu tarafından desteklenmez.
+*RECONFIGURE, NetX Duo DHCPv6 Sunucusu tarafından desteklenmiyor.
 
-Parantez içinde eşdeğer DHCPv4 ileti türü ile temel DHCPv6 istek sırası aşağıdaki gibidir:
+Parantez içinde eşdeğer DHCPv4 ileti türüne sahip temel DHCPv6 istek dizisi aşağıdaki gibidir:
 
-İstemci ***istem** _ (_Discovery *) sunucu **tanıtımı** (* teklif *) istemci **isteği** (* istek *) sunucu **yanıtı** (* DHCPACK *)
+İstemci ***İstek _**(_Discovery )*Sunucu **Tanıtım** (* Teklif *) İstemci **İsteği** (* İstek ) Sunucu ***Yanıtı** (* DHCPAck*)
 
-İstemci **yenileme**(aynı) sunucu **yanıtı** (*DHCPACK*)
+İstemci **Yenileme**(aynı) Sunucu **Yanıtı** (*DHCPAck*)
 
-## <a name="dhcpv6-message-validation"></a>DHCPv6 Ileti doğrulaması
+## <a name="dhcpv6-message-validation"></a>DHCPv6 İleti Doğrulama
 
-İşlem KIMLIĞI: Istemci, sunucusuna gönderdiği her ileti için bir işlem KIMLIĞI üretmelidir. DHCPv6 sunucusu, bu işlem KIMLIĞIYLE eşleşmeyen Istemciden gelen tüm iletileri reddeder. Sırasıyla sunucu, yanıtlarındaki aynı işlem KIMLIĞINI Istemciye geri kullanmalıdır.
+İşlem Kimliği: İstemcinin Sunucuya gönderdiği her ileti için bir işlem kimliği oluşturması gerekir. DHCPv6 Sunucusu İstemciden gelen ve bu işlem kimliğiyle eşleşmeen tüm iletiyi reddeder. Sunucu da istemciye yanıtlarında aynı işlem kimliğini kullan gerekir.
 
-**DHCPv6 benzersiz tanımlayıcıları (Duıds)**
+**DHCPv6 benzersiz Tanımlayıcıları (DUID)**
 
-Tüm sunucu iletileri Ayrıca her iletiye DHCPv6 benzersiz tanımlayıcısını (DUıD) içermelidir veya DHCPv6 Istemcisinin iletiyi kabul etmemelidir. Bağlantı Katmanı (LL) DUıD, istemci MAC adresini, donanım türünü ve DUıD türünü içeren bir denetim bloğudur. Bir bağlantı katmanı saati (LLT) DUıD ek olarak, DUıD 'nin konak ağı üzerinde benzersiz olmaması ihtimalini azaltan bir zaman alanı içerir. Bu nedenle, RFC 3315, LL Duıds üzerinden LLT Duıds önerir. Ana bilgisayar uygulaması kendi benzersiz zaman değerini oluşturmadıysanız NetX Duo DHCPv6 varsayılan bir değer sağlar. Üçüncü DUıD türü, kayıtlı bir kurumsal KIMLIĞI (ıANA ile kayıtlı olduğu gibi) ve tür ve uzunluktadır olan özel verileri (örneğin, bellek boyutu, diğer donanım yapılandırması işletim sistemi türü) içeren bir kurumsal (satıcı tarafından atanan) DUıD türüdür. Sunucu satıcısı atanmış ve özel KIMLIK değerlerini ayarlamak için bu belgede başka bir yerde yapılandırma seçenekleri listesine bakın.
+Tüm Sunucu iletileri ayrıca her iletiye bir DHCPv6 benzersiz Tanımlayıcı (DUID) içermeli veya DHCPv6 İstemcisi iletiyi kabul etmeyecektir. Bağlantı Katmanı (LL) DUID istemci MAC adresini, donanım türünü ve DUID türünü içeren bir denetim bloğu. Bağlantı Katmanı Süresi (LLT) DUID ayrıca konak ağın DUID'leri benzersiz olma şansını azaltan bir zaman alanı içerir. Bu nedenle RFC 3315 LL DUID'ler üzerinden LLT DUID'lerini önermektedir. Konak uygulama kendi benzersiz saat değerini oluşturmazsa, NetX Duo DHCPv6 varsayılan bir değer sağlar. ÜÇÜNCÜ TÜR DUID, kayıtlı bir Enterprise kimliği (IANA'ya kayıtlı gibi) ve bellek boyutuna, diğer donanım yapılandırmasının işletim sistemi türüne bağlı olarak tür ve uzunlukta değişken özel verileri içeren Enterprise (Satıcı tarafından atanan) DUID'dir. Sunucu satıcısı tarafından atanan ve özel kimlik değerlerinin ayar için bu belgenin başka bir yerindeki Yapılandırma Seçenekleri listesine bakın.
 
-Istemci Ayrıca, INFORM_REQUEST hariç olmak üzere, içindeki DUıD 'sini sunucusuna da dahil etmelidir, aksi durumda sunucu bunları reddeder.
+İstemcinin ayrıca, sunucuya iletilerine DUID'sini içermesi gerekir INFORM_REQUEST yoksa Sunucu bunları reddeder.
 
-**DHCPv6 Istemci sunucusu oturumları**
+**DHCPv6 İstemci Sunucusu Oturumları**
 
-DHCPv6 Istemcileri ve sunucuları UDP üzerinden iletiler değiş tokuş. Istemci, DHCPv6 iletilerini göndermek ve almak için 546 bağlantı noktasını kullanır ve sunucu 547 bağlantı noktasını kullanır. Istemci başlangıçta, DHCPv6 iletilerini iletmek ve almak için bağlantı yerel adresini kullanır. *All_DHCP_Relay_Agents_and_Servers* çok noktaya yayın adresi *(FF02:: 01:02)* olarak bilinen ayrılmış, bağlantı kapsamlı çok noktaya yayın adresini kullanarak tüm iletileri DHCPv6 sunucusuna gönderir.
+DHCPv6 İstemcileri ve Sunucuları, UDP üzerinden ileti alışverişi yapıyor. İstemci, DHCPv6 iletilerini göndermek ve almak için bağlantı noktası 546'yı, Sunucu ise 547 bağlantı noktasını kullanır. İstemci başlangıçta DHCPv6 iletilerini ileterek almak için bağlantı yerel adresini kullanır. Tüm iletileri, *All_DHCP_Relay_Agents_and_Servers* çok noktaya yayın adresi *(FF02::01:02)* olarak bilinen ayrılmış, bağlantı kapsamlı çok noktaya yayın adresi kullanarak DHCPv6 sunucularına gönderir.
 
-ForIPv6 adres atama istekleri, DHCPv6 sunucusu *All_DHCP_Relay_Agents_and_Servers* adresine gönderilen *istem* iletilerini dinler. *İstek Isteğinde istemci* , belirli bir IPv6 adresi atamasını Isteyebilir veya sunucunun bir tane seçmesini sağlayabilir. Ayrıca, sunucudan diğer ağ yapılandırma bilgilerini de isteyebilir.
+DHCPv6 Sunucusu, ip adresi atama istekleri için, bu adrese gönderilen *Solicit* *iletilerini All_DHCP_Relay_Agents_and_Servers* dinler. İstekte *İstemci,* belirli bir IPv6 adresinin ataması isteğinde bulunarak Sunucu'ya bir adres seçmesine izin ve sonra da izin verir. Ayrıca Sunucu'dan diğer ağ yapılandırma bilgilerini de talep edilebilir.
 
-DHCPv6Server geçerli bir *istem* iletisini ayıklar ve Istemciye bir IPv6 adresi atayabiliyorsanız, Istemciye vereceğiniz IPv6 adresini, IPv6 adresi kiralama süresini ve istemci tarafından istenen ek bilgileri Içeren bir *tanıtım* iletisi ile yanıt verir. Istemci sunucuyu kabul ederse, sunucunun IPv6 adresini kabul edeceğini bildiren bir *istek* iletisiyle yanıt vermesini sağlar. Sunucu, Istemcinin bir *Yanıt* iletisiyle IPv6 adresine bağlandığını onaylar.
+DHCPv6Server geçerli bir *Solicit* iletisi ayıklar ve İstemciye bir IPv6 adresi  atayasa, İstemciye ve IPv6 adresi kira süresine ve İstemci tarafından istenen ek bilgileri içeren bir IPv6 adresini içeren bir Tanıtma iletisiyle yanıt verir. İstemci Sunucu teklifini kabul ederse, Sunucu'ya IPv6 adresini kabul etmiş olduğunu haber veren bir İstek iletisiyle yanıt verir.  Sunucu, İstemcinin Bir Yanıt iletisiyle IPv6 adresine bağlı *olduğunu onaylar.*
 
-Istemci DHCPv6 iletisi geçersizse, sunucu iletiyi sessizce atar. Sunucu isteği vermezse, IP adresi ıANA seçeneğinin durum alanındaki sorunu belirten bir *Yanıt* iletisi gönderir. Yinelenen Istemci istekleri alınmışsa, sunucu önceki DHCPv6 yanıtını yeniden sonlandırır ve Istemcinin yalnızca paketi almadığını kabul etmez.
+İstemci DHCPv6 iletisi geçersizse, Sunucu iletiyi sessizce atar. Sunucu isteği veremiyorsa IP adresi IANA seçeneğinin durum alanında sorunun göstergesini gösteren bir Yanıt iletisi gönderir.  Yinelenen İstemci istekleri alındı ise, İstemcinin paketi almamıştır varsayılan Sunucu önceki DHCPv6 yanıtını yeniden gönderir.
 
-Yinelenen adres algılama gibi çeşitli IPv6 protokollerini kullanarak, sunucudan atanan IPv6 adresinin, sistemdeki başka bir konağa atanmadığını doğrulamak Istemciye bağlıdır. Adres benzersiz değilse, Istemci sunucuya bir *Red* iletisi gönderir. Sunucu, IP Kiralama tablosunu bu bilgilerle güncelleştirir, bu, adresin zaten atandığı kayda kaydedilir. Istemcinin DHCPv6 istek işlemini başka bir *istem* iletisiyle yeniden başlatması gerekir.
+Yinelenen Adres Algılama gibi çeşitli IPv6 protokollerini kullanarak Sunucudan atanan IPv6 adresinin sistem üzerinde başka bir ana bilgisayarla atanmamış olduğunu doğrulamak İstemciye bağlı olur. Adres benzersiz yoksa İstemci Sunucuya bir Reddetme *iletisi* gönderir. Sunucu, IP kiralama tablolarını bu bilgilerle güncelleştirir ve adresin zaten atanmış olduğunu kaydeder. Bu arada İstemcinin DHCPv6 istek işlemini başka bir İstek iletisiyle yeniden *başlatması* gerekir.
 
-Bir IPv6 adresine ek olarak, bir Istemcinin DNS sunucusunu ve ağ etki alanı adı gibi diğer ağ bilgilerini de bilmeleri gerekir. DHCPv6, bu bilgileri istek ve *istek* *Iletilerinde bulunan seçenek* Isteklerinin kullanımını veya *bilgi isteği* iletilerinde ayrı olarak kullanmayı istemek için bir yol sağlar. DHCPv6 seçenekleri bu bölümün ilerleyen kısımlarında açıklanmıştır.
+Bir IPv6 adresine ek olarak, bir İstemcinin DNS sunucusunu ve muhtemelen ağ etki alanı adı gibi diğer ağ bilgilerini de biliyor olması gerekir. DHCPv6, İstekte Bulun ve İstek iletisinde Seçenek İstekleri'nin  kullanımını kullanarak veya Bilgi İsteği iletileri'ne ayrı olarak bu bilgileri *talep etmek için bir kaynak* sağlar.  DHCPv6 seçenekleri bu bölümün ilerleyen kısımlarında açıklanmıştır.
 
-**IPv6 kira süresi**
+**IPv6 Kira Süresi**
 
-Sunucu bir Istemciye bir IPv6 adresi verdiğinde, Istemci, *yenileme* ve yeniden *bağlanma* iletilerini kullanarak (T1) veya yeniden bağlama (T2) ile ilgili IPv6 adresini yenilemeye başlamasını ÖNERDIĞINDEN, için IANA seçeneğine (ömür) kira süresini de atar. İki arasındaki fark, Istemci, *yenileme Isteğine sunucu* DUID ekleyerek *yenileme* iletisini sunucusuna yönlendirir. Ancak, herhangi bir sunucu belirtmez ve bu nedenle, *All_DHCP_Relay_Agents_and_Servers* adresine yeniden *bağlama* iletisinde bir sunucu DUID içermez. Sunucunun verdiği gerçek IPv6 adresini içeren IA seçeneği, Ayrıca, kiralanan IPv6 adresi sırasıyla kullanım dışı veya eski (geçersiz) duruma geldiğinde, Istemcinin tercih edilen ve geçerli yaşam sürelerini de içermesi gerekir.
+Sunucu bir İstemciye bir IPv6 adresi vererek, İstemcinin İletileri Yenile ve Yeniden Bağlama kullanarak IPv6 adresini yenilemeye (T1) veya yeniden bağlamaya (T2) başlamasını önerip IANA seçeneğinde kiralama süresini (yaşam süresi) atar.   İkisi arasındaki fark, İstemcinin Yenile isteğine Sunucu DUID'sini dahil etmek için Sunucuyu Yenile iletiyi *yönlendirmiş olduğudur.*  Ancak, herhangi bir sunucu belirtmez ve bu nedenle *Rebind* iletisinde bir Sunucu DUID'i *All_DHCP_Relay_Agents_and_Servers* içerir. Sunucu'ya verilen gerçek IPv6 adresini içeren IA seçeneği, kiralanan IPv6 adresi kullanım dışı veya kullanımdan kaldırılmış (geçersiz) olduğunda tercih edilen ve geçerli yaşam sürelerini de içerir.
 
-NetX Duo DHCPv6 sunucusu, Istemci iletileri arasındaki süreyi izlemek için her Istemci için bir oturum zaman aşımı süresi tutar. Bu, bağlantıyı kaybetmekte olan bir Istemci Konağı durumunda gereklidir. Oturum zaman aşımı süresi dolduğunda, Istemcinin artık ilgilenmiyor veya sunucu için DHCPv6 isteklerini yapabilmemesi varsayılır. Sunucu, Istemci kaydını siler ve kullanılabilir havuza herhangi bir kesin olmayan şekilde atanan IPv6 adresini geri döndürür. Oturum zaman aşımı süresi, Kullanıcı tarafından yapılandırılabilir bir seçenektir.
+NetX Duo DHCPv6 Sunucusu, her İstemcinin İstemci iletileri arasındaki zamanı izlemesi için bir oturum zaman aşımına sahip olur. Bu, bir İstemci ana bilgisayarının bağlantının kaybedilsi veya ağ kapatıyor durumunda gereklidir. Oturum zaman aşımının süresi dolduğunda İstemcinin artık ilgilenmey olduğu veya Sunucudan DHCPv6 istekleri ala olmadığı varsayılır. Sunucu İstemci kaydını siler ve geçici olarak atanmış tüm IPv6 adreslerini kullanılabilir havuza geri döndürür. Oturum zaman aşımı beklemesi, kullanıcı tarafından yapılandırılabilir bir seçenektir.
 
-Istemci, IPv6 adresini serbest bırakabilir veya DHCPv6 sunucusu tarafından kendisine atanan IPv6 adresinin zaten kullanımda olduğunu belirlerse, sırasıyla bir *yayın* veya *reddetme* iletisi gönderir. Bir *Sürüm* Iletisinde, sunucu IPv6 adres durumunu kullanılabilir havuza geri döndürür. *Reddetme* iletisinde, bu IPv6 adresinin kullanılabilir olmadığını BELIRTMEK için IP Kiralama tablosunu güncelleştirir (ağ üzerinde başka bir varlık tarafından sahiplenilir).
+İstemci, IPv6 adresini serbest bırakmak isterse veya DHCPv6 Sunucusu tarafından atanmış olan IPv6 adresinin zaten kullanımda  olduğunu  keşfederse, sırasıyla bir Yayın veya Reddetme iletisi gönderir. Bir Yayın iletisi *durumunda,* Sunucu bu IPv6 adresi durumunu kullanılabilir havuza geri döndürür. Reddetme iletisi durumunda, *ip* kirası tablosu, bu IPv6 adresinin kullanılabilir olmadığını (ağ üzerinde başka bir varlığa ait) göstermek için güncelleştirir.
 
-**IPv6 kiralama ve Istemci kaydı verileri**
+**IPv6 Kira ve İstemci Kayıt Verileri**
 
-DHCPv6 sunucusu Istemci isteklerini kabul etmeye başladığında, IPv6 adresi isteyen veya atanmış etkin Istemcilerin bir listesini tutar. Sunucu, Istemci kira süresini düzenli olarak güncelleştiren bir kira süreölçeri aracılığıyla IP kira süre sonunu denetler. Süre geçerli yaşam süresini aştığında sunucu, Istemci kaydını siler ve IPv6 adresini kullanılabilir havuza geri döndürür. Bu işlem yapılmadan önce yenileme/yeniden bağlama işlemini başlatmak Istemciye kadar olur!
+DHCPv6 Sunucusu İstemci isteklerini kabul etmeye başladığında, IPv6 adresleri isteyen veya atanmış olan etkin İstemcilerin listesini sürdürür. Sunucu, İstemci kira süresini düzenli aralıklarla güncelleen bir kira süreölçeri ile IP kirası süre sonu denetler. Süre geçerli yaşam süresini aşarsa, Sunucu İstemci kaydını temizler ve IPv6 adresini kullanılabilir havuza geri döndürür. Bu olmadan önce yenileme/yeniden bağlama işleminin başlaması İstemciye kaldı!
 
-NetX Duo DHCPv6 sunucusu istemci kaydı tablosu, Istemcileri tanımlamak için bilgiler ve DHCPv6 Istemci isteklerini doğrulamak ve IPv6 adreslerini atamak veya yeniden atamak için ' durum ' bilgilerini içerir. Bu tür bilgiler şunları içerir:
+NetX Duo DHCPv6 Server istemci kayıt tablosu, İstemcileri tanımlamaya yönelik bilgiler ve DHCPv6 İstemci isteklerini doğrulama ve IPv6 adreslerini atama veya yeniden atamaya yönelik 'durum' bilgilerini içerir. Bu tür bilgiler şunları içerir:
 
-- Bir ağ üzerinde her bir Istemci konağını benzersiz bir şekilde tanımlayan Istemci DHCPv6 benzersiz tanımlayıcısı (DUıD). Istemci her zaman aynı DUıD 'yi tüm DHCPv6 iletileri için kullanmalıdır.
+- Bir ağ üzerinde her İstemci ana bilgisayarsını benzersiz olarak tanımlayan İstemci DHCPv6 Benzersiz Tanımlayıcısı (DUID). İstemcinin tüm DHCPv6 iletileri için her zaman aynı DUID'i kullanması gerekir.
 
-- Geçici olmayan adresler (ıANA) ve kimlik Ilişkilendirmesi IPv6 adresi (IA) için Istemci kimliği Ilişkilendirmesi, Istemci IPv6 adresi atama parametrelerini tanımlayan bir üst üste.
+- İstemci IPv6 adres atama parametrelerini tanımlayan, toplu olarak Geçici Olmayan Adresler (IANA) ve Kimlik İlişkisi IPv6 adresi (IA) için İstemci Kimliği İlişkisi.
 
 - İstemci seçeneği istekleri (DNS sunucusu, etki alanı adı vb.).
 
@@ -171,7 +171,7 @@ Sunucu yeniden başlatılmadan önce sunucuya verilerin yüklenmesi yapılmalıd
 
 ***Sunucu DHCP benzersiz tanımlayıcısı (DUıD)***
 
-Sunucu DUıD, ağda DHCPv6 sunucu konağını benzersiz şekilde tanımlar. Bir sunucu, DUıD 'sini daha önce oluşturmadıysa, *nx_dhcpv6_server_set_duid* oluşturmak için kullanabilir. RFC 3315 ' den itibaren, sunucu yeniden başlatıldıktan sonra alabilmesi için DHCPv6 sunucusunun bu DUıD 'yi kalıcı belleğe kaydetmesi gerekir. DHCPv6 sunucusu bağlantı katmanını, bağlantı katmanı süresini ve kurumsal (satıcı atanmış) DUıD türlerini destekler. Istemcinin doğrudan DUıD satıcı türünde gönderilmesi gerektiğini unutmayın. Satıcı türü Duıds (17) seçeneği, NetX Duo DHPv6 sunucusu tarafından doğrudan desteklenmez.
+Sunucu DUıD, ağda DHCPv6 sunucu konağını benzersiz şekilde tanımlar. Bir sunucu, DUıD 'sini daha önce oluşturmadıysa, *nx_dhcpv6_server_set_duid* oluşturmak için kullanabilir. RFC 3315 ' den itibaren, sunucu yeniden başlatıldıktan sonra alabilmesi için DHCPv6 sunucusunun bu DUıD 'yi kalıcı belleğe kaydetmesi gerekir. DHCPv6 sunucusu bağlantı katmanını, bağlantı katmanı saatini ve Enterprise (satıcının atandığı) duıd türlerini destekler. Istemcinin doğrudan DUıD satıcı türünde gönderilmesi gerektiğini unutmayın. Satıcı türü Duıds (17) seçeneği, NetX Duo DHPv6 sunucusu tarafından doğrudan desteklenmez.
 
 DHCPv6 sunucusu konak uygulamasının, kira zaman aşımı dahil olmak üzere IPv6 adres ataması için varsayılan değerleri vardır. Bu seçenekleri nasıl ayarlayabilmek için bu belgede daha sonra yapılandırılabilir seçeneklere bakın. :
 
@@ -217,12 +217,12 @@ NetX Duo DHCPv6 sunucusu, aşağıdaki DHCPv6 seçeneklerini desteklemez:
 
 *nx_dhcpv6_IP_address_declined_handler*
 
-DHCPv6 Istemcisi bir reddetme iletisi gönderdiğinde, NetX Duo DHCPv6 sunucusu adresi IPv6 adres tablolarında kullanılamıyor olarak işaretler. Bu iletinin sunucu işlemesini özelleştirmek için *nx_dhcpv6_IP_address_declined_handler* sağlanır *.* Ancak, bu geri arama şu anda uygulanmadı.
+DHCPv6 İstemcisi bir Reddetme iletisi gönderdiğinde, NetX Duo DHCPv6 Sunucusu adresi IPv6 adres tablolarında mevcut değil olarak işaretler. Bu iletinin Sunucu işlemesini özelleştirme yeteneğine sahip olmak *için nx_dhcpv6_IP_address_declined_handler* *sağlanır.* Ancak, bu geri çağırma şu anda uygulanmaz.
 
 *nx_dhcpv6_server_option_request_handler*
 
-DHCPv6 Istemci iletisi seçenek isteği verileri içerdiğinde, NetX Duo DHCPv6 sunucusu her bir seçenek isteği seçenek kodunu, tanımlanmışsa bu kullanıcı geri çağırması için iletir. Bu, NetX Duo sunucusuna, Kullanıcı tanımlı geri aramanın verileri doldurmasını sağlar. Ancak bu işlev şu anda uygulanmıyor.
+DHCPv6 İstemcisi iletisi seçenek isteği verileri içerdiğinde, NetX Duo DHCPv6 Sunucusu her seçenek isteği seçenek kodunu tanımlansa bu kullanıcı geri çağırmaya iletir. Bu, NetX Duo Server'a kullanıcı tanımlı geri çağırmanın verileri doldurmasına izin verme yeteneği verir. Ancak bu işlevsellik şu anda uygulanmaz.
 
-## <a name="supported-dhcpv6-rfcs"></a>Desteklenen DHCPv6 RFC 'Leri
+## <a name="supported-dhcpv6-rfcs"></a>Desteklenen DHCPv6 RFC'ler
 
-NetX Duo DHCPv6, RFC3315, RFC3646 ve ilgili RFC 'lerle uyumludur.
+NetX Duo DHCPv6 RFC3315, RFC3646 ve ilgili RFC'ler ile uyumludur.

@@ -1,21 +1,21 @@
 ---
-title: GUX örneği
-description: GUX tanıtım sistemi, örneklerde/HelloWorld/HelloWorld. c ' de tanımlanan küçük bir örnekle birlikte dağıtılır.
+title: GUIX Örneği
+description: GUIX tanıtım sistemi, examples/helloworld/helloworld.c içinde tanımlanan küçük bir örnekle birlikte teslim edilir.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 79d342fc8697fcb40e1f402f9b040621ed43e3fb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8af9ee437902467ba40c74266f59d358f3919fe0146d0a5bca3d6e6e5722359e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826339"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786408"
 ---
-# <a name="guix-example"></a>GUX örneği
+# <a name="guix-example"></a>GUIX Örneği
 
-GUX tanıtım sistemi, örneklerde/HelloWorld/HelloWorld. c ' de tanımlanan küçük bir örnekle birlikte dağıtılır. Bu örnek, ekran sürücülerini ayarlamak için Gux sistemini başlatmak üzere gereken adımları gösterir. Kaynak kodu aşağıdaki sayfalarda listelenmiştir.
+GUIX tanıtım sistemi, examples/helloworld/helloworld.c içinde tanımlanan küçük bir örnekle birlikte teslim edilir. Bu örnekte, görüntü sürücülerini ayarlamak için GUIX sistemini başlatmak için atılması gereken adımlar gösterilir. Kaynak kodu aşağıdaki sayfalarda listelenmiştir.
 
 ```c
 /* This is a small demonstration of the high-performance GUIX embedded UI run-time environment. This demonstration consists of a simple "Hello World" prompt on top of the root window. */

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 7dd3485f112bce379ab7d6b11a808605bca191a0
-ms.sourcegitcommit: 1d90854d1da01f4b65e54d732ee9190b57a531e1
+ms.openlocfilehash: dd694cb7d34df7ecae206c3dcaf7d75a20bd4bd4e26471bb94da4129897ef727
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105569006"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786329"
 ---
 # <a name="chapter-4-guix-studio-resources"></a>Bölüm 4: Gux Studio kaynakları
 
@@ -67,7 +67,7 @@ Kullanıcı tanımlı renkler için, GUıDX Studio her zaman önceki rengi yeni 
 
 Önceden tanımlanmış sistem renkleri için, GUıDX Studio dahili olarak üç benzersiz varsayılan renk tablosu tanımlar. Tek bir varsayılan renk tablosu, 4-BPP gri ölçeğe eşit tüm renk derinlikleri için kullanıldığında, gri ölçekli renk biçimleri (1 BPP < display_color_format <= 4bpp) için ikinci bir varsayılan renk tablosu kullanılır ve son olarak tek renkli renk biçimi için üçüncü bir varsayılan sistem renk tablosu kullanılır.
 
-Proje yapılandırması iletişim kutusunu kullanarak ekran renk biçimini değiştirdiğinizde aşağıdaki kurallar uygulanır:
+Project yapılandırma iletişim kutusunu kullanarak ekran renk biçimini değiştirdiğinizde aşağıdaki kurallar uygulanır:
 
 1) Eski ve yeni ekran renk biçimleri yukarıda tanımlandığı gibi farklı varsayılan sistem renk tabloları kullanıyorsa, sistem renkleri her biri önceden tanımlanmış varsayılan renklere sıfırlanır. Diğer bir deyişle, renkten gri ölçeğe veya gri ölçeğe göre tek renkli derinliğe geçiş yaparsanız, sistem renkleriniz yeni renk derinliği için dahili olarak tanımlanan varsayılan değerlere sıfırlanır. Bu, bazı özelleştirilmiş renk bilgilerinin kaybedilmesine neden olabilir, ancak görüntü renk biçimi ayarlarınızda etkileyici bir değişiklik yaptığınızda bu çözüm size makul bir başlangıç noktası sağlar.
 
@@ -83,7 +83,7 @@ GUX Studio, paleti iki bölüme böler: "Kullanıcı tanımlı" bölümü ve "ot
 
 Bu modda çalışırken, kaynak görünümünde tanımlanan bir rengi düzenlemek isterseniz, renk düzenleyici yalnızca tanımladığınız önceden tanımlanmış palet girişlerinden seçim yapmanıza izin verir. Bunun nedeni, kalan palet girişlerinin Gux Studio tarafından otomatik olarak oluşturulması ve projenize eklenen görüntülerin değiştirilmesi nedeniyle değişecektir.
 
-8bpp palet modunda çalışırken, izin verilen fontların görüntülenmesini istiyorsanız her bir ön plan/arka plan rengi kullanımı için bir gradyan oluşturan palet girişi dizisini tanımlamanız gerekir. Her renk birleşimi için gradyan için 8 palet girişi ya da daha yumuşak bir gradyan için 16 palet girişi kullanabilirsiniz. Kullanılan bu sayıda palet girişi, proje yapılandırması iletişim kutusundaki "Palet modu, diğer ad-diğer metin rengi sayısı" onay kutusu tarafından belirlenir. Her renk birleşimi için kullanılan palet girdilerini en aza indirmek için yalnızca sekiz girişli bir degradeyi kullanabilir veya en iyi şekilde daha fazla izin verilen metin görünümünü sağlamak için 16 giriş degradeleri kullanabilirsiniz.
+8bpp palet modunda çalışırken, izin verilen fontların görüntülenmesini istiyorsanız her bir ön plan/arka plan rengi kullanımı için bir gradyan oluşturan palet girişi dizisini tanımlamanız gerekir. Her renk birleşimi için gradyan için 8 palet girişi ya da daha yumuşak bir gradyan için 16 palet girişi kullanabilirsiniz. kullanılan bu sayıda palet girişi, Project yapılandırma iletişim kutusundaki "palet modu, diğer ad-diğer metin rengi sayısı" onay kutusu tarafından belirlenir. Her renk birleşimi için kullanılan palet girdilerini en aza indirmek için yalnızca sekiz girişli bir degradeyi kullanabilir veya en iyi şekilde daha fazla izin verilen metin görünümünü sağlamak için 16 giriş degradeleri kullanabilirsiniz.
 
 Bir renk degradesini daha fazla veya daha fazla olan metinlerin görüntülenmesini kolaylaştırmak için ya da kendi kullanımınız için bir renk gradyanı oluşturmak üzere paleti Düzenle iletişim kutusu bir gradyan oluştur düğmesi sağlar. Bu özelliği kullanmak için öncelikle başlangıç ve bitiş gradyanı renklerinin r:g: b değerlerini atamanız gerekir.
 
@@ -174,7 +174,7 @@ Piksel eşleme kaynağını değiştirmek için piksel eşleme kaynağında çif
 
 `Edit Pixelmap`İletişim kutusu, yeni bir piksel eşleme tanımlamanızı veya var olan bir piksel eşlemesinin içeriğini değiştirmenizi sağlar. Perde arkasında, GUıDX Studio giriş görüntüsünü okur ve resmi `GUIX GX_PIXELMAP` Gux kitaplığı tarafından kullanılabilecek biçime dönüştürür. GUX Studio Ayrıca, gelen görüntünün renk alanını bu piksel haritasının kullanacağı görüntünün renk alanına dönüştürür.
 
-Bu iletişim kutusunun ilk alanı, kaynak görüntünün yoludur. GUX Studio, PNG (. png) veya JPEG (. jpg) biçimli görüntü dosyalarını destekler. Yerel dosya sisteminizde istenen giriş dosyasını bulmak için "araştır" düğmesini kullanabilirsiniz.
+Bu iletişim kutusunun ilk alanı, kaynak görüntünün yoludur. GUX Studio, PNG (.png) veya JPEG (.jpg) biçimli görüntü dosyalarını destekler. Yerel dosya sisteminizde istenen giriş dosyasını bulmak için "araştır" düğmesini kullanabilirsiniz.
 
 Mümkünse, giriş görüntü dosyasının konumu proje göreli bir yol kullanılarak dahili olarak depolanır. Bu nedenle, tüm görüntü dosyalarınızı ortak bir konumda tutmanın yanı sıra, Gux Studio projelerini bir geliştirme istasyonundan diğerine taşımanızı sağlamak ve giriş resim verilerini izlememek için ortak bir dizin ağacı yapısını kullanmak önemlidir.
 
@@ -184,7 +184,7 @@ Mümkünse, giriş görüntü dosyasının konumu proje göreli bir yol kullanı
 
 "Çıktıyı Sıkıştır" onay kutusu, piksel eşleme çıktısının özel bir GUıDX sıkıştırma algoritması kullanıp kullanmadığını belirtmenize olanak tanır. Sıkıştırılmış çıkış dosyaları genellikle küçüktür, ancak aynı zamanda, hedefte işlenmesi için işlemci süresi gerekir. Çoğu zaman, büyük piksel Haritalarınız için sıkıştırmayı seçer ve daha küçük piksel haritaları için sıkıştırılmış olmayan biçim kullanır.
 
-Bu `Include Alpha Channel` onay kutusu, Gux Studio 'nun alfa kanal bilgilerini nasıl kullandığını belirler. png biçimli giriş dosyalarında bazen bu bilgileri kullanır. Bu onay kutusu işaretliyse ve ekran 16 BPP renk derinliğinde veya üstünde çalışıyorsa, GUıDX Studio çıkış dosyasındaki tam gelen Alpha verilerini korur. Bu onay kutusu işaretli değilse, GUıDX biraz daha küçük bir çıkış dosyası oluşturur. Bu çıkış dosyası saydamlık içerebilir, ancak tam alfa karışım bilgileri içermez.
+`Include Alpha Channel`CheckBox, GUıDX Studio 'nun alfa kanal bilgilerini .png biçimlendirme giriş dosyalarında bazen nasıl kullanacağını belirler. Bu onay kutusu işaretliyse ve ekran 16 BPP renk derinliğinde veya üstünde çalışıyorsa, GUıDX Studio çıkış dosyasındaki tam gelen Alpha verilerini korur. Bu onay kutusu işaretli değilse, GUıDX biraz daha küçük bir çıkış dosyası oluşturur. Bu çıkış dosyası saydamlık içerebilir, ancak tam alfa karışım bilgileri içermez.
 
 `Dither`CheckBox, Gux Studio 'ya, giriş görüntüsünü daha düşük bir renk derinliği görüntüsüyle kullanılmak üzere dönüştürürken gelişmiş bir titreme algoritması uygulamaya yöneltir. Titreme genellikle etkinleştirilir, ancak daha az yinelenen piksel olacağı için sıkıştırma kullanılıyorsa daha büyük çıkış dosyalarına neden olabilir.
 
@@ -226,67 +226,67 @@ Her zaman, tüm kaynak türleri için KIMLIK adlarınızın C sözdizimi uyumlu 
 
 Bir dize kaynağını değiştirmek için, ***dize tablosu Düzenleyicisi** _ iletişim kutusunu çağırmak üzere dize kaynağında çift tıklayın (veya sağ tıklama ve menü seçimi). Dize _*_tablosu Düzenleyicisi_*_ iletişim kutusunda dize kaynağı, uygulamanın UI gereksinimleriyle eşleşecek şekilde değiştirilebilir. _*_Şekil 18_*_ ' de _ *STRING_13** çift tıklandığında değişiklik iletişim kutusu gösterilir.
 
-Bu durumda, dize KIMLIK adı sol tarafta, birinci veya başvuru dilinin dize içeriğinin sağda gösterildiği anlamına gelir. Kuşkusuz, tam dize içeriği uygulamanıza oldukça özeldir, ancak dize grubu önizlemesinin düzeni tutarlıdır.
+Bu durumda, dize KIMLIK adı sol tarafta, birinci veya başvuru dilinin dize içeriğinin sağda gösterildiği anlamına gelir. Elbette tam dize içeriği uygulamanıza çok özeldir, ancak Dize grubu önizlemesi düzeni tutarlıdır.
 
-GUX Studio, bir dize tablosu tanımlayarak ve tutarak statik metin ve çok dilli uygulamayı destekler. Dize tablosu, her bir kayıt için bir dize KIMLIĞI ve desteklenen her dil için her kayıt için bir dize sabiti tanımlar.
+GUIX Studio, bir Dize Tablosu tanımlayarak ve koruyarak statik metin ve çok dilli uygulamayı destekler. Dize Tablosu, her kayıt için bir dize kimliği ve desteklenen her dil için her kayıt için bir dize sabiti tanımlar.
 
-Uygulamanız tarafından desteklenecek diller dil yapılandırması Iletişim kutusu kullanılarak tanımlanmıştır, burada gösterilmektedir:
+Uygulamanız tarafından desteklenen diller Dil Yapılandırması İletişim Kutusu kullanılarak tanımlanır ve burada gösterebilirsiniz:
 
-![Dil yapılandırması iletişim kutusunun ekran görüntüsü.](./media/guix-studio/config_languages.png)
+![Dil Yapılandırması iletişim kutusunun ekran görüntüsü.](./media/guix-studio/config_languages.png)
 
 **Şekil 18**
 
-Dil yapılandırması Iletişim kutusu, Yapılandır kullanılarak çağrılır | Uygulama menüsündeki diller komutu. Bu iletişim kutusu, uygulamanız tarafından desteklenecek dil sayısını ve her dille ilişkilendirilecek ad veya dil KIMLIĞINI tanımlamanızı sağlar. Projeniz oluşturulduktan sonra desteklenen diller değiştirilebilir, ancak bir dil kaldırılırsa, bu dille ilişkili dize verilerinin de kaldırılacağını ve alınamayacağını bilmelisiniz.
+Dil Yapılandırması İletişim Kutusu, Yapılandırma Sihirbazı kullanılarak | Uygulama menüsündeki Diller komutu. Bu iletişim kutusu, uygulamanız tarafından desteklenen dil sayısını ve her dille ilişkilendirilen ad veya dil kimliğini tanımlamanızı sağlar. Desteklenen diller projeniz oluşturulduktan sonra değiştirilebilir, ancak bir dil kaldırılırsa, bu dille ilişkili dize verilerinde de kaldırıldığına ve alınamayıldığına dikkat gerekir.
 
-"Statik olarak **tanımlanmış**" onay kutusu, seçilen dilin oluşturulan kaynak dosyasındaki kaynak kodu biçiminde statik olarak tanımlandığını gösterir. Statik olarak tanımlanmış bir dil yoksa, dil tablosu işaretçisi oluşturulan görüntüleme tablosunda NULL olarak ayarlanır ve Gux kitaplığı tarafından sunulan ikili kaynak yükleyicisi API 'Leri kullanılarak bir dilin yüklenmesi ve uygulamanın yüklenmesi gerekir.
+"Statik Olarak **Tanımlanmış" onay** kutusu, seçilen dilin oluşturulan kaynak dosyasında kaynak kodu biçiminde statik olarak tanımlandığına işaret ediyor. Hiçbir dil statik olarak tanımlanmamışsa, dil tablosu işaretçisi oluşturulan görüntüleme tablosunda NULL olarak ayarlanır ve GUIX kitaplığı tarafından sağlanan ikili kaynak yükleyici API'leri kullanılarak uygulama tarafından bir dil yükleniyor ve yükleniyor olmalıdır.
 
-"**Bidi metnini destekleme**" onay kutusu, bir çift yönlü metin işleme desteğini etkinleştirmek için Gux Studio 'ya yöneltir. Bu dil için gireceğiniz dizeler çift yönlü metin işleme gerektiriyorsa bu onay kutusunu açmanız gerekir.
+"Support **Bidi Text"** onay kutusu GUIX Studio'ya çift yönlü metin işleme desteğini etkinleştirmesini sağlar. Bu dil için girmeniz gereken dizeler çift yönlü metin işlemesi gerektirirse bu onay kutusunu açsanız iyi olur.
 
-"**Görüntüleme düzeninde bidi metni oluşturma**" onay kutusu, Gux Studio 'nun, görüntüleme düzeninde çıkış dosyasına çift yönlü metin oluşturmasını söyler. Bu seçenek işaretliyse, iki yönlü metni düzgün bir şekilde işlemek için Gux kitaplığı içinde çalışma zamanı işleme gerekmez. Bu seçenek belirlendiğinde, Gux kitaplığı 'nda çift yönlü metin işleme etkinleştirilmemelidir. Bu yapılandırma en iyi çalışma zamanı performansını verir, ancak dinamik olarak tanımlanmış çift yönlü metin dizelerini işlemeyi desteklemez.
+"Görüntü Düzeninde **Bidi Metni** Oluştur" onay kutusu, GUIX Studio'ya çıkış dosyasına görüntüleme sırasına göre çift yönlü metin oluşturma talimatı verir. Bu seçenek seçilirse, çift yönlü metni düzgün bir şekilde işlemek için GUIX kitaplığında çalışma zamanı işlemesi gerekmez. Bu seçenek seçildiğinde, GUIX kitaplığında çift yönlü metin işleme ETKINLEŞTIRILMEZ. Bu yapılandırma en iyi çalışma zamanı performansını verir, ancak dinamik olarak tanımlanmış çift yönlü metin dizelerinin işlemesini desteklemez.
 
-İlk dil veya "Dizin 1" dili "başvuru diliniz" olarak adlandırılır. Bu, Kullanıcı arabirimi tasarımınızı tanımlarken ve düzenlediğinizde, Gux Studio 'Nun kullanacağı dildir. Dize tablonuzdaki diğer tüm diller, çeviri dilleri olarak adlandırılır. GUX Studio, bir başvuru dili dışında desteklenmek üzere dillere yönelik çevirileri ekleme ile uygulama geliştiricisine yardımcı olabilecek çevirmenlerle dize bilgilerini değiş aktarma ve içeri aktarma işlemlerini destekler. GUX dize tablosunu bir XLıFF veya CSV dosyasına aktardığınızda, bir çeviri diliyle birlikte başvuru dili, XLıFF veya CSV dize verileri değişim dosyasına dahil edilir. Benzer şekilde, bir XLıFF veya CSV dosyasını içeri aktardığınızda, GUıDX dize tablonuzdaki bir çeviri dilini doldurmak için içeri aktarılan veriler kullanılır.
+İlk dil veya "Dizin 1" dili , "başvuru diliniz" olarak adlandırılır. Bu, KULLANıCı arabirimi tasarımınızı tanımlarken ve düzenlerken GUIX Studio'nun kullanabileceği dildir. Dize tablodaki diğer tüm diller Çeviri Dilleri olarak adlandırılır. GUIX Studio, dize tablosu verilerini endüstri standardı XLIFF veya CSV biçimli veri dosyalarında dışarı ve içeri aktarmayı destekler. Bu dosyalar, başvuru dili dışında desteklenen diller için çeviri ekleme konusunda uygulama geliştiriciye yardımcı olan çevirmenlerle dize bilgisi alışverişi yapmak için kullanışlıdır. GUIX dize tablosu bir XLIFF veya CSV dosyasına dışarı aktarıldıklarında, başvuru dili ve bir çeviri dili XLIFF veya CSV dizesi veri değişimi dosyasına dahil edilir. Benzer şekilde, bir XLIFF veya CSV dosyasını içeri aktarırsanız, içeri aktarılan veriler GUIX Dize tablonda bir çeviri dilini doldurmak için kullanılır.
 
-![Dize tablosu düzenleyicisinin ekran görüntüsü.](./media/guix-studio/image53.jpg)
+![Dize tablosu Düzenleyicisi'nin ekran görüntüsü.](./media/guix-studio/image53.jpg)
 
 **Şekil 19**
 
-Dize tablosu Düzenleyicisi iletişim kutusu önce sol taraftaki dize kimliklerinin bir listesini, ardından başvuru dili dize verilerini görüntüler. Birden fazla dil tanımlanmışsa, üçüncü bir sütunda desteklenen çeviri dillerinin herhangi biri gösterilir. Başvuru dili sütununun sağ üst köşesinde bulunan küçük oka tıklayarak üçüncü sütunu açabilir ve kapatabilirsiniz.
+Dize Tablosu Düzenleyicisi iletişim kutusunda önce solda bir dize kimlikleri listesi ve ardından başvuru dili dizesi verileri görüntülenir. Birden fazla dil tanımlanmışsa, üçüncü sütunda desteklenen çeviri dillerinden herhangi biri görüntülenir. Başvuru dili sütunlarının sağ üst kısmında yer alan küçük oka tıklayarak üçüncü sütunu açıp kapatabilirsiniz.
 
-Çeviri dili sütunu görünür olduğunda, dize listesinin çeviri dili sütununun sağ üst köşesindeki küçük oklara tıklayarak projede bulunan çeviri dilleri arasında geçiş yapabilirsiniz.
+Çeviri dili sütunu görünür olduğunda, dize listesinin çeviri dili sütununu sağ üst kısmında yer alan küçük oklara tıklayarak projede yer alan çeviri dillerinde döngüye geçebilirsiniz.
 
-Tablodaki kayda tıklayarak, bir dize kaydını seçerek düzenleyebilirsiniz. Bir kayıt seçildiğinde, kayıt dizesi KIMLIĞI ve dize içeriği Tablo görünümünün altındaki alanlarda gösterilir. Dize KIMLIĞI ve dize içeriğini değiştirmek için bu alanlara yeni değerler yazabilirsiniz.
+Bir dize kaydını seçmek için tablodaki kayda tıklayarak düzenleyebilirsiniz. Bir kayıt seçildiğinde, kayıt Dize Kimliği ve dize içeriği tablo görünümünün altındaki alanlarda gösterilir. Dize kimliğini ve dize içeriğini değiştirmek için bu alanlara yeni değerler girebilirsiniz.
 
-Tablo görünümünün sağ tarafındaki kutu, seçili dizeye başvuran Pencere öğelerinin önizlemelerini gösterir. Bu, düzenlenmiş bir dizenin belirli bir pencere öğesi alanını aşacağından söylemek için yararlıdır.
+Tablo görünümünün sağ tarafındaki kutu, seçili dizeye başvurulan pencere öğelerinin önizlemelerini gösterir. Bu, düzenlenen bir dizenin belirli bir pencere öğesi alanı aşıp aşmaymayacaklarını söylemek için kullanışlıdır.
 
-Dize içeriğinin sağında yer alan alanlar şunlardır:
+Dize içeriğinin sağ tarafından sağdan alanlar şunlardır:
 
-- "Başvuru sayısı": Bu alan, Gux Studio projesi içinde belirli bir dize KIMLIĞININ ne sıklıkla kullanıldığını gösterir. Başvuru sayısı 0 ise, bu dize artık kullanılmıyor olabilir ve isteğe bağlı olarak Kullanıcı tarafından kaldırılabilir.
-- Dize genişliği (piksel) belirtilen yazı tipini kullanarak dizenin görüntü genişliğini gösterir.
-- "Notlar" alanı, her bir dizenin amacı veya kullanımı hakkında bilgi eklemenize olanak sağlayan isteğe bağlı bir açıklama alanıdır. Bu notlar, doğru ve anlamlı dize çevirileri yaparken çevirmenlere yardımcı olmak için, tüm aktarılmış XLıFF dizesi veri dosyalarına dahil edilmiştir.
+- "Başvuru sayısı": Bu alan, GUIX Studio projesi içinde belirli bir dize kimliğinin ne sıklıkta kullanildiğini gösterir. Başvuru sayısı 0 ise, bu dize kullanımdan kaldırılmış olabilir ve kullanıcı tarafından isteğe bağlı olarak kaldırılabilir.
+- Dize Genişliği (piksel), belirtilen yazı tipini kullanarak dizenin görüntüleme genişliğini gösterir.
+- "Notlar" alanı, her dizenin amacı veya kullanımı hakkında bilgi eklemenize olanak sağlayan isteğe bağlı bir açıklama alanıdır. Bu notlar, çevirmenlerin doğru ve anlamlı dize çevirileri yapmalarına yardımcı olmak için dışarı aktarıldı xlIFF dize veri dosyalarına dahildir.
 
-***Dize tablosu Düzenleyicisi*** iletişim kutusunu açtığınızda, iletişim kutusunun üst kısmındaki dize Ekle düğmesine tıklayarak projenize ek dizeler ekleyebilirsiniz. Kullanımdan kaldırılan veya kullanılmayan dizeler, önce dizeyi seçerek sonra iletişim kutusunun en üstündeki dize Sil düğmesine tıklanarak projeden kaldırılabilir.
+Dize Tablosu Düzenleyicisi ***iletişim kutusunu her*** açıkken, iletişim kutusunun üst kısmında yer alan Dize Ekle düğmesine tıklayarak projenize başka dizeler ebilirsiniz. Kullanılmayan veya kullanılmayan dizeler önce dizeyi seçerek ve ardından iletişim kutusunun üst kısmında Bulunan Dizeyi Sil düğmesine tıklayarak projeden kaldırılabilir.
 
-Dize tablosu Düzenleyicisi iletişim kutusunu kullanarak projenize yeni dizeler el ile eklemeye ek olarak, metni destekleyen herhangi bir pencere öğesinin Özellikler görünümünün "metin" alanına dize içeriği yazarak dolaylı olarak yeni dizeler da ekleyebilirsiniz. Diğer bir deyişle, hedef görünümde yeni pencere öğeleri eklerken veya Özellikler görünümünde metin bilgileri yazarken, bu eylemler proje dize tablosunda otomatik olarak yeni girişler oluşturur.
+Dize Tablosu Düzenleyicisi iletişim kutusunu kullanarak projenize el ile yeni dizeler eklemenin yanı sıra, metni destekleyen herhangi bir pencere öğesinin Özellikler Görünümü'nde "Metin" alanına dize içeriği yazarak dolaylı olarak da yeni dizeler ekleyebilirsiniz. Başka bir deyişle, hedef görünüme yeni pencere öğeleri eklerken veya özellikler görünümünde metin bilgileri yazarken, bu eylemler proje dizesi tablosunda otomatik olarak yeni girişler oluşturuyor.
 
-## <a name="adding-language-translations"></a>Dil çevirileri ekleme
+## <a name="adding-language-translations"></a>Dil Çevirileri Ekleme
 
-GUX Studio dize tablosu Düzenleyicisi, geliştiricinin birincil dilini kullanarak bir uygulama oluşturmasına izin veren bir dil tanımı iş akışını destekler ve sonra dize verilerini bir dil çevirisi uzmanına gönderilmek üzere standart bir şema XML veya CSV dosyasına dışarı aktarır. Çeviri dosyası daha sonra geliştiriciye döndürülür, bu sayede dil çevirileri kendi Studio projesine geri aktarabilir ve böylece uygulamasına yeni bir dil desteği ekleyebilirsiniz.
+GUIX Studio dize tablosu düzenleyicisi, geliştiricinin birincil dilini kullanarak bir uygulama oluşturmasını ve ardından dize verilerini standart bir şema XML'ine veya CSV dosyasına dışarı aktararak dil çevirisi uzmanına göndermesini sağlayan bir dil tanımı iş akışını destekler. Çeviri dosyası daha sonra geliştiriciye döndürülür ve bu geliştirici, dil çevirilerini Studio projesine geri aktararak uygulamasına yeni bir dil desteği ekler.
 
-Bu özellik, dize tablosu düzenleyicisinin en üstündeki dışa aktarma (dize verilerini bir dosyaya yazmak için) ve Içeri aktarma (çevrilmiş dizeleri okumak için) düğmelerini kullanarak çağrılır. Dışarı aktar düğmesi, başvuru dili dizelerinizi içeren bir XLıFF şeması XML veya CSV dosyası oluşturmak için kullanılır. Bu dosya, standart XLıFF veya CSV dosya biçimini destekleyen araçlar ve düzenleyiciler kullanılarak kullanılan bir çevirici tarafından kullanılabilir.
+Bu tesis, Dize Tablosu Düzenleyicisi'nin üst kısmında yer alan Dışarı Aktar (dize verilerini bir dosyaya yazmak için) ve İçeri Aktar (çevrilmiş dizeleri okumak için) düğmeleri kullanılarak çağrılır. Dışarı Aktar düğmesi, başvuru dili dizelerinizi içeren bir XLIFF şema XML veya CSV dosyası oluşturmak için kullanılır. Bu dosya, standart XLIFF veya CSV dosya biçimini destekleyen araçlar ve düzenleyiciler kullanılarak bir çevirmen tarafından kullanılabilir.
 
-Bir çeviri uzmanı yeni dize çevirileri ile size XLıFF dosyasını döndürdüğünde, bu XLıFF veya CSV dosyasından verileri okumak için Içeri Aktar düğmesini kullanabilirsiniz. XLıFF veya CSV dosyası yeni bir dil içeriyorsa, yeni dil projenize eklenir. XLıFF dosyası mevcut bir dil için yeni dize verileri içeriyorsa, bu yeni veriler projenize aktarılır. Başvuru dili dizeleri Içeri aktarma işlemi tarafından değiştirilmez.
+Bir çeviri uzmanı xliff dosyasını size yeni dize çevirileriyle döndürtçe, verileri bu XLIFF veya CSV dosyasından okumak için İçeri Aktar düğmesini kullanabilirsiniz. XLIFF veya CSV dosyası yeni bir dil içeriyorsa, yeni dil projenize eklenir. XLIFF dosyası mevcut bir dil için yeni dize verileri içeriyorsa, bu yeni veriler projenize aktarılır. Başvuru dili dizeleri İçeri Aktarma işlemi tarafından değiştirilmez.
 
-Dışarı Aktar düğmesine tıkladığınızda, XLıFF/CSV dışa aktarma denetimi iletişim kutusu aşağıda gösterilmektedir, görüntülenir:
+Dışarı Aktar düğmesine tıklarken XLIFF/CSV Dışarı Aktarma Denetimi iletişim kutusu aşağıda gösterilir:
 
-![XLıFF/CSV dışa aktarma denetimi iletişim kutusunun ekran görüntüsü.](./media/guix-studio/image54.jpg)
+![XLIFF/CSV Dışarı Aktarma Denetimi iletişim kutusunun ekran görüntüsü.](./media/guix-studio/image54.jpg)
 
 **Şekil 20**
 
-Kaynak dili ve hedef dil alanları, referans dili ve çeviri dili olarak XLıFF veya CSV dosyasına hangi dize tablosu sütunlarının yazılacağını belirtir. Kaynak dili başvuru dizeleridir ve hedef dil, Çevirmeninizin çevrilmiş dize verileri sağlayabileceği dildir.
+Kaynak Dil ve Hedef Dil alanları, HANGI dize tablosu sütunlarının BAŞVURU dili ve çeviri dili olarak XLIFF veya CSV dosyasına yaz olacağını belirtir. Kaynak dil, başvuru dizeleri, Hedef Dil ise çeviricinizin çevrilmiş dize verilerini sağlayacak dilidir.
 
-XLıFF sürümü alanı, sürüm 1,2 veya sürüm 2,0 (ve üzeri) olmak üzere iki ana XLıFF dosya biçimi sürümünden birini belirtir. Bu XLıFF dosya biçimi standartları uyumsuzdur ve XLıFF dışarı aktarma/Içeri aktarma komutlarını kullanmadan önce araçlarınızın hangi sürüme kullandığını bilmeniz gerekir. XLıFF şeması ve XLıFF standartları hakkında daha fazla bilgiyi şurada bulabilirsiniz:
+XLIFF sürüm alanı iki ana XLIFF dosya biçimi sürümünden birini belirtir: sürüm 1.2 veya sürüm 2.0 (ve sonrası). Bu XLIFF dosya biçimi standartları uyumsuzdur ve XLIFF Dışarı Aktarma/İçeri Aktarma komutlarını kullanmadan önce araçlarınızı hangi sürümü kullanacağız? XLIFF şeması ve XLIFF standartları hakkında daha fazla bilgiyi burada bulunabilir:
 
-- sürüm 1,2: [https://docs.oasis-open.org/xliff/xliff-core/xliff-core.html](https://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
-- sürüm 2,0: [https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0os.pdf](https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.pdf)
+- sürüm 1.2: [https://docs.oasis-open.org/xliff/xliff-core/xliff-core.html](https://docs.oasis-open.org/xliff/xliff-core/xliff-core.html)
+- sürüm 2.0: [https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0os.pdf](https://docs.oasis-open.org/xliff/xliff-core/v2.0/os/xliff-core-v2.0-os.pdf)
 
-Çıkış dosya adı ve çıkış yolu alanları, çıkış dosyasının yazılacağı dosya adını ve konumunu belirtmenize olanak tanır. Dosya adı tamamen kullanıcıya tamamıyla yapılır, ancak, dışarıya eklenen dosyada bulunan kaynak ve hedef dilleri belirten adlar kullanmanızı öneririz.
+Çıktı dosya adı ve çıkış yolu alanları, çıkış dosyasının yazıldığı dosya adını ve konumu belirtmenize olanak sağlar. Dosya adı tamamen kullanıcıya yöneliktir, ancak dışarı aktaran dosyanın içinde yer alan kaynak ve hedef dilleri belirten adlar kullanmanızı öneririz.

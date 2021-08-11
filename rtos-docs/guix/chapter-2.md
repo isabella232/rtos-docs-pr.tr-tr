@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6527227062fc667b3f527a798d6621914c374c5c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a4572dbf4691869d9a1c32d68fbf9cc1c7dbfbee7e58ad69dd944e668e382b76
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826392"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784129"
 ---
 # <a name="chapter-2---installation-and-use-of-guix"></a>Bölüm 2-Gux yükleme ve kullanımı
 
@@ -19,7 +19,7 @@ Bu bölümde, HighPerformance Kullanıcı arabirimi ürününün Gux ' i yüklem
 
 ## <a name="host-considerations"></a>Ana bilgisayar konuları
 
-Katıştırılmış Geliştirme genellikle Windows veya Linux (UNIX) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlanır ve çalıştırılabilir dosya konakta üretildikten sonra, yürütme için hedef donanıma indirilir.
+katıştırılmış geliştirme genellikle Windows veya Linux (unıx) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlanır ve çalıştırılabilir dosya konakta üretildikten sonra, yürütme için hedef donanıma indirilir.
 
 Genellikle hedef indirme işlemi geliştirme aracının hata ayıklayıcı içinden yapılır. İndirmeden sonra, hata ayıklayıcı, hedef yürütme denetimi (go, dur, kesme noktası vb.) ve bellek ve işlemci kayıtlarına erişimi sağlamaktan sorumludur.
 
@@ -39,7 +39,7 @@ Azure RTOS Gux, konumundaki ortak kaynak kodu depomızdan elde edilebilir <https
 
 Aşağıda, çoğu ürün dağıtımlarıyla ortak olan önemli dosyaların bir listesi verilmiştir:
 
-| Kısaltın&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Açıklama   |
+| Kısaltın&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Description   |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | gx_api. h        | Bu C üstbilgi dosyası tüm sistem eş, veri yapılarını ve hizmet prototiplerini içerir. |
 | gx_port. h       | Bu C üstbilgi dosyası, hedefe özgü ve geliştirme aracına özgü veri tanımlarını ve yapılarını içerir.                                                                                                                                         |
@@ -51,13 +51,13 @@ Aşağıda, çoğu ürün dağıtımlarıyla ortak olan önemli dosyaların bir 
 
 ## <a name="guix-installation"></a>GUX yüklemesi
 
-GUIX, GitHub deposu yerel makinenize kopyalanarak yüklenir. Aşağıda, bilgisayarınızda Gux deposunun bir kopyasını oluşturmak için tipik sözdizimi verilmiştir:
+gux, GitHub deposu yerel makinenize kopyalanarak yüklenir. Aşağıda, bilgisayarınızda Gux deposunun bir kopyasını oluşturmak için tipik sözdizimi verilmiştir:
 
 ```c
     git clone https://github.com/azure-rtos/guix
 ```
 
-Alternatif olarak, GitHub ana sayfasında İndir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+alternatif olarak, GitHub ana sayfasındaki indir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
 
 Ayrıca, çevrimiçi deponun ön sayfasında Gux kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
 
@@ -70,7 +70,7 @@ GUX kullanmak kolaydır. Temel olarak, uygulama kodu derleme sırasında ***gx_a
 
 Bir Gux uygulaması oluşturmak için gereken dört kolay adım vardır:
 
-| Adımlar   | Açıklama    |
+| Adımlar   | Description    |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | &nbsp;1. Adım: | ***Gx_api. h*** dosyasını Gux hizmetlerini veya veri yapılarını kullanan tüm uygulama dosyalarına ekleyin.                                                               |
 | &nbsp;2. Adım: | _ *_Tx_application_define_** işlevinden veya bir uygulama iş parçacığından ***gx_system_initialize** _ çağırarak Gux sistemini başlatın.                       |

@@ -1,103 +1,103 @@
 ---
-title: Bölüm 3-LWM2M Istemcisinin Işlevsel açıklaması
-description: Bu bölüm, LWM2M Istemcisinin işlevsel bir açıklamasını içerir.
+title: Bölüm 3 - LWM2M İstemcisi İşlevsel Açıklaması
+description: Bu bölümde LWM2M İstemcisi'nin işlevsel bir açıklaması yer almaktadır.
 author: v-condav
 ms.author: v-condav
 ms.date: 01/22/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 24b7ff66fb4d060075eb6bc81bed45b3479e18dc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: be6d9d854ce89140ce749fbeb0364678077337bf19ddc1055d286d0f624e8bd5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825937"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783467"
 ---
-# <a name="chapter-3--functional-description-of-lwm2m-client"></a>Bölüm 3 LWM2M Istemcisinin Işlevsel açıklaması
+# <a name="chapter-3--functional-description-of-lwm2m-client"></a>Bölüm 3 LWM2M İstemcisi İşlevsel Açıklaması
 
-> Bu bölüm, LWM2M Istemcisinin işlevsel bir açıklamasını içerir.
+> Bu bölümde LWM2M İstemcisi'nin işlevsel bir açıklaması yer almaktadır.
 
-## <a name="lwm2m-client-initialization"></a>LWM2M Istemci başlatması
+## <a name="lwm2m-client-initialization"></a>LWM2M İstemci Başlatma
 
-LWM2M Istemcisi ***nx_lwm2m_client_create*** hizmeti çağırarak başlatılır. LWM2M Istemcisi kendi iş parçacığında çalışır ve geri çağırmalar kullanılarak veya uygulama tarafından uygulanan özel nesnelerin yöntemlerini çağırarak uygulamaya bazı olayları bildirebilir.
+LWM2M İstemcisi, nx_lwm2m_client_create ***başlatılır.*** LWM2M İstemcisi kendi iş parçacığında çalışır ve geri çağırmaları kullanarak veya uygulama tarafından uygulanan özel nesnelerin yöntemlerini çağırarak uygulamaya bazı olayları bildirebilir.
 
-Ayrıca, bir veya daha fazla sunucuyla iletişimi etkinleştirmek için ***nx_lwm2m_client_session_create*** çağırarak LWM2M istemci oturumlarının oluşturulması gerekir. Bir oturum iki farklı sunucu türüyle iletişim kurabilir: bir önyükleme sunucusu veya LWM2M sunucusu (cihaz yönetimi).
+Ayrıca LWM2M İstemci Oturumları, bir veya ***daha fazla nx_lwm2m_client_session_create*** iletişimin etkinleştirilmesi için özel çağrılarak oluşturularak oluşturulacak. Bir oturum iki farklı sunucu türüyle iletişim kurabilir: Bir Bootstrap Sunucusu veya LWM2M Sunucusu (Cihaz Yönetimi).
 
-### <a name="bootstrap-server-session"></a>Önyükleme sunucusu oturumu
+### <a name="bootstrap-server-session"></a>Bootstrap Sunucusu Oturumu
 
-LWM2M Istemcisinin, bir veya daha fazla LWM2M sunucusuyla "Register" işlemini gerçekleştirmesini sağlamak için, LWM2M Istemcisine bir iletişim oturumu, bir önyükleme sunucusu ile ilgili bilgi sağlamak için kullanılır. Istemci tarafından başlatılan ve sunucu tarafından başlatılan önyükleme modlarında bu tür bir sunucu kullanılır.
+LWM2M İstemcisi'nin bir veya daha fazla LWM2M Sunucusuna "Kaydetme" işlemini gerçekleştirmesini sağlamak üzere LWM2M İstemcisine temel bilgileri sağlamak için Bootstrap Sunucusu ile bir iletişim oturumu kullanılır. Bu sunucu türü İstemci Tarafından Başlatılan ve Sunucu Tarafından Başlatılan Önyükleme modları sırasında kullanılır.
 
-Uygulama, ***nx_lwm2m_client_session_bootstrap** _ veya _*_Nx_lwm2m_client_session_bootstrap_dtls_*_ çağırarak bir önyükleme oturumu başlatabilir, sunucunun IP adresini ve bağlantı noktası numarasını ve Isteğe bağlı BIR güvenlik nesnesi örnek kimliğini sağlamalıdır. _*_Nx_lwm2m_client_session_bootstrap_*_ işlevi güvenli olmayan iletişim kullanır, ancak _ *_nx_lwm2m_client_session_bootstrap_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurar.
+Uygulama * nx_lwm2m_client_session_bootstrap _ **veya** _*_nx_lwm2m_client_session_bootstrap_dtls_*_ çağırarak bir Bootstrap oturumu başlatabiliyor, sunucunun IP adresini ve bağlantı noktası numarasını ve isteğe bağlı bir Güvenlik Nesnesi Örneği Kimliğini sağlayabiliyor. Bu _*_nx_lwm2m_client_session_bootstrap_*_ güvenli olmayan iletişim kullanırken _ *_nx_lwm2m_client_session_bootstrap_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurulmasını sağlar.
 
-Önyükleme işlemi başarılı olursa, önyükleme sunucusu, önyükleme ve LWM2M sunucuları için güvenlik nesne örnekleri ve LWM2M sunucuları için sunucu nesne örnekleri oluşturmuş olmalıdır. Uygulama, LWM2M sunucusu bilgilerini almak için ***nx_lwm2m_client_session_register_info_get*** çağırabilir ve bu bilgileri lwm2m sunucuları ile oturum oluşturmak için kullanabilir.
+Bootstrap işlemi başarılı olursa, Bootstrap sunucusunun Bootstrap ve LWM2M Sunucuları için Güvenlik Nesnesi Örnekleri ve LWM2M Sunucuları için Sunucu Nesnesi Örnekleri oluşturması gerekir. Uygulama LWM2M ***Nx_lwm2m_client_session_register_info_get*** bilgilerini almak için nx_lwm2m_client_session_register_info_get'ı çağırarak LWM2M Sunucularla oturum kurmak için bu bilgileri kullanabilir.
 
-Önyükleme verileri, cihazın bir sonraki yeniden başlatmada LWM2M Istemcisini yapılandırmak için uygulama tarafından geçici olmayan belleğe kaydedilmelidir.
+Bootstrap verileri, cihazın bir sonraki yeniden başlatılmasında LWM2M İstemcisi'nin yapılandırılması için uygulama tarafından geçici olmayan belleğe kaydedılmalıdır.
 
-### <a name="lwm2m-server-session"></a>LWM2M sunucusu oturumu
+### <a name="lwm2m-server-session"></a>LWM2M Sunucu Oturumu
 
-Kayıt, cihaz yönetimi ve hizmet etkinleştirme için bir LWM2M sunucusuyla iletişim oturumu kullanılır.
+Kayıt, Güvenlik Ve Hizmet Etkinleştirme için LWM2M Sunucusu ile Cihaz Yönetimi oturumu kullanılır.
 
-Uygulama, LWM2M Istemcisini ***nx_lwm2m_client_session_register** _ veya _*_nx_lwm2m_client_session_register_dtls_*_ çağırarak sunucuya kaydedebilir, sunucunun IP adresini ve bağlantı noktası numarasını ve var olan bir sunucu nesnesi örneğine KARŞıLıK gelen kısa sunucu kimliğini sağlamalıdır. _*_Nx_lwm2m_client_session_register_*_ işlevi güvenli olmayan iletişim kullanır, ancak _ *_nx_lwm2m_client_session_register_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurar.
+Uygulama , ***nx_lwm2m_client_session_register** _ veya _*_nx_lwm2m_client_session_register_dtls_*_ çağırarak LWM2M İstemcisini bir sunucuya kaydedebilir, sunucunun IP adresini ve bağlantı noktası numarasını ve mevcut Sunucu Nesne Örneğine karşılık gelen Kısa Sunucu Kimliğini sağlasa gerekir. Bu _*_nx_lwm2m_client_session_register_*_ güvenli olmayan iletişim kullanırken _ *_nx_lwm2m_client_session_register_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurulmasını sağlar.
 
-Uygulama, ***nx_lwm2m_client_session_deregister** _ ' i çağırarak LWM2M istemcisini kaydedebilir ve istemciden _ *_nx_lwm2m_client_session_update_* * çağırarak bir ' güncelleştirme ' iletisi göndermesini ister.
+Uygulama ***nx_lwm2m_client_session_deregister** _ çağırarak LWM2M İstemcisi'nin kaydını sildi ve _* nx_lwm2m_client_session_update ** çağrısıyla istemciden bir 'Güncelleştir'_iletisi göndermesini_ isteyebilir.
 
-### <a name="session-state-callback"></a>Oturum durumu geri çağırma
+### <a name="session-state-callback"></a>Oturum Durumu Geri Çağırma
 
-Uygulama, oturum durumu güncellendiğinde çağrılan bir oturum oluşturma sırasında bir geri çağırma kaydeder, geri çağırma işlevi **NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK** aşağıdaki prototiple sahiptir.
+Uygulama, oturumun durumu güncelleştirildiğinde çağrılan bir oturumun oluşturulması sırasında bir geri çağırmayı kaydediyor. Geri çağırma **işlevi NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK** prototipe sahiptir.
 
-TypeDef VOID ( \* NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK) (NX_LWM2M_CLIENT_SESSION \* SESSION_PTR, UINT durumu);
+typedef VOID ( \* NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK)(NX_LWM2M_CLIENT_SESSION \* session_ptr,UINT durumu);
 
-Aşağıdaki durumlar tanımlanmıştır.
+Aşağıdaki eyaletler tanımlanmıştır.
 
-| Oturum &nbsp; durumu | Açıklama |
+| Oturum &nbsp; Durumu | Description |
 | --- | --- |
-| **NX_LWM2M_CLIENT_SESSION_INIT** | Oturum oluşturulduktan sonra ilk durum. |
-| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_WAITING** | İstemci, ' bekletme ' süreölçeri veya sunucu tarafından başlatılan önyükleme işleminin sona erme süresini bekliyor. |
-| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_REQUESTING** | İstemci, önyükleme sunucusuna bir ' Istek ' iletisi gönderdi (Istemci tarafından başlatılan önyükleme). |
-| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_INITIATED** | İstemci, önyükleme sunucusundan veri alıyor. |
-| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_FINISHED** | Önyükleme sunucusu ' finished ' iletisi gönderdi. |
+| **NX_LWM2M_CLIENT_SESSION_INIT** | Oturum oluşturma sonrasındaki ilk durum. |
+| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_WAITING** | İstemci , 'Kapalı Tut' süreölçeri veya Sunucu Tarafından Başlatılan Önyükleme'nin süresinin dolması için bekliyor. |
+| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_REQUESTING** | İstemci, Bootstrap Sunucusuna bir 'İstek' iletisi gönderdi (İstemci Tarafından Başlatılan Bootstrap). |
+| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_INITIATED** | İstemci Bootstrap Sunucusundan veri alıyor. |
+| **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_FINISHED** | Bootstrap Sunucusu bir 'Bitti' iletisi gönderdi. |
 | **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_ERROR** | Önyükleme oturumu başarısız oldu. |
-| **NX_LWM2M_CLIENT_SESSION_REGISTERING** | İstemci, LWM2M sunucusuna bir ' Register ' iletisi gönderdi. |
-| **NX_LWM2M_CLIENT_SESSION_REGISTERED** | İstemci LWM2M sunucusuna kaydedilir. |
-| **NX_LWM2M_CLIENT_SESSION_UPDATING** | İstemci, LWM2M sunucusuna bir ' Update ' iletisi gönderdi. |
-| **NX_LWM2M_CLIENT_SESSION_DEREGISTERING** | İstemci, LWM2M sunucusuna ' de Register ' iletisi gönderdi. |
-| **NX_LWM2M_CLIENT_SESSION_DEREGISTERED** | İstemci, LWM2M sunucusundan de kaydedilir. |
-| **NX_LWM2M_CLIENT_SESSION_DISABLED** | LWM2M sunucusu devre dışı bırakıldı. Devre dışı bırakma süreölçeri sona erdikten sonra bir ' Register ' gönderilir. |
-| **NX_LWM2M_CLIENT_SESSION_ERROR** | LWM2M sunucusuna kaydolma veya güncelleştirme işlemi başarısız oldu. |
-| **NX_LWM2M_CLIENT_SESSION_DELETED** | LWM2M sunucusuna karşılık gelen sunucu nesnesi örneği silindi. |
+| **NX_LWM2M_CLIENT_SESSION_REGISTERING** | İstemci LWM2M Sunucusuna bir 'Register' iletisi gönderdi. |
+| **NX_LWM2M_CLIENT_SESSION_REGISTERED** | İstemci LWM2M Sunucusuna kaydedilir. |
+| **NX_LWM2M_CLIENT_SESSION_UPDATING** | İstemci LWM2M Sunucusuna bir 'Güncelleştirme' iletisi gönderdi. |
+| **NX_LWM2M_CLIENT_SESSION_DEREGISTERING** | İstemci, LWM2M Sunucusuna bir 'De-register' iletisi gönderdi. |
+| **NX_LWM2M_CLIENT_SESSION_DEREGISTERED** | İstemci LWM2M Sunucusundan kaydı kaldırıldı. |
+| **NX_LWM2M_CLIENT_SESSION_DISABLED** | LWM2M Sunucusu devre dışı bırakıldı. Devre dışı bırakma süreölçeri sona erdikten sonra bir 'Register' gönderilir. |
+| **NX_LWM2M_CLIENT_SESSION_ERROR** | LWM2M Sunucusuna kayıt veya güncelleştirme işlemi başarısız oldu. |
+| **NX_LWM2M_CLIENT_SESSION_DELETED** | LWM2M Sunucusuna karşılık gelen Sunucu Nesne Örneği silindi. |
 
-Hata durumunda uygulamanın, ***nx_lwm2m_client_session_error_get*** çağırarak hatanın nedenini elde edebilir.
+Hata durumunda uygulama, hatanın nedenini almak için ***nx_lwm2m_client_session_error_get.***
 
-## <a name="local-device-management"></a>Yerel cihaz yönetimi
+## <a name="local-device-management"></a>Yerel Cihaz Yönetimi
 
-Uygulama, yerel cihaz yönetimi işlevlerini kullanarak LWM2M Istemcisinin nesnelerine erişebilir. Aşağıdaki işlevler verilmiştir.
+Uygulama, yerel cihaz yönetimi işlevlerini kullanarak LWM2M İstemcisi Nesneleri'ne erişebilir. Aşağıdaki işlevler sağlanmıştır.
 
-| İşlev &nbsp; adı | Açıklama |
+| İşlev &nbsp; Adı | Description |
 | --- | --- |
-| ***nx_lwm2m_client_object_read*** | Bir nesne örneğinden kaynakları okuyun. |
-| ***nx_lwm2m_client_object_discover*** | Bir nesne örneğinin kaynak listesini alın.
-| ***nx_lwm2m_client_object_write*** | Kaynakları bir nesne örneğine yazın. |
-| ***nx_lwm2m_client_object_execute*** | Bir nesne örneğinin kaynağında yürütme işlemini gerçekleştirin. |
-| ***nx_lwm2m_client_object_create*** | Yeni bir nesne örneği oluşturun. |
-| ***nx_lwm2m_client_object_delete*** | Varolan bir nesne örneğini silin. |
-| ***nx_lwm2m_client_object_next_get*** | LWM2M Istemcisinin sonraki nesne KIMLIĞINI alın. |
-| ***nx_lwm2m_client_object_instance_next_get*** | Bir nesnenin sonraki örneğini alır. |
+| ***nx_lwm2m_client_object_read*** | Nesne Örneğinden kaynakları okuma. |
+| ***nx_lwm2m_client_object_discover*** | Nesne Örneğinin kaynaklarının listesini al.
+| ***nx_lwm2m_client_object_write*** | Bir Nesne Örneğine kaynak yazma. |
+| ***nx_lwm2m_client_object_execute*** | Nesne Örneğinin kaynağında Yürütme işlemini gerçekleştirin. |
+| ***nx_lwm2m_client_object_create*** | Yeni bir Nesne Örneği oluşturun. |
+| ***nx_lwm2m_client_object_delete*** | Var olan bir Nesne Örneğini silin. |
+| ***nx_lwm2m_client_object_next_get*** | LWM2M İstemcisi tarafından bir sonraki Nesne Kimliği'ne sahip olur. |
+| ***nx_lwm2m_client_object_instance_next_get*** | Bir nesnenin sonraki Örneğini elde edersiniz. |
 
-## <a name="resource-information"></a>Kaynak bilgileri
+## <a name="resource-information"></a>Kaynak Bilgileri
 
-Nesneleri okuma ve nesnelere yazma sırasında bir kaynak NX_LWM2M_CLIENT_RESOURCE yapısıyla temsil edilir. Bu yapı, kaynak/örnek KIMLIĞINI ve değerini içerir.
+Nesnelerden okuma ve Nesnelere yazma, kaynak yapısı tarafından NX_LWM2M_CLIENT_RESOURCE temsil eder. Bu yapı, Kaynağın/Örneğin kimliğini ve değerini içerir.
 
-Kaynak bilgileri ve değeri ayarlamak için aşağıdaki işlevler verilmiştir.
+Kaynak bilgilerini ve değerini ayarlamaya için aşağıdaki işlevler sağlanmıştır.
 
-| İşlev &nbsp; adı | Açıklama |
+| İşlev &nbsp; Adı | Description |
 | --- | --- |
-| ***nx_lwm2m_client_resource_info_set*** | Kaynak bilgilerini ayarlama: kaynak kimliği ve işlemi: okuma, yazma, ÇALıŞTıRıLABILIR. |
+| ***nx_lwm2m_client_resource_info_set*** | Kaynak bilgilerini ayarlama: kaynak kimliği ve işlemi: OKUMA, YAZMA, YÜRÜTÜLEBILIR. |
 | ***nx_lwm2m_client_resource_string_set*** | Kaynak değerini dize olarak ayarlayın. |
-| ***nx_lwm2m_client_resource_integer32_set*** | Kaynak değerini 32 bitlik bir tamsayı olarak ayarlayın. |
-| ***nx_lwm2m_client_resource_integer64_set*** | Kaynak değerini 64 bitlik bir tamsayı olarak ayarlayın. |
-| ***nx_lwm2m_client_resource_float32_set*** | Kaynak değerini 32-bit float olarak ayarlayın. |
-| ***nx_lwm2m_client_resource_float64_set*** | Kaynak değerini 64-bit float olarak ayarlayın. |
-| ***nx_lwm2m_client_resource_boolean_set*** | Kaynak değerini Boole olarak ayarlayın. |
+| ***nx_lwm2m_client_resource_integer32_set*** | Kaynak değerini 32 Bit tamsayı olarak ayarlayın. |
+| ***nx_lwm2m_client_resource_integer64_set*** | Kaynak değerini 64 Bit tamsayı olarak ayarlayın. |
+| ***nx_lwm2m_client_resource_float32_set*** | Kaynak değerini 32 Bit float olarak ayarlayın. |
+| ***nx_lwm2m_client_resource_float64_set*** | Kaynak değerini 64 Bit float olarak ayarlayın. |
+| ***nx_lwm2m_client_resource_boolean_set*** | Kaynak değerini boole olarak ayarlayın. |
 | ***nx_lwm2m_client_resource_objlnk_set*** | Kaynak değerini nesne bağlantısı olarak ayarlayın. |
 | ***nx_lwm2m_client_resource_opaque_set*** | Kaynak değerini donuk olarak ayarlayın. |
 | ***nx_lwm2m_client_resource_instance_set*** | Birden çok kaynak için kaynak değerini örnek olarak ayarlayın. |
@@ -105,7 +105,7 @@ Kaynak bilgileri ve değeri ayarlamak için aşağıdaki işlevler verilmiştir.
 
 Kaynak bilgilerini ve değerini almak için aşağıdaki işlevler verilmiştir.
 
-| İşlev &nbsp; adı | Açıklama |
+| İşlev &nbsp; adı | Description |
 | --- | --- |
 | ***nx_lwm2m_client_resource_info_get*** | Kaynak bilgilerini al: kaynak kimliği ve işlemi: okuma, yazma, ÇALıŞTıRıLABILIR. |
 | ***nx_lwm2m_client_resource_string_get*** | Bir dize kaynağının değerini alır. |
@@ -127,7 +127,7 @@ Bir nesneyi tanımlamak için iki veri yapısı kullanılır: NX_LWM2M_CLIENT_OB
 
 Aşağıdaki işlevler verilmiştir.
 
-| İşlev &nbsp; adı | Açıklama |
+| İşlev &nbsp; adı | Description |
 | --- | --- |
 | ***nx_lwm2m_client_object_add*** | LwM2M Istemcisine nesne uygulamasını ekleyin. |
 | ***nx_lwm2m_client_object_remove*** | LwM2M Istemcisinden nesne uygulamasını kaldırın. |
@@ -156,7 +156,7 @@ typedef UINT (*NX_LWM2M_CLIENT_OBJECT_OPERATION_CALLBACK)(
 | **çalışmasını** | **NX_LWM2M_CLIENT_OBJECT_READ** |
 | **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
 | **instance_ptr** | Nesne örneği işaretçisi. |
-| **Kaynak** | Okunacak kaynakların kimliklerini içeren **NX_LWM2M_CLIENT_RESOURCE** dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen türler ve değerlerle doldurulur. |
+| **kaynak** | Okunacak kaynakların kimliklerini içeren **NX_LWM2M_CLIENT_RESOURCE** dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen türler ve değerlerle doldurulur. |
 | **resource_count** | Okunacak kaynak sayısına yönelik işaretçi. |
 | **args_ptr** | Okuma için kullanılmayan parametre. |
 | **args_length** | Okuma için kullanılmayan parametre. |
@@ -170,7 +170,7 @@ typedef UINT (*NX_LWM2M_CLIENT_OBJECT_OPERATION_CALLBACK)(
 | **çalışmasını** | **NX_LWM2M_CLIENT_OBJECT_DISCOVER** |
 | **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
 | **instance_ptr** | Nesne örneği işaretçisi. |
-| **Kaynak** | NX_LWM2M_CLIENT_RESOURCE dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen kaynak bilgileriyle doldurulur. |
+| **kaynak** | NX_LWM2M_CLIENT_RESOURCE dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen kaynak bilgileriyle doldurulur. |
 | **resource_count** | Bulunacak kaynak sayısına yönelik işaretçi. Dönüş sırasında bu parametrenin doğru değer olarak güncellenmesi gerekir. |
 | **args_ptr** | Bulma için kullanılmamış parametre. |
 | **args_length** | Bulma için kullanılmamış parametre. |
@@ -184,76 +184,76 @@ typedef UINT (*NX_LWM2M_CLIENT_OBJECT_OPERATION_CALLBACK)(
 | **çalışmasını** | **NX_LWM2M_CLIENT_OBJECT_WRITE** |
 | **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
 | **instance_ptr** | Nesne örneği işaretçisi. |
-| **Kaynak** | Okunacak kaynakların kimliklerini içeren **NX_LWM2M_CLIENT_RESOURCE** dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen türler ve değerlerle doldurulur. |
-| **resource_count** | Bulunacak kaynak sayısına yönelik işaretçi. |
-| **args_ptr** | Yazma bayrakları. |
+| **kaynak** | Okunan kaynakların **NX_LWM2M_CLIENT_RESOURCE** içeren bir dizi dosyanın işaretçisi. dönüşte, dizi karşılık gelen türler ve değerlerle doldurulur. |
+| **resource_count** | Keşfedilen kaynak sayısının işaretçisi. |
+| **args_ptr** | Bayraklar yazın. |
 | **args_length** | Bağımsız değişkenlerin uzunluğu. |
 
-Aşağıdaki yazma işlemleri *bayrak* parametresine belirlenebilir.
+Aşağıdaki yazma işlemleri flag parametresine *belirtilebilir.*
 
 | İşlem | Eylem | Açıklama |
 | --- | ---| --- |
-| 0 | Kısmi güncelleştirme | Yeni değerde belirtilen kaynakları ekler veya güncelleştirir ve diğer mevcut kaynakları değişmeden bırakır.
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_INSTANCE** | Örneği Değiştir | Nesne örneğini, belirtilen yeni kaynak değerleriyle değiştirir.
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_RESOURCE** |  Kaynağı değiştir | Kaynakları, belirtilen yeni kaynak değerleriyle (birden çok kaynağı değiştirmek için kullanılır) değiştirir. |
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_CREATE** | Örnek Oluştur | Yeni oluşturulan nesne örneğini, belirtilen kaynak değerleriyle ( **_nx_lwm2m_object_create_** yönteminden çağırılır) başlatır. |
-| **NX_LWM2M_CLIENT_OBJECT_WRITE_BOOTSTRAP** | Önyükleme yazma | Önyükleme sırası sırasında çağırılır. |
+| 0 | Kısmi Güncelleştirme | Sağlanan kaynakları yeni değere ekler veya günceller ve diğer mevcut Kaynakları olduğu gibi bırakır.
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_INSTANCE** | Örneği Değiştir | Nesne Örneğini yeni sağlanan kaynak değerleriyle değiştirir.
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_REPLACE_RESOURCE** |  Kaynağı Değiştir | Resources yerine sağlanan yeni kaynak değerlerini (Birden Çok Kaynağı değiştirmek için kullanılır) değiştirir. |
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_CREATE** | Örnek Oluşturma | Yeni oluşturulan Nesne Örneğini sağlanan kaynak değerleriyle (nx_lwm2m_object_create **_yönteminden çağrılır)_** başlatılır. |
+| **NX_LWM2M_CLIENT_OBJECT_WRITE_BOOTSTRAP** | Bootstrap Yazma | Bootstrap sırasında çağrılır. |
 
-### <a name="the-execute-method"></a>' Execute ' yöntemi
+### <a name="the-execute-method"></a>'Execute' Yöntemi
 
-' Execute ' yöntemi, bir nesne kaynağının yürütülmesini uygular.
+'Execute' yöntemi, nesne kaynağının yürütülmesini sağlar.
 
 Giriş parametreleri aşağıdaki gibi tanımlanır.
 
 | Parametre  | Açıklama |
 | --- | --- |
-| **çalışmasını** | NX_LWM2M_CLIENT_OBJECT_EXECUTE |
-| **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
-| **instance_ptr** | Nesne örneği işaretçisi. |
-| **Kaynak** | Okunacak kaynakların kimliklerini içeren **NX_LWM2M_CLIENT_RESOURCE** dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen türler ve değerlerle doldurulur. |
-| **resource_count** | Bulunacak kaynak sayısına yönelik işaretçi. |
+| **Işlem** | NX_LWM2M_CLIENT_OBJECT_EXECUTE |
+| **object_ptr** | Nesne uygulaması işaretçisi. |
+| **instance_ptr** | Nesne Örneğinin işaretçisi. |
+| **kaynak** | Okunan kaynakların **NX_LWM2M_CLIENT_RESOURCE** içeren bir dizi dosyanın işaretçisi. dönüşte, dizi karşılık gelen türler ve değerlerle doldurulur. |
+| **resource_count** | Keşfedilen kaynak sayısının işaretçisi. |
 | **args_ptr** | Bağımsız değişkenlerin işaretçisi. |
 | **args_length** | Bağımsız değişkenlerin uzunluğu.  |
 
-Kaynak KIMLIĞI yoksa işlevin **NX_LWM2M_CLIENT_NOT_FOUND** döndürmesi veya yürütmeyi desteklememesi durumunda **NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** gerekir.
+Kaynak kimliği **NX_LWM2M_CLIENT_NOT_FOUND** işlevi, yürütmeyi **desteklemezse NX_LWM2M_CLIENT_METHOD_NOT_ALLOWED** işlevinin bir geri dönüş koduna sahip olması gerekir.
 
-### <a name="the-create-method"></a>' Create ' yöntemi
+### <a name="the-create-method"></a>'Create' Yöntemi
 
-' Create ' yöntemi, yeni bir nesne örneği oluşturulmasını uygular.
+'Create' yöntemi, yeni bir Nesne Örneği oluşturma işlemi gerçekleştirin.
 
 Giriş parametreleri aşağıdaki gibi tanımlanır.
 
 | Parametre  | Açıklama |
 | --- | --- |
-| **çalışmasını** | **NX_LWM2M_CLIENT_OBJECT_CREATE** |
-| **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
+| **Işlem** | **NX_LWM2M_CLIENT_OBJECT_CREATE** |
+| **object_ptr** | Nesne uygulaması işaretçisi. |
 | **instance_ptr** | Kullanılmayan parametre. |
-| **Kaynak** | Okunacak kaynakların kimliklerini içeren **NX_LWM2M_CLIENT_RESOURCE** dizisine yönelik işaretçi. Dönüş sırasında dizi karşılık gelen türler ve değerlerle doldurulur. |
-| **resource_count** | Bulunacak kaynak sayısına yönelik işaretçi. |
+| **kaynak** | Okunan kaynakların **NX_LWM2M_CLIENT_RESOURCE** içeren bir dizi dosyanın işaretçisi. dönüşte, dizi karşılık gelen türler ve değerlerle doldurulur. |
+| **resource_count** | Keşfedilen kaynak sayısının işaretçisi. |
 | **args_ptr** | Nesne örneği kimliği. |
 | **args_length** | Bağımsız değişkenlerin uzunluğu. |
 
-### <a name="the-delete-method"></a>' DELETE ' yöntemi
+### <a name="the-delete-method"></a>'Delete' Yöntemi
 
-' DELETE ' yöntemi bir nesne örneğinin silinmesini uygular, giriş parametreleri aşağıdaki gibi tanımlanır.
+'Delete' yöntemi bir nesne örneğinin silinmesini sağlar, giriş parametreleri aşağıdaki gibi tanımlanır.
 
 | Parametre  | Açıklama |
 | --- | --- |
-| **çalışmasını** | NX_LWM2M_CLIENT_OBJECT_DELETE |
-| **object_ptr** | Nesne uygulamasına yönelik işaretçi. |
-| **instance_ptr** | Nesne örneği işaretçisi. |
-| **Kaynak** | Kullanılmayan parametre. |
+| **Işlem** | NX_LWM2M_CLIENT_OBJECT_DELETE |
+| **object_ptr** | Nesne uygulaması işaretçisi. |
+| **instance_ptr** | Nesne Örneğinin işaretçisi. |
+| **kaynak** | Kullanılmayan parametre. |
 | **resource_count** | Kullanılmayan parametre. |
 | **args_ptr** | Kullanılmayan parametre. |
 | **args_length** | Kullanılmayan parametre. |
 
-Başarılı olduğunda, nesne örnek verilerini ve örnek tarafından ayrılan diğer kaynakları serbest bırakmalıdır.
+Başarılı olması için Nesne, Nesne Örneği verilerini ve örnek tarafından ayrılan diğer tüm kaynakları serbest bırakmalı.
 
-## <a name="example-of-lwm2m-client-application"></a>LWM2M Istemci uygulaması örneği
+## <a name="example-of-lwm2m-client-application"></a>LWM2M İstemci Uygulaması Örneği
 
-Aşağıdaki kod, bir sıcaklık sensörden ve hafif anahtardan oluşan özel bir cihaz uygulayan basit bir LWM2M Istemci uygulamasına bir örnektir.
+Aşağıdaki kod, sıcaklık sensörü ve ışık anahtarı bulunan özel bir cihaz uygulayan basit bir LWM2M İstemci Uygulaması örneğidir.
 
-Cihaz, bir sunucunun ısı algılayıcısı değerini ve ışık anahtarının Boole durumunu okumasına izin verir ve ışığı açık/kapalı olarak ayarlar.
+Cihaz, bir sunucunun sıcaklık algılayıcısı değerini ve ışık anahtarının boole durumunu okumasını ve ışık anahtarını açık/kapalı olarak ayarlamasını sağlar.
 
 ```c
 #include "nx_lwm2m_client.h"

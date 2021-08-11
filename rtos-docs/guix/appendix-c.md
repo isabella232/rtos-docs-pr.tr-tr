@@ -1,134 +1,134 @@
 ---
-title: Ek C-Gux pencere öğesi stilleri
-description: GUX pencere öğesi stilleri hakkında bilgi edinin.
+title: Ek C - GUIX Pencere Öğesi Stilleri
+description: GUIX pencere öğesi stilleri hakkında bilgi edinebilirsiniz.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 83d5c5167739e91b7af8fce6b04213f610984fc6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9519d68af64b777e34deb1bf11e6962e78a96b86bdbfd90f5b379c5b56c92268
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827280"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784657"
 ---
-# <a name="appendix-c---guix-widget-styles"></a>Ek C-Gux pencere öğesi stilleri
+# <a name="appendix-c---guix-widget-styles"></a>Ek C - GUIX Pencere Öğesi Stilleri
 
-__***Genel stiller (çoğu pencere öğesi türü ile kullanılır):***__
+__***Genel Stiller (Çoğu pencere öğesi türüyle kullanılır):***__
 
 **GX_STYLE_BORDER_NONE**
   - Değer: 0x00000000
-  - Açıklama: kenarlığı olmayan bir pencere öğesi çizmek için bu stili kullanın.
+  - Açıklama: Kenarlıkları olan bir pencere öğesi çizmek için bu stili kullanın.
 
 **GX_STYLE_BORDER_RAISED**
   - Değer: 0x00000001
-  - Açıklama: yükseltilmiş bir kenarlığa sahip pencere öğesi çizin.
+  - Açıklama: Yükseltilmiş kenarlıkla pencere öğesi çizin.
 
 **GX_STYLE_BORDER_RECESSED**
   - Değer: 0x00000002
-  - Açıklama: bir kenar pencere öğesi ile yeniden oluşturulmuş bir kenarlık çizin.
+  - Açıklama: Kenarlıkla pencere öğesi çizme.
 
 **GX_STYLE_BORDER_THIN**
   - Değer: 0x00000004
-  - Açıklama: tek piksellik genişlik kenarlığı çizin.
+  - Açıklama: Bir piksel genişlik kenarlık çizin.
 
 **GX_STYLE_BORDER_THICK** 
   - Değer: 0x00000008
-  - Açıklama: kalın kenarlıklı pencere öğesi çizin.
+  - Açıklama: Kalın kenarlıklı pencere öğesi çizin.
 
 **GX_STYLE_BORDER_MASK**
-  - Değer: 0x0000000F
-  - Açıklama: pencere öğesi stili üyesinin yalnızca stil alanlarını test etmek için kullanılan maske değeri.
+  - Değer: 0x0000000f
+  - Açıklama: Pencere öğesi stili üyesinin yalnızca stil alanlarını test etmek için kullanılan değeri maskeleme.
 
 **GX_STYLE_TRANSPARENT**
   - Değer: 0x10000000
-  - Açıklama: en az kısmen saydam bir pencere öğesi oluşturun. Bu stil, pencere öğesi arka plan planı olarak yarı saydam bir pixelmap çizme pencere öğeleri de dahil olmak üzere tamamen donuk bir şekilde çizmediği zaman kullanılmalıdır. Bu stil bayrağı, pencere öğesi arka plan alanını yenilemek için pencere öğesi üst öğesinin çizilmek zorunda olduğunu bildirir.
+  - Açıklama: En azından kısmen saydam bir pencere öğesi oluşturun. Bu stil, pencere öğesi arka planı olarak yarı saydam bir piksel haritası çizen pencere öğeleri de dahil olmak üzere bir pencere öğesi kendisini tamamen opak çizmezken kullanılmalıdır. Bu stil bayrağı GUIX'e pencere öğesi arka plan alanı yenilemek için pencere öğesi üst öğesi çizilecek konusunda bilgi sağlar.
 
 **GX_STYLE_DRAW_SELECTED**
   - Değer: 0x20000000
-  - Açıklama: pencere öğesinin seçili durum renkleri ve yazı tipleri kullanılarak çizilip çizilmeyeceğini belirtin. Farklı pencere öğesi türleri, pencere öğesinin Şu anda seçili olduğunu göstermek için DRAW_SELECTED stilini farklı şekillerde kullanır.
+  - Açıklama: Pencere öğesi seçilen durum renkleri ve yazı tipleri kullanılarak çizilmelidir. Farklı pencere öğesi türleri DRAW_SELECTED pencere öğesi seçili olduğunu belirtmek için farklı şekillerde DRAW_SELECTED stili kullanır.
 
 **GX_STYLE_ENABLED**
   - Değer: 0x40000000
-  - Açıklama: pencere öğesinin kullanıcı giriş olaylarını kabul etmesine ve çıkış sinyalleri oluşturmasına izin veren pencere öğesini etkin olarak Işaretleyin.
+  - Açıklama: Pencere öğelerini etkin olarak işaretle, bu pencere öğesi kullanıcı giriş olaylarını kabul eder ve çıkış sinyalleri oluşturur.
   
 **GX_STYLE_DYNAMICALLY_ALLOCATED**
   - Değer: 0x80000000
-  - Açıklama: pencere öğesi denetim bloğu belleğinin pencere öğesi oluşturulduğunda gx_system_memory_allocator hizmeti kullanılarak dinamik olarak ayrıldığını ve pencere öğesi yok edildiğinde denetim blok belleği serbest bırakıldığını gösterir.
+  - Açıklama: Pencere öğesi oluşturulduğunda gx_system_memory_allocator hizmeti kullanılarak pencere öğesi denetim bloğu belleğinin dinamik olarak serbest bırakıldığından ve pencere öğesi yok edilirse denetim bloğu belleğinin serbest bırakıldığından gösterir.
 
 **GX_STYLE_USE_LOCAL_ALPHA**
   - Değer: 0x01000000
-  - Açıklama: Gux çizim işlevlerini pencere öğesi çizerken yerel pencere öğesi Alfa değerini kullanmasını söyler. Bu bayrak normalde iç Gux mantığı tarafından pencere öğesi Soldurma animasyonlarını uygulamak için kullanılır.
+  - Açıklama: GUIX çizim işlevlerine pencere öğesi çizimini gerçekleştirirken yerel pencere öğesi alfa değerini kullanma talimatı verir. Bu bayrak normalde iç GUIX mantığı tarafından pencere öğesi soluk görüntü animasyonları uygulamak için kullanılır.
 
 
-__***Metin hizalama stilleri (metin çizimli tüm pencere öğeleri için uygulanan stiller):***__
+__***Metin Hizalama Stilleri (metin çizen tüm pencere öğelerine uygulanan stiller):***__
 
 **GX_STYLE_TEXT_LEFT**
   - Değer: 0x00001000
-  - Açıklama: metin, pencere öğesi istemci alanı içinde sola hizalı olarak çizilir.
+  - Açıklama: Metin, pencere öğesi istemci alanı içinde sola hizalanmış şekilde çizilir.
 
 **GX_STYLE_TEXT_RIGHT** 
   - Değer: 0x00002000
-  - Açıklama: metin, pencere öğesi istemci alanı içinde sağa hizalı olarak çizilir.
+  - Açıklama: Metin, pencere öğesi istemci alanı içinde sağa hizalanmış şekilde çizilir.
 
 **GX_STYLE_TEXT_CENTER**
   - Değer: 0x00004000
-  - Açıklama: metin, pencere öğesi istemci alanı içinde ortalanmış olarak çizilir.
+  - Açıklama: Metin, pencere öğesi istemci alanı içinde orta hizalı olarak çizilir.
 
 **GX_STYLE_TEXT_COPY**
   - Değer: 0x00008000
-  - Açıklama: varsayılan olarak, metin çizilen pencere öğeleri yalnızca uygulama tarafından geçirilen metne bir işaretçi tutar. Dize tablosunda tanımlanan statik olarak tanımlanmış metin için, pencere öğesinin atanan metnin özel bir kopyasını oluşturmak için bir neden yoktur. Ancak, bir pencere öğesine atanan metin sprintler () veya gx_utility_ltoa gibi işlevler kullanılarak dinamik olarak oluşturulduysa, pencere öğesine atanan metinlerin özel bir kopyasını tutmasına söylemek çok uygundur. Bu, uygulamanın metin dizesini tanımlarken otomatik veya geçici değişkenler kullanmasına izin verir. Bu, uygulamanın, dinamik olarak tanımlanan metni kullanan her metin pencere öğesi için statik olarak tanımlanmış karakter dizileri tanımlamak zorunda olacağını belirler. Bu stil bayrağı ayarlandığında pencere öğesi, atanan dizenin özel bir kopyasını tutmak için gereken bellek bloğunu dinamik olarak ayırmak üzere gx_system_memory_allocator işlevini kullanır. Bu nedenle, bu stil bayrağını kullanmak memory_allocator ve memory_deallocator işlevlerini tanımlayan uygulamada tahmin edilir. GX_STYLE_TEXT_COPY ayarlandıktan sonra temizlenmemelidir ve bunu yapmak öngörülemeyen sonuçlara neden olur.
+  - Açıklama: Varsayılan olarak, metin çizen pencere öğeleri yalnızca uygulama tarafından geçirilen metnin işaretçisini kullanır. Dize tablosunda tanımlanan statik olarak tanımlanmış metinler için, pencere öğesi tarafından atanan metnin özel bir kopyasının olması için bir neden yoktur. Ancak, bir pencere öğesine atanan metin sprint() veya gx_utility_ltoa gibi işlevler kullanılarak dinamik olarak oluşturulursa, pencere öğesine atanan herhangi bir metnin kendi özel kopyasını tutması genellikle kullanışlı olur. Bu, uygulamanın metin dizesini tanımlarken otomatik veya geçici değişkenleri kullanmalarını sağlar. Aksi takdirde uygulamanın dinamik olarak tanımlanmış metin kullanan her metin pencere öğesi için statik olarak tanımlanmış karakter dizileri tanımlaması gerekir. Bu stil bayrağını ayarlayıp pencere öğesi gx_system_memory_allocator dizenin özel kopyasını tutmak için gereken bellek bloğuna dinamik olarak ayırmak için gx_system_memory_allocator işlevini kullanır. Bu nedenle bu stil bayrağının kullanımı, uygulamanın işlev ve işlev memory_allocator memory_deallocator gerekir. GX_STYLE_TEXT_COPY, ayardan sonra temizilemeyecektir ve bunu yapmak öngörülemeyen sonuçlara neden olur.
 
-__***Düğme stilleri (yalnızca Gux düğmesi pencere öğesi türleri için geçerlidir):***__
+__***Düğme Stilleri (yalnızca GUIX düğme pencere öğesi türleri için geçerlidir):***__
 
 **GX_STYLE_BUTTON_PUSHED**
-  - 0x00000010 değeri
-  - Açıklama: düğmenin itilmiş veya seçili durumda olduğunu gösterir.
+  - Değer 0x00000010
+  - Açıklama: Düğmenin iletili veya seçili durumda olduğunu gösterir.
 
 **GX_STYLE_BUTTON_TOGGLE**
   - Değer 0x00000020
-  - Açıklama: düğme, her tıklama olayında itilmiş ve gönderilmemiş arasında durum olarak değişir. Bu stil, genellikle "CheckBox" stil düğmeleri ile kullanılır.
+  - Açıklama: Her tıklama olayında düğmenin durumu, ertelenmiş ve geri alındı olarak değiştirilir. Bu stil genellikle "onay kutusu" stil düğmeleriyle kullanılır.
 
 **GX_STYLE_BUTTON_RADIO**
   - Değer 0x00000040
-  - Açıklama: Bu stil, düğmenin dışlandığını belirtir ve seçildiğinde tüm düğme eşdüzey öğelerinin seçimini kaldırın. Bu stil, genellikle "radyo düğmesi" stil düğmeleri ile kullanılır.
+  - Açıklama: Bu stil düğmenin dışlamalı olacağını ve seçildiğinde tüm düğme eşleri seçiminin kaldır olacağını gösterir. Bu stil genellikle "radyo düğmesi" stil düğmeleriyle kullanılır.
 
 **GX_STYLE_BUTTON_EVENT_ON_PUSH**
   - Değer: 0x00000080
-  - Açıklama: düğmenin başlangıçta gönderildiği bir tıklama olayı oluşturmadığını gösterir. Varsayılan işlem, düğme serbest bırakıldığında bir tıklama olayı oluşturmak olur.
+  - Açıklama: Düğmenin ilk kez birlikte bir tıklama olayı oluştur olduğunu gösterir. Varsayılan işlem, düğme serbest bırakıldığında bir tıklama olayı oluşturmaktır.
 
 **GX_STYLE_BUTTON_REPEAT**
   - Değer 0x00000100
-  - Açıklama: Düğme itilmiş durumda tutulduğu zaman düğme üst öğesine yinelenen tıklama olaylarını göndermek gerektiğini gösterir.
+  - Açıklama: Düğme gönderme durumuna geldiğinde düğmenin üst öğeye yinelenen tıklama olayları göndermesi gerektiğini gösterir.
 
-__***Liste stilleri (yalnızca Gux listesi pencere öğesi türleri için geçerlidir):***__
+__***Liste Stilleri (yalnızca GUIX listesi pencere öğesi türleri için geçerlidir):***__
 
 **GX_STYLE_CENTER_SELECTED** 
   - Değer: 0x00000010
-  - Açıklama: ayrılmış
+  - Açıklama: Ayrılmış
 
 **GX_STYLE_WRAP**
   - Değer 0x00000020
-  - Açıklama: liste, başlangıç veya bitiş listesi dizininden aşağı kaydırıldığında liste alt öğelerinden baştan sona kaydırılır.
+  - Açıklama: Liste, başlangıç veya bitiş listesi dizininin sonuna sürüklendikten veya kaydırıldıklarından alt altları baştan sona kaydırıldı.
 
 **GX_STYLE_FLICKABLE**
   - Değer: 0x00000040
-  - Açıklama: ayrılmış
+  - Açıklama: Ayrılmış
 
-__***Pixelmap düğmesi ve simge düğmesi stilleri:***__
+__***Piksel Haritası Düğmesi ve Simge Düğmesi Stilleri:***__
 
 **GX_STYLE_HALIGN_CENTER**
   - Değer: 0x00010000
-  - Açıklama: Bu düğme pixelmap, yatay eksende düğme sınırı içinde ortahizalı olmalıdır.
+  - Açıklama: Piksel haritası düğmesinin, yatay eksende düğme sınırı içinde orta hizalanması gerekir.
 
 **GX_STYLE_HALIGN_LEFT**
   - Değer: 0x00020000
-  - Açıklama: düğme pixelmap, Yatay eksenin düğme sınırı içinde sola hizalı olmalıdır.
+  - Açıklama: Düğme piksel haritası, yatay eksende düğme sınırı içinde hizalanmış şekilde bırakıldığında.
 
 **GX_STYLE_HALIGN_RIGHT**
   - Değer 0x00040000
-  - Açıklama: düğme pixelmap, Yatay eksenin düğme sınırı içinde sağa hizalanmalıdır.
+  - Açıklama: Düğme piksel haritası, yatay eksende düğme sınırı içinde sağa hizalanmış olması gerekir.
 
 **GX_STYLE_VALIGN_CENTER**
   - Değer 0x00080000

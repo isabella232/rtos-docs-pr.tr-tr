@@ -1,72 +1,72 @@
 ---
-title: GUX Studio tarafından oluşturulan kod
-description: Ekranlarınızı ve kaynaklarınızı düzenledikten sonra, GUıDX Studio, katıştırılmış uygulamanıza eklenebilen bir çıktı dosyaları kümesi oluşturur.
+title: GUIX Studio Tarafından Oluşturulan Kod
+description: Ekranlarınızı ve kaynaklarınızı düzenlemeyi tamamlarken GUIX Studio, eklenmiş uygulamanıza ekli bir dizi çıkış dosyası oluşturur.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: f8868ec770aa8f7f35d2866b99e3eb8f501281a8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 78b1ec1eea3ec2fcae48c64ad15931f44f34538c876dc8a267c2b1a84234320a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827130"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785711"
 ---
-# <a name="chapter-6-guix-studio-generated-code"></a>Bölüm 6: Gux Studio tarafından oluşturulan kod
+# <a name="chapter-6-guix-studio-generated-code"></a>Bölüm 6: GUIX Studio Tarafından Oluşturulan Kod
 
-Ekranlarınızı ve kaynaklarınızı düzenledikten sonra, GUıDX Studio, katıştırılmış uygulamanıza eklenebilen bir çıktı dosyaları kümesi oluşturur. Çıktı dosyaları, Proje menü öğesinden ***kaynak dosyaları oluştur** _ ve _ *_Özellikler oluştur_** seçilerek oluşturulur. GUX Studio tarafından oluşturulan ' c ' dil kaynak kodu dosyalarının derlenmesi ve katıştırılmış uygulama kaynak kodu ile bağlanması amaçlanmıştır. İkili biçimli bir kaynak dosyası üretildiyse, bu dosya hedefteki geçici olmayan bir depolama alanına ve Gux API işlevine programlanmış olmalıdır gx_binres_theme_install çalışma zamanında ikili kaynakları yüklemek için kullanılmalıdır.
+Ekranlarınızı ve kaynaklarınızı düzenlemeyi tamamlarken GUIX Studio, eklenmiş uygulamanıza ekli bir dizi çıkış dosyası oluşturur. Çıkış dosyaları, kaynak menü öğesinden ***** Kaynak Dosyaları Oluştur _ ve *___* Belirtimleri Oluştur * Project oluşturulur. GUIX Studio tarafından oluşturulan 'c' dil kaynak kodu dosyalarının derlenmiş ve eklenmiş uygulama kaynak koduyla bağlantılı olması amaçlandı. bir ikili biçim kaynak dosyası üretirse, bu dosya hedefte geçici olmayan bir depolama alanına programlanmış olmalı ve GUIX API işlevi gx_binres_theme_install çalışma zamanında ikili kaynakları yüklemek için kullanılmalıdır.
 
-Kullanıcının katıştırılmış uygulama kodu, GUıDX Studio tarafından oluşturulan koda başvurular yapar. Ayrıca, GUıDX Studio tarafından oluşturulan kod, projede belirtilen tüm özel pencere öğesi çizimini, olay işlemesini ve bellek ayırma işlevlerini kullanıcının katıştırılmış uygulama kodunda tanımlanacak şekilde bekler. Aksi takdirde, uygulama oluşturulurken bağlantı hataları mevcut olacaktır.
+Kullanıcının ekli uygulama kodu GUIX Studio tarafından oluşturulan koda başvuru yapar. Ayrıca GUIX Studio tarafından oluşturulan kod, projede belirtilen tüm özel pencere öğesi çizimi, olay işleme ve bellek ayırma işlevlerinin kullanıcının ekli uygulama kodunda tanımlanmalıdır. Yoksa, uygulamanın yapılsa bağlantı hataları olur.
 
 > [!NOTE]
-> Kullanıcının, GUıDX Studio tarafından oluşturulan kodu değiştirmek zorunda olmaması ve bunu yeniden yapabilmesi gerekir. Tüm UI değişiklikleri ilişkili Gux Studio projesinde yapılmalıdır. Bu, projeyi katıştırılmış uygulamayla eşitlenmiş halde tutar.
+> Kullanıcının HIÇBIR zaman GUIX Studio tarafından oluşturulan kodu değiştirmesi ve bunu yapmaya karşı koyması gerekir. Tüm kullanıcı arabirimi değişiklikleri ilişkili GUIX Studio projesinde yapılması gerekir. Bu, projenin eklenmiş uygulamayla eşitlenmiş durumda tutması sağlar.
 
-## <a name="generating-resource-files"></a>Kaynak dosyaları oluşturuluyor
+## <a name="generating-resource-files"></a>Kaynak Dosyaları Oluşturma
 
-GUX Studio tarafından oluşturulan kaynak dosyaları, projenin ***kaynak görünümü*** tanımlanan tüm kaynakları etkili bir şekilde belirleyen tüm guıdx Studio kaynaklarını (renkler, yazı tipleri, pixelmaps ve dizeler) tanımlayan önceden ayarlanmış veri yapıları içerir. Bu kaynak dosyaları, kaynak kodu veya ikili formlarda oluşturulabilir.
+GUIX Studio tarafından oluşturulan kaynak dosyaları, tüm GUIX Studio kaynaklarını (renkler, yazı tipleri, piksel haritaları ve dizeler) tanımlayan önceden ayarlanmış veri yapıları içerir ve bu da projenin Kaynak Görünümü kaynakları etkili bir ***şekilde*** sunar. Bu kaynak dosyaları kaynak kodunda veya ikili formlarda oluşturulabilir.
 
-Varsayılan olarak, bir dosya standart C kaynak kodu dosyasıdır ve diğeri, uygulama kodunun projede tanımlanan Gux kaynaklarına erişmesi için gerekli olan dış başvurular ve sabitler sağlayan bir C üstbilgi dosyasıdır. Dosya adları şu biçimdedir:
+Varsayılan olarak, oluşturulan iki dosya vardır, biri standart bir C kaynak kodu dosyası, diğeri ise uygulama kodunun projede tanımlanan GUIX kaynaklarına erişmesi için gereken dış başvuruları ve sabitleri sağlayan bir C üst bilgi dosyasıdır. Dosya adları şu şekildedir:
 
-**{*Proje-adı*} _Resources. h**
+**{*proje-adı*}_resources.h**
 
-**{*Proje-adı*} _Resources. c**
+**{*proje-adı*}_resources.c**
 
-Örneğin, "***basit***" Gux Studio projesi Için oluşturulan kaynak dosyaları şunlardır:
+Örneğin, " basit " GUIX Studio projesi ***için*** oluşturulan Kaynak dosyaları:
 
-**simple_resources. h**
+**simple_resources.h**
 
-**simple_resources. c**
+**simple_resources.c**
 
-Kaynak dosyalarını oluşturma işlemi, _*_Proje_*_ menü seçeneğinde ***kaynak dosyaları oluştur** _ seçeneği belirlenerek gerçekleştirilir. Kaynak dosyalarının hedefi, _ *_Configure_** menü öğesindeki _*_projeyi Yapılandır/görüntüler_*_ seçeneği aracılığıyla erişilebilen _*_Proje yapılandırma_*_ iletişim kutusunda belirtilir.
+Kaynak dosyaları oluşturma, kaynak menüsü seçeneğinde ***** Kaynak Dosyaları Oluştur _ seçeneği _*_Project_*_ ekleyebilirsiniz. Kaynak dosyalarının hedefi,*_Yapılandırma_* Project _**_ iletişim kutusunda belirtilir ve bu iletişim kutusuna _ Yapılandır * menü _*_öğesinde Project/Görüntüler_*_ seçeneği aracılığıyla erişilebilir.
 
-Pixelmap ve Font kaynakları için, ilişkili kaynak düzenlemesi iletişim kutularındaki her bir pixelmap ve yazı tipi için özel bir çıktı dosya adı belirtebilirsiniz. Bu özellik, tüm kaynakları tek bir ortak çıkış dosyasına koymak yerine, çok büyük kaynakları ayrı dosyalara eklemenizi sağlar. Bir font veya pixelmap kaynağı için geçersiz kılınan bir dosya adı belirtmezseniz, bu kaynaklar ortak kaynak dosyasına yazılır.
+Pixelmap ve Yazı tipi kaynakları için, ilişkili kaynak düzenleme iletişim kutularında her piksel haritası ve yazı tipi için özel bir çıkış dosya adı belirtebilirsiniz. Bu özellik, tüm kaynakları tek bir ortak çıkış dosyasına koymak yerine çok büyük kaynakları ayrı dosyalara koymaya olanak sağlar. Bir yazı tipi veya piksel haritası kaynağı için geçersiz kılınan bir dosya adı belirtmezseniz, bu kaynaklar ortak kaynak dosyasına yazılır.
 
-İkili kaynakları kullanmayı tercih ediyorsanız, ham veya Standart s-kayıt çıkış biçimini belirtebilirsiniz. İkili kaynaklar, uygulama koduyla derlenmez veya bağlanamaz, ancak bunun yerine gx_binres_them_load () API 'sini kullanarak çalışma zamanında yüklenir. Bu API hizmeti, geçici olmayan bellekte depolanan kaynaklarınızı işaret eden kaynak tabloları oluşturur. Daha sonra, gx_display_theme_install () kullanarak bu kaynakları belirli bir görüntüleme ile yükleyebilirsiniz.
+İkili kaynakları kullanmayı tercih ederseniz, ham veya standart s-record çıkış biçimi belirtebilirsiniz. İkili kaynaklar derlanmaz veya uygulama koduyla bağlantılı değildir, ancak bunun yerine gx_binres_them_load() API'si kullanılarak çalışma zamanında yüklenir. Bu API hizmeti geçici olmayan bellekte depolanan kaynaklarınızı işaret alan kaynak tabloları oluşturur. Daha sonra bu kaynakları belirli bir görüntüyle yüklemek için gx_display_theme_install() kullanabilirsiniz;
 
-## <a name="generating-specification-code"></a>Belirtim kodu üretiliyor
+## <a name="generating-specification-code"></a>Belirtim Kodu Oluşturma
 
-GUX Studio tarafından oluşturulan belirtim dosyaları, Gux Studio 'da tasarlanan kullanıcı arabirimini oluşturmak için tüm C kodlarını içerir. Bu kod ayrıca bu proje için oluşturulan kaynak dosyalarına da başvurur. Kullanıcının uygulama kodu, projede tanımlanan UI nesnelerini gerçekten oluşturmak için bu koda çağrı yapar. Ayrıca, kullanıcının uygulama kodu, projede belirtilen tüm özel pencere öğesi çizimini, olay işlemesini ve bellek ayırma işlevlerini içerir. Varsayılan olarak, bir dosya standart C kaynak kodu dosyasıdır ve diğeri, uygulama kodunun Gux Studio belirtimlerine erişmesi için gerekli olan dış başvurular ve sabitler sağlayan bir C üstbilgi dosyasıdır. Dosya adları şu biçimdedir:
+GUIX Studio tarafından oluşturulan Belirtim dosyaları, GUIX Studio'da tasarlanmış kullanıcı arabirimini oluşturmak için gereken tüm C kodunu içerir. Bu kod ayrıca bu proje için oluşturulan Kaynak dosyalarına da başvurur. Kullanıcının uygulama kodu, projede tanımlanan UI nesnelerini gerçekten oluşturmak için bu koda çağrılar yapacaktır. Ayrıca, kullanıcının uygulama kodu projede belirtilen tüm özel pencere öğesi çizimi, olay işleme ve bellek ayırma işlevlerini içerir. Varsayılan olarak, oluşturulan iki dosya vardır; biri standart bir C kaynak kodu dosyası, diğeri ise uygulama kodunun GUIX Studio Belirtimlerine erişmesi için gereken dış başvuruları ve sabitleri sağlayan bir C üst bilgi dosyasıdır. Dosya adları şu şekildedir:
 
-**{*Proje-adı*} _specifications. h**
+**{*proje-adı*}_specifications.h**
 
-**{*Proje-adı*} _specifications. c**
+**{*proje-adı*}_specifications.c**
 
-Örneğin, "***Simple***" Gux Studio projesi Için oluşturulan belirtim dosyaları şunlardır:
+Örneğin, " basit " GUIX Studio projesi ***için*** oluşturulan Belirtim dosyaları:
 
-**simple_specifications. h**
+**simple_specifications.h**
 
-**simple_specifications. c**
+**simple_specifications.c**
 
-Belirtim dosyalarını oluşturma işlemi, _*_Proje_*_ menü seçeneğinde ***Belirtim dosyaları oluştur** _ seçeneği belirlenerek gerçekleştirilir. Belirtim dosyalarının hedefi, _ *_Configure_** menü öğesindeki _*_projeyi Yapılandır/görüntüler_*_ seçeneği aracılığıyla erişilebilen _*_Proje yapılandırma_*_ iletişim kutusunda belirtilir.
+Belirtim dosyalarını oluşturmak için, Project menü seçeneğinde ***** _*_Belirtim Dosyaları Oluştur_*_ _ seçeneği seçerek ekleyebilirsiniz. Belirtim dosyalarının hedefi,*_Project_* _**_ Yapılandır iletişim kutusunda belirtilir ve bu iletişim kutusuna _ Yapılandır * menü _*_öğesinde Project/Görüntüler_*_ seçeneği aracılığıyla erişilebilir.
 
-## <a name="integrating-with-user-code"></a>Kullanıcı koduyla tümleştirme
+## <a name="integrating-with-user-code"></a>Kullanıcı Kodu ile Tümleştirme
 
-GUX Studio tarafından oluşturulan kaynak ve belirtim dosyalarını tümleştirme özelliği basittir, yalnızca aşağıdaki adımları izlemeniz gerekir:
+GUIX Studio tarafından oluşturulan Kaynak ve Belirtim dosyalarını tümleştirerek şu adımları takip etmek oldukça kolaydır:
 
-1. Kaynak ve belirtim dosyalarını, yol ayarları aracılığıyla gömülü derleme ortamına erişilebilir yapın veya kopyalayın.
-2. Tüm kaynak ve belirtim dosyalarını katıştırılmış IDE projesine veya derleme görevleri dosyasına ekleyin
-3. Uygulama Embedded kodunun, kaynak ve belirtim dosyalarında yer alan Kullanıcı arabirimini başlatmak ve oluşturmak için gerekli işlevleri çağırdığından emin olun
-4. Uygulama Embedded kodunun tüm gerekli özel pencere öğesi çizimini, olay işlemesini ve bellek ayırma işlevlerini içerdiğinden emin olun
-5. Uygulamayı oluşturma (Derle ve bağla)
+1. Kaynak ve Belirtim dosyalarını kopyalayıp ekli derleme ortamına giden yol ayarları aracılığıyla erişilebilir hale
+2. Ekli IDE projesine veya makefile'a tüm Kaynak ve Belirtim dosyalarını ekleme
+3. Uygulama ekli kodunun Kaynak ve Belirtim dosyalarında bulunan kullanıcı arabirimini başlatmak ve oluşturmak için gerekli işlevleri çağırması
+4. Uygulama ekli kodunun tüm gerekli özel pencere öğesi çizimini, olay işlemeyi ve bellek ayırma işlevlerini içerdiğini kontrol edin
+5. Uygulamayı derleme (derleme ve bağlama)
 6. Uygulamayı yürütün!

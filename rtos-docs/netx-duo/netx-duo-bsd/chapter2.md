@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 582661bc66c51341fc098de9ff7b6fa2a7d746de
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 560621e528c8ce98013ce505ea1511f466317f4a087aa44cc0e70cb4d4b8ed1e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826153"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788516"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-bsd"></a>Bölüm 2-Azure RTOS NetX Duo BSD yüklemesi ve kullanımı
 
@@ -281,33 +281,33 @@ Option_level için iki farklı ayar vardır.
 
 - **IP_MULTICAST_TTL**: Bu, UDP yuvaları için yaşam süresini ayarlar. Yuva oluşturulduğunda varsayılan değer NX_IP_TIME_TO_LIVE (0x80). Bu değer, bu yuva seçeneği ile *setsockopt* çağırarak geçersiz kılınabilir.
 
-- **IP_RAW_IPV6_HDRINCL**: Bu seçenek ayarlandıysa, çağıran uygulama, BSD tarafından oluşturulan ham IPv6 yuvaları üzerinde aktarılan verilere bir IPv6 üst bilgisi ve isteğe bağlı olarak uygulama üstbilgileri eklememelidir. Bu seçeneği kullanmak için, IP görevinde Ham yuva işlemenin etkinleştirilmesi gerekir.
+- **IP_RAW_IPV6_HDRINCL:** Bu seçenek ayarlanırsa, çağıran uygulamanın BSD tarafından oluşturulan ham IPv6 yuvalarına iletilen verilere IPv6 üst bilgisi ve isteğe bağlı olarak uygulama üst bilgileri eklemesi gerekir. Bu seçeneği kullanmak için, IP görevi üzerinde ham yuva işlemenin etkinleştirilmesi gerekir.
 
-- **IP_ADD_MEMBERSHIP**: ayarlanırsa, belirtilen IGMP grubuna katılması için bu seçenekler BSD yuvasını (yalnızca UDP yuvaları için geçerlidir) sağlar.
+- **IP_ADD_MEMBERSHIP:** Ayarlanırsa, bu seçenekler BSD yuvasının (yalnızca UDP yuvaları için geçerlidir) belirtilen IGMP grubunu birleştirmesini sağlar.
 
-- **IP_DROP_MEMBERSHIP**: ayarlanırsa, bu seçenekler belirtilen IGMP grubunu BıRAKMAK için BSD yuvasını (yalnızca UDP yuvaları için geçerlidir) sağlar.
+- **IP_DROP_MEMBERSHIP:** Ayarlanırsa, bu seçenekler BSD yuvasının (yalnızca UDP yuvaları için geçerlidir) belirtilen IGMP grubundan ayrılmasını sağlar.
 
-- **IP_HDRINCL**: Bu seçenek ayarlandıysa, ÇAĞıRAN uygulamanın IP üst bilgisini ve isteğe bağlı olarak uygulama üst bilgilerini BSD içinde oluşturulan ham IPv4 yuvaları üzerinde aktarılan verilere ekleme gerekir. Bu seçeneği kullanmak için, IP görevinde Ham yuva işlemenin etkinleştirilmesi gerekir.
+- **IP_HDRINCL:** Bu seçenek ayarlanırsa, çağıran uygulamanın BSD'de oluşturulan ham IPv4 yuvalarında iletilen verilere IP üst bilgisi ve isteğe bağlı olarak uygulama üst bilgileri eklemesi gerekir. Bu seçeneği kullanmak için, IP görevi üzerinde ham yuva işlemenin etkinleştirilmesi gerekir.
 
-- **IP_RAW_RX_NO_HEADER**: silinirse, ıPV6 üstbilgisi BSD içinde oluşturulan ham IPv6 yuvaları için alınan verilere dahildir. IPv6 üstbilgileri, BSD RAW IPv6 Yuvaları ' nda varsayılan olarak kaldırılır ve paket uzunluğu IPv6 üst bilgisini içermez.
+- **IP_RAW_RX_NO_HEADER:** Temizlenmemişse, IPv6 üst bilgisi BSD'de oluşturulan ham IPv6 yuvaları için alınan verilere dahil edilir. IPv6 üst bilgileri BSD ham IPv6 yuvalarında varsayılan olarak kaldırılır ve paket uzunluğu IPv6 üst bilgilerini içermez.
 
-Ayarlanırsa, IPv4 üstbilgisi, IPv4 türündeki BSD RAW yuvalarda alınan verilerden kaldırılır. IPv4 üstbilgileri, BSD ham IPv4 Yuvaları ' nda varsayılan olarak dahil edilir ve paket uzunluğu IPv4 üst bilgisini içerir.
+Ayarlanırsa, IPv4 türüne ait BSD ham yuvalarda alınan verilerden IPv4 üst bilgisi kaldırılır. IPv4 üst bilgileri varsayılan olarak BSD ham IPv4 yuvalarına dahil edilir ve paket uzunluğu IPv4 üst bilgilerini içerir.
 
-Bu seçeneğin IPv4 veya IPv6 iletim verisi üzerinde hiçbir etkisi yoktur.
+Bu seçeneğin IPv4 veya IPv6 iletim verileri üzerinde hiçbir etkisi yoktur.
 
-## <a name="small-ipv4-example"></a>Küçük IPv4 örneği
+## <a name="small-ipv4-example"></a>Küçük IPv4 Örneği
 
-IPv4 ağları için NetX Duo BSD hizmetlerinin nasıl kullanılacağına ilişkin bir örnek aşağıda açıklanmıştır. Bu örnekte, *nxd_bsd. h* içerme dosyası, 8. satırda getirilir. Ardından, IP örneği *bsd_ip* ve paket havuzu *bsd_pool* , 20 ve 21. satırda genel değişkenler olarak oluşturulur. Bu tanıtımda *, _nx_ram_network_driver* bir RAM (sanal) ağ sürücüsü kullanılmıştır. İstemci ve sunucu, bu örnekteki tek IP örneğinde aynı IP adresini paylaşır.
+IPv4 ağları için NetX Duo BSD hizmetlerini kullanma örneği aşağıda açıklanmıştır. Bu örnekte, *nxd_bsd.h* dahil dosyası 8. satıra getiri. Ardından, IP örneği *bsd_ip* ve *paket havuzu bsd_pool* 20. ve 21. satırda genel değişkenler olarak oluşturulur. Bu tanıtımda ram (sanal) ağ sürücüsü ( veya *) _nx_ram_network_driver.* İstemci ve sunucu, bu örnekteki tek BIR IP örneğinde aynı IP adresini paylaşır.
 
-İstemci ve sunucu iş parçacıkları 62 ve 68 satırlarında oluşturulur. Paketleri iletmek için BSD paket havuzu, 78 satırı üzerinde oluşturulur ve 87. satırdaki IP örneği oluşturulurken kullanılır. IP iş parçacığı görevinin *nx_ip_create* çağrısında öncelik 1 verildiğini unutmayın. Bu iş parçacığı, programda en iyi NetX performansı için tanımlanan en yüksek öncelik görevi olmalıdır.
+İstemci ve sunucu iş parçacıkları 62 ve 68. satırlarda oluşturulur. Paketleri ileten BSD paket havuzu 78. satırda oluşturulur ve 87. satırda IP örneği oluşturmada kullanılır. IP iş parçacığı görevine çağrıda 1 öncelik *nx_ip_create* unutmayın. Bu iş parçacığı, en iyi NetX performansı için programda tanımlanan en yüksek öncelikli görev olmalıdır.
 
-IP örneği, sırasıyla 88 ve 110 satırlarında ARP ve TCP hizmetleri için etkinleştirilir. BSD Hizmetleri 'nin kullanılabilmesi için son gereksinim, BSD için gereken tüm veri yapılarını ve NetX ve ThreadX kaynaklarını ayarlamak üzere 120 satırındaki *bsd_initialize* çağırmalıdır.
+IP örneği sırasıyla 88 ve 110. satırlarda ARP ve TCP hizmetleri için etkinleştirilir. BSD hizmetlerinin kullanılamadan önceki son *gereksinimi, BSD* için gereken tüm veri yapılarını ve NetX ve ThreadX kaynaklarını ayarlamak için 120. satırda bsd_initialize çağrısı yapmaktır.
 
-Sunucu iş parçacığı girişi işlevi daha sonra tanımlanır. BSD TCP yuvası 149. satırda oluşturulur. Sunucu IP adresi ve bağlantı noktası 160-163 satırları üzerinde ayarlanır. Ana bilgisayarın IP adresine ve bağlantı noktasına uygulanan *hton* ve ağ bayt *sıralaması makrolarının kullanımını aklınızda yazın.* Bu, birden çok baytlık verilerin ağ bayt düzeninde BSD hizmetlerine gönderildiği BSD yuvası belirtimiyle uyumludur.
+Sunucu iş parçacığı giriş işlevi daha sonra tanımlanır. BSD TCP yuvası 149. satırda oluşturulur. Sunucu IP adresi ve bağlantı noktası 160-163. satırlarda ayarlanır. IP adresine ve bağlantı noktasına uygulanan *hton ve hton'ları* ağ bayt sırası makroları için konak kullanımına dikkat olun.  Bu, BSD yuva belirtimine uygun olarak, ağ baytı sırasıyla BSD hizmetlerine birden çok bayt verisi göndermektedir.
 
-Ardından, ana sunucu yuvası 166. satırdaki *BIND* hizmeti kullanılarak bağlantı noktasına bağlıdır. Bu, 180. satırdaki *dinleme* HIZMETINI kullanan TCP bağlantı istekleri için dinleme yuvadır. Buradan sunucu iş parçacığı işlevinden *thread_server_entry*, satır 202 ' de *Select* çağrısını kullanarak alma olaylarını denetlemek için döngüler. Alma olayı, okuma için hazırlanma listesi karşılaştırılmasıyla belirlenen bir bağlantı isteği ise, 213 satırı *kabul eder* . Bağlantı isteğini işlemek ve 223 satırındaki bir Istemciye bağlı TCP sunucusu yuvaları ana listesine eklemek için bir alt sunucu yuvası atanır. Yeni bağlantı isteği yoksa, sunucu iş parçacığı daha sonra 236 satırından başlayan for döngüsünde alma olayları için şu anda bağlı olan tüm yuvaları denetler. Alma olayı beklenirken, veri alınana (bağlantı diğer tarafa kapalı) *ve yuva* 277 satırındaki *soc_close* hizmeti kullanılarak kapatıldıktan kadar bu yuvaya *gönderme* ve alma işlemi çağrılır.
+Ardından ana sunucu yuvası, 166. satırda *bağlama* hizmeti kullanılarak bağlantı noktasına bağlandı. Bu, 180. satırda dinleme hizmetini kullanan TCP *bağlantı* istekleri için dinleme yuvasıdır. Buradan sunucu iş parçacığı işlevi *thread_server_entry,* 202. satırda *seçme* çağrısını kullanarak alma olaylarını denetlemeye çalışır. Alma olayı, okuma için hazır listesi karşılaştırarak belirlenen bir bağlantı isteği ise 213. *satırda accept* çağrısında lanır. Bağlantı isteğini işlemek için bir alt sunucu yuvası atanır ve 223. satırda bir İstemciye bağlı TCP sunucusu yuvalarının ana listesine eklenir. Yeni bağlantı isteği yoksa, sunucu iş parçacığı 236. satırdan başlayarak for döngüsünde şu anda bağlı olan tüm yuvaları for döngüsünde alma olayları olup olmadığını denetler. Bekleyen bir alma olayı algılandığında, hiçbir  veri alınıncaya (diğer tarafta bağlantı kapatılana) ve yuva 277. satırda soc_close hizmeti kullanılarak kapatılana kadar bu yuvada *gönderme* *ve* geri alma çağrısında lanır.
 
-Sunucu iş parçacığı kurulduktan sonra, *Thread_client_entry* istemci iş parçacığı girişi işlevi, 326 numaralı satırda bir yuva oluşturur ve 337. satırdaki *Connect* çağrısını kullanarak TCP sunucu yuvasına bağlanır. Ardından, sırasıyla *gönderme* ve *alma hizmetlerini kullanarak paket gönderme ve alma* döngüleri olur. Daha fazla veri alınmadığında, *soc_close* hizmeti kullanılarak 398 satırındaki yuvayı kapatır. Bağlantı kesildikten sonra, istemci iş parçacığı girişi işlevi yeni bir TCP yuvası oluşturur ve while döngüsü 321. satırda başladığında başka bir bağlantı isteği yapar.
+Sunucu iş parçacığı ayardikten sonra, *thread_client_entry,* 326. satırda bir yuva oluşturur ve 337. satırda bağlantı çağrısını kullanarak TCP sunucu yuvasıyla bağlanır.  Ardından, sırasıyla gönderme ve geri alma hizmetlerini kullanarak paketleri *göndermek* *ve almak için döngüye* alır. Daha fazla veri alınmasa, 398. satırda soc_close *kapatır.* Bağlantı kesildikten sonra, istemci iş parçacığı giriş işlevi yeni bir TCP yuvası oluşturur ve 321. satırda başlayan while döngüsünde başka bir bağlantı isteği yapar.
 
 ```c
 /* This is a small demo of BSD Wrapper for the high-performance NetX Duo
@@ -747,23 +747,23 @@ struct     sockaddr_in localAddr; /
 }
 ```
 
-## <a name="small-ipv6-example-system"></a>Küçük IPv6 örnek sistemi
+## <a name="small-ipv6-example-system"></a>Küçük IPv6 Örnek Sistemi
 
-IPv6 ağları için NetX Duo BSD hizmetlerinin nasıl kullanılacağına ilişkin bir örnek aşağıdaki programda açıklanmıştır. Bu örnek, daha önce birkaç önemli farklılık ile açıklanan IPv4 tanıtım programına çok benzer.
+IPv6 ağları için NetX Duo BSD hizmetlerini kullanma örneği aşağıdaki programda açıklanmıştır. Bu örnek, daha önce birkaç önemli farkla açıklanan IPv4 tanıtım programına çok benzer.
 
-İstemci ve sunucu iş parçacıkları, BSD paket havuzu, IP örneği ve BSD başlatması, IPv4 BSD yuvaları için yaptığı gibi olur.
+İstemci ve sunucu iş parçacıkları, BSD paket havuzu, IP örneği ve BSD başlatması, IPv4 BSD yuvaları için olduğu gibi gerçekleşir.
 
-Sunucu iş parçacığı girişi işlevinde *thread_server_entry*, *sockaddr_in6* ve 145-148 numaralı satırlarda *NXD_ADDRESS* veri türlerini kullanarak birkaç IPv6 değişkeni tanımlar. NXD_ADDRESS veri türü aslında hem IPv4 hem de IPv6 adres türlerini saklayabilir.
+sunucu iş parçacığı giriş *işlevinde, thread_server_entry,* 145-148 *satırlarında sockaddr_in6* ve *NXD_ADDRESS* veri türlerini kullanarak birkaç IPv6 değişkeni tanımlar. Veri NXD_ADDRESS aslında hem IPv4 hem de IPv6 adres türlerini depolar.
 
-Daha sonra, sunucu iş parçacığı IP örneğindeki IPv6 ve ICMPv6 'Yı 161 ve 169 numaralı satırda sırasıyla *nxd_ipv6_enable* ve *nxd_icmpv6_enable* hizmetini kullanarak sunar. Sonra, bağlantı yerel ve genel IP adresleri IP örneğiyle kaydedilir. Bu, 180 ve 195 satırlarında *nxd_ipv6_address_set* hizmeti kullanılarak yapılır. Daha sonra, yinelenen adres algılama protokolünü tamamlaması için IP iş parçacığı görevinin yeterince uzun sürmesine izin verebilir ve bu adresleri 201 numaralı satırdaki *tx_thread_sleep* çağrısında geçerli adresler olarak kaydeder.
+Ardından, sunucu iş parçacığı sırasıyla 161 ve 169. satırda *nxd_ipv6_enable* ve *nxd_icmpv6_enable* ip örneğinde IPv6 ve ICMPv6'yı sağlar. Ardından, bağlantı yerel ve genel IP adresleri IP örneğine kaydedilir. Bu, 180 ve 195. satırlarda nxd_ipv6_address_set hizmeti kullanılarak yapılır.  Ardından IP iş parçacığı görevinin Yinelenen Adres Algılama protokolünü tamamlaması ve bu adresleri 201. satırda tx_thread_sleep adresleri *olarak* kaydetmesi için yeterince uzun süre uykudadır.
 
-Sonra TCP sunucusu yuvası, 204 satırındaki AF_INET6 yuva türü giriş bağımsız değişkeniyle oluşturulur. Yuva IPv6 adresi ve bağlantı noktası, 216-221 satırlarında, verileri de BSD yuva Hizmetleri için ağ bayt sırasına koymak üzere *htonl* ve *hton* makroları kullanımını belirterek ayarlar. Buradan, sunucu iş parçacığı girişi işlevi, IPv4 örneği ile neredeyse aynıdır.
+Ardından TCP sunucu yuvası, 204. satırda AF_INET6 giriş bağımsız değişkeniyle oluşturulur. Yuva IPv6 adresi ve bağlantı noktası, 216-221. satırlarda ayarlanır ve verileri BSD yuva hizmetleri için ağ byte sırasına koymak için *htonl* ve *htons* makrolarının kullanımına yeniden not ediliyor. Bundan sonra, sunucu iş parçacığı giriş işlevi IPv4 örneğine neredeyse aynıdır.
 
-İstemci iş parçacığı girişi işlevi *thread_client_entry*, bir sonraki adımda tanımlanmıştır. Bu örnekteki TCP istemcisi TCP sunucusuyla aynı IP örneğini ve IPv6 adresini paylaştığından, IP örneğinde IPv6 veya ICMPv6 hizmetlerini etkinleştirmek zorunda kalmaz. Ayrıca, IPv6 adresi zaten IP örneğiyle birlikte kaydedilir. Bunun yerine, istemci iş parçacığı girişi işlevi yalnızca sunucunun ayarlaması için 368 satırını bekler. Sunucu adresi ve bağlantı noktası ayarlanır, ana bilgisayar 387-392 satırlarında ağ baytı sıralaması makrolarıyla birlikte kullanılır ve ardından Istemci, 412. satırdaki TCP sunucusuyla bağlantı kurabilirsiniz. 378-383. satırlardaki yerel IP adresi veri türlerinin yalnızca 425 ve 434 sırasıyla *GetSockName* ve *GetPeerName* hizmetlerini göstermek için kullanıldığını unutmayın. Veriler ağdan geldiği için, 378-383 satırlarında kullanılan bayt sırası makrolarını barındırmak için ağ.
+İstemci iş parçacığı giriş işlevi *, thread_client_entry* tanımlanır. Bu örnekteki TCP istemcisi TCP sunucusuyla aynı IP örneğini ve IPv6 adresini paylaştığı için IP örneğinde IPv6 veya ICMPv6 hizmetlerini yeniden etkinleştirmemiz gerek olmadığını unutmayın. Ayrıca, IPv6 adresi de IP örneğine zaten kaydedilmiştir. Bunun yerine, istemci iş parçacığı giriş işlevi sunucunun ayarlaması için 368. satırda bekler. Sunucu adresi ve bağlantı noktası, 387-392. satırlarda ağ baytı sırası makrolarını ağa bağlamak için konak kullanılarak ayarlanır ve ardından İstemci, 412. satırda TCP sunucusuyla bağlantı kurabilirsiniz. Satır 378-383'te yerel IP adresi veri türlerinin yalnızca sırasıyla 425 ve 434. satırlarda *getsockname* ve *getpeername* hizmetlerini göstermek için kullanılacı olduğunu unutmayın. Veriler ağdan geliyor olduğundan, 378-383. satırlarda kullanılan byte sipariş makrolarını barındıran ağ.
 
-İstemci iş parçacığı girişi işlevi, bir TCP yuvası oluşturduğu bir döngü girer, bir TCP bağlantısı yapar ve IPv4 örneği ile aynı şekilde daha fazla veri alınana kadar, TCP sunucusuyla veri gönderir ve alır. Ardından, 483. satırdaki yuvayı kapatır, kısa bir süre duraklayıp başka bir TCP yuvası oluşturur ve bir TCP sunucu bağlantısı ister.
+Daha sonra istemci iş parçacığı giriş işlevi, BIR TCP yuvası oluşturduğu bir döngü girer, TCP bağlantısı yapar ve IPv4 örneğinde olduğu gibi neredeyse aynı veri alınıncaya kadar TCP sunucusuyla veri gönderir ve alır. Ardından 483. satırda yuvayı kapatır, kısa süre duraklatılır ve başka bir TCP yuvası oluşturur ve TCP sunucusu bağlantısı ister.
 
-IPv4 örneğinde önemli bir *farklılık, AF_INET6* giriş bağımsız değişkenini kullanarak bir IPv6 yuvası belirtmektir. Diğer önemli fark, TCP Istemci *bağlantı* çağrısının bir *sockaddr_in6* veri türü ve bir length bağımsız değişkenini *sockaddr_in6* veri türü boyutuna ayarlamış olması gerektiğidir.
+IPv4 örneğinde önemli bir  fark, yuva çağrılarına giriş bağımsız değişkeni kullanılarak bir IPv6 AF_INET6 belirttirmesidir. Bir diğer önemli fark da TCP *İstemcisi* bağlantı çağrısının veri *sockaddr_in6* ve uzunluk bağımsız değişkeninin veri türünün *boyutuna sockaddr_in6* alır.
 
 ```c
 /* This is a small demo of BSD Wrapper for the high-performance NetX Duo

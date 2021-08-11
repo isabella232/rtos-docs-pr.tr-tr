@@ -35,7 +35,7 @@
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
-    - name: Microsoft Azure RTOS
+    - name: Microsoft Azure RTO 'LAR
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml

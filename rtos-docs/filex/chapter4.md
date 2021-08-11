@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c24259fb9b6b212dda99422e3ee1ad0e2fd970ce
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: 87b278c9b8642976fdab098636c518a3960f73cb906b4f1b28136a9a597a7a78
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754888"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783841"
 ---
 # <a name="chapter-4--description-of-azure-rtos-filex-services"></a>Bölüm 4- FileX Azure RTOS açıklaması
 
@@ -30,7 +30,7 @@ UINT fx_directory_attributes_read (
     UINT *attributes_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dizinin özniteliklerini belirtilen medyadan okur.
 
@@ -111,9 +111,9 @@ UINT fx_directory_attributes_set(
     UINT *attributes);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dizinin özniteliklerini çağıranın belirttiğiniz özniteliklere ayarlar.
+Bu hizmet, dizinin özniteliklerini çağıran tarafından belirtilen özniteliklere ayarlar.
 
 > [!WARNING]
 > *Bu uygulamanın yalnızca bu hizmetle dizin özniteliklerinin bir alt kümesini değiştirmesine izin verilir. Ek öznitelikler ayarlama girişimi hataya neden olur.*
@@ -194,33 +194,33 @@ UINT fx_directory_create(
     FX_MEDIA *media_ptr,
     CHAR *directory_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, geçerli varsayılan dizinde veya dizin adında sağlanan yolda bir alt dizin oluşturur. Kök dizinden farklı olarak, alt dizinlerin tutabilecekleri dosya sayısı için bir sınır yoktur. Kök dizin yalnızca önyükleme kaydı tarafından belirlenen girdi sayısını tutabilirler.
+Bu hizmet, geçerli varsayılan dizinde veya dizin adıyla sağlanan yolda bir alt dizin oluşturur. Kök dizinden farklı olarak, alt dizinlerin tutanın dosya sayısıyla ilgili bir sınırı yoktur. Kök dizin yalnızca önyükleme kaydı tarafından belirlenen girdi sayısını tutabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
-- **directory_name**: Oluşturulacak dizinin adına yönelik işaretçi (Dizin yolu isteğe bağlıdır).
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **directory_name:** Oluşturulacak dizinin adının işaretçisi (dizin yolu isteğe bağlıdır).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dizin oluşturma.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil
-- **FX_NOT_FOUND** (0x04) belirtilen dizin medyada bulunamadı
-- **FX_NOT_DIRECTORY** (0x0E) girişi bir dizin değil
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası
-- **FX_FILE _CORRUPT** (0x08) dosyası bozuk
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_MEDIA_INVALID** (0x02) geçersiz medya
-- **FX_NO_MORE_ENTRIES** (0x0F) bu dizinde daha fazla girdi yok
-- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi
-- **FX_INVALID_ATTR** (0x19) geçersiz öznitelikler seçildi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dizin oluşturma.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil
+- **FX_NOT_FOUND** (0x04) Belirtilen dizin medyada bulunamadı
+- **FX_NOT_DIRECTORY** (0x0E) Girdisi bir dizin değil
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası
+- **FX_FILE _CORRUPT** (0x08) Dosyası bozuk
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya
+- **FX_NO_MORE_ENTRIES** (0x0F) Bu dizinde başka giriş yok
+- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi
+- **FX_INVALID_ATTR** (0x19) Geçersiz öznitelikler seçildi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -271,26 +271,26 @@ UINT fx_directory_default_get(
     CHAR **return_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ***fx_directory_default_set*** tarafından en son ayarlanan yola yönelik işaretçiyi döndürür. Varsayılan dizin ayarlanmamışsa veya geçerli varsayılan dizin kök dizin ise FX_NULL değeri döndürülür.
+Bu hizmet, son ayar tarafından ayarlanmış yolun işaretçisini ***fx_directory_default_set.*** Varsayılan dizin ayarlanmazsa veya geçerli varsayılan dizin kök dizinse, varsayılan dizin FX_NULL döndürülür.
 
 > [!IMPORTANT]
-> *İç yol dizesinin varsayılan boyutu 256 karakterdir; Bu, **fx_api. h** içinde **FX_MAXIMUM_PATH** değiştirilerek ve tüm FileX kitaplığını yeniden inşa ederek değiştirilebilir. Uygulama için karakter dizesi yolu tutulur ve FileX tarafından dahili olarak kullanılmaz.*
+> *İç yol dizesinin varsayılan boyutu 256 karakterdir; fx_api.h **dosyasındaki** FX_MAXIMUM_PATH **değiştirerek** ve FileX kitaplığının tamamını yeniden oluşturarak değiştirilebilir. Karakter dizesi yolu uygulama için korunur ve FileX tarafından dahili olarak kullanılmaz.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
-- **return_path_name**: son varsayılan dizin dizesinin hedefi işaretçisi. Varsayılan dizinin geçerli ayarı kök ise FX_NULL değeri döndürülür. Medya açıldığında, kök varsayılandır.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **return_path_name:** Son varsayılan dizin dizesi için hedefin işaretçisi. Varsayılan dizinin geçerli FX_NULL kök ise varsayılan değer değeri döndürülür. Medya açıldığında kök varsayılan değerdir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı varsayılan dizin Al
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya hedef işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı varsayılan dizin get
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya hedef işaretçi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -342,7 +342,7 @@ UINT fx_directory_default_set(
     CHAR *new_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyanın varsayılan dizinini ayarlar. FX_NULL değeri sağlanırsa, varsayılan dizin medyanın kök dizinine ayarlanır. Açıkça bir yol belirtmeyen tüm sonraki dosya işlemleri bu dizine varsayılan olarak uygulanır.
 
@@ -414,7 +414,7 @@ UINT fx_directory_delete(
     CHAR *directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen dizini siler. Silmek için dizinin boş olması gerektiğini unutmayın.
 
@@ -490,34 +490,34 @@ UINT fx_directory_first_entry_find(
     CHAR *return_entry_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, varsayılan dizindeki ilk giriş adını alır ve belirtilen hedefe kopyalar.
 
 > [!WARNING]
-> *Belirtilen hedef, FX_MAX_LONG_NAME_LEN tarafından tanımlanan en büyük boyutlu FileX adını tutabilecek kadar büyük olmalıdır **.***
+> *Belirtilen hedef, dosya adı tarafından tanımlandığı gibi en büyük boyutlu FileX adını tutacak kadar **büyük FX_MAX_LONG_NAME_LEN.***
 
 > [!WARNING]
-> *Yerel olmayan bir yol kullanıyorsanız, bir dizin çapraz geçişi gerçekleşirken diğer uygulama iş parçacıklarının bu dizini değiştirmesini engellemek (bir ThreadX semaforu, mutex veya öncelik düzeyi değişikliği ile birlikte) için diğer uygulama iş parçacıklarından kaçınmak önemlidir. Aksi takdirde, geçersiz sonuçlar elde edilebilir.*
+> *Yerel olmayan bir yol kullanıyorsanız, dizin geçişi sırasında diğer uygulama iş parçacıklarının bu dizini değiştirmesini önlemek (ThreadX semaforu, mutex veya öncelik düzeyi değişikliği ile) önemlidir. Aksi takdirde geçersiz sonuçlar elde edilir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
-- **return_entry_name**: varsayılan dizindeki ilk giriş adı için hedef işaretçisi.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **return_entry_name:** Varsayılan dizinde ilk giriş adı için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı ilk dizin girişi bulma
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil
-- **FX_NO_MORE_ENTRIES** (0x0F) bu dizinde daha fazla girdi yok
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya hedef işaretçisi
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil
+- **FX_SUCCESS** (0x00) Başarılı ilk dizin girişi bulma
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil
+- **FX_NO_MORE_ENTRIES** (0x0F) Bu dizinde başka giriş yok
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya hedef işaretçi
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -557,7 +557,7 @@ status = fx_directory_first_entry_find(&my_media, entry);
 
 ## <a name="fx_directory_first_full_entry_find"></a>fx_directory_first_full_entry_find
 
-Tüm bilgileri içeren ilk dizin girişini alır
+Tam bilgilerle ilk dizin girişini alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -572,39 +572,39 @@ UINT fx_directory_first_full_entry_find(
 ```
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
-- **directory_name**: bir dizin girişi adı için hedefin işaretçisi. En az FX_MAX_LONG_NAME_LEN kadar büyük olmalıdır.
-- **öznitelikler**: null olmayan, girişin özniteliklerinin yerleştirileceği hedefe yönelik işaretçi. Öznitelikler, aşağıdaki olası ayarlarla bir bit eşleme biçiminde döndürülür:
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **directory_name:** Dizin girişinin adı için hedefin işaretçisi. En az bu kadar büyük FX_MAX_LONG_NAME_LEN.
+- **attributes:** Null olmayan bir değerse, girişin yerleştirilecek öznitelikleri için hedefin işaretçisi. Öznitelikler, aşağıdaki olası ayarlarla bit eşlemesi biçiminde döndürülür:
   - **FX_READ_ONLY** (0x01)
   - **FX_HIDDEN** (0x02)
   - **FX_SYSTEM** (0x04)
   - **FX_VOLUME** (0x08)
   - **FX_DIRECTORY** (0x10)
   - **FX_ARCHIVE** (0x20)
-- **Boyut**: null olmayan, girdinin bayt cinsinden boyutu için hedefin işaretçisi.
-- **yıl**: null olmayan, girişin değiştirilme yılından hedefe yönelik işaretçi.
-- **ay**: null olmayan, girişin değiştirilme ayı için hedef işaretçisi.
-- **gün**: null olmayan, girişin değiştirilme günü için hedef işaretçisi.
-- **saat**: null olmayan, girişin değiştirilme saati için hedef işaretçisi.
-- **dakika**: null olmayan, girişin değiştirilme dakikası için hedef işaretçisi.
-- **ikinci**: null olmayan, girişin değiştirilme saniyesi için hedef işaretçisi.
+- **size:** Null olmayan bir değerse, girişin boyutu için hedefin bayt cinsinden işaretçisi.
+- **year:** Null olmayan bir değerse, girişin değişiklik yılı için hedefin işaretçisi.
+- **month:** Null olmayan bir değerse, girişin değişiklik ayı için hedefin işaretçisi.
+- **day:** Null olmayan bir değerse, girişin değişiklik günü için hedefin işaretçisi.
+- **hour:** Null olmayan bir değerse, girişin değişiklik saati için hedefin işaretçisi.
+- **minute:** Null olmayan bir değerse, girişin değişiklik dakikası için hedefin işaretçisi.
+- **second:** Null olmayan bir değerse, girişin ikinci değişikliği için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı ilk dizin girişi bulma
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil
-- **FX_NO_MORE_ENTRIES** (0x0F) bu dizinde daha fazla girdi yok
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı
-- **FX_FILE _CORRUPT** (0x08) dosyası bozuk
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_MEDIA_INVALID** (0x02) geçersiz medya
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya hedef işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı ilk dizin girişi bulma
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil
+- **FX_NO_MORE_ENTRIES** (0x0F) Bu dizinde başka giriş yok
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalı
+- **FX_FILE _CORRUPT** (0x08) Dosyası bozuk
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya hedef işaretçi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -654,7 +654,7 @@ status = fx_directory_first_full_entry_find(&my_media, entry_name,
 
 ## <a name="fx_directory_information_get"></a>fx_directory_information_get:
 
-Dizin girişi bilgilerini alır
+Dizin giriş bilgilerini alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -669,32 +669,32 @@ UINT fx_directory_first_full_entry_find(
 ```
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **directory_name:** Dizin girişinin adının işaretçisi.
-- **attributes:** Öznitelikler için hedefin işaretçisi.
-- **size:** Boyut için hedefin işaretçisi.
-- **year:** Yılın hedefine işaretçi.
-- **month:** Ay için hedefin işaretçisi.
-- **day:** Günün hedefine işaretçi.
-- **hour:** Bir saat için hedefin işaretçisi.
-- **minute:** Dakika için hedefin işaretçisi.
-- **second:** saniye için hedefin işaretçisi.
+- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
+- **directory_name**: Dizin girişinin adı işaretçisi.
+- **öznitelikler**: özniteliklerin hedefe yönelik işaretçisi.
+- **Boyut**: boyut için hedefin işaretçisi.
+- **Year**: yıl için hedefe yönelik işaretçi.
+- **Month**: ayın hedefi işaretçisi.
+- **Day**: günün hedefi işaretçisi.
+- **saat**: saat için hedefin işaretçisi.
+- **Minute**: dakika için hedefin işaretçisi.
+- **ikinci**: ikincisi için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı ilk dizin girişi bulma
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil
-- **FX_NOT_FOUND** (0x04) Belirtilen dizin medyada bulunamadı
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası
-- **FX_MEDIA_INVALID** (0x02) Geçersiz medya
-- **FX_FILE _CORRUPT** (0x08) Dosyası bozuk
-- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya hedef işaretçi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı ilk dizin girişi bulma
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil
+- **FX_NOT_FOUND** (0x04) belirtilen dizin medyada bulunamadı
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası
+- **FX_MEDIA_INVALID** (0x02) geçersiz medya
+- **FX_FILE _CORRUPT** (0x08) dosyası bozuk
+- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya hedef işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -746,22 +746,22 @@ Varsayılan yerel yolu temizler
 UINT fx_directory_local_path_clear(FX_MEDIA *media_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, çağıran iş parçacığı için ayarlanmış önceki yerel yolu temizler.
+Bu hizmet, çağıran iş parçacığı için ayarlanan önceki yerel yolu temizler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Önceden açılmış bir medyanın işaretçisi.
+- **media_ptr**: daha önce açılmış bir medyaya yönelik işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı yerel yol temiz.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya şu anda açık değil
-- **FX_NOT_IMPLEMENTED** (0x22) FX_NO_LCOAL_PATH tanımlı
-- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi
+- **FX_SUCCESS** (0x00) başarılı yerel yol temizleme.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya Şu anda açık değil
+- **FX_NOT_IMPLEMENTED** (0x22) FX_NO_LCOAL_PATH tanımlandı
+- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -810,24 +810,24 @@ UINT fx_directory_local_path_clear(
     CHAR **return_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen medyanın yerel yol işaretçisini döndürür. Yerel yol kümesi yoksa, çağırana NULL döndürülür.
+Bu hizmet, belirtilen medyanın yerel yol işaretçisini döndürür. Yerel bir yol ayarlanmamışsa, çağırana bir NULL döndürülür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **return_path_name:** Depoilecek yerel yol dizesi için hedef dize işaretçisinin işaretçisi.
+- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
+- **return_path_name**: yerel yol dizesinin depolanacağı hedef dize işaretçisine yönelik işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı yerel yol get.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya şu anda açık değil
+- **FX_SUCCESS** (0x00) başarılı yerel yol al.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya Şu anda açık değil
 - **FX_NOT_IMPLEMENTED** (0x22) NX_NO_LCOAL_PATH
-- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi
+- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi
 
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -867,7 +867,7 @@ status = fx_directory_local_path_get(&my_media, &my_path);
 
 ## <a name="fx_directory_local_path_restore"></a>fx_directory_local_path_restore:
 
-Önceki yerel yolu geri yükleme
+Önceki yerel yolu geri yükler
 
 ### <a name="prototype"></a>Prototype
 
@@ -877,26 +877,26 @@ UINT fx_directory_local_path_restore(
     FX_LOCAL_PATH *local_path_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet daha önce ayarlanmış bir yerel yolu geri yüklemektedir. Bu yerel yolda yapılan dizin arama konumu da geri yüklenir ve bu da bu yordamı uygulama tarafından yapılan yinelemeli dizin geçişlerinde yararlı yapar.
+Bu hizmet daha önce ayarlanmış bir yerel yolu geri yükler. Bu yerel yolda yapılan dizin arama konumu da geri yüklenir, bu da bu yordamı uygulama tarafından özyinelemeli Dizin traversals ' de yararlı hale getirir.
 
 > [!IMPORTANT]
-> *Her yerel yol, varsayılan olarak 256 **FX_MAXIMUM_PATH** bir yerel yol dizesi içerir. Bu iç yol dizesi FileX tarafından kullanılmaz ve yalnızca uygulamanın kullanımı için sağlanır. Bu **FX_LOCAL_PATH** yerel değişken olarak bildirilemezse, kullanıcılar bu yapının boyutuna göre büyüyen yığından dikkatli olması gerekir. Kullanıcıların dosya boyutunu azaltması ve **FileX FX_MAXIMUM_PATH** yeniden oluşturması gerekir.*
+> *Her yerel yol, varsayılan olarak 256 karakter olan **FX_MAXIMUM_PATH** boyutunda bir yerel yol dizesi içerir. Bu iç yol dizesi FileX tarafından kullanılmaz ve yalnızca uygulamanın kullanımı için sağlanır. **FX_LOCAL_PATH** yerel bir değişken olarak bildiriecekse, kullanıcıların bu yapının boyutuyla büyüyen yığına dikkat etmesi gerekir. Kullanıcılar **FX_MAXIMUM_PATH** boyutunu azaltmak ve FileX kitaplık kaynağını yeniden derlemek için hoş geldiniz.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **local_path_ptr:** Önceden ayarlanmış yerel yolun işaretçisi. Bu işaretçinin daha önce kullanılan ve hala bozulmamış bir yerel yola işaret etmelerinden emin olmak çok önemlidir.
+- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
+- **local_path_ptr**: daha önce ayarlanan yerel yola yönelik işaretçi. Bu işaretçinin gerçekten daha önce kullanılmış ve bozulmadan yerel yola işaret ettiğinden emin olmak çok önemlidir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı yerel yol geri yüklemesi.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya şu anda açık değil.
-- **FX_NOT_IMPLEMENTED** (0x22) FX_NO_LCOAL_PATH tanımlanır.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya yerel yol işaretçisi.
+- **FX_SUCCESS** (0x00) başarılı yerel yol geri yükleme.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya Şu anda açık değil.
+- **FX_NOT_IMPLEMENTED** (0x22) FX_NO_LCOAL_PATH tanımlandı.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya yerel yol işaretçisi.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -947,31 +947,31 @@ UINT fx_directory_local_path_set(
     CHAR *new_path_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet , * new_path_string _ tarafından belirtilen iş **parçacığına özgü bir yol** ayarlar. Bu yordam başarıyla tamamlandıktan sonra, _ *_local_path_ptr_** içinde depolanan yerel yol bilgileri, bu iş parçacığı tarafından yapılan tüm dosya ve dizin işlemleri için genel medya yolundan önceliklidir. Bunun sistem üzerindeki diğer iş parçacığı üzerinde hiçbir etkisi olmaz 
+Bu hizmet, ***new_path_string** _ tarafından belirtilen bir iş parçacığına özgü yol ayarlar. Bu yordamın başarıyla tamamlanmasından sonra, _ *_local_path_ptr_** içinde depolanan yerel yol bilgileri, bu iş parçacığı tarafından yapılan tüm dosya ve dizin işlemleri için genel medya yolundan öncelikli olur. Bu, sistemdeki diğer iş parçacıklarını etkilemez 
 > [!IMPORTANT]
-> *Yerel yol dizesinin varsayılan boyutu 256 karakterdir; fx_api.h **dosyasındaki** FX_MAXIMUM_PATH **değiştirerek** ve FileX kitaplığının tamamını yeniden oluşturarak değiştirilebilir. Karakter dizesi yolu uygulama için korunur ve FileX tarafından dahili olarak kullanılmaz.*
+> *Yerel yol dizesinin varsayılan boyutu 256 karakterdir; Bu, **fx_api. h** içinde **FX_MAXIMUM_PATH** değiştirilerek ve tüm FileX kitaplığını yeniden inşa ederek değiştirilebilir. Uygulama için karakter dizesi yolu tutulur ve FileX tarafından dahili olarak kullanılmaz.*
 
 > [!IMPORTANT]
-> *Uygulama tarafından sağlanan adlar için FileX hem ters eğik çizgi ( ) hem de eğik çizgi (/) karakterlerini ayrı dizinlere, alt dizinlere ve dosya \\ adlarına destekler. Ancak FileX, uygulamaya döndürülen yollarda yalnızca ters eğik çizgi karakterini kullanır.*
+> *Uygulama tarafından sağlanan adlar için, FileX, \\ dizinler, alt dizinler ve dosya adlarına ayrı ters eğik çizgi () ve eğik çizgi (/) karakterlerini destekler. Ancak, FileX yalnızca uygulamaya döndürülen yollarda ters eğik çizgi karakterini kullanır.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Önceden açılmış olan medyanın işaretçisi.
-- **local_path_ptr:** İş parçacığına özgü yerel yol bilgilerini tutmak için hedef. Bu yapının adresi gelecekte yerel yol geri yükleme işlevine sağlanmalıdır.
-- **new_path_name:** Kurulumun yerel yolunu belirtir.
+- **media_ptr**: daha önce açılmış medyaya yönelik işaretçi.
+- **local_path_ptr**: iş parçacığına özgü yerel yol bilgilerini tutmak için hedef. Bu yapının adresi gelecekte yerel yol geri yükleme işlevine sağlanabilir.
+- **new_path_name**: kurulumun yerel yolunu belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı varsayılan dizin kümesi.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_NOT_IMPLEMENTED** (0x22) **FX_NO_LCOAL_PATH
-- **FX_INVALID_PATH** (0x0D) Yeni dizin bulunamadı.
-- **FX_NOT_IMPLEMENTED** (0x22)- **FX_NO_LOCAL_PATH tanımlanır.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya yerel yol işaretçisi.
+- **FX_SUCCESS** (0x00) başarılı varsayılan dizin kümesi.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_NOT_IMPLEMENTED** (0x22) * * FX_NO_LCOAL_PATH
+- **FX_INVALID_PATH** (0x0D) yeni dizin bulunamadı.
+- **FX_NOT_IMPLEMENTED** (0x22)-* * FX_NO_LOCAL_PATH tanımlı.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya yerel yol işaretçisi.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -1027,7 +1027,7 @@ UINT fx_directory_long_name_get(
     CHAR *long_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan kısa (8.3 biçim) adıyla ilişkili uzun adı (varsa) verir. Kısa ad bir dosya adı veya dizin adı olabilir.
 
@@ -1035,7 +1035,7 @@ Bu hizmet, sağlanan kısa (8.3 biçim) adıyla ilişkili uzun adı (varsa) veri
 
 - **media_ptr:** Medya denetim bloğuna işaretçi.
 - **short_name:** Kaynak kısa adının işaretçisi (8.3 biçimi).
-- **long_name:** Uzun ad için hedefin işaretçisi. Uzun ad yoksa kısa ad döndürülür. Uzun adın hedefinin, uzun karakterlerin tutulacak kadar büyük FX_MAX_LONG_NAME_LEN unutmayın.
+- **long_name:** Uzun ad için hedefin işaretçisi. Uzun ad yoksa kısa ad döndürülür. Uzun adın hedefinin, uzun karakterlerin tutulacak kadar büyük FX_MAX_LONG_NAME_LEN dikkat edin.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -1101,7 +1101,7 @@ UINT fx_directory_long_name_get_extended(
     UINT long_file_name_buffer_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan kısa (8.3 biçim) adıyla ilişkili uzun adı (varsa) verir. Kısa ad bir dosya adı veya dizin adı olabilir.
 
@@ -1177,7 +1177,7 @@ UINT fx_directory_name_test(
     CHAR *directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen adın bir dizin olup olmadığını sınar. Öyleyse, bir FX_SUCCESS döndürülür.
 
@@ -1251,7 +1251,7 @@ UINT fx_directory_next_entry_find(
     CHAR *return_entry_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizindeki bir sonraki giriş adını döndürür.
 
@@ -1337,7 +1337,7 @@ UINT fx_directory_next_full_entry_find(
     UINT *second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, varsayılan dizindeki bir sonraki giriş adını alır ve belirtilen hedefe kopyalar. Ayrıca, ek giriş parametreleriyle belirtilen girdi hakkında tam bilgileri döndürür.
 
@@ -1349,38 +1349,38 @@ Bu hizmet, varsayılan dizindeki bir sonraki giriş adını alır ve belirtilen 
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
-- **directory_name**: bir dizin girişi adı için hedefin işaretçisi. En az **FX_MAX_LONG_NAME_LEN** kadar büyük olmalıdır.
-- **öznitelikler**: null olmayan, girişin özniteliklerinin yerleştirileceği hedefe yönelik işaretçi. Öznitelikler, aşağıdaki olası ayarlarla bir bit eşleme biçiminde döndürülür:
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **directory_name:** Dizin girişinin adı için hedefin işaretçisi. en az bir veya daha büyük **FX_MAX_LONG_NAME_LEN.**
+- **attributes:** Null olmayan bir değerse, girişin yerleştirilecek öznitelikleri için hedefin işaretçisi. Öznitelikler, aşağıdaki olası ayarlarla bit eşlemesi biçiminde döndürülür:
   - **FX_READ_ONLY** (0x01)
   - **FX_HIDDEN** (0x02)
   - **FX_SYSTEM** (0x04)
   - **FX_VOLUME** (0x08)
   - **FX_DIRECTORY** (0x10)
   - **FX_ARCHIVE** (0x20)
-- **Boyut**: null olmayan, girdinin bayt cinsinden boyutu için hedefin işaretçisi.
-- **ay**: null olmayan, girişin değiştirilme ayı için hedef işaretçisi.
-- **yıl**: null olmayan, girişin değiştirilme yılından hedefe yönelik işaretçi.
-- **gün**: null olmayan, girişin değiştirilme günü için hedef işaretçisi.
-- **saat**: null olmayan, girişin değiştirilme saati için hedef işaretçisi.
-- **dakika**: null olmayan, girişin değiştirilme dakikası için hedef işaretçisi.
-- **ikinci**: null olmayan, girişin değiştirilme saniyesi için hedef işaretçisi.
+- **size:** Null olmayan bir değerse, girişin boyutu için hedefin bayt cinsinden işaretçisi.
+- **month:** Null olmayan bir değerse, girişin değişiklik ayı için hedefin işaretçisi.
+- **year:** Null olmayan bir değerse, girişin değişiklik yılı için hedefin işaretçisi.
+- **day:** Null olmayan bir değerse, girişin değişiklik günü için hedefin işaretçisi.
+- **hour:** Null olmayan bir değerse, girişin değişiklik saati için hedefin işaretçisi.
+- **minute:** Null olmayan bir değerse, girişin değişiklik dakikası için hedefin işaretçisi.
+- **second:** Null olmayan bir değerse, girişin ikinci değişikliği için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı Dizin sonraki giriş bul.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
-- **FX_NO_MORE_ENTRIES** (0x0F) bu dizinde daha fazla girdi yok.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok.
-- **FX_MEDIA_INVALID** (0x02) ortam geçersiz.
-- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi veya tüm GIRIŞ parametreleri null.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dizin sonraki girdi bulma.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_NO_MORE_ENTRIES** (0x0F) Bu dizinde başka giriş yok.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok.
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi veya tüm giriş parametreleri NULL.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1432,7 +1432,7 @@ status = fx_directory_next_full_entry_find(&my_media, entry_name, &attributes, &
 
 ## <a name="fx_directory_rename"></a>fx_directory_rename
 
-Dizini yeniden adlandırır
+Dizini yeniden adlandırıyor
 
 ### <a name="prototype"></a>Prototype
 
@@ -1443,37 +1443,37 @@ UINT fx_directory_rename(
     CHAR *new_directory_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet dizin adını belirtilen yeni dizin adıyla değiştirir. Yeniden adlandırma işlemi, belirtilen yola veya varsayılan yola göre de yapılır. Yeni Dizin adında bir yol belirtilmişse, yeniden adlandırılan dizin, belirtilen yola etkili bir şekilde taşınır. Yol belirtilmemişse, yeniden adlandırılan dizin geçerli varsayılan yola yerleştirilir.
+Bu hizmet, dizin adını belirtilen yeni dizin adıyla değiştirir. Yeniden adı, belirtilen yola veya varsayılan yola göre de yapılır. Yeni dizin adı içinde bir yol belirtilirse, yeniden adlandırılan dizin belirtilen yola etkili bir şekilde taşınır. Yol belirtilmezse, yeniden adlandırılan dizin geçerli varsayılan yola yerleştirilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: medya denetim bloğu işaretçisi.
-- **old_directory_name**: geçerli dizin adı işaretçisi.
-- **new_directory_name**: yeni dizin adı işaretçisi.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **old_directory_name:** Geçerli dizin adının işaretçisi.
+- **new_directory_name:** Yeni dizin adının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dizin yeniden adlandırma.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
-- **FX_NOT_FOUND** (0x04) dizin girişi bulunamadı.
-- **FX_NOT_DIRECTORY** (0x0E) girişi bir dizin değil.
-- **FX_INVALID_NAME** (0x0C) yeni dizin adı geçersiz.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok.
-- **FX_MEDIA_INVALID** (0x02) ortam geçersiz.
-- **FX_NO_MORE_ENTRIES** (0x0F) bu dizinde daha fazla girdi yok.
-- **FX_INVALID_PATH** (0x0D) dizin adıyla belirtilen yol geçersiz.
-- **FX_ALREADY_CREATED** (0x0B) belirtilen dizin zaten oluşturuldu.
-- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dizin yeniden adlandırması.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_NOT_FOUND** (0x04) Dizin girdisi bulunamadı.
+- **FX_NOT_DIRECTORY** (0x0E) Girdisi bir dizin değildir.
+- **FX_INVALID_NAME** (0x0C) Yeni dizin adı geçersiz.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok.
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya.
+- **FX_NO_MORE_ENTRIES** (0x0F) Bu dizinde başka giriş yok.
+- **FX_INVALID_PATH** (0x0D) Dizin adı ile sağlanan geçersiz yol.
+- **FX_ALREADY_CREATED** (0x0B) Belirtilen dizin zaten oluşturulmuş.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1514,7 +1514,7 @@ status = fx_directory_rename(&my_media, "abc", "def");
 
 ## <a name="fx_directory_short_name_get"></a>fx_directory_short_name_get:
 
-Uzun bir ada kısa ad alır
+Uzun bir addan kısa ad alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -1525,31 +1525,31 @@ UINT fx_directory_short_name_get(
     CHAR *short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan uzun adla ilişkili kısa (8,3 biçim) adı alır. Uzun ad, bir dosya adı ya da dizin adı olabilir.
+Bu hizmet, sağlanan uzun adla ilişkili kısa (8.3 biçim) adı verir. Uzun ad bir dosya adı veya dizin adı olabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: medya denetim bloğu işaretçisi.
-- **long_name**: kaynak Long Name işaretçisi.
-- **short_name**: hedef kısa adı işaretçisi (8,3 biçimi). Kısa ad hedefinin 14 karakter tutabilecek kadar büyük olması gerektiğini unutmayın.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **long_name:** Kaynak uzun adının işaretçisi.
+- **short_name:** Hedef kısa adın işaretçisi (8.3 biçimi). Kısa adın hedefinin 14 karakter uzunluğunda olacak kadar büyük olması gerektiğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı kısa ad al.
-- **FX_NOT_FOUND** (0x04) uzun ad bulunamadı.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_MEDIA_INVALID** (0x02) ortam geçersiz.
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya ad işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı kısa ad get.
+- **FX_NOT_FOUND** (0x04) Uzun ad bulunamadı.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya ad işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1592,7 +1592,7 @@ status = fx_directory_short_name_get(&my_media,
 
 ## <a name="fx_directory_short_name_get_extended"></a>fx_directory_short_name_get_extended
 
-Uzun bir ada kısa ad alır
+Uzun bir addan kısa ad alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -1604,32 +1604,32 @@ UINT fx_directory_short_name_get_extended(
     UINT short_file_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan uzun adla ilişkili kısa (8,3 biçim) adı alır. Uzun ad, bir dosya adı ya da dizin adı olabilir.
+Bu hizmet, sağlanan uzun adla ilişkili kısa (8.3 biçim) adı verir. Uzun ad bir dosya adı veya dizin adı olabilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: medya denetim bloğu işaretçisi.
-- **long_name**: kaynak Long Name işaretçisi.
-- **short_name**: hedef kısa adı işaretçisi (8,3 biçimi). Note: kısa ad hedefi 14 karakter tutabilecek kadar büyük olmalıdır.
-- **short_file_name_length**: kısa ad arabelleğinin uzunluğu.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **long_name:** Kaynak uzun adının işaretçisi.
+- **short_name:** Hedef kısa adın işaretçisi (8.3 biçimi). Not: Kısa adın hedefi 14 karakter uzunluğunda olacak kadar büyük olmalıdır.
+- **short_file_name_length:** Kısa ad arabelleğinin uzunluğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı kısa ad al.
-- **FX_NOT_FOUND** (0x04) uzun ad bulunamadı.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_MEDIA_INVALID** (0x02) ortam geçersiz.
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya ad işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı kısa ad get.
+- **FX_NOT_FOUND** (0x04) Uzun ad bulunamadı.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_MEDIA_INVALID** (0x02) Geçersiz medya.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya ad işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1683,7 +1683,7 @@ UINT fx_fault_tolerant_enable(
     UINT memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, hataya dayanıklı modüle izin vermez. Başlamadan sonra, hataya dayanıklı modül dosya sisteminin FileX hataya dayanıklı koruma altında olup olmadığını algılar. Aksi takdirde, hizmet, dosya sistemi işlemlerinde günlükleri depolamak için dosya sisteminde kullanılabilir kesimleri bulur. Dosya sistemi, FileX hataya dayanıklı koruma altındaysa, bütünlüğünü sürdürmek için günlükleri dosya sistemine uygular.
 
@@ -1755,7 +1755,7 @@ UINT fx_file_allocate(
     FX_FILE *file_ptr, 
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır.
 
@@ -1838,7 +1838,7 @@ Dosya özniteliklerini okur
     CHAR *file_name,
     UINT *attributes_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın özniteliklerini belirtilen medyadan okur.
 
@@ -1929,7 +1929,7 @@ UINT fx_file_attributes_set(
     CHAR *file_name,
     UINT attributes);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyanın özniteliklerini çağıran tarafından belirtilen olanlarla ayarlar.
 
@@ -2015,7 +2015,7 @@ status = fx_file_attributes_set(&my_media, "myfile.txt", FX_READ_ONLY);
 
 ## <a name="fx_file_best_effort_allocate"></a>fx_file_best_effort_allocate
 
-Bir dosya için alan ayırmak için en iyi çaba
+Dosya için alan ayırmak için en iyi çaba
 
 ### <a name="prototype"></a>Prototype
 
@@ -2025,33 +2025,33 @@ UINT fx_file_best_effort_allocate(
     ULONG size,
     ULONG *actual_size_allocated);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır. Medyada yeterli sayıda ardışık küme yoksa, bu hizmet birbirini izleyen en büyük küme bloğunu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
+Bu hizmet, bir veya daha fazla bitişik kümeyi belirtilen dosyanın sonuna ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki kümenin tamam yanına yuvarlanmış olur. Medyada yeterli ardışık küme yoksa, bu hizmet ardışık kümeler için kullanılabilen en büyük bloğu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
 
-4 GB 'den daha fazla alan ayırmak için, uygulama Service *fx_file_extended_best_effort_allocate* kullanacaktır.
+Uygulama, 4 GB'ın üzerinde alan ayırmak için hizmet *fx_file_extended_best_effort_allocate.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
-- **Boyut**: dosya için ayrılacak bayt sayısı.
+- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
+- **boyut:** Dosya için ayrılarak ayrılan bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı en iyi çaba dosya ayırması.
-- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
-- Bu dosyayla ilişkilendirilmiş **FX_NO_MORE_SPACE** (0X0a) medya yeterli kullanılabilir kümeye sahip değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi veya hedef.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı en iyi çaba dosya ayırma.
+- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
+- **FX_NO_MORE_SPACE** (0x0A) Bu dosyayla ilişkilendirilmiş medya yeterli kullanılabilir kümeye sahip değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi veya hedefi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2110,25 +2110,25 @@ Dosyayı kapatır
 ```c
 UINT fx_file_close(FX_FILE *file_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dosyayı kapatır. Dosya yazmak için açıksa ve değiştirilmişse, bu hizmet Dizin girişini yeni boyut ve geçerli sistem saati ve tarihi ile güncelleştirerek dosya değiştirme işlemini tamamlar.
+Bu hizmet belirtilen dosyayı kapatır. Dosya yazmaya açıksa ve değiştirilmişse, bu hizmet dizin girdisini yeni boyut ve geçerli sistem saati ve tarihi ile güncelleştirerek dosya değiştirme işlemini tamamlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
+- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dosya kapatma.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya öznitelik işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dosya kapatma.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya öznitelik işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2185,12 +2185,12 @@ UINT fx_file_create(
     FX_MEDIA *media_ptr,
     CHAR *file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı varsayılan dizinde veya dosya adıyla sağlanan dizin yolunda oluşturur.
 
 > [!WARNING]
-> *Bu hizmet sıfır uzunlukta bir dosya oluşturur, başka bir ifadeyle küme ayrılır. Ayırma, sonraki dosya yazmalarında otomatik olarak yapılır veya fx_file_allocate hizmetiyle veya 4 GB'ın fx_file_extended_allocate alan için önceden yapılabilir.*
+> *Bu hizmet sıfır uzunluklu bir dosya oluşturur, başka bir ifadeyle ayrılmış küme yoktur. Ayırma, sonraki dosya yazmalarında otomatik olarak yapılır veya fx_file_allocate hizmetiyle veya 4 GB'ın fx_file_extended_allocate alan için önceden yapılabilir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -2212,7 +2212,7 @@ Bu hizmet, belirtilen dosyayı varsayılan dizinde veya dosya adıyla sağlanan 
 - **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
 - **FX_MEDIA_INVALID** (0x02)Geçersiz medya.
 - **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Temel medya yazma korumalıdır.
+- **FX_WRITE_PROTECT** (0x23) Temel alınan medya yazma korumalıdır.
 - **FX_PTR_ERROR** (0x18) Geçersiz medya veya dosya adı işaretçisi.
 - **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
@@ -2282,7 +2282,7 @@ UINT fx_file_date_time_set(
     UINT minute, 
     UINT second);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyanın tarih ve saati ayarlar.
 
@@ -2316,18 +2316,18 @@ status = fx_file_date_time_set(&my_media, "my_file", 1999, 12, 31, 23, 59, 59);
 - **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
 - **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
 - **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya ad işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
-- **FX_INVALID_YEAR** (0x12) Yıl geçersiz.
-- **FX_INVALID_MONTH** (0x13) Ay geçersiz.
-- **FX_INVALID_DAY** (0x14) Günü geçersiz.
-- **FX_INVALID_HOUR** (0x15) Saat geçersiz.
-- **FX_INVALID_MINUTE** (0x16) Dakika geçersiz.
-- **FX_INVALID_SECOND** (0x17) Saniye geçersiz.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya ad işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_INVALID_YEAR** (0x12) yıl geçersiz.
+- **FX_INVALID_MONTH** (0x13) ay geçersiz.
+- **FX_INVALID_DAY** (0x14) gün geçersiz.
+- **FX_INVALID_HOUR** (0x15) saat geçersiz.
+- **FX_INVALID_MINUTE** (0x16) dakika geçersiz.
+- **FX_INVALID_SECOND** (0x17) saniye geçersiz.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -2375,7 +2375,7 @@ status = fx_file_date_time_set(&my_media, "my_file", 1999, 12, 31, 23, 59, 59);
 
 ### <a name="deletes-file"></a>Dosyayı siler
 
-Dosya Silme
+Dosya silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2384,35 +2384,35 @@ UINT fx_file_delete(
     FX_MEDIA *media_ptr, 
     CHAR *file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet belirtilen dosyayı siler.
+Bu hizmet, belirtilen dosyayı siler.
 
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **file_name:** Silinecek dosyanın adının işaretçisi (dizin yolu isteğe bağlıdır).
+- **media_ptr**: bir medya denetim bloğuna yönelik işaretçi.
+- **file_name**: Silinecek dosyanın adı işaretçisi (Dizin yolu isteğe bağlıdır).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya silme.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_NOT_FOUND** (0x04) Belirtilen dosya bulunamadı.
-- **FX_NOT_A_FILE** (0x05) Belirtilen dosya adı bir dizin veya birimdi.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya şu anda açık.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
-- **FX_MEDIA_INVALID** (0x02) Geçersiz medya.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya silme.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_NOT_FOUND** (0x04) belirtilen dosya bulunamadı.
+- **FX_NOT_A_FILE** (0x05) belirtilen dosya adı bir dizin veya birimdir.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya şu anda açık.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
+- **FX_MEDIA_INVALID** (0x02) ortam geçersiz.
+- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -2469,33 +2469,33 @@ UINT fx_file_extended_allocate(
     FX_FILE *file_ptr, 
     ULONG64 size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir veya daha fazla bitişik kümeyi belirtilen dosyanın sonuna ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır.
+Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki kümenin tamam yanına yuvarlanmış olur.
 
-Bu hizmet, exFAT için tasarlanmıştır. *Boyut* parametresi 64 bitlik bir tamsayı değeri alır ve bu, çağıranın 4 Aralık dışında boşluk önceden ayırmasını sağlar.
+Bu hizmet exFAT için tasarlanmıştır. Size *parametresi* 64 bit tamsayı değeri alır ve bu değer çağıranın 4 GB aralığının ötesinde önceden alan ayırması için olanak sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
-- **Boyut**: dosya için ayrılacak bayt sayısı.
+- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
+- **boyut:** Dosya için ayrılarak ayrılan bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dosya ayırma.
-- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
-- Bu dosyayla ilişkilendirilmiş **FX_NO_MORE_SPACE** (0X0a) medya yeterli kullanılabilir kümeye sahip değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dosya ayırma.
+- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
+- **FX_NO_MORE_SPACE** (0x0A) Bu dosyayla ilişkilendirilmiş medya yeterli kullanılabilir kümeye sahip değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2545,7 +2545,7 @@ status = fx_file_extended_allocate(&my_file, 0x100000000);
 
 ## <a name="fx_file_extended_best_effort_allocate"></a>fx_file_extended_best_effort_allocate
 
-Bir dosya için alan ayırmak için en iyi çaba
+Dosya için alan ayırmak için en iyi çaba
 
 ### <a name="prototype"></a>Prototype
 
@@ -2555,33 +2555,33 @@ UINT fx_file_extended best_effort_allocate(
     ULONG64 size,
     ULONG64 *actual_size_allocated);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dosyanın sonuna bir veya daha fazla bitişik kümeyi ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki bütün kümeye yuvarlanır. Medyada yeterli sayıda ardışık küme yoksa, bu hizmet birbirini izleyen en büyük küme bloğunu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
+Bu hizmet, bir veya daha fazla bitişik kümeyi belirtilen dosyanın sonuna ayırır ve bağlar. FileX istenen boyutu küme başına bayt sayısına bölerek gereken küme sayısını belirler. Sonuç daha sonra bir sonraki kümenin tamam yanına yuvarlanmış olur. Medyada yeterli ardışık küme yoksa, bu hizmet ardışık kümeler için kullanılabilen en büyük bloğu dosyaya bağlar. Dosyaya gerçekten ayrılan alan miktarı çağırana döndürülür.
 
-Bu hizmet, exFAT için tasarlanmıştır. *Boyut* parametresi 64 bitlik bir tamsayı değeri alır ve bu, çağıranın 4 Aralık dışında boşluk önceden ayırmasını sağlar.
+Bu hizmet exFAT için tasarlanmıştır. Size *parametresi* 64 bit tamsayı değeri alır ve bu değer çağıranın 4 GB aralığının ötesinde önceden alan ayırması için olanak sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
-- **Boyut**: dosya için ayrılacak bayt sayısı.
+- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
+- **boyut:** Dosya için ayrılarak ayrılan bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dosya ayırma.
-- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
-- Bu dosyayla ilişkilendirilmiş **FX_NO_MORE_SPACE** (0X0a) medya yeterli kullanılabilir kümeye sahip değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dosya ayırma.
+- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
+- **FX_NO_MORE_SPACE** (0x0A) Bu dosyayla ilişkilendirilmiş medya yeterli kullanılabilir kümeye sahip değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2633,7 +2633,7 @@ status = fx_file_extended_best_effort_allocate(&my_file,
 
 ## <a name="fx_file_extended_relative_seek"></a>fx_file_extended_relative_seek
 
-Göreli bayt uzaklığına pozisyonlar
+Göreli bir byte uzaklığına konumlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -2643,37 +2643,37 @@ UINT fx_file_extended_relative_seek(
     ULONG64 byte_offset,
     UINT seek_from);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
+Bu hizmet, dahili dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlar. Sonraki herhangi bir dosya okuma veya yazma isteği, dosyada bu konumda başlar.
 
-Bu hizmet, exFAT için tasarlanmıştır. *Byte_offset* parametresi, çağıranın 4 Aralık dışında okuma/yazma işaretçisini yeniden konumlandırmasına olanak tanıyan bir bit-bit tamsayı değeri alır.
+Bu hizmet exFAT için tasarlanmıştır. Byte_offset  parametresi, çağıranın okuma/yazma işaretçisini 4 GB aralığının ötesinde yeniden konumlandırması için 64 bit tamsayı değeri alır.
 
 > [!IMPORTANT]
-> *Arama işlemi dosyanın sonundan sonra arama yapmayı denerse, dosyanın okuma/yazma işaretçisi dosyanın sonuna yerleştirilir. Buna karşılık, arama işlemi dosyanın başlangıcını aşan konuma çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın başlangıcına yerleştirilir.*
+> *Arama işlemi dosyanın sonunu aramaya çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın sonuna konum sağlar. Buna karşılık, arama işlemi dosyanın başına konumlandırmaya çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın başına konum sağlar.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
-- **byte_offset**: dosyada istenen göreli bayt kayması.
-- **seek_from**: göreli arama yapılacak yönün yönü ve konumu. Geçerli arama seçenekleri aşağıdaki gibi tanımlanır:
+- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
+- **byte_offset:** Dosyada istenen göreli bayt uzaklığı.
+- **seek_from:** Göreli aramanın nerede gerçekleştirecekleri yönü ve konumu. Geçerli arama seçenekleri aşağıdaki gibi tanımlanır:
   - FX_SEEK_BEGIN (0x00)
   - FX_SEEK_END (0x01)
   - FX_SEEK_FORWARD (0x02)
-  - FX_SEEK_BACK (0x03) FX_SEEK_BEGIN belirtilmişse, arama işlemi dosyanın başından yapılır. FX_SEEK_END belirtilirse, arama işlemi dosyanın sonundan geriye doğru gerçekleştirilir. FX_SEEK_FORWARD belirtilirse, arama işlemi geçerli dosya konumundan ileri doğru gerçekleştirilir. FX_SEEK_BACK belirtilirse, arama işlemi geçerli dosya konumundan geriye doğru gerçekleştirilir.
+  - FX_SEEK_BACK (0x03) FX_SEEK_BEGIN belirtilirse, arama işlemi dosyanın başından itibaren gerçekleştirilir. Bir FX_SEEK_END belirtilirse, arama işlemi dosyanın sonundan geriye doğru gerçekleştirilir. Bu FX_SEEK_FORWARD, arama işlemi geçerli dosya konumundan ileri doğru gerçekleştirilir. Bu FX_SEEK_BACK, arama işlemi geçerli dosya konumundan geriye doğru gerçekleştirilir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dosya göreli arama.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dosya göreli arama.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2722,7 +2722,7 @@ status = fx_file_extended_relative_seek(&my_file, 0x100000000, FX_SEEK_FORWARD);
 
 ## <a name="fx_file_extended_seek"></a>fx_file_extended_seek
 
-Bayt uzaklığa pozisyonlar
+Byte uzaklığına konumlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -2731,29 +2731,29 @@ UINT fx_file_extended_seek(
     FX_FILE *file_ptr, 
     ULONG64 byte_offset);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen bayt uzaklığa konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
+Bu hizmet, dahili dosya okuma/yazma işaretçisini belirtilen byte uzaklığına konumlar. Sonraki herhangi bir dosya okuma veya yazma isteği, dosyada bu konumda başlar.
 
-Bu hizmet, exFAT için tasarlanmıştır. *Byte_offset* parametresi, çağıranın 4 Aralık dışında okuma/yazma işaretçisini yeniden konumlandırmasına olanak tanıyan bir bit-bit tamsayı değeri alır.
+Bu hizmet exFAT için tasarlanmıştır. Byte_offset  parametresi, çağıranın okuma/yazma işaretçisini 4 GB aralığının ötesinde yeniden konumlandırması için 64 bit tamsayı değeri alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
-- **byte_offset**: dosyada istenen bayt kayması. Sıfır değeri, dosyanın başındaki okuma/yazma işaretçisini konumlandırır, ancak dosyanın boyutundan büyük bir değer, dosyanın sonundaki okuma/yazma işaretçisini konumlandırır.
+- **file_ptr:** Dosya denetim bloğuna işaretçi.
+- **byte_offset:** Dosyada istenen bayt uzaklığı. Sıfır değeri dosyanın başına okuma/yazma işaretçisini, dosyanın boyutundan büyük bir değer ise dosyanın sonuna okuma/yazma işaretçisini konumlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı dosya arama.
-- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
-- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı dosya arama.
+- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
+- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2785,7 +2785,7 @@ status = fx_file_extended_seek(&my_file, 0x100000000);
 - fx_file_extended_relative_seek
 - fx_file_extended_truncate
 - fx_file_extended_truncate_release
-- fx_file_open- fx_file_read
+- fx_file_open fx_file_read
 - fx_file_relative_seek
 - fx_file_rename
 - fx_file_seek
@@ -2800,7 +2800,7 @@ status = fx_file_extended_seek(&my_file, 0x100000000);
 
 ## <a name="fx_file_extended_truncate"></a>fx_file_extended_truncate
 
-Kesilir dosyası
+Dosya keser
 
 ### <a name="prototype"></a>Prototype
 
@@ -2809,35 +2809,35 @@ UINT fx_file_truncate(
     FX_FILE *file_ptr,
     ULONG64 size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar kısaltır. Sağlanan boyut gerçek dosya boyutundan büyükse bu hizmet herhangi bir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri yayımlenmez.
+Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri serbest bırakıldı.
 
 > [!WARNING]
-> *Aynı anda okuma için açık olan dosyaları kesme konusunda dikkatli olun. Ayrıca okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
+> *Okuma için aynı anda açık olabilecek bir uyarı kesiliyor dosyaları kullanın. Okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
 
-Bu hizmet exFAT için tasarlanmıştır. Size *parametresi,* çağıranın 4 GB'ın ötesinde çalışmasına olanak sağlayan 64 bit tamsayı değerini alır.
+Bu hizmet, exFAT için tasarlanmıştır. *Boyut* parametresi 64 bitlik bir tamsayı değeri alır, bu da arayanın 4'lik aralığın ötesinde çalışmasına izin verir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Dosya denetim bloğuna işaretçi.
-- **size:** Yeni dosya boyutu. Bu yeni dosya boyutunu geçen baytlar atılır.
+- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
+- **Boyut**: yeni dosya boyutu. Bu yeni dosya boyutunu aşan baytlar atılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya kesme.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Temel medya yazma korumalıdır.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya kesilme.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) temel alınan medya, yazma korumalı.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -2884,7 +2884,7 @@ status = fx_file_extended_truncate(&my_file, 0x100000000);
 
 ## <a name="fx_file_extended_truncate_release"></a>fx_file_extended_truncate_release
 
-Dosya ve yayın kümelerini keser
+Dosya ve yayınlar kümesi keser
 
 ### <a name="prototype"></a>Prototype
 
@@ -2894,34 +2894,34 @@ UINT fx_file_extended_truncate_release(
     ULONG64 size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar kısaltır. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet herhangi bir şey yapmaz. Bu ***hizmet fx_file_extended_truncate*** kullanılmayan kümeleri serbest bırakmaz.
+Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. ***Fx_file_extended_truncate*** hizmetinden farklı olarak, bu hizmet kullanılmayan kümeleri serbest bırakabilir.
 
 > [!WARNING]
-> *Aynı anda okuma için açık olan dosyaları kesme konusunda dikkatli olun. Ayrıca okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
+> *Okuma için aynı anda açık olabilecek bir uyarı kesiliyor dosyaları kullanın. Okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
 
-Bu hizmet exFAT için tasarlanmıştır. Size *parametresi,* çağıranın 4 GB'ın ötesinde çalışmasına olanak sağlayan 64 bit tamsayı değerini alır.
+Bu hizmet, exFAT için tasarlanmıştır. *Boyut* parametresi 64 bitlik bir tamsayı değeri alır, bu da arayanın 4'lik aralığın ötesinde çalışmasına izin verir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
-- **size:** Yeni dosya boyutu. Bu yeni dosya boyutunu geçen baytlar atılır.
+- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
+- **Boyut**: yeni dosya boyutu. Bu yeni dosya boyutunu aşan baytlar atılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya kesme.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya kesilme.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -2982,7 +2982,7 @@ UINT fx_file_open(
     CHAR *file_name,
     UINT open_type);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dosyayı okuma ya da yazma için açar. Bir dosya birden çok kez okumak için açılabilir, ancak bir dosya yalnızca yazıcı dosyayı kapatana kadar bir kez yazmak üzere açılabilir.
 
@@ -3080,36 +3080,36 @@ UINT fx_file_read(
     ULONG request_size, 
     ULONG *actual_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosyadaki baytları okur ve bunları sağlanan arabellekte depolar. Okuma işlemi tamamlandıktan sonra dosyanın iç okuma işaretçisi, dosyadaki bir sonraki bayta işaret etmek üzere ayarlanır. İstekte daha az bayt kaldığında, yalnızca kalan baytlar arabellekte depolanır. Herhangi bir durumda, arabelleğe yerleştirilmiş baytların toplam sayısı çağırana döndürülür.
 
 > [!WARNING]
-> *Uygulama, sağlanan arabelleğin belirtilen sayıda istenen bayt depolayana kadar olduğundan emin olmalıdır.*
+> *Uygulama, sağlanan arabelleğin belirtilen sayıda istenen baytı depolayabilmesini sağlamalıdır.*
 
 > [!WARNING]
-> *Hedef arabellek uzun sözcük sınırında ise ve istenen boyut sizeof( ULONG ) ile bölünebilirse daha hızlı performans elde **edilir.***
+> *Hedef arabellek uzun bir sözcüklük sınırındayken ve istenen boyut sizeof (**ulong**) tarafından eşit olarak bölünediyse daha hızlı performans elde edilir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Dosya denetim bloğuna işaretçi.
-- **buffer_ptr:** Okuma için hedef arabelleğinin işaretçisi.
-- **request_size:** Okunan bayt sayısı üst sayısı.
-- **actual_size:** Sağlanan arabellekte okunan gerçek bayt sayısını tutmak için değişkenin işaretçisi.
+- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
+- **buffer_ptr**: okuma için hedef arabelleğe yönelik işaretçi.
+- **request_size**: okunacak en fazla bayt sayısı.
+- **actual_size**: sağlanan arabelleğe okunan gerçek bayt sayısını tutacak değişkene yönelik işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya okuma.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
-- **FX_FILE_CORRUPT** (0x08) Belirtilen dosya bozuk ve okuma başarısız oldu.
-- **FX_END_OF_FILE** (0x09) Dosyanın sonuna ulaşıldı.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya veya arabellek işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya okundu.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
+- **FX_FILE_CORRUPT** (0x08) belirtilen dosya bozuk ve okuma başarısız.
+- **FX_END_OF_FILE** (0x09) dosya sonuna ulaşıldı.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya veya arabellek işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3158,7 +3158,7 @@ status = fx_file_read(&my_file, my_buffer, 1024, &actual_bytes);
 
 ## <a name="fx_file_relative_seek"></a>fx_file_relative_seek
 
-Göreli bir byte uzaklığına konumlar
+Göreli bayt uzaklığına pozisyonlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -3168,39 +3168,39 @@ UINT fx_file_relative_seek(
     ULONG byte_offset,
     UINT seek_from);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dahili dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlar. Sonraki herhangi bir dosya okuma veya yazma isteği, dosyada bu konumda başlar.
+Bu hizmet, iç dosya okuma/yazma işaretçisini belirtilen göreli bayt uzaklığına konumlandırır. Sonraki dosya okuma veya yazma isteği, dosyadaki bu konumda başlayacaktır.
 
 > [!IMPORTANT]
-> *Arama işlemi dosyanın sonunu aramaya çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın sonuna konum sağlar. Buna karşılık, arama işlemi dosyanın başına konumlandırmaya çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın başına konum sağlar.*
+> *Arama işlemi dosyanın sonundan sonra arama yapmayı denerse, dosyanın okuma/yazma işaretçisi dosyanın sonuna yerleştirilir. Buna karşılık, arama işlemi dosyanın başlangıcını aşan konuma çalışırsa, dosyanın okuma/yazma işaretçisi dosyanın başlangıcına yerleştirilir.*
 
-Uygulama, 4 GB'ın ötesinde bir uzaklık değeriyle arama yapmak için *fx_file_extended_relative_seek.*
+4 GB 'ın ötesinde bir fark değeri ile arama yapmak için, uygulama Service *fx_file_extended_relative_seek* kullanacaktır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
-- **byte_offset:** Dosyada istenen göreli bayt uzaklığı.
-- **seek_from:** Göreli aramanın nerede gerçekleştirecekleri yönü ve konumu. Geçerli arama seçenekleri aşağıdaki gibi tanımlanır:
+- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
+- **byte_offset**: dosyada istenen göreli bayt kayması.
+- **seek_from**: göreli arama yapılacak yönün yönü ve konumu. Geçerli arama seçenekleri aşağıdaki gibi tanımlanır:
   - FX_SEEK_BEGIN (0x00)
   - FX_SEEK_END (0x01)
   - FX_SEEK_FORWARD (0x02)
   - FX_SEEK_BACK (0x03)
 
-Bir FX_SEEK_BEGIN belirtilirse, arama işlemi dosyanın başından itibaren gerçekleştirilir. Bir FX_SEEK_END belirtilirse, arama işlemi dosyanın sonundan geriye doğru gerçekleştirilir. Bu FX_SEEK_FORWARD, arama işlemi geçerli dosya konumundan ileri doğru gerçekleştirilir. Bu FX_SEEK_BACK, arama işlemi geçerli dosya konumundan geriye doğru gerçekleştirilir.
+FX_SEEK_BEGIN belirtilirse, arama işlemi dosyanın başından yapılır. FX_SEEK_END belirtilirse, arama işlemi dosyanın sonundan geriye doğru gerçekleştirilir. FX_SEEK_FORWARD belirtilirse, arama işlemi geçerli dosya konumundan ileri doğru gerçekleştirilir. FX_SEEK_BACK belirtilirse, arama işlemi geçerli dosya konumundan geriye doğru gerçekleştirilir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya göreli arama.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya göreli arama.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3259,7 +3259,7 @@ UINT fx_file_rename(
     CHAR *old_file_name,
     CHAR *new_file_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, tarafından belirtilen dosyanın adını *old_file_name.* Yeniden adı, belirtilen yola veya varsayılan yola göre de yapılır. Yeni dosya adı içinde bir yol belirtilirse, yeniden adlandırılan dosya belirtilen yola etkili bir şekilde taşınır. Yol belirtilmezse, yeniden adlandırılan dosya geçerli varsayılan yola yerleştirilir.
 
@@ -3347,7 +3347,7 @@ UINT fx_file_seek(
     FX_FILE *file_ptr,
     ULONG byte_offset);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dahili dosya okuma/yazma işaretçisini belirtilen byte uzaklığına konumlar. Sonraki herhangi bir dosya okuma veya yazma isteği, dosyada bu konumda başlar.
 
@@ -3415,7 +3415,7 @@ status = fx_file_seek(&my_file, 0);
 
 ## <a name="fx_file_truncate"></a>fx_file_truncate
 
-Dosyanın kesilmesi
+Dosya keser
 
 ### <a name="prototype"></a>Prototype
 
@@ -3425,35 +3425,35 @@ UINT fx_file_truncate(
     ULONG size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar kısaltır. Sağlanan boyut gerçek dosya boyutundan büyükse bu hizmet herhangi bir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri yayımlenmez.
+Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. Dosyayla ilişkili medya kümelerinin hiçbiri serbest bırakıldı.
 
 > [!WARNING]
-> *Aynı anda okuma için açık olan dosyaları kesme konusunda dikkatli olun. Ayrıca okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
+> *Okuma için aynı anda açık olabilecek bir uyarı kesiliyor dosyaları kullanın. Okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
 
-Uygulama, 4 GB'ın ötesinde çalıştırmak için hizmet *fx_file_extended_truncate.*
+4 GB 'den daha fazla işlem yapmak için, uygulama Service *fx_file_extended_truncate* kullanacaktır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Dosya denetim bloğuna işaretçi.
-- **size:** Yeni dosya boyutu. Bu yeni dosya boyutunu geçen baytlar atılır.
+- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
+- **Boyut**: yeni dosya boyutu. Bu yeni dosya boyutunu aşan baytlar atılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya kesme.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya kesilme.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok
+- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3500,7 +3500,7 @@ status = fx_file_truncate(&my_file, 100);
 
 ## <a name="fx_file_truncate_release"></a>fx_file_truncate_release
 
-Dosya ve yayın kümelerini keser
+Dosya ve yayınlar kümesi keser
 
 ### <a name="prototype"></a>Prototype
 
@@ -3509,36 +3509,36 @@ UINT fx_file_truncate(
     FX_FILE *file_ptr,
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar kısaltır. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet herhangi bir şey yapmaz. Bu ***hizmet fx_file_truncate*** kullanılmayan kümeleri serbest bırakmaz.
+Bu hizmet, dosyanın boyutunu belirtilen boyuta kadar keser. Sağlanan boyut gerçek dosya boyutundan büyükse, bu hizmet hiçbir şey yapmaz. ***Fx_file_truncate*** hizmetinden farklı olarak, bu hizmet kullanılmayan kümeleri serbest bırakabilir.
 
 > [!WARNING]
-> *Aynı anda okuma için açık olan dosyaları kesme konusunda dikkatli olun. Ayrıca okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
+> *Okuma için aynı anda açık olabilecek bir uyarı kesiliyor dosyaları kullanın. Okuma için açılan bir dosyanın kesilmesi, geçersiz verilerin okunmasına neden olabilir.*
 
-Uygulama, 4 GB'ın ötesinde çalıştırmak için hizmet *fx_file_extended_truncate_release.*
+4 GB 'den daha fazla işlem yapmak için, uygulama Service *fx_file_extended_truncate_release* kullanacaktır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Daha önce açılmış bir dosyanın işaretçisi.
-- **size:** Yeni dosya boyutu. Bu yeni dosya boyutunu geçen baytlar atılır.
+- **file_ptr**: daha önce açılmış bir dosyanın işaretçisi.
+- **Boyut**: yeni dosya boyutu. Bu yeni dosya boyutunu aşan baytlar atılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya kesme.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya şu anda açık değil.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Temel medya yazma korumalıdır.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamak için daha fazla alan yok.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya kesilme.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya şu anda açık değil.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) temel alınan medya, yazma korumalı.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_NO_MORE_SPACE** (0x0A) işlemi tamamlamaya yönelik daha fazla alan yok.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3586,7 +3586,7 @@ status = fx_file_truncate_release(&my_file, 100);
 
 ## <a name="fx_file_write"></a>fx_file_write
 
-Dosyaya bayt yazar
+Baytları dosyaya yazar
 
 ### <a name="prototype"></a>Prototype
 
@@ -3596,35 +3596,35 @@ UINT fx_file_write(
     VOID *buffer_ptr,
     ULONG size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, dosyanın geçerli konumundan başlayarak belirtilen arabellekten baytlar yazar. Yazma işlemi tamamlandıktan sonra dosyanın iç okuma işaretçisi, dosyada bir sonraki bayta işaret etmek üzere ayarlanır.
+Bu hizmet, dosyanın geçerli konumundan başlayarak belirtilen arabellekteki baytları yazar. Yazma işlemi tamamlandıktan sonra dosyanın iç okuma işaretçisi, dosyadaki bir sonraki bayta işaret etmek üzere ayarlanır.
 
 > [!WARNING]
-> *Kaynak arabelleği uzun sözcük sınırında ise ve istenen boyut sizeof( ULONG ) ile bölünebilirse daha hızlı performans elde **edilir.***
+> *Kaynak arabelleğinin uzun bir sözcüklük sınırında olması ve istenen boyutun sizeof (**ulong**) tarafından eşit olarak bölünemesinin ardından daha hızlı performans elde edilir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Dosya denetim bloğuna işaretçi.
-- **buffer_ptr:** Yazma için kaynak arabelleğinin işaretçisi.
-- **boyut:** Yazacak bayt sayısı.
+- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
+- **buffer_ptr**: yazma için kaynak arabelleği işaretçisi.
+- **Boyut**: yazılacak bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı dosya yazma.
-- **FX_NOT_OPEN** (0x07) Belirtilen dosya açık değil.
-- **FX_ACCESS_ERROR** (0x06) Belirtilen dosya yazmaya açık değil.
-- **FX_NO_MORE_SPACE** (0x0A) Bu yazma işlemini gerçekleştirmek için medyada yer yok.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_FAT_READ_ERROR** (0x03) FAT girişi okunamıyor.
-- **FX_NO_MORE_ENTRIES** (0x0F) Artık FAT girdisi yok.
-- **FX_PTR_ERROR** (0x18) Geçersiz dosya veya arabellek işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı dosya yazma.
+- **FX_NOT_OPEN** (0x07) belirtilen dosya açık değil.
+- **FX_ACCESS_ERROR** (0x06) belirtilen dosya yazma için açık değil.
+- **FX_NO_MORE_SPACE** (0x0A) medyada bu yazma işlemini gerçekleştirmek için kullanılabilecek daha fazla yer yok.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_FAT_READ_ERROR** (0x03) FAT girdisi okunamıyor.
+- **FX_NO_MORE_ENTRIES** (0x0F) daha fazla FAT girişi yok.
+- **FX_PTR_ERROR** (0x18) geçersiz dosya veya arabellek işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3671,7 +3671,7 @@ status = fx_file_write(&my_file, "1234567890", 10);
 
 ## <a name="fx_file_write_notify_set"></a>fx_file_write_notify_set
 
-Dosya yazma notify işlevini ayarlar
+Dosya yazma bildirim işlevini ayarlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -3680,22 +3680,22 @@ UINT fx_file_write_notify_set(
     FX_FILE *file_ptr,
     VOID (*file_write_notify)(FX_FILE*));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, başarılı bir dosya yazma işlemi sonrasında çağrılan geri çağırma işlevini yüklür.
+Bu hizmet, başarılı bir dosya yazma işleminden sonra çağrılan geri çağırma işlevini yüklüyor.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **file_ptr:** Dosya denetim bloğuna işaretçi.
-- **file_write_notify:** Dosya yazma geri çağırma işlevi yüklenir. Geri çağırma işlevini NULL olarak ayarlamak geri çağırma işlevini devre dışı bırakıyor.
+- **file_ptr**: dosya denetim bloğuna yönelik işaretçi.
+- **file_write_notify**: yüklenecek dosya yazma geri arama işlevi. Callback işlevini NULL olarak ayarlayın geri çağırma işlevini devre dışı bırakır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Geri çağırma işlevi başarıyla yüklendi.
-- **FX_PTR_ERROR** (0x18) file_ptr NULL olur.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) geri çağırma işlevi başarıyla yüklendi.
+- **FX_PTR_ERROR** (0x18) file_ptr null.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -3744,7 +3744,7 @@ Medya etkinliklerini iptal eder
 ```c
 UINT fx_media_abort(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, tüm açık dosyaları kapatma, ilişkili sürücüye bir iptal isteği gönderme ve medyayı durdurulmuş duruma yerleştirme dahil olmak üzere medyayla ilişkili tüm geçerli etkinlikleri iptal eder. Bu hizmet genellikle g/ç hataları algılandığında çağrılır.
 
@@ -3810,7 +3810,7 @@ Mantıksal kesim önbelleğini geçersiz kılar
 UINT fx_media_cache_invalidate(FX_MEDIA *media_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önbellekteki tüm kirli kesimleri temizler ve sonra mantıksal kesim önbelleğinin tamamını geçersiz kılar.
 
@@ -3877,7 +3877,7 @@ UINT fx_media_check(
     ULONG error_correction_option,
     ULONG *errors_detected_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, dosya/dizin çapraz bağlantı, geçersiz FAT zincirleri ve kayıp kümeler gibi temel yapısal hatalar için belirtilen medyayı denetler. Bu hizmet ayrıca algılanan hataları düzeltme olanağı da sağlar.
 
@@ -3894,7 +3894,7 @@ Fx_media_check hizmeti, medyada dizinlerin ve dosyaların derinlik ilk analizi i
 - **error_correction_option:** Hata düzeltme seçeneği bitleri, bit ayarlanırken hata düzeltmesi gerçekleştirilir. Hata düzeltme seçeneği bitleri aşağıdaki gibi tanımlanır:
   - FX_FAT_CHAIN_ERROR (0x01)
   - FX_DIRECTORY_ERROR (0x02)
-  - FX_LOST_CLUSTER_ERROR (0x04) Basitçe OR ile gerekli hata düzeltme seçeneklerini birlikte kullanın. Hata düzeltmesi gerekmiyorsa 0 değeri sağlanmalıdır.
+  - FX_LOST_CLUSTER_ERROR (0x04) Yalnızca VEYA ile gerekli hata düzeltme seçeneklerini birlikte kullanın. Hata düzeltmesi gerekmiyorsa 0 değeri sağlanmalıdır.
 - **errors_detected_ptr:** Aşağıda tanımlandığı gibi hata algılama bitleri için hedef:
   - FX_FAT_CHAIN_ERROR (0x01)
   - FX_DIRECTORY_ERROR (0x02) FX_LOST_CLUSTER_ERROR (0x04)
@@ -3967,7 +3967,7 @@ Medyayı kapatır
 ```c
 UINT fx_media_close(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen medyayı kapatır. Medyayı kapatma işlemi sırasında, tüm açık dosyalar kapatılır ve kalan arabellekler fiziksel medyaya boşaltılmıştır.
 
@@ -4032,22 +4032,22 @@ UINT fx_media_close_notify_set(
     VOID (*media_close_notify)(FX_MEDIA*));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir medya başarıyla kapatıldıktan sonra çağrılan bir notify callback işlevi ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **media_ptr:** Medya denetim bloğuna işaretçi.
-- **media_close_notify:** Medya kapatma bildirimi geri çağırma işlevinin yüklü olması. Geri çağırma işlevi olarak NULL değerinin geçişini medya kapatma geri çağırmasını devre dışı bırakma.
+- **media_close_notify:** Medya kapatma bildirimi geri çağırma işlevinin yüklü olması. Geri çağırma işlevi olarak NULL değerinin geçirmesi medya kapatma geri çağrısını devre dışı bırakıyor.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **FX_SUCCESS** (0x00) Geri çağırma işlevi başarıyla yüklendi.
-- **FX_PTR_ERROR** (0x18) media_ptr NULL olur.
-- **FX_CALLER_ERROR**    (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_PTR_ERROR** (0x18) media_ptr null.
+- **FX_CALLER_ERROR**    (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4079,7 +4079,7 @@ fx_media_close_notify_set(media_ptr, my_media_close_callback);
 
 ## <a name="fx_media_exfat_format"></a>fx_media_exFAT_format
 
-Medyayı biçimlendirme
+Medyayı biçimlendirir
 
 ### <a name="prototype"></a>Prototype
 
@@ -4099,42 +4099,42 @@ UINT fx_media_exFAT_format(
     UINT volume_serial_number, 
     UINT boundary_unit);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet sağlanan medyayı sağlanan parametrelere göre exFAT uyumlu bir şekilde biçimler. Medya açılmadan önce bu hizmetin çağrılsı gerekir.
+Bu hizmet verilen medyayı sağlanan parametrelere göre exFAT ile uyumlu bir şekilde biçimlendirir. Medyayı açmadan önce bu hizmetin çağrılması gerekir.
 
 > [!WARNING]
-> *Zaten biçimlendirilmiş bir medyayı biçimlendirmek, medyanın tüm dosyalarını ve dizinlerini etkili bir şekilde siler.*
+> *Zaten biçimlendirilmiş bir medyanın biçimlendirilmesi, medyadaki tüm dosya ve dizinleri etkin bir şekilde siler.*
 
 > [!IMPORTANT]
-> *ExFAT birim boyutu bölümün boyutuyla (MBR veya GPT düzeni varsa) veya bölüm düzeni yoksa (MBR veya GPT yoksa) cihazın boyutuyla eşleşmesi gerekir. Kullanılabilir kesimlerden Windows toplam kesim değerleriyle biçimlendirildiklerinde exFAT Disk'in yeniden tanınmamasıyla ilgili bir sınırlama vardır*
+> *ExFAT birim boyutu bölümün boyutuyla (MBR veya GPT düzeni varsa) veya bölüm düzeni yoksa (MBR veya GPT) tüm cihazın boyutuna eşleşmelidir. kullanılabilir sektörlerden daha az sayıda toplam sektörde biçimlendirildiyse, exFAT diskinin bir Windows sınırlama yoktur*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi. Bu yalnızca sürücünün çalışması için gereken bazı temel bilgileri sağlamak için kullanılır.
-- **driver:** Bu medya için I/O sürücüsünün işaretçisi. Bu genellikle sonraki çağrıya sağlanan sürücü fx_media_open olur.
-- **driver_info_ptr:** I/Ç sürücüsünün kullanabiliyor olduğu isteğe bağlı bilgilerin işaretçisi.
-- **memory_ptr:** Medya için çalışan belleğin işaretçisi. memory_size Çalışma medyası belleğinin boyutunu belirtir. Boyutun en azından medyanın kesim boyutu kadar büyük olması gerekir.
-- **volume_name:** En fazla 11 karakter uzunluğunda olan birim adı dizesinin işaretçisi.
-- **number_of_fats:** Medyada SSS sayısı. Geçerli uygulama medyada bir FAT'i destekler.
-- **hidden_sectors:** Bu medyanın önyükleme kesimi öncesinde gizlenen kesim sayısı. Bu durum, birden çok bölüm olduğunda normaldir.
-- **total_sectors:** Medyadaki toplam kesim sayısı.
-- **bytes_per_sector:** Genellikle 512 olan kesim başına bayt sayısı. FileX için bunun 32'nin katları olması gerekir.
+- **media_ptr**: medya denetim bloğu işaretçisi. Bu, yalnızca sürücünün çalışması için gerekli olan bazı temel bilgileri sağlamak için kullanılır.
+- **sürücü**: Bu ortam için g/ç sürücüsüne yönelik işaretçi. Bu, genellikle sonraki fx_media_open çağrısına sağlanan sürücü olacaktır.
+- **driver_info_ptr**: g/ç sürücüsünün yararlanmasına yönelik isteğe bağlı bilgiler işaretçisi.
+- **memory_ptr**: medya için çalışma belleğine yönelik işaretçi. memory_size, çalışma medyası belleğinin boyutunu belirtir. Boyut en az medyanın kesim boyutu kadar büyük olmalıdır.
+- **Volume_Name**: en fazla 11 karakter olan birim adı dizesi işaretçisi.
+- **number_of_fats**: medyadaki Fats sayısı. Geçerli uygulama, medyada bir FAT 'ı destekler.
+- **hidden_sectors**: Bu medyanın önyükleme kesiminden önce gizlenen kesimlerin sayısı. Bu, birden çok bölüm mevcut olduğunda tipik bir davranıştır.
+- **total_sectors**: medyadaki toplam kesim sayısı.
+- **bytes_per_sector**: kesim başına genellikle 512 olan bayt sayısı. FileX, bunun 32 katı olmasını gerektirir.
 > [!IMPORTANT]
-> *Belirtim başvurusuyla, kesim başına bayt sayısı yalnızca şu değerleri alır: 512, 1024, 2048 veya 4096.*
+> *Belirtime başvuru ile kesim başına bayt yalnızca şu değerleri alabilir: 512, 1024, 2048 veya 4096.*
 
-- **sectors_per_cluster:** Her kümede kesim sayısı. Küme, FAT dosya sistemi içinde en düşük ayırma birimidir.
-- **volumne_serial_number:** Bu birim için kullanılacak seri numarası.
-- **boundary_unit:** Kesim sayısı olarak fiziksel veri alanı hizalama boyutu.
+- **sectors_per_cluster**: her kümedeki sektör sayısı. Küme, bir FAT dosya sistemindeki en düşük ayırma birimidir.
+- **volumne_serial_number**: Bu birim için kullanılacak seri numarası.
+- **boundary_unit**: fiziksel veri alanı hizalama boyutu, kesim sayısı olarak.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı medya biçimi.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya, sürücü veya bellek işaretçisi.
-- **FX_CALLER_ERROR**    (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı medya biçimi.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_PTR_ERROR** (0x18) medya, sürücü veya bellek işaretçisi geçersiz.
+- **FX_CALLER_ERROR**    (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4186,7 +4186,7 @@ status = fx_media_exFAT_format(&sd_card, _fx_sd_driver,
 
 ## <a name="fx_media_extended_space_available"></a>fx_media_extended_space_available
 
-Kullanılabilir medya alanı döndürür
+Kullanılabilir medya alanını döndürür
 
 ### <a name="prototype"></a>Prototype
 
@@ -4195,25 +4195,25 @@ UINT fx_media_extended_space_available(
     FX_MEDIA *media_ptr,
     ULONG64 *available_bytes_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, medyada kullanılabilir bayt sayısını döndürür.
+Bu hizmet, medyada kullanılabilir olan bayt sayısını döndürür.
 
-Bu hizmet exFAT için tasarlanmıştır. Available_bytes *parametresinin işaretçisi,* çağıranın 4 GB aralığının ötesindeki medyayla çalışmasına olanak sağlayan 64 bit tamsayı değerini alır.
+Bu hizmet, exFAT için tasarlanmıştır. *Available_bytes* parametresi işaretçisi 64 bitlik bir tamsayı değeri alır ve bu, çağıranın 4 ' ün üzerinde medya ile çalışmasına olanak tanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Önceden açılmış bir medyanın işaretçisi.
-- **available_bytes_ptr:** Medyada kalan kullanılabilir bayt sayısı.
+- **media_ptr**: daha önce açılmış bir medyaya yönelik işaretçi.
+- **available_bytes_ptr**: medyada kalan kullanılabilir bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Medyada kullanılabilir alan başarıyla alındı.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi veya kullanılabilir bayt işaretçisi NULL.
-- **FX_CALLER_ERROR**    (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) medyada bulunan alanı başarıyla aldı.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi veya kullanılabilir bayt işaretçisi null.
+- **FX_CALLER_ERROR**    (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4260,7 +4260,7 @@ Fiziksel medyada verileri boşaltır
 ```c
 UINT fx_media_flush(FX_MEDIA *media_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, herhangi bir değiştirilen dosyanın tüm önbelleğe alınan kesimlerini ve dizin girdilerini fiziksel medyada boşaltır.
 
@@ -4343,7 +4343,7 @@ UINT fx_media_format(
     UINT heads,
     UINT sectors_per_track);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet verilen medyayı sağlanan parametrelere göre FAT 12/16/32 ile uyumlu bir şekilde biçimlendirir. Medyayı açmadan önce bu hizmetin çağrılması gerekir.
 
@@ -4430,7 +4430,7 @@ status = fx_media_format(&ram_disk, _fx_ram_driver,
 
 ## <a name="fx_media_open"></a>fx_media_open
 
-Dosya erişimi için medyayı açar
+Dosya erişimi için medya açar
 
 ### <a name="prototype"></a>Prototype
 
@@ -4443,12 +4443,12 @@ UINT fx_media_open(
     VOID *memory_ptr, 
     ULONG memory_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan I/O sürücüsünü kullanarak dosya erişimi için bir medya açar.
 
 > [!WARNING]
-> *Bu hizmete sağlanan bellek iç mantıksal kesim önbelleğini uygulamak için kullanılır, bu nedenle bellek ne kadar fazla bellek sağlanırsa O kadar fazla fiziksel I/O azalır. FileX için en az bir mantıksal kesim (medya kesimi başına bayt) önbelleği gerekir.*
+> *Bu hizmete sağlanan bellek iç mantıksal kesim önbelleğini uygulamak için kullanılır, bu nedenle bellek ne kadar fazla bellek sağlanırsa o kadar fazla fiziksel I/O azalır. FileX için en az bir mantıksal kesim (medya kesimi başına bayt) önbelleği gerekir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -4462,7 +4462,7 @@ Bu hizmet, sağlanan I/O sürücüsünü kullanarak dosya erişimi için bir med
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **FX_SUCCESS** (0x00) Başarılı medya açma.
-- **FX_BOOT_ERROR** (0x01) Medyanın önyükleme kesimi okuma hatası.
+- **FX_BOOT_ERROR** (0x01) Medyanın önyükleme kesimi okundu.
 - **FX_MEDIA_INVALID** (0x02) Belirtilen medyanın önyükleme kesimi bozuk veya geçersiz. Ayrıca, bu dönüş kodu mantıksal kesim önbellek boyutunun veya FAT giriş boyutunun 2'nin gücü olmadığını belirtmek için kullanılır.
 - **FX_FAT_READ_ERROR** FAT 0x03 okuma hatası.
 - **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
@@ -4519,7 +4519,7 @@ UINT fx_media_open_notify_set(
     FX_MEDIA *media_ptr,
     VOID (*media_open_notify)(FX_MEDIA*));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir medya başarıyla açıldıktan sonra çağrılan bir notify callback işlevi ayarlar.
 
@@ -4578,7 +4578,7 @@ UINT fx_media_read(
     ULONG logical_sector, 
     VOID *buffer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, medyadan bir mantıksal kesim okur ve sağlanan arabelleğe yer sağlar.
 
@@ -4591,13 +4591,13 @@ Bu hizmet, medyadan bir mantıksal kesim okur ve sağlanan arabelleğe yer sağl
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **FX_SUCCESS** (0x00) Başarılı medya okuma.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya arabellek işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya arabellek işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4635,7 +4635,7 @@ status = fx_media_read(&my_media, 22, my_buffer);
 
 ## <a name="fx_media_space_available"></a>fx_media_space_available
 
-Kullanılabilir medya alanı döndürür
+Kullanılabilir medya alanını döndürür
 
 ### <a name="prototype"></a>Prototype
 
@@ -4645,25 +4645,25 @@ UINT fx_media_space_available(
     ULONG *available_bytes_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, medyada kullanılabilir bayt sayısını döndürür.
+Bu hizmet, medyada kullanılabilir olan bayt sayısını döndürür.
 
-4 GB'den büyük medya ile çalışmak için, uygulama tarafından *fx_media_extended_space_available.*
+4 GB 'den büyük medyayla çalışmak için, uygulama Service *fx_media_extended_space_available* kullanacaktır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Önceden açılmış bir medyanın işaretçisi.
-- **available_bytes_ptr:** Medyada kalan kullanılabilir bayt sayısı.
+- **media_ptr**: daha önce açılmış bir medyaya yönelik işaretçi.
+- **available_bytes_ptr**: medyada kalan kullanılabilir bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Medyada kullanılabilir alan başarıyla döndürüldü.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi veya kullanılabilir bayt işaretçisi NULL.
-- **FX_CALLER_ERROR**    (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) medyada kullanılabilir alanı başarıyla döndürdü.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi veya kullanılabilir bayt işaretçisi null.
+- **FX_CALLER_ERROR**    (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4713,28 +4713,28 @@ UINT fx_media_volume_get(
     CHAR *volume_name,
     UINT volume_source);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden açılmış olan medyanın birim adını almaktadır.
+Bu hizmet, daha önce açılmış medyanın birim adını alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **volume_name:** Birim adı için hedefin işaretçisi. Hedefin en az 12 karakter uzunluğunda olacak kadar büyük olması gerektiğini unutmayın.
-- **volume_source:** Önyükleme kesimi veya kök dizinden adın nereden alınacaklarını belirtir. Bu parametre için geçerli değerler şunlardır:
+- **media_ptr**: medya denetim bloğu işaretçisi.
+- **Volume_Name**: birim adı için hedef işaretçisi. Hedefin en az 12 karakter tutabilecek kadar büyük olması gerektiğini unutmayın.
+- **volume_source**: önyükleme kesiminden veya kök dizinden adın nereden alındığını belirtir. Bu parametre için geçerli değerler şunlardır:
   - FX_BOOT_SECTOR
   - FX_DIRECTORY_SECTOR
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı medya birimi get.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
-- **FX_NOT_FOUND** (0x04) Birimi bulunamadı.
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya birim hedef işaretçisi.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_SUCCESS** (0x00) başarılı medya birimi al.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
+- **FX_NOT_FOUND** (0x04) birim bulunamadı.
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya birim hedefi işaretçisi.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -4774,7 +4774,7 @@ status = fx_media_volume_get_extended(&ram_disk, volume_name,
 
 ## <a name="fx_media_volume_get_extended"></a>fx_media_volume_get_extended
 
-Daha önce açılmış medyanın medya birimi adını alır
+Önceden açılmış olan medyanın medya birimi adını alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -4785,33 +4785,33 @@ UINT fx_media_volume_get_extended(
     UINT volume_name_buffer_length,
     UINT volume_source);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce açılmış medyanın birim adını alır.
+Bu hizmet, önceden açılmış olan medyanın birim adını alır.
 
 > [!IMPORTANT]
-> Bu hizmet, çağıran _ *Volume_Name** arabelleğinin boyutunda geçtiği sürece ***fx_media_volume_get ()** _ ile aynıdır.
+> Bu hizmet ***fx_media_volume_get() _** ile aynıdır, ancak çağıranın _ volume_name **arabelleğinin boyutunu* geçer.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 
-- **media_ptr**: medya denetim bloğu işaretçisi.
-- **Volume_Name**: birim adı için hedef işaretçisi. Hedefin en az 12 karakter tutabilecek kadar büyük olması gerektiğini unutmayın.
-- **volume_name_buffer_length**: Volume_Name arabelleğinin boyutu.
-- **volume_source**: önyükleme kesiminden veya kök dizinden adın nereden alındığını belirtir. Bu parametre için geçerli değerler şunlardır:
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **volume_name:** Birim adı için hedefin işaretçisi. Hedefin en az 12 karakter uzunluğunda olacak kadar büyük olması gerektiğini unutmayın.
+- **volume_name_buffer_length:** Arabelleğin volume_name boyutu.
+- **volume_source:** Önyükleme kesimi veya kök dizinden adın nereden alınacaklarını belirtir. Bu parametre için geçerli değerler şunlardır:
   - FX_BOOT_SECTOR
   - FX_DIRECTORY_SECTOR
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı medya birimi al.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
-- **FX_NOT_FOUND** (0x04) birim bulunamadı.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya birim hedefi işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı medya birimi get.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_NOT_FOUND** (0x04) Birimi bulunamadı.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya birim hedef işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -4861,27 +4861,27 @@ UINT fx_media_volume_set(
     FX_MEDIA *media_ptr, 
     CHAR *volume_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce açılmış medyanın birim adını ayarlar.
+Bu hizmet, önceden açılmış olan medyanın birim adını ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: medya denetim bloğu işaretçisi.
-- **Volume_Name**: birim adı işaretçisi.
+- **media_ptr:** Medya denetim bloğuna işaretçi.
+- **volume_name:** Birim adının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı medya birimi kümesi.
+- **FX_SUCCESS** (0x00) Başarılı medya birimi kümesi.
 - **FX_INVALID_NAME** (0x0C) Volume_name geçersiz.
-- **FX_MEDIA_INVALID** (0x02) birim adı ayarlanamıyor.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_PTR_ERROR** (0x18) geçersiz medya veya birim adı işaretçisi.
-- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
+- **FX_MEDIA_INVALID** (0x02) Birim adı ayarlanamıyor.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya veya birim adı işaretçisi.
+- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -4919,7 +4919,7 @@ status = fx_media_volume_set(&ram_disk, "MY_VOLUME");
 
 ## <a name="fx_media_write"></a>fx_media_write
 
-Mantıksal kesimi yazar
+Yazma mantıksal kesimi
 
 ### <a name="prototype"></a>Prototype
 
@@ -4929,25 +4929,25 @@ UINT fx_media_write(
     ULONG logical_sector,
     VOID *buffer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet verilen arabelleği belirtilen mantıksal kesime yazar.
+Bu hizmet sağlanan arabelleği belirtilen mantıksal kesime yazar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr**: daha önce açılmış bir medyaya yönelik işaretçi.
-- **logical_sector**: yazılacak mantıksal kesim.
-- **buffer_ptr**: mantıksal kesim yazma için kaynak işaretçisi.
+- **media_ptr:** Önceden açılmış bir medyanın işaretçisi.
+- **logical_sector:** Yazacak mantıksal kesim.
+- **buffer_ptr:** Mantıksal kesim yazma için kaynağın işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) başarılı medya yazma.
-- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
-- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
-- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
-- **FX_WRITE_PROTECT** (0x23) belirtilen medya yazma korumalı.
-- **FX_PTR_ERROR** (0x18) geçersiz medya işaretçisi.
-- **FX_CALLER_ERROR**    (0x20) çağıran bir iş parçacığı değil.
+- **FX_SUCCESS** (0x00) Başarılı medya yazma.
+- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
+- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
+- **FX_WRITE_PROTECT** (0x23) Belirtilen medya yazma korumalıdır.
+- **FX_PTR_ERROR** (0x18) Geçersiz medya işaretçisi.
+- **FX_CALLER_ERROR**    (0x20) Çağıran bir iş parçacığı değildir.
 
 ### <a name="allowed-from"></a>İzin Verilen
 
@@ -5001,7 +5001,7 @@ UINT fx_system_date_get(
     UINT *month, 
     UINT *day);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet geçerli sistem tarihini döndürür.
 
@@ -5055,12 +5055,12 @@ UINT fx_system_date_set(
     UINT day);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sistem tarihini belirtilen şekilde ayarlar.
 
 > [!WARNING]
-> *İlk sistem tarihini ayarlamak için **bu fx_system_initialize** kısa süre sonra çağrılacaktır. Varsayılan olarak, sistem tarihi son genel FileX sürümüne göredir.*
+> *İlk sistem tarihini ayarlamak için bu **fx_system_initialize** kısa bir süre sonra çağrılacaktır. Varsayılan olarak, sistem tarihi son genel FileX sürümüne göredir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -5109,7 +5109,7 @@ Sistemin tamamını başlatıyor
 VOID fx_system_initialize(void);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet tüm önemli FileX veri yapılarını başlatıyor. Başka bir FileX ***hizmeti tx_application_define*** veya bir başlatma iş parçacığından çağrılmalı ve çağrılmalı.
 
@@ -5159,7 +5159,7 @@ void tx_application_define(VOID *free_memory)
 
 ## <a name="fx_system_time_get"></a>fx_system_time_get
 
-Geçerli sistem saatlerini alır
+Geçerli sistem saati alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -5170,13 +5170,13 @@ UINT fx_system_time_get(
     UINT *second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet geçerli sistem saatlerini almaktadır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **hour:** Hedefe saat işaretçisi.
+- **hour:** Hedefin saat işaretçisi.
 - **minute:** Dakika için hedefin işaretçisi.
 - **second:** saniye için hedefin işaretçisi.
 
@@ -5222,7 +5222,7 @@ Geçerli sistem saatlerini ayarlar
 UINT fx_system_time_set(UINT hour, UINT minute, UINT second);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli sistem saatlerini giriş parametreleri tarafından belirtilen saat olarak ayarlar.
 
@@ -5278,7 +5278,7 @@ UINT fx_unicode_directory_create(
     ULONG source_unicode_length, 
     CHAR *short_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir alt dizin oluşturur; Unicode kaynak adı parametresinde yol bilgilerine izin verilmez. Başarılı olursa, yeni oluşturulan Unicode alt dizininin kısa adı (8.3 biçimi) hizmet tarafından döndürülür.
 
@@ -5368,7 +5368,7 @@ UINT fx_unicode_directory_rename(
     ULONG new_unicode_length,
     CHAR *new_short_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Unicode adlı alt dizini geçerli çalışma dizininde belirtilen yeni Unicode adıyla değiştirir. Unicode ad parametrelerinin yol bilgilerine sahip olması gerekir.
 
@@ -5453,7 +5453,7 @@ UINT fx_unicode_file_create(
     CHAR *short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir dosya oluşturur; Unicode kaynak adı parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, yeni oluşturulan Unicode dosyanın kısa adı (8,3 biçimi) hizmet tarafından döndürülür.
 
@@ -5548,7 +5548,7 @@ UINT fx_unicode_file_rename(
     CHAR *new_short_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizinde Unicode adlı bir dosya adını belirtilen yeni Unicode adı olarak değiştirir. Unicode ad parametreleri yol bilgilerine sahip olmamalıdır.
 
@@ -5635,19 +5635,19 @@ Unicode adının uzunluğunu alır
 ```c
 ULONG fx_unicode_length_get(UCHAR *unicode_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan Unicode adının uzunluğunu belirler. Unicode bir karakter iki bayt ile temsil edilir. Unicode adı, iki baytlık bir Unicode karakter olan ve iki boş bayt (0 değeri 0 değeri) tarafından sonlandırılan bir serisidir.
+Bu hizmet, sağlanan Unicode adının uzunluğunu belirler. Bir Unicode karakteri iki bayt ile temsil eder. Unicode adı, iki NULL bayt (0 değeri iki bayt) tarafından sonlandırılan iki baytlık Unicode karakter dizisidir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-**unicode_name**: Unicode adına işaretçi.
+**unicode_name:** Unicode adı işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-**uzunluk**: Unicode adının uzunluğu (adda Unicode karakter sayısı).
+**length:** Unicode adının uzunluğu (adda Unicode karakter sayısı).
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -5710,23 +5710,23 @@ UINT fx_unicode_length_get_extended(
     UCHAR *unicode_name,
     UINT buffer_length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan Unicode adının uzunluğunu alır. Unicode bir karakter iki bayt ile temsil edilir. Unicode adı, iki boş bayt (iki bayt 0 değeri) tarafından sonlandırılan bir dizi TWA Unicode karakter dizisidir.
+Bu hizmet, sağlanan Unicode adının uzunluğunu alır. Bir Unicode karakteri iki bayt ile temsil eder. Unicode adı, iki NULL bayt (0 değeri iki bayt) tarafından sonlandırılan iki baytlık Unicode karakter dizisidir.
 
 > [!IMPORTANT]
-> *Bu hizmet, iki NULL karakter de dahil olmak üzere, çağıran **unicode_name** arabelleğinin boyutuna geçtiğinde, **fx_unicode_length_get ()** ile aynıdır.*
+> *Bu hizmet **fx_unicode_length_get()** ile aynıdır ancak çağıranın iki NULL karakter dahil olmak **üzere unicode_name** arabelleğinin boyutunu geçerse.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **unicode_name**: Unicode adına işaretçi.
-- **BUFFER_LENGTH**: Unicode ad arabelleğinin boyutu.
+- **unicode_name:** Unicode adı işaretçisi.
+- **buffer_length:** Unicode ad arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-**uzunluk**: Unicode adının uzunluğu (adda Unicode karakter sayısı).
+**length:** Unicode adının uzunluğu (adda Unicode karakter sayısı).
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -5792,7 +5792,7 @@ UINT fx_unicode_name_get(
     ULONG *destination_unicode_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizin içinde sağlanan kısa ad (8,3 biçimi) ile ilişkili Unicode adını alır; kısa ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından kısa adla ilişkili Unicode adı döndürülür.
 
@@ -5881,7 +5881,7 @@ UINT fx_unicode_name_get_extended(
     ULONG *destination_unicode_length,
     ULONG unicode_name_buffer_length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, geçerli varsayılan dizin içinde sağlanan kısa ad (8,3 biçimi) ile ilişkili Unicode adını alır; kısa ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından kısa adla ilişkili Unicode adı döndürülür.
 
@@ -5962,7 +5962,7 @@ length = fx_unicode_name_get_extended(&ram_disk, "ABC0~111.TXT",
 
 ## <a name="fx_unicode_short_name_get"></a>fx_unicode_short_name_get
 
-Unicode addan kısa ad alır
+Unicode adından kısa adı alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -5974,32 +5974,32 @@ UINT fx_unicode_short_name_get(
     CHAR *destination_short_name);
 ```
 
-Bu hizmet, geçerli varsayılan dizinde Unicode-name ile ilişkili kısa adı (8.3 biçimi) verir; Unicode ad parametresinde yol bilgilerine izin verilmez. Başarılı olursa, Unicode adıyla ilişkili kısa ad hizmet tarafından döndürülür.
+Bu hizmet, geçerli varsayılan dizin içindeki UNICODE adı ile ilişkili kısa adı (8,3 biçimi) alır; Unicode ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından Unicode adıyla ilişkili kısa ad döndürülür.
 
 > [!IMPORTANT]
-> *Bu hizmet hem dosyalar hem de alt dizinler için kısa adlar almak için kullanılabilir.*
+> *Bu hizmet, hem dosya hem de alt dizinlerin kısa adlarını almak için kullanılabilir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **source_unicode_name:** Unicode adı işaretçisi.
-- **source_unicode_length:** Unicode adının uzunluğu.
-- **destination_short_name:** Kısa ad (8.3 biçimi) için hedefin işaretçisi. Bu, en az 13 bayt boyutunda olmalıdır.
+- **media_ptr**: medya denetim bloğu işaretçisi.
+- **source_unicode_name**: Unicode adına işaretçi.
+- **source_unicode_length**: Unicode adının uzunluğu.
+- **destination_short_name**: kısa ad (8,3 biçimi) için hedef işaretçisi. Bu, en az 13 bayt boyutunda olmalıdır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı kısa ad alma.
+- **FX_SUCCESS** (0x00) başarılı kısa ad alma.
 - **FX_FAT_READ_ERROR** (0x03) FAT tablosu okunamıyor.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
 - **FX_NOT_FOUND** (0x04) Unicode adı bulunamadı.
-- **FX_NOT_IMPLEMENTED** (0x22) Hizmeti exFAT dosya sistemi için uygulanmadı.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya ad işaretçileri.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_NOT_IMPLEMENTED** (0x22) hizmeti exFAT dosya sistemi için uygulanmadı.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya ad işaretçileri.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -6052,7 +6052,7 @@ length = fx_unicode_short_name_get(&ram_disk, my_unicode_name, 17, my_short_name
 
 ## <a name="fx_unicode_short_name_get_extended"></a>fx_unicode_short_name_get_extended
 
-Unicode addan kısa ad alır
+Unicode adından kısa adı alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -6065,37 +6065,37 @@ UINT fx_unicode_short_name_get_extended(
     ULONG short_name_buffer_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, geçerli varsayılan dizinde Unicode-name ile ilişkili kısa adı (8.3 biçimi) verir; Unicode ad parametresinde yol bilgilerine izin verilmez. Başarılı olursa, Unicode adıyla ilişkili kısa ad hizmet tarafından döndürülür.
+Bu hizmet, geçerli varsayılan dizin içindeki UNICODE adı ile ilişkili kısa adı (8,3 biçimi) alır; Unicode ad parametresinde hiçbir yol bilgisine izin verilmez. Başarılı olursa, hizmet tarafından Unicode adıyla ilişkili kısa ad döndürülür.
 
 > [!IMPORTANT]
-> *Bu hizmet **fx_unicode_short_name_get() ile** aynıdır, ancak çağıranın hedef arabelleğin boyutunu giriş bağımsız değişkeni olarak sağlar. Bu, hizmetin kısa adın hedef arabelleği aşmasını garantilemektedir.*
+> *Çağıran, hedef arabelleğin bir giriş bağımsız değişkeni olarak boyutunu sağladığı, bu hizmet **fx_unicode_short_name_get ()** ile aynıdır. Bu, hizmetin kısa adı hedef arabelleği aşmadığını garanti etmesine olanak tanır.*
 
-*Bu hizmet hem dosyalar hem de alt dizinler için kısa adlar almak için kullanılabilir*
+*Bu hizmet, hem dosya hem de alt dizinlerin kısa adlarını almak için kullanılabilir*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **media_ptr:** Medya denetim bloğuna işaretçi.
-- **source_unicode_name:** Unicode adı işaretçisi.
-- **source_unicode_length:** Unicode adının uzunluğu.
-- **destination_short_name:** Kısa ad (8.3 biçimi) için hedefin işaretçisi. Bu, en az 13 bayt boyutunda olmalıdır.
-- **short_name_buffer_length:** Hedef arabelleğin boyutu. Arabellek boyutu en az 14 bayt olmalıdır.
+- **media_ptr**: medya denetim bloğu işaretçisi.
+- **source_unicode_name**: Unicode adına işaretçi.
+- **source_unicode_length**: Unicode adının uzunluğu.
+- **destination_short_name**: kısa ad (8,3 biçimi) için hedef işaretçisi. Bu, en az 13 bayt boyutunda olmalıdır.
+- **short_name_buffer_length**: hedef arabelleğin boyutu. Arabellek boyutu en az 14 bayt olmalıdır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **FX_SUCCESS** (0x00) Başarılı kısa ad alma.
+- **FX_SUCCESS** (0x00) başarılı kısa ad alma.
 - **FX_FAT_READ_ERROR** (0x03) FAT tablosu okunamıyor.
-- **FX_FILE_CORRUPT** (0x08) Dosyası bozuk
-- **FX_IO_ERROR** (0x90) Sürücü Ç hatası.
-- **FX_MEDIA_NOT_OPEN** (0x11) Belirtilen medya açık değil.
+- **FX_FILE_CORRUPT** (0x08) dosyası bozuk
+- **FX_IO_ERROR** (0x90) sürücü g/ç hatası.
+- **FX_MEDIA_NOT_OPEN** (0x11) belirtilen medya açık değil.
 - **FX_NOT_FOUND** (0x04) Unicode adı bulunamadı.
-- **FX_NOT_IMPLEMENTED** (0x22) Hizmeti exFAT dosya sistemi için uygulanmadı.
-- **FX_SECTOR_INVALID** (0x89) Geçersiz kesim.
-- **FX_PTR_ERROR** (0x18) Geçersiz medya veya ad işaretçileri.
-- **FX_CALLER_ERROR** (0x20) Çağıran bir iş parçacığı değildir.
+- **FX_NOT_IMPLEMENTED** (0x22) hizmeti exFAT dosya sistemi için uygulanmadı.
+- **FX_SECTOR_INVALID** (0x89) geçersiz kesim.
+- **FX_PTR_ERROR** (0x18) geçersiz medya veya ad işaretçileri.
+- **FX_CALLER_ERROR** (0x20) çağıran bir iş parçacığı değil.
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 

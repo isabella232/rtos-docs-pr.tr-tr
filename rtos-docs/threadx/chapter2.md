@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e1bf85d363b07c81f226d494107eae9ba18114a7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a88dc75c3b01e8054f72b3e1475791f064eac0ded02b22ccd18dd46da8c7200a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825456"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116785048"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-threadx"></a>Bölüm 2-Azure RTOS ThreadX yükleme ve kullanımı
 
@@ -19,7 +19,7 @@ Bu bölümde, yüksek performanslı Azure RTOS ThreadX çekirdeğinin yüklenmes
 
 ## <a name="host-considerations"></a>Ana bilgisayar konuları
 
-Katıştırılmış yazılım genellikle Windows veya Linux (UNIX) ana bilgisayar bilgisayarlarında geliştirilmiştir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
+katıştırılmış yazılım genellikle Windows veya Linux (unıx) ana bilgisayar bilgisayarlarında geliştirilmiştir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
 
 Genellikle hedef indirme, geliştirme aracı hata ayıklayıcısı içinden yapılır. İndirme tamamlandıktan sonra, hata ayıklayıcı hedef yürütme denetimi (go, dur, kesme noktası, vb.) sağlamaktan ve bellek ve işlemci kayıtlarına erişime karşı sorumludur.
 
@@ -42,7 +42,7 @@ Azure RTOS ThreadX, konumundaki ortak kaynak kodu depomızdan elde edilebilir <h
 
 Aşağıda, depodaki birçok önemli dosyanın bir listesi verilmiştir.
 
-| Kısaltın | Açıklama |
+| Kısaltın | Description |
 |------------------- | ----------- |
 | **tx_api. h**                      | Tüm sistem eşlerini, veri yapılarını ve hizmet prototiplerini içeren C üstbilgi dosyası.                                                             |
 | **tx_port. h**                     | Tüm geliştirme araçlarını ve targetspecific veri tanımlarını ve yapılarını içeren C üstbilgi dosyası.                                                 |
@@ -55,13 +55,13 @@ Aşağıda, depodaki birçok önemli dosyanın bir listesi verilmiştir.
 
 ## <a name="threadx-installation"></a>ThreadX yüklemesi
 
-ThreadX, GitHub deposu yerel makinenize kopyalanarak yüklenir. Bilgisayarınızda ThreadX deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir.
+GitHub deposu yerel makinenize kopyalanarak threadx yüklenir. Bilgisayarınızda ThreadX deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir.
 
 ```c
     git clone https://github.com/azure-rtos/threadx
 ```
 
-Alternatif olarak, GitHub ana sayfasında İndir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+alternatif olarak, GitHub ana sayfasındaki indir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
 
 Ayrıca, çevrimiçi deponun ön sayfasında ThreadX kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
 
@@ -170,7 +170,7 @@ TX_INLINE_THREAD_RESUME_SUSPEND
 
 ### <a name="global-time-source"></a>Küresel saat kaynağı
 
-Diğer Microsoft Azure RTOS ürünleri (FileX, NetX, GUıDX, USBX, vb.) için ThreadX, bir saniye temsil eden ThreadX Zamanlayıcı işareti sayısını tanımlar. Diğerleri zaman gereksinimlerini bu sabiti temel alarak türeteler. Varsayılan olarak, değer 100 ' dir ve bir 10 MS dönemsel kesmesi varsayılıyor. Kullanıcı, ***tx_port. h*** veya IDE veya komut satırı içindeki istenen değeri TX_TIMER_TICKS_PER_SECOND tanımlayarak bu değeri geçersiz kılabilir.
+diğer Microsoft Azure rtos ürünleri (filex, netx, guıdx, usbx, vb.) için threadx, bir saniye temsil eden threadx zamanlayıcı işareti sayısını tanımlar. Diğerleri zaman gereksinimlerini bu sabiti temel alarak türeteler. Varsayılan olarak, değer 100 ' dir ve bir 10 MS dönemsel kesmesi varsayılıyor. Kullanıcı, ***tx_port. h*** veya IDE veya komut satırı içindeki istenen değeri TX_TIMER_TICKS_PER_SECOND tanımlayarak bu değeri geçersiz kılabilir.
 
 ### <a name="detailed-configuration-options"></a>Ayrıntılı yapılandırma seçenekleri
 

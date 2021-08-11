@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b07e275468484ccc905655dcd13197de42b2ac86
-ms.sourcegitcommit: 4ebe7c51ba850951c6a9d0f15e22d07bb752bc28
+ms.openlocfilehash: 7c89014c571b2b59279487cd24d5ec9e36019ed4c3ec2b6470b80e150214ebf3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/20/2021
-ms.locfileid: "110223418"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786832"
 ---
 # <a name="chapter-4---description-of-guix-services"></a>Bölüm 4 - GUIX Hizmetlerinin Açıklaması
 
@@ -28,15 +28,15 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_animation_canvas_define          | Sonraki animasyonlarda kullanılacak tuval için animasyon denetleyicisine bellek sağlama. |
 | gx_animation_create                  | Animasyon denetleyicisi oluşturma                                                               |
 | gx_animation_delete                  | Bir veya birden çok animasyon denetleyicisini silme |
-| gx_animation_drag_disable           | Ekran Sürükle animasyon kancasını devre dışı bırak                                                           |
-| gx_animation_drag_enable            | Ekran Sürükle animasyon kancasını etkinleştir                                                            |
-| gx_animation_landing_speed_set     | Ekran sürükleme animasyonu için giriş hızını ayarla                                                  |
-| gx_animation_start                   | Animasyon sırası başlatma                                                               |
-| gx_animation_stop                    | Animasyon sırasını askıya alma                                                                |
-| gx_binres_language_count_get      |  Bir ikili kaynak dosyasından dil sayısını Al                                          |
+| gx_animation_drag_disable           | Ekran sürükleme animasyon kancasını devre dışı bırakma                                                           |
+| gx_animation_drag_enable            | Ekran sürükleme animasyon kancası etkinleştirme                                                            |
+| gx_animation_landing_speed_set     | Ekran sürükleme animasyonu için giriş hızını ayarlama                                                  |
+| gx_animation_start                   | Animasyon dizisi başlatma                                                               |
+| gx_animation_stop                    | Animasyon dizisini askıya alma                                                                |
+| gx_binres_language_count_get      |  İkili kaynak dosyasından dil sayısını alma                                          |
 | gx_binres_language_info_load      |  İkili kaynak dosyasından dil adı ve boyut bilgilerini okuyun.                           |
-| gx_binres_language_table_load      | kullanım dışı İkili kaynak veri arabelleğinden bir dil tablosu yükleme                          |
-| gx_binres_language_table_load_ext | İkili kaynak veri arabelleğinden bir dil tablosu yükleme                                       |
+| gx_binres_language_table_load      | (kullanım dışı) İkili kaynak veri arabelleğinden dil tablosu yükleme                          |
+| gx_binres_language_table_load_ext | İkili kaynak veri arabelleğinden dil tablosu yükleme                                       |
 | gx_binres_theme_load                | İkili kaynak veri arabelleğinden tema yükleme                                                |
 | gx_brush_default                     | Geçerli fırçayı varsayılan olarak başlatma                                                         |
 | gx_brush_define                      | Fırça tanımlama                                                                                 |
@@ -48,36 +48,36 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_button_select                    | Seç düğmesi                                     |
 | gx_canvas_alpha_set                | Tuval için alfa-blend değerini ayarlama                  |
 | gx_canvas_arc_draw                 | Daire yay çizme                                   |
-| gx_canvas_block_move               | Blok taşı                                        |
-| gx_canvas_circle_draw              | Daire çiz                                       |
+| gx_canvas_block_move               | Blok taşıma                                        |
+| gx_canvas_circle_draw              | Daire çizme                                       |
 | gx_canvas_create                    | Tuval oluşturma                                   |
 | gx_canvas_delete                    | Tuvali silme                                   |
-| gx_canvas_drawing_complete         | Tuval çizimini tamamen doldurun                           |
-| gx_canvas_drawing_initiate         | Tuvalde çizim Başlat                        |
-| gx_canvas_ellipse_draw             | Elips çizme                                   |
+| gx_canvas_drawing_complete         | Tam tuval çizimi                           |
+| gx_canvas_drawing_initiate         | Tuvalde çizim başlatma                        |
+| gx_canvas_ellipse_draw             | Üç nokta çizme                                   |
 | gx_canvas_hardware_layer_bind     | Tuvali grafik katmanına bağlama                     |
 | gx_canvas_hide                      | Tuvali görünmez yapma                           |
-| gx_canvas_line_draw                | Çizgi çiz                                         |
-| gx_canvas_memory_define            | Tuval bellek adresi ata                      |
-| gx_canvas_offset_set               | Tuval x, y görüntüleme boşluğu ata                  |
-| gx_canvas_pie_draw                 | Pasta (kama) şekli çiz                          |
-| gx_canvas_pixel_draw               | Tek bir piksel çiz                               |
-| gx_canvas_pixelmap_blend           | Bir pixelmap ile arka plan Blend                  |
-| gx_canvas_pixelmap_get             | Tuval verilerine işaret eden bir pixelmap al            |
-| gx_canvas_pixelmap_draw            | Pixelmap çiz                                     |
-| gx_canvas_pixelmap_rotate          | Pixelmap 'i döndür                                   |
-| gx_canvas_pixelmap_tile            | Kutucuk pixelmap                                     |
+| gx_canvas_line_draw                | Çizgi çizme                                         |
+| gx_canvas_memory_define            | Tuval belleği adresi atama                      |
+| gx_canvas_offset_set               | Tuval atama x,y görüntü uzaklığı                  |
+| gx_canvas_pie_draw                 | Pasta (wedge) şekli çizme                          |
+| gx_canvas_pixel_draw               | Tek piksel çizme                               |
+| gx_canvas_pixelmap_blend           | Piksel haritasını arka planla karıştırma                  |
+| gx_canvas_pixelmap_get             | Tuval verilerini işaret alan bir piksel haritası elde etmek            |
+| gx_canvas_pixelmap_draw            | Piksel haritası çizme                                     |
+| gx_canvas_pixelmap_rotate          | Piksel haritasını döndürme                                   |
+| gx_canvas_pixelmap_tile            | Kutucuk piksel haritası                                     |
 | gx_canvas_polygon_draw             | Çokgen Çiz                                      |
-| gx_canvas_rectangle_draw           | Dikdörtgen çizme                                    |
-| gx_canvas_rotated_text_draw       | (kullanım dışı) Orta nokta hakkında döndürülmüş metin çizme |
-| gx_canvas_rotated_text_draw_ext  | Orta nokta hakkında döndürülmüş metin çizme              |
-| gx_canvas_shift                     | Tuvali x,y'ye göre kaydırma                               |
+| gx_canvas_rectangle_draw           | Dikdörtgen çiz                                    |
+| gx_canvas_rotated_text_draw       | kullanım dışı Orta nokta ile döndürülen metin çiz |
+| gx_canvas_rotated_text_draw_ext  | Orta nokta ile döndürülen metin çiz              |
+| gx_canvas_shift                     | X, y için tuval kaydır                               |
 | gx_canvas_show                      | Tuvali görünür yapma                             |
-| gx_canvas_text_draw                | (kullanım dışı) Metin çizme                            |
-| gx_canvas_text_draw_ext           | Metin çizme                                         |
+| gx_canvas_text_draw                | kullanım dışı Metin çiz                            |
+| gx_canvas_text_draw_ext           | Metin çiz                                         |
 | gx_checkbox_create                  | Onay kutusu oluşturma                                 |
-| gx_checkbox_draw                    | Onay kutusu çizme                                   |
-| gx_checkbox_event_process          | Onay kutusu olay süreci işlevi                   |
+| gx_checkbox_draw                    | Onay kutusu çiz                                   |
+| gx_checkbox_event_process          | CheckBox olay işlem işlevi                   |
 | gx_checkbox_pixelmap_set           | Onay kutusu pixelmap ata                          |
 | gx_checkbox_select                  | Onay kutusunu seçin                                   |
 | gx_circular_gauge_angle_get       | Ölçer pencere öğesi iğne açısını al                |
@@ -88,16 +88,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_circular_gauge_draw             | Dairesel ölçer pencere öğesi çiz                      |
 | gx_circular_gauge_event_process   | Döngüsel ölçer olayını işle                      |
 | gx_context_brush_default            | Geçerli bağlam fırçasını ayarla                                      |
-| gx_context_brush_define             | Geçerli bağlamın fırçalarını tanımlama                                       |
-| gx_context_brush_get                | Geçerli bağlamın fırçalarını al                                          |
-| gx_context_brush_pattern_set       | Geçerli bağlamın fırça desenini ayarlama                           |
-| gx_context_brush_set                | Geçerli bağlamın fırçalarını ayarlama                                          |
-| gx_context_brush_style_set         | Geçerli bağlamın fırça stilini ayarlama                                    |
-| gx_context_brush_width_set         | Geçerli ontext'in fırça genişliğini ayarlama                                     |
-| gx_context_color_get                | Renk kimliğini renk değerine çözümleme                                     |
-| gx_context_fill_color_set          | Geçerli bağlamın dolgu rengini ayarlama                                     |
-| gx_context_font_get                 | Yazı tipi işaretçisi değerini yazı tipi kimliğine çözümleme                               |
-| gx_context_font_set                 | Geçerli bağlamın yazı tipini ayarlama                                           |
+| gx_context_brush_define             | Geçerli bağlamın fırçayı tanımlayın                                       |
+| gx_context_brush_get                | Geçerli bağlamın fırçasını al                                          |
+| gx_context_brush_pattern_set       | Geçerli bağlam fırçasının şeklini ayarla                           |
+| gx_context_brush_set                | Geçerli bağlam fırçası ayarla                                          |
+| gx_context_brush_style_set         | Geçerli bağlamın Fırça stilini ayarla                                    |
+| gx_context_brush_width_set         | Geçerli bağlam 'in fırça genişliğini ayarla                                     |
+| gx_context_color_get                | Renk KIMLIĞINI renk değerine çözümle                                     |
+| gx_context_fill_color_set          | Geçerli bağlamın Fill rengini ayarla                                     |
+| gx_context_font_get                 | Yazı tipi KIMLIĞINI yazı tipi işaretçisi değerine çözümle                               |
+| gx_context_font_set                 | Geçerli bağlamın yazı tipini ayarla                                           |
 | gx_context_line_color_set          | Geçerli bağlamın çizgi rengini ayarla                                     |
 | gx_context_pixelmap_get             | Bir pixelmap KIMLIĞINI pixelmap işaretçisi değerine çözümle                       |
 | gx_context_pixelmap_set             | Alan dolguları için kullanılan fırça pixelmap atama                            |
@@ -108,26 +108,26 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_context_string_get_ext          | Geçerli çizim bağlamıyla ilişkili dizeyi al (kullanım dışı). |
 | gx_display_active_language_set     | Etkin dil ata                                                |
 | gx_display_color_set                | Görüntüleme rengi tablosundaki bir renk değerini değiştirin.                       |
-| gx_display_color_table_set         | Ekran tarafından kullanılan renk tablosu atama                              |
-| gx_display_create                    | Görüntü oluşturma                                                        |
-| gx_display_delete                    | Silme ekranı                                                        |
-| gx_display_font_table_set          | Ekran tarafından kullanılan yazı tipi tablosu atama                               |
-| gx_display_language_table_get      | Bir görüntüyle ilişkili dil tablosu alma (kullanım dışı)    |
-| gx_display_language_table_get_ext | Ekranla ilişkili dil tablosu alma                 |
-| gx_display_language_table_set      | Belirtilen görüntüye dil tablosu atama (kullanım dışı)           |
-| gx_display_language_table_set_ext | Dil tablosuna belirtilen görüntülemeyi attayabilirsiniz.                       |
-| gx_display_pixelmap_table_set      | Ekran tarafından kullanılan pixelmap tablosu atama                           |
+| gx_display_color_table_set         | Bir görüntü tarafından kullanılan renk tablosunu atama                              |
+| gx_display_create                    | Görüntü oluştur                                                        |
+| gx_display_delete                    | Görünümü Sil                                                        |
+| gx_display_font_table_set          | Bir görüntü tarafından kullanılan yazı tipi tablosunu atama                               |
+| gx_display_language_table_get      | Bir görüntüleme ile ilişkili dil tablosunu alma (kullanım dışı)    |
+| gx_display_language_table_get_ext | Bir ekran ile ilişkili dil tablosunu alma                 |
+| gx_display_language_table_set      | Dil tablosunu belirtilen görüntüleme (kullanım dışı) olarak ata           |
+| gx_display_language_table_set_ext | Belirtilen görüntüleme için dil tablosunu atayın.                       |
+| gx_display_pixelmap_table_set      | Bir görüntü tarafından kullanılan pixelmap tablosunu atama                           |
 | gx_display_string_get               | Dize kimliğiyle ilişkili dizeyi alma (kullanım dışı)                |
-| gx_display_string_get_ext          | Dize KIMLIĞIYLE ilişkili dizeyi al                             |
-| gx_display_string_table_get             | Belirtilen görüntüleme (kullanım dışı) ile ilişkili dize tablosunu alın. |
-| gx_display_string_table_get_ext        | Belirtilen görüntü ile ilişkili dize tablosunu al               |
-| gx_display_theme_install                 | Temaları belirtilen görüntüsüne yükler                               |
-| gx_drop_list_close                       | Bırakma listesini kapat                                                       |
-| gx_drop_list_create                      | Bırakma listesi oluştur                                                      |
-| gx_drop_list_event_process               | Liste olayı işlemeyi bırak                                            |
-| gx_drop_list_open                        | Bırakma listesini aç                                                        |
-| gx_drop_list_pixelmap_set               | Pixelmap 'i bırakma listesine ayarla                                             |
-| gx_drop_list_popup_set                  | Açılan listeyi bırakma listesine ayarla                                                |
+| gx_display_string_get_ext          | Dize kimliğiyle ilişkili dizeyi alma                             |
+| gx_display_string_table_get             | Belirtilen görüntüyle ilişkili dize tablosu alın (kullanım dışı). |
+| gx_display_string_table_get_ext        | Belirtilen görüntüyle ilişkili dize tablosu alma               |
+| gx_display_theme_install                 | Temaları belirtilen görüntüye yükleme                               |
+| gx_drop_list_close                       | Açılan listeyi kapatma                                                       |
+| gx_drop_list_create                      | Bırakma listesi oluşturma                                                      |
+| gx_drop_list_event_process               | Bırakma listesi olay işleme                                            |
+| gx_drop_list_open                        | Açılan listeyi açma                                                        |
+| gx_drop_list_pixelmap_set               | Pixelmap'i bırakma listesi olarak ayarlama                                             |
+| gx_drop_list_popup_set                  | Açılan listeyi açılan liste olarak ayarlama                                                |
 | gx_generic_scroll_wheel_children_position | Altları genel kaydırma tekerleğinde konumlandırma |
 | gx_generic_scroll_wheel_create| Genel kaydırma tekerleği pencere öğesi oluşturma |
 | gx_generic_scroll_wheel_draw | Genel kaydırma tekerleği pencere öğesi çizme |
@@ -140,13 +140,13 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_horizontal_list_page_index_set      | Yatay liste sayfası dizini atama                                     |
 | gx_horizontal_list_selected_index_get  | Seçili öğe dizinini al                                           |
 | gx_horizontal_list_selected_widget_get | Seçili öğe pencere öğesini al                                          |
-| gx_horizontal_list_selected_set         | Seçili öğeyi ayarla                                                 |
-| gx_horizontal_list_total_columns_set   | Oluşturulduktan sonra liste sütunlarının sayısını değiştirme                          |
-| gx_horizontal_scrollbar_create           | Yatay kaydırma çubuğu oluştur                                           |
-| gx_icon_button_create                    | Simge Oluştur düğmesi                                                    |
-| gx_icon_button_draw                      | Bir simge düğmesi çiz                                                   |
-| gx_icon_button_pixelmap_set             | Simge düğmesinde pixelmap ayarla                                           |
-| gx_icon_background_draw                  | Çizim simgesi arka planı                                                  |
+| gx_horizontal_list_selected_set         | Seçili öğeyi ayarlama                                                 |
+| gx_horizontal_list_total_columns_set   | Oluşturma sonrasında liste sütunlarının sayısını değiştirme                          |
+| gx_horizontal_scrollbar_create           | Yatay kaydırma çubuğu oluşturma                                           |
+| gx_icon_button_create                    | Oluştur simgesi düğmesi                                                    |
+| gx_icon_button_draw                      | Simge düğmesi çizme                                                   |
+| gx_icon_button_pixelmap_set             | Simge düğmesinde piksel haritasını ayarlama                                           |
+| gx_icon_background_draw                  | Çizim simgesi arka plan                                                  |
 | gx_icon_create                            | Oluştur simgesi                                                           |
 | gx_icon_draw                              | Çizim simgesi                                                             |
 | gx_icon_event_process                    | Simge olay işleme işlevi                                        |
@@ -159,26 +159,26 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_line_chart_data_draw                 | Çizgi grafik veri çizgisi çizme                                             |
 | gx_line_chart_draw                       | Varsayılan çizgi grafik çizimi                                            |
 | gx_line_chart_update                     | Çizgi grafik verilerini güncelleştirmeye zorlama                                       |
-| gx_line_chart_y_scale_calculate        | Y ekseni veri değerlerinin ölçeğini piksel koordinatlarına göre hesaplayın.           |
-| gx_menu_create                            | Menü Oluştur                                                           |
-| gx_menu_draw                              | Çiz Menüsü                                                             |
+| gx_line_chart_y_scale_calculate        | y ekseni veri değerlerinin ölçeğini piksel koordinatlarına göre hesaplama.           |
+| gx_menu_create                            | Oluştur menüsü                                                           |
+| gx_menu_draw                              | Çiz menüsü                                                             |
 | gx_menu_event_process                     | İşlem menüsü olayı                                                    |
-| gx_menu_insert                                | Yeni öğe Ekle                                                               |
-| gx_menu_remove                                | Bir öğeyi kaldır                                                                  |
-| gx_menu_text_draw                            | Çiz menü metni                                                                  |
-| gx_menu_text_offset_set                     | Menü metni çiz kaydırmayı ayarla                                                       |
+| gx_menu_insert                                | Yeni öğe ekleme                                                               |
+| gx_menu_remove                                | Öğeyi kaldırma                                                                  |
+| gx_menu_text_draw                            | Menü metni çizme                                                                  |
+| gx_menu_text_offset_set                     | Menü metni kaydırmayı ayarlama                                                       |
 | gx_multi_line_text_button_create           | Çok satırlı metin düğmesi oluştur                                                   |
 | gx_multi_line_text_button_draw             | Çok satırlı metin düğmesi çiz                                                     |
-| gx_multi_line_text_button_event_process   | Çok satırlı metin düğmesi için yazı tipini ayarlama                                             |
-| gx_multi_line_text_button_text_draw       | Çizimin metin çizimi kısmı                                                 |
-| gx_multi_line_text_button_text_id_set    | Sistem dizesini metin olarak ayarla düğmesi                                                |
-| gx_multi_line_text_button_text_set        | Metin düğmesine kullanıcı tanımlı dize atama (kullanım dışı)                          |
-| gx_multi_line_text_button_text_set_ext   | Metine kullanıcı tanımlı dize atama düğmesi                                       |
-| gx_multi_line_text_input_backspace         | Çok satırlı metin girişi imleci konumundan önce karakteri silme               |
-| gx_multi_line_text_input_buffer_get       | Metin girişi pencere öğesi arabellek bilgilerini alma                               |
-| gx_multi_line_text_input_buffer_clear     | Metin girişi arabelleğinden tüm karakterleri siler                               |
-| gx_multi_line_text_input_char_insert      | Çok satırlı metin girişi imleç konumunda UTF8 biçimli dize ekleme (kullanım dışı) |
-| gx_multi_line_text_input_char_insert_ext | Çok satırlı metin girişi imleç konumunda UTF8 biçimli dize ekleme              |
+| gx_multi_line_text_button_event_process   | Çok satırlı metin düğmesi için yazı tipi ayarla                                             |
+| gx_multi_line_text_button_text_draw       | Çizimin metin çizim kısmı                                                 |
+| gx_multi_line_text_button_text_id_set    | Sistem dizesini metin düğmesine ayarla düğmesi                                                |
+| gx_multi_line_text_button_text_set        | Metin düğmesine Kullanıcı tanımlı dize ata (kullanım dışı)                          |
+| gx_multi_line_text_button_text_set_ext   | Metin düğmesine Kullanıcı tanımlı dize ata düğmesi                                       |
+| gx_multi_line_text_input_backspace         | Çok satırlı metin girişi imleç konumundan önce karakteri sil               |
+| gx_multi_line_text_input_buffer_get       | Metin girişi pencere öğesinin arabellek bilgilerini alır                               |
+| gx_multi_line_text_input_buffer_clear     | Metin girişi arabelleğindeki tüm karakterleri siler                               |
+| gx_multi_line_text_input_char_insert      | Çok satırlı metin girişi imleç konumuna UTF8 biçimli dize Ekle (kullanım dışı) |
+| gx_multi_line_text_input_char_insert_ext | Çok satırlı metin girişi imleç konumuna UTF8 biçimli dize Ekle              |
 | gx_multi_line_text_input_create            | Çok satırlı metin girişi oluştur                                                    |
 | gx_multi_line_text_input_cursor_pos_get  | Çok satırlı metin girişi imleç konumunu al                                  |
 | gx_multi_line_text_input_delete            | Çok satırlı metin girişi imleç konumundan sonra karakteri sil                 |
@@ -189,16 +189,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_multi_line_text_input_home              | Çok satırlı metin girişi imlecini geçerli satırın başlangıcına taşı              |
 | gx_multi_line_text_input_left_arrow       | Çok satırlı metin girişi imlecini bir karakter sola taşı                         |
 | gx_multi_line_text_input_right_arrow      | Çok satırlı metin giriş imlecini bir karakter sağa taşı                        |
-| gx_multi_line_text_input_style_add        | Çok satırlı metin stili bayrakları ekleme                                                 |
-| gx_multi_line_text_input_style_remove     | Çok satırlı metin stili bayraklarını kaldırma                                              |
-| gx_multi_line_text_input_style_set        | Çok satırlı metin stili bayrakları atama                                              |
+| gx_multi_line_text_input_style_add        | Çok satırlı metin stili bayrakları Ekle                                                 |
+| gx_multi_line_text_input_style_remove     | Çok satırlı metin stili bayraklarını kaldır                                              |
+| gx_multi_line_text_input_style_set        | Çok satırlı metin stili bayrakları ata                                              |
 | gx_multi_line_text_input_text_color_set  | Çok satırlı metin girişi için metin renkleri atama                                    |
-| gx_multi_line_text_input_text_select      | Çok satırlı metin girişi metni seçme                                               |
+| gx_multi_line_text_input_text_select      | Çok satırlı metin giriş metnini seçin                                               |
 | gx_multi_line_text_input_text_set         | Çok satırlı metin girişine metin atama (kullanım dışı)                               |
 | gx_multi_line_text_input_text_set_ext          | Çok satırlı metin girişine metin atama                         |
-| gx_multi_line_text_input_up_arrow               | Çok satırlı metin girişi imlecini önceki satıra taşıma       |
-| gx_multi_line_text_view_create                   | Çok satırlı metin görünümü oluşturma                                  |
-| gx_multi_line_text_view_event_process           | Çok satırlı metin görünümü olaylarını işleme                           |
+| gx_multi_line_text_input_up_arrow               | Çok satırlı metin girişi imlecini önceki satıra taşı       |
+| gx_multi_line_text_view_create                   | Çok satırlı metin görünümü oluştur                                  |
+| gx_multi_line_text_view_event_process           | Çok satırlı metin görünümü olayını işle                           |
 | gx_multi_line_text_view_font_set                | Çok satırlı metin görünümünde kullanılan yazı tipini ayarlama                        |
 | gx_multi_line_text_view_line_space_set         | Çok satırlı metin görünümü satır alanını ayarla                          |
 | gx_multi_line_text_view_scroll_info_get        | Çok satırlı metin görünümü kaydırma bilgisi al                         |
@@ -209,16 +209,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_multi_line_text_view_whitespace_set          | Çok satırlı metin görünümü boşluğu ayarla                          |
 | gx_numeric_pixelmap_prompt_create                 | Sayısal pixelmap istemi oluştur                               |
 | gx_numeric_pixelmap_prompt_format_ function_set | Sayısal pixelmap isteminin biçim işlevini geçersiz kıl          |
-| gx_numeric_pixelmap_prompt_value_set             | Sayısal istem değerini ayarlama                                     |
-| gx_numeric_prompt_create                           | Sayısal istem oluşturma                                        |
-| gx_numeric_prompt_format_function_set            | Sayısal istemin format işlevini geçersiz kılma                   |
-| gx_numeric_prompt_value_set                       | Sayısal istem değerini ayarlama                                     |
-| gx_numeric_scroll_wheel_create                    | Sayısal kaydırma tekerleği pencere öğesi oluşturma                           |
-| gx_numeric_scroll_wheel_range_set                | Kaydırma tekerleği değer aralığı atama                              |
-| gx_pixelmap_button_create                          | Piksel haritası oluştur düğmesi                                       |
-| gx_pixelmap_button_draw                            | Piksel haritası çiz düğmesi                                         |
-| gx_pixelmap_button_event_process                  | Piksel haritası düğmesi olay işleme                             |
-| gx_pixelmap_button_pixelmap_set                   | Piksel haritasında piksel haritasını ayarla düğmesi                              |
+| gx_numeric_pixelmap_prompt_value_set             | Sayısal istem değeri ayarla                                     |
+| gx_numeric_prompt_create                           | Sayısal istem oluştur                                        |
+| gx_numeric_prompt_format_function_set            | Sayısal istem için biçim işlevini geçersiz kıl                   |
+| gx_numeric_prompt_value_set                       | Sayısal istem değeri ayarla                                     |
+| gx_numeric_scroll_wheel_create                    | Sayısal kaydırma tekerleği oluşturma pencere öğesi                           |
+| gx_numeric_scroll_wheel_range_set                | Kaydırma tekerleği değer aralığını ata                              |
+| gx_pixelmap_button_create                          | Pixelmap oluştur düğmesi                                       |
+| gx_pixelmap_button_draw                            | Pixelmap çiz düğmesi                                         |
+| gx_pixelmap_button_event_process                  | Pixelmap düğmesi olay işleme                             |
+| gx_pixelmap_button_pixelmap_set                   | Pixelmap 'te pixelmap ayarla düğmesi                              |
 | gx_pixelmap_prompt_create                          | Pixelmap istemi oluştur                                       |
 | gx_pixelmap_prompt_draw                            | Pixelmap istemi çiz                                         |
 | gx_pixelmap_prompt_pixelmap_set                   | Pixelmap isteminde pixelmap ayarla                              |
@@ -229,15 +229,15 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_progress_bar_background_draw         | Çizim ilerleme çubuğu arka planı           |
 | gx_progress_bar_create                   | İlerleme çubuğu oluşturma                  |
 | gx_progress_bar_draw                     | İlerleme çubuğu çiz                    |
-| gx_progress_bar_event_process           | İlerleme çubuğu olayı işleme           |
-| gx_progress_bar_font_set                | İlerleme çubuğu metninin yazı tipini ayarlama          |
-| gx_progress_bar_info_set                | İlerleme çubuğu bilgi yapısını ayarlama |
-| gx_progress_bar_pixelmap_set            | İlerleme çubuğu çizmek için kullanılan piksel haritasını ayarlama |
-| gx_progress_bar_range_set               | İlerleme çubuğunun değer aralığını ayarlama        |
-| gx_progress_bar_text_color_set         | İlerleme çubuğu metin rengini ayarlama            |
-| gx_progress_bar_text_draw               | İlerleme çubuğu metni çizme                 |
-| gx_progress_bar_value_set               | İlerleme çubuğu değerini ayarlama                 |
-| gx_prompt_create                          | İstem oluşturma                          |
+| gx_progress_bar_event_process           | İlerleme çubuğu olayını işleme           |
+| gx_progress_bar_font_set                | İlerleme çubuğu metninin yazı tipini ayarla          |
+| gx_progress_bar_info_set                | İlerleme çubuğu bilgi yapısını ayarla |
+| gx_progress_bar_pixelmap_set            | İlerleme çubuğu çizmek için kullanılan pixelmap 'i ayarla |
+| gx_progress_bar_range_set               | İlerleme çubuğunun değer aralığını ayarla        |
+| gx_progress_bar_text_color_set         | İlerleme çubuğu metin rengini ayarla            |
+| gx_progress_bar_text_draw               | Çizim ilerleme çubuğu metni                 |
+| gx_progress_bar_value_set               | İlerleme çubuğu değerini ayarla                 |
+| gx_prompt_create                          | İstem oluştur                          |
 | gx_prompt_draw                            | Çizim istemi                            |
 | gx_prompt_event_process                   | İşlem istemi olayı                   |
 | gx_prompt_font_set                       | İstem yazı tipini ayarla                        |
@@ -249,16 +249,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_prompt_text_set                       | İstem metnini ayarla (kullanım dışı)           |
 | gx_prompt_text_set_ext                  | İstem metnini ayarla                        |
 | gx_radial_progress_bar_anchor_set      | Başlangıç açısını ayarla                     |
-| gx_radial_progress_bar_background_draw | Radyal ilerleme çubuğu arka planını çizme    |
+| gx_radial_progress_bar_background_draw | Radyal ilerleme çubuğu arka planı çiz    |
 | gx_radial_progress_bar_create           | Radyal ilerleme çubuğu oluşturma           |
-| gx_radial_progress_bar_draw             | Radyal ilerleme çubuğu çizme             |
-| gx_radial_progress_bar_event_process   | Radyal ilerleme çubuğu olayı işleme      |
-| gx_radial_progress_bar_font_set        | Radyal ilerleme çubuğu yazı tipini ayarlama           |
+| gx_radial_progress_bar_draw             | Radyal ilerleme çubuğu çiz             |
+| gx_radial_progress_bar_event_process   | Radyal ilerleme çubuğu olayını işle      |
+| gx_radial_progress_bar_font_set        | Radyal ilerleme çubuğu yazı tipini ayarla           |
 | gx_radial_progress_bar_info_set        | Radyal ilerleme çubuğu bilgilerini ayarlama    |
-| gx_radial_progress_bar_text_color_set | Radyal ilerleme çubuğu metin rengini ayarlama     |
-| gx_radial_progress_bar_text_draw       | Radyal ilerleme çubuğu metni çizme          |
-| gx_radial_progress_bar_value_set       | Radyal ilerleme çubuğu değerini ayarlama          |
-| gx_radio_button_create                   | Radyo düğmesi oluşturma                    |
+| gx_radial_progress_bar_text_color_set | Radyal ilerleme çubuğu metin rengini ayarla     |
+| gx_radial_progress_bar_text_draw       | Radyal ilerleme çubuğu metni çiz          |
+| gx_radial_progress_bar_value_set       | Radyal ilerleme çubuğu değerini ayarla          |
+| gx_radio_button_create                   | Radyo düğmesi oluştur                    |
 | gx_radio_button_draw                     | Çizim radyo düğmesi                      |
 | gx_radio_button_pixelmap_set            | Radyo düğmesinde pixelmap ayarla           |
 | gx_radial_slider_anchor_angles_set     | Radyal kaydırıcı bağlayıcı açısı listesini ayarla    |
@@ -270,14 +270,14 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_radial_slider_event_process                 | Radyal kaydırıcı olayını işleme                               |
 | gx_radial_slider_info_get                      | Radyal kaydırıcı bilgisi işaretçisini al                  |
 | gx_radial_slider_info_set                      | Radyal kaydırıcı bilgilerini ayarlama                               |
-| gx_radial_slider_pixelmap_set                  | Radyal kaydırıcı piksel haritalarını ayarlama                                 |
+| gx_radial_slider_pixelmap_set                  | Radyal kaydırıcı pixelmaps ayarlayın                                 |
 | gx_rich_text_view_create                       | Zengin metin görünümü oluşturma                                     |
-| gx_rich_text_view_draw                         | Zengin metin görünümü çizme                                         |
+| gx_rich_text_view_draw                         | Zengin metin görünümü çiz                                         |
 | gx_rich_text_view_set_fonts                    | Zengin metin görünümü yazı tiplerini ayarlama                                    |
-| gx_rich_text_view_text_draw                    | Zengin metin görünümü metni çizme                                    |
-| gx_screen_stack_create                          | GUIX ekran yığını denetim bloğu ve bellek alanı oluşturun. |
-| gx_screen_stack_pop                             | Ekran yığınının üst ekranı açılır.                   |
-| gx_screen_stack_push                            | Geçerli ekranı ekran yığınına itin.                |
+| gx_rich_text_view_text_draw                    | Zengin metin görünümü metni çiz                                    |
+| gx_screen_stack_create                          | GUX ekran yığını denetim bloğu ve bellek alanını oluşturun. |
+| gx_screen_stack_pop                             | Ekran yığınından en üstteki ekranı açılır.                   |
+| gx_screen_stack_push                            | Geçerli ekranı ekran yığınına gönderin.                |
 | gx_screen_stack_reset                           | Ekran yığınını sıfırlama                                      |
 | gx_scroll_wheel_create                          | Taban kaydırma tekerleği oluştur pencere öğesi                             |
 | gx_scroll_wheel_event_process                  | Kaydırma tekerleği olay işleme                               |
@@ -289,16 +289,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_scroll_wheel_speed_set                      | Kaydırma hızı ata                                      |
 | gx_scroll_wheel_total_rows_set                | Toplam kullanılabilir satır sayısını ata                       |
 | gx_scrollbar_draw                                | Kaydırma çubuğu çiz                                              |
-| gx_scrollbar_event_process                      | Kaydırma çubuğu olayı işleme                                     |
-| gx_scrollbar_limit_check                        | Kaydırma çubuğu sınırını denetleme                                       |
-| gx_scrollbar_reset                               | Kaydırma çubuğunu sıfırlama                                             |
-| gx_scrollbar_value_set                          | Kaydırma çubuğu değeri atama                                      |
-| gx_single_line_text_input_backspace           | Geri al karakterini işleme                                  |
-| gx_single_line_text_input_buffer_clear       | Karakter arabelleğini temizleme                                  |
-| gx_single_line_text_input_buffer_get         | Arabellek işaretçisini alma                                     |
-| gx_single_line_text_input_character_delete   | Silme karakteri                                            |
-| gx_single_line_text_input_character_insert   | Karakter ekleme                                            |
-| gx_single_line_text_input_create              | Tek satırlı metin girişi oluşturma                               |
+| gx_scrollbar_event_process                      | İşlem kaydırma çubuğu olayı                                     |
+| gx_scrollbar_limit_check                        | Kaydırma çubuğu sınırını denetle                                       |
+| gx_scrollbar_reset                               | Kaydırma çubuğunu Sıfırla                                             |
+| gx_scrollbar_value_set                          | Kaydırma çubuğu değeri ata                                      |
+| gx_single_line_text_input_backspace           | İşleç geri alma karakteri                                  |
+| gx_single_line_text_input_buffer_clear       | Karakter arabelleğini temizle                                  |
+| gx_single_line_text_input_buffer_get         | Arabellek işaretçisini al                                     |
+| gx_single_line_text_input_character_delete   | Karakteri sil                                            |
+| gx_single_line_text_input_character_insert   | Karakter ekle                                            |
+| gx_single_line_text_input_create              | Tek satırlık metin girişi oluştur                               |
 | gx_single_line_text_input_draw                | Tek satırlı metin girişi pencere öğesi çiz                          |
 | gx_single_line_text_input_draw_position_get | Metin çizme başlangıç konumunu al                           |
 | gx_single_line_text_input_end                 | İmleci sona taşı                                          |
@@ -309,16 +309,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_single_line_text_input_position_get       | İmleç konumunu al                                         |
 | gx_single_line_text_input_right_arrow        | Sağ ok tuşunu işle                                      |
 | gx_single_line_text_input_style_add          | Stil bayrakları Ekle                                             |
-| gx_single_line_text_input_style_remove       | Stil bayraklarını kaldırma                                          |
-| gx_single_line_text_input_style_set          | Stil bayrakları atama                                          |
-| gx_single_line_text_input_text_color_set  | Tek satırlı metin girişi için metin renklerini ayarlama                      |
-| gx_single_line_text_input_text_select     | Tek satırlı metin girişi metni seçme                              |
-| gx_single_line_text_input_text_set        | Tek satırlı metin girişi metni ayarlama (kullanım dışı)                    |
-| gx_single_line_text_input_text_set_ext    | Tek satırlı metin girişi metni ayarlama                                 |
-| gx_slider_create                          | Kaydırıcı oluşturma                                                   |
-| gx_slider_draw                            | Kaydırıcıyı çizme                                                     |
-| gx_slider_event_process                   | Kaydırıcıyı işleme olayı                                            |
-| gx_slider_info_set                        | Kaydırıcı bilgi bloğu ayarlama                                    |
+| gx_single_line_text_input_style_remove       | Stil bayraklarını kaldır                                          |
+| gx_single_line_text_input_style_set          | Stil bayrakları ata                                          |
+| gx_single_line_text_input_text_color_set  | Tek satırlı metin girişi için metin renkleri ayarlama                      |
+| gx_single_line_text_input_text_select     | Tek satırlık metin giriş metnini seçin                              |
+| gx_single_line_text_input_text_set        | Tek satırlı metin giriş metnini ayarla (kullanım dışı)                    |
+| gx_single_line_text_input_text_set_ext    | Tek satırlık metin giriş metnini ayarla                                 |
+| gx_slider_create                          | Kaydırıcı oluştur                                                   |
+| gx_slider_draw                            | Çizim kaydırıcısı                                                     |
+| gx_slider_event_process                   | İşlem kaydırıcı olayı                                            |
+| gx_slider_info_set                        | Kaydırıcı bilgi bloğunu ayarla                                    |
 | gx_slider_needle_draw                     | Çiz kaydırıcı iğne                                              |
 | gx_slider_needle_position_get             | Kaydırıcı iğne konumunu al                                      |
 | gx_slider_tickmarks_draw                  | Çiz kaydırıcı tickiþaretleri                                           |
@@ -329,16 +329,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_sprite_current_frame_set               | Sprite pencere öğesi için geçerli görüntüleme çerçevesini ata                  |
 | gx_sprite_frame_list_set                  | Bir sprite çerçeve listesi atama veya değiştirme                            |
 | gx_sprite_start                           | Bir sprite dizisi Başlat                                         |
-| gx_sprite_stop                            | Sprite dizisini durdurma                                          |
-| gx_string_scroll_wheel_create             | Pencere `GX_STRING_SCROLL_WHEEL` öğesi oluşturma                          |
+| gx_sprite_stop                            | Bir sprite sırasını durdur                                          |
+| gx_string_scroll_wheel_create             | `GX_STRING_SCROLL_WHEEL`Pencere öğesi oluştur                          |
 | gx_string_scroll_wheel_event_process      | İşlem dizesi kaydırma tekerleği olayı                               |
-| gx_string_scroll_wheel_string_id_list_set | Dize kimlikleri dizisi atama                                      |
-| gx_string_scroll_wheel_string_list_set    | Görüntülenen dize dizisini değiştirme                                   |
-| gx_string_scroll_wheel_text_get           | Kaydırma tekerleği satırı için metin alma                              |
-| gx_studio_widget_create                   | Studio'da tanımlanan pencere öğesi oluşturma                             |
-| gx_studio_named_widget_create             | Studio'da tanımlanan oluşturma ekranı                             |
-| gx_studio_display_configure               | `GX_DISPLAY`, ve oluşturma ve `GX_CANVAS` başlatma`GX_WINDOW_ROOT` |
-| gx_system_active_language_set             | Etkin dil kimliği atama                                       |
+| gx_string_scroll_wheel_string_id_list_set | Dize kimlikleri dizisi ata                                      |
+| gx_string_scroll_wheel_string_list_set    | Görünen dize dizisini Değiştir                                   |
+| gx_string_scroll_wheel_text_get           | Kaydırma tekerleği satırı için metin al                              |
+| gx_studio_widget_create                   | Studio 'da tanımlanan pencere öğesi oluştur                             |
+| gx_studio_named_widget_create             | Studio 'da tanımlanan ekran oluşturma                             |
+| gx_studio_display_configure               | Oluşturma ve başlatma `GX_DISPLAY` , `GX_CANVAS` ve `GX_WINDOW_ROOT` |
+| gx_system_active_language_set             | Etkin dil KIMLIĞINI ata                                       |
 | gx_system_canvas_refresh                  | Kirli tuvaller olduklarından 'lerin yenilenmesini (çizimini) zorla                       |
 | gx_system_dirty_mark                      | Alanı kirli olarak işaretle                                                 |
 | gx_system_dirty_partial_add               | Kısmi alanı kirli olarak işaretle                                         |
@@ -349,16 +349,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_system_initialize                      | GUX 'i Başlat                                                 |
 | gx_system_language_table_get              | Dil tablosunu al                                         |
 | gx_system_language_table_set              | Dil tablosu ata                                           |
-| gx_system_memory_allocator_set            | Bellekocator/de-allocator atama                            |
-| gx_system_pen_configure                  | Kalem yapılandırmasını ayarlama                                  |
-| gx_system_screen_stack_create           | Ekran yığını denetimi oluşturma                            |
-| gx_system_screen_stack_get              | Ekran yığını işaretçilerini alma                         |
-| gx_system_screen_stack_pop              | Ekran yığınından üst ekranı aç                       |
-| gx_system_screen_stack_push             | Belirtilen ekranı ekran yığınına itme              |
+| gx_system_memory_allocator_set            | Bellek ayırıcı veya ayırıcı atama                            |
+| gx_system_pen_configure                  | Kalem yapılandırmasını ayarla                                  |
+| gx_system_screen_stack_create           | Ekran yığını denetimi oluştur                            |
+| gx_system_screen_stack_get              | Ekran yığını işaretçilerini al                         |
+| gx_system_screen_stack_pop              | Ekran yığınından açılan pencere ekranı                       |
+| gx_system_screen_stack_push             | Ekran yığınına belirtilen ekranı gönder              |
 | gx_system_screen_stack_reset            | Ekran yığınını sıfırlama                                 |
-| gx_system_scroll_appearance_get         | Kaydırma görünümünü al                                  |
-| gx_system_scroll_appearance_set         | Kaydırma görünümünü ayarlama                                  |
-| gx_system_start                           | GUIX'i başlatma                                             |
+| gx_system_scroll_appearance_get         | Kaydırma görünümü al                                  |
+| gx_system_scroll_appearance_set         | Kaydırma görünümünü ayarla                                  |
+| gx_system_start                           | GUX 'i Başlat                                             |
 | gx_system_string_get                     | Dizeyi al                                             |
 | gx_system_string_table_get              | Dize tablosu al                                       |
 | gx_system_string_table_set              | Dize tablosu ayarla                                       |
@@ -371,14 +371,14 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_system_version_string_get_ext       | GUX kitaplığı sürüm dizesini al                   |
 | gx_system_widget_find                    | Pencere öğesi bul                                            |
 | gx_text_button_create                    | Metin oluştur düğmesi                                     |
-| gx_text_button_draw                      | Metin çizme düğmesi                                       |
+| gx_text_button_draw                      | Metin çiz düğmesi                                       |
 | gx_text_button_event_process             | İşlem metni düğmesi olayı                              |
-| gx_text_button_font_set                 | Metin düğmesi için yazı tipini ayarlama                               |
-| gx_text_button_text_color_set          | Metin düğmesi rengini ayarlama                                  |
-| gx_text_button_text_draw                | Düğme çiziminin metin çizimi kısmı                 |
+| gx_text_button_font_set                 | Metin düğmesi için yazı tipi ayarla                               |
+| gx_text_button_text_color_set          | Metin düğmesi rengini ayarla                                  |
+| gx_text_button_text_draw                | Düğme çiziminin metin çizimi bölümü                 |
 | gx_text_button_text_get                 | Metin düğmesinde kullanılan metni al (kullanım dışı)              |
-| gx_text_button_text_get_ext            | Metin düğmesinde kullanılan metni al                           |
-| gx_text_button_text_id_set             | Metine sistem dizesi atama düğmesi                    |
+| gx_text_button_text_get_ext            | Metin düğmesinde kullanılan metni Al düğmesi                           |
+| gx_text_button_text_id_set             | Metin düğmesine sistem dizesi atama düğmesi                    |
 | gx_text_button_text_set                 | Metin düğmesine Kullanıcı tanımlı dize ata (kullanım dışı) |
 | gx_text_button_text_set_ext            | Metin düğmesine Kullanıcı tanımlı dize ata düğmesi              |
 | gx_text_scroll_wheel_callback_set      | Dize alma geri araması ata (kullanım dışı)          |
@@ -389,16 +389,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_text_scroll_wheel_font_set          | Metin kaydırma tekerleği yazı tiplerini ata                         |
 | gx_text_scroll_wheel_text_color_set   | Metin kaydırma tekerleği metin renkleri ata                   |
 | gx_tree_view_create                    | Ağaç görünümü oluşturma                          |
-| gx_tree_view_draw                      | Ağaç görünümü çizme                              |
-| gx_tree_view_event_process            | İşlem ağacı görünümü olayı                     |
-| gx_tree-view_indentation_set           | Ağaç görünümü girintisini ayarlama                   |
-| gx_tree_view_position                  | Ağaç görünümü öğelerini konumlandırma                    |
-| gx_tree_view_root_line_color_set    | Ağaç görünümü kök çizgi rengini ayarlama               |
-| gx_tree_view_root_pixelmap_set       | Ağaç görünümü kök piksel haritalarını ayarlama                |
-| gx_tree_view_selected_get             | Seçili öğeyi alma                      |
-| gx_tree_view_selected_set             | Seçili öğeyi ayarlama                           |
-| gx_utility_canvas_to_bmp              | Tuval belleğini bit eşlem biçimine dönüştürme      |
-| gx_utility_circle_point_get           | Dairenin üzerinde hesaplama noktası               |
+| gx_tree_view_draw                      | Ağaç görünümünü çiz                              |
+| gx_tree_view_event_process            | İşlem Ağacı Görünümü olayı                     |
+| gx_tree view_indentation_set           | Ağaç görünümü girintisini ayarla                   |
+| gx_tree_view_position                  | Ağaç Görünüm öğelerini Konumlandır                    |
+| gx_tree_view_root_line_color_set    | Ağaç görünümü kök çizgi rengini ayarla               |
+| gx_tree_view_root_pixelmap_set       | Ağaç görünümü kök pixelmaps ayarla                |
+| gx_tree_view_selected_get             | Seçili öğeyi al                      |
+| gx_tree_view_selected_set             | Seçili öğeyi ayarla                           |
+| gx_utility_canvas_to_bmp              | Tuval belleğini bit eşlem biçimine Dönüştür      |
+| gx_utility_circle_point_get           | Daire üzerinde hesaplama noktası               |
 | gx_utility_gradient_create             | Bir gradyan pixelmap oluşturun                  |
 | gx_utility_gradient_delete              | Bir gradyan pixelmap silme                  |
 | gx_utility_ltoa                         | Uzun tamsayıyı ASCII 'ye Dönüştür               |
@@ -409,26 +409,26 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_utility_math_sqrt                   | İşlem kare kökü                         |
 | gx_utility_bidi_paragraph_reorder         | BiDi metnini görüntüleme sırasına göre yeniden sırala|
 | gx_utility_bidi_resolved_text_info_delete | Yeniden düzenlenen BiDi metnini Sil               |
-| gx_utility_pixelmap_resize             | Piksel haritasını yeniden boyutlandırma                             |
-| gx_utility_pixelmap_rotate             | Piksel haritasını rastgele açıya göre döndürme          |
-| gx_utility_pixelmap_simple_rotate      | Piksel haritasını 90, 180, 270 derece döndür     |
-| gx_utility_rectangle_center            | Dikdörtgeni başka bir dikdörtgenin içine ortala   |
-| gx_utility_rectangle_center_find      | Dikdörtgenin merkezini bulma                    |
+| gx_utility_pixelmap_resize             | Pixelmap 'i yeniden boyutlandır                             |
+| gx_utility_pixelmap_rotate             | Pixelmap 'i rastgele bir açıda döndürün          |
+| gx_utility_pixelmap_simple_rotate      | Pixelmap 'i 90, 180, 270 derece döndürün     |
+| gx_utility_rectangle_center            | Dikdörtgeni başka bir dikdörtgen içinde ortala   |
+| gx_utility_rectangle_center_find      | Dikdörtgenin merkezini bul                    |
 | gx_utility_rectangle_combine           | İlk olarak iki dikdörtgeni birleştirin           |
-| gx_utility_rectangle_compare           | İki dikdörtgeni karşılaştırma                      |
-| gx_utility_rectangle_define            | Dikdörtgen tanımlama                            |
+| gx_utility_rectangle_compare           | İki dikdörtgeni karşılaştırın                      |
+| gx_utility_rectangle_define            | Dikdörtgen tanımla                            |
 | gx_utility_rectangle_resize            | Dikdörtgeni yeniden boyutlandırma                            |
 | gx_utility_rectangle_overlap_detect   | Dikdörtgenlerin çakışmalarını algılama                |
-| gx_utility_rectangle_point_detect     | Noktanın dikdörtgende yer alıyorsa Algıla        |
-| gx_utility_rectangle_shift             | Kaydırma dikdörtgeni                             |
-| gx_utility_string_to_alphamap         | Metin dizesini harflerden haritaya işle (kullanım dışı) |
-| gx_utility_string_to_alphamap_ext    | Metin dizesini harflerden haritaya işle              |
-| gx_vertical_list_children_position    | Alt öğeleri dikey listede Konumlandır          |
-| gx_vertical_list_create                | Dikey liste oluştur                        |
-| gx_vertical_list_event_process        | Dikey liste olayını işle                 |
+| gx_utility_rectangle_point_detect     | Noktanın dikdörtgende olup olduğunu algılama        |
+| gx_utility_rectangle_shift             | Dikdörtgen kaydırma                             |
+| gx_utility_string_to_alphamap         | Metin dizesini alfa haritaya işleme (kullanım dışı) |
+| gx_utility_string_to_alphamap_ext    | Metin dizesini alfa haritaya işleme              |
+| gx_vertical_list_children_position    | Altları dikey listeye konumlandırma          |
+| gx_vertical_list_create                | Dikey liste oluşturma                        |
+| gx_vertical_list_event_process        | Dikey liste olayı işleme                 |
 | gx_vertical_list_selected_index_get  | Seçili öğe dizinini al                     |
-| gx_vertical_list_selected_widget_get | Seçili pencere öğesini al                         |
-| gx_vertical_list_selected_set         | Girişi dikey listede ayarla                  |
+| gx_vertical_list_selected_widget_get | Seçili pencere öğesi al                         |
+| gx_vertical_list_selected_set         | Dikey listede girişi ayarlama                  |
 | gx_vertical_list_total_rows_set      | Oluşturma sonrasında liste satırlarının sayısını değiştirme   |
 | gx_vertical_scrollbar_create           | Dikey kaydırma çubuğu oluşturma                   |
 | gx_widget_allocate                      | Bir pencere öğesi dinamik olarak ayırma               |
@@ -439,16 +439,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_widget_block_move                   | Piksel bloğu taşıma                        |
 | gx_widget_border_draw                  | Pencere öğesi kenarlığı çizme                          |
 | gx_widget_border_style_set            | Pencere öğesi kenarlık stilini ayarlama                     |
-| gx_widget_border_width_get            | Pencere öğesi kenarlık genişliğini ayarla                     |
+| gx_widget_border_width_get            | Pencere öğesi kenarlık genişliğini ayarlama                     |
 | gx_widget_canvas_get               | Pencere öğesi tuvali al                                                         |
-| gx_widget_child_detect             | Pencere öğesi alt öğesini Algıla                                                       |
-| gx_widget_children_draw            | Pencere öğesi alt öğeleri çiz                                                      |
-| gx_widget_client_get               | Pencere öğesi istemci alanını al                                                    |
-| gx_widget_color_get                | Görünür bir pencere öğesi için renk KIMLIĞINI renk değerine çözümle                      |
-| gx_widget_create                    | Pencere öğesi oluştur                                                             |
-| gx_widget_created_test             | Pencere öğesi oluşturulduysa test                                                    |
-| gx_widget_delete                    | Pencere öğesini Sil                                                             |
-| gx_widget_detach                    | Pencere öğesini üst öğeden ayır                                                 |
+| gx_widget_child_detect             | Alt pencere öğesi algılama                                                       |
+| gx_widget_children_draw            | Pencere öğesi öğelerini çizme                                                      |
+| gx_widget_client_get               | Pencere öğesi istemci alanı al                                                    |
+| gx_widget_color_get                | Görünür bir pencere öğesi için renk kimliğini renk değerine çözümleme                      |
+| gx_widget_create                    | Pencere öğesi oluşturma                                                             |
+| gx_widget_created_test             | Pencere öğesi oluşturulsa bile test edin                                                    |
+| gx_widget_delete                    | Pencere öğesi silme                                                             |
+| gx_widget_detach                    | Üst öğeden pencere öğesi ayırma                                                 |
 | gx_widget_draw                      | Çizim pencere öğesi                                                               |
 | gx_widget_draw_set                 | Pencere öğesi draw işlevini ayarlama                                               |
 | gx_widget_event_generate           | Pencere öğesi olayı oluşturma                                                     |
@@ -459,16 +459,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_widget_find                      | Pencere öğesi bul                                                               |
 | gx_widget_first_child_get         | İlk alta işaretçiyi iade                                             |
 | gx_widget_focus_next               | Giriş odağında bir sonraki pencere öğesine taşıma                                           |
-| gx_widget_focus_previous           | Giriş odağını önceki pencere öğesine taşı                                       |
-| gx_widget_font_get                 | Yazı tipi KIMLIĞINI görünür pencere öğesi için yazı tipi işaretçisine çözümleme                    |
-| gx_widget_free                      | Ücretsiz pencere öğesi denetim blok belleği                                          |
-| gx_widget_front_move               | Pencere öğesini öne taşı                                                      |
+| gx_widget_focus_previous           | Giriş odağında önceki pencere öğesine taşıma                                       |
+| gx_widget_font_get                 | Görünür bir pencere öğesi için yazı tipi kimliğini yazı tipi işaretçisine çözümleme                    |
+| gx_widget_free                      | Boş pencere öğesi denetimi blok belleği                                          |
+| gx_widget_front_move               | Pencere öğesi öne taşı                                                      |
 | gx_widget_height_get               | Pencere öğesi yüksekliğini al                                                         |
-| gx_widget_hide                      | Pencere öğesini gizle                                                               |
-| gx_widget_last_child_get          | Son alt öğeye döndürme işaretçisi                                              |
-| gx_widget_next_sibling_get        | Sonraki eşdüzey için işaretçiyi döndür                                            |
-| gx_widget_parent_get               | Üst pencere öğesine işaretçi döndür                                           |
-| gx_widget_pixelmap_get             | Bir görünür pencere öğesi için pixelmap KIMLIĞINI bir pixelmap işaretçisine çözümleyin            |
+| gx_widget_hide                      | Pencere öğesi gizleme                                                               |
+| gx_widget_last_child_get          | Son alt aya dönüş işaretçisi                                              |
+| gx_widget_next_sibling_get        | Sonraki çiftin işaretçisini geri dönme                                            |
+| gx_widget_parent_get               | Üst pencere öğesi işaretçisini iade edin                                           |
+| gx_widget_pixelmap_get             | Görünür bir pencere öğesi için piksel haritası kimliğini piksel haritası işaretçisine çözümleme            |
 | gx_widget_previous_sibling_get    | Önceki karpuza işaretçisi dönme                                        |
 | gx_widget_resize                    | Pencere öğelerini yeniden boyutlandırma                                                             |
 | gx_widget_shift                     | Shift pencere öğesi                                                              |
@@ -479,16 +479,16 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_widget_string_get               | Görünür pencere öğesi için dize kimliğiyle ilişkili dizeyi alma (kullanım dışı) |
 | gx_widget_string_get_ext          | Görünür pencere öğesi için dize kimliğiyle ilişkili dizeyi alma.             |
 | gx_widget_status_test              | Pencere öğesi durumunu test edin                                                        |
-| gx_widget_style_add                | Pencere öğesi stili Ekle                                                          |
-| gx_widget_style_get                | Pencere öğesi stil bayraklarını al                                               |
-| gx_widget_style_remove             | Pencere öğesi stilini kaldır                                                       |
-| gx_widget_style_set                | Pencere öğesi stilini ayarla                                                          |
-| gx_widget_text_blend               | Karışık metni pencere öğesi üzerinde işle (kullanım dışı)                              |
-| gx_widget_text_blend_ext          | Karışık metni pencere öğesi üzerinde işle                                           |
-| gx_widget_text_draw                | Metni pencere öğesi üzerinde işle (kullanım dışı)                                      |
-| gx_widget_text_draw_ext           | Metni pencere öğesi üzerinde işle                                            |
-| gx_widget_text_id_draw            | Pencere öğesi üzerinde dize KIMLIĞIYLE tanımlanan metni işle                           |
-| gx_widget_top_visible_child_find | İşaretçiyi Z sırasının en üstünde çizilen, görünür alt öğeye döndür   |
+| gx_widget_style_add                | Pencere öğesi stili ekleme                                                          |
+| gx_widget_style_get                | Pencere öğesi stil bayraklarını alma                                               |
+| gx_widget_style_remove             | Pencere öğesi stilini kaldırma                                                       |
+| gx_widget_style_set                | Pencere öğesi stilini ayarlama                                                          |
+| gx_widget_text_blend               | Karıştırmış metni pencere öğesi üzerinde işleme (kullanım dışı)                              |
+| gx_widget_text_blend_ext          | Arabirim öğesi üzerinde karıştırlanmış metin işleme                                           |
+| gx_widget_text_draw                | Pencere öğesi üzerinden metin işleme (kullanım dışı)                                      |
+| gx_widget_text_draw_ext           | Pencere öğesi üzerinden metin işleme                                            |
+| gx_widget_text_id_draw            | Pencere öğesi üzerinden dize kimliğiyle tanımlanan metni işleme                           |
+| gx_widget_top_visible_child_find | Z siparişinin üst kısmında çizilen görünür alta işaretçiyi iade   |
 | gx_widget_type_find                | Pencere öğesi türünü bulma                                                          |
 | gx_widget_width_get                | Pencere öğesi genişliğini al                                                          |
 | gx_window_canvas_set               | Pencere tuvali ayarlama                                                         |
@@ -500,18 +500,18 @@ Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde,
 | gx_window_draw                      | Çizim penceresi                                                               |
 | gx_window_event_process            | İşlem penceresi olayı                                                      |
 | gx_window_execute                   | Kalıcı pencere yürütme                                                    |
-| gx_window_root_create              | Kök penceresi oluştur                                                        |
-| gx_window_root_delete              | Kök penceresini yok et                                                       |
-| gx_window_root_event_process      | Kök penceresi için işlem olayı                                             |
-| gx_window_root_find                | Kök penceresini bul                                                          |
-| gx_window_scroll_info_get         | Pencere kaydırma bilgisini al                                                    |
-| gx_window_scrollbar_find           | Pencere kaydırma çubuğunu bul                                                     |
+| gx_window_root_create              | Kök pencere oluşturma                                                        |
+| gx_window_root_delete              | Kök pencereyi yok et                                                       |
+| gx_window_root_event_process      | Kök pencere için işlem olayı                                             |
+| gx_window_root_find                | Kök pencereyi bul                                                          |
+| gx_window_scroll_info_get         | Pencere kaydırma bilgilerini al                                                    |
+| gx_window_scrollbar_find           | Pencere kaydırma çubuğunu bulma                                                     |
 | gx_window_wallpaper_get            | Pencere duvar kağıdını al                                                      |
-| gx_window_wallpaper_set            | Pencere duvar kağıdını ayarla                                                      |
+| gx_window_wallpaper_set            | Pencere duvar kağıdı ayarlama                                                      |
 
 ## <a name="gx_accordion_menu_create"></a>gx_accordion_menu_create
 
-Accordion menüsü oluşturma
+Bir accordion menüsü oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -531,7 +531,7 @@ Bu hizmet, belirtilen şekilde bir accordion menüsü oluşturur ve sağlanan ü
 
 Bir menü öğesi pencere öğesine alt öğe eklemek için, üst menü öğesi GX_MENU pencere öğesi olarak kullanılması önerilir.
 
-Tek düzeyli bir anlaşma menüsü oluşturmaya yardımcı olacak ipuçları:
+İpuçları düzeyli bir anlaşma menüsü oluşturmak için:
 
 1.  Bir accordion menüsü oluşturun.
 
@@ -539,7 +539,7 @@ Tek düzeyli bir anlaşma menüsü oluşturmaya yardımcı olacak ipuçları:
 
 3.  Üst öğe türü üst öğeye GX_MENU pencere öğeleri ekleme. Alt öğe türü herhangi bir GUIX pencere öğesi türü olabilir.
 
-Çok düzeyli uyum menüsü oluşturmaya yardımcı olacak ipuçları:
+İpuçları düzeyli anlaşma menüsü oluşturmak için şu seçenekleri kullanın:
 
 1.  Bir accordion menüsü oluşturun.
 
@@ -551,10 +551,10 @@ Tek düzeyli bir anlaşma menüsü oluşturmaya yardımcı olacak ipuçları:
 
 ### <a name="parameters"></a>Parametreler
 
-- **accordion** Accordion menü denetim bloğu işaretçisi
-- **name** Accordion menüsünün adı
-- **parent** Üst pencere öğesi işaretçisi
-- **style (stil)** Pencere öğesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
+- **Accordion** Accordion Menu denetim bloğu işaretçisi
+- **ad** Accordion menüsünün adı
+- **üst öğe** Üst pencere öğesi işaretçisi
+- **Stil** Pencere öğesinin stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
 - **accordion_menu_id** Accordion menüsünün uygulama tanımlı KIMLIĞI
 - **Boyut** Accordion menüsünün boyutu
 
@@ -616,7 +616,7 @@ GUX Studio yüklemesinin bir parçası olarak sağlanan demo uygulaması demo_gu
 
 ## <a name="gx_accordion_menu_draw"></a>gx_accordion_menu_draw
 
-Akordeon çizme menüsü
+Accordion menüsünü çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -626,17 +626,17 @@ VOID gx_accordion_menu_draw(GX_ACCORDION_MENU *accordion);
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtilen anlaşma menüsünü çizmektedir. Bu hizmet normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel kondisyon menüsü pencere öğeleri için özel çizim işlevlerinin uygulanmasına yardımcı olmak üzere uygulamaya açıktır.
+Bu hizmet, belirtilen Accordion menüsünü çizer. Bu hizmet normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel Accordion Menü pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **accordion** Accordion menü denetim bloğu işaretçisi
+- **Accordion** Accordion Menu denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -669,7 +669,7 @@ VOID my_accordion_menu_draw(GX_ACCORDION_MENU *accordion)
 
 ## <a name="gx_accordion_menu_event_process"></a>gx_accordion_menu_event_process
 
-İşlem anlaşma menüsü olayı
+İşlem Accordion Menü olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -681,13 +681,13 @@ UINT gx_accordion_menu_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen anlaşma menüsü için bir olayı işler. Bu hizmet, herhangi bir özel anlaşma menüsü olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
+Bu hizmet, belirtilen Accordion menüsü için bir olayı işler. Bu hizmet özel Accordion Menü olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
 
-Bu hizmet, bir GX_EVENT_PEN_DOWN GX_EVENT_PEN_UP genişletmek/daraltmak için olayları işleme ve bu olayları işleme.
+Bu hizmet, bir menü öğesini genişletmek/Kolaps için GX_EVENT_PEN_DOWN ve GX_EVENT_PEN_UP olaylarını işler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **accordion** Accordion menü denetim bloğu işaretçisi
+- **Accordion** Accordion Menu denetim bloğu işaretçisi
 - **event_ptr** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -761,11 +761,11 @@ Bu hizmet, Accordion menüsünün Menü öğelerini konumlandırır. Bu işlev, 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı anlaşma menü konumu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı Accordion Menü konumu
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -806,9 +806,9 @@ UINT gx_animation_canvas_define(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, animasyon dizisini uygulamak için kullanılan bir animasyon denetleyicisine bellek tuvali sağlar. Bu sağlanan tuval, animasyon hedef pencere öğelerini tutacak kadar büyük olmalı.
+Bu hizmet, Animasyon sırasını uygulamak için kullanılan bir animasyon denetleyicisine bir bellek tuvali sağlar. Bu sunulan tuval animasyon hedefi pencere öğesini tutabilecek kadar büyük olmalıdır.
 
-Bir animasyon tuvali tanımlandığı zaman, hedef pencere öğesi bu animasyon tuvale bir kez çizilir ve tuval kaydırma ve/veya tuval alfa değeri değiştirerek ekran slaytı veya soldurma etkisi ilir. Birden çok grafik katmanı için donanım desteği sağlanıyorsa, bir donanım grafik  katmanına bağlı bir animasyon tuvali tanımlamak slayt ve soluk animasyonların performansını önemli ölçüde geliştirebilir.
+Bir animasyon tuvali tanımlandığında, hedef pencere öğesi bu animasyon tuvaline bir kez çizilir ve tuval boşluğu ve/veya tuval alfa değeri değiştirilerek ekran slaydı veya Soldur efekti gerçekleştirilir. Birden çok grafik katmanı için donanım desteği sağlandığında, bir donanım grafik kaplama katmanına bağlanan bir animasyon tuvali tanımlamak, slayt ve Soldur animasyonların performansını ***önemli ölçüde*** iyileştirebilir.
 
 Animasyon Yöneticisi bir animasyon tuvalinin, renk derinliğinde 16 BPP bir daha az çalışıyorsa soluklaştırma ve soluklaştırma animasyon türlerini yürütmesini gerektirir.
 
@@ -888,7 +888,7 @@ UINT gx_animation_create(GX_ANIMATION *animation);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir animasyon denetleyicisi oluşturur. Denetleyici boşta durumuna başlatılır. Bir animasyon BOŞTA durumda olmadığı sürece başlatamaz. Denetim GX_ANIMATION işaretçisi gx_system_animation_get() kullanılarak elde edilir veya statik olarak tanımlanmış bir denetim bloğu olabilir.
+Bu hizmet bir animasyon denetleyicisi oluşturur. Denetleyici boşta durumuna başlatılır. BOŞTA durumunda olmadığı takdirde bir animasyon başlatamaz. GX_ANIMATION denetim bloğu işaretçisi gx_system_animation_get () kullanılarak elde edilebilir veya statik olarak tanımlanmış bir denetim bloğu olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -897,11 +897,11 @@ Bu hizmet bir animasyon denetleyicisi oluşturur. Denetleyici boşta durumuna ba
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Animasyon denetleyicisi başarıyla oluşturuldu
-- **GX_ALREADY_CREATED** (0x13) Denetim bloğu zaten başlatıldı
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) animasyon denetleyicisi başarıyla oluşturuldu
+- **GX_ALREADY_CREATED** (0x13) denetim bloğu zaten başlatılmış
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -938,7 +938,7 @@ if (animation)
 
 ## <a name="gx_animation_delete"></a>gx_animation_delete
 
-Bir veya birden çok animasyon denetleyicisini silme
+Bir veya daha fazla animasyon denetleyicisini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -948,7 +948,7 @@ UINT gx_animation_delete(GX_ANIMATION *animation, GX_WIDGET *parent);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, giriş animasyon işaretçisi ayarlanırsa bir animasyon dizisini siler, aksi takdirde tüm animasyonlar belirtilen üst pencere öğesine ait olur.
+Bu hizmet, giriş animasyon işaretçisi ayarlandıysa bir animasyon dizisini siler, aksi takdirde, tüm animasyonlar belirtilen üst pencere öğesine aittir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -1023,7 +1023,7 @@ UINT gx_animation_drag_disable(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, pencere öğesinin varsayılan olay işlemi işlevinden ekran sürükleme animasyon kanca yordamını kaldırır ve animasyon sırasını durduruyor. Ekran sürükleme animasyonu kanca yordamı, bir ekran sürükleme animasyonu için olayları işler.
+Bu hizmet, pencere öğesinin varsayılan olay işlemi işlevinden ekran sürükleme animasyon kanca yordamını kaldırır ve animasyon sırasını durduruyor. Ekran sürükleme animasyon kanca yordamı bir ekran sürükleme animasyonuna yönelik olayları işler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -1032,11 +1032,11 @@ Bu hizmet, pencere öğesinin varsayılan olay işlemi işlevinden ekran sürük
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1081,25 +1081,25 @@ UINT gx_animation_drag_enable(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, dahili olarak tanımlanan ekran sürükleme animasyonu olay süreci işlevini bir pencere öğesi varsayılan olay süreci işlevinin kanca yordamı olarak ayarlar. Ekran sürükleme animasyonu olay işlem işlevi bir ekran sürükleme animasyonu için olayları işler.
+Bu hizmet, dahili olarak tanımlanan ekran sürükleme animasyonu olay süreci işlevini bir pencere öğesi varsayılan olay süreci işlevinin kanca yordamı olarak ayarlar. Ekran sürükleme animasyonu olay süreci işlevi, bir ekran sürükleme animasyonu için olayları işler.
 
-Ekran Sürükle kanca yordamı, hedef pencere öğesine gönderilen kalem girişi olayları için varsayılan işleyici olur. Özgün pencere öğesi olay işleme işlevi, ekran sürükleme girişi olay türlerini denetledikten sonra bir zincirleme olarak çağrılır.
+Ekran sürükleme kancası yordamı, hedef pencere öğesine gönderilen kalem girişi olayları için varsayılan işleyici olur. Özgün pencere öğesi olay işleme işlevi, ekran sürükleme girişi olay türleri denetlendikten sonra zincirleme olarak çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **animasyon** Animasyon denetim bloğu işaretçisi
 - **pencere öğesi** Pencere öğesi denetim bloğu işaretçisi
-- **bilgi** Animasyon bilgileri
+- **info (bilgi)** Animasyon bilgileri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı
-- **GX_INVALID_STATUS** (0x26) geçersiz animasyon durumu
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_VALUE** (0x22) geçersiz değer
-- **GX_INVALID_WIDGET** (0x12) slayt ekran listesi sağlanmadı
+- **GX_SUCCESS** (0x00) Başarılı
+- **GX_INVALID_STATUS** (0x26) Geçersiz animasyon durumu
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_VALUE** (0x22) Geçersiz değer
+- **GX_INVALID_WIDGET** (0x12) Slayt ekranı listesi sağlanmaz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1199,7 +1199,7 @@ status = gx_animation_landing_peed_set(&my_animation, 20);
 
 ## <a name="gx_animation_start"></a>gx_animation_start
 
-Zamanlayıcı temelli bir animasyon başlatma
+Zamanlayıcı odaklı animasyon başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1211,27 +1211,27 @@ UINT gx_animation_start(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir animasyon örneği ve yeni bir animasyon parametreleri kümesi kullanan bir animasyon sırası başlatır. Bu işlev parametrelerin yerel bir kopyasını oluşturur, yani parametre yapısının statik olarak tanımlanması gerekmez.
+Bu hizmet, önceden oluşturulmuş bir animasyon örneğini ve yeni bir animasyon parametreleri kümesi kullanarak bir animasyon dizisi başlatıyor. Bu işlev, parametrelerin yerel bir kopyasını yapar, yani parametre yapısının statik olarak tanımlanmış olması gerekli değildir.
 
-GX_ANIMATION denetim yapısı uygulama tarafından statik olarak tanımlanabilir veya gx_system_animation_get () API 'SI kullanılarak elde edilebilir.
+Uygulama GX_ANIMATION yapısı uygulama tarafından statik olarak tanımlanabilir veya gx_system_animation_get() API'si kullanılarak elde edilir.
 
-GX_ANIMATION_INFO yapısı yürütülecek animasyonun parametrelerini tanımlar. Bu yapının ve her alanın anlamını açıklayan bir açıklama için, bu kılavuzun Bölüm 3 ' teki Gux animasyon bileşeni bölümüne bakın.
+GX_ANIMATION_INFO yapısı, yürütülecek animasyonun parametrelerini tanımlar. Bu yapının tam açıklaması ve her alanın anlamı için bu kılavuzun 3. Bölümündeki GUIX Animasyon Bileşeni bölümüne bakın.
 
 ### <a name="parameters"></a>Parametreler
 
 - **animasyon** Animasyon denetim bloğu işaretçisi
-- **params** Parametre yapısına yönelik işaretçi
+- **params** Parametre yapısı işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı
-- **GX_INVALID_VALUE** (0x22) geçersiz parametre
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) geçersiz animasyon hedefi
-- **GX_INVALID_STATUS** (0x26) geçersiz animasyon durumu
-- **GX_INVALID_CANVAS** (0x20) geçersiz animasyon tuvali
+- **GX_SUCCESS** (0x00) Başarılı
+- **GX_INVALID_VALUE** (0x22) Geçersiz parametre
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz animasyon hedefi
+- **GX_INVALID_STATUS** (0x26) Geçersiz animasyon durumu
+- **GX_INVALID_CANVAS** (0x20) Geçersiz animasyon tuvali
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1329,7 +1329,7 @@ status = gx_animation_stop(&animation);
 
 ## <a name="gx_binres_language_count_get"></a>gx_binres_language_count_get
 
-İkili kaynak verilerinde mevcut dillerin sayısını döndür
+İkili kaynak verilerinde mevcut olan dil sayısını iade
 
 ### <a name="prototype"></a>Prototype
 
@@ -1341,20 +1341,20 @@ UINT gx_binres_language_count_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ikili verilerde bulunan dillerin sayısını döndürmek için bir ikili kaynak veri üst bilgisini ayrıştırır. Bu, kullanıcının bir dil seçiminden seçim yapmasına izin veren kullanıcı için bir seçim listesi görüntülemesi gereken uygulamalar için yararlıdır.
+Bu hizmet, ikili verilerin içinde yer alan dil sayısını dönmek için ikili kaynak veri üst bilgilerini ayrıştırıyor. Bu, kullanıcının dil seçiminden seçime izin veren bir seçim listesi görüntülemesi gereken uygulamalar için kullanışlıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **root_address** Bellekteki ikili kaynak verilerinin adresi
-- **return_count** Döndürülen dil sayısını depolayacak konum
+- **root_address** Bellekte ikili kaynak verileri adresi
+- **return_count** Döndürülen dil sayısını depolamak için konum
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı
-- **GX_INVALID_FORMAT** (0x24) geçersiz ikili kaynak
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı
+- **GX_INVALID_FORMAT** (0x24) Geçersiz ikili kaynak
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1379,7 +1379,7 @@ status = gx_binres_language_count_get(root_address,
 
 ## <a name="gx_binres_language_info_load"></a>gx_binres_language_info_load
 
-Dil tablosu bilgilerini yükle
+Dil tablosu bilgilerini yükleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1391,9 +1391,9 @@ UINT gx_binres_language_info_load(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir dizi GX_LANGUAGE_HEADER yapıyı doldurmak için bir ikili kaynak veri blobu ayrıştırır ve bu, ikili verilerde bulunan her dilin dil adlarının ve dize tablo boyutunun uygulamasını bilgilendirmenizi sağlar. Uygulama, ikili verilerdeki dillerin sayısını öğrenmek için önce gx_binres_language_count_get () öğesini çağırmalıdır ve bu işlev noktalarına put_info işaretçisinin language_count GX_LANGUAGE_HEADER yapıları dizisine geçtiğini sağlar.
+Bu hizmet, bir ikili kaynak veri blobu ayrıştırarak GX_LANGUAGE_HEADER yapıları dizisini tamamlar ve uygulamanın ikili verilerde yer alan her dilin dil adlarını ve dize tablosu boyutunu bilgi altına alır. Uygulama, ikili veri içindeki dil sayısını belirlemek için önce gx_binres_language_count_get() çağrısında olmalı ve put_info işaretçisinin bu işleve geçirilen işaretçinin language_count GX_LANGUAGE_HEADER dizisini işaret ediyor olması gerekir.
 
-Bu hizmet, çalışma zamanında bir ikili kaynak veri öbeğinin içeriğini öğrenmek için uygulama tarafından kullanılır.
+Bu hizmet, çalışma zamanında ikili kaynak veri öbbeklerinin içeriğini belirlemek için uygulama tarafından kullanılır.
 
 GX_LANGUAGE_HEADER yapısı şu şekilde tanımlanır:
 
@@ -1462,25 +1462,25 @@ Bu kullanım dışı API, uygulamaların daha eski (sürüm 5.6 öncesi) ikili k
 
 Yeni uygulamalarda gx_binres_language_table_load_ext() gerekir.
 
-Bu hizmet tablo kaynaklarının işaretçilerini içeren bir dil tablosu yapısı oluşturulur, oluşturulan veri yapıları kaynak verilerini "yerinde" gösterir ve kaynak verilerini kopyalamaz. Kaynak verileri genel erişimli bir bellek konuma yerleştiril olmalı ve bu bellek konumunun temel adresi bu API'ye geçirilse.
+Bu hizmet tablo kaynaklarının işaretçilerini içeren bir dil tablosu yapısı oluşturulur, oluşturulan veri yapıları kaynak verilerini "yerinde" gösterir ve kaynak verilerini kopyalamaz. Kaynak verileri genel erişimli bir bellek konumunun içine yerleştiril olmalı ve bu bellek konumunun temel adresi bu API'ye geçirildir.
 
 Bu hizmet, dil tablosu yapısını tutmak için yeterli boyutta bir çalışma zamanı ayrılmış bellek bloğu gerektirir ve bu nedenle bu hizmet istenmeden önce gx_system_memory_allocator_set API'si bir kez çağrılması gerekir.
 
-Döndürülen dil tablosu, kaynak veri belleğindeki dize kaynaklarına işaretçiler içeren her dize tablosu, bir veya daha fazla dize tablosunu tanımlar.
+Döndürülen dil tablosu, her dize tablosu kaynak veri belleğinde dize kaynaklarına işaretçiler içeren bir veya daha fazla dize tablosu tanımlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **root_address** Bellekteki ikili kaynak verilerinin adresi
-- **_language_table döndürüldü** Yüklü dil tablosu işaretçisi
+- **root_address** Bellekte ikili kaynak verileri adresi
+- **döndürülen _language_table** Yüklenen dil tablosu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı
-- **GX_INVALID_FORMAT** (0x24) geçersiz ikili kaynak
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_SYSTEM_MEMPRY_ERROR** (0x30) bellek ayırıcısı veya Free işlevi tanımlı değil
+- **GX_SUCCESS** (0x00) Başarılı
+- **GX_INVALID_FORMAT** (0x24) Geçersiz ikili kaynak
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SYSTEM_MEMPRY_ERROR** (0x30) Bellek ya da boş işlev tanımlanmadı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1505,7 +1505,7 @@ status = gx_binres_language_table_load(root_address,
 
 ## <a name="gx_binres_language_table_load_ext"></a>gx_binres_language_table_load_ext
 
-Dil tablosu kaynağını yükle
+Dil tablosu kaynağını yükleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1517,25 +1517,25 @@ UINT gx_binres_language_table_load_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, tablo kaynaklarına işaretçiler içeren bir dil tablosu yapısı oluşturur, oluşturulan veri yapıları "yerinde" kaynak verilerine işaret ediyor, kaynak verileri kopyalamaz. Kaynak verileri bir genel erişim belleği konumuna yerleştirilmelidir ve bu bellek konumunun taban adresi bu API 'ye geçirilir.
+Bu hizmet tablo kaynaklarının işaretçilerini içeren bir dil tablosu yapısı oluşturulur, oluşturulan veri yapıları kaynak verilerini "yerinde" gösterir ve kaynak verilerini kopyalamaz. Kaynak verileri genel erişimli bir bellek konumunun içine yerleştiril olmalı ve bu bellek konumunun temel adresi bu API'ye geçirildir.
 
-Bu hizmet, dil tablosu yapısını tutmak için boyutu yeterli olan bir çalışma zamanına ayrılan bellek bloğunu gerektirir ve bu nedenle, bu hizmet istenene kadar gx_system_memory_allocator_set API 'sinin çağrılması gerekir.
+Bu hizmet, dil tablosu yapısını tutmak için yeterli boyutta bir çalışma zamanı ayrılmış bellek bloğu gerektirir ve bu nedenle bu hizmet istenmeden önce gx_system_memory_allocator_set API'si bir kez çağrılması gerekir.
 
-Döndürülen dil tablosu, kaynak veri belleğindeki dize kaynaklarına işaretçiler içeren her dize tablosu, bir veya daha fazla dize tablosunu tanımlar.
+Döndürülen dil tablosu, her dize tablosu kaynak veri belleğinde dize kaynaklarına işaretçiler içeren bir veya daha fazla dize tablosu tanımlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **root_address** Bellekteki ikili kaynak verilerinin adresi
-- **_language_table döndürüldü** Yüklü dil tablosu işaretçisi
+- **root_address** Bellekte ikili kaynak verileri adresi
+- **döndürülen _language_table** Yüklenen dil tablosu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı
-- **GX_INVALID_FORMAT** (0x24) geçersiz ikili kaynak
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_SYSTEM_MEMPRY_ERROR** (0x30) Bellek ya da boş işlev tanımlanmadı
+- **GX_SUCCESS** (0x00) Başarılı
+- **GX_INVALID_FORMAT** (0x24) Geçersiz ikili kaynak
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SYSTEM_MEMPRY_ERROR** (0x30) bellek ayırıcısı veya Free işlevi tanımlı değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1560,7 +1560,7 @@ status = gx_binres_language_table_load_ext(root_address,
 
 ## <a name="gx_binres_theme_load"></a>gx_binres_theme_load
 
-Tema kaynağını yükleme
+Tema kaynağı yükle
 
 ### <a name="prototype"></a>Prototype
 
@@ -1572,25 +1572,25 @@ UINT gx_binres_theme_load(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, istenen GX_THEME için kaynak tablolarının işaretçilerini içeren bir temel yapı oluşturur. Oluşturulan veri yapıları kaynak verilerini "yerinde" gösterir, kaynak verilerini kopyalamaz. Bu nedenle, kaynak verileri genel erişimli bir bellek konumunun içine yerleştiril olmalı ve bu bellek konumunun temel adresi bu API'ye geçirilse.
+Bu hizmet, istenen temanın kaynak tablolarına yönelik işaretçiler içeren bir GX_THEME yapısı oluşturur. Oluşturulan veri yapıları "yerinde" kaynak verilerine işaret ediyor, kaynak verileri kopyalamaz. Bu nedenle, kaynak verilerinin bir genel erişim belleği konumuna yerleştirilmesi ve bu bellek konumunun temel adresi bu API 'ye geçirilmesi gerekir.
 
-Bu hizmet, tema tablosu yapısını tutmak için yeterli boyutta bir çalışma zamanı ayrılmış bellek bloğu gerektirir ve bu nedenle gx_system_memory_allocator_set api'si bu hizmet istenmeden önce bir kez çağrılması gerekir.
+Bu hizmet, tema tablosu yapısını tutmak için boyutu yeterli olan bir çalışma zamanına ayrılan bellek bloğunu gerektirir ve bu nedenle, bu hizmet istenene kadar gx_system_memory_allocator_set API 'sinin çağrılması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **root_address** Bellekte ikili kaynak verileri adresi
+- **root_address** Bellekteki ikili kaynak verilerinin adresi
 - **theme_id** Temanın tanımlayıcısı
-- **returned_theme** Yüklenen temanın işaretçisi
+- **returned_theme** Yüklü Tema işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı
-- **GX_INVALID_FORMAT** (0x24) Geçersiz ikili kaynak
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_VALUE** (0x22) Geçersiz tema kimliği
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek ya da boş işlev tanımlanmadı
+- **GX_SUCCESS** (0x00) başarılı
+- **GX_INVALID_FORMAT** (0x24) geçersiz ikili kaynak
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_VALUE** (0x22) GEÇERSIZ Tema kimliği
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek ayırıcısı veya Free işlevi tanımlı değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1671,15 +1671,15 @@ Bu hizmet, belirtilen çizgi rengine, Fill rengine ve stile sahip bir fırça ta
 
 - **fırça** Fırça denetim bloğu işaretçisi
 - **line_color** Fırça hattının rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
-- **fill_color** Fırça dolgusunun rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
-- **style (stil)** Fırça stili. **Ek D,** desteklenen fırça stillerini açıklar. Fırça stilleri bitwise OR işlemi kullanılarak tek bir değişkende bir araya ayarlanabilir.
+- **fill_color** Fırça dolgusunun rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
+- **Stil** Fırça stili. **Ek D** desteklenen fırça stillerini açıklar. Fırça stilleri, bit düzeyinde OR işlemi kullanarak bir değişkende birleştirilebilir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı fırça tanımı
-- **GX_PTR_ERROR** (0x07) Geçersiz fırça işaretçisi
+- **GX_SUCCESS** (0x00) başarılı fırça tanımı
+- **GX_PTR_ERROR** (0x07) geçersiz fırça işaretçisi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -1699,7 +1699,7 @@ status = gx_brush_define(&my_brush, GX_COLOR_BLACK, GX_COLOR_BLACK,
 
 ## <a name="gx_button_background_draw"></a>gx_button_background_draw
 
- Düğme arka planını çizme
+ Düğme arka planı çiz
 
 ###<a name="prototype"></a>Prototype
 
@@ -1709,7 +1709,7 @@ VOID gx_button_background_draw(GX_BUTTON *button);
 
 ### <a name="description"></a>Description
 
-Bu hizmet düğme arka planını çizmektedir. Bu işlev normalde gx_button_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazmaya yardımcı olmak için uygulamaya açıktır.
+Bu hizmet, düğme arka planını çizer. Bu işlev genellikle gx_button_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazma konusunda yardımcı olmak için uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -1719,7 +1719,7 @@ Bu hizmet düğme arka planını çizmektedir. Bu işlev normalde gx_button_draw
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -1772,22 +1772,22 @@ UINT gx_button_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen bir düğme oluşturur ve düğmeyi sağlanan üst pencere öğesiyle ilişkilendirir.
+Bu hizmet, belirtilen şekilde bir düğme oluşturur ve düğmeyi sağlanan üst pencere öğesiyle ilişkilendirır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **düğme** Düğme denetim bloğu işaretçisi
-- **ad** Düğmenin mantıksal adı
-- **üst öğe** Düğmenin üst pencere öğesi işaretçisi
-- **Stil** Düğme stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
-- **button_id** Düğmenin uygulama tanımlı KIMLIĞI
-- **Boyut** Düğmenin boyutu
+- **name** Düğmenin mantıksal adı
+- **parent** Düğmenin üst pencere öğesi işaretçisi
+- **style (stil)** Düğme stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
+- **button_id** Düğmenin uygulama tanımlı kimliği
+- **boyut** Düğmenin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı düğme oluşturma
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı düğme oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 - **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
 
@@ -1843,7 +1843,7 @@ UINT gx_button_deselect(
 Bu hizmet, belirtilen düğmenin seçimini kaldırıyor ve düğme stillerine bağlı olarak bir sinyal olayı oluştur.
 
 
-| Düğme stili              | Sinyalinin                     |
+| Düğme Stili              | Sinyal                     |
 |---------------------------|----------------------------|
 | Hiçbiri                      | GX_EVENT_CLICKED         |
 | GX_STYLE_BUTTON_RADIO  | GX_EVENT_RADIO_DESELECT |
@@ -1854,16 +1854,16 @@ Bu hizmet, belirtilen düğmenin seçimini kaldırıyor ve düğme stillerine ba
 ### <a name="parameters"></a>Parametreler
 
 - **düğme** Düğme denetim bloğu işaretçisi
-- **gen_event** GX_TRUE, düğme, düğme stiline bağlı olarak bir GX_EVENT_CLICKED, GX_EVENT_DESELECT veya GX_EVENT_TOGGLE_OFFSET olayı oluşturacaktır. GX_FALSE, düğme normalde yapabilse bile daha yüksek düzey bir olay oluşturmaz.
+- **gen_event** Bu GX_TRUE, düğme stiline bağlı olarak GX_EVENT_CLICKED, GX_EVENT_DESELECT veya GX_EVENT_TOGGLE_OFFSET bir olay oluşturulur. Bu GX_FALSE, normalde böyle bir şey olsa bile daha üst düzey bir olay oluşturmaz.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı düğme seçimi kaldır
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı düğme seçimi kaldırıldı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2023,7 +2023,7 @@ UINT custom_button_event_process(GX_BUTTON *button,
 
 ## <a name="gx_button_select"></a>gx_button_select
 
-Seç düğmesi
+Düğme Seç
 
 ### <a name="prototype"></a>Prototype
 
@@ -2033,11 +2033,11 @@ UINT gx_button_select(GX_BUTTON *button);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen düğmeyi seçer ve düğme stillerine bağlı olarak bir sinyal olayı üretir.
+Bu hizmet, belirtilen düğmeyi seçer ve düğme stillerine bağlı olarak bir sinyal olayı oluşturur.
 
-Bir radyo düğmesi grubununiblings seçimini kaldırın.
+Radyo düğmesi grubu için eşdüzey öğeleri kaldırır.
 
-| Düğme Stili                       | Sinyal                   |
+| Düğme stili                       | Sinyalinin                   |
 |------------------------------------|--------------------------|
 | GX_STYLE_BUTTON_RADIO           | GX_EVENT_RADIO_SELECT |
 | GX_STYLE_BUTTON_EVENT_ON_PUSH | GX_EVENT_CLICKED       |
@@ -2085,7 +2085,7 @@ status = gx_button_select(&my_stop_button);
 
 ## <a name="gx_canvas_alpha_set"></a>gx_canvas_alpha_set
 
-Tuval için alfa-blend değerini ayarlama
+Tuval için alfa Blend değeri ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2097,27 +2097,27 @@ UINT gx_canvas_alpha_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen tuval için alfa karışımı değerini ayarlar. Tuval alfa değerleri 0 (saydam) ile 255 (tamamen opak) arasında olabilir.
+Bu hizmet, belirtilen tuval için alfa Blend değerini ayarlar. Tuval alfa değerleri 0 (saydam) ile 255 (tamamen donuk) arasında değişebilir.
 
-Katman tuvallerini karıştırmak için donanım grafik katmanı desteği veya bileşik tuval oluşturma yoluyla yazılım desteği gerekir.
+Birleşik kaplama canvalarını karıştırma, bir bileşik tuval oluşturma yoluyla donanım grafik katmanı desteği veya yazılım desteği gerektirir.
 
-Tuval karıştırma için donanım desteği, tuval alfa değerini ayarlamadan önce gx_canvas_hardware_layer_bind() API'si çağrılarak etkinleştirilir. Tuval bir donanım grafik katmanına bağlı olduğunda, gx_canvas_alpha_set() API'sini çağırmak donanım grafik katmanı karıştırma hizmetlerini doğrudan çağırır.
+Tuval Alpha değeri ayarlamadan önce gx_canvas_hardware_layer_bind () API 'sini çağırarak tuval karışımı için donanım desteği etkinleştirilir. Bir tuval bir donanım grafik katmanına bağlandığında, gx_canvas_alpha_set () API 'sini çağırmak doğrudan donanım grafik katmanı karıştırma hizmetlerini çağırır.
 
-Uygulama, tuval karıştırma için yazılım desteğini kullanmak için GX_CANVAS_COMPOSITE stiline sahip bir tuval oluşturmalı ve bu stilde diğer tüm yönetilen tuvaller son görüntüden önce bileşik haline gelir. Tuval karıştırmaya yönelik yazılım desteği yalnızca 16 bpp veya daha yüksek renk derinliğine sahip bir görüntü sürücüsü ile çalıştırıla birlikte sağlanır.
+Uygulama, tuval karıştırma için yazılım desteğini kullanmak amacıyla, tüm diğer yönetilen canların son görüntü öncesinde oluşturulduğu GX_CANVAS_COMPOSITE stiliyle bir tuval oluşturması gerekir. Tuval karıştırma için yazılım desteği yalnızca 16 BPP veya daha yüksek renk derinliğinde bir ekran sürücüsüyle çalışırken sağlanır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **tuval** Tuval denetim bloğu işaretçisi
-- **alfa** Alfa karışımı değeri, 0 (saydam) ile 255 (opak) arasında bir aralıktır.
+- **Alfa** Alfa Blend değeri, 0 (saydam) ile 255 (donuk) arasındadır.
 
-### <a name="return--values"></a>Dönüş Değerleri
+### <a name="return--values"></a>Dönüş değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı alfa karışımı değer kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_ERROR** (0x20) Geçersiz tuval
+- **GX_SUCCESS** (0x00) başarılı Alfa Blend değer kümesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_ERROR** (0x20) geçersiz tuval
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2158,24 +2158,24 @@ UINT gx_canvas_arc_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli fırçayı kullanarak tuvalde bir daire yay çizer. Daire yay tuvalde geçersiz bölge olarak kırpıldı. Bu hizmet için GX_ARC_DRAWING_SUPPORT tanımlanması gerekir.
+Bu hizmet, geçerli fırçayı kullanarak tuvalde bir daire yay çizer. Daire yayı tuval geçersiz bölgeye kırpılır. Bu hizmetin GX_ARC_DRAWING_SUPPORT gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- daire yay merkezinin **xcenter** x konumu
-- **yılmerkez** y-daire yay merkezinin konumu
-- Daire yaya **r** yarıçapı
-- **start_angle** Daire yay başlangıç açısı
-- **end_angle** Daire yay bitiş açısı
+- **xcenter** x-position of center of the circle arc
+- **ycenter** y-position of center of the circle arc
+- **r** Daire yay yarıçapı
+- **start_angle** Daire yayının başlangıç açısı
+- **end_angle** Daire yayının bitiş açısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı yay çizimi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_INVALID_VALUE** (0x22) geçersiz değer
-- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
+- **GX_SUCCESS** (0x00) Başarılı yay çekme
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_VALUE** (0x22) Geçersiz değer
+- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2227,11 +2227,11 @@ Bu hizmet, tuval pikseli verilerini belirtilen yönde taşır. Bu hizmet, hızl�
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) Başarılı blok taşıma
-- **GX_FAILURE** (0x10) başarısız blok taşıma
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_FAILURE** (0x10) Blok taşıma başarısız oldu
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2267,7 +2267,7 @@ status = gx_canvas_block_move(&move, 10, 0, &invalid);
 
 ## <a name="gx_canvas_circle_draw"></a>gx_canvas_circle_draw
 
-Daire çiz
+Daire çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2280,12 +2280,12 @@ UINT gx_canvas_circle_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli fırçayı kullanarak tuvalde bir daire çizer. Daire tuval için geçersiz bölgeye kırpıldı. Bu hizmet için GX_ARC_DRAWING_SUPPORT tanımlanması gerekir.
+Bu hizmet, geçerli fırçayı kullanarak tuvalde bir daire çizmektedir. Daire tuval geçersiz bölgeye kırpılır. Bu hizmetin GX_ARC_DRAWING_SUPPORT gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **xcenter** x-coord of the center of the circle
-- **ycenter** y-coord of the center of the centerlce
+- **ycenter** y-coord of the center of thecenterlce
 - **dairenin r** Yarıçapı
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -2327,7 +2327,7 @@ status = gx_canvas_circle_draw(100, 100, 50);
 
 ## <a name="gx_canvas_create"></a>gx_canvas_create
 
-Tuval oluştur
+Tuval oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2345,30 +2345,30 @@ UINT gx_canvas_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen özelliklerle ve ilişkili bellekle tuvalde oluşturur.
+Bu hizmet, tuvali belirtilen özellikler ve ilişkili bellekle oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
 - **tuval** Tuval denetim bloğu işaretçisi
-- **ad** Tuval için mantıksal ad
-- **görüntüleme** Önceden oluşturulmuş görüntü işaretçisi
-- **tür** Canvau tuval türlerinin türü şunları içerir:
-- **GX_CANVAS_SIMPLE:** Ekran çizimini devre dışı bırakmak için kullanılan bir bellek tuvali.
-- **GX_CANVAS_MANAGED:** Bileşik yapı sürecinin bir parçası olarak veya tek tuvalli mimarilere yönelik arabellek geçiş işleminin bir parçası olarak etkin ekranı otomatik olarak temizlenen bir tuval.
-- **GX_CANVAS_VISIBLE:** Bu bayrak tuval çizim içeriğini kaybetmeden bir tuvali açmak ve kapatmak için kullanılabilir.
-- **GX_CANVAS_MODIFIED:** Gelecekte kullanılmak üzere ayrılmıştır.
-- **GX_CANVAS_COMPOSITE:** Bu bayrak, birden çok yönetilen ve bileşik tuvalde bileşik bir sistem olan birden çok tuval sistemi yapılandırırken uygulama tarafından kullanılır ve bileşik donanım çerçeve arabelleğine dayalıdır.
-- **Genişlik** Piksel cinsinden genişlik
-- **Yükseklik** Piksel cinsinden yükseklik
-- **memory_area** Tuval için bellek alanı. Bu değer,
-- Tuval oluşturma sırasında **GX_NULL**
+- **name** Tuval için mantıksal ad
+- **display (görüntüleme)** Daha önce oluşturulan görüntü işaretçisi
+- **tür** Tuval türü Tuval türleri şunları içerir:
+- **GX_CANVAS_SIMPLE:** Ekran dışı çizim için kullanılan bir bellek tuvali.
+- **GX_CANVAS_MANAGED:** Bileşik bina işleminin bir parçası olarak veya tek tuval mimarileri için arabelleğe geçiş işleminin bir parçası olarak etkin görüntüye otomatik olarak boşaltan tuval.
+- **GX_CANVAS_VISIBLE:** Bu bayrak, tuval çizim içeriğini kaybetmeden tuvali açmak ve kapatmak için kullanılabilir.
+- **GX_CANVAS_MODIFIED:** Gelecekteki kullanım için ayrılmıştır.
+- **GX_CANVAS_COMPOSITE:** Bu bayrak, birden çok yönetilen tuvali bileşik tuvalde bir arada olacak şekilde yapılandıran çok tuvalli bir sistem yapılandırırken uygulama tarafından kullanılır ve bileşik, donanım çerçevesi arabelleğine yönlendirilendir.
+- **width (genişlik)** Piksel cinsinden genişlik
+- **height (yükseklik)** Piksel cinsinden yükseklik
+- **memory_area** Tuval için bellek alanı. Bu değer
+- **GX_NULL** oluşturma sırasındaki diğer
 - **ve** daha sonra gx_canvas_memory_define kullanılarak başlatıldı
-- **memory_size** Tuval oluşturulduktan sonra tuval belleği tanımlıysa, bayt cinsinden bellek alanının boyutu veya 0.
+- **memory_size** Bayt cinsinden bellek alanı boyutu veya tuval oluşturulduktan sonra tuval belleği tanımlandı ise 0.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı tuval oluştur
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_SUCCESS** (0x00) Başarılı tuval oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 - **GX_INVALID_CANVAS_SIZE** (0x1C) Geçersiz tuval denetim bloğu boyutu
@@ -2451,7 +2451,7 @@ status = gx_canvas_delete (&my_canvas);
 
 ## <a name="gx_canvas_drawing_complete"></a>gx_canvas_drawing_complete
 
-Tuval çizimini tamamen doldurun
+Tam tuval çizimi
 
 ### <a name="prototype"></a>Prototype
 
@@ -2463,24 +2463,24 @@ UINT gx_canvas_drawing_complete(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, Gux 'in belirtilen tuvalde uygulama çiziminin tamamlandığını bilmesini sağlar.
+Bu hizmet, GUIX'in uygulamanın belirtilen tuvale çizildiğinin tamam olduğunu haber vetir.
 
-Uygulama bu hizmeti kullanarak tuvalde hemen çizim yapılmasını zorlayabilir. Bu, tuvali görünür çerçeve arabelleğine boşaltır ve/veya sistem belleği mimarisine bağlı olarak bir hata atma geçiş işlemi tetikler.
+Uygulama, tuvale hemen çizim yapmak için bu hizmeti kullanabilir. Bu işlem tuvali görünür çerçeve arabelleğine boşaltır ve/veya sistem belleği mimarisine bağlı olarak bir hatager geçiş işlemi tetikler.
 
-Bu hizmet yalnızca uygulama tarafından, gx_canvas_drawing_initiate () ile başlatılan bir çizim dizisinin kapatılmasını sağlamak için çağrılmalıdır.
+Bu hizmet yalnızca gx_canvas_drawing_initiate() ile başlayan çizim sırasını kapatmak için uygulama tarafından çağrılmaya gx_canvas_drawing_initiate.
 
 ### <a name="parameters"></a>Parametreler
 
 - **tuval** Tuval denetim bloğu işaretçisi
-- **Temizleme** **_GX_TRUE_**, tuval değişiklikleri ekranda temizlenir
+- **flush (boşaltma)** Bu **_GX_TRUE_** tuval değişiklikleri görüntüye boşaltıldı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı çizim tamamlama
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı çizim tamamlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2532,9 +2532,9 @@ Bu hizmet, belirtilen tuvalde çizimini başlatıyor. Bu hizmet, tuvalin güncel
 - **GX_NO_VIEW** (0x03) Çağıran için görünüm yok
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_CANVAS** (0x20) geçersiz tuval
+- **GX_INVALID_CANVAS** (0x20) Geçersiz tuval
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2588,9 +2588,9 @@ Bu hizmet, geçerli fırçayı kullanarak tuvalde bir elips çizer. Elips tuval 
 - **GX_SUCCESS** (0x00) başarılı daire çiz
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_INVALID_VALUE** (0x22) geçersiz değer
-- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
+- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -2633,15 +2633,15 @@ UINT gx_canvas_hardware_layer_bind(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, GUIX çizim tuvalini donanım grafik katmanına bağlar. Bu hizmet yalnızca birden çok donanım grafik katmanını destekleyen donanım cihazları için gereklidir.
+Bu hizmet, bir Gux çizim tuvalini bir donanım grafik katmanına bağlar. Bu hizmet yalnızca birden çok donanım grafik katmanını destekleyen donanım cihazları için gereklidir.
 
-Bir tuvalin bir donanım grafik katmanına bağlaması, gx_canvas_show(), gx_canvas_hide()), gx_canvas_alpha_set() ve gx_canvas_offset_set() API'leri doğrudan donanım görüntüleme sürücü hizmetleri tarafından uygulanmasıyla sonuç verir.
+Bir tuvali bir donanım grafik katmanına bağlamak, donanım görüntü sürücüsü Hizmetleri tarafından doğrudan uygulanan gx_canvas_show (), gx_canvas_hide (), gx_canvas_alpha_set () ve gx_canvas_offset_set () API 'Lerinin sonucunu elde ediyor.
 
-Donanım görüntüleme sürücüsü birden çok grafik katmanını desteklemezse, bu hizmet birden çok grafik katmanını GX_INVALID_DISPLAY.
+Donanım görüntü sürücüsü birden çok grafik katmanını desteklemiyorsa, bu hizmet GX_INVALID_DISPLAY döndürmeyecektir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Donanımda** uygulanacak tuval tuvali
+- donanımda uygulanacak **tuval** tuvali
 - **Katman** donanımı grafik katmanı
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -2697,7 +2697,7 @@ Bu hizmet bir Gux tuvali gizler. Tuval, gx_canvas_hardware_layer_bind () kullan�
 - **GX_PTR_ERROR** (0x17) geçersiz işaretçiler
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2724,7 +2724,7 @@ status = gx_canvas_hide(&my_canvas);
 
 ## <a name="gx_canvas_line_draw"></a>gx_canvas_line_draw
 
-Çizgi çizme
+Çizgi çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -2738,19 +2738,19 @@ UINT gx_canvas_line_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli fırçayı kullanarak tuvalde bir çizgi çizmektedir. Satır tuval geçersiz bölgeye kırpılır.
+Bu hizmet, geçerli fırçayı kullanarak tuvalde bir çizgi çizer. Çizgi, tuval geçersiz bölgesine kırpıldı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **x_start** Satırın x konumunu başlatma
-- **y_end** Satırın y konumunu başlatma
-- **x_start** Satırın bitiş x konumu
-- **y_end** Satırın bitiş y konumu
+- **x_start** Çizginin x konumu başlatılıyor
+- **y_end** Satırın y konumu başlatılıyor
+- **x_start** Çizginin x konumunu sonlandırma
+- **y_end** Satırın y konumu bitiriliyor
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı çizgi çizme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı çizgi çiz
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
 - **GX_INVALID_WIDTH** (0x1E) geçersiz fırça genişliği
@@ -2803,15 +2803,15 @@ Bu hizmet, tuval oluşturulduktan sonra tuval bellek adresini atamak için kulla
 
 - **tuval** Daha önce oluşturulmuş tuval işaretçisi
 - **bellek** Tuval bellek adresi
-- **memsize** Bayt cinsinden tuval bellek bloğu boyutu
+- **memsize** Tuval bellek bloğunun bayt cinsinden boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı atama
-- **GX_INVALID_CANVAS** (0x20) Geçersiz denetim bloğu
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı atama
+- **GX_INVALID_CANVAS** (0x20) geçersiz denetim bloğu
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -2835,7 +2835,7 @@ reassigned. */
 
 ## <a name="gx_canvas_mouse_define"></a>gx_canvas_mouse_define
 
-Fare imleci görüntüsünü tanımlama
+Fare imleç resmini tanımlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2846,20 +2846,20 @@ UINT gx_canvas_mouse_define(GX_CANVAS *canvas,
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen tuval için fare bilgilerini tanımlar. Bu hizmetin GX_MOUSE_SUPPORT gerekir.
+Bu hizmet, belirtilen tuval için fare bilgilerini tanımlar. Bu hizmet için GX_MOUSE_SUPPORT tanımlanması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **tuval** Tuval denetim bloğu işaretçisi
-- **info (bilgi)** Fare imleci bilgileri işaretçisi. **Ek I,** bu yapıya GX_MOUSE_CURSOR_INFO içerir.
+- **bilgi** Fare imleç bilgilerine yönelik işaretçi. **Ek ı** GX_MOUSE_CURSOR_INFO yapısına yönelik tanımı içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Fare bilgi kümesi başarılı
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı fare bilgi kümesi
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2952,12 +2952,12 @@ Bu hizmet, fare imlecini belirtilen tuval için görünür hale getirir. Bu hizm
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Fare bilgi kümesi başarılı
-- **GX_FAILURE** (0X10) Fare imleci gösteremedi
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı fare bilgi kümesi
+- **GX_FAILURE** (0x10) fare Imlecinin gösterilmesi başarısız oldu
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -2979,7 +2979,7 @@ hidden successfully. */
 ## <a name="gx_canvas_offset_set"></a>gx_canvas_offset_set
 
 
-Tuval atama x,y görüntü uzaklığı
+Tuval x, y görüntüleme boşluğu ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -2992,7 +2992,7 @@ UINT gx_canvas_offset_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen tuval için bir x,y görüntüleme uzaklığı atar. Bu, tuvalin görünür çerçeve arabelleğinde birleşik olduğu konumu kontrol eder ve genellikle tuval fiziksel ekrandan küçük olduğunda kullanılır.
+Bu hizmet, belirtilen tuval için bir x, y görüntüleme boşluğu atar. Bu, tuvalin görünür çerçeve arabelleğine yerleştirme konumunu denetler ve genellikle tuval fiziksel görünenden küçük olduğunda kullanılır.
 
 Tuval, gx_canvas_hardware_layer_bind() API'si kullanılarak bir donanım grafik katmanına bağlanmışsa, gx_canvas_offset_set doğrudan donanım desteği kullanılarak uygulanır.
 
@@ -3009,7 +3009,7 @@ Tuval, gx_canvas_hardware_layer_bind() API'si kullanılarak bir donanım grafik 
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_CANVAS** (0x20) Geçersiz tuval
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3037,7 +3037,7 @@ position 20,30. */
 ## <a name="gx_canvas_pie_draw"></a>gx_canvas_pie_draw
 
 
-Pasta çiz
+Pasta çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3052,13 +3052,13 @@ UINT gx_canvas_pie_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamı fırçasını kullanarak tuvalde bir pasta çizer. Pasta tuval için geçersiz bölgeye kırpıldı. Bu hizmet, GX_ARC_DRAWING_SUPPORT yapılandırma seçeneğinin tanımlanmasını gerektirir.
+Bu hizmet, geçerli çizim bağlamı fırçalarını kullanarak tuvale bir pasta çizer. Pasta tuval geçersiz bölgeye kırpılır. Bu hizmet, yapılandırma seçeneğinin GX_ARC_DRAWING_SUPPORT gerektirir.
 
 ### <a name="parameters"></a>Parametreler
 
-- pasta merkezinin **xcenter** x konumu
-- **yılmerkez** y-pasta merkezinin konumu
-- Pastanın **r** yarıçapı
+- **xcenter** x-position of the center of the pie
+- **ycenter** y-position of the center of the pie
+- **r** Pastanın Yarıçapı
 - **start_angle** Pastanın başlangıç açısı
 - **end_angle** Pastanın bitiş açısı
 
@@ -3109,17 +3109,17 @@ UINT gx_canvas_pixel_draw(GX_POINT position);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlam fırçalarının çizgi rengini kullanarak tuvalde bir piksel çizer. Yapılandırma seçeneği GX_BRUSH_ALPHA_SUPPORT tanımlanmışsa, pikseli, tersi şekilde Blend, piksel tamamen opak olarak çizin.
+Bu hizmet, geçerli çizim bağlam fırçalarının çizgi rengini kullanarak tuvalde bir piksel çizer. Yapılandırma seçeneği GX_BRUSH_ALPHA_SUPPORT pikseli diğerleriyle karıştırarak pikseli tamamen opak olarak çizin.
 
-- **noktanın** x, y konumunu çizmek için
+- **x** noktası,çizilen pikselin y konumu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pixelmap çizimi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
+- **GX_SUCCESS** (0x00) Başarılı piksel haritası çizme
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3161,7 +3161,7 @@ gx_canvas_drawing_complete(mycanvas, GX_TRUE);
 
 ## <a name="gx_canvas_pixelmap_blend"></a>gx_canvas_pixelmap_blend
 
-Blend, pixelmap
+Blend piksel haritası
 
 ### <a name="prototype"></a>Prototype
 
@@ -3175,13 +3175,13 @@ UINT gx_canvas_pixelmap_blend(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir pixelmap 'i tuval arka planıyla karıştırır. Karıştırma oranı çağıran tarafından belirtilir. Alfa değeri 0 (tamamen saydam) ile 255 (tamamen opak) arasında değişebilir. Pixelmap Ayrıca, gelen karıştırma değeriyle birleştirilmiş bir iç alfa kanalını da içerebilir. Bu hizmet yalnızca 16 BPP renk derinliği ve üzeri sürümlerde çalışan ekran sürücüleri tarafından desteklenir.
+Bu hizmet piksel haritasını tuval arka planıyla bir karışımını sağlar. Karıştırma oranı çağıranın tarafından belirtilir. Alfa değer 0 (tamamen saydam) ile 255 (tamamen opak) arasında olabilir. Piksel haritası ayrıca gelen karıştırma değeriyle birleştirilmiş bir iç alfa kanalı da içerebilir. Bu hizmet yalnızca 16 bpp renk derinliğinde ve üzerinde çalışan görüntü sürücüleri tarafından de destekleniyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **x_start** Pixelmap 'in x-Position ' i başlatılıyor
-- **y_end** Pixelmap 'in y konumu başlatılıyor
-- **pixelmap** Pixelmap işaretçisi
+- **x_start** Piksel haritasının x konumunu başlatma
+- **y_end** Piksel haritasının y konumunu başlatma
+- **piksel haritası** Piksel haritası işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -3243,9 +3243,9 @@ Bu hizmet tuvalde bir piksel haritası çizmektedir.
 - **GX_SUCCESS** (0x00) Başarılı piksel haritası çizme
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
+- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3267,7 +3267,7 @@ status = gx_canvas_pixelmap_draw(10, 20, &my_pixelmap);
 
 ## <a name="gx_canvas_pixelmap_get"></a>gx_canvas_pixelmap_get
 
-Tuval pixelmap 'i al
+Tuval piksel haritasını al
 
 ### <a name="prototype"></a>Prototype
 
@@ -3277,18 +3277,18 @@ UINT gx_canvas_pixelmap_get(GX_PIXELMAP *pixelmap);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, tuval verilerine işaret eden bir GX_PIXELMAP yapısı döndürür. Pixelmap biçimi geçerli görüntüleme rengi biçimine ayarlanır.
+Bu hizmet, GX_PIXELMAP verilerine işaret ediyor bir veri kaynağı yapısı döndürür. Piksel haritası biçimi geçerli görüntü rengi biçimine ayarlanır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pixelmap** Döndürülen pixelmap
+- **piksel haritası** Döndürülen piksel haritası
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pixelmap al
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı piksel haritası get
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3374,7 +3374,7 @@ status = gx_canvas_pixelmap_rotate(10, 20, &my_pixelmap, 30,
 
 ## <a name="gx_canvas_pixelmap_tile"></a>gx_canvas_pixelmap_tile
 
-Kutucuk pixelmap
+Kutucuk piksel haritası
 
 ### <a name="prototype"></a>Prototype
 
@@ -3386,22 +3386,22 @@ UINT gx_canvas_pixelmap_tile(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, istenen pixelmap ile tuval içindeki bir dikdörtgeni doldurur.
+Bu hizmet, tuval içindeki bir dikdörtgeni istenen piksel haritasıyla doldurur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **doldur** Pixelmap ile döşeme alanı
-- **pixelmap** Pixelmap işaretçisi
+- **fill** Piksel haritası ile kutucuk alanı
+- **piksel haritası** Piksel haritası işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pixelmap kutucuğu
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
-- **GX_INVALID_VALUE** (0x22) geçersiz Fill boyutu
+- **GX_SUCCESS** (0x00) Başarılı piksel haritası kutucuğu
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
+- **GX_INVALID_VALUE** (0x22) Geçersiz dolgu boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3445,12 +3445,12 @@ Bu hizmet, geçerli çizim bağlamı fırçalarını kullanarak tuval üzerinde 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı çokgen çizim
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_CONTEXT** (0x06) Açık çizim bağlamı yok
+- **GX_SUCCESS** (0x00) başarılı Çokgen Çiz
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_CONTEXT** (0x06) açık çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3541,7 +3541,7 @@ status = gx_canvas_rectangle_draw(&my_rectangle);
 ## <a name="gx_canvas_rotated_text_draw"></a>gx_canvas_rotated_text_draw
 
 
-Bir orta nokta hakkında döndürülmüş metin çizme (kullanım dışı)
+Bir orta nokta ile döndürülen metin çiz (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -3555,22 +3555,22 @@ UINT gx_canvas_rotated_text_draw(
 
 ### <a name="description"></a>Description
 
-Bu API, tercih veya kullanımdan gx_canvas_rotated_text_draw_ext() kullanım dışıdır. Yine de desteklene rağmen, yeni uygulamalar bu API'yi kullanmalı ve bunun yerine gx_canvas_rotated_text_draw_ext() kullanmalı.
+Bu API kullanım dışı bırakıldı veya gx_canvas_rotated_text_draw_ext (). Hala desteklenirken, yeni uygulamalar bu API 'YI kullanmamalıdır ve bunun yerine gx_canvas_rotated_text_draw_ext () kullanmalıdır.
 
-Bu hizmet tuvale metin çizmektedir. Metin, istenen orta nokta hakkında döndürülür. Metni işlemek için geçerli çizim bağlamı yazı tipi ve çizim bağlam çizgisi rengi kullanılır.
+Bu hizmet, tuvale metin çizer. Metin, istenen merkez noktası hakkında döndürülmüş olarak çizilir. Metni işlemek için geçerli çizim bağlamı yazı tipi ve çizim bağlam çizgisi rengi kullanılır.
 
-Bu hizmet, metin gx_utility_string_to_alphamap yalnızca alfa değeri içeren geçici bir 8bpp piksel haritasına işlemek için gx_utility_string_to_alphamap işlevini kullanır. Daha sonra hizmet, gx_utility_pixelmap_rotate işlevini kullanarak alfa haritayı gx_utility_pixelmap_rotate. Tuvale son alfa haritası işlenen bu hizmet geçici alfa haritasını ve ilişkili belleği serbest bıraktırıyor.
+Bu hizmet, metin dizesini yalnızca alfa değeri içeren geçici bir 8bpp pixelmap 'e işlemek için gx_utility_string_to_alphamap işlevini kullanır. Daha sonra hizmet, gx_utility_pixelmap_rotate işlevini kullanarak harflerden eşlemeyi döndürür. Son alfamap tuvalde işlendikten sonra, bu hizmet geçici harfler eşlemesini ve ilişkili belleği serbest bırakır.
 
-Döndürülmüş metni işlemek için geçici bir alfa harita gerektiğinden, uygulamanın döndürülmüş metin çizmeye çalışmadan önce gx_system_memory_allocator api'sini gx_system_memory_allocator_set() API'sini çağırarak yapılandırması gerekir.
+Döndürülen metni işlemek için geçici bir alfamap gerektiğinden, döndürülen metni çizmeyi denemeden önce uygulamanın gx_system_memory_allocator çağıran gx_system_memory_allocator_set () API 'siyle yapılandırması gerekir.
 
-Bu hizmet yalnızca döndürülmüş metni "bir kez" işlemek için kullanılmalıdır. Aynı metin dizesi farklı konumlarda veya farklı döndürme açıları için birden çok kez çizilecekse, metin alfa haritasını bir kez oluşturmak için gx_utility_string_to_alphamap() yardımcı program işlevini kullanmak ve ardından elde edilen alfa haritayı tekrar tekrar döndürmek için gx_utility_pixelmap_rotate birden çok kez kullanmak daha verimlidir.
+Bu hizmet yalnızca "bir kez" döndürülen metni işlemek için kullanılmalıdır. Aynı metin dizesi farklı konumlarda veya farklı döndürme açılarında birden çok kez çizilip, bir kez metin harfler oluşturmak için gx_utility_string_to_alphamap () yardımcı program işlevini kullanmak daha verimlidir, sonra sonuçta elde edilen bir üst bilgi eşlemini sürekli olarak döndürmek için gx_utility_pixelmap_rotate birden çok kez kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
 - **metin** Çizilecek metin dizesi
-- **xCenter** Metnin döndürülecek olduğu merkezi positon.
-- **yCenter** Döndürülecek metnin orta konumu.
-- **açı** İstenen metin döndürme açısı (derece).
+- **Xcenter** Metnin döndürüleceği, ortaya dönmüş ton.
+- **Yılmerkez** Metnin çevresinde döndürüleceği konumu Ortala.
+- **açı** İstenen metin döndürme açısı (derece cinsinden).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -3637,29 +3637,29 @@ UINT gx_canvas_rotated_text_draw_ext(
 
 Bu hizmet, tuvale metin çizer. Metin, istenen merkez noktası hakkında döndürülmüş olarak çizilir. Metni işlemek için geçerli çizim bağlamı yazı tipi ve çizim bağlam çizgisi rengi kullanılır.
 
-Bu hizmet, metin dizesini yalnızca alfa değeri içeren geçici bir 8bpp pixelmap 'e işlemek için gx_utility_string_to_alphamap işlevini kullanır. Daha sonra hizmet, gx_utility_pixelmap_rotate işlevini kullanarak harflerden eşlemeyi döndürür. Tuvale son alfa haritası işlenen bu hizmet geçici alfa haritasını ve ilişkili belleği serbest bıraktırıyor.
+Bu hizmet, metin dizesini yalnızca alfa değeri içeren geçici bir 8bpp pixelmap 'e işlemek için gx_utility_string_to_alphamap işlevini kullanır. Daha sonra hizmet, gx_utility_pixelmap_rotate işlevini kullanarak harflerden eşlemeyi döndürür. Son alfamap tuvalde işlendikten sonra, bu hizmet geçici harfler eşlemesini ve ilişkili belleği serbest bırakır.
 
-Döndürülmüş metni işlemek için geçici bir alfa harita gerektiğinden, uygulamanın döndürülmüş metin çizmeye çalışmadan önce gx_system_memory_allocator ***API'sini gx_system_memory_allocator_set*** api'si tarafından yapılandırması gerekir.
+Döndürülen metni işlemek için geçici bir alfamap gerektiğinden, döndürülen metni çizmeyi denemeden önce uygulamanın gx_system_memory_allocator çağıran ***gx_system_memory_allocator_set*** API 'siyle yapılandırması gerekir.
 
-Bu hizmet yalnızca döndürülmüş metni "bir kez" işlemek için kullanılmalıdır. Aynı metin dizesi farklı konumlarda veya farklı döndürme açıları için birden çok kez çizilecekse, metin alfa haritasını bir kez oluşturmak için gx_utility_string_to_alphamap() yardımcı program işlevini kullanmak ve ardından elde edilen alfa haritayı tekrar tekrar döndürmek için gx_utility_pixelmap_rotate birden çok kez kullanmak daha verimlidir.
+Bu hizmet yalnızca "bir kez" döndürülen metni işlemek için kullanılmalıdır. Aynı metin dizesi farklı konumlarda veya farklı döndürme açılarında birden çok kez çizilip, bir kez metin harfler oluşturmak için gx_utility_string_to_alphamap () yardımcı program işlevini kullanmak daha verimlidir, sonra sonuçta elde edilen bir üst bilgi eşlemini sürekli olarak döndürmek için gx_utility_pixelmap_rotate birden çok kez kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
 - **metin** Çizilecek metin dizesi
-- **xCenter** Metnin döndürülecek olduğu merkezi positon.
-- **yCenter** Döndürülecek metnin orta konumu.
-- **açı** İstenen metin döndürme açısı (derece).
+- **Xcenter** Metnin döndürüleceği, ortaya dönmüş ton.
+- **Yılmerkez** Metnin çevresinde döndürüleceği konumu Ortala.
+- **açı** İstenen metin döndürme açısı (derece cinsinden).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı metin işleme
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_INVALID_CONTEXT** (0x06) Geçersiz çizim bağlamı
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) Yetersiz bellek gx_system_memory_allocator veya bellek atanmamış.
-- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) başarılı metin işleme
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_INVALID_CONTEXT** (0x06) geçersiz çizim bağlamı
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) yeterli kullanılabilir bellek yok veya gx_system_memory_allocator atanmadı.
+- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3766,7 +3766,7 @@ UINT gx_canvas_show(GX_CANVAS *canvas);
 
 ### <a name="description"></a>Description
 
-Bu hizmet tuvali görünür hale gelir. Tuval daha önce gx_canvas_hardware_layer_bind() API'si kullanılarak bir donanım grafik katmanına bağlanmışsa, gx_canvas_show() hizmeti doğrudan donanım desteği kullanılarak uygulanır.
+Bu hizmet, bir tuvali görünür hale getirir. Tuval daha önce gx_canvas_hardware_layer_bind () API 'sini kullanarak bir donanım grafik katmanına bağlanmışsa, gx_canvas_show () hizmeti doğrudan donanım desteği kullanılarak uygulanır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3774,12 +3774,12 @@ Bu hizmet tuvali görünür hale gelir. Tuval daha önce gx_canvas_hardware_laye
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Kaydırma ataması başarılı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_CANVAS** (0x20) Geçersiz tuval
+- **GX_SUCCESS** (0x00) başarılı Aralık ataması
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_CANVAS** (0x20) geçersiz tuval
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -3804,7 +3804,7 @@ status = gx_canvas_show(&my_canvas);
 
 ## <a name="gx_canvas_text_draw"></a>gx_canvas_text_draw
 
-Metin çizme (kullanım dışı)
+Metin çiz (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -3934,7 +3934,7 @@ status = gx_canvas_text_draw_ext(10, 20, &string);
 ## <a name="gx_checkbox_create"></a>gx_checkbox_create
 
 
-Onay kutusu oluştur
+Oluştur onay kutusu
 
 ### <a name="prototype"></a>Prototype
 
@@ -3951,14 +3951,14 @@ UINT gx_checkbox_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen özelliklerle bir CheckBox pencere öğesi oluşturur. GX_CHECKBOX GX_TEXT_BUTTON türetilir ve tüm gx_text_button Hizmetleri GX_CHECKBOX pencere öğeleri ile kullanılabilir.
+Bu hizmet, belirtilen özelliklere sahip bir onay kutusu pencere öğesi oluşturur. GX_CHECKBOX, GX_TEXT_BUTTON türetilen ve tüm gx_text_button hizmetleri farklı pencere öğeleriyle GX_CHECKBOX kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **onay kutusu** CheckBox denetimin blok adı onay kutusu pencere öğesinin mantıksal adı işaretçisi
-- **üst öğe** Üst pencere öğesi işaretçisi
-- **text_id** CheckBox metninin kaynak KIMLIĞI
-- **Stil** Onay kutusunun stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
+- **onay kutusu** Onay kutusu denetim bloğu adının işaretçisi Onay kutusu pencere öğesi mantıksal adı
+- **parent** Üst pencere öğesi işaretçisi
+- **text_id** Onay kutusu metninin kaynak kimliği
+- **style (stil)** Onay kutusunun stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
 - **checkbox_id** Onay kutusunun uygulama tanımlı kimliği
 - **boyut** Onay kutusunun boyutları
 
@@ -4004,7 +4004,7 @@ VOID gx_checkbox_draw(GX_CHECKBOX *checkbox);
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtilen onay kutusunu çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel onay kutusu pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya açıktır.
+Bu hizmet belirtilen onay kutusunu çizer. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel onay kutusu pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -4052,21 +4052,21 @@ UINT gx_checkbox_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen onay kutusu için bir olayı işler. Bu hizmet, özel onay kutusu olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
+Bu hizmet, belirtilen onay kutusu için bir olayı işler. Bu hizmet, herhangi bir özel onay kutusu olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **onay kutusu** CheckBox denetim bloğu işaretçisi
-- **event_ptr** İşlenecek olaya yönelik işaretçi
+- **onay kutusu** Onay kutusu denetim bloğu işaretçisi
+- **event_ptr** İşlemeye devam etmek için olayın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı onay kutusu olay işlemi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı onay kutusu olay işlemi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -4105,7 +4105,7 @@ UINT custom_checkbox_event_process(GX_CHECKBOX *checkbox,
 ## <a name="gx_checkbox_pixelmap_set"></a>gx_checkbox_pixelmap_set
 
 
-Onay kutusu için pixelmap ayarla
+Onay kutusu için piksel haritasını ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -4120,14 +4120,14 @@ UINT gx_checkbox_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, her onay kutusu durumu için belirtilen onay kutusu tarafından görüntülenecek pixelmaps 'ı atar. Kaynak kimlikleri yinelenebilir.
+Bu hizmet, her onay kutusu durumu için belirtilen onay kutusu tarafından görüntülenecek piksel haritalarını atar. Kaynak kimlikleri çoğaltılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **onay kutusu** Onay kutusu denetim bloğu işaretçisi
 - **unchecked_id** Denetlenmeyen durum için kullanılan piksel haritası
 - **checked_id** Denetlenen durum için kullanılan piksel haritası
-- **unchecked_disabled_id** Devre dışı bırakılmış ve işaretlenmemiş onay kutusu için kullanılan Piksel Haritası
+- **unchecked_disabled_id** Devre dışı bırakılmış ve işaretlenmemiş onay kutusu için kullanılan piksel haritası
 - **checked_disabled_id** Devre dışı bırakılmış ve işaretli onay kutusu için kullanılan piksel haritası
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -4182,9 +4182,9 @@ Bu hizmet, bir onay kutusunu seçili durumuna güçler.
 - **GX_SUCCESS** (0x00) Başarılı onay kutusu seçimi
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4218,19 +4218,19 @@ UINT gx_circular_gauge_angle_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, dairesel ölçer pencere öğesinin geçerli iğne açısını alır.
+Bu hizmet, dairesel ölçer pencere öğesi için geçerli iğne açısını verir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ölçer** Dairesel ölçer denetim bloğu işaretçisi
+- **ölçer** Döngüsel ölçer denetim bloğuna işaretçi
 - **açı** Alınacak geçerli iğne açısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı dairesel ölçer açısı al
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı döngüsel ölçer açı get
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4324,18 +4324,18 @@ Bu hizmet, döngüsel ölçer pencere öğesi için animasyon adımlarını ve g
 
 ### <a name="parameters"></a>Parametreler
 
-- **ölçer** Dairesel ölçer denetim bloğu işaretçisi
-- **adımlar** Tek bir döndürme için toplam adım sayısı
-- **gecikme** Her adım için gecikme süresi
+- **ölçer** Döngüsel ölçer denetim bloğuna işaretçi
+- **adımlar** Tek döndürme için toplam adım sayısı
+- **gecikme süresi** Her adım için gecikme süresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı onay kutusu seçme
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_VALUE** (0x22) geçersiz değer
+- **GX_SUCCESS** (0x00) Başarılı onay kutusu seçimi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_VALUE** (0x22) Geçersiz değer
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4362,7 +4362,7 @@ status = gx_circular_gauge_animation_set(&my_gauge, 30, 1);
 ## <a name="gx_circular_gauge_background_draw"></a>gx_circular_gauge_background_draw
 
 
-Dairesel ölçer arka planı çiz
+Dairesel ölçer arka planı çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -4372,11 +4372,11 @@ VOID gx_circular_gauge_background_draw(GX_CIRCULAR_GAUGE *gauge);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dairesel ölçerin arka planını çizer. Bu hizmet, genellikle gx_circular_gauge_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazma konusunda yardımcı olmak için uygulamaya sunulur.
+Bu hizmet, belirtilen döngüsel ölçerin arka planını çizmektedir. Bu hizmet normalde gx_circular_gauge_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazmaya yardımcı olmak için uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ölçer** Dairesel ölçer denetim bloğu işaretçisi
+- **ölçer** Döngüsel ölçer denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -4436,17 +4436,17 @@ Bu hizmet, belirtilen özelliklere sahip dairesel bir ölçer pencere öğesi ol
 - **style (stil)** Döngüsel ölçer stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
 - **circular_gauge_id** Döngüsel ölçerin uygulama tanımlı kimliği
 - **xpos** Ölçer x koordinatı konumu
-- **yılkonumu** Ölçer y-koordinat konumu
+- **ypos** Y koordinat konumunu ölçer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı onay kutusu seçme
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_SIZE** (0x19) geçersiz denetim bloğu boyutu
-- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_SUCCESS** (0x00) Başarılı onay kutusu seçimi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_SIZE** (0x19) Geçersiz denetim bloğu boyutu
+- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4483,7 +4483,7 @@ status = gx_circular_gauge_create(&my_gauge, “my_gauge”,
 
 ## <a name="gx_circular_gauge_draw"></a>gx_circular_gauge_draw
 
-Dairesel ölçer çiz
+Dairesel ölçer çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -4493,17 +4493,17 @@ VOID gx_circular_gauge_draw(GX_CIRCULAR_GAUGE *gauge);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dairesel ölçer çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ölçer pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
+Bu hizmet belirtilen döngüsel ölçeri çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ölçer pencere öğeleri için özel çizim işlevlerini uygulamaya yardımcı olmak üzere uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ölçer** Dairesel ölçer denetim bloğu işaretçisi
+- **ölçer** Döngüsel ölçer denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -4651,7 +4651,7 @@ status = gx_context_brush_default(&my_context);
 ## <a name="gx_context_brush_define"></a>gx_context_brush_define
 
 
-Geçerli çizim bağlamının fırçalarını tanımlama
+Geçerli çizim bağlamının kapsamını tanımlayın
 
 ### <a name="prototype"></a>Prototype
 
@@ -4664,23 +4664,23 @@ UINT gx_context_brush_define(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamının fırçalarını tanımlar.
+Bu hizmet, geçerli çizim bağlamının fırçasını tanımlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **line_color_id** Satır renginin kaynak kimliği. **Ek B,** kaynak kimlikleri için önceden tanımlanmış renk içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **fill_color_id** Dolgu renginin kaynak kimliği. **Ek B,** kaynak kimlikleri için önceden tanımlanmış renk içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **style (stil)** Fırça stili. **Ek D,** desteklenen fırça stillerini açıklar. Fırça stilleri bitwise OR işlemi kullanılarak tek bir değişkende bir araya ayarlanabilir.
+- **line_color_id** Çizgi renginin kaynak KIMLIĞI. **Ek B** önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **fill_color_id** Fill Color kaynak KIMLIĞI. **Ek B** önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **Stil** Fırçanın stili. **Ek D** desteklenen fırça stillerini açıklar. Fırça stilleri, bit düzeyinde OR işlemi kullanarak bir değişkende birleştirilebilir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bağlam fırça tanımlaması
-- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı tanım yok
-- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
+- **GX_SUCCESS** (0x00) başarılı bağlam fırçası tanımlama
+- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı tanımlama
+- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4733,10 +4733,10 @@ Bu hizmet, geçerli çizim bağlamındaki etkin fırçaya bir işaretçi döndü
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) bağlam fırçası başarıyla alındı
-- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4770,7 +4770,7 @@ status = gx_context_brush_get(&my_brush);
 ## <a name="gx_context_brush_pattern_set"></a>gx_context_brush_pattern_set
 
 
-Geçerli çizim bağlamının fırça desenini ayarlama
+Geçerli çizim bağlamının fırça düzenlerini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -4780,7 +4780,7 @@ UINT gx_context_brush_pattern_set(ULONG pattern);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamının fırça desenini ayarlar.
+Bu hizmet, geçerli çizim bağlamının fırça modelini ayarlar.
 
 Fırça deseninin kesik çizgili yatay ve kesik çizgili dikey çizgiler çizmek için kullanılır. Gx_canvas_line_draw () çağrıldığında ve çizgi yatay veya dikey olduğunda ve brush.gx_brush_line_pattern alanı sıfır değilse, bir kalıp çizgisi çizilir.
 
@@ -4827,7 +4827,7 @@ has been set to the specified pattern. */
 ## <a name="gx_context_brush_set"></a>gx_context_brush_set
 
 
-Geçerli çizim bağlamının fırçalarını ayarlama
+Geçerli çizim bağlamının fırça kümesini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -4837,19 +4837,19 @@ UINT gx_context_brush_set(GX_BRUSH *brush);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamının fırçalarını ayarlar.
+Bu hizmet, geçerli çizim bağlamının fırçasını ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **fırça** Geçerli bağlam için kullanmak üzere fırça işaretçisi.
+- **fırça** Geçerli bağlam için kullanılacak fırça işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bağlam fırça kümesi
-- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı bağlam fırçası kümesi
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -4957,7 +4957,7 @@ status = gx_context_brush_style_set(GX_BRUSH_ALIAS);
 ## <a name="gx_context_brush_width_set"></a>gx_context_brush_width_set
 
 
-Geçerli çizim bağlamının fırça genişliğini ayarlama
+Geçerli çizim bağlamının fırça genişliğini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -4967,19 +4967,19 @@ UINT gx_context_brush_width_set(UINT width);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamında etkin fırça genişliğini ayarlar.
+Bu hizmet, geçerli çizim bağlamındaki etkin fırçanın genişliğini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-**width (genişlik)** Geçerli bağlamın piksel cinsinden fırça genişliği
+**Genişlik** Geçerli bağlamın piksel cinsinden fırça genişliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-**GX_SUCCESS** (0x00) Başarılı bağlam fırça genişlik kümesi
+**GX_SUCCESS** (0x00) başarılı bağlam fırçası genişlik kümesi
 
-**GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
+**GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5011,7 +5011,7 @@ If status is GX_SUCCESS the brush width of the current context has been set to 1
 ## <a name="gx_context_color_get"></a>gx_context_color_get
 
 
-Geçerli çizim bağlamındaki renk KIMLIĞIYLE ilişkili renk değerini Al
+Geçerli çizim bağlamında renk kimliğiyle ilişkili renk değerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -5023,25 +5023,25 @@ UINT gx_context_color_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen renk KIMLIĞIYLE ilişkili renk değerini alır. Renk değeri, etkin bağlam görüntüsüne ait Color biçiminde döndürülür. Bu hizmet yalnızca etkin bir çizim işleminin içinden çağrılmalıdır.
+Bu hizmet, belirtilen renk kimliğiyle ilişkili renk değerini verir. Renk değeri, etkin bağlam görüntülemenin renk biçiminde döndürülür. Bu hizmet yalnızca etkin bir çizim işlemi içinde çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
-**color_id** İstenen rengin kaynak KIMLIĞI.
+**color_id** İstenen rengin kaynak kimliği.
 
-**return_color** Döndürülen renk değerini tutacak değişkenin adresi.
+**return_color** Döndürülen renk değerini tutmak için değişkenin adresi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-**GX_SUCCESS** (0x00) başarılı renk değeri Al
+**GX_SUCCESS** (0x00) Başarılı renk değeri get
 
-**GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+**GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
 
-**GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
+**GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
 
-**GX_PTR_ERROR** (0x07) geçersiz işaretçi
+**GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5092,9 +5092,9 @@ Bu hizmet, geçerli çizim bağlamında etkin fırçanın dolgu rengini ayarlar.
 
 - **GX_SUCCESS** (0x00) Başarılı bağlam dolgusu renk kümesi
 - **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
+- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5125,7 +5125,7 @@ status = gx_context_fill_color_set(MY_BLACK_COLOR_ID);
 
 ## <a name="gx_context_font_get"></a>gx_context_font_get
 
-Geçerli çizim bağlamındaki yazı tipi KIMLIĞIYLE ilişkili yazı tipini al
+Geçerli çizim bağlamında yazı tipi kimliğiyle ilişkili yazı tipini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -5137,7 +5137,7 @@ UINT gx_context_font_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen yazı tipi KIMLIĞIYLE ilişkili yazı tipi işaretçisini alır. Bu hizmet yalnızca etkin bir çizim işleminin içinden çağrılmalıdır.
+Bu hizmet, belirtilen yazı tipi kimliğiyle ilişkili yazı tipi işaretçisini kullanır. Bu hizmet yalnızca etkin bir çizim işlemi içinde çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -5237,7 +5237,7 @@ status = gx_context_font_set(MY_FONT_ID);
 
 ## <a name="gx_context_line_color_set"></a>gx_context_line_color_set
 
-Geçerli çizim bağlamının çizgi rengini ayarlama
+Geçerli çizim bağlamının çizgi rengini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -5247,19 +5247,19 @@ UINT gx_context_line_color_set(GX_RESOURCE_ID line_color_id);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamında etkin fırçanın çizgi rengini ayarlar.
+Bu hizmet, geçerli çizim bağlamındaki etkin fırçanın çizgi rengini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **line_color_id** Geçerli bağlamın çizgi rengi. **Ek B,** kaynak kimlikleri için önceden tanımlanmış renk içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **line_color_id** Geçerli bağlamın çizgi rengi. **Ek B** önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bağlam çizgisi renk kümesi
-- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
+- **GX_SUCCESS** (0x00) başarılı bağlam çizgisi renk kümesi
+- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5349,7 +5349,7 @@ status = gx_context_pixelmap_get(MY_PIXELMAP_ID, &map);
 
 ## <a name="gx_context_pixelmap_set"></a>gx_context_pixelmap_set
 
-Geçerli çizim bağlamının piksel haritasını ayarlama
+Geçerli çizim bağlamının pixelmap 'i ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -5359,16 +5359,16 @@ UINT gx_context_pixelmap_set(GX_RESOURCE_ID pixelmap_id);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli çizim bağlamında etkin fırçanın piksel haritasını atar.
+Bu hizmet, etkin fırçanın pixelmap 'i geçerli çizim bağlamına atar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pixelmap_id** Geçerli bağlam için kullanmak üzere Piksel Haritası kaynak kimliği
+- **pixelmap_id** Geçerli bağlam için kullanılacak pixelmap kaynak KIMLIĞI
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bağlam piksel haritası kümesi
-- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
+- **GX_SUCCESS** (0x00) başarılı bağlam pixelmap kümesi
+- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
 - **GX_INVLAID_CONTEXT** (0x06) Geçersiz bağlam
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -5402,7 +5402,7 @@ status = gx_context_pixelmap_set(MY_PIXELMAP_ID);
 
 ## <a name="gx_context_raw_brush_define"></a>gx_context_raw_brush_define
 
-Geçerli çizim bağlamının ham fırçasını tanımlayın
+Geçerli çizim bağlamının ham fırçalarını tanımlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -5415,11 +5415,11 @@ UINT gx_context_raw_brush_define(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli ekran bağlamının ham fırçasını tanımlar. Ham tanımlar, 32 bitlik ARGB renk değerleri renk kimlikleri yerine fırçaya geçirilene zaman kullanılır. Ham renk tanımları, istenen renk geçerli sistem renk tablosunda yoksa veya RGB renk değeri çalışma zamanında hesaplanmışsa yararlıdır.
+Bu hizmet, geçerli ekran bağlamının ham fırçalarını tanımlar. 32 bit ARGB renk değerleri renk kimlikleri yerine fırçaya geçiriken ham tanımlar kullanılır. Ham renk tanımları, istenen renk geçerli sistem renk tablosunda mevcut değilken veya RGB renk değeri çalışma zamanında hesaplandı olduğunda kullanışlıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **line_color** 32 bitlik ham ARGB renk biçimindeki çizginin rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
+- **line_color** 32 bit ham ARGB renk biçiminde çizginin rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
 - **fill_color** 32 bit ham ARGB renk biçiminde dolgu rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
 - **style (stil)** Fırça stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
 
@@ -5460,7 +5460,7 @@ status = gx_context_raw_brush_define(GX_COLOR_BLACK,
 
 ## <a name="gx_context_raw_fill_color_set"></a>gx_context_raw_fill_color_set
 
-Geçerli çizim bağlamının ham dolgusu rengini ayarla
+Geçerli çizim bağlamının ham dolgu rengini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -5470,18 +5470,18 @@ UINT gx_context_raw_fill_color_set(GX_COLOR line_color);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli ekran bağlamının ham dolgusu rengini ayarlar. Line_color parametresi, renk KIMLIĞI değeri yerine 32 bitlik bir ARGB formatı ham renk değeridir. Ham renk tanımları, istenen renk geçerli sistem renk tablosunda yoksa veya RGB renk değeri çalışma zamanında hesaplanmışsa yararlıdır.
+Bu hizmet, geçerli ekran bağlamının ham dolgu rengini ayarlar. Line_color parametresi, renk kimliği değeri yerine 32 bit ARGB biçimli ham renk değeridir. Ham renk tanımları, istenen renk geçerli sistem renk tablosunda mevcut değilken veya RGB renk değeri çalışma zamanında hesaplandı olduğunda kullanışlıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **line_color** Çizgi rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
+- **line_color** Çizginin rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı bağlam ham dolgusu renk kümesi
-- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
+- **GX_SUCCESS** (0x00) Başarılı bağlam ham dolgu renk kümesi
+- **GX_INVALID_CONTEXT** (0x06) Etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5583,11 +5583,11 @@ Kullanım dışı bırakılan bu API, belirtilen dize KIMLIĞIYLE ilişkili dize
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) başarılı bağlam ham çizgi renk kümesi
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_INVALID_CONTEXT** (0X06) Etkin çizim bağlamı yok
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5607,7 +5607,7 @@ status = gx_context_string_get(GX_ID_ERROR, &text);
 
 ## <a name="gx_context_string_get_ext"></a>gx_context_string_get_ext
 
-Verilen dize kimliğiyle ilişkili dizeyi alma.
+Verilen dize KIMLIĞIYLE ilişkili dizeyi al.
 
 ### <a name="prototype"></a>Prototype
 
@@ -5619,21 +5619,21 @@ UINT gx_context_string_get_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirli bir dize kimliğiyle ilişkili dizeyi döndürür. Bu hizmet yalnızca bir pencere öğesi çizim işlevinin içinde etkin bir çizim bağlamı olduğunda çağrılabilir. Bu hizmet etkin tuvali tanımlar ve bulunan görüntüleme örneğinden dizeyi görüntüler ve alır.
+Bu hizmet, belirli bir dize KIMLIĞIYLE ilişkili dizeyi döndürür. Bu hizmet yalnızca etkin bir çizim bağlamı olduğunda (örneğin, pencere öğesinin çizim işlevinin içinden) çağrılabilir. Bu hizmet etkin tuvali tanımlar ve bulunan görüntü örneğinden dizeyi görüntüler ve alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **string_id** Uygulama kaynak üst bilgisi dosyasında GUIX Studio tarafından oluşturulan dizeyi tanımlamak için kullanılan dize kimliği.
-- **return_string** Dize GX_STRING dize uzunluğunun döndürülecek olduğu bir değişken adresi.
+- **string_id** Uygulama kaynak üstbilgi dosyasında GUıDX Studio tarafından oluşturulan dizeyi tanımlamak için kullanılan dize KIMLIĞI.
+- **return_string** Dize işaretçisinin ve dize uzunluğunun döndürüleceği GX_STRING değişkenin adresi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bağlam ham çizgisi renk kümesi
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_INVALID_CONTEXT** (0X06) Etkin çizim bağlamı yok
+- **GX_SUCCESS** (0x00) başarılı bağlam ham çizgi renk kümesi
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_INVALID_CONTEXT** (0x06) etkin çizim bağlamı yok
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5687,15 +5687,15 @@ Birden çok görüntü sisteminde farklı ekranlar, her biri farklı etkin dille
 ### <a name="parameters"></a>Parametreler
 
 - **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
-- **language (dil)** Etkin dil dizini
+- **dil** Etkin dil dizini
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı dil ataması
-- **GX_PTR_ERROR** (0x07) Geçersiz görüntü işaretçisi
-- **GX_INVALID_VALUE** (0x22) Geçersiz dil dizini
+- **GX_SUCCESS** (0x00) başarılı dil ataması
+- **GX_PTR_ERROR** (0x07) geçersiz görüntüleme işaretçisi
+- **GX_INVALID_VALUE** (0x22) geçersiz dil dizini
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5716,7 +5716,7 @@ status = gx_display_active_language_set(&my_display,
 
 ## <a name="gx_display_color_set"></a>gx_display_color_set
 
-Bir renk değerini yeniden atama
+Bir renk değerini yeniden ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -5729,13 +5729,13 @@ UINT gx_display_color_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen renk kimliğiyle ilişkili renk değerini yeniden atar. Bu, tamamen yeni bir renk tablosu sağlamadan bir ekranın renk tablosunda değişiklik yapmak için kullanılabilir. Sağlanan renk değeri, ekran tarafından desteklenen yerel biçimde olmalıdır.
+Bu hizmet, belirtilen renk KIMLIĞIYLE ilişkili renk değerini yeniden atar. Bu, tamamen yeni bir renk tablosu sağlamadan bir görüntünün renk tablosunu değiştirmek için kullanılabilir. Belirtilen renk değeri, görüntü tarafından desteklenen yerel biçimde olmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **color_id** Yeniden atama için Renk Kimliği
-- **new_color** Bu yuvaya atanan renk color_id değeri
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **color_id** Yeniden atanacak renk KIMLIĞI
+- **new_color** Bu color_id yuvasına atanacak renk değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -5744,7 +5744,7 @@ Bu hizmet, belirtilen renk kimliğiyle ilişkili renk değerini yeniden atar. Bu
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_INVALID_DISPLAY** (0x1D) Geçersiz görüntü
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5763,7 +5763,7 @@ status = gx_display_color_set(&my_display, MY_COLOR_ID, 0x5454);
 
 ## <a name="gx_display_color_table_set"></a>gx_display_color_table_set
 
-Görüntü renk tablosu ata
+Görüntü rengi tablosu atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -5776,22 +5776,22 @@ UINT gx_display_color_table_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ekran tarafından kullanılacak renk tablosunu yeniden atar. Bu hizmet normalde Gux Studio tarafından üretilen görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
+Bu hizmet, ekran tarafından kullanılacak renk tablosuna yeniden atar. Bu hizmet normalde GUIX Studio tarafından oluşturulan görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
-- **Color_Table** Yerel görüntü biçimindeki renk değerleri dizisi.
-- **color_count** Renk tablosundaki giriş sayısını gösterir
+- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
+- **color_table** Yerel biçimde renk değerleri dizisi görüntülenir.
+- **color_count** Renk tablosunda girdi sayısını gösterir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı renk tablosu kümesi
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_INVALID_DISPLAY** (0x1d) geçersiz görüntüleme
+- **GX_SUCCESS** (0x00) Başarılı renk tablosu kümesi
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_DISPLAY** (0x1D) Geçersiz görüntü
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5812,7 +5812,7 @@ status = gx_display_color_table_set(&my_display, default_table, 32);
 
 ## <a name="gx_display_create"></a>gx_display_create
 
-Görüntü oluştur
+Görüntü oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -5827,7 +5827,7 @@ UINT gx_display_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir görüntü oluşturur ve görüntü sürücüsü kurulum işlevini çağırır. GUIX bu ekranı alır ve iç ekran listesine ekler.
+Bu hizmet bir görüntü oluşturur ve görüntü sürücüsü kurulum işlevini çağırtır. GUIX bu ekranı alır ve iç ekran listesine ekler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -5892,16 +5892,16 @@ Bu hizmet bir ekranı kapatır ve ayrılan kaynakları temizler.
 ### <a name="parameters"></a>Parametreler
 
 - **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **display_driver_cleanup** Görüntü sürücüsü Temizleme işlevinin işaretçisi
+- **display_driver_cleanup** Sürücü temizleme işlevini görüntüleme işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı görüntüleme silme
-- **GX_FAILURE** (0x10) oluşturulan görüntüleme listesi null
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı görüntüleme silme
+- **GX_FAILURE** (0x10) Oluşturulan görüntüleme listesi NULL
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -5932,7 +5932,7 @@ status = gx_display_delete(&my_display, driver_cleanup_callback);
 
 ## <a name="gx_display_font_table_set"></a>gx_display_font_table_set
 
-Görüntüleme yazı tipi tablosu ata
+Görünen yazı tipi tablosu atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -5945,11 +5945,11 @@ UINT gx_display_font_table_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ekran tarafından kullanılacak yazı tipi tablosunu yeniden atar. Bu hizmet normalde Gux Studio tarafından üretilen görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
+Bu hizmet, ekran tarafından kullanılacak yazı tipi tablosuna yeniden atar. Bu hizmet normalde GUIX Studio tarafından oluşturulan görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
 - **font_table** Veri GX_FONT dizisi.
 - **table_size** Tablodaki yazı tipi sayısı
 
@@ -5982,7 +5982,7 @@ status = gx_display_font_table_set(&my_display, font_table, 32);
 
 ## <a name="gx_display_language_table_get"></a>gx_display_language_table_get
 
-Görüntüleme dili tablosu alma (kullanım dışı)
+Görüntüleme dili tablosunu al (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -5996,16 +5996,16 @@ UINT gx_display_language_table_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen görüntüden dil tablosu alır. Bu hizmet, çalışma zamanında dinamik olarak tanımlanmış dizeleri kullanarak görüntüleme dili tablosunda değişiklik yapmak için bir uygulama tarafından kullanılabilir.
+Bu hizmet, belirtilen görüntülenen dil tablosunu alır. Bu hizmet, bir uygulama tarafından, çalışma zamanında dinamik olarak tanımlanan dizeler kullanılarak görüntüleme dili tablosunu değiştirmek üzere kullanılabilir.
 
-Bu API kullanım dışıdır ve yalnızca eski stil dil tablosu kullanan uygulamalar için de kullanılabilir (studio tarafından oluşturulan kaynak dosyası sürüm 5.6'dan önceki kitaplık sürümü için oluşturulur). Yeni uygulamalarda gx_display_language_table_get_ext() gerekir.
+Bu API kullanım dışıdır ve yalnızca eski stil dili tablosunu kullanan uygulamalar için desteklenir (yani, sürüm 5,6 ' den önceki kitaplık sürümü için Studio tarafından oluşturulan kaynak dosyası oluşturulur). Yeni uygulamalar gx_display_language_table_get_ext () kullanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **tablo** Tablo işaretçisini alacak adres
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **tablo** Tablo işaretçisinin alınacağı adres
 - **language_count** Dil sayısını alacak adres
-- **string_table_size** Dize tablosu boyutunu alacak adres
+- **string_table_size** Dize tablosu boyutunu alma adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -6069,7 +6069,7 @@ Bu hizmet, belirtilen görüntülenen dil tablosunu alır. Bu hizmet, bir uygula
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6095,7 +6095,7 @@ status = gx_display_language_table_get_ext(&my_display,
 
 ## <a name="gx_display_language_table_set"></a>gx_display_language_table_set
 
-Görüntüleme dili tablosu atama (kullanım dışı)
+Görüntüleme dili tablosu ata (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -6109,24 +6109,24 @@ UINT gx_display_language_table_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kullanım dışıdır ve yeni uygulamaların gx_display_language_table_set_ext() kullanmaları gerekir. Bu hizmet yalnızca sürüm 5.6'dan önceki kitaplık sürümlerini hedef alan Studio tarafından oluşturulan kaynak dosyalarıyla uyumluluk için de kullanılabilir.
+Bu hizmet kullanımdan kaldırılmıştır ve yeni uygulamalar gx_display_language_table_set_ext () kullanmalıdır. Bu hizmet yalnızca sürüm 5,6 ' den önceki kitaplık sürümlerini hedefleyen Studio tarafından oluşturulan kaynak dosyalarıyla uyumluluk için desteklenir.
 
-Bu hizmet, ekran tarafından kullanılacak dil tablosu atar. Bu hizmet normalde GUIX Studio tarafından oluşturulan işlev tarafından gx_studio_display_configure, ancak uygulama yazılımı tarafından da çağrılabilir.
+Bu hizmet, görüntü tarafından kullanılacak dil tablosunu atar. Bu hizmet normalde Gux Studio tarafından oluşturulan işlev gx_studio_display_configure tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
 - **tablo** Dil tablosu
-- **number_of_languages** Sağlanan tablodaki sütun sayısı
+- **number_of_languages** Belirtilen tablodaki sütun sayısı
 - **number_of_strings** Her tablo sütunundaki dize sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı yazı tipi tablosu kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı yazı tipi tablo kümesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6204,7 +6204,7 @@ status = gx_display_language_table_set_ext(&my_display,
 
 ## <a name="gx_display_pixelmap_table_set"></a>gx_display_pixelmap_table_set
 
-Görünen yazı tipi tablosu atama
+Görüntüleme yazı tipi tablosu ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -6217,21 +6217,21 @@ UINT gx_display_pixelmap_table_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ekran tarafından kullanılacak piksel haritası tablosuna yeniden atar. Bu hizmet normalde Studio tarafından oluşturulan görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
+Bu hizmet, ekran tarafından kullanılacak pixelmap tablosunu yeniden atar. Bu hizmet normalde, Studio tarafından oluşturulan görüntü yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **pixelmap_table** Veri GX_PIXELMAP dizisi.
-- **table_size** Tablodaki piksel haritası sayısı
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **pixelmap_table** GX_PIXELMAP işaretçileri dizisi.
+- **table_size** Tablodaki pixelmaps sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı küme piksel haritası tablosu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı bir pixelmap tablosu ayarla
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6254,7 +6254,7 @@ status = gx_display_pixelmap_table_set(&my_display, pixelmap_table, 32);
 
 ## <a name="gx_display_string_get"></a>gx_display_string_get
 
-Etkin dize tablosundan dize alma (kullanım dışı)
+Etkin dize tablosundan bir dize al (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -6267,11 +6267,11 @@ UINT gx_display_string_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, gx_display_string_get_ext() için kullanım dışıdır.
+Bu hizmet gx_display_string_get_ext () kullanımı için kullanım dışıdır.
 
-Bu hizmet, belirtilen görüntü için etkin dize tablosundan bir dize alır. Etkin dil, ekrana atanan dil tablosundan dizeyi seçmek için kullanılır.
+Bu hizmet, belirtilen görüntü için etkin dize tablosundan bir dize alır. Etkin dil, görüntülemeye atanan dil tablosundan dizeyi seçmek için kullanılır.
 
-Dize kimlikleri GUIX Studio tarafından oluşturulur ve application resources.h üst bilgi dosyasında bulunur.
+Dize kimlikleri, GUıDX Studio tarafından oluşturulur ve uygulama kaynakları. h üstbilgi dosyasında bulunur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -6333,16 +6333,16 @@ Dize kimlikleri, GUıDX Studio tarafından oluşturulur ve uygulama kaynakları.
 - **string_id** , GUıDX Studio tarafından oluşturulan dize KIMLIĞI.
 - **dize** GX_STRING değişkenin adresi
 - **String.gx_string_ptr ve**
-- **string.gx_string_length** döndürülür.
+- **String.gx_string_length** döndürülecek.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı dize alma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_INVALID_RESOURCE_ID** (0X33) Geçersiz dize kimliği
-- **GX_PTR_ERROR** (0x07) Geçersiz görüntü işaretçisi
+- **GX_SUCCESS** (0x00) başarılı dize alımı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_INVALID_RESOURCE_ID** (0x33) geçersiz dize kimliği
+- **GX_PTR_ERROR** (0x07) geçersiz görüntüleme işaretçisi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6367,7 +6367,7 @@ status = gx_display_string_get_ext(&my_display,
 ## <a name="gx_display_string_table_get"></a>gx_display_string_table_get
 
 
-Etkin dize tablosu alma (kullanım dışı)
+Etkin dize tablosunu alma (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -6381,21 +6381,21 @@ UINT gx_display_string_table_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kullanım dışıdır ve gx_display_string_table_get_ext() ile değiştirilir.
+Bu hizmet kullanım dışıdır ve gx_display_string_table_get_ext () ile değiştirilmiştir.
 
-Bu hizmet, etkin dille ilişkili dize tabloyu alır. Bu hizmet sık kullanılmasa da, dize tablosunda çalışma zamanı değişiklikleri yapılması gerektirilen uygulamalar için tamlık için sağlanır.
+Bu hizmet, etkin dille ilişkili dize tablosunu alır. Bu hizmet sıklıkla kullanılmaz, ancak dize tablosunda çalışma zamanı değişiklikleri yapması gerekebilecek uygulamalar için bu uygulamalar için de verilmiştir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **language (dil)** Alınacak tablo sütunu.
-- **tablo** İşaretçiyi iade etmek için değişkenin adresi.
-- **table_size** Tablo boyutunu iade etmek için değişkenin adresi
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **dil** Alınacak tablo sütunu.
+- **tablo** İşaretçiye döndürülecek değişkenin adresi.
+- **table_size** Tablo boyutunun döndürdüğü değişkenin adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı yazı tipi tablosu kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı yazı tipi tablo kümesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_NOT_FOUND** (0x09) geçersiz dil dizini
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
@@ -6481,7 +6481,7 @@ status = gx_display_string_table_get_ext(&my_display,
 ## <a name="gx_display_theme_install"></a>gx_display_theme_install
 
 
-Temaları belirtilen görüntüye yükleme
+Temaları belirtilen görüntüsüne yükler
 
 ### <a name="prototype"></a>Prototype
 
@@ -6493,21 +6493,21 @@ UINT gx_display_theme_install(
 
 ### <a name="description"></a>Description
 
-Bu hizmet temaları belirtilen görüntüye yüklür. Bu hizmet normalde Studio tarafından oluşturulan görüntüleme yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
+Bu hizmet, belirtilen ekranda temaları yükler. Bu hizmet normalde, Studio tarafından oluşturulan görüntü yapılandırma işlevi tarafından çağrılır, ancak uygulama yazılımı tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **display (görüntüleme)** Denetim bloğu görüntüleme işaretçisi
-- **theme_table** Yüklenmek için tema tablosu
+- **görüntüleme** Görüntüleme denetimi bloğunun işaretçisi
+- **theme_table** Yüklenecek Tema tablosu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarıyla yüklenmiş tema tablosu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz tema tablosu işaretçisi
-- **GX_INVALID_DISPLAY** (0x1D) Geçersiz görüntü
+- **GX_SUCCESS** (0x00) Tema tablosu başarıyla yüklendi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz Tema tablosu işaretçisi
+- **GX_INVALID_DISPLAY** (0x1d) geçersiz görüntüleme
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6644,32 +6644,32 @@ Bu hizmet bir bırakma listesi oluşturur. Bırakma listesi, bırakma listesi pe
 
 Bırakma listesi pencere öğesi iki ilişkili pixelmaps 'ı destekler. İlk olarak, Studio Özellikler görünümünde "duvar kağıdı Listele" olarak açıklanan, açılan liste pencere öğesi açıldığında görüntülenen dikey listenin arka planı olarak görüntülenen isteğe bağlı duvar kağıdı. Studio özellikleri görünümünde "arka plan görüntüsü" olarak tanımlanan ikinci pixelmap, açılan listenin arka planı olarak görüntülenecek isteğe bağlı bir görüntüdür.
 
-Açılan liste pencere öğesi, bırakma listesini açıp kapatmak için kullanılan bir alt pencere öğesine sahip olabilir (ancak olması gerekmez). Bu normalde bir simge veya düğme pencere öğesidir, ancak üst açılan liste için açık/kapalı geçiş olarak özel bir pencere öğesi bile kullanılabilir. Bu alt pencere öğesi bırakma listesini çalıştıran anahtar ayar, bu alt pencere öğesi için önceden tanımlanmış pencere öğesi kimliğine sahip olması ID_DROP_LIST_BUTTON.
+Bırakma listesi pencere öğesinin, bırakma listesini açmak ve kapatmak için kullanılan bir alt pencere öğesi olabilir (ancak olması gerekmez). Bu bir simge ya da düğme pencere öğesi geleneksel, ancak üst bırakma listesi için açık/kapatma geçişi olarak özel bir pencere öğesi kullanılabilir. Bu alt pencere öğesinin bırakma listesini işlemesini sağlayan anahtar ayarı, bu alt pencere öğesinin ID_DROP_LIST_BUTTON önceden tanımlanmış pencere öğesi kimliğine sahip olması gerekir.
 
-Açılan listeyi açıp kapatacak bir alt pencere öğesi tanımlamak için, önce ve alt pencere öğelerini bırakma listesine ekleyin ve bu alt pencere öğelerini istediğiniz gibi bırakma listesinde konuma getirin:
+Bırakma listesine açılan liste, firhazırlama ve alt pencere öğesini açıp kapatan bir alt pencere öğesi tanımlamak için, bu alt öğesini istenen şekilde bırakma listesinde konumlandırın:
 
-![Açılan listenin ekran görüntüsü.](./media/guix/image6.jpg)
+![Bırakma listesinin ekran görüntüsü.](./media/guix/image6.jpg)
 
-Ardından Studio özellikleri görünümünü kullanarak bu alt pencere öğesine üst açılan liste tarafından tanınan ID_DROP_LIST_BUTTON kimlik değeri olan kimlik değerini attayabilirsiniz:
+Daha sonra bu alt pencere öğesini, üst bırakma listesi tarafından tanınan bir iç tanımlı KIMLIK değeri olan ID_DROP_LIST_BUTTON ID değerini atamak için Studio özellikleri görünümünü kullanın:
 
 ![Studio özellikleri görünümünün ekran görüntüsü.](./media/guix/image7.jpg)
 
 ### <a name="parameters"></a>Parametreler
 - **drop_list** Bırakma listesi denetim bloğu işaretçisi
-- **name** Açılan listenin adı
-- **parent** Üst pencere öğesi işaretçisi
-- **total_rows** Açılan listede yer alan toplam satır sayısı
-- **open_height** Açılan liste açıldığında görüntülenen dikey listenin yüksekliği.
-- **geri çağırma** Liste kaydırıldıkları zaman dikey liste tarafından çağrılır. Daha fazla bilgi için GX_VERTICAL_LIST belgelerine bakın.
-- **style (stil)** Açılan liste kenarlık stili.
-- **drop_list_id** Bırakma listesinin uygulama tanımlı kimliği
-- **boyut** Bırakma listesinin boyutları
+- **ad** Bırakma listesinin adı
+- **üst öğe** Üst pencere öğesi işaretçisi
+- **total_rows** Bırakma listesindeki toplam satır sayısı
+- **open_height** Bırakma listesi açıldığında görünen dikey listenin yüksekliği.
+- **geri arama** Liste kaydırıldığında dikey liste tarafından çağrılan işlev. Daha fazla bilgi için GX_VERTICAL_LIST belgelerine bakın.
+- **Stil** Açılan liste kenarlığı stili.
+- **drop_list_id** Bırakma listesinin uygulama tanımlı KIMLIĞI
+- **Boyut** Bırakma listesinin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı bırakma listesi oluşturma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı bırakma listesi oluştur
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -6732,10 +6732,10 @@ Bu hizmet bırakma listesi için bir olayı işler.
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) bırakma listesi olayını başarıyla işledi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -6835,21 +6835,21 @@ UINT gx_drop_list_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bırakma listesine bir arka plan görüntüsü attayabilirsiniz. Bu pixelmap, liste açıldığında görüntülenen açılan dikey liste için değil, bırakma listesi pencere öğesinin kendisi için arka plan olarak kullanılır. Açılan liste açılır listesine bir pixelmap atamak için, önce açılan listeye bir işaretçi almak üzere gx_drop_list_popup_get çağırmanız ve sonra bu açılan listeye bir pixelmap atamak için gx_window_wallpaper_set () kullanmanız gerekir.
+Bırakma listesine bir arka plan görüntüsü attayabilirsiniz. Bu piksel haritası, liste açıldığında görüntülenen açılan dikey liste için değil, bırakma listesi pencere öğesi için arka plan olarak kullanılır. Açılan liste açılan listesine bir piksel haritası atamak için önce gx_drop_list_popup_get'i çağırarak açılan listeye bir işaretçi almalı ve ardından gx_window_wallpaper_set() kullanarak bu açılan listeye piksel haritası atamalısiniz.
 
 ### <a name="parameters"></a>Parametreler
 
 - **drop_list** Bırakma listesi denetim bloğu işaretçisi
-- piksellimap 'e ait **kimlik** kaynak kimliği
+- **pixlemap** için kimlik Kaynak Kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı bırakma listesi pixelmap kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_RESOURCE_ID** (0x33) geçersiz pikseltamap kimliği
+- **GX_SUCCESS** (0x00) Başarılı bırakma listesi piksel haritası kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz pixlemap Kimliği
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -6867,7 +6867,7 @@ status = gx_drop_list_pixelmap_set(&mylist,
 /* If status is GX_SUCCESS, the pixelmap was successfully set. */
 ```
 
-### <a name="see-also"></a>Ayrıca bkz:
+### <a name="see-also"></a>Ayrıca bkz.
 
 - gx_drop_list_close
 - gx_drop_list_create
@@ -6878,7 +6878,7 @@ status = gx_drop_list_pixelmap_set(&mylist,
 ## <a name="gx_drop_list_popup_get"></a>gx_drop_list_popup_get
 
 
-Açılan dikey listeye yönelik işaretçiyi al
+Açılan dikey listenin işaretçisini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -6890,7 +6890,7 @@ UINT gx_drop_list_popup_get(
 
 ### <a name="description"></a>Description
 
-Bir bırakma listesi pencere öğesi, açılan liste pencere öğesinin kendisinden oluşur ve açılan liste pencere öğesi açıldığında görüntülenen bir açılan pencere dikey listesidir. Bu hizmet, bırakma listesinin dikey liste bileşenine bir işaretçi alır ve uygulamanın API hizmetlerini doğrudan bu dikey listede çağırmasına izin verir.
+Açılan liste pencere öğesi, açılan liste pencere öğesi ve açılan liste pencere öğesi açıldığında gösterilen bir açılan dikey listeden oluşur. Bu hizmet, bırakma listesinin dikey liste bileşeninin işaretçisini alıyor ve uygulamanın API hizmetlerini doğrudan bu dikey listede çağırıyor.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -6950,7 +6950,7 @@ Bu işlev, genel kaydırma tekerleğinin altlarını genel kaydırma tekerleği 
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7004,28 +7004,28 @@ Genel bir kaydırma tekerleği, alt pencere öğelerinin bir dizi kaydırma teke
 
 GX_GENERIC_SCROLL_WHEEL GX_SCROLL_WHEEL türetilir ve tüm gx_scroll_wheel hizmetlerini destekler.
 
-Tüm kaydırma tekerleği türleri GX_EVENT_LIST_SELECT kaydırma tekerleği kaydırıldıklarında üstlerine olay oluşturmalarını sağlar.
+Kaydırma tekerleği kaydırıldığında, tüm kaydırma tekerleği türleri üst öğesine GX_EVENT_LIST_SELECT olaylar oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Genel kaydırma tekerleği denetim bloğuna işaretçi
-- **name** Genel kaydırma tekerleği pencere öğesi mantıksal adı
-- **parent** Üst pencere öğesi işaretçisi
-- **total_rows** Kaydırma tekerleğinin toplam satırı.
-- **geri çağırma** Bir pencere öğesi satırı oluşturmak için geri çağırma işlevi. Toplam satır GX_NULL alt sayıyla eşle eş olursa bu soruna neden olabilir. Alt sayı toplam satır sayısından küçük olduğunda veya stili ayarlanmış olduğunda pencere öğesi yeniden kullanımı GX_STYLE_WRAP sağlanmalıdır. Bu durumda alt sayısının görünür satır sayısından 1 fazla olduğundan emin olun.
-- **style (stil)** Genel kaydırma tekerleğinin stili. **Ek D,** tüm pencere öğeleri ve pencere öğelerine özgü stiller için önceden tanımlanmış genel stiller içerir.
-- **id** Genel kaydırma tekerleğinin Uygulama tarafından tanımlanan kimliği
-- **boyut** Genel kaydırma tekerleği pencere öğesi boyutları
+- **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
+- **ad** Genel kaydırma tekerleği pencere öğesinin mantıksal adı
+- **üst öğe** Üst pencere öğesi işaretçisi
+- **total_rows** Kaydırma tekerleğinin toplam satırları.
+- **geri arama** Pencere öğesi satırı oluşturmak için geri çağırma işlevi. Toplam satır sayısı alt saymla eşleşiyorsa, bu GX_NULL olabilir. Alt öğe sayısı toplam satır sayısından az olduğunda veya GX_STYLE_WRAP stil ayarlandığında pencere öğesi yeniden kullanım için sağlanmalıdır. Bu durumda, alt sayının, görünür satır sayısından daha fazla 1 olduğundan emin olun.
+- **Stil** Genel kaydırma tekerleğinin stili. **Ek D** tüm pencere öğeleri ve pencere öğesine özgü stiller için önceden tanımlanmış genel stilleri içerir.
+- **kimlik** uygulama tanımlı genel kaydırma TEKERLEĞININ kimliği
+- **Boyut** Genel kaydırma tekerleği pencere öğesinin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Genel kaydırma tekerleği başarıyla oluşturuldu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
-- **GX_INVALID_VALUE** (0x22) Geçersiz satır sayısı
-- **GX_INVALID_WIDGET** (0x12) Geçersiz üst pencere öğesi
+- **GX_SUCCESS** (0x00) genel kaydırma tekerleği başarıyla oluşturuldu
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
+- **GX_INVALID_VALUE** (0x22) geçersiz satır sayısı
+- **GX_INVALID_WIDGET** (0x12) geçersiz üst pencere öğesi
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -7139,7 +7139,7 @@ VOID my_custom_generic_scroll_wheel_draw(GX_GENERIC_SCROLL_WHEEL *wheel)
 - gx_generic_scroll_wheel_total_rows_set
 
 ## <a name="gx_generic_scroll_wheel_event_process"></a>gx_generic_scroll_wheel_event_process
-### <a name="process-generic-scroll-wheel-event"></a>Genel kaydırma tekerleği olaylarını işleme
+### <a name="process-generic-scroll-wheel-event"></a>İşlem genel kaydırma tekerleği olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -7151,21 +7151,21 @@ UINT gx_generic_scroll_wheel_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bu pencere için bir olayı işler.
+Bu hizmet bu pencere için bir olay işler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Genel kaydırma tekerleği denetim bloğuna işaretçi
-- **event (olay)** İşlemeye olay işaretçisi
+- **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı genel kaydırma tekerleği olay işleme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı genel kaydırma tekerleği olay işleme
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -7214,7 +7214,7 @@ UINT custom_generic_scroll_wheel_event_process(GX_GENERIC_SCROLL_WHEEL *wheel,
 ## <a name="gx_generic_scroll_wheel_row_height_set"></a>gx_generic_scroll_wheel_row_height_set
 
 
-Her bir tekerlek satırı için satır yüksekliğini ata
+Her tekerlek satırı için satır yüksekliğini atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -7226,19 +7226,19 @@ UINT gx_generic_scroll_wheel_row_height_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, kaydırma tekerleğinin her bir satırı için satır yüksekliğini atar.
+Bu hizmet, kaydırma tekerleğinin her satırı için satır yüksekliğini atar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
+- **wheel (tekerlek)** Genel kaydırma tekerleği denetim bloğuna işaretçi
 - **row_height** Piksel cinsinden satır yüksekliği değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) kaydırma tekerleği yüksekliğini başarıyla ayarla
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Kaydırma tekerleği yüksekliğini başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 - **GX_INVALID_VALUE** (0x22) Geçersiz satır yüksekliği
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -7293,12 +7293,12 @@ Bu hizmet, toplam genel kaydırma tekerleği satırı sayısını atar veya değ
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) Genel kaydırma tekerleği toplam satırı başarıyla ayarlanır
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) toplam satır sayısı geçersiz
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Toplam satır sayısı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7327,7 +7327,7 @@ display 20 total rows */
 ## <a name="gx_horizontal_list_children_position"></a>gx_horizontal_list_children_position
 
 
-Yatay liste için alt öğe Konumlandır
+Altları yatay liste için konumlandırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -7337,7 +7337,7 @@ UINT gx_horizontal_list_children_position(GX_HORIZONTAL_LIST *horizontal_list);
 
 ### <a name="description"></a>Description
 
-Bu işlev, yatay listenin alt öğelerini konumlandırır. Bu işlev, liste bir olay GX_EVENT_SHOW otomatik olarak çağrılır, ancak liste görünür hale geldiğinde liste değiştirildikten sonra doğrudan çağrılmelidir.
+Bu işlev, altları yatay liste için konumlar. Bu işlev, liste bir olay GX_EVENT_SHOW otomatik olarak çağrılır, ancak liste görünür hale geldiğinde liste değiştirildikten sonra doğrudan çağrılmelidir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -7401,11 +7401,11 @@ Bu hizmet yatay bir liste oluşturur.
 - **horizontal_list** Yatay liste pencere öğesi denetim bloğu
 - **name** Yatay listenin adı
 - **parent** Üst pencere öğesi işaretçisi
-- **total_columns** Yatay listedeki toplam comumns sayısı
-- **geri arama** Bu, uygulama tarafından sağlanmış bir geri çağırma işlevine yönelik bir işaretçidir. Yeni görünür liste öğelerini oluşturmak için yatay liste kaydırıldığında geri çağırma işlevi çağrılır. Bu şekilde yatay liste, Kullanıcı tanımlı pencere öğesi türünü liste öğeleri olarak görüntüleyebilir.
-- **Stil** ScrollBar pencere öğesinin stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
-- **horizontal_list_id** Yatay listenin uygulama tanımlı KIMLIĞI
-- **Boyut** Horitzgen listesinin boyutları
+- **total_columns** Yatay listede toplam virgül sayısı
+- **geri çağırma** Bu, uygulama tarafından sağlanan bir geri çağırma işlevinin işaretçisidir. Yatay liste kaydırıldığında, yeni görünen liste öğelerini oluşturmak için geri çağırma işlevi çağrılır. Bu şekilde yatay liste, kullanıcı tanımlı herhangi bir pencere öğesi türünü liste öğeleri olarak ekleyebilirsiniz.
+- **style (stil)** Kaydırma çubuğu pencere öğesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
+- **horizontal_list_id** Yatay listenin uygulama tanımlı kimliği
+- **boyut** Horitzonal listesinin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -7443,7 +7443,7 @@ status = gx_horizontal_list_create(&my_list, “my_list”, &my_parent,
 ## <a name="gx_horizontal_list_event_process"></a>gx_horizontal_list_event_process
 
 
-Yatay liste olayı işleme
+Yatay liste olayını işle
 
 ### <a name="prototype"></a>Prototype
 
@@ -7459,16 +7459,16 @@ Bu hizmet, yatay liste için bir olayı işler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **list (liste)** Yatay liste pencere öğesi denetim bloğu
-- **event (olay)** İşlemeye olay işaretçisi
+- **liste** Yatay liste pencere öğesi denetim bloğu
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Yatay liste olayı başarıyla işlendi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) yatay liste olayı başarıyla işlendi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7576,7 +7576,7 @@ UINT gx_horizontal_list_selected_index_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, yatay listenin seçili liste giriş dizinini döndürür.
+Bu hizmet, yatay listenin seçili liste girişi dizinini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -7585,10 +7585,10 @@ Bu hizmet, yatay listenin seçili liste giriş dizinini döndürür.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Yatay liste girişi başarıyla elde edildi
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı oldu yatay liste girişi alındı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7617,7 +7617,7 @@ status = gx_horizontal_list_selected_index_get(&my_list,
 ## <a name="gx_horizontal_list_selected_set"></a>gx_horizontal_list_selected_set
 
 
-Seçilen girişi yatay listede atama
+Seçili girişi yatay bir listede ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -7629,22 +7629,22 @@ UINT gx_horizontal_list_selected_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, seçilen girişi yatay bir listede atar. Gerekirse yatay liste kaydırarak seçili girişi görünür hale gelir.
+Bu hizmet seçili girişi yatay bir listede atar. Gerekirse, yatay liste kaydırılacak ve seçili girişin görünür hale getirir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **horizontal_list** Yatay liste pencere öğesi denetim bloğu
-- **dizin** Yeni liste girişinin dizin tabanlı konumu
+- **Dizin** Yeni liste girişinin dizin tabanlı konumu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) yatay liste girişini başarıyla ayarladı
 - **GX_FAILURE** (0x10) dizini geçersiz aralıkta değil
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7670,7 +7670,7 @@ status = gx_horizontal_list_selected_set(&my_list, 12);
 ## <a name="gx_horizontal_list_selected_widget_get"></a>gx_horizontal_list_selected_widget_get
 
 
-Seçili girişi yatay listeden Al
+Yatay listeden seçili girişi al
 
 ### <a name="prototype"></a>Prototype
 
@@ -7682,7 +7682,7 @@ UINT gx_horizontal_list_selected_widget_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, yatay listenin seçili liste girişini döndürür. Yatay listede alt pencere öğelerinin daha fazla satır varsa ve seçili giriş görünümden kaydırıldığında, bu API GX_NULL döndürür çünkü alt pencere öğeleri liste içeriği kaydırıldığında yeniden kullanılır. Bu öğe görünümden kaydırıldığında bile gx_horizontal_list_selected_index_get işlevi, seçili öğenin dizinini güvenilir bir şekilde döndürür.
+Bu hizmet, yatay listenin seçili liste girişini döndürür. Yatay listede alt pencere öğelerinden daha fazla satır varsa ve seçilen giriş görünümden kaydırıldısa, alt pencere öğeleri liste içeriği kaydırıldı olarak yeniden kullanıldıklarından bu API GX_NULL geri döner. Gx_horizontal_list_selected_index_get işlevi, görünümden kaydırıldı olsa bile seçilen öğenin dizinini güvenilir bir şekilde geri verir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -7746,11 +7746,11 @@ Bu hizmet, yatay liste tarafından görüntülenecek toplam sütun sayısını a
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) Başarılı atanan sütun sayısı
-- **GX_CALLER_ERROR** (0x10) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_VALUE** (0x22) geçersiz sayı değeri
+- **GX_CALLER_ERROR** (0x10) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_VALUE** (0x22) Geçersiz sayı değeri
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -7776,7 +7776,7 @@ status = gx_horizontal_list_total_columns_set(&my_list, 20);
 ## <a name="gx_horizontal_scrollbar_create"></a>gx_horizontal_scrollbar_create
 
 
-Yatay kaydırma çubuğu oluştur
+Yatay kaydırma çubuğu oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -7790,15 +7790,15 @@ UINT gx_horizontal_scrollbar_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet yatay bir kaydırma çubuğu oluşturur. Yatay kaydırma çubuğunun KIMLIĞI önceden tanımlanmıştır (bir pencere bundan sonra olayları nasıl yakalayacağından emin olmak için) ve boyut otomatik (üst pencerenin istemci genişliğini doldurmaları gerektiğinden). İstemci alanı kaydırma çubuklarında izin vermeye karar verirse, kimlik ve boyut parametreleriyle başka bir oluşturma işlevi eklememiz gerekir.
+Bu hizmet yatay bir kaydırma çubuğu oluşturur. Yatay kaydırma çubuğunun kimliği önceden tanımlanmıştır (bir pencerenin olayları nasıl yakalaması gerekir) ve boyut otomatiktir (üst pencerenin istemci genişliğini doldurması gerekir). İstemci alanı kaydırma çubuklarına izin vermek için kimlik ve boyut parametreleriyle başka bir create işlevi eklememiz gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırma çubuğu** ScrollBar pencere öğesi denetim bloğu
-- **ad** Kaydırma çubuğunun adı
-- **üst öğe** Üst pencere öğesi işaretçisi
+- **kaydırma çubuğu** Kaydırma çubuğu pencere öğesi denetim bloğu
+- **name** Kaydırma çubuğunun adı
+- **parent** Üst pencere öğesi işaretçisi
 - **görünüm** Görünüm yapısı, kaydırma çubuğunun görünümünü tanımlar. Bu değer GX_NULL, kaydırma çubuğu tarafından tanımlanan varsayılan kaydırma çubuğu görünümünü gx_system_scroll_appearance_get. İlke **yapısının tanımı** için Ek I GX_SCROLLBAR_APPEARANCE bakın.
-- **Stil** Kaydırma çubuğu pencere öğesi stili. **Ek D,** pencere öğelerine özgü stillerin yanı sıra tüm pencere öğeleri için önceden tanımlanmış genel stiller içerir.
+- **Stil** Kaydırma çubuğu pencere öğesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -7853,7 +7853,7 @@ UINT gx_icon_button_create(
 
 Bu hizmet belirtilen simge düğmesi pencere öğesi oluşturur.
 
-GX_ICON_BUTTON GX_BUTTON türetilir ve tüm gx_button API hizmetlerini destekler.
+GX_ICON_BUTTON, api hizmetlerinden GX_BUTTON ve tüm api gx_button destekler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -7910,7 +7910,7 @@ status = gx_icon_button_create(&my_icon_button, “my_icon_button”,
 ## <a name="gx_icon_button_draw"></a>gx_icon_button_draw
 
 
-Simge düğmesi çizme
+Bir simge düğmesi çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -7920,17 +7920,17 @@ VOID gx_icon_button_draw(GX_ICON_BUTTON *button);
 
 ### <a name="description"></a>Description
 
-Bu hizmet simge düğmesini çizmektedir. Bu işlev normalde tuval yenileme işlemi kapsamında GUIX tarafından dahili olarak çağrılır, ancak özel çizim işlevi sağlamak ve varsayılan simge düğme çizimini özel çizim tabanı olarak çağırmak isteyen uygulamaya da gösterilir.
+Bu hizmet, simge düğmesini çizer. Bu işlev normalde bir tuval yenileme işleminin parçası olarak Gux tarafından dahili olarak çağrılır, ancak özel bir çizim işlevi sağlamak ve varsayılan simge düğme çizimini özel çizim temeli olarak çağırmak isteyebileceğiniz uygulamaya de sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **düğme** Simge işaretçisi düğme denetim bloğu
+- **düğme** Simge düğmesi denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -7993,7 +7993,7 @@ Bu hizmet, simge düğmesi pencere öğesine yeni bir pixelmap atar.
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -8028,7 +8028,7 @@ status = gx_icon_button_pixelmap_set(&my_icon_button,
 ## <a name="gx_icon_background_draw"></a>gx_icon_background_draw
 
 
-Çizim simgesi arka plan
+Çizim simgesi arka planı
 
 ### <a name="prototype"></a>Prototype
 
@@ -8038,17 +8038,17 @@ VOID gx_icon_background_draw(GX_ICON *icon);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen simge pencere öğesi arka planını çizmektedir. Bu hizmet, genellikle gx_icon_button_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazma konusunda yardımcı olmak için uygulamaya sunulur.
+Bu hizmet, belirtilen simge pencere öğesinin arka planını çizer. Bu hizmet, genellikle gx_icon_button_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazma konusunda yardımcı olmak için uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **simge** Simge pencere öğesi denetim bloğu işaretçisi
+- **simgesi** Simge pencere öğesi denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -8096,23 +8096,23 @@ UINT gx_icon_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen simge pencere öğesini oluşturur.
+Bu hizmet belirtilen simge pencere öğesi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **simge** Simge Denetim bloğu işaretçisi
-- **ad** Simge pencere öğesinin mantıksal adı
-- **üst öğe** Üst pencere öğesi işaretçisi
-- **pixelmap_id** Pixelmap kaynak KIMLIĞI
-- **Stil** Simgenin stili
-- **icon_id** Uygulama tanımlı simgenin KIMLIĞI
-- **x x koordinatı konumunu başlatma**
-- y koordinatı konumunu **y** başlatılıyor
+- **simgesi** Simge denetim bloğu işaretçisi
+- **name** Simge pencere öğesi mantıksal adı
+- **parent** Üst pencere öğesi işaretçisi
+- **pixelmap_id** Piksel haritasının kaynak kimliği
+- **style (stil)** Simge stili
+- **icon_id** Simgenin uygulama tanımlı kimliği
+- **x** Başlangıç x koordinatı konumu
+- **y** Y koordinat konumunu başlatma
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı simge oluştur
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_SUCCESS** (0x00) Başarılı simgesi oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 - **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
@@ -8203,16 +8203,16 @@ Bu hizmet, bir GX_ICON pencere öğesine gönderilen olayları işlemektedir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **simge** Simge pencere öğesi denetim bloğu işaretçisi
-- **event_ptr** GX_EVENT yapısına yönelik işaretçi
+- **simgesi** Simge pencere öğesi denetim bloğu işaretçisi
+- **event_ptr** Veri yapısına GX_EVENT işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı işlenen simge olayı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı işlenen simgesi olayı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -8239,7 +8239,7 @@ case GX_EVENT_SHOW:
 ## <a name="gx_icon_pixelmap_set"></a>gx_icon_pixelmap_set
 
 
-Simgeye yönelik pixelmap ayarla
+Simge için piksel haritası ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -8252,21 +8252,21 @@ UINT gx_icon_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen simge pencere öğesi için pixelmap 'i ayarlar.
+Bu hizmet, belirtilen simge pencere öğesi için piksel haritasını ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **simge** Simge pencere öğesi denetim bloğu işaretçisi
-- **normal_id** Normal durum kaynak KIMLIĞI
-- **selected_id** Seçili durum kaynak KIMLIĞI
+- **simgesi** Simge pencere öğesi denetim bloğu işaretçisi
+- **normal_id** Normal durum Kaynak Kimliği
+- **selected_id** Seçilen durum Kaynak Kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı simgesi pixelmap kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı simgesi piksel haritası kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -8305,25 +8305,25 @@ UINT gx_image_reader_create(
 
 ### <a name="description"></a>Description
 
-Bu işlev bir çalışma zamanı ham görüntü okuyucusu /kod çözücü oluşturur. Şu anda yalnızca jpeg ve png ham görüntü türleri de destektedir. Bu hizmetin GX_SOFTWARE_DECODER_SUPPORT gerekir.
+Bu işlev bir çalışma zamanı ham görüntü okuyucusu /kod çözücü oluşturur. Şu anda yalnızca JPEG ve PNG RAW görüntü türleri desteklenir. Bu hizmet için GX_SOFTWARE_DECODER_SUPPORT tanımlanması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **image_reader** Görüntü okuyucusu denetim bloğu
-- **veriler** Ham giriş verilerine işaretçi.
-- **data_size** Ham giriş verileri boyutu.
+- **image_reader** Görüntü okuyucu denetim bloğu
+- **veri** Ham giriş verilerine yönelik işaretçi.
+- **data_size** Ham giriş verilerinin boyutu.
 - **color_format** İstenen çıkış rengi biçimi.
-- **modu** Sıkıştırma, dither ve alfa modları bayrakları.
+- **mod** Sıkıştır, titrek ve alfa modları bayrakları.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı görüntü okuyucu oluşturma
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_VALUE** (0x22) Geçersiz veri boyutu
+- **GX_SUCCESS** (0x00) başarılı görüntü okuyucu oluşturma
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_VALUE** (0x22) geçersiz veri boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
-Başlatma ve İş Parçacıkları
+Başlatma ve Iş parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -8418,19 +8418,19 @@ Bu hizmet, bir ham görüntünün belirtilen renk biçimiyle kodunu çözer. Şu
 ### <a name="parameters"></a>Parametreler
 
 - **image_reader** Görüntü okuyucu denetim bloğu
-- **piksel haritası** Çıkış piksel haritası
+- **pixelmap** Çıktı pixelmap
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı görüntü kodu çözme
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek ayırma tanımlanmadı veya bellek ayırma başarısız oldu
-- **GX_NOT_SUPPORTED** (0x28) Giriş görüntüsü türü veya çıkış rengi biçimi desteklenmiyor
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı görüntü kod çözme
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek ayırıcısı tanımlı değil veya bellek ayırma başarısız oldu
+- **GX_NOT_SUPPORTED** (0x28) giriş resmi türü veya çıkış rengi biçimi desteklenmiyor
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
-Başlatma ve İş Parçacıkları
+Başlatma ve Iş parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -8454,7 +8454,7 @@ status = gx_image_reader_start(&my_image_reader, output_map)
 ## <a name="gx_line_chart_axis_draw"></a>gx_line_chart_axis_draw
 
 
-Çizgi grafik x,y ekseni çizme
+Çizgi grafiği x, y ekseni çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -8464,19 +8464,19 @@ VOID gx_line_chart_axis_draw(GX_LINE_CHART *chart);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çizgi grafiğin x,y eksenini çizmektedir. Eksen renkleri ve çizgi genişliği parametreleri, çizgi grafik bilgi yapısından alınır.
+Bu hizmet, çizgi grafiğinin x, y eksenini çizer. Eksen renkleri ve çizgi genişliği parametreleri çizgi grafik bilgi yapısından alınır.
 
-Bu hizmet normalde gx_line_chart_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazmaya yardımcı olmak için uygulamaya açıktır.
+Bu hizmet, genellikle gx_line_chart_draw işlevi tarafından dahili olarak çağrılır, ancak özel çizim işlevleri yazma konusunda yardımcı olmak için uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **chart (grafik)** Çizgi grafik denetim bloğu.
+- **grafik** Çizgi grafik denetim bloğu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -8546,8 +8546,8 @@ GX_LINE_CHART GX_WINDOW tabanlıdır ve tüm GX_WINDOW API 'Leri destekler.
 - **GX_SUCCESS** (0x00) başarılı çizgi grafik oluştur
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
-- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 
 ### <a name="allowed-from"></a>İzin Verilen
 
@@ -8664,17 +8664,17 @@ UINT gx_line_chart_draw(GX_LINE_CHART *chart);
 
 ### <a name="description"></a>Description
 
-Bu, Grafik eksenini ve veri çizgisini çizen varsayılan çizgi grafik çizim işlevidir. Uygulamalar genellikle, temel çizgi grafik pencere öğesi tarafından çizilen grafik eksenine ve veri satırına tickiþaretleri, ölçek veya diğer bilgiler gibi şeyler eklemek için varsayılan çizimi değiştirmek üzere özel bir çizim işlevi sağlar.
+Bu, grafik eksenini ve veri çizgilerini çizen varsayılan çizgi grafik çizim işlevidir. Uygulamalar genellikle varsayılan çizimi değiştirerek grafik eksenine ve temel çizgi grafik pencere öğesi tarafından çizilen veri çizgisine onay işareti, ölçek veya başka bilgiler eklemek için özel bir çizim işlevi sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **grafik** Çizgi grafik denetim bloğuna yönelik işaretçi.
+- **chart (grafik)** Çizgi grafik denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -8702,7 +8702,7 @@ VOID my_chart_draw(GX_LINE_CHART *chart)
 ## <a name="gx_line_chart_update"></a>gx_line_chart_update
 
 
-Satır grafik veri satırını güncelleştir
+Çizgi grafik veri çizgisini güncelleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -8715,21 +8715,21 @@ UINT gx_line_chart_update(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çizgi grafik penceresi tarafından çizilen veri dizisini güncelleştirir ve pencereyi yeniden boyutlandırmaya zorlar.
+Bu hizmet, çizgi grafik penceresi tarafından çizilen veri dizisini günceller ve pencereyi yeniden çizime güçler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **grafik** Çizgi grafik denetim bloğu
-- **veri** Çizilemek üzere veri dizisi
+- **chart (grafik)** Çizgi grafik denetim bloğu
+- **veriler** Çizilen veri dizisi
 - **data_count** Veri dizisinin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı metin düğmesi oluştur
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı metin düğmesi oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -8822,14 +8822,14 @@ UINT gx_menu_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen şekilde bir menü oluşturur ve menüyü sağlanan üst pencere öğesiyle ilişkilendirır. Alt menü öğesi olarak tüm pencere öğesi türlerini kabul eder. Bir pencere öğesini bir alt menü öğesi olarak eklemek için **gx_menu_insert** çağırın.
+Bu hizmet, belirtilen şekilde bir menü oluşturur ve menüyü sağlanan üst pencere öğesiyle ilişkilendirır. Tüm pencere öğesi türlerini alt menü öğesi olarak kabul eder. Bir pencere öğesini alt menü öğesi olarak eklemek için **gx_menu_insert.**
 
-GX_MENU GX_PIXELMAP_PROMPT türetilir ve tüm gx_pixelmap_prompt API hizmetlerini destekler.
+GX_MENU, api GX_PIXELMAP_PROMPT türetilen ve tüm gx_pixelmap_prompt API hizmetlerini destekler.
 
 ### <a name="parameters"></a>Parametreler
 
 - **menü** Menü denetim bloğu işaretçisi
-- **ad** Menünün adı
+- **name** Menenin adı
 - **üst öğe** Üst pencere öğesi işaretçisi
 - **text_id** Metnin kaynak KIMLIĞI
 - **fill_id** Dolgunun kaynak KIMLIĞI
@@ -8878,7 +8878,7 @@ status = gx_menu_create(&my_menu, “my_menu”, parent, MY_TEXT_ID,
 ## <a name="gx_menu_draw"></a>gx_menu_draw
 
 
-Çiz menüsü
+Çiz Menüsü
 
 ### <a name="prototype"></a>Prototype
 
@@ -8888,7 +8888,7 @@ VOID gx_menu_draw(GX_MENU *menu);
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtilen menüyü çizer. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel menü pencere öğeleri için özel çizim işlevlerinin uygulanmasına yardımcı olmak üzere uygulamaya açıktır.
+Bu hizmet, belirtilen menüyü çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel menü pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -8898,7 +8898,7 @@ Bu hizmet belirtilen menüyü çizer. Bu işlev normalde GUIX tuval yenileme mek
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -9000,7 +9000,7 @@ UINT custom_menu_event_process(GX_MENU *menu, GX_EVENT *event)
 ## <a name="gx_menu_insert"></a>gx_menu_insert
 
 
-Yeni öğe ekleme
+Yeni öğe Ekle
 
 ### <a name="prototype"></a>Prototype
 
@@ -9017,15 +9017,15 @@ Bu hizmet, menüye yeni bir öğe ekler.
 ### <a name="parameters"></a>Parametreler
 
 - **menü** Menü denetim bloğu işaretçisi
-- **pencere öğesi** Eklemek için pencere öğesi işaretçisi
+- **pencere öğesi** Eklenecek pencere öğesi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Yeni öğe menüye başarıyla eklendi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) yeni öğe menüye başarıyla ekledi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9054,7 +9054,7 @@ status = gx_menu_insert(&my_menu, &my_widget);
 ## <a name="gx_menu_remove"></a>gx_menu_remove
 
 
-Bir öğeyi kaldır
+Öğeyi kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -9071,15 +9071,15 @@ Bu hizmet, menüden bir öğeyi kaldırır.
 ### <a name="parameters"></a>Parametreler
 
 - **menü** Menü denetim bloğu işaretçisi
-- **pencere öğesi** Kaldırılacak pencere öğesi işaretçisi
+- **pencere öğesi** Kaldır için pencere öğesi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) menü öğesi başarıyla kaldırıldı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Menü öğesi başarıyla kaldırıldı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9118,7 +9118,7 @@ VOID gx_menu_text_draw(GX_MENU *menu);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir menenin metnini çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel menü pencere öğeleri için özel çizim işlevlerinin uygulanmasına yardımcı olmak üzere uygulamaya açıktır.
+Bu hizmet bir menenin metnini çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel menü pencere öğeleri için özel çizim işlevlerinin uygulanmasına yardımcı olmak üzere uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -9179,21 +9179,21 @@ UINT gx_menu_text_offset_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet menü metni için x, y görüntüleme sapmasını ayarlar.
+Bu hizmet, menü metni için x, y görüntü kaydırması ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **menü** Menü denetim bloğu işaretçisi
-- **x_offset** Uzaklığa X koordinatı
-- **y_offset** Uzaklığa ait Y koordinatı
+- **x_offset** Uzaklığın X koordinatı
+- **y_offset** Uzaklığın Y koordinatı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı Ayarla menü metni çiz boşluğu
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı ayar menü metni çizim uzaklığı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9258,10 +9258,10 @@ GX_MULTI_LINE_TEXT_BUTTON, api hizmetlerinden GX_TEXT_BUTTON ve tüm api gx_text
 - **GX_SUCCESS** (0x00) Başarılı çok satırlı metin düğmesi oluşturma
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9350,20 +9350,20 @@ UINT gx_multi_line_text_button_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin düğmesi pencere öğesi için varsayılan olay işleme işlevidir. Bu işlev, bir metin düğmesi pencere öğesi için özel olay işleme sağlamak isteyen uygulamalar tarafından erişilebilir hale gelir.
+Bu hizmet, çok satırlı metin düğmesi pencere öğesi için varsayılan olay işleme işlevidir. Bu işlev, metin düğmesi pencere öğesi için özel olay işleme sağlamak isteyen uygulamalar tarafından erişilebilir hale getirilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **düğme** Metin işaretçisi düğme denetim bloğu
+- **düğme** Metin düğmesi denetim bloğuna işaretçi
 - **event_ptr** İşlenecek olay
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Olay başarıyla işlendi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) olay başarıyla işlendi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9399,7 +9399,7 @@ UINT MyEventHandler(GX_MULTI_LINE_TEXT_BUTTON *button,
 ## <a name="gx_multi_line_text_button_text_draw"></a>gx_multi_line_text_button_text_draw
 
 
-Çizim destek işlevi
+Çizim desteği işlevi
 
 ### <a name="prototype"></a>Prototype
 
@@ -9409,7 +9409,7 @@ VOID gx_multi_line_text_button_text_draw(GX_MULTI_LINE_TEXT_BUTTON *text_button)
 
 ### <a name="description"></a>Description
 
-Bu destek işlevi, çok satırlı bir metin düğmesinin metin bölümünü çizmektedir. Bu işlev, gx_multi_line_text_button_draw() tarafından dahili olarak çağrılır ve özel bir çok satırlı metin düğmesi çizim işlevi tanımlayan uygulamalara kolaylık sağlamak için ayrı bir API olarak sağlanır. Düğme arka plan çizimini özelleştirmek isteyen uygulamalar kendi özel çizim işlevlerini sağlayabilir ve multi_line_text_button_text_draw hizmetini özel çiziminin bir parçası olarak çağırarak arka plan üzerinde düğme metnini çizin.
+Bu destek işlevi, çok satırlı bir metin düğmesinin metin bölümünü çizer. Bu işlev, gx_multi_line_text_button_draw () tarafından dahili olarak çağrılır ve özel bir çok satırlı metin düğmesi çizim işlevi tanımlayan uygulamalar için kolaylık olarak ayrı bir API olarak sağlanır. Düğme arka plan çizimini özelleştirmek isteyen uygulamalar kendi özel çizim işlevlerini sağlayabilir ve multi_line_text_button_text_draw hizmetini özel çiziminin bir parçası olarak çağırarak arka plan üzerinde düğme metnini çizin.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -9532,7 +9532,7 @@ Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi
 - **GX_MEMORY_ERROR** (0x30) Bellek yalıtıcı tanımlanmadı
 - **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9571,20 +9571,20 @@ UINT gx_mult_line_text_button_text_set_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi stil GX_STYLE_TEXT_COPY ile oluşturulduysa pencere öğesi, atanan metin dizesinin özel bir kopyasını oluşturur ve bu nedenle gx_system_memmory_allocate_set API 'SI bu hizmetin istenmediği bir kez çağrılmalıdır. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz, bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani bu bir otomatik veya geçici değişken olmayabilir.
+Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi stil GX_STYLE_TEXT_COPY oluşturulursa, pencere öğesi atanan metin dizesinin özel bir kopyasını oluşturur ve bu nedenle gx_system_memmory_allocate_set API'si bu hizmet istenmeden önce bir kez çağrılabilir. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_button** Metin düğmesi denetim bloğuna işaretçi
-- GX_STRING değişkene yönelik **dize** işaretçisi
+- **text_button** Metin işaretçisi düğme denetim bloğu
+- **GX_STRING** değişkenine dize işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) metin düğmeye başarıyla ayarlandı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_MEMORY_ERROR** (0x30) bellek ayırıcısı tanımlı değil
-- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) Metni düğmeye başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_MEMORY_ERROR** (0x30) Bellek yalıtıcı tanımlanmadı
+- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
 
 ### <a name="allowed-from"></a>İzin Verilen
 
@@ -9699,7 +9699,7 @@ UINT gx_multi_line_text_input_buffer_clear(GX_MULTI_LINE_TEXT_INPUT *text_input)
 
 ### <a name="description"></a>Description
 
-Bu hizmet, metin girişi arabelleğinden tüm karakterleri siler.
+Bu hizmet, metin girişi arabelleğindeki tüm karakterleri siler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -9707,11 +9707,11 @@ Bu hizmet, metin girişi arabelleğinden tüm karakterleri siler.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı çok satırlı metin girişi arabellek temizleme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı çok satırlı metin girişi arabelleği temizle
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9760,7 +9760,7 @@ status = gx_multi_line_text_input_clear(&my_text_input);
 ## <a name="gx_multi_line_text_input_buffer_get"></a>gx_multi_line_text_input_buffer_get
 
 
-Metin girişi pencere öğesi arabellek bilgilerini alma
+Metin girişi pencere öğesinin arabellek bilgilerini alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -9774,22 +9774,22 @@ UINT gx_multi_line_text_input_buffer_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesi arabellek bilgilerini verir.
+Bu hizmet, çok satırlı bir metin girişi pencere öğesinin arabellek bilgilerini alır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
 - **buffer_address** Giriş arabelleğinin adresi
-- **content_size** Giriş verisi için byte sayısı
-- **buffer_size** Giriş arabelleğinin boyutu
+- **content_size** Giriş verilerinin bayt sayısı
+- **Buffer_size** Giriş arabelleğinin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı çok satırlı metin get
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı çok satırlı metin al
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9844,7 +9844,7 @@ status = gx_multi_line_text_input_buffer_get(&my_text_input,
 ## <a name="gx_multi_line_text_input_char_insert"></a>gx_multi_line_text_input_char_insert
 
 
-Geçerli çok satırlı metin girişi imleç konumunda bir karakter dizesi ekleme (kullanım dışı)
+Geçerli çok satırlı metin girişi imleç konumuna bir karakter dizesi Ekle (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -9857,9 +9857,9 @@ UINT gx_multi_line_text_input_char_insert(
 
 ### <a name="description"></a>Description
 
-Bu API kullanım dışıdır ve gx_multi_line_text_input_char_insert_ext() ile değiştirilir.
+Bu API kullanım dışıdır ve gx_multi_line_text_input_char_insert_ext () ile değiştirilmiştir.
 
-Bu hizmet, geçerli imleç konumundaki çok satırlı metin giriş dizesi arabelleğine bir karakter dizesi ekler. Bu hizmet, belirli bir anahtar aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, geçerli imleç konumundaki çok satırlı metin girişi dize arabelleğine bir karakter dizesi ekler. Bu hizmet, belirli bir anahtar aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -9872,11 +9872,11 @@ Bu hizmet, geçerli imleç konumundaki çok satırlı metin giriş dizesi arabel
 - **GX_SUCCESS** (0x00) Karakter dizesi başarıyla eklendi
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) geçersiz dize boyutu
-- **GX_FAILURE** (0x10) geçersiz Yazı tipi veya arabellek boyutu dışında
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Geçersiz dize boyutu
+- **GX_FAILURE** (0x10) Geçersiz yazı tipi veya arabellek boyutu dışında
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9899,7 +9899,7 @@ status = gx_multi_line_text_input_char_insert(&my_text_input,
 ## <a name="gx_multi_line_text_input_char_insert_ext"></a>gx_multi_line_text_input_char_insert_ext
 
 
-Geçerli çok satırlı metin girişi imleç konumuna bir karakter dizesi Ekle (kullanım dışı)
+Geçerli çok satırlı metin girişi imleç konumunda bir karakter dizesi ekleme (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -9911,24 +9911,24 @@ UINT gx_multi_line_text_input_char_insert_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli imleç konumundaki çok satırlı metin girişi dize arabelleğine bir karakter dizesi ekler. Bu hizmet, belirli bir anahtar aşağı olayları alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, geçerli imleç konumundaki çok satırlı metin giriş dizesi arabelleğine bir karakter dizesi ekler. Bu hizmet, belirli anahtar aşağı olayları alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **dize** Eklenecek UTF-8 kodlu karakter dizesi
+- **string** Eklenecek UTF-8 kodlanmış karakter dizesi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) karakter dizesi başarıyla ekledi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) geçersiz dize boyutu
-- **GX_FAILURE** (0x10) geçersiz Yazı tipi veya arabellek boyutu dışında
-- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) Karakter dizesi başarıyla eklendi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Geçersiz dize boyutu
+- **GX_FAILURE** (0x10) Geçersiz yazı tipi veya arabellek boyutu dışında
+- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -9983,7 +9983,7 @@ status = gx_multi_line_text_input_char_insert_ext(&my_text_input, &string);
 ## <a name="gx_multi_line_text_input_create"></a>gx_multi_line_text_input_create
 
 
-Çok satırlı metin girişi oluştur
+Çok satırlı metin girişi oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -10000,15 +10000,15 @@ UINT gx_multi_line_text_input_create(
 
 Bu hizmet, çok satırlı bir metin girişi pencere öğesi oluşturur.
 
-GX_MULTI_LINE_TEXT_INPUT GX_MULTI_LINE_TEXT_VIEW türetilir ve tüm gx_multi_line_text_view hizmetlerini destekler.
+GX_MULTI_LINE_TEXT_INPUT, GX_MULTI_LINE_TEXT_VIEW türetilen ve tüm gx_multi_line_text_view destekler.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **ad** Metin girişi pencere öğesinin adı
-- **üst öğe** Üst pencere öğesi işaretçisi
+- **name** Metin girişi pencere öğesi adı
+- **parent** Üst pencere öğesi işaretçisi
 - **input_buffer** Metin girişi arabelleği işaretçisi
-- **Buffer_size** Metin girişi arabelleğinin bayt cinsinden boyutu
+- **buffer_size** Metin girişi arabelleğinin bayt cinsinden boyutu
 - **style (stil)** Metin girişi pencere öğesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
 - **text_input_id** Metin girişinin uygulama tanımlı kimliği
 - **boyut** Metin girişi pencere öğesi boyutları
@@ -10081,7 +10081,7 @@ status = gx_multi_line_text_input_create(&my_text_input,
 ## <a name="gx_multi_line_text_input_cursor_pos_get"></a>gx_multi_line_text_input_cursor_pos_get
 
 
-Çok satırlı metin girişi imleci konumunu alma
+Çok satırlı metin girişi imleç konumunu al
 
 ### <a name="prototype"></a>Prototype
 
@@ -10093,20 +10093,20 @@ UINT gx_multi_line_text_input_cursor_pos_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, mult-line metin girişi imleç konumunu alır.
+Bu hizmet, mult satırı metin girişi imleç konumunu alır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **cursor_pos** İmleç konumu alındı
+- **cursor_pos** Alınan imleç konumu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) İmleç konumu başarıyla alındı
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Imleç konumu başarıyla alındı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10158,7 +10158,7 @@ status = gx_multi_line_text_input_cursor_pos_get(&my_text_input,
 ## <a name="gx_multi_line_text_input_delete"></a>gx_multi_line_text_input_delete
 
 
-Çok satırlı metin girişi imleci konumundaki karakteri silme
+Çok satırlı metin girişi imleç konumundaki karakteri sil
 
 ### <a name="prototype"></a>Prototype
 
@@ -10168,7 +10168,7 @@ UINT gx_multi_line_text_input_delete(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi imleç konumundan sonra karakteri siler. Bu hizmet, bir silme anahtarı aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, çok satırlı metin girişi imleç konumundan sonra karakteri siler. Bu hizmet, bir DELETE anahtar aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -10176,13 +10176,13 @@ Bu hizmet, çok satırlı metin girişi imleç konumundan sonra karakteri siler.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) İmleç sonrasında karakteri başarıyla silme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_FAILURE** (0x10) Geçersiz yazı tipi
+- **GX_SUCCESS** (0x00) İmleçten sonra bir karakter başarıyla silindi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_FAILURE** (0x10) geçersiz Yazı tipi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10231,7 +10231,7 @@ status = gx_multi_line_text_input_delete(&my_text_input);
 ## <a name="gx_multi_line_text_input_down_arrow"></a>gx_multi_line_text_input_down_arrow
 
 
-Çok satırlı metin girişi imlecini sonraki satıra taşıma
+Çok satırlı metin girişi imlecini sonraki satıra taşı
 
 ### <a name="prototype"></a>Prototype
 
@@ -10241,7 +10241,7 @@ UINT gx_multi_line_text_input_down_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini sonraki satıra konumlar. Bu hizmet, bir aşağı ok tuşu aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini sonraki satıra konumlandırır. Bu hizmet, aşağı ok tuşunu basılı bir olay alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -10249,13 +10249,13 @@ Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini sonraki satıra
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Metin girişi imleci başarıyla sonraki satıra taşındı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_FAILURE** (0x10) Geçersiz yazı tipi veya satır yüksekliği
+- **GX_SUCCESS** (0x00) metin girişi imleci bir sonraki satıra başarıyla taşındı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_FAILURE** (0x10) geçersiz Yazı tipi veya çizgi yüksekliği
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10304,7 +10304,7 @@ status = gx_multi_line_text_input_down_arrow(&my_text_input);
 ## <a name="gx_multi_line_text_input_end"></a>gx_multi_line_text_input_end
 
 
-Çok satırlı metin girişi imlecini geçerli satırın sonuna taşıma
+Çok satırlı metin giriş imlecini geçerli satırın sonuna taşı
 
 ### <a name="prototype"></a>Prototype
 
@@ -10314,7 +10314,7 @@ UINT gx_multi_line_text_input_end(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini geçerli dize çizgisinin sonuna konumlar. Bu hizmet, bir son anahtar aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini geçerli dize satırının sonuna konumlandırır. Bu hizmet, bir son anahtar aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -10322,12 +10322,12 @@ Bu hizmet, çok satırlı metin girişi pencere öğesi imlecini geçerli dize �
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Metin girişi imleci geçerli satırın sonuna başarıyla taşındı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) metin giriş imlecini geçerli satırın sonuna başarıyla taşıdı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10388,21 +10388,21 @@ UINT gx_multi_line_text_input_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesi için varsayılan olay işleme işlevidir. Bu işlev, çok satırlı metin girişi pencere öğesi için özel olay işleme sağlamak isteyen uygulamalar tarafından erişilebilir hale gelir.
+Bu hizmet, çok satırlı metin girişi pencere öğesi için varsayılan olay işleme işlevidir. Bu işlev, çok satırlı bir metin girişi pencere öğesi için özel olay işleme sağlamak isteyen uygulamalar tarafından erişilebilir hale getirilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **düğme** Çok satırlı metin girişi denetim bloğuna işaretçi
+- **düğme** Çok satırlı metin girişi denetim bloğu işaretçisi
 - **event_ptr** İşlenecek olay
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Olay başarıyla işlendi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Üst pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) olay başarıyla işlendi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) üst pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10463,7 +10463,7 @@ UINT MyEventHandler(GX_MULTI_LINE_TEXT_INPUT *input,
 ## <a name="gx_multi_line_text_input_fill_color_set"></a>gx_multi_line_text_input_fill_color_set
 
 
-Çok satırlı metin girişi arka plan rengini ayarlama
+Çok satırlı metin girişi arka plan rengini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -10478,20 +10478,20 @@ UINT gx_multi_line_text_input_fill_color_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesi için dolgu renkleri atar.
+Bu hizmet, çok satırlı metin girişi pencere öğesi için Fill renkleri atar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **normal_fill_color_id** Normal durumda kullanılan normal dolgu renginin kaynak kimliği
-- **selected_fill_color_id** Pencere öğesi odağında kullanılan seçili dolgu renginin kaynak kimliği
-- **disabled_fill_color_id** Etkin değilken devre dışı bırakılmış dolgu renginin GX_STYLE_ENABLED kimliği
-- **readonly_fill_color_id** Hem kaynak hem de kaynak etkin olduğunda kullanılan salt okunur GX_STYLE_ENABLED GX_STYLE_INPUT_READONLY kimliği.
+- **normal_fill_color_id** Normal durumda kullanılan normal Fill renginin kaynak KIMLIĞI
+- **selected_fill_color_id** Pencere öğesi odaklanıldığında kullanılan seçili Fill renginin kaynak KIMLIĞI
+- **disabled_fill_color_id** GX_STYLE_ENABLED etkin olmadığında kullanılan devre dışı Fill renginin kaynak KIMLIĞI
+- **readonly_fill_color_id** Hem GX_STYLE_ENABLED hem de GX_STYLE_INPUT_READONLY etkin olduğunda kullanılan salt okuma dolgusu renginin kaynak KIMLIĞI.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Çok satırlı metin girişi için renkleri başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) çok satırlı metin girişi Için renkler başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -10568,10 +10568,10 @@ Bu hizmet, metin girişi imleci konumunu geçerli satırın başlangıcına taş
 
 - **GX_SUCCESS** (0x00) İmleç geçerli satırın başlangıcına başarıyla taşındı
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10639,12 +10639,12 @@ Bu hizmet, çok satırlı metin girişi imlecini bir karakter sola taşır. Bu h
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) İmleç başarıyla sola taşındı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_FAILURE** (0x10) geçersiz Yazı tipi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_FAILURE** (0x10) Geçersiz yazı tipi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10694,7 +10694,7 @@ status = gx_multi_line_text_input_left_arrow(&my_text_input);
 ## <a name="gx_multi_line_text_input_right_arrow"></a>gx_multi_line_text_input_right_arrow
 
 
-Mult satırı metin girişi imlecini bir karakter sağa taşıma
+Mult satırı metin giriş imlecini bir karakter sağa taşı
 
 ### <a name="prototype"></a>Prototype
 
@@ -10704,7 +10704,7 @@ UINT gx_multi_line_text_input_right_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi imlecini bir karakter sağa taşır. Bu hizmet, bir sağ anahtar aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet çok satırlı metin giriş imlecini bir karakter sağa kaydırır. Bu hizmet, doğru bir anahtar aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -10778,7 +10778,7 @@ UINT gx_multi_line_text_input_style_add(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin girişi pencere öğesine stiller ekler.
+Bu hizmet, çok satırlı bir metin girişi pencere öğesine stiller ekler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -10841,7 +10841,7 @@ status = gx_multi_line_text_input_style_add(&my_text_input,
 ## <a name="gx_multi_line_text_input_style_remove"></a>gx_multi_line_text_input_style_remove
 
 
-Stilleri kaldırma
+Stilleri kaldır
 
 ### <a name="prototype"></a>Prototype
 
@@ -10858,15 +10858,15 @@ Bu hizmet, belirtilen stilleri çok satırlı metin girişi pencere öğesinden 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **Stil** Kaldırılacak stiller. **Ek D** tüm pencere öğeleri için önceden tanımlanmış genel stilleri içerir
+- **style (stil)** Kaldır için stiller. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stiller içerir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı çok satırlı metin girişi oluşturma
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı çok satırlı metin girişi oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10915,7 +10915,7 @@ status = gx_multi_line_text_input_style_remove(&my_text_input,
 
 ## <a name="gx_multi_line_text_input_style_set"></a>gx_multi_line_text_input_style_set
 
-Çok satırlı metin giriş stillerini ayarlama
+Çok satırlı metin girişi stillerini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -10927,20 +10927,20 @@ UINT gx_multi_line_text_input_style_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı bir metin girişi pencere öğesinin stillerini ayarlar.
+Bu hizmet, çok satırlı metin girişi pencere öğesi için stilleri ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **Stil** Ayarlanacak stiller. **Ek D** tüm pencere öğeleri için önceden tanımlanmış genel stilleri içerir
+- **style (stil)** Ayar için stiller. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stiller içerir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı çok satırlı metin girişi stili kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı çok satırlı metin girişi stil kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -10990,7 +10990,7 @@ status = gx_multi_line_text_input_style_set(&my_text_input,
 ## <a name="gx_multi_line_text_input_text_color_set"></a>gx_multi_line_text_input_text_color_set
 
 
-Çok satırlı metin girişi metin rengini ayarla
+Çok satırlı metin girişi metin rengini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -11010,7 +11010,7 @@ Bu hizmet, çok satırlı metin girişi pencere öğesi için metin renkleri ata
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Çok satırlı metin girişi pencere öğesi denetim bloğu
-- **normal_fill_color_id** Normal durumda kullanılan normal metin renginin kaynak KIMLIĞI
+- **normal_fill_color_id** Normal durumda kullanılan normal metin renginin kaynak kimliği
 - **selected_text_color_id** Pencere öğesi odaklanıldığında kullanılan seçili metin renginin kaynak KIMLIĞI
 - **disabled_text_color_id** GX_STYLE_ENABLED etkin olmadığında kullanılan devre dışı metin renginin kaynak KIMLIĞI
 - **readonly_text_color_id** Hem GX_STYLE_ENABLED hem de GX_STYLE_TEXT_INPUT_READONLY etkin olduğunda kullanılan salt okuma metin renginin kaynak KIMLIĞI
@@ -11176,12 +11176,12 @@ Bu hizmet, belirtilen dizeyi çok satırlı metin girişine atar. Multi_line_tex
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) metin, çok satırlı metin girişine başarıyla ayarlandı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) Metni çok satırlı metin girişi olarak başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -11300,7 +11300,7 @@ Bu hizmet, çok satırlı metin girişi imlecini önceki metin satırına taşı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) İmleci önceki satıra başarıyla taşıdı
+- **GX_SUCCESS** (0x00) İmleç önceki satıra başarıyla taşındı
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
@@ -11393,7 +11393,7 @@ Bu hizmet bir GX_MULTI_LINE_TEXT_VIEW oluşturur. Bu pencere öğesi türü GX_W
 - **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 - **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -11519,7 +11519,7 @@ VOID my_multi_line_text_view_draw(GX_MULTI_LINE_TEXT_VIEW *view)
 ## <a name="gx_multi_line_text_view_event_process"></a>gx_multi_line_text_view_event_process
 
 
-Çok satırlı metin görünümü olaylarını işleme
+Çok satırlı metin görünümü olayını işle
 
 ### <a name="prototype"></a>Prototype
 
@@ -11531,21 +11531,21 @@ UINT gx_multi_line_text_view_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin görünümü pencere öğesi için bir olayı işler.
+Bu hizmet, çok satırlı bir metin görünümü pencere öğesi için bir olayı işler.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **event (olay)** İşlemeye olay işaretçisi
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı çok satırlı metin görünümü olay işlemi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı çok satırlı metin görünümü olay işlemi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -11617,20 +11617,20 @@ UINT gx_multi_line_text_view_text_id_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin görünümü pencere öğesi yazı tipini ayarlar.
+Bu hizmet, çok satırlı bir metin görünümü pencere öğesinin yazı tipini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **font_id** Yazı tipi için kaynak kimliği
+- **font_id** Yazı tipinin kaynak KIMLIĞI
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Çok satırlı metin görünümü için yazı tipini başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) çok satırlı metin görünümü için yazı tipi başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -11679,7 +11679,7 @@ status = gx_multi_line_text_view_font_set(&my_text_view, FONT_ID);
 ## <a name="gx_multi_line_text_view_line_space_set"></a>gx_multi_line_text_view_line_space_set
 
 
-Çok satırlı metin görünümü satır alanı ayarlama
+Çok satırlı metin görünümü satır alanını ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -11691,20 +11691,20 @@ UINT gx_multi_line_text_view_line_space_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin görünümü pencere öğesi için metin satırları arasındaki aralığı ayarlar.
+Bu hizmet, çok satırlı metin görünümü pencere öğesi için metin satırları arasındaki boşluğu ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **görünüm** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **line_space** Ayar için değer
+- **görüntüleme** Çok satırlı metin görünümü pencere öğesi denetim bloğu
+- **line_space** Ayarlanacak değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Çok satırlı metin görünümü için satır alanı değerini başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) çok satırlı metin görünümü için satır alanı değeri başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -11750,7 +11750,7 @@ status = gx_multi_line_text_view_line_space_set(&my_text_view, 2);
 
 ## <a name="gx_multi_line_text_view_scroll_info_get"></a>gx_multi_line_text_view_scroll_info_get
 
-Çok satırlı metin görünümü kaydırma bilgilerini al
+Çok satırlı metin görünümü kaydırma bilgisi al
 
 
 ### <a name="prototype"></a>Prototype
@@ -11769,15 +11769,15 @@ Bu hizmet, çok satırlı metin görünümü kaydırma bilgilerini alır.
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
 - **Stil** GX_SCROLLBAR_HORIZONTAL veya GX_SCROLLBAR_VERTICAL
-- **Bilgi** Kaydırma bilgileri için hedefin işaretçisi. **Ek I,** bu yapıya GX_SCROLL_INFO içerir.
+- **Bilgi** Kaydırma bilgisi için hedef işaretçisi. **Ek ı** GX_SCROLL_INFO yapısına yönelik tanımı içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Metin görünümü kaydırma bilgileri başarıyla alındı
-- **GX_FAILURE** (0x10) Pencere öğesi görünmüyor veya metin görünümü yazı tipi kimliği geçerli değil
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) metin görünümü kaydırma bilgisini başarıyla aldı
+- **GX_FAILURE** (0x10) pencere öğesi görünür değil veya metin görünümü yazı tipi kimliği geçerli değil
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -11848,14 +11848,14 @@ Bu hizmet, çok satırlı metin görünümü pencere öğesine metin rengi atar.
 ### <a name="parameters"></a>Parametreler
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **normal_text_color_id** Normal durumda kullanılan normal metin renginin kaynak kimliği
-- **selected_text_color_id** Pencere öğesi odağında kullanılan seçili metin renginin kaynak kimliği
-- **disabled_text_color_id** Devre dışı bırakılmış metin renginin kaynak kimliği GX_STYLE_ENABLED etkin değil
+- **normal_text_color_id** Normal durumda kullanılan normal metin renginin kaynak KIMLIĞI
+- **selected_text_color_id** Pencere öğesi odaklanıldığında kullanılan seçili metin renginin kaynak KIMLIĞI
+- **disabled_text_color_id** GX_STYLE_ENABLED kullanılan devre dışı metin renginin kaynak KIMLIĞI etkin değil
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Çok satırlı metin görünümü için renkleri başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) çok satırlı metin görünümü Için renkler başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -11910,7 +11910,7 @@ status = gx_multi_line_text_view_text_color_set(&my_text_view,
 ## <a name="gx_multi_line_text_view_text_id_set"></a>gx_multi_line_text_view_text_id_set
 
 
-Çok satırlı metin görünümünde sistem metin dizesini ayarlama
+Birden çok satırlı metin görünümünde sistem metin dizesi ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -11922,17 +11922,17 @@ UINT gx_multi_line_text_view_text_id_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir dizenin kaynak kimliğini çok satırlı metin görünümü pencere öğesi olarak ayarlar.
+Bu hizmet, bir dizenin kaynak KIMLIĞINI çok satırlı metin görünümü pencere öğesine ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **text_id** Metin dizesinin kaynak kimliği
+- **text_id** Metin dizesinin kaynak KIMLIĞI
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Çok satırlı metin görünümü için dize kimliği başarıyla ayarlanmadı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) çok satırlı metin görünümü için dize kimliği başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
 
@@ -11985,7 +11985,7 @@ status = gx_multi_line_text_view_text_id_set(&my_text_view, STRING_ID);
 ## <a name="gx_multi_line_text_view_text_set"></a>gx_multi_line_text_view_text_set
 
 
-Çok satırlı metin görünümünde kullanıcı tanımlı dize ayarlama
+Çok satırlı metin görünümünde Kullanıcı tanımlı dizeyi ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -11997,7 +11997,7 @@ UINT gx_multi_line_text_view_text_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çok satırlı metin görünümü pencere öğesine bir metin dizesi atar. Text_view pencere öğesi stil GX_STYLE_TEXT_COPY oluşturulursa, pencere öğesi atanan metin dizesinin özel bir kopyasını oluşturur ve bu nedenle gx_system_memory_allocate_set API'si bu hizmet istenmeden önce bir kez çağrılabilir. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle atanan dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
+Bu hizmet, çok satırlı metin görünümü pencere öğesine bir metin dizesi atar. Text_view pencere öğesi stil GX_STYLE_TEXT_COPY ile oluşturulduysa pencere öğesi, atanan metin dizesinin özel bir kopyasını oluşturur ve bu nedenle gx_system_memory_allocate_set API 'SI bu hizmetin istenmediği bir kez çağrılmalıdır. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle atanan dize statik veya genel olarak ayrılmış olmalıdır, yani bu bir otomatik veya geçici değişken olmayabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -12011,7 +12011,7 @@ Bu hizmet, çok satırlı metin görünümü pencere öğesine bir metin dizesi 
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12077,15 +12077,15 @@ Bu hizmet, çok satırlı metin görünümü pencere öğesi için pencere öğe
 ### <a name="parameters"></a>Parametreler
 
 - **text_view** Çok satırlı metin görünümü pencere öğesi denetim bloğu
-- **boşluk** Text_view pencere öğesi ile görüntülenmiş metin arasındaki kenar boşluğu genişliği (piksel cinsinden).
+- **boşluk** Pencere öğesi ile görüntülenen text_view piksel cinsinden kenar boşluğu genişliği.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) çok satırlı metin görünümü Için boşluk başarıyla ayarlandı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Çok satırlı metin görünümü için boşluk başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12149,26 +12149,26 @@ UINT gx_numeric_pixelmap_prompt_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet sayısal bir piksel haritası istemi pencere öğesi oluşturur. Numeric_pixelmap_prompt, kendi arabelleğini tutan ve bir gx_numeric_pixelmap_prompt_value_set (INT) API sağlayan bir pixelmap_prompt, arabellek boyutu sabit GX_NUMERIC_PROMPT_BUFFER_SIZE tarafından tanımlanır, varsayılan olarak 16 ' dır.
+Bu hizmet sayısal bir piksel haritası istemi pencere öğesi oluşturur. Numeric_pixelmap_prompt, kendi arabelleğinin pixelmap_prompt ve gx_numeric_pixelmap_prompt_value_set(INT) API'si sağlayan bir GX_NUMERIC_PROMPT_BUFFER_SIZE api'dir; arabellek boyutu varsayılan olarak 16 olan sabit GX_NUMERIC_PROMPT_BUFFER_SIZE tarafından tanımlanır.
 
-GX_NUMERIC_PIXELMAP_PROMPT GX_PIXELMAP_PROMPT türetilir ve tüm gx_pixelmap_prompt API hizmetlerini destekler.
+GX_NUMERIC_PIXELMAP_PROMPT, api hizmetlerinden GX_PIXELMAP_PROMPT ve tüm api gx_pixelmap_prompt destekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** Sayısal pixelmap istem denetim bloğu
-- **ad** İstem adı
-- **üst öğe** Üst pencere öğesi denetim bloğu
-- **text_id** Kaynak dize kimliği
-- **fill_id** Fill alanı için pixelmap kimliği
-- **Stil** Sayısal pixelmap isteminin stili, **Ek D** tüm pencere öğeleri için önceden tanımlanmış genel stilleri ve pencere öğesine özgü stilleri içerir.
-- **pixelmap_prompt_id** Uygulama tanımlı istem KIMLIĞI
-- **Boyut** Sayısal pixelmap isteminin boyutları
+- **istemi** Sayısal piksel haritası komut istemi denetim bloğu
+- **name** İstem adı
+- **parent** Üst pencere öğesi denetim bloğu
+- **text_id** Kaynak dizesi kimliği
+- **fill_id** Dolgu alanı için piksel haritası kimliği
+- **style (stil)** Sayısal piksel haritası istemi stili, **Ek D** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
+- **pixelmap_prompt_id** İstem uygulama tanımlı kimliği
+- **boyut** Sayısal piksel haritası isteminin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) sayısal piksellimap Istemi başarıyla oluşturuldu
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Sayısal pixlemap istemini başarıyla oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
 - **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
@@ -12197,7 +12197,7 @@ status = gx_numeric_pixelmap_prompt_create(&my_numeric_pix_prompt,
 ## <a name="gx_numeric_pixelmap_prompt_format_function_set"></a>gx_numeric_pixelmap_prompt_format_function_set
 
 
-Sayısal piksel haritası isteminin format işlevini geçersiz kılma
+Sayısal pixelmap isteminin biçim işlevini geçersiz kıl
 
 ### <a name="prototype"></a>Prototype
 
@@ -12209,19 +12209,19 @@ UINT gx_numeric_pixelmap_format_function_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sayısal pixlemap istemi pencere öğesi varsayılan biçim işlevini geçersiz kılar. Varsayılan biçim işlevi, sayısal piksel haritası istemi değerini bir dizeye dönüştürür ve pencere öğesi özel arabelleğinde depolar. Bu hizmet, uygulamanın sayısal piksel haritası istemi değerini biçimlendirmek ve pencere öğesi özel arabelleğinde depolamak için kendi biçim işlevini tanımlamasını sağlar.
+Bu hizmet, sayısal piksellimap istem pencere öğesinin varsayılan biçim işlevini geçersiz kılar. Varsayılan biçim işlevi, sayısal pixelmap istem değerini bir dizeye dönüştürür ve pencere öğesinin özel arabelleğinde depolar. Bu hizmet, uygulamanın, sayısal pixelmap istem değerini pencere öğesinin özel arabelleğinde biçimlendirmek ve depolamak için kendi biçim işlevini tanımlamasına olanak sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **istemi** Sayısal piksel haritası denetim bloğu
-- **format_func** Ayar yapmak için Format işlevi
+- **komut istemi** Sayısal pixelmap istem denetim bloğu
+- **format_func** Ayarlanacak biçimlendirme işlevi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Sayısal pixlemap istemi biçim işlevini başarıyla ayarlama
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) sayısal piksellimap istem biçimi işlevini başarıyla ayarladı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12261,7 +12261,7 @@ status = gx_numeric_pixelmap_prompt_format_function_set(
 ## <a name="gx_numeric_pixelmap_prompt_value_set"></a>gx_numeric_pixelmap_prompt_value_set
 
 
-Sayısal pixlemap istemi değerini ayarlama
+Sayısal piksellimap istem değerini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -12273,18 +12273,18 @@ UINT gx_numeric_pixelmap_prompt_value_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sayısal piksel haritası istemine bir tamsayı değeri verir.
+Bu hizmet, sayısal bir pixelmap istemine bir tamsayı değeri.
 
 ### <a name="parameters"></a>Parametreler
 
-- **istemi** Sayısal piksel haritası komut istemi denetim bloğu
-- **value (değer)** Ayar için tamsayı değeri
+- **komut istemi** Sayısal pixelmap istem denetim bloğu
+- **değer** Ayarlanacak tamsayı değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Sayısal piksel haritası istemi değerini başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) sayısal pixelmap Istem değeri başarıyla ayarlandı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -12342,9 +12342,9 @@ GX_NUMERIC_PROMPT GX_PROMPT türetilir ve tüm gx_prompt API hizmetlerini destek
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12368,7 +12368,7 @@ status = gx_numeric_prompt_create(&my_numeric_prompt,
 ## <a name="gx_numeric_prompt_format_function_set"></a>gx_numeric_prompt_format_function_set
 
 
-Sayısal istemin format işlevini geçersiz kılma
+Sayısal istem için biçim işlevini geçersiz kıl
 
 ### <a name="prototype"></a>Prototype
 
@@ -12380,19 +12380,19 @@ UINT gx_numeric_format_function_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sayısal bir istem pencere öğesinde varsayılan biçim işlevini geçersiz kılar. Varsayılan biçim işlevi, sayısal istem değerini bir dizeye dönüştürür ve pencere öğesi özel arabelleğinde depolar. Bu hizmet, uygulamanın sayısal istemi biçimlendirmek ve pencere öğesi özel arabelleğinde depolamak için kendi biçim işlevini tanımlamasını sağlar.
+Bu hizmet, sayısal istem pencere öğesinin varsayılan biçim işlevini geçersiz kılar. Varsayılan biçim işlevi, sayısal istem değerini bir dizeye dönüştürür ve pencere öğesinin özel arabelleğinde depolar. Bu hizmet, uygulamanın, sayısal istem değerini pencere öğesinin özel arabelleğinde biçimlendirmek ve depolamak için kendi biçim işlevini tanımlamasına olanak sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **istemi** Sayısal istem denetim bloğu
-- **format_func** Ayar yapmak için Format işlevi
+- **komut istemi** Sayısal istem denetim bloğu
+- **format_func** Ayarlanacak biçimlendirme işlevi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Sayısal istem biçimi işlevini başarıyla ayarlama
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) sayısal istem biçimi işlevini başarıyla ayarladı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12429,7 +12429,7 @@ status = gx_numeric_prompt_format_function_set(&my_numeric_prompt,
 ## <a name="gx_numeric_prompt_value_set"></a>gx_numeric_prompt_value_set
 
 
-Sayısal istem değerini ayarlama
+Sayısal istem değeri ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -12492,9 +12492,9 @@ GX_NUMERIC_SCROLL_WHEEL GX_TEXT_SCROLL_WHEEL türetilir ve tüm gx_text_scroll_w
 
 Kaydırma tekerleği kaydırıldığında, tüm kaydırma tekerleği türleri üst öğesine GX_EVENT_LIST_SELECT olaylar oluşturur.
 
-Sayısal bir kaydırma tekerleği varsayılan olarak ABS (end_val – start_val) + 1 satıra sahip olur. Başka bir deyişle kaydırma tekerleği, her satırda start_val end_val 1 artırarak veya azaltarak arasındaki her değeri görüntüler. Uygulamanın start_val görünmesini istediği end_val büyük veya küçük bir değer olduğunu unutmayın.
+Sayısal bir kaydırma tekerleği varsayılan olarak ABS (end_val – start_val) + 1 satıra sahip olur. Diğer bir deyişle, kaydırma tekerleği start_val ve end_val arasındaki her değeri görüntüler, her satır ile 1 ' i artırmaz veya azaltılır. Uygulamanın aralığın görünmesini istediği yönteme bağlı olarak, start_val end_val daha fazla veya daha az olabileceğini unutmayın.
 
-Uygulama satır artışını değiştirmek istiyorsa bunu sayısal kaydırma tekerleğini oluşturduk gx_scroll_wheel_total_rows_set() çağrısıyla yapar. Örneğin, 1980 ile 2020 yıllarını 5 artırarak gösteren bir kaydırma tekerleği oluşturmak isteyen bir uygulama bunu yapar:
+Uygulama satır artışını değiştirmek isterse, sayısal kaydırma tekerleğini oluşturduktan sonra gx_scroll_wheel_total_rows_set () çağırarak bunu yapabilir. Örneğin bir uygulama, 1980 ile 2020 arasındaki yılları görüntüleyen bir kaydırma tekerleği oluşturmak isteyen bir uygulamadır.
 
 ```C
 gx_numeric_scroll_wheel_create(&wheel, GX_NULL, parent, 1980,
@@ -12508,24 +12508,24 @@ gx_scroll_wheel_total_rows_set(&wheel, 9);
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Sayısal kaydırma tekerleği denetim bloğuna işaretçi
-- **name** Piksel haritası düğme pencere öğesi mantıksal adı
-- **parent** Üst pencere öğesi işaretçisi
-- **start_val** Sayısal değeri başlatma
+- **tekerlek** Sayısal kaydırma tekerleği denetim bloğu işaretçisi
+- **ad** Pixelmap düğme pencere öğesinin mantıksal adı
+- **üst öğe** Üst pencere öğesi işaretçisi
+- **start_val** Başlangıç sayısal değeri
 - **end_val** Bitiş sayısal değeri
-- **style (stil)** Onay kutusunun stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
-- **wheel_id** Kaydırma tekerleğinin uygulama tanımlı kimliği
-- **boyut** Kaydırma tekerleği pencere öğesi boyutları
+- **Stil** Onay kutusunun stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
+- **wheel_id** Uygulama tanımlı kaydırma tekerleği KIMLIĞI
+- **Boyut** Kaydırma tekerleği pencere öğesinin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Sayısal kaydırma tekerleği başarıyla oluşturuldu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_SUCCESS** (0x00) sayısal kaydırma tekerleği başarıyla oluşturuldu
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12582,23 +12582,23 @@ gx_numeric_scroll_wheel_range_set(
 
 Bu hizmet, izin verilen ve sayısal bir kaydırma tekerleği pencere öğesi tarafından görünen değer aralığını değiştirir.
 
-Sayısal bir kaydırma tekerleği, bir dizi sayıyı görüntülemek için özel olarak kullanılan bir kaydırma tekerleği pencere öğesi türüdür. Diğer kaydırma tekerleği pencere öğesi türleri de mevcuttur. Kaydırma tekerleği pencere öğesi hiyerarşisi, pencere öğesi türleri ve pencere öğesi türetme hakkında daha fazla bilgi için gx_scroll_wheel_create() API'sini kullanın.
+Sayısal bir kaydırma tekerleği, bir dizi sayıyı görüntülemek için özel olarak kullanılan bir kaydırma tekerleği pencere öğesi türüdür. Diğer kaydırma tekerleği pencere öğesi türleri de mevcuttur. Kaydırma tekerleği pencere öğesi hiyerarşisi, pencere öğesi türleri ve pencere öğesi türetme hakkında daha fazla bilgi için gx_scroll_wheel_create () API 'sine bakın.
 
-Bu API'nin çağrısı, kaydırma tekerleğinin toplam satırlarını abs(end_val – start_val) + 1 olarak sıfırlar. Başka bir ifadeyle kaydırma tekerleği her satır için 1 artacak. Bunu değiştirmek için uygulama gx_scroll_wheel_total_rows_set() çağrısıyla toplam satır sayısını değiştirebilir ve satırlar arasındaki değer artışını etkili bir şekilde değiştirebilir.
+Bu API 'YI çağırmak, kaydırma tekerleği toplam satırlarını ABS (end_val – start_val) + 1 olarak sıfırlar, yani kaydırma tekerleği her satır için 1 ile artacaktır. Bunu değiştirmek için, uygulama toplam satır sayısını değiştirmek için gx_scroll_wheel_total_rows_set () çağırabilir ve satırlar arasındaki değer artışını etkin bir şekilde değiştirir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Sayısal kaydırma tekerleği denetim bloğuna işaretçi
-- **start_val** Sayısal değeri başlatma 
+- **tekerlek** Sayısal kaydırma tekerleği denetim bloğu işaretçisi
+- **start_val** Başlangıç sayısal değeri 
 - **end_val** Bitiş sayısal değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Sayısal kaydırma tekerleği aralığını başarıyla ayarlama
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) sayısal kaydırma tekerleği aralığı başarıyla ayarlandı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları 
 
@@ -12666,19 +12666,19 @@ GX_PIXELMAP_BUTTON GX_BUTTON türetilir ve tüm gx_button hizmetlerini destekler
 - **normal_id** Normal durum kaynak KIMLIĞI
 - **selected_id** Seçili durum kaynak KIMLIĞI
 - **disabled_id** Devre dışı durum kaynak KIMLIĞI
-- **Stil** Onay kutusunun stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
-- **pixelmap_button_id** Piksel haritası düğmesinin uygulama tanımlı kimliği
-- **boyut** Piksel haritası düğmesinin boyutları
+- **Stil** Onay kutusunun stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
+- **pixelmap_button_id** Uygulama tanımlı pixelmap düğmesinin KIMLIĞI
+- **Boyut** Pixelmap düğmesinin boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Piksel haritası başarıyla oluşturuldu düğmesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_SUCCESS** (0x00) başarılı bir şekilde pixelmap düğmesi oluşturuldu
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -12786,7 +12786,7 @@ VOID my_pixelmap_button_draw(GX_PIXELMAP_BUTTON *button)
 ## <a name="gx_pixelmap_button_event_process"></a>gx_pixelmap_button_event_process
 
 
-Piksel haritası düğmesi olay işleme
+Pixelmap düğmesi olay işleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -12798,11 +12798,11 @@ UINT gx_pixelmap_button_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet piksel haritası düğmesi pencere öğesi türü için varsayılan olay işleme sağlar.
+Bu hizmet, pixelmap düğmesi pencere öğesi türü için varsayılan olay işleme sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **düğme** Piksel haritası düğme denetim bloğu işaretçisi
+- **düğme** Pixelmap Button denetim bloğu işaretçisi
 - **event_ptr** GX_EVENT yapısına yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -12925,7 +12925,7 @@ status = gx_pixelmap_button_pixelmap_set (&my_pixelmap_button,
 ## <a name="gx_pixelmap_prompt_create"></a>gx_pixelmap_prompt_create
 
 
-Pixelmap istemi oluştur
+Piksel haritası oluşturma istemi
 
 ### <a name="prototype"></a>Prototype
 
@@ -13002,7 +13002,7 @@ status = gx_pixelmap_prompt_create(&my_pixelmap_prompt,
 ## <a name="gx_pixelmap_prompt_draw"></a>gx_pixelmap_prompt_draw
 
 
-Pixelmap istemi çiz
+Piksel haritası istemi çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -13060,7 +13060,7 @@ VOID my_pixelmap_button_draw(GX_PIXELMAP_PROMPT *prompt)
 ## <a name="gx_pixelmap_prompt_pixelmap_set"></a>gx_pixelmap_prompt_pixelmap_set
 
 
-sorulacak piksel haritalarını atama
+İsteyecek pixelmaps ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -13077,7 +13077,7 @@ UINT gx_pixelmap_prompt_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet piksel haritası kimliklerini piksel haritası istemine atar. Sol, dolgu ve sağ piksel haritası kimlikleri, uygulamanın çeşitli genişliklerden istemler için bir piksel haritası kümesi kullanmasına, ancak depolama gereksinimlerine göre tasarruf etmek için ortak bir yüksekliğe sahip olmasına olanak vermek için kullanılır. Sol ve sağ kimlikler kullanılmazsa 0 olarak ayarlanmaz. İstem, giriş odağını kazandığında kendisini farklı çizirse, bu amaçla seçili pixelmap kimlikleri kullanılır. Seçilen kimlikler kullanılmıyorsa veya normal kimlikler ile aynıysa, bunları 0 olarak ayarlayın.
+Bu hizmet, pixelmap kodlarını pixelmap istemine atar. Sol, Fill ve Right pixelmap kimlikleri, uygulamanın çeşitli genişlikler için bir dizi pixelmaps kullanmasına izin vermek için kullanılır, ancak depolama gereksinimlerine kaydetmek için ortak bir yükseklik. Sol ve sağ kimlikler kullanılmıyorsa, bunlar 0 olarak ayarlanmalıdır. İstem, giriş odağını kazandığında kendisini farklı çizirse, bu amaçla seçili pixelmap kimlikleri kullanılır. Seçilen kimlikler kullanılmıyorsa veya normal kimlikler ile aynıysa, bunları 0 olarak ayarlayın.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -13137,7 +13137,7 @@ status = gx_pixelmap_prompt_pixelmap_set (&my_prompt,
 ## <a name="gx_pixelmap_slider_create"></a>gx_pixelmap_slider_create
 
 
-Piksel haritası kaydırıcısı oluşturma
+Pixelmap kaydırıcı oluştur
 
 ### <a name="prototype"></a>Prototype
 
@@ -13153,12 +13153,12 @@ UINT gx_pixelmap_slider_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir piksel haritası kaydırıcı pencere öğesi oluşturur.
+Bu hizmet bir pixelmap kaydırıcı pencere öğesi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı** Piksel haritası kaydırıcısı denetim bloğu işaretçisi
-- **name** Piksel haritası kaydırıcı pencere öğesi mantıksal adı
+- **kaydırıcı** Pixelmap kaydırıcı denetim bloğu işaretçisi
+- **ad** Pixelmap kaydırıcı pencere öğesinin mantıksal adı
 - **üst öğe** Üst pencere öğesi işaretçisi
 - **bilgi** Kaydırıcı minimum değeri, en büyük değer, geçerli değer ve iğne limitlerini tanımlayan değerleri içeren GX_SLIDER_INFO yapısına yönelik işaretçi. **Ek ı** GX_SLIDER_INFO yapısı için tanım içeriyor.
 - **pixelmap_info** Kaydırıcı arka planını ve iğne çizmek için kullanılan pixelmaps 'i tanımlayan GX_PIXELMAP_SLIDER_INFO yapısına yönelik işaretçi. **Ek ı** GX_PIXELMAP_SLIDER_INFO yapısı için tanım içeriyor. Kaydırıcı arka planı bir veya iki pixelmaps kullanabilir. Bir tane varsa, iğne taşırken arka plan değişmez. İki arka plan tanımlanmışsa, iğne ilk arka plan pixelmap 'i kullanmadan önce arka plan ve iğne ikinci arka plan pixelmap 'i kullandıktan sonra arka plan kullanılır.
@@ -13237,7 +13237,7 @@ status = gx_pixelmap_slider_create(&my_pixelmap_slider,
 ## <a name="gx_pixelmap_slider_draw"></a>gx_pixelmap_slider_draw
 
 
-Piksel haritası kaydırıcısını çizme
+Pixelmap kaydırıcısını çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -13247,7 +13247,7 @@ VOID gx_pixelmap_slider_draw(GX_PIXELMAP_SLIDER *slider);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir piksel haritası kaydırıcı pencere öğesi çizmektedir. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel pixelmap kaydırıcı pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
+Bu hizmet bir pixelmap kaydırıcı pencere öğesi çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel pixelmap kaydırıcı pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -13300,7 +13300,7 @@ VOID my_pixelmap_slider_draw(GX_PIXELMAP_SLIDER *pixelmap_slider)
 ## <a name="gx_pixelmap_slider_event_process"></a>gx_pixelmap_slider_event_process
 
 
-Piksel haritası kaydırıcı olayı işleme
+İşlem pixelmap kaydırıcı olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -13312,21 +13312,21 @@ UINT gx_pixelmap_slider_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen piksel haritası kaydırıcı pencere öğesi için bir olayı işler.
+Bu hizmet, belirtilen pixelmap kaydırıcı pencere öğesi için bir olayı işler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı** Piksel haritası işaretçisi
-- **kaydırıcı** denetim bloğu olay İşlemeye olay işaretçisi
+- **kaydırıcı** Pixelmap işaretçisi
+- **kaydırıcı** denetimi olay işaretçisini işlenecek olaya engel
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı piksel haritası kaydırıcısı olay işlemi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pixelmap kaydırıcı olay işlemi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -13396,7 +13396,7 @@ Bu hizmet, pixelmaps 'i pixelmap kaydırıcıyla ayarlar.
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Pixelmap kaydırıcı denetim bloğu işaretçisi
-- **pikselınfo** Kaydırıcı arka planını ve iğne çizmek için kullanılan pixelmaps 'i tanımlayan GX_PIXELMAP_SLIDER_INFO yapısına yönelik işaretçi. **Ek ı** GX_PIXELMAP_SLIDER_INFO yapısı için tanım içeriyor. Kaydırıcı arka planı bir veya iki pixelmaps kullanabilir. Bir tane varsa, iğne taşırken arka plan değişmez. İki arka plan tanımlanmışsa, iğneden önceki arka plan ilk arka plan piksel haritasını, iğneden sonra gelen arka plan ikinci arka plan piksel haritasını kullanır.
+- **pikselınfo** Kaydırıcı arka planını ve iğne çizmek için kullanılan pixelmaps 'i tanımlayan GX_PIXELMAP_SLIDER_INFO yapısına yönelik işaretçi. **Ek ı** GX_PIXELMAP_SLIDER_INFO yapısı için tanım içeriyor. Kaydırıcı arka planı bir veya iki pixelmaps kullanabilir. Bir tane varsa, iğne taşırken arka plan değişmez. İki arka plan tanımlanmışsa, iğne ilk arka plan pixelmap 'i kullanmadan önce arka plan ve iğne ikinci arka plan pixelmap 'i kullandıktan sonra arka plan kullanılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -13454,7 +13454,7 @@ status = gx_pixelmap_slider _pixelmap_set (&my_pixelmap_slider,
 ## <a name="gx_progress_bar_background_draw"></a>gx_progress_bar_background_draw
 
 
-Çizim ilerleme çubuğu arka planı
+İlerleme çubuğu arka planını çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -13464,7 +13464,7 @@ VOID gx_progress_bar_background_draw(GX_PROGRESS_BAR *progress_bar)
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ilerleme çubuğunun arka planını çizer. Bu işlev, gx_progress_bar_draw () bir parçası olarak dahili olarak çağrılır, ancak uygulamanın özel bir ilerleme çubuğu çizim işlevini tanımladığı bu durumları desteklemek için uygulamaya sunulur.
+Bu hizmet, belirtilen ilerleme çubuğunun arka planını çiziyor. Bu işlev, gx_progress_bar_draw() işlevinin bir parçası olarak çağrılır, ancak uygulamanın özel bir ilerleme çubuğu çizim işlevi tanımladığı bu örnekleri desteklemek için uygulamaya açık olur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -13474,7 +13474,7 @@ Bu hizmet, belirtilen ilerleme çubuğunun arka planını çizer. Bu işlev, gx_
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -13594,7 +13594,7 @@ status = gx_progress_bar_create(&my_progress_bar, GX_NULL, GX_NULL,
 ## <a name="gx_progress_bar_draw"></a>gx_progress_bar_draw
 
 
-İlerleme çubuğu çiz
+İlerleme çubuğu çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -13604,7 +13604,7 @@ VOID gx_progress_bar_draw(GX_PROGRESS_BAR *progress_bar);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir ilerleme çubuğu pencere öğesi çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ilerleme çubuğu pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
+Bu hizmet bir ilerleme çubuğu pencere öğesi çiziyor. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ilerleme çubuğu pencere öğeleri için özel çizim işlevlerini uygulamaya yardımcı olmak üzere uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -13614,7 +13614,7 @@ Bu hizmet bir ilerleme çubuğu pencere öğesi çizer. Bu işlev normalde Gux t
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -13716,7 +13716,7 @@ UINT my_event_process (GX_PROGRESS_BAR *progress_bar, GX_EVENT *event_ptr)
 ## <a name="gx_progress_bar_font_set"></a>gx_progress_bar_font_set
 
 
-İlerleme çubuğu metninin yazı tipini ayarla
+İlerleme çubuğu metninin yazı tipini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -13728,7 +13728,7 @@ UINT gx_progress_bar_font_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir ilerleme çubuğu pencere öğesinin yazı tipini ayarlar.
+Bu hizmet, bir ilerleme çubuğu pencere öğesi yazı tipini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -13737,11 +13737,11 @@ Bu hizmet, bir ilerleme çubuğu pencere öğesinin yazı tipini ayarlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı ilerleme çubuğu yazı tipi kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı ilerleme çubuğu yazı tipi kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -13831,7 +13831,7 @@ status = gx_progress_bar_info_set(&progress_bar, &info);
 ## <a name="gx_progress_bar_pixelmap_set"></a>gx_progress_bar_pixelmap_set
 
 
-İlerleme çubuğu çizmek için kullanılan pixelmap 'i ayarla
+İlerleme çubuğu çizmek için kullanılan piksel haritasını ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -13843,20 +13843,20 @@ UINT gx_progress_bar_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ilerleme çubuğu arka planını dolduracak şekilde kullanılan pixelmap 'i ayarlar.
+Bu hizmet, ilerleme çubuğu arka planını doldurmak için kullanılan piksel haritasını ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **progress_bar** İlerleme çubuğu denetim bloğu
-- **pixelmap_id** Pixelmap kaynak kimliği
+- **pixelmap_id** Piksel haritası kaynak kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı ilerleme çubuğu pixelmap kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı ilerleme çubuğu piksel haritası kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -13952,22 +13952,22 @@ UINT gx_progress_bar_text_color_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir ilerleme çubuğu pencere öğesinin metin rengini ayarlar.
+Bu hizmet, ilerleme çubuğu pencere öğesi metin rengini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **progress_bar** İlerleme çubuğu denetim bloğu
-- **normal_text_color** Normal durumda kullanılan normal metin renginin kaynak KIMLIĞI
-- **selected_text_color** Pencere öğesi odaklanıldığında kullanılan seçili metin renginin kaynak KIMLIĞI
-- **disabled_text_color** GX_STYLE_ENABLED etkin olmadığında kullanılan devre dışı metin renginin kaynak KIMLIĞI
+- **normal_text_color** Normal durumda kullanılan normal metin renginin kaynak kimliği
+- **selected_text_color** Pencere öğesi odağında kullanılan seçili metin renginin kaynak kimliği
+- **disabled_text_color** Etkin değilken devre dışı bırakılmış metin renginin GX_STYLE_ENABLED kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı ilerleme çubuğu metin rengi kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı ilerleme çubuğu metin rengi kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14054,7 +14054,7 @@ VOID my_progress_bar_draw(GX_PROGRESS_BAR *progress_bar)
 ## <a name="gx_progress_bar_value_set"></a>gx_progress_bar_value_set
 
 
-İlerleme çubuğunun geçerli değerini ayarla
+İlerleme çubuğunun geçerli değerini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -14066,18 +14066,18 @@ UINT gx_progress_bar_value_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ilerleme çubuğu geçerli değerini atar. İlerleme çubuğu değeri değiştirildiğinde ilerleme çubuğu pencere öğesi otomatik olarak geçersiz kılacak ve yeniden çizilecektir.
+Bu hizmet ilerleme çubuğu geçerli değerini atar. İlerleme çubuğu değeri değiştirilirken ilerleme çubuğu pencere öğesi otomatik olarak geçersiz kılınacak ve yeniden çizilir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **progress_bar** İlerleme çubuğu denetim bloğu
-- **değer** İlerleme çubuğu geçerli değeri
+- **value (değer)** İlerleme çubuğu geçerli değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarıyla ilerleme çubuğunun değerini ayarla
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) İlerleme çubuğunun değerini ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -14106,7 +14106,7 @@ UINT status = gx_progress_bar_value_set(progress_bar, 50);
 ## <a name="gx_prompt_create"></a>gx_prompt_create
 
 
-İstem oluşturma
+İstem oluştur
 
 ### <a name="prototype"></a>Prototype
 
@@ -14125,25 +14125,25 @@ UINT gx_prompt_create(
 
 Bu hizmet bir istem pencere öğesi oluşturur.
 
-GX_PROMPT, GX_WIDGET türetilen ve tüm gx_widget destekler.
+GX_PROMPT GX_WIDGET türetilir ve tüm gx_widget hizmetlerini destekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Üst** pencere öğesi işaretçisi
-- **text_id** İstem metninin kaynak kimliği
-- **style (stil)** İstem stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
-- **prompt_id** İstem uygulama tanımlı kimliği
-- **boyut** İstem boyutları
+- Üst pencere öğesi **işaretçisi**
+- **text_id** İstem metninin kaynak KIMLIĞI
+- **Stil** İstem stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
+- **prompt_id** Uygulama tanımlı istem KIMLIĞI
+- **Boyut** İstem boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı istem oluşturma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_SUCCESS** (0x00) başarılı istem oluşturma
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14238,21 +14238,21 @@ UINT gx_prompt_event_process(GX_PROMPT *prompt, GX_EVENT *event_ptr);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen istem için bir olayı işler. Bu hizmet, herhangi bir özel istem olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
+Bu hizmet, belirtilen istem için bir olayı işler. Bu hizmet, özel istem olayı işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **istemi** İstem denetim bloğu işaretçisi
-- **event_ptr** İşlemeye devam etmek için olayın işaretçisi
+- **komut istemi** İstem denetim bloğu işaretçisi
+- **event_ptr** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı istem olayı işlemi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı istem olay işlemi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -14308,21 +14308,21 @@ UINT gx_prompt_font_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir istem pencere öğesinin yazı tipini ayarlar.
+Bu hizmet, bir istem pencere öğesi yazı tipini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** İstem öğesi denetim bloğunun işaretçisi
-- **font_id** Yazı tipinin kaynak KIMLIĞI
+- **istemi** Pencere öğesi denetim bloğu istemi işaretçisi
+- **font_id** Yazı tipi kaynak kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı istem yazı tipi kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı istem yazı tipi kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14379,9 +14379,9 @@ Bu hizmet, bir istem pencere öğesi metin rengini ayarlar.
 - **GX_SUCCESS** (0x00) Başarılı istem metni renk kümesi
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET_SIZE** (0x14) geçersiz pencere öğesi boyutu
+- **GX_INVALID_WIDGET_SIZE** (0x14) Geçersiz pencere öğesi boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14413,7 +14413,7 @@ status = gx_prompt_text_color_set(&my_prompt,
 ## <a name="gx_prompt_text_draw"></a>gx_prompt_text_draw
 
 
-Çizim desteği işlevi
+Çizim destek işlevi
 
 ### <a name="prototype"></a>Prototype
 
@@ -14423,17 +14423,17 @@ VOID gx_prompt_text_draw(GX_PROMPT *prompt);
 
 ### <a name="description"></a>Description
 
-Bu destek işlevi bir istemin metin bölümünü çizer. Bu işlev, gx_prompt_draw () tarafından dahili olarak çağrılır ve özel bir istem çizimi işlevini tanımlayan uygulamalar için kolaylık olarak ayrı bir API olarak sağlanır. İstem arka plan çizimini özelleştirmek isteyen uygulamalar özel çizim işlevlerini sağlayabilir ve istem metnini arka planda çizmek için özel çiziminin bir parçası olarak gx_prompt_text_draw hizmetini çağırabilir.
+Bu destek işlevi, bir istemin metin bölümünü çizmektedir. Bu işlev, gx_prompt_draw() tarafından dahili olarak çağrılır ve özel bir istem çizim işlevi tanımlayan uygulamalar için kolaylık olarak ayrı bir API olarak sağlanır. İstem arka plan çizimini özelleştirmek isteyen uygulamalar kendi özel çizim işlevini sağlar ve komut istemi metnini arka planda çizmek için özel çizimlerinin bir parçası olarak gx_prompt_text_draw hizmetini çağırabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** İstem denetim bloğunun işaretçisi
+- **istemi** İstem denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -14528,7 +14528,7 @@ status = gx_prompt_text_get(&my_prompt, &my_prompt_text);
 ## <a name="gx_prompt_text_get_ext"></a>gx_prompt_text_get_ext
 
 
-İstem metnini al
+İstem metni al
 
 ### <a name="prototype"></a>Prototype
 
@@ -14540,20 +14540,20 @@ UINT gx_prompt_text_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir istem pencere öğesinin dizesini alır.
+Bu hizmet, bir istem pencere öğesi dizesini alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** İstem öğesi denetim bloğunun işaretçisi
-- **return_string** Dize için hedef işaretçisi
+- **istemi** Pencere öğesi denetim bloğu istemi işaretçisi
+- **return_string** Dize için hedefe işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı istem metni al
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı istem metni get
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14610,9 +14610,9 @@ Bu hizmet, metin istemi pencere öğesi için dize kimliğini ayarlar.
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek boş işlevi tanımlı değil
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek boş işlevi tanımlanmadı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14640,7 +14640,7 @@ status = gx_prompt_text_id_set(&my_prompt, MY_STRING_ID);
 ## <a name="gx_prompt_text_set"></a>gx_prompt_text_set
 
 
-İstem metnini ayarla (kullanım dışı)
+Komut istemi metnini ayarlama (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -14652,15 +14652,15 @@ UINT gx_prompt_text_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet gx_prompt_text_set_ext () kullanım dışı bırakılmıştır.
+Bu hizmet, gx_prompt_text_set_ext() tarafından kullanımdan gx_prompt_text_set_ext.
 
-Bu hizmet bir istem pencere öğesinin metnini ayarlar. İstem pencere öğesi stil GX_STYLE_TEXT_COPY ile oluşturulduysa pencere öğesi, atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz, bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani bu bir otomatik veya geçici değişken olmayabilir.
+Bu hizmet, bir istem pencere öğesi metnini ayarlar. İstem pencere öğesi stil GX_STYLE_TEXT_COPY, pencere öğesi atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
 
-GX_PROMPT GX_WIDGET türetilir ve bu nedenle tüm gx_widget API hizmetleri GX_PROMPT ile kullanılabilir.
+GX_PROMPT, GX_WIDGET türetilen ve bu nedenle gx_widget API hizmetlerinin hepsi GX_PROMPT.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** İstem öğesi denetim bloğunun işaretçisi
+- **istemi** Pencere öğesi denetim bloğu istemi işaretçisi
 - **metin** Metin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -14711,24 +14711,24 @@ UINT gx_prompt_text_set_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir istem pencere öğesinin metnini ayarlar. İstem pencere öğesi stil GX_STYLE_TEXT_COPY ile oluşturulduysa pencere öğesi, atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz, bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani bu bir otomatik veya geçici değişken olmayabilir.
+Bu hizmet, bir istem pencere öğesi metnini ayarlar. İstem pencere öğesi stil GX_STYLE_TEXT_COPY, pencere öğesi atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
 
-GX_PROMPT GX_WIDGET türetilir ve bu nedenle tüm gx_widget API hizmetleri GX_PROMPT ile kullanılabilir.
+GX_PROMPT, GX_WIDGET türetilen ve bu nedenle gx_widget API hizmetlerinin hepsi GX_PROMPT.
 
 ### <a name="parameters"></a>Parametreler
 
-- **komut istemi** İstem öğesi denetim bloğunun işaretçisi
+- **istemi** Pencere öğesi denetim bloğu istemi işaretçisi
 - **metin** Metin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı istem metin kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek ayırma işlevi tanımlı değil
-- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) Başarılı istem metin kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek ayırma işlevi tanımlanmadı
+- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -14817,7 +14817,7 @@ status = gx_radial_progress_bar_anchor_set(&my_progress_bar, start_angle);
 ## <a name="gx_radial_progress_bar_background_draw"></a>gx_radial_progress_bar_background_draw
 
 
-Arka plan çiz
+Arka plan çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -14827,7 +14827,7 @@ VOID gx_radial_progress_bar_background_draw(GX_RADIAL_PROGRESS_BAR *progress_bar
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir radyal ilerleme çubuğu arka planı çizer. Bu hizmete gx_radial_progress_bar_draw işlevi tarafından dahili olarak başvuruluyor, ancak uygulamanın özel bir radyal ilerleme çubuğu çizim işlevini tanımladığı durumlarda uygulama tarafından kullanıma sunuldu
+Bu hizmet radyal ilerleme çubuğu arka planını çiziyor. Bu hizmete, gx_radial_progress_bar_draw işlevi tarafından dahili olarak başvurulsa da uygulamanın özel radyal ilerleme çubuğu çizim işlevi tanımladığı durumlarda uygulama tarafından kullanımına açıktır
 
 ### <a name="parameters"></a>Parametreler
 
@@ -14837,7 +14837,7 @@ Bu hizmet bir radyal ilerleme çubuğu arka planı çizer. Bu hizmete gx_radial_
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -14872,7 +14872,7 @@ VOID my_radial_progress_bar_draw(GX_RADIAL_PROGRESS_BAR *radial_progress)
 ## <a name="gx_radial_progress_bar_create"></a>gx_radial_progress_bar_create
 
 
-Radyal ilerleme çubuğu oluştur
+Radyal ilerleme çubuğu oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -14910,9 +14910,9 @@ Pencere öğesi GX_STYLE_PROGRESS_TEXT_DRAW, ilerleme çubuğu değerini ilerlem
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_WIDGET** (0x12) Geçersiz üst pencere öğesi
+- **GX_INVALID_WIDGET** (0x12) geçersiz üst pencere öğesi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -15022,7 +15022,7 @@ VOID my_radial_progress_bar_draw(GX_RADIAL_PROGRESS_BAR *radial_progress)
 ## <a name="gx_radial_progress_bar_event_process"></a>gx_radial_progress_bar_event_process
 
 
-Radyal ilerleme çubuğu olayı işleme
+Radyal ilerleme çubuğu olayını işle
 
 ### <a name="prototype"></a>Prototype
 
@@ -15034,21 +15034,21 @@ UINT gx_radial_progress_bar_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet radyal bir ilerleme çubuğu olayı işler. Bu işlev, gx_radial_progress_bar_create işlevi tarafından dahili olarak başvurulsa da, uygulamanın özel radyal ilerleme durumu olay işleme işlevini tanımladığı durumlarda uygulama tarafından kullanım için açığa çıkar.
+Bu hizmet bir radyal ilerleme çubuğu olayını işler. Bu işleve gx_radial_progress_bar_create işlevi tarafından dahili olarak başvurulur, ancak uygulamanın özel bir radyal ilerleme olayı işleme işlevini tanımladığı durumlarda uygulama tarafından kullanıma sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ilerleme** çubuğu Radyal ilerleme çubuğu denetim bloğu işaretçisi
-- **event_ptr** İşlemeye olay işaretçisi
+- radyal ilerleme çubuğu denetim bloğu için **ilerleme** çubuğu işaretçisi
+- **event_ptr** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı radyal ilerleme çubuğu olay işlemi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) başarılı radyal ilerleme çubuğu olay işlemi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -15157,12 +15157,12 @@ UINT gx_radial_progress_bar_info_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet radyal ilerleme çubuğuna atanan bilgi parametrelerini sıfırlar.
+Bu hizmet, radyal ilerleme çubuğuna atanan bilgi parametrelerini sıfırlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ilerleme** çubuğu Radyal ilerleme çubuğu denetim bloğu işaretçisi
-- **info (bilgi)** Radyal ilerleme çubuğu bilgi yapısının işaretçisi. **Ek I,** veri yapısı için GX_RADIAL_PROGRESS_BAR_INFO içerir.
+- radyal ilerleme çubuğu denetim bloğu için **ilerleme** çubuğu işaretçisi
+- **bilgi** Radyal ilerleme çubuğu bilgi yapısına yönelik işaretçi. **Ek I,** veri yapısı için GX_RADIAL_PROGRESS_BAR_INFO içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -15220,7 +15220,7 @@ status = gx_radial_progress_bar_info_set(&my_progress_bar, &info);
 ## <a name="gx_radial_progress_bar_text_color_set"></a>gx_radial_progress_bar_text_color_set
 
 
-Radyal ilerleme çubuğu metin rengini ayarla
+Radyal ilerleme çubuğu metin rengini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -15234,14 +15234,14 @@ UINT gx_radial_progress_bar_text_color_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, radyal ilerleme çubuğunun metin rengini ayarlar. Bu değer yalnızca Style GX_STYLE_PROGRESS_TEXT_DRAW ayarlandıysa kullanılır.
+Bu hizmet radyal ilerleme çubuğunun metin rengini ayarlar. Bu değer yalnızca stil GX_STYLE_PROGRESS_TEXT_DRAW kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- radyal ilerleme çubuğu denetim bloğu için **ilerleme** çubuğu işaretçisi
-- **normal_color** Normal durumdaki metin renginin kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
-- **selected_color** Pencere öğesi odaklanıldığında metin renginin kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
-- **disabled_color** Stil GX_STYLE_ENABLED ayarlanmamışsa metin renginin kaynak KIMLIĞI. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **ilerleme** çubuğu Radyal ilerleme çubuğu denetim bloğu işaretçisi
+- **normal_color** Normal durumda metin renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **selected_color** Pencere öğesi odağında metin renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **disabled_color** Stil stili ayarlanmazken metin renginin GX_STYLE_ENABLED kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -15291,7 +15291,7 @@ VOID gx_radial_progress_bar_text_draw(GX_RADIAL_PROGRESS_BAR *progress_bar);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen radyal ilerleme çubuğunun metnini çiziyor. Bu işlev, gx_radial_progress_bar_draw () bir parçası olarak dahili olarak çağrılır, ancak uygulamanın özel bir ilerleme çubuğu çizim işlevini tanımladığı bu durumları desteklemek için uygulamaya sunulur.
+Bu hizmet, belirtilen radyal ilerleme çubuğunun metnini çiziyor. Bu işlev, gx_radial_progress_bar_draw() işlevinin bir parçası olarak çağrılır, ancak uygulamanın özel bir ilerleme çubuğu çizim işlevi tanımladığı bu örnekleri desteklemek için uygulamaya açık olur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -15301,9 +15301,9 @@ Bu hizmet, belirtilen radyal ilerleme çubuğunun metnini çiziyor. Bu işlev, g
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma ve Iş parçacıkları
+Başlatma ve İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -15341,7 +15341,7 @@ VOID my_radial_progress_bar_draw(GX_RADIAL_PROGRESS_BAR *radial_progress)
 ## <a name="gx_radial_progress_bar_value_set"></a>gx_radial_progress_bar_value_set
 
 
-Radyal ilerleme çubuğu değerini ayarla
+Radyal ilerleme çubuğu değerini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -15353,9 +15353,9 @@ UINT gx_radial_progress_bar_value_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, radyal ilerleme çubuğu değerini ayarlar. Atanan değer [-360, 360] aralığı ile sınırlıdır ve ilerleme çubuğu geçerli konumu için olası Ansal değer aralığını tanımlar. Uygulama, ilerleme çubuğu pencere öğesine angular değeri atamak için belirtilen gerçek uluslararası değeri ölçeklendirmelidir.
+Bu hizmet radyal ilerleme çubuğu değerini ayarlar. Atanan değer [-360, 360] aralığıyla sınırlıdır ve ilerleme çubuğu geçerli konumu için olası angular değer aralığını tanımlar. Uygulama, ilerleme çubuğu pencere öğesine angular değer atamak için gösterilen gerçek dünya değerini ölçeklendirmeli.
 
-İlerleme çubuğu, geçerli değerin, üst yayı yer işareti konumu ve bitiş noktası arasındaki açısal değişikliği gösterdiği şekilde çizilir. Negatif değerler, Arc konumundan başlayarak saat yönünde bir yönde çizilmesine neden olur. Pozitif geçerli değer, bağlayıcının bağlantı konumundan başlayan saat yönünde bir yönde çizilmesini sağlar.
+İlerleme çubuğu, geçerli değerin yer işareti konumu ile üst yay bitiş noktası arasındaki angular deltayı işaret eden şekilde çizilir. Negatif değerler, yaynın sabit noktası konumundan başlayarak saat yönünde çizilir. Pozitif geçerli değer, yayın sabit noktası konumundan başlayarak saat yönünün tersine doğru çizilir.
 
 Örneğin, yay üst kısmından başlayarak (saat 12 o'clock konumu) ve sağdan (üç o'saat konumu) biten bir yay çizmek için, 90 derece sabit noktası değeri ve geçerli bir -90 derece değeri atatın.
 
@@ -15402,7 +15402,7 @@ status = gx_radial_progress_bar_value_set(&my_progress_bar,
 ## <a name="gx_radio_button_create"></a>gx_radio_button_create
 
 
-Radyo düğmesi oluşturma
+Radyo düğmesi oluştur
 
 ### <a name="prototype"></a>Prototype
 
@@ -15473,7 +15473,7 @@ status = gx_radio_button_create(&my_radio_button, “my_radio_button”, &my_par
 ## <a name="gx_radio_button_draw"></a>gx_radio_button_draw
 
 
-Radyo düğmesi çizme
+Çizim radyo düğmesi
 
 ### <a name="prototype"></a>Prototype
 
@@ -15483,7 +15483,7 @@ VOID gx_radio_button_draw(GX_RADIO_BUTTON *button);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir radyo düğmesi pencere öğesi çizmektedir. Bu hizmet GUIX tuval yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılma çizim işlevleri tarafından da çağrılabilir.
+Bu hizmet bir radyo düğmesi pencere öğesi çizer. Bu hizmet, Gux tuvali yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılınan çizim işlevleri tarafından çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -15493,7 +15493,7 @@ Bu hizmet bir radyo düğmesi pencere öğesi çizmektedir. Bu hizmet GUIX tuval
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -15560,11 +15560,11 @@ Bu hizmet, her düğme durumu için belirtilen radyo düğmesi tarafından gör�
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) başarılı radyo düğmesi pixelmaps kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -15613,22 +15613,22 @@ UINT gx_radial_slider_anchor_angles_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, radyal kaydırıcı için bağlantı açılarını ayarlar. Çapa açısı listesi ayarlandıysa, radyal kaydırıcı açısı tanımlı çapa açılarının biri olacaktır.
+Bu hizmet radyal kaydırıcı için yer çubuğu açılarını ayarlar. Yer çubuğu açısı listesi ayarlanmışsa radyal kaydırıcı açısı tanımlı sabit noktası açılarından biri olur.
 
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Radyal kaydırıcı denetim bloğu
-- **anchor_angles** Ayarlanacak açı listesi
-- **anchor_count** Çapa açılarının sayısı
+- **anchor_angles** Ayar yapmak için açılı liste
+- **anchor_count** Yer noktası açılarının sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı bağlayıcı açısı kümesi
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
-- **GX_INVALID_VALUE** (0x22) geçersiz bağlantı listesi
+- **GX_SUCCESS** (0x00) Başarılı sabit noktası açıları kümesi
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
+- **GX_INVALID_VALUE** (0x22) Geçersiz sabit noktası listesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -15719,7 +15719,7 @@ status = gx_radial_slider_angle_set(&my_radial_slider, 0);
 ## <a name="gx_radial_slider_animation_set"></a>gx_radial_slider_animation_set
 
 
-Radyal kaydırıcı animasyon bilgisi oluştur
+Radyal kaydırıcı animasyon bilgisi oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -15733,14 +15733,14 @@ UINT gx_radial_slider_animation_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, radyal kaydırıcı iğne animasyonu için animasyon adımlarını, gecikme süresini ve animasyon stillerini ayarlar.
+Bu hizmet, radyal kaydırıcı iğne animasyonu için animasyon adımlarını, gecikme süresi ve animasyon stillerini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Radyal kaydırıcı denetim bloğu işaretçisi
-- **adımlar** Tek animasyon için toplam adım
-- **gecikme** Her animasyon adımı için gecikme süresi
-- **animation_style** Kolaylaştırıcı işlev türü şunları içerir:
+- **adımlar** Bir animasyon için toplam adım sayısı
+- **gecikme süresi** Her animasyon adımı için gecikme süresi
+- **animation_style** Easing işlev türü, şunları içerir:
   - GX_ANIMATION_BACK_EASE_IN
   - GX_ANIMATION_BACK_EASE_OUT
   - GX_ANIMATION_BACK_EASE_IN_OUT
@@ -15771,12 +15771,12 @@ Bu hizmet, radyal kaydırıcı iğne animasyonu için animasyon adımlarını, g
   - GX_ANIMATION_SINE_EASE_IN
   - GX_ANIMATION_SINE_EASE_OUT
   - GX_ANIMATION_SINE_EASE_IN_OUT
-- **animation_update_callback** Her animasyon adımdan sonra çağrılacak kullanıcı tanımlı geri çağırma işlevi
+- **animation_update_callback** Her animasyon adımından sonra çağrılacak Kullanıcı tanımlı geri çağırma işlevi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı radyal kaydırıcı animasyon kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı radyal kaydırıcı animasyon kümesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
 
@@ -15845,10 +15845,10 @@ Bu hizmet, kaydırıcı iğne 'yi geçerli konumdan belirtilen konuma taşımak 
 
 - **GX_SUCCESS** (0x00) başarılı radyal kaydırıcı animasyon başlangıcı
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -15877,7 +15877,7 @@ status = gx_radial_slider_animation_start(&my_radial_slider, 90);
 ## <a name="gx_radial_slider_create"></a>gx_radial_slider_create
 
 
-Radyal kaydırıcı oluşturma
+Radyal kaydırıcı oluştur
 
 ### <a name="prototype"></a>Prototype
 
@@ -15894,14 +15894,14 @@ UINT gx_radial_slider_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet radyal kaydırıcı pencere öğesi oluşturur.
+Bu hizmet bir radyal kaydırıcı pencere öğesi oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Radyal kaydırıcı denetim bloğu işaretçisi
-- **name** Radyal kaydırıcı pencere öğesi mantıksal adı
-- **parent** Üst pencere öğesi işaretçisi
-- **info (bilgi)** Radyal kaydırıcı görünüm tanımı, **Ek I,** veri GX_RADIAL_SLIDER_INFO.
+- **ad** Radyal kaydırıcı pencere öğesinin mantıksal adı
+- **üst öğe** Üst pencere öğesi işaretçisi
+- **bilgi** Radyal kaydırıcı görünüm tanımı, **ek i** GX_RADIAL_SLIDER_INFO tanım içeriyor.
 - **Stil** Radyo düğmesinin stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
 - **radio_button_id** Radyal kaydırıcının uygulama tanımlı KIMLIĞI
 - **Boyut** Radyal kaydırıcı boyutları
@@ -15985,7 +15985,7 @@ status = gx_radial_slider_create(&my_radial_slider,
 ## <a name="gx_radial_slider_draw"></a>gx_radial_slider_draw
 
 
-Radyal kaydırıcıyı çizme
+Radyal kaydırıcı çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -15995,7 +15995,7 @@ VOID gx_radial_slider_draw(GX_RADIAL_SLIDER *slider);
 
 ### <a name="description"></a>Description
 
-Bu hizmet radyal kaydırıcıyı çizmektedir. Bu hizmet GUIX tuval yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılma çizim işlevleri tarafından da çağrılabilir.
+Bu hizmet bir radyal kaydırıcı çizer. Bu hizmet, Gux tuvali yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılınan çizim işlevleri tarafından çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -16005,7 +16005,7 @@ Bu hizmet radyal kaydırıcıyı çizmektedir. Bu hizmet GUIX tuval yenilemesi t
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -16051,21 +16051,21 @@ UINT gx_radial_slider_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir radyal kaydırıcı olayı işler. Bu hizmet özel bir radyal kaydırıcı olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
+Bu hizmet bir radyal kaydırıcı olayı işler. Bu hizmet, herhangi bir özel radyal kaydırıcı olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Radyal kaydırıcı denetim bloğu işaretçisi
-- **event_ptr** İşlenecek olaya yönelik işaretçi
+- **event_ptr** İşlemeye olay işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı radyal kaydırıcı olay işlemi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) Başarılı radyal kaydırıcı olay işlemi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -16108,7 +16108,7 @@ UINT my_event_process(GX_RADIAL_SLIDER *slider,
 ## <a name="gx_radial_slider_info_get"></a>gx_radial_slider_info_get
 
 
-Radyal kaydırıcı bilgilerini al
+Radyal kaydırıcı bilgilerini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -16181,16 +16181,16 @@ Bu hizmet radyal kaydırıcı bilgilerini ayarlar.
 ### <a name="parameters"></a>Parametreler
 
 - **kaydırıcı** Radyal kaydırıcı denetim bloğu işaretçisi
-- **bilgi** Ayarlanacak radyal kaydırıcı bilgileri
+- **info (bilgi)** Ayar için radyal kaydırıcı bilgileri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı radyal kaydırıcı bilgi kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) Başarılı radyal kaydırıcı bilgi kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -16253,7 +16253,7 @@ status = gx_radial_slider_info_set(&my_radial_slider, &info);
 ## <a name="gx_radial_slider_pixelmap_set"></a>gx_radial_slider_pixelmap_set
 
 
-Radyal kaydırıcı pixelmaps ayarlayın
+Radyal kaydırıcı piksel haritalarını ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -16266,7 +16266,7 @@ UINT gx_radial_slider_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, radyal kaydırıcı arka planını ve iğne pixelmaps 'ı ayarlar.
+Bu hizmet radyal kaydırıcı arka planı ve iğne piksel haritalarını ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -16353,21 +16353,21 @@ Bu hizmet, belirtilen şekilde zengin metin görünümü oluşturur.
 - **text_view** Zengin metin görünümü denetim bloğu işaretçisi
 - **ad** Zengin metin görünümünün adı
 - **üst öğe** Üst pencere öğesi işaretçisi
-- **text_id** Metin dizesinin kaynak kimliği
-- **yazı tipleri** Zengin metin görünümü yazı tipi bilgileri işaretçisi. **Apendix I,** bir GX_RICH_TEXT_FONTS içerir.
-- **style (stil)** Pencere öğesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stiller içerir.
-- **kimlik** Zengin metin görünümünün Uygulama tanımlı kimliği
-- **boyut** Zengin metin görünümünün boyutu
+- **text_id** Metin dizesinin kaynak KIMLIĞI
+- **yazı tipleri** Zengin metin görünümü yazı tipi bilgilerine yönelik işaretçi. **Apbitix** , GX_RICH_TEXT_FONTS yapısına yönelik tanımı içerir.
+- **Stil** Pencere öğesinin stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
+- zengin metin görünümünün **kimlik** uygulama tanımlı kimliği
+- **Boyut** Zengin metin görünümü boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı zengin metin görünümü oluşturma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_SUCCESS** (0x00) başarılı zengin metin görünümü oluşturma
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -16398,7 +16398,7 @@ status = gx_rich_text_view_create(&rich_view, “my_rich_view”,
 
 ```
 
-GUIX Studio demo_guix_widget_types parçası olarak sağlanan tanıtım uygulaması, zengin metin görünümü pencere öğesi kullanımına tam bir örnek sağlar.
+GUX Studio yüklemesinin bir parçası olarak sağlanan demo uygulaması demo_guix_widget_types, zengin metin görünümü pencere öğesini kullanma hakkında ayrıntılı bir örnek sağlar.
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
@@ -16409,7 +16409,7 @@ GUIX Studio demo_guix_widget_types parçası olarak sağlanan tanıtım uygulama
 ## <a name="gx_rich_text_view_draw"></a>gx_rich_text_view_draw
 
 
-Zengin metin görünümü çizme
+Zengin metin görünümü çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -16509,7 +16509,7 @@ status = gx_rich_text_view_fonts_set(&my_rich_view, &fonts);
 ## <a name="gx_rich_text_view_text_draw"></a>gx_rich_text_view_text_draw
 
 
-Zengin metin görünümü metni çizme
+Zengin metin görünümü metni çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -16519,17 +16519,17 @@ VOID gx_rich_text_view_text_draw(GX_RICH_TEXT_VIEW *text_view);
 
 ### <a name="description"></a>Description
 
-Bu destek işlevi, zengin metin görünümünün metin bölümünü çizmektedir. Bu işlev, gx_rich_text_view_draw() tarafından dahili olarak çağrılır ve özel zengin metin görünümü çizim işlevi tanımlayan uygulamalar için kolaylık sağlamak amacıyla ayrı bir API olarak sağlanır. Zengin metin görünümü arka plan çizimini özelleştirmek isteyen uygulamalar kendi özel çizim işlevini sağlar ve arka planda zengin metin görünümü metnini çizmek için gx_rich_text_view_text_draw hizmetini özel çizimlerinin bir parçası olarak çağırabilirsiniz.
+Bu destek işlevi bir zengin metin görünümünün metin bölümünü çizer. Bu işlev, gx_rich_text_view_draw () tarafından dahili olarak çağrılır ve özel bir zengin metin görünümü çizim işlevi tanımlayan uygulamalar için kolaylık olarak ayrı bir API olarak sağlanır. Zengin metin görünümü arka plan çizimini özelleştirmek isteyen uygulamalar özel çizim işlevlerini sağlayabilir ve zengin metin görünümü metnini arka plan üzerine çizmek için gx_rich_text_view_text_draw hizmetini özel çiziminin bir parçası olarak çağırabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_view** Zengin metin görünümü pencere öğesi denetim bloğuna işaretçi
+- **text_view** Zengin metin görünümü pencere öğesi denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -16572,16 +16572,16 @@ UINT gx_screen_stack_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir ekran yığınını başlatıyor. Uygulama, ekran yığını özelliğini uygulamak için kullanılan bellek bloğu ve arabellek boyutunu tanımlamalı.
+Bu hizmet bir ekran yığınını başlatır. Uygulamanın, ekran yığını özelliğini uygulamak için kullanılan bellek bloğunu ve arabellek boyutunu tanımlamanız gerekir.
 
 > [!NOTE]
-> *Bu API artık kullanılmıyor ve gx_system_screen_stack_create() ile değiştirildi. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
+> *Bu API kullanım dışı bırakılmış ve gx_system_screen_stack_create () ile değiştirilmiştir. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **denetim** Ekran yığını denetim bloğu
-- **memory_buffer** Ekran yığını olarak kullanılan bellek arabelleği işaretçisi
-- **buffer_size** Bayt cinsinden bellek boyutu
+- **Denetim** Ekran yığını denetim bloğu
+- **memory_buffer** Ekran yığını olarak kullanılan bir bellek arabelleği işaretçisi
+- **Buffer_size** Bayt cinsinden bellek boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -16665,7 +16665,7 @@ status = gx_screen_stack_pop(&my_stack_control);
 ## <a name="gx_screen_stack_push"></a>gx_screen_stack_push
 
 
-Anında görüntü ekranı ve üstleri yığına
+Gönder ekranı ve üst öğeleri yığına
 
 ### <a name="prototype"></a>Prototype
 
@@ -16678,25 +16678,25 @@ UINT gx_screen_stack_push(
 
 ### <a name="description"></a>Description
 
-Bu hizmet ekranı üst öğesinden ayırır ve ekran işaretçisini ve üst işaretçiyi ekran yığınına iletir. Yeni ekran işaretçisi daha sonra üst öğeye iliştirilmiş olur.
+Bu hizmet ekranı üst öğesinden ayırır ve ekran işaretçisini ve üst işaretçiyi ekran yığınına iter. Yeni ekran işaretçisi daha sonra üst öğeye eklenir.
 
 
 > [!NOTE]
-> *Bu API artık kullanılmıyor ve gx_system_screen_stack_pop() ile değiştirildi. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
+> *Bu API kullanım dışı bırakılmış ve gx_system_screen_stack_pop () ile değiştirilmiştir. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **denetim** Ekran yığını denetim bloğu
-- **ekran** Itmek için ekran işaretçisi
+- **Denetim** Ekran yığını denetim bloğu
+- **ekran** Gönderim için ekran işaretçisi
 - **new_screen** Yeni ekranın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı ekran yığını itme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı ekran yığını gönderimi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -16719,7 +16719,7 @@ status = gx_screen_stack_push(&my_stack_control,
 ## <a name="gx_screen_stack_reset"></a>gx_screen_stack_reset
 
 
-Ekran yığınından tüm girişleri kaldırır
+Tüm girişleri ekran yığınından kaldırır
 
 ### <a name="prototype"></a>Prototype
 
@@ -16729,10 +16729,10 @@ UINT gx_screen_stack_reset(GX_SCREEN_STACK_CONTROL *control);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ekran yığınından tüm girişleri kaldırır.
+Bu hizmet, tüm girişleri ekran yığınından kaldırır.
 
 > [!NOTE]
-> *Bu API artık kullanılmıyor ve gx_system_screen_stack_pop() ile değiştirildi. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
+> *Bu API kullanım dışı bırakılmış ve gx_system_screen_stack_pop () ile değiştirilmiştir. Bu sürüm yalnızca önceki kitaplık sürümleriyle geriye dönük uyumluluk için sağlanır.*
 
 ### <a name="parameters"></a>Parametreler
 
@@ -16792,9 +16792,9 @@ Bu hizmet, bir kaydırma Parmak tekerleği oluşturur. Bu hizmet, genellikle GX_
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
 - **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
-- **GX_INVALID_WIDGET** (0x12) Üst pencere öğesi geçerli değil
+- **GX_INVALID_WIDGET** (0x12) üst pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -16818,7 +16818,7 @@ status = gx_scroll_thumb_create(&my_scroll_thumb, &my_scrollbar,
 ## <a name="gx_scroll_thumb_draw"></a>gx_scroll_thumb_draw
 
 
-Kaydırma başparmak çizme
+Kaydırma parmak izi çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -16828,17 +16828,17 @@ VOID gx_scroll_thumb_draw(GX_SCROLL_THUMB *scroll_thumb);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırma tekerleği çizmektedir. Bu hizmet GUIX tuval yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılma çizim işlevleri tarafından da çağrılabilir.
+Bu hizmet, bir kaydırma Parmak tekerleği çizer. Bu hizmet, Gux tuvali yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılınan çizim işlevleri tarafından çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **scroll_thumb** Kaydırma pencere öğesi denetim bloğu
+- **scroll_thumb** Kaydırma kutusu pencere öğesi denetim bloğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -16864,7 +16864,7 @@ VOID my_scroll_thumb_draw(GX_SCROLL_THUMB *thumb)
 ## <a name="gx_scroll_thumb_event_process"></a>gx_scroll_thumb_event_process
 
 
-İşlem kaydırma başparmak olayı
+İşlem kaydırma parmak izi olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -16876,16 +16876,16 @@ UINT gx_scroll_thumb_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, kaydırma çubuğu parmak tekerleğine gönderilen olayları işler. Bu hizmet normalde GUIX tarafından dahili olarak kullanılır, ancak özel kaydırma çubuğu davranışlarının uygulanmasına yardımcı olmak için genel olarak kullanılır.
+Bu hizmet, bir ScrollBar parmak tekerinin gönderdiği olayları işler. Bu hizmet normalde Gux tarafından dahili olarak kullanılır, ancak özel kaydırma çubuğu davranışları uygulamaya yardımcı olmak için genel kullanıma açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **scroll_thumb** Kaydırma pencere öğesi denetim bloğu
-- **event (olay)** İşlemeye olay işaretçisi
+- **scroll_thumb** Kaydırma kutusu pencere öğesi denetim bloğu
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı kaydırma parmak olayı işlemi
+- **GX_SUCCESS** (0x00) başarılı kaydırma parmak izi olay işlemi
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
@@ -16957,19 +16957,19 @@ GX_SCROLL_WHEEL GX_WINDOW tabanlıdır ve bu nedenle tüm GX_WINDOW API 'Leri GX
 - **üst öğe** Üst pencere öğesi veya GX_NULL
 - **total_rows** Toplam kullanılabilir satır
 - **Stil** Pencere öğesi stil bayrakları
-- **Id** Uygulama tarafından atanan pencere öğesi kimliği
-- **boyut** İlk pencere öğesi boyutunu tanımlayan dikdörtgen.
+- **kimlik** uygulama tarafından atanan pencere öğesi kimliği
+- **Boyut** İlk pencere öğesi boyutunu tanımlayan dikdörtgen.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Kaydırma tekerleği başarıyla oluşturuldu
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_SIZE** (0x19) Geçersiz denetim bloğu boyutu
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi oluşturuldu
-- **GX_INVALID_WIDGET** (0x12) Üst pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) kaydırma tekerleği başarıyla oluşturuldu
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_SIZE** (0x19) geçersiz denetim bloğu boyutu
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi oluşturuldu
+- **GX_INVALID_WIDGET** (0x12) üst pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17168,7 +17168,7 @@ Successfully assigned. */
 ## <a name="gx_scroll_wheel_row_height_set"></a>gx_scroll_wheel_row_height_set
 
 
-Her tekerlek satırı için satır yüksekliğini atama
+Her bir tekerlek satırı için satır yüksekliğini ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -17180,11 +17180,11 @@ UINT gx_scroll_wheel_row_height_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, kaydırma tekerleğinin her satırı için satır yüksekliğini atar. Kaydırma tekerleğinde stil GX_STYLE_TEXT_SCROLL_WHEEL_ROUND, satır yüksekliğinin bir dönüştürmeden geçerek satır, tekerleğin üst veya alt kenarına yaklaşarak satır yüksekliğini etkili bir şekilde azaltıyor olduğunu unutmayın.
+Bu hizmet, kaydırma tekerleğinin her bir satırı için satır yüksekliğini atar. Kaydırma tekerleğinin stil GX_STYLE_TEXT_SCROLL_WHEEL_ROUND varsa, satır yüksekliği, ekranın üst veya alt kenarına yaklaştığında satır yüksekliğini etkin bir şekilde azaltacak bir dönüşümden geçer.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Genel kaydırma tekerleği denetim bloğuna işaretçi
+- **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
 - **row_height** Piksel cinsinden satır yüksekliği değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -17231,7 +17231,7 @@ pixels. */
 ## <a name="gx_scroll_wheel_selected_background_set"></a>gx_scroll_wheel_selected_background_set
 
 
-Tekerlek seçili satırı için arka plan görüntüsü atama
+Tekerlek seçili satırı için arka plan görüntüsü ata
 
 ### <a name="prototype"></a>Prototype
 
@@ -17243,21 +17243,21 @@ UINT gx_scroll_wheel_selected_background_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, kaydırma tekerleğinin seçili satırı arkasında çizilen isteğe bağlı bir piksel haritası kimliği atar. Bu, kullanıcının kaydırma tekerleğinin hangi satırın seçili olduğunu kolayca ayırt etmek için seçilen satırı vurgulamak için kullanılabilir.
+Bu hizmet, kaydırma tekerleğinin seçili satırının arkasında çizilen isteğe bağlı bir pixelmap KIMLIĞI atar. Bu, kullanıcının kaydırma tekerleğinin hangi satırının seçili olduğunu kolayca ayırabilmesi için seçili satırı vurgulamak üzere kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Genel kaydırma tekerleği denetim bloğuna işaretçi
-- **image_id** Seçilen satır arka plan görüntüsü olarak kullanmak üzere Piksel Haritası kimliği.
+- **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
+- **image_id** Seçilen satır arka plan görüntüsü olarak kullanılacak pixelmap KIMLIĞI.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Kaydırma tekerleği arka planını başarıyla ayarlama
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) kaydırma tekerleği arka planını başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17312,16 +17312,16 @@ Bu hizmet, şu anda seçili olan satırı almak için kaydırma tekerleğini sor
 ### <a name="parameters"></a>Parametreler
 
 - **tekerlek** Genel kaydırma tekerleği denetim bloğu işaretçisi
-- **satır** Seçilen satır değerinin döndürülecek konumu.
+- **satır** Seçili satır değerinin döndürüleceği konum.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Seçilen tekerlek satırı başarıyla alındı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x19) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) seçili tekerlek satırı başarıyla alındı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x19) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17383,9 +17383,9 @@ Bu hizmet şu anda seçili olan kaydırma tekerleği satırını atar.
 - **GX_SUCCESS** (0x00) seçili tekerlek satırını başarıyla ayarladı
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17445,17 +17445,17 @@ Bu hizmet, kaydırma tekerleği pencere öğesi için kaydırma hızını atar.
 - **start_speed_rate** Kaydırma başlangıç hızını titreşim hızına oranı.
 - **end_speed_rate** Kaydırma bitiş hızını titreşim hızına oranı
 - **max_steps** Kaydırma için en fazla adım.
-- **gecikme** Her adımın gecikme süresi.
+- **gecikme süresi** Her adımın gecikme süresi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) tekerlek hızını başarıyla ayarladı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) geçersiz değer
+- **GX_SUCCESS** (0x00) Tekerlek hızını başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Geçersiz değer
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17565,17 +17565,17 @@ VOID gx_scrollbar_draw(GX_SCROLLBAR *scrollbar);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırma çubuğu çizer. Hem dikey hem de yatay kaydırma çubuğu pencere öğeleri için ortak bir çizim işlevi kullanılır. Bu hizmet GUIX tuval yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılma çizim işlevleri tarafından da çağrılabilir.
+Bu hizmet bir kaydırma çubuğu çizer. Genellikle dikey ve yatay kaydırma çubuğu pencere öğeleri için ortak bir çizim işlevi kullanılır. Bu hizmet, Gux tuvali yenilemesi tarafından dahili olarak çağrılır, ancak geçersiz kılınan çizim işlevleri tarafından çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırma çubuğu** Çizilen kaydırma çubuğu pencere öğesi
+- **kaydırma çubuğu** Çizilecek ScrollBar pencere öğesi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -17604,7 +17604,7 @@ VOID my_scrollbar_draw(GX_SCROLLBAR *scrollbar)
 ## <a name="gx_scrollbar_event_process"></a>gx_scrollbar_event_process
 
 
-Kaydırma çubuğu olayı işleme
+İşlem kaydırma çubuğu olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -17616,19 +17616,19 @@ UINT gx_scrollbar_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırma çubuğu olayı işler. Hem dikey hem de yatay kaydırma çubuğu pencere öğeleri için kullanılan yaygın bir olay işleme işlevi.
+Bu hizmet bir ScrollBar olayını işler. Hem dikey hem de yatay kaydırma çubuğu öğeleri için kullanılan ortak bir olay işleme işlevi.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırma çubuğu** Kaydırma çubuğu pencere öğesi denetim bloğu
-- **event (olay)** İşlemeye olay işaretçisi
+- **kaydırma çubuğu** ScrollBar pencere öğesi denetim bloğu
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı kaydırma çubuğu olay işlemi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı kaydırma çubuğu olay işlemi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -17714,7 +17714,7 @@ status = gx_scrollbar_limit_check(&my_scrollbar);
 ## <a name="gx_scrollbar_reset"></a>gx_scrollbar_reset
 
 
-Kaydırma çubuğunu sıfırlama
+Kaydırma çubuğunu Sıfırla
 
 ### <a name="prototype"></a>Prototype
 
@@ -17726,22 +17726,22 @@ UINT gx_scrollbar_reset(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kaydırma çubuğunu sıfırlar.
+Bu hizmet, kaydırma çubuğunu sıfırlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırma çubuğu** Kaydırma çubuğu pencere öğesi denetim bloğu
-- **info (bilgi)** Kaydırma çubuğu GX_SCROLL_INFO, geçerli değer ve adım veya artış tanımlayan bir yapının işaretçisi. **Ek I,** bu yapıya GX_SCROLL_INFO içerir.
+- **kaydırma çubuğu** ScrollBar pencere öğesi denetim bloğu
+- **bilgi** Kaydırma çubuğu sınırlarını, geçerli değeri ve adım veya artışı tanımlayan GX_SCROLL_INFO yapısına yönelik işaretçi. **Ek ı** GX_SCROLL_INFO yapısına yönelik tanımı içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı kaydırma çubuğu sıfırlaması
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) Kaydırma bilgileri geçerli değil
+- **GX_SUCCESS** (0x00) başarılı ScrollBar sıfırlaması
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) kaydırma bilgileri geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17845,12 +17845,12 @@ Bu hizmet, metin girişi imleç konumundan önce karakteri siler. Bu hizmet, bir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı tek satırlı metin girişi oluşturma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x23) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı tek satırlık metin girişi oluşturma
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x23) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -17952,7 +17952,7 @@ status = gx_single_line_text_input_clear(&my_text_input);
 ## <a name="gx_single_line_text_input_buffer_get"></a>gx_single_line_text_input_buffer_get
 
 
-Metin girişi pencere öğesi arabellek bilgilerini alma
+Metin girişi pencere öğesinin arabellek bilgilerini alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -17966,7 +17966,7 @@ UINT gx_single_line_text_input_buffer_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, metin girişi pencere öğesi arabellek bilgilerini verir.
+Bu hizmet, metin girişi pencere öğesinin arabellek bilgilerini alır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -18025,7 +18025,7 @@ status = gx_single_line_text_input_buffer_get(&my_text_input,
 ## <a name="gx_single_line_text_input_character_delete"></a>gx_single_line_text_input_character_delete
 
 
-Geçerli imleç konumundaki karakteri silme
+Geçerli imleç konumundaki karakteri sil
 
 ### <a name="prototype"></a>Prototype
 
@@ -18036,7 +18036,7 @@ UINT gx_single_line_text_input_character_delete(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, metin girişi imleci konumundan sonra karakteri siler. Bu hizmet, bir silme anahtarı aşağı olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet, metin girişi imleç konumundan sonra karakteri siler. Bu hizmet, bir DELETE anahtar aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -18044,12 +18044,12 @@ Bu hizmet, metin girişi imleci konumundan sonra karakteri siler. Bu hizmet, bir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) İmleç sonrasında karakteri başarıyla silme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) İmleçten sonra bir karakter başarıyla silindi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18089,7 +18089,7 @@ status = gx_single_line_text_input_character_delete(&my_text_input);
 ## <a name="gx_single_line_text_input_character_insert"></a>gx_single_line_text_input_character_insert
 
 
-Geçerli imleç konumunda bir karakter dizesi ekleme
+Geçerli imleç konumuna bir karakter dizesi Ekle
 
 ### <a name="prototype"></a>Prototype
 
@@ -18102,22 +18102,22 @@ UINT gx_single_line_text_input_character_insert(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli imleç konumundaki metin girişi dizesi arabelleğine bir karakter dizesi ekler.
+Bu hizmet, geçerli imleç konumundaki metin girişi dize arabelleğine bir karakter dizesi ekler.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Tek satırlı metin girişi pencere öğesi denetim bloğu
 - **insert_str** Eklenecek karakter dizesi
-- **insert_size** Eklenecek byte sayısı
+- **insert_size** Eklenecek bayt sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Karakteri başarıyla ekledi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) karakteri başarıyla ekledi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18174,16 +18174,16 @@ UINT gx_single_line_text_input_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir metin girişi pencere öğesi oluşturur. Çağıran, giriş dizesi için depolama alanı sağlamalıdır ve en fazla dize uzunluğunu belirtmelidir.
+Bu hizmet bir metin girişi pencere öğesi oluşturur. Çağıranın giriş dizesi için depolama alanı sağlaması ve dizenin maksimum uzunluğunu belirt olması gerekir.
 
-GX_SINGLE_LINE_TEXT_INPUT GX_PROMPT türetilir ve bu nedenle tüm gx_prompt Hizmetleri GX_SINGLE_LINE_TEXT_INPUT pencere öğeleri ile kullanılabilir.
+GX_SINGLE_LINE_TEXT_INPUT, GX_PROMPT türetilen bir gx_prompt bu nedenle tüm GX_SINGLE_LINE_TEXT_INPUT kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Tek satırlı metin girişi pencere öğesi denetim bloğu
-- **ad** İsteğe bağlı pencere öğesi mantıksal adı
+- **name** İsteğe bağlı pencere öğesi mantıksal adı
 - **parent** İsteğe bağlı üst pencere öğesi
-- **input_buffer** Giriş dizesi için depolama
+- **input_buffer** Depolama dizesini kullanın
 - **buffer_size** Giriş dizesi depolama alanı boyutu (bayt cinsinden).
 - **style (stil)** Metin girişi stil bayrakları
 - **text_input_id** Giriş pencere öğesi isteğe bağlı kimliği
@@ -18246,7 +18246,7 @@ status = gx_single_line_text_input_create(&my_text_input,
 ## <a name="gx_single_line_text_input_draw"></a>gx_single_line_text_input_draw
 
 
-Metin girişi pencere öğesi çiz
+Metin girişi pencere öğesi çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -18256,7 +18256,7 @@ VOID gx_single_line_text_input_draw(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir metin girişi pencere öğesi çizer. Bu hizmet, genellikle tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel metin girişi çizim işlevlerinden de çağrılabilir.
+Bu hizmet bir metin girişi pencere öğesi çizmektedir. Bu hizmet normalde tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel metin girişi çizim işlevlerinden de çağrılabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -18266,7 +18266,7 @@ Bu hizmet bir metin girişi pencere öğesi çizer. Bu hizmet, genellikle tuval 
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -18310,7 +18310,7 @@ VOID my_sl_text_input_draw(GX_SINGLE_LINE_TEXT_INPUT *input)
 ## <a name="gx_single_line_text_input_draw_position_get"></a>gx_single_line_text_input_draw_position_get
 
 
-Metin çizme başlangıç konumunu al
+Metin çekme başlangıç konumunu alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -18322,21 +18322,21 @@ UINT gx_single_line_text_input_draw_position_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, metin giriş metninin çizim başlangıç konumunu alır.
+Bu hizmet, metin girişi metninin çizim başlangıç konumunu verir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Tek satırlı metin girişi pencere öğesi denetim bloğu
-- **XPos** X koordinatı içinde çizim başlangıç konumu alındı
-- **yılkonumu** Y koordinatı içinde çizim başlangıç konumu alındı
+- **xpos** x koordinatta çizim başlangıç konumu alındı
+- **ypos** y koordinatı içinde çizim başlangıç konumu alındı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) metin girişi imlecini başarıyla sona taşı
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Metin girişi imlecini başarıyla sona taşıma
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18461,7 +18461,7 @@ UINT gx_single_line_text_input_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet tek satırlı metin girişi olayı işlemektedir. Bu işlev, gx_single_line_text_input_create işlevi tarafından dahili olarak başvurulsa da, uygulamanın özel bir tek satırlı metin girişi olay işleme işlevi tanımladığı durumlarda uygulama tarafından kullanım için açığa çıkar.
+Bu hizmet tek satırlı bir metin girişi olayı işler. Bu işlev, gx_single_line_text_input_create işlevi tarafından dahili olarak başvurulsa da, uygulamanın özel bir tek satırlı metin girişi olay işleme işlevi tanımladığı durumlarda uygulama tarafından kullanım için açığa çıkar.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -18532,7 +18532,7 @@ UINT custom_sl_text_input_event_process(
 ## <a name="gx_single_line_text_input_fill_color_set"></a>gx_single_line_text_input_fill_color_set
 
 
-Tek satırlık metin girişi arka plan rengini ayarla
+Tek satırlı metin girişi arka plan rengini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -18547,24 +18547,24 @@ UINT gx_single_line_text_input_fill_color_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, tek satırlık metin girişinin Fill rengini ayarlar.
+Bu hizmet, tek satırlı metin girişinin dolgu rengini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_input** Tek satırlı metin girişi denetim bloğu işaretçisi
-- **normal_fill_color_id** Pencere öğesi dolgusunun normal durumundaki kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
-- **selected_fill_color_id** Pencere öğesi odağında pencere öğesi dolgu renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **disabled_fill_color_id** Stil stili ayarlanmazken pencere öğesi dolgu GX_STYLE_ENABLED kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **readonly_fill_color_id** Hem stil hem de kaynak kümesi ayar GX_STYLE_ENABLED pencere öğesi dolgu GX_STYLE_TEXT_INPUT_READYONLY kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **text_input** Tek satırlı metin girişi denetim bloğuna işaretçi
+- **normal_fill_color_id** Pencere öğesi dolgu renginin kaynak kimliği normal durumda. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **selected_fill_color_id** Pencere öğesi odaklanıldığında pencere öğesi dolgusu dolgusunun kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **disabled_fill_color_id** Stil GX_STYLE_ENABLED ayarlanmamışsa pencere öğesi dolgusunun kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **readonly_fill_color_id** Stil GX_STYLE_ENABLED ve GX_STYLE_TEXT_INPUT_READYONLY her ikisi de ayarlandığında pencere öğesi dolgusu rengi kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı tek satırlı metin girişi dolgu renk kümesi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı tek satırlık metin girişi dolgusu renk kümesi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18626,12 +18626,12 @@ Bu hizmet metin girişi imleç konumunu giriş dizesinin başlangıcına taşım
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) İmleç giriş konuma başarıyla taşındı
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) imleci ana konuma başarıyla taşındı
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18742,7 +18742,7 @@ UINT gx_single_line_text_input_position_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet metin girişi imlecini istenen piksel konumunu temel alarak konumlar. Metin girişi imleç dizini, piksel konumunun x değeri temel alınarak hesaplanır. Bu hizmet, bir kalem aşağı olayı alındığında dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
+Bu hizmet metin girişi imlecini istenen piksel konumunu temel alarak konumlar. Metin girişi imleç dizini, piksel konumunun x değerine göre hesaplanır. Bu hizmet, bir kalem olayı alınca dahili olarak çağrılır, ancak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -18751,12 +18751,12 @@ Bu hizmet metin girişi imlecini istenen piksel konumunu temel alarak konumlar. 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) imleci Istenen konuma başarıyla ayarladı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) İmleci istenen konuma başarıyla ayarlayın
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -18922,7 +18922,7 @@ GX_STYLE_CURSOR_AWAYS);
 
 ## <a name="gx_single_line_text_input_style_remove"></a>gx_single_line_text_input_style_remove
 
-Stilleri kaldır
+Stilleri kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -18934,18 +18934,18 @@ UINT gx_single_line_text_input_style_remove(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen stili (öğeleri) tek satırlık metin girişi pencere öğesinden kaldırır.
+Bu hizmet, belirtilen stili tek satırlı metin girişi pencere öğesinden kaldırır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Tek satırlı metin girişi pencere öğesi denetim bloğu
-- **Stil** Kaldırılacak stil (ler). **Ek D** tüm pencere öğeleri için önceden tanımlanmış genel stilleri içerir
+- **style (stil)** Kaldır için stil(ler). **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stiller içerir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) pencere öğesi içindeki stil (ler) başarıyla kaldırıldı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Pencere öğesinden stil başarıyla kaldırıldı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -18998,21 +18998,21 @@ UINT gx_single_line_text_input_style_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen stili (öğeleri) tek satırlık metin girişi pencere öğesine ayarlar.
+Bu hizmet, belirtilen stili tek satırlı metin girişi pencere öğesi olarak ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **text_input** Tek satırlı metin girişi pencere öğesi denetim bloğu
-- atanacak **Stil** stili bayrakları
+- **atanecek** stil stili bayrakları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) metin girişi stilini başarıyla ayarladı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Metin girişi stilini başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -19072,17 +19072,17 @@ Bu hizmet, tek satırlı metin girişinin metin rengini ayarlar.
 - **text_input** Tek satırlı metin girişi denetim bloğuna işaretçi
 - **normal_text_color_id** Normal durumda metin renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 - **selected_text_color_id** Pencere öğesi odağında metin renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **disabled_text_color_id** Stil GX_STYLE_ENABLED ayarlanmamışsa metin renginin kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
-- **readonly_text_color_id** Stil GX_STYLE_ENABLED ve GX_STYLE_TEXT_INPUT_READONLY her ikisi de ayarlandığında metin renginin kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **disabled_text_color_id** Stil stili ayarlanmazken metin renginin GX_STYLE_ENABLED kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **readonly_text_color_id** Hem stil hem de metin stili GX_STYLE_ENABLED metin GX_STYLE_TEXT_INPUT_READONLY kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı tek satırlık metin girişi metin rengi kümesi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı tek satırlı metin girişi metin rengi kümesi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -19148,11 +19148,11 @@ Bu hizmet, belirtilen başlangıç işareti ve bitiş işareti dizini olan metni
 
 - **GX_SUCCESS** (0x00) Başarılı tek satırlı metin girişi metin seçimi
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) dizin değeri geçerli değil
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Dizin değeri geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -19243,7 +19243,7 @@ status = gx_single_line_text_input_text_set(&my_text_input,
 ## <a name="gx_single_line_text_input_text_set_ext"></a>gx_single_line_text_input_text_set_ext
 
 
-Tek satırlı metin girişi metni ayarlama
+Tek satırlık metin giriş metnini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -19313,7 +19313,7 @@ status = gx_single_line_text_input_text_set_ext(&my_text_input,
 
 ## <a name="gx_slider_create"></a>gx_slider_create
 
-Kaydırıcı oluşturma
+Kaydırıcı oluştur
 
 ### <a name="prototype"></a>Prototype
 
@@ -19331,16 +19331,16 @@ UINT gx_slider_create(
 
 Bu hizmet bir kaydırıcı pencere öğesi oluşturur.
 
-GX_SLIDER, GX_WIDGET türetilen ve bu nedenle tüm gx_widget API hizmetleri GX_SLIDER pencere öğeleriyle kullanılabilir.
+GX_SLIDER GX_WIDGET türetilir ve bu nedenle tüm gx_widget API hizmetleri GX_SLIDER türü pencere öğeleri ile kullanılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
-- **name**: Kaydırıcının adı
-- **parent:** Üst pencere öğesi işaretçisi
-- **tick_count:** Kaydırıcı tık sayısı
-- **slider_info:** Kaydırıcı değer sınırlarını, kaydırıcı iğne boyutunu ve konumunu ve diğer kaydırıcı parametrelerini geçmek için kullanılan bir yapı olan kaydırıcı bilgisi işaretçisi. **Ek I,** bu yapının GX_SLIDER_INFO içerir.
-- **style:** Kaydırıcı stili. **Ek D** , tüm pencere öğeleri için önceden tanımlanmış genel stilleri ve pencere öğesine özgü stilleri içerir.
+- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
+- **ad**: kaydırıcının adı
+- **Parent**: üst pencere öğesi işaretçisi
+- **tick_count**: kaydırıcı işaretleri sayısı
+- **slider_info**: kaydırıcı değeri sınırlarını, kaydırıcı iğne boyutunu ve konumunu ve diğer kaydırıcı parametrelerini geçirmek için kullanılan bir yapı olan kaydırıcı bilgisine yönelik işaretçi. **Ek ı** GX_SLIDER_INFO yapısına yönelik tanımı içerir.
+- **Stil**: kaydırıcı stili. **Ek D** , tüm pencere öğeleri için önceden tanımlanmış genel stilleri ve pencere öğesine özgü stilleri içerir.
 - **slider_id**: uygulama TANıMLı kaydırıcının kimliği
 - **Boyut**: kaydırıcının boyutları
 
@@ -19400,7 +19400,7 @@ status = gx_slider_create(&my_slider, “my_slider”,
 
 ## <a name="gx_slider_draw"></a>gx_slider_draw
 
-Kaydırıcıyı çizme
+Çizim kaydırıcısı
 
 ### <a name="prototype"></a>Prototype
 
@@ -19410,17 +19410,17 @@ VOID gx_slider_draw(GX_SLIDER *slider);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırıcıyı çizmektedir. Bu hizmet, gx_slider_create işlevi tarafından dahili olarak kullanılır, ancak özel bir kaydırıcı çizim işlevi tanımlandığı zaman bu örneklerde uygulama tarafından da kullanılabilir.
+Bu hizmet bir kaydırıcı çizer. Bu hizmet gx_slider_create işlevi tarafından dahili olarak kullanılır, ancak özel bir kaydırıcı çizim işlevi tanımlandığında Bu örneklerde uygulama tarafından kullanılmak üzere de sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
+- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -19455,7 +19455,7 @@ VOID my_slider_draw(GX_SLIDER *slider)
 
 ## <a name="gx_slider_event_process"></a>gx_slider_event_process
 
-İşlem kaydırıcı olayı
+Kaydırıcıyı işleme olayı
 
 ### <a name="prototype"></a>Prototype
 
@@ -19467,21 +19467,21 @@ UINT gx_slider_event_process(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırıcı olayını işler. Bu işleve gx_slider_create işlevi tarafından dahili olarak başvurulur, ancak uygulamanın özel bir kaydırıcı olay işleme işlevini tanımladığı durumlarda uygulama tarafından kullanıma sunulur.
+Bu hizmet bir kaydırıcı olayı işler. Bu işlev, gx_slider_create işlevi tarafından dahili olarak başvurulsa da, uygulamanın özel bir kaydırıcı olay işleme işlevi tanımladığı durumlarda uygulama tarafından kullanım için açığa çıkar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
-- **olay**: işlenecek olaya yönelik işaretçi
+- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
+- **event:** İşlemeye olay işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı kaydırıcı olay işlemi
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Başarılı kaydırıcı olay işlemi
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -19538,7 +19538,7 @@ UINT gx_slider_info_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kaydırıcı minimum, kaydırıcı maksimum ve kaydırıcı geçerli değeri gibi belirtilen kaydırıcı bilgilerini belirtilen kaydırıcıya atar. Kaydırıcı, iğne konumunu güncelleştirecek ve yeni kaydırıcı bilgilerine göre yeniden çizecek.
+Bu hizmet, kaydırıcı minimum, kaydırıcı maksimum ve kaydırıcı geçerli değeri gibi belirtilen kaydırıcı bilgilerini belirtilen kaydırıcıya atar. Kaydırıcı, iğne konumunu güncelleştirecek ve yeni kaydırıcı bilgilerine göre yeniden çizecek.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -19596,7 +19596,7 @@ status = gx_slider_info_set (&my_slider, &my_slider_info);
 
 ## <a name="gx_slider_needle_draw"></a>gx_slider_needle_draw
 
-Çiz kaydırıcı iğne
+Kaydırıcı iğnesi çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -19606,17 +19606,17 @@ VOID gx_slider_needle_draw(GX_SLIDER *slider);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir kaydırıcı iğne çizer. Bu hizmet gx_slider_draw işlevi tarafından otomatik olarak çağrılır, ancak özelleştirilmiş kaydırıcı çizim işlevinin bir parçası olarak uygulama tarafından da çağrılabilir.
+Bu hizmet bir kaydırıcı iğnesi çizmektedir. Bu hizmet, gx_slider_draw işlevi tarafından otomatik olarak çağrılır, ancak uygulama tarafından özelleştirilmiş kaydırıcı çizim işlevinin bir parçası olarak da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
+- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -19678,12 +19678,12 @@ Bu hizmet, geçerli kaydırıcı değerine göre kaydırıcı iğne konumunu hes
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS:**(0x00) Başarılı kaydırıcı iğne konumu
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE**: (0x22) kaydırıcı bilgisi geçerli değil
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_INVALID_VALUE:**(0x22) Kaydırıcı bilgileri geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -19789,24 +19789,24 @@ UINT gx_slider_travel_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kaydırıcı gezmasını alır.
+Bu hizmet kaydırıcıyı alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
-- **bilgi**: kaydırıcı bilgi yapısına yönelik işaretçi. **Ek ı** GX_SLIDER_INFO yapısına yönelik tanımı içerir.
-- **return_min_travel**: en düşük seyahat değeri için hedef işaretçisi</td>
-- **return_max_travell**: en yüksek seyahat değeri için hedef işaretçisi</td>
+- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
+- **info:** Kaydırıcı bilgi yapısının işaretçisi. **Ek I,** bu yapının GX_SLIDER_INFO içerir.
+- **return_min_travel:** Minimum seyahat değeri için hedefin işaretçisi</td>
+- **return_max_travell:** Maksimum seyahat değeri için hedefin işaretçisi</td>
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı kaydırıcı seyahat al
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE**: (0x22) kaydırıcı bilgisi geçerli değil
+- **GX_SUCCESS:**(0x00) Başarılı kaydırıcı seyahati
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_INVALID_VALUE:**(0x22) Kaydırıcı bilgileri geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -19900,7 +19900,7 @@ status = gx_slider_value_calculate(&my_slider,
 
 ## <a name="gx_slider_value_set"></a>gx_slider_value_set
 
-Kaydırıcı değerini ayarla
+Kaydırıcı değerini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -19913,12 +19913,12 @@ UINT gx_slider_value_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet kaydırıcı değerini ayarlar. Bu API, uygulama tarafından, kaydırıcı iğne 'yi sürüklemek için Kullanıcı girişi gereksinimini atlayarak program denetimi altına bir kaydırıcı iğne taşımak için çağrılabilir.
+Bu hizmet kaydırıcı değerini ayarlar. Bu API, kaydırıcı iğnesini program denetimi altına taşımak için uygulama tarafından çağrılarak, kaydırıcı iğnesini sürüklemek için kullanıcı girişi ihtiyacı atlanır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **kaydırıcı**: kaydırıcı pencere öğesi denetim bloğu
-- **bilgi**: kaydırıcı bilgi yapısına yönelik işaretçi. **Ek I,** GX_SLIDER_INFO yapısının tanımını içerir
+- **kaydırıcı:** Kaydırıcı pencere öğesi denetim bloğu
+- **info:** Kaydırıcı bilgi yapısının işaretçisi. **Ek I,** GX_SLIDER_INFO yapısının tanımını içerir
 - **new_value:** Yeni kaydırıcı değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -19960,7 +19960,7 @@ status = gx_slider_value_set(&my_slider,
 
 ##  <a name="gx_sprite_create"></a>gx_sprite_create
 
-Bir sprite pencere öğesi oluşturma
+Sprite pencere öğesi oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -19976,29 +19976,29 @@ UINT gx_sprite_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir GX_SPRITE pencere öğesi oluşturur. Bir sprite, bir animasyon içinde olan bir veya birden çok durumlu pixelmap görüntüleme pencere öğesi olarak kullanılabilecek bir dizi pixelharita göstermek için kullanılır.
+Bu hizmet bir GX_SPRITE oluşturur. Sprite, bir dizi piksel haritasını bir animasyonda olduğu gibi görüntülemek için kullanılır veya çok durumlu piksel haritası görüntüleme pencere öğesi olarak kullanılabilir.
 
-GX_SPRITE GX_WIDGET türetilir ve tüm gx_widget API hizmetlerini destekler.
+GX_SPRITE, api GX_WIDGET türetilen ve tüm gx_widget API hizmetlerini destekler.
 
-GX_SPRITE pencere öğesi, SPRITE animasyonunu tanımlamak için GX_SPRITE_FRAME yapılarından oluşan bir dizi gerektirir. **Ek ı** GX_PRITE_FRAME yapısına yönelik tanımı içerir.
+GX_SPRITE pencere öğesi, sprite animasyonunu GX_SPRITE_FRAME bir dizi farklı yapı gerektirir. **Ek I,** bu yapıya GX_PRITE_FRAME içerir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Sprite**: sprite pencere öğesi denetim bloğu
-- **ad**: isteğe bağlı Sprite adı
-- **Parent**: üst pencere öğesi işaretçisi
-- **frame_list**: GX_SPRITE_FRAME yapılarının dizisi
-- **frame_count**: Çerçeve listesi dizisindeki giriş sayısını belirtir
-- **Stil**: sprite stili. **Ek D** , tüm pencere öğeleri için önceden tanımlanmış genel stilleri ve pencere öğesine özgü stilleri içerir.
-- **sprite_id**: uygulama TANıMLı Sprite kimliği
-- **Boyut**: Hareketli grafiğin boyutları
+- **sprite:** Sprite pencere öğesi denetim bloğu
+- **name:** İsteğe bağlı sprite adı
+- **parent:** Üst pencere öğesi işaretçisi
+- **frame_list:** Bir dizi GX_SPRITE_FRAME yapı
+- **frame_count:** çerçeve listesi dizisinde girdi sayısını belirtir
+- **style:** sprite stili. **Ek D,** pencere öğelerine özgü stillerin yanı sıra tüm pencere öğeleri için önceden tanımlanmış genel stiller içerir.
+- **sprite_id:** Sprite'in uygulama tanımlı kimliği
+- **size:** sprite boyutları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarıyla Sprite oluştur
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturuldu
+- **GX_SUCCESS:**(0x00) Başarılı sprite oluşturma
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturulmuş
 - **GX_INVALID_WIDGET:**(0x12) Üst pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -20040,7 +20040,7 @@ UINT gx_sprite_current_frame_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet geçerli sprite çerçevesini atar. Bir GX_SPRITE pencere öğesi otomatik olarak çalışmıyorsa, program tarafından denetlenen durum ışığı olarak kullanılabilir ve komut satırı piksel haritası görüntülenir.
+Bu hizmet geçerli sprite çerçevesini atar. Bir GX_SPRITE pencere öğesi otomatik olarak çalışmıyorsa, program tarafından denetlenen durum ışığı olarak kullanılabilir ve komut çerçeve piksel haritası görüntülenir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -20076,7 +20076,7 @@ status = gx_sprite_current_frame_set(&my_sprite, 3);
 
 ## <a name="gx_sprite_frame_list_set"></a>gx_sprite_frame_list_set
 
-Bir sprite çerçeve listesi atama veya değiştirme
+Sprite çerçeve listesi atama veya değiştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -20089,22 +20089,22 @@ UINT gx_sprite_frame_list_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, Sprite pencere öğesi oluşturulduktan sonra bir sprite pencere öğesi tarafından kullanılan çerçeve listesini atamak veya yeniden atamak için kullanılabilir. Bir sprite çerçeve listesinin içeriği hakkında daha fazla bilgi için gx_sprite_create API belgelerine bakın.
+Bu hizmet, sprite pencere öğesi oluşturulduktan sonra bir sprite pencere öğesi tarafından kullanılan çerçeve listesini atamak veya yeniden atamak için kullanılabilir. Bir sprite çerçeve listesinin içeriği hakkında daha fazla bilgi için gx_sprite_create API belgelerine bakın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Sprite**: sprite pencere öğesi denetim bloğu
-- **frame_list**: GX_SPRITE_FRAME yapılarının dizisi veya çerçeve listesi yoksa GX_NULL.
-- **frame_count**: Çerçeve listesi dizisindeki çerçeve sayısı
+- **sprite:** Sprite pencere öğesi denetim bloğu
+- **frame_list:** Çerçeve GX_SPRITE_FRAME veya çerçeve GX_NULL dizi.
+- **frame_count:** Çerçeve listesi dizisinde kare sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı Sprite çerçeve listesi kümesi
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Başarılı sprite çerçeve listesi kümesi
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -20192,12 +20192,12 @@ Bu hizmet, sprite otomatik çalıştırma sırasını durdurur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) Sprite çalıştırmasını başarıyla durdurdu
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Sprite çalıştırması başarıyla durduruldu
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -20237,20 +20237,20 @@ UINT gx_string_scroll_wheel_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir dize türü kaydırma tekerleği oluşturur.
+Bu hizmet, bir dize türü kaydırma tekerleği oluşturur.
 
-GX_STRING_SCROLL_WHEEL GX_TEXT_SCROLL_WHEEL türetilir ve bu nedenle tüm gx_text_scroll_wheel API işlevleri GX_STRING_SCROLL_WHEEL pencere öğeleri ile birlikte kullanılabilir.
+GX_STRING_SCROLL_WHEEL, GX_TEXT_SCROLL_WHEEL türetilen ve bu nedenle gx_text_scroll_wheel API işlevlerinin hepsi GX_STRING_SCROLL_WHEEL kullanılabilir.
 
-Uygulama, kaydırma tekerleği tarafından görüntülenecek dizeleri tanımlayan oluşturma işlevine basit bir dize dizisi geçirebilir veya uygulama, string_list parametresi olarak GX_NULL geçirebilir ve `gx_string_scroll_wheel_string_id_list_set()` dize kimlikleri dizisi sağlamak üzere API 'yi çağırabilir. İkinci yöntem kullanılırsa, dize kaydırma tekerleği, etkin uygulama dili değiştirilirse, görüntülenecek dizeleri otomatik olarak geçer.
+Uygulama, kaydırma tekerleği tarafından görüntülenecek dizeleri tanımlayan create işlevine basit bir dize dizisi iletir veya uygulama GX_NULL parametresi olarak string_list'yi iletir ve dize kimlikleri dizisi sağlamak için `gx_string_scroll_wheel_string_id_list_set()` API'yi çağırabilirsiniz. İkinci yöntem kullanılırsa, etkin uygulama dili değiştirilirse dize kaydırma tekerleği görüntülenen dizeleri otomatik olarak değiştirecek.
 
-Alternatif olarak, görüntülenecek dizeler, kaydırma tekerleği oluşturulduğu sırada statik olarak tanımlanmazsa veya bilmiyor ise, uygulama GX_NULL dize listesi parametresi olarak geçirebilir ve bir geri çağırma işlevi tanımlamak için gx_text_scroll_wheel_callback_set () API işlevini çağırıp, dizelerin gerçek zamanlı olarak görüntülenmesini sağlar.
+Alternatif olarak, görüntülenecek dizeler statik olarak tanımlanmamışsa veya kaydırma tekerleği oluşturulurken bilinmezse uygulama, dize listesi parametresi olarak GX_NULL'ı iletebilir ve gerektiğinde gerçek zamanlı olarak görüntülenecek dizeleri sağlayacak bir geri çağırma işlevi tanımlamak için gx_text_scroll_wheel_callback_set() API işlevini çağırabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tekerlek**: dize kaydırma tekerleği denetim bloğu adresi
-- **ad**: uygulama tanımlı pencere öğesi adı
-- **üst öğe**: tekerlek üstü veya GX_NULL
-- **total_rows**: kullanıcıya sunulacak toplam satır sayısı
+- **wheel:** Dize kaydırma tekerleği denetim bloğu adresi
+- **name:** Uygulama tanımlı pencere öğesi adı
+- **parent:** Tekerlek üst veya GX_NULL
+- **total_rows:** Kullanıcıya sunulacak toplam satır sayısı
 - **string_list:** Statik olarak tanımlanmış dize dizisi veya GX_NULL
 - **style:** İstenen stil bayrakları
 - **Kimlik:** Uygulama tanımlı tekerlek stili bayraklar
@@ -20261,7 +20261,7 @@ Alternatif olarak, görüntülenecek dizeler, kaydırma tekerleği oluşturuldu�
 - **GX_SUCCESS:**(0x00) Dize kaydırma tekerleği başarıyla oluşturuldu
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR (0x07)**: Geçersiz işaretçi
-- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturuldu
+- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturulmuş
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -20330,21 +20330,21 @@ UINT gx_string_scroll_wheel_string_id_list_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dize kaydırma tekerleği için bir olayı işler. Bu hizmet özel bir dize kaydırma tekerleği olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
+Bu hizmet, belirtilen dize kaydırma tekerleği için bir olayı işler. Bu hizmet, herhangi bir özel dize kaydırma tekerleği olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tekerlek** Dize kaydırma tekerleği denetim bloğu işaretçisi
-- **event_ptr** İşlenecek olaya yönelik işaretçi
+- **wheel (tekerlek)** Dize kaydırma tekerleği denetim bloğuna işaretçi
+- **event_ptr** İşlemeye devam etmek için olayın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı dize kaydırma tekerleği olay işlemi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı dize kaydırma tekerleği olay işlemi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -20406,23 +20406,23 @@ UINT gx_string_scroll_wheel_string_id_list_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir dize kaydırma tekerleği pencere öğesine dize kimlikleri dizisi atar. Dizeler statik olarak tanımlanmışsa ve pencere öğesi birden çok dilde çalışmalısa, dize kaydırma tekerleğine dize atama yöntemi önerilir. Bu API kullanılacaksa, önce kaydırma tekerleği pencere öğesi bir GX_NULL dize listesi ile oluşturulmalıdır.
+Bu hizmet, bir dize kaydırma tekerleği pencere öğesine dize kimlikleri dizisi atar. Dizeler statik olarak tanımlanmışsa ve pencere öğesi birden çok dilde çalışmalısa, dize kaydırma tekerleğine dize atama yöntemi önerilir. Bu API kullanılacaksa, ilk olarak kaydırma tekerleği pencere öğesi bir dize listesiyle GX_NULL gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tekerlek**: dize kaydırma tekerleği denetim bloğu adresi
-- **string_id_list**: dize kimlikleri dizisi
-- **id_count**: kimlik listesinin boyutu.
+- **wheel:** Dize kaydırma tekerleği denetim bloğu adresi
+- **string_id_list:** Dize Kimlikleri Dizisi
+- **id_count:** Kimlik listesinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) dize kimliği dizisi başarıyla ayarlandı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE**: 0x22) geçersiz kimlik listesi boyutu
+- **GX_SUCCESS:**(0x00) Dize kimliği dizisini başarıyla ayarlama
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_INVALID_VALUE:** 0x22) Geçersiz Kimlik listesi boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -20499,9 +20499,9 @@ Bu string_scroll_wheel işlevinin GX_STYLE_TEXT_COPY desteklemez ve bu nedenle b
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
-- **GX_INVALID_VALUE**: (0x22) geçersiz dize listesi boyutu
+- **GX_INVALID_VALUE:**(0x22) Geçersiz dize listesi boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -20573,7 +20573,7 @@ Bir uygulamanın oluşturulan belirtimler dosyasındaki GUIX Studio pencere öğ
 ### <a name="parameters"></a>Parametreler
 
 - **denetim** Pencere öğesi denetim bloğu işaretçisi veya GX_NULL olarak ayrılmışsa bu işaretçiyi seçin.
-- **tanım** Studio tarafından oluşturulan pencere öğesi tanımı yapısı
+- **definition (tanım)** Studio tarafından oluşturulan pencere öğesi tanımı yapısı
 - **varsa,** pencere öğesi üst işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -20622,20 +20622,20 @@ UINT *gx_studio_named_widget_create(
 
 Bu hizmet, GUIX Studio tarafından oluşturulan belirtimler dosyasında tanımlanan bir pencere öğesi belirtimi kullanarak bir pencere öğesi ve pencere öğesi öğelerini oluşturur.
 
-Bu API işlevi, pencere öğesi tanım tanımlayıcısı olarak Gux Studio uygulamasında belirtilen ekran adını kullanarak en üst düzey ekranları oluşturmak için kullanılır.
+Bu API işlevi, GUIX Studio uygulamasında pencere öğesi tanımı tanımlayıcısı olarak belirtilen ekran adını kullanarak üst düzey ekranlar oluşturmak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ad**: ekran adı Gux Studio uygulaması içinde tanımlandığı şekilde.
-- **Parent**: varsa pencere öğesi üst öğesine işaretçi
-- **new_widget**: oluşturulan pencere öğesi işaretçisini döndürecek konum
+- **name:** GUIX Studio uygulamasında tanımlanan ekran adı.
+- **parent:** varsa pencere öğesi üst öğesi işaretçisi
+- **new_widget:** oluşturulan pencere öğesi işaretçisini iade etmek için konum
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı
-- **GX_FAILURE**: (0x11) adlandırılmış pencere öğesi bulunamadı
+- **GX_SUCCESS:**(0x00) Başarılı
+- **GX_FAILURE:**(0x11) Adlandırılmış pencere öğesi bulunamadı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -20660,7 +20660,7 @@ status = gx_studio_named_widget_create(“main_menu”,
 
 ## <a name="gx_studio_display_configure"></a>gx_studio_display_configure
 
-GUX Studio projesinde tanımlanan ekranı Yapılandır
+GUIX Studio projesinde tanımlanan ekranı yapılandırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -20675,17 +20675,17 @@ UINT *gx_studio_display_configure(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, kullanıma hazırlanabilmesi için bir GX_DISPLAY başlatır. Bu işlev, GX_DISPLAY bir denetim bloğu başlatmak, ekrana sığacak bir tuval oluşturmak ve tuval için bir kök pencere oluşturmak üzere işlevleri birleştirir. Bu işlev Ayrıca, görüntüleme başlatıldıktan sonra istenen dili ve kaynak temasını da yükleyecek.
+Bu hizmet, GX_DISPLAY için bir hizmet başlatıyor. Bu işlev, bir denetim bloğu GX_DISPLAY, görüntüye sığacak bir tuval oluşturmak ve tuval için bir kök pencere oluşturmak için işlevleri birleştirilmiştir. Bu işlev, görüntü başlatıldıktan sonra istenen dili ve kaynak temasını da yüklür.
 
-Bu işlev, bir ekranı kullanıma hazırlamak için en yaygın olarak gereken programlama çabayı birleştirir. İşlev, gx_display_create (), gx_display_color_table_set, gx_display_font_table_set, gx_display_pixelmap_table_set, gx_system_language_table_set, gx_system_active_language_set, gx_system_scroll_appearance_set, gx_canvas_create ve gx_window_root_create işlevlerini, diğer bir deyişle uygulama programı için gerekli olacak şekilde çağırır.
+Bu işlev, bir ekran kullanmak üzere hazırlamak için en yaygın olarak gereken programlama çabasını birleştirilmiştir. İşlev gx_display_create()), gx_display_color_table_set, gx_display_font_table_set, gx_display_pixelmap_table_set, gx_system_language_table_set, gx_system_active_language_set, gx_system_scroll_appearance_set, gx_canvas_create ve gx_window_root_create işlevlerini çağırır; bunların hepsi veya bazıları uygulama programı tarafından gerekli olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **görüntüle**: Studio proje dosyasındaki görüntüleme tanımlarına karşılık gelen görüntüleme tablosuna dizin.
-- **sürücü**: görüntü sürücüsü başlatma işlevine yönelik işaretçi. Bu işlev, GX_DISPLAY denetim bloğunun dolaylı işlev işaretçilerini başlatmak için çağrılır ve gerekli tüm donanım ayarlarını gerçekleştirir.
-- **dil**: ilk dil tablosu dizini
+- **display:** Studio proje dosyasındaki görüntüleme tanımlarına karşılık gelen görüntü tablosunda dizine alın.
+- **driver**: sürücü başlatma işlevini görüntüleme işaretçisi. Bu işlev, denetim bloğunda dolaylı işlev işaretçilerini başlatmak GX_DISPLAY ve gerekli donanım kurulumunu gerçekleştirmek için çağrılır.
+- **language**: ilk dil tablosu dizini
 - **language**: ilk tema dizini
-- **root:** kök pencere adresinin veya bir değişkenin hangi değişkende GX_NULL.
+- **root:** kök pencere adresinin veya kök pencere adresinin iade GX_NULL.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -20727,7 +20727,7 @@ the requested language and theme have been installed.
 
 ## <a name="gx_system_active_language_set"></a>gx_system_active_language_set
 
-Etkin dil ayarlama
+Etkin dili ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -20737,7 +20737,7 @@ UINT gx_system_active_language_set(GX_UBYTE language);
 
 ### <a name="description"></a>Description
 
-Bu hizmet geçerli dili ayarladı. Dil dizini, uygulama dizesi tablosunda sütun sayısından az olmalıdır. Bu işlev, kullanımdan gx_display_active_language_set. Tüm yeni uygulamalar gx_display_active_langauge_set kullanmalıdır.
+Bu hizmet geçerli dili ayarladı. Dil dizini, uygulama dizesi tablosundaki sütun sayısından küçük olmalıdır. Bu işlev, gx_display_active_language_set kullanım dışı bırakılmıştır. Tüm yeni uygulamalar gx_display_active_langauge_set kullanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -20792,11 +20792,11 @@ Bu API kullanılarak ayrılan bir animasyon denetim bloğu, animasyon tamamlanma
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS**: (0x00) animasyon denetim bloğu başarıyla alındı
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz animasyon işaretçisi
-- **GX_OUT_OF_ANIMATIONS:**(0x31) Sistem animasyon havuzu tükendi
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz animasyon işaretçisi
+- **GX_OUT_OF_ANIMATIONS**: (0x31) sistem animasyon havuzu tükendi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -20822,7 +20822,7 @@ if (status == GX_SUCCESS)
 
 ## <a name="gx_system_animation_free"></a>gx_system_animation_free
 
-Sistem havuzuna animasyon denetim bloğu geri dönme
+Sistem havuzuna bir animasyon denetim bloğu döndürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -20832,17 +20832,17 @@ UINT gx_system_animation_free(GX_ANIMATION *animation);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sistem havuzuna bir animasyon denetim bloğu dönmek için kullanılabilir. Animasyon denetim bloğu havuzu ve ilgili API hizmetleri yalnızca sabit GX_ANIMATION_POOL_SIZE 0 değeriyle tanımlandığı zaman sağlanır. Bu değer için varsayılan ayar 6'dır, yani sistem animasyon denetim bloğu havuzu, denetim bloğuna GX_ANIMATION içerir.
+Bu hizmet, sistem havuzuna bir animasyon denetim bloğu döndürmek için kullanılabilir. Animasyon denetim bloğu havuzu ve ilgili API hizmetleri yalnızca sabit GX_ANIMATION_POOL_SIZE 0 değeri ile tanımlandığında sağlanır. Bu değer için varsayılan ayar 6 ' dır, yani sistem animasyon denetim blok havuzu boyut GX_ANIMATION denetim bloğu içerir.
 
-Animasyon tamamlanacak şekilde çalıştırılırsa gx_system_animation_get() kullanılarak ayrılan bir animasyon denetim bloğu otomatik olarak ücretsiz havuza döndürülür. Ücretsiz havuza zaten döndürülen ücretsiz havuza bir animasyon denetim bloğu döndürülerek herhangi bir etkisi olmaz.
+Animasyon tamamlanmayı çalıştırıyorsa, gx_system_animation_get () kullanılarak ayrılmış bir animasyon denetim bloğu otomatik olarak boş havuza döndürülür. Boş havuza zaten döndürülen boş havuza bir animasyon denetim bloğu döndürme girişimi hiçbir etkiye sahip değildir.
 
-Animasyon gx_animation_stop kullanılarak durdurulursa veya döndürülen bir hata nedeniyle başlatılamezse, gx_system_animation_get() kullanılarak elde edilen animasyon denetim bloğu gx_system_animation_free() kullanılarak uygulama tarafından ücretsiz havuza döndürülebilir.
+Animasyon gx_animation_stop kullanılarak durdurulmuşsa veya bazı döndürülen bir hata nedeniyle başlatılamıyorsa, gx_system_animation_get () kullanılarak edinilen animasyon denetim bloğu, uygulama tarafından gx_system_animation_free () kullanılarak boş havuza döndürülmelidir.
 
-Animasyonun boş havuza döndürülmeden önce BOŞTA durumda olması gerekir. Animasyon, başlatılmasa, durdurulurken veya tamamlandıktan sonra boşta durumdadır.
+Bir animasyon, ücretsiz havuza döndürülmeden önce boşta durumunda olmalıdır. Bir animasyon, başlatılmamışsa, durdurulduğunda veya tamamlanmaya çalıştırıldığında boşta durumundadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **animation:** Denetim bloğuna GX_ANIMATION işaretçisi.
+- **animasyon**: GX_ANIMATION denetim bloğuna yönelik işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -20924,7 +20924,7 @@ status = gx_system_bidi_text_disable();
 
 ## <a name="gx_system_bidi_text_enable"></a>gx_system_bidi_text_enable
 
-Dinamik bidi metin desteğini etkinleştirme
+Dinamik bidi metin desteğini etkinleştir
 
 ### <a name="prototype"></a>Prototype
 
@@ -20934,7 +20934,7 @@ UINT gx_system_bidi_text_enable(VOID);
 
 ### <a name="description"></a>Description
 
-Bu hizmet dinamik çift yönlü metin desteği sağlar. Bu hizmet GX_DYNAMIC_BIDI_TEXT_SUPPORT GUIX kitaplığını derleme sırasında tanımlanmalıdır ve yalnızca BiDi dize verilerini yeniden sıralamak için çalışma zamanı gerektiğinde gereklidir. Çoğu uygulama, doğru şekilde yeniden sıralandırilmiş BiDi metin dizeleri üretmek için GUIX Studio kullanır.
+Bu hizmet, dinamik iki yönlü metin desteğini sunar. Bu hizmet, Gux kitaplığı oluşturulurken GX_DYNAMIC_BIDI_TEXT_SUPPORT tanımlanması gerekir ve yalnızca BiDi dize verilerinin çalışma zamanı yeniden sıralanması gerekliyse gereklidir. Çoğu uygulama, doğru şekilde yeniden sıralandırilmiş BiDi metin dizeleri üretmek için GUIX Studio kullanır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -20975,7 +20975,7 @@ UINT gx_system_canvas_refresh(VOID);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, tüm kirli pencere öğelerinin ve tuvallerin hemen yeniden çizilmelerini sağlar. Bu hizmet normalde GUIX sistem bileşeni tarafından dahili olarak çağrılır, ancak uygulama tarafından sistemi hemen yeniden çizen bir işlemi zorlamak için çağrılabilir.
+Bu hizmet, tüm kirli pencere öğelerinin ve tuvallerin hemen yeniden çizilmelerini sağlar. Bu hizmet normalde GUIX sistem bileşeni tarafından dahili olarak çağrılır, ancak uygulama tarafından sistem yeniden çizilen hemen bir işlemi zorlamak için çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -21093,7 +21093,7 @@ status = gx_system_dirty_mark(&my_widget);
 
 ## <a name="gx_system_dirty_partial_add"></a>gx_system_dirty_partial_add
 
-Kısmi alanı kirli olarak işaretle
+Kısmi alanı kirli olarak işaretleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -21105,22 +21105,22 @@ UINT gx_system_dirty_partial_add(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bu pencere öğesinin kısmi alanını kirli olarak işaretler. Bu işlem, sistem olay işleme tamamlandığında Gux tuval yenileme işlemi tarafından yeniden çizim için pencere öğesini kuyruğa alır.
+Bu hizmet bu pencere öğesi için kısmi alanı kirli olarak işaretler. Bu, sistem olay işlemesi tamamlandığında pencere öğesi GUIX tuval yenileme işlemi tarafından yeniden çizileme için kuyruğa eklenir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere öğesi**: pencere öğesi denetim bloğu işaretçisi
-- **dirty_area**: kirli olarak işaretlemek için pencere öğesinin kirli alanı
+- **pencere öğesi:** Pencere öğesi denetim bloğu işaretçisi
+- **dirty_area:** Kirli işaretlemek için pencere öğesi kirli alanı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS:**(0x00) Başarılı kısmi kirli alan işareti
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
-- **GX_INVALID_SIZE:**(0x19) Geçersiz kirli alan boyutu
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_SIZE**: (0x19) kirli alanın geçersiz boyutu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21304,7 +21304,7 @@ status = gx_system_event_fold(&my_event);
 
 ## <a name="gx_system_event_send"></a>gx_system_event_send
 
-Olay gönderme
+Olayı gönder
 
 ### <a name="prototype"></a>Prototype
 
@@ -21314,7 +21314,7 @@ UINT gx_system_event_send(GX_EVENT *event);
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtilen olayı GUIX sistem olay kuyruğuna gönderir. Yeni olay sıranın sonuna yerleştirilir.
+Bu hizmet, belirtilen olayı Gux sistem olay kuyruğuna gönderir. Yeni olay sıranın sonuna yerleştirilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -21378,7 +21378,7 @@ status = gx_system_event_send(&new_event);
 
 ## <a name="gx_system_focus_claim"></a>gx_system_focus_claim
 
-Talep odağı
+Talep odaklı
 
 ### <a name="prototype"></a>Prototype
 
@@ -21388,19 +21388,19 @@ UINT gx_system_focus_claim(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen pencere öğesi için odağı talep ediyor. Pencere öğesi daha önce odak noktası yoksa, bir GX_EVENT_FOCUS_GAINED alır.
+Bu hizmet, belirtilen pencere öğesi için odağı talep ediyor. Pencere öğesi daha önce odağa sahip değilse, GX_EVENT_FOCUS_GAINED bir olay alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** öğesi: Talep odağına pencere öğesi denetim bloğu işaretçisi
+- **pencere öğesi**: odağı talep etmek için pencere öğesi denetim bloğunun işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı odak talebi
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_NO_CHANGE:**(0x08) Pencere öğesi odak sahibi zaten
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_INVALID_WIDGET:**(0x12 Pencere Öğesi geçerli değil
+- **GX_SUCCESS**: (0x00) başarılı odak talebi
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_NO_CHANGE**: (0x08) zaten odağa sahip pencere öğesi
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_INVALID_WIDGET**: (0X12 pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -21444,7 +21444,7 @@ status = gx_system_claim_focus(&my_widget);
 
 ## <a name="gx_system_initialize"></a>gx_system_initialize
 
-GUIX'i başlatma
+GUX 'i Başlat
 
 ### <a name="prototype"></a>Prototype
 
@@ -21454,7 +21454,7 @@ UINT gx_system_initialize(VOID);
 
 ### <a name="description"></a>Description
 
-Bu hizmet GUIX'i başlatıyor. Bu hizmet başka bir GUIX API'si hizmetten önce çağrılı ve sistem başlangıcında yalnızca bir kez çağrılmalı.
+Bu hizmet, GUıDX 'i başlatır. Bu hizmetin diğer bir Gux API hizmetinden önce çağrılması ve sistem başlangıcında yalnızca bir kez çağrılması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -21462,7 +21462,7 @@ Bu hizmet GUIX'i başlatıyor. Bu hizmet başka bir GUIX API'si hizmetten önce 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı sistem başlatma
+- **GX_SUCCESS**: (0x00) başarılı sistem başlatması
 - **GX_SYSTEM_ERROR:**(0xFE) Geçersiz GX_EVENT denetim bloğu boyutu veya olay kuyruğu/mutex/iş parçacığı oluşturma işlemi başarısız oldu.
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
 
@@ -21507,7 +21507,7 @@ status = gx_system_initialize();
 
 ## <a name="gx_system_language_table_get"></a>gx_system_language_table_get
 
-Etkin dil tablosunu al
+Etkin dil tablosu alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -21520,7 +21520,7 @@ UINT gx_system_language_table_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, etkin dil tablosunu alır. Bu işlev, kullanımdan gx_display_language_table_get. Tüm yeni uygulamalar, gx_display_language_table_get.
+Bu hizmet etkin dil tablosu alır. Bu işlev, kullanımdan gx_display_language_table_get. Tüm yeni uygulamalar, gx_display_language_table_get.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -21583,11 +21583,11 @@ Bu hizmet etkin dil tablosu yüklü olur. Bu işlev, kullanımdan gx_display_lan
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) dil tablosu başarıyla ayarlandı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_SUCCESS:**(0x00) Dil tablosu başarıyla ayarlanmadı
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21608,7 +21608,7 @@ status = gx_system_language_table_set(language_table,
 
 ## <a name="gx_system_memory_allocator_set"></a>gx_system_memory_allocator_set
 
-Bellek ayırma, serbest ayırma için işlevler atama
+Bellek ayırma, ayırmayı geri alan işlevler atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -21619,25 +21619,25 @@ UINT gx_system_memory_allocator_set(VOID *(allocate)(ULONG size),
 
 ### <a name="description"></a>Description
 
-Bu hizmet, dinamik bellek ayırma ve ayırmayı ayırma için uygulama tarafından sağlanan geri çağırma işlevini atar.
+Bu hizmet, dinamik bellek ayırma ve ayırmayı geri alma için uygulama tarafından sağlanan geri çağırma işlevini atar.
 
-Uygulama için dinamik bellek ayırma kullanan bir Gux hizmeti gerekmiyorsa, bu hizmetin çağrılması gerekmez.
+Uygulama tarafından dinamik bellek ayırma kullanan bir GUIX hizmetine ihtiyaç yoksa, bu hizmetin çağrılma ihtiyacı yoktur.
 
-Kullanılıyorsa, bu hizmetin, Gux hizmet işaretçilerini ve dinamik bellek ayırmayı kullanması gereken Gux hizmetinden önce, gx_system_initialize () sonra çağrılması gerekir.
+Kullanılırsa, bu hizmet GUIX hizmet işaretçilerini temiz gx_system_initialize() sonra ve dinamik bellek ayırmanın kullanımını gerektiren herhangi bir GUIX hizmeti önce çağrılır.
 
-Çalışma zamanı belleği ayırmayı ve ayırmayı kaldırma hizmetini gerektiren GUıDX Hizmetleri şunları içerir:
+Çalışma zamanı bellek ayırma ve ayırmayı geri yükleme hizmeti gerektiren GUIX hizmetleri şunlardır:
 
-- Dış depolamadan Gux çalışma zamanı ortamına ikili kaynakları yükleme.
-- Yazılım çalışma zamanı JPEG görüntü kod çözücüsü.
-- Yazılım çalışma zamanı PNG resmi kod çözücüsü.
-- GX_STYLE_TEXT_COPY ile metin pencere öğeleri kullanma.
-- Çalışma zamanı Pikselleştirme yeniden boyutlandırma ve döndürme yardımcı programı işlevleri.
-- Çalışma zamanı ekranı ve pencere öğesi denetim bloğu ayırması.
+- Dış depolamadan GUIX çalışma zamanı ortamına ikili kaynak yükleme.
+- Yazılım çalışma zamanı jpeg görüntü kod çözücü.
+- Yazılım çalışma zamanı png görüntü kod çözücü.
+- Metin pencere öğelerini GX_STYLE_TEXT_COPY.
+- Çalışma zamanı pixemap yeniden boyutlandırma ve döndürme yardımcı programı işlevleri.
+- Çalışma zamanı ekranı ve pencere öğesi denetimi blok ayırma.
 
 ### <a name="parameters"></a>Parametreler
 
 - **allocator:** Bellekocator işlevi
-- **sürüm:** Bellek boş işlevi
+- **yayın:** Bellek boş işlevi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -21745,10 +21745,10 @@ GUX yayınları 5.4.0 ve daha eski sürümlerde, GX_PEN_CONFIGURATION gx_pen_con
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Kalem yapılandırmasını başarıyla ayarlama
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS**: (0x00) kalem yapılandırması başarıyla ayarlandı
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21790,22 +21790,22 @@ UINT gx_system_screen_stack_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sistem ekran yığını için kullanılacak bir bellek havuzu tanımlar. Sistem ekran yığını, uygulama tarafından uygulama ekran akışı görünümünü yönetmek için kullanılan isteğe bağlı bir özelliktir.
+Bu hizmet, sistem ekran yığını için kullanılacak bir bellek havuzunu tanımlar. Sistem ekran yığını uygulama ekran akışı görünümünü yönetmek için uygulama tarafından kullanılabilen isteğe bağlı bir özelliktir.
 
-Uygulama, ekran yığını hizmetlerini kullanmak için gx_system_screen_stack_create bellek bölgesi kurulumu için önce çağrılmak gerekir.
+Uygulama, ekran yığını hizmetlerini kullanmayı amaçladığında, önce ekran yığını bellek bölgesini ayarlamak için gx_system_screen_stack_create işlevin çağrılması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **memory:** Ayrılmış bellek bloğuna işaretçi.
-- **size:** Ayrılmış bellek bloğuna ait bayt cinsinden boyut.
+- **bellek**: ayrılmış bellek bloğuna yönelik işaretçi.
+- **Boyut**: ayrılan bellek bloğunun bayt cinsinden boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarıyla oluşturma
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_SUCCESS**: (0x00) başarıyla oluşturuldu
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21908,12 +21908,12 @@ Bu işlev, ekran yığınında en üstteki girdiyi otomatik olarak ekler ve basa
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Ekran yığını işaretçilerinin başarıyla alınması
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_FAILURE:**(0x10) Geçersiz veya boş ekran yığını
+- **GX_SUCCESS**: (0x00) ekran yığını işaretçilerinin başarıyla alımı
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_FAILURE**: (0x10) geçersiz veya boş ekran yığını
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21958,9 +21958,9 @@ Bu hizmet, genellikle üst düzey bir ekran olan belirtilen pencere öğesine bi
 
 - **GX_SUCCESS:**(0x00) Kaydırma çubuğu görünümünü başarıyla alın
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -21994,7 +21994,7 @@ UINT gx_system_screen_stack_reset();
 
 ### <a name="description"></a>Description
 
-Bu işlev, sistem ekran yığınından tüm girdileri kaldırır. Yığından oluşan ekranlarda, GUıDX Studio tarafından ayrılan dinamik olarak ayrılmış denetim blokları varsa, bu denetim blokları için bellek serbest bırakılır.
+Bu işlev, sistem ekran yığınından tüm girişleri kaldırır. Yığından çıkan ekranların GUIX Studio tarafından ayrılan dinamik olarak ayrılmış denetim blokları varsa, bu denetim bloklarının belleği serbesttir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -22002,11 +22002,11 @@ Bu işlev, sistem ekran yığınından tüm girdileri kaldırır. Yığından ol
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) kaydırma çubuğu görünümü başarıyla al
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_SUCCESS:**(0x00) Kaydırma çubuğu görünümünü başarıyla alın
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22099,7 +22099,7 @@ appearance. */
 
 ## <a name="gx_system_scroll_appearance_set"></a>gx_system_scroll_appearance_set
 
-Kaydırma görünümünü ayarla
+Kaydırma görünümünü ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -22111,20 +22111,20 @@ UINT gx_system_scroll_appearance_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet varsayılan kaydırma görünümünü ayarlar. Bir kaydırma oluşturulduğunda, uygulama özel bir sürüm sunmadığı takdirde bu görünüm yapısı kullanılır.
+Bu hizmet varsayılan kaydırma görünümünü ayarlar. Bir kaydırma oluşturulduğunda, uygulama özel bir sürüm oluşturmadıkça bu görünüm yapısı kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stil**: kaydırma stili `GX_SCROLLBAR_HORIZONTAL` veya `GX_SCROLLBAR_VERTICAL`
-- **Görünüm**: farklı ScrollBar görünümü öznitelikleriyle başlatılan görünüm yapısına yönelik işaretçi. İlke **yapısının tanımı** için Ek I GX_SCROLLBAR_APPEARANCE bakın.
+- **style:** Kaydırma stili `GX_SCROLLBAR_HORIZONTAL` veya `GX_SCROLLBAR_VERTICAL`
+- **appearance:** Çeşitli kaydırma çubuğu görünüm öznitelikleriyle başlatılan görünüm yapısının işaretçisi. İlke **yapısının tanımı** için Ek I GX_SCROLLBAR_APPEARANCE bakın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS:**(0x00) Kaydırma görünümü kümesi başarıyla ayarlanmış
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22303,13 +22303,13 @@ UINT gx_system_string_table_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, istenen dilin dize tablosunu ilk ekranda alır. Bu işlev, gx_display_string_table_get kullanım dışı bırakılmıştır. Tüm yeni uygulamalar, gx_display_string_table_get.
+Bu hizmet, istenen dilin dize tablosunu ilk ekranda alır. Bu işlev, gx_display_string_table_get kullanım dışı bırakılmıştır. Tüm yeni uygulamalar gx_display_string_table_get kullanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **language**: Dil dizini
-- **string_table:** Dize tablosu işaretçisinin depolama alanı işaretçisi veya çağıranın dize tablosu işaretçisini almak zorunda yoksa NULL.
-- **get_size:** Dize tablosunda dize sayısı için depolama işaretçisi veya çağıranın dize tablosunda dize sayısını almak zorunda olmayan NULL.
+- **dil**: dil dizini
+- **string_table**: dize tablo işaretçisinin depolama alanı işaretçisi veya çağıranın dize tablosuna yönelik işaretçiyi ALMASı gerekmiyorsa null.
+- **get_size**: dize tablosundaki dize sayısı için depolama alanı işaretçisi veya çağıranın dize tablosundaki dize sayısını ALMASı gerekmiyorsa null.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -22364,18 +22364,18 @@ Bu hizmet, belirtilen yazı tipini kullanarak sağlanan dizenin görüntüleme g
 
 - **font:** Dizenin yazı tipi işaretçisi
 - **string:** Dize işaretçisi
-- **string_length**: dize uzunluğu
-- **return_width**: dizenin genişliği için hedef
+- **string_length:** Dize uzunluğu
+- **return_width:** Dize genişliği hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı dize genişliği al
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_INVALID_FONT**: (0x16) geçersiz Yazı tipi
-- **GX_INVALID_STRING_LENGTH**: (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS:**(0x00) Başarılı dize genişliği get
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_FONT:**(0x16) Geçersiz yazı tipi
+- **GX_INVALID_STRING_LENGTH:**(0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22410,20 +22410,20 @@ UINT gx_system_string_width_get_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen yazı tipini kullanarak sağlanan dizenin piksel cinsinden görüntüleme genişliğini hesaplar.
+Bu hizmet, belirtilen yazı tipini kullanarak sağlanan dizenin görüntüleme genişliğini piksel cinsinden hesaplar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yazı tipi**: dizenin yazı tipine yönelik işaretçi
-- **dize**: dize işaretçisi
-- **return_width**: dizenin genişliği için hedef
+- **font:** Dizenin yazı tipi işaretçisi
+- **string:** Dize işaretçisi
+- **return_width:** Dize genişliği hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı dize genişliği al
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_CALLER_ERROR**: 0x11) bu işlevin çağıranı geçersiz
-- **GX_INVALID_FONT**: (0x16) geçersiz Yazı tipi
+- **GX_SUCCESS:**(0x00) Başarılı dize genişliği get
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_CALLER_ERROR:** 0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_FONT:**(0x16) Geçersiz yazı tipi
 - **GX_INVALID_STRING_LENGTH:**(0x34) Geçersiz dize uzunluğu
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -22467,7 +22467,7 @@ status = gx_system_string_width_get_ext(&my_font,
 
 ## <a name="gx_system_timer_start"></a>gx_system_timer_start
 
-Zamanlayıcıyı Başlat
+Zamanlayıcıyı başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -22481,25 +22481,25 @@ UINT gx_system_timer_start(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen pencere öğesi için bir süreölçer başlatır. Sabit GX_MAX_ACTIVE_TIMERS desteklenen en fazla etkin Zamanlayıcı sayısını tanımladı. Bu değer için varsayılan ayar 32 ' dir.
+Bu hizmet, belirtilen pencere öğesi için bir zamanlayıcı başlatır. Sabit süre GX_MAX_ACTIVE_TIMERS desteklenen en yüksek etkin süre öncelerini tanımladı. Bu değer için varsayılan ayar 32'dir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **sahip**: pencere öğesi denetim bloğu işaretçisi
-- **timer_id**: zamanlayıcının kimliği
-- **initial_ticks**: ilk süre sonu işaretleri
-- **reschedule_ticks**: düzenli süre sonu işaretleri
+- **sahip:** Pencere öğesi denetim bloğu işaretçisi
+- **timer_id:** Süreölçer kimliği
+- **initial_ticks:** başlangıç sona erme zaman işaretlerini
+- **reschedule_ticks:** Düzenli süre sonu onayları
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) başarılı süreölçer başlangıcı
-- **GX_OUT_OF_TIMERS**: (0x04) daha fazla Zamanlayıcı yok
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE**: (0X22) Zamanlayıcı değerleri geçerli değil
+- **GX_SUCCESS:**(0x00) Başarılı zamanlayıcı başlatma
+- **GX_OUT_OF_TIMERS:**(0x04) Artık süreer yok
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_INVALID_VALUE:**(0x22) Zamanlayıcı değerleri geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22546,7 +22546,7 @@ UINT gx_system_timer_stop(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çağıran pencere öğesiyle timer_id belirtilen süreölçeri durdurur. Uygulama, belirli bir pencere öğesiyle bağlantılı tüm süreerleri durdurmak için timer_id değerini 0 olarak iletir.
+Bu hizmet, çağıran pencere öğesiyle timer_id belirtilen süreölçeri durdurur. Belirli bir pencere öğesiyle bağlantılı tüm süreerleri durdurmak için, uygulama 0 timer_id değerini iletir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -22557,11 +22557,11 @@ Bu hizmet, çağıran pencere öğesiyle timer_id belirtilen süreölçeri durdu
 
 - **GX_SUCCESS:**(0x00) Başarılı zamanlayıcı durdurma
 - **GX_NOT_FOUND:**(0x09) Zamanlayıcı Kimliği bulunamadı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22606,7 +22606,7 @@ UINT gx_system_version_string_get(GX_CHAR **version);
 
 ### <a name="description"></a>Description
 
-Bu hizmet gx_system_version_string_get_ext() için kullanım dışıdır.
+Bu hizmet, gx_system_version_string_get_ext() için kullanım dışıdır.
 
 Bu hizmet GUIX kitaplığı sürüm dizesini alır.
 
@@ -22716,21 +22716,21 @@ UINT gx_system_widget_find(
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtilen pencere öğesi kimliğini arar. Bu işlev, gx_widget_find() işlevinin aksine, sistemde tanımlanan tüm kök pencerelerin öğelerini arar, yani tüm görünür pencere öğelerinin kapsamlı bir aramasıdır. Aramakta olduğunu pencere öğesi üst öğesi biliyorsanız, bunun yerine gx_widget_find() kullanın.
+Bu hizmet, belirtilen pencere öğesi KIMLIĞINI arar. Gx_widget_find () aksine, bu işlev sistemde tanımlanan tüm kök pencerelerin alt öğelerini arar, yani bu, tüm görünür pencere öğelerinin ayrıntılı bir aradır. Aradığınız pencere öğesinin üst öğesini biliyorsanız bunun yerine gx_widget_find () kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **widget_id:** Aranan Pencere Öğesi Kimliği
-- **search_level:** Alt pencere öğelerinin arandığı, recursive iç içe yerleştirme düzeyini tanımlar. Bu değer 0 ise, her kök penceresinin yalnızca anlık children aranır. Bu değer GX_SEARCH_DEPTH_INFINITE işlev, istenen pencere öğesi kimliğini arayan tüm alt öğeleri içine iç içe yer almaktadır. 0 olan diğer > için arama düzeyi, bu işlevin istenen pencere öğesi kimliğini aramaya ne kadar derinden iç içe geçmiş olduğunu tanımlar.
-- **return_search_result:** Pencere öğesi bulundu için hedefin işaretçisi
+- **widget_id**: aranacak pencere öğesi kimliği
+- **search_level**: alt pencere öğelerinin aranacağı özyinelemeli iç içe geçme düzeyini tanımlar. Bu değer 0 ise, her bir kök pencerenin yalnızca anlık alt öğeleri aranır. Bu değer GX_SEARCH_DEPTH_INFINITE ise, işlev, istenen pencere öğesi KIMLIĞINI arayan tüm alt öğeleri arar. Başka herhangi bir değer > 0 ' da, arama düzeyi bu işlevin istenen pencere öğesi KIMLIĞI için ne kadar fazla arama yapılacağını tanımlar.
+- **return_search_result**: pencere öğesi için hedef işaretçisi bulundu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı pencere öğesi araması
-- **GX_NOT_FOUND:**(0x09) Pencere Öğesi Kimliği bulunamadı
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_SUCCESS**: (0x00) başarılı pencere öğesi araması
+- **GX_NOT_FOUND**: (0x09) pencere öğesi kimliği bulunamadı
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -22795,26 +22795,26 @@ UINT gx_text_button_create(
 
 Bu hizmet bir metin düğmesi pencere öğesi oluşturur.
 
-GX_TEXT_BUTTON, api hizmetlerinden GX_BUTTON ve tüm api gx_button destekler.
+GX_TEXT_BUTTON GX_BUTTON türetilir ve tüm gx_button API hizmetlerini destekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_button:** Metin işaretçisi düğme denetim bloğu
-- **name:** Metin düğmesinin mantıksal adı
-- **parent:** Düğmenin üst pencere öğesi işaretçisi
-- **text_id:** Metnin kaynak kimliği
-- **style:** Metin düğmesi stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
-- **text_button_id:** Metin düğmesinin uygulama tanımlı kimliği
-- **size:** Düğmenin boyutu
+- **text_button**: metin düğmesi denetim bloğuna işaretçi
+- **ad**: metin düğmesinin mantıksal adı
+- **Parent**: düğmenin üst pencere öğesine işaretçi
+- **text_id**: METNIN kaynak kimliği
+- **Stil**: metin düğmesi stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
+- **text_button_id**: metin düğmesinin uygulama tanımlı kimliği
+- **Boyut**: düğmenin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı metin düğmesi oluşturma
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturuldu
-- **GX_INVALID_SIZE:**(0x19) Geçersiz pencere öğesi denetim bloğu boyutu
-- **GX_INVALID_WIDGET:**(0x12) Üst pencere öğesi geçerli değil
+- **GX_SUCCESS**: (0x00) başarılı metin düğmesi oluştur
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_ALREADY_CREATED**: (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE**: (0x19) geçersiz pencere öğesi denetimi blok boyutu
+- **GX_INVALID_WIDGET**: (0x12) üst pencere öğesi geçerli değil
 
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -22873,17 +22873,17 @@ VOID gx_text_button_draw(GX_TEXT_BUTTON *button);
 
 ### <a name="description"></a>Description
 
-Bu hizmet metin düğmesini çizmektedir. Bu hizmet normalde tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel metin düğmesi çizim işlevlerinden de çağrılabilirsiniz.
+Bu hizmet metin düğmesini çizer. Bu hizmet, genellikle tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel metin düğmesi çizim işlevlerinden de çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **düğme:** Metin işaretçisi düğme denetim bloğu
+- **düğme**: metin düğmesi denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -22933,21 +22933,21 @@ UINT gx_text_button_event_process(GX_TEXT_BUTTON *text_button, GX_EVENT *event_p
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen metin düğmesi için bir olayı işler. Bu hizmet, özel metin düğmesi olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
+Bu hizmet, belirtilen metin düğmesi için bir olayı işler. Bu hizmet, herhangi bir özel metin düğmesi olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_button** Metin düğmesi denetim bloğuna işaretçi
-- **event_ptr** İşlenecek olaya yönelik işaretçi
+- **text_button** Metin işaretçisi düğme denetim bloğu
+- **event_ptr** İşlemeye devam etmek için olayın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı metin düğmesi olay işlemi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı metin düğmesi olay işlemi
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -23057,7 +23057,7 @@ status = gx_text_button_font_set(&my_text_button, MY_FONT);
 
 ## <a name="gx_text_button_text_color_set"></a>gx_text_button_text_color_set
 
-Metin düğmesi rengini ayarla
+Metin düğmesi rengini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -23075,8 +23075,8 @@ Bu hizmet, metin düğmesinin rengini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_button**: metin düğmesi denetim bloğuna işaretçi
-- **normal_text_color_id**: normal METNIN kaynak kimliği. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **text_button:** Metin işaretçisi düğme denetim bloğu
+- **normal_text_color_id:** Normal metnin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 - **selected_text_color_id:** Seçilen metnin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 - **disabled_text_color_id:** Devre dışı bırakılmış metin için rengin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
 
@@ -23084,10 +23084,10 @@ Bu hizmet, metin düğmesinin rengini ayarlar.
 
 - **GX_SUCCESS:**(0x00) Başarılı metin düğmesi renk kümesi
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -23197,21 +23197,21 @@ UINT gx_text_button_text_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, gx_text_button_text_get_ext() için kullanım dışıdır.
+Bu hizmet gx_text_button_text_get_ext () kullanımı için kullanım dışıdır.
 
-Bu hizmet, belirtilen dizeyi metin düğmesinden alır.
+Bu hizmet, metin düğmesinden belirtilen dizeyi alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text_button:** Metin işaretçisi düğme denetim bloğu
-- **return_text:** Metin düğmesinden alınan dizenin işaretçisi
+- **text_button**: metin düğmesi denetim bloğuna işaretçi
+- **return_text**: metin düğmesinden alınan dizenin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Düğmeden metni başarıyla alın
-- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_SUCCESS**: (0x00) düğmeden metin başarıyla alınır
+- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -23360,7 +23360,7 @@ status = gx_text_button_text_id_set(&my_text_button,
 
 ## <a name="gx_text_button_text_set"></a>gx_text_button_text_set
 
-Metin düğmesine metin ata (kullanım dışı)
+Metin düğmesine metin atama (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -23372,9 +23372,9 @@ UINT gx_text_button_text_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet gx_text_button_text_set_ext () kullanımı için kullanım dışıdır.
+Bu hizmet, gx_text_button_text_set_ext() için kullanım dışıdır.
 
-Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi stil GX_STYLE_TEXT_COPY ile oluşturulduysa pencere öğesi, atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
+Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi stil GX_STYLE_TEXT_COPY oluşturulursa, pencere öğesi atanan metin dizesinin özel bir kopyasını oluşturur. GX_STYLE_TEXT_COPY etkin değilse, pencere öğesi gelen dizenin özel bir kopyasını oluşturmaz ve bu nedenle dize statik veya genel olarak ayrılmış olmalıdır, yani otomatik veya geçici bir değişken olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -23431,18 +23431,18 @@ Bu hizmet, belirtilen dizeyi metin düğmesine atar. Text_button pencere öğesi
 ### <a name="parameters"></a>Parametreler
 
 - **text_button:** Metin işaretçisi düğme denetim bloğu
-- **String**: GX_STRING değişkenine yönelik işaretçi
+- **string:** GX_STRING değişkeninin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) metin düğmeye başarıyla ayarlandı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
-- **GX_SYSTEM_MEMORY_ERROR**: (0x30) bellek ayırıcısı tanımlı değil veya bellek ayırma başarısız oldu
-- **GX_INVALID_STRING_LENGTH**: (0x34) geçersiz dize uzunluğu
+- **GX_SUCCESS:**(0x00) Metni düğme olarak başarıyla ayarlama
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Bellek ayırma tanımlanmadı veya bellek ayırma başarısız oldu
+- **GX_INVALID_STRING_LENGTH:**(0x34) Geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -23499,15 +23499,15 @@ Bu hizmet, imlecin yanıp sönme aralığı değerini ayarlar.
 ### <a name="parameters"></a>Parametreler
 
 - **cursor_input** İmleç denetim bloğu
-- **blink_interval** Ayar için değer
+- **blink_interval** Ayarlanacak değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) İmleç yanıp sönme aralığını başarıyla ayarlama
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_VALUE:**(0x22) Yanıp sönme aralığı değeri geçerli değil
+- **GX_SUCCESS**: (0x00) imleç yanıp sönme aralığını başarıyla ayarladı
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_VALUE**: (0x22) yanıp sönen Aralık değeri geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -23535,7 +23535,7 @@ status = gx_text_input_cursor_blink_interval_set(input_cursor, 2);
 
 ## <a name="gx_text_input_cursor_height_set"></a>gx_text_input_cursor_height_set
 
-İmleç yüksekliğini ayarlama
+İmleç yüksekliğini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -23547,11 +23547,11 @@ UINT gx_text_input_cursor_height_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet imlecin yüksekliğini ayarlar.
+Bu hizmet, imlecin yüksekliğini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cursor_input:** İmleç denetim bloğu
+- **cursor_input**: imleç denetim bloğu
 - **Yükseklik** Ayarlanacak değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -23642,7 +23642,7 @@ successfully set to 2. */
 
 ## <a name="gx_text_scroll_wheel_callback_set"></a>gx_text_scroll_wheel_callback_set
 
-Metin türü kaydırma tekerleğinin geri çağırma işlevini atama (kullanım dışı)
+Metin türü kaydırma tekerinin geri çağırma işlevini ata (kullanım dışı)
 
 ### <a name="prototype"></a>Prototype
 
@@ -23654,28 +23654,28 @@ UINT gx_text_scroll_wheel_callback_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, gx_text_scroll_wheel_callback_set_ext() tercihi ile kullanım dışıdır.
+Bu hizmet gx_text_scroll_wheel_callback_set_ext () kullanımı için kullanım dışıdır.
 
-Bu hizmet, kaydırma tekerleğinin her bir satırına görüntülenecek metin dizesini belirlemek için bir metin türü kaydırma tekerleğinin çağıracak olduğu geri çağırma işlevini atar.
+Bu hizmet, kaydırma tekerleğinin her satırında görüntülenecek metin dizesini belirleyebilmek için bir metin türü kaydırma tekerinin çağıracağı geri çağırma işlevini atar.
 
-Bu GX_NUMERIC_SCROLL_WHEEL GX_STRING_SCROLL_WHEEL için varsayılan geri çağırma işlevleri sağlanır ve uygulamanın bu varsayılan uygulamaları kullanmak için herhangi bir değişiklik yapmaları gerekmemektedir.
+GX_NUMERIC_SCROLL_WHEEL ve GX_STRING_SCROLL_WHEEL için, varsayılan geri çağırma işlevleri sağlanır ve uygulamanın bu varsayılan uygulamaları kullanmak için herhangi bir değişiklik yapması gerekmez.
 
-Bu API, uygulamanın kaydırma tekerleği pencere öğesinde görüntülenen dizenin biçimlendirmesini veya diğer parametrelerini özelleştirmesine izin vermek için sağlanır.
+Bu API, uygulamanın, kaydırma tekerleği pencere öğesinin her satırında görüntülenen biçimlendirme veya dizenin diğer parametrelerini özelleştirmesini sağlamak için sağlanır.
 
-Geri çağırma işlevi, kaydırma tekerleği denetim bloğuna bir işaretçi ve görüntülenen satır numarasını girdi olarak alır. İşlev, metin dizesine bir işaretçi döndürür.
+Geri çağırma işlevi, kaydırma tekerleği denetim bloğuna ve görüntülenen satır numarasına bir işaretçi girişi olarak gönderilir. İşlev, bir metin dizesine bir işaretçi döndürmelidir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Dize kaydırma tekerleği denetim bloğu adresi
-- **geri çağırma** Geri çağırma işlevinin işaretçisi
+- **tekerlek** Dize kaydırma tekerleği denetim bloğu adresi
+- **geri arama** Geri çağırma işlevine işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Geri çağırma başarıyla ayarlanmadı
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_SUCCESS**: (0x00) geri çağırma başarıyla ayarlandı
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -23759,10 +23759,10 @@ Geri çağırma işlevi, kaydırma tekerleği denetim bloğuna ve görüntülene
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS**: (0x00) geri çağırma başarıyla ayarlandı
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -23924,7 +23924,7 @@ UINT my_scroll_wheel_create(MY_SCROLL_WHEEL *wheel,
 
 ## <a name="gx_text_scroll_wheel_draw"></a>gx_text_scroll_wheel_draw
 
-Metin kaydırma tekerleği çizme
+Metin kaydırma tekerleği çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -23934,9 +23934,9 @@ VOID gx_text_scroll_wheel_draw(GX_TEXT_SCROLL_WHEEL *wheel);
 
 ### <a name="description"></a>Description
 
-Bu, temel alınan tüm tekerlek türleri için varsayılan çizim GX_TEXT_SCROLL_WHEEL. Bu işlev, metin kaydırma tekerleği çizimi görünümünü özelleştirmeyi gerektiren uygulamalar tarafından geçersiz kılınabilir.
+Bu, GX_TEXT_SCROLL_WHEEL dayalı tüm tekerlek türleri için varsayılan çizim işlevidir. Bu işlev, metin kaydırma tekerleği çizim görünümünü özelleştirmeyi gerektiren uygulamalar tarafından geçersiz kılınabilir.
 
-GX_STRING_SCROLL_WHEEL ve GX_NUMERIC_SCROLL_WHEEL, veri kaynaklarından türetilen veya GX_TEXT_SCROLL_WHEEL.
+GX_STRING_SCROLL_WHEEL ve GX_NUMERIC_SCROLL_WHEEL, GX_TEXT_SCROLL_WHEEL dayanır veya türetilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -23994,11 +23994,11 @@ UINT gx_text_scroll_wheel_event_process(GX_TEXT_SCROLL_WHEEL *wheel, GX_EVENT *e
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen metin kaydırma tekerleği için bir olayı işler. Bu hizmet, herhangi bir özel metin kaydırma tekerleği olay işleme işlevi tarafından varsayılan olay işleyicisi olarak çağrılmalı.
+Bu hizmet, belirtilen metin kaydırma tekerleği için bir olayı işler. Bu hizmet, özel metin kaydırma tekerleği olay işleme işlevleri tarafından varsayılan olay işleyicisi olarak çağrılmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **wheel (tekerlek)** Metin işaretçisi kaydırma tekerleği denetim bloğu
+- **tekerlek** Metin kaydırma tekerleği denetim bloğu işaretçisi
 - **event_ptr** İşlemeye devam etmek için olayın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -24056,7 +24056,7 @@ UINT custom_text_scroll_wheel_event_process(GX_TEXT_SCROLL_WHEEL *wheel, GX_EVEN
 
 ## <a name="gx_text_scroll_wheel_font_set"></a>gx_text_scroll_wheel_font_set
 
-Kaydırma tekerleği satırlarını çizmek için kullanılan yazı tiplerini atama
+Kaydırma tekerleği satırları çizmek için kullanılan yazı tiplerini atama
 
 ### <a name="prototype"></a>Prototype
 
@@ -24069,20 +24069,20 @@ UINT gx_text_scroll_font_set(
 
 ### <a name="description"></a>Description
 
-Metin kaydırma tekerleği tabanlı pencere öğesinin metnini çizmek için kullanılacak yazı tiplerini atayın.
+Metin kaydırma tekerleği tabanlı pencere öğesi metnini çizmek için kullanılan yazı tiplerini attayabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tekerlek**: dize kaydırma tekerleği denetim bloğu adresi
+- **wheel:** Dize kaydırma tekerleği denetim bloğu adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) tekerlek yazı tipi başarıyla atandı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Başarıyla atanan tekerlek yazı tipi
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24148,7 +24148,7 @@ Bu işlev, metin tabanlı kaydırma tekerleği satırları çizmek için kullan�
 - **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24201,7 +24201,7 @@ UINT gx_tree_view_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet belirtildiği şekilde bir ağaç görünümü oluşturur ve ağaç görünümünü sağlanan üst pencere öğesiyle ilişkilendirir. Tüm pencere öğesi türlerini alt menü öğesi olarak kabul eder. Alt menü öğesi olarak GX_MENU pencere öğesinin kullanılması önerilir.
+Bu hizmet, belirtilen şekilde bir ağaç görünümü oluşturur ve ağaç görünümünü sağlanan üst pencere öğesiyle ilişkilendirmektedir. Tüm pencere öğesi türlerini alt menü öğesi olarak kabul eder. Alt menü öğesi olarak GX_MENU pencere öğesinin kullanılması önerilir.
 
 GX_TREE_VIEW, api GX_WINDOW türetilen ve tüm gx_window API hizmetlerini destekler.
 
@@ -24219,7 +24219,7 @@ GX_TREE_VIEW, api GX_WINDOW türetilen ve tüm gx_window API hizmetlerini destek
 - **GX_SUCCESS:**(0x00) Başarılı ağaç görünümü oluşturma
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturuldu
+- **GX_ALREADY_CREATED:**(0x13) Pencere öğesi zaten oluşturulmuş
 - **GX_INVALID_SIZE:**(0x19) Geçersiz pencere öğesi denetim bloğu boyutu
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
@@ -24256,7 +24256,7 @@ status = gx_tree_view_create(&my_tree_view,
 
 ## <a name="gx_tree_view_draw"></a>gx_tree_view_draw
 
-Ağaç görünümünü çiz
+Ağaç görünümü çizme
 
 ### <a name="prototype"></a>Prototype
 
@@ -24266,7 +24266,7 @@ VOID gx_tree_view_draw(GX_TREE_VIEW *tree);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ağaç görünümünü çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ağaç görünümü pencere öğeleri için özel çizim işlevleri uygulamaya yardımcı olmak üzere uygulamaya sunulur.
+Bu hizmet belirtilen ağaç görünümünü çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel ağaç görünümü pencere öğeleri için özel çizim işlevlerini uygulamaya yardımcı olmak üzere uygulamaya açıktır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -24276,7 +24276,7 @@ Bu hizmet, belirtilen ağaç görünümünü çizer. Bu işlev normalde Gux tuva
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -24337,7 +24337,7 @@ Bu hizmet, belirtilen ağaç görünümü için bir olayı işler. Bu hizmet, he
 - **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -24385,7 +24385,7 @@ return status;
 
 ## <a name="gx_tree_view_indentation_set"></a>gx_tree_view_indentation_set
 
-Ağaç görünümü girintisini ayarla
+Ağaç görünümü girintisini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -24397,16 +24397,16 @@ UINT gx_tree_view_indentation_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ağaç görünümü için Girintiyi belirler.
+Bu hizmet ağaç görünümü için girintiyi ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ağaç**: ağaç görünümü denetim bloğu işaretçisi
-- **girintileme**: ayarlanacak girintileme
+- **tree**: Ağaç görünümü denetim bloğuna işaretçi
+- **girintileme:** Ayar için girintileme
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) ağaç görünümü girintisi başarıyla ayarlandı
+- **GX_SUCCESS:**(0x00) Ağaç görünümü girintisini başarıyla ayarlama
 - **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
@@ -24453,20 +24453,20 @@ UINT gx_tree_view_position(GX_TREE_VIEW *tree);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ağaç görünümü öğelerini konumlandırır.
+Bu hizmet ağaç görünümü öğelerini konumlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ağaç**: ağaç görünümü denetim bloğu işaretçisi
+- **tree**: Ağaç görünümü denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) ağaç görünümü öğeleri başarıyla yerleştirildi
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Ağaç görünümü öğeleri başarıyla konumlandı
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24558,7 +24558,7 @@ status = gx_tree_view_root_line_color_set(&my_tree,
 
 ## <a name="gx_tree_view_root_pixelmap_set"></a>gx_tree_view_root_pixelmap_set
 
-Ağaç görünümü kök pixelmap ayarla
+Ağaç görünümü kök piksel haritasını ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -24571,22 +24571,22 @@ UINT gx_tree_view_root_pixelmap_set(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ağaç görünümü için bir Genişlet ve Daralt pixelmap 'e atar.
+Bu hizmet ağaç görünümü için piksel haritasını genişletme ve daraltma atar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ağaç**: ağaç görünümü denetim bloğu işaretçisi
-- **expand_map_id**: ' nin Genişlet pixelmap kaynak kimliği
-- **collapse_map_id**: pixelmap 'i daraltma kaynak kimliği
+- **tree**: Ağaç görünümü denetim bloğuna işaretçi
+- **expand_map_id:** Genişlet piksel haritasının kaynak kimliği
+- **collapse_map_id:** Piksel haritasını daralt'ın kaynak kimliği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) kök pixelmap başarıyla ayarlandı
-- **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS:**(0x00) Kök piksel haritasını başarıyla ayarlama
+- **GX_CALLER_ERROR:**(0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24632,20 +24632,20 @@ UINT gx_tree_view_selected_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ağaç görünümünün geçerli seçili öğesini almaktadır.
+Bu hizmet, ağaç görünümünün geçerli seçili öğesini alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tree**: Ağaç görünümü denetim bloğuna işaretçi
-- **selected:** Seçili pencere öğesi işaretçisinin işaretçisi
+- **ağaç**: ağaç görünümü denetim bloğu işaretçisi
+- **Seçili**: seçili pencere öğesi işaretçisine işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Seçilen öğe başarıyla alındı
-- **GX_PTR_ERROR:**(0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_SUCCESS**: (0x00) seçili öğe başarıyla alındı
+- **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24704,9 +24704,9 @@ Bu hizmet, ağaç görünümü için seçili öğeyi ayarlar.
 - **GX_SUCCESS**: (0x00) başarılı Çiz Menüsü
 - **GX_CALLER_ERROR**: (0x11) bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR**: (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET:**(0x12) Pencere öğesi geçerli değil
+- **GX_INVALID_WIDGET**: (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -24738,7 +24738,7 @@ been set to “tree_view_item”. */
 
 ## <a name="gx_utility_canvas_to_bmp"></a>gx_utility_canvas_to_bmp
 
-Tuval faturalarını bit eşlem olarak dönüştürme
+Tuval anma resmini bit eşleme Dönüştür
 
 ### <a name="prototype"></a>Prototype
 
@@ -24755,7 +24755,7 @@ Bu hizmet tuval belleğini bit eşlem dosyasına dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tuval:** Tuval denetim bloğu işaretçisi
+- **tuval**: tuval denetim bloğu işaretçisi
 - **Rect**: dönüştürülecek dikdörtgen
 - **write_data**: verileri yazmak için geri çağırma işlev işaretçisi
 
@@ -24824,7 +24824,7 @@ VOID scroll_wheel_screen_draw(GX_WINDOW *window)
 
 ## <a name="gx_utility_circle_point_get"></a>gx_utility_circle_point_get
 
-Dairenin üzerinde nokta hesaplama
+Bir daire üzerinde nokta hesaplama
 
 ### <a name="prototype"></a>Prototype
 
@@ -24895,7 +24895,7 @@ GX_POINT point;
 
 ## <a name="gx_utility_gradient_create"></a>gx_utility_gradient_create
 
-Bir gradyan pixelmap oluşturun
+Gradyan piksel haritası oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -24911,15 +24911,15 @@ INT gx_utility_gradient_create(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, çalışma zamanında bir gradyan pixelmap oluşturur. Bir gradyan görüntüsü, belirme efektlerini ve diğer ilgi çekici görsel değişiklikleri gerçekleştirmek için kullanılabilir.
+Bu hizmet çalışma zamanında bir gradyan piksel haritası oluşturur. Gradyan görüntü, soldurma etkilerini ve diğer ilgi çekici görsel değişiklikleri gerçekleştirmek için kullanılabilir.
 
-İstenen degradenin genişliği ve yüksekliği, 2x2 pikselden az olamaz.
+İstenen gradyanın genişliği ve yüksekliği 2x2 pikselden az olabilir.
 
-GUX, oluşturulan degradeler listesinin bir listesini tutar ve bu işlev ilk olarak, yeni bir pixelmap oluşturmadan önce eşleşen bir gradyan pixelmap bulmak için gradyan listesinde arama yapar. Diğer bir deyişle, aynı gradyan pixelmap 'i birden çok kez gerekir, yalnızca bir pixelmap oluşturulmuştur ve bu pixelmap 'i gerektiren her degrade oluşturulan pixelmap 'i paylaşır.
+GUIX, oluşturulan gradyanların listesini dahili olarak sürdürür ve bu işlev, yeni bir piksel haritası oluşturmadan önce eşleşen bir gradyan piksel haritası bulmak için gradyan listesini aratır. Başka bir deyişle, aynı gradyan piksel haritası birden çok kez gereklidir, aslında yalnızca bir piksel haritası oluşturulur ve bu piksel haritası gerektiren her gradyan oluşturulan piksel haritasını paylatır.
 
-Bu API, çalışma zamanı bellek ayırmaya izin vermek için gx_system_memory_allocator işlevinin tanımlanmasını gerektirir.
+Bu API, gx_system_memory_allocator bellek ayırmaya izin vermek için gx_system_memory_allocator işlevinin tanımlanmalıdır.
 
-Gradyan türü bayrakları GX_GRADIENT_TYPE_ALPHA ve GX_GRADIENT_TYPE_MIRROR içerir. Yalnızca GX_GRADIENT_TYPE_ALPHA türü gradyanları de desteklemiştir (bu tür bayrağının ayarlanmış olması gerekir). GX_GRADIENT_TYPE_MORROR bayrağı isteğe bağlıdır ve ayar olduğunda, gradyan oluşturma mantığına, start_alpha'den end_alpha'ye ve sonra yeniden start_alpha. Aksi takdirde doğrusal bir gradyan oluşturulur.
+Gradyan türü bayrakları, GX_GRADIENT_TYPE_ALPHA ve GX_GRADIENT_TYPE_MIRROR. Yalnızca GX_GRADIENT_TYPE_ALPHA türü gradyanları de desteklemiştir (bu tür bayrağının ayarlanmış olması gerekir). GX_GRADIENT_TYPE_MORROR bayrağı isteğe bağlıdır ve ayar olduğunda, gradyan oluşturma mantığına, start_alpha'den end_alpha'ye ve sonra yeniden start_alpha. Aksi takdirde doğrusal gradyan oluşturulur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -24979,7 +24979,7 @@ status = gx_utiity_gradient_create(&gradient, 3, 40,
 
 ## <a name="gx_utility_gradient_delete"></a>gx_utility_gradient_delete
 
-Önceden oluşturulmuş bir degradeyi silme
+Önceden oluşturulmuş bir gradyan silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -24989,11 +24989,11 @@ INT gx_utility_gradient_delete(GX_GRADIENT *gradient);
 
 ### <a name="description"></a>Description
 
-Bu hizmet daha önce oluşturulmuş bir degradeyi siler. Bu degradeyle ilişkilendirilen pixelmap başka degradeler tarafından kullanımda değilse, pixelmap verileri de silinir.
+Bu hizmet, önceden oluşturulmuş bir gradyan siler. Bu gradyan ile ilişkilendirilmiş piksel haritası başka bir gradyan tarafından kullanımda yoksa piksel haritası verileri de silinir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gradyan**: gradyan denetim bloğu işaretçisi
+- **gradyan:** Gradyan denetim bloğuna işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -25105,7 +25105,7 @@ representation of “my_value”. */
 
 ## <a name="gx_utility_math_acos"></a>gx_utility_math_acos
 
-İşlem ark kosinüs
+İşlem yay kosinüsü
 
 ### <a name="prototype"></a>Prototype
 
@@ -25115,24 +25115,24 @@ INT gx_utility_math_acos(GX_FIXED_VAL x);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, ark kosinüs x'in açı değerini hesaplar.
+Bu hizmet, ark kosinüs x 'in açı değerini hesaplar.
 
-Giriş değeri sabit bir nokta veri t GX_FIXED_VAL_MAKE inT'den GX_FIXED_VAL çağrısıdır. Örneğin, 0,5'in ark kosinüs değerini hesaplamak için girişi GX_FIXED_VAL_MAKE(1) / 2 olarak ifade edin.
+Giriş değeri sabit bir nokta veri türüdür, INT 'ten GX_FIXED_VAL türüne dönüştürmek için GX_FIXED_VAL_MAKE çağırın. Örneğin, 0,5 'in ark kosinüsünü hesaplamak istiyorsanız, girişi GX_FIXED_VAL_MAKE (1)/2 olarak yapın.
 
-5.4.0 veya daha küçük bir GUIX sürümünde, bu işlevin giriş değeri türü INT'tir ve değer [-256, 256] aralığıyla sınırlıdır. Uygulama bu hizmeti çağırmadan önce değeri [-1, 1] aralığından [-256, 256] aralığına ölçeklendirmeli. GUIX sürümü 5.4.0 veya daha küçük olan projenizin bu API'ye başvurusu varsa ve projenizi en son Guix kitaplığıyla yükseltmek istiyorsanız. İki seçenek sunulur.
+5.4.0 veya daha düşük sürümde, bu işlevin giriş değeri türü INT 'tir ve değer [-256, 256] aralığıyla sınırlıdır. Bu hizmeti çağırmak için uygulama [-1, 1] aralığından [-256, 256] aralığında değeri ölçeklendirmelidir. GUX sürümüne eşit veya daha küçük olan projeniz bu API 'ye başvuru içeriyorsa ve projenizi en son Gux kitaplığıyla yükseltmek istiyorsanız. İki seçenek sunulur.
 
-1. Veri türü değerini kullanmak için bu API çağrısının GX_FIXED_VAL düzeltin.
-1. Veri GUIX_5_4_0_COMPATIBILITY.
+1. Bu API çağrısının giriş değerini, GX_FIXED_VAL veri türü değerini kullanacak şekilde düzeltir.
+1. GUIX_5_4_0_COMPATIBILITY tanımlayın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **x:** Ark kosinüs değeri hesaplandı
+- **x**: yay kosinüsü hesaplanan değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **açı:** Ark kosinüs x'in açı değeri
+- **açı**: ark kosinüs x 'in açı değeri
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Tümü
 
@@ -25187,20 +25187,20 @@ Bu hizmet, ark sinüs x 'in açı değerini hesaplar.
 
 Giriş değeri sabit bir nokta veri türüdür, INT 'ten GX_FIXED_VAL türüne dönüştürmek için GX_FIXED_VAL_MAKE çağırın. Örneğin, 0,5 yay değerini hesaplamak istiyorsanız, girişi GX_FIXED_VAL_MAKE (1)/2 olarak yapın.
 
-5.4.0 veya daha düşük sürümde, bu işlevin giriş değeri türü INT 'tir ve değer [-256, 256] aralığıyla sınırlıdır. Uygulama bu hizmeti çağırmadan önce değeri [-1, 1] aralığından [-256, 256] aralığına ölçeklendirmeli. GUIX sürümüne sahip projeniz 5.4.0'a eşit veya daha küçükse ve projenizi en son guix kitaplığıyla yükseltmek istiyorsanız. İki seçenek sunulur.
+5.4.0 veya daha düşük sürümde, bu işlevin giriş değeri türü INT 'tir ve değer [-256, 256] aralığıyla sınırlıdır. Bu hizmeti çağırmak için uygulama [-1, 1] aralığından [-256, 256] aralığında değeri ölçeklendirmelidir. GUX sürümüne eşit veya ondan küçükse ve projenizi en son Gux kitaplığıyla yükseltmek istiyorsanız. İki seçenek sunulur.
 
-1. Veri türü değerini kullanmak için bu API çağrısının GX_FIXED_VAL düzeltin.
-1. Veri GUIX_5_4_0_COMPATIBILITY.
+1. Bu API çağrısının giriş değerini, GX_FIXED_VAL veri türü değerini kullanacak şekilde düzeltir.
+1. GUIX_5_4_0_COMPATIBILITY tanımlayın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **x:** Ark sinüsü hesaplanan değer
+- **x**: yay sinüsü hesaplanan değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **açı:** Ark sinüsü x'in açı değeri
+- **açı**: Ark sinüsü x açı değeri
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Tümü
 
@@ -25323,13 +25323,13 @@ GX_FIXED_VAL gx_utility_math_sin(GX_FIXED_VAL angle);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sağlanan açının sinüsü hesaplar.
+Bu hizmet, sağlanan açının sinüsünü hesaplar.
 
-Giriş değeri, INT'den veri kaynağına GX_FIXED_VAL_MAKE bir sabit nokta veri GX_FIXED_VAL. Örneğin, 90 derecelik sinüsü hesaplamak için girişi GX_FIXED_VAL_MAKE(90) olarak kullanabilirsiniz. 
+Giriş değeri sabit bir nokta veri türüdür, INT 'ten GX_FIXED_VAL dönüştürmek için GX_FIXED_VAL_MAKE çağırın. Örneğin, 90 derecelik sinüsü hesaplamak istiyorsanız, girişi GX_FIXED_VAL_MAKE (90) olarak yapın. 
 
-Dönüş değeri sabit bir nokta veri t değeridir ve GX_FIXED_VAL_TO_INT'den INT'ye GX_FIXED_VAL çağrısıdır.
+Dönüş değeri sabit bir nokta veri türüdür, GX_FIXED_VAL ' dan INT 'e dönüştürmek için GX_FIXED_VAL_TO_INT çağırın.
 
-5.4.0 veya daha küçük bir GUIX sürümünde giriş değeri ve dönüş değeri türü INT'tir, giriş değeri ve dönüş değeri 256 büyütülmüştür. Bu nedenle, uygulamanın bu hizmeti çağırabilmesi için açı değerini 256 ile Ölçeklendirmesi gerekir. GUX sürümüne eşit veya daha küçük bir sürüme sahip projeniz 5.4.0 ve projenizi en son Gux kitaplığıyla yükseltmek istiyorsanız iki seçeneğiniz vardır.
+5.4.0 veya daha düşük sürümde, giriş değeri ve dönüş değer türü INT 'tir, giriş değeri ve dönüş değeri 256 ile genişletilir. Bu nedenle, uygulamanın bu hizmeti çağırabilmesi için açı değerini 256 ile Ölçeklendirmesi gerekir. GUX sürümüne eşit veya daha küçük bir sürüme sahip projeniz 5.4.0 ve projenizi en son Gux kitaplığıyla yükseltmek istiyorsanız iki seçeneğiniz vardır.
 
 1. GX_FIXED_VAL veri türü değerini kullanmak için bu API çağrısının giriş değerini ve dönüş değerine teslim etme değerini onarın.
 1. GUIX_5_4_0_COMPATIBILITY tanımlayın.
@@ -25395,17 +25395,17 @@ UINT gx_utility_math_sqrt(UINT value);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sağlanan değerin karekökünü hesaplar.
+Bu hizmet, sağlanan değerin kare kökünü hesaplar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **değer:** değerinin karekökünü hesaplamak için değer
+- **değer**: hesaplama kare kökünün değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **karekök:** Sağlanan değerin karekökünü
+- **kare kök**: sağlanan değerin kare kökü
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Tümü
 
@@ -25613,19 +25613,19 @@ UINT gx_utility_bidi_resolved_text_info_delete(GX_BIDI_RESOLVED_TEXT_INFO **reso
 
 ### <a name="description"></a>Description
 
-Bu hizmet tarafından döndürülen çözümlenmiş bilgi listesini gx_utility_bidi_paragraph_reorder.
+Bu hizmet, gx_utility_bidi_paragraph_reorder tarafından döndürülen çözümlenmiş bilgi listesini siler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **resolved_info_head:** Çözümlenen BiDi metin bilgileri listesinin işaretçisi
+- **resolved_info_head**: çözümlenen bidi metin bilgisi listesine yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı çözümlenmiş metin silme
-- **GX_PTR_ERROR:**(0x07) Geçersiz giriş işaretçileri
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Bellek ayırma tanımlı değil veya bellek ayırma başarısız oldu
+- **GX_SUCCESS**: (0x00) başarılı çözümlenmiş metin silme
+- **GX_PTR_ERROR**: (0x07) geçersiz giriş işaretçileri
+- **GX_SYSTEM_MEMORY_ERROR**: (0x30) bellek ayırıcısı tanımlı değil veya bellek ayırma başarısız oldu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Tümü
 
@@ -25664,7 +25664,7 @@ VOID custom_widget_draw(GX_WIDGET *widget)
 
 ## <a name="gx_utility_pixelmap_resize"></a>gx_utility_pixelmap_resize
 
-Piksel haritasını yeniden boyutlandırma
+Pixelmap 'i yeniden boyutlandır
 
 ### <a name="prototype"></a>Prototype
 
@@ -25678,24 +25678,24 @@ UINT gx_utility_pixelmap_resize(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir piksel haritasını yeniden boyutlandırarak piksel haritasının yeniden boyutlandırılma sonucu olarak yeni bir piksel haritasına işaretçi döndürür.
+Bu hizmet bir pixelmap 'i yeniden boyutlandırır ve yeni bir pixelmap için bir işaretçi döndürür. Bu, pixelmap yeniden boyutlandırmanın sonucudur.
 
-Bu hizmet, yeniden boyutlandırilen piksel gx_system_memory_allocator_set bellek ayırmaya izin vermek için önceden gx_system_memory_allocator_set'nin kullanımını gerektirir.
+Bu hizmet, yeniden boyutlandırılan pixelmap verilerini tutmak için belleğin ayrılmasına izin vermek üzere gx_system_memory_allocator_set önceki kullanımını gerektirir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **src:** Yeniden boyutlandırmak için piksel haritasının işaretçisi
-- **destination:** Sonuçta elde edilen piksel haritası için hedef arabellek
-- **width:** Sonuçta elde edilen piksel haritasının piksel cinsinden genişliği
-- **height:** Sonuçta elde edilen piksel haritasının piksel cinsinden hiyerarşisi
+- **src**: yeniden boyutlandırmak için pixelmap işaretçisine
+- **hedef**: elde edilen pixelmap için hedef arabellek
+- **Width**: elde edilen pixelmap 'in piksel cinsinden genişliği
+- **Yükseklik**: elde edilen pixelmap 'in piksel cinsinden uzunluğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Başarılı piksel haritası yeniden boyutlandırma
-- **GX_PTR_ERROR:**(0x07) Geçersiz kaynak veya hedef piksel haritası işaretçisi
-- **GX_INVALID_VALUE:**(0x22) Genişlik veya yükseklik değeri geçerli değil
-- **GX_NOT_SUPPORTED:**(0x28) Kaynak piksel haritası sıkıştırılmış biçimdir
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Bellek ayırma tanımlı değil veya bellek ayırma başarısız oldu
+- **GX_SUCCESS**: (0x00) başarılı pixelmap yeniden boyutlandırma
+- **GX_PTR_ERROR**: (0x07) geçersiz kaynak veya hedef pixelmap işaretçisi
+- **GX_INVALID_VALUE**: (0x22) Genişlik veya yükseklik değeri geçerli değil
+- **GX_NOT_SUPPORTED**: (0x28) kaynak pixelmap sıkıştırılmış biçimde
+- **GX_SYSTEM_MEMORY_ERROR**: (0x30) bellek ayırıcısı tanımlı değil veya bellek ayırma başarısız oldu
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -25748,7 +25748,7 @@ UINT gx_utility_pixelmap_rotate(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir pixelmap döndürür ve pixelmap dönüşünün sonucu olan yeni bir pixelmap için bir işaretçi döndürür. Bir pixelmap 'i doğrudan tuvale döndürmek için gx_canvas_pixelmap_rotate () kullanın.
+Bu hizmet bir pixelmap döndürür ve pixelmap dönüşünün sonucu olan yeni bir pixelmap için bir işaretçi döndürür. Piksel haritasını doğrudan tuvale döndürmek için gx_canvas_pixelmap_rotate() kullanın.
 
 Bu hizmet, bellek ayırmanın gx_system_memory_allocator_set piksel haritası verilerini tutmasına izin vermek için önceden gx_system_memory_allocator_set'nin kullanımını gerektirir.
 
@@ -25806,7 +25806,7 @@ resulting pixelmap of rotation. */
 
 ## <a name="gx_utility_pixelmap_simple_rotate"></a>gx_utility_pixelmap_simple_rotate
 
-Pixelmap 'i döndür
+Piksel haritasını döndürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -25821,14 +25821,14 @@ UINT gx_utility_pixelmap_simple_rotate(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir pixelmap 'i 90 derece, 180 derece veya 270 derecesi ile döndürür.
+Bu hizmet piksel haritasını 90 derece, 180 derece veya 270 derece döndürmektedir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **src**: döndürülecek pixelmap
-- **açı**: dönüşünün derece cinsinden açısı
-- **hedef**: elde edilen pixelmap için hedef arabellek
-- **rot_cx**: hedef pixelmap 'e göre döndürme merkezinin x koordinatı alındı. Kaynak pixelmap 'e göre döndürme merkezinin x koordinatı ile başlatılmalıdır. Rot_cx GX_NULL, değer alınmayacak.
+- **src:** Döndürülacak piksel haritası
+- **açı:** Derece olarak döndürme açısı
+- **destination:** Sonuçta elde edilen piksel haritası için hedef arabellek
+- **rot_cx:** Hedef piksel haritasına göre döndürme merkezinin x koordinatı alınır. Kaynak piksel haritasına göre döndürme merkezinin x koordinatı ile başlatılmıştır. Bu rot_cx GX_NULL değer alınmayacak.
 **rot_cy:** Hedef piksel haritasına göre döndürme merkezinin y koordinatı alınır. Kaynak piksel haritasına göre döndürme merkezinin y koordinatı ile başlatılmıştır. Bu rot_cy GX_NULL değer alınmayacak.
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -25877,7 +25877,7 @@ resulting pixelmap of rotation. */
 
 ## <a name="gx_utility_rectangle_center"></a>gx_utility_rectangle_center
 
-Dikdörtgeni başka bir dikdörtgen içinde ortala
+Dikdörtgeni başka bir dikdörtgenin içinde ortala
 
 ### <a name="prototype"></a>Prototype
 
@@ -25889,20 +25889,20 @@ UINT gx_utility_rectangle_center(
 
 ### <a name="description"></a>Description
 
-Bu hizmet dikdörtgeni başka bir dikdörtgen içinde ortalar.
+Bu hizmet dikdörtgeni başka bir dikdörtgenin içinde merkezlerine alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dikdörtgen**: ortata dikdörtgen
-- **within_rectangle**: içinde ortaya dikdörtgen
+- **dikdörtgen:** Ortadan dikdörtgen
+- **within_rectangle:** Orta olacak dikdörtgen
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) dikdörtgeni başarıyla ortalandı
-- **GX_PTR_ERROR**: (0x07) geçersiz giriş dikdörtgeni işaretçisi
-- **GX_INVALID_SIZE**: (0x19) geçersiz dikdörtgen boyutu
+- **GX_SUCCESS:**(0x00) Dikdörtgen başarıyla ortalandı
+- **GX_PTR_ERROR:**(0x07) Geçersiz giriş dikdörtgeni işaretçisi
+- **GX_INVALID_SIZE:**(0x19) Geçersiz dikdörtgen boyutu
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Tümü
 
@@ -26018,19 +26018,19 @@ UINT gx_utility_rectangle_combine(
 
 ### <a name="description"></a>Description
 
-Bu hizmet birinci ve İkinci dikdörtgeni ilk dikdörtgende birleştirir. İlk dikdörtgen, ikincisini içerecek şekilde genişletilir.
+Bu hizmet birinci ve ikinci dikdörtgeni ilk dikdörtgende birleştirir. İlk dikdörtgen ikinci dikdörtgeni içerecek şekilde genişletilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **first_rectangle**: ilk dikdörtgen ve Birleşik dikdörtgen
-- **second_rectangle**: ikinci dikdörtgen
+- **first_rectangle:** İlk dikdörtgen ve birleştirilmiş dikdörtgen
+- **second_rectangle:** İkinci dikdörtgen
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) Iki dikdörtgeni başarıyla birleştirildi
-- **GX_PTR_ERROR**: (0x07) geçersiz giriş işaretçisi
+- **GX_SUCCESS:**(0x00) İki dikdörtgen başarıyla birleştirildi
+- **GX_PTR_ERROR:**(0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26093,9 +26093,9 @@ Bu hizmet birinci ve ikinci dikdörtgeni karşılar. Bunlar eşitse, GX_TRUE dö
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **sonuç**: dikdörtgenler eşitse GX_TRUE, aksi takdirde GX_FALSE döndürülür.
+- **sonuç:** GX_TRUE eşitse, aksi takdirde GX_FALSE döndürülür.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26143,14 +26143,14 @@ UINT gx_utility_rectangle_define(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen şekilde bir dikdörtgen tanımlar.
+Bu hizmet bir dikdörtgeni belirtilen şekilde tanımlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **rectangle:** Dikdörtgen denetim bloğu
 - **left:** En fazla koordinatı sol
 - **top:** En üst koordinat
-- **right:** En koordinatı sağa
+- **right:** En koordinatı doğru
 - **bottom:** En alt koordinat
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -26195,7 +26195,7 @@ status = gx_utility_rectangle_define(&my_rect, 10, 5, 200, 100);
 
 ## <a name="gx_utility_rectangle_overlap_detect"></a>gx_utility_rectangle_overlap_detect
 
-Dikdörtgenlerin çakışmasını Algıla
+Dikdörtgenlerin çakışmalarını algılama
 
 ### <a name="prototype"></a>Prototype
 
@@ -26208,19 +26208,19 @@ GX_BOOL gx_utility_rectangle_overlap_detect(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sağlanan dikdörtgenlerin çakışmasını algılar. Çakışma bulunursa, hizmet GX_TRUE ve çakışan dikdörtgeni döndürür.
+Bu hizmet, sağlanan dikdörtgenlerin çakışmalarını algılar. Çakışma bulunursa, hizmet GX_TRUE çakışan dikdörtgeni döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **first_rectangle**: ilk dikdörtgen
-- **second_rectangle**: ikinci dikdörtgen
-- **return_overlap_area**: örtüşen dikdörtgen alanı
+- **first_rectangle:** İlk dikdörtgen
+- **second_rectangle:** İkinci dikdörtgen
+- **return_overlap_area:** Çakışan dikdörtgen alanı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **sonuç**: dikdörtgenler çakıştığında GX_TRUE, aksi takdirde GX_FALSE.
+- **sonuç:** GX_TRUE çakışıyorsa veya çakışıyorsa GX_FALSE.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Tümü
 
@@ -26331,19 +26331,19 @@ UINT gx_utility_rectangle_resize(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, dikdörtgenin boyutunu belirtilen şekilde artırır.
+Bu hizmet dikdörtgenin boyutunu belirtilen şekilde artırır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dikdörtgen**: dikdörtgenin işaretçisi
-- **Ayarla**: dikdörtgeni ayarlanacak miktar
+- **rectangle:** Dikdörtgen işaretçisi
+- **ayarlama:** Dikdörtgeni ayarlamak için miktar
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS**: (0x00) dikdörtgeni başarıyla yeniden boyutlandırıldı
-- **GX_PTR_ERROR**: (0x07) geçersiz giriş dikdörtgeni işaretçisi
+- **GX_SUCCESS:**(0x00) Dikdörtgen başarıyla yeniden boyutlandırıldı
+- **GX_PTR_ERROR:**(0x07) Geçersiz giriş dikdörtgeni işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Tümü
 
@@ -26377,7 +26377,7 @@ status = gx_utility_rectangle_resize(&my_rectangle, 20);
 
 ## <a name="gx_utility_rectangle_shift"></a>gx_utility_rectangle_shift
 
-Dikdörtgen kaydırma
+Kaydırma dikdörtgeni
 
 ### <a name="prototype"></a>Prototype
 
@@ -26390,20 +26390,20 @@ UINT gx_utility_rectangle_shift(
 
 ### <a name="description"></a>Description
 
-Bu hizmet dikdörtgeni belirtilen değerlerle kaydırıyor.
+Bu hizmet, dikdörtgeni belirtilen değerlere kaydırır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **rectangle:** Kaydırmak için dikdörtgen
-- **x_shif:** x ekseninde kaydırmak için piksel sayısı
-- **y_shift:** y ekseninde kaydırmak için piksel sayısı
+- **dikdörtgen**: SHIFT için dikdörtgen
+- **x_shif**: x ekseninde kaydırma yapılacak piksel sayısı
+- **y_shift**: y ekseninde kaydırma yapılacak piksel sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Dikdörtgen başarıyla kaydırıldı
-- **GX_PTR_ERROR:**(0x07) Geçersiz giriş dikdörtgeni işaretçisi
+- **GX_SUCCESS**: (0x00) dikdörtgeni başarıyla kaydırın
+- **GX_PTR_ERROR**: (0x07) geçersiz giriş dikdörtgeni işaretçisi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Tümü
 
@@ -26457,22 +26457,22 @@ Bu hizmet, yalnızca alfa değerlerini içeren bir 8bpp pixelmap özel biçimi o
 
 Bu hizmet, sonuçta elde edilen harflerden eşleşme için gereken bellek boyutunu hesaplar ve dinamik olarak bellek ayırmak için uygulama tarafından tanımlanan gx_system_memory_allocator () işlevini çağırır. Uygulamanın bu hizmeti kullanmadan önce, genellikle program başlangıcında, bir noktada gx_system_memory_allocator_set () çağrısı gerekir.
 
-Bir metin dizesi döndürülecektir ve tek bir kez tuvale çizildiyse, hizmet gx_canvas_rotated_text_draw () alternatif olarak sağlanır. gx_canvas_rotated_text_draw() işlevi, döndürülmüş metni tek bir işlemde işlemek için gx_utility_string_to_alphamap()), gx_utility_pixelmap_rotate() ve gx_canvas_pixelmap_draw() işlevini çağıracak. Ancak aynı metin çeşitli açılarda birden çok kez döndürülecekse, gx_utility_string_to_alphmap API'sini kullanarak alfa haritasını oluşturmak ve ardından elde edilen alfa haritayı gerektiğinde birden çok kez döndürmek daha verimlidir.
+Bir metin dizesi döndürülecektir ve tek bir kez tuvale çizildiyse, hizmet gx_canvas_rotated_text_draw () alternatif olarak sağlanır. gx_canvas_rotated_text_draw (), döndürülen metni tek bir işlemde işlemek için gx_utility_string_to_alphamap (), gx_utility_pixelmap_rotate () ve gx_canvas_pixelmap_draw () çağırır. Ancak, aynı metin çeşitli açılarda birden çok kez döndürülürse, gx_utility_string_to_alphmap API 'sini kullanarak bir kez daha verimli bir şekilde çizilecektir ve sonra sonuçta elde edilen harflerden oluşan Haritayı gerektiği gibi döndürün.
 
 ### <a name="parameters"></a>Parametreler
 
-- **text:** Alfa haritaya işılacak metin dizesi
-- **font:** Metni işlemek için yazı tipi
-- **return_map:** Çağıranın GX_PIXELMAP için işaretçi.
+- **metin**: harflerden haritaya işlenecek metin dizesi
+- **yazı tipi**: metni işlemek için kullanılacak yazı tipi
+- **return_map**: çağırana döndürülecek GX_PIXELMAP işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS:**(0x00) Bir metin dizesini alfa haritaya başarıyla işlendi
-- **GX_PTR_ERROR:**(0x07) Geçersiz giriş işaretçisi
-- **GX_SYSTEM_MEMORY_ERROR:**(0x30) Bellek ayırma/serbest işlev tanımlanmadı
-- **GX_INVALID_STRING_LENGTH:**(0x34) Geçersiz dize uzunluğu
+- **GX_SUCCESS**: (0x00) bir metin dizesini bir alfamap 'e başarıyla işlendi
+- **GX_PTR_ERROR**: (0x07) geçersiz giriş işaretçisi
+- **GX_SYSTEM_MEMORY_ERROR**: (0x30) bellek ayırma/serbest bırakma işlevi tanımlı değil
+- **GX_INVALID_STRING_LENGTH**: (0x34) geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26517,7 +26517,7 @@ gx_canvas_pixelmap_draw(200, 200, &rotated_text);
 
 ## <a name="gx_utility_string_to_alphamap_ext"></a>gx_utility_string_to_alphamap_ext
 
-Dizeyi 8bpp alfa harita türü piksel haritasına işleme
+Dizeyi bir 8bpp harfler eşleme türü pixelmap olarak işle
 
 ### <a name="prototype"></a>Prototype
 
@@ -26530,11 +26530,11 @@ UINT gx_utility_string_to_alphamap_ext(
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir metin dizesini alfa haritaya işler. Bu, yalnızca alfa değerleri içeren 8bpp piksel haritasının özel bir biçimidir. Bu hizmet genellikle gx_utility_pixelmap_rotate ve gx_canvas_pixelmap_draw tuvale döndürülmüş metin çizmek için kullanılır.
+Bu hizmet, yalnızca alfa değerlerini içeren bir 8bpp pixelmap özel biçimi olan bir alfamap 'e bir metin dizesi işler. Bu hizmet genellikle gx_utility_pixelmap_rotate ve gx_canvas_pixelmap_draw ile birlikte kullanılarak döndürülen metni tuvale çizmektir.
 
-Bu hizmet, elde edilen alfa harita için gereken bellek boyutunu hesaplar ve uygulama tarafından dinamik olarak bellek ayırmak için tanımlanan gx_system_memory_allocator() işlevini çağırır. Uygulamanın bu hizmeti gx_system_memory_allocator_set() çağrısından önce genellikle program başlatma sırasında bir noktada çağrısında olması gerekir.
+Bu hizmet, sonuçta elde edilen harflerden eşleşme için gereken bellek boyutunu hesaplar ve dinamik olarak bellek ayırmak için uygulama tarafından tanımlanan gx_system_memory_allocator () işlevini çağırır. Uygulamanın bu hizmeti kullanmadan önce, genellikle program başlangıcında, bir noktada gx_system_memory_allocator_set () çağrısı gerekir.
 
-Metin dizesi yalnızca bir kez döndürülerek tuvale çizilecekse alternatif olarak gx_canvas_rotated_text_draw() hizmeti sağlanır. gx_canvas_rotated_text_draw() işlevi, döndürülmüş metni tek bir işlemde işlemek için gx_utility_string_to_alphamap()), gx_utility_pixelmap_rotate() ve gx_canvas_pixelmap_draw() işlevini çağıracak. Ancak, aynı metin çeşitli açılarda birden çok kez döndürülürse, gx_utility_string_to_alphmap API 'sini kullanarak bir kez daha verimli bir şekilde çizilecektir ve sonra sonuçta elde edilen harflerden oluşan Haritayı gerektiği gibi döndürün.
+Bir metin dizesi döndürülecektir ve tek bir kez tuvale çizildiyse, hizmet gx_canvas_rotated_text_draw () alternatif olarak sağlanır. gx_canvas_rotated_text_draw (), döndürülen metni tek bir işlemde işlemek için gx_utility_string_to_alphamap (), gx_utility_pixelmap_rotate () ve gx_canvas_pixelmap_draw () çağırır. Ancak, aynı metin çeşitli açılarda birden çok kez döndürülürse, gx_utility_string_to_alphmap API 'sini kullanarak bir kez daha verimli bir şekilde çizilecektir ve sonra sonuçta elde edilen harflerden oluşan Haritayı gerektiği gibi döndürün.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -26610,7 +26610,7 @@ gx_canvas_pixelmap_draw(200, 200, &rotated_text);
 - gx_utility_rectangle_point_detect
 
 ## <a name="gx_vertical_list_children_position"></a>gx_vertical_list_children_position
-### <a name="position-children-for-the-vertical-list"></a>Dikey liste için altları konumlandırma
+### <a name="position-children-for-the-vertical-list"></a>Dikey liste için alt öğe Konumlandır
 
 ### <a name="prototype"></a>Prototype
 
@@ -26621,20 +26621,20 @@ UINT gx_vertical_list_children_position(
 
 ### <a name="description"></a>Description
 
-Bu işlev, dikey listenin altlarını konumlar.
+Bu işlev, dikey liste için alt öğeleri konumlandırır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **vertical_list** Dikey liste denetim bloğuna işaretçi
+- **vertical_list** Dikey liste denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Altları dikey liste için başarıyla konumlandırma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) dikey listenin alt öğeleri başarıyla yerleştirildi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26695,12 +26695,12 @@ GX_VERTICAL_LIST GX_WINDOW türetilir ve tüm gx_window API hizmetlerini destekl
 - **GX_SUCCESS** (0x00) dikey liste başarıyla oluşturuldu
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
-- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
-- **GX_INVALID_VALUE** (0x22) Geçerli değil satır sayısı
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
+- **GX_INVALID_VALUE** (0x22) satır sayısı geçerli değil
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26726,7 +26726,7 @@ status = gx_vertical_list_create(&my_list, “my_list”, &my_parent,
 - gx_vertical_list_total_rows_set
 
 ## <a name="gx_vertical_list_event_process"></a>gx_vertical_list_event_process
-### <a name="process-vertical-list-event"></a>Dikey liste olayı işleme
+### <a name="process-vertical-list-event"></a>Dikey liste olayını işle
 
 ### <a name="prototype"></a>Prototype
 
@@ -26737,17 +26737,17 @@ UINT gx_vertical_list_event_process(GX_VERTICAL_LIST *list,
 
 ### <a name="description"></a>Description
 
-Bu hizmet, dikey liste için bir olayı işler.
+Bu hizmet dikey liste için bir olayı işler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **list (liste)** Dikey liste pencere öğesi denetim bloğu
-- **event (olay)** İşlemeye olay işaretçisi
+- **liste** Dikey liste pencere öğesi denetim bloğu
+- **olay** İşlenecek olaya yönelik işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Dikey liste olayı başarıyla işlendi
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) dikey liste olayını başarıyla işledi
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
@@ -26801,7 +26801,7 @@ Bu hizmet dikey liste için başlangıç dizinini ayarlar.
 - **GX_INVALID_VALUE** (0x22) geçersiz dizin değeri
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26825,7 +26825,7 @@ been set to 4. */
 - gx_vertical_list_total_rows_set
 
 ## <a name="gx_vertical_list_selected_index_get"></a>gx_vertical_list_selected_index_get
-### <a name="get-selected-index-from-vertical-list"></a>Dikey listeden seçili dizini al
+### <a name="get-selected-index-from-vertical-list"></a>Seçili dizini dikey listeden Al
 
 ### <a name="prototype"></a>Prototype
 
@@ -26841,15 +26841,15 @@ Bu hizmet dikey listenin seçili dizinini döndürür
 ### <a name="parameters"></a>Parametreler
 
 - **vertical_list** Dikey liste pencere öğesi denetim bloğu
-- **return_index** Seçilen dizinin iade hedefi
+- **return_index** Seçili dizinin dönüşü için hedef
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Dikey liste girişini başarıyla alın
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) dikey liste girişini başarıyla al
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26924,7 +26924,7 @@ status = gx_vertical_list_selected_set(&my_list, 12);
 - gx_vertical_list_total_rows_set
 
 ## <a name="gx_vertical_list_selected_widget_get"></a>gx_vertical_list_selected_widget_get
-### <a name="get-selected-widget-from-vertical-list"></a>Dikey listeden seçili pencere öğesi al
+### <a name="get-selected-widget-from-vertical-list"></a>Seçili pencere öğesini dikey listeden Al
 
 ### <a name="prototype"></a>Prototype
 
@@ -26935,21 +26935,21 @@ UINT gx_vertical_list_selected_widget_get(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet dikey listenin seçili pencere öğelerini döndürür. Listede alt pencere öğelerinden daha fazla satır varsa ve seçili alt pencere öğesi görünümden kaydırıldısa, pencere öğesi yeni bir liste girdisi görüntülemek için yeniden kullanılmasından bu işlev GX_NULL GX_WIDGET işaretçisi olarak GX_WIDGET'i geri dönecektir.
+Bu hizmet dikey listenin seçili pencere öğesini döndürür. Listede alt pencere öğelerinin daha fazla satır varsa ve seçili alt pencere öğesi görünümden kaydırıldığında, pencere öğesi yeni bir liste girişi görüntüleyecek şekilde yeniden kullanıldığından, bu işlev GX_WIDGET işaretçi olarak GX_NULL döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 - **vertical_list** Dikey liste pencere öğesi denetim bloğu
-- **return_list_entry** Dönüş listesi giriş pencere öğesi hedefi
+- **return_list_entry** Dönüş listesi girdisi pencere öğesi hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Dikey liste girişini başarıyla alın
-- **GX_FAILURE** (0x10) Seçili pencere öğesi görünümden kaydırıldı.
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) dikey liste girişini başarıyla al
+- **GX_FAILURE** (0x10) seçili pencere öğesi görünümden kaydırıldı.
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -26991,17 +26991,17 @@ Bu hizmet Toplam liste satırı sayısını atar veya değiştirir.
 ### <a name="parameters"></a>Parametreler
 
 - **vertical_list** Dikey liste pencere öğesi denetim bloğu
-- **sayı** Yeni liste satırı sayısı
+- **count (sayı)** Yeni liste satır sayısı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) dikey liste satır sayısını başarıyla ayarladı
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) satır sayısı değeri geçerli değil
+- **GX_SUCCESS** (0x00) Dikey liste satır sayısını başarıyla ayarlama
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) Satır sayısı değeri geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -27081,7 +27081,7 @@ status = gx_vertical_scrollbar_create(&my_scrollbar,
 - gx_scrollbar_reset
 
 ## <a name="gx_widget_allocate"></a>gx_widget_allocate
-### <a name="allocate-a-widget-control-block"></a>Pencere öğesi denetim bloğu ayır
+### <a name="allocate-a-widget-control-block"></a>Pencere öğesi denetim bloğu ayırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -27092,21 +27092,21 @@ UINT gx_widget_allocate(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, uygulama tanımlı bellek ayırma işlevini çağırarak bir pencere öğesi denetim bloğunu dinamik olarak ayırır. Bu hizmet, Gux Studio özellikleri görünümünde "dinamik ayırma" özelliği seçildiğinde, denetim bloğunu dinamik olarak ayırmak için Gux Studio tarafından oluşturulan işlevler tarafından kullanılır.
+Bu hizmet, uygulama tanımlı bellek ayırma işlevini çağırarak dinamik olarak bir pencere öğesi denetim bloğu ayırır. Bu hizmet öncelikli olarak GUIX Studio özellikleri görünümünde "Dinamik Ayırma" özelliği seçildiğinde denetim bloğunun dinamik olarak ayırmak için GUIX Studio tarafından oluşturulan işlevler tarafından kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **control_block** Döndürülen denetim bloğu işaretçisine yönelik işaretçi
-- **memsize** Denetim blok boyutu, bayt cinsinden
+- **control_block** Döndürülen denetim bloğu işaretçisine işaretçi
+- **memsize** Bayt cinsinden denetim bloğu boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi ayırma
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek ayırıcısı tanımlı değil veya bellek ayırma başarısız oldu
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_MEMORY_SIZE** (0x29) bellek boyutu geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi ayırma
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek ayırma tanımlanmadı veya bellek ayırma başarısız oldu
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_MEMORY_SIZE** (0x29) Bellek boyutu geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -27173,21 +27173,21 @@ UINT gx_widget_attach(
 
 Bu hizmet, pencere öğesini belirtilen üst öğeye iliştirir. Pencere öğesi zaten başka bir üst öğeye eklenmişse, ilk olarak ayrılır. Pencere öğesi zaten aynı üst öğeye eklenmişse, işlev hiçbir şey yapmaz.
 
-Pencere öğesi, üstünün z sıralaması bakımından en üst alt öğesi olur. Eşdüzey pencere öğeleri çakışırsa, bu pencere öğesi eşdüzey öğelerinin üzerine çizilir. Yeni pencere öğelerini z sırasına geri koymak için gx_widget_back_attach veya gx_widget_back_move.
+Pencere öğesi, üstünün z sıralaması bakımından en üst alt öğesi olur. Eşdüzey pencere öğeleri çakışırsa, bu pencere öğesi eşdüzey öğelerinin üzerine çizilir. Yeni pencere öğesini z düzeninin arkasına koymak için gx_widget_back_attach veya gx_widget_back_move kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **parent** Üst pencere öğesi işaretçisi
+- **üst öğe** Üst pencere öğesi işaretçisi
 - **pencere öğesi** Alt pencere öğesi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi ekleme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Üst öğe veya pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi iliştirme
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) üst öğe veya pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -27240,7 +27240,7 @@ status = gx_widget_attach(&my_parent, &my_widget);
 - gx_widget_width_get
 
 ## <a name="gx_widget_background_draw"></a>gx_widget_background_draw
-### <a name="draw-a-widget-background"></a>Pencere öğesi arka planı çizme
+### <a name="draw-a-widget-background"></a>Pencere öğesi arka planı çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -27249,7 +27249,7 @@ VOID gx_widget_background_draw(GX_WIDGET *widget);
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, pencere öğesi arka planında düz renk dolgusu gerçekleştirir. Bu hizmet, gx_widget_draw işlevi tarafından otomatik olarak çağrılır, ancak özelleştirilmiş pencere öğesi çizim işlevinin bir parçası olarak uygulama tarafından da çağrılabilir.
+Bu hizmet, bir pencere öğesi arka planının düz renk doldurmasını gerçekleştirir. Bu hizmet gx_widget_draw işlevi tarafından otomatik olarak çağrılır, ancak özelleştirilmiş bir pencere öğesi çizim işlevinin bir parçası olarak uygulama tarafından da çağrılabilir.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -27259,7 +27259,7 @@ Bu hizmet, pencere öğesi arka planında düz renk dolgusu gerçekleştirir. Bu
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -27319,7 +27319,7 @@ VOID my_widget_draw(GX_WIDGET * widget)
 - gx_widget_width_get
 
 ## <a name="gx_widget_back_attach"></a>gx_widget_back_attach
-### <a name="attach-widget-to-its-parent"></a>Üst öğeye pencere öğesi ekleme
+### <a name="attach-widget-to-its-parent"></a>Pencere öğesini üst öğesine Ekle
 
 ### <a name="prototype"></a>Prototype
 
@@ -27330,20 +27330,20 @@ UINT gx_widget_back_attach(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi belirtilen üst öğeye iliştiriliyor. Pencere öğesi zaten başka bir üst öğeye eklenmişse, önce ayrılır. Pencere öğesi aynı üst öğeye zaten eklenmişse işlev hiçbir şey yapmadı.
+Bu hizmet, pencere öğesini belirtilen üst öğeye iliştirir. Pencere öğesi zaten başka bir üst öğeye eklenmişse, ilk olarak ayrılır. Pencere öğesi zaten aynı üst öğeye eklenmişse, işlev hiçbir şey yapmaz.
 
-Pencere öğesi, z sıralama açısından üst öğenin en alt öğesi haline gelir. Küçük pencere öğeleri çakışıyorsa, bu pencere öğesi bu altlıkların arkasına çizilir. Yeni pencere öğelerini z-düzenin önüne koymak için gx_widget_attach veya gx_widget_front_move.
+Pencere öğesi, üst öğenin z sıralaması bakımından en alt alt öğesi olur. Eşdüzey pencere öğeleri çakışırsa bu pencere öğesi bu eşdüzey öğelerinin arkasına çizilir. Yeni pencere öğesini z düzeninin önüne koymak için gx_widget_attach veya gx_widget_front_move kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **parent** Üst pencere öğesi işaretçisi
+- **üst öğe** Üst pencere öğesi işaretçisi
 - **pencere öğesi** Alt pencere öğesi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi ekleme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi iliştirme
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) üst öğe veya pencere öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin verilen
@@ -27572,21 +27572,21 @@ VOID gx_widget_border_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi kenarlığını çizer. Bu hizmet normalde pencere öğesi çizim işlevinin bir parçası olarak çağrılır. Bu hizmet pencere öğesi kenarlık stili bayraklarını kenarlık, ince kenarlık, yükseltilmiş kenarlık, kenarlık veya kalın kenarlık çizmek için yorumlar.
+Bu hizmet pencere öğesi kenarlığını çizer. Bu hizmet normalde pencere öğesi çizim işlevinin bir parçası olarak çağrılır. Bu hizmet, pencere öğesi kenarlık stili bayraklarını hiçbir sınır, ince bir kenarlık, yükseltilmiş bir kenarlık, bir kenar kenarlığı veya kalın bir kenarlık çizmek için yorumlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **border_color** Kenarlık rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
-- **upper_fill** Üst dolgu rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
-- **lower_fill** Alt dolgu rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
-- **fill** Bu boole bayrağı, pencere öğesi alanına sağlanan dolgu renkleriyle doldurulması gerekip gerek olmadığını gösterir. Bu değer GX_FALSE, yalnızca pencere öğesi kenarlığı çizilir.
+- **border_color** Kenarlık rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
+- **upper_fill** Üst dolgunun rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
+- **lower_fill** Alt dolgunun rengi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
+- **doldur** Bu Boole bayrağı, pencere öğesi alanının sağlanan dolgu renkleriyle doldurulup doldurulmayacağını gösterir. Bu değer GX_FALSE ise yalnızca pencere öğesi kenarlığı çizilir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -27742,15 +27742,15 @@ Bu hizmet pencere öğesi kenarlık genişliğini alır.
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **return_width** Pencere öğesi kenarlık genişliği için hedef işaretçisi
+- **return_width** Pencere öğesi kenarlık genişliği için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) kenarlık genişliği başarıyla alındı
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Kenarlık genişliği başarıyla alındı
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -27815,21 +27815,21 @@ UINT gx_widget_canvas_get(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, bu pencere öğesinin üzerinde işlendiği tuvale bir işaretçi döndürür.
+Bu hizmet, bu pencere öğesi üzerinde işlenecek tuvale bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **return_canvas** Pencere öğesinin tuvali için hedef işaretçisi
+- **return_canvas** Pencere öğesi tuvali için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi tuvali al
-- **GX_FAILURE** (0x10) pencere öğesi tuvali bulunamadı
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi tuvali get
+- **GX_FAILURE** (0x10) Pencere öğesi tuvali bulunamadı
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -27882,7 +27882,7 @@ status = gx_widget_canvas_get(&my_widget, &my_canvas);
 - gx_widget_width_get
 
 ## <a name="gx_widget_child_detect"></a>gx_widget_child_detect
-### <a name="detect-widget-child"></a>Pencere öğesi alt öğesini Algıla
+### <a name="detect-widget-child"></a>Alt pencere öğesi algılama
 
 ### <a name="prototype"></a>Prototype
 
@@ -27895,11 +27895,11 @@ UINT gx_widget_child_detect(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, pencere öğesinin üst pencere öğesinin bir alt öğesi olup olmadığını algılar. Bu hizmet alt öğeleri aramak için önemlidir ve üst pencere öğesi alt pencere öğesinin bir üst öğesiyse TRUE değerini döndürür.
+Bu hizmet, pencere öğesi üst pencere öğesi alt öğesi olup olduğunu algılar. Bu hizmet, alt öğeleri aramak için iç içe geçmiştir ve üst pencere öğesi alt pencere öğesi üst öğesi düzeyinde ise TRUE döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **üst öğe** Üst pencere öğesi işaretçisi
+- **parent** Üst pencere öğesi işaretçisi
 - **alt öğe** Alt pencere öğesi işaretçisi
 - **return_detect** Algılama için hedef işaretçisi
 
@@ -27982,7 +27982,7 @@ Bu hizmet üst pencere öğesinin tüm alt öğelerini çizer. Bu hizmet, normal
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -28058,17 +28058,17 @@ Bu hizmet, pencere öğesinin istemci alanını genel pencere öğesi boyutundan
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **border_width** Pencere öğesi kenarlığı genişliği
-- **return_client_area** İstemci alanı döndüren hedef
+- **border_width** Pencere öğesi kenarlığının genişliği
+- **return_client_area** İstemci alanı döndürme hedefi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi istemci alanı get
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) Pencere öğesi kenarlığı geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi istemci alanı Get
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_VALUE** (0x22) pencere öğesi kenarlığı geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28134,23 +28134,23 @@ UINT gx_widget_color_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sağlanan kaynak kimliğiyle ilişkili rengi alır. Bu hizmet yalnızca görünür pencere öğeleri tarafından çağrılmalı.
+Bu hizmet, sağlanan kaynak KIMLIĞIYLE ilişkili rengi alır. Bu hizmet yalnızca görünür pencere öğeleri tarafından çağrılmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi denetim bloğu işaretçisi
-- **resource_id** Rengin kaynak kimliği. **Ek B,** kaynak kimlikleri için önceden tanımlanmış renk içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **return_color** Renk için hedefin işaretçisi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın özel renkler de ekleyyana dikkat.
+- **resource_id** Rengin kaynak KIMLIĞI. **Ek B** önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **return_color** Renge yönelik hedefin işaretçisi. **Ek A** önceden tanımlanmış renkler içerir. Uygulamanın de özel renkler ekleyebileceğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı renk get
-- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
-- **GX_INVALID_CANVAS** (0x20) Pencere öğesi tuvali geçerli değil veya pencere öğesi görünmez
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı renk al
+- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+- **GX_INVALID_CANVAS** (0x20) pencere öğesi tuvali geçerli değil veya pencere öğesi görünmez
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28274,19 +28274,19 @@ UINT gx_widget_created_test(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, pencere öğesinin daha önce oluşturulup oluşturulmadığını belirlemede sınar. Herhangi bir hatayla karşılaşılmadıysa, pencere öğesinin henüz oluşturulup oluşturulmadığına bakılmaksızın bu işlev GX_SUCCESS döndürür. Testin sonucu, test işaretçisinde return_test olur.
+Bu hizmet, pencere öğesinin daha önce oluşturulup oluşturulmadığını belirlemede sınar. Herhangi bir hatayla karşılaşılmadıysa, pencere öğesinin henüz oluşturulup oluşturulmadığına bakılmaksızın bu işlev GX_SUCCESS döndürür. Testin sonucu return_test işaretçisidir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **return_test** Test sonucu hedefi
+- **return_test** Test sonucu için hedef
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı test tamamlama
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı test tamamlama
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28340,7 +28340,7 @@ GX_TRUE, the widget “my_widget” has been created. */
 - gx_widget_width_get
 
 ## <a name="gx_widget_delete"></a>gx_widget_delete
-### <a name="delete-widget"></a>Pencere öğesi silme
+### <a name="delete-widget"></a>Pencere öğesini Sil
 
 ### <a name="prototype"></a>Prototype
 
@@ -28350,7 +28350,7 @@ UINT gx_widget_delete(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi siler. Pencere öğesi denetim bloğu dinamik olarak ayrılırsa, gx_system_memory_free serbest bırakıldığında depolama alanı için çağrılır.
+Bu hizmet pencere öğesini siler. Pencere öğesi denetim bloğu dinamik olarak ayrılmışsa gx_system_memory_free hizmeti, dinamik olarak ayrılan depolama alanını serbest bırakmak için çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -28358,12 +28358,12 @@ Bu hizmet pencere öğesi siler. Pencere öğesi denetim bloğu dinamik olarak a
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi silme GX_CALLER_ERROR (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek boş işlevi tanımlanmadı
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi silme GX_CALLER_ERROR (0x11) bu işlevin geçersiz çağıranı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek boş işlevi tanımlı değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28414,7 +28414,7 @@ status = gx_widget_delete(&my_widget);
 - gx_widget_width_get
 
 ## <a name="gx_widget_detach"></a>gx_widget_detach
-### <a name="detach-widget-from-parent"></a>Üst öğeden pencere öğesi ayırma
+### <a name="detach-widget-from-parent"></a>Pencere öğesini üst öğeden ayır
 
 ### <a name="prototype"></a>Prototype
 
@@ -28424,7 +28424,7 @@ UINT gx_widget_detach(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi üst öğesinden ayırır.
+Bu hizmet pencere öğesini üst öğesinden ayırır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -28432,11 +28432,11 @@ Bu hizmet pencere öğesi üst öğesinden ayırır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi ayırma GX_CALLER_ERROR (0x11) Bu işlevin geçersiz çağıranı
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi ayırma GX_CALLER_ERROR (0x11) bu işlevin geçersiz çağıranı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28487,7 +28487,7 @@ status = gx_widget_detach(&my_widget);
 - gx_widget_width_get
 
 ## <a name="gx_widget_draw"></a>gx_widget_draw
-### <a name="draw-widget"></a>Çizim pencere öğesi
+### <a name="draw-widget"></a>Pencere öğesi çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -28497,7 +28497,7 @@ VOID gx_widget_draw(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi çizmektedir. Bu işlev normalde GUIX tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel çizim işlevlerinin uygulanmasına yardımcı olmak için uygulamaya açıktır.
+Bu hizmet pencere öğesini çizer. Bu işlev normalde Gux tuval yenileme mekanizması tarafından dahili olarak çağrılır, ancak özel çizim işlevlerini uygulamaya yardımcı olmak için uygulamaya sunulur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -28507,7 +28507,7 @@ Bu hizmet pencere öğesi çizmektedir. Bu işlev normalde GUIX tuval yenileme m
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 İş Parçacıkları
 
@@ -28586,10 +28586,10 @@ Bu hizmet, pencere öğesi varsayılan çizim işlevini geçersiz kılar.
 
 - **GX_SUCCESS** (0x00) Başarılı pencere öğesi çizim işlevi geçersiz kılma
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -28646,7 +28646,7 @@ status = gx_widget_draw_set(&my_widget, my_drawing_function);
 - gx_widget_width_get
 
 ## <a name="gx_widget_event_generate"></a>gx_widget_event_generate
-### <a name="generate-widget-event"></a>Pencere öğesi olayı oluştur
+### <a name="generate-widget-event"></a>Pencere öğesi olayı oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -28658,26 +28658,26 @@ UINT gx_widget_event_generate(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, belirli bir tür veya GX_EVENT sınıfı olan GX_SIGNAL bir olay türü oluşturur. gx_widget_event_generate (), 16 bit pencere öğesi KIMLIĞINI, geçirilen event_type ile birlikte tek bir 32 bit GX_EVENT. gx_event_type değerine kodluyor. Değer parametresi, oluşturulan gx_event kodlandı. gx_event_payload gx_event_payload.gx_event_longdata alanı.
+Bu hizmet, GX_SIGNAL türü veya sınıf olan bir olay türü GX_EVENT. gx_widget_event_generate() 16 bit pencere öğesi kimliğini, geçirilen event_type ile birlikte tek bir 32 bitlik GX_EVENT.gx_event_type değerine kodlar. value parametresi, oluşturulan veri gx_event. gx_event_payload.gx_event_longdata alanı.
 
-Oluşturulan event.gx_event_target alanı her zaman çağıran pencere öğesinin üst öğesi ile yüklenir, yani oluşturulan olay her zaman ilk olarak oluşturma pencere öğesinin üst öğesine gönderilir.
+Oluşturulan event.gx_event_target alanı her zaman çağıran pencere öğesi üst öğesiyle yüklenir, yani oluşturulan olay her zaman önce oluşturan pencere öğesi üst öğeye gönderilir.
 
-Gx_widget_event_generate yalnızca GX_SIGNAL Range olay türlerini göndermek için kullanılması gerektiğini unutmayın. Kullanıcı tanımlı olay türleri dahil tüm diğer olay türleri için, Gux olay kuyruğuna gönderilen olayın her alanı üzerinde tam denetim veren gx_system_event_send () API 'sini kullanın.
+Yalnızca gx_widget_event_generate aralığı olay türlerini göndermek için GX_SIGNAL gerektiğini unutmayın. Kullanıcı tanımlı olay türleri de dahil olmak üzere diğer tüm olay türleri için GUIX olay kuyruğuna iletilan olayın her alanı üzerinde tam denetime sahip olan gx_system_event_send() API'sini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **event_type** Olay türü. **Ek E** , önceden tanımlanmış Gux olaylarını içerir. Uygulama tarafından ek olaylar eklenebilir.
-- **değer** Ek olay bilgileri
+- **event_type** Olay türü. **Ek E,** önceden tanımlanmış GUIX olaylarını içerir. Uygulama tarafından ek olaylar eklenebilir.
+- **value (değer)** Ek olay bilgileri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi olay oluşturma
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi olay oluşturma
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -28741,7 +28741,7 @@ UINT gx_widget_event_process(
 
 ### <a name="description"></a>Description
 
-Bu, tüm pencere öğeleri için varsayılan olay işleme işlevidir. Özel bir olay işleme işlevi yazıldığında, herhangi bir olay türü için varsayılan eylem, her zaman Olayı bir pencere öğesinin temel aldığı pencere öğesi türüne iletmektir. En temel GX_WIDGET türüne dayalı pencere öğeleri varsayılan olay işleme işlevi olarak gx_widget_event_process kullanır.
+Bu, tüm pencere öğeleri için varsayılan olay işleme işlevidir. Özel bir olay işleme işlevi yazıldığı zaman, herhangi bir olay türü için varsayılan eylem her zaman olayı bir pencere öğesi tabanlı pencere öğesi türüne iletir. En temel uygulama türüne dayanan pencere öğeleri GX_WIDGET varsayılan olay gx_widget_event_process işlevi olarak gx_widget_event_process'leri kullanır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -28978,7 +28978,7 @@ status = gx_widget_event_to_parent(&my_widget, my_event);
 - gx_widget_width_get
 
 ## <a name="gx_widget_fill_color_set"></a>gx_widget_fill_color_set
-### <a name="set-widget-background-color"></a>Pencere öğesi arka plan rengini ayarlama
+### <a name="set-widget-background-color"></a>Pencere öğesi arka plan rengini ayarla
 
 ### <a name="prototype"></a>Prototype
 
@@ -28991,13 +28991,13 @@ UINT gx_widget_fill_color_set(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi arka plan renklerini ayarlar.
+Bu hizmet, pencere öğesi arka plan renklerini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **normal_color_id** Normal durumda dolgu renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
-- **selected_color_id** Pencere öğesi odağında dolgu renginin kaynak kimliği. **Ek A önceden** tanımlanmış renk Kaynak kimliklerini içerir. Uygulamanın özel renk Kaynak Kimlikleri de ekleyyana dikkat.
+- **normal_color_id** Normal durumdaki Fill renginin kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
+- **selected_color_id** Pencere öğesi odaklanıldığında, Fill Color kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
 - **disabled_color_id** Stil GX_STYLE_ENABLED ayarlanmamışsa, Fill Color kaynak KIMLIĞI. **Ek A** , önceden tanımlanmış renk kaynak kimliklerini içerir. Uygulamanın özel renk kaynak kimlikleri de ekleyebileceğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -29145,7 +29145,7 @@ status = gx_widget_find(&my_widget, GX_SEARCH_DEPTH_INFINITE
 - gx_widget_width_get
 
 ## <a name="gx_widget_first_child_get"></a>gx_widget_first_child_get
-### <a name="return-pointer-to-first-child-widget"></a>İlk alt pencere öğesine İşaretçiyi döndür
+### <a name="return-pointer-to-first-child-widget"></a>İlk alt pencere öğesi için işaretçiyi iade edin
 
 ### <a name="prototype"></a>Prototype
 
@@ -29156,11 +29156,11 @@ UINT gx_widget_first_child_get(
 ```
 ### <a name="description"></a>Description
 
-GUX, üst ve alt pencere öğelerinin yapılandırılmış bir listesini tutar. Bu hizmet, üst öğenin ilk alt öğesi için bir işaretçi döndürür.
+GUIX, üst ve alt pencere öğelerinin ağaç yapılandırılmış listesini sağlar. Bu hizmet, üst öğenin ilk alt pencere öğesi için bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **üst öğe** Üst pencere öğesi işaretçisi
+- **parent** Üst pencere öğesi işaretçisi
 - **widget_return** Pencere öğesi işaretçisini iade etmek için işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -29242,7 +29242,7 @@ widget in the navigation order */
 - gx_widget_focus_previous
 
 ## <a name="gx_widget_focus_previous"></a>gx_widget_focus_previous
-### <a name="move-focus-to-previous-widget-in-navigation-order"></a>Odağı gezinti sırasında önceki pencere öğesine taşı
+### <a name="move-focus-to-previous-widget-in-navigation-order"></a>Gezinti sırasına göre odağı önceki pencere öğesine taşıma
 
 ### <a name="prototype"></a>Prototype
 
@@ -29252,18 +29252,18 @@ UINT gx_widget_focus_previous(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, odağı gezinti sırasında önceki pencere öğesine kaydırır.
+Bu hizmet, gezinti sırasına göre odağı önceki pencere öğesine taşır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere öğesi** Geçerli olan pencere öğesi işaretçisi giriş odağa sahip.
+- **pencere öğesi** Geçerli pencere öğesi işaretçisi, giriş odağına sahip.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) odak taşındı
-- **GX_FAILURE** (0x00) odak taşınmadı
+- **GX_SUCCESS** (0x00) odağı taşındı
+- **GX_FAILURE** (0x00) odağı taşınmadı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -29281,7 +29281,7 @@ previous widget. */
 - gx_widget_focus_next
 
 ## <a name="gx_widget_font_get"></a>gx_widget_font_get
-### <a name="get-font-for-specified-resource-id"></a>Belirtilen kaynak KIMLIĞI için yazı tipi al
+### <a name="get-font-for-specified-resource-id"></a>Belirtilen kaynak kimliği için yazı tipini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -29293,18 +29293,18 @@ UINT gx_widget_font_get(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, bu pencere öğesinin görünür olduğu ekran yazı tipi tablosundan belirtilen kaynak KIMLIĞIYLE ilişkili yazı tipini alır. Bu işlev yalnızca görünür bir pencere öğesi tarafından çağrılmalıdır.
+Bu hizmet, belirtilen kaynak kimliğiyle ilişkili yazı tipini, pencere öğesi görünür olduğu ekranın yazı tipi tablosundan alır. Bu işlev yalnızca görünür bir pencere öğesi tarafından çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi denetim bloğu işaretçisi
-- **resource_id** Yazı tipinin kaynak KIMLIĞI
-- **return_font** Yazı tipi işaretçisi için hedef işaretçisi
+- **resource_id** Yazı tipi kaynak kimliği
+- **return_font** Yazı tipi işaretçisi için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) yazı tipi başarıyla alındı
-- **GX_INVALID_RESOURCE_ID** (0x33) GEÇERSIZ kaynak kimliği
+- **GX_SUCCESS** (0x00) Başarıyla alınan yazı tipi
+- **GX_INVALID_RESOURCE_ID** (0x33) Geçersiz kaynak kimliği
 - **GX_INVALID_CANVAS** (0x20) Pencere öğesi tuvali geçerli değil veya pencere öğesi görünmez
 - **GX_PTR_ERROR** (0x07) Geçersiz pencere öğesi işaretçisi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
@@ -29327,7 +29327,7 @@ status = gx_widget_font_get(widget, MY_FONT_RESOURCE_ID, &my_font);
 - gx_widget_pixelmap_get
 
 ## <a name="gx_widget_free"></a>gx_widget_free
-### <a name="release-memory-associated-with-a-widget"></a>Pencere öğesiyle ilişkili bellek serbest bırakma
+### <a name="release-memory-associated-with-a-widget"></a>Pencere öğesi ile ilişkili yayın belleği
 
 ### <a name="prototype"></a>Prototype
 
@@ -29337,21 +29337,21 @@ UINT gx_widget_free(GX_WIDGETG *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir pencere öğesi denetim bloğu ile ilişkili belleği serbest bıraktır.
+Bu hizmet, bir pencere öğesi denetim bloğu ile ilişkili belleği serbest bırakır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi denetim bloğu işaretçisi
-- **resource_id** Yazı tipi kaynak kimliği
-- **return_font** Yazı tipi işaretçisi için hedefin işaretçisi
+- **resource_id** Yazı tipinin kaynak KIMLIĞI
+- **return_font** Yazı tipi işaretçisi için hedef işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarıyla serbest bırakıldı pencere öğesi
-- **GX_SYSTEM_MEMPRY_ERROR** (0x30) Boş bellek işlevi tanımlanmadı
-- **GX_PTR_ERROR** (0x07) Geçersiz pencere öğesi işaretçisi
+- **GX_SUCCESS** (0x00) başarıyla serbest bırakıldı pencere öğesi
+- **GX_SYSTEM_MEMPRY_ERROR** (0x30) bellek boş işlevi tanımlı değil
+- **GX_PTR_ERROR** (0x07) geçersiz pencere öğesi işaretçisi
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -29410,7 +29410,7 @@ if (status == GX_SUCCESS)
 - gx_widget_width_get
 
 ## <a name="gx_widget_front_move"></a>gx_widget_front_move
-### <a name="move-widget-to-front"></a>Pencere öğesi öne taşı
+### <a name="move-widget-to-front"></a>Pencere öğesini öne taşı
 
 ### <a name="prototype"></a>Prototype
 
@@ -29422,17 +29422,17 @@ UINT gx_widget_front_move(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, alt pencere öğelerinin üst Z sırası listesinde pencere öğelerini öne taşır.
+Bu hizmet, alt pencere öğelerinin üst Z sırası listesindeki pencere öğesini öne hareket ettirir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere öğesi** Taşımak için pencere öğesi işaretçisi
-- **return_moved** Pencere öğesi taşındığını gösteren hedef işaretçisi
+- **pencere öğesi** Taşınacak pencere öğesi işaretçisi
+- **return_moved** Gösterge pencere öğesi için hedef işaretçisi taşındı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi öne taşıma
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi öne taşı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_NO_CHANGE** (0x08) zaten ön pencere öğesi
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
@@ -29508,16 +29508,16 @@ Bu hizmet pencere öğesi yüksekliğini alır.
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **return_height** Pencere öğesi yüksekliği için hedef işaretçisi
+- **return_height** Pencere öğesi yüksekliği için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi yüksekliği al
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi yüksekliği
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -29571,7 +29571,7 @@ status = gx_widget_height_get(&my_widget, &widget_height);
 - gx_widget_width_get
 
 ## <a name="gx_widget_hide"></a>gx_widget_hide
-### <a name="hide-widget"></a>Pencere öğesini gizle
+### <a name="hide-widget"></a>Pencere öğesi gizleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -29581,7 +29581,7 @@ UINT gx_widget_hide(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesini gizler. Bu pencere öğesi hala üst öğeye eklenmiş, ancak tuval üzerinde çizim yapılmasına izin verilmiyor.
+Bu hizmet pencere öğesi gizler. Bu pencere öğesi yine üst öğeye eklenmiş durumdadır, ancak tuvale çizmesine izin verilmez.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -29589,12 +29589,12 @@ Bu hizmet pencere öğesini gizler. Bu pencere öğesi hala üst öğeye eklenmi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi gizle
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi gizleme
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -29645,7 +29645,7 @@ status = gx_widget_hide(&my_widget);
 - gx_widget_width_get
 
 ## <a name="gx_widget_last_child_get"></a>gx_widget_last_child_get
-### <a name="return-pointer-to-last-child-widget"></a>Son alt pencere öğesine İşaretçiyi döndür
+### <a name="return-pointer-to-last-child-widget"></a>Son alt pencere öğesi için işaretçiyi iade edin
 
 ### <a name="prototype"></a>Prototype
 
@@ -29656,17 +29656,17 @@ UINT gx_widget_last_child_get(
 ```
 ### <a name="description"></a>Description
 
-GUX, üst ve alt pencere öğelerinin yapılandırılmış bir listesini tutar. Bu hizmet, üst öğenin son alt pencere öğesine bir işaretçi döndürür.
+GUIX, üst ve alt pencere öğelerinin ağaç yapılandırılmış listesini sağlar. Bu hizmet, üst öğenin son alt pencere öğesi için bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **üst öğe** Üst pencere öğesi işaretçisi
-- **widget_return** Pencere öğesi işaretçisi döndürme işaretçisi
+- **parent** Üst pencere öğesi işaretçisi
+- **widget_return** Pencere öğesi işaretçisini iade etmek için işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) işaretçisi döndü
-- **GX_PTR_ERROR** (0x07) geçersiz pencere öğesi işaretçisi
+- **GX_SUCCESS** (0x00) işaretçisi döndürüldü
+- **GX_PTR_ERROR** (0x07) Geçersiz pencere öğesi işaretçisi
 - **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -29756,7 +29756,7 @@ GX_WIDGET *get_next(GX_WIDGET *current)
 - gx_widget_top_visible_child_find
 
 ## <a name="gx_widget_parent_get"></a>gx_widget_parent_get
-### <a name="return-pointer-to-parent-of-current-widget"></a>Geçerli pencere öğesinin üst öğesine İşaretçiyi döndür
+### <a name="return-pointer-to-parent-of-current-widget"></a>Geçerli pencere öğesi üst öğenin işaretçisini iade edin
 
 ### <a name="prototype"></a>Prototype
 
@@ -29767,20 +29767,20 @@ UINT gx_widget_parent_get(
 ```
 ### <a name="description"></a>Description
 
-GUX, üst ve alt pencere öğelerinin yapılandırılmış bir listesini tutar. Bu hizmet, geçerli pencere öğesinin üst öğesine bir işaretçi döndürür.
+GUIX, üst ve alt pencere öğelerinin ağaç yapılandırılmış listesini sağlar. Bu hizmet, geçerli pencere öğesi üst öğesi için bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 - **geçerli** Geçerli pencere öğesi işaretçisi
-- **widget_return** Pencere öğesi işaretçisi döndürme işaretçisi
+- **widget_return** Pencere öğesi işaretçisini iade etmek için işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) işaretçisi döndü
-- **GX_PTR_ERROR** (0x07) geçersiz pencere öğesi işaretçisi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) işaretçisi döndürüldü
+- **GX_PTR_ERROR** (0x07) Geçersiz pencere öğesi işaretçisi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -29811,7 +29811,7 @@ GX_WIDGET *get_parent(GX_WIDGET *current)
 - gx_widget_top_visible_child_find
 
 ## <a name="gx_widget_pixelmap_get"></a>gx_widget_pixelmap_get
-### <a name="get-pixelmap"></a>Pixelmap al
+### <a name="get-pixelmap"></a>Piksel haritasını al
 
 ### <a name="prototype"></a>Prototype
 
@@ -29824,7 +29824,7 @@ UINT gx_widget_pixelmap_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, sağlanan kaynak KIMLIĞIYLE ilişkili pixelmap 'i alır. Bu hizmet yalnızca görünür pencere öğeleri için çağrılmalı.
+Bu hizmet, sağlanan kaynak kimliğiyle ilişkili piksel haritasını alır. Bu hizmet yalnızca görünür pencere öğeleri için çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -29873,16 +29873,16 @@ UINT gx_widget_previous_sibling_get(
 
 ### <a name="description"></a>Description
 
-GUIX, üst ve alt pencere öğelerinin ağaç yapılandırılmış listesini sağlar. Bu hizmet, geçerli pencere öğesi önceki çifti için bir işaretçi döndürür.
+GUX, üst ve alt pencere öğelerinin yapılandırılmış bir listesini tutar. Bu hizmet, geçerli pencere öğesinin önceki eşdüzey öğesine bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 - **geçerli** Geçerli pencere öğesi işaretçisi
-- **widget_return** Pencere öğesi işaretçisini iade etmek için işaretçi
+- **widget_return** Pencere öğesi işaretçisi döndürme işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) işaretçisi döndürüldü
+- **GX_SUCCESS** (0x00) işaretçisi döndü
 - **GX_PTR_ERROR** (0x07) geçersiz pencere öğesi işaretçisi
 - **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
 
@@ -30017,16 +30017,16 @@ Bu hizmet, pencere öğesini kaymalar ve isteğe bağlı olarak onu kirli olarak
 
 - **pencere öğesi** Pencere öğesi işaretçisi
 - **x_shift** X ekseninde kaydırma için piksel sayısı
-- **y_shift** Y ekseninde kaydırmak için piksel sayısı
-- **mark_dirty** GX_TRUE, aksi takdirde kirli olduğunu GX_FALSE
+- **y_shift** Y ekseninde kaydırma yapılacak piksel sayısı
+- **mark_dirty** Kirli olduğunu göstermek için GX_TRUE, aksi takdirde GX_FALSE
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi kaydırma GX_CALLER_ERROR (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi kaydırma GX_CALLER_ERROR (0x11) bu işlevin geçersiz çağıranı
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30078,7 +30078,7 @@ status = gx_widget_shift(&my_widget, 10, 20, GX_FALSE);
 - gx_widget_width_get
 
 ## <a name="gx_widget_show"></a>gx_widget_show
-### <a name="show-widget"></a>Pencere öğesi göster
+### <a name="show-widget"></a>Pencere öğesini göster
 
 ### <a name="prototype"></a>Prototype
 
@@ -30088,7 +30088,7 @@ UINT gx_widget_show(GX_WIDGET *widget);
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi gösterir. Pencere öğesi yalnızca üst öğeye eklenmişse ve üst pencere öğesi de görünürse görünür hale gelir.
+Bu hizmet pencere öğesini gösterir. Pencere öğesi yalnızca bir üst öğeye iliştirilmişse görünür hale gelir ve üst pencere öğesi de görünür olur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -30096,12 +30096,12 @@ Bu hizmet pencere öğesi gösterir. Pencere öğesi yalnızca üst öğeye ekle
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi gösterme
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi Show
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30152,7 +30152,7 @@ status = gx_widget_show(&my_widget);
 - gx_widget_width_get
 
 ## <a name="gx_widget_status_add"></a>gx_widget_status_add
-### <a name="add-widget-status"></a>Pencere öğesi durumu ekleme
+### <a name="add-widget-status"></a>Pencere öğesi durumu Ekle
 
 ### <a name="prototype"></a>Prototype
 
@@ -30164,20 +30164,20 @@ UINT gx_widget_status_add(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, durum bayraklarının herhangi bir bileşimini belirtilen pencere öğesine ekler.
+Bu hizmet, belirtilen pencere öğesine durum bayraklarının herhangi bir birleşimini ekler.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **durum** Ekleme durumu
+- **durum** Eklenecek durum
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi durumu ekleme
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi durumu ekleme
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30251,9 +30251,9 @@ Bu hizmet pencere öğesinden durum bayraklarını almaktadır.
 
 - **GX_SUCCESS** (0x00) Başarılı pencere öğesi durumu get
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30323,15 +30323,15 @@ Bu hizmet, belirtilen durum bayraklarını pencere öğeleri iç durum değişke
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **durum** Kaldırılacak durum
+- **durum** Kaldır için durum
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi durumu kaldırma
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi durumu kaldırma
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30383,7 +30383,7 @@ widget “my_widget”. */
 - gx_widget_width_get
 
 ## <a name="gx_widget_status_test"></a>gx_widget_status_test
-### <a name="test-widget-status"></a>Test pencere öğesi durumu
+### <a name="test-widget-status"></a>Pencere öğesi durumunu test edin
 
 ### <a name="prototype"></a>Prototype
 
@@ -30395,21 +30395,21 @@ UINT gx_widget_status_test(
 ```
 ### <a name="description"></a>Description
 
-Bu hizmet, belirtilen pencere öğesinin durum bayraklarını sınar ve sonucu "return_test" ile işaret edilen bellekte depolar.
+Bu hizmet, belirtilen pencere öğesi durum bayraklarını test ediyor ve sonucu "return_test" tarafından işaret edilen bellekte depolar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **durum** Sınanacak durum
-- **return_status** Testin sonucu için hedef işaretçisi
+- **durum** Test için durum
+- **return_status** Test sonucu için hedefe işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi durum testi
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi durum testi
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30449,7 +30449,7 @@ UINT gx_widget_string_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, gx_widget_string_get_ext() kullanım dışıdır.
+Bu hizmet, gx_widget_string_get_ext() tercihi ile kullanım dışıdır.
 
 Bu hizmet, verilen dize kimliği değeri için dize tablosu girişini döndürür. Bu hizmet gx_display_string_get benzerdir, ancak etkin görüntü çağıranın geçirilene değil otomatik olarak belirlenir. Bu hizmet yalnızca görünen pencere öğeleri için kullanılabilir, yani bu pencere öğesiyle ilişkili ekran bilinir.
 
@@ -30499,21 +30499,21 @@ UINT gx_widget_string_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, verilen dize kimliği değeri için dize tablosu girişini döndürür. Bu hizmet gx_display_string_get benzerdir, ancak etkin görüntü çağıranın geçirilene değil otomatik olarak belirlenir. Bu hizmet yalnızca görünen pencere öğeleri için kullanılabilir, yani bu pencere öğesiyle ilişkili görüntüleme bilinmektedir.
+Bu hizmet, verilen dize kimliği değeri için dize tablosu girişini döndürür. Bu hizmet gx_display_string_get benzerdir, ancak etkin görüntü çağıranın geçirilene değil otomatik olarak belirlenir. Bu hizmet yalnızca görünen pencere öğeleri için kullanılabilir, yani bu pencere öğesiyle ilişkili ekran bilinir.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **string_id** Kaynak üstbilgisinden dize KIMLIĞI değeri
-- **dize** Dizeyi döndüren değişkenin adresi
+- **string_id** Kaynak üst bilgisinde yer alan dize kimliği değeri
+- **string** Dizeyi iade etmek için değişkenin adresi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere öğesi durum testi
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere öğesi durum testi
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30536,7 +30536,7 @@ status = gx_widget_string_get_ext(&my_widget,
 - gx_display_active_langauge_set
 
 ## <a name="gx_widget_style_add"></a>gx_widget_style_add
-### <a name="add-widget-style"></a>Pencere öğesi stili Ekle
+### <a name="add-widget-style"></a>Pencere öğesi stili ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -30554,12 +30554,12 @@ Eklenen stil GX_STYLE_TRANSPARENT, durum GX_STATUS_TRANSPARENT eklenir.
 
 Eklenen stil GX_STYLE_ENABLED, durum GX_STATUS_SELECTABLE eklenir.
 
-Pencere öğesi görünür durumdaysa otomatik olarak geçersiz kılınır ve yeniden çizim için sıraya alınır.
+Pencere öğesi görünür durumda ise, otomatik olarak geçersiz kılınmış ve yeniden çizim için kuyruğa alındı.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **Stil** Eklenecek yeni stil. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
+- **style (stil)** Eklemek için yeni stil. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -30699,7 +30699,7 @@ status = gx_widget_style_get(&my_widget, &style);
 - gx_widget_width_get
 
 ## <a name="gx_widget_style_remove"></a>gx_widget_style_remove
-### <a name="remove-widget-style"></a>Pencere öğesi stilini kaldırma
+### <a name="remove-widget-style"></a>Pencere öğesi stilini kaldır
 
 ### <a name="prototype"></a>Prototype
 
@@ -30711,23 +30711,23 @@ UINT gx_widget_style_remove(
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesinden bir stili kaldırır. Ayrıca, aşağıdaki eylemler alınır.
+Bu hizmet pencere öğesinin bir stilini kaldırır. Ayrıca, aşağıdaki eylemler alınır.
 
 Kaldırılan stil GX_STYLE_TRANSPARENT, durum GX_STATUS_TRANSPARENT kaldırılır.
 
 Kaldırılan stil GX_STYLE_ENABLED, durum GX_STATUS_SELECTABLE kaldırılır.
 
-Pencere öğesi görünür durumda ise, otomatik olarak geçersiz kılınmış ve yeniden çizim için kuyruğa alındı.
+Pencere öğesi görünür durumdaysa otomatik olarak geçersiz kılınır ve yeniden çizim için sıraya alınır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **style (stil)** Kaldır için stil. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
+- **Stil** Kaldırılacak stil. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi stili kaldırma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi stili kaldır
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
@@ -30901,13 +30901,13 @@ Bu hizmet, geçerli fırça ve metin hizalamasını kullanarak belirtilen metni 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi genişliği get
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_INVALID_STRING_LENGTH** (0x34) Geçersiz dize uzunluğu
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi genişliği al
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_STRING_LENGTH** (0x34) geçersiz dize uzunluğu
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -30926,7 +30926,7 @@ status = gx_widget_text_blend(&my_widget, my_text_color, my_font_id,
 - gx_widget_text_blend_ext
 
 ## <a name="gx_widget_text_blend_ext"></a>gx_widget_text_blend_ext
-### <a name="blend-text-assigned-to-widget"></a>Pencere öğesine atanan blend metni
+### <a name="blend-text-assigned-to-widget"></a>Pencere öğesine atanan metni karıştır
 
 ### <a name="prototype"></a>Prototype
 
@@ -30943,23 +30943,23 @@ UINT gx_widget_text_blend(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, gx_widget_text_blend_ext() kullanım dışıdır.
+Bu hizmet gx_widget_text_blend_ext () kullanımı için kullanım dışıdır.
 
-Bu hizmet, geçerli fırça ve metin hizalaması ile belirtilen renk, yazı tipi ve x,y kaydırmasını kullanarak belirtilen pencere öğesi üzerinde bir dize işler.
+Bu hizmet, geçerli fırça ve metin hizalamasını ve belirtilen renk, yazı tipi ve x, y sapmasını kullanarak belirtilen pencere öğesi üzerinde bir dize oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **tColor** Metin rengi
-- **font_id** Yazı Tipi Kimliği
-- **string** Çizim dizesi
-- **x_offset** Çizim konumu ayarlaması
-- **y_offset** Çizim konumu ayarlaması
-- **alfa** Karıştırma değeri 0-255
+- **TColor** Metin rengi
+- **font_id** Yazı tipi kimliği
+- **dize** Çizim dizesi
+- **x_offset** Çizim konumu ayarlama
+- **y_offset** Çizim konumu ayarlama
+- **Alfa** Değer karıştırma 0-255
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi genişliği get
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi genişliği al
 - **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
 - **GX_PTR_ERROR** (0x07) geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
@@ -31049,7 +31049,7 @@ VOID my_custom_widget_draw(GX_WIDGET *widget)
 - gx_widget_text_id_draw
 
 ## <a name="gx_widget_text_draw_ext"></a>gx_widget_text_draw_ext
-### <a name="draw-text-assigned-to-widget"></a>Pencere öğesine atanan metni çizme
+### <a name="draw-text-assigned-to-widget"></a>Pencere öğesine atanan metin çiz
 
 ### <a name="prototype"></a>Prototype
 
@@ -31065,16 +31065,16 @@ VOID gx_widget_text_draw(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, geçerli fırça ve metin hizalamasını kullanarak bir pencere öğesi üzerinde belirtilen metni çizmektedir.
+Bu hizmet, geçerli fırça ve metin hizalamasını kullanarak belirtilen metni bir pencere öğesi üzerine çizer.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **tColor** Metin rengi
-- **font_id** Yazı Tipi Kimliği
-- **text_id** Metin Kimliği
-- **x_offset** Çizim konumu ayarlaması
-- **y_offset** Çizim konumu ayarlaması
+- **TColor** Metin rengi
+- **font_id** Yazı tipi kimliği
+- **text_id** Metin kimliği
+- **x_offset** Çizim konumu ayarlama
+- **y_offset** Çizim konumu ayarlama
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -31134,13 +31134,13 @@ Bu hizmet, metin kimliği verilen bir pencere öğesi üzerinde metin çizmekted
 - **font_id** Yazı Tipi Kimliği
 - **text_id** Metin Kimliği
 - **x_offset** Çizim konumu ayarlaması
-- **y_offset** Çizim konumu ayarlama
+- **y_offset** Çizim konumu ayarlaması
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31165,7 +31165,7 @@ VOID my_custom_widget_draw(GX_WIDGET *widget)
 - gx_widget_text_draw
 
 ## <a name="gx_widget_top_visible_child_find"></a>gx_widget_top_visible_child_find
-### <a name="return-pointer-to-visible-child-that-is-top-of-z-order"></a>İşaretçiyi Z düzeninin en üstünde bulunan, görünür alt öğeye döndür
+### <a name="return-pointer-to-visible-child-that-is-top-of-z-order"></a>Z sırasına göre görünen alta işaretçiyi iade
 
 ### <a name="prototype"></a>Prototype
 
@@ -31177,21 +31177,21 @@ UINT gx_widget_top_visible_child_find(
 
 ### <a name="description"></a>Description
 
-GUX, üst ve alt pencere öğelerinin yapılandırılmış bir listesini tutar.
-Bu hizmet, geçerli pencere öğesinin en üstteki görünür alt öğesine bir işaretçi döndürür.
+GUIX, üst ve alt pencere öğelerinin ağaç yapılandırılmış listesini sağlar.
+Bu hizmet, geçerli pencere öğesi için en üstteki görünür alta bir işaretçi döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 - **geçerli** Geçerli pencere öğesi işaretçisi
-- **widget_return** Pencere öğesi işaretçisi döndürme işaretçisi
+- **widget_return** Pencere öğesi işaretçisini iade etmek için işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) işaretçisi döndü
-- **GX_PTR_ERROR** (0x07) geçersiz pencere öğesi işaretçisi
-- **GX_INVALID_WIDGET** (0x12) geçersiz pencere öğesi
+- **GX_SUCCESS** (0x00) işaretçisi döndürüldü
+- **GX_PTR_ERROR** (0x07) Geçersiz pencere öğesi işaretçisi
+- **GX_INVALID_WIDGET** (0x12) Geçersiz pencere öğesi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -31316,21 +31316,21 @@ UINT gx_widget_width_get(
 
 ### <a name="description"></a>Description
 
-Bu hizmet pencere öğesi genişliğini alır.
+Bu hizmet, pencere öğesinin genişliğini alır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **pencere öğesi** Pencere öğesi işaretçisi
-- **return_width** Pencere öğesi genişliği için hedefin işaretçisi
+- **return_width** Pencere öğesi genişliği için hedef işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere öğesi genişliği get
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere öğesi genişliği al
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31400,16 +31400,16 @@ Bu hizmet, pencerenin istemci yüksekliğini alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **window (pencere)** Pencere işaretçisi
-- **return_height** İstemci yüksekliği için hedefin işaretçisi
+- **pencere** Pencere işaretçisi
+- **return_height** İstemci yüksekliğinin hedefi işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere istemci yüksekliği
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere istemci yüksekliği al
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31462,17 +31462,17 @@ Bu hizmet, Windows istemcilerini belirtilen tutara göre kaydırır.
 
 - **pencere** Pencere işaretçisi
 - **x_scroll** X ekseninde kaydırılan miktar
-- **y_scroll** Y ekseninde kaydırma miktarı
+- **y_scroll** Y ekseninde kaydırılan miktar
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarılı pencere istemcisi kaydırma
-- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
-- **GX_INVALID_VALUE** (0x22) Kaydırma değerleri geçerli değil
+- **GX_SUCCESS** (0x00) başarılı pencere istemcisi kaydırma
+- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_INVALID_VALUE** (0X22) kaydırma değerleri geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31518,17 +31518,17 @@ Bu hizmet, belirtilen pencerenin istemci genişliğini alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** Pencere işaretçisi
-- **return_height** İstemci genişliği için hedef işaretçisi
+- **window (pencere)** Pencere işaretçisi
+- **return_height** İstemci genişliği için hedefe işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere istemci genişliği al
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
+- **GX_SUCCESS** (0x00) Başarılı pencere istemci genişliği get
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31578,7 +31578,7 @@ Bu hizmet, kalıcı bir pencereyi üst öğesinden ayırmaya ve kalıcı yürüt
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) Başarıyla kapatılan pencere
+- **GX_SUCCESS** (0x00) Başarıyla kapatılmış pencere
 - **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
 - **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
@@ -31614,7 +31614,7 @@ status = gx_window_close(&my_window);
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_create"></a>gx_window_create
-### <a name="create-window"></a>Pencere oluştur
+### <a name="create-window"></a>Oluştur penceresi
 
 ### <a name="prototype"></a>Prototype
 
@@ -31632,16 +31632,16 @@ UINT gx_window_create(
 
 Bu hizmet bir pencere oluşturur.
 
-GX_WINDOW GX_WIDGET türetilir ve tüm gx_widget API hizmetlerini destekler.
+GX_WINDOW, api hizmetlerinden GX_WIDGET ve tüm api gx_widget destekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** Pencere denetim bloğu işaretçisi
-- **ad** Pencerenin mantıksal adı
-- **üst öğe** Üst pencere öğesi işaretçisi
-- **Stil** Pencere stili. **Ek D** , tüm pencere öğelerinin yanı sıra pencere öğesine özgü stillerin önceden tanımlanmış genel stillerini içerir.
-- **window_id** Pencerenin uygulama tanımlı KIMLIĞI
-- **Boyut** Pencerenin boyutu
+- **window (pencere)** Pencere denetim bloğu işaretçisi
+- **name** Pencerenin mantıksal adı
+- **parent** Üst pencere öğesi işaretçisi
+- **style (stil)** Pencere stili. **Ek D,** tüm pencere öğeleri için önceden tanımlanmış genel stillerin yanı sıra pencere öğelerine özgü stilleri içerir.
+- **window_id** Pencerenin uygulama tanımlı kimliği
+- **boyut** Pencerenin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -31687,7 +31687,7 @@ status = gx_window_create(&my_window, "my window",
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_draw"></a>gx_window_draw
-### <a name="draw-window"></a>Pencereyi çiz
+### <a name="draw-window"></a>Çizim penceresi
 
 ### <a name="prototype"></a>Prototype
 
@@ -31697,17 +31697,17 @@ VOID gx_window_draw(GX_WINDOW *window);
 
 ### <a name="description"></a>Description
 
-Bu hizmet bir pencere çizer. Bu hizmet, genellikle tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel pencere çizim işlevlerinden de çağrılabilir.
+Bu hizmet bir pencere çizmektedir. Bu hizmet normalde tuval yenilemesi sırasında dahili olarak çağrılır, ancak özel pencere çizim işlevlerinden de çağrılabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** Pencere denetim bloğu işaretçisi
+- **window (pencere)** Pencere denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -31816,7 +31816,7 @@ UINT custom_window_event_process(GX_WINDOW *window,
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_execute"></a>gx_window_execute
-### <a name="modally-execute-a-window"></a>Bir pencereyi önemli bir şekilde yürütür
+### <a name="modally-execute-a-window"></a>Bir pencereyi mod ile yürütme
 
 ### <a name="prototype"></a>Prototype
 
@@ -31828,21 +31828,21 @@ UINT gx_window_execute(
 
 ### <a name="description"></a>Description
 
-Bu hizmet, bir pencereyi önemli ölçüde yürütür. Pencere istemci alanının dışında herhangi bir kullanıcı girişi (Pen olayları, vb.) yok sayılır. Bu işlevin sürekli engelleyici bir yürütme döngüsü girdiğini ve model yürütme sonlanana kadar çağırana dönmediğini unutmayın.
+Bu hizmet, bir pencereyi mod olarak yürütür. Pencere istemci alanı dışındaki tüm kullanıcı girişleri (kalem olayları vb.) yoksayılır. Bu işlevin bir sürekli engelleme yürütme döngüsü girdiğine ve model yürütmesi sonlandırılana kadar çağırana dönmez.
 
-Alınan herhangi bir olay için olay işleme sıfır olmayan bir durum değeri döndürdüğünde veya gx_window_close API işlevi çağrıldığında kalıcı yürütme sonlandırılır. Sıfır olmayan olay işleme dönüş kodu, bu API 'ye geçirilen return_ptr aracılığıyla çağırana döndürülür
+Alınan herhangi bir olay için olay işleme sıfır olmayan bir durum değeri döndür olduğunda veya api işlevi çağrıldığında kalıcı yürütme gx_window_close sonlandırılır. Sıfır olmayan olay işleme dönüş kodu, bu API'ye geçirilen return_ptr çağrıyı yapana döndürülür
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** Pencere denetim bloğu işaretçisi
-- **return_ptr** Kalıcı yürütme çıkış durumunun kaydedileceği konum. GX_NULL olabilir.
+- **window (pencere)** Pencere denetim bloğu işaretçisi
+- **return_ptr** Kalıcı yürütme çıkış durumunu kaydetme konumu. Bu durum GX_NULL.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı yürütme
-- **GX_SYSTEM_EVENT_RECEIVE_ERROR (0x05)** Olay kuyruğundan alma olayı başarısız oldu
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarılı yürütme
+- **GX_SYSTEM_EVENT_RECEIVE_ERROR(0x05)** Olay kuyruğundan teslim alma olayı başarısız oldu
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 - **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
 
 ### <a name="allowed-from"></a>İzin Verilen
@@ -31900,13 +31900,13 @@ Bu hizmet bir kök pencere oluşturur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) kök pencere başarıyla oluşturuldu
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_SIZE** (0x19) geçersiz pencere öğesi denetimi blok boyutu
-- **GX_ALREADY_CREATED** (0x13) pencere öğesi zaten oluşturuldu
+- **GX_SUCCESS** (0x00) Başarıyla oluşturulan kök pencere
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_SIZE** (0x19) Geçersiz pencere öğesi denetim bloğu boyutu
+- **GX_ALREADY_CREATED** (0x13) Pencere Öğesi zaten oluşturulmuş
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -31950,11 +31950,11 @@ Bu hizmet bir kök pencereyi siler.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) kök pencere başarıyla silindi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_SYSTEM_MEMORY_ERROR** (0x30) bellek boş işlevi tanımlı değil
+- **GX_SUCCESS** (0x00) Başarıyla silinen kök pencere
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_SYSTEM_MEMORY_ERROR** (0x30) Bellek boş işlevi tanımlanmadı
 
 ### <a name="allowed-from"></a>İzin Verilen
 
@@ -32004,15 +32004,15 @@ Bu hizmet belirtilen kök pencere için olayları işler.
 ### <a name="parameters"></a>Parametreler
 
 - **root_window** Kök pencere denetim bloğu işaretçisi
-- **olay** İşlenecek olaya yönelik işaretçi
+- **event (olay)** İşlenecek olayın işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) kök pencere olayı başarıyla işlendi
-- **GX_CALLER_ERROR** (0x11) bu Işlev için geçersiz çağıran
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_SUCCESS** (0x00) Başarıyla işlenen kök pencere olayı
+- **GX_CALLER_ERROR** (0x11) Bu işlevin çağıranı geçersiz
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -32116,7 +32116,7 @@ status = gx_window_root_find(&my_window, &root_window);
 - gx_window_wallpaper_set
 
 ## <a name="gx_window_scroll_info_get"></a>gx_window_scroll_info_get
-### <a name="get-window-scroll-info"></a>Pencere kaydırma bilgisini al
+### <a name="get-window-scroll-info"></a>Pencere kaydırma bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -32133,18 +32133,18 @@ Bu hizmet pencere kaydırma bilgilerini alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pencere** Pencere işaretçisi
-- **Stil** GX_SCROLLBAR_HORIZONTAL veya GX_SCROLLBAR_VERTICAL
-- **return_scroll_info** Kaydırma bilgisi için hedef işaretçisi. Ana pencere, üst pencere kaydırma çubuğunu, görüntülenebilir alanı ve kaydırma artışını ve sınırlarını bilgilendirmek için bu yapıyı başlatır. Varsayılan uygulama, Windows istemci alanını görüntülenebilir alan olarak kullanır ve piksellere göre kayar, ancak özelleştirilmiş pencere uygulama, kaydırma parametrelerini kullanabilir. **Ek ı** GX_SCROLL_INFO yapısının tanımını içerir
+- **window (pencere)** Pencere işaretçisi
+- **style (stil)** GX_SCROLLBAR_HORIZONTAL veya GX_SCROLLBAR_VERTICAL
+- **return_scroll_info** Kaydırma bilgileri için hedefin işaretçisi. Üst pencere bu yapıyı başlatarak üst pencere toplam boyutu, değiştirilebilir alan ve kaydırma artış ve sınırları hakkında kaydırma çubuğuna bilgi verir. Varsayılan uygulama, değiştirilebilir alan olarak Windows istemci alanı kullanır ve piksellere göre kaydırır, ancak özelleştirilmiş pencere uygulaması kaydırma parametrelerini kullanabilir. **Ek I,** GX_SCROLL_INFO yapısının tanımını içerir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **GX_SUCCESS** (0x00) başarılı pencere kaydır bilgi al
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_TYPE** (0x1B) geçersiz tür
+- **GX_SUCCESS** (0x00) Başarılı pencere kaydırma bilgileri get
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_TYPE** (0x1B) Geçersiz tür
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -32196,17 +32196,17 @@ Bu hizmet belirtilen pencere için kaydırma çubuğunu bulur.
 
 - **window (pencere)** Pencere işaretçisi
 - **tür** GX_TYPE_VERTICAL_SCROLL veya GX_TYPE_HORIZONTAL_SCROLL
-- **return_scrollbar** Kaydırma çubuğu için hedefe işaretçi
+- **return_scrollbar** Kaydırma çubuğu için hedefin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) Başarılı pencere kaydırma çubuğu bulma
-- **GX_NOT_FOUND** (0x09) kaydırma çubuğu bulunamadı
-- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
-- **GX_INVALID_TYPE** (0x1B) geçersiz tür
+- **GX_NOT_FOUND** (0x09) Kaydırma çubuğu bulunamadı
+- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_INVALID_TYPE** (0x1B) Geçersiz tür
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
@@ -32260,10 +32260,10 @@ Bu hizmet, belirtilen pencere için duvar kağıdını alır.
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **GX_SUCCESS** (0x00) Başarılı pencere duvar kağıdı get
-- **GX_PTR_ERROR** (0x07) Geçersiz işaretçi
-- **GX_INVALID_WIDGET** (0x12) Pencere Öğesi geçerli değil
+- **GX_PTR_ERROR** (0x07) geçersiz işaretçi
+- **GX_INVALID_WIDGET** (0x12) pencere öğesi geçerli değil
 
-### <a name="allowed-from"></a>İzin Verilen
+### <a name="allowed-from"></a>İzin verilen
 
 Başlatma ve iş parçacıkları
 

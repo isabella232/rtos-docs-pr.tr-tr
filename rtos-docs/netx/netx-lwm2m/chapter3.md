@@ -1,110 +1,110 @@
 ---
-title: Bölüm 3-Azure RTOS NetX LWM2M 'ın Işlevsel açıklaması
-description: Bu bölümde, Azure RTOS NetX LWM2M 'in işlevsel bir açıklaması bulunmaktadır.
+title: Bölüm 3 - NetX LWM2M Azure RTOS işlevsel açıklaması
+description: Bu bölümde NetX LWM2M Azure RTOS işlevsel bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f49a4f5f4c899dfa461a9d57a8b56e4503d6acd4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6424023a02aedf43c7433c9adc09231b8c146af13b9bddc15ebd1f2fc02e8c8a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826680"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784946"
 ---
-# <a name="chapter-3---functional-description-of-azure-rtos-netx-lwm2m"></a>Bölüm 3-Azure RTOS NetX LWM2M 'ın Işlevsel açıklaması
+# <a name="chapter-3---functional-description-of-azure-rtos-netx-lwm2m"></a>Bölüm 3 - NetX LWM2M Azure RTOS işlevsel açıklaması
 
-Bu bölümde, Azure RTOS NetX LWM2M 'in işlevsel bir açıklaması bulunmaktadır.
+Bu bölümde NetX LWM2M Azure RTOS işlevsel bir açıklama yer almaktadır.
 
-## <a name="lwm2m-client-initialization"></a>LWM2M Istemci başlatması
+## <a name="lwm2m-client-initialization"></a>LWM2M İstemci Başlatma
 
-LWM2M Istemcisi ***nx_lwm2m_client_create*** hizmeti çağırarak başlatılır. LWM2M Istemcisi kendi iş parçacığında çalışır ve geri çağırmalar kullanılarak veya uygulama tarafından uygulanan özel nesnelerin yöntemlerini çağırarak uygulamaya bazı olayları bildirebilir.
+LWM2M İstemcisi, nx_lwm2m_client_create ***başlatılır.*** LWM2M İstemcisi kendi iş parçacığında çalışır ve geri çağırmaları kullanarak veya uygulama tarafından uygulanan özel nesnelerin yöntemlerini çağırarak uygulamaya bazı olayları bildirebilir.
 
-Ayrıca, bir veya daha fazla sunucuyla iletişimi etkinleştirmek için ***nx_lwm2m_client_session_create*** çağırarak LWM2M istemci oturumlarının oluşturulması gerekir. Bir oturum iki farklı sunucu türüyle iletişim kurabilir: bir önyükleme sunucusu veya LWM2M sunucusu (cihaz yönetimi).
+Ayrıca LWM2M İstemci Oturumları, bir veya ***daha fazla nx_lwm2m_client_session_create*** iletişimin etkinleştirilmesi için özel çağrılarak oluşturularak oluşturulacak. Bir oturum iki farklı sunucu türüyle iletişim kurabilir: Bir Bootstrap Sunucusu veya LWM2M Sunucusu (Cihaz Yönetimi).
 
-### <a name="bootstrap-server-session"></a>Önyükleme sunucusu oturumu
+### <a name="bootstrap-server-session"></a>Bootstrap Sunucusu Oturumu
 
-LWM2M Istemcisinin, bir veya daha fazla LWM2M sunucusuyla "Register" işlemini gerçekleştirmesini sağlamak için, LWM2M Istemcisine bir iletişim oturumu, bir önyükleme sunucusu ile ilgili bilgi sağlamak için kullanılır. Istemci tarafından başlatılan ve sunucu tarafından başlatılan önyükleme modlarında bu tür bir sunucu kullanılır.
+LWM2M İstemcisi'nin bir veya daha fazla LWM2M Sunucusuna "Kaydetme" işlemini gerçekleştirmesini sağlamak üzere LWM2M İstemcisine temel bilgileri sağlamak için Bootstrap Sunucusu ile bir iletişim oturumu kullanılır. Bu sunucu türü İstemci Tarafından Başlatılan ve Sunucu Tarafından Başlatılan Önyükleme modları sırasında kullanılır.
 
-Uygulama, ***nx_lwm2m_client_session_bootstrap** _ veya _*_Nx_lwm2m_client_session_bootstrap_dtls_*_ çağırarak bir önyükleme oturumu başlatabilir, sunucunun IP adresini ve bağlantı noktası numarasını ve Isteğe bağlı BIR güvenlik nesnesi örnek kimliğini sağlamalıdır. _*_Nx_lwm2m_client_session_bootstrap_*_ işlevi güvenli olmayan iletişim kullanır, ancak _ *_nx_lwm2m_client_session_bootstrap_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurar.
+Uygulama * nx_lwm2m_client_session_bootstrap _ **veya** _*_nx_lwm2m_client_session_bootstrap_dtls_*_ çağırarak bir Bootstrap oturumu başlatabiliyor, sunucunun IP adresini ve bağlantı noktası numarasını ve isteğe bağlı bir Güvenlik Nesnesi Örneği Kimliğini sağlayabiliyor. Bu _*_nx_lwm2m_client_session_bootstrap_*_ güvenli olmayan iletişim kullanırken _ *_nx_lwm2m_client_session_bootstrap_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurulmasını sağlar.
 
-Önyükleme işlemi başarılı olursa, önyükleme sunucusu, önyükleme ve LWM2M sunucuları için güvenlik nesne örnekleri ve LWM2M sunucuları için sunucu nesne örnekleri oluşturmuş olmalıdır. Uygulamanın, LWM2M sunucuları ile oturum oluşturmak için bu bilgileri kullanması gerekir.
+Bootstrap işlemi başarılı olursa, Bootstrap sunucusunun Bootstrap ve LWM2M Sunucuları için Güvenlik Nesnesi Örnekleri ve LWM2M Sunucuları için Sunucu Nesnesi Örnekleri oluşturması gerekir. Uygulamanın LWM2M Sunucularla oturum kurmak için bu bilgileri kullanması gerekir.
 
-Önyükleme verileri, cihazın bir sonraki yeniden başlatmada LWM2M Istemcisini yapılandırmak için uygulama tarafından geçici olmayan belleğe kaydedilmelidir.
+Cihazın bir sonraki yeniden başlatılmasında LWM2M İstemcisi'nin yapılandırılması için Bootstrap verileri uygulama tarafından geçici olmayan belleğe kaydedılmalıdır.
 
-### <a name="lwm2m-server-session"></a>LWM2M sunucusu oturumu
+### <a name="lwm2m-server-session"></a>LWM2M Sunucu Oturumu
 
-Kayıt, cihaz yönetimi ve hizmet etkinleştirme için bir LWM2M sunucusuyla iletişim oturumu kullanılır.
+Kayıt, Güvenlik Ve Hizmet Etkinleştirme için LWM2M Sunucusu ile Cihaz Yönetimi oturumu kullanılır.
 
-Uygulama, LWM2M Istemcisini ***nx_lwm2m_client_session_register** _ veya _*_nx_lwm2m_client_session_register_dtls_*_ çağırarak sunucuya kaydedebilir, sunucunun IP adresini ve bağlantı noktası numarasını ve var olan bir sunucu nesnesi örneğine KARŞıLıK gelen kısa sunucu kimliğini sağlamalıdır. _*_Nx_lwm2m_client_session_register_*_ işlevi güvenli olmayan iletişim kullanır, ancak _ *_nx_lwm2m_client_session_register_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurar.
+Uygulama , ***nx_lwm2m_client_session_register** _ veya _*_nx_lwm2m_client_session_register_dtls_*_ çağırarak LWM2M İstemcisini bir sunucuya kaydedebilir, sunucunun IP adresini ve bağlantı noktası numarasını ve mevcut Sunucu Nesne Örneğine karşılık gelen Kısa Sunucu Kimliğini sağlasa gerekir. Bu _*_nx_lwm2m_client_session_register_*_ güvenli olmayan iletişim kullanırken _ *_nx_lwm2m_client_session_register_dtls_** sunucuyla güvenli bir DTLS bağlantısı kurulmasını sağlar.
 
-Uygulama, ***nx_lwm2m_client_session_deregister** _ ' i çağırarak LWM2M istemcisini kaydedebilir ve istemciden _ *_nx_lwm2m_client_session_update_* * çağırarak bir ' güncelleştirme ' iletisi göndermesini ister.
+Uygulama ***nx_lwm2m_client_session_deregister** _ çağırarak LWM2M İstemcisi'nin kaydını sildi ve _* nx_lwm2m_client_session_update ** çağrısıyla istemciden bir 'Güncelleştir'_iletisi göndermesini_ isteyebilir.
 
-### <a name="session-state-callback"></a>Oturum durumu geri çağırma
+### <a name="session-state-callback"></a>Oturum Durumu Geri Çağırma
 
-Uygulama, oturum durumu güncellendiğinde çağrılan bir oturum oluşturma sırasında bir geri çağırma kaydeder, geri çağırma işlevi NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK aşağıdaki prototiple sahiptir:
+Uygulama, oturumun durumu güncelleştirildiğinde çağrılan bir oturumun oluşturulması sırasında bir geri çağırmayı kaydediyor. Geri çağırma işlevi NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK prototipe sahiptir:
 
 ```c
 typedef VOID (*NX_LWM2M_CLIENT_SESSION_STATE_CALLBACK)
         (NX_LWM2M_CLIENT_SESSION *session_ptr, UINT state);
 ```
 
-Aşağıdaki durumlar tanımlanmıştır:
+Aşağıdaki eyaletler tanımlanmıştır:
 
-- **NX_LWM2M_CLIENT_SESSION_INIT**: oturum oluşturulduktan sonra ilk durum.
+- **NX_LWM2M_CLIENT_SESSION_INIT:** Oturum oluşturma sonrasındaki ilk durum.
 
-- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_WAITING**: istemci, ' bekletme ' süreölçeri veya sunucu tarafından başlatılan önyükleme işleminin sona erme süresini bekliyor.
+- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_WAITING:** İstemci , 'Kapalı Tut' süreölçeri veya Sunucu Tarafından Başlatılan Önyükleme'nin süresinin dolması için bekliyor.
 
-- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_REQUESTING**: Istemci önyükleme sunucusuna bir ' istek ' iletisi gönderdi (Istemci tarafından başlatılan önyükleme).
+- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_REQUESTING:** İstemci, Bootstrap Sunucusuna bir 'İstek' iletisi gönderdi (İstemci Tarafından Başlatılan Bootstrap).
 
-- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_INITIATED**: Istemci, önyükleme sunucusundan veri alıyor.
+- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_INITIATED:** İstemci, Bootstrap Sunucusundan veri alıyor.
 
-- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_FINISHED**: önyükleme sunucusu ' FINISHED ' iletisi gönderdi.
+- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_FINISHED:** Bootstrap Sunucusu bir 'Bitti' iletisi gönderdi.
 
-- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_ERROR**: önyükleme oturumu başarısız oldu.
+- **NX_LWM2M_CLIENT_SESSION_BOOTSTRAP_ERROR:** Önyükleme oturumu başarısız oldu.
 
-- **NX_LWM2M_CLIENT_SESSION_REGISTERING**: ISTEMCI, LWM2M sunucusuna bir ' Register ' iletisi gönderdi.
+- **NX_LWM2M_CLIENT_SESSION_REGISTERING:** İstemci LWM2M Sunucusuna bir 'Kaydetme' iletisi gönderdi.
 
-- **NX_LWM2M_CLIENT_SESSION_REGISTERED**: Istemci LWM2M sunucusuna kaydedilir.
+- **NX_LWM2M_CLIENT_SESSION_REGISTERED:** İstemci LWM2M Sunucusuna kaydedilir.
 
-- **NX_LWM2M_CLIENT_SESSION_UPDATING**: ISTEMCI, LWM2M sunucusuna bir ' Update ' iletisi gönderdi.
+- **NX_LWM2M_CLIENT_SESSION_UPDATING:** İstemci LWM2M Sunucusuna bir 'Güncelleştir' iletisi gönderdi.
 
-- **NX_LWM2M_CLIENT_SESSION_DEREGISTERING**: ISTEMCI, LWM2M sunucusuna ' de Register ' iletisi gönderdi.
+- **NX_LWM2M_CLIENT_SESSION_DEREGISTERING:** İstemci LWM2M Sunucusuna bir 'Kaydı Geri Gönder' iletisi gönderdi.
 
-- **NX_LWM2M_CLIENT_SESSION_DEREGISTERED**: ISTEMCI, LWM2M sunucusundan de kayıtlı.
+- **NX_LWM2M_CLIENT_SESSION_DEREGISTERED:** İstemci LWM2M Sunucusundan kaydı kaldırıldı.
 
-- **NX_LWM2M_CLIENT_SESSION_DISABLED**: LWM2M sunucusu devre dışı bırakıldı. Devre dışı bırakma süreölçeri sona erdikten sonra bir ' Register ' gönderilir.
+- **NX_LWM2M_CLIENT_SESSION_DISABLED:** LWM2M Sunucusu devre dışı bırakıldı. Devre dışı bırakma süreölçeri sona erdikten sonra bir 'Register' gönderilir.
 
-- **NX_LWM2M_CLIENT_SESSION_ERROR**: LWM2M sunucusuna kaydolma veya güncelleştirme işlemi başarısız oldu.
+- **NX_LWM2M_CLIENT_SESSION_ERROR:** LWM2M Sunucusuna kayıt veya güncelleştirme işlemi başarısız oldu.
 
-- **NX_LWM2M_CLIENT_SESSION_DELETED**: LWM2M sunucusuna karşılık gelen sunucu nesnesi örneği silindi. Hata durumunda uygulamanın, **_nx_lwm2m_client_session_error_get_** çağırarak hatanın nedenini elde edebilir.
+- **NX_LWM2M_CLIENT_SESSION_DELETED:** LWM2M Sunucusuna karşılık gelen Sunucu Nesne Örneği silindi. Hata durumunda uygulama, hatanın nedenini almak için **_nx_lwm2m_client_session_error_get._**
 
-## <a name="local-device-management"></a>Yerel cihaz yönetimi
+## <a name="local-device-management"></a>Yerel Cihaz Yönetimi
 
-Uygulama, yerel cihaz yönetimi işlevlerini kullanarak LWM2M Istemcisinin nesnelerine erişebilir. Aşağıdaki işlevler verilmiştir:
+Uygulama, yerel cihaz yönetimi işlevlerini kullanarak LWM2M İstemcisi Nesneleri'ne erişebilir. Aşağıdaki işlevler sağlanır:
 
-- ***nx_lwm2m_client_object_read***: bir nesne örneğinden kaynakları okuyun.
+- ***nx_lwm2m_client_object_read:*** Bir Nesne Örneğinden kaynakları okuyun.
 
-- ***nx_lwm2m_client_object_discover***: bir nesne örneğinin kaynak listesini alın.
+- ***nx_lwm2m_client_object_discover:*** Nesne Örneğinin kaynaklarının listesini al.
 
-- ***nx_lwm2m_client_object_write***: kaynakları bir nesne örneğine yazma
+- ***nx_lwm2m_client_object_write:*** Nesne Örneğine kaynak yazma
 
-- ***nx_lwm2m_client_object_execute***: bir nesne örneğinin kaynağında yürütme işlemi gerçekleştirin.
+- ***nx_lwm2m_client_object_execute:*** Nesne Örneğinin kaynağında Yürütme işlemini gerçekleştirin.
 
-- ***nx_lwm2m_client_object_create***: yeni bir nesne örneği oluşturun.
+- ***nx_lwm2m_client_object_create:*** Yeni bir Nesne Örneği oluşturun.
 
-- ***nx_lwm2m_client_object_delete***: varolan bir nesne örneğini silin.
+- ***nx_lwm2m_client_object_delete:*** Var olan bir Nesne Örneğini silin.
 
-- ***nx_lwm2m_client_object_get_next***: lwm2m istemcisi tarafından uygulanan sonrakı nesne kimliğini alın.
+- ***nx_lwm2m_client_object_get_next:*** LWM2M İstemcisi tarafından uygulanan sonraki Nesne Kimliğini al.
 
-- ***nx_lwm2m_client_object_instance_get_next***: bir nesnenin sonraki örneğini al.
+- ***nx_lwm2m_client_object_instance_get_next:*** Bir Nesnenin sonraki Örneğini al.
 
-## <a name="resource-information"></a>Kaynak bilgileri
+## <a name="resource-information"></a>Kaynak Bilgileri
 
-Nesneleri okuma ve nesnelere yazma sırasında bir kaynak NX_LWM2M_RESOURCE yapısıyla temsil edilir. Bu yapı, kaynak/örnek KIMLIĞINI ve değerini içerir. Değerin kodlaması türüne ve kaynağına (uygulama veya ağ) bağlıdır.
+Nesnelerden okuma ve Nesnelere yazma, kaynak yapısı tarafından NX_LWM2M_RESOURCE temsil eder. Bu yapı, Kaynağın/Örneğin kimliğini ve değerini içerir. Değerin kodlaması türüne ve kaynağına (uygulama veya ağ) bağlıdır.
 
-NX_LWM2M_RESOURCE yapısı aşağıdaki tanıma sahiptir:
+NX_LWM2M_RESOURCE yapısı aşağıdaki tanımlara sahiptir:
 
 ```c
 typedef struct NX_LWM2M_RESOURCE_STRUCT
@@ -135,52 +135,52 @@ typedef struct NX_LWM2M_RESOURCE_STRUCT
 } NX_LWM2M_RESOURCE;
 ```
 
-- **nx_lwm2m_resource_id**: kaynağın veya örneğin kimliği.
-- **nx_lwm2m_resource_type**: değerin türü, aşağıya bakın.
-- **nx_lwm2m_resource_value**: kaynağın değeri, değerin türüne bağlıdır.
+- **nx_lwm2m_resource_id:** Kaynağın veya Örneğin Kimliği.
+- **nx_lwm2m_resource_type:** Değerin türü, aşağıya bakın.
+- **nx_lwm2m_resource_value:** Kaynağın değeri, değerin türüne bağlıdır.
 
-Aşağıdaki değer türleri tanımlanmıştır:
+Aşağıdaki değer türü tanımlanmıştır:
 
-- **NX_LWM2M_RESOURCE_NONE**: boş kaynak.
+- **NX_LWM2M_RESOURCE_NONE:** Boş kaynak.
 
-- **NX_LWM2M_RESOURCE_STRING**: *nx_lwm2m_resource_stringdata* içinde depolanan, null ile sonlandırılmış bir UTF-8 dize değeri.
+- **NX_LWM2M_RESOURCE_STRING:** içinde depolanan null sonlandırılan UTF-8 dize *nx_lwm2m_resource_stringdata.*
 
-- **NX_LWM2M_RESOURCE_INTEGER32**: *Nx_lwm2m_resource_integer32data* depolanan 32 bitlik bir tamsayı değeri.
+- **NX_LWM2M_RESOURCE_INTEGER32:** içinde depolanan 32 Bit tamsayı *nx_lwm2m_resource_integer32data.*
 
-- **NX_LWM2M_RESOURCE_INTEGER64**: *Nx_lwm2m_resource_integer64data* depolanan 64 bitlik bir tamsayı değeri.
+- **NX_LWM2M_RESOURCE_INTEGER64:** içinde depolanan 64 Bit tamsayı *nx_lwm2m_resource_integer64data.*
 
-- **NX_LWM2M_RESOURCE_FLOAT32**: *Nx_lwm2m_resource_float32data* depolanan 32 bitlik kayan nokta değeri.
+- **NX_LWM2M_RESOURCE_FLOAT32:** içinde depolanan 32 Bit Kayan Nokta *nx_lwm2m_resource_float32data.*
 
-- **NX_LWM2M_RESOURCE_FLOAT64**: *Nx_lwm2m_resource_float64data* depolanan 64 bitlik kayan nokta değeri.
+- **NX_LWM2M_RESOURCE_FLOAT64:** içinde depolanan 64 Bit Kayan Nokta *nx_lwm2m_resource_float64data.*
 
-- **NX_LWM2M_RESOURCE_BOOLEAN**: *Nx_lwm2m_resource_booleandata* depolanan bir Boole değeri.
+- **NX_LWM2M_RESOURCE_BOOLEAN:** içinde depolanan bir Boole *değeri nx_lwm2m_resource_booleandata.*
 
-- **NX_LWM2M_RESOURCE_OPAQUE**: *Nx_lwm2m_resource_bufferdata* tarafından tanımlanan donuk bir değer.
+- **NX_LWM2M_RESOURCE_OPAQUE:** tarafından tanımlanan opak bir *nx_lwm2m_resource_bufferdata.*
 
-- **NX_LWM2M_RESOURCE_OBJLNK**: *Nx_lwm2m_resource_objlnkdata* depolanan bir nesne bağlantı değeri.
+- **NX_LWM2M_RESOURCE_OBJLNK:** içinde depolanan bir Nesne Bağlantısı *nx_lwm2m_resource_objlnkdata.*
 
-- **NX_LWM2M_RESOURCE_TLV**: *nx_lwm2m_resource_bufferdata* tarafından tanımlanan bir TLV şifreli değeri.
+- **NX_LWM2M_RESOURCE_TLV:** ile tanımlanan TLV kodlanmış *nx_lwm2m_resource_bufferdata.*
 
-- **NX_LWM2M_RESOURCE_TEXT**: *nx_lwm2m_resource_bufferdata* tarafından tanımlanan Plain-Text kodlanmış bir değer.
+- **NX_LWM2M_RESOURCE_TEXT:** Plain-Text tarafından tanımlanan bir *kodlanmış* nx_lwm2m_resource_bufferdata.
 
-- **NX_LWM2M_RESOURCE_MULTIPLE**: *Nx_lwm2m_resource_multipledata* tarafından tanımlanan birden çok kaynak. *nx_lwm2m_resource_multiple_ptr* , her kaynak örneği hakkında bilgi içeren bir **NX_LWM2M_RESOURCE** yapıları dizisinin bir işaretçisidir.
+- **NX_LWM2M_RESOURCE_MULTIPLE:** tarafından tanımlanan Birden Çok *Kaynak nx_lwm2m_resource_multipledata.* *nx_lwm2m_resource_multiple_ptr,* her Kaynak Örneği hakkında **bilgi NX_LWM2M_RESOURCE** bir dizi farklı yapının işaretçisidir.
 
-- **NX_LWM2M_RESOURCE_MULTIPLE_TLV**: *Nx_lwm2m_resource_multipledata* tarafından tanımlanan birden çok kaynak. *nx_lwm2m_resource_multiple_ptr* , TLV kodlamalı arabelleğin bir işaretçisidir.
+- **NX_LWM2M_RESOURCE_MULTIPLE_TLV:** tarafından tanımlanan Birden Çok *Kaynak nx_lwm2m_resource_multipledata.* *nx_lwm2m_resource_multiple_ptr* TLV kodlanmış arabelleğinin işaretçisi.
 
-Değer almak ve türünü denetlemek için kullanışlı işlevler, NX_LWM2M_RESOURCE yapısından bir değer alırken uygulama asla *nx_lwm2m_resource_value* alana doğrudan erişmemelidir. Aşağıdaki işlevler tanımlanmıştır:
+Değeri almak ve türünü kontrol etmek için kullanışlı işlevler sağlanır.  Uygulama, nx_lwm2m_resource_value yapısından bir değer alırken hiçbir zaman NX_LWM2M_RESOURCE erişmez. Aşağıdaki işlevler tanımlanmıştır:
 
-- ***nx_lwm2m_resource_get_***: verilen türe sahip bir değer alın.
-- ***nx_lwm2m_resource_multiple_get_***: birden fazla kaynaktan verilen türe sahip bir değer alın.
+- ***nx_lwm2m_resource_get_:*** Verilen türe sahip bir değer elde.
+- ***nx_lwm2m_resource_multiple_get_:*** Birden Çok Kaynak'tan verilen türe sahip bir değer elde.
 
-Makro **NX_LWM2M_RESOURCE_IS_MULTIPLE**(tür), bir kaynak türünün birden çok kaynak olup olmadığını denetlemek için kullanılabilir.
+Makro **NX_LWM2M_RESOURCE_IS_MULTIPLE**(tür) bir kaynak türünün Birden Çok Kaynak olup olduğunu kontrol etmek için kullanılabilir.
 
-## <a name="object-implementation"></a>Nesne uygulama
+## <a name="object-implementation"></a>Nesne Uygulama
 
-LWM2M Istemcisi zorunlu OMA LWM2M nesnelerini uygular: güvenlik (0), sunucu (1), Access Control (2) ve cihaz (3). Diğer cihaza özgü nesnelerin uygulama tarafından uygulanması gerekir.
+LWM2M İstemcisi zorunlu OMA LWM2M Nesnelerini kullanır: Güvenlik (0), Sunucu (1), Access Control (2) ve Cihaz (3). Cihaza özgü diğer nesneler uygulama tarafından uygulanarak uygulanarak.
 
-Bir nesneyi tanımlamak için iki veri yapısı kullanılır: NX_LWM2M_OBJECT yapısı, nesne KIMLIĞI ve nesne yöntemleri de dahil olmak üzere nesne uygulamasını tanımlar ve NX_LWM2M_OBJECT_INSTANCE yapısı bir nesne örneğinin verilerini içerir.
+Nesne tanımlamak için iki veri yapısı kullanılır: NX_LWM2M_OBJECT yapısı Nesne Kimliği ve nesne yöntemleri de dahil olmak üzere Nesne uygulamasını tanımlar ve NX_LWM2M_OBJECT_INSTANCE yapısı bir Nesne Örneğinin verilerini içerir.
 
-NX_LWM2M_OBJECT yapısı aşağıdaki tanıma sahiptir:
+Bu NX_LWM2M_OBJECT aşağıdaki tanımı içerir:
 
 ```c
 typedef struct NX_LWM2M_OBJECT_STRUCT
@@ -208,17 +208,17 @@ typedef struct NX_LWM2M_OBJECT_STRUCT
 } NX_LWM2M_OBJECT;
 ```
 
-- **nx_lwm2m_object_next**: listedeki bir sonraki nesne.
-- **nx_lwm2m_object_id**: nesne kimliği.
-- **nx_lwm2m_object_read**: ' Read ' yöntemi, aşağıya bakın.
-- **nx_lwm2m_object_discover**: ' bul ' yöntemi aşağıya bakın.
-- **nx_lwm2m_object_write**: ' Write ' yöntemi, aşağıya bakın.
-- **nx_lwm2m_object_execute**: ' Execute ' yöntemi, aşağıya bakın.
-- **nx_lwm2m_object_create**: ' Create ' yöntemi, aşağıya bakın.
-- **nx_lwm2m_object_delete**: ' DELETE ' yöntemi, aşağıya bakın.
-- **nx_lwm2m_object_instances**: nesne örneklerinin null ile sonlandırılmış listesi.
+- **nx_lwm2m_object_next:** Listede sonraki nesne.
+- **nx_lwm2m_object_id:** Nesne Kimliği.
+- **nx_lwm2m_object_read:**'Read' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_discover:**'Discover' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_write:**'Write' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_execute:**'Execute' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_create:**'Create' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_delete:**'Delete' yöntemi, aşağıya bakın.
+- **nx_lwm2m_object_instances:** Nesne örneklerinin NULL ile sonlandırılan listesi.
 
-NX_LWM2M_OBJECT_INSTANCE yapısı aşağıdaki tanıma sahiptir:
+NX_LWM2M_OBJECT_INSTANCE yapısı aşağıdaki tanımlara sahiptir:
 
 ```c
 typedef struct NX_LWM2M_OBJECT_INSTANCE_STRUCT
@@ -228,10 +228,10 @@ typedef struct NX_LWM2M_OBJECT_INSTANCE_STRUCT
 } NX_LWM2M_OBJECT_INSTANCE;
 ```
 
-- **nx_lwm2m_object_instance_next**: listedeki bir sonraki örnek.
-- **nx_lwm2m_object_instance_id**: nesne örneği kimliği.
+- **nx_lwm2m_object_instance_next:** Listenin sonraki örneği.
+- **nx_lwm2m_object_instance_id:** Nesne Örneği Kimliği.
 
-Nesne, LWM2M cihaz yönetimi arabirimi tarafından tanımlanan işlemlere karşılık gelen yöntemleri uygulamalıdır: ' Read ', ' Discover ', ' Write ', ' Execute ', ' Create ' ve ' DELETE '. ' Create ' ve ' DELETE ' yöntemleri, nesne örneklerin dinamik olarak oluşturulmasını desteklemiyorsa NULL olarak ayarlanabilir.
+Nesne LWM2M Cihaz Yönetimi Arabirimi tarafından tanımlanan işlemlere karşılık gelen yöntemleri uygulamalı: 'Okuma', 'Bulma', 'Yazma', 'Yürüt', 'Oluştur' ve 'Sil'. Nesne örneklerin dinamik olarak oluşturulmasını desteklemezse 'Oluştur' ve 'Sil' yöntemleri NULL olarak ayarilebilir.
 
 ### <a name="the-read-method"></a>' Read ' yöntemi
 

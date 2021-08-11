@@ -1,72 +1,72 @@
 ---
-title: Bölüm 2-HTTP ve HTTPS yükleme ve kullanımı
-description: Bu bölümde, NetX Web HTTP bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - HTTP ve HTTPS yüklemesi ve kullanımı
+description: Bu bölümde NetX Web HTTP bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 07/24/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 99e649781588b56e72b509c2aa077c38423379d1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fd8ab093d15c5413b0d5dac6d35b080674c3a332ec7a028fc462237135880d34
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825703"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783433"
 ---
-# <a name="chapter-2---installation-and-use-of-http-and-https"></a>Bölüm 2-HTTP ve HTTPS yükleme ve kullanımı
+# <a name="chapter-2---installation-and-use-of-http-and-https"></a>Bölüm 2 - HTTP ve HTTPS yüklemesi ve kullanımı
 
-Bu bölümde, NetX Web HTTP bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde NetX Web HTTP bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX için HTTP, adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Bu paket, aşağıdaki gibi üç kaynak dosyası, iki içerme dosyası ve bu belgeyi içeren bir dosya içerir:
+NetX için HTTP adresinden [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) edinebilirsiniz. Pakette üç kaynak dosya, iki ekleme dosyası ve bu belgeyi içeren bir dosya aşağıdaki gibi yer almaktadır:
 
-- **nx_web_http_common. h** NetX Web HTTP için ortak üst bilgi dosyası
-- **nx_web_http_client. h** NetX Web için HTTP Istemcisi üst bilgi dosyası
-- **nx_web_http_server. h** NetX Web için HTTP sunucusu üst bilgi dosyası
-- **nx_web_http_client. c** NetX Web için HTTP Istemcisi için C kaynak dosyası
-- **nx_web_http_server. c** NetX Web için HTTP sunucusu için C kaynak dosyası
-- **nx_tcpserver. c** Birden çok TCP yuvası için C kaynak dosyası
-- **nx_tcpserver. h** HTTPS sunucu sembolleri tanımlamak için üst bilgi dosyası
-- **nx_md5. c** MD5 Özet algoritmaları
-- **filex_stub. h** FileX yoksa saplama dosyası
+- **nx_web_http_common.h** NetX Web HTTP için ortak üst bilgi dosyası
+- **nx_web_http_client.h** NetX Web için HTTP İstemcisi üst bilgi dosyası
+- **nx_web_http_server.h** NetX Web için HTTP Sunucusu üst bilgi dosyası
+- **nx_web_http_client.c** NetX Web için HTTP İstemcisi için C Kaynak dosyası
+- **nx_web_http_server.c** NetX Web için HTTP Sunucusu için C Kaynak dosyası
+- **nx_tcpserver.c** Birden çok TCP yuvası için C Kaynak dosyası
+- **nx_tcpserver.h** HTTPS Sunucusu simgelerini tanımlamak için üst bilgi dosyası
+- **nx_md5.c** MD5 özet algoritmaları
+- **filex_stub.h** FileX yoksa saplama dosyası
 - **nx_web_http.pdf** NetX Web için HTTP açıklaması
-- **demo_netx_web_http. c** NetX Web HTTP tanıtımı
+- **demo_netx_web_http.c** NetX Web HTTP gösterimi
 
-## <a name="http-installation"></a>HTTP yüklemesi
+## <a name="http-installation"></a>HTTP Yüklemesi
 
-NetX Web HTTP 'yi kullanmak için, daha önce bahsedilen dağıtımın tamamı NetX Duo 'un yüklü olduğu dizine kopyalanmalıdır. Örneğin, NetX Duo "*\threadx\arm7\green*" dizinine yüklenmişse, *NETX Web http istemci uygulamaları için* *nx_web_http_client. h* ve Nx_web_http_client. c ve *netx Web http sunucusu uygulamaları için nx_web_http_server. h, nx_web_http_server. c, nx_tcpserver. c ve nx_tcpserver. h. Hem istemci hem de sunucu uygulamaları için nx_web_http_common. h de bu dizinde olmalıdır.* Özet kimlik doğrulaması kullanılıyorsa, nx_md5. c de bu dizine kopyalanmalıdır. Tanıtım ' RAM sürücüsü ' uygulaması için HTTP Istemcisi ve sunucu dosyaları aynı dizine kopyalanmalıdır.
+NetX Web HTTP'sini kullanmak için daha önce bahsedilen dağıtımın tamamı NetX Duo'nın yüklü olduğu dizine kopyalanır. Örneğin, NetX Duo "*\threadx\arm7\green"* dizininde yüklüyse NetX Web HTTP İstemcisi uygulamaları için *nx_web_http_client.h* ve *nx_web_http_client.c* ve NetX Web HTTP Server uygulamaları için nx_web_http_server.h , *nx_web_http_server.c, nx_tcpserver.c ve nx_tcpserver.h dizine yüklenir. Hem istemci hem de sunucu uygulamaları için nx_web_http_common.h de bu dizinde olmalıdır. özet nx_md5 kullanılıyorsa, nx_md5.c* de bu dizine kopyalanır. Demo 'ram driver' uygulaması HTTP İstemcisi ve Sunucu dosyaları aynı dizine kopyalanır.
 
-TLS kullanılıyorsa, TLS kaynak dosyalarını içeren ayrı bir NetX güvenli dizininiz olmalıdır.
+TLS kullanıyorsanız TLS kaynak dosyalarını içeren ayrı bir NetX Secure dizini olmalıdır.
 
 ## <a name="using-http"></a>HTTP kullanma
 
-NetX Web HTTP kullanmak kolaydır. Temel olarak, uygulama kodu *nx_web_http_client.* h ve/veya *nx_web_http_server.* h içermelidir *tx_api. h, fx_api. h* ve *nx_api. h* (*nx_web_http_common. h* otomatik olarak eklenir). Bu üst bilgiler, uygulamanın sırasıyla ThreadX, FileX ve NetX Duo kullanmasını sağlar. HTTPS desteği için, *nx_secure_tls. h* dosyası, TLS desteğini getirmek üzere eklendikten sonra üst bilgiler eklenmelidir.
+NetX Web HTTP'nin kullanımı kolaydır. Temel olarak, uygulama kodu *tx_api.h, fx_api.h* ve *nx_api.h* 'yi *(nx_web_http_common.h* otomatik olarak dahil edildikten sonra) nx_web_http_client.h ve/veya *nx_web_http_server.h'yi* içermeli. Bu üst bilgiler uygulamanın sırasıyla ThreadX, FileX ve NetX Duo kullanmalarına olanak sağlar. HTTPS desteği için, TLS desteğini getirmek için *nx_secure_tls.h* dosyası dahil edildikten sonra üst bilgiler dahil edilecektir.
 
-HTTP üstbilgi dosyaları eklendikten sonra, uygulama kodu daha sonra bu kılavuzda belirtilen HTTP işlev çağrılarını yapabilir. Uygulama Ayrıca, http (s *) istemcileri için nx_web_http_client. c* *NX_TCPSERVER ve (http (s) sunucuları için, nx_web_http_server.* c ' ye ve derleme sürecinde *nx_md5. c (Özet kimlik doğrulaması için)* ile bağlantı etmelidir. Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Web HTTP 'yi kullanmak için gereklidir.
+HTTP üst bilgisi dosyaları dahil edildiktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen HTTP işlev çağrılarını da mümkün hale gelecektir. Uygulama ayrıca derleme sürecinde HTTP (S) istemcileri için *nx_web_http_client.c, HTTP (S)* sunucuları için *nx_web_http_server.c* ve *nx_tcpserver.c ve nx_md5.c (özet* kimlik doğrulaması için) ile bağlantı kurması gerekir. Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne formunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX Web HTTP kullanmak için gerekenler bunlardır.
 
 > [!NOTE]
-> Yapı işleminde NX_WEB_HTTP_DIGEST_ENABLE belirtilmemişse, *MD5. c* dosyasının uygulamaya eklenmesi gerekmez. Benzer şekilde, HTTP Istemci özellikleri gerekmiyorsa, *nx_web_http_client. c* dosyası atlanabilir ve hiçbir http sunucusu özelliği gerekmiyorsa, *nx_web_http_server. c* atlanabilir.
+> Derleme NX_WEB_HTTP_DIGEST_ENABLE belirtilmezse, *md5.c* dosyasının uygulamaya eklenmesi gerek değildir. Benzer şekilde, herhangi bir HTTP İstemcisi özelliği gerekli *yoksa, nx_web_http_client.c* dosyası atlanabilir ve HTTP Sunucusu özellikleri gerekli *yoksayılabilir, nx_web_http_server.c* atlanabilir.
 >
-> HTTPS 'yi etkinleştirmek için NX_WEB_HTTPS_ENABLE tanımlanmamışsa (yalnızca düz metin HTTP kullanmak yerine), NetX güvenli TLS 'nin derlemede olması gerekmez.
+> HTTPS NX_WEB_HTTPS_ENABLE etkinleştirmek için tanımlanmamışsa (yalnızca düz metin HTTP kullanmak yerine) NetX Secure TLS'nin derlemede olması gerekir.
 >
-> HTTP, NetX TCP hizmetlerini kullandığından, HTTP kullanmadan önce *nx_tcp_enable ()* çağrısıyla TCP 'nin etkinleştirilmesi gerekir.
+> HTTP, NetX TCP hizmetlerini kullanır, HTTP'yi kullanmadan önce *TCP'nin nx_tcp_enable()* çağrısıyla etkinleştirilmesi gerekir.
 >
-> HTTPS 'yi NetX güvenli TLS ile kullanırken, HTTPS yordamları çağrılmadan önce TLS *nx_secure_tls_initialize ()* ile başlatılmalıdır.
+> NetX Secure TLS ile HTTPS kullanırken, HTTPS yordamları çağrıldan önce *TLS'nin nx_secure_tls_initialize()* ile başlatılması gerekir.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX Web HTTP 'nin nasıl kullanılacağına ilişkin bir örnek aşağıda şekil 1,1 ' de açıklanmıştır.
+Aşağıdaki Şekil 1.1'de NetX Web HTTP'nin kullanımına bir örnek verilmiştir.
 
 > [!CAUTION]
-> Bu yalnızca tanıtım amaçlıdır ve olduğu gibi derlenmesi ve çalıştırılması garanti edilmez.
+> Bu yalnızca tanıtım amacıyla sağlanır ve olduğu gibi derle ve çalıştır garanti edilemez.
 >
-> Lütfen yerel Express Logic ortamında düzgün şekilde oluşturulacak tanıtım kaynak kodu dosyaları için NetX Duo HTTPS sürüm kodu dağıtımına bakın.  Ayrıca, bu tanıtımlar, yeni kullanıcılara HTTPS ve/veya NetX Duo HTTPS uygulaması tanıtılmak üzere bilinçli olarak çok basit bir şekilde tutulduğuna dikkat edin.
+> Lütfen yerel Express Logic ortamında düzgün şekilde derleme yapan tanıtım kaynak kodu dosyaları için NetX Duo HTTPS yayın kodu dağıtımına bakın.  Ayrıca, bu tanıtımların yeni kullanıcılara HTTPS ve/veya NetX Duo HTTPS uygulamasını tanıtmaya yönelik olduğu için kasıtlı olarak çok basit tutulmaktadır.
 
-Bu örnekte, HTTP içerme dosyası *nx_web_http_client. h ve nx_web_http_server. h* ' de getirilir (*netx_web_http_common. h* otomatik olarak dahildir). Ardından, HTTP sunucusu "*tx_application_define*" içinde oluşturulur. HTTP sunucu denetimi bloğunun "*sunucu*" daha önce genel bir değişken olarak tanımlandığını unutmayın. Başarılı oluşturulduktan sonra, HTTPS sunucusu başlatılır. HTTPS Istemcisi oluşturulur. Dosyayı yazar ve dosyayı geri okur.
+Bu örnekte, *nx_web_http_client.h ve nx_web_http_server.h* http dahil dosyası *(netx_web_http_common.h* otomatik olarak dahil edilir). Ardından, HTTP Sunucusu " tx_application_define "*içinde* oluşturulur. "Sunucu" HTTP Sunucusu denetim bloğu *daha önce* genel değişken olarak tanımlanmıştır. Oluşturma işlemi başarılı olduktan sonra HTTPS Sunucusu başlatılacaktır. Ardından HTTPS İstemcisi oluşturulur. Dosyayı yazar ve geri okur.
 
 > [!NOTE]
-> NX_WEB_HTTPS_ENABLE bu sistemde tanımlandı.
+> NX_WEB_HTTPS_ENABLE bu sistemde tanımlanır.
 
 ```c
 /* This is a small demo of HTTPS on the high-performance NetX Duo TCP/IP stack.
@@ -376,38 +376,38 @@ void    thread_0_entry(ULONG thread_input)
 }
 ```
 
-**Şekil 1,1 NetX ve NetX güvenli TLS ile HTTPS kullanımı örneği**
+**Şekil 1.1 NetX ve NetX Secure TLS ile HTTPS kullanımı örneği**
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX için HTTP oluşturmaya yönelik birkaç yapılandırma seçeneği vardır. Aşağıda, her birinin ayrıntılı olarak açıklandığı tüm seçeneklerin bir listesi verilmiştir. Varsayılan değerler listelenir, ancak *nx_web_http_client. h ve nx_web_http_server. h*'a dahil etmeden önce yeniden tanımlanabilir:
+NetX için HTTP'nin ek yapılandırma seçenekleri vardır. Aşağıda, her biri ayrıntılı olarak açıklanan tüm seçeneklerin listesi ve ardından velanmıştır. Varsayılan değerler listelenir, ancak *nx_web_http_client.h ve nx_web_http_server.h eklenmeden önce yeniden tanımlandır:*
 
-- **NX_DISABLE_ERROR_CHECKING** Tanımlı, bu seçenek temel HTTP hata denetimini kaldırır. Genellikle uygulamanın hata ayıklaması yapıldıktan sonra kullanılır.
-- **NX_WEB_HTTP_DIGEST_ENABLE** Tanımlanmışsa, MD5 özetini kullanarak kimlik doğrulaması HTTPS sunucusunda etkinleştirilir. Varsayılan olarak tanımlı değildir.
-- **NX_WEB_HTTP_SERVER_PRIORITY** HTTPS sunucusu iş parçacığının önceliği. Varsayılan olarak, 16 önceliğini belirtmek için bu değer 16 olarak tanımlanır.
-- **NX_WEB_HTTP_NO_FILEX** Tanımlı, bu seçenek FileX bağımlılıkları için bir saplama sağlar. Bu seçenek tanımlanmışsa HTTPS Istemcisi herhangi bir değişiklik yapılmadan çalışır. HTTPS sunucusunun değiştirilmesi gerekir veya Kullanıcı düzgün bir şekilde çalışması için bir çok sayıda FileX hizmeti oluşturmanız gerekecektir.
-- **NX_WEB_HTTP_TYPE_OF_SERVICE** HTTPS TCP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP paket hizmetini göstermek için NX_IP_NORMAL olarak tanımlanır.
-- **NX_WEB_HTTP_SERVER_THREAD_TIME_SLICE** Aynı önceliğe sahip iş parçacıklarını oluşturmadan önce, sunucu iş parçacığının çalışmasına izin verilen süreölçer onay işareti sayısı. Varsayılan değer 2 ' dir. Bu seçeneğin kullanım dışı olduğunu aklınızda edin.
-- **NX_WEB_HTTP_FRAGMENT_OPTION** HTTP TCP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer HTTP TCP fragmenting devre dışı bırakmak için NX_DONT_FRAGMENT.
-- **NX_WEB_HTTP_SERVER_WINDOW_SIZE** Sunucu yuvası pencere boyutu. Varsayılan olarak, bu değer 2048 bayttır.
-- **NX_WEB_HTTP_TIME_TO_LIVE** Bu paketin, atılmadan önce geçebilmesi gereken yönlendirici sayısını belirtir. Varsayılan değer 0x80 olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_TIMEOUT** İç hizmetlerin askıya alınacağı ThreadX ticks sayısını belirtir. Varsayılan değer 10 saniye (10 \* *NX_IP_PERIODIC_RATE*) olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_TIMEOUT_ACCEPT** İç *nx_tcp_server_socket_accept ()* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer (10 \* *NX_IP_PERIODIC_RATE*) olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_TIMEOUT_DISCONNECT** İç *nx_tcp_socket_disconnect ()* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniye (10 \* *NX_IP_PERIODIC_RATE*) olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE** İç *nx_tcp_socket_receive ()* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniye (10 \* *NX_IP_PERIODIC_RATE*) olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_TIMEOUT_SEND** İç *nx_tcp_socket_send ()* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniye (10 \* *NX_IP_PERIODIC_RATE*) olarak ayarlanır.
-- **NX_WEB_HTTP_MAX_HEADER_FIELD** **, http üst bilgisi alanının en büyük boyutunu belirtir. Varsayılan değer 256 ' dir.**
-- * * NX_WEB_HTTP_MULTIPART_ENABLE * * * * tanımlıysa, HTTPS sunucusunun çok parçalı HTTP isteklerini desteklemesini sağlar. **
-- **NX_WEB_HTTP_SERVER_MAX_PENDING** HTTPS sunucusu için sıraya alınabilen bağlantı sayısını belirtir. Varsayılan değer en fazla sunucu oturumu sayısı olarak ayarlanır.
-- **NX_WEB_HTTP_MAX_RESOURCE** İstemci tarafından sağlanan *kaynak adında* izin verilen bayt sayısını belirtir. Varsayılan değer 40 olarak ayarlanır.
-- **NX_WEB_HTTP_MAX_NAME** İstemci tarafından sağlanan *Kullanıcı adında* izin verilen bayt sayısını belirtir. Varsayılan değer 20 olarak ayarlanır.
-- **NX_WEB_HTTP_MAX_PASSWORD** İstemci tarafından sağlanan *parolada* izin verilen bayt sayısını belirtir. Varsayılan değer 20 olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_SESSION_MAX** Bir HTTP veya HTTPS sunucusu için eş zamanlı oturumların sayısını belirtir. Her oturum için bir TCP yuvası ve TLS oturumu (HTTPS etkinse) ayrılır. Varsayılan değer 2 olarak ayarlanır.
-- **NX_WEB_HTTPS_ENABLE** Tanımlandıysa, bu makro TLS ve HTTPS 'yi etkinleştirmesine izin vermez. Yalnızca düz metin HTTP isteniyorsa kaynakları boşaltmak için tanımsız bırakın. Varsayılan olarak, bu makro tanımlı değildir.
-- **NX_WEB_HTTPS_KEEPALIVE_DISABLE** Bu makro tanımlanmışsa, HTTP canlı tutma özelliğini devre dışı bırakır. Varsayılan olarak, bu makro tanımlı değildir.
-- **NX_WEB_HTTP_SERVER_MIN_PACKET_SIZE** Sunucu oluşturulurken belirtilen havuzdaki paketlerin en küçük boyutunu belirtir. En küçük boyut, HTTP üstbilgisinin tamamının tek bir pakette yer aldığından emin olmak için gereklidir. Varsayılan değer 600 olarak ayarlanır.
-- **NX_WEB_HTTP_CLIENT_MIN_PACKET_SIZE** Istemci oluşturulurken belirtilen havuzdaki paketlerin en küçük boyutunu belirtir. En küçük boyut, HTTP üstbilgisinin tamamının tek bir pakette yer aldığından emin olmak için gereklidir. Varsayılan değer 600 olarak ayarlanır.
-- **NX_WEB_HTTP_SERVER_RETRY_SECONDS** Sunucu yuvası yeniden aktarım zaman aşımını saniye cinsinden ayarlayın. Varsayılan değer 2 olarak ayarlanır.
-- **NX_WEB_HTTP_ SERVER_RETRY_MAX** Bu, sunucu yuvasıyla maksimum yeniden iletim sayısını ayarlar. Varsayılan değer 10 olarak ayarlanır.
-- **NX_WEB_HTTP_ SERVER_RETRY_SHIFT** Bu değer, sonraki yeniden iletim zaman aşımını ayarlamak için kullanılır. Geçerli zaman aşımı, bu nedenle, yuva zaman aşımı kaydırma değerine göre kaydırılan, o kadar yeniden iletim sayısı ile çarpılır. Zaman aşımını katlama için varsayılan değer 1 ' e ayarlanır.
-- **NX_WEB_HTTP_SERVER_RETRY_TRANSMIT_QUEUE_DEPTH** Bu, sunucu yuvası yeniden iletim kuyruğunda sıraya alınabilen en fazla paket sayısını belirtir. Sıraya alınan paketlerin sayısı bu sayıya ulaşırsa, bir veya daha fazla sıraya alınmış paket yayınlanana kadar başka paket gönderilemez. Varsayılan değer 20 olarak ayarlanır.
+- **NX_DISABLE_ERROR_CHECKING** Tanımlandı, bu seçenek temel HTTP hata denetimlerini kaldırır. Genellikle uygulama hata ayıklandıktan sonra kullanılır.
+- **NX_WEB_HTTP_DIGEST_ENABLE** Tanımlanmışsa, HTTPS Sunucusunda MD5 özetini kullanarak kimlik doğrulaması etkinleştirilir. Varsayılan olarak tanımlı değildir.
+- **NX_WEB_HTTP_SERVER_PRIORITY** HTTPS Sunucusu iş parçacığının önceliği. Varsayılan olarak, 16 önceliğini belirtmek için bu değer 16 olarak tanımlanır.
+- **NX_WEB_HTTP_NO_FILEX** Tanımlı, bu seçenek FileX bağımlılıkları için bir saplama sağlar. Bu seçenek tanımlanırsa HTTPS İstemcisi herhangi bir değişiklik yapmadan işlev gösterir. HTTPS Sunucusunun değiştirilmesi gerekir veya kullanıcının düzgün çalışması için birkaç FileX hizmeti oluşturması gerekir.
+- **NX_WEB_HTTP_TYPE_OF_SERVICE** HTTPS TCP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP NX_IP_NORMAL belirtmek için varsayılan olarak tanımlanmıştır.
+- **NX_WEB_HTTP_SERVER_THREAD_TIME_SLICE** Aynı önceliğe sahip iş parçacıklarına verilmeden önce Sunucu iş parçacığının çalışmasına izin verilen zamanlayıcı sayısı. Varsayılan değer 2'dir. Bu seçeneğin kullanım dışı olduğunu unutmayın.
+- **NX_WEB_HTTP_FRAGMENT_OPTION** HTTP TCP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer HTTP TCP NX_DONT_FRAGMENT devre dışı bırakmak için kullanılır.
+- **NX_WEB_HTTP_SERVER_WINDOW_SIZE** Sunucu yuvası pencere boyutu. Varsayılan olarak bu değer 2048 bayttır.
+- **NX_WEB_HTTP_TIME_TO_LIVE** Bu paketin atmadan önce geçeceği yönlendirici sayısını belirtir. Varsayılan değer, 0x80.
+- **NX_WEB_HTTP_SERVER_TIMEOUT** İç hizmetlerin askıya alınacak ThreadX saat işaretlerinin sayısını belirtir. Varsayılan değer 10 saniye (10 \* NX_IP_PERIODIC_RATE).
+- **NX_WEB_HTTP_SERVER_TIMEOUT_ACCEPT** İç hizmetlerin iç nx_tcp_server_socket_accept() çağrılarında askıya alması gereken ThreadX *saat işaretlerinin sayısını* belirtir. Varsayılan değer olarak ayarlanır (10 \* *NX_IP_PERIODIC_RATE).*
+- **NX_WEB_HTTP_SERVER_TIMEOUT_DISCONNECT** İç hizmetlerin iç nx_tcp_socket_disconnect() çağrılarında askıya alması gereken ThreadX *saat işaretlerinin sayısını* belirtir. Varsayılan değer 10 saniye (10 \* NX_IP_PERIODIC_RATE).
+- **NX_WEB_HTTP_SERVER_TIMEOUT_RECEIVE** İç hizmetlerin iç nx_tcp_socket_receive() çağrılarında askıya alması gereken ThreadX *saat işaretlerinin sayısını* belirtir. Varsayılan değer 10 saniye (10 \* NX_IP_PERIODIC_RATE).
+- **NX_WEB_HTTP_SERVER_TIMEOUT_SEND** İç hizmetlerin iç nx_tcp_socket_send() çağrılarında askıya alması gereken ThreadX *saat işaretlerinin sayısını* belirtir. Varsayılan değer 10 saniye (10 \* NX_IP_PERIODIC_RATE).
+- **NX_WEB_HTTP_MAX_HEADER_FIELD** **HTTP üst bilgisi alanı için en büyük boyutu belirtir. Varsayılan değer 256'dır.**
+- **NX_WEB_HTTP_MULTIPART_ENABLE ** **Tanımlanmışsa, HTTPS Sunucusunun çok parçalı HTTP isteklerini desteklemesi sağlanır. **
+- **NX_WEB_HTTP_SERVER_MAX_PENDING** HTTPS Sunucusu için kuyruğa alınan bağlantı sayısını belirtir. Varsayılan değer, en fazla sunucu oturumu sayısının iki katı olarak ayarlanır.
+- **NX_WEB_HTTP_MAX_RESOURCE** İstemci tarafından sağlanan kaynak adına izin verilen bayt *sayısını belirtir.* Varsayılan değer 40 olarak ayarlanır.
+- **NX_WEB_HTTP_MAX_NAME** İstemci tarafından sağlanan kullanıcı adı içinde izin verilen bayt sayısını *belirtir.* Varsayılan değer 20 olarak ayarlanır.
+- **NX_WEB_HTTP_MAX_PASSWORD** İstemci tarafından sağlanan parolada izin verilen bayt sayısını *belirtir.* Varsayılan değer 20 olarak ayarlanır.
+- **NX_WEB_HTTP_SERVER_SESSION_MAX** Bir HTTP veya HTTPS Sunucusu için eş zamanlı oturum sayısını belirtir. Her oturum için bir TCP yuvası ve TLS oturumu (HTTPS etkinse) ayrılır. Varsayılan değer 2 olarak ayarlanır.
+- **NX_WEB_HTTPS_ENABLE** Tanımlanmışsa, bu makro TLS ve HTTPS'yi sağlar. Yalnızca düz metin HTTP istenmişse kaynakları serbest bırakmak için tanımsız bırakın. Varsayılan olarak, bu makro tanımlanmamıştır.
+- **NX_WEB_HTTPS_KEEPALIVE_DISABLE** Tanımlandıysa, bu makro HTTP canlı tutma özelliğini devre dışı bırakıyor. Varsayılan olarak, bu makro tanımlanmamıştır.
+- **NX_WEB_HTTP_SERVER_MIN_PACKET_SIZE** Sunucu oluşturma sırasında belirtilen havuza paketlerin en küçük boyutunu belirtir. Tam HTTP üst bilgisi tek bir pakette yer alanın sağlamak için en küçük boyut gereklidir. Varsayılan değer 600 olarak ayarlanır.
+- **NX_WEB_HTTP_CLIENT_MIN_PACKET_SIZE** İstemci oluşturma sırasında belirtilen havuza paketlerin en küçük boyutunu belirtir. Tam HTTP üst bilgisi tek bir pakette yer alanın sağlamak için en küçük boyut gereklidir. Varsayılan değer 600 olarak ayarlanır.
+- **NX_WEB_HTTP_SERVER_RETRY_SECONDS** Sunucu yuvası yeniden iletim zaman aşımını saniyeler içinde ayarlayın. Varsayılan değer 2 olarak ayarlanır.
+- **NX_WEB_HTTP_ SERVER_RETRY_MAX** Bu, Sunucu yuvasında en fazla yeniden iletim sayısını ayarlar. Varsayılan değer 10 olarak ayarlanır.
+- **NX_WEB_HTTP_ SERVER_RETRY_SHIFT** Bu değer bir sonraki yeniden iletim zaman aşımını ayarlamak için kullanılır. Geçerli zaman aşımı, şimdiye kadar yapılan yeniden iletim sayısıyla çarpılır ve yuva zaman aşımı kaydırma değeriyle kaydırılır. Zaman aşımını iki katına yapmak için varsayılan değer 1 olarak ayarlanır.
+- **NX_WEB_HTTP_SERVER_RETRY_TRANSMIT_QUEUE_DEPTH** Bu, Sunucu yuvası yeniden iletim kuyruğunda kuyruğa alın en fazla paket sayısını belirtir. Sıra edilen paket sayısı bu sayıya ulaşırsa, bir veya daha fazla enqueued paket serbest bırakana kadar daha fazla paket gönderilmez. Varsayılan değer 20 olarak ayarlanır.

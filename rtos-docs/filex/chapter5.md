@@ -1,105 +1,105 @@
 ---
-title: Bölüm 5-Azure RTOS FileX için g/ç sürücüleri
-description: Bu bölümde, Azure RTOS FileX için g/ç sürücülerinin bir açıklaması yer almaktadır ve geliştiricilere uygulamaya özgü sürücüleri yazma konusunda yardımcı olmak için tasarlanmıştır.
+title: Bölüm 5 - FileX için Azure RTOS Sürücüleri
+description: Bu bölümde FileX için I/O sürücülerinin Azure RTOS yer almaktadır ve geliştiricilere uygulamaya özgü sürücüler yazmada yardımcı olmak için tasarlanmıştır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8f2ef697f68a269b24a34147a4bc076b8a2b1660
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 163893119837a46479b3f346c2bd47d200de2af75232f91a23bbc3f64e20ea50
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550091"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782923"
 ---
-# <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Bölüm 5-Azure RTOS FileX için g/ç sürücüleri
+# <a name="chapter-5---io-drivers-for-azure-rtos-filex"></a>Bölüm 5 - FileX için Azure RTOS Sürücüleri
 
-Bu bölümde, Azure RTOS FileX için g/ç sürücülerinin bir açıklaması yer almaktadır ve geliştiricilere uygulamaya özgü sürücüleri yazma konusunda yardımcı olmak için tasarlanmıştır.
+Bu bölümde FileX için I/O sürücülerinin Azure RTOS yer almaktadır ve geliştiricilere uygulamaya özgü sürücüler yazmada yardımcı olmak için tasarlanmıştır.
 
-## <a name="io-driver-introduction"></a>G/ç sürücüsü tanıtımı
+## <a name="io-driver-introduction"></a>G/Ç Sürücüsüne Giriş
 
-FileX birden çok medya aygıtını destekler. FX_MEDIA yapısı, bir medya cihazını yönetmek için gereken her şeyi tanımlar. Bu yapı, medyaya özgü g/ç sürücüsü ve sürücü ile FileX arasında bilgi ve durum iletmek için ilişkili parametreler dahil olmak üzere tüm medya bilgilerini içerir. Çoğu sistemde, her FileX medya örneği için benzersiz bir g/ç sürücüsü vardır.
+FileX birden çok medya cihazı destekler. Ortam FX_MEDIA medya cihazı yönetmek için gereken her şeyi tanımlar. Bu yapı, medyaya özgü I/O sürücüsü ve sürücü ile FileX arasında bilgi ve durum geçirmeye yönelik ilişkili parametreler de dahil olmak üzere tüm medya bilgilerini içerir. Çoğu sistemde, her FileX medya örneği için benzersiz bir I/O sürücüsü vardır.
 
-## <a name="io-driver-entry"></a>G/ç sürücü girdisi
+## <a name="io-driver-entry"></a>G/Ç Sürücüsü Girişi
 
-Her FileX g/ç sürücüsü, ***fx_media_open*** hizmet çağrısı tarafından tanımlanan tek bir giriş işlevine sahiptir. Sürücü girdisi işlevi aşağıdaki biçimdedir:
+Her FileX G/Ç sürücüsünün tek bir giriş işlevi vardır ve bu işlev, ***fx_media_open*** çağrısı tarafından tanımlanır. Sürücü girişi işlevi aşağıdaki biçime sahiptir:
 
 ```c
 void my_driver_entry(FX_MEDIA *media_ptr);
 ```
 
-FileX, başlatma ve önyükleme kesimini okuma dahil tüm fiziksel medya erişimini istemek için g/ç sürücü girişi işlevini çağırır. Sürücüye yapılan istekler sırayla yapılır; Yani, FileX, başka bir istek gönderilmeden önce geçerli isteğin tamamlanmasını bekler.
+FileX başlatma ve önyükleme kesimi okuma dahil olmak üzere tüm fiziksel medya erişimini isteği için G/Ç sürücü giriş işlevini çağırır. Sürücüye yapılan istekler sırayla yapılır; Diğer bir ifadeyle FileX, başka bir istek gönderilmeden önce geçerli isteğin tamamlanır.
 
-## <a name="io-driver-requests"></a>G/ç sürücüsü Istekleri
+## <a name="io-driver-requests"></a>I/O Sürücü İstekleri
 
-Her g/ç sürücüsünün tek bir giriş işlevi olduğundan, FileX, medya denetim bloğu aracılığıyla belirli istekleri yapar. Özellikle, FX_MEDIA **fx_media_driver_request** üyesi tam  sürücü isteğini belirtmek için kullanılır. G/ç sürücüsü, **FX_MEDIA** **fx_media_driver_status** üyesi aracılığıyla isteğin başarısını veya başarısızlığını iletişim kurar. Sürücü isteği başarılı olduysa, sürücü dönüşmeden önce bu alana **FX_SUCCESS** yerleştirilir. Aksi halde, bir hata algılanırsa, bu alana FX_IO_ERROR yerleştirilir.
+Her G/Ç sürücüsü tek bir giriş işlevine sahip olduğundan, FileX medya denetim bloğu aracılığıyla belirli istekler yapar. Özellikle,  **fx_media_driver_request** isteği **FX_MEDIA** için dosyanın bir üyesi kullanılır. I/O sürücüsü, isteğin başarılı veya başarısız olduğunu fx_media_driver_status **üyesi** aracılığıyla **FX_MEDIA.** Sürücü isteği başarılı olursa, **FX_SUCCESS** önce bu alana yerleştirilir. Aksi takdirde, bir hata algılanırsa, FX_IO_ERROR bu alana yerleştirilir.
 
-### <a name="driver-initialization"></a>Sürücü başlatma
+### <a name="driver-initialization"></a>Sürücü Başlatma
 
-Asıl sürücü başlatma işlemi uygulamaya özgü olsa da, genellikle veri yapısı başlatma ve büyük olasılıkla bazı ön donanım başlatma işlemleri oluşur. Bu istek, FileX tarafından yapılan ilk ilkdir ve fx_media_open hizmeti içinden yapılır.
+Gerçek sürücü başlatma işlemi uygulamaya özgü olsa da, genellikle veri yapısı başlatmadan ve muhtemelen bazı ön donanım başlatmalardan oluşur. Bu istek, FileX tarafından yapılan ilk istektir ve dosya fx_media_open yapılır.
 
-Medya yazma koruması algılanırsa, FX_MEDIA fx_media_driver_write_protect üyesi olan sürücü FX_TRUE olarak ayarlanmalıdır.
+Medya yazma koruması algılanırsa, fx_media_driver_write_protect üyesi FX_MEDIA sürücü olarak FX_TRUE.
 
-Aşağıdaki FX_MEDIA üyeleri g/ç sürücüsü başlatma isteği için kullanılır:
+Aşağıdaki FX_MEDIA sürücü başlatma isteği için kullanılır:
 
-|FX_MEDIA üyesi|Anlamı|
+|FX_MEDIA üye|Anlamı|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_INIT|
 
-FileX, kesimler artık kullanılmıyorsa uygulama sürücüsünü bilgilendirmek için bir mekanizma sağlar. Bu özellikle, FLASH ile eşlenmiş tüm kullanımdaki mantıksal kesimleri yönetmesi gereken FLASH bellek yöneticileri için yararlıdır.
+FileX, kesimlerin artık kullanılmama durumuyla ilgili uygulama sürücüsünü bilgilendirmek için bir mekanizma sağlar. Bu, özellikle FLASH'a eşlenmiş tüm kullanımda mantıksal kesimleri yönetmesi gereken FLASH bellek yöneticileri için yararlıdır.
 
-Bu tür ücretsiz kesimler gerekliyse, uygulama sürücüsü yalnızca ilişkili **FX_MEDIA** yapısındaki *fx_media_driver_free_sector_update* alanını **FX_TRUE** olarak ayarlar. Ayarlandıktan sonra, FileX bir veya daha fazla ardışık kesimlerin ücretsiz hale geldiğini belirten bir **_FX_DRIVER_RELEASE_SECTORS_** g/ç sürücü çağrısı yapar.
+Ücretsiz kesimler hakkında böyle bir bildirim gerekirse, uygulama sürücüsü ilişkili *fx_media_driver_free_sector_update* yapısında FX_MEDIA **alanını** **FX_TRUE.** Ayardan sonra FileX, **_ardışık FX_DRIVER_RELEASE_SECTORS_** bir veya daha fazla kesimin serbest olduğunu belirten bir I/O sürücü çağrısı yapar.
 
-### <a name="boot-sector-read"></a>Önyükleme kesimini okuma
+### <a name="boot-sector-read"></a>Önyükleme Kesimi Okuma
 
-FileX, standart bir okuma isteği kullanmak yerine medyanın önyükleme kesimini okumak için belirli bir istek yapar. Aşağıdaki **FX_MEDIA** üyeleri g/ç sürücüsü önyükleme kesimi okuma isteği için kullanılır:
+FileX, standart bir okuma isteği kullanmak yerine medyanın önyükleme kesimlerini okumak için belirli bir istekte ır. Aşağıdaki **FX_MEDIA,** I/O sürücü önyükleme kesimi okuma isteği için kullanılır:
 
-|FX_MEDIA üyesi|Anlamı|
+|FX_MEDIA üye|Anlamı|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_BOOT_READ|
-|fx_media_driver_buffer| Önyükleme sektörü için hedefin adresi.|
+|fx_media_driver_buffer| Önyükleme kesimi için hedefin adresi.|
 
-### <a name="boot-sector-write"></a>Önyükleme kesimine yazma
+### <a name="boot-sector-write"></a>Önyükleme Kesimi Yazma
 
-FileX, standart bir yazma isteği kullanmak yerine medyanın önyükleme kesimini yazmak için belirli bir istek yapar. Aşağıdaki **FX_MEDIA** üyeleri g/ç sürücüsü önyükleme kesimi yazma isteği için kullanılır:
+FileX, standart bir yazma isteği kullanmak yerine medyanın önyükleme kesimine yazma isteği yapar. Aşağıdaki **FX_MEDIA,** I/O sürücü önyükleme kesimi yazma isteği için kullanılır:
 
-|FX_MEDIA üyesi|Anlamı|
+|FX_MEDIA üye|Anlamı|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_BOOT_WRITE|
-|fx_media_driver_buffer| Önyükleme kesiminin kaynak adresi.|
+|fx_media_driver_buffer| Önyükleme kesimi kaynağının adresi.|
 
-### <a name="sector-read"></a>Kesim okuma
+### <a name="sector-read"></a>Kesim Okuma
 
-FileX, g/ç sürücüsüne bir okuma isteği vererek bir veya daha fazla kesimi belleğe okur. Aşağıdaki **FX_MEDIA** üyeleri g/ç sürücüsü okuma isteği için kullanılır:
+FileX, bir veya daha fazla kesimi belleğe okumak için, bir okuma isteğiniN/O sürücüsüne iletir. Aşağıdaki **FX_MEDIA,** I/O sürücü okuma isteği için kullanılır:
 
-|FX_MEDIA üyesi|Anlamı|
+|FX_MEDIA üye|Anlamı|
 |-----------|-----------|
 |fx_media_driver_request| FX_DRIVER_READ|
-|fx_media_driver_logical_sector|Okunan mantıksal kesim|
+|fx_media_driver_logical_sector|Okunacak mantıksal kesim|
 |fx_media_driver_sectors|Okunacak kesim sayısı|
-|fx_media_driver_buffer|Okunan kesimler için hedef arabellek|
-|fx_media_driver_data_sector_read|Bir dosya veri kesimi isteniyorsa FX_TRUE olarak ayarlayın. Aksi takdirde, bir sistem kesimi (FAT veya dizin sektörü) isteniyorsa FX_FALSE.|
-|fx_media_driver_sector_type|İstenen kesime ait açık türü aşağıdaki şekilde tanımlar:<br />FX_FAT_SECTOR (2)<br />FX_DIRECTORY_SECTOR (3)<br />FX_DATA_SECTOR (4)|
+|fx_media_driver_buffer|Kesimler için hedef arabellek okuma|
+|fx_media_driver_data_sector_read|Dosya FX_TRUE kesimi istense bu ayar olarak ayarlayın. Aksi FX_FALSE bir sistem kesimi (FAT veya dizin kesimi) istensin.|
+|fx_media_driver_sector_type|İstenen kesimin açık türünü aşağıdaki gibi tanımlar:<br />FX_FAT_SECTOR (2)<br />FX_DIRECTORY_SECTOR (3)<br />FX_DATA_SECTOR (4)|
 
-### <a name="sector-write"></a>Kesim yazma
+### <a name="sector-write"></a>Kesim Yazma
 
-FileX, g/ç sürücüsüne bir yazma isteği vererek fiziksel medyaya bir veya daha fazla kesim yazar. Aşağıdaki FX_MEDIA üyeleri g/ç sürücüsü yazma isteği için kullanılır:
+FileX, fiziksel medyaya bir veya daha fazla kesim yazarak, I/O sürücüsüne bir yazma isteği yayınlar. Aşağıdaki FX_MEDIA sürücü yazma isteği için kullanılır:
 
-|FX_MEDIA üyesi| Anlamı|
+|FX_MEDIA üye| Anlamı|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_WRITE|
-|fx_media_driver_logical_sector|Yazılacak mantıksal kesim|
-|fx_media_driver_sectors|Yazılacak kesim sayısı|
-|fx_media_driver_buffer|Yazılacak kesimler için kaynak arabelleği|
-|fx_media_driver_system_write| Bir sistem kesimi isteniyorsa (FAT veya dizin sektörü) FX_TRUE olarak ayarlayın. Aksi takdirde, bir dosya veri kesimi isteniyorsa FX_FALSE.|
-|fx_media_driver_sector_type|İstenen kesime ait açık türü aşağıdaki şekilde tanımlar:<br> <br>FX_FAT_SECTOR (2) <br> FX_DIRECTORY_SECTOR (3) <br>FX_DATA_SECTOR (4).|
+|fx_media_driver_logical_sector|Yazacak mantıksal kesim|
+|fx_media_driver_sectors|Yazacak kesim sayısı|
+|fx_media_driver_buffer|Yazma için kesimler için kaynak arabelleği|
+|fx_media_driver_system_write| Bir sistem FX_TRUE (FAT veya dizin kesimi) istense bu ayar olarak ayarlayın. Aksi FX_FALSE bir dosya veri kesimi istensin.|
+|fx_media_driver_sector_type|İstenen kesimin açık türünü aşağıdaki gibi tanımlar:<br> <br>FX_FAT_SECTOR (2) <br> FX_DIRECTORY_SECTOR (3) <br>FX_DATA_SECTOR (4).|
 
-### <a name="driver-flush"></a>Sürücü temizleme
+### <a name="driver-flush"></a>Sürücü Boşaltma
 
-FileX, g/ç sürücüsüne bir temizleme isteği vererek sürücünün kesim önbelleğinde bulunan tüm kesimleri fiziksel medyaya boşaltır. Tabii ki, sürücü önbelleğe alma kesimleri değilse, bu istek sürücü işleme gerektirmez. Aşağıdaki FX_MEDIA üyeleri g/ç sürücüsü temizleme isteği için kullanılır:
+FileX, O/Ç sürücüsüne bir boşaltma isteği yayınarak sürücünün kesim önbelleğinde bulunan tüm kesimleri fiziksel medyaya boşaltır. Elbette, sürücü kesimleri önbelleğe almasa, bu istek için sürücü işlemesi gerekli değildir. Aşağıdaki FX_MEDIA,O sürücü boşaltma isteği için kullanılır:
 
-|FX_MEDIA üyesi| Anlamı|
+|FX_MEDIA üye| Anlamı|
 |-----------|-----------|
 |fx_media_driver_request|FX_DRIVER_FLUSH|
 

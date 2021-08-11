@@ -1,49 +1,49 @@
 ---
-title: Bölüm 3-Azure RTOS NetX PPPoE sunucu hizmetlerinin açıklaması
-description: Bu bölüm, tüm Azure RTOS NetX PPPoE sunucu hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX PPPoE Azure RTOS Hizmetlerinin Açıklaması
+description: Bu bölümde, Tüm NetX PPPoE Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: d1137fae4dfea428d50e2defed94de6a838b01c6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d184fc3c5e6ed74ef25045561b1613e280672f77385fbb13b8e84bccf051b301
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826602"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782821"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-server-services"></a>Bölüm 3-Azure RTOS NetX PPPoE sunucu hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-server-services"></a>Bölüm 3 - NetX PPPoE Azure RTOS Hizmetlerinin Açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX PPPoE sunucu hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde, Tüm NetX PPPoE Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_pppoe_server_create**: *bir PPPoE sunucu örneği oluşturma*
+- **nx_pppoe_server_create:** *PPPoE Sunucusu örneği oluşturma*
 
-- **nx_pppoe_server_ac_name_set**: *erişim yoğunlaştırıcı adını ayarla*
+- **nx_pppoe_server_ac_name_set:** Access *Concentrator adını ayarlama*
 
-- **nx_pppoe_server_delete**: *bir PPPoE sunucu örneğini silme*
+- **nx_pppoe_server_delete:** *PPPoE Sunucusu örneğini silme*
 
-- **nx_pppoe_server_enable**: *PPPoE sunucu hizmetlerini etkinleştirme*
+- **nx_pppoe_server_enable:** *PPPoE Sunucusu hizmetlerini etkinleştirme*
 
-- **nx_pppoe_server_disable**: *PPPoE sunucu hizmetlerini devre dışı bırak*
+- **nx_pppoe_server_disable:** *PPPoE Sunucusu hizmetlerini devre dışı bırakma*
 
-- **nx_pppoe_server_callback_notify_set**: *PPPoE sunucusu geri çağırma bildirim işlevlerini ayarla*
+- **nx_pppoe_server_callback_notify_set:** *PPPoE Sunucusu geri çağırma bildirimi işlevlerini ayarlama*
 
-- **nx_pppoe_server_service_name_set**: *PPPoE sunucu hizmeti adını ayarla*
+- **nx_pppoe_server_service_name_set:** *PPPoE Sunucusu hizmet adını ayarlayın*
 
-- **nx_pppoe_server_session_send**: *PPPoE sunucu verilerini belirtilen oturuma gönder*
+- **nx_pppoe_server_session_send:** *PPPoE Sunucusu verilerini belirtilen oturuma gönderme*
 
-- **nx_pppoe_server_session_packet_send**: *PPPoE sunucu paketini belirtilen oturuma gönder*
+- **nx_pppoe_server_session_packet_send:** *PPPoE Sunucusu paketini belirtilen oturuma gönderme*
 
-- **nx_pppoe_server_session_terminate**: *belirtilen PPPoE oturumunu Sonlandır*
+- **nx_pppoe_server_session_terminate:** Belirtilen *PPPoE oturumunu sonlandırma*
 
-- **nx_pppoe_server_session_get**: *belirtilen oturum bilgilerini al*
+- **nx_pppoe_server_session_get:** Belirtilen *oturum bilgilerini al*
 
 ## <a name="nx_pppoe_server_create"></a>nx_pppoe_server_create
 
-Bir PPPoE sunucu örneği oluşturma
+PPPoE Sunucusu örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -58,36 +58,36 @@ UINT nx_pppoe_server_create(NX_PPPOE_SERVER *pppoe_server_ptr,
                             UINT priority);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen NetX IP örneği için Kullanıcı tarafından sağlanan bağlantı sürücüsüyle bir PPPoE sunucu örneği oluşturur. Bağlantı sürücüsü başlatılmamış ve etkin değilse, PPPoE sunucu yazılımı bağlantı sürücüsünü başlatmaktan sorumludur.
+Bu hizmet, belirtilen NetX IP örneği için kullanıcı tarafından sağlanan bağlantı sürücüsü ile bir PPPoE Sunucusu örneği oluşturur. Bağlantı sürücüsü başlatılmamışsa ve etkinse, bağlantı sürücüsünü başlatmak PPPoE sever yazılımından sorumludur.
 
-Ayrıca, uygulamanın, iç paket ayırma için kullanması için, PPPoE sunucu örneği için önceden oluşturulmuş bir paket havuzu sağlaması gerekir.
+Ayrıca, uygulamanın iç paket ayırma için kullanmak üzere PPPoE Sunucusu örneği için önceden oluşturulmuş bir paket havuzu sağlamak gerekir.
 
-Genellikle NetX IP iş parçacığını, PPPoE sunucu iş parçacığı önceliğinden daha yüksek bir önceliğe göre oluşturmak iyi bir fikir olduğunu unutmayın. IP iş parçacığı önceliğini belirtme hakkında daha fazla bilgi için lütfen *nx_ip_create* hizmetine bakın.
+NetX IP iş parçacığını PPPoE Sunucusu iş parçacığı önceliklerinden daha yüksek bir önceliğe sahip olarak oluşturmanın genel olarak iyi bir fikir olduğunu unutmayın. IP iş parçacığı *nx_ip_create* belirtme hakkında daha fazla bilgi için lütfen nx_ip_create hizmetine bakın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **pppoe_server_ptr**: PPPoE sunucu denetim bloğu işaretçisi.
-- **ad**: Bu PPPoE sunucu örneğinin adı.
-- **ip_ptr**: IP örneği için denetim bloğuna yönelik işaretçi.
-- **interface_index**: arabirim dizini.
-- **pppoe_link_driver**: Kullanıcı tarafından sağlanan bağlantı sürücüsü.
-- **pool_ptr**: paket havuzuna yönelik işaretçi.
-- **stack_ptr**: PPPoE sunucu iş parçacığının yığın alanının başlangıcı işaretçisi.
-- **stack_size**: iş parçacığının yığınında bayt cinsinden boyut.
-- **Öncelik**: Iç PPPoE sunucu iş parçacıklarının önceliği (1-31).
+- **pppoe_server_ptr:** PPPoE Sunucusu denetim bloğuna işaretçi.
+- **name:** Bu PPPoE Sunucusu örneğinin adı.
+- **ip_ptr:** IP örneği için denetim bloğu işaretçisi.
+- **interface_index:** Arabirim dizini.
+- **pppoe_link_driver:** Kullanıcı tarafından sağlanan bağlantı sürücüsü.
+- **pool_ptr:** Paket havuzunun işaretçisi.
+- **stack_ptr:** PPPoE Sunucusu iş parçacığının yığın alanı başlangıç işaretçisi.
+- **stack_size:** İş parçacığı yığınında bayt cinsinden boyut.
+- **öncelik:** İç PPPoE Sunucusu iş parçacıklarının önceliği (1-31).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_PPPOE_SERVER_SUCCESS**: (0x00) başarılı bir PPPoE sunucu oluştur.
-- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) geçersiz PPPoE sunucusu, IP, paket havuzu veya yığın işaretçisi.
-- NX_PPPOE_SERVER_INVALID_INTERFACE: (0xC2) geçersiz arabirim.
-- NX_PPPOE_SERVER_PACKET_PAYLOAD_ERROR: (0xC3) paket havuzunun yük boyutu geçersiz.
-- NX_PPPOE_SERVER_MEMORY_SIZE_ERROR: (0xC4) geçersiz bellek boyutu.
-- NX_PPPOE_SERVER_PRIORITY_ERROR: (0xC5) PPPoE sunucu iş parçacığının geçersiz önceliği.
+- **NX_PPPOE_SERVER_SUCCESS:**(0x00) Başarılı PPPoE Sunucusu oluşturma.
+- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) Geçersiz PPPoE Sunucusu, IP, paket havuzu veya yığın işaretçisi.
+- NX_PPPOE_SERVER_INVALID_INTERFACE: (0xC2) Geçersiz arabirim.
+- NX_PPPOE_SERVER_PACKET_PAYLOAD_ERROR: (0xC3) Paket havuzunun yük boyutu geçersiz.
+- NX_PPPOE_SERVER_MEMORY_SIZE_ERROR: (0xC4) Geçersiz bellek boyutu.
+- NX_PPPOE_SERVER_PRIORITY_ERROR: (0xC5) PPPoE Sunucusu iş parçacığının geçersiz önceliği.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -103,7 +103,7 @@ status = nx_pppoe_server_create(&my_pppoe_server, "my PPPoE Server", &my_ip,
 
 ## <a name="nx_pppoe_server_delete"></a>nx_pppoe_server_delete
 
-Bir PPPoE sunucu örneğini silme
+PPPoE Sunucusu örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -111,20 +111,20 @@ Bir PPPoE sunucu örneğini silme
 UINT nx_pppoe_server_delete(NX_PPPOE_SERVER *pppoe_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş olan PPPoE sunucu örneğini siler.
+Bu hizmet, önceden oluşturulmuş PPPoE Sunucusu örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **pppoe_server_ptr**: PPPoE sunucu denetim bloğu işaretçisi.
+- **pppoe_server_ptr:** PPPoE Sunucusu denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_PPPOE_SERVER_SUCCESS**: (0x00) başarılı PPPoE sunucu silme.
-- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) geçersiz PPPoE sunucu işaretçisi.
+- **NX_PPPOE_SERVER_SUCCESS:**(0x00) Başarılı PPPoE Sunucusu silme.
+- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) Geçersiz PPPoE Sunucusu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -139,7 +139,7 @@ status = nx_pppoe_server_delete(&my_pppoe_server);
 
 ## <a name="nx_pppoe_server_enable"></a>nx_pppoe_server_enable
 
-PPPoE sunucu hizmetini etkinleştir
+PPPoE Sunucusu hizmetini etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -147,23 +147,23 @@ PPPoE sunucu hizmetini etkinleştir
 UINT nx_pppoe_server_enable(NX_PPPOE_SERVER *pppoe_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPPoE sunucu hizmetlerini sunar.
+Bu hizmet PPPoE Sunucusu hizmetlerini sağlar.
 
 > [!NOTE]
-> Bu işlev, *nx_pppoe_server_create* ve *nx_pppoe_server_callback_notify_set* sonra çağrılmalıdır.
+> Bu işlev, nx_pppoe_server_create *ve nx_pppoe_server_callback_notify_set.* 
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **pppoe_server_ptr**: PPPoE sunucu denetim bloğu işaretçisi.
+- **pppoe_server_ptr:** PPPoE Sunucusu denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_PPPOE_SERVER_SUCCESS**: (0x00) başarılı PPPoE sunucu silme.
-- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) geçersiz PPPoE sunucu işaretçisi.
+- **NX_PPPOE_SERVER_SUCCESS:**(0x00) Başarılı PPPoE Sunucusu silme.
+- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) Geçersiz PPPoE Sunucusu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -178,7 +178,7 @@ status = nx_pppoe_server_enable(&my_pppoe_server);
 
 ## <a name="nx_pppoe_server_disable"></a>nx_pppoe_server_disable
 
-PPPoE sunucu hizmetini devre dışı bırak
+PPPoE Sunucusu hizmetini devre dışı bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -186,20 +186,20 @@ PPPoE sunucu hizmetini devre dışı bırak
 UINT nx_pppoe_server_disable(NX_PPPOE_SERVER *pppoe_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPPoE sunucu hizmetlerini devre dışı bırakır.
+Bu hizmet PPPoE Sunucusu hizmetlerini devre dışı bırakıyor.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **pppoe_server_ptr**: PPPoE sunucu denetim bloğu işaretçisi.
+- **pppoe_server_ptr:** PPPoE Sunucusu denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_PPPOE_SERVER_SUCCESS**: (0x00) başarılı PPPoE sunucu silme.
-- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) geçersiz PPPoE sunucu işaretçisi.
+- **NX_PPPOE_SERVER_SUCCESS:**(0x00) Başarılı PPPoE Sunucusu silme.
+- NX_PPPOE_SERVER_PTR_ERROR: (0xC1) Geçersiz PPPoE Sunucusu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -214,7 +214,7 @@ status = nx_pppoe_server_disable(&my_pppoe_server);
 
 ## <a name="nx_pppoe_server_callback_notify_set"></a>nx_pppoe_server_callback_notify_set
 
-PPPoE sunucusu geri çağırma bildirim işlevlerini ayarla 
+PPPoE Sunucusu geri çağırma bildirimi işlevlerini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -231,20 +231,20 @@ UINT nx_pppoe_server_callback_notify_set(
         VOID (* pppoe_discover_notify)(UINT session_index, UCHAR *data))
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPPoE sunucu geri çağırma bildirim işlevlerini ayarlar.
+Bu hizmet PPPoE Sunucusu geri çağırma bildirimi işlevlerini ayarlar.
 
 > [!NOTE]
-> Bu işlev nx_pppoe_server_enabl önce çağrılmalıdır *ve* pppoe_data_receive_notify işlev işaretçisinin ayarlanması gerekir, aksi takdirde *nx_pppoe_server_enable* hata olur.
+> Bu işlev, nx_pppoe_server_enabl  çağrılmadan önce çağrılır ve pppoe_data_receive_notify işlev işaretçisi *ayarlanmazsa* nx_pppoe_server_enable hata olur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **pppoe_server_ptr**: PPPoE sunucu denetim bloğu işaretçisi.
-- **pppoe_discover_initiation_notify**: her PPPoE bulma başlatma iletisi alındığında çağrılan uygulama işlevi. Bu değer NULL ise, başlatma geri çağırma işlevini bul seçeneği devre dışı bırakılır.
-- **pppoe_discover_request_notify**: PPPoE bulma isteği iletisi alındığında çağrılan uygulama işlevi. Bu değer NULL ise, bulma isteği geri çağırma işlevi devre dışı bırakılır.
-- **pppoe_discover_terminate_notify**: PPPoE bulma sonlandırma iletisi alındığında çağrılan uygulama işlevi. Bu değer NULL ise, bulma Sonlandır geri aramayı bul işlevi devre dışı bırakılır.
-- **pppoe_discover_terminate_confirm**: PPPoE her sonlandırma iletisi gönderildiğinde çağrılan uygulama işlevi. Bu değer NULL ise, bulma Sonlandır geri aramayı bul işlevi devre dışı bırakılır.
+- **pppoe_server_ptr:** PPPoE Sunucusu denetim bloğuna işaretçi.
+- **pppoe_discover_initiation_notify:** PPPoE bulma başlatan ileti her alınsa çağrılır uygulama işlevi. Bu değer NULL ise, başlatılabilir geri çağırma işlevinin devre dışı bırakılmıştır.
+- **pppoe_discover_request_notify:** PPPoE bulma isteği iletisi her alınarak çağrılmış uygulama işlevi. Bu değer NULL ise, istek geri çağırma işlevinin devre dışı bırakılmıştır.
+- **pppoe_discover_terminate_notify:** PPPoE discover terminate iletisi her alındında çağrılır uygulama işlevi. Bu değer NULL ise, terminate callback işlevinin devre dışı bırakılmıştır.
+- **pppoe_discover_terminate_confirm:** PPPoE discover terminate iletisi her gönderildiği zaman çağrılır. Bu değer NULL ise, bulma Sonlandır geri aramayı bul işlevi devre dışı bırakılır.
 - **pppoe_data_receive_notify**: PPPoE veri iletisi alındığında çağrılan uygulama işlevi. Bu değer sıfır olmamalıdır.
 - **pppoe_data_send_notify**: PPPoE veri iletisi gönderildiğinde çağrılan uygulama işlevi. Bu değer NULL ise, veri geri arama gönder işlevi devre dışı bırakılır.
 
@@ -286,7 +286,7 @@ UINT nx_pppoe_server_ac_name_set(
 );
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, erişim yoğunlaştırıcı adı işlev çağrısını ayarladı.
 
@@ -330,7 +330,7 @@ UINT nx_pppoe_server_service_name_set(
         UCHAR **service_name, UINT service_name_count);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPPoE sunucu hizmeti adını ayarlar.
 
@@ -375,7 +375,7 @@ UINT nx_pppoe_server_session_send (NX_PPPOE_SERVER *pppoe_server_ptr,
                 UINT session_index, UCHAR *data_ptr, UINT data_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen oturum KIMLIĞINI kullanarak PPPoE çerçevesini gönderir.
 
@@ -419,7 +419,7 @@ UINT nx_pppoe_server_session_packet_send (
         UINT session_index, NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen oturum KIMLIĞINI kullanarak PPPoE paketi gönderir.
 
@@ -463,7 +463,7 @@ UINT nx_pppoe_server_session_terminate(
         UINT session_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPPoE oturumunu sonlandırır.
 
@@ -507,7 +507,7 @@ UINT nx_pppoe_server_session_get(NX_PPPOE_SERVER *pppoe_server_ptr,
                                 ULONG *session_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPPoE oturum bilgilerini, istemci fiziksel adresini ve oturum kimliğini alır.
 
@@ -549,7 +549,7 @@ Varsayılan hizmet adını yapılandırın
 VOID PppInitnd(UINT length, UCHAR *aData);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlevin, TTP 'nin, PPPoE 'nin gelen PADI isteklerini filtrelemek için kullanması gereken ' varsayılan hizmet adı ' öğesini yapılandırmasına izin vermek için bu işlevi kullanıma sunacaktır. PPPoE yazılımı bu bilgileri unutmalıdır ve eşleşen bir hizmet adı içeren bir PADI paketi alınmışsa PppDiscoverReq öğesini çağırmalıdır.
 
@@ -583,7 +583,7 @@ PADO paketinin hizmet adı alanını tanımlayın
 VOID PppDiscoverCnf (UINT length, UCHAR *aData, UINT interfaceHandle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 PPPoE yazılımı, TTP yazılımının PADO paketinin hizmet adı alanını tanımlamasına izin vermek için bu işlevi kullanıma sunar. PppDiscoverCnf çağrıldığında, PPPoE yazılımı PADO 'yi göndermemelidir.
 
@@ -624,7 +624,7 @@ PPPoE oturumunu kabul etme veya reddetme
 VOID PppOpenCnf (UCHAR accept, UINT interfaceHandle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 PPPoE yazılımı, TTP 'nin yazılım PPPoE oturumunu kabul etmesine veya reddetmesine izin vermek için bu işlevi kullanıma sunar.  Buna yanıt olarak, PPPoE yığını bağlantıyı kabul etmeli ve ınterfacehandle ile ilişkili benzersiz bir PPPoE Session_ID numarası atamalıdır.
 
@@ -658,7 +658,7 @@ Bir PPPoE oturumunu kapatma
 VOID PppCloseInd (UINT interfaceHandle, UCHAR *causeCode);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, TTP 'nin yazılımının bir PPPoE oturumunu kapatmasını sağlamak için bu işlevi açığa çıkarır.
 
@@ -694,7 +694,7 @@ Tanıtıcının serbest bırakılmış olduğunu onaylayın
 VOID PppCloseCnf (UINT interfaceHandle);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 PPPoE yazılımı, bu işlevi, TTP 'nin yazılımın, tanıtıcının serbest bırakılmış olduğunu onaylamasını sağlamak için kullanıma sunar.
 
@@ -728,7 +728,7 @@ VOID PppTransmitDataCnf (UINT interfaceHandle, UCHAR *aData,
                         UINT packet_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 PPPoE yazılımı, önceki bir PppTransmitDataReq 'ın onaylanmasına izin vermek için bu işlevi kullanıma sunacaktır.  Bu, TTP 'nin, PPPoE 'den yeni bir PPP çerçevesi için hazırlandığını gösterir.
 
@@ -757,7 +757,7 @@ PppTransmitDataCnf(0, NX_NULL, packet_id);
 
 ## <a name="pppreceivedataind"></a>PppReceiveDataInd
 
-Ethernet üzerinden aktarımdan veri al
+Ethernet üzerinden iletimden veri alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -765,21 +765,21 @@ Ethernet üzerinden aktarımdan veri al
 VOID PppReceiveDataInd(UINT interfaceHandle, UINT length, UCHAR *aData);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-PPPoE yazılımı, Ethernet üzerinden iletilmek üzere veri almak için bu işlevi kullanıma sunacaktır
+PPPoE yazılımı, Ethernet üzerinden iletim için veri almak için bu işlevi ortaya çıkarır
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **ınterfacehandle**: arabirim tanıtıcısı.
-- **uzunluk**: ADATA 'daki bayt sayısı.
-- **ADATA**: PPP verilerinin çerçevesini içeren veri arabelleği.
+- **interfaceHandle:** Arabirim tanıtıcısı.
+- **length:** aData'daki bayt sayısı.
+- **aData:** PPP veri çerçevesini içeren veri arabelleği.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 **Hiçbiri**
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 

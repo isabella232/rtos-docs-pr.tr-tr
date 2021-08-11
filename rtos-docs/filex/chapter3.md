@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a94344a7079e3f0e3e451bc678c369fee543aef6
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: bb2e1d7f10d71ed01a040cea63e9e469855525d89dd6318f3147c61ed166ee4c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550176"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783082"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-filex"></a>Bölüm 3-Azure RTOS FileX 'in Işlevsel bileşenleri
 
@@ -71,106 +71,106 @@ Medyanın mantıksal sektör görünümündeki diğer alanların tam kesim boşl
 - **Medya türü** *Medya türü* alanı, aygıt sürücüsü için mevcut medya türünü belirlemek için kullanılır. Bu, eski bir alandır.
 - **FAT başına kesim sayısı** Medya önyükleme kaydındaki *FAT başına düşen kesimler* , FAT alanındaki her bir FAT ile ilişkili kesimlerin sayısını içerir. FAT kesimlerinin sayısı, medyada ayrılabilecek olabilecek en yüksek küme sayısı için hesaba yetecek kadar büyük olmalıdır.
 - **Iz başına kesim sayısı** Medya önyükleme kaydındaki *izleme başına kesim* alanı, iz başına kesim sayısını tanımlar. Bu, genellikle gerçek disk türü medyayla geçerlidir. FLASH cihazları bu eşlemeyi kullanmaz.
-- **Kafa sayısı** Medya önyükleme kaydındaki *kafa sayısı* alanı, medyadaki kafa sayısını tanımlar. Bu, genellikle gerçek disk türü medyayla geçerlidir. FLASH cihazları bu eşlemeyi kullanmaz.
-- **Gizli kesimler** Medya önyükleme kaydındaki *gizli kesimler* alanı, önyükleme kaydından önceki kesimlerin sayısını tanımlar. Bu alan **FX_MEDIA** denetim bloğunda tutulur ve FileX tarafından yapılan tüm okuma ve yazma Isteklerindeki FileX g/ç sürücülerinde hesaba katılmış olmalıdır.
-- **Bölüm sayısı FAT-32** Medya önyükleme kaydındaki *kesim sayısı* alanı yalnızca iki baytlık *sektör* alanı sıfır olduğunda geçerlidir. Böyle bir durumda, bu dört baytlık alan medyadaki kesimlerin sayısını içerir.
-- **FAT başına kesim (FAT-32)** *FAT başına kesim (FAT-32)* alanı yalnızca fat-32 biçiminde geçerlidir ve medyanın her bir FAT alanı için ayrılan kesimlerin sayısını içerir.
-- **Kök dizin kümesi** *Kök dizin kümesi* alanı yalnızca FAT-32 biçiminde geçerlidir ve kök dizinin başlangıç kümesi numarasını içerir.
-- **Sistem önyükleme kodu** *Sistem önyükleme kodu* alanı, önyükleme kodunun küçük bir bölümünü depolamak için bir alandır. Günümüzde bu çoğu cihazda eski bir alandır.
-- **Imza 0x55AA** *İmza* alanı, önyükleme kaydını tanımlamak için kullanılan bir veri modelidir. Bu alan yoksa, önyükleme kaydı geçerli değildir.
+- **Tura Sayısı** Medya *önyükleme kaydında* tura sayısı alanı, medyada tura sayısını tanımlar. Bu genellikle yalnızca gerçek disk türü medyayla ilgilidir. FLASH cihazları bu eşlemeyi kullanmaz.
+- **Gizli Kesimler** Medya *önyükleme kaydında* gizli kesimler alanı, önyükleme kaydı öncesinde kesim sayısını tanımlar. Bu alan, dosya **denetim FX_MEDIA** korunur ve FileX tarafından yapılan tüm okuma ve yazma isteklerinde FileX I/O sürücülerde hesaba katları gerekir.
+- **Sektör Sayısı FAT-32** Medya *önyükleme kaydında* kesim sayısı alanı yalnızca kesimlerin iki baytı alanı *sıfırsa* geçerlidir. Böyle bir durumda, bu dört bayt alanı medyada kesim sayısını içerir.
+- **FAT başına kesim sayısı (FAT-32)** *FAT (FAT-32)* alanı başına kesimler yalnızca FAT-32 biçiminde geçerlidir ve medyanın her FAT'sı için ayrılan kesim sayısını içerir.
+- **Kök Dizin Kümesi** Kök *dizin kümesi alanı* yalnızca FAT-32 biçiminde geçerlidir ve kök dizinin başlangıç küme numarasını içerir.
+- **Sistem Önyükleme Kodu** Sistem *önyükleme kodu alanı,* önyükleme kodunun küçük bir kısmını depolamak için bir alandır. Günümüzde çoğu cihaz için bu eski bir alandır.
+- **İmza 0x55AA** İmza *alanı,* önyükleme kaydını tanımlamak için kullanılan bir veri desenidir. Bu alan yoksa önyükleme kaydı geçerli değildir.
 
-### <a name="exfat"></a>exFAT
+### <a name="exfat"></a>Exfat
 
-FAT32 'teki en büyük dosya boyutu 4 GB 'dir ve bu, yüksek tanımlı multimedya dosyalarının geniş benimseme sayısını sınırlar. Varsayılan olarak FAT32, en fazla 32GB'A kadar depolama medyasını destekler. Flash ve SD kart kapasitesini artırarak, FAT32 büyük birimleri yönetirken daha verimli hale gelir. exFAT, bu sınırlamaları aşmak için tasarlanmıştır. exFAT, yaklaşık 1.000.000.000 GB olan bir Exabyte 'e (EB) kadar dosya boyutunu destekler. ExFAT ve FAT32 arasındaki diğer önemli fark, exFAT 'in birimdeki kullanılabilir alanı yönetmek için bit eşlem kullandığından, verileri dosyaya yazarken kullanılabilir alanı bulmada daha verimli hale getirir. Bitişik kümeler içinde depolanan dosya için, exFAT, FAT zincirinin tüm kümeleri bulmasını ve büyük dosyalara erişirken daha verimli olmasını sağlar. 32 ' den büyük Flash depolama ve SD kartları için exFAT gereklidir.
+FAT32'de dosya boyutu üst sınırı 4 GB'tır ve bu da yüksek tanımlı multimedya dosyalarının geniş kapsamlı benimsenmelerini sınırlar. Fat32 varsayılan olarak 32 GB'a kadar depolama medyası destekler. Flash ve SD kart kapasitesi artarak FAT32, büyük hacimleri yönetmede daha az verimli hale gelir. exFAT, bu sınırlamaları aşmak için tasarlanmıştır. exFAT, yaklaşık bir milyar GB olan en fazla bir Exabayt (EB) dosya boyutunu destekler. exFAT ile FAT32 arasındaki bir diğer önemli fark da exFAT'ın bir birim içinde kullanılabilir alanı yönetmek için bit eşlem kullanması ve bu da exFAT'nin dosyaya veri yazarken kullanılabilir alan bulma konusunda daha verimli hale bulunmasıdır. Bitişik kümelerde depolanan dosyalarda exFAT, tüm kümeleri bulmak için FAT zincirinde aşağı doğru ilerler ve büyük dosyalara erişirken daha verimli hale getirir. exFAT, 32 GB'tan büyük flash depolama ve SD kartları için gereklidir.
 
-### <a name="exfat-logical-sectors"></a>exFAT mantıksal kesimleri
+### <a name="exfat-logical-sectors"></a>exFAT Mantıksal Kesimleri
 
-Medyanın exFAT 'teki mantıksal kesimlerinin genel düzeni Şekil 2 ' de gösterilmiştir. ExFAT 'de önyükleme bloğunda ve FAT alanı sistem alanına aittir. Kümelerin geri kalanı Kullanıcı alanıdır. Gerekli olmasa da, exFAT Standard, ayırma bit eşlemin Kullanıcı alanının başlangıcında ve ardından büyük/küçük harf ve kök dizin olması önerilir.
+ExFAT'ta medyanın mantıksal kesimlerinin genel düzeni Şekil 2'de gösterildiği gibi. ExFAT'ta önyükleme bloğu ve FAT alanı Sistem Alanına aittir. Kümelerin geri kalanı Kullanıcı Alanı'dır. Gerekli değildir, ancak exFAT standardı, Ayırma Bit Eşlemi'nin Kullanıcı Alanı'nın başında ve ardından Up-case Table ve kök dizinde olması önerilir.
 
-### <a name="exfat-media-boot-record"></a>exFAT medya önyükleme kaydı
+### <a name="exfat-media-boot-record"></a>exFAT Medya Önyükleme Kaydı
 
-ExFAT 'deki medya önyükleme kaydının içeriği FAT12/16/32 ' den farklı. Bunlar tablo 2 ' de listelenir. Karışıklık oluşmasını önlemek için, FAT12/16/32 ' de çeşitli medya parametreleri içeren 0x0B ve 0x40 arasındaki alan exFAT 'de *ayrılmış* olarak işaretlenir. Bu ayrılmış alan sıfırlarla programlanmalıdır ve medya önyükleme kaydının yanlış yorumlanması önlenir.
+exFAT'daki Medya Önyükleme Kaydı içeriği FAT12/16/32'de bulunanlardan farklıdır. Bunlar Tablo 2'de listelenir. Karışıklığı önlemek için, FAT12/16/32 0x40 de çeşitli medya parametreleri içeren 0x0B ve 0x40 arasındaki alan exFAT içinde *Ayrılmış* olarak işaretlenir. Bu ayrılmış alan sıfırlarla programlanmış olmalı ve Medya Önyükleme Kaydı'nın yanlış yorumlandırılmasından kaçınılmalıdır.
 
-![exFAT mantıksal kesimleri](./media/user-guide/exfat-logical-sectors.png)
+![exFAT Mantıksal Kesimleri](./media/user-guide/exfat-logical-sectors.png)
 
-**ŞEKIL 2. exFAT mantıksal kesimleri**
+**ŞEKIL 2. exFAT Mantıksal Kesimleri**
 
-- **Sıçrama yönergesi** *Sıçrama yönergesi* alanı, bir işlemci atlamanın Intel x86 makinesi yönergesini temsil eden üç baytlık bir alandır. Bu çoğu durumda eski bir alandır.
+- **Atlama Yönergesi** Atlama *yönergesi* alanı, işlemci atlama için Intel x86 makine yönergesini temsil eden üç baytlık bir alandır. Bu, çoğu durumda eski bir alandır.
 
-    **TABLO 2. exFAT medya önyükleme kaydı**
+    **TABLO 2. exFAT Medya Önyükleme Kaydı**
 
-    |Uzaklık  |Alan  |Bayt sayısı|
+    |Uzaklık  |Alan  |Bayt Sayısı|
     |----------|-----------|------------|
-    |-|Sıçrama yönergesi|3|
-    |0x03|Dosya sistemi adı|8|
+    |0x00|Atlama Yönergesi|3|
+    |0x03|Dosya Sistemi Adı|8|
     |0x0B|Ayrılmıştır|53|
-    |0x40|Bölüm boşluğu|8|
-    |0x48|Birim uzunluğu|8|
-    |0x50|FAT kayması|4|
-    |0x54|FAT uzunluğu|4|
-    |0x58|Küme yığın boşluğu|4|
-    |0x5C|Küme sayısı|4|
-    |0x60|İlk kök dizin kümesi|4|
-    |0x64|Birim seri numarası|4|
-    |0x68|Dosya sistemi düzeltmesi|2|
-    |0x6A|Birim bayrakları|2|
-    |0x6C|Kesim kaydırma başına bayt|1|
-    |0x6D|Küme başına kesim kaydırma|1|
-    |0x6E|FATs sayısı|1|
-    |0x6F|Sürücü seçme|1|
-    |0x70|Kullanımdaki yüzde|7|
+    |0x40|Bölüm Uzaklığı|8|
+    |0x48|Birim Uzunluğu|8|
+    |0x50|FAT Uzaklığı|4|
+    |0x54|FAT Uzunluğu|4|
+    |0x58|Küme Yığını Uzaklığı|4|
+    |0x5C|Küme Sayısı|4|
+    |0x60|Kök Dizinin İlk Kümesi|4|
+    |0x64|Birim Seri Numarası|4|
+    |0x68|Dosya Sistemi Düzeltmesi|2|
+    |0x6A|Birim Bayrakları|2|
+    |0x6C|Kesim Başına Bayt Kaydırma|1|
+    |0x6D|Küme Başına Kesim Kaydırma|1|
+    |0x6E|SSS Sayısı|1|
+    |0x6F|Sürücü Seçme|1|
+    |0x70|Kullanım Yüzde|7|
     |0x71|Ayrılmıştır|1|
-    |0x78|Önyükleme kodu|390|
-    |0x1FE|Önyükleme Imzası|2|
+    |0x78|Önyükleme Kodu|390|
+    |0x1FE|Önyükleme İmzası|2|
 
-- **Dosya sistemi adı** ExFAT için *dosya sistemi adı* alanı "exFAT" ve ardından üç sondaki boşluk olmalıdır.
-- **Ayrılmış** *Ayrılmış* alanın içeriği sıfır olmalıdır. Bu bölge FAT12/16/32 içindeki önyükleme kayıtlarıyla örtüşüyor. Bu alanın sıfır olması, dosya sistemlerinin bu birimi yanlış yorumlaması durumunda olmasını önler.
-- **Bölüm boşluğu** *Bölüm boşluğu boşluğu* alanı, bu bölümün başlangıcını gösterir.
-- **Birim uzunluğu** *Birim uzunluğu* alanı, bu bölümün kesim sayısını, boyutunu tanımlar.
-- **FAT kayması** *FAT konum* alanı, bu bölümün FAT tablosunda, bu bölümün başlangıcına göre başlangıç sektör numarasını tanımlar.
-- **FAT uzunluğu** *FAT uzunluğu* alanı, FAT tablosunun boyutunu kesim sayısı cinsinden tanımlar.
-- **Küme yığın boşluğu** *Küme yığını konum* alanı, küme yığınının bölüm başlangıcına göre başlangıç sektör numarasını tanımlar. Küme yığını, dizin bilgilerinin ve dosya verilerinin depolandığı alandır.
-- **Küme sayısı** *Küme sayısı* alanı, bu bölümün sahip olduğu küme sayısını tanımlar.
-- **Ilk kök dizin kümesi** *İlk kök dizin alanı kümesi* , kök dizinin başlangıç konumunu tanımlar, bu, ayırma bit eşlemi ve baş durum tablosundan hemen sonra olması önerilir.
-- **Birim seri numarası** *Birim seri numarası* alanı, bu bölümün seri numarasını tanımlar.
-- **Dosya sistemi düzeltmesi** *Dosya sistemi düzeltme* alanı, exFAT 'in birincil ve ikincil sürümünü tanımlar.
-- **Birim bayrakları** *Birim bayrakları* alanı, bu birimin durumunu gösteren bayraklar içerir.
-- **Kesim kaydırma başına bayt** *Kesim kaydırma alanı başına bayt* sayısı, kesim başına bayt sayısını, log2 (n) cinsinden tanımlar; burada n, kesim başına bayt sayısıdır. Örneğin, SD kartında sektör boyutu 512 bayttır. Bu nedenle bu alan 9 (log2 (512) = 9) olacaktır.
-- **Küme başına kesim kaydırma** *Küme kaydırma alanı başına kesim* sayısı, kümedeki kesimlerin sayısını tanımlar, burada n, küme başına kesim sayısıdır.
-- **FATs sayısı** *FATs alanı sayısı* , bu bölümdeki FAT tablolarının sayısını tanımlar. ExFAT için, bir FAT tablosu için değerin 1 olması önerilir.
-- **Sürücü seçme** *Sürücü seçme* alanı, genişletilmiş Int 13h sürücü numarasını tanımlar.
-- **Kullanımdaki yüzde** *Kullanım alanı yüzdesi* , küme yığınındaki kümelerin yüzdesini tanımlar. Geçerli değerler 0 ile 100 (dahil) arasındadır.
+- **Dosya Sistemi Adı** exFAT için *dosya sistemi adı alanı* "EXFAT" ve ardından üç boşluk eksildi.
+- **Ayrılmış** Ayrılmış alanın *içeriği* sıfır olmalıdır. Bu bölge FAT12/16/ 32'de önyükleme kayıtlarıyla çakışıyor. Bu alanı sıfıra yapmak, dosya sistemlerinin bu birimi yanlış yorumlamalarını önler.
+- **Bölüm Uzaklığı** Bölüm *uzaklığı alanı* bu bölümün başlatı olduğunu gösterir.
+- **Birim Uzunluğu** Birim *uzunluğu* alanı, bu bölümün kesim sayısı olarak boyutunu tanımlar.
+- **FAT Uzaklığı** *FAT kaydırma* alanı, bu bölümün FAT tablosuna göre bu bölümün başlangıcına göre başlangıç kesim numarasını tanımlar.
+- **FAT Uzunluğu** *FAT uzunluğu* alanı, FAT tablosu boyutunu kesim sayısı olarak tanımlar.
+- **Küme Yığını Uzaklığı** Küme *yığını kaydırma* alanı, küme yığınının bölüm başlangıcına göre başlangıç kesim numarasını tanımlar. Küme yığını, dizin bilgilerini ve dosya verilerini depolandığı alandır.
+- **Küme Sayısı** Küme *sayısı* alanı, bu bölümün sahip olduğu küme sayısını tanımlar.
+- **Kök Dizinin İlk Kümesi** İlk *kök dizin alanı kümesi,* kök dizinin başlangıç konumunu tanımlar. Bu konumun ayırma bit eşlemi ve büyük/büyük/büyük harf tablosundan hemen sonra olması önerilir.
+- **Birim Seri Numarası** Birim *seri numarası* alanı bu bölümün seri numarasını tanımlar.
+- **Dosya Sistemi Düzeltmesi** Dosya *sistemi düzeltme alanı* exFAT'nin ana ve ikincil sürümünü tanımlar.
+- **Birim Bayrakları** Birim *bayrakları* alanı, bu birimin durumunu belirten bayraklar içerir.
+- **Kesim Başına Bayt Kaydırma** Kesim *kaydırma alanı başına bayt* sayısı, kesim başına bayt sayısını (log2(n) tanımlar; burada n, kesim başına bayt sayısıdır. Örneğin, SD kartında kesim boyutu 512 bayttır. Bu nedenle bu alan 9 (log2(512) = 9) olur.
+- **Küme Başına Kesim Kaydırma** Küme *başına kesim kaydırma* alanı, log2(n) içinde küme başına kesim sayısını tanımlar; burada n, küme başına kesim sayısıdır.
+- **SSS Sayısı** *SSS alanı,* bu bölümdeki FAT tablolarının sayısını tanımlar. ExFAT için, bir FAT tablosu için değerin 1 olması önerilir.
+- **Sürücü Seçme** Sürücü *seçme alanı* genişletilmiş INT 13h sürücü numarasını tanımlar.
+- **Kullanım Yüzde** Kullanım *alanında yüzde* değeri, küme yığınında ayrılan kümelerin yüzdesini tanımlar. Geçerli değerler 0 ile 100 (dahil) arasındadır.
 - **Ayrılmış** Bu alan gelecekte kullanılmak üzere ayrılmıştır.
-- **Önyükleme kodu** *Önyükleme kodu* alanı, önyükleme kodunun küçük bir bölümünü depolayan bir alandır. Günümüzde bu çoğu cihazda eski bir alandır.
-- **Imza 0x55AA** *Önyükleme imzası* alanı, önyükleme kaydını tanımlamak için kullanılan bir veri modelidir. Bu alan yoksa, önyükleme kaydı geçerli değildir.
+- **Önyükleme Kodu** Önyükleme *kodu alanı,* önyükleme kodunun küçük bir kısmını depolamak için bir alandır. Günümüzde çoğu cihaz için bu eski bir alandır.
+- **İmza 0x55AA** Önyükleme *imzası alanı,* önyükleme kaydını tanımlamak için kullanılan bir veri desenidir. Bu alan yoksa önyükleme kaydı geçerli değildir.
 
-### <a name="file-allocation-table-fat"></a>Dosya ayırma tablosu (FAT)
+### <a name="file-allocation-table-fat"></a>Dosya Ayırma Tablosu (FAT)
 
-*Dosya ayırma tablosu (FAT)* , medyadaki ayrılmış kesimlerden sonra başlar. FAT alanı temel olarak, kümenin ayrılmadığını veya bir alt dizin ya da bir dosya içeren küme zincirinin bir parçasını oluşturan 12 bit, 16 bit veya 32 bitlik girdilerden oluşan bir dizidir. Her bir FAT girişinin boyutu, temsil edilebilmesi gereken küme sayısına göre belirlenir. Küme sayısı (Toplam kesimlerden küme başına kesim sayısı), 4.086 değerinden küçük veya bu değere eşitse, 12 bit FAT girişleri kullanılır. Toplam küme sayısı 4.086 ' den büyükse ve 65.525 ' den küçükse, 16 bit FAT girişleri kullanılır. Aksi takdirde, toplam küme sayısı 65.525 ' e eşit veya daha büyükse, 32-bit FAT veya exFAT kullanılır.
+Dosya *Ayırma Tablosu (FAT),* medyadaki ayrılmış kesimlerden sonra başlar. FAT alanı temelde bu kümenin ayrılmış olup olmadığını veya alt dizin ya da dosyadan oluşan bir küme zincirinin parçası olup olmadığını belirleyen 12 bit, 16 bit veya 32 bit girişlerden oluşan bir dizidir. Her FAT girişinin boyutu, temsili gereken küme sayısına göre belirlenir. Küme sayısı (küme başına kesimlere bölünen toplam kesimden türetilen) 4.086'dan küçükse veya ona eşitse, 12 bit FAT girişleri kullanılır. Toplam küme sayısı 4.086'dan büyükse ve 65.525'in altında ise 16 bit FAT girişleri kullanılır. Aksi takdirde, toplam küme sayısı 65.525'den büyük veya bu sayıya eşitse 32 bit FAT veya exFAT kullanılır.
 
-FAT12/16/32 için FAT tablosu yalnızca küme zincirini korumadığından, küme ayırma hakkında bilgi de sağlar: bir kümenin kullanılabilir olup olmadığı. ExFAT 'de, küme ayırma bilgileri bir ayırma bit eşlem Dizin girişi tarafından korunur. Her bölümün kendi ayırma bit eşlemi vardır. Bit eşlemin boyutu, tüm kullanılabilir kümeleri kapsayacak kadar büyük. Bir küme ayırma için kullanılabiliyorsa, ayırma bit eşlemdeki ilgili bit 0 olarak ayarlanır. Aksi takdirde, bit 1 olarak ayarlanır. Ardışık kümeleri kaplayan bir dosya için exFAT, tüm kümelerin izlenmesini sağlamak için bir FAT zinciri gerektirmez. Ancak, ardışık küme içermeyen bir dosya için, bir FAT zincirinin hala tutulması gerekir.
+FAT12/16/32 için FAT tablosu yalnızca küme zincirini korumakla birlikte küme ayırma hakkında da bilgi sağlar: bir kümenin kullanılabilir olup olmadığı. exFAT'ta, küme ayırma bilgileri bir Ayırma Bit Eşlem Dizini Girdisi tarafından korunur. Her bölümün kendi ayırma bit eşlemi vardır. Bit eşlem boyutu, kullanılabilir tüm kümeleri kapsayacak kadar büyüktür. Bir küme ayırma için kullanılabilirse, bit eşlem ayırmada karşılık gelen bit 0 olarak ayarlanır. Aksi takdirde bit 1 olarak ayarlanır. Ardışık kümeleri kapladığı bir dosya için exFAT, tüm kümeleri izlemek için FAT zinciri gerektirmez. Ancak art arda kümeler kap etmeyen bir dosya için FAT zincirinin yine de korunması gerekir.
 
-### <a name="fat-entry-contents"></a>FAT giriş Içeriği
+### <a name="fat-entry-contents"></a>FAT Giriş İçeriği
 
-FAT tablosundaki ilk iki giriş kullanılmaz ve genellikle aşağıdaki içeriğe sahiptir.
+FAT tablosundaki ilk iki giriş kullanılmaz ve genellikle aşağıdaki içeriklere sahip olur.
 
-|FAT girdisi |12 bit FAT|16 bit FAT|32-bit FAT| exFAT|
+|FAT Girişi |12 bit FAT|16 bit FAT|32 bit FAT| Exfat|
 |----------|-----------|------------|-------|------|
 |Giriş 0|0x0F0|0x00F0|0x000000F0|0xF8FFFFFF|
-|Girdi 1|0xFFF|0xFFFF|0x0FFFFFFF|Ffffffff|
+|Giriş 1|0xFFF|0xffff|0x0FFFFFFF|0xffffffff|
 
-FAT giriş numarası 2, medyanın veri alanındaki ilk kümeyi temsil eder. Her küme girişinin içeriği, bir dosya veya alt dizin için ayrılmış kümelerin bağlı listesinin boş veya bir parçası olup olmadığını belirler. Küme girişi başka bir geçerli küme girişi içeriyorsa, küme ayrılır ve değeri küme zincirinde ayrılan sonraki kümeye işaret eder.
+FAT giriş numarası 2, medyanın veri alanında ilk kümeyi temsil eder. Her küme girişinin içeriği, bunun ücretsiz olup olmadığını veya bir dosya veya alt dizin için ayrılmış bağlı küme listesinin bir parçası olup olmadığını belirler. Küme girdisi başka bir geçerli küme girdisi içeriyorsa, küme ayrılır ve değeri küme zincirinde ayrılan sonraki kümeyi gösterir.
 
-Olası küme girdileri aşağıdaki gibi tanımlanmıştır.
+Olası küme girişleri aşağıdaki gibi tanımlanır.
 
-|Anlamı|12 bit FAT|16 bit FAT|32-bit FAT| exFAT|
+|Anlamı|12 bit FAT|16 bit FAT|32 bit FAT| Exfat|
 |----------|-----------|------------|-------|------|
-|Boş küme|0x000|0x0000|0x00000000|0x00000000|
-|Kullanılmıyor|0x001|0x0001|0x00000001|0x00000001|
-|Ayrılmıştır|0xFF0-FF6|0xFFF0-FFF6|0x0FFFFFF0-6|ClusterCounter + 2 ile 0xFFFFFFF6|
-|Hatalı küme|0xFF7|0xFFF7|0x0FFFFFF7|0xFFFFFFF7|
+|Ücretsiz Küme|0x000|0x0000|0x00000000|0x00000000|
+|Kullanılmaz|0x001|0x0001|0x00000001|0x00000001|
+|Ayrılmıştır|0xFF0-FF6|0xFFF0-FFF6|0x0FFFFFF0-6|ClusterCounter +2'den 0xFFFFFFF6|
+|Hatalı Küme|0xFF7|0xFFF7|0x0FFFFFF7|0xFFFFFFF7|
 |Ayrılmıştır| - | - | - | 0xFFFFFFF8-E|
-|Son küme| 0xFF8-FFF| 0xFFF8-FFFF| 0x0FFFFFF8-F| Ffffffff|
+|Son Küme| 0xFF8-FFF| 0xFFF8-FFFF| 0x0FFFFFF8-F| 0xffffffff|
 |Küme bağlantısı| 0x002-0xFEF| 0x0002-FFEF| 0x2-0x0FFFFFEF | 0x2-ClusterCount + 1|
 
 Ayrılmış bir küme zincirindeki son küme, son küme değerini (yukarıda tanımlanan) içerir. İlk küme numarası, dosya veya alt dizinin dizin girdisinde bulunur.
@@ -209,7 +209,7 @@ Diğer alanlardaki denetim bloğunun bulunması, dinamik olarak ayrılan tüm be
 
 ## <a name="fat121632-directory-description"></a>**FAT12/16/32 dizin açıklaması**
 
-FileX, hem 8,3 hem de Windows Long dosya adı (LFN) ad biçimlerini destekler. Adın yanı sıra, her bir dizin girişi girişin özniteliklerini, son değiştirilme tarihi ve tarihini, başlangıç kümesi dizinini ve girişin bayt cinsinden boyutunu içerir. Tablo 3, bir FileX 8,3 dizin girişinin içeriğini ve boyutunu gösterir.
+filex, hem 8,3 hem de Windows uzun dosya adı (lfn) ad biçimlerini destekler. Adın yanı sıra, her bir dizin girişi girişin özniteliklerini, son değiştirilme tarihi ve tarihini, başlangıç kümesi dizinini ve girişin bayt cinsinden boyutunu içerir. Tablo 3, bir FileX 8,3 dizin girişinin içeriğini ve boyutunu gösterir.
 
 - **Dizin adı**
 
@@ -324,272 +324,272 @@ FileX, hem 8,3 hem de Windows Long dosya adı (LFN) ad biçimlerini destekler. A
 
 - **LFN kümesi**
 
-    İki baytlık *LFN kümesi* alanı kullanılmamış ve her zaman 0 ' dır.
+    İki bayt *LFN Kümesi* alanı kullanılmaz ve her zaman 0'dır.
 
-    **TABLO 5. 39 karakter LFN kapsayan dizin girişleri**
+    **TABLO 5. 39 Karakterli LFN'den Oluşan Dizin Girişleri**
 
     |Giriş|Anlamı|
     |------------|-----------|
-    |1|LFN Dizin girdisi 3|
-    |2|LFN Dizin girişi 2|
-    |3|LFN Dizin girdisi 1|
-    |4|8,3 dizin girişi (ttttt ~ n. xx)|
+    |1|LFN Dizin Girişi 3|
+    |2|LFN Dizin Girişi 2|
+    |3|LFN Dizin Girişi 1|
+    |4|8.3 Dizin Girişi (ttttt~n.xx)|
 
-### <a name="exfat-directory-description"></a>exFAT dizin açıklaması
+### <a name="exfat-directory-description"></a>exFAT Dizin Açıklaması
 
-exFAT dosya sistemi, Dizin girişini ve dosya adını farklı şekilde depolar. Dizin girişi, girişin özniteliklerini, girişin oluşturulduğu, değiştirildiği ve erişildiği zaman içindeki çeşitli zaman damgalarını içerir. Dosya boyutu ve küme başlatma gibi diğer bilgiler, birincil dizin girişini hemen izleyen akış uzantısı Dizin girişinde depolanır. exFAT yalnızca uzun dosya adı (LFN) ad biçimini destekler. Dosya adı Dizin girişinde depolanan, tablo 2 ' de gösterildiği gibi, akış uzantısı Dizin girişini hemen izler.
+exFAT dosya sistemi dizin girişini ve dosya adını farklı depolar. Dizin girdisi, girişin özniteliklerini, girişin ne zaman oluşturulduğunda, değiştirildiğinde ve erişildiğinde çeşitli zaman damgasını içerir. Dosya boyutu ve kümeyi başlatma gibi diğer bilgiler, birincil dizin girişinin hemen ardından geçen Stream Uzantısı Dizin Girdisi'ne depolanır. exFAT yalnızca Uzun Dosya Adı (LFN) ad biçimini destekler. Dosya Adı Dizin Girdisi'ne depolanmış olan dizin, Tablo 2'de gösterildiği gibi Stream Extension Directory Girdisi'nin hemen ardından gelir.
 
-### <a name="exfat-file-directory-entry"></a>exFAT dosya dizini girdisi
+### <a name="exfat-file-directory-entry"></a>exFAT Dosya Dizini Girişi
 
-ExFAT dosya dizini girişinin açıklaması ve içeriği aşağıdaki tablo ve paragraflara dahildir.
+Aşağıdaki tabloda ve paragraflarda exFAT dosya dizini girişinin ve içeriğinin açıklaması yer alır.
 
 - **Giriş Türü**
 
-    Giriş türü alanı bu girişin türünü gösterir. Dosya dizini girişi için bu alan 0x85 olmalıdır.
+    Giriş türü alanı bu girişin türünü gösterir. Dosya Dizini Girişi için bu alanın 0x85.
 
-- **İkincil giriş sayısı**
+- **İkincil Giriş Sayısı**
 
-    *İkincil girdi sayısı* alanı, bu birincil girdinin hemen altındaki ikincil girdi sayısını gösterir. Dosya dizini girdisiyle ilişkili ikincil girişler, bir akış uzantısı Dizin girişi ve bir veya daha fazla dosya adı Dizin girişi içerir.
+    İkincil *giriş sayısı* alanı, bu birincil girdiden hemen sonra ikincil giriş sayısını gösterir. Dosya dizini girdisi ile ilişkili ikincil girişler, bir akış uzantısı dizin girişi ve bir veya daha fazla dosya adı dizin girdisi içerir.
 
-    **TABLO 6. exFAT dosya dizini girdisi**
+    **TABLO 6. exFAT Dosya Dizini Girişi**
 
-    |Uzaklık|Alan|Bayt sayısı|
+    |Uzaklık|Alan|Bayt Sayısı|
     |----|-----------|-|
-    |-|Giriş Türü|1|
-    |0x01|İkincil girdi|1|
+    |0x00|Giriş Türü|1|
+    |0x01|İkincil Giriş|1|
     |0x02|Sağlama|2|
     |0x04|Dosya Öznitelikleri|2|
     |0x06|Ayrılmış 1|2|
     |0x08|Zaman Damgası Oluştur|4|
-    |0x0C|Son değiştirme zaman damgası|4|
-    |0x10|Son erişme zaman damgası|4|
-    |0x14|10 MS artışı oluştur|1|
-    |0x15|Son değiştirme 10ms artış|1|
-    |0x16|UTC boşluğu oluştur|1|
-    |0x17|Son değiştirme UTC kayması|1|
-    |0x18|Son erişim UTC kayması|1|
+    |0x0C|Son Değiştirilen Zaman Damgası|4|
+    |0x10|Son Erişilen Zaman Damgası|4|
+    |0x14|10 m'lik Artış Oluşturma|1|
+    |0x15|Son Değiştirme 10 saniyeLik Artış|1|
+    |0x16|UTC Farkı Oluşturma|1|
+    |0x17|Son Değiştirilen UTC Farkı|1|
+    |0x18|Son Erişim UTC Farkı|1|
     |0x19|Ayrılmış 2|7|
 
-- **Toplam**
+- **Sağlama toplamı**
 
-    *Sağlama toplamı* alanı, Dizin giriş kümesindeki tüm girişler üzerindeki sağlama toplamı değerini (dosya dizini girişi ve ikincil girdileri) içerir.
+    Sağlama *listesi* alanı, dizin giriş kümesinde (dosya dizini girdisi ve ikincil girdileri) tüm girişler üzerinde sağlama listesi değerini içerir.
 
 - **Dosya Öznitelikleri**
 
-    Tek baytlı öznitelikler alan girişi, dizin girişinin çeşitli özelliklerini belirten bir bit serisi içerir. Çoğu öznitelik bitlerinin tanımı, FAT 12/16/32 ile aynıdır. Dizin öznitelik tanımları aşağıdaki gibidir:
+    Tek bir bayt öznitelikler alan girdisi, dizin girişinin çeşitli özelliklerini belirten bir dizi bit içerir. Çoğu öznitelik biti, FAT 12/16/32 ile aynıdır. Dizin özniteliği tanımları aşağıdaki gibidir:
 
-    |Öznitelik biti|Anlamı|
+    |Öznitelik Biti|Anlamı|
     |------------|-----------|
-    |0x01| Giriş salt okunurdur|
-    |0x02|Giriş gizli|
-    |0x04|Giriş bir sistem girdisi|
-    |0x08|Girdi ayrıldı|
-    |0x10|Giriş bir dizin|
-    |0x20|Giriş değiştirildi|
-    |Diğer tüm bitleri|Ayrılmıştır|
+    |0x01| Giriş salt okunur|
+    |0x02|Girdi gizli|
+    |0x04|Girdi bir sistem girişidir|
+    |0x08|Girdi ayrılmış|
+    |0x10|Girdi bir dizindir|
+    |0x20|Girdi değiştirildi|
+    |Diğer tüm bitler|Ayrılmıştır|
 
-- **Reserved1**
+- **Ayrılmış1**
 
     Bu alan sıfır olmalıdır.
 
 - **Zaman Damgası Oluştur**
 
-    *Zaman damgası oluştur* alanı, *10 MS artış oluştur* alanındaki bilgileri birleştirerek, dosyanın veya dizinin oluşturulduğu yerel tarih ve saati açıklar.
+    Create  *10ms Increment* alanından alınan bilgileri birleştiren oluşturma zaman damgası alanı, dosyanın veya dizinin oluşturularak yerel tarihi ve saati açıklar.
 
-- **Son değiştirme zaman damgası**
+- **Son Değiştirilen Zaman Damgası**
 
-    Son değişiklik *zaman damgası* alanı, *son değiştirilen 10 MS artış* alanından bilgileri birleştiren, dosyanın veya dizinin en son değiştirildiği yerel tarih ve saati açıklıyor. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Son *değiştirilen zaman damgası alanı,* son değiştirilen *10 m'lik* artış alanından alınan bilgileri birleştirerek dosyanın veya dizinin en son değiştiril olduğu yerel tarihi ve saati açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **Son erişme zaman damgası**
+- **Son Erişilen Zaman Damgası**
 
-    *Son erişilen zaman damgası* alanı, dosyanın veya dizinin en son erişildiği yerel tarih ve saati açıklar. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Son *erişilen zaman damgası* alanında, dosyanın veya dizinin son erişilen yerel tarihi ve saati açıklanır. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **10 MS artışı oluştur**
+- **10 m'lik Artış Oluşturma**
 
-    *Zaman damgası oluştur* alanındaki bilgileri birleştiren *10ms artışı oluştur* alanı, dosyanın veya dizinin oluşturulduğu yerel tarih ve saati açıklar. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Create *10ms artırma* alanı, *oluşturma zaman damgası* alanından alınan bilgileri birleştirerek dosyanın veya dizinin oluşturularak yerel tarihi ve saati açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **Son değiştirme 10ms artış**
+- **Son Değiştirme 10 saniyeLik Artış**
 
-    Son değiştirilen *10ms artış* alanı, *son değiştirme zaman damgası* alanından bilgileri birleştiren, dosyanın veya dizinin en son değiştirildiği yerel tarih ve saati açıklama. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Son değiştirilen zaman damgası alanından bilgileri birleştirerek  son değiştirilen *10 saniyelik* artış alanı, dosyanın veya dizinin en son değiştirildiğinde yerel tarihi ve saati açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **UTC boşluğu oluştur**
+- **UTC Farkı Oluşturma**
 
-    *UTC farkı oluştur* alanı, dosya veya dizin oluşturulduğunda yerel saat ile UTC saati arasındaki farkı açıklar. Zaman damgalarındaki aşağıdaki notlara bakın.
+    UTC *farkı oluşturma* alanı, dosyanın veya dizinin oluşturulduğunda yerel saatle UTC saati arasındaki farkı açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **Son değiştirme UTC kayması**
+- **Son Değiştirilen UTC Farkı**
 
-    *Son DEĞIŞTIRILEN UTC farkı* alanı, dosyanın veya dizinin en son değiştirildiği yerel saat ile UTC saati arasındaki farkı açıklar. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Son *değiştirilen UTC kaydırma alanı,* dosyanın veya dizinin son değiştirildiğinde yerel saatle UTC saati arasındaki farkı açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **Son erişildiği UTC kayması**
+- **Son Erişilen UTC Farkı**
 
-    *Son ERIŞILEN UTC farkı* alanı, dosyaya veya dizine son erişildiği zamana göre yerel saat ile UTC saati arasındaki farkı açıklar. Zaman damgalarındaki aşağıdaki notlara bakın.
+    Son *erişilen UTC uzaklığı* alanı, dosya veya dizine en son erişilen yerel saat ile UTC saati arasındaki farkı açıklar. Zaman damgası hakkında aşağıdaki notlara bakın.
 
-- **Reserved2**
+- **Ayrılmış2**
 
     Bu alan sıfır olmalıdır.
 
-### <a name="notes-on-timestamps"></a>Zaman damgalarıyla ilgili notlar
+### <a name="notes-on-timestamps"></a>Zaman Damgası Notları
 
-- **Zaman damgası girişi** Zaman damgası alanları aşağıdaki gibi yorumlanır:
+- **Zaman Damgası Girişi** Zaman damgası alanları aşağıdaki gibi yorumlanır:
 
-- **10 MS artış alanı** 10ms artış alanındaki değer, zaman damgası değerine daha ayrıntılı bir ayrıntı düzeyi sağlar. Geçerli değerler 0 (0ms) ile 199 (1990ms) arasındadır.
+- **10 m'lik Artış Alanları** 10 m'lik artış alanında yer alan değer, zaman damgası değerine daha ince ayrıntı sağlar. Geçerli değerler 0 (0ms) ile 199 (1990ms) arasındadır.
 
-     ![10 MS artış alanı](./media/user-guide/10ms-increment-fields.png)
+     ![10 m'lik Artış Alanları](./media/user-guide/10ms-increment-fields.png)
 
-- **UTC fark alanı**
+- **UTC Uzaklık Alanı**
 
-     ![UTC fark alanı](./media/user-guide/utc-offset-field.png)
+     ![UTC Uzaklık Alanı](./media/user-guide/utc-offset-field.png)
 
-- **Konum değeri**
+- **Uzaklık Değeri**
 
-    7 bit işaretli tamsayı, 15 dakikalık artışlarla UTC zamanının sapmasını temsil eder.
+    7 bit imzalı tamsayı, UTC saatiyle uzaklığı 15 dakikalık artışlarla temsil eder.
 
 - **Geçerli**
 
-    Konum alanındaki değerin geçerli olup olmadığı. 0, fark değeri alanındaki değerin geçersiz olduğunu gösterir. 1 değerin geçerli olduğunu gösterir.
+    Uzaklık alanı değerinin geçerli olup olmadığı. 0, uzaklık değeri alanında yer alan değerin geçersiz olduğunu gösterir. 1 değerin geçerli olduğunu gösterir.
 
-### <a name="stream-extension-directory-entry"></a>Akış uzantısı Dizin girişi
+### <a name="stream-extension-directory-entry"></a>Stream Uzantısı Dizin Girişi
 
-Akış uzantısı dizin girişinin açıklaması ve içeriği aşağıdaki tabloya dahildir.
+Stream Uzantısı Dizin Girdisi'nin ve içeriğinin açıklaması aşağıdaki tabloya ek olarak ek açıklamadır.
 
-**TABLO 7. Akış uzantısı Dizin girişi**
+**TABLO 7. Stream Uzantısı Dizin Girişi**
 
-|Uzaklık|Alan| Bayt sayısı|
+|Uzaklık|Alan| Bayt Sayısı|
 |------------|-----------|-------|
-|-|Giriş Türü|1|
+|0x00|Giriş Türü|1|
 |0x01|Bayraklar|1|
 |0x02|Ayrılmış 1|1|
-|0x03|Ad uzunluğu|1|
-|0x04|Ad karması|2|
+|0x03|Ad Uzunluğu|1|
+|0x04|Ad Karması|2|
 |0x06|Ayrılmış 2|2|
-|0x08|Geçerli veri uzunluğu|8|
+|0x08|Geçerli Veri Uzunluğu|8|
 |0x10|Ayrılmış 3|4|
-|0x14|İlk küme|4|
-|0x18|Veri uzunluğu|8|
+|0x14|İlk Küme|4|
+|0x18|Veri Uzunluğu|8|
 
 - **Giriş Türü**
 
-    *Giriş türü* alanı bu girişin türünü gösterir. Akış uzantısı Dizin girişi için bu alan 0xC0 olmalıdır.
+    Giriş *türü alanı* bu girişin türünü gösterir. Akış uzantısı Dizin Girişi için bu alanın 0xC0.
 
-- **Larına**
+- **Bayrak**
 
-    Bu alan, çeşitli özellikleri belirten bir bit serisi içerir:
+    Bu alan çeşitli özellikleri belirten bir dizi bit içerir:
     
-    |Bayrak biti|Anlamı    |
+    |Bayrak Biti|Anlamı    |
     |-----------------|-----------|
-    |0x01            |Bu alan, kümelerin ayrılmasının mümkün olup olmadığını gösterir. Bu alan 1 olmalıdır.|
-    |0x02            |Bu alan, ilişkili kümelerin bitişik olup olmadığını gösterir. 0 değeri, FAT girişinin geçerli olduğu ve FileX 'in FAT zincirini takip eden anlamına gelir. 1 değeri, FAT girişinin geçersiz olduğu ve kümelerin bitişik olduğu anlamına gelir.|
-    |Diğer tüm bitleri    |Ayrılmış.|
+    |0x01            |Bu alan, küme ayırmanın mümkün olup olmadığını gösterir. Bu alan 1 olabilir.|
+    |0x02            |Bu alan, ilişkili kümelerin bitişik olup olmadığını gösterir. 0 değeri FAT girişinin geçerli olduğu ve FileX'in FAT zincirini izlemesi gerekir. 1 değeri FAT girişinin geçersiz olduğu ve kümelerin bitişik olduğu anlamına gelir.|
+    |Diğer tüm bitler    |Ayrılmış.|
 
 - **Ayrılmış 1**
 
-    Bu alan 0 olmalıdır.
+    Bu alan 0'dır.
 
-- **Ad uzunluğu**
+- **Ad Uzunluğu**
 
-    *Ad uzunluğu* alanı, her topluca içeren dosya adı Dizin girişlerinde Unicode dizesinin uzunluğunu içerir. Dosya adı Dizin girdileri hemen bu akış uzantısı Dizin girişini izler.
+    Ad *uzunluğu alanı,* dosya adı dizin girişlerinin topluca içerdiği unicode dizesinin uzunluğunu içerir. Dosya adı dizin girdileri bu akış uzantısı dizin girişini hemen takip eder.
 
-- **Ad karması**
+- **Ad Karması**
 
-    *Ad karması* alanı, yukarı yönlü dosya adının karma değerini içeren 2 baytlık bir giriştir. Karma değeri daha hızlı dosya/dizin adı aramasına izin verir: karma değerleri eşleşmezse, bu girişle ilişkili dosya adı bir eşleşme değildir.
+    Ad *karması* alanı, büyük/küçük harfli dosya adının karma değerini içeren bir 2 bayt girişidir. Karma değeri dosya/dizin adı aramasını daha hızlı sağlar: Karma değerleri eşlenemse, bu girişle ilişkili dosya adı eşleşmez.
 
 - **Ayrılmış 2**
 
-    Bu alan 0 olmalıdır.
+    Bu alan 0'dır.
 
-- **Geçerli veri uzunluğu**
+- **Geçerli Veri Uzunluğu**
 
-    *Geçerli veri uzunluğu* alanı, dosyadaki geçerli veri miktarını gösterir.
+    Geçerli *veri uzunluğu* alanı dosyada geçerli veri miktarını gösterir.
 
 - **Ayrılmış 3**
 
-    Bu dosyalanmış 0 olmalıdır.
+    Bu dosya 0 olmalı.
 
-- **İlk küme**
+- **İlk Küme**
 
-    *İlk küme* alanı, veri akışı ilk kümesinin dizinini içerir.
+    İlk *küme alanı,* veri akışının ilk kümesi dizinini içerir.
 
-- **Veri uzunluğu**
+- **Veri Uzunluğu**
 
-    *Veri uzunluğu* alanı, ayrılan kümelerdeki toplam bayt sayısını içerir. ExFAT, veri kümelerinin önceden ayrılmasına izin verdiğinden bu değer *geçerli veri uzunluğundan* daha büyük olabilir.
+    Veri *uzunluğu alanı,* ayrılan kümelerde toplam bayt sayısını içerir. ExFAT, veri *kümelerinin önceden ayırmaya* izin verir çünkü bu değer Geçerli Veri Uzunluğu'dan büyük olabilir.
 
 ### <a name="root-directory"></a>Kök Dizin
 
-FAT 12 ve 16 bit biçimlerinde *kök dizin* , ORTAMDAKI tüm Fat kesimlerinden hemen sonra bulunur ve açık bir _ *FX_MEDIA** denetim bloğunda ***fx_media_root_sector_start** _ ' i inceleyerek bulunabilir. Kök dizinin, Dizin girişi sayısı (her 32 bayt boyutunda) cinsinden boyutu, medyanın önyükleme kaydındaki karşılık gelen girdiye göre belirlenir.
+FAT 12 ve 16 bit biçimlerinde kök dizin, medyada tüm FAT kesimlerinden hemen sonra bulunur ve açık *_* FX_MEDIA * denetim bloğunda *  **fx_media_root_sector_start** _ inceler. Kök dizinin boyutu, dizin girişlerinin sayısı bakımından (her 32 bayt boyutunda), medyanın önyükleme kaydındaki ilgili giriş tarafından belirlenir.
 
-FAT-32 ve exFAT içindeki kök dizin, kullanılabilir kümelerin herhangi bir yerinden bulunabilir. Medya açıldığında önyükleme kaydından konum ve boyut belirlenir. Medya açıldıktan sonra, ***fx_media_root_sector_start*** alanı, FAT-32 veya exFAT kök dizininin başlangıç kümesini bulmak için kullanılabilir.
+FAT-32 ve exFAT'daki kök dizin, kullanılabilir kümelerin herhangi bir yerinde yer alıyor olabilir. Konumu ve boyutu, medya açıldığında önyükleme kaydından belirlenir. Medya açıldıktan sonra, ***fx_media_root_sector_start*** alanı FAT-32 veya exFAT kök dizininin başlangıç kümelerini bulmak için kullanılabilir.
 
-### <a name="subdirectories"></a>Klasörleri
+### <a name="subdirectories"></a>Altdizin
 
-Bir FAT sisteminde herhangi bir sayıda alt dizin bulunur. Alt dizinin adı, bir dosya adı gibi bir dizin girdisinde bulunur. Ancak, Dizin öznitelik belirtimi (0x10) girişin bir alt dizin olduğunu ve dosya boyutunun her zaman sıfır olduğunu belirtecek şekilde ayarlanır.
-Şekil 3 ' te, * Sample adlı yeni bir singlecluster alt dizini için tipik bir alt dizin yapısının nasıl göründüğü gösterilmektedir **. DıR** _, _ *_FILE.TXT_* * adlı bir dosya ile.
-Çoğu şekilde, alt dizinler dosya girdilerine çok benzer. İlk küme alanı, bağlantılı kümeler listesinin ilk kümesini işaret eder. Bir alt dizin oluşturulduğunda, ilk iki dizin girişi varsayılan dizinleri içerir; yani "." dizini ve ".." dizinidir. "." Dizini alt dizinin kendisini işaret ederken, ".." dizini önceki veya üst dizine işaret eder.
+FAT sisteminde herhangi bir sayıda alt dizin vardır. Alt dizinin adı, tıpkı dosya adı gibi bir dizin girdisinde bulunur. Ancak dizin özniteliği belirtimi (0x10), girişin bir alt dizin olduğunu ve dosya boyutunun her zaman sıfır olduğunu belirtmek için ayarlanır.
+Şekil 3'te * SAMPLE adlı yeni bir tekli alt dizin için tipik bir alt dizin yapısının nasıl göründüğünü **gösterir. DIR** _ _* adlı bir dosya ile _FILE.TXT_** .
+Çoğu şekilde, alt dizinler dosya girişlerine çok benzer. İlk küme alanı, bağlantılı bir küme listesinin ilk kümesine puanlar. Bir alt dizin oluşturulduğunda, ilk iki dizin girdisi varsayılan dizinleri ( "." dizini ve ".." dizini) içerir. "." dizini alt dizinin kendisini, ".." dizini ise önceki veya üst dizini gösterir.
 
-### <a name="global-default-path"></a>Genel varsayılan yol
+### <a name="global-default-path"></a>Genel Varsayılan Yol
 
-FileX, medya için genel bir varsayılan yol sağlar. Varsayılan yol, açıkça tam yol belirtmeyen herhangi bir dosya veya dizin hizmetinde kullanılır.
+FileX, medya için genel bir varsayılan yol sağlar. Varsayılan yol, açıkça tam yol belirtmeen herhangi bir dosya veya dizin hizmeti için kullanılır.
 
-Başlangıçta genel varsayılan dizin medyanın kök dizinine ayarlanır. Bu, ***fx_directory_default_set*** çağırarak uygulama tarafından değiştirilebilir.
+Başlangıçta, genel varsayılan dizin medyanın kök dizinine ayarlanır. Bu, fx_directory_default_set çağrılarak ***uygulama tarafından değiştirilebilir.***
 
-Medyanın geçerli varsayılan yolu, ***fx_directory_default_get** _ çağırarak incelenebilir. Bu yordam, _ *FX_MEDIA** denetim bloğunun içinde tutulan varsayılan yol dizesine bir dize işaretçisi sağlar.
+Medyanın geçerli varsayılan yolu * fx_directory_default_get _ **çağrılarak incelendi.** Bu yordam, _ FX_MEDIA * denetim bloğu içinde bakımı yapılan varsayılan *yol dizesine bir dize* işaretçisi sağlar.
 
-### <a name="local-default-path"></a>Yerel varsayılan yol
+### <a name="local-default-path"></a>Yerel Varsayılan Yol
 
-FileX, farklı iş parçacıklarının çakışma olmadan benzersiz yollara sahip olmasına izin veren, iş parçacığına özgü bir varsayılan yol da sağlar. **FX_LOCAL_PATH** yapısı, çağıran iş parçacığının yerel yolunu değiştirmek için **_fx_directory_local_path_set_*_ ve _*_fx_directory_local_path_restore_** çağrıları sırasında uygulama tarafından sağlanır.
+FileX ayrıca farklı iş parçacıklarının çakışma olmadan benzersiz yollara sahip olması için iş parçacığına özgü bir varsayılan yol sağlar. Çağrı **FX_LOCAL_PATH,** çağrı iş parçacığının yerel yolunu değiştirmek için **_fx_directory_local_path_set_*_* ve _ _fx_directory_local_path_restore_** çağrısı sırasında uygulama tarafından sağlanır.
 
-Yerel bir yol varsa, yerel yol genel varsayılan medya yolundan önceliklidir. Yerel yol ayarlanmamış veya ***fx_directory_local_path_clear*** hizmetiyle silinirse, medyanın genel varsayılan yolu bir kez daha kullanılır.
+Yerel yol varsa, yerel yol genel varsayılan medya yolundan önceliklidir. Yerel yol ayarlanmazsa veya fx_directory_local_path_clear ile temizlirse, medyanın genel varsayılan yolu bir kez daha kullanılır. 
 
-## <a name="file-description"></a>Dosya açıklaması
+## <a name="file-description"></a>Dosya Açıklaması
 
-FileX, standart 8,3 karakteri ve üç karakterli uzantılara sahip uzun dosya adlarını destekler. ASCII adının yanı sıra, her bir dosya girişi girişin özniteliklerini, son değiştirilme tarihi ve tarihini, başlangıç kümesi dizinini ve girişin bayt cinsinden boyutunu içerir.
+FileX, standart 8.3 karakterini ve üç karakterli uzantılara sahip uzun dosya adlarını destekler. ASCII adına ek olarak, her dosya girişi girdinin özniteliklerini, son değiştirme tarihini ve tarihini, başlangıç küme dizinini ve girişin bayt cinsinden boyutunu içerir.
 
-### <a name="file-allocation"></a>Dosya ayırma
+### <a name="file-allocation"></a>Dosya Ayırma
 
-FileX, FAT biçiminin standart küme ayırma düzenini destekler. Ayrıca, FileX bitişik kümelerin ön küme ayırmasını destekler. Buna uyum sağlamak için, her FileX dosyası ayrılmış kümeler olmadan oluşturulur. Kümeler, izleyen yazma isteklerinde veya ***fx_file_allocate*** isteklerinde bitişik kümelerin önceden ayrılması için ayrılır.
+FileX, FAT biçiminin standart küme ayırma şemasını destekler. FileX ayrıca bitişik kümelerin küme öncesi ayırmayı da destekler. Bunu karşılamak için, her FileX dosyası ayrılmış kümeler ile oluşturulur. Kümeler sonraki yazma isteklerinde veya bitişik ***fx_file_allocate*** önceden ayırma isteklerinde ayrılır.
 
-Şekil 4 ' te, "FileX FAT-16 dosya örneği", küme 101 ' den başlayarak ayrılmış iki sıralı kümeyle ***FILE.TXT*** adlı bir dosya gösterir, örneğin, dosyanın ilk veri kümesi numarası 101.
+Şekil 4'te "FileX FAT-16 Dosya Örneği", ***küme*** 101'den başlayarak ayrılmış iki sıralı kümeyle birlikteFILE.TXTadlı bir dosyayı, 26 boyutunda ve dosyanın ilk veri kümesi numarası 101'de yer alan veriler olarak alfabeyi gösterir.
 
-### <a name="file-access"></a>Dosya erişimi
+### <a name="file-access"></a>Dosya Erişimi
 
-Bir FileX dosyası, okuma erişimi için aynı anda birden çok kez açılabilir. Ancak, bir dosya yazmak için yalnızca bir kez açılabilir. Dosya erişimini desteklemek için kullanılan bilgiler ***FX_FILE*** dosya denetim bloğunda bulunur.
+Bir FileX dosyası, okuma erişimi için aynı anda birden çok kez açılabilir. Ancak, bir dosya yazmak için yalnızca bir kez açılabilir. Dosya erişimini desteklemek için kullanılan bilgiler, dosya denetim ***bloğunda FX_FILE*** içerir.
 
 > [!NOTE]
-> *Medya sürücüsünün dinamik olarak yazma koruması ayarlayabileceğini unutmayın. Bu durumda, tüm yazma istekleri reddedilir ve yazma için bir dosyayı açmaya çalışır.*
+> *Medya sürücüsünün dinamik olarak yazma koruması ayarlayana dikkat eder. Bu durumda tüm yazma istekleri reddedilir ve yazma için bir dosya açma girişimleri de reddedilir.*
 
-### <a name="file-layout-in-exfat"></a>ExFAT 'de dosya düzeni
+### <a name="file-layout-in-exfat"></a>exFAT'ta Dosya Düzeni
 
-Veri KİRLİK kümelerinde depolanıyorsa, exFAT 'in tasarımı bir dosya için FAT zincirinin korunmasını gerektirmez. Stream uzantısı Dizin girişinde bulunan *Nofatzincirine* bit, dosyadaki VERILERI okurken FAT zincirinin kullanılıp kullanılmayacağını belirtir. *Nofatzinciri* ayarlandıysa, FileX akış uzantısı dizin girdisindeki *ilk küme* alanında belirtilen kümeden sırayla okur.
+ExFAT tasarımı, veriler sıkıcı kümelerde depolanıyorsa bir dosya için FAT zincirinin korunmasını gerektirmez. Stream Uzantısı *Dizin Girdisi'nin NoFATChain* biti, dosyadan veri okurken FAT zincirinin kullanıla mı olacağını belirtir. *NoFATChain* ayarlanırsa, FileX Stream Uzantısı Dizin Girdisi'nin  İlk Küme alanında belirtilen kümeden sırayla okur.
 
-Öte yandan, *Nofatzinciri* açık Ise, FILEX, FAT12/16/32 içindeki FAT zincirine benzer şekilde dosyanın tamamının çapraz geçiş yapmak için FAT zincirini izler.
+Öte *yandan, NoFATChain* netse FileX, FAT12/16/32'de FAT zincirine benzer şekilde dosyanın tamamını çapraz geçiş yapmak için FAT zincirini takip eder.
 
-Şekil 3 ' te, biri FAT zinciri gerektirmeyen ve diğeri bir FAT zinciri gerektiren iki örnek dosya gösterilmektedir.
+Şekil 3'te biri FAT zinciri gerektirmeyen ve diğeri FAT zinciri gerektiren iki örnek dosya vardır.
 
 ## <a name="system-information"></a>Sistem Bilgileri
 
-FileX sistem bilgileri, açık medya örneklerinin izlemesinin yanı sıra genel sistem saatini ve tarihini sakdan oluşur.
+FileX sistem bilgileri, açık medya örneklerini takip etmek ve genel sistem saat ve tarihini korumakla oluşur.
 
-![Bitişik kümeler ve FAT bağlantısı gerektiren dosya içeren dosya](./media/user-guide/system-information.png)
+![Bitişik Kümelere Sahip Dosya ile FAT Bağlantısı Gerektiren Dosya karşılaştırması](./media/user-guide/system-information.png)
 
-**ŞEKIL 3. Bitişik kümeler ve FAT bağlantısı gerektiren dosya içeren dosya**
+**ŞEKIL 3. Bitişik Kümelere Sahip Dosya ile FAT Bağlantısı Gerektiren Dosya karşılaştırması**
 
-Varsayılan olarak, sistem tarihi ve saati FileX 'in son yayın tarihine ayarlanır. Doğru sistem tarih ve saatine sahip olmak için, uygulamanın başlatma sırasında ***fx_system_time_set** _ ve _ *_fx_system_date_set_** çağrısı gerekir.
+Varsayılan olarak, sistem tarihi ve saati FileX'in son yayın tarihine ayarlanır. Doğru sistem tarihi ve saati olması için, uygulama başlatma sırasında ***fx_system_time_set** _ ve _ *_fx_system_date_set_** çağrısında olmalıdır.
 
-### <a name="system-date"></a>Sistem tarihi
+### <a name="system-date"></a>Sistem Tarihi
 
-FileX sistem tarihi genel ***_fx_system_date*** değişkeninde tutulur. 15 ' ten 9 ' a kadar olan bit, 1980 arasındaki yılı içerir, 1 ile 5 arasındaki bit, ay sapmasını içerir |
+FileX sistem tarihi, genel değişkende ***_fx_system_date*** korunur. Bit 15 ile 9 arasında 1980'den yıl uzaklığı, 8 ile 5 arasında bitler ay farkı ve 4 ile 0 arasında bitler günü içerir. |
 
-### <a name="system-time"></a>Sistem saati
+### <a name="system-time"></a>Sistem Saati
 
-FileX sistem saati genel ***_fx_system_time*** değişkeninde tutulur. Bit 15 ile 11 arasında saat varsa, bit 10 ' da dakikalar, 5 ' i de yarım saniye içeren bit 4 ' ü içerir.
+FileX sistem zamanı genel değişkende ***_fx_system_time*** korunur. Bit 15 ile 11 arasında saat, 10 ile 5 arası bitler dakika, 4 ile 0 arası bitler ise yarım saniyeyi içerir.
 
-### <a name="periodic-time-update"></a>Düzenli saat güncelleştirme
+### <a name="periodic-time-update"></a>Düzenli Aralıklarla Zaman Güncelleştirmesi
 
-Sistem başlatma sırasında, FileX sistem tarihini ve saatini düzenli aralıklarla güncelleştirmek için bir ThreadX uygulama süreölçeri oluşturur. Sistem tarih ve saat güncelleştirmesinin ***_fx_system_initialize*** işlevi tarafından kullanılan iki sabitle belirlendiği oran.
+Sistem başlatma sırasında FileX, sistem tarih ve saatlerini düzenli aralıklarla güncelleştirmek için bir ThreadX uygulama zamanlayıcısı oluşturur. Sistem tarih ve saat güncelleştirme hızı, _fx_system_initialize işlevi tarafından ***kullanılan iki sabit tarafından*** belirlenir.
 
-**FX_UPDATE_RATE_IN_SECONDS** ve **FX_UPDATE_RATE_IN_TICKS** sabitleri aynı süreyi temsil eder. Sabit **FX_UPDATE_RATE_IN_TICKS** , sabit **FX_UPDATE_RATE_IN_SECONDS** belirtilen saniye sayısını temsil eden threadx Zamanlayıcı onay işareti sayısıdır. **FX_UPDATE_RATE_IN_SECONDS** sabiti, her bir FileX saat güncelleştirmesi arasındaki saniye sayısını belirtir. Bu nedenle, iç FileX süresi **FX_UPDATE_RATE_IN_SECONDS** aralıklarla artar. Bu sabitler fx_system_initialize _ derlemesi sırasında sağlanabilir veya geliştirici, FileX sürümünün **_ _fx_port. h_ dosyasında *bulunan Varsayılanları değiştirebilir*** .
+Aynı zaman **FX_UPDATE_RATE_IN_SECONDS** **FX_UPDATE_RATE_IN_TICKS** sabitleri aynı dönemi temsil ediyor. Bu **FX_UPDATE_RATE_IN_TICKS** sabiti, FX_UPDATE_RATE_IN_SECONDS sabiti tarafından belirtilen saniye sayısını temsil eden ThreadX zamanlayıcı tık **sayısıdır.** Yeni **FX_UPDATE_RATE_IN_SECONDS** sabiti, her FileX saat güncelleştirmesi arasında kaç saniye olduğunu belirtir. Bu nedenle, iç FileX süresi aralıklarla artarak **FX_UPDATE_RATE_IN_SECONDS.** Bu sabitler, fx_system_initialize _ derlemesi sırasında sağlanmalıdır veya geliştirici, FileX yayınlarının ***_*_fx_port.h_** dosyasında bulunan varsayılanları değiştirebilir.
 
-Düzenli FileX süreölçeri yalnızca dosya zaman damgalaması için kullanılan genel sistem tarih ve saatini güncelleştirmek için kullanılır. Zaman damgalaması gerekli değilse, FileX dönemsel zamanlayıcısını oluşturmayı ortadan kaldırmak için **_fx_system_initialize. c_** derlerken **FX_NO_TIMER** tanımlamanız yeterlidir.
+Düzenli FileX zamanlayıcısı yalnızca yalnızca dosya zaman damgası için kullanılan genel sistem tarih ve saati güncelleştirmek için kullanılır. Zaman damgası gerekli yoksa, FileX **FX_NO_TIMER zamanlayıcısının** oluşturulmasını ortadan kaldırmak için **_fx_system_initialize.c derlemesi_** sırasında tek yapmanız gereken bu işlemi tanımlamaktır.
 
-![FileX FAT-16 dosya örneği](./media/user-guide/fat-16-file-example.png)
+![FileX FAT-16 Dosya Örneği](./media/user-guide/fat-16-file-example.png)
 
-**ŞEKIL 4. FileX FAT-16 dosya örneği**
+**ŞEKIL 4. FileX FAT-16 Dosya Örneği**

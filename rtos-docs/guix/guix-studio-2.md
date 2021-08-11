@@ -1,62 +1,62 @@
 ---
-title: GUX Studio 'nun yüklenmesi ve kullanımı
-description: Bu bölümde, Gux Studio UI sistem tasarımı aracının yüklenmesiyle, kurulumuyla ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: GUIX Studio'yu Yükleme ve Kullanma
+description: Bu bölümde GUIX Studio kullanıcı arabirimi sistem tasarım aracının yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: d7b5f94c26842b408ea1b00aeeb78e111bea3623
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 55d2b0ac08bdceebdf286effe4bbc679320541243ff78359deafe0858a7b597e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827167"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786481"
 ---
-# <a name="chapter-2-installation-and-use-of-guix-studio"></a>Bölüm 2: Gux Studio 'Yu yükleme ve kullanma
+# <a name="chapter-2-installation-and-use-of-guix-studio"></a>Bölüm 2: GUIX Studio'yu Yükleme ve Kullanma
 
-Bu bölümde, Gux Studio UI sistem tasarımı aracının yüklenmesiyle, kurulumuyla ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır. 
+Bu bölümde GUIX Studio kullanıcı arabirimi sistem tasarım aracının yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır. 
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-GUX Studio uygulamasını, Gux Studio 'yu arayarak veya doğrudan [Gux Studio sayfasına](https://www.microsoft.com/p/azure-rtos-guix-studio/9pbm1k1r7q0f?activetab=pivot:overviewtab)giderek [Microsoft App Store](https://microsoft.com/store/apps) 'dan edinebilirsiniz. Ardından aşağıdakileri yapın.
+GUIX Studio uygulamasını [Microsoft](https://microsoft.com/store/apps) App Store GUIX Studio'yu arayarak veya [doğrudan GUIX Studio sayfasına gidip edinebilirsiniz.](https://www.microsoft.com/p/azure-rtos-guix-studio/9pbm1k1r7q0f?activetab=pivot:overviewtab) Ardından aşağıdaki adımları gerçekleştirin.
 
-1. Uygulama mağazasındaki Gux Studio sayfasında, Gux Studio 'Yu indirmek için **Al** veya **Yükle** düğmesine tıklayın.
+1. GuiX Studio'yu indirmek için App Store veya  Yükle  düğmesine tıklayın.
 
-1. Tarayıcınız, aşağıdaki şekilde gösterildiği gibi Microsoft Store açmak isteyip istemediğinizi soran bir ileti görüntülenebilir. Varsa, **Aç** düğmesini seçin.
-![GUX Studio 'Yu yüklemek için Aç ' ı seçin.](./media/guix-studio/open-ms-store.png)
+1. Tarayıcınız, aşağıdaki şekilde gösterildiği gibi tarayıcıyı açmak Microsoft Store bir ileti indirebilirsiniz. Varsa Aç **düğmesini** seçin.
+![GUIX Studio'yu yüklemek için Aç'ı seçin.](./media/guix-studio/open-ms-store.png)
 
-1. Yüklemesi tamamlandığında, **Başlat** düğmesini seçin.
+1. Yükleme tamam olduğunda Başlat **düğmesini** seçin.
 
-1. GUX Studio ilk kez başlatıldığında, Gux deposunu yerel bilgisayarınıza kopyalamak isteyip istemediğinizi soran bir iletişim kutusu görüntüler. Depoyu kopyalamayı seçebilirsiniz, depoyu zaten Klonladığınız yere işaret edebilir veya depoyu hiç kopyalamamanız tercih edebilirsiniz (Bu durumda, bilgisayarınızda bir örnek proje yüklü).
-![Depoyu kopyalamayı seçin, zaten kopyalanmış bir depoyu işaret edin veya atlayın.](./media/guix-studio/clone-repo.png)
+1. GUIX Studio ilk kez başlatıcıda, GUIX repo'yu yerel bilgisayarınıza klonlamak istediğinize soran bir iletişim kutusu görüntülenir. Depoyu kopyalamayı, depoyu zaten klonlamış olduğunuz yere işaret edin veya depoyu kopyalamayı seçmeyebilirsiniz (bu durumda, bilgisayarınızda bir örnek proje yüklenir).
+![Repo klonlamayı seçin, önceden kopyalanmış bir repoya işaret gelin veya atlayabilirsiniz.](./media/guix-studio/clone-repo.png)
 
 > ![!NOTE]
-> Bu iletişim kutusuna, Gux Stuido ana menüsünden **Yapılandır** ' ı ve ardından **Gux deposu**' nu seçerek dilediğiniz zaman geri dönebilirsiniz.
+> GUIX Stuado'nun ana menüsünden  Yapılandır'ı ve ardından GUIX Deposu'yu seçerek istediğiniz zaman bu **iletişim kutusuna dönebilirsiniz.**
 
-Başlangıç işlemi tamamlandıktan sonra, Gux Studio 'Yu kullanmaya hazırlanın.
+Başlatma işlemi tamam olduktan sonra GUIX Studio'yu kullanmaya hazır hale geleceksiniz.
 
-## <a name="using-guix-studio"></a>GUX Studio 'Yu kullanma
+## <a name="using-guix-studio"></a>GUIX Studio'yu kullanma
 
-GUX Studio 'Yu kullanmak kolay bir şekilde, "***Başlat***" düğmesi aracılığıyla Gux Studio 'yu çalıştırmak yeterlidir. Bu noktada, Gux Studio Kullanıcı arabirimini gözlemleyeceksiniz. Artık, yerleşik kullanıcı arabirimini grafiksel olarak oluşturmak için Gux Studio 'Yu kullanmaya hazırsınız. Buradan yeni bir proje oluşturursunuz veya Gux örnek projeleri de dahil olmak üzere mevcut bir projeyi açarsınız.
+GUIX Studio'yu kullanmak kolaydır. GuiX Studio'yu " Başlat"***düğmesiyle*** çalıştırmanız gerekir. Bu noktada GUIX Studio kullanıcı arabirimini gözlemlersiniz. Artık ekli kullanıcı arabiriminizi grafiksel olarak oluşturmak için GUIX Studio'yu kullanmaya hazır oluruz. Buradan yeni bir proje oluşturabilir veya GUIX örnek projeleri de dahil olmak üzere mevcut bir projeyi açacağız.
 
 > [!NOTE]
-> Ayrıca, "**GXP**" uzantılı bir Gux Studio proje dosyasına çift tıklayarak Gux Studio 'yu otomatik olarak başlatabilir ve başvurulan projeyi açabilirsiniz.
+> Ayrıca GUIX Studio'yu otomatik olarak başlatacak ve başvurulan projeyi açacak olan "**gxp"** uzantısına sahip herhangi bir GUIX Studio proje dosyasına çift tıkabilirsiniz.
 
-## <a name="guix-studio-project-samples"></a>GUX Studio proje örnekleri
+## <a name="guix-studio-project-samples"></a>GUIX Studio Project Örnekleri
 
-"***GXP**_"_ uzantısına sahip bir dizi örnek Gux Studio proje dosyası, yüklemenizin " * _Samples_* *" alt dizininde bulunur. Önceden oluşturulmuş bu örnek projeler, Gux Studio 'Yu kullanmaya rahat bir şekilde başlamanıza yardımcı olur.
+Yüklemenizin _"_ Örnekler **" alt dizininde "***gxp**" uzantısına sahip bir dizi örnek GUIX Studio proje * dosyası bulunur. Bu önceden hazır örnek projeler GUIX Studio'yu kullanma konusunda size yardımcı olacaktır.
 
-Her zaman bulunan örnek bir proje dosyası ***Samples/demo_guix_simple/guix_simple. GXP** _ dosyasıdır. Bu örnek proje dosyası, bu belgenin _ *_Bölüm 7_** bölümünde açıklandığı gibi basıt bır GUıDX Kullanıcı arabirimi tanımını gösterir.
+Her zaman mevcut olan örnek proje dosyalarından biri ***samples/demo_guix_simple/guix_simple.gxp** _ dosyasıdır. Bu örnek proje dosyası, bu belgenin _ Bölüm *_7_** bölümünde açıklandığı gibi basit bir GUIX kullanıcı arabiriminin tanımını gösterir.
 
-![GUX Studio Kullanıcı arabiriminin ekran görüntüsü.](./media/guix-studio/image_10.png)
+![GUIX Studio kullanıcı arabiriminin ekran görüntüsü.](./media/guix-studio/image_10.png)
 
 **Şekil 1**
 
 ## <a name="keyboard-shortcuts"></a>Klavye Kısayolları
 
-- **CTRL + N:** Yeni proje
-- **CTRL + O:** Projeyi aç
-- **CTRL + S:** Projeyi Kaydet
-- **CTRL + SHIFT + S:** Projeyi farklı kaydet
-- **Alt + F4:** Çıkıp
+- **Ctrl + N:** Yeni Project
+- **Ctrl + O:** Açık Project
+- **Ctrl + S:** Project
+- **Ctrl + Shift + S:** Farklı Project Kaydet
+- **Alt + F4:** Çıkış

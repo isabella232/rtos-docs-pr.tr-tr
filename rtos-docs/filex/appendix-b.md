@@ -1,21 +1,21 @@
 ---
-title: Ek B-Azure RTOS FileX sabitleri
-description: Azure RTOS FileX sabitleri hakkında bilgi edinin.
+title: Ek B - Azure RTOS FileX sabitleri
+description: FileX sabitleri hakkında Azure RTOS öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a40eef204f9d524abc1ca02e07785c98ff1aba53
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5846a47e9de16ad39f946640bcb0d7682630b5fa4dd6fb1b9012b2a83052b67a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825570"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783824"
 ---
-# <a name="appendix-b---azure-rtos-filex-constants"></a>Ek B-Azure RTOS FileX sabitleri
+# <a name="appendix-b---azure-rtos-filex-constants"></a>Ek B - Azure RTOS FileX sabitleri
 
-## <a name="alphabeticlistings"></a>Alfabetik | Rehberi 
+## <a name="alphabeticlistings"></a>Alfabetik| Liste 
 
 | Sabit (alfabetik olarak) | Değer          |
 |-----------|-----------|
@@ -29,7 +29,7 @@ ms.locfileid: "104825570"
 |EXFAT_FAT_NUM_OF_FATS|0x001|
 |EXFAT_FAT_VOLUME_FLAG|0x000|
 |EXFAT_FAT_VOLUME_NAME_FIELD_SIZE|11|
-|EXFAT_LAST_CLUSTER_MASK|Ffffffff|
+|EXFAT_LAST_CLUSTER_MASK|0xffffffff|
 |EXFAT_MIN_NUM_OF_RESERVED_SECTORS|1|
 |EXFAT_NUM_OF_DIR_ENTRIES|2|
 |FX_12_BIT_FAT_SIZE|4086|
@@ -52,7 +52,7 @@ ms.locfileid: "104825570"
 |FX_CALLER_ERROR|0x20|
 |FX_DATA_SECTOR|4|
 |FX_DAY_MASK|0x1F|
-|FX_DIR_ENTRY_DONE|-|
+|FX_DIR_ENTRY_DONE|0x00|
 |FX_DIR_ENTRY_FREE|0xE5|
 |FX_DIR_ENTRY_SIZE|32|
 |FX_DIR_EXT_SIZE|3|
@@ -147,10 +147,10 @@ ms.locfileid: "104825570"
 |FX_JUMP_INSTR|0x000|
 |FX_LAST_CLUSTER_1|0xFFF8|
 |FX_LAST_CLUSTER_1_32|0x0FFFFFF8|
-|FX_LAST_CLUSTER_2|0xFFFF|
+|FX_LAST_CLUSTER_2|0xffff|
 |FX_LAST_CLUSTER_2_32|0x0FFFFFFF|
 |FX_LAST_CLUSTER_EXFAT|0x0FFFFFFF|
-|FX_LONG_NAME|0xF|
+|FX_LONG_NAME|0xf|
 |FX_LONG_NAME_ENTRY_LEN|13|
 |FX_LOST_CLUSTER_ERROR|0x04|
 |FX_MAX_12BIT_CLUST|0x0FF0|
@@ -224,7 +224,7 @@ ms.locfileid: "104825570"
 |FX_SIG_BYTE_2|0xAA|
 |FX_SIG_OFFSET|0x1FE|
 |FX_SIGN_EXTEND|0xF000|
-|FX_SUCCESS|-|
+|FX_SUCCESS|0x00|
 |FX_SYSTEM|0x04|
 |FX_TRUE|1|
 |FX_UNKNOWN_SECTOR|0|
@@ -232,14 +232,14 @@ ms.locfileid: "104825570"
 |FX_VOLUME_ID|0x027|
 |FX_VOLUME_LABEL|0x02B|
 |FX_WRITE_PROTECT|0x23|
-|FX_YEAR_MASK|0x7F|
+|FX_YEAR_MASK|0x7f|
 |FX_YEAR_SHIFT|9|
 
-## <a name="listings-by-value"></a>Değere göre listeler
+## <a name="listings-by-value"></a>Değere Göre Listelemeler
 
 | Sabit (değere göre)   |  Değer         |
 |-----------|-----------|
-|FX_DIR_ENTRY_DONE|-|
+|FX_DIR_ENTRY_DONE|0x00|
 |FX_DRIVER_READ|0|
 |FX_FALSE|0|
 |EXFAT_BIT_MAP_FIRST_TABLE|0|
@@ -249,7 +249,7 @@ ms.locfileid: "104825570"
 |FX_NULL|0|
 |FX_OPEN_FOR_READ|0|
 |FX_SEEK_BEGIN|0|
-|FX_SUCCESS|-|
+|FX_SUCCESS|0x00|
 |FX_UNKNOWN_SECTOR|0|
 |FX_EXFAT_FAT_MAIN_BOOT_SECTOR_OFFSET|0|
 |FX_EXFAT_BITMAP_CLUSTER_FREE|0|
@@ -334,7 +334,7 @@ EXFAT_NUM_OF_DIR_ENTRIES|2|
 |FX_MAX_SHORT_NAME_LEN|13|
 |FX_NOT_DIRECTORY|0x0E|
 |FX_RESERVED_SECTORS|0x00E|
-|FX_LONG_NAME|0xF|
+|FX_LONG_NAME|0xf|
 |FX_MONTH_MASK|0x0F|
 |FX_NO_MORE_ENTRIES|0x0F|
 |FX_DIR_NOT_EMPTY|0x10|
@@ -436,7 +436,7 @@ EXFAT_DEFAULT_BOUNDARY_UNIT|128|
 |FX_RESERVED_2|0xFFF6|
 |FX_BAD_CLUSTER|0xFFF7|
 |FX_LAST_CLUSTER_1|0xFFF8|
-|FX_LAST_CLUSTER_2|0xFFFF|
+|FX_LAST_CLUSTER_2|0xffff|
 |FX_RESERVED_1_32|0x0FFFFFF0|
 |FX_RESERVED_2_32|0x0FFFFFF6|
 |FX_BAD_CLUSTER_32|0x0FFFFFF7|
@@ -452,5 +452,5 @@ EXFAT_DEFAULT_BOUNDARY_UNIT|128|
 |FX_RESERVED_1_EXFAT|0xFFFFFFF8|
 |FX_RESERVED_2_EXFAT|0xFFFFFFFE|
 |FX_BAD_CLUSTER_EXFAT|0xFFFFFFF7|
-|FX_LAST_CLUSTER_EXFAT|Ffffffff|
-EXFAT_LAST_CLUSTER_MASK|Ffffffff|
+|FX_LAST_CLUSTER_EXFAT|0xffffffff|
+EXFAT_LAST_CLUSTER_MASK|0xffffffff|

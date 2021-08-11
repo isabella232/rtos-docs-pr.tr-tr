@@ -1,46 +1,46 @@
 ---
-title: Bölüm 2-Azure RTOS NetX POP3 Istemcisinin yüklenmesi ve kullanımı
-description: NetX POP3 Istemcisi bir kaynak dosyası, bir üst bilgi dosyası ve bir demo dosyası içerir. MD5 Özet Hizmetleri için iki ek dosya vardır.
+title: Bölüm 2 - NetX POP3 İstemcisi'Azure RTOS yükleme ve kullanma
+description: NetX POP3 İstemcisi bir kaynak dosya, bir üst bilgi dosyası ve bir tanıtım dosyası içerir. MD5 özet hizmetleri için iki ek dosya vardır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 24de396c69d458866f9423fd995bcb8d905f29c8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e8fc4f1194e423efdd179c3b7f33c3935bf683fcdd0321d83a7510dc6bdffb81
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826663"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783399"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pop3-client"></a>Bölüm 2-Azure RTOS NetX POP3 Istemcisinin yüklenmesi ve kullanımı
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pop3-client"></a>Bölüm 2 - NetX POP3 İstemcisi'Azure RTOS yükleme ve kullanma
 
-NetX POP3 Istemcisi bir kaynak dosyası, bir üst bilgi dosyası ve bir demo dosyası içerir. MD5 Özet Hizmetleri için iki ek dosya vardır. Ayrıca bir Kullanıcı Kılavuzu PDF dosyası (Bu belge) vardır.
+NetX POP3 İstemcisi bir kaynak dosya, bir üst bilgi dosyası ve bir tanıtım dosyası içerir. MD5 özet hizmetleri için iki ek dosya vardır. Ayrıca bir Kullanıcı Kılavuzu PDF dosyası da (bu belge) vardır.
 
-- **nx_pop3_client. c**: NETX POP3 istemcisi API 'si Için c kaynak dosyası
-- **nx_pop3_client. h**: NETX POP3 istemcisi API 'si Için C üstbilgi dosyası
-- **demo_netxduo_pop3_client. c**: POP3 istemcisi oluşturma ve oturum başlatma için demo dosyası
-- **nx_md5. c**: MD5 Özet hizmetlerini tanımlayan c kaynak dosyası
-- **nx_md5. h**: MD5 Özet hizmetlerini tanımlayan C üstbilgi dosyası
-- **nx_pop3_client.pdf**: NETX POP3 Istemcisi Kullanıcı Kılavuzu
+- **nx_pop3_client.c:** NetX POP3 İstemci API'si için C Kaynak dosyası
+- **nx_pop3_client.h:** NetX POP3 İstemci API'si için C Üst Bilgi dosyası
+- **demo_netxduo_pop3_client.c:** POP3 İstemcisi oluşturma ve oturum başlatımı için tanıtım dosyası
+- **nx_md5.c:** MD5 özet hizmetlerini tanımlayan C Kaynak dosyası
+- **nx_md5.h:** MD5 özet hizmetlerini tanımlayan C Üst Bilgi dosyası
+- **nx_pop3_client.pdf:** NetX POP3 İstemci Kullanıcı Kılavuzu
 
-NetX POP3 Istemcisini kullanmak için, daha önce bahsedilen tüm dağıtım, NetX 'in yüklendiği dizine kopyalanabilir. Örneğin, "*\threadx\mcf5272\green*" dizininde NETX yüklüyse, *nx_md5. h*, *nx_md5. c,* *nx_pop3_client. h ve nx_pop3_client. c* dosyaları bu dizine kopyalanmalıdır.
+NetX POP3 İstemcisini kullanmak için, daha önce bahsedilen dağıtımın tamamı NetX'in yüklü olduğu dizine kopyalanır. Örneğin, NetX "*\threadx\mcf5272\green"* dizininde *yüklüyse, nx_md5.h*, *nx_md5.c,* *nx_pop3_client.h ve nx_pop3_client.c* dosyalarının bu dizine kopyalanmış olması gerekir.
 
-## <a name="using-netx-pop3-client"></a>NetX POP3 Istemcisi kullanma
+## <a name="using-netx-pop3-client"></a>NetX POP3 İstemcisini Kullanma
 
-NetX POP3 Istemci hizmetini kullanmak için, uygulamanın yapı projesine *nx_pop3_client. c* eklemesi gerekir. Uygulama kodu, ThreadX ve NetX kullanmak için *tx_api. h* ve *nx_api. h* sonrasında *nx_md5. h, nx_pop3. h ve nx_pop3_client.* h içermelidir.
+NetX POP3 İstemci hizmetini kullanmak için uygulamanın derleme projesine *nx_pop3_client.c* eklemesi gerekir. ThreadX ve NetX kullanmak için uygulama kodu *nx_md5.h, nx_pop3.h ve nx_pop3_client.h'den* *sonra tx_api.h* ve *nx_api.h'yi* içermeli.
 
-Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne kodu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX POP3 Istemcisini kullanmak için gereklidir.
+Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne kodunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX POP3 İstemcisi'nin kullanımı için gerekenler bunlardır.
 
-## <a name="small-example-of-the-netx-pop3-client"></a>NetX POP3 Istemcisinin küçük örneği
+## <a name="small-example-of-the-netx-pop3-client"></a>NetX POP3 İstemcisi Küçük Örneği
 
-NetX POP3 Istemci hizmetlerinin nasıl kullanılacağına ilişkin bir örnek şekil 1 ' de aşağıda gösterilen şekilde açıklanmıştır. Bu demo, 37 ve 38 satırlarında posta indirme ve oturum tamamlama bildirimi için iki geri çağırma yapar. POP3 Istemcisi paket havuzu 76. satırda oluşturulur. IP iş parçacığı görevi 88. satırda oluşturulur. Bu paket havuzunun POP3 Istemci paket havuzu için de kullanıldığını unutmayın. TCP, satır 107 ' deki IP görevinde etkinleştirilir.
+Aşağıda görünen Şekil 1'de NetX POP3 İstemci hizmetlerini kullanma örneği açıklanmıştır. Bu tanıtım, 37. ve 38. satırlarda posta indirme ve oturum tamamlama bildirimi için iki geri çağırmayı ayarlar. POP3 İstemci paket havuzu 76. satırda oluşturulur. IP iş parçacığı görevi 88. satırda oluşturulur. Bu paket havuzunun POP3 İstemci paket havuzu için de kullan olduğunu unutmayın. TCP, 107. satırda IP görevi üzerinde etkinleştirilir.
 
-POP3 Istemcisi, uygulama iş parçacığı girişi *demo_thread_entry* işlevi içindeki 133 numaralı satırda oluşturulur. Bunun nedeni, *nx_pop3_client_create* hizmetinin POP3 sunucusuyla TCP bağlantısı kurmaya da çalışır. Başarılı olursa, uygulama POP3 sunucusunu, *nx_pop3_client_mail_items_get* hizmeti kullanılarak 149 numaralı satırdaki maildrop öğesinde bulunan öğe sayısı için sorgular.
+POP3 İstemcisi, uygulama iş parçacığı giriş işlevinin içinde 133. satırda oluşturulur ve *demo_thread_entry.* Bunun nedeni, *nx_pop3_client_create* hizmetinin POP3 sunucusuyla TCP bağlantısı yapmaya da çalışmasıdır. Başarılı olursa, uygulama, nx_pop3_client_mail_items_get hizmetini kullanarak pop3 sunucusunu 149. satırdaki postadaki *öğe sayısı için sorgular.*
 
-Bir veya daha fazla öğe varsa, uygulama posta iletisini indirmek üzere her bir posta öğesinin while döngüsü boyunca yinelenir. RETR isteği *nx_pop3_client_mail_item_get* çağrısında satır 149 ' de yapılır. Başarılı olursa, uygulama, 196. satırda alınan son paketi algıladığı için 177. satırdaki *nx_pop3_client_mail_item_message_get* hizmetini kullanarak paketleri indirir. Son olarak, uygulama posta öğesini siler, bu, *nx_pop3_client_mail_item_delete* çağrısında 199 satırında başarılı bir indirmenin gerçekleştiğini kabul ediyor. RFC 1939, POP3 Istemcilerinin, Istemcinin maildrop ile posta biriktirmesini engellemek üzere indirilen posta öğelerini silmesini ister. Sunucu yine de bunu otomatik olarak yapamayabilir.
+Bir veya daha fazla öğe varsa, uygulama posta iletisini indirmek için her bir posta öğesi için while döngüsünde tekrarlar. RETR isteği, 149. satırda nx_pop3_client_mail_item_get *yapılır.* Başarılı olursa, uygulama 177. *satırda nx_pop3_client_mail_item_message_get* hizmetini kullanarak paketleri indirir ve iletide son paketin 196. satırda alınmıştır. Son olarak uygulama, 199. satırda bir indirmenin başarılı olduğunu varsayarak posta *öğesini* nx_pop3_client_mail_item_delete siler. RFC 1939, POP3 İstemcilerinin, İstemcinin posta dinlemesinde postanın birikerek önlenmesi için Sunucuya indirilen posta öğelerini silmesini talimatı göndermesini önermektedir. Sunucu bunu otomatik olarak da yapar.
 
-Tüm posta öğeleri indirildikten veya bir POP3 Istemci hizmeti çağrısı başarısız olursa, uygulama döngüden çıkar ve *nx_pop3_client_delete* hizmeti kullanılarak 217. satırdaki POP3 istemcisini siler.
+Tüm posta öğeleri indirildikten sonra veya bir POP3 İstemcisi hizmet çağrısı başarısız olursa uygulama döngüden çıkar ve nx_pop3_client_delete hizmetini kullanarak 217. satırdaki *POP3 İstemcisini* siler.
 
 ```c
 /*
@@ -250,24 +250,24 @@ NX_PACKET     *packet_ptr;
 }
 ```
 
-Şekil 1. NetX POP3 Istemci uygulaması örneği
+Şekil 1. NetX POP3 İstemci uygulaması örneği
 
-## <a name="pop3-client-configuration-options"></a>POP3 Istemcisi yapılandırma seçenekleri
+## <a name="pop3-client-configuration-options"></a>POP3 İstemci Yapılandırma Seçenekleri
 
-NetX POP3 Istemcisi ile birkaç yapılandırma seçeneği vardır. Aşağıda, ayrıntılı olarak açıklanan tüm seçeneklerin bir listesi verilmiştir:
+NetX POP3 İstemcisi'nin çeşitli yapılandırma seçenekleri vardır. Aşağıda ayrıntılı olarak açıklanan tüm seçeneklerin listesi velanmıştır:
 
-- **NX_POP3_CLIENT_PACKET_TIMEOUT**: Bu, POP3 istemcisinin bir paket ayırması için saniye cinsinden bekleme seçeneğini tanımlar. Varsayılan değer 1 saniyedir.
+- **NX_POP3_CLIENT_PACKET_TIMEOUT:** Bu, POP3 İstemcisi'nin paket ayırması için saniyeler içinde bekleme seçeneğini tanımlar. Varsayılan değer 1 saniyedir.
 
-- **NX_POP3_CLIENT_CONNECTION_TIMEOUT**: Bu, POP3 Istemcisinin POP3 sunucusuyla bağlantı kurmak için saniye cinsinden bekleme seçeneğini tanımlar. Varsayılan değer 30 saniyedir.
+- **NX_POP3_CLIENT_CONNECTION_TIMEOUT:** Bu, POP3 İstemcisi'nin POP3 Sunucusuna bağlanması için saniyeler içinde bekleme seçeneğini tanımlar. Varsayılan değer 30 saniyedir.
 
-- **NX_POP3_CLIENT_DISCONNECT_TIMEOUT**: Bu, POP3 Istemcisinin POP3 sunucusu bağlantısını kesmek için saniye cinsinden bekleme seçeneğini tanımlar. Varsayılan değer 2 saniyedir.
+- **NX_POP3_CLIENT_DISCONNECT_TIMEOUT:** Bu, POP3 İstemcisi'nin POP3 Sunucusu bağlantısının kesilmesi için saniyeler içinde bekleme seçeneğini tanımlar. Varsayılan değer 2 saniyedir.
 
-- **NX_POP3_TCP_SOCKET_SEND_WAIT**: Bu seçenek, *nx_tcp_socket_send* hizmeti çağrılarında bekle seçeneğini saniye cinsinden ayarlar. Varsayılan değer 2 saniyedir.
+- **NX_POP3_TCP_SOCKET_SEND_WAIT:** Bu seçenek, hizmet çağrılarında bekleme *nx_tcp_socket_send* ayarlar. Varsayılan değer 2 saniyedir.
 
-- **NX_POP3_SERVER_REPLY_TIMEOUT**: Bu seçenek, istemci isteğine yanıt vermesi için *nx_tcp_socket_receive* hizmet çağrılarında bekle seçeneğini ayarlar. Varsayılan değer 10 saniyedir.
+- **NX_POP3_SERVER_REPLY_TIMEOUT:** Bu seçenek, bir İstemci *isteğine nx_tcp_socket_receive* sunucu yanıtı için hizmet çağrılarında bekleme seçeneğini ayarlar. Varsayılan değer 10 saniyedir.
 
-- **NX_POP3_CLIENT_TCP_WINDOW_SIZE**: Bu seçenek, istemci TCP alma penceresinin boyutunu ayarlar. Bu, IP örneği MTU boyutu eksi IP ve TCP üst bilgisi olarak ayarlanmalıdır. Varsayılan değer 1460 ' dir.
+- **NX_POP3_CLIENT_TCP_WINDOW_SIZE:** Bu seçenek İstemci TCP alma penceresinin boyutunu ayarlar. Bu, IP örneği MTU boyutu eksi IP ve TCP üst bilgisi olarak ayarlanır. Varsayılan değer 1460'tır.
 
-- **NX_POP3_MAX_USERNAME**: Bu seçenek, POP3 istemci Kullanıcı adı arabelleğinin boyutunu ayarlar. Varsayılan değer 40 bayttır.
+- **NX_POP3_MAX_USERNAME:** Bu seçenek POP3 İstemci kullanıcı adının arabelleğinin boyutunu ayarlar. Varsayılan değer 40 bayttır.
 
-- **NX_POP3_MAX_PASSWORD**: Bu seçenek, POP3 istemci parolasının arabellek boyutunu ayarlar. Varsayılan değer 20 bayttır.
+- **NX_POP3_MAX_PASSWORD:** Bu seçenek POP3 İstemci parolasının arabelleğinin boyutunu ayarlar. Varsayılan değer 20 bayttır.

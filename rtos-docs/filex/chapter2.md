@@ -1,130 +1,130 @@
 ---
-title: Bölüm 2-Azure RTOS FileX yükleme ve kullanımı
-description: Bu bölümde, aşağıdakiler de dahil olmak üzere Azure RTOS FileX 'e giriş ve yükleme koşulları, yordamları ve kullanımı açıklaması yer almaktadır
+title: Bölüm 2 - Azure RTOS FileX'i yükleme ve kullanma
+description: Bu bölümde FileX Azure RTOS ve yükleme koşullarının, yordamlarının ve kullanımının açıklaması ve aşağıdakiler de dahil olmak üzere bir giriş yer almaktadır
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6703b10d8e0895984bb92d74d5dff809dca1a7f8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2f064fc65ef8445ea33590f23d5a040ed8b07c6c651ea4cf5c4aaef4b6c4fa7b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825510"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783858"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-filex"></a>Bölüm 2-Azure RTOS FileX yükleme ve kullanımı
+# <a name="chapter-2---installation-and-use-of-azure-rtos-filex"></a>Bölüm 2 - Azure RTOS FileX'i yükleme ve kullanma
 
-Bu bölümde, Azure RTOS FileX 'e giriş ve yükleme koşulları, yordamları ve kullanımı hakkında bir açıklama yer almaktadır. 
+Bu bölümde FileX'e Azure RTOS ve yükleme koşulları, yordamları ve kullanımına ilişkin bir açıklama yer almaktadır. 
 
-## <a name="host-considerations"></a>Ana bilgisayar konuları
+## <a name="host-considerations"></a>KonakLa ilgili Dikkat Edilmesi Gerekenler
 
-### <a name="computer-type"></a>Bilgisayar türü
+### <a name="computer-type"></a>Bilgisayar Türü
 
-Katıştırılmış Geliştirme genellikle Windows veya Linux (UNIX) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
+Katıştırılmış geliştirme genellikle linux (Unix) Windows bilgisayarlarda gerçekleştirilir. Uygulama derledikten, bağlandıktan ve konakta bulunduktan sonra, yürütme için hedef donanıma indirilir.
 
-### <a name="download-interfaces"></a>Arabirimleri indir
+### <a name="download-interfaces"></a>Arabirimleri İndirme
 
-Genellikle hedef indirme işlemi geliştirme aracının hata ayıklayıcı içinden yapılır. İndirmeden sonra, hata ayıklayıcı, hedef yürütme denetimi (go, dur, kesme noktası vb.) ve bellek ve işlemci kayıtlarına erişimi sağlamaktan sorumludur.
+Hedef indirme genellikle geliştirme aracının hata ayıklayıcısından yapılır. İndirmeden sonra, hata ayıklayıcısı hedef yürütme denetimi (go, durdurma, kesme noktası vb.) sağlamanın yanı sıra bellek ve işlemci kayıtlarına erişim sağlamakla sorumludur.
 
-### <a name="debugging-tools"></a>Hata ayıklama araçları
+### <a name="debugging-tools"></a>Hata Ayıklama Araçları
 
-Çoğu geliştirme aracı hata ayıklayıcıları, JTAG (IEEE 1149,1) ve arka plan hata ayıklama modu (BDM) gibi yonga hata ayıklama (OCD) bağlantıları aracılığıyla hedef donanımla iletişim kurar. Hata ayıklayıcılar Ayrıca In-Circuit öykünme (buz) bağlantıları aracılığıyla hedef donanımla iletişim kurar. OCD ve ıCE bağlantıları, hedef yerleşik yazılımda en az yetkisiz erişim sağlayan güçlü çözümler sağlar.
+Çoğu geliştirme aracı hata ayıklayıcısı, JTAG (IEEE 1149.1) ve Arka Plan Hata Ayıklama Modu (BDM) gibi yonga üzerinde hata ayıklama (OCD) bağlantıları aracılığıyla hedef donanımla iletişim kurar. Hata ayıklayıcılar ayrıca Öykünme (ICE) In-Circuit hedef donanımla iletişim kurar. Hem OCD hem de ICE bağlantıları, hedef yerleşik yazılıma en az izinsiz girişle sağlam çözümler sağlar.
 
-### <a name="required-hard-disk-space"></a>Gerekli sabit disk alanı
+### <a name="required-hard-disk-space"></a>Gerekli Sabit Disk Alanı
 
-FileX için kaynak kodu ASCII biçiminde dağıtılır ve konak bilgisayarın sabit diskinde yaklaşık 500 Kbayt alan gerektirir
+FileX kaynak kodu ASCII biçiminde teslim edilir ve konak bilgisayarın sabit diskte yaklaşık 500 KBayt alan gerektirir
 
-## <a name="target-considerations"></a>Hedef konuları
+## <a name="target-considerations"></a>HedefLe ilgili Dikkat Edilmesi Gerekenler
 
-Dosya x, hedefte 6 Kbayt ve 30 Kbayt Read-Only bellek (ROM) arasında olmalıdır. FileX genel veri yapıları için hedefin rastgele erişim belleğinin (RAM) başka bir 100 baytı gerekir. Her açılan medya Ayrıca, bir kesime yönelik verilerin depolanması için RAM 'e ek olarak denetim bloğunda 1,5 Kbayt RAM gerektirir (genellikle 512 bayt).
+FileX, hedefte 6 KBayt ile 30 KBayt Read-Only Bellek (ROM) gerektirir. FileX genel veri yapıları için hedefin Rastgele Erişim Belleği'nin (RAM) 100 bayt daha olması gerekir. Her açık medya, bir kesime (genellikle 512 bayt) veri depolamak için RAM'e ek olarak denetim bloğu için 1,5 KBayt RAM gerektirir.
 
-Tarih/saat damgalaması için düzgün çalışması için, FileX, ThreadX Zamanlayıcı tesislerini kullanır. Bu, FileX başlatma sırasında FileX 'e özgü bir Zamanlayıcı oluşturularak uygulanır. FileX, Ayrıca birden çok iş parçacığı koruması ve g/ç askıya alma için ThreadX semaforları kullanır.
+Tarih/saat damgasının düzgün çalışması için FileX, ThreadX zamanlayıcı olanaklarını kullanır. Bu, FileX başlatma sırasında FileX'e özgü bir zamanlayıcı oluşturarak uygulanır. FileX ayrıca birden çok iş parçacığı koruması ve I/O'nun askıya alınması için ThreadX semaforlarını da kullanabilir.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS FileX, konumundaki ortak kaynak kodu depomızdan elde edilebilir <https://github.com/azure-rtos/filex/> .
+Azure RTOS FileX, genel kaynak kod depomuzdan <https://github.com/azure-rtos/filex/> edinebilirsiniz.
 
-Depodaki birçok önemli dosyanın listesi aşağıda verilmiştir:
+Aşağıda, depoda yer alan birkaç önemli dosyanın listesi ve ardından yer alan liste ve bir liste ve ardından yer alan bilgileri bulabilirsiniz:
 
-- ***fx_api. h*** : Bu C üstbilgi dosyası tüm sistem eş, veri yapılarını ve hizmet prototiplerini içerir.
-- ***fx_port. h*** : Bu C üstbilgi dosyası, tüm geliştirme aracına özgü veri tanımlarını ve yapılarını içerir.
-- ***demo_filex. c*** : Bu c dosyası küçük bir demo uygulaması içerir.
-- ***FX. a (veya FX. lib)*** : Bu, FileX C kitaplığının ikili sürümüdür. Standart paketiyle dağıtılır.
+- ***fx_api.h:*** Bu C üst bilgi dosyası tüm sistem eşitlerini, veri yapılarını ve hizmet prototiplerini içerir.
+- ***fx_port.h:*** Bu C üst bilgi dosyası, geliştirme aracına özgü tüm veri tanımlarını ve yapılarını içerir.
+- ***demo_filex.c:*** Bu C dosyası küçük bir tanıtım uygulaması içerir.
+- ***fx.a (veya fx.lib):*** Bu, FileX C kitaplığının ikili sürümüdür. Standart paketle dağıtılır.
 
 > [!IMPORTANT]
-> *Tüm dosya adları küçük bir durumdur. Bu adlandırma kuralı, komutların Linux (UNIX) geliştirme platformlarına dönüştürülmesini kolaylaştırır.*
+> *Tüm dosya adları küçük harflidir. Bu adlandırma kuralı komutları Linux (Unix) geliştirme platformlarına dönüştürmeyi kolaylaştırır.*
 
-## <a name="filex-installation"></a>FileX yüklemesi
+## <a name="filex-installation"></a>FileX Yüklemesi
 
-Dosya x, GitHub deposu yerel makinenize kopyalanarak yüklenir. Bilgisayarınızda FileX deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir:
+FileX, yerel makinenize GitHub kopya tarafından yüklenir. Aşağıda, bilgisayarınızda FileX deposunun bir kopyasını oluşturmak için tipik bir söz dizimi ve ardından yer alan söz dizimi ve daha sonra yer alan genel bir söz dizimi ve daha fazla bilgi ve daha fazla bilgi için bkz.
 
 ```c
     git clone https://github.com/azure-rtos/filex
 ```
 
-Alternatif olarak, GitHub ana sayfasında İndir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+Alternatif olarak, ana sayfada yer alan indirme düğmesini kullanarak deponun bir GitHub indirebilirsiniz.
 
-Ayrıca, çevrimiçi deponun ön sayfasında FileX kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
-
-> [!IMPORTANT]
-> Uygulama yazılımının FileX kitaplık dosyasına erişmesi gerekir (genellikle * genellikle ***FX. a** _ veya _*_FX. lib_*_) C içerme dosyaları **fx_api. h** ve **fx_port. h** _and. Bu, geliştirme araçları için uygun yol ayarlanarak veya bu dosyaları uygulama geliştirme alanına kopyalayarak gerçekleştirilir.
-
-## <a name="using-filex"></a>FileX kullanma
-
-FileX kullanmak kolaydır. Temel olarak, uygulama kodu derleme sırasında ***fx_api. h** _ ve FileX çalışma zamanı kitaplığı _*_FX. a_*_ (veya _*_FX. lib_*_) ile bağlantı içermelidir. Tabii ki, _*_tx_api. h_*_ ve _*_TX. a_*_ (veya _*_TX. lib_*_) _, * olan threadx dosyaları da gereklidir.
+FileX kitaplığını oluşturma yönergelerini çevrimiçi deponun ön sayfasında da bulabilirsiniz.
 
 > [!IMPORTANT]
-> Bağımsız modda FileX kullanılırken (**FX_STANDALONE_ENABLE** tanımlanmalıdır), threadx dosyaları/kitaplıkları gerekli değildir.
+> Uygulama yazılımının, C dahil **fx_api.h** ve fx_port.h dosyaları için FileX kitaplık dosyasına (genellikle * genellikle ***fx.a** _ veya _*_fx.lib_*_ _and olarak bilinir) **erişmesi gerekir.** Bu, geliştirme araçları için uygun yolu ayarlayıp veya bu dosyaları uygulama geliştirme alanına kopyalayıp bunu gerçekleştirebilirsiniz.
 
-Zaten ThreadX kullandığınızı varsayarsak, bir FileX uygulaması oluşturmak için dört adım gereklidir:
+## <a name="using-filex"></a>FileX Kullanma
 
-1. FileX Hizmetleri veya veri yapıları kullanan tüm uygulama dosyalarına ***fx_api. h*** dosyasını dahil edin.
-1. _ *_Tx_application_define_** işlevinden veya bir uygulama iş parçacığından ***Fx_system_initialize** _ çağırarak FileX sistemini başlatın.
+FileX'i kullanmak kolaydır. Temel olarak, uygulama kodu derleme sırasında ***fx_api.h** _ öğesini ve fx.a (veya _*_fx.lib)_*_ FileX çalışma zamanı kitaplığıyla bağlantıyı içermeli. _**_ Elbette, _*_tx_api.h_*_ ve _*_tx.a_*_ (veya _*_tx.lib_*_)_,* gibi ThreadX dosyaları da gereklidir.
+
+> [!IMPORTANT]
+> Tek başına modda FileX kullanılırken (**FX_STANDALONE_ENABLE** gerekir), ThreadX dosyaları/kitaplıkları gerekli değildir.
+
+ThreadX'i zaten kullanıyorsanız, Bir FileX uygulaması oluşturmak için gereken dört adım vardır:
+
+1. ***fx_api.h dosyasını*** FileX hizmetlerini veya veri yapılarını kullanan tüm uygulama dosyalarına dahil etmek.
+1. _ tx_application_define * işlevinden veya **bir uygulama iş parçacığından****_fx_system_initialize_* _ çağırarak FileX sistemini başlatma.
 
     > [!IMPORTANT]
-    > Bağımsız modda FileX kullanırken, ***fx_system_initialize*** doğrudan uygulama kodundan çağrılmalıdır.
+    > Tek başına modda FileX kullanırken, ***fx_system_initialize*** doğrudan uygulama kodundan çağrılabilir.
 
-1. FileX medyasını ayarlamak için ***fx_media_open*** bir veya daha fazla çağrı ekleyin. Bu çağrı, bir uygulama iş parçacığı bağlamından yapılmalıdır.
+1. FileX medyası ayarlamak ***için fx_media_open*** bir veya daha fazla çağrı ekleyin. Bu çağrı bir uygulama iş parçacığının bağlamından yapılmış olması gerekir.
 
     > [!IMPORTANT]
-    > ***Fx_media_open** çağrısının, verileri bir sektör için depolamak IÇIN yeterli RAM gerektirdiğini unutmayın.*
+    > *Çağrının tek **fx_media_open** verileri depolamak için yeterli RAM gerektirdiğini unutmayın.*
 
-1. Uygulama kaynağını derleyin ve FileX ve ThreadX çalışma zamanı kitaplıkları, ***FX. a** _ (veya _*_FX. lib_*_) ve _*_TX. a_*_ (veya _ *_TX. lib_* *) ile bağlantı yapın. Elde edilen görüntü hedefe indirilebilir ve yürütülür!
+1. Uygulama kaynağını derle ve FileX ve ThreadX çalışma zamanı kitaplıkları, ***fx.a** _ (veya _*_fx.lib_*_) ve _*_tx.a_*_ (veya _*_tx.lib_**) ile bağlantıyı derle. Sonuçta elde edilen görüntü hedefe indirilir ve yürütülür!
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Her FileX bağlantı noktası, bir tanıtım uygulamasıyla birlikte dağıtılır. Her zaman, hedef donanımda veya belirli bir demo ortamında, ilk olarak tanıtım sisteminin çalışmasını sağlamak iyi bir fikirdir.
+Her FileX bağlantı noktası bir tanıtım uygulaması ile birlikte teslim edilir. Tanıtım sisteminin önce hedef donanımda veya belirli bir tanıtım ortamında çalıştırılana kadar her zaman iyi bir fikirdir.
 
-Tanıtım sistemi çalışmazsa, sorunu daraltmak için aşağıdaki şeyleri deneyin:
+Tanıtım sistemi çalışmıyorsa sorunu daraltmak için aşağıdaki adımları deneyin:
 
-1. Tanıtım 'in ne kadarının çalıştığını belirleme.
-1. Yığın boyutlarını artırın (gerçek uygulama kodunda tanıtım için olduğundan daha önemlidir).
-1. 32Kbayt varsayılan RAM disk boyutu için yeterli RAM olduğundan emin olun. Temel sistem çok daha az RAM üzerinde çalışır; Ancak, RAM diskinin daha fazlası kullanıldığında, yeterli bellek yoksa, sorunlar ortaya çıkabilir.
-1. Sorunun kaybolup olmadığını veya değişiklik olduğunu görmek için son değişiklikleri geçici olarak atlayın. Bu tür bilgiler, Microsoft Destek mühendislerinin yararlı olduğunu kanıtlamaları gerekir. Sorun giderme adımlarından toplanan bilgileri göndermek için "Müşteri Destek Merkezi" bölümünde özetlenen yordamları izleyin.
+1. Gösterimin ne kadar çalıştırı olduğunu belirleme.
+1. Yığın boyutlarını artırma (bu, gerçek uygulama kodunda gösterimden daha önemlidir).
+1. 32KBayt varsayılan RAM disk boyutu için yeterli RAM olduğundan emin olmak. Temel sistem çok daha az RAM üzerinde çalışır; ancak, RAM diskin daha fazlası kullanılırken, yeterli bellek yoksa sorunlar ortaya çıkar.
+1. Sorunun kaybolur mu yoksa değişir mi olduğunu görmek için son yapılan değişiklikleri geçici olarak atlar. Bu tür bilgiler Microsoft destek mühendisleri için faydalı olacaktır. Sorun giderme adımlarından toplanan bilgileri göndermek için "Müşteri Destek Merkezi"nde özetlenen yordamları izleyin.
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-Dosya x kitaplığı ve FileX kullanarak uygulama derlenirken birkaç yapılandırma seçeneği vardır. Aşağıdaki seçenekler uygulama kaynağında, komut satırında veya ***fx_user. h*** içerme dosyası içinde tanımlanabilir.
+FileX kitaplığını ve uygulamayı FileX kullanarak oluşturmanın çeşitli yapılandırma seçenekleri vardır. Aşağıdaki seçenekler uygulama kaynağında, komut satırı veya ***fx_user.h include dosyasında*** tanımlanabilir.
 
 > [!IMPORTANT]
-> ***Fx_user. h** içinde tanımlanan seçenekler yalnızca uygulama ve Threadx kitaplığı, tek başına modda (FX_STANDALONE_ENABLE * tanımlanması gerekir) **FileX kullanılırken _FX_INCLUDE_USER_DEFINE_FILE_* _ Defined._** ile derlenip*, threadx dosyaları/kitaplıkları gerekli değildir.
+> fx_user.h dosyasında tanımlanan seçenekler yalnızca uygulama ve ThreadX kitaplığı ***FX_INCLUDE_USER_DEFINE_FILE *_ _defined.__ DosyaX*** tek başına modunda kullanılırken ( FX_STANDALONE_ENABLE * tanımlanmalıdır) uygulanır, ThreadX dosyaları/kitaplıkları gerekli değildir.
 
 Aşağıdaki listede her yapılandırma seçeneği ayrıntılı olarak açıklanmaktadır:
 
-|Tanımlayın|Anlamı|
+|Tanımlamak|Anlamı|
 |----------    |-----------|
-|FX_MAX_LAST_NAME_LEN        |Bu değer, tam yol adı içeren en büyük dosya adı uzunluğunu tanımlar. Varsayılan olarak, bu değer 256 ' dir.|
-|FX_DONT_UPDATE_OPEN_FILES    |Tanımlı, FileX zaten açık olan dosyaları güncelleştirmiyor.|
+|FX_MAX_LAST_NAME_LEN        |Bu değer, tam yol adını içeren maksimum dosya adı uzunluğunu tanımlar. Varsayılan olarak bu değer 256'dır.|
+|FX_DONT_UPDATE_OPEN_FILES    |FileX önceden açılmış dosyaları güncelleştirmez.|
 |FX_MEDIA_DISABLE_SEARCH_CACHE    |Tanımlı, dosya arama önbelleği iyileştirmesi devre dışı bırakıldı.|
 |FX_MEDIA_DISABLE_SEARCH_CACHE    |Tanımlı, dosya arama önbelleği iyileştirmesi devre dışı bırakıldı.|
-|FX_DISABLE_DIRECT_DATA_READ_CACHE_FILL |Tanımlı, önbelleğin doğrudan okuma sektör güncelleştirmesi devre dışı bırakıldı.|
-|FX_MEDIA_STATISTICS_DISABLE |Tanımlı, medya istatistiklerinin toplanması devre dışı bırakıldı.|
-|FX_SINGLE_OPEN_LEGACY |Aynı dosya için tanımlı, eski tek açık mantık etkindir.|
-|FX_RENAME_PATH_INHERIT    |Tanımlanan, yeniden adlandırma yol bilgilerini devralır.|
-|FX_DISABLE_ERROR_CHECKING    |Temel FileX hata denetimi API 'sini kaldırır ve gelişmiş performans ile sonuçlanır (%30 ' a kadar) ve daha küçük kod boyutu.|
-|FX_MAX_LONG_NAME_LEN    |FileX için maksimum dosya adı boyutunu belirtir. Varsayılan değer 256 ' dir, ancak bu, komut satırı tanımlamaile geçersiz kılınabilir. Geçerli değerler 13 ile 256 arasında değişir.|
-|FX_MAX_SECTOR_CACHE|FileX tarafından Önbelleğe alınabilecek mantıksal kesimlerin maksimum sayısını belirtir. Önbelleğe alınabilecek gerçek kesimlerin sayısı, bu sabit değerden daha azdır ve fx_media_open sağlanan bellek miktarına kaç kesim uyadırabilirler. Varsayılan değer 256 ' dir. Tüm değerler 2 ' nin üssü olmalıdır.|
+|FX_DISABLE_DIRECT_DATA_READ_CACHE_FILL |Tanımlı, önbelleğin doğrudan okuma kesimi güncelleştirmesi devre dışı bırakılmıştır.|
+|FX_MEDIA_STATISTICS_DISABLE |Tanımlı, medya istatistiklerinin toplanması devre dışı bırakılmıştır.|
+|FX_SINGLE_OPEN_LEGACY |Tanımlı, aynı dosya için eski tek açık mantık etkinleştirilir.|
+|FX_RENAME_PATH_INHERIT    |Tanımlanan, yeniden yapılanma yol bilgilerini devralıyor.|
+|FX_DISABLE_ERROR_CHECKING    |Temel FileX hata denetleme API'sini kaldırır ve gelişmiş performans (%30'a kadar) ve daha küçük kod boyutuna neden olur.|
+|FX_MAX_LONG_NAME_LEN    |FileX için en büyük dosya adı boyutunu belirtir. Varsayılan değer 256'dır, ancak bir komut satırı tanımlaması ile geçersiz kılınabilir. Yasal değerler 13 ile 256 arasında değişebilir.|
+|FX_MAX_SECTOR_CACHE|FileX tarafından önbelleğe alınacak en fazla mantıksal kesim sayısını belirtir. Önbelleğe alınacak gerçek kesim sayısı bu sabitten daha azdır ve bu sabitte sağlanan bellek miktarına kaç kesim fx_media_open. Varsayılan değer 256'dır. Tüm değerlerin 2 gücü olması gerekir.|
 |FX_FAT_MAP_SIZE    |FAT güncelleştirme haritasında temsil edilebilir kesimlerin sayısını belirtir. Varsayılan değer 256 ' dir, ancak bu, komut satırı tanımlamaile geçersiz kılınabilir. Daha büyük değerler, ikincil FAT sektörlerinin gereksiz güncelleştirmelerini azaltmaya yardımcı olur.|
 |FX_MAX_FAT_CACHE    |İç FAT önbelleğindeki giriş sayısını belirtir. Varsayılan değer 16 ' dır, ancak bu, bir komut satırı tanımlamaile geçersiz kılınabilir. Tüm değerler 2 ' nin üssü olmalıdır.|
 |FX_FAULT_TOLERANT    |Tanımlandığında, FileX tüm sistem kesimlerinin (önyükleme, FAT ve Dizin kesimleri) yazma isteklerini medya sürücüsüne hemen geçirir. Bu, performansı düşürür, ancak bozulmaları kayıp kümeleriyle sınırlandırmaya yardımcı olur. Bu özelliğin etkinleştirilmesi, tanımlama tarafından etkinleştirilen, FileX hata dayanıklı modülünü otomatik olarak etkinleştirmez.|

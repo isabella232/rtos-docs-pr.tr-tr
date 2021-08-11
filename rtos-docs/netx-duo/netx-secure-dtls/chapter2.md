@@ -1,52 +1,52 @@
 ---
-title: Bölüm 2-Azure RTOS NetX güvenli DTLS yüklemesi ve kullanımı
-description: Bu bölümde, Azure RTOS NetX güvenli DTLS bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Secure DTLS Azure RTOS yükleme ve kullanma
+description: Bu bölümde NetX Secure DTLS bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3533471edf17ec6e812027ef0af672a00773f968
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c84d9e4f0ff99475c92e96cfaaf48201c605e80547696c44820015cbf348393f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825691"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784096"
 ---
-# <a name="chapter-2-installation-and-use-of-azure-rtos-netx-secure-dtls"></a>Bölüm 2: Azure RTOS NetX güvenli DTLS yükleme ve kullanma
+# <a name="chapter-2-installation-and-use-of-azure-rtos-netx-secure-dtls"></a>Bölüm 2: NetX Secure DTLS Azure RTOS yükleme ve kullanma
 
-Bu bölümde, Azure RTOS NetX güvenli DTLS bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde NetX Secure DTLS bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX güvenli, adresinde bulunabilir [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Paket, kaynak dosyaları, içerme dosyaları ve bu belgeyi içeren bir PDF dosyasını aşağıdaki gibi içerir:
+NetX Secure şu bağlantıda [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) kullanılabilir: . Paket kaynak dosyaları, ekleme dosyalarını ve bu belgeyi içeren bir PDF dosyasını aşağıdaki gibi içerir:
 
-- **nx_secure_dtls_api. h** NetX güvenli DTLS için ortak API üst bilgi dosyası
-- **nx_secure_dtls_user. h** Kullanıcı NetX güvenli DTLS için üst bilgi dosyasını tanımlıyor
-- **nx_secure_ bağlantı noktası. h** NetX güvenli için platforma özgü tanımlar
-- **nx_secure_dtls. h** NetX güvenli DTLS için üst bilgi dosyası
-- **nx_secure_tls. h** NetX güvenli TLS için üst bilgi dosyası
-- NetX güvenli DTLS için **nx_secure_dtls \* . c/h** c/h kaynak dosyaları
-- NetX güvenli TLS için **nx_secure_tls \* . c/h** c/h kaynak dosyaları
-- NetX güvenli şifreleme için **nx_crypto \* . c/h** c/h kaynak dosyaları
-- X. 509.440 dijital sertifikaları için **\* . c/h** c/h kaynak dosyalarını nx_secure_x509.
-- **demo_netx_secure_dtls. c** NetX güvenli DTLS tanıtımı için C kaynak dosyası
-- **NetX_Secure_DTLS_User_Guide.pdf** NetX güvenli ürününün PDF açıklaması
+- **nx_secure_dtls_api.h** NetX Secure DTLS için genel API üst bilgi dosyası
+- **nx_secure_dtls_user.h** Kullanıcı NetX Secure DTLS için üst bilgi dosyasını tanımlar
+- **nx_secure_ port.h** NetX Secure için platforma özgü tanımlar
+- **nx_secure_dtls.h** NetX Secure DTLS için üst bilgi dosyası
+- **nx_secure_tls.h** NetX Secure TLS için üst bilgi dosyası
+- **nx_secure_dtls \* .c/h** C/H Kaynak dosyalarını NetX Secure DTLS için kullanın
+- nx_secure_tls Güvenli TLS **\* için .c/h** C/H Kaynak dosyaları
+- **nx_crypto \* .c/h** C/H Kaynak dosyalarını NetX Güvenli Şifreleme için kullanın
+- **\* nx_secure_x509.c/h** C/H Kaynak dosyalarını X.509 dijital sertifikaları için kullanın.
+- **demo_netx_secure_dtls.c** NetX Secure DTLS için C Kaynak Dosyası Tanıtım
+- **NetX_Secure_DTLS_User_Guide.pdf** NetX Secure ürününün PDF açıklaması
 
 > [!NOTE]
-> Nx_crypto * dosyaları, NetX güvenli üst dizininin bir alt dizinindeki farklı donanım platformları için sağlanır.
+> Bu nx_crypto* dosyaları, NetX Secure üst dizininin alt dizininde farklı donanım platformları için sağlanır.
 
-## <a name="netx-secure-dtls-installation"></a>NetX güvenli DTLS yüklemesi
+## <a name="netx-secure-dtls-installation"></a>NetX Güvenli DTLS Yüklemesi
 
-NetX güvenli DTLS 'yi kullanmak için, daha önce bahsedilen dağıtımın tamamı, NetX 'in yüklü olduğu aynı dizin düzeyine kopyalanmalıdır. Örneğin, "*\threadx\arm7\netx*" dizininde NETX yüklüyse *nx_secure \* . \** dizinlerin "*\threadx\arm7\netxsecure*" dizinine kopyalanması gerekir.
+NetX Secure DTLS kullanmak için, daha önce bahsedilen dağıtımın tamamı NetX'in yük olduğu dizin düzeyine kopyalanır. Örneğin, NetX "*\threadx\arm7\NetX*" dizininde *yüklüyse, nx_secure \* \* .* dizinleri "*\threadx\arm7\NetXSecure*" dizinine kopyalanır.
 
-## <a name="using-netx-secure-dlts"></a>NetX güvenli DLCı 'leri kullanma
+## <a name="using-netx-secure-dlts"></a>NetX Secure DLTS kullanma
 
-NetX güvenli DTLS kullanımı basittir. Uygulama kodu, *tx_api. h* ve *nx_api. h* (sırasıyla Threadx ve NETX için olan) öğesini ekledikten sonra *nx_secure_dtls_api. h* içermelidir. *Nx_secure_dtls_api. h* dahil olduğunda, uygulama kodu daha sonra bu kılavuzda belirtilen NETX GÜVENLI DTLS işlev çağrılarını yapabilir. Uygulamanın Ayrıca, *nx_secure \* . \** dosyaları netxsecure kitaplığına ve platforma özgü *nx_crypto \* . \** dosyaları, daha sonra son uygulama ikilisinde bağlantılı bir netxşifre kitaplığı içine aktarmanız gerekir.
+NetX Secure DTLS kullanmak oldukça kolaydır. Uygulama kodu *nx_secure_dtls_api.h ve* *tx_api.h* (sırasıyla ThreadX ve NetX için) *nx_api.h'yi* içermesi gerekir. Uygulama *nx_secure_dtls_api.h* ekli olduktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen NetX Secure DTLS işlev çağrılarını mümkün hale gelir. Uygulama ayrıca nx_secure *\* . \** dosyalarını bir NetXSecure kitaplığına ve platforma özgü *nx_crypto \* \* .* dosyalarını da son uygulama ikili dosyasıyla bağlantılı bir NetXCrypto kitaplığına aktarması gerekir.
 
-## <a name="small-example-system-dtls-client"></a>Küçük örnek sistem (DTLS Istemcisi)
+## <a name="small-example-system-dtls-client"></a>Küçük Örnek Sistem (DTLS İstemcisi)
 
-NetX güvenli DTLS kullanmanın ne kadar kolay olduğunu gösteren bir örnek, aşağıda görüntülenen Şekil 1,1 ' de açıklanmış ve OpenSSL (ya da benzer) DTLS sunucusuyla çalışmak üzere tasarlanan basit bir DTLS Istemcisini gösterir. DTLS istemci programı yapısının bir NetX güvenli TLS Istemcisine çok benzediğini unutmayın (bkz. NetX güvenli TLS belgeleri). Bunun nedeni, DTLS protokolünün temel olarak UDP gibi güvenilir olmayan aktarım ağ protokolleri üzerinde kullanılması için bir TLS sürümüdür.
+NetX Secure DTLS kullanmanın ne kadar kolay olduğunu gösteren bir örnek, Şekil 1.1'de açıklanmıştır. Aşağıda, openSSL (veya benzeri) DTLS sunucusuyla çalışmak üzere tasarlanmış basit bir DTLS İstemcisi gösterilmiştir. DTLS istemci programı yapısının NetX Güvenli TLS İstemcisi'ne çok benzer olduğunu unutmayın (bkz. NetX Secure TLS belgeleri). Bunun nedeni, DTLS protokolünün UDP gibi güvenilir olmayan aktarım ağı protokolleri üzerinden kullanmak üzere bir TLS sürümü olmasıdır.
 
 ```C
 #include "tx_api.h"
@@ -259,11 +259,11 @@ void client_thread_entry(ULONG thread_input)
 }
 ```
 
-**Şekil 1,1 NetX ile NetX güvenli kullanımı örneği**
+**Şekil 1.1 NetX ile NetX Güvenli kullanımı örneği**
 
-## <a name="small-example-system-dtls-server"></a>Küçük örnek sistem (DTLS sunucusu)
+## <a name="small-example-system-dtls-server"></a>Küçük Örnek Sistem (DTLS Sunucusu)
 
-Aşağıda görüntülenen ve basit bir DTLS sunucusunu gösteren şekil 1,2 ' de NetX güvenli kullanmanın ne kadar kolay olduğunu gösteren bir örnek. DTLS sunucusunun tek bir UDP bağlantı noktasında (DTLS sunucu örneğinde depolanır) birden çok gelen istemci isteğini yönetmesi gerektiğinden, DTLS sunucusu işlevinin DTLS Istemcisi ve TLS Istemcisi/sunucusundan oldukça farklı olduğunu unutmayın.
+NetX Secure kullanmanın ne kadar kolay olduğunu gösteren bir örnek, aşağıda görünen ve basit bir DTLS Sunucusu gösteren Şekil 1.2'de açıklanmıştır. DTLS Sunucusunun tek bir UDP bağlantı noktası üzerinde (DTLS Sunucu örneğinde depolanan) birden çok gelen istemci isteğini yönetmesi gerektiri için DTLS Sunucusu işlevinin DTLS İstemcisi ve TLS İstemcisi/Sunucusu'dan oldukça farklı olduğunu unutmayın.
 
 ```C
 #include "tx_api.h"
@@ -500,20 +500,20 @@ void server_thread_entry(ULONG thread_input)
 }
 ```
 
-**Şekil 1,2 NetX güvenli DTLS Server örneği**
+**Şekil 1.2 NetX Secure DTLS Sunucusu Örneği**
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX güvenli oluşturmak için birkaç yapılandırma seçeneği vardır.
-Aşağıda, her birinin ayrıntılı olarak açıklandığı tüm seçeneklerin bir listesi verilmiştir:
+NetX Secure'i inşa için çeşitli yapılandırma seçenekleri vardır.
+Aşağıda, her biri ayrıntılı olarak açıklanan tüm seçeneklerin listesi velanmıştır:
 
-| Tanımlayın                                                 | Anlamı                                                                                                                                                                                                                |
+| Tanımlamak                                                 | Anlamı                                                                                                                                                                                                                |
 |--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **NX_SECURE_ENABLE_DTLS**                           | NetX güvenli içinde DTLS mantığını etkinleştirmek için bu makronun tanımlanması gerekir.                                                                                                                                                       |
-| **NX_SECURE_DISABLE_ERROR_CHECKING**               | Tanımlı, bu seçenek temel NetX güvenli hata denetimini kaldırır. Genellikle uygulamanın hata ayıklaması yapıldıktan sonra kullanılır.                                                                                     |
-| **NX_SECURE_TLS_CLIENT_DISABLED**                  | Tanımlı, bu seçenek, Istemci moduyla ilgili tüm TLS/DTLS yığın kodunu kaldırır, kod ve veri kullanımını azaltır.                                                                                                            |
-| **NX_SECURE_TLS_SERVER_DISABLED**                  | Tanımlı, bu seçenek, sunucu moduyla ilgili tüm TLS/DTLS yığın kodunu kaldırır, kod ve veri kullanımını azaltır.                                                                                                            |
-| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**              | Tanımlı, bu seçenek önceden paylaşılan anahtar (PSK) işlevselliği sunar. Dijital sertifikaları devre dışı bırakır.                                                                                                        |
-| **NX_SECURE_X509_STRICT_NAME_COMPARE**            | Bu seçenek, sertifika arama ve doğrulama için X. 509.440 sertifikaları için katı ayırt edici ad karşılaştırmayı mümkün bir şekilde sunar. Varsayılan değer yalnızca ortak ad alanlarını ayırt edici adlara göre karşılaştırmaktır. |
-| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES**     | Bu seçenek, X. 509.440 sertifikaları için ek bellek kullanımı masrafındaki isteğe bağlı X. 509.952 ayırt edici ad alanlarını mümkün bir şekilde sunar.                                                                               |
-| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                | Tanımlı, bu seçenek bit cinsinden beklenen maksimum RSA mod sayısını verir. Varsayılan değer 4096 bit mod için 4096 ' dir \- . Diğer değerler 3072, 2048 veya 1024 (önerilmez) olabilir.                               |
+| **NX_SECURE_ENABLE_DTLS**                           | NetX Secure'de DTLS mantığını etkinleştirmek için bu makro tanımlanmalıdır.                                                                                                                                                       |
+| **NX_SECURE_DISABLE_ERROR_CHECKING**               | Tanımlandığı gibi, bu seçenek temel NetX Güvenli hata denetimlerini kaldırır. Genellikle uygulama hata ayıklandıktan sonra kullanılır.                                                                                     |
+| **NX_SECURE_TLS_CLIENT_DISABLED**                  | Tanımlanan bu seçenek İstemci moduyla ilgili tüm TLS/DTLS yığın kodunu kaldırır ve kod ve veri kullanımını azaltabilir.                                                                                                            |
+| **NX_SECURE_TLS_SERVER_DISABLED**                  | Tanımlanan bu seçenek, Sunucu moduyla ilgili tüm TLS/DTLS yığın kodunu kaldırır ve kod ve veri kullanımını azaltacaktır.                                                                                                            |
+| **NX_SECURE_ENABLE_PSK_CIPHERSUITES**              | Tanımlı, bu seçenek Önceden Paylaşılan Anahtar (PSK) işlevselliğini sağlar. Dijital sertifikaları devre dışı bırakmaz.                                                                                                        |
+| **NX_SECURE_X509_STRICT_NAME_COMPARE**            | Tanımlanan bu seçenek, sertifika arama ve doğrulama için X.509 sertifikaları için katı ayırt edici ad karşılaştırmasını sağlar. Varsayılan değer, Ayırt Edici Adlar'ın yalnızca Ortak Ad alanlarını karşılaştırmaktır. |
+| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES**     | Tanımlanan bu seçenek, X.509 sertifikaları için ek bellek kullanımı karşılığında isteğe bağlı X.509 Ayırt Edici Ad alanlarını sağlar.                                                                               |
+| **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**                | Tanımlı, bu seçenek bitlerde beklenen en fazla RSA modu sağlar. 4096 bit modulus için varsayılan değer \- 4096'dır. Diğer değerler 3072, 2048 veya 1024 olabilir (önerilmez).                               |

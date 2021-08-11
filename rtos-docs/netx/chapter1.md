@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 48be6a7ecddc53b36b3cc1a9ecfb50a11e285881
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 207aaec18f020e8cc3534a9ef55ed338df487fd95b22b5021f691ea63ba62b8b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826891"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782872"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx"></a>Bölüm 1-Azure RTOS NetX 'e giriş
 
@@ -55,7 +55,7 @@ Eski uygulamalarda NetX, altında yüksek performanslı NetX API 'sine çağrı 
 
 Temel ağ protokollerini açıklayan RFC 'lerin NetX desteği aşağıdakileri içerir, ancak aşağıdaki ağ protokolleriyle sınırlı değildir. NetX, küçük bellek ayak ve verimli yürütme ile gerçek zamanlı bir işletim sisteminin kısıtlamaları dahilinde tüm genel önerilere ve temel gereksinimlere uyar.
 
-| RFC      | Açıklama                                            |
+| RFC      | Description                                            |
 |----------|--------------------------------------------------------|
 | RFC 1112 | IP çok noktaya yayın için konak uzantıları (IGMPv1)           |
 | RFC 1122 | Internet konakları için gereksinimler-Iletişim katmanları |

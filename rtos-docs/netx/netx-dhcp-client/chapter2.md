@@ -1,74 +1,74 @@
 ---
-title: Bölüm 2-Azure RTOS NetX DHCP Istemcisini yükleme ve kullanma
-description: Bu bölümde, Azure RTOS NetX DHCP istemci bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+title: Bölüm 2 - NetX DHCP Azure RTOS yükleme ve kullanma
+description: Bu bölüm, NetX DHCP istemci bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama içerir.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9224a4df70b8199032066e30108250a3baeb65f5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: da27039694c90f74a8b13dc556a367802f66c0ba7dd337f3e31ebab05641a9b1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826800"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788788"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-dhcp-client"></a>Bölüm 2-Azure RTOS NetX DHCP Istemcisini yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-dhcp-client"></a>Bölüm 2 - NetX DHCP Azure RTOS yükleme ve kullanma
 
-Bu bölümde, Azure RTOS NetX DHCP bileşeninin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+Bu bölümde, NetX DHCP bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX için DHCP, adresinde bulunabilir [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) . Paket, aşağıdaki gibi, bu belgeyi içeren iki kaynak dosya ve bir PDF dosyası içerir:
+NetX için DHCP şu adreste [https://github.com/azure-rtos/netx](https://github.com/azure-rtos/netx) kullanılabilir: . Paket, aşağıdaki gibi iki kaynak dosya ve bu belgeyi içeren bir PDF dosyası içerir:
 
-- **nx_dhcp. h** NetX için DHCP üst bilgi dosyası
+- **nx_dhcp.h** NetX için DHCP üst bilgi dosyası
 
-- **nx_dhcp. c** NetX için DHCP için C kaynak dosyası
+- **nx_dhcp.c** NetX için DHCP kaynak dosyası
 
-- **nx_dhcp.pdf** NetX için DHCP 'nin PDF açıklaması
+- **nx_dhcp.pdf** NetX için DHCP'nin PDF açıklaması
 
-- **demo_netx_dhcp. c** NetX DHCP gösterimi
+- **demo_netx_dhcp.c** NetX DHCP gösterimi
 
-- **demo_netx_multihome_dhcp_client. c** NetX DHCP Istemci, birden çok arabirimde DHCP gösterimi
+- **demo_netx_multihome_dhcp_client.c** Birden çok arabirimde DHCP'nin NetX DHCP İstemcisi gösterimi
 
-## <a name="dhcp-installation"></a>DHCP yüklemesi
+## <a name="dhcp-installation"></a>DHCP Yüklemesi
 
-NetX için DHCP kullanmak istiyorsanız, daha önce bahsedilen dağıtımın tamamı NetX 'in yüklü olduğu dizine kopyalanmalıdır. Örneğin, "*\threadx\arm7\green*" dizininde NETX yüklüyse, *nx_dhcp. h* ve *nx_dhcp. c* dosyaları bu dizine kopyalanmalıdır.
+NetX için DHCP kullanmak üzere, daha önce bahsedilen dağıtımın tamamı NetX'in yüklü olduğu dizine kopyalanır. Örneğin,*"\threadx\arm7\green"* dizininde NetX yüklüyse, *nx_dhcp.h ve* *nx_dhcp.c* dosyalarının bu dizine kopyalanmış olması gerekir.
 
 ## <a name="using-dhcp"></a>DHCP kullanma
 
-NetX için DHCP kullanmak kolaydır. Temel olarak, uygulama kodu sırasıyla ThreadX ve NetX kullanmak için *tx_api. h* ve *nx_api. h* dahil *nx_dhcp.* h içermelidir. *Nx_dhcp. h* dahil olduğunda, uygulama kodu daha sonra bu KıLAVUZDA belirtilen DHCP işlev çağrılarını yapabilir. Uygulama, yapı işlemine *nx_dhcp. c* de içermelidir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmelidir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX DHCP 'yi kullanmak için gereklidir.
+NetX için DHCP kullanmak kolaydır. Temel olarak, ThreadX ve NetX'i kullanmak için uygulama kodu *tx_api.h* ve nx_api.h 'yi içeren *nx_dhcp.h'yi* içermesi gerekir.  Uygulama *nx_dhcp.h* ekli olduktan sonra, uygulama kodu bu kılavuzun ilerleyen adımlarında belirtilen DHCP işlev çağrılarını da tamamlar. Uygulamanın derleme sürecinde *nx_dhcp.c'yi* de içermesi gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmiş olmalı ve nesne formu uygulamanın dosyalarıyla birlikte bağlanacak. NetX DHCP kullanmak için gerekenlerin hepsi bu kadardır.
 
-DHCP 'nin NetX UDP hizmetlerini kullandığından önce, DHCP kullanmadan önce *nx_udp_enable* çağrısıyla UDP 'nin etkinleştirilmesi gerektiğini unutmayın.
+DHCP NetX UDP hizmetlerini kullanıyorsa, DHCP'yi kullanmadan önce *UDP'nin nx_udp_enable* çağrısıyla etkinleştirilmesi gerektiğini unutmayın.
 
-Daha önce atanmış bir IP adresi almak için DHCP Istemcisi, Istek iletisiyle DHCP işlemini başlatabilir ve "Istenen IP adresi" 50 seçeneğini DHCP sunucusuna alabilir. DHCP sunucusu, Istemcinin IP adresini veya reddederse bir NACK veriyorsa bir onay iletisiyle yanıt verir. İkinci durumda, DHCP Istemcisi başlangıç durumunda DHCP işlemini bulma iletisi ve istenen IP adresi olmadan yeniden başlatır. Ana bilgisayar uygulaması önce DHCP Istemcisini oluşturur, ardından *nx_dhcp_start* ile DHCP işlemini başlatmadan önce istenen IP adresini ayarlamak için *nx_dhcp_request_client_ip* API hizmetini çağırır. Daha fazla ayrıntı için bu belgede başka bir yerde örnek bir DHCP uygulaması sunulmaktadır.
+Daha önce atanmış bir IP adresi almak için, DHCP İstemcisi DHCP sunucusuna İstek iletisi ve Seçenek 50 "İstenen IP Adresi" ile DHCP işlemini başlatabilir. DHCP Sunucusu, IP adresini İstemciye verirse bir ACK iletisiyle veya reddederse bir NACK ile yanıt verir. İkinci durumda, DHCP İstemcisi BAŞLATMA durumunda DHCP işlemini bulma iletisiyle ve istenen IP adresiyle yeniden başlatıyor. Konak uygulaması önce DHCP İstemcisi'yi oluşturur, ardından dhcp işlemini *nx_dhcp_request_client_ip* ile başlatmadan önce istenen IP adresini ayarlamak için *nx_dhcp_start.* Daha fazla ayrıntı için bu belgenin başka bir yerinde örnek bir DHCP uygulaması sağlanır.
 
-## <a name="in-the-bound-state"></a>Bağlanma durumunda
+## <a name="in-the-bound-state"></a>Bağlı Durumda
 
-DHCP istemcisi bağlı durumdayken, DHCP Istemci iş parçacığı, Istemci durumunu Aralık başına bir kez (NX_DHCP_TIME_INTERVAL tarafından belirtildiği gibi) işler ve Istemciye atanan IP kiralamasının kalan süresini azaltır. Yenileme süresi geçtiğinde, DHCP Istemci durumu Istemcinin DHCP sunucusundan yenileme isteyeceğini yenıleme durumuna güncelleştirilir.
+DHCP İstemcisi bağlı durumdayken, DHCP İstemcisi iş parçacığı İstemci durumunu aralık başına bir kez (NX_DHCP_TIME_INTERVAL tarafından belirtilen şekilde) işler ve İstemciye atanan IP kirası üzerinde kalan süreyi kısar. Yenileme süresi sona erdiğinde DHCP İstemcisi durumu, İstemcinin DHCP Sunucusundan yenileme isteğide bulunduğu YenİLEME durumuna güncelleştirilir.
 
 
-## <a name="sending-dhcp-messages-to-the-server"></a>Sunucuya DHCP Iletileri gönderiliyor
+## <a name="sending-dhcp-messages-to-the-server"></a>Sunucuya DHCP iletileri gönderme
 
-DHCP Istemcisinde, ana bilgisayar uygulamasının DHCP sunucusuna ileti göndermesini sağlayan API hizmetleri vardır. Not Bu hizmetler, ana bilgisayar uygulamasının, DHCP Istemci iç durumunu güncelleştirmeden önce iletiyi ilk gönderdiklerinden, DHCP Istemci protokolünü el ile çalıştırmasına yönelik DEĞILDIR.
+DHCP İstemcisi, konak uygulamanın DHCP Sunucusuna ileti göndermesine olanak sağlayan API hizmetleri içerir. Bu hizmetlerin, DHCP İstemcisi iç durumunu güncelleştirmeden öncelikli olarak iletiyi göndermeleri için ana bilgisayar uygulamasının DHCP İstemcisi protokolünü el ile çalıştırması amaçlanmaz.
 
-  - *nx_dhcp_release*: Bu, ana bilgisayar uygulaması ağdan çıkarken sunucuya bir sürüm iletisi gönderir veya bir IP adresini yeniden gerektirir.
+  - *nx_dhcp_release:* Bu, konak uygulama ağdan ayrılırken veya IP adresini geri isterken Sunucuya bir YAYıN iletisi gönderir.
 
-  - *nx_dhcp_decline*: Ana bilgisayar UYGULAMASı, IP adresinin zaten KULLANıMDA olduğunu DHCP istemcisinden bağımsız olarak belirlerse sunucuya bir Red iletisi gönderir.
+  - *nx_dhcp_decline:* Ana bilgisayar uygulaması, DHCP İstemcisi'nin IP adresinin zaten kullanmakta olduğunu bağımsız olarak belirlerse Sunucuya bir REDDETME iletisi gönderir.
 
-  - *nx_dhcp_forcerenew*: Bu, sunucuya bir FORCERENEW iletisi gönderir
+  - *nx_dhcp_forcerenew:* Bu, Sunucuya bir FORCERENEW iletisi gönderir
 
-  - *nx_dhcp_send_request*: bu, *nx_dhcp. h*' de belirtildiği gibi bir DHCP ileti türünde bağımsız değişken alır ve iletiyi sunucuya gönderir. Bu, öncelikli olarak DHCP BILDIR iletisini göndermek için tasarlanmıştır.
+  - *nx_dhcp_send_request:* Bu, *nx_dhcp.h* içinde belirtilen bir DHCP ileti türü olarak bağımsız değişken olarak alır ve iletiyi Sunucuya gönderir. Bu öncelikle DHCP INFORM iletisi göndermek için tasarlanmıştır.
 
-Bu belgenin başka bir yerinde bu hizmetler hakkında daha fazla bilgi için "*DHCP hizmetlerinin açıklaması*" başlığına bakın.
+Bu belgenin *başka bir yerinde bu hizmetler* hakkında daha fazla bilgi için bkz. " DHCP Hizmetlerinin Açıklaması".
 
-## <a name="starting-and-stopping-the-dhcp-client"></a>DHCP Istemcisini başlatma ve durdurma
+## <a name="starting-and-stopping-the-dhcp-client"></a>DHCP İstemcisini Başlatma ve Durdurma
 
-DHCP Istemcisini, bağlantılı bir durum elde etmesinden bağımsız olarak durdurmak için, ana bilgisayar uygulaması *nx_dhcp_stop* çağırır.
+Dhcp İstemcisi'nin sınırlayıcı bir durum elde yapılandırmasını durdurması için, konak uygulama *nx_dhcp_stop.*
 
-Bir DHCP istemcisini yeniden başlatmak için, ana bilgisayar uygulamasının önce yukarıda açıklanan *nx_dhcp_stop* HIZMETINI kullanarak DHCP istemcisini durdurması gerekir. Daha sonra ana bilgisayar, DHCP Istemcisini sürdürmesini sağlamak için *nx_dhcp_start* çağırabilir. Ana bilgisayar uygulaması önceki bir DHCP Istemci profilini temizlemenizi istiyorsa (örneğin, başka bir ağdaki önceki bir DHCP sunucusundan elde edilen), ana bilgisayar uygulaması, nx_dhcp_start çağrılmadan önce bu görevi açmak için *nx_dhcp_reinitialize* çağırmalıdır.
+Bir DHCP istemcisini yeniden başlatmak için, konak uygulamanın önce yukarıda açıklanan nx_dhcp_stop DHCP *İstemcisini* durdurması gerekir. Ardından konak, DHCP *İstemcisini nx_dhcp_start* için çağrıyı çağırarak. Ana bilgisayar uygulaması, önceki bir DHCP İstemci profilini (örneğin, başka bir ağ üzerinde önceki bir  DHCP Sunucusundan alınan) temizlemek isterse, konak uygulama bu görevi nx_dhcp_reinitialize çağırmadan önce dahili olarak gerçekleştirmek için nx_dhcp_start.
 
-Tipik bir sıra şu olabilir:
+Tipik bir sıra şöyle olabilir:
 
 ```C
 nx_dhcp_stop(&my_dhcp);
@@ -78,21 +78,21 @@ nx_dhcp_reinitialize(&my_dhcp);
 nx_dhcp_start(&my_dhcp);
 ```
 
-Yalnızca tek bir DHCP arabiriminde çalışan DHCP uygulamaları için, DHCP Istemcisi durdurulduğunda DHCP ISTEMCI süreölçeri de etkinleştirilir. Bu nedenle, artık IP kiralamasının kalan süresini takip tutmayacaktır. Belirli bir arabirimdeki DHCP Istemcisinin durdurulması DHCP Istemci zamanlayıcısını devre dışı vermez, ancak Zamanlayıcı güncelleştirmelerini Bu arabirimdeki IP kirasında kalan süre için durdurur.
+Yalnızca tek bir DHCP arabiriminde çalışan DHCP uygulamaları için, DHCP İstemcisi'nin durdurulması DHCP İstemcisi zamanlayıcısını da devre dışı bıraktır. Bu nedenle artık IP kirası için kalan sürenin takip uzamaz. Belirli bir arabirimde DHCP İstemcisi'nin durdurulması DHCP İstemcisi zamanlayıcısını devre dışı bırakmaz, ancak bu arabirimde IP kiralamada kalan süreye kadar zamanlayıcı güncelleştirmelerini durdurur.
 
-Bu nedenle, ana bilgisayar uygulaması yeniden başlatma veya ağ anahtarlama gerektirmediği takdirde DHCP Istemcisinin durdurulması önerilmez.
+Bu nedenle, konak uygulamanın yeniden başlatılması veya ağ değiştirmesi gerektirdikçe DHCP İstemcisi'nin durdurulması tavsiye değildir.
 
-## <a name="using-the-dhcp-client-with-auto-ip"></a>DHCP Istemcisini otomatik IP ile kullanma
+## <a name="using-the-dhcp-client-with-auto-ip"></a>DHCP İstemcisini Otomatik IP ile Kullanma
 
-NetX DHCP Istemcisi, DHCP ve otomatik IP 'nin bir DHCP sunucusunun kullanılabilir veya yanıt verme garantisi olmadığı bir adresi garanti ettiği uygulamalarda otomatik IP protokolüyle aynı anda çalışıyor. Ancak, ana bilgisayar bir sunucu algılayamazsa veya atanmış bir IP adresi alamazsanız, yerel bir IP adresi için otomatik IP protokolüne geçiş yapabilir. Ancak bunu yapmadan önce, otomatik IP "araştırma" ve "savunma" aşamaları üzerinden geçtiğinde DHCP Istemcisinin geçici olarak durdurulması önerilir. Bir otomatik IP adresi konağa atandıktan sonra, DHCP Istemcisi yeniden başlatılabilir ve bir DHCP sunucusu kullanılabilir hale gelirse, ana bilgisayar IP adresi, uygulama çalışırken DHCP sunucusu tarafından sunulan IP adresini kabul edebilir.
+NetX DHCP İstemcisi, DHCP ve Otomatik IP'nin DHCP Sunucusunun kullanılabilir veya yanıt verme garantisine sahip olmadığının bir adresi garanti altına alan uygulamalarda Otomatik IP protokolüyle eşzamanlı olarak çalışır. Ancak, ana bilgisayar bir Sunucu algılayamamışsa veya atanmış bir IP adresi alamasa, yerel IP adresi için Otomatik IP protokolüne geçiş olabilir. Ancak bunu yapmadan önce, Otomatik IP "yoklama" ve "savunma" aşamalarından geçirken DHCP İstemcisini geçici olarak durdurmanız tavsiye edilebilir. Ana bilgisayar için bir Otomatik IP adresi atandıktan sonra, DHCP İstemcisi yeniden başlatabilir ve bir DHCP Sunucusu kullanılabilir hale olursa, ana bilgisayar IP adresi uygulama çalışırken DHCP Sunucusu tarafından sunulan IP adresini kabul eder.
 
-NetX otomatik IP 'si, bir IP adresi değişikliği olayında etkinliklerini izlemek için ana bilgisayar için bir adres değişikliği bildirimine sahiptir.
+NetX Auto IP'sinde, IP adresi değişikliği durumunda ana bilgisayar için etkinliklerini izlemesi için bir adres değişikliği bildirimi vardır.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-Aşağıdaki şekil 1,1 ' de NetX 'in nasıl kullanıldığını gösteren bir örnek. DHCP Istemcisi, 101 satırındaki "*my_thread_entry*" oluşturulur. Başarılı oluşturulduktan sonra DHCP işlemi, 108 satırındaki *nx_dhcp_start* çağrısında başlatılır. Bu noktada DHCP Istemci girişimleri DHCP sunucusuyla iletişim kurmak için başlatılır. Bu işlem sırasında, uygulama kodu 95 satırından başlayarak *nx_ip_status_check* hizmeti (veya ikincil bir arabirim için *NX_IP_INTERFACE_STATUS_CHECK* ) kullanılarak IP örneğine geçerli bir IP adresinin kaydedilmesini bekler. Bu, daha kısa bir bekleme seçeneğiyle bir döngüde daha yaygın olarak yapılır.
+Aşağıdaki Şekil 1.1'de NetX kullanımına bir örnek verilmiştir. DHCP İstemcisi, 101.*my_thread_entry*" oluşturulur. Oluşturma başarılı olduktan sonra, DHCP işlemi 108. *satırda nx_dhcp_start* çağrısıyla başlatılır. Bu noktada, DHCP sunucusuyla iletişim kurmak için DHCP İstemcisi girişimleri başlatılır. Bu işlem sırasında, uygulama kodu 95. satırdan başlayarak *nx_ip_status_check* hizmeti (veya ikincil arabirim için nx_ip_interface_status_check) kullanılarak geçerli bir IP *adresinin* IP örneğine kayıtlı olması için bekler. Bu daha yaygın olarak daha kısa bekleme seçeneği olan bir döngüde yapılır.
 
-Satır 127 ' den sonra DHCP geçerli bir IP adresi aldıktan sonra, NetX TCP/IP hizmetlerinden yararlanarak istediğiniz gibi uygulama devam edebilir.
+127. satırdan sonra DHCP geçerli bir IP adresi aldı ve uygulama, istenen Şekilde NetX TCP/IP hizmetlerini kullanarak devam ediyor olabilir.
 
 ```C
 #include  "tx_api.h"
@@ -227,27 +227,27 @@ NX_PACKET  *my_packet;
 }
 ```
 
-Şekil 1,1 NetX ile DHCP kullanımı örneği
+Şekil 1.1 NetX ile DHCP kullanımı örneği
 
-## <a name="multi-server-environments"></a>Çoklu sunucu ortamları
+## <a name="multi-server-environments"></a>Çok Sunuculu Ortamlar
 
-Birden çok DHCP sunucusunun bulunduğu ağlarda, DHCP Istemcisi, ilk alınan DHCP sunucusu teklif iletisini kabul eder, Istek durumuna ilerler ve diğer alınan teklifleri yoksayar.
+Birden fazla DHCP Sunucusu olan ağlarda, DHCP İstemcisi alınan ilk DHCP Sunucusu Teklifi iletiyi kabul eder, İstek durumuna ilerler ve alınan diğer teklifleri yoksayar.
 
-## <a name="arp-probes"></a>ARP araştırmaları
+## <a name="arp-probes"></a>ARP Araştırmaları
 
-DHCP Istemcisi, IP adresinin zaten kullanımda olmadığından emin olmak için DHCP sunucusundan IP adresi atamasından sonra bir veya daha fazla ARP araştırmaları gönderecek şekilde yapılandırılabilir. ARP araştırma adımı, RFC 2131 tarafından önerilir ve özellikle birden fazla DHCP sunucusuna sahip ortamlarda önemlidir. Ana bilgisayar uygulaması NX_DHCP_CLIENT_SEND_ARP_PROBE seçeneğini etkinleştirmesine izin verirseniz (ek ARP araştırma seçenekleri için bölümdeki **yapılandırma seçeneklerine** bakın), DHCP istemcisi ' kendine adreslenen ' bir ARP araştırması gönderir ve yanıt için belirtilen zamanı bekler. Hiçbiri alınmazsa, DHCP Istemcisi, bağlantılı duruma ilerletir. Yanıt alınmışsa, DHCP Istemcisi adresin zaten kullanımda olduğunu varsayar. Otomatik olarak sunucuya bir reddetme iletisi gönderir ve Istemciyi yeniden başlatarak başlangıç durumundan DHCP araştırmalarını yeniden başlatır. Bu, DHCP durum makinesini yeniden başlatır ve Istemci sunucuya başka bir bulma iletisi gönderir.
+DHCP İstemcisi, IP adresinin zaten kullanım dışı olduğunu doğrulamak için DHCP Sunucusundan IP adresi ataması sonrasında bir veya daha fazla ARP araştırması gönderecek şekilde yalıtabilirsiniz. ARP yoklama adımı RFC 2131 tarafından önerilir ve birden fazla DHCP Sunucusuna sahip ortamlarda özellikle önemlidir. Konak uygulama NX_DHCP_CLIENT_SEND_ARP_PROBE seçeneğini sağlarsa (ek  ARP yoklama seçenekleri için Bölüm 2'de Yapılandırma Seçenekleri'ne bakın), DHCP İstemcisi bir 'kendi kendine adreslenen' ARP araştırması gönderir ve yanıt için belirtilen zamanı bekler. Hiçbiri alınmasa, DHCP İstemcisi Sınır durumuna ilerler. Bir yanıt alındı ise, DHCP İstemcisi adresin zaten kullanımda olduğunu varsayıyor. Otomatik olarak Sunucuya bir DECLINE iletisi gönderir ve INIT durumdan DHCP araştırmalarını yeniden başlatmak için İstemciyi yeniden başlatın. Bu, DHCP durum makinesini yeniden başlatılır ve İstemci Sunucuya başka bir DISCOVER iletisi gönderir.
 
 ## <a name="bootp-protocol"></a>BOOTP Protokolü
 
-DHCP Istemcisi Ayrıca, BOOTP protokolünü de destekler. Bu seçeneği etkinleştirmek ve DHCP yerine BOOTP 'yi kullanmak için, ana bilgisayar uygulamasının NX_DHCP_BOOTP_ENABLE yapılandırma seçeneğini ayarlaması gerekir. Ana bilgisayar uygulaması, BOOTP protokolünde belirli IP adresleri talep edebilir. Ancak, DHCP Istemcisi, bazı durumlarda BOOTP olarak kullanılmak üzere ana bilgisayar işletim sisteminin yüklenmesini desteklemez.
+DHCP İstemcisi, BOOTP protokolünü ve DHCP protokolünü de destekler. Bu seçeneği etkinleştirmek ve DHCP yerine BOOTP kullanmak için, konak uygulamanın NX_DHCP_BOOTP_ENABLE ayarlaması gerekir. Konak uygulama, BOOTP protokolünde belirli IP adreslerini yine de talep ediyor olabilir. Ancak, BOOTP bazen bunu yapmak için kullandığı için DHCP İstemcisi ana bilgisayar işletim sisteminin yüklenmesini desteklemez.
 
-## <a name="dhcp-on-a-secondary-interface"></a>Ikincil bir arabirimde DHCP
+## <a name="dhcp-on-a-secondary-interface"></a>İkincil Arabirimde DHCP
 
-NetX DHCP Istemcisi, varsayılan birincil arabirim yerine ikincil arabirimlerde çalıştırılabilir.
+NetX DHCP İstemcisi, varsayılan birincil arabirim yerine ikincil arabirimlerde çalıştırabilirsiniz.
 
-NetX DHCP Istemcisini ikincil bir ağ arabiriminde çalıştırmak için, konak uygulamanın, *nx_dhcp_set_interface_index* API HIZMETINI kullanarak DHCP istemcisinin arabirim dizinini ikincil arabirime ayarlaması gerekir. Arabirimin, *nx_ip_interface_attach* hizmeti kullanılarak birincil ağ arabirimine zaten eklenmiş olması gerekir. İkincil arabirimler ekleme hakkında daha fazla bilgi için bkz. NetX Kullanıcı Kılavuzu.
+NetX DHCP İstemcisini ikincil bir ağ arabiriminde çalıştırmak için, konak uygulamanın DHCP İstemcisi'nin arabirim dizinini, nx_dhcp_set_interface_index API hizmetini *kullanarak ikincil arabirime ayarlaması* gerekir. Arabirim, nx_ip_interface_attach hizmeti kullanılarak birincil ağ *arabirimine nx_ip_interface_attach* gerekir. İkincil arabirimleri ekleme hakkında daha fazla bilgi için bkz. NetX Kullanıcı Kılavuzu.
 
-Şekil 1,2 ' de aşağıda, ana bilgisayar uygulamasının ikincil arabirimindeki DHCP sunucusuna bağlandığı örnek bir sistem bulunur. Satır 65 ' de, ikincil arabirim IP görevine null bir IP adresi ile iliştirilir. Satır 104 ' de, DHCP Istemci örneği oluşturulduktan sonra, *nx_dhcp_set_interface_index* çağırarak DHCP istemci arabirimi dizini 1 olarak ayarlanır (örneğin, birincil arabirimden kendisi dizin 0 ' dır). Ardından, DHCP Istemcisi, 108. satırda başlamaya hazırlanmaya başlamıştır.
+Şekil 1.2'de, konak uygulamanın ikincil arabiriminde DHCP sunucusuna bağlandığı örnek bir sistem verilmiştir. 65. satırda, ikincil arabirim IP görevine null IP adresiyle ekli olur. 104. satırda, DHCP İstemcisi örneği oluşturulduktan sonra, DHCP İstemcisi arabirim dizini, nx_dhcp_set_interface_index çağrılarak 1 olarak ayarlanır (örneğin, kendisi dizin 0 olan birincil arabirimden *uzaklığı).* Ardından DHCP İstemcisi, 108. satırda başlamaya hazırdır.
 
 ```C
 #include  "tx_api.h"
@@ -384,31 +384,31 @@ NX_PACKET  *my_packet;
 }
 ```
 
-Şekil 1,2 multihome desteğiyle NetX için DHCP örneği
+Şekil 1.2 Çoklu giriş desteğine sahip NetX için DHCP örneği
 
-## <a name="dhcp-client-on-multiple-interfaces-simultaneously"></a>Aynı anda birden çok arabirimde DHCP Istemcisi
+## <a name="dhcp-client-on-multiple-interfaces-simultaneously"></a>Aynı Anda Birden Çok Arabirimde DHCP İstemcisi
 
-DHCP Istemcisini birden çok arabirimde çalıştırmak için, *nx_api. h* içindeki NX_MAX_PHYSICAL_INTERFACES, cihaza bağlı olan fiziksel arabirimlerin sayısına ayarlanmalıdır. Varsayılan olarak, bu değer 1 ' dir (örn. birincil arabirim). IP örneğine ek bir arabirim kaydetmek için *nx_ip_interface_attach* hizmetini kullanın. İkincil arabirimler ekleme hakkında daha fazla bilgi için bkz. NetX Kullanıcı Kılavuzu.
+DHCP İstemcisini birden çok arabirimde çalıştırmak için *NX_MAX_PHYSICAL_INTERFACES.h'nx_api'daki* sanal ağların cihaza bağlı fiziksel arabirim sayısına ayarlanmış olması gerekir. Varsayılan olarak bu değer 1'tir (örneğin, birincil arabirim). IP örneğine ek bir arabirim kaydetmek için nx_ip_interface_attach *kullanın.* İkincil arabirimleri ekleme hakkında daha fazla bilgi için bkz. NetX Kullanıcı Kılavuzu.
 
-Sonraki adım, *nx_dhcp. h* IÇINDEKI NX_DHCP_CLIENT_MAX_RECORDS DHCP 'yi aynı anda çalıştırmak için beklenen en fazla arabirim sayısına ayarlamaya yönelik olur. NX_DHCP_CLIENT_MAX_RECORDS NX_MAX_PHYSICAL_INTERFACES eşit olması gerekmediğini unutmayın. Örneğin, NX_MAX_PHYSICAL_INTERFACES 3 ve NX_DHCP_CLIENT_MAX_RECORDS 2 ' ye eşit olabilir. Bu yapılandırmada, yalnızca iki arabirim (ve herhangi bir zamanda üç fiziksel arabirimden herhangi biri olabilir), herhangi bir anda DHCP 'yi çalıştırabilir. DHCP Istemci kayıtları, ağ arabirimlerine bire bir eşleme içermez, örneğin, Istemci kaydı 1 fiziksel arabirim dizini 1 ile otomatik olarak bağıntılı değildir.
+Sonraki adım, NX_DHCP_CLIENT_MAX_RECORDS.h nx_dhcp *DHCP'nin* aynı anda çalışması beklenen en fazla arabirim sayısına ayarlamaktır. Bu NX_DHCP_CLIENT_MAX_RECORDS eşit olması gerek NX_MAX_PHYSICAL_INTERFACES. Örneğin, NX_MAX_PHYSICAL_INTERFACES 3 olabilir ve NX_DHCP_CLIENT_MAX_RECORDS 2'ye eşit olabilir. Bu yapılandırmada, üç fiziksel arabirimin yalnızca iki arabirimi (ve herhangi bir anda üç fiziksel arabirimden herhangi ikisi de olabilir) DHCP'yi herhangi bir anda çalıştırabilirsiniz. DHCP İstemci Kayıtları, ağ arabirimleri için bire bir eşlemeye sahip değildir, örneğin İstemci Kaydı 1 fiziksel arabirim dizini 1 ile otomatik olarak ilişkili değildir.
 
-NX_DHCP_CLIENT_MAX_RECORDS Ayrıca, NX_MAX_PHYSICAL_INTERFACES daha büyük olarak ayarlanabilir ancak bu, kullanılmayan istemci kayıtları oluşturur ve belleğin verimsiz bir şekilde kullanılmasını sağlar.
+NX_DHCP_CLIENT_MAX_RECORDS daha büyük bir değere NX_MAX_PHYSICAL_INTERFACES ancak bu, kullanılmayan istemci kayıtları oluşturabilir ve belleğin verimsiz bir kullanımı olur.
 
-Herhangi bir arabirimde DHCP 'yi başlatabilmeniz için, uygulamanın *nx_dhcp_interface_enable* çağırarak bu arabirimleri etkinleştirmesi gerekir. Özel durumun, *nx_dhcp_create* çağrısında otomatik olarak etkinleştirilen (ve aşağıda açıklanan *nx_dhcp_interface_disable* hizmeti kullanılarak devre dışı bırakılabilen) birincil arabirim olduğunu unutmayın.
+Herhangi bir arabirimde DHCP'yi başlatamadan önce, uygulamanın bu arabirimleri *nx_dhcp_interface_enable.* Özel durumun, nx_dhcp_create çağrısında otomatik olarak  etkinleştirildiğinden (ve aşağıda ele nx_dhcp_interface_disable devre dışı *bırakılabilir)* birincil arabirim olduğunu unutmayın.
 
-Herhangi bir zamanda, bir arabirim DHCP için devre dışı bırakılabilir ve bu arabirimde DHCP çalıştıran diğer arabirimlerden bağımsız olarak durulabilirler.
+Herhangi bir zamanda, DHCP için bir arabirim devre dışı bırakılabilir veya DHCP, DHCP çalıştıran diğer arabirimlerden bağımsız olarak bu arabirimde durdurulur.
 
-Yukarıda belirtildiği gibi, DHCP için belirli bir arabirimi etkinleştirmek üzere *nx_dhcp_interface_enable* hizmetini kullanın ve giriş bağımsız değişkeninde fiziksel arabirim dizinini belirtin. NX_DHCP_CLIENT_MAX_RECORDS arabirimlerin tümü, arabirim dizini giriş bağımsız değişkeninin NX_MAX_PHYSICAL_INTERFACES daha az olduğu sınırlamasıyla etkinleştirilebilir.
+Yukarıda belirtildiği gibi, DHCP için belirli bir  arabirimi etkinleştirmek üzere nx_dhcp_interface_enable hizmetini kullanın ve giriş bağımsız değişkenine fiziksel arabirim dizinini belirtin. En fazla NX_DHCP_CLIENT_MAX_RECORDS arabirimler, arabirim dizini giriş bağımsız değişkeninin bağımsız değişkenden daha küçük olması sınırlaması ile NX_MAX_PHYSICAL_INTERFACES.
 
-Belirli bir arabirimde DHCP 'yi başlatmak için *nx_dhcp_interface_start* hizmetini kullanın. Tüm etkin arabirimlerde DHCP 'yi başlatmak için *nx_dhcp_start* hizmetini kullanın. (DHCP 'yi zaten Başlatan arabirimler *nx_dhcp_start* bundan etkilenmeyecektir.)
+DHCP'yi belirli bir arabirimde başlatmak için nx_dhcp_interface_start *kullanın.* DHCP'yi tüm etkin arabirimlerde başlatmak için nx_dhcp_start *kullanın.* (DHCP'yi zaten başlatmış olan arabirimler, *nx_dhcp_start.)*
 
-Bir arabirimdeki DHCP 'yi durdurmak için *nx_dhcp_interface_stop* hizmetini kullanın. DHCP, bu arabirim üzerinde zaten başlatılmış olmalıdır veya bir hata durumu döndürülür. Tüm etkinleştirilen arabirimlerde DHCP 'yi durdurmak için *nx_dhcp_stop* hizmetini kullanın. DHCP, diğer arabirimlerden bağımsız olarak herhangi bir zamanda durdurulabilir.
+Bir arabirimde DHCP'yi durdurmak için nx_dhcp_interface_stop *kullanın.* DHCP'nin bu arabirimde zaten başlatmış olması gerekir, yoksa bir hata durumu döndürülür. Tüm etkin arabirimlerde DHCP'yi durdurmak için nx_dhcp_stop *kullanın.* DHCP, herhangi bir zamanda diğer arabirimlerden bağımsız olarak durdurulur.
 
-Var olan DHCP Istemci hizmetlerinin çoğu bir ' interface ' eşdeğerine sahiptir. *nx_dhcp_interface_release* , arabirime özgü *nx_dhcp_release eşdeğerdir.* DHCP Istemcisi tek bir arabirim için yapılandırılmışsa, aynı eylemi gerçekleştirir.
+Mevcut DHCP İstemcisi hizmetlerinin çoğunun 'arabirimi' eşdeğeri vardır; *örneğin nx_dhcp_interface_release,* *nx_dhcp_release'nin arabirimine özgü olandır.* DHCP İstemcisi tek bir arabirim için yapılandırılmışsa, aynı eylemi gerçekleştirler.
 
-Arabirime özgü olmayan DHCP Istemci hizmetlerinin tipik olarak tüm arabirimlere uygulanacağını, ancak tümünün değil olduğunu unutmayın. İkinci durumda, arabirime özgü olmayan hizmet, arabirim kayıtlarının DHCP Istemci listesinde arama sırasında bulunan ilk DHCP etkin arabirimi için geçerlidir. DHCP için birden çok arabirim etkinleştirildiğinde arabirim temelli olmayan bir hizmetin nasıl gerçekleştirildiğinden ilgili üçüncü bölümde bulunan **hizmetlerin açıklamasına** bakın.
+Arabirime özgü olmayan DHCP İstemcisi hizmetlerinin genellikle tüm arabirimler için geçerli olmadığını unutmayın. İkinci durumda, arabirime özgü olmayan hizmet, DHCP İstemcisi arabirim kayıtlarının listesinde aramada bulunan ilk DHCP özellikli arabirime uygulanır. DHCP **için birden çok** arabirim etkinleştirildiğinde arabirime özgü olmayan bir hizmetin nasıl performans sergileyesi hakkında bilgi için Üçüncü Bölümdeki Hizmetlerin Açıklamasına bakın.
 
-Aşağıdaki örnek dizide, IP örneğinin iki ağ arabirimi vardır ve ilk olarak ikincil arabirimde DHCP 'yi çalıştırır. Daha sonra bir süre sonra, birincil arabirimde DHCP başlatılır. Ardından birincil arabirimdeki IP adresini serbest bırakır ve birincil arabirimde DHCP 'yi yeniden başlatır:
+Aşağıdaki örnek dizide, IP örneği iki ağ arabirimine sahiptir ve önce ikincil arabirimde DHCP çalıştırır. Bir süre sonra, birincil arabirimde DHCP'yi başlatır. Ardından birincil arabirimde IP adresini serbest bırakarak birincil arabirimde DHCP'yi yeniden başlatıyor:
 
 ```C
 nx_dhcp_create(&my_dhcp_client);
@@ -433,58 +433,58 @@ nx_dhcp_interface_start(&my_dhcp_client, 0);
 /* DHCP is restarted on primary interface. */
 ```
 
-Arabirime özgü hizmetlerin tüm listesi için, Bölüm üçünde **hizmetlerin açıklamasına** bakın.
+Arabirime özgü hizmetlerin tam listesi için **bkz. Üçüncü Bölümdeki** Hizmetlerin Açıklaması.
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-*Nx_dhcp. h* içindeki kullanıcı yapılandırılabilir DHCP seçenekleri, ana bilgisayar uygulamasının belirli GEREKSINIMLERI Için DHCP istemcisini ince olarak değiştirmesine izin verir. Bu parametrelerin listesi aşağıda verilmiştir:  
+*nx_dhcp.h'de kullanıcı tarafından yapılandırılabilir* DHCP seçenekleri, konak uygulamanın DHCP İstemcisi'ne özel gereksinimleri için ince ayarda yapılandırmasını sağlar. Aşağıda bu parametrelerin bir listesi ve ardından yer almaktadır:  
   
-- **NX_DHCP_ENABLE_BOOTP** Tanımlı, bu seçenek DHCP yerine BOOTP protokolünü sunar. Varsayılan olarak bu seçenek devre dışıdır.
+- **NX_DHCP_ENABLE_BOOTP** Tanımlı, bu seçenek DHCP yerine BOOTP protokolünü sağlar. Varsayılan olarak bu seçenek devre dışıdır.
 
-- **NX_DHCP_CLIENT_RESTORE_STATE** Bu, tanımlanmazsa, DHCP Istemcisinin, kira üzerinde kalan süre dahil olmak üzere geçerli DHCP Istemci lisansını kaydetmesine ve bu durumu DHCP Istemci uygulaması yeniden başlatmalar arasında geri yüklemesine olanak sağlar. Varsayılan değer devre dışıdır.
+- **NX_DHCP_CLIENT_RESTORE_STATE** Tanımlanmışsa, bu, DHCP İstemcisi'nin kirada kalan süre dahil olmak üzere geçerli DHCP İstemcisi lisansını 'durumunu' kaydetmesini ve DHCP İstemcisi uygulamasının yeniden başlatılması arasında bu durumu geri yüklemesini sağlar. Varsayılan değer devre dışıdır.
 
-- **NX_DHCP_CLIENT_USER_CREATE_PACKET_POOL** Ayarlanırsa, DHCP Istemcisi kendi paket havuzunu oluşturmaz. Ana bilgisayar uygulamasının, DHCP Istemci paket havuzunu ayarlamak için nx_dhcp_packet_pool_set hizmetini kullanması gerekir. Varsayılan değer devre dışıdır.
+- **NX_DHCP_CLIENT_USER_CREATE_PACKET_POOL** Ayarlanırsa, DHCP İstemcisi kendi paket havuzunu oluşturmaz. Konak uygulama, DHCP İstemcisi paket nx_dhcp_packet_pool_set ayarlamak için nx_dhcp_packet_pool_set hizmetini kullan gerekir. Varsayılan değer devre dışıdır.
 
-- **NX_DHCP_CLIENT_SEND_ARP_PROBE** Bu, DHCP Istemcisinin atanmış DHCP adresinin başka bir konağa ait olmadığından emin olmak için IP adresi atamasından sonra bir ARP araştırması göndermesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
+- **NX_DHCP_CLIENT_SEND_ARP_PROBE** Tanımlı, bu, ATANAN DHCP adresinin başka bir ana bilgisayar tarafından sahip olmadığını doğrulamak için DHCP İstemcisi'nin IP adresi ataması sonrasında bir ARP araştırması göndermesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
 
-- **NX_DHCP_ARP_PROBE_WAIT** Bir ARP araştırması gönderdikten sonra DHCP Istemcisinin yanıt beklediği sürenin uzunluğunu tanımlar. Varsayılan değer bir saniye (1 * NX_IP_PERIODIC_RATE)
+- **NX_DHCP_ARP_PROBE_WAIT** BIR ARP araştırması gönderdikten sonra DHCP İstemcisi'nin yanıt bekleme süresini tanımlar. Varsayılan değer bir saniyedir (1 * NX_IP_PERIODIC_RATE)
 
-- **NX_DHCP_ARP_PROBE_MIN** ARP araştırmaları gönderme arasındaki aralıkta bulunan en küçük çeşitlemesi tanımlar. Değer 1 saniye olarak ayarlanır.
+- **NX_DHCP_ARP_PROBE_MIN** ARP yoklamaları gönderme arasındaki aralıkta minimum varyasyonu tanımlar. Değer varsayılan olarak 1 saniyedir.
 
-- **NX_DHCP_ARP_PROBE_MAX** ARP araştırmaları gönderme arasındaki aralıktaki en yüksek çeşitleme tanımlar. Değer 2 saniyeye varsayılan olarak ayarlanır.
+- **NX_DHCP_ARP_PROBE_MAX** ARP yoklamaları gönderme arasındaki aralıkta maksimum varyasyonu tanımlar. Değer varsayılan olarak 2 saniyedir.
 
-- **NX_DHCP_ARP_PROBE_NUM** DHCP sunucusu tarafından atanan IP adresinin zaten kullanımda olup olmadığını belirlemek için gönderilen ARP araştırmaları sayısını tanımlar. Değer 3 yoklamalara göre varsayılan olarak ayarlanır.
+- **NX_DHCP_ARP_PROBE_NUM** DHCP sunucusu tarafından atanan IP adresinin zaten kullanımda olup olmadığını belirlemek için gönderilen ARP yoklamalarının sayısını tanımlar. Değeri varsayılan olarak 3 yoklama olarak kullanılır.
 
-- **NX_DHCP_RESTART_WAIT** DHCP istemcisine atanan IP adresi zaten kullanımda ise DHCP Istemcisinin DHCP 'yi yeniden başlatması için bekleyeceği süreyi tanımlar. Değer, varsayılan olarak 10 saniyedir.
+- **NX_DHCP_RESTART_WAIT** DHCP İstemcisi'ne atanan IP adresi zaten kullanıyorsa, DHCP İstemcisi'nin DHCP'yi yeniden başlatmak için bekleyeceği süre uzunluğunu tanımlar. Değer varsayılan olarak 10 saniyedir.
 
-- **NX_DHCP_CLIENT_MAX_RECORDS** DHCP Istemci örneğine kaydedilecek en fazla arabirim kaydı sayısını belirtir. DHCP Istemci arabirimi kaydı, belirli bir arabirim üzerinde çalışan DHCP Istemcisinin kaydıdır. Varsayılan değer, fiziksel arabirimlerin sayısı (NX_MAX_PHYSICAL_INTERFACES) olarak ayarlanır.
+- **NX_DHCP_CLIENT_MAX_RECORDS** DHCP İstemci örneğine kaydedilen en fazla arabirim kaydı sayısını belirtir. DHCP İstemcisi arabirim kaydı, belirli bir arabirimde çalışan DHCP İstemcisi'nin kaydıdır. Varsayılan değer, fiziksel arabirim sayısı (NX_MAX_PHYSICAL_INTERFACES).
 
-- **NX_DHCP_CLIENT_SEND_MAX_DHCP_MESSAGE_OPTION** Bu, DHCP Istemcisinin en fazla DHCP ileti boyutu seçeneğini göndermesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
+- **NX_DHCP_CLIENT_SEND_MAX_DHCP_MESSAGE_OPTION** Tanımlı, bu, DHCP İstemcisi'nin en büyük DHCP ileti boyutu seçeneğini göndermesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
 
-- **NX_DHCP_CLIENT_ENABLE_HOST_NAME_CHECK** Bu, DHCP Istemcisinin, nx_dhcp_create çağrısındaki giriş ana bilgisayar adını geçersiz karakterler veya uzunlukla denetlemesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
+- **NX_DHCP_CLIENT_ENABLE_HOST_NAME_CHECK** Tanımlanan bu, DHCP İstemcisi'nin geçersiz karakterler veya uzunluk için nx_dhcp_create giriş ana bilgisayar adını denetlemesini sağlar. Varsayılan olarak, bu seçenek devre dışıdır.
 
-- **NX_DHCP_THREAD_PRIORITY** DHCP iş parçacığının önceliği. Varsayılan olarak, bu değer DHCP iş parçacığının öncelik 3 ' te çalıştığını belirtir.
+- **NX_DHCP_THREAD_PRIORITY** DHCP iş parçacığının önceliği. Varsayılan olarak, bu değer DHCP iş parçacığının öncelik 3'te çalıştırılanı belirtir.
 
-- **NX_DHCP_THREAD_STACK_SIZE** DHCP iş parçacığı yığınının boyutu. Varsayılan olarak, boyut 2048 bayttır.
+- **NX_DHCP_THREAD_STACK_SIZE** DHCP iş parçacığı yığınının boyutu. Varsayılan olarak, boyut 2048 bayt'tır.
 
-- **NX_DHCP_TIME_INTERVAL** DHCP Istemci Zamanlayıcı süre sonu işlevinin yürütüldüğü saniye cinsinden Aralık. Bu işlev, DHCP işlemindeki tüm zaman aşımlarını (örneğin, iletilerin yeniden veya DHCP Istemci durumunun değiştirilmesini) güncelleştirir. Varsayılan olarak, bu değer 1 saniyedir.
+- **NX_DHCP_TIME_INTERVAL** DHCP İstemcisi süre sonu işlevinin yürütülmesi saniye aralığı. Bu işlev, örneğin iletilerin yeniden iletimli olması veya DHCP İstemcisi durumunun değişmesi gibi DHCP işlemiyle ilgili tüm zaman aşımı durumlarını günceller. Varsayılan olarak bu değer 1 saniyedir.
 
-- **NX_DHCP_OPTIONS_BUFFER_SIZE** DHCP seçenekleri arabelleğinin boyutu. Varsayılan olarak, bu değer 312 ' dir.
+- **NX_DHCP_OPTIONS_BUFFER_SIZE** DHCP seçenekleri arabelleğinin boyutu. Varsayılan olarak bu değer 312'dir.
 
-- **NX_DHCP_PACKET_PAYLOAD** DHCP Istemci paketi yükünün bayt cinsinden boyutunu belirtir. Varsayılan değer NX_DHCP_MINIMUM_IP_DATAGRAM + fiziksel üstbilgi boyutudur. Kablolu bir ağdaki fiziksel üst bilgi boyutu genellikle Ethernet çerçeve boyutudur.
+- **NX_DHCP_PACKET_PAYLOAD** BOYUTU DHCP İstemcisi paket yükünün bayt cinsinden belirtir. Varsayılan değer+ NX_DHCP_MINIMUM_IP_DATAGRAM üst bilgi boyutudur. Bir kablo ağındaki fiziksel üst bilgi boyutu genellikle Ethernet çerçeve boyutudur.
 
-- **NX_DHCP_PACKET_POOL_SIZE** DHCP Istemci paket havuzunun boyutunu belirtir. Varsayılan değer (5 * NX_DHCP_PACKET_PAYLOAD) olur. Bu, iç paket havuzu ek yükü için dört paket ve yer sağlar.
+- **NX_DHCP_PACKET_POOL_SIZE** DHCP İstemcisi paket havuzunun boyutunu belirtir. Varsayılan değer (5 *NX_DHCP_PACKET_PAYLOAD), iç paket havuzu ek yükü için dört paket ve yer sağlayacaktır.
 
-- **NX_DHCP_MIN_RETRANS_TIMEOUT** İletiyi yeniden göndermeden önce istemci iletisine bir DHCP sunucusu yanıtı almak için en düşük bekleme seçeneğini belirtir. Varsayılan değer, RFC 2131 önerilen 4 saniyedir.
+- **NX_DHCP_MIN_RETRANS_TIMEOUT** İletiyi yeniden aktarmadan önce DHCP Sunucusu istemci iletisine yanıt almak için en düşük bekleme seçeneğini belirtir. Varsayılan değer, 4 saniye önerilen RFC 2131'tir.
 
-- **NX_DHCP_MAX_RETRANS_TIMEOUT** İletiyi yeniden göndermeden önce istemci iletisine bir DHCP sunucusu yanıtı almak için en fazla bekleme seçeneğini belirtir. Varsayılan değer, RFC 2131 önerilen 64 saniyedir.
+- **NX_DHCP_MAX_RETRANS_TIMEOUT** İletiyi yeniden aktarmadan önce DHCP Sunucusu istemci iletisine yanıt almak için en yüksek bekleme seçeneğini belirtir. Varsayılan değer, 64 saniye önerilen RFC 2131'tir.
 
-- **NX_DHCP_MIN_RENEW_TIMEOUT** DHCP Istemcisi bir IP adresine bağlandıktan sonra bir DHCP sunucusu iletisi almak ve yenileme isteği göndermek için en az bekleme seçeneğini belirtir. Varsayılan değer 60 saniyedir. Ancak, DHCP Istemcisi en düşük yenileme zaman aşımını varsayılan olarak yapmadan önce DHCP sunucusu iletisinden yenileme ve yeniden bağlama süre sonu zamanlarını kullanır.
+- **NX_DHCP_MIN_RENEW_TIMEOUT** DHCP Sunucusu iletisi almak ve DHCP İstemcisi bir IP adresine bağlandikten sonra yenileme isteği göndermek için en düşük bekleme seçeneğini belirtir. Varsayılan değer 60 saniyedir. Ancak, DHCP İstemcisi varsayılan olarak en düşük yenileme zaman aşımına neden olmadan önce DHCP sunucusu iletisinde yer alan Yenileme ve Yeniden Bağlantı sona erme sürelerini kullanır.
 
-- **NX_DHCP_TYPE_OF_SERVICE** DHCP UDP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP paket hizmetini göstermek için NX_IP_NORMAL olarak tanımlanır.
+- **NX_DHCP_TYPE_OF_SERVICE** DHCP UDP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP NX_IP_NORMAL belirtmek için varsayılan olarak tanımlanmıştır.
 
-- **NX_DHCP_FRAGMENT_OPTION** DHCP UDP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer DHCP UDP fragmenting 'yi devre dışı bırakmak için NX_DONT_FRAGMENT.
+- **NX_DHCP_FRAGMENT_OPTION** DHCP UDP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer DHCP UDP NX_DONT_FRAGMENT devre dışı bırakmak için kullanılır.
 
-- **NX_DHCP_TIME_TO_LIVE** Bu paketin, atılmadan önce geçebilmesi gereken yönlendirici sayısını belirtir. Varsayılan değer 0x80 olarak ayarlanır.
+- **NX_DHCP_TIME_TO_LIVE** Bu paketin atmadan önce geçeceği yönlendirici sayısını belirtir. Varsayılan değer, 0x80.
 
-- **NX_DHCP_QUEUE_DEPTH** Alma kuyruğunun en yüksek derinlik sayısını belirtir. Varsayılan değer 4 ' e ayarlanır.
+- **NX_DHCP_QUEUE_DEPTH** Alma kuyruğu maksimum derinliğini belirtir. Varsayılan değer 4'e ayarlanır.

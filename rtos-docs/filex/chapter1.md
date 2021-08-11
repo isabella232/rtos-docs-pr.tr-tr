@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: be7e6f9cd9fbc69ac0908d1de733dac1c4f73bf6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 48fab21d78ede88e84db11a4f30574ce2061d145820b819ec7846203e297f42a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825517"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782973"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-filex"></a>Bölüm 1-Azure RTOS FileX 'e giriş
 
@@ -110,7 +110,7 @@ FileX sürüm 5 hizmetlerinin tüm listesi için bkz. [ek a](appendix-a.md).
 
 ## <a name="exfat-support"></a>exFAT desteği
 
-exFAT (genişletilmiş dosya ayırma tablosu), dosya boyutunun, FAT32 dosya sistemleri tarafından uygulanan bir sınırı GB ile aşmasına izin vermek için Microsoft tarafından tasarlanan bir dosya sistemidir. Bu, 32 ' den fazla kapasiteye sahip SD kartları için varsayılan dosya sistemidir. SD kartlar veya FileX exFAT biçimiyle biçimlendirilen Flash sürücüleri Windows ile uyumludur. exFAT, yaklaşık 1.000.000.000 GB olan bir Exabyte 'e (EB) kadar dosya boyutunu destekler.
+exFAT (genişletilmiş dosya ayırma tablosu), dosya boyutunun, FAT32 dosya sistemleri tarafından uygulanan bir sınırı GB ile aşmasına izin vermek için Microsoft tarafından tasarlanan bir dosya sistemidir. Bu, 32 ' den fazla kapasiteye sahip SD kartları için varsayılan dosya sistemidir. Dosya x exFAT biçimiyle biçimlendirilen SD kartlar veya Flash sürücüleri Windows uyumludur. exFAT, yaklaşık 1.000.000.000 GB olan bir Exabyte 'e (EB) kadar dosya boyutunu destekler.
 
 ExFAT kullanması gereken kullanıcılar FileX kitaplığını ***FX_ENABLE_EXFAT** _ tanımlı simgesiyle yeniden derlemeniz gerekir. Medya açılırken, FileX medya türünü algılar. Medya exFAT ile biçimlendirildiyse, FileX dosya sistemini exFAT standardına göre okur ve yazar. Yeni medyayı exFAT ile biçimlendirmek için _ *_fx_media_exFAT_format_* * hizmetini kullanın. Varsayılan olarak exFAT etkin değildir.
 

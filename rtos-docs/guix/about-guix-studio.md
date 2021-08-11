@@ -1,21 +1,21 @@
 ---
 title: Azure RTOS Gux Studio Kullanıcı Kılavuzu
-description: Bu kılavuz, Microsoft 'un Azure RTOS Gux çalışma zamanı kitaplığı için özel olarak tasarlanan Microsoft Windows tabanlı Hızlı Kullanıcı arabirimi geliştirme ortamı olan Azure RTOS Gux Studio hakkında kapsamlı bilgiler sağlar.
+description: bu kılavuz, microsoft 'un azure rtos gux çalışma zamanı kitaplığı için özel olarak tasarlanan microsoft Windows tabanlı hızlı kullanıcı arabirimi geliştirme ortamı olan azure rtos gux Studio hakkında kapsamlı bilgiler sağlar.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 4be5049fca40d6d57961e692661d8df6706eac28
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 63b3f17aae95cb00a338db423c94e4846c589787027401d3e33a29bbfafdd966
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827293"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784725"
 ---
 # <a name="about-this-guix-studio-user-guide"></a>Bu Gux Studio Kullanıcı Kılavuzu hakkında
 
-Bu kılavuz, Microsoft 'un Azure RTOS Gux çalışma zamanı kitaplığı için özel olarak tasarlanan Microsoft Windows tabanlı Hızlı Kullanıcı arabirimi geliştirme ortamı olan Azure RTOS Gux Studio hakkında kapsamlı bilgiler sağlar. 
+bu kılavuz, microsoft 'un azure rtos gux çalışma zamanı kitaplığı için özel olarak tasarlanan microsoft Windows tabanlı hızlı kullanıcı arabirimi geliştirme ortamı olan azure rtos gux Studio hakkında kapsamlı bilgiler sağlar. 
 
 Bu, ThreadX Real-Time Işletim sistemi (RTOS) ve Azure RTOS Gux UI çalışma zamanı kitaplığını kullanan Embedded gerçek zamanlı yazılım geliştiricisi için tasarlanmıştır. Geliştirici standart Azure RTOS ThreadX ve Azure RTOS Gux kavramlarını tanımanız gerekir.
 

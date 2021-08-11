@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 63fd212249da6154926684f9bc844d2c2a78e84e
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: a5dd020daeb336f264bf611fc3a515e55dbc5dab6f9afbcfdbf3733baa66de26
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754854"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782787"
 ---
 # <a name="overview-of-azure-rtos-netx"></a>Azure RTOS NetX'e genel bakış
 
-Azure RTOS NetX, özellikle derin katıştırılmış, gerçek zamanlı ve IoT uygulamaları için tasarlanmış bir endüstriyel sınıf TCP/IP IPv4 tümleşik ağ yığınıdır. Azure RTOS NetX, Microsoft'un özgün IPv4 ağ yığınıdır ve temel olarak bir ağ Azure RTOS. NetX; IPv4, TCP ve UDP gibi temel ağ protokollerinin yanı sıra ek, üst düzey eklenti protokollerinin eksiksiz bir paketini içeren katıştırılmış uygulamalar sağlar. Küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığı, NetX Azure RTOS en zorlu tümleşik IoT uygulamaları için ideal bir seçenektir.
+Azure RTOS NetX, özellikle derin katıştırılmış, gerçek zamanlı ve IoT uygulamaları için tasarlanmış bir endüstriyel sınıf TCP/IP IPv4 tümleşik ağ yığınıdır. Azure RTOS NetX, Microsoft'un özgün IPv4 ağ yığınıdır ve temel olarak bir ağ Azure RTOS. NetX; IPv4, TCP ve UDP gibi temel ağ protokollerinin yanı sıra ek, daha üst düzey ek protokollerden oluşan eksiksiz bir paket ile tümleşik uygulamalar sağlar. Küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığı, NetX Azure RTOS en zorlu tümleşik IoT uygulamaları için ideal bir seçenektir.
 
 ## <a name="api-protocols"></a>API protokolleri
 Azure RTOS NetX aşağıdakiler için destek sağlar.
@@ -144,27 +144,27 @@ Azure RTOS NetX aşağıdakiler için destek sağlar.
 
 * En az 1,7 KB FLASH, RAM boyutu.
 * 32 blt IPv4 ve 48 blt MAC adreslerinin dinamik çözünürlüğü.
-* I HIP IxANVL Doğrulandı.
-* Esnek, kullanıcı tanımlı ARP önbelleği.
-* Gratuitous ARP desteği.
-* Uygulama tarafından belirlenen isteğe bağlı ARP/RARP istatistikleri.
-* Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme.
+* IXIA IxANVL doğrulanmadı.
+* Esnek, Kullanıcı tanımlı ARP önbelleği.
+* Gereksiz ARP desteği.
+* Uygulamaya göre belirlenen isteğe bağlı ARP/RARP istatistikleri.
+* Azure RTOS TraceX aracılığıyla sistem düzeyinde Izleme.
 
-### <a name="ethernet-wifi-bluetooth-le-154-etc"></a>ETHERNET, WiFi, BLUETOOTH LE, 15.4 vb.
+### <a name="ethernet-wifi-bluetooth-le-154-etc"></a>ETHERNET, WiFi, BLUETOOTH LE, 15,4, vb.
 
 ## <a name="interoperability-verification"></a>Birlikte çalışabilirlik doğrulaması
 
-Azure RTOS NetX, RFC standartlarına uygundur ve çoğu satıcının cihazlarında tam birlikte çalışabilirlik sunar. Azure RTOS NetX, NetX çekirdek TCP/IP protokolü uygulaması için sektör standardı IxANVL (Otomatik Ağ Doğrulama Kitaplığı) Azure RTOS kullanır.
+Azure RTOS NetX, RFC standartlarına uyar ve birçok satıcının cihazlarından tüm birlikte çalışabilirlik olanağı sunar. Azure RTOS NetX, Azure RTOS NetX Core TCP/IP protokol uygulamasının endüstri standardı IxANVL (otomatik ağ doğrulama kitaplığı) kullanır.
 
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
-Azure RTOS NetX, aşağıdakilere sahip gelişmiş bir teknolojidir.
-* Piconet™ mimari.
+Azure RTOS NetX, aşağıdakileri içeren gelişmiş bir teknolojidir.
+* Piconet™ mimarisi.
 * Otomatik ölçeklendirme.
-* UDP Fast-Path Technology™.
+* UDP Fast-Path teknolojisi™.
 * Esnek paket yönetimi.
-* Sıfır kopya API'si ve uygulaması.
-* Çok girişli destek.
-* Tüm askıya almada isteğe bağlı zaman aşımı.
+* Sıfır-API ve uygulama kopyalama.
+* Çoklu bilgisayarlı destek.
+* Tüm askıya alma sırasında isteğe bağlı zaman aşımı.
 * Statik yönlendirme desteği.
 * Azure RTOS TraceX sistem analizi desteği.

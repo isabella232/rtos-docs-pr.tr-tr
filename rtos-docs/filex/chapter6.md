@@ -1,138 +1,138 @@
 ---
-title: Bölüm 6-Azure RTOS FileX hataya dayanıklı modül
-description: Bu bölümde, medya güç kaybettiğinde veya dosya yazma işleminin ortasında çıkarıldığında dosya sistemi bütünlüğünü sürdürmek üzere tasarlanan Azure RTOS FileX hata toleranslı modülünün bir açıklaması bulunur.
+title: Bölüm 6 - Azure RTOS FileX hataya karşı iyi bir modül
+description: Bu bölüm, medyanın güç kaybetmesi veya bir dosya yazma işlemi sırasında çıkarılırsa dosya sistemi bütünlüğünü korumak için tasarlanmış Azure RTOS FileX Hataya Karşı Koruma Modülü'ne ilişkin bir açıklama içerir.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 68a24f0345a2c4d3e824270699b00a2daab32f8e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 66bffa2dbf52bc458bfaf124aa006a79e810100ac2e926c17444daf090519e66
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826506"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783794"
 ---
-# <a name="chapter-6---azure-rtos-filex-fault-tolerant-module"></a>Bölüm 6-Azure RTOS FileX hataya dayanıklı modül
+# <a name="chapter-6---azure-rtos-filex-fault-tolerant-module"></a>Bölüm 6 - Azure RTOS FileX hataya karşı iyi bir modül
 
-Bu bölümde, medya güç kaybettiğinde veya dosya yazma işleminin ortasında çıkarıldığında dosya sistemi bütünlüğünü sürdürmek üzere tasarlanan Azure RTOS FileX hata toleranslı modülünün bir açıklaması bulunur.
+Bu bölüm, medyanın güç kaybetmesi veya bir dosya yazma işlemi sırasında çıkarılırsa dosya sistemi bütünlüğünü korumak için tasarlanmış Azure RTOS FileX Hataya Karşı Koruma Modülü'ne ilişkin bir açıklama içerir.
 
-## <a name="filex-fault-tolerant-module-overview"></a>FileX hataya dayanıklı modüle genel bakış
+## <a name="filex-fault-tolerant-module-overview"></a>FileX Hataya Karşı TolereAnt Modülüne Genel Bakış
 
-Bir uygulama bir dosyaya veri yazdığında, FileX veri kümelerini ve sistem bilgilerini güncelleştirir. Bu güncelleştirmelerin, dosya sistemindeki bilgilerin tutarlı tutulması için atomik bir işlem olarak tamamlanması gerekir. Örneğin, bir dosyaya veri eklerken, FileX 'in medyada kullanılabilir bir kümeyi bulması, FAT zincirini güncelleştirmesi, Dizin girişinde dosyalanan uzunluğu güncelleştirmesi ve Dizin girişinde başlangıç kümesi numarasını güncelleştirmesi gerekir. Güç kesintisi veya medya çıkarma, güncelleştirme dizisini kesintiye uğratabilir, bu da dosya sistemini tutarsız bir durumda bırakır. Tutarsız durum düzeltilmemişse, güncelleştirilmekte olan veriler kaybolabilir ve sistem bilgilerine zarar verebileceğinden, sonraki dosya sistemi işlemi ortamdaki diğer dosyalara veya dizinlere zarar verebilir.
+Bir uygulama bir dosyaya veri yazdığında FileX hem veri kümelerini hem de sistem bilgilerini günceller. Bu güncelleştirmelerin, bilgileri dosya sisteminde tutarlı tutmak için atomik bir işlem olarak tamamlanması gerekir. Örneğin, bir dosyaya veri eklerken FileX'in medyada kullanılabilir bir küme bulması, FAT zincirini güncelleştirmesi, dizin girdisinde dosya uzunluğu güncelleştirmesi ve muhtemelen dizin girdisinde başlangıç küme numarasını güncelleştirmesi gerekir. Güç hatası veya medya çıkarma, güncelleştirme dizisini kesintiye uğratmaya neden olabilir ve bu da dosya sistemini tutarsız bir durumda bırakır. Tutarsız durum düzeltilmişse, güncelleştirilen veriler kaybolabilir ve sistem bilgilerine zarar verdiği için sonraki dosya sistemi işlemi medyanın diğer dosyalarına veya dizinlere zarar verebilir.
 
-FileX hata toleransı modülü, bu adımlar dosya sistemine uygulanmadan *önce* bir dosyayı güncelleştirmek için gereken günlüğe kaydetme adımları ile işe yarar. Dosya güncelleştirmesi başarılı olursa bu günlük girdileri kaldırılır. Ancak, dosya güncelleştirmesi kesintiye uğrarsa günlük girdileri medyada depolanır. Medyanın bir sonraki takılışında, FileX bu günlük girdilerini önceki (tamamlanmamış) yazma işleminden algılar. Bu gibi durumlarda, FileX, dosya sistemine zaten yapılmış olan değişiklikleri geri alarak veya önceki işlemi tamamlamaya yönelik gerekli değişiklikleri yeniden uygulayarak bir hatadan kurtuya olabilir. Bu şekilde, bir güncelleştirme işlemi sırasında medya güç kesilirse, FileX hata toleransı modülü dosya sistemi bütünlüğünü korur.
-
-> [!IMPORTANT]
-> *FileX hata toleranslı modülü, fiziksel medya bozulmasından kaynaklanan geçerli verilerle oluşan dosya sistemi bozulmasını önleyecek şekilde tasarlanmamıştır.*
+FileX Hataya Karşı İlke Modülü, bu adımlar  dosya sistemine uygulanmadan önce bir dosyayı güncelleştirmek için gereken adımların günlüklerini ayalar. Dosya güncelleştirmesi başarılı olursa, bu günlük girişleri kaldırılır. Ancak dosya güncelleştirmesi kesintiye uğrarsa günlük girişleri medyada depolanır. Medya bir sonraki takışında FileX, önceki (tamamlanmamış) yazma işlemiyle ilgili bu günlük girişlerini algılar. Böyle durumlarda FileX, dosya sisteminde zaten yapılan değişiklikleri geri göndererek veya önceki işlemi tamamlamak için gerekli değişiklikleri yeniden kullanarak bir hatadan kurtarılabilir. Bu şekilde, bir güncelleştirme işlemi sırasında medya güç kaybederse FileX Hataya Karşı Koruma Modülü dosya sistemi bütünlüğünü sürdürür.
 
 > [!IMPORTANT]
-> *FileX hataya dayanıklı modül bir medyayı koruduktan sonra, hata toleransı etkinleştirilmiş olarak dosya x dışında bir şeye bağlı olmamalıdır. Bunun yapılması, dosya sistemindeki günlük girişlerinin medyada sistem bilgileriyle tutarsız olmasına neden olabilir. Medya başka bir dosya sistemi tarafından güncelleştirildikten sonra FileX hata toleranslı modülü günlük girdilerini işlemeye çalışırsa, kurtarma yordamı başarısız olabilir ve tüm dosya sistemi öngörülemeyen bir durumda bırakılır.*
-
-## <a name="use-of-the-fault-tolerant-module"></a>Hataya dayanıklı modülün kullanımı
-
-FileX hataya dayanıklı özelliği, FileX tarafından desteklenen FAT12, FAT16, FAT32 ve exFAT gibi tüm FAT dosya sistemleri tarafından kullanılabilir. Hataya dayanıklı özelliği etkinleştirmek için, FileX, tanımlı **FX_ENABLE_FAULT_TOLERANT** sembol ile oluşturulmalıdır. Çalışma zamanında uygulama, ***_ fx_media_open çağrısından hemen sonra fx_fault_tolerant_enable _*** çağırarak hataya dayanıklı hizmet başlatır. Hata toleransı etkinleştirildikten sonra, belirlenen medyaya tüm dosya yazma işlemleri korunur. Varsayılan olarak, hataya dayanıklı modül etkin değildir.
+> *FileX Hataya Karşı Koruma Modülü, içinde geçerli verilerle fiziksel medya bozulmasının neden olduğu dosya sistemi bozulmasını önlemek için tasarlanmamıştı.*
 
 > [!IMPORTANT]
-> * Uygulamanın dosya sistemine ***fx_fault_tolerant_enable** _ çağrılmadan önce erişilmediğinden emin olması gerekir. Uygulama, hataya dayanıklı etkinleştirilmesinden önce dosya sistemine veri yazardıysa, önceki yazma işlemleri tamamlanmıyorsa ve dosya sistemi hataya dayanıklı günlük entries._ ile geri yüklenmediğinde yazma işlemi medyayı bozabilir.
+> *FileX Hataya Karşı Koruma modülü bir medyayı korumaya başladıktan sonra, medya, Hataya Karşı Özellikli DosyaX dışında hiçbir şey tarafından bağlı değildir. Bunu yapmak, dosya sistemideki günlük girişlerinin medyada sistem bilgileriyle tutarsız olmasına neden olabilir. Medya başka bir dosya sistemi tarafından güncelleştirildikten sonra FileX Hataya Karşı Tepkili modülü günlük girdilerini işlemeye çalışırsa, kurtarma yordamı başarısız olabilir ve dosya sisteminin tamamını öngörülemez bir durumda bırakabilirsiniz.*
 
-## <a name="filex-fault-tolerant-module-log"></a>FileX hataya dayanıklı modül günlüğü
+## <a name="use-of-the-fault-tolerant-module"></a>Hataya Karşı İlke Modülünün Kullanımı
 
-FileX hata toleransı günlüğü, Flash 'ta bir mantıksal küme kullanır. Bu kümenin başlangıç kümesi numarasına olan dizin, **FX_FAULT_TOLERANT_BOOT_INDEX** sembol tarafından belirtilen bir uzaklığa sahip medyanın önyükleme kesimine kaydedilir. Varsayılan olarak, bu sembol 116 olarak tanımlanmıştır. Bu konum, FAT12/16/32 ve exFAT belirtiminde ayrılmış olarak işaretlendiğinden seçilir.
-
-Şekil 5, "günlük yapısı düzeni", günlük yapısının genel yerleşimini gösterir. Günlük yapısı üç bölüm içerir: günlük üstbilgisi, FAT zinciri ve günlük girişleri.
+FileX Hataya Karşı İlke özelliği FAT12, FAT16, FAT32 ve exFAT dahil olmak üzere FileX tarafından desteklenen tüm FAT dosya sistemlerinde kullanılabilir. Hataya karşı tolere eden özelliği etkinleştirmek için FileX, tanımlandığı şekilde **FX_ENABLE_FAULT_TOLERANT** gerekir. Çalışma zamanında uygulama, _fx_fault_tolerant_enable _ çağrısının hemen ardından _ çağrısıyla ***hataya karşı fx_media_open.*** Hataya karşı korumalı etkinleştirildikten sonra, belirlenen medyaya yönelik tüm dosya yazma işlemleri korunur. Hataya karşı özellikli modül varsayılan olarak etkin değildir.
 
 > [!IMPORTANT]
-> *Günlük girişlerinde depolanan tüm çok baytlı değerler little endian biçimindedir.*
+> *Uygulamanın, * uygulama _ çağrısından önce dosya sistemine **erişil fx_fault_tolerant_enable** emin olması gerekir. Uygulama, hataya karşı korumayı etkinleştirmeden önce dosya sistemine veri yazarsa, önceki yazma işlemleri tamamlanmamışsa ve dosya sistemi hataya karşı koruma günlük kaydı kullanılarak geri entries._
 
-![Günlük yapısı düzeni](./media/user-guide/log-structure-layout.png)
+## <a name="filex-fault-tolerant-module-log"></a>FileX Hataya Karşı KarşıTlı Modül Günlüğü
 
-**Şekil 5. Günlük yapısı düzeni**
+FileX hataya karşı karşı olan günlük, bir mantıksal kümeyi flash olarak alır. Bu kümenin başlangıç küme numarasının dizini medyanın önyükleme kesimine kaydedilir ve simgesi tarafından belirtilen uzaklık değeri **FX_FAULT_TOLERANT_BOOT_INDEX.** Varsayılan olarak bu simge 116 olarak tanımlanır. Fat12/ 16/32 ve exFAT belirtimleri içinde ayrılmış olarak işaretlenen bu konum seçilir.
 
-Günlük üstbilgisi alanı, tüm günlük yapısını açıklayan bilgileri içerir ve her bir alanı ayrıntılı olarak açıklar.
+Şekil 5,"Günlük Yapısı Düzeni", günlük yapısının genel düzenini gösterir. Günlük yapısı üç bölüm içerir: Günlük Üst Bilgisi, FAT Zinciri ve Günlük Girişleri.
 
-**TABLO 8. Günlük üst bilgi alanı**
+> [!IMPORTANT]
+> *Günlük girişlerinde depolanan tüm çoklu bayt değerleri Little Endian biçimindedir.*
 
-|Alan|Boyut (bayt)|Description|
+![Günlük Yapısı Düzeni](./media/user-guide/log-structure-layout.png)
+
+**Şekil 5. Günlük Yapısı Düzeni**
+
+Günlük Üst Bilgisi alanı, günlük yapısının tamamını açıklayan ve her alanı ayrıntılı olarak açıklayan bilgiler içerir.
+
+**TABLO 8. Günlük Üst Bilgisi Alanı**
+
+|Alan|Boyut (bayt cinsinden)|Description|
 |-----|--------------|-----------|
-|ID|4|Bir FileX hata toleransı günlük yapısını tanımlar. KIMLIK değeri 0x46544C52 değilse, günlük yapısı geçersiz olarak kabul edilir.|
-|Toplam Boyut|2|Tüm günlük yapısının toplam boyutunu (bayt olarak) belirtir.|
-|Üst bilgi sağlama toplamı|2|Günlük üst bilgi alanını dönüştüren sağlama toplamı. Üstbilgi alanları sağlama toplamı doğrulamasında başarısız olursa günlük yapısı geçersiz olarak kabul edilir.|
-|Sürüm Numarası|2|FileX hataya dayanıklı büyük ve küçük sürüm numaraları.|
-|Ayrılmıştır|2|Daha sonra genişletme için.|
+|ID|4|FileX Hataya Karşı KarşıTlı Günlük yapısını tanımlar. Kimlik değeri doğrulanmazsa günlük yapısı geçersiz 0x46544C52.|
+|Toplam Boyut|2|Günlük yapısının tamamının toplam boyutunu (bayt cinsinden) gösterir.|
+|Üst Bilgi SağlamaLarı|2|Günlük üst bilgisi alanına dönüştüren sağlamalar. Üst bilgi alanları sağlama tam sayı doğrulamasında başarısız olursa günlük yapısı geçersiz olarak kabul edilir.|
+|Sürüm Numarası|2|FileX Hataya Karşı Büyük ve Küçük Sürüm Numaraları.|
+|Ayrılmıştır|2|Gelecekteki genişleme için.|
 
-Günlük üst bilgi alanının ardından FAT zinciri günlük alanı bulunur. Şekil 9 ' da, FAT zincirinin nasıl değiştirilmesi gerektiğini açıklayan bilgiler yer alır. Bu günlük alanı, bir dosyaya ayrılan kümelerle ilgili bilgiler, bir dosyadan çıkarılan kümeler ve ekleme/silmenin nerede olması gerektiğini ve FAT zinciri günlük alanındaki her alanı açıklar.
+Günlük Üst Bilgisi alanı, FAT Zincir Günlüğü alanı tarafından takip ediliyor. Şekil 9'da FAT zincirinin nasıl değiştirileceklerini açıklayan bilgiler yer almaktadır. Bu günlük alanı bir dosyaya ayrılan kümeler, bir dosyadan kaldırılan kümeler ve ekleme/silmenin nerede olması gerektiği hakkında bilgiler içerir ve FAT Zincir Günlüğü alanında her alanı açıklar.
 
-**TABLO 9. FAT zinciri günlük alanı**
+**TABLO 9. FAT Zincir Günlüğü Alanı**
 
-|Alan|Boyut (bayt)|Açıklama|
+|Alan|Boyut (bayt cinsinden)|Description|
 |-----|--------------|-----------|
-|FAT zinciri günlüğü sağlama toplamı|2|Tüm FAT zinciri günlük alanının sağlama toplamı. Sağlama toplamı doğrulamasında başarısız olursa FAT zinciri günlük alanı geçersiz olarak kabul edilir.|
-|Bayrak|1|Geçerli bayrak değerleri şunlardır:<br/>0x01 FAT zinciri geçerli<br />0x02 BIT EŞLEMI kullanılıyor|
-|Ayrılmıştır|1|Gelecekte kullanılmak üzere ayrılmış|
-|Ekleme noktası – ön|4|Yeni oluşturulan zincirin eklendiği küme (orijinal FAT zincirine ait).|
-|Yeni FAT zincirinin baş kümesi|4|Yeni oluşturulan FAT zincirinin ilk kümesi|
-|Özgün FAT zincirinin baş kümesi|4|Kaldırılacak özgün FAT zincirinin bölümünün ilk kümesi.|
-|Ekleme noktası – geri|4|Yeni oluşturulan FAT zincirinin üzerinde birleşen özgün küme.|
-|Sonraki silme noktası|4|Bu alan, FAT zinciri Temizleme yordamına yardımcı olur.|
+|FAT Zincir Günlüğü SağlamaLarı|2|FAT Zinciri Günlük alanı tamamının sağlamaları. SAĞLAMA tam sayı doğrulaması başarısız olursa FAT Zincir Günlüğü alanı geçersiz olarak kabul edilir.|
+|Bayrak|1|Geçerli bayrak değerleri:<br/>0x01 FAT Chain Valid<br />0x02 BITMAP kullanılıyor|
+|Ayrılmıştır|1|Gelecekteki kullanım için ayrılmıştır|
+|Ekleme Noktası – Ön|4|Yeni oluşturulan zincirin ekli olduğu küme (özgün FAT zincirine ait olan).|
+|Yeni FAT Zincirinin Baş Kümesi|4|Yeni oluşturulan FAT Zincirinin ilk kümesi|
+|Özgün FAT Zincirinin Baş Kümesi|4|Kaldırılacak özgün FAT Zinciri bölümünün ilk kümesi.|
+|Ekleme Noktası – Geri|4|Yeni oluşturulan FAT zincirinin bulunduğu özgün küme.|
+|Sonraki Silme Noktası|4|Bu alan FAT zinciri temizleme yordamına yardımcı olur.|
 
-Günlük girişleri alanı, bir hatadan kurtarmak için gereken değişiklikleri tanımlayan günlük girdilerini içerir. FileX hata toleranslı modülünde desteklenen üç günlük girişi türü vardır: FAT günlük girdisi; Dizin günlüğü girişi; ve bit eşlem günlüğü girişi.
+Günlük Girişleri Alanı, bir hatadan kurtarmak için gereken değişiklikleri açıklayan günlük girdilerini içerir. FileX hataya karşı olan modülde desteklenen üç tür günlük girişi vardır: FAT Günlük Girişi; Dizin Günlüğü Girişi; ve Bit Eşlem Günlüğü Girişi.
 
-Aşağıdaki üç şekil ve üç tablo bu günlük girdilerini ayrıntılı olarak anlatmaktadır.
+Aşağıdaki üç rakam ve üç tablo, bu günlük girişlerini ayrıntılı olarak açıklar.
 
-![FAT günlük girdisi](./media/user-guide/fat-log-entry.png)
+![FAT Günlük Girdisi](./media/user-guide/fat-log-entry.png)
 
-**Şekil 6. FAT günlük girdisi**
+**Şekil 6. FAT Günlük Girdisi**
 
-**TABLO 10. FAT günlük girdisi**
+**TABLO 10. FAT Günlük Girdisi**
 
-|Alan|Boyut (bayt)|Açıklama|
+|Alan|Boyut (bayt cinsinden)|Açıklama|
 |-----|--------------|-----------|
-Tür|2|Giriş türü, FX_FAULT_TOLERANT_FAT_LOG_TYPE olmalıdır|
-|Boyut|2|Bu girdinin boyutu|
-|Küme numarası|4|Küme numarası|
-|Değer|4|FAT girişine yazılacak değer|
+Tür|2|Giriş türü, FX_FAULT_TOLERANT_FAT_LOG_TYPE|
+|Boyut|2|Bu girişin boyutu|
+|Küme Numarası|4|Küme numarası|
+|Değer|4|FAT girdisine yazıldığı değer|
 
-![Dizin günlüğü girdisi](./media/user-guide/directory-log-entry.png)
+![Dizin Günlüğü Girişi](./media/user-guide/directory-log-entry.png)
 
-**Şekil 7. Dizin günlüğü girdisi**
+**Şekil 7. Dizin Günlüğü Girişi**
 
-**TABLO 11. Dizin günlüğü girdisi**
+**TABLO 11. Dizin Günlüğü Girişi**
 
-|Alan|Boyut (bayt)|Açıklama|
+|Alan|Boyut (bayt cinsinden)|Açıklama|
 |-----|--------------|-----------|
-|Tür|2|Giriş türü, FX_FAULT_TOLERANT_DIRECTORY_LOG_TYPE olmalıdır|
-|Boyut|2|Bu girdinin boyutu|
-|Kesim boşluğu|4|Bu dizinin bulunduğu kesime (bayt cinsinden).|
-|Günlük kesimi|4|Dizin girişinin bulunduğu sektör|
+|Tür|2|Giriş türü, FX_FAULT_TOLERANT_DIRECTORY_LOG_TYPE|
+|Boyut|2|Bu girişin boyutu|
+|Kesim Farkı|4|Bu dizinin bulunduğu kesime uzaklık (bayt cinsinden).|
+|Günlük Kesimi|4|Dizin girişinin bulunduğu kesim|
 |Günlük Verileri|Değişken|Dizin girişinin içeriği|
 
-![Bit eşlem günlüğü girdisi](./media/user-guide/bitmap-log-entry.png)
+![Bit Eşlem Günlüğü Girişi](./media/user-guide/bitmap-log-entry.png)
 
-**Şekil 8. Bit eşlem günlüğü girdisi**
+**Şekil 8. Bit Eşlem Günlüğü Girişi**
 
-**TABLO 12. Bit eşlem günlüğü girdisi**
+**TABLO 12. Bit Eşlem Günlüğü Girişi**
 
-|Alan|Boyut (bayt)|Açıklama|
+|Alan|Boyut (bayt cinsinden)|Açıklama|
 |-----|--------------|-----------|
-|Tür|2|Giriş türü, FX_FAULT_TOLERANT_BITMAP_LOG_TYPE olmalıdır|
-|Boyut|2|Bu girdinin boyutu|
-|Küme numarası|4|Küme numarası|
-|Değer|4|FAT girişine yazılacak değer|
+|Tür|2|Giriş türü, FX_FAULT_TOLERANT_BITMAP_LOG_TYPE|
+|Boyut|2|Bu girişin boyutu|
+|Küme Numarası|4|Küme numarası|
+|Değer|4|FAT girdisine yazıldığı değer|
 
-## <a name="fault-tolerant-protection"></a>Hataya dayanıklı koruma
+## <a name="fault-tolerant-protection"></a>Hataya Karşı Koruma
 
-FileX hata toleranslı modülü başladıktan sonra, öncelikle medyada mevcut bir hataya dayanıklı günlük dosyası arar. Geçerli bir günlük dosyası bulunamazsa, FileX medyayı korumasız olarak değerlendirir. Bu durumda, FileX medyada bir hata toleranslı günlük dosyası oluşturur.
+FileX Hataya Karşı İlke Modülü başladıktan sonra, ilk olarak medyada mevcut hataya karşı tepkili bir günlük dosyasını arar. Geçerli bir günlük dosyası bulunamazsa, FileX medyayı korumasız olarak kabul ediyor. Bu durumda FileX, medya üzerinde hataya karşı tepkili bir günlük dosyası oluşturacak.
 
 > [!IMPORTANT]
-> * FileX, dosya sistemini, FileX hata toleranslı modülü başlamadan önce bozuksa koruyamaz. *
+> *FileX Hataya Karşı Koruma Modülü başlamadan önce dosya sistemi bozuksa FileX koruyamaz. *
 
-Bir hata toleranslı günlük dosyası bulunuyorsa, FileX mevcut günlük girişlerini denetler. Günlük girişi olmayan bir günlük dosyası, önceki dosya işleminin başarılı olduğunu ve tüm günlük girişlerinin kaldırıldığını gösterir. Bu durumda, uygulama hataya dayanıklı koruma ile dosya sistemini kullanmaya başlayabilir.
+Hataya karşı karşı bir günlük dosyası bulunuyorsa, FileX var olan günlük girdilerini denetler. Günlük girişi olmadan bir günlük dosyası, önceki dosyanın başarılı olduğunu ve tüm günlük girdilerinin kaldırılmış olduğunu gösterir. Bu durumda uygulama, hataya karşı koruma ile dosya sistemini kullanmaya başlayabilir.
 
-Ancak günlük girişleri konumlandırıldığında, FileX 'in önceki dosya işlemini tamamlaması veya dosya sistemine zaten uygulanmış olan değişiklikleri geri döndürmesinden önce, değişiklikleri etkin bir şekilde geri alın. Her iki durumda da, günlük girdileri dosya sistemine uygulandıktan sonra, dosya sistemi tutarlı bir duruma geri yüklenir ve uygulama dosya sistemini yeniden kullanmaya başlayabilir.
+Ancak günlük girişleri bulunursa, FileX'in önceki dosya işlemini tamamlaması veya dosya sistemine zaten uygulanmış değişiklikleri geri döndürmesi, değişiklikleri etkili bir şekilde geri alması gerekir. Her iki durumda da, günlük girişleri dosya sistemine uygulandıktan sonra, dosya sistemi tutarlı bir durumda geri yüklenir ve uygulama dosya sistemini yeniden kullanmaya başlayabilir.
 
-Dosya güncelleştirme işlemi sırasında FileX tarafından korunan medya için veri bölümü doğrudan medyaya yazılır. FileX, verileri yazdığında, Dizin girişlerine, FAT tablosuna uygulanması gereken tüm değişiklikleri de kaydeder. Bu bilgiler, dosya dayanıklı günlük girişlerine kaydedilir. Bu yaklaşım, veriler medyaya yazıldıktan sonra dosya sistemi güncelleştirmelerinin gerçekleşmesini güvence altına alır. Veri yazma aşamasında medya çıkartılamamışsa, önemli dosya sistemi bilgileri henüz değiştirilmez. Bu nedenle, dosya sistemi kesintiye karşı etkilenmez.
+FileX tarafından korunan medyalarda, dosya güncelleştirme işlemi sırasında veri kısmı doğrudan medyaya yazılır. FileX verileri yazdığında, dizin girişlerine (FAT tablosu) uygulanması gereken tüm değişiklikleri de kaydedmektedir. Bu bilgiler, dosyanın karşıt günlük girişlerine kaydedilir. Bu yaklaşım, veriler medyaya yazıldığı zaman dosya sistemi güncelleştirmelerinin gerçekleşmesini garantiler. Medya veri yazma aşamasında çıkarılırsa, önemli dosya sistemi bilgileri henüz değişmemiştir. Bu nedenle dosya sistemi kesintiden etkilenmez.
 
-Tüm veriler medyaya başarıyla yazıldıktan sonra, FileX, değişiklikleri sistem bilgilerinde, tek seferde bir giriş olacak şekilde uygulamak için günlük girdilerindeki bilgileri izler. Tüm sistem bilgileri medyaya kaydedildikten sonra, günlük girişleri hataya dayanıklı günlüğünden kaldırılır. Bu noktada, FileX dosya güncelleştirme işlemini tamamlar.
+Tüm veriler medyaya başarıyla yazıldıktan sonra FileX, değişiklikleri sistem bilgilerine tek tek bir girdi olarak uygularken günlük girişlerinde yer alan bilgileri izler. Tüm sistem bilgileri medyaya işlendikten sonra, günlük girişleri hataya karşı tepkili günlükten kaldırılır. Bu noktada, FileX dosya güncelleştirme işlemini tamamlar.
 
-Dosya güncelleştirme işlemi sırasında dosyalar yerinde güncellenmez. Hataya dayanıklı modül, verilerin yeni verileri içine yazması için bir sektör ayırır ve sonra üzerine yazılacak verilerin bulunduğu kesimi kaldırır ve yeni kesimi chça bağlamak üzere ilgili FAT girişlerini günceller. Bir kümedeki kısmi verilerin değiştirilmesi gereken durumlarda, FileX her zaman yeni kümeler ayırır, güncelleştirilmiş verilerle eski kümelerden tüm verileri yeni kümelere yazar ve ardından eski kümeleri boşaltır. Bu, dosya güncelleştirmesi kesintiye uğrarsa özgün dosyanın bozulmadan emin olur. Uygulamanın, FileX hataya dayanıklı koruma altında, bir dosyadaki verilerin güncelleştirilmesi için medyanın, eski verileri olan kesimlerin yayımlanmasından önce yeni verileri tutacak yeterli boş alana sahip olması gerektiğini bilmesi gerekir. Medyada yeni verileri tutmak için yeterli alan yoksa güncelleştirme işlemi başarısız olur.
+Dosya güncelleştirme işlemi sırasında dosyalar yerinde güncelleştirilmez. Hataya karşı koruma modülü, yeni verilerin yazılacak verileri yazması için bir kesim ayırır ve ardından üzerine yazılacak verileri içeren kesimi kaldırır ve yeni kesimi chian'a bağlaması için ilgili FAT girişlerini güncelleştirin. Bir kümede kısmi verilerin değiştirilmesi gereken durumlarda FileX her zaman yeni kümeler ayırır, güncelleştirilmiş verilerle eski kümelerden tüm verileri yeni kümelere yazar ve ardından eski kümeleri serbest yazar. Bu, dosya güncelleştirmesi kesintiye uğrarsa özgün dosyanın bozulmamış olduğunu garantiler. Uygulamanın FileX hataya karşı koruma altında, bir dosyada verileri güncelleştirmek için medyanın eski verilere sahip kesimlerin serbest bırakılamadan önce yeni verileri tutmak için yeterli boş alana sahip olması gerektiğinin farkında olması gerekir. Medyada yeni verileri tutmak için yeterli alan yoksa güncelleştirme işlemi başarısız olur.

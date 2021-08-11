@@ -1,133 +1,133 @@
 ---
-title: Basit örnek proje
-description: Bu bölümde, GUıDX Studio 'da örnek projenin nasıl oluşturulduğu ve Gux üzerinde örnek yürütülmesi açıklanmaktadır.
+title: Basit Örnek Project
+description: Bu bölümde GUIX Studio'da örnek bir proje oluşturma ve örneği GUIX'te yürütme açık bir şekilde anlattır.
 author: jdeere5220
 ms.author: kemaxwel
 ms.date: 9/30/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 3661396f097e0ed7bd872fae01a7bec9212001b9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8981bed62d2929703e4233d6a3ee31b692226c26d046875a235bf3aca32a7573
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826428"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116786660"
 ---
-# <a name="chapter-10-example-project"></a>Bölüm 10: örnek proje
+# <a name="chapter-10-example-project"></a>Bölüm 10: Örnek Project
 
-Bu bölümde, GUıDX Studio 'da örnek projenin nasıl oluşturulduğu ve Gux üzerinde örnek yürütülmesi açıklanmaktadır.
+Bu bölümde GUIX Studio'da örnek bir proje oluşturma ve örneği GUIX'te yürütme açık bir şekilde anlattır.
 
 ## <a name="create-new-project"></a>Yeni Proje Oluştur
 
-İlk adım yeni bir proje oluşturuyor ve projenin destekleyeceği ekranları ve dilleri yapılandırıyor. GUX Studio 'Yu ilk kez başlattığınızda, ***son projeler*** ekranını görürsünüz:
+İlk adım yeni bir proje oluşturmak ve projenin destekleyecek ekranları ve dilleri yapılandırmaktır. GUIX Studio'yu ilk kez başlatacak olurken Son Projeler ***ekranı*** görüntülenir:
 
-![GUX Studio son projeler iletişim kutusunun ekran görüntüsü.](./media/guix-studio/recent_projects.png)
+![GUIX Studio Son Projeler iletişim kutusunun ekran görüntüsü.](./media/guix-studio/recent_projects.png)
 
-**Şekil 10,1**
+**Şekil 10.1**
 
-***Yeni proje oluştur** _... öğesine tıklayın. düğmesini başlatın. Burada gösterilen _ *_New GUıDX projesi_** iletişim kutusu görüntülenir:
+* Yeni Oluştur **_... Project** tıklayın düğmesine tıklayarak yeni bir proje başlatabilirsiniz. Burada gösterilen _ Yeni *_GUIX Project_** iletişim kutusu gösterilir:
 
-![GUX Studio yeni proje oluştur iletişim kutusunun ekran görüntüsü.](./media/guix-studio/create_new_project.png)
+![GUIX Studio Yeni Uygulama Oluştur iletişim kutusunun Project görüntüsü.](./media/guix-studio/create_new_project.png)
 
-**Şekil 10,2**
+**Şekil 10.2**
 
-Proje adı olarak "***new_example***" adını yazın. Proje adları, standart C değişken adlandırma kuralları, yani özel veya ayrılmış karakter kullanmalıdır. Projenin kaydedileceği konumun yolunu yazın. Yolun geçerli bir dosya sistemi dizini olması gerekir, diğer bir deyişle, yoksa Gux Studio dizini oluşturmaz. Projeyi oluşturmak için "Tamam" a tıklayın.
+Proje adı olarak "***new_example***" yazın. Project adları, özel veya ayrılmış karakter olmayan standart C değişken adlandırma kuralları kullanmalıdır. Projenin kaydedilebilir olduğu konumun yolunu yazın. Yol geçerli bir dosya sistemi dizini olmalıdır, yani guix Studio yoksa dizini oluşturmaz. Projeyi oluşturmak için "Tamam"a tıklayın.
 
-Gösterilen sonraki ekran, burada gösterilen proje yapılandırma ekranıdır:
+Gösterilen sonraki ekran, Project yapılandırma ekranıdır:
 
-![GUX Studio proje yapılandırma iletişim kutusunun ekran görüntüsü.](./media/guix-studio/config_new_project.png)
+![GUIX Studio Yapılandırma iletişim kutusunun Project görüntüsü.](./media/guix-studio/config_new_project.png)
 
-**Şekil 10,3**
+**Şekil 10.3**
 
-Bu iletişim kutusu, projenizin kaç tane görüntülediğini belirtmenizi ve her bir görüntü için bir ad vermenizi sağlar. Her bir ekran tarafından desteklenen renk biçimini belirtmeniz gerekir ve isteğe bağlı olarak her bir ekran için Studio tarafından oluşturulan çıkış dosyaları için bir yol adı yazın. Çıkış dosyaları için varsayılan dizin "***. \\***", yani C çıktı dosyaları projenin kendisiyle aynı dizine yazılır.
+Bu iletişim kutusu, projenizin kaç görüntü destekley desteğine sahip olduğunu belirtmenize ve her görüntüye bir ad vermenizi sağlar. Her ekran tarafından desteklenen renk biçimini belirtmeniz ve isteğe bağlı olarak her görüntü için Studio tarafından oluşturulan çıkış dosyaları için bir yol adı yazmalısiniz. Çıkış dosyalarının varsayılan dizini "***\\ .***" şeklindedir, yani C çıkış dosyaları projenin kendisiyle aynı dizine yazılır.
 
-Bu örnekte, * ekran **sayısı** _ ' i "1" olarak ayarlayın, görünen ad alanına "_*_main_display_*_" adını yazın ve "_*_tuval belleğini ayır_*_" seçeneğini işaretleyin. Çözümleme, renk biçimi ve dizin alanlarını varsayılan değerlerinde bırakın ve _ *_Tamam_* * öğesine tıklayın.
+Bu örnek için ***** Görüntüleme Sayısı _ değerini "1" olarak ayarlayın, görünen ad alanına "_*_main_display_*_" yazın ve " tuval belleği ayır" öğesini _*_kontrol_*_ edin. Çözümleme, renk biçimi ve dizin alanlarını varsayılan değerlerinde bırakın ve _* Tamam _**'a_ tıklayın.
 
-Artık Şekil 10,4 ' de gösterildiği gibi, projenizi Studio IDE ile açık olarak görmeniz gerekir:
+Artık şekil 10.4'te gösterildiği gibi projenizin Studio IDE ile açık olduğunu görüyoruz:
 
-![Studio IDE ile açılmış projenin ekran görüntüsü.](./media/guix-studio/initial_screen.png)
+![Studio IDE ile açık bir projenin ekran görüntüsü.](./media/guix-studio/initial_screen.png)
 
-**Şekil 10,4**
+**Şekil 10.4**
 
-Yeni bir proje oluşturduğunuzda, GUıDX Studio otomatik olarak projeniz için başlangıç noktası olarak varsayılan bir pencere oluşturur. Bu gri kutu, sizin için oluşturulan varsayılan pencere, *hedef görünüm* içinde ortalandı.
+Yeni bir proje oluştururken GUIX Studio, projenizin başlangıç noktası olarak otomatik olarak varsayılan bir pencere oluşturur. Bu gri kutu, sizin için oluşturulan varsayılan penceredir ve Hedef Görünüm içinde *ortalar.*
 
-Bu pencere seçili değilse, pencerenin çevresine kesikli seçim kutusu çizilmek üzere pencereye tıklayın. Şimdi ***Özellikler Görünümü** _ ' de, _*_pencere öğesi adı_*_, _*_pencere öğesi kimliği_*_, _*_sol_*_, _*_üst_*_, _*_Genişlik_*_, _*_Yükseklik_*_ ve _ *_Border_** öğesini aşağıda gösterilen ayarlarla eşleşecek şekilde değiştirin. Bu değişiklikleri yaparken, değişikliklerinizin hedef görünümde hemen etkili olduğunu görmeniz gerekir.
+Bu pencere seçili değilse pencereye tıklayın, böylece pencere etrafında kesikli seçim kutusu çizilir. * Özellikler Görünümü **'ne** _, Pencere Öğesi _*_Adı,_*_ _*_Pencere_*_ Öğesi Kimliği , _*_Sol_*_, _*_Üst_*_, _*_Genişlik,_*_ _*_Yükseklik_*_ ve _ *_Kenarlık_** değerini aşağıda gösterilen ayarlarla eş olacak şekilde değiştirin. Bu değişiklikleri yaptığınız sürece, değişikliklerinizin Hedef Görünüm'de hemen etkili olduğunu görüyor olun.
 
 ![Özellikler Görünümü iletişim kutusunun ekran görüntüsü.](./media/guix-studio/initial_window_properties.png)
 
-**Şekil 10,5**
+**Şekil 10.5**
 
-Bir sonraki adımda, bir ***GX_ICON** _ pencere öğesi içinde kullanılacak bir pixelmap kaynağı ekleyeceğiz. Bu örnekte ince çalışacak şekilde Gux Studio dağıtımlarınız ile çeşitli simgeler sağlanır. _*_Pixelmaps_*_ kaynak görünümü genişletin ve _ *_Yeni pixelmap Ekle_** düğmesine tıklayın:
+Daha sonra * GX_ICON _ pencere öğesi içinde kullanılacak **bir piksel haritası** kaynağı ekleyebilirsiniz. GuiX Studio dağıtımınız ile birlikte bu örnek için uygun olacak çeşitli simgeler sağlanır. Piksel _*_haritalarınızı genişletin Kaynak Görünümü_*_ _ Yeni Piksel Haritası *_Ekle_** düğmesine tıklayın:
 
-![Yeni pixelmap Ekle düğmesinin ekran görüntüsü.](./media/guix-studio/image74.jpg)
+![Yeni Piksel Haritası Ekle düğmesinin ekran görüntüsü.](./media/guix-studio/image74.jpg)
 
-GUX Studio yükleme klasörünüze gidin ve ***./Graphics/simgeler** _ klasörü içinde _*_i_history_lg.png_*_ adlı dosyayı seçin. Bu kaynağı projenize eklemek için _*_Aç_*_ ' a tıklayın. _ *_Pixelmaps_** kaynak görünümü artık yeni eklenen simge görüntüsünün önizlemesini göstermelidir:
+GUIX Studio yükleme klasörünüze gidin ve ***./graphics/icons** _ klasöründen _*_i_history_lg.png._*_ Bu _*_kaynağı_*_ projenize eklemek için Aç'a tıklayın. _ *_Pixelmaps_** Kaynak Görünümü şimdi yeni eklenen simge görüntüsünün önizlemesini gösterebilirsiniz:
 
-![Pixelmaps Kaynak Görünümü ekran görüntüsü.](./media/guix-studio/example_add_pixelmap.png)
+![Piksel haritalarının ekran Kaynak Görünümü.](./media/guix-studio/example_add_pixelmap.png)
 
-**Şekil 10,6**
+**Şekil 10.6**
 
-Bu yeni görüntü kaynağını daha sonra UI tasarımımızın bir parçası olarak kullanacağız.
+Bu yeni görüntü kaynağını daha sonra kullanıcı arabirimi tasarımımızın bir parçası olarak kullanacağız.
 
-Bir pixelmap kaynağı eklemeye benzer şekilde, bu yazı tipini tasarımımızda daha sonra kullanabilmemiz için araç kutusu 'na yeni bir yazı tipi kaynağı ekleyeceğiz. ***Fonts** _ kaynak görünümü genişletin ve _*_Yeni yazı tipi Ekle_*_ düğmesine tıklayın. Bu eylem, yazı tipi _*_Ekle/Düzenle_*_ iletişim kutusunu çağırır. Ardından, Gux Studio yükleme klasöründe sunulan Gux yazı tiplerine gidin _*_ . \\ yazı tipleri \\ _ verasans_ ve _ _veraıt. ttf_*adlı TrueType yazı tipi dosyasını seçin**_._* Yazı tipi adı alanına "_MEDIUM_ITALIC_*_"_* yazı tipini yazın ve yükseklik alanına "_30_* *" yazın. İletişim kutusu artık şöyle görünmelidir:
+Pixelmap kaynağı eklemeye benzer şekilde, bu yazı tipini daha sonra tasarımımızda kullanacağız. ***** Yazı Tipleri _ Kaynak Görünümü ve Yeni Yazı Tipi _*_Ekle düğmesine_*_ tıklayın. Bu eylem Yazı tipi _*_ekle/düzenle iletişim kutusunu_*_ çağırır. Ardından GUIX Studio yükleme klasöründe sağlanan GUIX yazı tiplerini (). _*_ \\ yazı \\ verasans_ _ yazın ve _ _VeraIt.ttf_ adlı *TrueType* yazı tipi dosyasını *_seçin. Yazı tipi adı alanına yazı_* tipi adını "_MEDIUM_ITALIC_" yazın ve yükseklik alanına *_"_*_30_**" yazın. İletişim kutusu şu şekilde görünür:
 
-![Yazı tipi düzenleme iletişim kutusunun ekran görüntüsü.](./media/guix-studio/example_add_font.png)
+![Yazı Tipini Düzenle iletişim kutusunun ekran görüntüsü.](./media/guix-studio/example_add_font.png)
 
-**Şekil 10,7**
+**Şekil 10.7**
 
-Bu yazı tipini projenize eklemek için ***Tamam*** ' ı tıklatın. Artık Kaynak Görünümü yazı tipini görmeniz gerekir:
+Bu ***yazı tipini*** projenize eklemek için Tamam'a tıklayın. Artık yazı tipini aşağıdaki gibi Kaynak Görünümü:
 
-![Kaynak Görünümü yazı tiplerinin ekran görüntüsü.](./media/guix-studio/example_font_added.png)
+![Kaynak Görünümü.](./media/guix-studio/example_font_added.png)
 
-**Şekil 10,8**
+**Şekil 10.8**
 
-Bu yeni yazı tipini, Kullanıcı arabirimi tasarımımızda daha sonra kullanacağız.
+Bu yeni yazı tipini daha sonra kullanıcı arabirimi tasarımımızda kullanacağız.
 
-Artık yeni kaynakların mevcut olduğuna göre, bu kaynakları kullanan ekranlarımıza bazı alt pencere öğeleri eklememiz gerekiyor. Hedef görünümdeki pencereye sağ tıklayarak "***hello_world** _" adlı önceden oluşturulmuş pencereyi seçin. Artık görüntülenen açılır menüde, yeni bir _ *_GX_PROMPT_** pencere öğesi eklemek ve pencere öğesini arka plan penceresine eklemek için menü komutunu _*_Ekle, metin, komut istemi_*_ ' ni seçin. Pencereniz şu şekilde görünmelidir:
+Artık yeni kaynaklara sahip olduğunu göre ekranımıza bu kaynakları kullana bir alt pencere öğesi eklememiz gerekiyor. Hedef Görünüm'de pencereye **sağ tıklayarak**"* hello_world _" adlı önceden oluşturulmuş pencereyi seçin. Şimdi görüntülenen açılır menüde Ekle, Metin, İstem menü komutunu seçerek yeni bir _ *_GX_PROMPT_** pencere öğesi girin ve pencere öğesini arka plan penceresine iliştirin. _**_ Pencereniz şimdi şöyle görünür:
 
-![Istem seçimine sahip bir açılan menünün ekran görüntüsü](./media/guix-studio/image78.jpg)
+![İstem seçiminin yer alan açılır menüsünün ekran görüntüsü](./media/guix-studio/image78.jpg)
 
-**Şekil 10,9**
+**Şekil 10.9**
 
-_ *_Fonts_** kaynak görünümü içindeki "***MEDIUM_ITALIC** _" adlı yazı tipine tıklayın ve yazı tipini komut istemi pencere öğesine sürükleyin ve bırakın. Sonra, istemi yeniden boyutlandırmak, istem saydamlığını ayarlamak ve istem metnini ve stilini değiştirmek için Şekil 10,10 ' de gösterilen istem özelliklerini düzenleyin:
+_ *_Fonts_** Kaynak Görünümü içinde "***MEDIUM_ITALIC** _" adlı yazı tipine tıklayın ve istemin pencere öğesinde yazı tipini sürükleyip bırakın. Ardından, şekil 10.10'da gösterildiği gibi istemi yeniden boyutlandırmak, istem saydamlığını ayarlamak ve istem metnini ve stilini değiştirmek için istem özelliklerini düzenleyin:
 
-![İstem için özellikler görünümünün ekran görüntüsü.](./media/guix-studio/image79.jpg)
+![İstem için Özellikler Görünümü'nin ekran görüntüsü.](./media/guix-studio/image79.jpg)
 
-**Şekil 10,10**
+**Şekil 10.10**
 
-Bu ayarların her birini ekran çözünürlüğünüzle ilgili olarak görmek için Özellikler görünümünde dikey olarak kaydırma yapmanız gerekebilir. Bu değişiklikleri yaptıktan sonra, hedef görünümlerinizin şu şekilde görünmesi gerekir:
+Ekran çözünürlüğüne bağlı olarak bu ayarların her birini görmek için Özellikler Görünümü'ne dikey olarak kaydırmanız gerekebilir. Bu değişiklikleri tamamladikten sonra Hedef Görünüm şu şekilde görüntü gerekir:
 
-![Merhaba Dünya seçime sahip bir açılır menünün ekran görüntüsü.](./media/guix-studio/image80.jpg)
+![Uygulama seçimiyle birlikte açılan men Merhaba Dünya görüntüsü.](./media/guix-studio/image80.jpg)
 
-**Şekil 10,11**
+**Şekil 10.11**
 
-Daha sonra ekrana bir simge düğme stili pencere öğesi yerleştireceğiz. Üzerine tıklayarak arka plan penceresini seçin ve pencereye yeni bir _*_GX_ICON_BUTTON_*_ eklemek için en üst düzey menü veya sağ tıklama açılan menüsünü kullanın. (**Ekle, düğme, simge düğmesi** _) seçeneğini belirleyin. Daha önce eklediğimiz _ *_I_HISTORY_LG_** adlı simgeye tıklayın ve simgeyi simge düğmesine sürükleyin. Özellikler görünümünü kullanarak, simge konumunu ve boyutunu aşağıda göster olarak ayarlayın:
+Daha sonra, ekrana Simge Düğmesi stilinde bir pencere öğesi yer alastırız. Arka plan penceresine tıklayarak arka plan penceresini seçin ve üst düzey menüyü veya sağ tıklama açılan menüsünü kullanarak ***Ekle, Düğme,** Simge Düğmesi _ öğesini seçerek pencereye yeni bir _*_GX_ICON_BUTTON_*_ ekleyin. Daha önce eklemiz _ *_I_HISTORY_LG_** adlı Simgeye tıklayın ve simge düğmesine sürükleyin. Özellikler görünümünü kullanarak simge konumunu ve boyutunu aşağıda olduğu gibi ayarlayın:
 
-![Simge düğmesi stili pencere öğesi için özellikler görünümünün ekran görüntüsü.](./media/guix-studio/image81.jpg)
+![Simge düğmesi stili pencere öğesi için Özellikler Görünümü'nin ekran görüntüsü.](./media/guix-studio/image81.jpg)
 
-**Şekil 10,12**
+**Şekil 10.12**
 
-Ekranınız şu şekilde görünmelidir:
+Ekranınız şimdi şöyle görünür:
 
-![Merhaba Dünya ve Pano simgesiyle açılan menünün ekran görüntüsü.](./media/guix-studio/image82.jpg)
+![Pano ve pano simgesinin yer Merhaba Dünya menüsünün ekran görüntüsü.](./media/guix-studio/image82.jpg)
 
-**Şekil 10,13**
+**Şekil 10.13**
 
-Bu, basit örnek ekran tasarımı için bu tamamlamayı arayacağız. Gerçek uygulama ekranlarınız büyük olasılıkla çok daha karmaşık olacaktır, ancak bu, kendi uygulama ekranlarınızı oluşturmak için Gux Studio 'Yu nasıl kullanacağınızı göstermek için yeterlidir.
+Basit örnek ekran tasarımı için bu tam olarak çağrılır. Gerçek uygulama ekranlarınızı büyük olasılıkla çok daha karmaşık hale gelecektir, ancak kendi uygulama ekranlarınızı oluşturmak için GUIX Studio'yu nasıl kullanabileceğinizi göstermek için bu yeterlidir.
 
-## <a name="generate-resource-and-application-code"></a>Kaynak ve uygulama kodu oluştur
+## <a name="generate-resource-and-application-code"></a>Kaynak ve Uygulama Kodu Oluşturma
 
-Sonraki adım, katıştırılmış Gux çalışma zamanı Kullanıcı arabirimini tanımlayan kaynak dosyası ve belirtim dosyası oluşturmak için kullanılır. Çıkış dosyalarınızı oluşturmak için proje görünümündeki ***main_display** _ düğümüne sağ tıklayıp _ *_kaynak dosyaları oluştur_** komutunu seçmeniz gerekir. Şekil 10,14 ' de gösterildiği gibi, kaynak dosyalarınızın oluşturulduğunu belirten bir bilgi penceresi gözlemleyeceksiniz:
+Sonraki adım, ekli GUIX çalışma zamanı kullanıcı arabirimini tanımlayan kaynak dosyası ve belirtim dosyasını oluşturmaktır. Çıkış dosyalarınızı oluşturmak için, Project View 'da ***main_display** _ düğümüne sağ tıklar ve *___* Kaynak Dosyaları Oluştur * komutunu seçmeniz gerekir. Şekil 10.14'te gösterildiği gibi kaynak dosyalarınızın oluşturulmuş olduğunu gösteren bir bilgi penceresi gözlemlersiniz:
 
 ![Bildirim iletişim kutusunun ekran görüntüsü.](./media/guix-studio/image83.jpg)
 
-**Şekil 10,14**
+**Şekil 10.14**
 
-Bu bildirimi kapatmak için ***Tamam** _ ' e tıklayın ve _*_main_display_*_ düğümüne sağ tıklayıp _ *_Belirtim dosyaları oluştur_** komutunu seçerek aynı yordamı kullanın. Benzer bir bildirim penceresi gözlemleyebilirsiniz. Basit UI uygulama dosyalarınızı oluşturdunuz.
+Bu bildirimi **silmek** için * Tamam _ seçeneğine tıklayın ve _**_ main_display düğümüne sağ tıklar ve *___* Belirtim Dosyaları Oluştur * komutunu seçmek için aynı yordamı kullanın. Benzer bir bildirim penceresi gözlemleyebilirsiniz. Artık basit KULLANıCı arabirimi uygulama dosyalarınızı oluşturabilirsiniz.
 
-## <a name="create-user-supplied-code"></a>Kullanıcı tarafından sağlanan kod oluştur
+## <a name="create-user-supplied-code"></a>Kullanıcı Tarafından Sağlanan Kod Oluşturma
 
-Sonraki adım, Gux Studio tarafından üretilen ekran tasarımını çağırabilecek kendi uygulama dosyanızı oluşturmaktır. Tercih ettiğiniz düzenleyiciyi kullanarak, ***new_example. c*** adlı bir kaynak dosya oluşturun ve bu dosyaya aşağıdaki kaynak kodu girin:
+Sonraki adım, GUIX Studio tarafından oluşturulan ekran tasarımını çağıracak kendi uygulama dosyanızı oluşturmaktır. Tercih ettiğiniz düzenleyiciyi kullanarak ***new_example.c*** adlı bir kaynak dosya oluşturun ve bu dosyaya aşağıdaki kaynak kodu girin:
 
 ```C
 
@@ -199,9 +199,9 @@ VOID new_example_thread_entry(ULONG thread_input)
 }
 ```
 
-Yukarıdaki kaynak kodu, `GUIX New Example Thread` 4k baytlık yığın boyutuyla adlı tipik bir ThreadX iş parçacığı oluşturur. İlginç işler ***new_example_thread_entry*** adlı işlevde başlar. Bu işlev, Gux 'e özgü iş parçacığının çalışmaya başladığı yerdir.
+Yukarıdaki kaynak kod, yığın boyutu 4K bayt olan adlı tipik bir ThreadX `GUIX New Example Thread` iş parçacığı oluşturur. İlginç iş, new_example_thread_entry ***adlı işlevde başlar.*** Bu işlev, GUIX'e özgü iş parçacığının çalıştırmaya başladığı yerdir.
 
-İlk çağrı ***gx_system_initialize*** adlı işleve yapılır. Bu çağrı, Gux kitaplığını ilk kullanım için hazırlamak üzere diğer bir GUıDX API 'Leri çağrılmadan önce her zaman gereklidir.
+İlk çağrı, gx_system_initialize ***adlı işleve yapılan çağrıdır.*** Bu çağrı, Gux kitaplığını ilk kullanım için hazırlamak üzere diğer bir GUıDX API 'Leri çağrılmadan önce her zaman gereklidir.
 
 Sonra, örnek ***gx_studio_display_configure*** işlevini çağırır. Bu işlev, GUıDX görüntüleme örneğini oluşturur, uygulama dizesi tablosunun istenen dilini yüklerse, istenen temayı görüntüleme kaynaklarından yüklerse ve bu görüntü için oluşturulan kök penceresine bir işaretçi döndürüyor. Kök pencere, uygulamamız görüntülenecek olan tüm üst düzey ekranların üst öğesi olarak kullanılır.
 

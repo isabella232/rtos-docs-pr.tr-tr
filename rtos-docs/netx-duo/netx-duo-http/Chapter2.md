@@ -1,68 +1,68 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo HTTP 'yi yükleme ve kullanma
-description: Bu bölümde, Azure RTOS NetX Duo HTTP bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Duo HTTP Azure RTOS Yükleme ve Kullanma
+description: Bu bölümde NetX Duo HTTP bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9a3ea37b180ab57a8dcd269092638fa74589836a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8739603d4a387ff3f3f42c979bd00fcebe4f08efaab42ecade462adf1fb4906a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825966"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116783501"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-http"></a>Bölüm 2-Azure RTOS NetX Duo HTTP 'yi yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-http"></a>Bölüm 2 - NetX Duo HTTP Azure RTOS Yükleme ve Kullanma
 
-Bu bölümde, Azure RTOS NetX Duo HTTP bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde NetX Duo HTTP bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS NetX Duo, konumundaki ortak kaynak kodu deposundan elde edilebilir [https://github.com/azure-rtos/netxduo/](https://github.com/azure-rtos/netxduo/) .
+Azure RTOS NetX Duo, genel kaynak kod depomuzdan [https://github.com/azure-rtos/netxduo/](https://github.com/azure-rtos/netxduo/) edinebilirsiniz.
 
- - **nxd_http_client. h** NetX Duo için HTTP Istemcisi üst bilgi dosyası
- - **nxd_http_server. h** NetX Duo için HTTP sunucusu üst bilgi dosyası
- - **nxd_http_client. c** NetX Duo için HTTP Istemcisi için C kaynak dosyası
- - **nxd_http_server. c** NetX Duo için HTTP sunucusu için C kaynak dosyası
- - **nx_md5. c** MD5 Özet algoritmaları
- - **filex_stub. h** FileX yoksa saplama dosyası
+ - **nxd_http_client.h** NetX Duo için HTTP İstemcisi üst bilgi dosyası
+ - **nxd_http_server.h** NetX Duo için HTTP Sunucusu üst bilgi dosyası
+ - **nxd_http_client.c** NetX Duo için HTTP İstemcisi için C Kaynak dosyası
+ - **nxd_http_server.c** NetX Duo için HTTP Sunucusu için C Kaynak dosyası
+ - **nx_md5.c** MD5 özet algoritmaları
+ - **filex_stub.h** FileX yoksa saplama dosyası
  - **nxd_http.pdf** NetX Duo için HTTP açıklaması
- - **demo_netxduo_http. c** NetX Duo HTTP tanıtımı
+ - **demo_netxduo_http.c** NetX Duo HTTP gösterimi
 
-## <a name="http-installation"></a>HTTP yüklemesi
+## <a name="http-installation"></a>HTTP Yüklemesi
 
-NetX Duo için HTTP kullanmak istiyorsanız, daha önce bahsedilen dağıtımın tamamı NetX Duo 'un yüklü olduğu dizine kopyalanmalıdır. Örneğin, NetX Duo *"\threadx\arm7\green"* dizinine yüklenirse, NETX Duo http istemci uygulamaları için *nxd_http_client. h*  ve *Nxd_http_client. c* ve netx Duo http sunucu uygulamaları için *nxd_http_server. h* ve *nxd_http_server. c* . *nx_md5. c* bu dizine kopyalanmalıdır. Tanıtım ' RAM sürücüsü ' uygulaması NetX Duo HTTP Istemcisi ve sunucu dosyaları aynı dizine kopyalanmalıdır.
+NetX Duo için HTTP kullanmak üzere, daha önce bahsedilen dağıtımın tamamı NetX Duo'nın yüklü olduğu dizine kopyalanır. Örneğin, *"\threadx\arm7\green"* dizinine NetX Duo HTTP İstemcisi uygulamaları için *nxd_http_client.h*  ve *nxd_http_client.c,* NetX Duo HTTP Server uygulamaları için *de nxd_http_server.h* ve *nxd_http_server.c* dizinine yüklenir. *nx_md5.c* bu dizine kopyalanmış olmalıdır. NetX Duo HTTP İstemcisi ve Sunucu dosyalarının demo 'ram driver' uygulaması için aynı dizine kopyalanmış olması gerekir.
 
 ## <a name="using-http"></a>HTTP kullanma
 
-NetX Duo için HTTP kullanmak kolaydır. Temel olarak, uygulama kodu, sırasıyla ThreadX, FileX ve NetX Duo kullanmak için *tx_api. h*, *fx_api. h* ve *nx_api. h* dahil olmak üzere *nxd_http_client.* h ve/veya *nxd_http_server.* h içermelidir. HTTP üstbilgi dosyaları eklendikten sonra, uygulama kodu daha sonra bu kılavuzda belirtilen HTTP işlev çağrılarını yapabilir. Uygulama, yapı işlemine *nxd_http_client. c*, *nxd_http_server. c* ve *MD5. c* ' yi de içermelidir. Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Duo HTTP 'yi kullanmak için gereklidir.
+NetX Duo için HTTP kullanmak kolaydır. Temel olarak, ThreadX, FileX ve NetX Duo'yi kullanmak için uygulama kodu *tx_api.h*, *fx_api.h* ve nx_api.h'yi içeren *nxd_http_client.h* ve/veya *nxd_http_server.h'yi* içermeli.  HTTP üst bilgisi dosyaları dahil edildiktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen HTTP işlev çağrılarını da mümkün hale gelecektir. Uygulamanın derleme sürecinde *nxd_http_client.c*, *nxd_http_server.c* ve *md5.c'yi* de içermesi gerekir. Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne formunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX Duo HTTP kullanmak için gerekenler bunlardır.
 
 > [!NOTE]
-> Yapı işleminde NX_HTTP_DIGEST_ENABLE belirtilmemişse, MD5. c dosyasının uygulamaya eklenmesi gerekmez. Benzer şekilde, HTTP Istemci özellikleri gerekmiyorsa *nxd_http_client. c* dosyası atlanabilir.
+> Derleme NX_HTTP_DIGEST_ENABLE belirtilmezse, md5.c dosyasının uygulamaya eklenmesi gerek değildir. Benzer şekilde, http istemcisi özellikleri gerekli yoksa *nxd_http_client.c* dosyası atlanabilir.
 
 > [!NOTE]
-> HTTP, NetX Duo TCP hizmetlerini kullandığından, HTTP kullanmadan önce *nx_tcp_enable* çağrısıyla TCP 'nin etkinleştirilmesi gerekir.
+> HTTP, NetX Duo TCP hizmetlerini kullanıyorsa, HTTP'yi kullanmadan önce *TCP nx_tcp_enable* çağrısıyla etkinleştirilmelidir.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX Duo HTTP kullanmanın ne kadar kolay olduğunu gösteren bir örnek aşağıda gösterilen Şekil 1,1 ' de açıklanmıştır. Bu örnek, 23. satırdaki #define USE_DUO NetX Duo HTTP yerleştirmesi 'nda bulunan ' Duo ' hizmetleriyle birlikte geçerlidir. Aksi takdirde, eski NetX HTTP eşdeğerini kullanır (yalnızca IPv4 ile sınırlıdır). Geliştiricilerin, mevcut uygulamaları NetX Duo HTTP hizmetlerini kullanarak geçirmaları önerilir.
+Aşağıda görünen Şekil 1.1'de NetX Duo HTTP kullanmanın ne kadar kolay olduğuna bir örnek verilmiştir. Bu örnek, 23. satırda netX Duo HTTP yerleşimi #define USE_DUO 'duo' hizmetleriyle çalışır. Aksi takdirde eski NetX HTTP eşdeğerini kullanır (yalnızca IPv4 ile sınırlıdır). Geliştiricilerin mevcut uygulamaları NetX Duo HTTP hizmetlerini kullanmaya geçirmesi teşvik edilecektir.
 
-IPv6 iletişimini belirtmek için, uygulama ıPTYPE 'yi, 24. satırda IPv6 olarak tanımlar.
+Uygulama, IPv6 iletişimini belirtmek için 24. satırda IPv6'ya IPTYPE tanımlar.
 
-Bu örnekte, *nxd_http_client. h* ve *NXD_HTTP_SERVER. h* http içerme dosyaları 8. ve 9. satırda getirilir. Ardından, yardımcı HTTP sunucusu iş parçacığı, paket havuzu ve IP örneği 89 – 112 satırlarında oluşturulur. HTTP sunucusu IP örneği, 137. satırda görüldüğü gibi TCP 'nin etkin olması gerekir. HTTP sunucusu daha sonra 159. satırda oluşturulur.
+Bu örnekte, *nxd_http_client.h* ve *nxd_http_server.h* http dahil dosyaları 8. ve 9. satıra getiri. Ardından, yardımcı HTTP Sunucusu iş parçacığı, paket havuzu ve IP örneği 89 – 112. satırlarda oluşturulur. HTTP Sunucusu IP örneği, 137. satırda olduğu gibi TCP etkin olmalıdır. Http Sunucusu daha sonra 159. satırda içinde oluşturulur.
 
-Daha sonra HTTP Istemcisi oluşturulur. İlk olarak istemci iş parçacığı, satır 172 ' de oluşturulur ve HTTP sunucusuna benzer şekilde, 186 – 200. HTTP Istemci IP örneğinin TCP etkin olması gerekir (satır 217).
+Ardından HTTP İstemcisi oluşturulur. İlk olarak istemci iş parçacığı 172. satırda oluşturulur ve ardından 186 – 200. satırlarda HTTP Sunucusuna benzer şekilde paket havuzu ve IP örneği oluşturulur. Http İstemciSI IP örneği yeniden TCP etkin olmalıdır (satır 217).
 
-HTTP sunucusu iş parçacığı çalışır ve ilk görevi, 423-450 numaralı satırlarda bulunan NetX Duo ile IP adresini doğrular. Artık HTTP sunucusu istekleri almaya hazır.
+HTTP Sunucusu iş parçacığı çalışır ve ilk görevi 423 - 450. satırlarda yaptığı NetX Duo ile IP adresini doğrulamaktır. Http Sunucusu artık istekleri almaya hazırdır.
 
-HTTP Istemci iş parçacığının ilk görevi, FileX medyası oluşturur ve biçimlendirir (satırlar 236 ve 260. Medya başlatıldıktan sonra HTTP Istemcisi 271. satırda oluşturulur. HTTP sunucusunun HTTP isteklerine hizmet edebilmesi için önce bu işlemi yapmanız gerekir. Daha sonra IP adresini, 282 – 316 satırlarında olduğu NetX Duo ile doğrulamalıdır. HTTP Istemcisi daha sonra client_test.html dosyasını oluşturup HTTP sunucusuna gönderir, kısa süre sonra dosyayı HTTP sunucusundan geri okumaya çalışır.
-
-> [!NOTE]
-> IPv6 etkinleştirilmemişse HTTP Istemcisi API 'SI farklı bir hizmet kullanır (satır 343 ' de *nx_http_client_put_start* ve *nx_http_client_get_start* 399). Bu, NetX Duo 'ın mevcut NetX HTTP Istemci uygulamalarını desteklemesini sağlar.
+HTTP İstemcisi iş parçacığının ilk görevi FileX medyası (satır 236 ve 260) oluşturmak ve biçimlendirmektir. Medya başlatıldıktan sonra, HTTP İstemcisi 271. satırda oluşturulur. Bu, HTTP sunucusunun HTTP isteklerine hizmet verileyemeden önce yapılması gerekir. Ardından IP adresini 282 – 316. satırlarda yaptığı NetX Duo ile doğrulaması gerekir. HTTP İstemcisi daha sonra dosyayı client_test.html ile HTTP Sunucusuna gönderir, kısa bir süre bekler ve ardından dosyayı HTTP Sunucusundan geri okumaya çalışır.
 
 > [!NOTE]
-> HTTP Istemcisi API çağrıları nispeten kısa zaman aşımları ile yapılır. Bir HTTP istemcisi, daha yavaş bir işlemcide meşgul sunucu veya uzak sunucu ile iletişim kurduğunda bu zaman aşımlarını uzatmak gerekebilir.
+> IPv6 etkinleştirilmediyse HTTP İstemci API'si farklı bir hizmet kullanır (*nx_http_client_put_start* 343. satırda ve 399. *satırda nx_http_client_get_start* kullanır). Bu, NetX Duo'nın mevcut NetX HTTP İstemcisi uygulamalarını desteklemesini sağlar.
+
+> [!NOTE]
+> HTTP İstemci API'si çağrıları görece kısa zaman aşımı ile yapılır. Http istemcisi, daha yavaş bir işlemcide meşgul bir sunucu veya uzak sunucuyla iletişim kuruyorsa bu zaman aşımı süresini uzatmak gerekebilir.
 
 ```c
 1    /* This is a small demo of the NetX Duo HTTP Client Server API running on a
@@ -531,34 +531,34 @@ HTTP Istemci iş parçacığının ilk görevi, FileX medyası oluşturur ve bi�
 467  }
 ```
 
-**Şekil 1,1 NetX Duo ile HTTP kullanımı örneği**
+**Şekil 1.1 NetX Duo ile HTTP kullanımı örneği**
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX Duo için HTTP oluşturmaya yönelik birkaç yapılandırma seçeneği vardır. Aşağıda, her birinin ayrıntılı olarak açıklandığı tüm seçeneklerin bir listesi verilmiştir. Varsayılan değerler listelenir, ancak *nxd_http_client. h* ve *nxd_http_server. h*'ye dahil etmeden önce yeniden tanımlanabilir:
+NetX Duo için HTTP'ler için çeşitli yapılandırma seçenekleri vardır. Aşağıda, her biri ayrıntılı olarak açıklanan tüm seçeneklerin listesi ve ardından velanmıştır. Varsayılan değerler listelenir, ancak *nxd_http_client.h ve nxd_http_server.h* eklenmeden önce *yeniden tanımlandır:*
 
- - **NX_DISABLE_ERROR_CHECKING** Tanımlı, bu seçenek temel HTTP hata denetimini kaldırır. Genellikle uygulamanın hatası ayıklandıktan sonra kullanılır
- - **NX_HTTP_SERVER_PRIORITY** HTTP sunucusu iş parçacığının önceliği. Varsayılan olarak, 16 önceliğini belirtmek için bu değer 16 olarak tanımlanır.
- - **NX_HTTP_NO_FILEX** Tanımlı, bu seçenek FileX bağımlılıkları için bir saplama sağlar. Bu seçenek tanımlandıysa, HTTP Istemcisi herhangi bir değişiklik yapılmadan çalışır. HTTP sunucusunun değiştirilmesi veya kullanıcının düzgün çalışması için bir çok sayıda FileX hizmeti oluşturması gerekir.
- - **NX_HTTP_TYPE_OF_SERVICE** HTTP TCP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP paket hizmetini göstermek için NX_IP_NORMAL olarak tanımlanır.
-  - **NX_HTTP_SERVER_THREAD_TIME_SLICE** Aynı önceliğe sahip iş parçacıklarını oluşturmadan önce, sunucu iş parçacığının çalışmasına izin verilen süreölçer onay işareti sayısı. Varsayılan değer 2 ' dir.
- - **NX_HTTP_FRAGMENT_OPTION** HTTP TCP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer HTTP TCP fragmenting devre dışı bırakmak için NX_DONT_FRAGMENT.
- - **NX_HTTP_SERVER_WINDOW_SIZE**   Sunucu yuvası pencere boyutu. Varsayılan olarak, bu değer 2048 bayttır
- - **NX_HTTP_TIME_TO_LIVE** Bu paketin, atılmadan önce geçebilmesi gereken yönlendirici sayısını belirtir. Varsayılan değer 0x80 olarak ayarlanır.
- - **NX_HTTP_SERVER_TIMEOUT**   İç hizmetlerin askıya alınacağı ThreadX ticks sayısını belirtir. Varsayılan değer 10 saniyeye ayarlanır (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_SERVER_TIMEOUT_ACCEPT** İç *nx_tcp_server_socket_accept* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer (10 * NX_IP_PERIODIC_RATE) olarak ayarlanır.
- - **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** İç *nx_tcp_socket_disconnect* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniyeye ayarlanır (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_SERVER_TIMEOUT_RECEIVE** İç *nx_tcp_socket_receive* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniyeye ayarlanır (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_SERVER_TIMEOUT_SEND** İç *nx_tcp_socket_send* çağrılarında iç hizmetlerin askıya alınacağı threadx ticks sayısını belirtir. Varsayılan değer 10 saniyeye ayarlanır (10 * NX_IP_PERIODIC_RATE).
- - **NX_HTTP_MAX_HEADER_FIELD** HTTP üst bilgisi alanının en büyük boyutunu belirtir. Varsayılan değer 256 ' dir.
- - **NX_HTTP_MULTIPART_ENABLE** Tanımlandıysa, HTTP sunucusunun çok parçalı HTTP isteklerini desteklemesini sağlar.
- - **NX_HTTP_SERVER_MAX_PENDING**   HTTP sunucusu için sıraya alınabilen bağlantı sayısını belirtir. Varsayılan değer 5 ' e ayarlanır.
- - **NX_HTTP_MAX_RESOURCE** İstemci tarafından sağlanan *kaynak adında* izin verilen bayt sayısını belirtir. Varsayılan değer 40 olarak ayarlanır.
- - **NX_HTTP_MAX_NAME** İstemci tarafından sağlanan *Kullanıcı adında* izin verilen bayt sayısını belirtir. Varsayılan değer 20 olarak ayarlanır.
- - **NX_HTTP_MAX_PASSWORD** İstemci tarafından sağlanan *parolada* izin verilen bayt sayısını belirtir. Varsayılan değer 20 olarak ayarlanır.
- - **NX_HTTP_SERVER_MIN_PACKET_SIZE** Sunucu oluşturulurken belirtilen havuzdaki paketlerin en küçük boyutunu belirtir. En küçük boyut, HTTP üstbilgisinin tamamının tek bir pakette yer aldığından emin olmak için gereklidir. Varsayılan değer 600 olarak ayarlanır.
- - **NX_HTTP_CLIENT_MIN_PACKET_SIZE** Istemci oluşturulurken belirtilen havuzdaki paketlerin en küçük boyutunu belirtir. En küçük boyut, HTTP üstbilgisinin tamamının tek bir pakette yer aldığından emin olmak için gereklidir. Varsayılan değer 300 olarak ayarlanır.
- - **NX_HTTP_SERVER_RETRY_SECONDS** Sunucu yuvası yeniden aktarım zaman aşımını saniye cinsinden ayarlayın. Varsayılan değer 2 olarak ayarlanır.
- - **NX_HTTP_SERVER_ RETRY_MAX** Bu, sunucu yuvasıyla maksimum yeniden iletim sayısını ayarlar. Varsayılan değer 10 olarak ayarlanır.
- - **NX_HTTP_SERVER_ RETRY_SHIFT** Bu değer, sonraki yeniden iletim zaman aşımını ayarlamak için kullanılır. Geçerli zaman aşımı, bu nedenle, yuva zaman aşımı kaydırma değerine göre kaydırılan, o kadar yeniden iletim sayısı ile çarpılır. Zaman aşımını katlama için varsayılan değer 1 ' e ayarlanır.
- - **NX_HTTP_SERVER_TRANSMIT_QUEUE_DEPTH** Bu, sunucu yuvası yeniden iletim kuyruğunda sıraya alınabilen en fazla paket sayısını belirtir. Sıraya alınan paketlerin sayısı bu sayıya ulaşırsa, bir veya daha fazla sıraya alınmış paket yayınlanana kadar başka paket gönderilemez. Varsayılan değer 20 olarak ayarlanır.
+ - **NX_DISABLE_ERROR_CHECKING** Tanımlandı, bu seçenek temel HTTP hata denetimlerini kaldırır. Genellikle uygulama hata ayıklandıktan sonra kullanılır
+ - **NX_HTTP_SERVER_PRIORITY** HTTP Sunucusu iş parçacığının önceliği. Varsayılan olarak, 16 önceliğini belirtmek için bu değer 16 olarak tanımlanır.
+ - **NX_HTTP_NO_FILEX** Tanımlı, bu seçenek FileX bağımlılıkları için bir saplama sağlar. Bu seçenek tanımlanırsa HTTP İstemcisi herhangi bir değişiklik yapmadan işlev gösterir. HTTP Sunucusunun değiştirilmesi gerekir veya kullanıcının düzgün çalışması için birkaç FileX hizmeti oluşturması gerekir.
+ - **NX_HTTP_TYPE_OF_SERVICE** HTTP TCP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP NX_IP_NORMAL belirtmek için varsayılan olarak tanımlanmıştır.
+  - **NX_HTTP_SERVER_THREAD_TIME_SLICE** Aynı önceliğe sahip iş parçacıklarına verilmeden önce Sunucu iş parçacığının çalışmasına izin verilen zamanlayıcı sayısı. Varsayılan değer 2'dir.
+ - **NX_HTTP_FRAGMENT_OPTION** HTTP TCP istekleri için parça etkinleştirme. Varsayılan olarak, bu değer HTTP TCP NX_DONT_FRAGMENT devre dışı bırakmak için kullanılır.
+ - **NX_HTTP_SERVER_WINDOW_SIZE**   Sunucu yuvası pencere boyutu. Varsayılan olarak bu değer 2048 bayttır
+ - **NX_HTTP_TIME_TO_LIVE** Bu paketin atmadan önce geçeceği yönlendirici sayısını belirtir. Varsayılan değer, 0x80.
+ - **NX_HTTP_SERVER_TIMEOUT**   İç hizmetlerin askıya alınacak ThreadX saat işaretlerinin sayısını belirtir. Varsayılan değer 10 saniye (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_ACCEPT** İç hizmetlerin iç iş parçacığı çağrılarında askıya alması gereken ThreadX *nx_tcp_server_socket_accept* belirtir. Varsayılan değer olarak ayarlanır (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_DISCONNECT** İç hizmetlerin iç iş parçacığı çağrılarında askıya alması gereken ThreadX nx_tcp_socket_disconnect *belirtir.* Varsayılan değer 10 saniye (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_RECEIVE** İç hizmetlerin iç iş parçacığı çağrılarında askıya alması gereken ThreadX nx_tcp_socket_receive *belirtir.* Varsayılan değer 10 saniye (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_SERVER_TIMEOUT_SEND** İç hizmetlerin iç iş parçacığı çağrılarında askıya alması gereken ThreadX *nx_tcp_socket_send* belirtir. Varsayılan değer 10 saniye (10 * NX_IP_PERIODIC_RATE).
+ - **NX_HTTP_MAX_HEADER_FIELD** HTTP üst bilgisi alanı için en büyük boyutu belirtir. Varsayılan değer 256'dır.
+ - **NX_HTTP_MULTIPART_ENABLE** Tanımlandı ise, HTTP Sunucusunun çok parçalı HTTP isteklerini desteklemesi için olanak sağlar.
+ - **NX_HTTP_SERVER_MAX_PENDING**   HTTP Sunucusu için kuyruğa alınan bağlantı sayısını belirtir. Varsayılan değer 5'e ayarlanır.
+ - **NX_HTTP_MAX_RESOURCE** İstemci tarafından sağlanan kaynak adına izin verilen bayt *sayısını belirtir.* Varsayılan değer 40 olarak ayarlanır.
+ - **NX_HTTP_MAX_NAME** İstemci tarafından sağlanan kullanıcı adı içinde izin verilen bayt sayısını *belirtir.* Varsayılan değer 20 olarak ayarlanır.
+ - **NX_HTTP_MAX_PASSWORD** İstemci tarafından sağlanan parolada izin verilen bayt sayısını *belirtir.* Varsayılan değer 20 olarak ayarlanır.
+ - **NX_HTTP_SERVER_MIN_PACKET_SIZE** Sunucu oluşturma sırasında belirtilen havuza paketlerin en küçük boyutunu belirtir. Tam HTTP üst bilgisi tek bir pakette yer alanın sağlamak için en küçük boyut gereklidir. Varsayılan değer 600 olarak ayarlanır.
+ - **NX_HTTP_CLIENT_MIN_PACKET_SIZE** İstemci oluşturma sırasında belirtilen havuza paketlerin en küçük boyutunu belirtir. Tam HTTP üst bilgisi tek bir pakette yer alanın sağlamak için en küçük boyut gereklidir. Varsayılan değer 300 olarak ayarlanır.
+ - **NX_HTTP_SERVER_RETRY_SECONDS** Sunucu yuvası yeniden iletim zaman aşımını saniyeler içinde ayarlayın. Varsayılan değer 2 olarak ayarlanır.
+ - **NX_HTTP_SERVER_ RETRY_MAX** Bu, Sunucu yuvasında en fazla yeniden iletim sayısını ayarlar. Varsayılan değer 10 olarak ayarlanır.
+ - **NX_HTTP_SERVER_ RETRY_SHIFT** Bu değer bir sonraki yeniden iletim zaman aşımını ayarlamak için kullanılır. Geçerli zaman aşımı, şimdiye kadar yapılan yeniden iletim sayısıyla çarpılır ve yuva zaman aşımı kaydırma değeriyle kaydırılır. Zaman aşımını iki katına yapmak için varsayılan değer 1 olarak ayarlanır.
+ - **NX_HTTP_SERVER_TRANSMIT_QUEUE_DEPTH** Bu, Sunucu yuvası yeniden iletim kuyruğunda kuyruğa alın en fazla paket sayısını belirtir. Sıra edilen paket sayısı bu sayıya ulaşırsa, bir veya daha fazla enqueued paket serbest bırakana kadar daha fazla paket gönderilmez. Varsayılan değer 20 olarak ayarlanır.

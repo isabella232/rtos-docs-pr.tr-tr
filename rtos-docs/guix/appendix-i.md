@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dc7775cdde8f1aa89ca650561713f54ac6c069eb
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 8730dbfc49ed51716f32c118a25ebffc907b19a54d98d83ede4155f87fbecb7b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550227"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116784175"
 ---
 # <a name="appendix-i---guix-information-structures"></a>Ek I-Gux bilgi yapıları 
 
@@ -27,7 +27,7 @@ typedef struct GX_BIDI_TEXT_INFO_STRUCT
     GX_VALUE  gx_bidi_text_info_display_width;
 } GX_BIDI_TEXT_INFO;
 ```
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_text_info_text**               | Yeniden sıralama için metin |
 | **gx_bidi_text_info_font**               | Metni göstermek için kullanılan yazı tipi, satır sonu gerekmiyorsa GX_NULL olarak ayarlayın |
@@ -46,7 +46,7 @@ typedef struct GX_BIDI_RESOLVED_TEXT_INFO_STRUCT
 } GX_BIDI_RESOLVED_TEXT_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_bidi_resolved_text_info_text**             | Yeniden sıralanan bidi metni dizisine yönelik işaretçi |
 | **gx_bidi_resolved_text_info_total_lines**      | Tek bir paragraf için çözülen çift yönlü metnin toplam satırları |
@@ -69,7 +69,7 @@ typedef struct GX_CIRCULAR_GAUGE_INFO_STRUCT
 } GX_CIRCULAR_GAUGE_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ------------------------------------------------ | -------------------------------------------- |
 | **gx_circular_gauge_info_animation_steps**       | Geçerli iğne açısına göre yeni, atanan iğne açısına geçiş yaparken, iğne 'nin hareket ettirme toplam adım sayısı |
 | **gx_circular_gauge_info_animation_delay**       | Animasyon adımları arasındaki gecikmede Gux saat Ticks sayısı |
@@ -106,7 +106,7 @@ typedef struct GX_LINE_CHART_INFO_STRUCT
 } GX_LINE_CHART_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_line_chart_min_val**          | Ölçeklendirmeyi hesaplamak için kullanılan minimum veri değeri
 | **gx_line_chart_max_val**          | Ölçeklendirmeyi hesaplamak için kullanılan maksimum veri değeri |
@@ -132,7 +132,7 @@ typedef struct GX_MOUSE_CURSOR_INFO_STRUCT
 } GX_MOUSE_CURSOR_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------- | ---------------------------------------------------------- |
 | **gx_mouse_cursor_image_id**       | Fare resminin kaynak KIMLIĞI |
 | **gx_mouse_cursor_hotspot_x**      | Fare resminin solundaki fare resmi etkin noktası arasındaki fark |
@@ -150,7 +150,7 @@ typedef struct GX_PEN_CONFIGURATION_STRUCT
 }GX_PEN_CONFIGURATION;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | -------------------------------------------- | ------------------------------------------------ |
 | **gx_pen_configuration_min_drag_dist**       | Bir hareket olayı tetiklemek için Gux süreölçeri başına en az sürükleme uzaklığı. Sabit bir nokta veri türü değeri oluşturmak için GX_FIXED_VAL_MAKE çağırın |
 | **gx_pen_configuration_max_pen_speed_ticks** | Bir hareket olayı tetiklemek için Gux süreölçer işaretleri cinsinden maksimum sürükleme hızı | 
@@ -168,11 +168,11 @@ typedef struct GX_PIXELMAP_SLIDER_INFO_STRUCT
 } GX_PIXELMAP_SLIDER_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ----------------------------------------------------- | ---------------------------------------- |
 | **gx_pixelmap_slider_info_lower_background_pixelmap** | İğne 'dan önce arka planı doldurmak için pixelmap 'in kaynak KIMLIĞI. Üst arka plan pixelmap ayarlanmamışsa, arka planı yalnızca iğne 'den önce ve sonra doldurmak için kullanılır |
 | **gx_pixelmap_slider_info_upper_background_pixelmap** | İğne 'tan sonra arka planı doldurmak için pixelmap 'in kaynak KIMLIĞI |
-| **gx_pixelmap_slider_info_needle_pixelmap**           | İğne pixelmap 'in kaynak KIMLIĞI |
+| **gx_pixelmap_slider_info_needle_pixelmap**           | Iğne piksel haritasının kaynak kimliği |
 
 ## <a name="gx_progress_bar_info"></a>GX_PROGRESS_BAR_INFO 
 
@@ -192,16 +192,16 @@ typedef struct GX_PROGRESS_BAR_INFO_STRUCT
 } GX_PROGRESS_BAR_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | -------------------------------------------- | ------------------------------------------------ |
-| **gx_progress_bar_info_min_val**             | Raporlanan en düşük değer |
-| **gx_progress_bar_info_max_val**             | Raporlanan en yüksek değer |
+| **gx_progress_bar_info_min_val**             | Bildirilen minimum değer |
+| **gx_progress_bar_info_max_val**             | Bildirilen maksimum değer |
 | **gx_progress_bar_info_current_val**         | Geçerli değer |
-| **gx_progress_bar_info_font_id**             | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin değerini çizmek için kullanılan yazı tipinin kaynak KIMLIĞI      |
-| **gx_progress_bar_normal_text_color**        | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılan, normal durumdaki metin renginin kaynak KIMLIĞI |
-| **gx_progress_bar_selected_text_color**      | Pencere öğesi odaklanıldığında metin renginin kaynak KIMLIĞI, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
-| **gx_progress_bar_disabled_text_color**      | GX_STYLE_ENABLED etkin olmadığında metin renginin kaynak KIMLIĞI, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
-| **gx_progress_bar_fill_pixelmap**            | Arka plan doldurma için pixelmap 'in kaynak KIMLIĞI|
+| **gx_progress_bar_info_font_id**             | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin değerini çizmek için kullanılan yazı tipinin kaynak kimliği      |
+| **gx_progress_bar_normal_text_color**        | Normal durumdaki metin renginin kaynak kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_progress_bar_selected_text_color**      | Pencere öğesi odağında metin renginin kaynak kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_progress_bar_disabled_text_color**      | Çalışma alanı etkin değilken metin renginin GX_STYLE_ENABLED kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_progress_bar_fill_pixelmap**            | Arka plan doldurma için piksel haritasının kaynak kimliği|
 
 ## <a name="gx_radial_progress_bar_info"></a>GX_RADIAL_PROGRESS_BAR_INFO
 
@@ -226,21 +226,21 @@ typedef struct GX_RADIAL_PROGRESS_BAR_INFO_STRUCT
 } GX_RADIAL_PROGRESS_BAR_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ------------------------------------------------- | -------------------------------------------- |
-| **gx_radial_progress_bar_info_xcenter**           | X koordinatı içindeki pencere öğesi konumu |
-| **gx_radial_progress_bar_info_ycenter**           | Y koordinatı pencere öğesi konumu  |
-| **gx_radial_progress_bar_info_radius**            | İlerleme çemberin yarıçapı |
-| **gx_radial_progress_bar_info_current_val**       | [-360, 360] aralığıyla sınırlı geçerli değer, yer işareti konumu ve üst yayı bitiş noktası arasındaki angular Delta değerini gösterir. Negatif değer, bağlayıcının bağlantı konumundan başlayarak saat yönünde bir yönde çizilmesini sağlar. Pozitif değer, bağlayıcının bağlantı konumundan başlayarak saat yönünde bir yönde çizilmesini sağlar. Uygulama, ilerleme çubuğu pencere öğesine bir angular değeri atamak için belirtilen gerçek sözcüklü değeri ölçeklendirmelidir |
-| **gx_radial_progress_bar_anchor_val**             | Üst ilerleme yayı başlangıç açısı. Değer, doğru ve 90 dereceyle işaret eden 0 derecelik tamsayı derecesi cinsinden tanımlanır. |
-| **gx_radial_progress_bar_font_id**                | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin değerini çizmek için kullanılan yazı tipinin kaynak KIMLIĞI |
-| **gx_radial_progress_bar_normal_text_color**      | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılan, normal durumdaki metin renginin kaynak KIMLIĞI |
-| **gx_radial_progress_bar_selected_text_color**    |Pencere öğesi odaklı metin renginin kaynak KIMLIĞI, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
-| **gx_radial_progress_bar_disabled_text_color**    | GX_STYLE_ENABLED etkin olmadığında metin renginin kaynak KIMLIĞI, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
-| **gx_radial_progress_bar_normal_brush_width**     | Düşük ilerleme çemberin genişliği |
-| **gx_radial_progress_bar_selected_brush_width**   | Üstteki ilerleme yayı genişliği, üst yay daha dar, ile aynı veya daha büyük bir daireye eşit olabilir |
-| **gx_radial_progress_bar_normal_brush_color**     | Düşük ilerleme çemberi dolduracak rengin kaynak KIMLIĞI |
-| **gx_radial_progress_bar_selected_brush_color**   | Üst ilerleme yaya dolduracak rengin kaynak KIMLIĞI |
+| **gx_radial_progress_bar_info_xcenter**           | x koordinatı içinde pencere öğesi konumu |
+| **gx_radial_progress_bar_info_ycenter**           | y koordinatı içinde pencere öğesi konumu  |
+| **gx_radial_progress_bar_info_radius**            | İlerleme dairesinin yarıçapı |
+| **gx_radial_progress_bar_info_current_val**       | [-360, 360] aralığıyla sınırlı olan geçerli değer, yer işareti konumu ile üst yay bitiş noktası arasındaki angular deltayı gösterir. Negatif değer, yaynın sabit noktası konumundan başlayarak saat yönünde çizilir. Pozitif değer, sabit noktası konumundan başlayarak yaynın saat yönünün tersine doğru çizilir. Uygulama, ilerleme çubuğu pencere öğesine angular değer atamak için gösterilen gerçek sözcük değerini ölçeklendirmeli |
+| **gx_radial_progress_bar_anchor_val**             | Üst ilerleme yayının başlangıç açısı. Değer, sağa işaret eden 0 derece ve düz yukarı konumu gösteren 90 derece ile tamsayı derecesi olarak tanımlanır. |
+| **gx_radial_progress_bar_font_id**                | İlerleme çubuğu pencere öğesi içinde isteğe bağlı metin değerini çizmek için kullanılan yazı tipinin kaynak kimliği |
+| **gx_radial_progress_bar_normal_text_color**      | Normal durumdaki metin renginin kaynak kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_radial_progress_bar_selected_text_color**    |Pencere öğesi odağında metin renginin kaynak kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_radial_progress_bar_disabled_text_color**    | Çalışma alanı etkin değilken metin renginin GX_STYLE_ENABLED kimliği, ilerleme çubuğu pencere öğesi içinde isteğe bağlı metin çizimini tanımlamak için kullanılır |
+| **gx_radial_progress_bar_normal_brush_width**     | Daha düşük ilerleme dairesinin genişliği |
+| **gx_radial_progress_bar_selected_brush_width**   | Üst ilerleme yayının genişliği, üst yay alt daireyle aynı şekilde daha dar veya daha geniş olabilir |
+| **gx_radial_progress_bar_normal_brush_color**     | Daha düşük ilerleme dairesini doldurmak için rengin kaynak kimliği |
+| **gx_radial_progress_bar_selected_brush_color**   | Üst ilerleme yayının doldurulacak rengin kaynak kimliği |
 
 ## <a name="gx_radial_slider_info"></a>GX_RADIAL_SLIDER_INFO 
 
@@ -263,19 +263,19 @@ typedef struct GX_RADIAL_SLIDER_INFO_STRUCT
 } GX_RADIAL_SLIDER_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | --------------------------------------------- | ------------------------------------------------ |
-**gx_radial_slider_info_xcenter**               | Kaydırıcı pencere öğesinin sol tarafında bulunan kaydırıcı iğne 'nin ortasına mesafe |
-| **gx_radial_slider_info_ycenter**             | Kaydırıcı pencere öğesinin üstünden kaydırıcı iğne 'nin ortasına kadar uzaklık |
-| **gx_radial_slider_info_radius**              | Radyal kaydırıcı çemberin yarıçapı |
+**gx_radial_slider_info_xcenter**               | Kaydırıcı pencere öğesinden kaydırıcı iğnenin döndürme merkezine uzaklık |
+| **gx_radial_slider_info_ycenter**             | Kaydırıcı pencere öğesinden en üst kısmından kaydırıcı iğnenin döndürme merkezine uzaklık |
+| **gx_radial_slider_info_radius**              | Radyal kaydırıcı dairenin yarıçapı |
 | **gx_radial_slider_info_track_width**         | Radyal kaydırıcı izlemenin genişliği |
 | **gx_radial_slider_info_current_angle**       | Geçerli kaydırıcı açısı |
-| **gx_radial_slider_info_min_angle**           | Minimum kaydırıcı açısı |
+| **gx_radial_slider_info_min_angle**           | En düşük kaydırıcı açısı |
 | **gx_radial_slider_info_max_angle**           | Maksimum kaydırıcı açısı |
-| **gx_radial_slider_info_angle_list**          | Açı değeri listesi, küme açılarını tanımlar, ayarlandıysa, kaydırıcı açısı yalnızca tanımlı çapa açılarının biri olabilir |
-| **gx_radial_slider_info_list_count**          | Çapa açısı sayısı |
-| **gx_radial_slider_info_background_pixelmap** | Arka plan pixelmap kaynak KIMLIĞI |
-| **gx_radial_slider_info_needle_pixelmap**     | İğne pixelmap kaynak KIMLIĞI |
+| **gx_radial_slider_info_angle_list**          | Açılı değer listesi, sabit noktası açılarını tanımlar; ayarlanırsa kaydırıcı açısı tanımlı sabit noktası açılarından yalnızca biri olabilir |
+| **gx_radial_slider_info_list_count**          | Yer noktası açılarının sayısı |
+| **gx_radial_slider_info_background_pixelmap** | Arka plan piksel haritasının kaynak kimliği |
+| **gx_radial_slider_info_needle_pixelmap**     | Iğne piksel haritasının kaynak kimliği |
 
 ## <a name="gx_rectangle"></a>GX_RECTANGLE
 
@@ -291,12 +291,12 @@ typedef struct GX_RECTANGLE_STRUCT
 } GX_RECTANGLE;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | -------------------------------- | ------------------------|
-| **gx_rectangle_left**            | Dikdörtgenin sol tarafında   |  
-| **gx_rectangle_top**             | Dikdörtgenin üstü    | 
+| **gx_rectangle_left**            | Dikdörtgenin sol   |  
+| **gx_rectangle_top**             | Dikdörtgenin üst kısmında    | 
 | **gx_rectangle_right**           | Dikdörtgenin sağ  |
-| **gx_rectangle_bottom**          | Dikdörtgenin altı |
+| **gx_rectangle_bottom**          | Dikdörtgenin alt kısmında |
 
 ## <a name="gx_rich_text_fonts"></a>GX_RICH_TEXT_FONTS 
 
@@ -312,10 +312,10 @@ typedef struct GX_RICH_TEXT_FONTS_STRUCT
 } GX_RICH_TEXT_FONTS;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------- | ---------------------------------------------------------- |
-| **gx_rich_text_fonts_normal_id**   | Normal metin yazı tipinin kaynak KIMLIĞI |
-| **gx_rich_text_fonts_bold_id**     | Kalın metin yazı tipinin kaynak KIMLIĞI |
+| **gx_rich_text_fonts_normal_id**   | Normal metin yazı tipi kaynak kimliği |
+| **gx_rich_text_fonts_bold_id**     | Kalın metin yazı tipi kaynak kimliği |
 | **gx_rich_text_fonts_italic_id**   | İtalik metin yazı tipinin kaynak KIMLIĞI |
 | **gx_rich_text_fonts_bold_italic_id** | Kalın italik metin yazı tipinin kaynak KIMLIĞI |
 
@@ -333,7 +333,7 @@ typedef struct GX_SCROLL_INFO_STRUCT
 } GX_SCROLL_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ----------------------- | ----------------------------- |
 | **gx_scroll_value**     | Geçerli kaydırma konumu       |
 | **gx_scroll_minimum**   | Raporlanan en düşük konum     |
@@ -363,7 +363,7 @@ typedef struct GX_SCROLLBAR_APPEARANCE_STRUCT
 } GX_SCROLLBAR_APPEARANCE;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_scroll_width**                      | ScrollBar pencere öğesinin piksel cinsinden genişliği |
 | **gx_scroll_thumb_width**                | Kaydırma çubuğu üzerindeki slaytları piksel cinsinden gösteren Thumb düğmesinin genişliği. Bu değer genellikle toplam kaydırma çubuğu genişliğinden az sayıda piksel daha küçüktür |
@@ -398,7 +398,7 @@ typedef struct GX_SLIDER_INFO_STRUCT
 } GX_SLIDER_INFO;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | --------------------------------------- | ------------------------------------------------------ |
 | **gx_slider_info_min_val**              | Raporlanan en düşük değer |
 | **gx_slider_info_max_val**              | Raporlanan en yüksek değer |
@@ -426,7 +426,7 @@ typedef struct GX_SPRITE_FRAME_STRUCT
 } GX_SPRITE_FRAME;
 ```
 
-| Üyeler | Açıklama |
+| Üyeler | Description |
 | ---------------------------------------- | ----------------------------------------------------- |
 | **gx_sprite_frame_pixelmap**             | Bu çerçeve için görüntülenecek pixelmap 'in kaynak KIMLIĞI. KIMLIK 0 olabilir. |
 | **gx_sprite_frame_x_offset**             | Pixelmap 'i göstermek için sprite pencere öğesinin sol tarafındaki boşluğu |
