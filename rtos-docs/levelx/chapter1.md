@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 045446fec74164f125bc0ad27e8b7a904be14ab2
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 73c06d48b98081291d83635e049e6cf8641714c87efe815f9399f3fbab3a6211
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826273"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790607"
 ---
 # <a name="chapter-1---overview-of-azure-rtos-levelx"></a>Bölüm 1-Azure RTOS LevelX 'e genel bakış
 

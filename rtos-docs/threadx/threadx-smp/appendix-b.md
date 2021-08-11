@@ -1,21 +1,21 @@
 ---
-title: Ek B-Azure RTOS ThreadX SMP sabitleri
-description: ThreadX SMP sabitleri
+title: Ek B - Azure RTOS ThreadX SMP Sabitleri
+description: ThreadX SMP Sabitleri
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7245b53e78e657ce8059ee8f013a8d2faa4f7b14
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 32eab718b2b9b4c050ca0f1f39dbf1fda7d74eb49cabfe99be988b60d709d87a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825444"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801776"
 ---
-# <a name="appendix-b---azure-rtos-threadx-smp-constants"></a>Ek B-Azure RTOS ThreadX SMP sabitleri
+# <a name="appendix-b---azure-rtos-threadx-smp-constants"></a>Ek B - Azure RTOS ThreadX SMP Sabitleri
 
-## <a name="alphabetic-listings"></a>Alfabetik listeler
+## <a name="alphabetic-listings"></a>Alfabetik Listelemeler
 
 ```C
 TX_1_ULONG                 1
@@ -97,7 +97,7 @@ TX_WAIT_ERROR              0x04
 TX_WAIT_FOREVER
 0xFFFFFFFFUL
 ```
-## <a name="listing-by-value"></a>Değere göre listeleme
+## <a name="listing-by-value"></a>Değere Göre Listeleme
 
 ```C
 TX_DONT_START              0

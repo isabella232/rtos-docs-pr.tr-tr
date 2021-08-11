@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1d56b20b1c7d719d1b7d9c8c5b2fe234d5577da3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a36357ce486d5ba8a68b23c829de6c4b821dfb3cc62f47b0958ff32deaa2f7a7
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825985"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791304"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-ftp"></a>Bölüm 1-Azure RTOS NetX Duo FTP 'ye giriş
 
@@ -31,7 +31,7 @@ NetX FTP paketinin FTP sunucusu bölümünde birkaç ek gereksinim vardır. İlk
 
 FTP standardı, dosya verilerinin gösterimiyle ilgili birçok seçeneğe sahiptir. NetX FTP; ls – al gibi anahtar seçeneklerini uygulamaz. NetX FTP sunucusu, istekleri ve bağımsız değişkenlerini ardışık paketler yerine tek bir pakette almayı bekler.
 
-UNIX uygulamalarına benzer şekilde NetX FTP aşağıdaki dosya biçimi kısıtlamalarını varsayar:
+UNIX uygulamalarına benzer şekilde netx FTP aşağıdaki dosya biçimi kısıtlamalarını varsayar:
 
 - Dosya türü: **ikili**
 - Dosya biçimi: **Yalnızca baskı dışı**
@@ -203,12 +203,12 @@ FTP bağlantısı gerçekleştiğinde, Istemcinin sunucuya bir *Kullanıcı adı
 
 Kullanıcı, oturum açma ve oturum kapatma kimlik doğrulama yordamlarına sahip NetX FTP sağlamaktan sorumludur. Bunlar, ***nxd_ftp_server_create** _ ve _*_nx_ftp_server_create_*_ hizmetleri sırasında sağlanır ve parola işlemeden çağırılır. İkisi arasındaki fark, oturum açma ve oturum kapatma için _*_nxd_ftp_server_create_*_ giriş işlevi Işaretçileridir NETX Duo adres türü _*_NXD_ADDRESS_*_ bekler. Bu veri türü hem IPv4 hem de IPv6 adres biçimlerini barındırır ve bu işlevi hem IPv4 hem de IPv6 ağlarını destekleyen "Duo" hizmeti yapar. LOGIN ve Logout kimlik doğrulama işlevlerinin _ *_nx_ftp_server_create_** giriş işlevi IŞARETÇILERI, ulong IP adresi türünü bekler. Bu işlev, IPv4 ağları ile sınırlıdır. Geliştiricinin mümkün olduğunca "Duo" hizmetini kullanması önerilir.
 
-*Oturum açma* işlevi NX_SUCCESS döndürürse bağlantı DOĞRULANıR ve FTP işlemlerine izin verilir. Aksi takdirde, *oturum açma* işlevi NX_SUCCESS dışında bir şey döndürürse bağlantı girişimi reddedilir.
+Oturum açma *işlevi* NX_SUCCESS, bağlantının kimliği doğrulanır ve FTP işlemlerine izin verilir. Aksi takdirde, *oturum açma* işlevi NX_SUCCESS başka bir şey döndürürse bağlantı girişimi reddedilir.
 
-## <a name="ftp-multi-thread-support"></a>FTP çoklu Iş parçacığı desteği
+## <a name="ftp-multi-thread-support"></a>FTP Çoklu İş Parçacığı Desteği
 
-NetX FTP Istemci Hizmetleri birden çok iş parçacığından aynı anda çağrılabilir. Ancak, belirli bir FTP Istemcisi örneği için okuma veya yazma istekleri aynı iş parçacığından sırayla yapılmalıdır.
+NetX FTP İstemcisi hizmetleri aynı anda birden çok iş parçacığından çağrılabilirsiniz. Ancak, belirli bir FTP İstemcisi örneği için okuma veya yazma istekleri aynı iş parçacığından sırasıyla yapılmalı.
 
-## <a name="ftp-rfcs"></a>FTP RFC 'Leri
+## <a name="ftp-rfcs"></a>FTP RFC'leri
 
-NetX Duo FTP, RFC 959, RFC 2428 ve ilgili RFC 'lerle uyumludur.
+NetX Duo FTP RFC 959, RFC 2428 ve ilgili RFC'ler ile uyumludur.

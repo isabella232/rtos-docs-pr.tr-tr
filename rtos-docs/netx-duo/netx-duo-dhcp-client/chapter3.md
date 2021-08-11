@@ -1,72 +1,72 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo DHCP Istemci hizmetlerinin açıklaması
-description: Bu bölüm, tüm Azure RTOS NetX Duo DHCP Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo DHCP Azure RTOS hizmetlerinin açıklaması
+description: Bu bölümde tüm NetX Duo DHCP Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: f143a443221ae08848316a458a630a0790108198
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9c678772b6e6160dba9929af41e76c2580c06fb163bfccfdb6fcc46fa42ade82
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826117"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790352"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-client-services"></a>Bölüm 3-Azure RTOS NetX Duo DHCP Istemci hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-dhcp-client-services"></a>Bölüm 3 - NetX Duo DHCP Azure RTOS hizmetlerinin açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX Duo DHCP Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde tüm NetX Duo DHCP Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_dhcp_create**: *DHCP örneği oluşturma*
-- **nx_dhcp_clear_broadcast_flag**: *istemci iletilerinde yayın bayrağını temizle*
-- **nx_dhcp_delete**: *bir DHCP örneğini silme*
-- **nx_dhcp_force_renew**: *zorla yenileme iletisi gönder*
-- **nx_dhcp_packet_pool_set**: *DHCP istemci paket havuzunu ayarlama*
-- **nx_dhcp_decline**: *sunucuya reddetme iletisi* gönder
-- **nx_dhcp_release**: *sunucuya sürüm iletisi* gönder
-- **nx_dhcp_reinitialize**: *DHCP istemci ağı parametrelerini temizle*
-- **nx_dhcp_request_client_ip**: *belirli bir IP adresi belirtin*
-- **nx_dhcp_send_request**: *sunucuya DHCP iletisi gönder*
-- **nx_dhcp_start**: *DHCP istemci işlemesini Başlat*
-- **nx_dhcp_stop**: *DHCP istemci işlemesini durdur*
-- **nx_dhcp_set_interface_index**: *arabirimi DHCP istemcisini çalıştıracak şekilde ayarlama*
-- **nx_dhcp_server_address_get**: *DHCP sunucusu IP adresini al*
-- **nx_dhcp_state_change_notify**: *DHCP durumu değiştiğinde geri çağırma işlevini ayarla*
-- **nx_dhcp_user_option_retrieve**: *belirtilen DHCP seçeneğini Al*
-- **nx_dhcp_user_option_convert**: *dört baytı ulong 'a Dönüştür*
+- **nx_dhcp_create:** *DHCP örneği oluşturma*
+- **nx_dhcp_clear_broadcast_flag:** İstemci *iletisinde yayın bayrağını temizleme*
+- **nx_dhcp_delete:** DHCP *örneğini silme*
+- **nx_dhcp_force_renew:** *Zorla yenileme iletisi gönderme*
+- **nx_dhcp_packet_pool_set:** *DHCP İstemcisi paket havuzunu ayarlama*
+- **nx_dhcp_decline:** Reddetme *iletisi sunucuya gönder*
+- **nx_dhcp_release:** *Sunucuya Yayın iletisi gönderme*
+- **nx_dhcp_reinitialize:** DHCP *istemci ağ parametrelerini temizleme*
+- **nx_dhcp_request_client_ip:** Belirli *bir IP adresi belirtin*
+- **nx_dhcp_send_request:** DHCP *iletisi sunucuya gönder*
+- **nx_dhcp_start:** DHCP *İstemcisi işlemeyi başlatma*
+- **nx_dhcp_stop:** DHCP *İstemcisi işlemeyi durdurun*
+- **nx_dhcp_set_interface_index:** Arabirimi *DHCP İstemcisini çalıştıracak şekilde ayarlayın*
+- **nx_dhcp_server_address_get:** *DHCP sunucusu IP adresini al*
+- **nx_dhcp_state_change_notify:** DHCP *durumu değişirken geri çağırma işlevini ayarlayın*
+- **nx_dhcp_user_option_retrieve:** Belirtilen *DHCP seçeneğini alın*
+- **nx_dhcp_user_option_convert:** Dört *baytı ULONG'a dönüştür*
 
-Arabirime özgü DHCP Istemci Hizmetleri:
+Arabirime özgü DHCP İstemcisi hizmetleri:
  
-- **nx_dhcp_interface_clear_broadcast_flag**: *belirtilen arabirimdeki istemci iletilerinde yayın bayrağını temizle*
-- **nx_dhcp_interface_enable**: *belirtilen arabirimde DHCP çalıştırmak için arabirimi etkinleştir*
-- **nx_dhcp_interface_disable**: *belirtilen arabirimde DHCP çalıştırmak için arabirimi devre dışı bırak*
-- **nx_dhcp_interface_decline**: *belirtilen arabirimdeki sunucuya reddetme iletisi gönder*
-- **nx_dhcp_interface_force_renew**: *belirtilen arabirimde zorla yenileme iletisi gönder*
-- **nx_dhcp_interface_reinitialize**: *belirtilen arabirimdeki DHCP istemci ağ parametrelerini temizle*
-- **nx_dhcp_interface_release**: *belirtilen arabirimdeki sunucuya sürüm iletisi gönder*
-- **nx_dhcp_interface_request_client_ip**: *belirtilen ARABIRIMDE belirli bir IP adresi belirtin*
-- **nx_dhcp_interface_send_request**: *belirtilen arabirimdeki DHCP iletisini sunucuya gönderin*
-- **nx_dhcp_interface_server_address_get**: *belirtilen ARABIRIMDEKI DHCP sunucusu IP adresini al*
-- **nx_dhcp_interface_start**: *belirtilen arabirimde DHCP istemci işlemesini Başlat*
-- **nx_dhcp_interface_stop**: *belirtilen arabirimdeki DHCP istemci işlemesini durdur*
-- **nx_dhcp_interface_state_change_notify**: *belirtilen arabirimdeki DHCP durumu değiştiğinde geri çağırma işlevini ayarla*
-- **nx_dhcp_interface_user_option_retrieve**: belirtilen *arabirimde belirtilen DHCP seçeneğini Al*
+- **nx_dhcp_interface_clear_broadcast_flag:** Belirtilen *arabirimde İstemci iletisinde yayın bayrağını temizleme*
+- **nx_dhcp_interface_enable:** Belirtilen *arabirimde DHCP çalıştırmak için arabirimi etkinleştirin*
+- **nx_dhcp_interface_disable:** Belirtilen *arabirimde DHCP çalıştırmak için arabirimi devre dışı bırakma*
+- **nx_dhcp_interface_decline:** *Belirtilen arabirimde sunucuya Reddetme iletisi gönderme*
+- **nx_dhcp_interface_force_renew:** Belirtilen *arabirimde zorla yenileme iletisi gönderme*
+- **nx_dhcp_interface_reinitialize:** Belirtilen *arabirimde DHCP istemci ağ parametrelerini temizleme*
+- **nx_dhcp_interface_release:** *Belirtilen arabirimde sunucuya Yayın iletisi gönderme*
+- **nx_dhcp_interface_request_client_ip:** Belirtilen *arabirimde belirli bir IP adresi belirtin*
+- **nx_dhcp_interface_send_request:** *Belirtilen arabirimde sunucuya DHCP iletisi gönderme*
+- **nx_dhcp_interface_server_address_get:** Belirtilen *arabirimde DHCP sunucusu IP adresini al*
+- **nx_dhcp_interface_start:** Belirtilen *arabirimde DHCP İstemcisi işlemini başlatma*
+- **nx_dhcp_interface_stop:** *Belirtilen arabirimde DHCP İstemcisi işlemini durdurun*
+- **nx_dhcp_interface_state_change_notify:** *Belirtilen arabirimde DHCP durumu değişirken geri çağırma işlevini ayarlayın*
+- **nx_dhcp_interface_user_option_retrieve:** *Belirtilen arabirimde belirtilen DHCP seçeneğini alın*
 
-NX_DHCP_CLIENT_RESORE_STATE tanımlanmışsa DHCP Istemci Hizmetleri:
+Dhcp İstemci Hizmetleri NX_DHCP_CLIENT_RESORE_STATE:
 
-- **nx_dhcp_resume**: *önceden oluşturulmuş DHCP istemci durumunu sürdürür*
-- **nx_dhcp_suspend**: *DHCP istemci durumunu işlemeyi askıya al*
-- **nx_dhcp_client_get_record**: *DHCP istemci durumunun kaydını oluşturma*
-- **nx_dhcp_client_restore_record**: *daha önce KAYDEDILMIŞ bir kaydı DHCP istemcisine geri yükleme*
-- **nx_dhcp_client_update_time_remaining**: *geçerli DHCP durumunda kalan süreyi Güncelleştir*
+- **nx_dhcp_resume:** Daha *önce kurulan DHCP İstemcisi durumunu sürdür*
+- **nx_dhcp_suspend:** *DHCP İstemcisi durumunu işlemeyi askıya alma*
+- **nx_dhcp_client_get_record:** DHCP *İstemcisi durumunun kaydını oluşturma*
+- **nx_dhcp_client_restore_record:** Daha *önce kaydedilmiş bir kaydı DHCP İstemcisi'ne geri yükleme*
+- **nx_dhcp_client_update_time_remaining:** *Geçerli DHCP durumda kalan zamanı güncelleştirin*
 
-NX_DHCP_CLIENT_RESORE_STATE tanımlanmışsa arabirime özgü DHCP Istemci Hizmetleri:
+Arabirim Tanımlı ise Arabirime NX_DHCP_CLIENT_RESORE_STATE DHCP İstemci Hizmetleri:
 
-- **nx_dhcp_client_interface_get_record**: *belirtilen arabirimde DHCP istemci durumunun bir kaydını oluşturun*
-- **nx_dhcp_client_interface_restore_record**: *önceden kaydedilmiş bir kaydı belirtilen arabirimdeki DHCP istemcisine geri yükleme*
-- **nx_dhcp_client_interface_update_time_remaining**: *BELIRTILEN arabirimdeki geçerli DHCP durumunda kalan süreyi Güncelleştir*
+- **nx_dhcp_client_interface_get_record:** Belirtilen *arabirimde DHCP İstemcisi durumunun kaydını oluşturun*
+- **nx_dhcp_client_interface_restore_record:** Belirtilen *arabirimde daha önce kaydedilmiş bir kaydı DHCP İstemcisi'ne geri yükleme*
+- **nx_dhcp_client_interface_update_time_remaining:** Belirtilen *arabirimde geçerli DHCP durumda kalan zamanı güncelleştirin*
 
 ## <a name="nx_dhcp_create"></a>nx_dhcp_create
 
@@ -78,31 +78,31 @@ DHCP örneği oluşturma
 UINT nx_dhcp_create(NX_DHCP *dhcp_ptr, NX_IP *ip_ptr, CHAR *name_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulan IP örneği için bir DHCP örneği oluşturur. Varsayılan olarak, birincil arabirim DHCP çalıştırmak için etkinleştirilmiştir. DHCP Istemcisinin NetX Duo uygulamasında kullanılmayan ad girişi, ana bilgisayar adları için RFC 1035 ölçütlerine uymalıdır. Toplam uzunluk 255 karakteri aşmamalıdır, noktalarla ayrılmış etiketlerin bir harfle başlaması ve bir harf ya da sayıyla bitmesi gerekir ve kısa çizgi içeremez, ancak alfasayısal olmayan başka karakterler içermemelidir.
+Bu hizmet, daha önce oluşturulan IP örneği için bir DHCP örneği oluşturur. Varsayılan olarak birincil arabirim DHCP'yi çalıştırmaya etkinleştirilir. DHCP İstemcisi'nin NetX Duo uygulamasında kullanılmasa da ad girişi, konak adları için RFC 1035 ölçütlerini izlemeli. Toplam uzunluk 255 karakteri aşmamalıdır, noktalardan ayrı etiketler bir harfle başlamalıdır ve bir harf veya sayı ile bitmeli ve alfasayısal olmayan başka bir karakter yerine kısa çizgi içerebilir.
 
-Uygulama, DHCP 'nin IP örneğiyle kaydedilmiş başka bir arabirimi çalıştırmak istiyorsanız ( *nx_ip_interface_attach* kullanarak), uygulama, DHCP 'yi yalnızca o arabirim üzerinde çalıştırmak için *nx_dhcp_set_interface_index* ÇAĞıRABILIR veya bu arabirimde DHCP çalıştırmak için *nx_dhcp_interface_enable* . Daha fazla ayrıntı için bu hizmetlerin açıklamasına bakın.
+Uygulama, DHCP'yi IP örneğine kayıtlı başka bir arabirimi *(nx_ip_interface_attach* kullanarak) çalıştırmak isterse, uygulama DHCP'yi yalnızca bu arabirimde çalıştırmak için *nx_dhcp_set_interface_index'yi* veya DHCP'yi bu arabirimde *nx_dhcp_interface_enable* çalıştırmak için nx_dhcp_interface_enable'yi çağırabilirsiniz. Daha fazla ayrıntı için bu hizmetlerin açıklamasına bakın.
 
 >[!NOTE]
-> Uygulamanın, DHCP Istemci paket havuzu yükünün, RFC 2131 Bölüm 2 tarafından belirtilen en düşük DHCP ileti boyutunu (548 bayt DHCP ileti verilerinin yanı sıra UDP, IP ve fiziksel ağ çerçeve üstbilgileri) destekleyebileceğine emin olması gerekir.
+> Uygulama, DHCP İstemcisi paket havuzu yükünün RFC 2131 Bölüm 2 (548 bayt DHCP ileti verileri artı UDP, IP ve fiziksel ağ çerçevesi üst bilgileri) tarafından belirtilen en düşük DHCP ileti boyutunu destekleyeneden emin olmalıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğuna yönelik işaretçi. 
-- **ip_ptr**: daha önce oluşturulan IP örneğine yönelik işaretçi.  
-- **name_ptr**: DHCP örneği için ana bilgisayar adı işaretçisi.
+- **dhcp_ptr:** DHCP denetim bloğuna işaretçi. 
+- **ip_ptr:** Daha önce oluşturulan IP örneğinin işaretçisi.  
+- **name_ptr:** DHCP örneği için ana bilgisayar adı işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP oluşturma
-- **NX_DHCP_INVALID_NAME**: (0Xa8) geçersiz konak adı
-- **NX_DHCP_INVALID_PAYLOAD**: (0x9C) yük DHCP iletisi için çok küçük
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
+- **NX_SUCCESS:**(0x00) Başarılı DHCP oluşturma
+- **NX_DHCP_INVALID_NAME:**(0xA8) Geçersiz ana bilgisayar adı
+- **NX_DHCP_INVALID_PAYLOAD:**(0x9C) YÜK DHCP iletisi için çok küçük
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, başlatma
+İş Parçacıkları, Başlatma
 
 ### <a name="example"></a>Örnek
 
@@ -115,7 +115,7 @@ status =  nx_dhcp_create(&my_dhcp, &my_ip, "My-DHCP");
 
 ## <a name="nx_dhcp_interface_enable"></a>nx_dhcp_interface_enable
 
-Belirtilen arabirimi DHCP çalıştırmak için etkinleştir 
+DHCP'yi çalıştırmak için belirtilen arabirimi etkinleştirme 
 
 ### <a name="prototype"></a>Prototype
 
@@ -123,37 +123,37 @@ Belirtilen arabirimi DHCP çalıştırmak için etkinleştir
 UINT nx_dhcp_interface_enable(NX_DHCP *dhcp_ptr, UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP çalıştırmak için belirtilen arabirimi sunar. Varsayılan olarak, birincil arabirim DHCP Istemcisi için etkinleştirilmiştir. Bu noktada, DHCP, *nx_dhcp_interface_start* çağırarak veya tüm ETKINLEŞTIRILMIŞ arabirimlerde DHCP 'yi başlatmak için bu arabirim üzerinde başlatılabilir *nx_dhcp_start*.
+Bu hizmet, DHCP'yi çalıştırma için belirtilen arabirimi sağlar. Birincil arabirim varsayılan olarak DHCP İstemcisi için etkindir. Bu noktada, DHCP bu arabirimde nx_dhcp_interface_start *çağrılarak* veya dhcp'yi tüm etkin arabirimlerde başlatarak *nx_dhcp_start.*
 
 >[!NOTE] 
-> Uygulamanın, nx_ip_interface_attach kullanarak bu arabirimi IP örneğiyle kaydetmesi gerekir *.*
+> Uygulamanın önce bu arabirimi ip örneğine kaydetmesi gerekir ve *nx_ip_interface_attach.*
 
-Ayrıca, bu arabirimi etkin arabirimler listesine eklemek için kullanılabilir bir DHCP Istemci arabirimi ' Record ' olmalıdır. Varsayılan olarak NX_DHCP_CLIENT_MAX_RECORDS 1 olarak tanımlanmıştır. DHCP Istemcisini aynı anda çalıştırmak için beklenen en fazla arabirim sayısına bu seçeneği ayarlayın. Genellikle NX_DHCP_CLIENT_MAX_RECORDS, NX_MAX_PHYSICAL_INTERFACES eşit olur; Ancak, bir cihazda DHCP Istemcisi çalıştırmak beklediğinden daha fazla fiziksel arabirim varsa, bu sayıdan daha az NX_DHCP_CLIENT_MAX_RECORDS ayarlayarak bellek tasarrufu sağlayabilir. DHCP Istemci arabirimi kayıtlarıyla bir fiziksel arabirimlerin eşleştirmesi bir tane değildir.
+Ayrıca, bu arabirimi etkin arabirimler listesine eklemek için kullanılabilir bir DHCP İstemci arabirimi 'kaydı' olmalıdır. Varsayılan olarak NX_DHCP_CLIENT_MAX_RECORDS 1 olarak tanımlanır. Bu seçeneği DHCP İstemcisi'nin aynı anda çalışması beklenen en fazla arabirim sayısına ayarlayın. Genellikle NX_DHCP_CLIENT_MAX_RECORDS eşit NX_MAX_PHYSICAL_INTERFACES; ancak, bir cihaz DHCP İstemcisi'nin çalıştırmasını beklediğinizden daha fazla fiziksel arabirime sahipse, cihaz bu sayıdan NX_DHCP_CLIENT_MAX_RECORDS ayar NX_DHCP_CLIENT_MAX_RECORDS bellek kaydedebilir. DHCP İstemcisi arabirim kayıtlarıyla fiziksel arabirimlerin bire bir eşlemesi yok.
 
-Bu hizmet ve *nx_dhcp_set_interface_index* arasındaki fark, ikinci olarak yalnızca tek BIR arabirim DHCP 'yi çalıştıracak şekilde ayarlıyor. bu hizmet, BELIRTILEN arabirimi DHCP Için etkinleştirilen istemci arabirimleri listesine ekler.
+Bu hizmetle nx_dhcp_set_interface_index  arasındaki fark, ikincinin DHCP'yi çalıştırmak için yalnızca tek bir arabirim ayarlarken, bu hizmet yalnızca belirtilen arabirimi DHCP için etkinleştirilmiş İstemci arabirimleri listesine ekler.
 
-DHCP arabirimini devre dışı bırakmak için uygulama
+Uygulama, DHCP arabirimini devre dışı bırakmak için
 
-*nx_dhcp_interface_disable* hizmet.
+*nx_dhcp_interface_disable* hizmeti.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğuna yönelik işaretçi.  
-- **interface_index**: üzerinde DHCP 'yi etkinleştirmek için arabirim dizini
+- **dhcp_ptr:** DHCP denetim bloğuna işaretçi.  
+- **interface_index:** DHCP'yi etkinleştirmek için arabirim dizini
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP etkin
-- **NX_DHCP_NO_RECORDS_AVAILABLE**: (0xa7) başka BIR arabirimin DHCP için etkinleştirilmesi için kullanılabilir kayıt yok
-- **NX_DHCP_INTERFACE_ALREADY_ENABLED**: (0xA3) arabirim DHCP için etkinleştirildi
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Başarılı DHCP etkinleştirmesi
+- **NX_DHCP_NO_RECORDS_AVAILABLE:**(0xA7) DHCP için başka bir Arabirimin etkinleştirilmesi için kayıt yok
+- **NX_DHCP_INTERFACE_ALREADY_ENABLED:**(0xA3) DHCP için etkinleştirilmiş arabirim
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, başlatma
+İş Parçacıkları, Başlatma
 
 ### <a name="example"></a>Örnek
 
@@ -171,7 +171,7 @@ status = nx_dhcp_start(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_disable"></a>nx_dhcp_interface_disable
 
-DHCP çalıştırmak için belirtilen arabirimi devre dışı bırak 
+DHCP çalıştırmak için belirtilen arabirimi devre dışı bırakma 
 
 ### <a name="prototype"></a>Prototype
 
@@ -181,26 +181,26 @@ UINT nx_dhcp_interface_disable(NX_DHCP *dhcp_ptr,
                                UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP çalıştırmak için belirtilen arabirimi devre dışı bırakır. Bu arabirimdeki DHCP Istemcisini yeniden başlatır.
+Bu hizmet, DHCP'yi çalıştırma için belirtilen arabirimi devre dışı bırakıyor. Bu arabirimde DHCP İstemcisi'nin yeniden ilkini sağlar.
 
-DHCP Istemcisini yeniden başlatmak için, uygulamanın *nx_dhcp_interface_enable* kullanarak arabirimi yeniden etkinleştirmeleri ve *nx_dhcp_interface_start* çağırarak DHCP 'yi yeniden başlatması gerekir.
+DHCP İstemcisini yeniden başlatmak için, uygulamanın nx_dhcp_interface_enable kullanarak arabirimi yeniden etkinleştirmesi *ve* dhcp'yi *nx_dhcp_interface_start.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğuna yönelik işaretçi.  
-- **interface_index**: DHCP 'yi devre dışı bırakmak için arabirim dizini
+- **dhcp_ptr:** DHCP denetim bloğuna işaretçi.  
+- **interface_index:** DHCP'yi devre dışı bırakmak için arabirim dizini
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP oluşturma
-- **NX_DHCP_INTERFACE_NOT_ENABLED**: (0xa4) arabirimi DHCP için etkin değil
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Başarılı DHCP oluşturma
+- **NX_DHCP_INTERFACE_NOT_ENABLED:**(0xA4) DHCP için etkinleştirilmemiş arabirim
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -222,30 +222,30 @@ DHCP yayın bayrağını ayarlama
 UINT nx_dhcp_clear_broadcast_flag(NX_DHCP *dhcp_ptr, UINT clear_flag);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP için etkinleştirilen tüm arabirimlerin DHCP ileti üst bilgisini ayarlar veya temizler. Istemci bir IP adresine sahip olmadığından, bazı DHCP iletileri (örneğin, bul) yayın bayrağı Broadcast olarak ayarlanır.
+Bu hizmet, DHCP için etkinleştirilmiş tüm arabirimler için DHCP ileti üst bilgisi yayın bayrağını ayarlar veya temizler. Bazı DHCP iletileri (örneğin DISCOVER) için, İstemcinin bir IP adresi yoksa yayın bayrağı yayına ayarlanır.
 
 clear_flag değerleri: 
 
-- **NX_TRUE**: yayın bayrağı temizlendi (tek noktaya yayın yanıtı iste)
-- **NX_FALSE**: yayın bayrağı ayarlandı (Yayın yanıtı iste)
+- **NX_TRUE:** yayın bayrağı temizlenmiştir (tek noktaya yayın yanıtı isteği)
+- **NX_FALSE:** yayın bayrağı ayarlanmış (yayın yanıtı isteği)
 
-Bu hizmet, yönlendiricinin, iletme yayını iletilerini reddettiği DHCP sunucusuna ulaşmak için bir yönlendiriciden geçmesi gereken DHCP Istemcilerine yöneliktir.
+Bu hizmet, yönlendiricinin yayın iletilerini iletmeyi reddederek DHCP Sunucusuna gitmek için bir yönlendiriciden geçen DHCP İstemcilerine yöneliktir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğu işaretçisi  
-- **clear_flag**: yayın bayrağını ayarlanacak değer
+- **dhcp_ptr:** DHCP denetim bloğu işaretçisi  
+- **clear_flag:** Yayın bayrağını ayarlanacak değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) bayrağı başarıyla ayarlandı
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
+- **NX_SUCCESS:**(0x00) Başarıyla ayarlanmış bayrak
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, başlatma
+İş Parçacıkları, Başlatma
 
 ### <a name="example"></a>Örnek
 
@@ -259,7 +259,7 @@ status =  nx_dhcp_clear_broadcast_flag(&my_dhcp, NX_TRUE);
 
 ## <a name="nx_dhcp_interface_clear_broadcast_flag"></a>nx_dhcp_interface_clear_broadcast_flag
 
-Belirtilen arabirimdeki yayın bayrağını ayarla veya temizle
+Belirtilen arabirimde yayın bayrağını ayarlama veya temizleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -269,26 +269,26 @@ UINT nx_dhcp_interface_clear_broadcast_flag(NX_DHCP *dhcp_ptr,
                                             UINT clear_flag);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP Istemci ana bilgisayar uygulamasının, DHCP Istemci iletilerindeki yayın bayrağını belirtilen arabirimdeki DHCP sunucusuna ayarlamasını veya temizlemesini sağlar. Daha fazla bilgi için bkz. **nx_dhcp_clear_broadcast_flag**.
+Bu hizmet, DHCP İstemcisi konak uygulamasının DHCP İstemcisi iletisinde yayın bayrağını belirtilen arabirimde DHCP Sunucusuna ayarlamasını veya temizlemesini sağlar. Diğer ayrıntılar için **bkz. nx_dhcp_clear_broadcast_flag.**
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğu işaretçisi
-- **interface_index**: yayın bayrağını ayarlamak için arabirim dizini
-- **clear_flag**: yayın bayrağını ayarlanacak değer
+- **dhcp_ptr:** DHCP denetim bloğu işaretçisi
+- **interface_index:** Yayın bayrağını ayarlamak için arabirim dizini
+- **clear_flag:** Yayın bayrağını ayarlanacak değer
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) bayrağı başarıyla ayarlandı
-- **NX_DHCP_INTERFACE_NOT_ENABLED**: (0xa4) arabirimi DHCP için etkin değil
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Başarıyla ayarlanmış bayrak
+- **NX_DHCP_INTERFACE_NOT_ENABLED:**(0xA4) DHCP için etkinleştirilmemiş arabirim
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, başlatma
+İş Parçacıkları, Başlatma
 
 ### <a name="example"></a>Örnek
 
@@ -313,21 +313,21 @@ DHCP örneğini silme
 UINT nx_dhcp_delete(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet önceden oluşturulmuş bir DHCP örneğini siler.
+Bu hizmet, önceden oluşturulmuş bir DHCP örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP silme.
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı DHCP silme.
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -342,7 +342,7 @@ status =  nx_dhcp_delete(&my_dhcp);
 
 ## <a name="nx_dhcp_-force_renew"></a>nx_dhcp_ force_renew
 
-Zorla yenileme iletisi gönder 
+Zorla yenileme iletisi gönderme 
 
 ### <a name="prototype"></a>Prototype
 
@@ -350,24 +350,24 @@ Zorla yenileme iletisi gönder
 UINT nx_dhcp force_renew(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ana bilgisayar uygulamasının DHCP için etkinleştirilen tüm arabirimlerde zorla yenileme iletisi göndermesini sağlar. DHCP Istemcisi, bir bağlantılı durumda olmalıdır. Bu işlev, DHCP Istemcisinin T1 zaman aşımı dolmadan önce yenilemeyi deneyecek şekilde, durumu yenıleme olarak ayarlar.
+Bu hizmet, konak uygulamanın DHCP için etkinleştirilmiş tüm arabirimlerde zorla yenileme iletisi göndermesini sağlar. DHCP İstemcisi BOUND durumda olması gerekir. Bu işlev, dhcp istemcisinin T1 zaman aşımı süresi dolmadan önce yenilemeyi deneyecek şekilde durumu YenİLEME olarak ayarlar.
 
-Birden çok arabirim DHCP etkinken belirli bir arabirim üzerinde zorla yenileme göndermek için *nx_dhcp_interface_force_renew* kullanın.
+Birden çok arabirim DHCP etkin olduğunda belirli bir arabirimde zorla yenileme göndermek için, *nx_dhcp_interface_force_renew.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) zorla yenilemeyi başarıyla gönderdi.
-- **NX_DHCP_NOT_BOUND**: (0x94) istemci IP adresi bağlanmadı.  
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Zorla yenileme başarıyla gönderildi.
+- **NX_DHCP_NOT_BOUND:**(0x94) İstemci IP adresi bağlı değil.  
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -383,7 +383,7 @@ status =  nx_dhcp_force_renew(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_force_renew"></a>nx_dhcp_interface_force_renew
 
-Belirtilen arabirimde zorla yenileme iletisi gönder
+Belirtilen arabirimde zorla yenileme iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -392,20 +392,20 @@ UINT nx_dhcp_interface_force_renew(NX_DHCP *dhcp_ptr,
                                    UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, arabirim DHCP için etkinleştirilmiş olduğu sürece, ana bilgisayar uygulamasının giriş arabiriminde zorla yenileme iletisi göndermesini sağlar (bkz. *nx_dhcp_interface_enable*). Belirtilen arabirimdeki DHCP Istemcisinin bağlı durumda olması gerekir. Bu işlev, DHCP Istemcisinin T1 zaman aşımı dolmadan önce yenilemeyi deneyecek şekilde, durumu yenıleme olarak ayarlar.
+Bu hizmet, ana bilgisayar uygulamasının DHCP için etkinleştirilmiş olduğu sürece giriş arabiriminde zorla yenileme iletisi göndermesini sağlar (bkz. *nx_dhcp_interface_enable).* Belirtilen arabirimde DHCP İstemcisi BOUND durumda olması gerekir. Bu işlev, dhcp istemcisinin T1 zaman aşımı süresi dolmadan önce yenilemeyi deneyecek şekilde durumu YenİLEME olarak ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) zorla yenilemeyi başarıyla gönderdi.  
-- **NX_DHCP_INTERFACE_NOT_ENABLED**: (0xa4) arabirimi DHCP için etkin değil
-- NX_PTR_ERROR: (0x16) geçersiz IP veya DHCP işaretçisi
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Zorla yenileme başarıyla gönderildi.  
+- **NX_DHCP_INTERFACE_NOT_ENABLED:**(0xA4) DHCP için etkinleştirilmemiş arabirim
+- NX_PTR_ERROR: (0x16) Geçersiz IP veya DHCP işaretçisi
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -432,7 +432,7 @@ DHCP Istemci paket havuzunu ayarlama
 UINT nx_dhcp_packet_pool_set(NX_DHCP *dhcp_ptr, NX_PACKET_POOL *packet_pool_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamanın bu hizmet çağrısında daha önce oluşturulmuş bir paket havuzuna bir işaretçi geçirerek DHCP Istemci paket havuzunu oluşturmasına izin verir. Bu özelliği kullanmak için, ana bilgisayar uygulamasının NX_DHCP_CLIENT_USER_CREATE_PACKET_POOL tanımlanmalıdır. Tanımlandığında, *nx_dhcp_create* hizmet istemcinin paket havuzunu oluşturmaz. 
 
@@ -484,7 +484,7 @@ UINT nx_dhcp_request_client_ip(NX_DHCP *dhcp_ptr,
                                UINT skip_discover_message);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP Istemcisinin DHCP istemci kaydında DHCP için etkinleştirilen ilk arabirimdeki DHCP sunucusundan istemesi için IP adresini ayarlar. *Skip_discover_message* bayrağı AYARLANDıYSA, DHCP istemcisi bulma iletisini atlar ve bir istek iletisi gönderir.
 
@@ -530,7 +530,7 @@ UINT nx_dhcp_interface_request_client_ip(NX_DHCP *dhcp_ptr, UINT  interface_inde
                                          ULONG client_ip_address, UINT skip_discover_message);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP Istemcisinin, belirtilen arabirimdeki DHCP sunucusundan istemesi için IP adresini ayarlar, bu arabirim DHCP için etkinleştirilmişse (bkz. *nx_dhcp_interface_enable*). *Skip_discover_message* bayrağı AYARLANDıYSA, DHCP istemcisi bulma iletisini atlar ve bir istek iletisi gönderir.
 
@@ -572,7 +572,7 @@ DHCP istemci ağı parametrelerini Temizleme
 UINT nx_dhcp_reinitialize(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ana bilgisayar uygulama ağ parametrelerini (IP adresi, ağ adresi ve ağ maskesi) temizler ve DHCP için etkinleştirilen tüm arabirimlerde DHCP Istemci durumunu temizler. *Nx_dhcp_stop* ile birlikte KULLANıLıR ve DHCP durum makinesine ' yeniden Başlat ' için *nx_dhcp_start* :
 
@@ -617,7 +617,7 @@ UINT nx_dhcp_interface_reinitialize(NX_DHCP *dhcp_ptr,
                                      UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu arabirim DHCP için etkinleştirilmişse belirtilen arabirimdeki ağ parametrelerini (IP adresi, ağ adresi ve ağ maskesi) temizler (bkz. *nx_dhcp_interface_enable*). Daha fazla bilgi için bkz. *nx_dhcp_reinitialize* .
 
@@ -657,26 +657,26 @@ Yayın kiralanan IP adresi
 UINT nx_dhcp_release(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DHCP sunucusundan alınan IP adresini, yayın iletisini bu sunucuya göndererek yayınlar. Daha sonra DHCP Istemcisini yeniden başlatır. Bu hizmet, DHCP için etkinleştirilen tüm arabirimlere uygulanır.
+Bu hizmet, bir DHCP sunucusundan alınan IP adresini, yayın iletisini bu sunucuya göndererek yayınlar. Daha sonra DHCP Istemcisini yeniden başlatır. Bu hizmet, DHCP için etkinleştirilmiş tüm arabirimlere uygulanır.
 
-Uygulama, *nx_dhcp_start* çağırarak DHCP istemcisini yeniden başlatabilir.
+Uygulama, dhcp istemcisini çağırarak DHCP İstemcisini *nx_dhcp_start.*
 
-Bir adresi belirli bir arabirimdeki DHCP sunucusuna geri yüklemek için *nx_dhcp_interface_release* hizmetini kullanın
+Bir adresi belirli bir arabirimde DHCP sunucusuna geri serbest bırakmak için nx_dhcp_interface_release *kullanın*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sürümü.  
-- **NX_DHCP_NOT_BOUND**: (0x94) IP adresi kiralamadı, bu nedenle serbest bırakılamaz.
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı DHCP sürümü.  
+- **NX_DHCP_NOT_BOUND:**(0x94) IP adresi kiralanmaz, dolayısıyla yayımlanmaz.
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -691,7 +691,7 @@ status =  nx_dhcp_release(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_release"></a>nx_dhcp_interface_release
 
-Belirtilen arabirimdeki IP adresini serbest bırak
+Belirtilen arabirimde IP adresini serbest bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -699,24 +699,24 @@ Belirtilen arabirimdeki IP adresini serbest bırak
 UINT nx_dhcp_interface_release(NX_DHCP *dhcp_ptr, UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen arabirimdeki bir DHCP sunucusundan alınan IP adresini serbest bırakır ve DHCP Istemcisini yeniden başlatır. DHCP Istemcisi, *nx_dhcp_start* çağırarak yeniden başlatılabilir.
+Bu hizmet, belirtilen arabirimde bir DHCP sunucusundan alınan IP adresini serbest bırakarak DHCP İstemcisini yeniden verir. DHCP İstemcisi, nx_dhcp_start *çağrılarak yeniden nx_dhcp_start.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı DHCP sürümü.
-- **NX_DHCP_INTERFACE_NOT_ENABLED**: (0xa4) arabirimi DHCP için etkin değil
-- **NX_DHCP_NOT_BOUND**: (0x94) IP adresi kiralamadı, bu nedenle serbest bırakılamaz.
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Başarılı DHCP sürümü.
+- **NX_DHCP_INTERFACE_NOT_ENABLED:**(0xA4) DHCP için etkinleştirilmemiş arabirim
+- **NX_DHCP_NOT_BOUND:**(0x94) IP adresi kiralanmaz, dolayısıyla yayımlanmaz.
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -731,7 +731,7 @@ status =  nx_dhcp_interface_release(&my_dhcp, 1);
 
 ## <a name="nx_dhcp_decline"></a>nx_dhcp_decline
 
-DHCP sunucusundan IP adresini Reddet
+DHCP Sunucusundan IP adresini reddetme
 
 ### <a name="prototype"></a>Prototype
 
@@ -739,26 +739,26 @@ DHCP sunucusundan IP adresini Reddet
 UINT nx_dhcp_decline(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP için etkinleştirilen tüm arabirimlerde DHCP sunucusundan kiralanmış bir IP adresini reddeder. NX_DHCP_CLIENT_ SEND_ ARP_PROBE tanımlanmışsa, DHCP Istemcisi IP adresinin zaten kullanımda olduğunu algılarsa bir reddetme iletisi gönderir. NetX Duo DHCP Istemcisinde ARP araştırma yapılandırması hakkında daha fazla bilgi için bkz. bölüm içinde **ARP araştırmaları** .
+Bu hizmet, DHCP için etkinleştirilmiş tüm arabirimlerde DHCP sunucusundan kiralanan bir IP adresini reddeder. Bu NX_DHCP_CLIENT_ SEND_ ARP_PROBE tanımlanmışsa, IP adresinin zaten kullanımda olduğunu algılarsa DHCP İstemcisi bir REDDETME iletisi gönderir. NetX Duo DHCP **İstemcisi'nin** ARP yoklama yapılandırması hakkında daha fazla bilgi için Birinci Bölümdeki ARP Yoklamaları'ne bakın.
 
-Uygulama, adresin başka yollarla kullanımda olduğunu tespit etmezse IP adresini reddetmek için bu hizmeti kullanabilir.
+Uygulama, adresin başka bir şekilde kullanımda olduğunu fark ettiyse IP adresini reddetmek için bu hizmeti kullanabilir.
 
-Bu hizmet, DHCP Istemcisini *nx_dhcp_start* çağırarak yeniden başlatılacak şekilde yeniden başlatır.
+Bu hizmet, DHCP İstemcisi'nin nx_dhcp_start çağrılarak yeniden *başlatıla nx_dhcp_start.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) reddetme başarıyla gönderildi  
-- **NX_DHCP_NOT_BOUND**: (0x94) DHCP istemcisi bağlanmadı
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS:**(0x00) Başarıyla gönderilen reddetme  
+- **NX_DHCP_NOT_BOUND:**(0x94) DHCP İstemcisi bağlı değil
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -774,7 +774,7 @@ status =  nx_dhcp_decline(&my_dhcp);
 
 ## <a name="nx_dhcp_interface_decline"></a>nx_dhcp_interface_decline
 
-Belirtilen arabirimdeki DHCP sunucusundan IP adresini Reddet
+Belirtilen arabirimde DHCP Sunucusundan IP adresini reddetme
 
 ### <a name="prototype"></a>Prototype
 
@@ -783,25 +783,25 @@ UINT nx_dhcp_interface_decline(NX_DHCP *dhcp_ptr,
                                UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCP sunucusu tarafından atanan bir IP adresini reddetmek için reddetme iletisini sunucuya gönderir. Ayrıca, DHCP Istemcisini yeniden başlatır. Daha fazla bilgi için bkz. *nx_dhcp_decline* .
+Bu hizmet, DHCP sunucusu tarafından atanan bir IP adresini reddetmek için SUNUCUYA REDDİsİ iletisi gönderir. Ayrıca DHCP İstemcisi'nin de yeniden ilkini sağlar. Diğer *nx_dhcp_decline* için bkz.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
-- **Interface_index**: IP adresini reddetme arabiriminin dizini
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
+- **Interface_index:** IP adresini reddetmek için arabirim dizini
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) DHCP reddetme iletisi gönderildi  
-- **NX_DHCP_NOT_BOUND**: (0x94) DHCP istemcisi bağlanmadı
-- **NX_DHCP_INTERFACE_NOT_ENABLED**: (0xa4) arabirimi DHCP için etkin değil
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) DHCP reddetme iletisi gönderildi  
+- **NX_DHCP_NOT_BOUND:**(0x94) DHCP İstemcisi bağlı değil
+- **NX_DHCP_INTERFACE_NOT_ENABLED:**(0xA4) DHCP için etkinleştirilmemiş arabirim
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -815,7 +815,7 @@ status =  nx_dhcp_interface_decline(&my_dhcp, 2);
 ```
 ## <a name="nx_dhcp_send_request"></a>nx_dhcp_send_request
 
-DHCP iletisini sunucuya gönder
+Sunucuya DHCP iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -824,28 +824,28 @@ UINT nx_dhcp_send_request(NX_DHCP *dhcp_ptr, UINT dhcp_message_type);
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen DHCP iletisini DHCP Istemci kaydında bulunan DHCP için etkinleştirilen ilk arabirimdeki DHCP sunucusuna gönderir. Bir yayın veya reddetme iletisi göndermek için, uygulamanın sırasıyla *nx_dhcp [_interface] _Release*() veya *nx_dhcp_interface_decline ()* hizmetlerini kullanması gerekir.
+Bu hizmet, belirtilen DHCP iletiyi DHCP İstemci kaydında bulunan DHCP için etkinleştirilmiş ilk arabirimde DHCP sunucusuna gönderir. YAYıN veya REDDIZ iletisi göndermek için uygulamanın *sırasıyla nx_dhcp[_interface]_release*() veya *nx_dhcp_interface_decline() hizmetlerini* kullanması gerekir.
 
-Bu hizmeti kullanmak için, DHCP Istemcisinin INFORM_REQUEST ileti türünü gönderme haricinde başlatılmış olması gerekir.
+DHCP İstemcisi, bu hizmeti kullanmak için, etki alanı ileti türünü INFORM_REQUEST başlat gerekir.
 
 >[!NOTE]
-> Bu hizmet, ana bilgisayar uygulamasının DHCP Istemci durumu makinesine ' Drive ' için tasarlanmamıştır.
+> Bu hizmet, konak uygulamanın DHCP İstemcisi durum makinesini "sürücüsüne" yönelik değildir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğuna yönelik işaretçi.  
-- **dhcp_message_type**: ileti isteği ( *nxd_dhcp_client. h* içinde tanımlı)
+- **dhcp_ptr:** DHCP denetim bloğuna işaretçi.  
+- **dhcp_message_type:** İleti isteği *(nxd_dhcp_client.h içinde tanımlanır)*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) DHCP iletisi gönderildi  
-- **NX_DHCP_NOT_STARTED**: (0x96) geçersiz arabirim dizini
-- **NX_DHCP_INVALID_MESSAGE**: (0x9b) göndermek için geçersiz ileti türü
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi girişi
+- **NX_SUCCESS:**(0x00) DHCP iletisi gönderildi  
+- **NX_DHCP_NOT_STARTED:**(0x96) Geçersiz arabirim dizini
+- **NX_DHCP_INVALID_MESSAGE:**(0x9B) Göndermek için geçersiz ileti türü
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -860,7 +860,7 @@ status =  nx_dhcp_send_request(&my_dhcp, NX_DHCP_TYPE_DHCPINFORM);
 
 ## <a name="nx_dhcp_interface_send_request"></a>nx_dhcp_interface_send_request
 
-Belirli bir arabirimdeki DHCP iletisini sunucuya gönder
+Belirli bir arabirimde Sunucuya DHCP iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -870,18 +870,18 @@ UINT nx_dhcp_interface_send_request(NX_DHCP *dhcp_ptr,
                                     UINT dhcp_message_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu arabirim DHCP için etkinleştirilmişse, belirtilen arabirimdeki DHCP sunucusuna bir ileti gönderir. Bir yayın veya reddetme iletisi göndermek için, uygulamanın sırasıyla *nx_dhcp [_interface] _Release*() veya *nx_dhcp_interface_decline ()* hizmetlerini kullanması gerekir.
+Bu hizmet, bu arabirim DHCP için etkinleştirilmişse belirtilen arabirimde DHCP sunucusuna bir ileti gönderir. YAYıN veya REDDIZ iletisi göndermek için uygulamanın *sırasıyla nx_dhcp[_interface]_release*() veya *nx_dhcp_interface_decline() hizmetlerini* kullanması gerekir.
 
-DHCP Istemcisi, DHCP BILDIR Istek iletisi türünü göndermek dışında bu hizmeti kullanacak şekilde başlatılmalıdır.
+DHCP INFORM REQUEST ileti türünü göndermek dışında, DHCP İstemcisi bu hizmeti kullanmak üzere başlatıladır.
 
-Bu hizmet, ana bilgisayar uygulamasının DHCP Istemci durumu makinesine ' Drive ' için tasarlanmamıştır.
+Bu hizmet, konak uygulamanın DHCP İstemcisi durum makinesini "sürücüsüne" yönelik değildir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: DHCP denetim bloğuna yönelik işaretçi.
-- **Interface_index**: iletinin gönderileceği arabirimin dizini
+- **dhcp_ptr:** DHCP denetim bloğuna işaretçi.
+- **Interface_index:** İleti göndermek için arabirim dizini
 - **dhcp_message_type**: ileti isteği (nxd_dhcp_client. h içinde tanımlı)
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -918,7 +918,7 @@ UINT nx_dhcp_server_address_get(NX_DHCP *dhcp_ptr,
                                 ULONG server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet DHCP istemci kaydında bulunan DHCP için etkinleştirilen ilk arabirimdeki DHCP Istemci DHCP sunucusu IP adresini alır. Çağıran bu hizmeti yalnızca DHCP Istemcisi DHCP sunucusu tarafından atanan bir IP adresine bağlandıktan sonra kullanabilir. Konak uygulama, IP adresinin ayarlandığını doğrulamak için *nx_ip_status_check* hizmetini kullanabilir veya NX *_DHCP_STATE_CHANGE_NOTIFY* kullanabilir ve DHCP istemci durumunun NX_DHCP_STATE_BOUND olduğunu sorgulayabilir. Durum değişikliği geri arama işlevini ayarlama hakkında daha fazla ayrıntı için bkz. *nx_dhcp_state_change_notify* .
 
@@ -973,7 +973,7 @@ UINT nx_dhcp_interface_server_address_get(NX_DHCP *dhcp_ptr,
                                           ULONG server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu arabirim DHCP için etkinleştirilmişse, belirtilen arabirimdeki DHCP Istemci DHCP sunucusu IP adresini alır. DHCP Istemcisi, bağlantılı durumda olmalıdır. Bu arabirimdeki DHCP Istemcisini başlattıktan sonra konak uygulama, IP adresinin ayarlandığını doğrulamak için *nx_ip_status_check* hizmetini kullanabilir ya da DHCP istemci durumu değişikliği geri aramasını KULLANABILIR ve DHCP istemci durumunun NX_DHCP_STATE_BOUND. Durum değişikliği geri arama işlevini ayarlama hakkında daha fazla ayrıntı için bkz. *nx_dhcp_state_change_notify* .
 
@@ -1030,7 +1030,7 @@ DHCP örneği için ağ arabirimini ayarla
 UINT nx_dhcp_set_interface_index(NX_DHCP *dhcp_ptr, UINT index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP örneği için ağ arabirimini, tek bir ağ arabirimi için yapılandırılmış DHCP Istemcisini çalıştırırken üzerinde DHCP sunucusuna bağlanacak şekilde ayarlar.
 
@@ -1074,7 +1074,7 @@ DHCP işlemesini Başlat
 UINT nx_dhcp_start(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet DHCP için etkinleştirilen tüm arabirimlerde DHCP işlemeyi başlatır. Varsayılan olarak, uygulama nx_dhcp_create çağırdığında, birincil arabirim DHCP için etkinleştirilir *.*
 
@@ -1118,7 +1118,7 @@ Belirtilen arabirimde DHCP işlemeyi Başlat
 UINT nx_dhcp_interface_start(NX_DHCP *dhcp_ptr, UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu arabirim DHCP için etkinleştirilmişse, belirtilen arabirim üzerinde DHCP işlemi başlatır. DHCP için bir arabirim etkinleştirme hakkında daha fazla ayrıntı için bkz. *nx_dhcp_interface_enable*(). Varsayılan olarak, uygulama nx_dhcp_create çağırdığında, birincil arabirim DHCP için etkinleştirilir *.*
 
@@ -1163,7 +1163,7 @@ UINT nx_dhcp_state_change_notify(NX_DHCP *dhcp_ptr,
                                  VOID (*dhcp_state_change_notify)(NX_DHCP *dhcp_ptr, UCHAR new_state));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP durum değişikliklerinin bir uygulamasına bildirimde bulunmak için dhcp_state_change_notify belirtilen geri çağırma işlevini kaydeder. Geri arama işlevi, DHCP Istemcisinin geçiş durumunu sağlar.
 
@@ -1217,7 +1217,7 @@ UINT nx_dhcp_interface_state_change_notify(NX_DHCP *dhcp_ptr, UINT interface_ind
                                                                             UCHAR new_state));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP durum değişikliklerinin bir uygulamasına bildirimde bulunmak için belirtilen geri çağırma işlevini kaydeder. Geri çağırma, funcıton giriş bağımsız değişkenleri, arabirim dizinidir ve DHCP Istemcisinin bu arabirimde geçiş olduğu durumdur.
 
@@ -1264,7 +1264,7 @@ DHCP işlemesini durduruyor
 UINT nx_dhcp_stop(NX_DHCP *dhcp_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP işlemesini Başlatan tüm arabirimlerde DHCP işlemeyi durduruyor. DHCP 'yi işleyen bir arabirim yoksa, bu hizmet DHCP Istemci iş parçacığını askıya alacak ve DHCP Istemci zamanlayıcısını devre dışı kalacak.
 
@@ -1304,7 +1304,7 @@ Belirtilen arabirimdeki DHCP işlemesini durdur
 UINT nx_dhcp_interface_stop(NX_DHCP *dhcp_ptr, UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP zaten başlatılmışsa belirtilen arabirimdeki DHCP işlemesini durduruyor. DHCP çalıştıran başka arabirimler yoksa, DHCP iş parçacığı ve Zamanlayıcı askıya alınır.
 
@@ -1345,28 +1345,28 @@ UINT nx_dhcp_user_option_retrieve(NX_DHCP *dhcp_ptr, UINT request_option,
                                   UCHAR *destination_ptr, UINT *destination_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCP Istemci kaydında bulunan DHCP için etkinleştirilen ilk arabirimdeki DHCP seçenekleri arabelleğinden belirtilen DHCP seçeneğini alır. Başarılı olursa, seçenek verileri belirtilen arabelleğe kopyalanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.  
-- **request_option**: DHCP seçeneği, RFC 'ler tarafından belirtilen şekilde. *Nxd_dhcp_client. h* içindeki NX_DHCP_OPTION seçeneğine bakın.
-- **destination_ptr**: Yanıt dizesi için hedefin işaretçisi.  
-- **destination_size**: hedefin boyutuna ve dönüşe ilişkin işaretçi, döndürülen bayt sayısını yerleştirmek için hedef.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.  
+- **request_option:** RFC'ler tarafından belirtilen DHCP seçeneği. *nxd_dhcp_client.h içinde NX_DHCP_OPTION seçeneğine bakın.*
+- **destination_ptr:** Yanıt dizesi için hedefin işaretçisi.  
+- **destination_size:** Hedefin boyutunun işaretçisi ve döndürülen bayt sayısını yer alan hedef.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı seçenek alma.  
-- **NX_DHCP_NOT_BOUND**: (0x94) DHCP istemcisi bağlanmadı.
-- **NX_DHCP_NO_INTERFACES_ENABLED**: (0xa5) DHCP için etkinleştirilen arabirim yok
-- **NX_DHCP_DEST_TO_SMALL**: (0x95) hedef, yanıtı tutmak için çok küçük.
-- **NX_DHCP_PARSE_ERROR**: (0x97) seçeneği sunucu yanıtında bulunamadı.
-- NX_PTR_ERROR: (0x16) geçersiz giriş işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı seçenek alma.  
+- **NX_DHCP_NOT_BOUND:**(0x94) DHCP İstemcisi bağlı değil.
+- **NX_DHCP_NO_INTERFACES_ENABLED:**(0xA5) DHCP için etkinleştirilmiş arabirim yok
+- **NX_DHCP_DEST_TO_SMALL:**(0x95) Hedef, yanıtı tutmak için çok küçük.
+- **NX_DHCP_PARSE_ERROR:**(0x97) Sunucu yanıtta seçenek bulunamadı.
+- NX_PTR_ERROR: (0x16) Geçersiz giriş işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1386,7 +1386,7 @@ status =  nx_dhcp_user_option_retrieve(&my_dhcp, NX_DHCP_OPTION_DNS_SVR,
 
 ## <a name="nx_dhcp_interface_user_option_retrieve"></a>nx_dhcp_interface_user_option_retrieve
 
-Belirtilen arabirimdeki son sunucu yanıtından bir DHCP seçeneği alın
+Belirtilen arabirimde son sunucu yanıttan DHCP seçeneği alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1397,29 +1397,29 @@ UINT nx_dhcp_interface_user_option_retrieve(NX_DHCP *dhcp_ptr,
                                             UINT *destination_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen arabirim DHCP için etkinleştirilirse belirtilen arabirimdeki DHCP seçenekleri arabelleğinden belirtilen DHCP seçeneğini alır. Başarılı olursa, seçenek verileri belirtilen arabelleğe kopyalanır.
+Bu hizmet, belirtilen arabirim DHCP için etkinleştirilmişse, belirtilen arabirimde dhcp seçenekleri arabelleğinden belirtilen DHCP seçeneğini kaldırır. Başarılı olursa, seçenek verileri belirtilen arabelleğe kopyalanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
-- **Interface_index**: belirtilen seçeneğin alınacağı dizin
-- **request_option**: DHCP seçeneği, RFC 'ler tarafından belirtilen şekilde. NX_DHCP_OPTION seçeneğine bakın: *nxd_dhcp_client. h*.  
-- **destination_ptr**: Yanıt dizesi için hedefin işaretçisi.  
-- **destination_size**: hedefin boyutuna ve dönüşe ilişkin işaretçi, döndürülen bayt sayısını yerleştirmek için hedef.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
+- **Interface_index:** Belirtilen seçeneğin alınarak dizin oluşturma
+- **request_option:** RFC'ler tarafından belirtilen DHCP seçeneği. Bkz. NX_DHCP_OPTION seçeneği: *nxd_dhcp_client.h*.  
+- **destination_ptr:** Yanıt dizesi için hedefin işaretçisi.  
+- **destination_size:** Hedefin boyutunun işaretçisi ve döndürülen bayt sayısını yer alan hedef.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı seçenek alma.  
-- **NX_DHCP_NOT_BOUND**: (0x94) IP adresi atanmadı
-- **NX_DHCP_DEST_TO_SMALL**: (0x95) arabellek çok küçük
-- **NX_DHCP_PARSE_ERROR**: (0x97) DHCP seçeneği sunucu yanıtında bulunamadı.
-- NX_PTR_ERROR: (0x16) geçersiz DHCP işaretçisi.
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
-- NX_INVALID_INTERFACE: (0x4C) geçersiz ağ arabirimi
+- **NX_SUCCESS:**(0x00) Başarılı seçenek alma.  
+- **NX_DHCP_NOT_BOUND:**(0x94) IP adresi atanmamış
+- **NX_DHCP_DEST_TO_SMALL:**(0x95) Arabellek çok küçük
+- **NX_DHCP_PARSE_ERROR:**(0x97) DHCP Seçeneği Sunucu yanıtta bulunamadı.
+- NX_PTR_ERROR: (0x16) Geçersiz DHCP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
+- NX_INVALID_INTERFACE: (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1439,7 +1439,7 @@ status =  nx_dhcp_interface_user_option_retrieve(&my_dhcp, 0, NX_DHCP_OPTION_DNS
 
 ## <a name="nx_dhcp_user_option_convert"></a>nx_dhcp_user_option_convert
 
-Dört baytı ULONG 'a Dönüştür
+Dört baytı ULONG'a dönüştürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1447,20 +1447,20 @@ Dört baytı ULONG 'a Dönüştür
 ULONG nx_dhcp_user_option_convert(UCHAR *option_string_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, "option_string_ptr" ile işaret edilen dört karakteri işaretsiz bir Long değere dönüştürür. Bu, özellikle IP adresleri olduğunda yararlıdır  
-görüntülemeyen.
+Bu hizmet, "option_string_ptr" tarafından işaret option_string_ptr işaret eden dört karakteri imzasız bir uzun değere dönüştürür. Özellikle IP adresleri  
+Mevcut.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **option_string_ptr**: daha önce alınan seçenek dizesinin işaretçisi.
+- **option_string_ptr:** Daha önce alınan seçenek dizesinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **Değer**: ilk dört baytın değeri.
+- **Değer:** İlk dört bayt değeri.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1479,7 +1479,7 @@ dns_ip=  nx_dhcp_user_option_convert(dns_ip_string);
 
 ## <a name="nx_dhcp_user_option_add_callback_set"></a>nx_dhcp_user_option_add_callback_set
 
-Kullanıcı tarafından sağlanan seçenekleri eklemek için geri çağırma işlevini ayarla
+Kullanıcı tarafından sağlanan seçenekleri eklemek için geri çağırma işlevini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1492,26 +1492,26 @@ ULONG nx_dhcp_user_option_add_callbcak_set(NX_DHCP *dhcp_ptr,
                                                                         UINT *user_option_length));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Kullanıcı tarafından sağlanan seçenekleri eklemek için belirtilen geri çağırma işlevini kaydeder.
+Bu hizmet, kullanıcı tarafından sağlanan seçenekleri eklemek için belirtilen geri çağırma işlevini kaydedmektedir.
 
-Geri çağırma işlevi belirtilmişse, uygulamalar iface_index ve message_type tarafından pakete Kullanıcı tarafından sağlanan seçenekleri ekleyebilir.
+Geri çağırma işlevi belirtilmişse, uygulamalar pakete kullanıcı tarafından sağlanan seçenekleri iface_index ve message_type.
 
 >[!NOTE] 
-> Kullanıcı yordamında. Kullanıcı tarafından sağlanan seçenekler eklerken uygulamaların DHCP seçenekleri biçimi gelmelidir. Kullanıcı seçeneklerinin toplam boyutu user_option_length küçük veya eşit olmalı ve user_option_length gerçek seçenek uzunluğu olarak güncellenebilir. Seçenek başarıyla Ekle ' NX_TRUE döndürün, aksi NX_FALSE döndürün.
+> Kullanıcının yordamında. Kullanıcılar tarafından sağlanan seçenekleri eklerken uygulamaların DHCP seçenekleri biçimini izlemesi gerekir. Kullanıcı seçeneklerinin toplam boyutu, kullanıcı seçeneklerine eşit veya user_option_length olmalı ve user_option_length seçeneklerin uzunluğu olarak güncelleştirilsin. Seçenekleri NX_TRUE, yoksa geri dönüş NX_FALSE.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcp_ptr**: daha önce oluşturulmuş DHCP örneğine yönelik işaretçi.
-- **dhcp_user_option_add**: Kullanıcı seçeneği ekleme işlevi işaretçisi.
+- **dhcp_ptr:** Daha önce oluşturulan DHCP örneğinin işaretçisi.
+- **dhcp_user_option_add:** Kullanıcı seçeneği ekleme işlevinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı geri arama kümesi.
-- NX_PTR_ERROR: (0x16) geçersiz işaretçi.
+- **NX_SUCCESS:**(0x00) Başarılı geri çağırma kümesi.
+- NX_PTR_ERROR: (0x16) Geçersiz işaretçi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 

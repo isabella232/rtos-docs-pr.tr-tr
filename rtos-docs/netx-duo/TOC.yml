@@ -1,273 +1,273 @@
 - name: Azure RTOS NetX Duo belgeleri
   href: index.yml
-- name: NetX Duo 'e genel bakış
+- name: NetX Duo'ya Genel Bakış
   href: overview-netx-duo.md
-- name: NetX Duo Kullanıcı Kılavuzu
+- name: NetX Duo kullanıcı kılavuzu
   expanded: true
   items:
     - name: Bu Kılavuz Hakkında
       href: about-this-guide.md
-    - name: Denetleyebilirsiniz. 1-NetX Duo 'e giriş
+    - name: Caner. 1 - NetX Duo'ya Giriş
       href: chapter1.md
-    - name: Denetleyebilirsiniz. 2-NetX Duo yüklemesi ve kullanımı
+    - name: Caner. 2 - NetX Duo yüklemesi ve kullanımı
       href: chapter2.md
-    - name: Denetleyebilirsiniz. NetX Duo 'un 3 işlevsel bileşenleri
+    - name: Caner. 3 - NetX Duo'nın işlevsel bileşenleri
       href: chapter3.md
-    - name: Denetleyebilirsiniz. 4-NetX Duo hizmetlerinin açıklaması
+    - name: Caner. 4 - NetX Duo hizmetlerinin açıklaması
       href: chapter4.md
-    - name: Denetleyebilirsiniz. 5-NetX Duo ağ sürücüleri
+    - name: Caner. 5 - NetX Duo ağ sürücüleri
       href: chapter5.md
-    - name: Uygulamanızda. A-NetX Duo Hizmetleri
+    - name: App. A - NetX Duo hizmetleri
       href: appendix-a.md
-    - name: Uygulamanızda. B-NetX Duo sabitleri
+    - name: App. B - NetX Duo sabitleri
       href: appendix-b.md
-    - name: Uygulamanızda. C-NetX Duo veri türleri
+    - name: App. C - NetX Duo veri türleri
       href: appendix-c.md
-    - name: Uygulamanızda. D-BSD uyumlu yuva API 'SI
+    - name: App. D - BSD ile uyumlu yuva API'si
       href: appendix-d.md
-    - name: Uygulamanızda. E-ASCII karakter kodları
+    - name: App. E - ASCII karakter kodları
       href: appendix-e.md
 - name: NetX Duo eklentileri
   items:
-    - name: NetX Duo Oto IP Kullanıcı Kılavuzu
+    - name: NetX Duo AutoIP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo Oto-IP 'sine giriş
+        - name: Caner. 1 - NetX Duo AutoIP'e Giriş
           href: netx-duo-auto-ip/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo Oto IP 'yi yükleme ve kullanma
+        - name: Caner. 2 - NetX Duo AutoIP yükleme ve kullanımı
           href: netx-duo-auto-ip/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo Oto IP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo AutoIP hizmetlerinin açıklaması
           href: netx-duo-auto-ip/chapter3.md
-    - name: NetX Duo BSD Hizmetleri Kullanıcı Kılavuzu
+    - name: NetX Duo BSD Services kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo BSD 'ye giriş
+        - name: Caner. 1 - NetX Duo BSD'ye Giriş
           href: netx-duo-bsd/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo BSD yüklemesi ve kullanımı
+        - name: Caner. 2 - NetX Duo BSD'yi yükleme ve kullanma
           href: netx-duo-bsd/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo BSD Hizmetleri
+        - name: Caner. 3 - NetX Duo BSD Hizmetleri
           href: netx-duo-bsd/chapter3.md
-    - name: NetX şifreleme Kullanıcı Kılavuzu
+    - name: NetX Şifrelemesi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX şifrelemeye giriş
+        - name: Caner. 1 - NetX Şifrelemesi'ne Giriş
           href: ../netx/netx-crypto/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX şifrelemesi yükleme ve kullanma
+        - name: Caner. 2 - NetX Şifrelemesini yükleme ve kullanma
           href: ../netx/netx-crypto/chapter2.md
-        - name: Denetleyebilirsiniz. NetX şifreleme için 3 işlevsel bileşenler
+        - name: Caner. 3 - NetX Şifrelemesi'nin işlevsel bileşenleri
           href: ../netx/netx-crypto/chapter3.md
-        - name: Denetleyebilirsiniz. 3-NetX şifreleme API 'SI açıklaması
+        - name: Caner. 3 - NetX Şifreleme API'si açıklaması
           href: ../netx/netx-crypto/chapter4.md
-    - name: NetX Duo DHCP İstemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo DHCP istemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo DHCP istemcisine giriş
+        - name: Caner. 1 - NetX Duo DHCP istemcisine giriş
           href: netx-duo-dhcp-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo DHCP istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo DHCP istemcisi yükleme ve kullanma
           href: netx-duo-dhcp-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo DHCP istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo DHCP istemci hizmetlerinin açıklaması
           href: netx-duo-dhcp-client/chapter3.md
-        - name: Uygulamanızda. A-NetX Duo DHCP istemci hizmetleri için geri yükleme durumu özelliğinin açıklaması
+        - name: App. A - NetX Duo DHCP istemci hizmetleri için Geri yükleme durumu özelliğinin açıklaması
           href: netx-duo-dhcp-client/appendixA.md
-    - name: NetX Duo DHCP sunucusu Kullanıcı Kılavuzu
+    - name: NetX Duo DHCP sunucusu kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo DHCP sunucusuna giriş
+        - name: Caner. 1 - NetX Duo DHCP sunucusuna giriş
           href: netx-duo-dhcp-server/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo DHCP sunucusunu yükleme ve kullanma
+        - name: Caner. 2 - NetX Duo DHCP sunucusunu yükleme ve kullanma
           href: netx-duo-dhcp-server/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo DHCP sunucusu hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo DHCP sunucu hizmetlerinin açıklaması
           href: netx-duo-dhcp-server/chapter3.md
-    - name: NetX Duo DHCPv6 istemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo DHCPv6 istemci kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo DHCPv6 istemcisine giriş
+        - name: Caner. 1 - NetX Duo DHCPv6 istemcisine giriş
           href: netx-duo-dhcpv6-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo DHCPv6 istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo DHCPv6 istemcisi yükleme ve kullanma
           href: netx-duo-dhcpv6-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo DHCPv6 yapılandırma seçenekleri
+        - name: Caner. 3 - NetX Duo DHCPv6 yapılandırma seçenekleri
           href: netx-duo-dhcpv6-client/chapter3.md
-        - name: Denetleyebilirsiniz. 4-NetX Duo DHCPv6 istemci hizmetleri
+        - name: Caner. 4 - NetX Duo DHCPv6 istemci hizmetleri
           href: netx-duo-dhcpv6-client/chapter4.md
-        - name: Uygulamanızda. Bir-geri yükleme durumu özelliğinin açıklaması
+        - name: App. A - Geri Yükleme Durumu Özelliğinin Açıklaması
           href: netx-duo-dhcpv6-client/appendix-a.md
-    - name: NetX Duo DHCPv6 sunucusu Kullanıcı Kılavuzu
+    - name: NetX Duo DHCPv6 sunucusu kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo DHCPv6 sunucusuna giriş
+        - name: Caner. 1 - NetX Duo DHCPv6 sunucusuna giriş
           href: netx-duo-dhcpv6-server/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo DHCPv6 sunucusunu yükleme ve kullanma
+        - name: Caner. 2 - NetX Duo DHCPv6 sunucusunu yükleme ve kullanma
           href: netx-duo-dhcpv6-server/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo DHCPv6 sunucu yapılandırma seçenekleri
+        - name: Caner. 3 - NetX Duo DHCPv6 sunucu yapılandırma seçenekleri
           href: netx-duo-dhcpv6-server/chapter3.md
-        - name: Denetleyebilirsiniz. 4-NetX Duo DHCPv6 sunucu hizmetleri
+        - name: Caner. 4 - NetX Duo DHCPv6 sunucu hizmetleri
           href: netx-duo-dhcpv6-server/chapter4.md
-        - name: Uygulamanızda. A-NetX Duo DHCPv6 seçenek kodları
+        - name: App. A - NetX Duo DHCPv6 seçenek kodları
           href: netx-duo-dhcpv6-server/appendix-a.md
-        - name: Uygulamanızda. B-NetX Duo DHCPv6 sunucusu durum kodu
+        - name: App. B- NetX Duo DHCPv6 sunucu durum kodu
           href: netx-duo-dhcpv6-server/appendix-b.md
-        - name: Uygulamanızda. C-NetX Duo DHCPv6 benzersiz tanımlayıcıları (Duıds)
+        - name: App. C - NetX Duo DHCPv6 benzersiz tanımlayıcıları (DUID)
           href: netx-duo-dhcpv6-server/appendix-c.md
-        - name: Uygulamanızda. D-Advanced NetX Duo DHCPv6 sunucu örneği
+        - name: App. D - Gelişmiş NetX Duo DHCPv6 sunucu örneği
           href: netx-duo-dhcpv6-server/appendix-d.md
-    - name: NetX Duo DNS İstemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo DNS istemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo DNS istemcisine giriş
+        - name: Caner. 1 - NetX Duo DNS istemcisine giriş
           href: netx-duo-dns/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo DNS istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo DNS istemcisi yükleme ve kullanma
           href: netx-duo-dns/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo DNS istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo DNS istemci hizmetlerinin açıklaması
           href: netx-duo-dns/chapter3.md
-    - name: NetX Duo FTP Kullanıcı Kılavuzu
+    - name: NetX Duo FTP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo FTP 'ye giriş
+        - name: Caner. 1 - NetX Duo FTP'ye Giriş
           href: netx-duo-ftp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-FTP yüklemesi ve kullanımı
+        - name: Caner. 2 - FTP yükleme ve kullanımı
           href: netx-duo-ftp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-FTP hizmetlerinin açıklaması
+        - name: Caner. 3 - FTP hizmetlerinin açıklaması
           href: netx-duo-ftp/chapter3.md
-    - name: NetX Duo HTTP Kullanıcı Kılavuzu
+    - name: NetX Duo HTTP kullanıcı kılavuzu
       items:
-        - name: Bölüm 1-NetX Duo HTTP 'ye giriş
+        - name: Bölüm 1 - NetX Duo HTTP'ye Giriş
           href: netx-duo-http/chapter1.md
-        - name: Bölüm 2-NetX Duo HTTP 'yi yükleme ve kullanma
+        - name: Bölüm 2 - NetX Duo HTTP Yükleme ve Kullanımı
           href: netx-duo-http/chapter2.md
-        - name: Bölüm 3-NetX HTTP hizmetlerinin açıklaması
+        - name: Bölüm 3 - NetX HTTP Hizmetlerinin Açıklaması
           href: netx-duo-http/chapter3.md
-    - name: NetX Duo mDNS/DNS-SD Kullanıcı Kılavuzu
+    - name: NetX Duo mDNS/DNS-SD kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo mDNS/DNS-SD 'ye giriş
+        - name: Caner. 1 - NetX Duo mDNS/DNS-SD'ye Giriş
           href: netx-duo-mdns/chapter1.md
-        - name: Denetleyebilirsiniz. 2-mDNS yüklemesi ve kullanımı
+        - name: Caner. 2 - mDNS yükleme ve kullanımı
           href: netx-duo-mdns/chapter2.md
-        - name: Denetleyebilirsiniz. 3-iç hizmet önbelleğinin açıklaması
+        - name: Caner. 3 - İç hizmet önbelleğinin açıklaması
           href: netx-duo-mdns/chapter3.md
-        - name: Denetleyebilirsiniz. 4-mDNS hizmetlerinin açıklaması
+        - name: Caner. 4 - mDNS hizmetlerinin açıklaması
           href: netx-duo-mdns/chapter4.md
-    - name: NetX Duo LWM2M Istemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo LWM2M İstemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-LWM2M istemcisine giriş
+        - name: Caner. 1 - LWM2M istemcisine giriş
           href: netx-duo-lwm2m/chapter1.md
-        - name: Denetleyebilirsiniz. 2-LWM2M istemcisi yükleme ve kullanma
+        - name: Caner. 2 - LWM2M istemcisi yükleme ve kullanma
           href: netx-duo-lwm2m/chapter2.md
-        - name: Denetleyebilirsiniz. 3-LWM2M istemcisinin işlevsel açıklaması
+        - name: Caner. 3 - LWM2M istemcisinin İşlevsel Açıklaması
           href: netx-duo-lwm2m/chapter3.md
-        - name: Denetleyebilirsiniz. 4-LWM2M istemci hizmetlerinin açıklaması
+        - name: Caner. 4 - LWM2M istemci hizmetlerinin açıklaması
           href: netx-duo-lwm2m/chapter4.md
-    - name: NetX Duo MQTT istemci Kullanıcı Kılavuzu
+    - name: NetX Duo MQTT istemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo MQTT istemcisine giriş
+        - name: Caner. 1 - NetX Duo MQTT istemcisine giriş
           href: netx-duo-mqtt/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo MQTT istemcisini yükleme ve kullanma
+        - name: Caner. 2 - NetX Duo MQTT istemcisi yükleme ve kullanma
           href: netx-duo-mqtt/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo MQTT istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo MQTT istemci hizmetlerinin açıklaması
           href: netx-duo-mqtt/chapter3.md
-    - name: NetX Duo NAT Kullanıcı Kılavuzu
+    - name: NetX Duo NAT kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo NAT 'a giriş
+        - name: Caner. 1 - NetX Duo NAT'ye Giriş
           href: chapter1.md
-        - name: Denetleyebilirsiniz. 2-NAT yükleme ve kullanımı
+        - name: Caner. 2 - NAT yükleme ve kullanımı
           href: chapter2.md
-        - name: Denetleyebilirsiniz. 3-NAT yapılandırma seçenekleri
+        - name: Caner. 3 - NAT yapılandırma seçenekleri
           href: chapter3.md
-        - name: Denetleyebilirsiniz. 4-NAT hizmetlerinin açıklaması
+        - name: Caner. 4 - NAT hizmetlerinin açıklaması
           href: chapter4.md
-    - name: NetX Duo POP3 istemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo POP3 istemci kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo POP3 istemcisine giriş
+        - name: Caner. 1 - NetX Duo POP3 istemcisine giriş
           href: netx-duo-pop3-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo POP3 istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo POP3 istemcisi yükleme ve kullanma
           href: netx-duo-pop3-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-POP3 istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - POP3 istemci hizmetlerinin açıklaması
           href: netx-duo-pop3-client/chapter3.md
-    - name: NetX Duo PPP Kullanıcı Kılavuzu
+    - name: NetX Duo PPP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo PPP 'ye giriş
+        - name: Caner. 1 - NetX Duo PPP'ye Giriş
           href: netx-duo-ppp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo PPP yükleme ve kullanımı
+        - name: Caner. 2 - NetX Duo PPP yüklemesi ve kullanımı
           href: netx-duo-ppp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo PPP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo PPP hizmetlerinin açıklaması
           href: netx-duo-ppp/chapter3.md
-    - name: NetX Duo PTP Kullanıcı Kılavuzu
+    - name: NetX Duo PTP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo MTP istemcisine giriş
+        - name: Caner. 1 - NetX Duo PTP istemcisine giriş
           href: netx-duo-ptp-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo MTP istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo PTP istemcisi yükleme ve kullanma
           href: netx-duo-ptp-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo MTP istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo PTP istemci hizmetlerinin açıklaması
           href: netx-duo-ptp-client/chapter3.md
-    - name: NetX Duo SMTP istemcisi Kullanıcı Kılavuzu
+    - name: NetX Duo SMTP istemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo SMTP istemcisine giriş
+        - name: Caner. 1 - NetX Duo SMTP istemcisine giriş
           href: netx-duo-smtp-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo SMTP istemcisini yükleme ve kullanma
+        - name: Caner. 2 - NetX Duo SMTP istemcisi yükleme ve kullanma
           href: netx-duo-smtp-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-SMTP istemci hizmetlerinin istemci açıklaması
+        - name: Caner. 3 - SMTP istemci hizmetlerinin istemci açıklaması
           href: netx-duo-smtp-client/chapter3.md
-    - name: NetX Duo SNMP Kullanıcı Kılavuzu
+    - name: NetX Duo SNMP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo SNMP 'ye giriş
+        - name: Caner. 1 - NetX Duo SNMP'ye Giriş
           href: netx-duo-snmp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo SNMP aracısının yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo SNMP aracılarının yüklenmesi ve kullanımı
           href: netx-duo-snmp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo SNMP aracı hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo SNMP aracı hizmetlerinin açıklaması
           href: netx-duo-snmp/chapter3.md
     - name: NetX Duo SNTP istemcisi
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo SNTP istemcisine giriş
+        - name: Caner. 1 - NetX Duo SNTP istemcisine giriş
           href: netx-duo-sntp-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo SNTP istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo SNTP istemcisi yükleme ve kullanma
           href: netx-duo-sntp-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo SNTP istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo SNTP istemci hizmetlerinin açıklaması
           href: netx-duo-sntp-client/chapter3.md
-        - name: Uygulamanızda. A-NetX Duo SNTP önemli hata kodları
+        - name: App. A - NetX Duo SNTP Önemli Hata Kodları
           href: netx-duo-sntp-client/appendix-a.md
-    - name: NetX Duo Telnet Kullanıcı Kılavuzu
+    - name: NetX Duo Telnet kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo Telnet 'e giriş
+        - name: Caner. 1 - NetX Duo Telnet'e Giriş
           href: netx-duo-telnet/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo Telnet yüklemesi ve kullanımı
+        - name: Caner. 2 - NetX Duo Telnet yüklemesi ve kullanımı
           href: netx-duo-telnet/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo Telnet hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo Telnet hizmetlerinin açıklaması
           href: netx-duo-telnet/chapter3.md
     - name: NetX Duo TFTP
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo TFTP 'ye giriş
+        - name: Caner. 1 - NetX Duo TFTP'ye Giriş
           href: netx-duo-tftp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo TFTP 'nin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX Duo TFTP'yi yükleme ve kullanma
           href: netx-duo-tftp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Duo TFTP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Duo TFTP hizmetlerinin açıklaması
           href: netx-duo-tftp/chapter3.md
-    - name: NetX Duo Web HTTP ve HTTPS Kullanıcı Kılavuzu
+    - name: NetX Duo Web HTTP ve HTTPS kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Duo HTTP ve HTTPS 'ye giriş
+        - name: Caner. 1 - NetX Duo HTTP ve HTTPS'ye Giriş
           href: netx-duo-web-http/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Duo HTTP ve HTTPS yüklemesi ve kullanımı
+        - name: Caner. 2 - NetX Duo HTTP ve HTTPS yükleme ve kullanımı
           href: netx-duo-web-http/chapter2.md
-        - name: Denetleyebilirsiniz. 3-HTTP hizmetlerinin açıklaması
+        - name: Caner. 3 - HTTP hizmetlerinin açıklaması
           href: netx-duo-web-http/chapter3.md
-    - name: NetX güvenli DTLS Kullanıcı Kılavuzu
+    - name: NetX Secure DTLS kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX güvenli DTLS 'ye giriş
+        - name: Caner. 1 - NetX Secure DTLS'ye Giriş
           href: netx-secure-dtls/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX güvenli DTLS yükleme ve kullanma
+        - name: Caner. 2 - NetX Secure DTLS'nin yüklenmesi ve kullanımı
           href: netx-secure-dtls/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX güvenli DTLS 'nin işlevsel açıklaması
+        - name: Caner. 3 - NetX Secure DTLS'nin işlevsel açıklaması
           href: netx-secure-dtls/chapter3.md
-        - name: Denetleyebilirsiniz. 4-NetX güvenli DTLS hizmetlerinin açıklaması
+        - name: Caner. 4 - NetX Secure DTLS hizmetlerinin açıklaması
           href: netx-secure-dtls/chapter4.md
-        - name: Uygulamanızda. A-NetX güvenli DTLS dönüş/hata kodları
+        - name: App. A - NetX Secure DTLS dönüş/hata kodları
           href: netx-secure-dtls/appendix-a.md
-    - name: NetX güvenli TLS Kullanıcı Kılavuzu
+    - name: NetX Secure TLS kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX 'e giriş
+        - name: Caner. 1 - NetX Secure'e Giriş
           href: netx-secure-tls/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX güvenli yükleme ve kullanımı
+        - name: Caner. 2 - NetX Secure'i yükleme ve kullanma
           href: netx-secure-tls/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX güvenliği için işlevsel açıklama
+        - name: Caner. 3 - NetX Secure'in işlevsel açıklaması
           href: netx-secure-tls/chapter3.md
-        - name: Denetleyebilirsiniz. 4-NetX güvenli hizmetlerinin açıklaması
+        - name: Caner. 4 - NetX Secure hizmetlerinin açıklaması
           href: netx-secure-tls/chapter4.md
-        - name: Uygulamanızda. A-NetX güvenli dönüş/hata kodları
+        - name: App. A - NetX Secure dönüş/hata kodları
           href: netx-secure-tls/appendix-a.md
 - name: NetX Duo deposu
   href: 'https://github.com/azure-rtos/netxduo'
 - name: İlgili hizmetler
   items:
-    - name: IoT için Defender-RTOS (Önizleme)
+    - name: IoT için Defender - RTOS (önizleme)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
@@ -275,19 +275,19 @@
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
-    - name: ThreadX modülleri
+    - name: ThreadX Modülleri
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
     - name: NetX
       href: ../netx/index.yml
-    - name: GUX
+    - name: GUIX
       href: ../guix/index.yml
-    - name: Dosya x
+    - name: FileX
       href: ../filex/index.yml
     - name: LevelX
       href: ../levelx/index.yml
     - name: USBX
       href: ../usbx/index.yml
-    - name: Trackingex
+    - name: TraceX
       href: ../tracex/index.yml

@@ -1,108 +1,108 @@
 ---
-title: ThreadX Azure RTOS anlama
-description: Özellikle derin katıştırılmış uygulamalar için tasarlanmış gelişmiş bir gerçek zamanlı işletim sistemi (RTOS) olan Azure ThreadX hakkında daha fazla bilgi edinin.
+title: Azure RTOS ThreadX 'i anlama
+description: Özellikle derin eklenmiş uygulamalar için tasarlanan gelişmiş gerçek zamanlı bir işletim sistemi (RTOS) olan Azure ThreadX hakkında daha fazla bilgi edinin.
 author: philmea
 ms.author: philmea
 ms.date: 6/9/2021
 ms.service: rtos
 ms.topic: overview
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 4b6c8df5133f16cf3ed4006c12433ac426453cb5
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 300307a82cfde9c74ec0a2499528898b384076676f75bd592fa2840bc5ac53a8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178213"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796313"
 ---
-# <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX'e genel bakış
+# <a name="overview-of-azure-rtos-threadx"></a>Azure RTOS ThreadX 'e genel bakış
 
-Azure RTOS ThreadX, Microsoft'un gelişmiş endüstriyel sınıf Real-Time İşletim Sistemidir (RTOS). Özellikle derinden eklenmiş, gerçek zamanlı ve IoT uygulamaları için tasarlanmıştır. Azure RTOS ThreadX gelişmiş zamanlama, iletişim, eşitleme, zamanlayıcı, bellek yönetimi ve kesme yönetimi özellikleri sağlar. Ayrıca Azure RTOS ThreadX'in picokernel™ mimarisi™ preemption-threshold™ scheduling, event-chaining,™ yürütme profili oluşturma, performans ölçümleri ve sistem olay izleme gibi birçok gelişmiş özelliği vardır. Azure RTOS ThreadX, üstün kullanım kolaylığıyla birlikte en zorlu tümleşik uygulamalar için ideal seçimdir. Azure RTOS ThreadX'te tüketici cihazları, tıbbi elektronik cihazlar ve endüstriyel kontrol ekipmanları gibi çok çeşitli ürünlerde milyarlarca dağıtım vardır.
+Azure RTOS ThreadX, Microsoft 'un gelişmiş endüstriyel sınıf Real-Time Işletim sistemidir (RTOS). Özellikle de gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanmıştır. Azure RTOS ThreadX, Gelişmiş zamanlama, iletişim, eşitleme, süreölçer, bellek yönetimi ve kesme yönetim olanakları sağlar. Ayrıca, Azure RTOS ThreadX 'in birçok gelişmiş özelliği vardır: picokernel™ mimarisi, önalım-Threshold™ zamanlama, olay zincirleme,™ yürütme profili oluşturma, performans ölçümleri ve sistem olay izleme. En üstün kullanım kolaylığıyla birlikte, Azure RTOS ThreadX, katıştırılmış uygulamaların en zorlu kullanımı için ideal seçenektir. Azure RTOS ThreadX, tüketici cihazları, tıbbi elektronik aygıtlar ve endüstriyel denetim donatımı dahil olmak üzere çok çeşitli ürünlerde milyarlarca dağıtım içerir.
 
 ## <a name="threadx-footprint"></a>ThreadX ayak izi
 
-Azure RTOS ThreadX'in oldukça küçük bir 2 KB yönerge alanı ve en az 1 KB RAM alanı vardır. Bu küçük boyutun nedeni büyük ölçüde katmanlı olmayan picokernel mimarisi ve otomatik ölçeklendirmedir. Otomatik ölçeklendirme, bağlantı zamanında son görüntüye yalnızca uygulama tarafından kullanılan hizmetlerin (ve destekleyen altyapının) dahil olduğu anlamına gelir.
+Azure RTOS ThreadX 'in bir remarkada küçük 2 KB yönerge alanı ve 1 KB 'lık RAM en az ayak izi vardır. Bu küçük boyut büyük ölçüde katmanlı olmayan picokernel mimarisi ve otomatik ölçeklendirmeyle kaynaklanmaktadır. Otomatik ölçeklendirme, uygulama tarafından kullanılan hizmetlerin (ve destekleyici altyapının) bağlantı zamanında son görüntüye dahil olduğu anlamına gelir.
 
-Burada bazı tipik Azure RTOS ThreadX boyutu özellikleri vetir.
+Bazı tipik Azure RTOS ThreadX boyut özellikleri aşağıda verilmiştir.
 
-|Azure RTOS ThreadX Hizmeti  |Bayt Cinsinden Tipik Boyut  |
+|Azure RTOS ThreadX hizmeti  |Bayt cinsinden normal boyut  |
 |---------|---------|
-|Temel Hizmetler (Gerekli) |2.000  |
+|Çekirdek hizmetler (gerekli) |2.000  |
 |Kuyruk Hizmetleri  |900  |
-|Olay Bayrağı Hizmetleri  |900  |
-|Semaphore Hizmetleri  |450  |
-|Mutex Services  |1.200  |
-|Bellek Hizmetlerini Engelleme  |550  |
-|Byte Memory Services  |900  |
+|Olay bayrağı Hizmetleri  |900  |
+|Semafor Hizmetleri  |450  |
+|Mutex Hizmetleri  |1.200  |
+|Bellek hizmetlerini engelle  |550  |
+|Bayt bellek Hizmetleri  |900  |
 
 ## <a name="threadx-execution-speed"></a>ThreadX yürütme hızı
 
-Azure RTOS ThreadX, en popüler işlemcilerde mikrosaniyenin altında bir bağlam anahtarına sahip olur ve genel olarak diğer ticari RTOS'lara göre daha hızlıdır. ThreadX, hızlı olmanın Azure RTOS yüksek oranda belirleyicidir. Hazır 200 iş parçacığı veya yalnızca bir tane olsa da aynı hızlı performansı elde ediyor.
+Azure RTOS ThreadX, en popüler işlemciler üzerinde bir alt mikro ikinci bağlam anahtarına erişir ve diğer ticari RTOSs 'den daha hızlıdır. Hızlı olmasının yanı sıra Azure RTOS ThreadX de oldukça belirleyici bir niteliğindedir. Yalnızca bir tane veya tek bir 200 iş parçacığı olup olmadığı için aynı hızlı performansa erişir.
 
-Azure RTOS ThreadX'in tipik performans Azure RTOS vardır:
+Azure RTOS ThreadX 'in bazı tipik performans özellikleri aşağıda verilmiştir:
 
-* Hızlı önyükleme: Azure RTOS ThreadX'in önyüklemesi 120 döngüden kısadır.
-* Temel hata denetimi isteğe bağlı olarak kaldırıldı: Temel Azure RTOS ThreadX hata denetimi derleme zamanında atlanabilir. Bu, uygulama kodu doğrulandığında ve artık her parametrede hata denetimi gerektirmeyecek şekilde yararlı olabilir. Hata denetimi atlama işlemi, sistem genelinde değil derleme biriminde yapılabilir.
-* Picokernel tasarımı: Hizmetler birbirine katmanlanmaz ve gereksiz işlev çağrısı ek yükü ortadan kaldırılmış olur.
-* en iyi duruma getirilmiş kesme işleme: Ön hazırlık gerekli olmadığı sürece, ISR girdisi/çıkışında yalnızca karalama yazmacı kaydedilir/geri yüklenir.
+* Hızlı önyükleme: Azure RTOS ThreadX önyüklemesi 120 ' den az Döngülerde.
+* Temel hata denetimi için isteğe bağlı kaldırma: temel Azure RTOS ThreadX hata denetimi derleme zamanında atlanabilir. Bu, uygulama kodu doğrulandığında ve her parametreye artık hata denetimi gerektirmeyen yararlı olabilir. Hata denetimi atlama, sistem genelinde değil, bir derleme biriminde yapılabilir.
+* Picokernel tasarımı: hizmetler, gereksiz işlev çağrı yükünü ortadan kaldırarak birbirleriyle katmanlanmış değildir.
+* İyileştirilmiş kesme işleme: önalım gerekmedikçe yalnızca karalama kayıtları ıSR girdisi/çıkış üzerine kaydedilir/geri yüklenir.
 * İyileştirilmiş API işleme:
 
-    |Azure RTOS ThreadX Hizmeti  |MikroSaniyelerde Hizmet Süresi*  |
+    |Azure RTOS ThreadX hizmeti  |Mikrosaniye cinsinden Hizmet Süresi *  |
     |---------|---------|
-    |İş ParçacığıNı Askıya Alma  |0.6  |
-    |İş Parçacığı Sürdürme  |0.6  |
-    |Kuyruk Gönderme  |0.3  |
-    |Kuyruk Alma  |0.3  |
-    |Semaphore'ları al  |0,2  |
-    |Semafor koy  |0,2  |
-    |Bağlam Anahtarı  |0,4  |
-    |Kesme Yanıtı  |0.0 – 0.6  |
+    |İş parçacığı askıya alma  |0.6  |
+    |İş parçacığı özgeçmişi  |0.6  |
+    |Kuyruğu gönder  |0.3  |
+    |Kuyruk alma  |0.3  |
+    |Semafor al  |0,2  |
+    |Semaforu koy  |0,2  |
+    |Bağlam anahtarı  |0,4  |
+    |Kesme yanıtı  |0,0 – 0,6  |
 
-    **200 MHz ile çalışan tipik işlemciye göre performans rakamları.*
+    **200 MHz hızında çalışan normal işlemciyi temel alan performans rakamları*.
 
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
-Azure RTOS ThreadX, ön eşik zamanlaması için önemli bir değerdir. Bu özellik, Azure RTOS ThreadX için benzersizdir ve kapsamlı akademik araştırmalara konudur. Yun Wang (Wangia Üniversitesi) ve Manas Saksena (University of Pittsburgh) tarafından kaleme alan [Scheduling Fixed-Priority Tasks with Preemption Threshold](https://ieeexplore.ieee.org/document/811269)(Zamanlama Görevleri) makalesinde daha fazla bilgi bulunabilir.
+Azure RTOS ThreadX, önalım-Threshold zamanlaması için önemli bir tablodur. Bu özellik Azure RTOS ThreadX için benzersizdir ve kapsamlı akademik araştırma konusu. [Önalım eşiğine sahip Fixed-Priority görevlerden](https://ieeexplore.ieee.org/document/811269), urun Wang (Concorçya University) ve Manas Saksena (University of Estsburgh) Ile bilgi zamanlarından daha fazla bilgi edinebilirsiniz.
 
-Azure RTOS ThreadX'in temel özellikleri:
+Azure RTOS ThreadX 'in temel özellikleri:
 
-* Eksiksiz ve Kapsamlı Çok Görevli Tesisler
-  * İş parçacıkları, uygulama süreçleri, ileti kuyrukları, semaforları sayma, mutex'ler, olay bayrakları, blok ve byte bellek havuzları
-* Priority-Based Ön Zamanlama
-* Öncelik Esnekliği – En fazla 1024 Öncelik Düzeyi
-* İşbirlikçi Zamanlama
-* Preemption-Threshold: ThreadX'Azure RTOS benzersizdir, bağlam anahtarlarını azaltmaya ve zamanlanabilirliği garanti etmeye yardımcı olur (akademik araştırma başına)
-* Azure RTOS ThreadX MODULES aracılığıyla Bellek Koruması
-* Tam Belirleyici
-* Olay İzleme – Son *n sistem/uygulama* olaylarını yakalama
-* Olay Zinciri Oluşturma – ThreadX iletişimi veya eşitleme nesnesi için uygulamaya özgü "notify" Azure RTOS işlevini kaydetme
-* Azure RTOS İsteğe Bağlı Bellek Koruması ile ThreadX MODÜLLERI
-* Run-Time Performans Ölçümleri
-  * İş parçacığı yeniden dizilerinin sayısı
-  * İş parçacığı askıya alma sayısı
-  * İstenen iş parçacığı ön emptions sayısı
-  * Zaman uyumsuz iş parçacığı kesme ön emptions sayısı
-  * İş parçacığı öncelik ters çevirme sayısı
-  * İş parçacığı ilinquishes sayısı
-* Yürütme Profili Seti (EPK)
-* Kesme Yığınını Ayırma
-* Run-Time Yığını Analizi
-* Zamanlayıcı Kesme İşleme İyileştirilmiş
+* Eksiksiz ve kapsamlı çoklu görev olanakları
+  * İş parçacıkları, uygulama zamanlayıcılar, ileti kuyrukları, sayım semaforları, zaman uyumu sağlayıcılar, olay bayrakları, blok ve bayt bellek havuzları
+* Priority-Based preemptive zamanlaması
+* Öncelik esnekliği – 1024 öncelik düzeyine kadar
+* Cooperative zamanlaması
+* Preemption-Threshold – Azure RTOS ThreadX 'e özgü, bağlam anahtarlarının azaltılmasına yardımcı olur ve schedulability garanti sağlanmasına yardımcı olur (akademik araştırma başına)
+* Azure RTOS ThreadX MODÜLLERI aracılığıyla bellek koruması
+* Tam belirleyici
+* Olay Izleme – son *n* sistem/uygulama olaylarını yakala
+* Olay zincirleme – her bir Azure RTOS ThreadX iletişimi veya eşitleme nesnesi için uygulamaya özgü "bildirim" geri çağırma işlevini kaydetme
+* Isteğe bağlı bellek koruması ile Azure RTOS ThreadX MODÜLLERI
+* Run-Time performans ölçümleri
+  * İş parçacığı bağlantının sürdürülmesi sayısı
+  * İş parçacığı getirilmesi sayısı
+  * İstek iş parçacığı ön onayları sayısı
+  * Zaman uyumsuz iş parçacığı kesme ön onayları sayısı
+  * İş parçacığı önceliği ınsürümlerin sayısı
+  * İş parçacığı relinkler sayısı
+* Yürütme profili seti (EPK)
+* Kesme yığınını ayır
+* Run-Time Stack Analizi
+* İyileştirilmiş Zamanlayıcı kesme Işlemi
 
-## <a name="multicore-support-amp--smp"></a>Çok çekirdekli destek (AMP & SMP)
+## <a name="multicore-support-amp--smp"></a>Birden çok Ore desteği (AMP & SMP)
 
-Standart Azure RTOS ThreadX genellikle ayrı bir Azure RTOS ThreadX kopyasının ve uygulamanın (veya Linux'ın) her çekirdek üzerinde yürütülür ve paylaşılan bellek veya OpenAMP gibi bir işlemciler arası iletişim mekanizması aracılığıyla birbirleriyle iletişim kurarak OpenAMP (Azure RTOS ThreadX OpenAMP'ı destekler) asimetrik Çok İşlemcili (AMP) bir şekilde kullanılır.
+Standart Azure RTOS ThreadX genellikle asimetrik çoklu Işlem (AMP) ile birlikte kullanılır; burada Azure RTOS ThreadX 'in ayrı bir kopyası ve uygulama (veya Linux) her çekirdek üzerinde yürütülür ve paylaşılan bellek aracılığıyla birbirleriyle iletişim kurar veya OpenAMP (Azure RTOS ThreadX, OpenAMP 'yı destekler).
 
-İşlemcileri yüklemenin yüksek oranda dinamik olduğu ortamlarda Azure RTOS ThreadX Simetrik Çoklu İşlemci (SMP) aşağıdaki işlemci aileleri için kullanılabilir:
+Yükleme işlemcilerin yüksek dinamik olduğu ortamlarda, aşağıdaki işlemci aileleri için Azure RTOS ThreadX simetrik çoklu Işlem (SMP) kullanılabilir:
 
 * ARM Cortex-Ax
 * ARM Cortex-Rx
 * ARM Cortex-A5x 64 bit
-* MIPS 34 K, 1004 K ve interAptiv
+* MIPS 34 K, 1004 K ve ınteraptiv
 * PowerPC
-* Özet ARC HS
+* Synopsys ARC HS
 * x86
 
-Azure RTOS ThreadX SMP, n işlemci arasında dinamik *yük dengeleme* gerçekleştirir. Tüm ThreadX Azure RTOS (kuyruklar, semaforlar, olay bayrakları, bellek havuzları vb.) herhangi bir çekirdek üzerinde herhangi bir iş parçacığı tarafından erişilsin. Azure RTOS ThreadX SMP tüm çekirdekler için tam Azure RTOS ThreadX API 'sini sağlar ve SMP işlemi için geçerli olan aşağıdaki yeni API 'Leri tanıtır:
+Azure RTOS ThreadX SMP, *n* işlemciler genelinde dinamik yük dengeleme gerçekleştirir. Tüm Azure RTOS ThreadX kaynaklarına (kuyruklar, Semaforlar, olay bayrakları, bellek havuzları vb.) herhangi bir çekirdek üzerinde herhangi bir iş parçacığı tarafından erişilebilmesini sağlar. Azure RTOS ThreadX SMP tüm çekirdekler için tam Azure RTOS ThreadX API 'sini sağlar ve SMP işlemi için geçerli olan aşağıdaki yeni API 'Leri tanıtır:
 
 * `UINT tx_thread_smp_core_exclude(TX_THREAD *thread_ptr, ULONG exclusion_map);`
 * `UINT tx_thread_smp_core_exclude_get(TX_THREAD *thread_ptr, ULONG *exclusion_map_ptr);`

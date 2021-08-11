@@ -1,35 +1,35 @@
 ---
-title: Bölüm 6-Azure RTOS LevelX veya API 'Leri
-description: Azure RTOS LevelX veya API 'si uygulama tarafından kullanılabilir.
+title: Bölüm 6 - Azure RTOS LevelX NOR API'leri
+description: Uygulama Azure RTOS LevelX VEYA API'leri kullanılabilir.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3ab7d3a7e431d7c8f49ef4f5cab9216dc77c8d33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 2e109f5916a9e903aa3341f2855ade085e9d9a22b80ec7cb2e0c310e43ff3eac
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827052"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790250"
 ---
-# <a name="chapter-6---azure-rtos-levelx-nor-apis"></a>Bölüm 6-Azure RTOS LevelX veya API 'Leri
+# <a name="chapter-6---azure-rtos-levelx-nor-apis"></a>Bölüm 6 - Azure RTOS LevelX NOR API'leri
 
-Uygulama için kullanılabilen Azure RTOS LevelX ve API işlevleri aşağıdaki gibidir.
+Uygulama Azure RTOS için kullanılabilir olan levelX NOR API işlevleri aşağıdaki gibidir.
 
-- ***lx_nor_flash_close** _: _Close veya Flash örneği *
-- ***lx_nor_flash_defragment** _: _Defragment veya Flash örneği *
-- ***lx_nor_flash_extended_cache_enable** _: _Enable/genişletilmiş ve önbelleği devre dışı bırak *
-- ***lx_nor_flash_initialize** _: _Initialize veya Flash desteği *
-- ***lx_nor_flash_open** _: _Open veya Flash örneği *
-- ***lx_nor_flash_partial_defragment** _: _Partial veya Flash örneği birleştirme
-- ***lx_nor_flash_sector_read** _: _Read veya Flash sektörü *
-- ***lx_nor_flash_sector_release** _: _Release veya Flash sektörü *
-- ***lx_nor_flash_sector_write** _: _write veya Flash sektörü *
+- ***lx_nor_flash_close** _: _Close NOR flash örneği*
+- ***lx_nor_flash_defragment** _: _Defragment NOR flash örneği*
+- ***lx_nor_flash_extended_cache_enable** _: genişletilmiş NOR _Enable/devre dışı bırakma*
+- ***lx_nor_flash_initialize** _: _Initialize NOR flash desteği*
+- ***lx_nor_flash_open** _: _Open NOR flash örneği*
+- ***lx_nor_flash_partial_defragment** _: _Partial VEYA flash örneğinin birleştiricisi*
+- ***lx_nor_flash_sector_read** _: _Read NOR flash sektör*
+- ***lx_nor_flash_sector_release** _: _Release NOR flash sektör*
+- ***lx_nor_flash_sector_write** _: _Write NOR flash sektör*
 
 ## <a name="lx_nor_flash_close"></a>lx_nor_flash_close
 
-Kapat veya Flash örneği
+NOR flash örneğini kapatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -37,20 +37,20 @@ Kapat veya Flash örneği
 UINT lx_nor_flash_close(LX_NOR_FLASH *nor_flash);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce açılmış veya Flash örneğini kapatır.
+Bu hizmet, önceden açılmış OLAN NOR flash örneğini kapatır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- *nor_flash*: veya Flash örnek işaretçisi.
+- *nor_flash:* NOR flash örnek işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) Flash örneği kapatılırken hata oluştu.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) Flash örneği kapatılıyor hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -76,7 +76,7 @@ status = lx_nor_flash_close(&my_nor_flash);
 
 ## <a name="lx_nor_flash_defragment"></a>lx_nor_flash_defragment
 
-Birleştirme veya Flash örneği
+Birleştirme NOR flash örneği
 
 ### <a name="prototype"></a>Prototype
 
@@ -84,20 +84,20 @@ Birleştirme veya Flash örneği
 UINT lx_nor_flash_defragment(LX_NOR_FLASH *nor_flash);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce açılan veya Flash örneğini birleştirir. Birleştirme işlemi, boş kesimlerin ve blokların sayısını en üst düzeye çıkarır.
+Bu hizmet, daha önce açılan NOR flash örneğini birleştirmektedir. Birleştirme işlemi, serbest kesim ve blok sayısını en üst düzeye çıkartır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- *nor_flash*: veya Flash örnek işaretçisi.
+- *nor_flash:* NOR flash örnek işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) Flash örneği birleştirme hatası.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) Flash örneği birleştirme hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -123,7 +123,7 @@ status = lx_nor_flash_defragment(&my_nor_flash);
 
 ## <a name="lx_nor_flash_extended_cache_enable"></a>lx_nor_flash_extended_cache_enable
 
-Genişletilmiş ve önbelleği etkinleştir/devre dışı bırak
+Genişletilmiş NOR önbelleğini etkinleştirme/devre dışı bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -134,23 +134,23 @@ UINT lx_nor_flash_extended_cache_enable(
     ULONG size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulama tarafından sağlanan belleği kullanarak RAM 'de bir veya kesim önbelleği katmanı uygular. Sağlanan her 512 bayt belleği, Önbelleğe alınabilecek bir veya kesime dönüştürür. Önbelleğe alınan kesimler, blok denetim bilgilerini, örneğin, silme sayısını, serbest sektör eşlemesini ve sektör eşleme bilgilerini içeren olanlardır. Veri kesimleri bu önbellekte depolanmaz.
+Bu hizmet, uygulama tarafından sağlanan belleği kullanarak RAM'de bir NOR kesim önbellek katmanı kullanır. Sağlanan her 512 bayt bellek, önbelleğe alınacak bir NOR kesimine çevrilir. Önbelleğe alınan kesimler; silme sayısı, serbest kesim eşlemesi ve kesim eşleme bilgileri gibi blok denetimi bilgilerini içeren kesimlerdir. Veri kesimleri bu önbellekte depolanmaz.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nor_flash**: veya Flash örnek işaretçisi.  
-- **bellek**:, ulong erişimi için hizalanmış önbellek belleği için başlangıç adresi. LX_NULL değeri önbelleği devre dışı bırakır.  
-- **Boyut**: sağlanan belleğin bayt cinsinden boyutu (512 baytın katlarından biri olmalıdır).
+- **nor_flash:** NOR flash örnek işaretçisi.  
+- **memory:** ULONG erişimi için hizalanmış önbellek belleğinin başlangıç adresi. LX_NULL değeri önbelleği devre dışı bırakıyor.  
+- **boyut:** Sağlanan belleğin bayt cinsinden boyutu (512 bayt'ın katları olmalıdır).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) bir veya kesimi için yeterli bellek yok.
-- **LX_DISABLED**: (0x09) veya genişletilmiş önbellek yapılandırma seçeneği tarafından devre dışı bırakıldı.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) Bir NOR kesimi için yeterli bellek yok.
+- **LX_DISABLED:**(0x09) VEYA genişletilmiş önbellek yapılandırma seçeneği tarafından devre dışı bırakılır.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -177,7 +177,7 @@ status = lx_nor_flash_extended_cache_enable(&my_nor_flash,
 
 ## <a name="lx_nor_flash_initialize"></a>lx_nor_flash_initialize
 
-Başlatma veya Flash desteği
+NOR flash desteği başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -185,9 +185,9 @@ Başlatma veya Flash desteği
 UINT lx_nor_flash_initialize(void);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, LevelX veya Flash desteğini başlatır. Diğer bir LevelX ve API 'lerden önce çağrılmalıdır.
+Bu hizmet LevelX NOR flash desteğini başlatıyor. Başka bir LevelX VEYA API'den önce çağrılmalı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -195,12 +195,12 @@ Bu hizmet, LevelX veya Flash desteğini başlatır. Diğer bir LevelX ve API 'le
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) hata veya Flash desteği başlatılıyor.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) NOR flash desteği başlatma hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -235,7 +235,7 @@ UINT lx_nor_flash_open(
     UINT (*nor_driver_initialize) (LX_NOR_FLASH *));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen veya Flash denetim bloğu ve sürücü başlatma işlevi ile bir veya Flash örneği açar. Sürücü başlatma işlevinin, bu veya Flash örneğiyle ilişkili veya donanımı okuma, yazma ve silme blokları için çeşitli işlev işaretçileri yüklememesinden sorumlu olduğunu unutmayın.
 
@@ -288,7 +288,7 @@ UINT lx_nor_flash_partial_defragment(
     UINT max_blocks);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden açılmış veya Flash örneğini belirtilen en fazla blok sayısına kadar birleştirir. Birleştirme işlemi, boş kesimlerin ve blokların sayısını en üst düzeye çıkarır.
 
@@ -339,7 +339,7 @@ UINT lx_nor_flash_sector_read(
     VOID *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, mantıksal kesimi veya Flash örneğinden okur ve başarılı olursa sağlanan arabellekteki içeriği döndürür. Bu ve sektör boyutunun her zaman 512 bayt olduğunu unutmayın.
 
@@ -390,7 +390,7 @@ UINT lx_nor_flash_sector_release(
     ULONG logical_sector);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, veya Flash örneğindeki mantıksal kesim eşlemesini yayınlar. Kullanılmayan bir mantıksal kesimi serbest bırakmak, LevelX aşumu seviyelendirmenin daha verimli olmasını sağlar.
 
@@ -430,7 +430,7 @@ status = lx_nor_flash_sector_release(&my_nor_flash, 20);
 
 ## <a name="lx_nor_flash_sector_write"></a>lx_nor_flash_sector_write
 
-Yazma veya Flash sektörü
+YAZMA NOR flash sektör
 
 ### <a name="prototype"></a>Prototype
 
@@ -441,23 +441,23 @@ UINT lx_nor_flash_sector_write(
     VOID *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, veya Flash örneğinde belirtilen mantıksal kesimi yazar.
+Bu hizmet, NOR flash örneğinde belirtilen mantıksal kesimi yazar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- *nor_flash*: veya Flash örnek işaretçisi.
-- *logical_sector*: yazılacak mantıksal kesim.
-- *buffer*: mantıksal sektörün içeriğine yönelik işaretçi. Arabelleğin, ULONG erişimi için 512 bayt hizalı kabul edilir olduğunu unutmayın.
+- *nor_flash:* NOR flash örnek işaretçisi.
+- *logical_sector:* Yazacak mantıksal kesim.
+- *buffer:* Mantıksal kesimin içeriklerinin işaretçisi. Arabelleğin ULONG erişimi için hizalanmış 512 bayt olduğu varsayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_NO_SECTORS**: (0x02) yazma işlemini gerçekleştirmek için kullanılabilir daha fazla boş sektör yok.
-- **LX_ERROR**: (0x01) veya Flash kesimini serbest bırakma hatası.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_NO_SECTORS:**(0x02) Yazma işlemini gerçekleştirmek için artık ücretsiz kesim yok.
+- **LX_ERROR:**(0x01) NOR flash kesimini serbest bırakma hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 

@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.date: 01/22/2021
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 536225de30f54356157c222917fc904c6aa039fe
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f804ae59dd639ca05d1b8f5251cf8b878e78bb9ad2575e08c21d43b14e727a19
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825949"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796523"
 ---
 # <a name="chapter-2--installation-and-use-of-lwm2m-client"></a>Bölüm 2 LWM2M Client yüklemesi ve kullanımı
 
@@ -29,7 +29,7 @@ Azure RTOS LWM2M Istemcisi, konumundaki ortak kaynak kodu deposundan elde edileb
 
 ## <a name="lwm2m-client-installation"></a>LWM2M Istemcisi yüklemesi
 
-LWM2M Istemcisi NetX Duo 'in bir parçasıdır. Bu nedenle, NetX Duo öğesini GitHub deposundan kopyaladıktan sonra, LWM2M istemci kaynağı ***netxduo/addons/LWM2M*** adresinde bulunabilir.
+LWM2M Istemcisi NetX Duo 'in bir parçasıdır. bu nedenle, GitHub deposundan netx Duo klonladıktan sonra, LWM2M istemci kaynağı ***netxduo/addons/LWM2M*** konumunda bulunabilir.
 
 ## <a name="using-lwm2m_client"></a>LWM2M \_ istemcisi kullanma
 
@@ -39,7 +39,7 @@ LWM2M Istemcisi kullanımı basittir. Temel olarak, ***\_ \_ Threadx ve NETX kul
 
 LWM2M Istemci kitaplığı ve uygulamayı LWM2M Istemcisini kullanarak oluştururken birkaç yapılandırma seçeneği vardır. Yapılandırma seçenekleri, aksi belirtilmediği takdirde, komut satırında, uygulama kaynağında tanımlanabilir.
 
-| Yapılandırma &nbsp; seçeneği | Açıklama |
+| Yapılandırma &nbsp; seçeneği | Description |
 | --- | --- |
 | **NX \_ LWM2M \_ istemci \_ MTU 'su** | IP ve UDP üstbilgileri dahil olmak üzere bir CoAP iletisinin en büyük boyutunu belirtir. Varsayılan değer 1280 ' dir. |
 | **NX \_ LWM2M \_ istemci \_ yuvası \_ TOS** | LwM2M UDP için gereken hizmet türü. Varsayılan olarak, bu değer \_ \_ normal IP paket hizmetini BELIRTMEK için NX IP normal olarak tanımlanır. |

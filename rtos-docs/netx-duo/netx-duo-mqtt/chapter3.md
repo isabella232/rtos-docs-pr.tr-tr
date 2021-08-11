@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9cbb65946c45bfbc476091f7c604346e839a42fc
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cc08f7c0dceb84d5843e25384275557d2871e3546d90579aab006119a2d9980c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825895"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797526"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-mqtt-client-services"></a>Bölüm 3-Azure RTOS NetX Duo MQTT istemci hizmetlerinin açıklaması
 
@@ -22,8 +22,8 @@ Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kal�
 -  *MQTT istemci örneği nxd_mqtt_client_create oluştur*
 - **nxd_mqtt_client_will_message_set** *iletiyi ayarla*
 - **nxd_mqtt_client_client_login_set** *MQTT istemci oturum açma Kullanıcı adı ve parolasını ayarlama*
--  *MQTT istemcisini aracıya bağlama* nxd_mqtt_client_connect
-- **nxd_mqtt_client_secure_connect** *MQTT istemcisini, TLS güvenliği ile aracıya bağlama*
+- **nxd_mqtt_client_connect** *Bağlan mqtt istemcisini aracıya*
+-  *TLS güvenliği ile nxd_mqtt_client_secure_connect mqtt istemcisini aracıya Bağlan*
 - **nxd_mqtt_client_publish** *aracı aracılığıyla bir ileti yayımlayın.*
 - **nxd_mqtt_client_subscribe** *bir konuya abone olma*
 - **nxd_mqtt_client_unsubscribe** *bir konuyla aboneliğinizi kaldırma*
@@ -48,7 +48,7 @@ UINT nxd_mqtt_client_create(NXD_MQTT_CLIENT *client_ptr,
     VOID *memory_ptr, ULONG memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneğinde bir MQTT Istemci örneği oluşturur. *Client_id* dize, *Istemci tanımlayıcısı (ClientID)* olarak MQTT bağlantı aşamasında sunucuya geçirilir. Ayrıca, gerekli ThreadX kaynaklarını (MQTT Istemci görevi iş parçacığı, mutex, olay bayrağı grubu ve TCP yuvası) oluşturur.
 
@@ -115,7 +115,7 @@ UINT nxd_mqtt_client_will_message_set(NXD_MQTT_CLIENT
     UINT will_QoS);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, istemci sunucuya bağlanmadan önce isteğe bağlı olarak yapılacak konuyu ve iletiyi ayarlar. Bu konu başlığı UTF-8 kodlu dize olmalıdır.
 
@@ -174,7 +174,7 @@ UINT nxd_mqtt_client_login_set(NXD_MQTT_CLIENT *client_ptr,
     UINT password_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama amacıyla MQTT bağlantı aşamasında kullanılan Kullanıcı adını ve parolayı ayarlar.
 
@@ -216,7 +216,7 @@ transmitted to the server during MQTT connection. */
 
 ## <a name="nxd_mqtt_client_connect"></a>nxd_mqtt_client_connect
 
-MQTT Istemcisini aracıya bağlama
+Bağlan Aracıya MQTT Istemcisi
 
 ### <a name="prototype"></a>Prototype
 
@@ -226,7 +226,7 @@ UINT nxd_mqtt_client_connect(NXD_MQTT_CLIENT *client_ptr,
     UINT keepalive, UINT clean_session, ULONG wait_option));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, aracıya bir bağlantı başlatır. İlk olarak bir TCP yuvasını bağlar ve bir TCP bağlantısı yapar. Başarılı olduğunu varsayarsak, MQTT canlı tut özelliği etkinse bir zamanlayıcı oluşturur. Ardından MQTT sunucusu (Broker) ile bağlanır.
 
@@ -284,7 +284,7 @@ status = nxd_mqtt_client_connect(&my_client, &broker_address,
 
 ## <a name="nxd_mqtt_client_secure_connect"></a>nxd_mqtt_client_secure_connect
 
-MQTT istemcisini TLS güvenliği ile aracıya bağlama
+Bağlan TLS güvenliği ile bir aracıya MQTT istemcisi
 
 ### <a name="prototype"></a>Prototype
 
@@ -300,7 +300,7 @@ UINT nxd_mqtt_client_secure_connect(NXD_MQTT_CLIENT
     UINT clean_session, ULONG wait_option));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bağlantı TCP yerine TLS katmanından geçilerek ***nxd_mqtt_client_connect*** aynıdır. Bu nedenle, istemci ile aracı arasındaki iletişim güvenli hale getirilir.
 
@@ -397,7 +397,7 @@ UINT nxd_mqtt_client_publish(NXD_MQTT_CLIENT *client_ptr,
     UINT retain, UINT QoS, ULONG timeout);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, aracı aracılığıyla bir ileti yayımlar. QoS düzey 2 iletilerinin yayımlanması henüz desteklenmiyor.
 
@@ -456,7 +456,7 @@ UINT nxd_mqtt_client_subscribe(NXD_MQTT_CLIENT
     UINT topic_name_length, UINT QoS);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirli bir konuya abone olur. QoS düzey 2 iletilerine abone olma henüz desteklenmiyor.
 
@@ -509,7 +509,7 @@ UINT nxd_mqtt_client_unsubscribe(NXD_MQTT_CLIENT
     UINT topic_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir konudan aboneliği kaldırır.
 
@@ -559,7 +559,7 @@ UINT nxd_mqtt_client_receive_notify_set(NXD_MQTT_CLIENT
     UINT message_count));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet MQTT istemcisiyle bir geri çağırma işlevi kaydeder. Aracı tarafından yayınlanan bir ileti alındıktan sonra MQTT istemcisi iletiyi alma kuyruğunda depolar. Geri çağırma işlevi ayarlandıysa, uygulamaya bir iletinin alınmaya hazırlandığını bildirmek için geri çağırma işlevi çağırılır. Alma bildirme işlevi MQTT istemci denetim bloğuna bir işaretçi alır ve alma sırasındaki ileti sayısını belirten bir *message_count* . Bu sayı, zaman aralığında ulaşan yeni iletiler geldiği için alma bildirimi ve uygulamanın bu iletileri aldığı zaman arasında değişebileceğini unutmayın.
 
@@ -617,7 +617,7 @@ UINT nxd_mqtt_client_message_get(NXD_MQTT_CLIENT
     UINT message_buffer_size, UINT *actual_message_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, aracı tarafından yayınlanan bir iletiyi alır. Gelen tüm iletiler alma sırasında depolanır. Uygulama bu hizmeti bu iletileri almak için kullanır. Bu çağrı engellenmemiş. Alma sırası boşsa, bu hizmet ***NXD_MQTT_NO_MESSAGE** _ döndürür. Gelen ileti hakkında bildirim almak isteyen bir uygulama, alma geri araması işlevini kaydetmek için _ *_nxd_mqtt_client_receive_notify_set_** hizmetini çağırabilir.
 
@@ -688,7 +688,7 @@ UINT nxd_mqtt_client_disconnect_notify_set(
     VOID(*disconnect_notify)(NXD_MQTT_CLIENT* client_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet MQTT istemcisiyle bir geri çağırma işlevi kaydeder. MQTT, aracı bağlantısını algıladığında, uygulamayı uyarmak için bu bildirim işlevini çağırır. Bu nedenle uygulama, kayıp bir bağlantıyı algılamak ve aracıya yeniden bağlantı kurmak için bu geri çağırma işlevini kullanabilir.
 
@@ -732,7 +732,7 @@ MQTT istemcisinin aracıdan bağlantısını kesme
 UINT nxd_mqtt_client_disconnect(NXD_MQTT_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, istemcinin aracısından bağlantısını keser. Alma sırasındaki iletilerin serbest bırakıldığını unutmayın. İletme sırasındaki QoS 1 olan iletiler serbest bırakılır. İstemci sunucuya yeniden bağlandıktan sonra, istemci sunucuya yeniden bağlanmadığı müddetçe, *clean_session* bayrağı ***NX_TRUE*** olarak ayarlanan QoS 1 iletileri işlenebilir.
 
@@ -774,7 +774,7 @@ MQTT istemci örneğini silme
 UINT nxd_mqtt_client_delete(NXD_MQTT_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet MQTT istemci örneğini siler ve iç kaynakları yayınlar. Bu hizmet hala bağlıysa, istemcinin aracısının bağlantısını otomatik olarak keser. Henüz iletilmemiş veya onaylanmamış iletiler serbest bırakılır. Alınan ancak uygulama tarafından alınmayan iletiler de serbest bırakılır.
 

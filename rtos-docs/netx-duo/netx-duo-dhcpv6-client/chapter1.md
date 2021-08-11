@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3bf3b52c53bb26e2c9c2c736ae35817eb967f609
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f938be404c121f3080cfed1a81aa356f698538c4f557387009d951df40496a6d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826098"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791321"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-dhcpv6-client"></a>Bölüm 1-Azure RTOS NetX Duo DHCPv6 Istemcisine giriş
 
@@ -95,7 +95,7 @@ NetX Duo DHCPv6 Istemcisinin geçerli sürümü aşağıdaki sınırlamalara sah
 
   - NetX Duo DHCPv6 Istemcisi, bir sunucunun ağdaki Istemcilerde IPv6 adres değişikliklerini başlattığı yeniden yapılandırma isteğini desteklemez.
 
-  - NetX Duo DHCPv6 Istemcisi, DHCPv6 benzersiz tanımlayıcı denetim bloğunun kurumsal biçimini desteklemez. Yalnızca bağlantı katmanını ve bağlantı katmanını ve zaman biçimini destekler.
+  - netx Duo dhcpv6 istemcisi, DHCPv6 benzersiz tanımlayıcı denetim bloğunun Enterprise biçimini desteklemez. Yalnızca bağlantı katmanını ve bağlantı katmanını ve zaman biçimini destekler.
 
   - NetX Duo DHCPv6 Istemcisi geçici Ilişkilendirme (TA) adres isteklerini desteklemez, ancak geçici olmayan (ıANA) seçenek isteklerini destekler.
 
@@ -143,4 +143,4 @@ Not: Bu geri çağırma işlevleri DHCPv6 Istemci iş parçacığı görevinden 
 
 ## <a name="dhcpv6-rfcs"></a>DHCPv6 RFC 'Leri
 
-NetX Duo DHCP, RFC3315, RFC3646 ve ilgili RFC 'lerle uyumludur.
+NetX Duo DHCP RFC3315, RFC3646 ve ilgili RFC'ler ile uyumludur.

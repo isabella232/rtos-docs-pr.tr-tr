@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 09/11/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ccc55111d785d84cdb193c387830abbc03a15e7c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0770d6beb8b2715a8e5dddf1bdf187c0cd1d5ffd74e7bea9b7ff9bdf1785d088
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826854"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801929"
 ---
 # <a name="chapter-5---netx-network-drivers"></a>Bölüm 5-NetX ağ sürücüleri
 
@@ -265,90 +265,90 @@ Bağlantı durumu, *nx_ip_driver_interface* işaretçisine göre işaret edilen 
 | NX_IP_DRIVER üyesi     | Anlamı                                                                                                      |
 |-------------------------|--------------------------------------------------------------------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_STATUS                                                                                           |
-| nx_ip_driver_ptr        | IP örneği işaretçisi                                                                                       |
-| nx_ip_driver_return_ptr | Durumu yerleştirilecek hedefe yönelik işaretçi.                                                              |
-| nx_ip_driver_interface  | Arabirim örneği işaretçisi                                                                            |
-| nx_ip_driver_status     | Tamamlanma durumu. Sürücü belirli bir durum alamazsanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr        | IP örneğine işaretçi                                                                                       |
+| nx_ip_driver_return_ptr | Durumu yer alan hedefin işaretçisi.                                                              |
+| nx_ip_driver_interface  | Arabirim örneğinin işaretçisi                                                                            |
+| nx_ip_driver_status     | Tamamlanma durumu. Sürücü belirli bir durumu alamasa da sıfır olmayan bir hata durumu döndürür. |
 |                         |                                                                                                              |
 
 > [!NOTE]
-> ***nx_ip_status_check** , birincil arabirimin durumunu denetlemek için hala kullanılabilir. Ancak, uygulama geliştiricilerinin arabirime özgü hizmet nx_ip_interface_status_check kullanması önerilir **.***
+> ***nx_ip_status_check** arabirimin durumunu denetlemeye devam etmek için kullanılabilir. Ancak, uygulama geliştiricilerinin arabirime özgü hizmet **nx_ip_interface_status_check.***
 
-### <a name="get-link-speed"></a>Bağlantı hızını al  
+### <a name="get-link-speed"></a>Bağlantı Hızını Al  
 
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, belirtilen hedefte bağlantının hat hızını depolar. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı hattı hız isteği için kullanılır.
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının hat hızını sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER bağlantı çizgisi hızı isteği için kullanılır.
 
-| NX_IP_DRIVER üyesi     | Anlamı |
+| NX_IP_DRIVER üye     | Anlamı |
 |-------------------------|---------------------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_SPEED |
-| nx_ip_driver_ptr        | IP örneği işaretçisi |
-| nx_ip_driver_return_ptr | Satır hızını yerleştirmek için hedefin işaretçisi |
-| nx_ip_driver_interface  | Arabirim örneği işaretçisi |
-| nx_ip_driver_status     | Tamamlanma durumu. Sürücü hız bilgilerini alamazsanız, sıfır olmayan bir hata durumu döndürür.
+| nx_ip_driver_ptr        | IP örneğine işaretçi |
+| nx_ip_driver_return_ptr | Çizgi hızının yer İşaretçisi |
+| nx_ip_driver_interface  | Arabirim örneğinin işaretçisi |
+| nx_ip_driver_status     | Tamamlanma durumu. Sürücü hız bilgilerini alamayacaksa sıfır olmayan bir hata durumu döndürür.
  |
 
 
 > [!NOTE]
-> *Bu istek NetX tarafından dahili olarak kullanılmadığından, uygulamasının uygulanması isteğe bağlıdır.*
+> *Bu istek NetX tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-duplex-type"></a>Çift yönlü tür al  
+### <a name="get-duplex-type"></a>Çift Yönlü Türü Al  
 
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının çift yönlü türünü sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER üyeleri çift yönlü tür isteği için kullanılır.
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının çift yönlü türünü sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER çift yönlü tür isteği için kullanılır.
 
-| NX_IP_DRIVER üyesi     | Anlamı |
+| NX_IP_DRIVER üye     | Anlamı |
 |-------------------------|-----------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_DUPLEX_TYPE |
-| nx_ip_driver_ptr        | IP örneği işaretçisi |
-| nx_ip_driver_return_ptr | Çift yönlü türü yerleştirmek için hedefin işaretçisi |
-| nx_ip_driver_interface  | Arabirim örneği işaretçisi |
-| nx_ip_driver_status     | Tamamlanma durumu. Sürücü çift yönlü bilgileri alamazsanız, sıfır dışında bir hata durumu döndürür.
+| nx_ip_driver_ptr        | IP örneğine işaretçi |
+| nx_ip_driver_return_ptr | Çift yönlü türün yer İşaretçisi |
+| nx_ip_driver_interface  | Arabirim örneğinin işaretçisi |
+| nx_ip_driver_status     | Tamamlanma durumu. Sürücü çift yönlü bilgileri alamayacaksa sıfır olmayan bir hata durumu döndürür.
  |
 
 
 > [!NOTE]
-> *Bu istek NetX tarafından dahili olarak kullanılmadığından, uygulamasının uygulanması isteğe bağlıdır.*
+> *Bu istek NetX tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-error-count"></a>Hata sayısını Al  
+### <a name="get-error-count"></a>Hata Sayısını Al  
 
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının hata sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün işlem hatalarını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı hata sayısı isteği için kullanılır.
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının hata sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün işlem hatalarını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER bağlantı hatası sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER üyesi     | Anlamı                                                                                                  |
+| NX_IP_DRIVER üye     | Anlamı                                                                                                  |
 |-------------------------|----------------------------------------------------------------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_ERROR_COUNT                                                                                  |
-| nx_ip_driver_ptr        | IP örneği işaretçisi                                                                                   |
-| nx_ip_driver_return_ptr | Hata sayısını yerleştirmek için hedefin işaretçisi                                                      |
-| nx_ip_driver_interface  | Arabirim örneği işaretçisi                                                                        |
-| nx_ip_driver_status     | Tamamlanma durumu. Sürücü hata sayısını alamazsanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr        | IP örneğine işaretçi                                                                                   |
+| nx_ip_driver_return_ptr | Hata sayısını yer alan hedefin işaretçisi                                                      |
+| nx_ip_driver_interface  | Arabirim örneğinin işaretçisi                                                                        |
+| nx_ip_driver_status     | Tamamlanma durumu. Sürücü hata sayısını alamasa da sıfır olmayan bir hata durumu döndürür. |
 
 
 > [!NOTE]
-> *Bu istek NetX tarafından dahili olarak kullanılmadığından, uygulamasının uygulanması isteğe bağlıdır.*
+> *Bu istek NetX tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-receive-packet-count"></a>Alma paketi sayısını Al  
+### <a name="get-receive-packet-count"></a>Alma Paketi Sayısını Alma  
 
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının alma paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün alınan paket sayısını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı alma paketi sayısı isteği için kullanılır.
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının alma paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün alınan paket sayısını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER, bağlantı alma paket sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER üyesi     | Anlamı                                                                                                    |
+| NX_IP_DRIVER üye     | Anlamı                                                                                                    |
 |-------------------------|------------------------------------------------------------------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_RX_COUNT                                                                                       |
-| nx_ip_driver_ptr        | IP örneği işaretçisi                                                                                     |
-| nx_ip_driver_return_ptr | Alma paketi sayısını yerleştirmek için hedefin işaretçisi                                               |
-| nx_ip_driver_interface  | Fiziksel ağ arabirimine yönelik işaretçi                                                                  |
-| nx_ip_driver_status     | Tamamlanma durumu. Sürücü alma sayısı alamadıysanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr        | IP örneğine işaretçi                                                                                     |
+| nx_ip_driver_return_ptr | Alma paketi sayısını almak için hedefin işaretçisi                                               |
+| nx_ip_driver_interface  | Fiziksel ağ arabirimi işaretçisi                                                                  |
+| nx_ip_driver_status     | Tamamlanma durumu. Sürücü alma sayısını alamasa da sıfır olmayan bir hata durumu döndürür. |
 
 
 > [!NOTE]
-> *Bu istek NetX tarafından dahili olarak kullanılmadığından, uygulamasının uygulanması isteğe bağlıdır.*
+> *Bu istek NetX tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-transmit-packet-count"></a>Iletme paketi sayısını Al  
+### <a name="get-transmit-packet-count"></a>İletim Paketi Sayısını Al  
 
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının aktarım paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün her bir arabirimde ilettiği her bir paketi izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı iletme paketi sayısı isteği için kullanılır.
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının aktarım paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün her arabirime ilettiği her paketi izlemesi gerekir. Aşağıdaki NX_IP_DRIVER bağlantı iletme paket sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER üyesi     | Anlamı                                                                                                     |
+| NX_IP_DRIVER üye     | Anlamı                                                                                                     |
 |-------------------------|-------------------------------------------------------------------------------------------------------------|
 | nx_ip_driver_command    | NX_LINK_GET_TX_COUNT                                                                                        |
-| nx_ip_driver_ptr        | IP örneği işaretçisi                                                                                      |
-| nx_ip_driver_return_ptr | İletme paketi sayısını yerleştirmek için hedefin işaretçisi                                               |
+| nx_ip_driver_ptr        | IP örneğine işaretçi                                                                                      |
+| nx_ip_driver_return_ptr | İletme paketi sayısını yer alan hedefin işaretçisi                                               |
 | nx_ip_driver_interface  | Arabirim örneği işaretçisi                                                                           |
 | nx_ip_driver_status     | Tamamlanma durumu. Sürücü, iletim sayısını alamıyor, sıfır olmayan bir hata durumu döndürür. |
 

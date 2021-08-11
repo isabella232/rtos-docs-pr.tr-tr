@@ -1,46 +1,46 @@
 ---
-title: Bölüm 4-Azure RTOS NetX Duo DHCPv6 sunucu hizmetleri
+title: Bölüm 4 - Azure RTOS NetX Duo DHCPv6 sunucu hizmetleri
 description: Bu bölümde tüm NetX Duo DHCPv6Server hizmetlerinin açıklaması yer almaktadır
 author: philmea
 ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1d45139031b5a687baacf86c7a2e0a53c90533be
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: cf6b43f70a7159af6c24496ec2ae2276d5e271af2ad3af99687181df3bf6be6c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826027"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792035"
 ---
-# <a name="chapter-4---azure-rtos-netx-duo-dhcpv6-server-services"></a>Bölüm 4-Azure RTOS NetX Duo DHCPv6 sunucu hizmetleri
+# <a name="chapter-4---azure-rtos-netx-duo-dhcpv6-server-services"></a>Bölüm 4 - Azure RTOS NetX Duo DHCPv6 sunucu hizmetleri
 
-Bu bölüm tüm NetX Duo DHCPv6Server hizmetlerinin (aşağıda listelenmiştir) bir açıklamasını içerir.
+Bu bölümde tüm NetX Duo DHCPv6Server hizmetlerinin (aşağıda listelenmiştir) açıklaması yer alır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- nx_dhcpv6_server_create *DHCPv6 ServerInstance oluşturma*
-- nx_dhcpv6_server_delete *DHCPv6 ServerInstance silme*
-- nx_dhcpv6_server_start *DHCPv6 sunucusu görevini başlatın*
-- nx_dhcpv6_server_suspend *DHCPv6 sunucusu görevini askıya al*
-- nx_dhcpv6_server_resume *DHCPv6 istemci Işlemesini sürdürür*
-- nx_dhcpv6_server_suspend *DHCPv6 istemci Işlemesini askıya al*
-- *seçenek istekleri IÇIN DNS sunucusunu Nx_dhcpv6_create_dns_address ayarlama*
-- nx_dhcpv6_create_ip_address_range *kiralamak IÇIN IP adresi aralığı oluşturma*
-- *sunucu LISTESINDEKI IP adreslerinin ayrılmış aralığını* nx_dhcpv6_reserve_ip_address_range
-- nx_dhcpv6_set_server_duid *DHCPv6 paketleri Için sunucu DUID 'Sini ayarlama*
-- *DHCPv6 sunucu tablosuna bir kira kaydı eklemek* nx_dhcpv6_add_ip_address_lease
-- *Sunucu tablosundan BIR IP Kiralama kaydı almak* Nx_dhcpv6_retrieve_ip_address_lease
-- *sunucu tablosuna bir DHCPv6 istemci kaydı eklemek* nx_dhcpv6_add_client_record
-- *sunucu tablosundan bir istemci kaydı almak* nx_dhcpv6_retrieve_client_record
-- *sunucu DHCPv6 Hizmetleri için arabirim dizinini Nx_dhcpv6_server_interface_set ayarlama*
-- *seçenek isteği işleyicisini Nx_dhcpv6_server_option_request_handler_set ayarla*
+- nx_dhcpv6_server_create *DHCPv6 sunucusu oluşturma*
+- nx_dhcpv6_server_delete *DHCPv6 sunucusunu silme*
+- nx_dhcpv6_server_start *DHCPv6 sunucu görevini başlatma*
+- nx_dhcpv6_server_suspend *DHCPv6 sunucu görevini askıya alma*
+- nx_dhcpv6_server_resume *DHCPv6 istemci işlemesini sürdürme*
+- nx_dhcpv6_server_suspend *DHCPv6 istemci işlemesini Askıya Alma*
+- nx_dhcpv6_create_dns_address DNS *sunucusunu seçenek istekleri için ayarlama*
+- nx_dhcpv6_create_ip_address_range *Kiralanması gereken IP adresleri aralığını oluşturma*
+- nx_dhcpv6_reserve_ip_address_range *ip adresi aralığını sunucu listesinden yedekle*
+- nx_dhcpv6_set_server_duid *DHCPv6 paketleri için Sunucu DUID'sini ayarlama*
+- nx_dhcpv6_add_ip_address_lease *DHCPv6 sunucu tablosuna kiralama kaydı ekleme*
+- Nx_dhcpv6_retrieve_ip_address_lease Sunucu *tablosundan IP kira kaydı alma*
+- nx_dhcpv6_add_client_record *Tablosuna DHCPv6 İstemci kaydı ekleme*
+- nx_dhcpv6_retrieve_client_record Sunucu *tablosundan istemci kaydı alma*
+- nx_dhcpv6_server_interface_set Sunucu *DHCPv6 hizmetleri için arabirim dizinini ayarlama*
+- nx_dhcpv6_server_option_request_handler_set *isteği işleyicisini ayarlama*
 
 ## <a name="nx_dhcpv6_create_dns_address"></a>nx_dhcpv6_create_dns_address
 
 ### <a name="set-the-network-dns-server"></a>Ağ DNS sunucusunu ayarlama
 
-**Prototype**
+**Prototip**
 
 ```
 UINT nx_dhcpv6_create_dns_address(
@@ -50,22 +50,22 @@ UINT nx_dhcpv6_create_dns_address(
 
 **Açıklama**
 
-Bu hizmet, DHCPv6 sunucusunu sunucu DHCPv6 ağ arabirimi için DNS sunucu adresiyle yükler.
+Bu hizmet, Sunucu DHCPv6 ağ arabirimi için DNS sunucusu adresiyle birlikte DHCPv6 Sunucusunu yükler.
 
-**Giriş parametreleri**
+**Giriş Parametreleri**
 
-- **dhcpv6_server_ptr** DHCPv6 sunucusu işaretçisi
-- **dns_ipv6_address** DNS sunucusu işaretçisi
+- **dhcpv6_server_ptr** DHCPv6 Sunucusu İşaretçisi
+- **dns_ipv6_address** DNS sunucusunun işaretçisi
 
-**Dönüş değerleri**
+**Dönüş Değerleri**
 
-- **NX_SUCCESS** (0x00) DNS sunucusu, DHCPv6 sunucu örneğine kaydedildi
-- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xe95) geçersiz bir adres sağlandı
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) DNS Sunucuları DHCPv6 Sunucusu örneğine ekli
+- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xE95) Geçersiz bir adres sağlanmalıdır
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-**İzin verilen**
+**İzin Verilen**
 
-Uygulama kodu
+Uygulama Kodu
 
 **Örnek**
 
@@ -79,7 +79,7 @@ status = nx_dhcpv6_create__dns_address(&dhcp_server_0, &dns_ipv6_address);
 
 ### <a name="create-the-server-ip-address-list"></a>Sunucu IP adresi listesini oluşturma
 
-**Prototype**
+**Prototip**
 
 ```
 UINT _nx_dhcpv6_create_ip_address_range(
@@ -90,24 +90,24 @@ UINT _nx_dhcpv6_create_ip_address_range(
 
 **Açıklama**
 
-Bu hizmet, sunucunun atanabilir adres aralığının başlangıç ve bitiş adresleriyle belirtilen IP adresi listesini oluşturur. Başlangıç ve bitiş adresleri sunucu arabirimi adres önekiyle eşleşmelidir (sunucu DHCPv6 arabirimiyle aynı bağlantıda olmalıdır). Gerçekte eklenen adreslerin sayısı döndürülür.
+Bu hizmet, Sunucunun atanabilir adres aralığının başlangıç ve bitiş adresleri tarafından belirtilen IP adresi listesini oluşturur. Başlangıç ve bitiş adresleri Sunucu arabirimi adres ön eki ile eşleşmeli (Sunucu DHCPv6 arabirimiyle aynı bağlantıda olmalıdır). Gerçekte eklenen adres sayısı döndürülür.
 
-**Giriş parametreleri**
+**Giriş Parametreleri**
 
-- **dhcpv6_server_ptr** DHCPv6 sunucusu işaretçisi
-- **start_ipv6_address** Eklenecek adreslerin başlangıcı
-- **end_ipv6_address** Eklenecek adreslerin sonu
+- **dhcpv6_server_ptr** DHCPv6 Sunucusu İşaretçisi
+- **start_ipv6_address** Eklemek istediğiniz adreslerin başlangıcı
+- **end_ipv6_address** Eklemek istediğiniz adreslerin sonu
 - ***addresses_added** Eklenen adreslerin çıkışı
 
-**Dönüş değerleri**
+**Dönüş Değerleri**
 
 - **NX_SUCCESS** (0x00) IP adresi listesi başarıyla oluşturuldu
-- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xe95) geçersiz bir adres sağlandı
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xE95) Geçersiz bir adres sağlanmalıdır
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-**İzin verilen**
+**İzin Verilen**
 
-Uygulama kodu
+Uygulama Kodu
 
 **Örnek**
 
@@ -120,9 +120,9 @@ status = nx_dhcpv6_create_ip_address_range(&dhcp_server_0,
 
 ## <a name="nx_dhcpv6_reserve_ip_address_range"></a>nx_dhcpv6_reserve_ip_address_range
 
-### <a name="reserve-specified-range-of-ip-addresses"></a>Belirtilen IP adresi aralığını ayır
+### <a name="reserve-specified-range-of-ip-addresses"></a>Belirtilen IP adresi aralığını koruma
 
-**Prototype**
+**Prototip**
 
 ```
 UINT _nx_dhcpv6_reserve_ip_address_range(
@@ -133,25 +133,25 @@ UINT _nx_dhcpv6_reserve_ip_address_range(
 
 **Açıklama**
 
-Bu hizmet başlangıç ve bitiş adresleriyle belirtilen IP adresi aralığını ayırır. Bu adresler, önceden oluşturulmuş sunucu IP adresi aralığında olmalıdır. Bu adresler, DHCPv6 sunucusu tarafından herhangi bir Istemciye atanmaz. Başlangıç ve bitiş adresleri sunucu arabirimi adres önekiyle eşleşmelidir (sunucu DHCPv6 ağ arabirimiyle aynı bağlantıda olmalıdır). Gerçekte ayrılan adreslerin sayısı döndürülür.
+Bu hizmet, başlangıç ve bitiş adresleri tarafından belirtilen IP adresi aralığını yedekler. Bu adresler, önceden oluşturulmuş sunucu IP adresi aralığında yer alalıdır. Bu adresler DHCPv6 Sunucusu tarafından hiçbir İstemciye atanmayacak. Başlangıç ve bitiş adresleri Sunucu arabirimi adres ön eki ile eşleşmeli (Sunucu DHCPv6 ağ arabirimiyle aynı bağlantıda olmalıdır). Gerçekten ayrılmış olan adres sayısı döndürülür.
 
-**Giriş parametreleri**
+**Giriş Parametreleri**
 
-- **dhcpv6_server_ptr** DHCPv6 sunucusu işaretçisi
-- **start_ipv6_address** Ayrılacak adreslerin başlangıcı
-- **end_ipv6_address** Ayrılacak adreslerin sonu
+- **dhcpv6_server_ptr** DHCPv6 Sunucusu İşaretçisi
+- **start_ipv6_address** Rezervasyon için adreslerin başlangıcı
+- **end_ipv6_address** Yedeklen adres sonu
 - ***addresses_reserved** Ayrılan adres sayısı
 
-**Dönüş değerleri**
+**Dönüş Değerleri**
 
-- **NX_SUCCESS** (0x00) yayın iletisi başarıyla oluşturuldu ve işlendi
-- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xe95) geçersiz bir adres sağlandı
-- Sunucu adres listesinde **NX_DHCPV6_INVALID_IP_ADDRESS** (0xed1) başlangıç adresi bulunamadı.
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) YAYıN iletisi başarıyla oluşturuldu ve işlendi
+- **NX_DHCPV6_INVALID_INTERFACE_IP_ADDRESS** (0xE95) Geçersiz bir adres sağlanmalıdır
+- **NX_DHCPV6_INVALID_IP_ADDRESS** (0xED1) Sunucu adresi listesinde başlangıç adresi bulunamadı.
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-**İzin verilen**
+**İzin Verilen**
 
-Uygulama kodu
+Uygulama Kodu
 
 **Örnek**
 
@@ -167,9 +167,9 @@ status = nx_dhcpv6_reserve_ip_address_range(&dhcp_server_0,
 
 ## <a name="nx_dhcpv6_server_create"></a>nx_dhcpv6_server_create
 
-### <a name="create-the-dhcpv6-server-instance"></a>DHCPv6 sunucusu örneğini oluşturma 
+### <a name="create-the-dhcpv6-server-instance"></a>DHCPv6 Sunucusu örneğini oluşturma 
 
-**Prototype**
+**Prototip**
 
 ```
 UINT nx_dhcpv6_server_create(NX_DHCPV6_SERVER *dhcpv6_server_ptr, 
@@ -187,28 +187,28 @@ UINT nx_dhcpv6_server_create(NX_DHCPV6_SERVER *dhcpv6_server_ptr,
 
 **Açıklama**
 
-Bu hizmet, belirtilen girişe sahip DHCPv6 sunucusu görevini oluşturur. Geri çağırma işleyicileri isteğe bağlı giriştir. Yığın işaretçisi, IP örneği ve paket havuzu girişi gerekiyor. IP örneği ve paket havuzu zaten oluşturulmuş olmalıdır.
+Bu hizmet, belirtilen girişle DHCPv6 Sunucusu görevini oluşturur. Geri çağırma işleyicileri isteğe bağlı giriştir. Yığın işaretçisi, IP örneği ve paket havuzu girişi gereklidir. IP örneği ve paket havuzu önceden oluşturulmuş olması gerekir.
 
-Kullanıcının, seçenek isteği işleyicisini ayarlamak için nx_dhcpv6_server_option_request_handler_set çağırması önerilir.
+Seçenek isteği işleyicisini ayarlamak nx_dhcpv6_server_option_request_handler_set kullanıcıya çağrılmaları teşvik edilmektedir.
 
-**Giriş parametreleri**
+**Giriş Parametreleri**
 
-- **dhcpv6_server_ptr** DHCPv6 sunucusu işaretçisi
-- **ip_ptr** IP örneğine yönelik işaretçi
+- **dhcpv6_server_ptr** DHCPv6 Sunucusu İşaretçisi
+- **ip_ptr** IP örneğinin işaretçisi
 - **name_str** Sunucu adı işaretçisi
 - **packet_pool_ptr** Sunucu paket havuzu işaretçisi
-- **stack_ptr** Sunucu yığını belleği işaretçisi
-- **stack_size** Sunucu yığını belleğinin boyutu
-- **dhcpv6_address_declined_handler** Istemci reddetme veya yayın iletisi işleyicisi işaretçisi
-- **dhcpv6_option_request_handler** Seçenekler isteği seçenek işleyicisi işaretçisi
+- **stack_ptr** Sunucu yığın belleği işaretçisi
+- **stack_size** Sunucu yığın belleğinin boyutu
+- **dhcpv6_address_declined_handler** İstemci Reddetme veya Yayın iletisi işleyicisi işaretçisi
+- **dhcpv6_option_request_handler** Seçeneklere işaretçi isteği seçenek işleyicisi
 
-**Dönüş değerleri**
+**Dönüş Değerleri**
 
-- **NX_SUCCESS** (0x00) sunucu başarıyla sürdürüldü
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
-- NX_DHCPV6_PARAM_ERROR işaretçi olmayan giriş geçersiz
+- **NX_SUCCESS** (0x00) Sunucusu başarıyla sürdürıldı
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
+- NX_DHCPV6_PARAM_ERROR İşaretçi olmayan giriş geçersiz
 
-**İzin verilen**
+**İzin Verilen**
 
 Uygulama kodu
 
@@ -226,7 +226,7 @@ status = nx_dhcpv6_server_create(&dhcp_server_0, &ip_0, "DHCPv6 Server",
 
 ### <a name="delete-the-dhcpv6-server"></a>DHCPv6 sunucusunu silme
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_server_delee(NX_DHCPV6_SERVER *dhcpv6_server_ptr)
@@ -261,7 +261,7 @@ status = nx_dhcpv6_server_delete(&dhcp_server_0);
 
 ### <a name="resume-dhcpv6-server-task"></a>DHCPv6 sunucusu görevini sürdürür 
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_server_resume(NX_DHCPV6_SERVER *dhcpv6_server_ptr)
@@ -298,7 +298,7 @@ status = nx_dhcpv6_server_resume(&dhcp_server_0);
 
 ### <a name="suspend-dhcpv6-server-task"></a>DHCPv6 sunucusunu askıya al görevi 
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_server_suspend(NX_DHCPV6_SERVER *dhcpv6_server_ptr)
@@ -336,7 +336,7 @@ status = nx_dhcpv6_server_suspend(&dhcp_server_0);
 
 ### <a name="start-the-dhcpv6-server-task"></a>DHCPv6 sunucusu görevini başlatın 
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_server_start(NX_DHCPV6_SERVER *dhcpv6_server_ptr)
@@ -379,7 +379,7 @@ status = nx_dhcpv6_server_start(&dhcp_server_0);
 
 ### <a name="get-an-ip-address-lease-from-the-server-table"></a>Sunucu tablosundan bir IP adresi kirası al
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_retrieve_ip_address_lease(
@@ -435,7 +435,7 @@ For (I = 0; I < NX_DHCPV6_MAX_LEASES; i++)
 
 ### <a name="add-an-ip-address-lease-to-the-server-table"></a>Sunucu tablosuna bir IP adresi kirası ekleyin
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_add_ip_address_lease(
@@ -496,7 +496,7 @@ for each lease. */
 
 ### <a name="add-a-client-record-to-the-server-table"></a>Sunucu tablosuna bir Istemci kaydı ekleme
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_add_client_record(NX_DHCPV6_SERVER *dhcpv6_server_ptr, 
@@ -581,7 +581,7 @@ it is ok to start the DHCPv6 server now. */
 
 ### <a name="retrieve-a-client-record-from-the-server-table"></a>Sunucu tablosundan bir Istemci kaydı alma
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_retrieve_client_record(
@@ -647,7 +647,7 @@ For (i = 0; i< NX_MAX_DHCPV6_CLIENTS; i++)
 
 ### <a name="setthe-interface-index-for-server-dhcpv6-interface"></a>Sunucu DHCPv6 arabirimi için arabirim dizinini ayarla
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_server_interface_set(
@@ -691,7 +691,7 @@ status = nx_dhcpv6_server_interface_set(&dhcp_server_0, 0, 1);
 
 ### <a name="set-the-server-duid-for-dhcpv6-packets"></a>DHCPv6 paketleri için sunucu DUıD 'sini ayarlama
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT _nx_dhcpv6_set_server_duid(NX_DHCPV6_SERVER *dhcpv6_server_ptr,
@@ -743,7 +743,7 @@ status = nx_dhcpv6_set_server_duid(&dhcp_server_0,1, 0x6,
 
 ### <a name="set-the-option-request-handler-for-dhcpv6-server-instance"></a>DHCPv6 sunucu örneği için seçenek isteği işleyicisini ayarla 
 
-**Prototype**
+**Örneğini**
 
 ```
 UINT nx_dhcpv6_server_option_request_handler_set(

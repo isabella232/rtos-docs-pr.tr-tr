@@ -1,47 +1,47 @@
 - name: Azure RTOS TraceX belgeleri
   href: index.yml
-- name: TraceX 'e genel bakış
+- name: TraceX'e genel bakış
   href: overview-tracex.md
-- name: Trackingex Kullanıcı Kılavuzu
+- name: TraceX kullanıcı kılavuzu
   expanded: true
   items:
     - name: Bu kılavuz hakkında
       href: about-this-guide.md
-    - name: Denetleyebilirsiniz. 1-TraceX 'a giriş
+    - name: Caner. 1 - TraceX'e giriş
       href: chapter1.md
-    - name: Denetleyebilirsiniz. 2-TraceX yükleme ve kullanımı
+    - name: Caner. 2 - TraceX yükleme ve kullanımı
       href: chapter2.md
-    - name: Denetleyebilirsiniz. 3-TraceX açıklaması
+    - name: Caner. 3 - TraceX'in açıklaması
       href: chapter3.md
-    - name: Denetleyebilirsiniz. 4-TraceX performans analizi
+    - name: Caner. 4 - TraceX performans analizi
       href: chapter4.md
-    - name: Denetleyebilirsiniz. 5-izleme arabellekleri oluşturma
+    - name: Caner. 5 - İzleme arabellekleri oluşturma
       href: chapter5.md
-    - name: Denetleyebilirsiniz. 6-ThreadX izleme olayları
+    - name: Caner. 6 - ThreadX izleme olayları
       href: chapter6.md
-    - name: Denetleyebilirsiniz. 7-FileX izleme olayları
+    - name: Caner. 7 - DosyaX izleme olayları
       href: chapter7.md
-    - name: Denetleyebilirsiniz. 8-NetX izleme olayları
+    - name: Caner. 8 - NetX izleme olayları
       href: chapter8.md
-    - name: Denetleyebilirsiniz. 9-USBX izleme olayları
+    - name: Caner. 9 - USBX izleme olayları
       href: chapter9.md
-    - name: Denetleyebilirsiniz. 10-müşteri Kullanıcı Etkinlikleri
+    - name: Caner. 10 - Müşteri kullanıcı olayları
       href: chapter10.md
-    - name: Denetleyebilirsiniz. 11-olay izleme arabelleğinin biçimi
+    - name: Caner. 11 - Olay izleme arabelleğinin biçimi
       href: chapter11.md
-    - name: Uygulamanızda. A-örnek tx_port. h
+    - name: App. A - Örnek tx_port.h
       href: appendix-a.md
-    - name: Uygulamanızda. B-tx_trace. h dosyası
+    - name: App. B - tx_trace.h Dosyası
       href: appendix-b.md
-    - name: Uygulamanızda. C-DOS komut satırı yardımcı programları
+    - name: App. C - DOS komut satırı yardımcı programları
       href: appendix-c.md
-    - name: Uygulamanızda. D-döküm ve izleme arabelleği
+    - name: App. D - Döküm ve izleme arabelleği
       href: appendix-d.md
-- name: Trackingex 'ı indir
+- name: TraceX'i indirme
   href: 'https://aka.ms/azrtos-tracex-installer'
 - name: İlgili hizmetler
   items:
-    - name: IoT için Defender-RTOS (Önizleme)
+    - name: IoT için Defender - RTOS (önizleme)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
@@ -49,19 +49,19 @@
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
-    - name: ThreadX modülleri
+    - name: ThreadX Modülleri
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
     - name: NetX
       href: ../netx/index.yml
-    - name: GUX
+    - name: GUIX
       href: ../guix/index.yml
-    - name: Dosya x
+    - name: FileX
       href: ../filex/index.yml
     - name: LevelX
       href: ../levelx/index.yml
     - name: USBX
       href: ../usbx/index.yml
-    - name: Trackingex
+    - name: TraceX
       href: ../tracex/index.yml

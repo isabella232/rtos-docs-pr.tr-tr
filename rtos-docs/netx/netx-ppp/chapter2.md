@@ -1,95 +1,95 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) yükleme ve kullanımı
-description: Bu bölümde, Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) yükleme ve kullanma
+description: Bu bölümde, Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 40f09da31f5541208c3b2cc0eeb54850b3d71f7c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b62ca837cadd5f7bee2686ab566ff133f1088ff7ba8b572e372e5051b7bbaab9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826656"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791100"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-point-to-point-protocol-ppp"></a>Bölüm 2-Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) yükleme ve kullanımı
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-point-to-point-protocol-ppp"></a>Bölüm 2 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) yükleme ve kullanma
 
-Bu bölümde, Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde, Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS NetX Noktadan Noktaya Protokolü (PPP) paketi adresinde bulunabilir <https://github.com/azure-rtos/netx> . Paket aşağıdaki dosyaları içerir:
+NetX Azure RTOS (PPP) Noktadan Noktaya Protokolü paketi, üzerinden <https://github.com/azure-rtos/netx> kullanılabilir. Paket aşağıdaki dosyaları içerir:
 
-- **nx_ppp. h**: NETX için PPP için üst bilgi dosyası
-- **nx_ppp. c**: NETX için PPP Için c kaynak dosyası
-- **nx_ppp.pdf**: NETX için PPP açıklaması
-- **demo_netx_ppp. c**: NETX PPP tanıtımı
+- **nx_ppp.h:** NetX için PPP üst bilgi dosyası
+- **nx_ppp.c:** NetX için PPP için C Kaynak dosyası
+- **nx_ppp.pdf:** NetX için PPP'nin PDF açıklaması
+- **demo_netx_ppp.c**: NetX PPP gösterimi
 
-## <a name="ppp-installation"></a>PPP yüklemesi
+## <a name="ppp-installation"></a>PPP Yüklemesi
 
-NetX için PPP kullanmak istiyorsanız, daha önce bahsedilen dağıtımın tamamı NetX ' in yüklü olduğu dizine kopyalanmalıdır. Örneğin, "*\threadx\arm7\green*" dizininde NETX yüklüyse, *nx_ppp. h* ve *nx_ppp. c* dosyaları bu dizine kopyalanmalıdır.
+NetX için PPP kullanmak üzere, daha önce bahsedilen dağıtımın tamamı NetX'in yüklü olduğu dizine kopyalanır. Örneğin,*"\threadx\arm7\green"* dizininde NetX yüklüyse, *nx_ppp.h* ve *nx_ppp.c* dosyalarının bu dizine kopyalanmış olması gerekir.
 
 ## <a name="using-ppp"></a>PPP kullanma
 
-NetX için PPP kullanmak kolaydır. Temel olarak, uygulama kodu sırasıyla ThreadX ve NetX kullanmak için *tx_api. h* ve *nx_api. h* dahil *nx_ppp.* h içermelidir. *Nx_ppp. h* dahil olduğunda, uygulama kodu daha sonra bu KıLAVUZDA belirtilen PPP işlev çağrılarını yapabilir. Uygulama, yapı işlemine *nx_ppp. c* de içermelidir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmelidir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX PPP 'yi kullanmak için gereklidir.
+NetX için PPP kullanmak kolaydır. Temel olarak, ThreadX ve NetX'i sırasıyla kullanmak için uygulama kodu *tx_api.h* ve nx_api.h 'yi içeren *nx_ppp.h'yi* içermeli.  *nx_ppp.h* ekli olduktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen PPP işlev çağrılarını da mümkün hale gelecektir. Uygulamanın derleme sürecine *nx_ppp.c'yi* de içermesi gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmiş olmalı ve nesne formu uygulamanın dosyalarıyla birlikte bağlanacak. NetX PPP'yi kullanmak için gerekenler bunlardır.
 
-## <a name="using-modems"></a>Modem kullanma
+## <a name="using-modems"></a>Modemleri Kullanma
 
-İnternet bağlantısı için bir modem gerekliyse, NetX PPP ürününü kullanabilmeniz için bazı özel noktalar gerekir. Temel olarak, bir modem kullanılması, iletişim kaybı için ek başlatma mantığı ve mantığını tanıtır. Ayrıca, ek modem mantığının çoğu NetX PPP bağlamı dışında gerçekleştirilir. NetX PPP 'yi modem ile kullanmanın temel akışı şuna benzer:
+İnternet bağlantısı için modem gerekli ise NetX PPP ürününü kullanmak için dikkat edilmesi gereken bazı özel noktalar vardır. Temel olarak, modem kullanmak iletişim kaybı için ek başlatma mantığı ve mantık sağlar. Ayrıca, ek modem mantığının çoğu NetX PPP bağlamı dışında yapılır. NetX PPP'yi modem ile kullanmanın temel akışı şöyledir:
 
-1. Modemi Başlat
+1. Modem Başlatma
 
-1. Internet servis sağlayıcısı (ISS) ara
+1. İnternet Hizmet Sağlayıcısı'nın (ISS) arama
 
-1. Bağlantıyı bekle
+1. Bağlantı'nın beklemesi
 
-1. Kullanıcı kimliği Istemi bekle
+1. UserID İstemi'nin beklemesi
 
-1. NetX PPP 'yi Başlat [işlemde PPP]
+1. NetX PPP'yi başlatma [PPP işlemde]
 
-1. Iletişim kaybı
+1. İletişim Kaybı
 
-1. NetX PPP 'yi durdurun (veya nx_ppp_restart aracılığıyla yeniden başlatın)
+1. NetX PPP'yi durdurma (veya nx_ppp_restart)
 
-### <a name="initialize-modem"></a>Modemi Başlat
+### <a name="initialize-modem"></a>Modem Başlatma
 
-Uygulamanın alt düzey seri çıkış yordamını kullanarak, modem bir dizi ASCII karakter komutlarıyla başlatılır (daha fazla ayrıntı için Modemin belgelerine bakın).
+Uygulamanın alt düzey seri çıkış yordamı kullanılarak, modem bir dizi ASCII karakter komutuyla başlatılır (daha fazla ayrıntı için modemin belgelerine bakın).
 
-### <a name="dial-internet-service-provider"></a>Internet hizmet sağlayıcısını ara
+### <a name="dial-internet-service-provider"></a>İnternet Hizmet Sağlayıcısını Çevirme
 
-Uygulamanın alt düzey seri çıkış yordamını kullanarak, modemin ISS 'yi çevirebileceği için talimat verilir. Örneğin, aşağıdaki 123-4567 numaralı bir ISS 'yi aramak için kullanılan bir ASCII dizesinin tipik bir örneğidir:
+Uygulamanın alt düzey seri çıkış yordamını kullanarak modemin ISS'yi çevirmesi ist. Örneğin, bir ISS'yi 123-4567 numarasına kadar çevirmede kullanılan bir ASCII dizesi tipiktir:
 
 "ATDT123456\r"
 
-### <a name="wait-for-connection"></a>Bağlantıyı bekle
+### <a name="wait-for-connection"></a>Bağlantı'nın beklemesi
 
-Bu noktada, uygulama bir bağlantının kurulduğu modemden bildirim almayı bekler. Bu, uygulamanın alt düzey seri giriş yordamından karakter arayarak yapılır. Genellikle, modemler bir bağlantı oluşturulduğunda "Bağlan" ASCII dizesini döndürür.
+Bu noktada, uygulama modemden bir bağlantının kurul olduğuna dair göstergeyi almak için bekler. Bu, uygulamanın alt düzey seri giriş yordamından karakterlere bakarak başarılı olur. Modemler genellikle bir bağlantı kurularak bir ASCII "CONNECT" dizesi döndürür.
 
-### <a name="wait-for-user-id-prompt"></a>Kullanıcı KIMLIĞI Istemi bekle
+### <a name="wait-for-user-id-prompt"></a>Kullanıcı Kimliği İstemi'nin beklemesi
 
-Bağlantı kurulduktan sonra, uygulamanın ISS 'den bir ilk oturum açma isteği beklemesi gerekir. Bu genellikle "oturum aç?" gibi bir ASCII dizesi biçimini alır.
+Bağlantı kurulduktan sonra uygulamanın iss'den ilk oturum açma isteğini beklemesi gerekir. Bu genellikle "Login?" gibi bir ASCII dizesi biçimi alır.
 
-### <a name="start-netx-ppp"></a>NetX PPP 'yi Başlat
+### <a name="start-netx-ppp"></a>NetX PPP'yi başlatma
 
-Bu noktada NetX PPP başlatılabilir. Bu, *nx_ip_create* hizmeti tarafından izlenen *nx_ppp_create* hizmeti çağırarak gerçekleştirilir. PAP 'yi etkinleştirmek ve PPP IP adreslerini ayarlamak için ek hizmetler de gerekebilir. Daha fazla bilgi için lütfen bu kılavuzun aşağıdaki bölümlerini gözden geçirin.
+Bu noktada NetX PPP başlat olabilir. Bu, nx_ppp_create hizmeti *çağrılarak* ve ardından nx_ip_create  başarılı olur. PAP'yi etkinleştirmek ve PPP IP adreslerinin kurulumunu yapmak için ek hizmetler de gerekebilir. Daha fazla bilgi için lütfen bu kılavuzun aşağıdaki bölümlerini gözden geçirebilirsiniz.
 
-### <a name="loss-of-communication"></a>Iletişim kaybı
+### <a name="loss-of-communication"></a>İletişim Kaybı
 
-PPP başlatıldıktan sonra, PPP olmayan herhangi bir bilgi, *nx_ppp_create* hizmetine belirtilen uygulamayı "geçersiz paket işleme" yordamına geçirilir. Genellikle modemler, ISS ile iletişim kesildiğinde "TAŞıYıCı yok" gibi bir ASCII dizesi gönderir. Uygulama bu tür bilgilerle PPP olmayan bir paket aldığında, NetX PPP örneğini durdurmanız veya *nx_ppp_restart* API 'SI aracılığıyla PPP durum makinesini yeniden başlatmanız gerekir.
+PPP başlatıldıktan sonra PPP olmayan tüm bilgiler, uygulamanın nx_ppp_create hizmetine belirtilen "geçersiz paket *işleme" yordamına* geçiriliyor. Modemler genellikle ISS ile iletişimin kaybedilip "TAŞıYıCı YOK" gibi bir ASCII dizesi gönderir. Uygulama bu tür bilgilerle PPP olmayan bir paket aldığında, NetX PPP örneğini durdurmaya veya ppp durum makinesini nx_ppp_restart *API'si aracılığıyla yeniden başlatması* gerekir.
 
-### <a name="stop-netx-ppp"></a>NetX PPP 'yi durdur
+### <a name="stop-netx-ppp"></a>NetX PPP'yi durdurma
 
-NetX PPP 'nin durdurulması oldukça basittir. Temel olarak, oluşturulan tüm yuvalar ilişkisiz ve silinmiş olmalıdır. Sonra, *nx_ip_delete* HIZMETI aracılığıyla IP örneğini silin. IP örneği silindikten sonra, PPP 'yi durdurma işlemini tamamlaması için *nx_ppp_delete* hizmeti çağrılmalıdır. Bu noktada, uygulama artık ISS ile iletişimi yeniden kurmayı deneyebilir.
+NetX PPP'yi durdurmak oldukça kolaydır. Temel olarak, oluşturulan tüm yuvaların sınırsız olması ve silinmesi gerekir. Ardından, ip örneğini nx_ip_delete *silin.* IP örneği silindikten sonra, *PPP nx_ppp_delete* durdurma işlemini tamamlamak için nx_ppp_delete hizmeti çağrılması gerekir. Bu noktada, uygulama artık ISS ile iletişimi yeniden kurma girişiminde olabilir.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX PPP kullanmanın ne kadar kolay olduğunu gösteren bir örnek, aşağıda görüntülenen Şekil 1,1 ' de açıklanmıştır. Bu örnekte, *nx_ppp. h* PPP içerme dosyası 3. satırda getirilir. Sonra, 56 satırındaki *"tx_application_define*" içinde PPP oluşturulur. "*My_ppp*" PPP denetim bloğu, daha önce satır 9 ' da genel bir değişken olarak tanımlandı. 
+Aşağıda gösterilen Şekil 1.1'de NetX PPP kullanmanın ne kadar kolay olduğunu gösteren bir örnek açıklanmıştır. Bu örnekte PPP include *nx_ppp.h* dosyası 3. satıra getiri. Ardından PPP, 56.*satırda "tx_application_define"* içinde oluşturulur. PPP denetim bloğu "*my_ppp*" daha önce 9. satırda genel değişken olarak tanımlanmıştır. 
 
 >[!NOTE]
->IP örneği oluşturulmadan önce PPP oluşturulmalıdır. PPP ve IP başarıyla oluşturulduktan sonra, "*my_thread*" Iş parçacığı ppp bağlantısının 98. satırda canlı olmasını bekler. 104. satırda, hem PPP hem de NetX tam olarak çalışır.
+>PPP, IP örneği oluşturulmadan önce oluşturulacak. PPP ve IP'nin başarıyla oluşturulmasının ardından , "*my_thread*" iş parçacığı PPP bağlantısının 98. satırda canlanır. 104. satırda hem PPP hem de NetX tamamen çalışır durumdadır.
 
-Bu örnekte görünmeyen bir öğe, uygulamanın seri bayt Alım ıSR ' dir. "*My_ppp*" ile *nx_ppp_byte_receive* ve giriş parametresi olarak alınan bayt çağrısı yapması gerekecektir.
+Bu örnekte göster almayan bir öğe, uygulamanın seri bayt alma ISR'dir. "my_ppp " *ile nx_ppp_byte_receive* çağrısı *my_ppp* giriş parametreleri olarak alınan bayta çağrılacak.
 
 ```c
 #include   "tx_api.h"
@@ -197,24 +197,24 @@ NX_PACKET   *my_packet;
 
 }
 ```
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX için PPP oluşturmaya yönelik birkaç yapılandırma seçeneği vardır. Aşağıdaki listede her biri ayrıntılı açıklanmıştır:
+NetX için PPP'yi inşa için çeşitli yapılandırma seçenekleri vardır. Aşağıdaki listede her biri ayrıntılı olarak açıklanmaktadır:
 
-- **NX_DISABLE_ERROR_CHECKING**: tanımlı, bu seçenek temel PPP hata denetimini kaldırır. Genellikle uygulamanın hata ayıklaması yapıldıktan sonra kullanılır.
-- **NX_PPP_PPPOE_ENABLE**: TANıMLANMıŞSA, PPP Ethernet üzerinden paket aktarabilir
-- **NX_PPP_BASE_TIMEOUT**: Bu, PPP iş parçacığı GÖREVININ, PPP olaylarını denetlemek için uyandırması gereken dönem oranını (süreölçer işaretleri cinsinden) tanımlar. Varsayılan değer 1 * NX_IP_PERIODIC_RATE (100 Ticks).
-- **NX_PPP_DISABLE_INFO**: tanımlanmışsa, iç PPP bilgi toplama devre dışıdır.
-- **NX_PPP_DEBUG_LOG_ENABLE**: tanımlanmışsa, iç PPP hata ayıklama günlüğü etkinleştirilir.
-- **NX_PPP_DEBUG_LOG_PRINT_ENABLE**: tanımlanmışsa, *STDıO* iç PPP hata *ayıklama günlüğü etkinleştirilir* . Bu yalnızca hata ayıklama günlüğü de etkinse geçerlidir.
-- **NX_PPP_DEBUG_LOG_SIZE**: hata ayıklama günlüğü boyutu (hata ayıklama günlüğündeki giriş sayısı). Son girdiye ulaşıldığında, hata ayıklama yakalaması ilk girişe kaydırılır ve daha önce yakalanan tüm verilerin üzerine yazar. Varsayılan değer 50 ' dir.
-- **NX_PPP_DEBUG_FRAME_SIZE**: alınan bir paket yükünden yakalanan ve hata ayıklama çıkışına kaydedilen maksimum veri miktarı. Varsayılan değer 50 ' dir.
-- **NX_PPP_DISABLE_CHAP**: TANıMLANMıŞSA, MD5 Özet mantığı dahil olmak üzere Iç PPP CHAP mantığı kaldırılır.
-- **NX_PPP_DISABLE_PAP**: tanımlanmışsa, Iç PPP PAP mantığı kaldırılır.
-- **NX_PPP_DNS_OPTION_DISABLE**: TANıMLANMıŞSA, DNS seçeneği IPCP yanıtında devre dışıdır.  Varsayılan olarak bu seçenek tanımlı değildir (DNS seçeneği ayarlanır).
-- **NX_PPP_DNS_ADDRESS_MAX_RETRIES**: Bu, PPP ana bilgisayarının her bir DNS sunucusu adresini IPCP durumundaki eşten ne kadar zaman isteyeceğini belirtir. NX_PPP_DNS_OPTION_DISABLE tanımlanmışsa bu bir etkiye sahip değildir. Varsayılan değer 2 ' dir.
-- **NX_PPP_HASHED_VALUE_SIZE**: CHAP kimlik doğrulamasında kullanılan "karma değer" dizelerinin boyutunu belirtir. Varsayılan değer 16 bayt olarak ayarlanır, ancak *nx_ppp. h* 'ye dahil etmeden önce yeniden tanımlanabilir.
-- **NX_PPP_MAX_LCP_PROTOCOL_RETRIES**: Bu, PPP zaman aşımına uğrarsa DIĞER bir LCP yapılandırma isteği iletisini gönderdikten en fazla yeniden deneme sayısını tanımlar. Bu sayıya ulaşıldığında, PPP el sıkışması durdurulur ve bağlantı durumu kapanır. Varsayılan değer 20 ' dir.
+- **NX_DISABLE_ERROR_CHECKING:** Tanımlandı, bu seçenek temel PPP hata denetimlerini kaldırır. Genellikle uygulama hata ayıklandıktan sonra kullanılır.
+- **NX_PPP_PPPOE_ENABLE:** Tanımlandı ise PPP paketi Ethernet üzerinden iletilmesini sağlar
+- **NX_PPP_BASE_TIMEOUT:** PPP iş parçacığı görevinin PPP olaylarını kontrol etmek için uyandır olduğu dönem oranını (zamanlayıcı değer tıklarında) tanımlar. Varsayılan değer 1*NX_IP_PERIODIC_RATE (100 tık) değeridir.
+- **NX_PPP_DISABLE_INFO:** Tanımlanmışsa, iç PPP bilgi toplama devre dışı bırakılır.
+- **NX_PPP_DEBUG_LOG_ENABLE:** Tanımlandı ise iç PPP hata ayıklama günlüğü etkinleştirilir.
+- **NX_PPP_DEBUG_LOG_PRINT_ENABLE:** Tanımlandı ise *stdio'ya* iç PPP hata ayıklama günlüğü *printf* etkinleştirilir. Bu yalnızca hata ayıklama günlüğü de etkinleştirildiğinde geçerlidir.
+- **NX_PPP_DEBUG_LOG_SIZE:** Hata ayıklama günlüğünün boyutu (hata ayıklama günlüğünde girdi sayısı). Son girişe ulaşılan hata ayıklama yakalaması ilk girdiye sarmalanır ve daha önce yakalanan verilerin üzerine yazarak. Varsayılan değer 50'dir.
+- **NX_PPP_DEBUG_FRAME_SIZE:** Alınan paket yükünden yakalanan ve çıkışta hata ayıklamak için kaydedilen maksimum veri miktarı. Varsayılan değer 50'dir.
+- **NX_PPP_DISABLE_CHAP:** Tanımlanırsa, MD5 özet mantığı da dahil olmak üzere iç PPP CHAP mantığı kaldırılır.
+- **NX_PPP_DISABLE_PAP:** Tanımlanırsa iç PPP PAP mantığı kaldırılır.
+- **NX_PPP_DNS_OPTION_DISABLE:** Tanımlanmışsa, IPCP yanıtta DNS Seçeneği devre dışı bırakılır.  Varsayılan olarak bu seçenek tanımlanmamıştır (DNS seçeneği ayarlanmıştır).
+- **NX_PPP_DNS_ADDRESS_MAX_RETRIES:** PPP ana bilgisayarının IPCP durumdaki eşten kaç kez DNS Sunucusu adresi isteği gönderileceğini belirtir. Bu, tanımlandığı NX_PPP_DNS_OPTION_DISABLE etkisi yoktur. Varsayılan değer 2'dir.
+- **NX_PPP_HASHED_VALUE_SIZE:** CHAP kimlik doğrulamasında kullanılan "karma değer" dizelerinin boyutunu belirtir. Varsayılan değer 16 bayt olarak ayarlanır, ancak nx_ppp.h eklenmeden *önce yeniden tanımlandır.*
+- **NX_PPP_MAX_LCP_PROTOCOL_RETRIES:** Başka bir LCP yapılandırma isteği iletisi göndermeden önce PPP'nin zaman atladığı maksimum yeniden deneme sayısını tanımlar. Bu numaraya ulaşıldıkça PPP el sıkışması durdurulacak ve bağlantı durumu durdurulacak. Varsayılan değer 20'dir.
 - **NX_PPP_MAX_PAP_PROTOCOL_RETRIES**: Bu, başka bir PAP kimlik doğrulama isteği iletisi göndermeden önce PPP zaman aşımına uğrarsa en fazla yeniden deneme sayısını tanımlar. Bu sayıya ulaşıldığında, PPP el sıkışması durdurulur ve bağlantı durumu kapanır. Varsayılan değer 20 ' dir.
 - **NX_PPP_MAX_CHAP_PROTOCOL_RETRIES**: Bu, başka bir CHAP sınama iletisi göndermeden önce PPP zaman aşımına uğrarsa en fazla yeniden deneme sayısını tanımlar. Bu sayıya ulaşıldığında, PPP el sıkışması durdurulur ve bağlantı durumu kapanır. Varsayılan değer 20 ' dir.
 - **NX_PPP_MAX_IPCP_PROTOCOL_RETRIES**: Bu, PPP zaman aşımına uğrarsa başka bir IPCP yapılandırma isteği iletisini gönderdikten en fazla yeniden deneme sayısını tanımlar. Bu sayıya ulaşıldığında, PPP el sıkışması durdurulur ve bağlantı durumu kapanır. Varsayılan değer 20 ' dir.

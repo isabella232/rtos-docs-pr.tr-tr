@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 2432b291f2b3fa7d6d798b8b4c187dd20b97db6b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: fd31c586a8b582215d2f0e54e3e543cd1127594599162ca93bbba69b07565f12
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827358"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791268"
 ---
 # <a name="chapter-5---device-drivers-for-azure-rtos-threadx"></a>Bölüm 5-Azure RTOS ThreadX için cihaz sürücüleri
 
@@ -181,27 +181,27 @@ VOID tx_sdriver_output_ISR(VOID)
 
 ### <a name="simple-driver-shortcomings"></a>Basit sürücü eksikler
 
-Bu basit cihaz sürücüsü örneği, bir ThreadX cihaz sürücüsünün temel fikrini gösterir. Ancak, basit cihaz sürücüsü veri arabelleğe alma veya herhangi bir ek yük sorununu gidermez, ancak gerçek dünyada ThreadX sürücülerini tam olarak temsil etmez. Aşağıdaki bölümde, cihaz sürücüleriyle ilişkili daha gelişmiş sorunlardan bazıları açıklanmaktadır.
+Bu basit cihaz sürücüsü örneği, bir ThreadX cihaz sürücüsünün temel fikrini gösterir. Ancak, basit cihaz sürücüsü veri arabelleğe alma veya ek yük sorunlarını ele almayacağı için gerçek dünya ThreadX sürücülerini tam olarak temsil etmez. Aşağıdaki bölümde, cihaz sürücüleriyle ilişkili daha gelişmiş sorunlardan bazıları açık almaktadır.
 
-## <a name="advanced-driver-issues"></a>Gelişmiş sürücü sorunları
+## <a name="advanced-driver-issues"></a>Gelişmiş Sürücü Sorunları
 
-Daha önce belirtildiği gibi, cihaz sürücüleri, uygulamaları için benzersiz olan gereksinimlere sahiptir. Bazı uygulamalar, yüksek frekanslı cihaz kesintileri nedeniyle, başka bir uygulama en iyi duruma getirilmiş sürücü ISRs gerektirirken, çok büyük miktarda veri arabelleğe alma gerektirebilir.
+Daha önce belirtildiği gibi, cihaz sürücülerinin uygulamaları kadar benzersiz gereksinimleri vardır. Bazı uygulamalar çok büyük miktarda veri arabelleğe alma gerektirirken, başka bir uygulama yüksek sıklıkta cihaz kesintileri nedeniyle iyileştirilmiş sürücü ISR'leri gerektirebilir.
 
-### <a name="io-buffering"></a>G/ç arabelleğe alma
+### <a name="io-buffering"></a>I/O Arabelleğe Alma
 
-Gerçek zamanlı gömülü uygulamalarda veri arabelleğe alma, önemli bir planlama gerektirir. Tasarımın bazıları temel alınan donanım aygıtı tarafından dikte edilir. Cihaz temel bayt g/ç sağlıyorsa, büyük olasılıkla basit bir dairesel arabellek olabilir. Ancak, cihaz blok, DMA veya paket g/ç sağlıyorsa, büyük olasılıkla bir arabellek yönetimi düzeni garanti edilir.
+Gerçek zamanlı ekli uygulamalarda veri arabelleğe alma için önemli planlamalar gerekir. Tasarımın bazıları, temel alınan donanım cihazı tarafından dikte edilen bir tasarımdır. Cihaz temel bir bayt I/O sağlarsa, büyük olasılıkla basit bir döngüsel arabellek sırasına göredir. Ancak, cihaz blok, DMA veya paket I/O sağlarsa, büyük olasılıkla bir arabellek yönetim şeması gerekir.
 
-### <a name="circular-byte-buffers"></a>Dairesel bayt arabellekleri
+### <a name="circular-byte-buffers"></a>Döngüsel Byte Arabellekleri
 
-Döngüsel bayt arabellekleri genellikle UART gibi basit bir seri donanım cihazını yöneten sürücülerde kullanılır. Genellikle giriş ve çıkış için bir tane olmak üzere iki dairesel arabellek çoğu zaman bu durumlarda kullanılır.
+Döngüsel bayt arabellekleri genellikle UART gibi basit bir seri donanım cihazı yöneten sürücülerde kullanılır. İki döngüsel arabellek en çok bu tür durumlarda kullanılır: biri giriş, biri çıkış için.
 
-Her döngüsel bayt arabelleği, bir bayt bellek alanından (genellikle bir **dizi yer)**, bir okuma işaretçisine ve bir yazma işaretçisine oluşur. Okuma işaretçisi ve yazma işaretçileri arabellekteki aynı bellek konumuna başvuru yaparken bir arabellek boş kabul edilir. Sürücü başlatma, hem okuma hem de yazma arabelleği işaretçilerini arabelleğin başlangıç adresine ayarlar.
+Her döngüsel bayt arabelleği bir bayt bellek alanı (genellikle **bir UCHAR** dizisi), okuma işaretçisi ve yazma işaretçisi içerir. Okuma işaretçisi ve yazma işaretçileri arabellekte aynı bellek konumuyla ilgili olduğunda arabellek boş olarak kabul edilir. Sürücü başlatma, hem okuma hem de yazma arabellek işaretçilerini arabelleğin başlangıç adresine ayarlar.
 
-### <a name="circular-buffer-input"></a>Döngüsel arabellek girişi
+### <a name="circular-buffer-input"></a>Döngüsel Arabellek Girişi
 
-Giriş arabelleği, uygulamanın kendisine hazırlanmadan önce gelen karakterleri tutmak için kullanılır. Bir giriş karakteri alındığında (genellikle bir kesme hizmeti yordamında), yeni karakter donanım aygıtından alınır ve yazma işaretçisi tarafından işaret edilen konumdaki giriş arabelleğine konur. Yazma işaretçisi daha sonra arabellekte bir sonraki konuma ilerlemiş olur. Sonraki konum arabelleğin sonunu aşıyorsa, yazma işaretçisi arabelleğin başlangıcına ayarlanır. Yeni yazma işaretçisi okuma işaretçiyle aynıysa yazma işaretçisinin ilerleme durumu iptal edildiğinde sıranın tam koşulu işlenir.
+Giriş arabelleği, uygulama hazır olmadan önce gelen karakterleri tutmak için kullanılır. Bir giriş karakteri (genellikle bir kesme hizmeti yordamında) alınca, yeni karakter donanım cihazından alınır ve yazma işaretçisi tarafından işaret ettiği konumda giriş arabelleğine yerleştirilir. Yazma işaretçisi daha sonra arabellekte bir sonraki konuma ileri doğru ilerler. Sonraki konum, arabelleğin sonunu geçmişse, yazma işaretçisi arabelleğin başına ayarlanır. Yeni yazma işaretçisi okuma işaretçisi ile aynı ise, kuyruk tam koşulu yazma işaretçisi ilerlemesi iptal edilir.
 
-Sürücüye yönelik uygulama giriş bayt istekleri, giriş arabelleğinin okuma ve yazma işaretçilerini ilk olarak inceler. Okuma ve yazma işaretçileri aynıysa, arabellek boştur. Aksi takdirde, okuma işaretçisi aynı değilse, okuma işaretçisi tarafından işaret edilen bayt giriş arabelleğinden kopyalanır ve okuma işaretçisi bir sonraki arabellek konumuna göre ilerlemiş olur. Yeni okuma işaretçisi arabelleğin sonunu aşıyorsa, başlangıca sıfırlanır. Şekil 12 ' de dairesel giriş arabelleğinin mantığı gösterilmektedir.
+Sürücüye yapılan uygulama giriş bayt istekleri önce giriş arabelleğinin okuma ve yazma işaretçilerini inceler. Okuma ve yazma işaretçileri aynı ise arabellek boştur. Aksi takdirde, okuma işaretçisi aynı değilse, okuma işaretçisi tarafından işaret eden bayt giriş arabelleğinden kopyalanır ve okuma işaretçisi sonraki arabellek konumu için gelişmiştir. Yeni okuma işaretçisi arabelleğin sonunu geçmişse en baştan sıfırlanır. Şekil 12'de döngüsel giriş arabelleğinin mantığı yer almaktadır.
 
 ```c
 UCHAR   tx_input_buffer[MAX_SIZE];
@@ -228,15 +228,15 @@ if (tx_input_read_ptr != tx_input_write_ptr)
       tx_input_read_ptr = &tx_input_buffer[0];
 }
 ```
-**ŞEKIL 12. Döngüsel giriş arabelleği mantığı**
+**ŞEKIL 12. Döngüsel Giriş Arabelleği mantığı**
 
 > [!NOTE]
-> * Güvenilir bir işlem için hem giriş hem de çıkış dairesel arabelleklerinin okuma ve yazma işaretçilerini işleyerek kesintileri kilitlemesini gerektirebilir. *
+> *Güvenilir işlem için hem giriş hem de çıkış döngüsel arabelleklerinin okuma ve yazma işaretçileri işlenebilirken kesmeleri kilitlemek gerekebilir. *
 
-### <a name="circular-output-buffer"></a>Döngüsel çıkış arabelleği
+### <a name="circular-output-buffer"></a>Döngüsel Çıkış Arabelleği
 
-Çıktı arabelleği, donanım aygıtı önceki baytı göndermeden önce çıkış için ulaşan karakterleri tutmak için kullanılır. Çıkış arabelleği işleme, giriş arabelleği işlemeye benzerdir, ancak iletim çıkış isteği çıkış okuma işaretçisini, uygulama çıktı isteği çıkış yazma işaretçisinden yararlanır.
-Aksi takdirde, çıkış arabelleği işleme aynıdır. Şekil 13, döngüsel çıkış arabelleğinin mantığını gösterir.
+Çıkış arabelleği, donanım cihazı önceki baytı göndermeden önce çıkışa gelen karakterleri tutmak için kullanılır. Çıkış arabelleği işlemesi giriş arabelleği işlemeye benzer, ancak aktarım tam kesme işlemesi çıkış okuma işaretçisini, uygulama çıkış isteği ise çıkış yazma işaretçisini kullanır.
+Aksi takdirde, çıkış arabelleği işlemesi aynıdır. Şekil 13'te döngüsel çıkış arabelleğinin mantığı gösterir.
 
 ```c
 UCHAR   tx_output_buffer[MAX_SIZE];
@@ -263,13 +263,13 @@ if (tx_output_write_ptr > &tx_output_buffer[MAX_SIZE-1])
 if (tx_output_write_ptr == tx_output_read_ptr)
     tx_output_write_ptr = save_ptr; /* Buffer full! */
 ```
-**ŞEKIL 13. Döngüsel çıkış arabelleği mantığı**
+**ŞEKIL 13. Döngüsel Çıkış Arabelleği mantığı**
 
-### <a name="buffer-io-management"></a>Arabellek g/ç yönetimi
+### <a name="buffer-io-management"></a>Arabellek I/O Yönetimi
 
-Gömülü mikro işlemcilerin performansını artırmak için, birçok çevresel cihaz cihazı yazılım tarafından sağlanan arabelleklerle veri iletir ve alır. Bazı uygulamalarda, tek tek veri paketlerini iletmek veya almak için birden çok arabellek kullanılabilir.
+Ekli mikro işlemcilerin performansını geliştirmek için birçok çevresel cihaz, yazılım tarafından sağlanan arabelleklerle veri iletir ve alır. Bazı uygulamalar, tek tek veri paketlerini iletmek veya almak için birden çok arabellek kullanılabilir.
 
-G/ç arabelleklerinin boyutu ve konumu, uygulama ve/veya sürücü yazılımı tarafından belirlenir. Genellikle, arabellekler boyut olarak sabitlenir ve bir ThreadX blok bellek havuzu içinde yönetilir. Şekil 14, tipik bir g/ç arabelleğini ve bunların ayırmasını yöneten bir ThreadX blok bellek havuzunu açıklar.
+I/O arabelleklerinin boyutu ve konumu, uygulama ve/veya sürücü yazılımı tarafından belirlenir. Arabellekler genellikle boyut olarak sabittir ve bir ThreadX blok bellek havuzu içinde yönetilir. Şekil 14'te, ayırmalarını yöneten tipik bir I/O arabelleği ve ThreadX blok bellek havuzu açık bulunmaktadır.
 
 ```c
 typedef struct TX_IO_BUFFER_STRUCT
@@ -290,49 +290,49 @@ tx_block_pool_create(&tx_io_block_pool,
                   sizeof(TX_IO_BUFFER));
 ```
 
-**ŞEKIL 14. G/ç arabelleği**
+**ŞEKIL 14. I/O Arabelleği**
 
 ### <a name="tx_io_buffer"></a>TX_IO_BUFFER
 
-TypeDef TX_IO_BUFFER iki işaretçisinden oluşur. **Tx_next_packet** işaretçisi, giriş veya çıkış listesinde birden çok paketi bağlamak için kullanılır. **Tx_next_buffer** işaretçisi, cihazdan tek bir veri paketini oluşturan arabellekleri birbirine bağlamak için kullanılır. Arabellek havuzdan ayrıldığında, bu işaretçilerin her ikisi de NULL olarak ayarlanır. Ayrıca, bazı cihazlar arabellek alanının ne kadarının veri içerdiğini göstermek için başka bir alan gerektirebilir.
+Typedef TX_IO_BUFFER iki işaretçiden oluşur. Tx_next_packet  işaretçisi, giriş veya çıkış listesinde birden çok paketin bağlantısını yapmak için kullanılır. Tx_next_buffer  işaretçisi, cihazdan tek bir veri paketinin bir araya gelen arabelleklerini bir araya etmek için kullanılır. Arabellek havuzdan ayrılırken bu işaretçilerin her ikisi de NULL olarak ayarlanır. Buna ek olarak, bazı cihazlar arabellek alanın gerçekte ne kadar veri içerdiğini belirtmek için başka bir alan gerektirmektedir.
 
-### <a name="buffered-io-advantage"></a>Arabelleğe alınan g/ç avantajı
+### <a name="buffered-io-advantage"></a>Arabelleğe Alındı I/O Avantajı
 
-Arabellek g/ç düzeninin avantajları nelerdir? En büyük avantaj, verilerin cihaz kayıtları ve uygulamanın belleği arasında kopyalanamaması. Bunun yerine, sürücü cihaza bir dizi arabellek işaretçisi sağlar. Fiziksel aygıt g/ç, sağlanan arabellek belleğini doğrudan kullanır.
+Arabellek I/O şemasının avantajları nelerdir? En büyük avantajı, verilerin cihaz kayıtları ile uygulamanın belleği arasında kopyalanmamalarındandır. Bunun yerine sürücü, cihaza bir dizi arabellek işaretçisi sağlar. Fiziksel cihaz I/O, sağlanan arabellek belleğini doğrudan kullanır.
 
-Bilgilerin giriş veya çıkış paketlerini kopyalamak için işlemcinin kullanılması son derece maliyetlidir ve yüksek performanslı iş g/ç durumunda kaçınılmalıdır.
+bilgi giriş veya çıkış paketlerini kopyalamak için işlemcinin kullanımı son derece maliyetlidir ve yüksek aktarım hızı G/Ç durumlarında kaçınılmalıdır.
 
-Ara belleğe alınan g/ç yaklaşımının bir diğer avantajı da giriş ve çıkış listelerinin tam koşulları olmaması olabilir. Tüm kullanılabilir arabellekler her iki listede de herhangi bir anda olabilir. Bu, daha önce bölümün başında sunulan basit bayt dairesel arabelleklerle karşıttır. Her birinin derlemede belirlenen sabit bir boyutu vardır.
+Arabelleğe alan G/Ç yaklaşımının bir diğer avantajı, giriş ve çıkış listelerinin tam koşulların yer almamış olduğudır. Kullanılabilir tüm arabellekler herhangi bir anda her iki listede de olabilir. Bu, bölümün önceki kısımlarında sunulan basit bayt döngüsel arabellekleriyle karşıttır. Her biri derlemede belirlenen sabit bir boyuta sahipti.
 
-### <a name="buffered-driver-responsibilities"></a>Arabellekli sürücü sorumlulukları
+### <a name="buffered-driver-responsibilities"></a>Arabelleğe Alındı Sürücü Sorumlulukları
 
-Arabelleğe alınmış cihaz sürücüleri yalnızca, g/ç arabelleklerinin bağlı listelerini yönetme ile ilgilidir. Uygulama yazılımı hazırlanmadan önce alınan paketlere yönelik bir giriş arabelleği listesi tutulur. Buna karşılık, bir çıkış arabelleği listesi, donanım cihazından daha hızlı gönderilmekte olan paketlerin bakımını sağlar. Şekil 15 ' te, veri paketlerinin basit giriş ve çıkış bağlantılı listeleri ve her bir paketi oluşturan arabellekler gösterilmektedir.
+Arabelleğe alan cihaz sürücüleri yalnızca bağlantılı I/O arabellek listelerini yönetmekle ilgilidir. Uygulama yazılımı hazır olmadan önce alınan paketler için bir giriş arabelleği listesi korunur. Buna karşılık, donanım aygıtının bunları işleyene kadar daha hızlı gönderilen paketler için bir çıkış arabellek listesi korunur. Şekil 15'te veri paketlerinin basit giriş ve çıkış bağlantılı listeleri ve her paketin yer alan arabellekleri yer almaktadır.
 
-**Giriş listesi**
+**Giriş Listesi**
 
-![Giriş listesi](./media/user-guide/input-list.png)
+![Giriş Listesi](./media/user-guide/input-list.png)
 
-**Çıkış listesi**
+**Çıkış Listesi**
 
-![Çıkış listesi](./media/user-guide/output-list.png)
+![Çıkış Listesi](./media/user-guide/output-list.png)
 
-**ŞEKIL 15. Input-Output listeleri**
+**ŞEKIL 15. Input-Output Listeleri**
 
-Aynı g/ç arabelleklerine sahip arabellekli sürücülerle uygulamalar arabirimi. İletim sırasında, uygulama yazılımı, iletmek için bir veya daha fazla arabelleme sahip olan sürücüyü sağlar. Uygulama yazılımı giriş istediğinde, sürücü g/ç arabelleklerinde giriş verilerini döndürür.
+Aynı I/O arabellekleri ile arabelleğe alan sürücülere sahip uygulamalar arabirimi. Aktarımda, uygulama yazılımı sürücüye iletilen bir veya daha fazla arabellek sağlar. Uygulama yazılımı giriş isteğinde olduğunda sürücü G/Ç arabellekleri içinde giriş verilerini döndürür.
 
 > [!NOTE]
-> *Bazı uygulamalarda, uygulamanın sürücüden gelen bir giriş arabelleği için boş bir arabellek alışverişi gerektirdiğini gerektiren bir sürücü giriş arabirimi oluşturmak yararlı olabilir. Bu, sürücünün içindeki bazı arabellek ayırma işlemlerini giderebilirler.*
+> *Bazı uygulamalarda, uygulamanın sürücüden bir giriş arabelleği için boş arabellek değiştirmesini gerektiren bir sürücü giriş arabirimi oluşturmak yararlı olabilir. Bu, sürücünün içindeki bazı arabellek ayırma işlemlerini hafifletmeye neden olabilir.*
 
-### <a name="interrupt-management"></a>Kesme yönetimi
+### <a name="interrupt-management"></a>Kesinti Yönetimi
 
-Bazı uygulamalarda, cihaz kesme sıklığı C 'de ıSR yazmayı veya her kesintiye karşı ThreadX ile etkileşime geçmesini engelleyebilir. Örneğin, kesintiye uğramayan bağlamı kaydetmek ve geri yüklemek için 25 ABD sürüyorsa, kesme sıklığının 50 ABD olduğu durumlarda tam bağlam kaydetme işlemini gerçekleştirmek önerilmez. Bu gibi durumlarda, birçok cihaz kesmesi işlemek için küçük bir derleme dili ıSR kullanılır. Bu düşük yüktür ıSR yalnızca gerektiğinde ThreadX ile etkileşime geçebilir.
+Bazı uygulamalarda cihaz kesme sıklığı, ISR'nin C'de yazarak veya her kesmede ThreadX ile etkileşim kurmasını yasaklar. Örneğin, kesintiye neden olan bağlamı kaydetmek ve geri yüklemek 25us sürerse, kesme sıklığı 50us ise tam bağlam kaydetmesi tavsiye edilemez. Bu gibi durumlarda, cihaz kesintilerinin çoğunu işlemek için küçük bir derleme dili ISR kullanılır. Bu düşük ek yüke sahip ISR yalnızca gerektiğinde ThreadX ile etkileşime geçmenizi sağlar.
 
-Bölüm 3 ' ün sonundaki kesme yönetimi tartışmasında benzer bir tartışma bulunabilir.
+Benzer bir tartışma, Bölüm 3'in sonundaki kesme yönetimi tartışmalarında bulunabilir.
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
-Bu bölümde daha önce sunulan basit sürücü örneğinde, bir karakter kullanılamıyorsa giriş hizmeti 'nin çağıranı askıya alınır. Bazı uygulamalarda bu, kabul edilebilir olmayabilir.
+Bu bölümün başlarında sunulan basit sürücü örneğinde, bir karakter yoksa giriş hizmetini çağıran askıya alır. Bazı uygulamalarda bu kabul edilebilir bir durum değildir.
 
-Örneğin, bir sürücüden gelen girişin işlenmesinden sorumlu iş parçacığının başka bir işi de varsa, yalnızca sürücü girişinin askıya alınması büyük olasılıkla işe gitmemelidir. Bunun yerine, sürücünün iş parçacığına diğer işleme isteklerinin yapılma biçimine benzer şekilde istek işleme için özelleştirilmelidir.
+Örneğin, bir sürücüden gelen girişi işlemeden sorumlu iş parçacığının başka görevleri de varsa, yalnızca sürücü girişinin askıya alınması büyük olasılıkla işe yaramayacaktır. Bunun yerine, diğer işleme isteklerinin iş parçacığına yapılmasına benzer şekilde, sürücünün istek işleme için özelleştirilebilir olması gerekir.
 
-Çoğu durumda, giriş arabelleği bağlı bir listeye yerleştirilir ve iş parçacığının giriş kuyruğuna bir giriş olayı iletisi gönderilir.
+Çoğu durumda, giriş arabelleği bağlantılı bir listeye yerleştirilir ve iş parçacığının giriş kuyruğuna bir giriş olayı iletisi gönderilir.

@@ -1,69 +1,69 @@
 - name: Azure RTOS ThreadX belgeleri
   href: index.yml
-- name: ThreadX 'e genel bakış
+- name: ThreadX'e genel bakış
   href: overview-threadx.md
-- name: ThreadX Kullanıcı Kılavuzu
+- name: ThreadX kullanıcı kılavuzu
   expanded: true
   items:
     - name: Bu kılavuz hakkında
       href: about-this-guide.md
-    - name: Denetleyebilirsiniz. 1-ThreadX 'e giriş
+    - name: Caner. 1 - ThreadX'e giriş
       href: chapter1.md
-    - name: Denetleyebilirsiniz. 2-ThreadX yükleme ve kullanımı
+    - name: Caner. 2 - ThreadX yükleme ve kullanımı
       href: chapter2.md
-    - name: Denetleyebilirsiniz. 3-ThreadX işlev bileşenleri
+    - name: Caner. 3 - ThreadX'in işlevsel bileşenleri
       href: chapter3.md
-    - name: Denetleyebilirsiniz. 4-ThreadX hizmetlerinin açıklaması
+    - name: Caner. 4 - ThreadX hizmetlerinin açıklaması
       href: chapter4.md
-    - name: Denetleyebilirsiniz. 5-ThreadX için cihaz sürücüleri
+    - name: Caner. 5 - ThreadX için cihaz sürücüleri
       href: chapter5.md
-    - name: Denetleyebilirsiniz. 6-ThreadX için tanıtım sistemi
+    - name: Caner. 6 - ThreadX için tanıtım sistemi
       href: chapter6.md
-    - name: Uygulamanızda. A-ThreadX API hizmetleri
+    - name: App. A - ThreadX API hizmetleri
       href: appendix-a.md
-    - name: Uygulamanızda. B-ThreadX sabitleri
+    - name: App. B - ThreadX sabitleri
       href: appendix-b.md
-    - name: Uygulamanızda. C-ThreadX veri türleri
+    - name: App. C - ThreadX veri türleri
       href: appendix-c.md
-    - name: Uygulamanızda. D-ASCII karakter kodları
+    - name: App. D - ASCII karakter kodları
       href: appendix-d.md
-- name: ARMv8-d için ThreadX Kullanıcı Kılavuzu Eki
+- name: ARMv8-M için ThreadX Kullanıcı Kılavuzu Eki
   items:
-    - name: Denetleyebilirsiniz. 1-ARMv8-e için Azure RTOS ThreadX 'e giriş
+    - name: Caner. 1 - ARMv8-M Azure RTOS ThreadX'e giriş
       href: ./user-guide-armv8m/chapter1.md
-    - name: Denetleyebilirsiniz. 2-ARMv8-d için ThreadX desteği yükleniyor
+    - name: Caner. 2 - ARMv8-M için ThreadX desteğini yükleme
       href: ./user-guide-armv8m/chapter2.md
-    - name: Denetleyebilirsiniz. 3-ARMv8-d için ThreadX API 'Leri
+    - name: Caner. 3 - ARMv8-M için ThreadX API'leri
       href: ./user-guide-armv8m/chapter3.md
-- name: ThreadX SMP Kullanıcı Kılavuzu
+- name: ThreadX SMP kullanıcı kılavuzu
   items:
     - name: Bu Kılavuz Hakkında
       href: ./threadx-smp/about-this-guide.md
-    - name: Denetleyebilirsiniz. 1-ThreadX SMP 'e giriş
+    - name: Caner. 1 - ThreadX SMP'ye Giriş
       href: ./threadx-smp/chapter1.md
-    - name: Denetleyebilirsiniz. 2-ThreadX SMP 'in yükleme & kullanımı
+    - name: Caner. 2 - ThreadX SMP'& Yükleme ve Kullanma
       href: ./threadx-smp/chapter2.md
-    - name: Denetleyebilirsiniz. 3-ThreadX SMP bileşenleri
+    - name: Caner. 3 - ThreadX SMP'nin İşlevsel Bileşenleri
       href: ./threadx-smp/chapter3.md
-    - name: Denetleyebilirsiniz. 4-ThreadX SMP hizmetlerinin açıklaması
+    - name: Caner. 4 - ThreadX SMP Hizmetlerinin Açıklaması
       href: ./threadx-smp/chapter4.md
-    - name: Denetleyebilirsiniz. 5-ThreadX SMP için cihaz sürücüleri
+    - name: Caner. 5 - ThreadX SMP için Cihaz Sürücüleri
       href: ./threadx-smp/chapter5.md
-    - name: Denetleyebilirsiniz. 6-ThreadX SMP için tanıtım sistemi
+    - name: Caner. 6 - ThreadX SMP için Tanıtım Sistemi
       href: ./threadx-smp/chapter6.md
-    - name: Uygulamanızda. A-ThreadX SMP API hizmetleri
+    - name: App. A - ThreadX SMP API Services
       href: ./threadx-smp/appendix-a.md
-    - name: Uygulamanızda. B-ThreadX SMP sabitleri
+    - name: App. B - ThreadX SMP Sabitleri
       href: ./threadx-smp/appendix-b.md
-    - name: Uygulamanızda. C-ThreadX SMP veri türleri
+    - name: App. C - ThreadX SMP Veri Türleri
       href: ./threadx-smp/appendix-c.md
-    - name: Uygulamanızda. D-ASCII karakter kodları
+    - name: App. D - ASCII Karakter Kodları
       href: ./threadx-smp/appendix-d.md
 - name: ThreadX deposu
   href: 'https://github.com/azure-rtos/threadx'
 - name: İlgili hizmetler
   items:
-    - name: IoT için Defender-RTOS (Önizleme)
+    - name: IoT için Defender - RTOS (önizleme)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
@@ -71,19 +71,19 @@
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
-    - name: ThreadX modülleri
+    - name: ThreadX Modülleri
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
     - name: NetX
       href: ../netx/index.yml
-    - name: GUX
+    - name: GUIX
       href: ../guix/index.yml
-    - name: Dosya x
+    - name: FileX
       href: ../filex/index.yml
     - name: LevelX
       href: ../levelx/index.yml
     - name: USBX
       href: ../usbx/index.yml
-    - name: Trackingex
+    - name: TraceX
       href: ../tracex/index.yml

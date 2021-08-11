@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: d11b827558e9c96df44f462329b7807a500a64a4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b230a6207cec3a0968d88b197455896881e5ef7a0d8b93d4b1fb5a37696a7b6c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827575"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802150"
 ---
 # <a name="chapter-11---format-of-event-trace-buffer"></a>Bölüm 11-olay izleme arabelleğinin biçimi
 

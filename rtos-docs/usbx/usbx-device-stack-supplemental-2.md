@@ -1,25 +1,25 @@
 ---
-title: Bölüm 2-USBX cihaz sınıfı konuları
-description: USB cihaz RNDIS sınıfı, USB konak sisteminin cihazla Ethernet cihazı olarak iletişim kurmasına olanak tanır. Bu sınıf, Microsoft özel uygulamasına dayalıdır ve Windows platformları için özeldir.
+title: Bölüm 2 - USBX Cihaz Sınıfı Konuları
+description: USB cihazı RNDIS sınıfı, usb konak sisteminin cihazla Ethernet cihazı olarak iletişim kurmasına olanak sağlar. Bu sınıf, Microsoft'un özel uygulamasını temel alıyor ve Windows özeldir.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 035492644a911eba3b1c62a79572bc7d4c55f6dd
-ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
+ms.openlocfilehash: 2a28196c8f0e29ad94ef9f2d65b143459bf0214f48c345e6bb0d4ea71d520dfd
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106082226"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802640"
 ---
-# <a name="chapter-2---usbx-device-class-considerations"></a>Bölüm 2-USBX cihaz sınıfı konuları
+# <a name="chapter-2---usbx-device-class-considerations"></a>Bölüm 2 - USBX Cihaz Sınıfı Konuları
 
-## <a name="usb-device-rndis-class"></a>USB cihazı RNDIS sınıfı
+## <a name="usb-device-rndis-class"></a>USB Cihazı RNDIS Sınıfı
 
-USB cihaz RNDIS sınıfı, USB konak sisteminin cihazla Ethernet cihazı olarak iletişim kurmasına olanak tanır. Bu sınıf, Microsoft özel uygulamasına dayalıdır ve Windows platformları için özeldir.
+USB cihazı RNDIS sınıfı, usb konak sisteminin cihazla Ethernet cihazı olarak iletişim kurmasına olanak sağlar. Bu sınıf, Microsoft'un özel uygulamasını temel alıyor ve Windows özeldir.
 
-RNDIS uyumlu bir cihaz çerçevesinin cihaz yığını tarafından bildirilmesine ihtiyacı vardır. Aşağıda bir örnek bulunur.
+RNDIS uyumlu bir cihaz çerçevesinin cihaz yığını tarafından bildir yapılması gerekir. Aşağıda bir örnek verilmiştir.
 
 ```C
 unsigned char device_framework_full_speed[] = {
@@ -111,7 +111,7 @@ unsigned char device_framework_full_speed[] = {
 };
 ```
 
-RNDIS sınıfı, CDC-ACM ve CDC-ECD için çok benzer bir cihaz tanımlayıcısı yaklaşımı kullanır ve ayrıca bir ıAD tanımlayıcısı gerektirir. Cihaz tanımlayıcısının tanımı ve gereksinimleri için CDC-ACM sınıfına bakın.
+RNDIS sınıfı CDC-ACM ve CDC-ECM'ye çok benzer bir cihaz tanımlayıcısı yaklaşımı kullanır ve ayrıca bir IAD tanımlayıcısı gerektirir. Cihaz tanımlayıcısının tanımı ve gereksinimleri için bkz. CDC-ACM sınıfı.
 
 RNDIS sınıfının etkinleştirilmesi aşağıdaki gibidir.
 
@@ -151,13 +151,13 @@ status = ux_device_stack_class_register(_ux_system_slave_class_rndis_name,
     ux_device_class_rndis_entry, 1,0, &parameter);
 ```
 
-CDC-ECD için, RNDIS sınıfı 2 düğüm, bir yerel ve bir uzak, ancak uzak düğümü tanımlayan bir dize tanımlayıcısına sahip olmak için gerekli değildir.
+CDC-ECM'de olduğu gibi, RNDIS sınıfı bir yerel ve bir uzak olmak için 2 düğüm gerektirir, ancak uzak düğümü açıklayan bir dize tanımlayıcısına sahip olmak gerekli değildir.
 
-Ancak, Microsoft özel mesajlaşma mekanizmasından dolayı bazı ek parametreler gereklidir. Önce satıcı KIMLIĞININ geçirilmesi gerekir. Benzer şekilde, RNDIS 'in sürücü sürümü. Bir satıcı dizesi de verilmelidir.
+Ancak Microsoft'un özel mesajlaşma mekanizması nedeniyle bazı ek parametreler gereklidir. İlk olarak satıcı kimliğinin geçir olması gerekir. Benzer şekilde, RNDIS'nin sürücü sürümü. Bir satıcı dizesi de ver gerekir.
 
-RNDIS sınıfında, her iki şekilde de verileri aktarmaya yönelik yerleşik API 'Ler vardır ancak kullanıcı uygulaması, USB Ethernet cihazından NetX üzerinden iletişim kurduğu için bu uygulamalar uygulamaya gizlenir.
+RNDIS sınıfında her iki şekilde de veri aktarmak için yerleşik API'ler vardır, ancak kullanıcı uygulaması, USB Ethernet cihazıyla NetX üzerinden iletişim kuracak şekilde uygulamaya gizlenir.
 
-USBX RNDIS sınıfı, Azure RTOS NetX ağ yığınına yakın bir şekilde bağlanır. NetX ve USBX RNDIS sınıfını kullanan bir uygulama, NetX ağ yığınını olağan şekilde etkinleştirir ancak ek olarak, USB ağ yığınını aşağıdaki şekilde etkinleştirmek gerekir.
+USBX RNDIS sınıfı, NetX Ağ Azure RTOS yakından bağlanır. Hem NetX hem de USBX RNDIS sınıfını kullanan bir uygulama, NetX ağ yığınını her zamanki gibi etkinleştirir, ancak buna ek olarak USB ağ yığınını aşağıdaki gibi etkinleştirmesi gerekir.
 
 ```C
 /* Initialize the NetX system. */
@@ -168,9 +168,9 @@ nx_system_initialize();
 ux_network_driver_init();
 ```
 
-USB ağ yığınının yalnızca bir kez etkinleştirilmesi ve RNDIS 'e özgü olmaması, ancak NetX hizmetleri gerektiren herhangi bir USB sınıfı için gerekli olması gerekir.
+USB ağ yığınının yalnızca bir kez etkinleştirilmesi gerekir ve RNDIS'e özgü değildir, ancak NetX hizmetleri gerektiren herhangi bir USB sınıfı için gereklidir.
 
-RNDIS sınıfı, Microsoft işletim sistemlerine özgü olan MAC OS ve Linux konakları tarafından tanınmaz. Windows platformlarında, cihaz tanımlayıcısıyla eşleşen konakta bir. inf dosyası bulunması gerekir. Microsoft, RNDIS sınıfı için bir şablon sağlar ve usbx_windows_host_files dizininde bulunabilir. Windows 'un daha yeni sürümü için RNDIS_Template. inf dosyası kullanılmalıdır. Bu dosyanın, cihaz tarafından kullanılan PID/VıD 'yi yansıtacak şekilde değiştirilmesi gerekir. Şirket ve ürün USB-IF ile kaydettirilirse, PID/VıD son müşteriye özgü olacaktır. INF dosyasında, değiştirilecek alanlar burada bulunur.
+RNDIS sınıfı, Microsoft işletim sistemlerine özgü olduğu için MAC OS ve Linux konakları tarafından tanınmaz. Windows platformlarında, cihaz tanımlayıcısıyla eşleşen konakta bir .inf dosyasının mevcut olması gerekir. Microsoft, RNDIS sınıfı için bir şablon sağlar ve bu şablon usbx_windows_host_files bulunabilir. Dosyanın daha yeni Windows için RNDIS_Template.inf dosyası kullanılmalıdır. Bu dosya, cihaz tarafından kullanılan PID/VID'i yansıtacak şekilde değiştirilmelidir. PiD/VID, şirket ve ürün USB-IF kaydı olduğunda son müşteriye özgü olur. Inf dosyasında değiştirilen alanlar burada bulunur.
 
 ```Inf
 [DeviceList]
@@ -180,19 +180,19 @@ RNDIS sınıfı, Microsoft işletim sistemlerine özgü olan MAC OS ve Linux kon
 %DeviceName%=DriverInstall, USB\\VID_xxxx&PID_yyyy&MI_00
 ```
 
-RNDIS cihazının cihaz çerçevesinde, PID/VıD cihaz tanımlayıcısına depolanır (yukarıda belirtilen cihaz tanımlayıcısına bakın)
+RNDIS cihazın cihaz çerçevesinde PID/VID, cihaz tanımlayıcısında depolanır (yukarıda bildirilen cihaz tanımlayıcısına bakın)
 
-USB ana bilgisayar sistemleri, USB RNDIS cihazını bulduğunda, bir ağ arabirimi bağlayacaktır ve cihaz ağ protokol yığını ile birlikte kullanılabilir. Başvuru için konak Işletim sistemine bakın.
+USB ana bilgisayar sistemleri USB RNDIS cihazını bulasa, bir ağ arabirimi bağlar ve cihaz ağ protokolü yığınıyla kullanılabilir. Başvuru için bkz. konak İşletim Sistemi.
 
-## <a name="usb-device-dfu-class"></a>USB cihaz DFU sınıfı
+## <a name="usb-device-dfu-class"></a>USB Cihazı DFU Sınıfı
 
-USB cihaz DFU sınıfı, bir USB konak sisteminin bir konak uygulamasına bağlı olarak cihaz bellenimini güncelleştirmesine izin verir. DFU sınıfı, bir USB-IF standart sınıfıdır.
+USB cihazı DFU sınıfı, bir USB konak sisteminin cihaz üretici yazılımını bir konak uygulamasına göre güncelleştirmesini sağlar. DFU sınıfı bir USB-IF standart sınıfıdır.
 
-USBX DFU sınıfı nispeten basittir. BT cihaz tanımlayıcısı, bir denetim uç noktası olmak üzere hiçbir şey gerektirmez. Çoğu zaman, bu sınıf bir USB Bileşik cihazına gömülecektir. Cihaz, bir depolama cihazı veya bir iletişim cihazı gibi herhangi bir şey olabilir ve eklenen DFU arabirimi, ana bilgisayara cihazın belleniminin güncelleştirilmesini sağlayabilir.
+USBX DFU sınıfı görece basittir. Bu cihaz tanımlayıcısı için bir denetim uç noktası değil başka bir şey gerekir. Bu sınıf çoğu zaman USB bileşik cihazına ekli olur. Cihaz bir depolama cihazı veya bir iletişim cihazı gibi herhangi bir şey olabilir ve eklenen DFU arabirimi, ana bilgisayarı cihazın üretici yazılımının hemen güncelleştirilebilir olduğu konusunda bilgilendirebilir.
 
-DFU sınıfı 3 adımda çalışmaktadır. İlk olarak, aygıt, dışarıya aktarılmış sınıfı kullanarak normal şekilde takar. Konaktaki (Windows veya Linux) bir uygulama DFU sınıfını oluşturacak ve cihazı DFU moduna sıfırlamaya yönelik bir istek gönderecek. Cihaz, veri yolundan kısa bir süre (konak ve cihaz için bir SıFıRLAMA sırasını algılamaya yetecek kadar) kaybolur ve yeniden başlatıldığında cihaz, ana bilgisayar uygulamasının bir bellenim yükseltmesi göndermesini beklemek için özel olarak DFU modunda olur. Üretici yazılımı yükseltmesi tamamlandığında, ana bilgisayar uygulaması cihazı sıfırlar ve yeniden numaralandırdıktan sonra cihaz yeni üretici yazılımıyla normal işlemine döndürülür.
+DFU sınıfı 3 adımda çalışır. İlk olarak cihaz, dışarı aktarıldı sınıfını kullanarak normal şekilde bağlar. Ana bilgisayar (Windows Linux) üzerinde bir uygulama DFU sınıfına alıştırma yapıyor ve cihazı DFU moduna sıfırlamak için bir istek gönderiyor. Cihaz kısa bir süre (ana bilgisayar ve cihaz bir RESET dizisini algılamak için yeterlidir) veri yollarından kaybolur ve yeniden başlatıldıktan sonra yalnızca DFU modunda olur ve konak uygulamanın bir üretici yazılımı yükseltmesi göndermesini bekler. Üretici yazılımı yükseltmesi tamamlandığında, konak uygulaması cihazı sıfırlar ve yeniden numaralandıktan sonra cihaz yeni üretici yazılımıyla normal çalışmasına geri döner.
 
-DFU cihaz çerçevesi şuna benzeyecektir.
+DFU cihaz çerçevesi şuna benzer.
 
 ```C
 UCHAR device_framework_full_speed[] = {
@@ -216,15 +216,15 @@ UCHAR device_framework_full_speed[] = {
 };
 ```
 
-Bu örnekte, DFU tanımlayıcısı diğer sınıflarla ilişkili değildir. Basit bir arabirim tanımlayıcısına sahiptir ve kendisine bağlı başka uç noktalar yoktur. Cihazın DFU özelliklerinin ayrıntılarını açıklayan bir Işlevsel tanımlayıcı vardır.
+Bu örnekte, DFU tanımlayıcısı başka hiçbir sınıfla ilişkili değildir. Basit bir arabirim tanımlayıcısına sahiptir ve ekli başka uç nokta yoktur. Cihazın DFU özelliklerini açıklayan bir İşlevsel tanımlayıcı vardır.
 
 DFU yeteneklerinin açıklaması aşağıdaki gibidir.
 
 | Name             | Uzaklık  | Boyut | tür      | Description |
 |------------------|----------|------|-----------|------------|
-| bmAttributes  | 2     | 1   | Bit alanı | Bit 3: cihaz, bir DFU_DETACH isteği aldığında bir veri yolu ayırma-iliştirme sırası gerçekleştirir. Konağın USB sıfırlaması yayınlamamalıdır. (bitWillDetach) 0 = Hayır 1 = Evet bit 2: cihaz, bildirim aşamasından sonra USB üzerinden iletişim kurabilir. (Bitbildirimli Estationdayanıklı) 0 = Hayır, veri yolu sıfırlaması 1 = Evet bit 1: karşıya yükleme özellikli (bitCanUpload) 0 = Hayır 1 = Evet bit 0: indirme özelliği (bitCanDnload) 0 = Hayır 1 = Evet  |
-| Wçıkarılabilir zaman aşımı  | 3      | 2  | sayı    | Milisaniye cinsinden, cihazın DFU_DETACH isteği alındıktan sonra bekleyeceği süre. Bu süre USB sıfırlaması olmadan geçtiğinde cihaz, yeniden yapılandırma aşamasını sonlandırır ve normal işleme geri döndürülür. Bu, cihazın bekleneceği maksimum süreyi (zamanlayıcılar, vb.) temsil eder. USBX bu değeri 1000 ms olarak ayarlar.  |
-| wTransferSize  | 5      | 2  | sayı    | Cihazın her denetim yazma işlemi için kabul edebileceği en fazla bayt sayısı \- . USBX bu değeri 64 bayt olarak ayarlar. |
+| bmAttributes  | 2     | 1   | Bit alanı | Bit 3: Cihaz, bir veri DFU_DETACH aldığında veri DFU_DETACH gerçekleştirecek. Ana bilgisayar USB Sıfırlaması sorununa neden olmaz. (bitWillDetach) 0 = 1 yok = evet Bit 2: Cihaz, Usb üzerinden Iletişim Kura aşamasının ardından iletişim kurabilir. (bitManstationTolerant) 0 = hayır, bus sıfırlaması 1 = evet Bit 1: karşıya yükleme özellikli (bitCanUpload) 0 = hayır 1 = evet Bit 0: indirme özellikli (bitCanDnload) 0 = 1 = evet  |
+| wDetachTimeOut  | 3      | 2  | sayı    | Cihazın istek alındıktan sonra bekleyeceği süre DFU_DETACH. Bu süre USB sıfırlaması olmadan sona ererse, cihaz Yeniden Yapılandırma aşamasını sonlandırılır ve normal işleme geri döner. Bu, cihazın bekleyeceği en uzun zamanı (süreye göre vb.) temsil eder. USBX bu değeri 1000 ms olarak ayarlar.  |
+| wTransferSize  | 5      | 2  | sayı    | Cihazın denetim yazma işlemi başına kabul edile maksimum bayt \- sayısı. USBX bu değeri 64 bayt olarak ayarlar. |
 
 DFU sınıfının bildirimi aşağıdaki gibidir:
 
@@ -264,29 +264,29 @@ status = ux_device_stack_class_register(_ux_system_slave_class_dfu_name,
 if (status!=UX_SUCCESS) return;
 ```
 
-DFU sınıfının hedefe özgü bir cihaz üretici yazılımı uygulamasıyla çalışması gerekir. Bu nedenle, üretici yazılımının okuma ve yazma blokları ve bellenim güncelleştirme uygulamasından durum almak için birkaç geri çağrı tanımlar. DFU sınıfında Ayrıca, bellenimin bir başlangıç ve bitiş sonu gerçekleştiğinde uygulamayı bilgilendirmek için bir bildirim geri araması işlevi bulunur.
+DFU sınıfının hedefe özgü bir cihaz üretici yazılımı uygulamasıyla çalışması gerekir. Bu nedenle, üretici yazılımı okuma ve yazma bloklarını geri çağırma ve üretici yazılımı güncelleştirme uygulamasından durum almak için birkaç çağrı tanımlar. DFU sınıfı ayrıca üretici yazılımının aktarımının bir başlangıç ve bitişi olduğunda uygulamayı bilgilendirmek için bir notify callback işlevine sahiptir.
 
-Tipik bir DFU uygulama akışının açıklaması aşağıda verilmiştir.
+Aşağıda tipik bir DFU uygulama akışının açıklaması ve ardından yer vemektedir.
 
 ![DFU uygulama akışı](./media/usbx-device-stack-supplemental/dfu-application-flow.png)
 
-DFU sınıfının önemli zorluğu, bellenime indirme işlemini gerçekleştirmek için konakta doğru uygulamayı almaktır. Microsoft veya USB-IF tarafından sağlanan bir uygulama yok. Bazı paylaşılan yazılım var ve Linux 'ta ve Windows 'da daha düşük bir ölçüde iyi çalışır.
+DFU sınıfının en büyük zor olduğu ana bilgisayar üzerinde üretici yazılımını indirmek için doğru uygulamayı almaktır. Microsoft veya USB-IF tarafından sağlanan bir uygulama yoktur. Bazı paylaşım yazılımları vardır ve Linux'ta makul bir şekilde ve daha az ölçüde çalışırlar Windows.
 
-Linux 'ta, bir tane DFU-utils kullanarak burada bulunabilir: [https://wiki.openmoko.org/wiki/Dfu-util](https://wiki.openmoko.org/wiki/Dfu-util) Bu bağlantıda DFU yardımcı programları hakkında çok fazla bilgi bulunabilir: [https://www.libusb.org/wiki/windows_backend](https://www.libusb.org/wiki/windows_backend)
+Linux'ta dfu-utils'i kullanarak buradan ulaşabilirsiniz: dfu yardımcı programıyla ilgili birçok bilgi [https://wiki.openmoko.org/wiki/Dfu-util](https://wiki.openmoko.org/wiki/Dfu-util) şu bağlantıda da bulunabilir: [https://www.libusb.org/wiki/windows_backend](https://www.libusb.org/wiki/windows_backend)
 
-DFU 'nin Linux uygulamasına, ana bilgisayar ile cihaz arasındaki sıfırlama sırası doğru şekilde gerçekleştirilir ve bu nedenle cihazın bunu yapmasına gerek yoktur. Linux, bmAttributes *Bitwilldetach* 0 olması için kabul edebilir. Diğer taraftan Windows, cihazın sıfırlamayı gerçekleştirmesini gerektirir.
+DFU'nun Linux uygulaması, konak ve cihaz arasındaki sıfırlama dizisini doğru gerçekleştirir ve bu nedenle cihazın bunu yapma ihtiyacı olmaz. Linux, bmAttributes *bitWillDetach'in* 0 olduğunu kabul eder. Windows diğer tarafta cihazın sıfırlama gerçekleştirmesi gerekir.
 
-Windows 'da, USB kayıt defteri, USB cihazını PID/VıD ve USB kitaplığı ile ilişkilendirebilmelidir ve bu da DFU uygulaması tarafından kullanılacaktır. Bu, burada bulunabilerek ücretsiz yardımcı program ile kolayca yapılabilir: [https://sourceforge.net/projects/libwdi/files/zadig/](https://sourceforge.net/projects/libwdi/files/zadig/) .
+Bu Windows, USB kayıt defterinin USB cihazını PID/VID ile ve DFU uygulaması tarafından kullanılacak USB kitaplığıyla ilişkilendirmesi gerekir. Bu, burada bulunan ücretsiz Zadig yardımcı programıyla kolayca yapılabilir: [https://sourceforge.net/projects/libwdi/files/zadig/](https://sourceforge.net/projects/libwdi/files/zadig/) .
 
-Zadig 'yi ilk kez çalıştırmak bu ekranı gösterecektir:
+Zadig'i ilk kez çalıştırmanız şu ekranı gösterir:
 
-![Zadig 'yi ilk kez çalıştırma](./media/usbx-device-stack-supplemental/zadig.png)
+![Zadig'i ilk kez çalıştırma](./media/usbx-device-stack-supplemental/zadig.png)
 
-Cihaz listesinden cihazınızı bulun ve lıbusb Windows sürücüsüyle ilişkilendirin. Bu işlem, cihazın PID/VıD 'sini DFU yardımcı programları tarafından kullanılan Windows USB kitaplığıyla bağlar.
+Cihaz listesinden cihazınızı bulun ve libusb Windows sürücüsüyle ilişkilendirmek. Bu, cihazın PID/VID'sini DFU yardımcı programları tarafından Windows USB kitaplığıyla bağlar.
 
-DFU komutunu çalıştırmak için, yalnızca daraltılmış DFU yardımcı programlarının bir dizine paketini açmanız yeterlidir ve bu DLL 'nin aynı dizinde de bulunduğundan emin olun. DFU yardımcı programlarının komut satırındaki bir DOS kutusundan çalıştırılması gerekir.
+DFU komutunu çalıştırmak için sıkıştırılmış dfu yardımcı programlarını bir dizine açıp libusb dll dosyasının da aynı dizinde mevcut olduğundan emin olun. DFU yardımcı programlarının komut satırına bir DOS kutusundan çalışması gerekir.
 
-İlk olarak, cihazın listelenip listelenmediğini öğrenmek için **DFU-Util – l** komutunu yazın. Aksi takdirde, cihazın listelenmiş ve USB kitaplığıyla ilişkili olduğundan emin olmak için Zadig 'yi çalıştırın. Aşağıdaki gibi bir ekran görmeniz gerekir:
+İlk olarak cihazın listelenmiş **olup olmadığını belirlemek için dfu-util –l** komutunu yazın. Yoksa, cihazın listelenmiş ve USB kitaplığıyla ilişkili olduğundan emin olmak için Zadig'i çalıştırın. Aşağıdaki gibi bir ekran görürsünüz:
 
 ```Command-line
 C:\usb specs\DFU\dfu-util-0.6&gt;dfu-util -l dfu-util 0.6
@@ -297,79 +297,79 @@ This program is Free Software and has ABSOLUTELY NO WARRANTY
 Found Runtime: [0a5c:21bc] devnum=0, cfg=1, intf=3, alt=0, name="UNDEFINED"
 ```
 
-Sonraki adım, dosyayı indirilecek şekilde hazırlanacaktır. USBX DFU sınıfı, bu dosya üzerinde herhangi bir doğrulama gerçekleştirmez ve iç biçiminin bağımsız olduğunu göstermez. Bu üretici yazılımı dosyası hedefe özgü değildir ancak DFU 'ye veya USBX 'e uygulanmaz.
+Sonraki adım, indirilecek dosyayı hazırlamak olacak. USBX DFU sınıfı bu dosya üzerinde herhangi bir doğrulama gerçekleştirmez ve iç biçiminden bağımsızdır. Bu üretici yazılımı dosyası hedefe çok özeldir, ancak DFU veya USBX'e özgü değildir.
 
-Ardından, aşağıdaki komutu yazarak DFU-Util 'e dosyayı göndermek için talimat uygulanabilir:
+Daha sonra dfu-util'e aşağıdaki komutu yazarak dosyayı göndermesi talimatı ve ardından:
 
 ```Command-line
 dfu-util –R –t 64 -D file_to_download.hex
 ```
 
-Yazılım yazılımı tamamen indirilene kadar DFU-Util dosya indirme işlemini görüntülemelidir.
+Üretici yazılımı tamamen indirilene kadar dfu-util dosya indirme işlemini görüntülemeli.
 
-## <a name="usb-device-pima-class-ptp-responder"></a>USB cihaz PIMA sınıfı (PTP Yanıtlayıcısı)
+## <a name="usb-device-pima-class-ptp-responder"></a>USB Cihazı PIMA Sınıfı (PTP Yanıtlayan)
 
-USB cihaz PIMA sınıfı, bir USB ana bilgisayar sisteminin (Başlatıcı) bir cihaza bağlanmasını sağlar
+USB cihazı PIMA sınıfı, bir USB ana bilgisayar sisteminin (Başlatıcı)
 
-Medya dosyalarını aktarmak için PIMA cihazı (Resonder). USBX Pima sınıfı, PTP class (resim aktarma protokolü için) olarak da bilinen USB-IF PIMA 15740 sınıfına yöneliktir.
+Medya dosyalarını aktaran PIMA cihazı (Resonder). USBX Pima Sınıfı, PTP sınıfı olarak da bilinen USB-IF PIMA 15740 sınıfına (Resim Aktarım Protokolü için) uyum sağlar.
 
-USBX Device Side PIMA sınıfı aşağıdaki işlemleri destekler.
+USBX cihaz tarafı PIMA sınıfı aşağıdaki işlemleri destekler.
 
 | İşlem kodu                                    | Değer | Açıklama                       |
 |---------------------------------------------------|---------|-----------------------------------------------------|
-| UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO    | 0x1001  | Desteklenen cihaz işlemlerini ve olayları edinin                                                         |
-| UX_DEVICE_CLASS_PIMA_OC_OPEN_SESSION        | 0x1002  | Konak ve cihaz arasında bir oturum açın                                                            |
-| UX_DEVICE_CLASS_PIMA_OC_CLOSE_SESSION       | 0x1003  | Konak ve cihaz arasında bir oturumu kapatma                                                           |
-| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_IDS    | 0x1004  | Cihazın depolama KIMLIĞINI döndürür. USBX PIMA yalnızca bir depolama KIMLIĞI kullanır |
-| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_INFO   | 0x1005  | Depolama nesnesi hakkında en fazla kapasite ve boş alan gibi bilgileri döndür                           |
-| UX_DEVICE_CLASS_PIMA_OC_GET_NUM_OBJECTS    | 0x1006  | Depolama cihazında bulunan nesne sayısını döndür                                              |
-| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_HANDLES | 0x1007  | Depolama cihazında nesnelerin bir tanıtıcı dizisini döndürür                                           |
-| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_INFO    | 0x1008  | Nesnenin adı, Oluşturulma tarihi, değiştirilme tarihi gibi bir nesneyle ilgili bilgileri döndürür |
-| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT          | 0x1009  | Belirli bir nesneyle ilgili verileri döndürür                                                         |
-| UX_DEVICE_CLASS_PIMA_OC_GET_THUMB           | 0x100A  | Bir nesne hakkında kullanılabiliyorsa küçük resmi gönder                                                           |
-| UX_DEVICE_CLASS_PIMA_OC_DELETE_OBJECT       | 0x100B  | Medyadaki bir nesneyi silme                                                                             |
-| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT_INFO   | 0x100C  | Medyada oluşturulması için bir nesneyle ilgili cihaz bilgilerine gönderin                              |
-| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT         | 0x100D  | Bir nesne için verileri cihaza gönderme                                                                     |
-| UX_DEVICE_CLASS_PIMA_OC_FORMAT_STORE        | 0x100F  | Cihaz medyasını Temizleme                                                                                    |
-| UX_DEVICE_CLASS_PIMA_OC_RESET_DEVICE        | 0x0110  | Hedef cihazı sıfırlayın                                                                                   |
+| UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO    | 0x1001  | Cihaz tarafından desteklenen işlemleri ve olayları alma                                                         |
+| UX_DEVICE_CLASS_PIMA_OC_OPEN_SESSION        | 0x1002  | Konak ve cihaz arasında oturum açma                                                            |
+| UX_DEVICE_CLASS_PIMA_OC_CLOSE_SESSION       | 0x1003  | Konak ve cihaz arasındaki oturumu kapatma                                                           |
+| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_IDS    | 0x1004  | Cihazın depolama kimliğini döndürür. USBX PIMA yalnızca bir depolama kimliği kullanır |
+| UX_DEVICE_CLASS_PIMA_OC_GET_STORAGE_INFO   | 0x1005  | Maksimum kapasite ve boş alan gibi depolama nesnesi hakkında bilgi dönüş                           |
+| UX_DEVICE_CLASS_PIMA_OC_GET_NUM_OBJECTS    | 0x1006  | Depolama cihazında bulunan nesne sayısını iade edin                                              |
+| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_HANDLES | 0x1007  | Depolama cihazında nesnelerin tanıtıcı dizisini döndürür                                           |
+| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT_INFO    | 0x1008  | Nesnenin adı, oluşturma tarihi, değiştirme tarihi gibi bir nesne hakkında bilgi dönüş |
+| UX_DEVICE_CLASS_PIMA_OC_GET_OBJECT          | 0x1009  | Belirli bir nesneyle ilgili verileri iade                                                         |
+| UX_DEVICE_CLASS_PIMA_OC_GET_THUMB           | 0x100A  | Bir nesne hakkında varsa küçük resmi gönderme                                                           |
+| UX_DEVICE_CLASS_PIMA_OC_DELETE_OBJECT       | 0x100B  | Medyada bir nesneyi silme                                                                             |
+| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT_INFO   | 0x100C  | Medyada oluşturulması için cihaza bir nesne hakkında bilgi gönderme                              |
+| UX_DEVICE_CLASS_PIMA_OC_SEND_OBJECT         | 0x100D  | Cihaza bir nesne için veri gönderme                                                                     |
+| UX_DEVICE_CLASS_PIMA_OC_FORMAT_STORE        | 0x100F  | Cihaz medyalarını temizleme                                                                                    |
+| UX_DEVICE_CLASS_PIMA_OC_RESET_DEVICE        | 0x0110  | Hedef cihazı sıfırlama                                                                                   |
 
-| İşlem kodu                                         | Değer | Açıklama |
+| İşlem Kodu                                         | Değer | Açıklama |
 |--------------------------------------------------------|-------|-----------------------------------------|
 | UX_DEVICE_CLASS_PIMA_EC_CANCEL_TRANSACTION       | 0x4001  | Geçerli işlemi iptal eder                                                 |
-| UX_DEVICE_CLASS_PIMA_EC_OBJECT_ADDED             | 0x4002  | Cihaz medyasına bir nesne eklenmiştir ve bu, host\tarafından alınabilir. |
-| UX_DEVICE_CLASS_PIMA_EC_OBJECT_REMOVED           | 0x4003  | Cihaz medyasından bir nesne silindi                                |
-| UX_DEVICE_CLASS_PIMA_EC_STORE_ADDED              | 0x4004  | Cihaza medya eklendi                                            |
+| UX_DEVICE_CLASS_PIMA_EC_OBJECT_ADDED             | 0x4002  | Cihaz medyaya bir nesnesi eklendi ve konak tarafından alınamadı\ |
+| UX_DEVICE_CLASS_PIMA_EC_OBJECT_REMOVED           | 0x4003  | Cihaz medyadan bir nesne silindi                                |
+| UX_DEVICE_CLASS_PIMA_EC_STORE_ADDED              | 0x4004  | Cihaza bir medya eklendi                                            |
 | UX_DEVICE_CLASS_PIMA_EC_STORE_REMOVED            | 0x4005  | Cihazdan bir medya silindi                                        |
-| UX_DEVICE_CLASS_PIMA_EC_DEVICE_PROP_CHANGED     | 0x4006  | Cihaz özellikleri değiştirildi                                                  |
-| UX_DEVICE_CLASS_PIMA_EC_OBJECT_INFO_CHANGED     | 0x4007  | Bir nesne bilgisi değişti                                               |
-| UX_DEVICE_CLASS_PIMA_EC_DEVICE_INFO_CHANGE      | 0x4008  | Bir cihaz değiştirildi                                                            |
-| UX_DEVICE_CLASS_PIMA_EC_REQUEST_OBJECT_TRANSFER | 0x4009  | Cihaz, konaktan bir nesne aktarımını ister                     |
-| UX_DEVICE_CLASS_PIMA_EC_STORE_FULL               | 0x400A  | Ortam dolu cihaz raporları                                                |
-| UX_DEVICE_CLASS_PIMA_EC_DEVICE_RESET             | 0x400B  | Sıfırlanan cihaz raporları                                                     |
-| UX_DEVICE_CLASS_PIMA_EC_STORAGE_INFO_CHANGED    | 0x400C  | Cihazda depolama bilgileri değişti                                   |
+| UX_DEVICE_CLASS_PIMA_EC_DEVICE_PROP_CHANGED     | 0x4006  | Cihaz özellikleri değişti                                                  |
+| UX_DEVICE_CLASS_PIMA_EC_OBJECT_INFO_CHANGED     | 0x4007  | Nesne bilgileri değiştirildi                                               |
+| UX_DEVICE_CLASS_PIMA_EC_DEVICE_INFO_CHANGE      | 0x4008  | Bir cihaz değişti                                                            |
+| UX_DEVICE_CLASS_PIMA_EC_REQUEST_OBJECT_TRANSFER | 0x4009  | Cihaz, bir nesnenin konaktan aktarımını istiyor                     |
+| UX_DEVICE_CLASS_PIMA_EC_STORE_FULL               | 0x400A  | Cihaz medyanın dolu olduğunu rapor ediyor                                                |
+| UX_DEVICE_CLASS_PIMA_EC_DEVICE_RESET             | 0x400B  | Cihaz sıfırlandı raporlarında                                                     |
+| UX_DEVICE_CLASS_PIMA_EC_STORAGE_INFO_CHANGED    | 0x400C  | Depolama bilgileri cihazda değişti                                   |
 | UX_DEVICE_CLASS_PIMA_EC_CAPTURE_COMPLETE         | 0x400D  | Yakalama tamamlandı                                                            |
 
-USBX PIMA cihaz sınıfı, konaktan PIMA komutlarını dinlemek için bir TX Iş parçacığı kullanır.
+USBX PIMA cihaz sınıfı, konaktan PIMA komutlarını dinlemek için bir TX İş Parçacığı kullanır.
 
-Bir PIMA komutu bir komut bloğundan, bir veri bloğundan ve bir durum aşamasından oluşur.
+PIMA komutu bir komut bloğu, veri bloğu ve durum aşamasından oluşur.
 
-İşlev ux_device_class_pima_thread, ana bilgisayar tarafında bir PIMA komutu almak için yığına bir istek gönderir. PIMA komutunun kodu çözüldü ve içerik için doğrulanır. Komut bloğu geçerliyse, uygun komut işleyicisine dallandırır.
+İşlev ux_device_class_pima_thread, konak tarafından PIMA komutu almak için yığına bir istek göndermektedir. PIMA komutunun kodu çözüldü ve içerik için doğrulandı. Komut bloğu geçerli ise uygun komut işleyiciye dallar.
 
-Çoğu PIMA komutları yalnızca, ana bilgisayar tarafından bir oturum açıldığında yürütülebilir. Tek özel durum, komut **UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO**. USBX PIMA uygulamasıyla, her zaman bir başlatıcı ve Yanıtlayıcı arasında yalnızca bir oturum açılabilir. Tek oturumdaki tüm işlemler engelleniyor ve önceki işlem tamamlanmadan önce yeni bir işlem başlayabilirler.
+Çoğu PIMA komutu yalnızca konak tarafından bir oturum açıldığında yürütülebiliyor. Tek özel durum, komutunun **UX_DEVICE_CLASS_PIMA_OC_GET_DEVICE_INFO.** USBX PIMA uygulamasıyla, başlatıcı ile Yanıtlayıcı arasında herhangi bir anda yalnızca bir oturum açılabilir. Tek oturum içindeki tüm işlemler engellidir ve önceki tamamlanmadan yeni bir işlem başlatılamayabilirsiniz.
 
-PIMA işlemleri 3 aşamadan, bir komut aşamasına, isteğe bağlı bir veri aşamasına ve bir yanıt aşamasına göre oluşur. Bir veri aşaması varsa, yalnızca bir yönde olabilir.
+PIMA işlemleri 3 aşamadan, komut aşamasından, isteğe bağlı bir veri aşamasından ve yanıt aşamasından oluşur. Bir veri aşaması varsa, yalnızca bir yönde olabilir.
 
-Başlatıcı her zaman PIMA işlemlerinin akışını belirler ancak Yanıtlayıcı, bir oturum sırasında gerçekleşen durum değişikliklerini bilgilendirmek için olayları başlatıcıya geri başlatabilir.
+Başlatıcı her zaman PIMA işlemlerinin akışını belirler, ancak Yanıtlayıcı bir oturum sırasında meydana gelen durum değişikliklerini bildirmek için başlatıcıya geri olayları başlatabilirsiniz.
 
-Aşağıdaki diyagramda, ana bilgisayar ve PIMA cihaz sınıfı arasında bir veri nesnesinin aktarımı gösterilmektedir.
+Aşağıdaki diyagramda, bir veri nesnesinin konak ile PIMA cihaz sınıfı arasında aktarımını gösterir.
 
 ![PIMA işlemleri](./media/usbx-device-stack-supplemental/pima-transactions.png)
 
-## <a name="initialization-of-the-pima-device-class"></a>PIMA cihaz sınıfının başlatılması
+## <a name="initialization-of-the-pima-device-class"></a>PIMA cihaz sınıfını başlatma
 
-PIMA cihaz sınıfı, başlatma sırasında uygulama tarafından sağlanan bazı parametrelere ihtiyaç duyuyor.
+PIMA cihaz sınıfı, başlatma sırasında uygulama tarafından sağlanan bazı parametrelere ihtiyaç gösterir.
 
-Aşağıdaki parametreler cihaz ve depolama bilgilerini anlatmaktadır.
+Aşağıdaki parametreler cihaz ve depolama bilgilerini açıklar.
 
 - `ux_device_class_pima_manufacturer`
 - `ux_device_class_pima_model`
@@ -387,7 +387,7 @@ Aşağıdaki parametreler cihaz ve depolama bilgilerini anlatmaktadır.
 - `ux_device_class_pima_storage_description`
 - `ux_device_class_pima_storage_volume_label`
 
-IZMA sınıfı ayrıca belirli olayları bilgilendirmek veya yerel medyadan veri almak/depolamak için uygulamaya geri çağırma kaydı yapılmasını gerektirir. Geri çağrılar aşağıdaki gibidir.
+PIMA sınıfı ayrıca belirli olayları uygulamaya bildirmek veya yerel medyadan/medyadan/medyadan veri almak/depolamak için uygulamaya geri çağırma kaydını gerektirir. Geri çağırmalar aşağıdaki gibidir.
 
 - `ux_device_class_pima_object_number_get`
 - `ux_device_class_pima_object_handles_get`
@@ -397,7 +397,7 @@ IZMA sınıfı ayrıca belirli olayları bilgilendirmek veya yerel medyadan veri
 - `ux_device_class_pima_object_data_send`
 - `ux_device_class_pima_object_delete`
 
-Aşağıdaki örnekte, PIMA 'nın istemci tarafının nasıl başlatıldığı gösterilmektedir. Bu örnek, PIMA için istemci olarak PictBridge kullanır.
+Aşağıdaki örnekte PIMA'nın istemci tarafının nasıl başlatılmış olduğu göstermektedir. Bu örnekte PIMA için bir istemci olarak Pictbridge 2011 ve 2012 yıllarına göre 2004'e kadar 2008'den az
 
 ```C
 /* Initialize the first XML object valid in the pictbridge instance.
@@ -504,7 +504,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_device_class_pima_object_add"></a>ux_device_class_pima_object_add
 
-Bir nesne ekleme ve olayı konağa gönderme
+Nesne ekleme ve olayı ana bilgisayarla gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -516,12 +516,12 @@ UINT ux_device_class_pima_object_add(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının bir nesne eklemesi ve Konağı bilgilendirilmesi gerektiğinde çağrılır.
+PIMA sınıfının bir nesnesi eklemesi ve ana bilgisayarı bilgilendirmesi gereken bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı.
+- **pima:** pima sınıfı örneğinin işaretçisi
+- **object_handle:** Nesnenin tanıtıcısı.
 
 ### <a name="example"></a>Örnek
 
@@ -533,7 +533,7 @@ status = ux_device_class_pima_object_add(pima, UX_PICTBRIDGE_OBJECT_HANDLE_CLIEN
 
 ## <a name="ux_device_class_pima_object_number_get"></a>ux_device_class_pima_object_number_get
 
-Uygulamadan nesne numarası alma
+Uygulamanın nesne numarasını alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -545,12 +545,12 @@ UINT ux_device_class_pima_object_number_get(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının yerel sistemdeki nesne sayısını alması ve konağa geri göndermek için gerektiğinde çağrılır.
+PIMA sınıfının yerel sistemdeki nesne sayısını almaları ve ana bilgisayarlarına geri göndermesi gereken bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi
-- **object_number**: döndürülecek nesne sayısının adresi
+- **pima:** pima sınıfı örneğinin işaretçisi
+- **object_number:** Döndürülen nesne sayısının adresi
 
 ### <a name="example"></a>Örnek
 
@@ -565,7 +565,7 @@ UINT ux_pictbridge_dpsclient_object_number_get(UX_SLAVE_CLASS_PIMA *pima, ULONG 
 
 ## <a name="ux_device_class_pima_object_handles_get"></a>ux_device_class_pima_object_handles_get
 
-Nesne tutamacı dizisini döndürün
+Nesne tanıtıcı dizisini döndürür
 
 ### <a name="prototype"></a>Prototype
 
@@ -580,15 +580,15 @@ UINT **ux_device_class_pima_object_handles_get**(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının, yerel sistemde nesne işleyicileri dizisini alması ve konağa geri gönderebilmesi gerektiğinde çağrılır.
+PIMA sınıfının yerel sistemde nesne tanıtıcı dizisini almak ve ana bilgisayar geri göndermek için ihtiyacı olduğunda bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **object_handles_format_code**: tutamaçlar için kodu Biçimlendir
-- **object_handles_association**: nesne ilişkilendirme kodu
-- **object_handle_array**: tanıtıcıların depolanacağı adres
-- **object_handles_max_number**: dizideki en fazla tanıtıcı sayısı
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **object_handles_format_code:** Tanıtıcılar için kodu biçimlendirme
+- **object_handles_association:** Nesne ilişkilendirme kodu
+- **object_handle_array:** Tanıtıcıların nerede depolan bir adrese
+- **object_handles_max_number:** Dizide en fazla tanıtıcı sayısı
 
 ### <a name="example"></a>Örnek
 
@@ -638,7 +638,7 @@ UINT ux_pictbridge_dpsclient_object_handles_get(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_info_get"></a>ux_device_class_pima_object_info_get
 
-Nesne bilgilerini döndürme
+Nesne bilgilerini iade edin
 
 ### <a name="prototype"></a>Prototype
 
@@ -651,13 +651,13 @@ UINT ux_device_class_pima_object_info_get(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının, yerel sistemde nesne işleyicileri dizisini alması ve konağa geri gönderebilmesi gerektiğinde çağrılır.
+PIMA sınıfının yerel sistemde nesne tanıtıcı dizisini almak ve ana bilgisayar geri göndermek için ihtiyacı olduğunda bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **object_handles**: nesnenin tanıtıcısı
-- **nesne**: nesne işaretçisi adresi
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **object_handles:** Nesnenin tanıtıcısı
+- **object**: Nesne işaretçisi adresi
 
 ### <a name="example"></a>Örnek
 
@@ -695,7 +695,7 @@ UINT ux_pictbridge_dpsclient_object_info_get(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_data_get"></a>ux_device_class_pima_object_data_get
 
-Nesne verilerini döndürme
+Nesne verilerini iade
 
 ### <a name="prototype"></a>Prototype
 
@@ -711,15 +711,15 @@ UINT ux_device_class_pima_object_info_get(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının, yerel sistemdeki nesne verilerini alması ve konağa geri gönderilmesi gerektiğinde çağrılır.
+PIMA sınıfının yerel sistemden nesne verilerini almaları ve ana bilgisayarlarına geri göndermesi gereken bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **object_handle**: nesnenin tanıtıcısı
-- **object_buffer**: nesne arabellek adresi
-- **object_length_requested**: istemci tarafından uygulamaya istenen nesne veri uzunluğu
-- **object_actual_length**: uygulama tarafından döndürülen nesne veri uzunluğu
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **object_handle:** Nesnenin tanıtıcısı
+- **object_buffer:** Nesne arabellek adresi
+- **object_length_requested:** İstemci tarafından uygulamaya istenen nesne veri uzunluğu
+- **object_actual_length:** Uygulama tarafından döndürülen nesne veri uzunluğu
 
 ### <a name="example"></a>Örnek
 
@@ -816,7 +816,7 @@ UINT ux_pictbridge_dpsclient_object_data_get(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_info_send"></a>ux_device_class_pima_object_info_send
 
-Ana bilgisayar nesne bilgilerini gönderir
+Konak nesne bilgilerini gönderir
 
 ### <a name="prototype"></a>Prototype
 
@@ -829,13 +829,13 @@ UINT ux_device_class_pima_object_info_send(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının daha sonra depolama için yerel sistemdeki nesne bilgilerini alması gerektiğinde çağrılır.
+PiMA sınıfının gelecekteki depolama için yerel sistemde nesne bilgilerini almaları gereken bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi
-- **nesne**: nesnenin işaretçisi
-- **object_handle**: nesnenin tanıtıcısı
+- **pima:** pima sınıfı örneğinin işaretçisi
+- **object**: Nesnenin işaretçisi
+- **object_handle:** Nesnenin tanıtıcısı
 
 ### <a name="example"></a>Örnek
 
@@ -935,16 +935,16 @@ UINT ux_device_class_pima_object_data_send(
 
 ### <a name="description"></a>Description
 
-Bu işlev, PIMA sınıfının depolama için yerel sistemdeki nesne verilerini alması gerektiğinde çağrılır.
+PIMA sınıfının depolama için yerel sistemde nesne verilerini almaları gerekirken bu işlev çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı
-- **aşama**: aktarımın aşaması (etkin veya tamamlanmış)
-- **object_buffer**: nesne arabellek adresi
-- **object_offset**: verilerin adresi
-- **object_length**: uygulama tarafından gönderilen nesne veri uzunluğu
+- **pima:** pima sınıfı örneğinin işaretçisi
+- **object_handle:** Nesnenin tanıtıcısı
+- **aşama:** aktarımın aşaması (etkin veya tamamlandı)
+- **object_buffer:** Nesne arabellek adresi
+- **object_offset:** Veri adresi
+- **object_length:** Uygulama tarafından gönderilen nesne veri uzunluğu
 
 ### <a name="example"></a>Örnek
 
@@ -1000,7 +1000,7 @@ UINT ux_pictbridge_dpsclient_object_data_send(UX_SLAVE_CLASS_PIMA *pima,
 
 ## <a name="ux_device_class_pima_object_delete"></a>ux_device_class_pima_object_delete
 
-Yerel bir nesneyi silme
+Yerel nesneyi silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1438,9 +1438,9 @@ Bu işlev, belirtilen akıştan 16 bit ses örnek verilerini okur.
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1455,7 +1455,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read24"></a>ux_device_class_audio_sample_read24
 
-Ses akışından 24 bit örnek okuyun
+Ses akışından 24 bit örneği okuma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1467,21 +1467,21 @@ UINT ux_device_class_audio_sample_read24(
 
 ### <a name="description"></a>Description
 
-Bu işlev, belirtilen akıştan alınan 24 bit ses örnek verilerini okur.
+Bu işlev, belirtilen akıştan 24 bit ses örnek verilerini okur.
 
-Özellikle, FıFO 'daki geçerli ses çerçevesi arabelleğindeki örnek verileri okur. Bir ses çerçevesindeki son örneği okurken, ana bilgisayardan daha fazla veri kabul etmek için kullanılabilmesi için çerçeve otomatik olarak serbest bırakılır.
+Özellikle FIFO'daki geçerli ses çerçevesi arabelleğinden örnek verileri okur. Ses çerçevesindeki son örneği okuduktan sonra, konaktan daha fazla veri kabul etmek için kullanılamayacak şekilde çerçeve otomatik olarak serbest bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **buffer**: 3 baytlık örneği kaydetmek için arabelleğin işaretçisi.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **buffer:** 3 bayt örneğini kaydetmek için arabelleğin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1496,7 +1496,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_sample_read32"></a>ux_device_class_audio_sample_read32
 
-Ses akışından 32 bitlik örnek okuyun
+Ses akışından 32 bit örneği okuma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1508,21 +1508,21 @@ UINT ux_device_class_audio_sample_read32(
 
 ### <a name="description"></a>Description
 
-Bu işlev, belirtilen akıştan 32 bitlik ses örnek verilerini okur.
+Bu işlev, belirtilen akıştan 32 bit ses örnek verilerini okur.
 
-Özellikle, FıFO 'daki geçerli ses çerçevesi arabelleğindeki örnek verileri okur. Bir ses çerçevesindeki son örneği okurken, ana bilgisayardan daha fazla veri kabul etmek için kullanılabilmesi için çerçeve otomatik olarak serbest bırakılır.
+Özellikle FIFO'daki geçerli ses çerçevesi arabelleğinden örnek verileri okur. Ses çerçevesindeki son örneği okuduktan sonra, konaktan daha fazla veri kabul etmek için kullanılamayacak şekilde çerçeve otomatik olarak serbest bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **buffer**: 4 baytlık verileri kaydetmek için arabelleğin işaretçisi.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **buffer:** 4 byte verilerini kaydetmek için arabelleğin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1537,7 +1537,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_read_frame_get"></a>ux_device_class_audio_read_frame_get
 
-Ses akışındaki ses çerçevesine erişim sağlayın
+Ses akışında ses çerçevesine erişim elde etmek
 
 ### <a name="prototype"></a>Prototype
 
@@ -1550,20 +1550,20 @@ UINT ux_device_class_audio_read_frame_get(
 
 ### <a name="description"></a>Description
 
-Bu işlev, ilk ses çerçevesi arabelleğini ve belirtilen akışın FıFO uzunluğunu döndürür. Uygulama verileri işlemeyi tamamladıktan sonra FıFO 'daki çerçeve arabelleğini serbest bırakmak için ux_device_class_audio_read_frame_free kullanılmalıdır.
+Bu işlev, belirtilen akışın FIFO's unda ilk ses çerçevesi arabelleğini ve uzunluğunu döndürür. Uygulama, verileri işlemeyi tamamlasa ux_device_class_audio_read_frame_free FIFO'da çerçeve arabelleğinin serbest bırakılamayabilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **frame_data**: veri işaretçisini döndürmek için veri işaretçisine yönelik işaretçi.
-- **frame_length**: çerçeve uzunluğunu bayt sayısıyla kaydetmek için arabelleğin işaretçisi.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **frame_data:** Veri işaretçisini iade etmek için veri işaretçisinin işaretçisi.
+- **frame_length:** Çerçeve uzunluğunu bayt sayısı olarak kaydetmek için arabelleğe işaretçi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1578,7 +1578,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_read_frame_free"></a>ux_device_class_audio_read_frame_free
 
-Ses akışında ses çerçevesi arabelleğini serbest bırakma
+Ses akışında ses çerçevesi arabelleği serbest bırak
 
 ### <a name="prototype"></a>Prototype
 
@@ -1588,18 +1588,18 @@ UINT ux_device_class_audio_read_frame_free(UX_DEVICE_CLASS_AUDIO_STREAM *stream)
 
 ### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayardan veri alabilmesi için belirtilen akışın FıFO önünde ses çerçevesi arabelleğini serbest bırakır.
+Bu işlev, belirtilen akışın FIFO's un önündeki ses çerçevesi arabelleğini serbest bırakarak konaktan veri aldırıyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
+- **stream:** Ses akışı örneğinin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1614,7 +1614,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_transmission_start"></a>ux_device_class_audio_transmission_start
 
-Ses akışı için ses veri aktarımını Başlat
+Ses akışı için ses veri iletimini başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1624,18 +1624,18 @@ UINT ux_device_class_audio_transmission_start(UX_DEVICE_CLASS_AUDIO_STREAM *stre
 
 ### <a name="description"></a>Description
 
-Bu işlev, ses sınıfında FıFO 'ya yazılmış ses verileri göndermeye başlamak için kullanılır.
+Bu işlev, ses sınıfında FIFO'ya yazılan ses verilerini göndermeye başlamak için kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
+- **stream:** Ses akışı örneğinin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği null.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği null.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1650,7 +1650,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_frame_write"></a>ux_device_class_audio_frame_write
 
-Ses akışına bir ses çerçevesi yazma
+Ses akışına ses çerçevesi yazma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1663,20 +1663,20 @@ UINT ux_device_class_audio_frame_write(
 
 ### <a name="description"></a>Description
 
-Bu işlev, ses akışının FıFO ' a bir çerçeve yazar. Çerçeve verileri, konağa gönderilebilmesi için FıFO 'daki kullanılabilir arabelleğe kopyalanır.
+Bu işlev, ses akışının FIFO's una bir çerçeve yazar. Çerçeve verileri FIFO'daki kullanılabilir arabelleğe kopyalanır, böylece konakta gönderebilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **çerçeve**: çerçeve verileri işaretçisi.
-- **frame_length** Bayt sayısıyla çerçeve uzunluğu.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **frame:** Çerçeve verilerine işaretçi.
+- **frame_length** Bayt sayısı cinsinden çerçeve uzunluğu.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği dolu.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabellek dolu.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1691,7 +1691,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_write_frame_get"></a>ux_device_class_audio_write_frame_get
 
-Ses akışındaki ses çerçevesine erişim sağlayın
+Ses akışında ses çerçevesine erişim elde etmek
 
 ### <a name="prototype"></a>Prototype
 
@@ -1704,20 +1704,20 @@ UINT ux_device_class_audio_write_frame_get(
 
 ### <a name="description"></a>Description
 
-Bu işlev, FıFO 'nun son ses çerçevesi arabelleğinin adresini alır; Ayrıca, ses çerçevesi arabelleğinin uzunluğunu da alır. Uygulama, ses çerçevesi arabelleğini istenen verilerle doldurduktan sonra, ***ux_device_class_audio_write_frame_commit*** kare arabelleği eklemek/FIFO 'ya uygulamak için kullanılmalıdır.
+Bu işlev FIFO'nun son ses çerçevesi arabelleğinin adresini; ayrıca ses çerçevesi arabelleğinin uzunluğunu da alar. Uygulama, ses çerçevesi arabelleğini istenen  verilerle ux_device_class_audio_write_frame_commit çerçeve arabelleği fiFO'ya eklemek/işlemek için kullanılmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **frame_data**: çerçeve verisi işaretçisini döndürmek için çerçeve verisi işaretçisine yönelik işaretçi.
-- **frame_length** Çerçeve uzunluğunu bayt sayısıyla kaydetmek için arabelleğin işaretçisi.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **frame_data:** Çerçeve veri işaretçisini iade etmek için çerçeve veri işaretçisi.
+- **frame_length** Bayt sayısı cinsinden çerçeve uzunluğunu kaydetmek için arabelleğin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği dolu.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabellek dolu.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1732,7 +1732,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio_write_frame_commit"></a>ux_device_class_audio_write_frame_commit
 
-Ses akışına ses çerçevesi arabelleği yürütün.
+Ses akışında bir ses çerçevesi arabelleği işle.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1744,19 +1744,19 @@ UINT ux_device_class_audio_write_frame_commit(
 
 ### <a name="description"></a>Description
 
-Bu işlev, arabellek konağa aktarılmaya hazırlandığından, son ses çerçevesi arabelleğini FıFO 'ya ekler/kaydeder; son ses çerçevesi arabelleğinin ux_device_class_write_frame_get ile doldurulmuş olması gerektiğini göz önünde bulabilirsiniz.
+Bu işlev son ses çerçevesi arabelleğini FIFO'ya ekler/işler, böylece arabellek ana bilgisayar için aktar olmaya hazır olur; Son ses çerçevesi arabelleğinin, ses çerçevesi arabelleğinin ux_device_class_write_frame_get.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Stream**: ses akışı örneğine yönelik işaretçi.
-- **uzunluk**: arabellekte Ready bayt sayısı.
+- **stream:** Ses akışı örneğinin işaretçisi.
+- **length:** Arabellekte hazır olan bayt sayısı.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) arabirim çalışmıyor.
-- **UX_BUFFER_OVERFLOW** (0x5D) FIFO arabelleği fssull şeklindedir.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_CONFIGURATION_HANDLE_UNKNOWN** (0x51) Arabirim yok.
+- **UX_BUFFER_OVERFLOW** (0x5d) FIFO arabelleği fssull olur.
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1771,7 +1771,7 @@ if(status != UX_SUCCESS)
 
 ## <a name="ux_device_class_audio10_control_process"></a>ux_device_class_audio10_control_process
 
-USB ses 1,0 denetim isteklerini işle
+USB Ses 1.0 denetim isteklerini işleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1784,20 +1784,20 @@ UINT ux_device_class_audio10_control_process(
 
 ### <a name="description"></a>Description
 
-Bu işlev, denetim uç noktasındaki ana bilgisayar tarafından gönderilen temel istekleri, USB ses 1,0 'e özgü bir türle yönetir.
+Bu işlev, usb ses 1.0'a özgü bir tür ile denetim uç noktası üzerinde konak tarafından gönderilen temel istekleri yönetir.
 
-Birim ve sessiz isteklerin ses 1,0 özellikleri işlevinde işlenir. İstekleri işlerken, istekleri yanıtlamak ve denetim değişikliklerini depolamak için son parametre (Grup) tarafından geçirilen önceden tanımlanmış veriler kullanılır.
+Ses ve sessiz isteklerin ses 1.0 özellikleri işlevinde işlenir. İstekleri işlerken, istekleri yanıtlamak ve denetim değişikliklerini depolamak için son parametre (grup) tarafından geçirilen önceden tanımlanmış veriler kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses örneğine yönelik işaretçi.
-- **Transfer**: aktarım isteği örneğine yönelik işaretçi.
-- **Grup**: istek işlemi için veri grubu.
+- **audio:** Ses örneğinin işaretçisi.
+- **transfer:** Aktarım isteği örneğinin işaretçisi.
+- **group:** İstek işlemi için veri grubu.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1830,7 +1830,7 @@ if (status == UX_SUCCESS)
 
 ## <a name="ux_device_class_audio20_control_process"></a>ux_device_class_audio20_control_process
 
-USB ses 1,0 denetim isteklerini işle
+USB Ses 1.0 denetim isteklerini işleme
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1842,20 +1842,20 @@ UINT ux_device_class_audio20_control_process(
 
 ### <a name="description"></a>Description
 
-Bu işlev, denetim uç noktasındaki ana bilgisayar tarafından gönderilen temel istekleri, USB ses 2,0 'e özgü bir türle yönetir.
+Bu işlev, usb ses 2.0'a özgü bir türle denetim uç noktası üzerinde konak tarafından gönderilen temel istekleri yönetir.
 
-Ses 2,0 örnekleme hızı (tek sabit sıklık varsayıldı), birim ve sessiz isteklerin özellikleri işlevinde işlenir. İstekleri işlerken, istekleri yanıtlamak ve denetim değişikliklerini depolamak için son parametre (Grup) tarafından geçirilen önceden tanımlanmış veriler kullanılır.
+Ses 2.0 örnekleme hızı (tek bir sabit sıklık varsayılır), ses ve sessiz istek özellikleri işlevde işlenir. İstekleri işlerken, istekleri yanıtlamak ve denetim değişikliklerini depolamak için son parametre (grup) tarafından geçirilen önceden tanımlanmış veriler kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses örneğine yönelik işaretçi.
-- **Transfer**: aktarım isteği örneğine yönelik işaretçi.
-- **Grup**: istek işlemi için veri grubu.
+- **audio:** Ses örneğinin işaretçisi.
+- **transfer:** Aktarım isteği örneğinin işaretçisi.
+- **group:** İstek işlemi için veri grubu.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- İşlevden **UX_ERROR** (0xFF) hatası
+- **UX_ERROR** (0xFF) Hatası
 
 ### <a name="example"></a>Örnek
 

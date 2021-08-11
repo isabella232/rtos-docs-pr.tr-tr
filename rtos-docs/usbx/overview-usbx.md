@@ -1,178 +1,178 @@
 ---
-title: USBX Azure RTOS anlama
-description: Azure RTOS USBX yüksek performanslı bir USB ana bilgisayar, cihaz ve devam ediyor (OTG) tümleşik yığınıdır. Azure RTOS USBX, Azure RTOS ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX tarafından desteklenen işlemciler için kullanılabilir.
+title: Azure RTOS USBX 'i anlama
+description: Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayar, cihaz ve açık Go (OTG) eklenmiş Stack 'tir, Azure RTOS USBX Azure RTOS ThreadX ile tamamen tümleşiktir ve tüm Azure RTOS ThreadX tarafından desteklenen işlemcilerde kullanılabilir.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 3c214a49f7dd1af20c20f07412fb072dd785b16f
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: 8950e7573bf705feb16de6ac1adb5f55559ea4b04b453944c5a24baddc6ae7b9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754837"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791457"
 ---
-# <a name="overview-of-azure-rtos-usbx"></a>AZURE RTOS USBX'e genel bakış
+# <a name="overview-of-azure-rtos-usbx"></a>Azure RTOS USBX 'e genel bakış
 
-Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayarı, cihaz ve devam ediyor (OTG) tümleşik yığınıdır. Azure RTOS USBX, Azure RTOS ThreadX ile tamamen tümleşiktir ve ThreadX tarafından desteklenen tüm işlemciler için kullanılabilir. ThreadX gibi, Azure RTOS USBX de küçük bir ayak izine ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla arabirim gerektiren derin tümleşik uygulamalar için idealdir.
+Azure RTOS USBX, yüksek performanslı bir USB ana bilgisayar, cihaz ve-go (OTG) katıştırılmış Stack 'tir. Azure RTOS USBX, Azure RTOS ThreadX ile tamamen tümleşiktir ve tüm ThreadX tarafından desteklenen işlemciler için kullanılabilir. ThreadX gibi Azure RTOS USBX, küçük bir ayak izi ve yüksek performansa sahip olacak şekilde tasarlanmıştır ve bu da USB cihazlarıyla bir arabirim gerektiren çok sayıda gömülü uygulama için idealdir.
 
-## <a name="host-device-otg--extensive-class-support"></a>Konak, Cihaz, OTG & Kapsamlı Sınıf Desteği
+## <a name="host-device-otg--extensive-class-support"></a>Konak, cihaz, OTG & kapsamlı sınıf desteği
 
-Azure RTOS USBX Ana Bilgisayarı/Cihaz tümleşik USB protokol yığını, derinden gömülü, gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış endüstriyel sınıf bir tümleşik USB çözümüdür. Azure RTOS USBX, konak, cihaz ve OTG desteğinin yanı sıra kapsamlı sınıf desteği sağlar. Azure RTOS USBX, ThreadX Real-Time İşletim Sistemi, Azure RTOS FileX embedded FAT uyumlu dosya sistemi, Azure RTOS NetX ve Azure RTOS NetX Duo ekli TCP/IP yığınları ile tamamen tümleşiktir. Bunların hepsi son derece küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığı ile birlikte, Azure RTOS USBX'i USB bağlantısı gerektiren en zorlu tümleşik IoT uygulamaları için ideal seçenek yapın.
+Azure RTOS USBX konak/cihaz Embedded USB protokol yığını, özellikle de gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan bir endüstriyel sınıf Embedded USB çözümüdür. Azure RTOS USBX, ana bilgisayar, cihaz ve OTG desteğinin yanı sıra kapsamlı sınıf desteği sağlar. Azure RTOS USBX, ThreadX Real-Time Işletim sistemiyle tamamen tümleşiktir, Azure RTOS FileX Embedded FAT uyumlu dosya sistemi, Azure RTOS NetX ve Azure RTOS NetX Duo Embedded TCP/IP yığınları. Bunun hepsi, son derece küçük bir ayak izi, Hızlı yürütme ve üstün kullanım kolaylığıyla birlikte Azure RTOS USBX ' i, USB bağlantısı gerektiren en zorlu eklenmiş IoT uygulamalarına yönelik ideal seçenektir.
 
 ### <a name="usbx-memory-footprint"></a>USBX bellek ayak izi
 
-Azure RTOS USBX, 10,5 KB FLASH ve Azure RTOS USBX Cihazı CDC/ACM desteği için 5,1 KB RAM olmak üzere oldukça küçük bir ayak izine sahip. Azure RTOS USBX Ana Bilgisayarı için CDC/ACM desteği için en az 18 KB FLASH ve 25 KB RAM gerekir.
+Azure RTOS USBX, Azure RTOS USBX cihaz CDC/ACM desteği için 10,5 KB 'lık FLASH ve 5,1 KB RAM 'in daha hızlı küçük bir ayak izine sahiptir. Azure RTOS USBX ana bilgisayarı, CDC/ACM desteği için en az 18 KB FLASH ve 25 KB RAM gerektirir.
 
-TCP işlevselliği için 10 KB ile 13 KB arasında yönerge alanı belleği gerekir. Azure RTOS USBX RAM kullanımı genellikle 2,6 KB ile 3,6 KB arasında ve uygulama tarafından tanımlanan paket havuzu belleğidir.
+TCP işlevselliği için 10 KB ila 13 KB 'lık yönerge alanı belleği gerekir. Azure RTOS USBX RAM kullanımı, genellikle 2,6 KB 'den 3,6 KB 'ye ve uygulama tarafından tanımlanan paket havuzu belleğine göre değişir.
 
-ThreadX'te olduğu gibi, Azure RTOS USBX'in boyutu da uygulama tarafından gerçekten kullanılan hizmetlere göre otomatik olarak ölçeklendirilir. Bu, karmaşık yapılandırma ve derleme parametrelerine olan ihtiyacı neredeyse ortadan kaldırarak geliştirici için işleri kolaylaştırır.
+ThreadX gibi, Azure RTOS USBX boyutu, uygulama tarafından gerçekten kullanılan hizmetlere göre otomatik olarak ölçeklendirilir. Bu, karmaşık yapılandırma ve derleme parametrelerine gerek duymayı neredeyse ortadan kaldırır, böylece geliştirici daha kolay hale getirir.
 
-### <a name="usb-interoperability-verification"></a>USB Birlikte Çalışabilirlik doğrulaması
+### <a name="usb-interoperability-verification"></a>USB birlikte çalışabilirlik doğrulaması
 
-Azure RTOS USBX Cihaz Yığını, USB belirtimleriyle tam uyumluluğu ve farklı konak sistemleriyle birlikte çalışabilirliği sağlamak için USB IF standart test aracı USBCV ile sıkı bir şekilde test edilmiştir.
-Ayrıca USBX AZURE RTOS yığını, Tayvan'daki bağımsız test laboratuvarı Allion tarafından doğrulanmış ve onaylanmıştır.
+Azure RTOS USBX cihaz yığını, USB belirtimleri ve farklı konak sistemleriyle birlikte çalışabilirlik ile tam uyumluluk sağlamak için USB IF standart test aracı USBV ile bir daha dikkatli test edilmiştir.
+Ayrıca, Azure RTOS USBX OTG yığını, Tayvan 'daki bağımsız test laboratuvarı tarafından doğrulanır ve sertifikalandırilmiştir.
 
-### <a name="usb-host-controller-support"></a>USB Konak denetleyicisi desteği
+### <a name="usb-host-controller-support"></a>USB ana bilgisayar denetleyicisi desteği
 
-Azure RTOS USBX, AHCI ve EHCI gibi önemli USB standartlarını destekler. Ayrıca, Azure RTOS USBX; Atmel, Microchip, Yazıcı, Renesas, ST, TI ve diğer satıcılardan özel ayrık USB konak denetleyicilerini destekler. Azure RTOS USBX aynı uygulamada birden çok konak denetleyicisini de destekler.
-USB Cihaz denetleyicisi desteği Azure RTOS USBX; Analog Cihazlar, Atmel, Microchip, NXP, Analog, Renesas, ST, TI ve diğer satıcılardan popüler USB cihaz denetleyicilerini destekler.
+Azure RTOS USBX, OHCı ve EHCı gibi ana USB standartlarını destekler. Ayrıca, Azure RTOS USBX, Atmel, mikro yonga, Philips, Renesas, ST, TI ve diğer satıcılardan özel ayrı USB ana bilgisayar denetleyicilerini destekler. Azure RTOS USBX aynı uygulamadaki birden çok konak denetleyicisini da destekler.
+USB cihaz denetleyicisi desteği Azure RTOS USBX, analog cihazlardan, Atmel, mikro yonga, NXP, Philips, Renesas, ST, TI ve diğer satıcılardan popüler USB cihaz denetleyicilerini destekler.
 
-### <a name="extensive-host-class-support"></a>Kapsamlı Konak Sınıfı desteği
+### <a name="extensive-host-class-support"></a>Kapsamlı konak sınıfı desteği
 
-Azure RTOS USBX Ana Bilgisayarı ASIX, AUDIO, CDC/ACM, CDC/ECM, GSER, KEYBOARD (klavye, fare ve uzaktan denetim), HUB, PIMA (PTP/MTP), PRINTER, PROLIFIC ve STORAGE gibi popüler sınıfların çoğu için destek sağlar.
+Azure RTOS USBX ana bilgisayarı, ASIX, AUDIO, CDC/ACM, CDC/ECM, GSER, HID (klavye, fare ve Uzaktan denetim), Merkez, PIMA (PTP/MTP), yazıcı, PROLIFIC ve depolama gibi popüler sınıfların çoğu için destek sağlar.
 
-### <a name="extensive-usb-device-class-support"></a>Kapsamlı USB Cihaz Sınıfı desteği
+### <a name="extensive-usb-device-class-support"></a>Kapsamlı USB cihaz sınıfı desteği
 
-Azure RTOS USBX Cihazı CDC/ACM, CDC/ECM, DFU, GIZLI, PIMA (PTP/MTP) (w/MTP), RNDIS ve STORAGE gibi popüler sınıfların çoğu için destek sağlar. Özel sınıflar için destek de mevcuttur.
+Azure RTOS USBX cihazı, CDC/ACM, CDC/ECD, DFU, HID, PIMA (PTP/MTP) (w/MTP), RNDIS ve depolama gibi popüler sınıfların çoğu için destek sağlar. Özel sınıflar için destek de mevcuttur.
 
-### <a name="pictbridge-support"></a>Pictbridge desteği
+### <a name="pictbridge-support"></a>PictBridge desteği
 
-Azure RTOS USBX, hem konakta hem de cihazda tam Pictbridge uygulamasını destekler. Pictbridge, her iki Azure RTOS USBX PIMA (PTP/MTP) sınıfının üzerinde yer almaktadır. PictBridge standardı, bir dijital hala kamera veya akıllı telefonun bilgisayar olmadan doğrudan yazıcıya bağlantısına olanak sağlayarak, Belirli Pictbridge'e bağlı yazıcılara doğrudan yazdırmayı sağlar. Yazıcıya bir kamera veya telefon bağlandığında yazıcı USB ana bilgisayarı, kamera ise USB cihazıdır. Ancak, Pictbridge ile kamera ana bilgisayar olarak görünür ve komutlar kameradan çalıştırılır. Kamera depolama sunucusu, yazıcı ise depolama istemcisidir. Kamera yazdırma istemcisidir ve yazıcı elbette yazdırma sunucusudur. Pictbridge aktarım katmanı olarak USB kullanır, ancak iletişim protokolü için PTP 'yi (Resim Aktarım Protokolü) kullanır.
+Azure RTOS USBX, hem konakta hem de cihazda tam PictBridge uygulamasını destekler. PictBridge, her iki tarafta Azure RTOS USBX PIMA (PTP/MTP) sınıfının üzerinde yer alır. PictBridge standardı, dijital bir kamera veya akıllı telefonun doğrudan bılgısayar olmadan bir yazıcıya bağlantısının yapılmasına izin verir ve belirli bir PictBridge kullanan yazıcılara doğrudan yazdırmayı etkinleştirir. Bir kamera veya telefon bir yazıcıya bağlıyken, yazıcı USB ana bilgisayarı ve kamera USB aygıtıdır. Ancak, PictBridge ile kamera ana bilgisayar olarak görünür ve bu da komutlar kameradan çalıştırılır. Kamera, depolama istemcisini yazıcı olan depolama sunucusudur. Kamera, yazdırma istemcsahiptir ve yazıcı, yazdırma sunucusu kursta. PictBridge, USB 'yi bir aktarım katmanı olarak kullanır, ancak iletişim protokolüne ait PTP (resim aktarma protokolü) kullanır.
 
 ### <a name="custom-class-support"></a>Özel sınıf desteği
 
-Azure RTOS USBX Ana Bilgisayarı ve Cihazı özel sınıfları destekler. UsbX dağıtımında örnek bir özel Azure RTOS sağlanır. Bu basit veri pompası sınıfı DPUMP olarak adlandırılan ve özel uygulama sınıfları için model olarak kullanılabilir.
-USBX Azure RTOS ve Cihaz için gelişmiş teknoloji özel sınıfları destekler. UsbX dağıtımında örnek bir özel Azure RTOS sağlanır. Azure RTOS USBX, şunları içeren gelişmiş bir teknolojidir:
+Azure RTOS USBX Konağı ve cihazı özel sınıfları destekler. Azure RTOS USBX dağıtımında örnek bir özel sınıf verilmiştir. Bu basit veri pompa sınıfı DPUMP olarak adlandırılır ve özel uygulama sınıfları için bir model olarak kullanılabilir.
+Gelişmiş teknoloji Azure RTOS USBX Konağı ve cihaz özel sınıfları destekler. Azure RTOS USBX dağıtımında örnek bir özel sınıf verilmiştir. Azure RTOS USBX, şunları içeren gelişmiş bir teknolojidir:
 
-* Konak, Cihaz ve OTG desteği
+* Konak, cihaz ve OTG desteği
 * USB düşük, tam ve yüksek hızlı destek
 * Otomatik ölçeklendirme
-* ThreadX, Azure RTOS FileX ve NetX ile Azure RTOS tümleşiktir
+* ThreadX, Azure RTOS FileX ve Azure RTOS NetX ile tam tümleşik
 * İsteğe bağlı performans ölçümleri
 * Azure RTOS TraceX sistem analizi desteği
 
-## <a name="azure-rtos-usbx-apis"></a>Azure RTOS USBX API'leri
+## <a name="azure-rtos-usbx-apis"></a>Azure RTOS USBX API 'Leri
 
-### <a name="azure-rtos-usbx-host-api"></a>Azure RTOS USBX Ana Bilgisayar API'si
+### <a name="azure-rtos-usbx-host-api"></a>Azure RTOS USBX konak API 'SI
 
-USBX Azure RTOS API'si, isim-fiil adlandırma kuralının ardından sezgisel ve tutarlı bir API'dir. Tüm API'ler USBX ux_host_* önde gelen veri noktalarına* sahip olur. Engelleyici API'ler isteğe bağlı iş parçacığı zaman aşımına neden olur.
+Azure RTOS USBX ana bilgisayar API 'SI, bir ad fiil adlandırma kuralını izleyen sezgisel ve tutarlı bir API 'dir. Tüm API 'Ler, USBX olarak kolayca tanımlanabilmesi için önde gelen ux_host_ *. Tüm engelleyici API 'Lerde isteğe bağlı iş parçacığı zaman aşımı vardır.
 
 * ASIX
     - En az 0,3 KB FLASH, 4 KB RAM
-    - Otomatik ölçeklendirme Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_asix_**
-* Ses
+    - Azure RTOS TraceX aracılığıyla otomatik scalingSystem-Level izleme
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_asix_**
+* MÜZIK
     - En az 1,2 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_host_class_audio_**
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_audio_**
 * CDC/ACM
     - En az 1,4 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_cdc_acm_**
-* Sakladı
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_cdc_acm_**
+* CIHAZDAN
     - En az 0,3 KB FLASH, 4 KB RAM
     - Klavye, fare ve uzaktan destek
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_hid_** 
-* Hub
-    - En az 1,7 KB FLASH, 2 KB RAM
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_hid_** 
+* HUB
+    - Minimum 1,7 KB FLASH, 2 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_host_class_hub_**
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_hub_**
 * PIMA (PTP/MTP)
     - En az 0,9 KB FLASH, 8 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_pima_**
-* Yazıcı
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_pima_**
+* YAZıCıDA
     - En az 0,8 KB FLASH, 8 KB RAM
     - Otomatik ölçeklendirme
     -  Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    -  UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_printer_**
-* Üretken
+    -  Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_printer_**
+* PROLIFIC
     - En az 1,5 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_class_prolific_**
-* STORAG
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_prolific_**
+* Lama
     - En az 5,6 KB FLASH, 4 KB RAM
-    - Otomatik ölçeklendirme<br> Azure RTOS FileX ile tümleşiktir
+    - Otomatik ölçeklendirme<br> Azure RTOS FileX ile tümleşik
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_host_class_storage_**
-* USB Ana Bilgisayar YıĞıNı
+    - Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_class_storage_**
+* USB ana bilgisayar YıĞıNı
     - Birçok konak denetleyicisini destekler
     - En az 18 KB FLASH, 25 KB RAM
     - Otomatik ölçeklendirme
     - Aynı platformda birden çok konak denetleyicisi desteği
     -  USB düşük, tam ve yüksek hızlı destek
     -  Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    -  UsbX Azure RTOS API'leri şu şekilde sezgiseldir: *ux_host_stack_* * 
-* AHCI, EHCI, ÖZEL KONAK DENETLEYICILERI 
+    -  Bu biçimde sezgisel Azure RTOS USBX konak API 'Leri: *ux_host_stack_* * 
+* OHCı, EHCı, özel ana bilgisayar DENETLEYICILERI 
 
-### <a name="azure-rtos-usbx-device-api"></a>Azure RTOS USBX Cihaz API'si
+### <a name="azure-rtos-usbx-device-api"></a>Azure RTOS USBX cihaz API 'SI
 
-USBX Azure RTOS API'si, isim-fiil adlandırma kuralının ardından sezgisel ve tutarlı bir API'dir. Tüm API'ler USBX ux_device_* önde gelen veri noktalarına* sahip olur. Engelleme API'lerinde isteğe bağlı iş parçacığı zaman aşımı vardır. Daha fazla [Azure RTOS usbx ana bilgisayar kullanıcı kılavuzuna](usbx-host-stack-about.md) bakın.
+Azure RTOS USBX cihaz API 'SI, bir ad fiil adlandırma kuralını izleyen sezgisel ve tutarlı bir API 'dir. Tüm API 'Ler, USBX olarak kolayca tanımlanabilmesi için önde gelen ux_device_ *. API 'Lerin engellenmesi isteğe bağlı iş parçacığı zaman aşımına uğradı. Daha fazla ayrıntı için lütfen bkz. [Azure RTOS USBX konak Kullanıcı Kılavuzu](usbx-host-stack-about.md) .
 
 * CDC/ACM
-    - En az 0,8 KB FLASH, 2 KB RAM
+    - Minimum 0,8 KB FLASH, 2 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - Sezgisel Azure RTOS USBX cihaz API'leri şu şekildedir: *ux_device_class_cdc_acm_**.
-* CDC/ECM
-    - En az 1,5 KB FLASH, 4 KB ile 8 KB RAM
+    - Bu biçimde sezgisel Azure RTOS USBX cihaz API 'Leri: * ux_device_class_cdc_acm_ * *.
+* CDC/ECD
+    - Minimum 1,5 KB FLASH, 4 KB-8 KB RAM
     - Otomatik ölçeklendirme
-    - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme<br> UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_cdc_ecm_**.
-* Dfu
-    - En az 1,1 KB FLASH, 2 KB RAM
+    - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme<br> Bu biçimde sezgisel Azure RTOS USBX cihaz API 'Leri: * ux_device_class_cdc_ecm_ * *.
+* DFU
+    - Minimum 1,1 KB FLASH, 2 KB RAM
     -  Otomatik ölçeklendirme
     -  Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_dfu_** 
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_dfu_** 
 * GSER
     - En az 0,6 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_gser_**
-* Sakladı
-    - En az 0,9 KB FLASH, 2 KB RAM
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_gser_**
+* CIHAZDAN
+    - Minimum 0,9 KB FLASH, 2 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - Bu Azure RTOS USBX cihaz API'lerinin kullanımı kolay: *ux_device_class_hid_** PIMA (PTP/MTP)
+    - Bu biçimde sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_hid_** Pima (PTP/MTP)
     - En az 5,2 KB FLASH, 8 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_pima_** 
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_pima_** 
 * DEPOLAMA
     - En az 2,3 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_storage_**
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_storage_**
 * RNDIS
-    - En az 2,3 KB FLASH, 4 KB ile 8 KB RAM
+    - Minimum 2,3 KB FLASH, 4 KB-8 KB RAM
     - Otomatik ölçeklendirme
-    - Azure RTOS NetX ve Azure RTOS NetX DUO ile tümleşiktir
+    - Azure RTOS NetX ve Azure RTOS NetX DUO ile tümleşik
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_rndls_**
-* Azure RTOS USBX Cihaz YıĞıNı
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_rndls_**
+* Azure RTOS USBX cihaz YıĞıNı
     - En az 2,3 KB FLASH, 4 KB RAM
     - Otomatik ölçeklendirme
     - Azure RTOS TraceX aracılığıyla sistem düzeyinde izleme
-    - UsbX Azure RTOS API'lerini şu şekilde sezgisel hale getirir: *ux_device_class_storage_**
-* ÖZEL KONAK DENETLEYICILERI
+    - Bu biçimdeki sezgisel Azure RTOS USBX cihaz API 'Leri: *ux_device_class_storage_**
+* ÖZEL konak DENETLEYICILERI
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Konak Yığını Kullanıcı Kılavuzu Azure RTOS Cihaz Yığını Kullanıcı [](usbx-host-stack-about.md) Kılavuzu'mızı takip edin ve USBX Ana Bilgisayarı ve Cihaz Yığını [ile çalışmaya başlama.](usbx-device-stack-about.md)
+[Ana bilgisayar yığını Kullanıcı Kılavuzumuzu](usbx-host-stack-about.md) veya [cihaz yığını Kullanıcı Kılavuzumuzu](usbx-device-stack-about.md)izleyerek Azure RTOS USBX Konağı ve cihaz Stack ile çalışmaya başlayın.

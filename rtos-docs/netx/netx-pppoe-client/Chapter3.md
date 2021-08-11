@@ -1,38 +1,38 @@
 ---
-title: Bölüm 3-Azure RTOS NetX PPPoE Istemci hizmetlerinin açıklaması
-description: Bu bölüm, tüm Azure RTOS NetX PPPoE Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX PPPoE Azure RTOS Hizmetlerinin Açıklaması
+description: Bu bölümde, Tüm NetX PPPoE Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 07/13/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 246115fc97d7597246f7fd5b4fb88cb615baab33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8310006b7c188fa63402c931459ffd84ebb776c207dc520959208449862fe27f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825589"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790216"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-client-services"></a>Bölüm 3-Azure RTOS NetX PPPoE Istemci hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-pppoe-client-services"></a>Bölüm 3 - NetX PPPoE Azure RTOS Hizmetlerinin Açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX PPPoE Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde, Tüm NetX PPPoE Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_pppoe_client_create** *bir PPPoE istemci örneği oluşturma*
-- **Nx_pppoe_client_delete** *PPPoE istemci örneğini silme*
-- **Nx_pppoe_client_host_uniq_set** *PPPoE istemcisi için benzersiz konak kümesi*
-- **Nx_pppoe_client_host_uniq_set_extended** *PPPoE istemcisi için benzersiz konak kümesi*
-- **Nx_pppoe_client_service_name_set** *PPPoE istemcisinin hizmet adını ayarlama*
-- **Nx_pppoe_client_service_name_set_extended** *PPPoE istemcisinin hizmet adını ayarlama*
-- **Nx_pppoe_client_session_connect** *PPPoE Istemci oturumunu PPPoE sunucusuna bağlama*
-- **Nx_pppoe_client_session_packet_send** *PPPoE oturum paketi gönder*
-- **Nx_pppoe_client_session_terminate** *PPPoE oturumunu Sonlandır*
-- **nx_pppoe_client_session_get** *belirtilen PPPoE oturum inf dosyasını Al*
+- **nx_pppoe_client_create** *PPPoE İstemci örneği oluşturma*
+- **nx_pppoe_client_delete** *PPPoE İstemci örneğini silme*
+- **nx_pppoe_client_host_uniq_set** *PPPoE İstemcisi için benzersiz bir konak ayarlayın*
+- **nx_pppoe_client_host_uniq_set_extended** *PPPoE İstemcisi için benzersiz bir konak ayarlayın*
+- **nx_pppoe_client_service_name_set** *PPPoE İstemcisi için hizmet adını ayarlayın*
+- **nx_pppoe_client_service_name_set_extended** *PPPoE İstemcisi için hizmet adını ayarlama*
+- **nx_pppoe_client_session_connect** *Bağlan PPPoE Sunucusuna PPPoE İstemcisi oturumu*
+- **nx_pppoe_client_session_packet_send** *PPPoE oturum paketini gönderme*
+- **nx_pppoe_client_session_terminate** *PPPoE oturumunu sonlandırma*
+- **nx_pppoe_client_session_get** *PPPoE oturum inf'lerini al*
 
 ## <a name="nx_pppoe_client_create"></a>nx_pppoe_client_create
 
-Bir PPPoE Istemci örneği oluşturma
+PPPoE İstemci örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -49,38 +49,38 @@ UINT  nx_pppoe_client_create(NX_PPPOE_CLIENT *pppoe_client_ptr,
                             (NX_PACKET *packet_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen NetX IP örneği için Kullanıcı tarafından sağlanan bağlantı sürücüsüyle bir PPPoE Istemci örneği oluşturur. Bağlantı sürücüsü başlatılmamış ve etkin değilse, PPPoE Istemci yazılımı bağlantı sürücüsünü başlatmaktan sorumludur.
+Bu hizmet, belirtilen NetX IP örneği için kullanıcı tarafından sağlanan bağlantı sürücüsü ile bir PPPoE İstemci örneği oluşturur. Bağlantı sürücüsü başlatılmamışsa ve etkinse, bağlantı sürücüsünü başlatmak PPPoE İstemci yazılımından sorumludur.
 
-Ayrıca, uygulamanın, iç paket ayırma için kullanması için, PPPoE Istemci örneği için önceden oluşturulmuş bir paket havuzu sağlaması gerekir.
+Ayrıca, uygulamanın iç paket ayırma için kullanmak üzere PPPoE İstemci örneği için önceden oluşturulmuş bir paket havuzu sağlamak gerekir.
 
 > [!NOTE]
-> Genellikle NetX IP iş parçacığını, PPPoE Istemci iş parçacığı önceliğinden daha yüksek bir önceliğe göre oluşturmanız iyi bir fikirdir. IP iş parçacığı önceliğini belirtme hakkında daha fazla bilgi için lütfen *nx_ip_create* hizmetine bakın.
+> Genel olarak, PPPoE İstemcisi iş parçacığı önceliklerinden daha yüksek bir önceliğe sahip NetX IP iş parçacığı oluşturmak iyi bir fikirdir. IP iş parçacığı *nx_ip_create* belirtme hakkında daha fazla bilgi için lütfen nx_ip_create hizmetine bakın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **pppoe_client_ptr** PPPoE Istemci denetim bloğu işaretçisi.
- - **ad** Bu PPPoE Istemci örneğinin adı.
- - **ip_ptr** IP örneği için denetim bloğuna yönelik işaretçi.
+ - **pppoe_client_ptr** PPPoE İstemcisi denetim bloğuna işaretçi.
+ - **name** Bu PPPoE İstemci örneğinin adı.
+ - **ip_ptr** IP örneği için denetim bloğuna işaretçi.
  - **interface_index** Arabirim dizini.
- - **pool_ptr** Paket havuzu işaretçisi.
- - **stack_ptr** PPPoE Istemci iş parçacığının yığın alanının başlangıcı işaretçisi.
+ - **pool_ptr** Paket havuzunun işaretçisi.
+ - **stack_ptr** PPPoE İstemcisi iş parçacığının yığın alanı başlangıç işaretçisi.
  - **stack_size** İş parçacığının yığınında bayt cinsinden boyut.
- - **Öncelik** İç PPPoE Istemci iş parçacıklarının önceliği (1-31).
+ - **öncelik** İç PPPoE İstemci iş parçacıklarının önceliği (1-31).
  - **pppoe_link_driver** Kullanıcı tarafından sağlanan bağlantı sürücüsü.
  - **pppoe_packet_receive** Kullanıcı tarafından sağlanan paket alma işlevi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) başarılı PPPoE istemcisi oluştur.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) geçersiz PPPoE Istemcisi, IP, paket havuzu veya yığın işaretçisi.
- - NX_PPPOE_CLIENT_INVALID_INTERFACE (0xD2) geçersiz arabirim.
- - NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) paket havuzunun yük boyutu geçersiz.
- - NX_PPPOE_CLIENT_MEMORY_SIZE_ERROR (0xD4) geçersiz bellek boyutu.
- - NX_PPPOE_CLIENT_PRIORITY_ERROR (0xD5) PPPoE Istemci iş parçacığının geçersiz önceliği.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) PPPoE İstemcisi oluşturma.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Geçersiz PPPoE İstemcisi, IP, paket havuzu veya yığın işaretçisi.
+ - NX_PPPOE_CLIENT_INVALID_INTERFACE (0xD2) Geçersiz arabirim.
+ - NX_PPPOE_CLIENT_PACKET_PAYLOAD_ERROR (0xD3) Paket havuzunun yük boyutu geçersiz.
+ - NX_PPPOE_CLIENT_MEMORY_SIZE_ERROR (0xD4) Geçersiz bellek boyutu.
+ - NX_PPPOE_CLIENT_PRIORITY_ERROR (0xD5) PPPoE İstemci iş parçacığının geçersiz önceliği.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -97,7 +97,7 @@ link_driver, packet_receive);
 
 ## <a name="nx_pppoe_client_delete"></a>nx_pppoe_client_delete
 
-Bir PPPoE Istemci örneğini silme
+PPPoE İstemci örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -105,20 +105,20 @@ Bir PPPoE Istemci örneğini silme
 UINT nx_pppoe_client_delete(NX_PPPOE_CLIENT *pppoe_client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş olan PPPoE Istemci örneğini siler.
+Bu hizmet, önceden oluşturulmuş PPPoE İstemci örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **pppoe_client_ptr** PPPoE Istemci denetim bloğu işaretçisi
+ - **pppoe_client_ptr** PPPoE İstemcisi denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) başarılı PPPoE istemcisi silme.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) geçersiz PPPoE Istemci işaretçisi.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) PPPoE İstemcisi silme.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Geçersiz PPPoE İstemcisi işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -133,7 +133,7 @@ status =  nx_pppoe_client_delete(&my_pppoe_client);
 
 ## <a name="nx_pppoe_client_host_uniq_set"></a>nx_pppoe_client_host_uniq_set
 
-PPPoE Istemci konağını benzersiz ayarla
+PPPoE İstemcisi ana bilgisayarlarını benzersiz olarak ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -143,28 +143,28 @@ UINT nx_pppoe_client_host_uniq_set(
                         UCHAR *host_uniq);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPPoE Istemci konağını benzersiz olarak ayarlar. Host-Uniq, bir ana bilgisayar tarafından bir erişim yoğunlaştırıcıyı belirli bir ana bilgisayar isteğiyle benzersiz bir şekilde ilişkilendirmek için kullanılır.
-Bu, konağın seçtiği herhangi bir değerin ve uzunluğun ikili verileri olabilir.
-
-> [!NOTE]
-> benzersiz konak, null ile sonlandırılmış bir dize olmalıdır.
+Bu hizmet PPPoE İstemcisi ana bilgisayarlarını benzersiz olarak ayarlar. Host-Uniq, bir Access Concentrator'ı belirli bir Konak isteğiyle benzersiz olarak ilişkilendirmek için bir konak tarafından kullanılır.
+Bu, Ana Bilgisayar'ın tercihi olan herhangi bir değer ve uzunlukta ikili veriler olabilir.
 
 > [!NOTE]
-> Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nx_pppoe_client_host_uniq_set_extended ()* uygulamasına geçirilmesi önerilir.
+> konak benzersiz, Null sonlandırılan dize olmalıdır.
+
+> [!NOTE]
+> Bu hizmet kullanım dışıdır. Geliştiricilerin *nx_pppoe_client_host_uniq_set_extended() 'a geçişleri teşvik edilecektir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **pppoe_client_ptr** PPPoE Istemci denetim bloğu işaretçisi.
- - **host_uniq** Benzersiz bir ana bilgisayar işaretçisi. Benzersiz konak, null ile sonlandırılmış bir dize olmalıdır.
+ - **pppoe_client_ptr** PPPoE İstemcisi denetim bloğuna işaretçi.
+ - **host_uniq** Benzersiz bir ana bilgisayar işaretçisi. Konak benzersiz, Null sonlandırılan dize olmalıdır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) başarılı PPPoE istemci ana bilgisayar benzersiz kümesi.
- - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) geçersiz PPPoE Istemci işaretçisi.
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Başarılı PPPoE İstemcisi konak benzersiz kümesi.
+ - NX_PPPOE_CLIENT_PTR_ERROR (0xD1) Geçersiz PPPoE İstemcisi işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -180,7 +180,7 @@ status =  nx_pppoe_client_host_uniq_set(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_host_uniq_set_extended"></a>nx_pppoe_client_host_uniq_set_extended
 
-PPPoE Istemci konağını benzersiz ayarla
+PPPoE İstemcisi ana bilgisayarlarını benzersiz olarak ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -190,30 +190,30 @@ UINT nx_pppoe_client_host_uniq_set_extended(
                         UCHAR *host_uniq,UINT host_uniq_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, PPPoE Istemci konağını benzersiz olarak ayarlar. Host-Uniq, bir ana bilgisayar tarafından bir erişim yoğunlaştırıcıyı belirli bir ana bilgisayar isteğiyle benzersiz bir şekilde ilişkilendirmek için kullanılır.
-Bu, konağın seçtiği herhangi bir değerin ve uzunluğun ikili verileri olabilir.
-
-> [!NOTE]
-> benzersiz konak, null ile sonlandırılmış bir dize olmalıdır.
+Bu hizmet PPPoE İstemcisi ana bilgisayarlarını benzersiz olarak ayarlar. Host-Uniq, bir Access Concentrator'ı belirli bir Konak isteğiyle benzersiz olarak ilişkilendirmek için bir konak tarafından kullanılır.
+Bu, Ana Bilgisayar'ın tercihi olan herhangi bir değer ve uzunlukta ikili veriler olabilir.
 
 > [!NOTE]
-> Bu hizmet *nx_pppoe_client_host_uniq_set ()* yerini alır. Bu sürüm, hizmete ek uzunluk bilgileri sağlar.
+> konak benzersiz, Null sonlandırılan dize olmalıdır.
+
+> [!NOTE]
+> Bu hizmet, *nx_pppoe_client_host_uniq_set() ile değiştirilir.* Bu sürüm hizmete ek uzunluk bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **pppoe_client_ptr** PPPoE Istemci denetim bloğu işaretçisi.
- - **host_uniq** Benzersiz bir ana bilgisayar işaretçisi. Benzersiz konak, null ile sonlandırılmış bir dize olmalıdır.
- - **host_uniq_length** Host_uniq uzunluğu
+ - **pppoe_client_ptr** PPPoE İstemcisi denetim bloğuna işaretçi.
+ - **host_uniq** Benzersiz bir ana bilgisayar işaretçisi. Konak benzersiz, Null sonlandırılan dize olmalıdır.
+ - **host_uniq_length** Host_uniq
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_PPPOE_CLIENT_SUCCESS** (0x00) başarılı PPPoE istemci ana bilgisayar benzersiz kümesi.
- - **NX_PPPOE_CLIENT_PTR_ERROR** (0Xd1) geçersiz PPPoE istemci işaretçisi.
- - **NX_SIZE_ERROR** (0x09) denetim host_uniq_length başarısız oldu
+ - **NX_PPPOE_CLIENT_SUCCESS** (0x00) Başarılı PPPoE İstemcisi konak benzersiz kümesi.
+ - **NX_PPPOE_CLIENT_PTR_ERROR** (0xD1) Geçersiz PPPoE İstemcisi işaretçisi.
+ - **NX_SIZE_ERROR** (0x09) Denetim host_uniq_length başarısız
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -239,7 +239,7 @@ UINT nx_pppoe_client_service_name_set(
                         UCHAR *service_name);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPPoE Istemci hizmeti adını ayarlar. Konağın istediği hizmeti belirten Service-Name. Service-Name ayarlanmamışsa konağın herhangi bir sayıda hizmeti kabul edeceğini belirtir.
 
@@ -285,7 +285,7 @@ UINT nx_pppoe_client_service_name_set_extended(
                         UCHAR *service_name,UINT service_name_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, PPPoE Istemci hizmeti adını ayarlar. Konağın istediği hizmeti belirten Service-Name. Service-Name ayarlanmamışsa konağın herhangi bir sayıda hizmeti kabul edeceğini belirtir.
 
@@ -323,7 +323,7 @@ status =  nx_pppoe_client_service_name_set_extended(&my_pppoe_client,
 
 ## <a name="nx_pppoe_client_session_connect"></a>nx_pppoe_client_session_connect
 
-PPPoE Istemci oturumunu bağlama
+Bağlan PPPoE Istemci oturumu
 
 ### <a name="prototype"></a>Prototype
 
@@ -332,7 +332,7 @@ UINT nx_pppoe_client_session_connect(NX_PPPOE_CLIENT *pppoe_client_ptr,
                                     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulmuş bir PPPoE Istemcisini belirtilen PPPoE sunucusuna kullanarak PPPoE oturum bağlantısı yapar.
 
@@ -374,7 +374,7 @@ UINT nx_pppoe_client_session_packet_send(
                                     NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen oturum KIMLIĞINI kullanarak PPPoE paketi gönderir.
 
@@ -414,7 +414,7 @@ UINT nx_pppoe_client_session_terminate(
                                     NX_PPPOE_CLIENT *pppoe_client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPPoE oturumunu sonlandırır.
 
@@ -453,7 +453,7 @@ UINT nx_pppoe_client_session_get(NX_PPPOE_CLIENT *pppoe_client_ptr,
                                 ULONG *session_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen PPPoE oturum bilgilerini, sunucu fiziksel adresini ve oturum kimliğini alır.
 

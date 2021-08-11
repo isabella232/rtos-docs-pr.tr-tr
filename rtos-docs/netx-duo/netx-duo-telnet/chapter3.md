@@ -1,43 +1,43 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo Telnet hizmetlerinin açıklaması
-description: Bu bölüm, tüm Azure RTOS NetX Duo Telnet hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
+description: Bu bölümde Tüm NetX Duo Telnet Services Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 991ec53aaba052b4f42da6e5a541151953121e76
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 70bf4016793572d7327d12be182750316659c3c4260d2f7db8acddbba00c5601
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825714"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792001"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-telnet-services"></a>Bölüm 3-Azure RTOS NetX Duo Telnet hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-telnet-services"></a>Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX Duo Telnet hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde Tüm NetX Duo Telnet Services Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_telnet_client_connect**: *bir Telnet istemcisini IPv4 adresiyle bağlama*
-- **nxd_telnet_client_connect**: IPv6 *bir IPv6 Telnet istemcisini IPv6 adresiyle bağlama*
-- **nx_telnet_client_create**: *bir Telnet istemcisi oluşturma*
-- **nx_telnet_client_delete**: *bir Telnet istemcisini silme*
-- **nx_telnet_client_disconnect**: *bir Telnet istemcisinin bağlantısını kesme*
-- **nx_telnet_client_packet_receive**: *Telnet istemcisi aracılığıyla paket alma*
-- **nx_telnet_client_packet_send**: *Telnet istemcisi aracılığıyla paket gönder*
-- **nx_telnet_server_create**: *bir Telnet sunucusu oluşturma*
-- **nx_telnet_server_delete**: *bir Telnet sunucusunu silme*
-- **nx_telnet_server_disconnect**: *bir Telnet istemcisinin bağlantısını kesme*
-- **nx_telnet_server_get_open_connection_count**: *açık bağlantı sayısını alma*
-- **nx_telnet_server_packet_send**: *istemci bağlantısı aracılığıyla paket gönder*
-- **nx_telnet_server_packet_pool_set**: *paket havuzunu Telnet sunucusu paket havuzu olarak ayarla*
-- **nx_telnet_server_start**: *bir Telnet sunucusu başlatın*
-- **nx_telnet_server_stop**: *bir Telnet sunucusunu durdur*
+- **nx_telnet_client_connect:** Bağlan *IPv4 adresine sahip bir Telnet İstemcisi'ne sahip*
+- **nxd_telnet_client_connect:** Bağlan *IPv6 adresine sahip bir IPv6 Telnet İstemcisi'ne sahip*
+- **nx_telnet_client_create:** *Telnet İstemcisi Oluşturma*
+- **nx_telnet_client_delete:** *Telnet İstemcisini Silme*
+- **nx_telnet_client_disconnect:** *Telnet İstemcisi Bağlantısını Kesme*
+- **nx_telnet_client_packet_receive:** *Telnet İstemcisi aracılığıyla paket alma*
+- **nx_telnet_client_packet_send:** *Telnet İstemcisi aracılığıyla paket gönderme*
+- **nx_telnet_server_create:** *Telnet Sunucusu Oluşturma*
+- **nx_telnet_server_delete:** *Telnet Sunucusunu Silme*
+- **nx_telnet_server_disconnect:** *Telnet İstemcisi Bağlantısını Kesme*
+- **nx_telnet_server_get_open_connection_count:** Açık *bağlantı sayısını alma*
+- **nx_telnet_server_packet_send:** Paketi *İstemci bağlantısı üzerinden gönderme*
+- **nx_telnet_server_packet_pool_set:** Paket *havuzunu Telnet Sunucusu paket havuzu olarak ayarlayın*
+- **nx_telnet_server_start:** *Telnet Sunucusu Başlatma*
+- **nx_telnet_server_stop:** *Telnet Sunucusunu Durdurma*
 
 ## <a name="nx_telnet_client_connect"></a>nx_telnet_client_connect
 
-Bir Telnet Istemcisini IPv4 adresiyle bağlama
+Bağlan IPv4 adresine sahip bir Telnet İstemcisi ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -47,29 +47,29 @@ UINT nx_telnet_client_connect(NX_TELNET_CLIENT *client_ptr,
                               ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulan Telnet Istemci örneğini, Telnet sunucusu için bir IPv4 adresi kullanarak belirtilen IP ve bağlantı noktasındaki sunucuya bağlamayı dener. Bu hizmet, bir NXD_ADDRESS denetim bloğunda ULONG sunucu IP adresini ekler ve aşağıda açıklanan *nxd_telnet_client_connect* hizmeti ÇAĞRıLMADAN önce IP sürümünü 4 ' e ayarlar.
+Bu hizmet, telnet sunucusu için bir IPv4 adresi kullanarak önceden oluşturulmuş Telnet İstemci örneğini belirtilen IP ve bağlantı noktası üzerinden Sunucuya bağlamaya çalışır. Bu hizmet, ULONG sunucusu IP adresini bir NXD_ADDRESS denetim bloğuna ekler ve aşağıda  açıklanan nxd_telnet_client_connect çağırmadan önce IP sürümünü 4 olarak ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **server_ip**: Telnet sunucusunun IPv4 adresi.
-- **SERVER_PORT**: sunucu TCP bağlantı noktası (Telnet sunucusu bağlantı noktası 23 ' dir).
-- **wait_option**: hizmetin Telnet istemcisi bağlantısı için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **server_ip:** Telnet Sunucusunun IPv4 Adresi.
+- **server_port:** Sunucunun TCP Bağlantı Noktası (Telnet Server, bağlantı noktası 23'tir).
+- **wait_option:** Hizmetin Telnet İstemcisi'nin bağlanmasını ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-    - **zaman aşımı değeri**: (0x00000001-0xfffffffe) sayısal değer (1-0XFFFFFFFE) seçildiğinde, Telnet sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
-    - **TX_WAIT_FOREVER**: (0xffffffff) TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının, Telnet sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    - **zaman aşımı değeri:**(0x00000001 0xFFFFFFFE) Sayısal bir değer (1-0xFFFFFFFE) seçerek Telnet Sunucusu yanıtı beklerken askıya alınacak zamanlayıcı saat sayısı üst sayısını belirtir.
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)TX_WAIT_FOREVER telnet sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) Istemci bağlantısı başarılı oldu.
-- **NX_TELNET_NOT_DISCONNECTED**: (0xf4) istemci zaten bağlı.
-- NX_PTR_ERROR: (0x07) geçersiz Istemci işaretçisi.
-- NX_IP_ADDRESS_ERROR: (0x21) geçersiz IP adresi.
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci bağlantısı.
+- **NX_TELNET_NOT_DISCONNECTED:**(0xF4) İstemci zaten bağlı.
+- NX_PTR_ERROR: (0x07) Geçersiz İstemci işaretçisi.
+- NX_IP_ADDRESS_ERROR: (0x21) Geçersiz IP adresi.
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -86,7 +86,7 @@ status =  nx_telnet_client_connect(&my_client, IP_ADDRESS(1,2,3,4), 23, 100);
 
 ## <a name="nxd_telnet_client_connect"></a>nxd_telnet_client_connect
 
-Bir Telnet Istemcisini IPv6 veya IPv4 adresiyle bağlama
+Bağlan IPv6 veya IPv4 adresine sahip bir Telnet İstemcisi'ne sahip
 
 ### <a name="prototype"></a>Prototype
 
@@ -97,30 +97,30 @@ UINT nxd_telnet_client_connect(NX_TELNET_CLIENT *client_ptr,
                                ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulan Telnet Istemci örneğini, Telnet sunucusunun IPv6 adresini kullanarak belirtilen IP ve bağlantı noktasındaki sunucuya bağlamayı dener. Bu hizmet bir IPv4 veya IPv6 adresi alabilir, ancak NXD_ADDRESS değişken *server_ip_address içermeli.*
+Bu hizmet, önceden oluşturulmuş Telnet İstemcisi örneğini, Telnet Sunucusunun IPv6 adresini kullanarak belirtilen IP ve bağlantı noktası üzerinden Sunucuya bağlamaya çalışır. Bu hizmet bir IPv4 veya IPv6 adresi aldırabilirsiniz, ancak bu adres bir NXD_ADDRESS içinde *server_ip_address.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **server_ip_address**: sunucunun IP adresi.
-- **SERVER_PORT**: sunucu TCP bağlantı noktası (Telnet sunucusu bağlantı noktası 23 ' dir).
-- **wait_option**: hizmetin Telnet istemcisi bağlantısı için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **server_ip_address:** Sunucunun IP Adresi.
+- **server_port:** Sunucunun TCP Bağlantı Noktası (Telnet Server, bağlantı noktası 23'tir).
+- **wait_option:** Hizmetin Telnet İstemcisi'nin bağlanmasını ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-    - **zaman aşımı değeri**: (0x00000001-0xfffffffe) sayısal değer (1-0XFFFFFFFE) seçildiğinde, Telnet sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
-    - **TX_WAIT_FOREVER**: (0xffffffff) TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının, Telnet sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    - **zaman aşımı değeri:**(0x00000001 0xFFFFFFFE) Sayısal bir değer (1-0xFFFFFFFE) seçerek Telnet Sunucusu yanıtı beklerken askıya alınacak zamanlayıcı saat sayısı üst sayısını belirtir.
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF) TX_WAIT_FOREVER telnet sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) Istemci bağlantısı başarılı oldu.
-- **NX_TELNET_ERROR**: (0Xf0) istemci bağlantı hatası.
-- **NX_TELNET_NOT_DISCONNECTED**: (0xf4) istemci zaten bağlı.
-- NX_PTR_ERROR: (0x07) geçersiz Istemci işaretçisi.
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
-- NX_TELNET_INVALID_PARAMETER: (0xF5) geçersiz işaretçi girişi
+- **NX_SUCCESS:**(0x00) Başarılı İstemci bağlantısı.
+- **NX_TELNET_ERROR:**(0xF0) İstemci bağlantısı hatası.
+- **NX_TELNET_NOT_DISCONNECTED:**(0xF4) İstemci zaten bağlı.
+- NX_PTR_ERROR: (0x07) Geçersiz İstemci işaretçisi.
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
+- NX_TELNET_INVALID_PARAMETER: (0xF5) İşaretçi olmayan giriş geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -137,7 +137,7 @@ status =  nxd_telnet_client_connect(&my_client, &server_ip_address, 23, 100);
 
 ## <a name="nx_telnet_client_create"></a>nx_telnet_client_create
 
-Telnet Istemcisi oluşturma
+Telnet İstemcisi Oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -147,26 +147,26 @@ UINT nx_telnet_client_create(NX_TELNET_CLIENT *client_ptr,
                              ULONG window_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir Telnet Istemci örneği oluşturur.
+Bu hizmet bir Telnet İstemcisi örneği oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **client_name**: istemci örneğinin adı.
-- **ip_ptr**: IP örneğine yönelik işaretçi.
-- **window_size**: Bu ISTEMCI için TCP alma penceresinin boyutu.
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **client_name:** İstemci örneğinin adı.
+- **ip_ptr:** IP örneğine işaretçi.
+- **window_size:** Bu İstemci için TCP alma penceresinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) Istemci oluşturma başarılı.
-- **NX_TELNET_ERROR**: (0Xf0) yuva oluşturma hatası.
-- NX_PTR_ERROR: (0x07) geçersiz Istemci veya IP işaretçisi.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci oluşturma.
+- **NX_TELNET_ERROR:**(0xF0) Yuva oluşturma hatası.
+- NX_PTR_ERROR: (0x07) Geçersiz İstemci veya IP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -179,7 +179,7 @@ status =  nx_telnet_client_create(&my_client, “My Telnet Client”, &ip_0, 204
 ```
 ## <a name="nx_telnet_client_delete"></a>nx_telnet_client_delete
 
-Bir Telnet Istemcisini silme
+Telnet İstemcisini Silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -187,22 +187,22 @@ Bir Telnet Istemcisini silme
 UINT nx_telnet_client_delete(NX_TELNET_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir Telnet Istemci örneğini siler.
+Bu hizmet, önceden oluşturulmuş bir Telnet İstemci örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) Istemci silme başarılı.
-- **NX_TELNET_NOT_DISCONNECTED**: (0xf4) istemci hala bağlı.
-- NX_PTR_ERROR: (0x07) geçersiz Istemci işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci silme.
+- **NX_TELNET_NOT_DISCONNECTED:**(0xF4) İstemci hala bağlı.
+- NX_PTR_ERROR: (0x07) Geçersiz İstemci işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -218,7 +218,7 @@ status =  nx_telnet_client_delete(&my_client);
 
 ## <a name="nx_telnet_client_disconnect"></a>nx_telnet_client_disconnect
 
-Telnet Istemcisinin bağlantısını kesme
+Telnet İstemcisi Bağlantısını Kesme
 
 ### <a name="prototype"></a>Prototype
 
@@ -226,27 +226,27 @@ Telnet Istemcisinin bağlantısını kesme
 UINT nx_telnet_client_disconnect(NX_TELNET_CLIENT *client_ptr, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce bağlı bir Telnet Istemci örneğinin bağlantısını keser.
+Bu hizmet, daha önce bağlanan bir Telnet İstemcisi örneğinin bağlantısını keser.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **wait_option**: hizmetin Telnet istemcisinin bağlantısını kesmek için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **wait_option:** Hizmetin Telnet İstemci bağlantısının ne kadar süreyle bağlantısının kesilmesini bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-    - **zaman aşımı değeri**: (0x00000001-0xfffffffe) sayısal değer (1-0XFFFFFFFE) seçildiğinde, Telnet sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
-    - **TX_WAIT_FOREVER**: (0xffffffff) TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının, Telnet sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    - **zaman aşımı değeri:**(0x00000001 0xFFFFFFFE) Sayısal bir değer (1-0xFFFFFFFE) seçerek Telnet Sunucusu yanıtı beklerken askıya alınacak zamanlayıcı saat sayısı üst sayısını belirtir.
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF) TX_WAIT_FOREVER telnet sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) Istemci bağlantısının başarıyla kesilmesi.
-- **NX_TELNET_NOT_CONNECTED**: (0Xf3) istemci bağlı değil.
-- NX_PTR_ERROR: (0x07) geçersiz Istemci işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci bağlantısı kesildi.
+- **NX_TELNET_NOT_CONNECTED:**(0xF3) İstemci bağlı değil.
+- NX_PTR_ERROR: (0x07) Geçersiz İstemci işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -263,7 +263,7 @@ status =  nx_telnet_client_disconnect(&my_client, 100);
 
 ## <a name="nx_telnet_client_packet_receive"></a>nx_telnet_client_packet_receive
 
-Telnet Istemcisi aracılığıyla paket alma
+Telnet İstemcisi aracılığıyla paket alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -273,25 +273,25 @@ UINT nx_telnet_client_packet_receive(NX_TELNET_CLIENT *client_ptr,
                                      ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce bağlı olan Telnet Istemci örneğinden bir paket alır.
+Bu hizmet, daha önce bağlanan Telnet İstemci örneğinden bir paket alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **packet_ptr**: alınan paket için hedef işaretçisi.
-- **wait_option**: hizmetin Telnet istemci paketi alma süresini ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri**: (0x00000001-0xfffffffe) sayısal değer (1-0XFFFFFFFE) seçildiğinde, Telnet sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
-    - **TX_WAIT_FOREVER**: (0xffffffff) TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının, Telnet sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **packet_ptr:** Alınan paket için hedefin işaretçisi.
+- **wait_option:** Hizmetin Telnet İstemci paketinin ne kadar süreyle alınıp alınmayacaklarını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman aşımı değeri:**(0x00000001 0xFFFFFFFE) Sayısal bir değer (1-0xFFFFFFFE) seçerek Telnet Sunucusu yanıtı beklerken askıya alınacak zamanlayıcı saat sayısı üst sayısını belirtir.
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF) TX_WAIT_FOREVER telnet sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) istemci paketi alma başarılı.
-- NX_PTR_ERROR: (0x07) geçersiz işaretçi girişi
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci paketi alma.
+- NX_PTR_ERROR: (0x07) Geçersiz işaretçi girişi
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -307,7 +307,7 @@ status =  nx_telnet_client_packet_receive(&my_client, &my_packet, 100);
 ```
 ## <a name="nx_telnet_client_packet_send"></a>nx_telnet_client_packet_send
 
-Telnet Istemcisi aracılığıyla paket gönder
+Telnet İstemcisi aracılığıyla paket gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -317,26 +317,26 @@ UINT nx_telnet_client_packet_send(NX_TELNET_CLIENT *client_ptr,
                                   ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce bağlı olan Telnet Istemci örneği aracılığıyla bir paket gönderir.
+Bu hizmet, daha önce bağlanan Telnet İstemci örneği üzerinden bir paket gönderir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: Telnet istemci denetim bloğu işaretçisi.
-- **packet_ptr**: gönderileceği pakete yönelik işaretçi.
-- **wait_option**: hizmetin Telnet istemci paketinin gönderilmesi için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri**: (0x00000001-0xfffffffe) sayısal değer (1-0XFFFFFFFE) seçildiğinde, Telnet sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
-    - **TX_WAIT_FOREVER**: (0xffffffff) TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının, Telnet sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+- **client_ptr:** Telnet İstemcisi denetim bloğuna işaretçi.
+- **packet_ptr:** Göndermek için paketin işaretçisi.
+- **wait_option:** Hizmetin Telnet İstemci paketi göndermesini ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman aşımı değeri:**(0x00000001 0xFFFFFFFE) Sayısal bir değer (1-0xFFFFFFFE) seçerek Telnet Sunucusu yanıtı beklerken askıya alınacak zamanlayıcı saat sayısı üst sayısını belirtir.
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF) TX_WAIT_FOREVER telnet sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı istemci paketi gönderme.
-- **NX_TELNET_ERROR**: (0Xf0) paket gönderme başarısız oldu – çağıran, paketi serbest bırakmaktan sorumludur.
-- NX_PTR_ERROR: (0x07) geçersiz işaretçi girişi
-- NX_CALLER_ERROR: (0x11) geçersiz hizmet çağıranı.
+- **NX_SUCCESS:**(0x00) Başarılı İstemci paketi gönderme.
+- **NX_TELNET_ERROR:**(0xF0) Paketi gönderme başarısız oldu – paketi serbest bırakmak çağıranın sorumluluğundadır.
+- NX_PTR_ERROR: (0x07) Geçersiz işaretçi girişi
+- NX_CALLER_ERROR: (0x11) Geçersiz hizmet çağıranı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -351,7 +351,7 @@ status =  nx_telnet_client_packet_send(&my_client, my_packet, 100);
 
 ## <a name="nx_telnet_server_create"></a>nx_telnet_server_create
 
-Telnet sunucusu oluşturma
+Telnet Sunucusu oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -367,29 +367,29 @@ UINT nx_telnet_server_create(NX_TELNET_SERVER *server_ptr, CHAR *server_name, NX
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneğinde bir Telnet Server örneği oluşturur.
+Bu hizmet, belirtilen IP örneğinde bir Telnet Sunucusu örneği oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **server_ptr**: Telnet sunucu denetim bloğu işaretçisi.
-- **SERVER_NAME**: Telnet sunucu örneğinin adı.
-- **ip_ptr**: ilişkili IP örneğine yönelik işaretçi.
-- **stack_ptr**: iç sunucu iş parçacığı için yığın işaretçisi.
-- **sack_size**: yığının bayt cinsinden boyutu.
-- **new_connection**: uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, sunucu tarafından her yeni bir Telnet Istemci bağlantı isteği algılandığında çağrılır.
-- **receive_data**: uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, bağlantıda her yeni bir Telnet Istemci verisi olduğunda çağrılır. Bu yordam, paketin serbest bırakılmasından sorumludur.
-- **end_connection**: uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, bir Telnet Istemci bağlantısının Istemci tarafından bağlantısı kesildiğinde veya Istemci bağlantısı zaman aşımına uğradığında ("etkinlik zaman aşımı" süresi dolduğunda) çağrılır. Sunucu ayrıca aşağıda açıklanan *nx_telnet_server_disconnect* hizmeti aracılığıyla bağlantısını kesebilir.
+- **server_ptr:** Telnet Sunucusu denetim bloğuna işaretçi.
+- **server_name:** Telnet Sunucusu örneğinin adı.
+- **ip_ptr:** İlişkili IP örneğinin işaretçisi.
+- **stack_ptr:** İç Sunucu iş parçacığı için yığın işaretçisi.
+- **sack_size:** Yığının bayt cinsinden boyutu.
+- **new_connection:** Uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, Sunucu tarafından yeni bir Telnet İstemcisi bağlantı isteği algılandığında çağrılır.
+- **receive_data:** Uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, bağlantıda yeni bir Telnet İstemcisi verisi mevcut olduğunda çağrılır. Bu yordam paketi serbest bırakmakla sorumludur.
+- **end_connection:** Uygulama geri çağırma yordamı işlev işaretçisi. Bu yordam, İstemci tarafından Telnet İstemcisi bağlantısının kesildiğinde veya İstemci bağlantısının zaman aşımına (etkinlik zaman aşımı" süresi dolduğunda) çağrılır. Sunucu ayrıca aşağıda açıklanan nx_telnet_server_disconnect *bağlantısı* kesebilirsiniz.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) sunucu oluşturma başarılı.
-- NX_PTR_ERROR: (0x07) sunucu, IP, yığın veya uygulama geri çağırma işaretçileri geçersiz.
+- **NX_SUCCESS:**(0x00) Başarılı Sunucu oluşturma.
+- NX_PTR_ERROR: (0x07) Geçersiz Sunucu, IP, yığın veya uygulama geri çağırma işaretçileri.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -404,7 +404,7 @@ status =  nx_telnet_server_create(&my_server, "Telnet Server", &ip_0,
 ```
 ## <a name="nx_telnet_server_delete"></a>nx_telnet_server_delete
 
-Bir Telnet sunucusunu silme
+Telnet Sunucusunu silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -412,21 +412,21 @@ Bir Telnet sunucusunu silme
 UINT nx_telnet_server_delete(NX_TELNET_SERVER *server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir Telnet sunucusu örneğini siler.
+Bu hizmet, önceden oluşturulmuş bir Telnet Server örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **server_ptr**: Telnet sunucu denetim bloğu işaretçisi.
+- **server_ptr:** Telnet Sunucusu denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) sunucu başarıyla silindi.
-- NX_PTR_ERROR: (0x07) geçersiz sunucu işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı Sunucu silme.
+- NX_PTR_ERROR: (0x07) Geçersiz Sunucu işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -441,7 +441,7 @@ status =  nx_telnet_server_delete(&my_server);
 
 ## <a name="nx_telnet_server_disconnect"></a>nx_telnet_server_disconnect
 
-Telnet Istemcisinin bağlantısını kesme
+Telnet İstemcisi Bağlantısını Kesme
 
 ### <a name="prototype"></a>Prototype
 
@@ -449,7 +449,7 @@ Telnet Istemcisinin bağlantısını kesme
 UINT nx_telnet_server_disconnect(NX_TELNET_SERVER *server_ptr, UINT logical_connection);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu Telnet sunucu örneğindeki daha önce bağlı bir Istemcinin bağlantısını keser. Bu yordam tipik olarak, alınan verilerde algılanan bir koşula yanıt olarak uygulamanın veri geri çağırma işlevinden çağrılır.
 
@@ -492,7 +492,7 @@ Açık durumdaki bağlantıların geri dönüş sayısı
 UINT nx_telnet_server_get_open_connection_count(NX_TELNET_SERVER *server_ptr, UINT *connection_count);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, şu anda bağlı olan Telnet Istemcilerinin sayısını döndürür.
 
@@ -535,7 +535,7 @@ UINT nx_telnet_server_packet_send(NX_TELNET_SERVER *server_ptr,
                                   ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu Telnet sunucu örneğindeki Istemci bağlantısına bir paket gönderir. Bu yordam tipik olarak, alınan verilerde algılanan bir koşula yanıt olarak uygulamanın veri geri çağırma işlevinden çağrılır.
 
@@ -582,7 +582,7 @@ UINT nx_telnet_server_packet_pool_set(NX_TELNET_SERVER *server_ptr, NX_PACKET_PO
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, NX_TELNET_SERVER_USER_CREATE_PACKET_POOL tanımlanmışsa, daha önce oluşturulmuş bir paket havuzunu Telnet sunucusu paket havuzu olarak ayarlar. Ayrıca, Telnet sunucusunun Telnet istemcilerine Telnet seçeneklerini iletmek için bir paket havuzuna ihtiyacı olacak şekilde NX_TELNET_SERVER_OPTION_DISABLE tanımlanmamalıdır.
 
@@ -625,7 +625,7 @@ UINT nx_telnet_server_start(NX_TELNET_SERVER *server_ptr);
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önceden oluşturulmuş bir Telnet sunucu örneğini başlatır.
 
@@ -662,7 +662,7 @@ Bir Telnet sunucusunu durdur
 UINT nx_telnet_server_stop(NX_TELNET_SERVER *server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önceden oluşturulmuş ve başlatılmış bir Telnet sunucu örneğini durduruyor.
 

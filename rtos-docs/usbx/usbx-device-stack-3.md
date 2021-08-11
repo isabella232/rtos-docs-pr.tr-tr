@@ -1,80 +1,80 @@
 ---
-title: Bölüm 3-USBX cihaz yığınının Işlevsel bileşenleri
-description: Bu bölüm, işlevsel bir perspektiften yüksek performanslı bir USBX Embedded USB cihaz yığınının açıklamasını içerir.
+title: Bölüm 3 - USBX Cihaz Yığınının İşlevsel Bileşenleri
+description: Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX ekli USB cihaz yığınının açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: dc57f3e0f6aa6731f4aaedee8169313ca7276cff
-ms.sourcegitcommit: 1aeca2f91960856d8cc24fef65f909639e527599
+ms.openlocfilehash: 104badcbf1ec682cd8b09008578ba91768834d694473ecccf59e35637dfd9f3c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106082209"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791366"
 ---
-# <a name="chapter-3---functional-components-of-usbx-device-stack"></a>Bölüm 3-USBX cihaz yığınının Işlevsel bileşenleri
+# <a name="chapter-3---functional-components-of-usbx-device-stack"></a>Bölüm 3 - USBX Cihaz Yığınının İşlevsel Bileşenleri
 
-Bu bölüm, işlevsel bir perspektiften yüksek performanslı bir USBX Embedded USB cihaz yığınının açıklamasını içerir.
+Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX ekli USB cihaz yığınının açıklaması yer almaktadır.
 
-## <a name="execution-overview"></a>Yürütmeye genel bakış
+## <a name="execution-overview"></a>Yürütmeye Genel Bakış
 
-Cihaz için USBX birkaç bileşenden oluşur.
+Cihaz için USBX çeşitli bileşenlerden oluşur.
 
 - Başlatma
 - Uygulama arabirimi çağrıları
-- Cihaz sınıfları
-- USB cihaz yığını
+- Cihaz Sınıfları
+- USB Cihaz Yığını
 - Cihaz denetleyicisi
-- VBUS Yöneticisi
+- VBUS yöneticisi
 
-Aşağıdaki diyagramda, USBX cihaz yığını gösterilmektedir.
+Aşağıdaki diyagramda USBX Cihaz yığınını göstermektedir.
 
-![USBX cihaz yığını](media/usbx-device-stack/usbx-device-stack.png)
+![USBX Cihaz Yığını](media/usbx-device-stack/usbx-device-stack.png)
 
 ### <a name="initialization"></a>Başlatma
 
-USBX ' i etkinleştirmek için ***ux_system_initialize*** işlevi çağrılmalıdır. Bu işlev, USBX bellek kaynaklarını başlatır.
+USBX'i etkinleştirmek için işlev ***ux_system_initialize*** çağrılmalı. Bu işlev USBX'in bellek kaynaklarını başlatıyor.
 
-USBX cihaz tesislerini etkinleştirmek için ***ux_device_stack_initialize*** işlevi çağrılmalıdır. Bu işlev, USBX cihaz yığını tarafından kullanılan ve ThreadX iş parçacıkları, zaman uyumu sağlayıcılar ve semaforlar gibi tüm kaynakları başlatacak.
+USBX cihaz olanaklarını etkinleştirmek için, ***ux_device_stack_initialize*** çağrılma gerekir. Bu işlev, ThreadX iş parçacıkları, mutex'ler ve semaforlar gibi USBX cihaz yığını tarafından kullanılan tüm kaynakları başlatacak.
 
-Bu, USB cihaz denetleyicisini ve bir veya daha fazla USB sınıfını etkinleştirmek için uygulama başlatma 'ya kadar sürer. USB ana bilgisayar tarafının aksine, cihaz tarafında herhangi bir anda yalnızca bir USB denetleyici sürücüsü çalışıyor olabilir. Sınıflar yığına kaydedildiğinde ve cihaz denetleyicisi başlatma işlevi çağrıldığında, veri yolu etkin olur ve yığın veri yolu sıfırlama ve konak listeleme komutlarına yanıt gönderir.
+USB cihaz denetleyicisini ve bir veya daha fazla USB sınıflarını etkinleştirmek uygulama başlatmaya bağlı olur. USB ana bilgisayar tarafının aksine, cihaz tarafında herhangi bir anda çalışan yalnızca bir USB denetleyici sürücüsü olabilir. Sınıflar yığına kaydedildiklerinde ve cihaz denetleyicilerini başlatma işlevi çağrıldığı zaman, veri sistemi etkindir ve yığın, veri verisi sıfırlama ve konak numaralama komutlarını yanıtlar.
 
-### <a name="application-interface-calls"></a>Uygulama arabirimi çağrıları
+### <a name="application-interface-calls"></a>Uygulama Arabirimi Çağrıları
 
-USBX içinde iki API düzeyi vardır.
+USBX'te iki API düzeyi vardır.
 
-- USB cihaz yığını API 'Leri
-- USB cihaz sınıfı API 'Leri
+- USB Cihaz Yığını API'leri
+- USB Cihaz Sınıfı API'leri
 
-Normalde, bir USBX uygulamasının USB cihaz yığını API 'Lerinden herhangi birini çağırması gerekmez. Çoğu uygulama yalnızca USB sınıfı API 'Lerine erişir.
+Normalde, bir USBX uygulamasının USB cihaz yığını API'lerinin herhangi birini çağıran bir uygulama olması gerekir. Çoğu uygulama yalnızca USB Sınıfı API'lerine erişecek.
 
-### <a name="usb-device-stack-apis"></a>USB cihaz yığını API 'Leri
+### <a name="usb-device-stack-apis"></a>USB Cihaz Yığını API'leri
 
-Cihaz yığını API 'Leri, sınıflar ve cihaz çerçevesi gibi USBX cihaz bileşenlerinin kaydı yapmaktan sorumludur.
+Cihaz yığını API'leri, sınıflar ve cihaz çerçevesi gibi USBX cihaz bileşenlerinin kaydından sorumludur.
 
-### <a name="usb-device-class-apis"></a>USB cihaz sınıfı API 'Leri
+### <a name="usb-device-class-apis"></a>USB Cihaz Sınıfı API'leri
 
-Sınıf API 'Leri her USB sınıfına çok özeldir. USB sınıfları için ortak API 'lerin çoğu, bir cihazı açma/kapatma ve bir cihazdan okuma ve bir cihaza yazma gibi hizmetleri sağlamıştır. API 'Ler ana bilgisayar tarafına benzer şekilde benzerdir.
+Sınıf API'leri her USB sınıfına çok özeldir. USB sınıflarının yaygın API'lerinin çoğu, bir cihazı açma/kapatma ve cihazdan okuma ve yazma gibi hizmetler sağladı. API'ler doğası gereği konak tarafına benzer.
 
-## <a name="device-framework"></a>Cihaz çerçevesi
+## <a name="device-framework"></a>Cihaz Çerçevesi
 
-USB cihaz tarafı, cihaz çerçevesinin tanımından sorumludur. Cihaz çerçevesi, aşağıdaki bölümlerde açıklandığı gibi üç kategoriye ayrılmıştır.
+USB cihaz tarafı, cihaz çerçevesinin tanımından sorumludur. Cihaz çerçevesi aşağıdaki bölümlerde açıklandığı gibi üç kategoriye ayrılır.
 
-### <a name="definition-of-the-components-of-the-device-framework"></a>Cihaz çerçevesi bileşenlerinin tanımı
+### <a name="definition-of-the-components-of-the-device-framework"></a>Cihaz Çerçevesi Bileşenlerinin Tanımı
 
-Cihaz çerçevesinin her bileşeninin tanımı, cihazın doğası ve cihaz tarafından kullanılan kaynaklar ile ilgilidir. Ana kategoriler aşağıda verilmiştir.
+Cihaz çerçevesinin her bir bileşeninin tanımı, cihazın doğası ve cihaz tarafından kullanılan kaynaklarla ilgilidir. Ana kategoriler aşağıda ve aşağıda ve liste listelerinde ve listelerinde ve listelerinde yer almaktadır.
 
-- Cihaz tanımlayıcısı
-- Yapılandırma tanımlayıcısı
-- Arabirim tanımlayıcısı
-- Uç nokta tanımlayıcısı
+- Cihaz Tanımlayıcısı
+- Yapılandırma Tanımlayıcısı
+- Arabirim Tanımlayıcısı
+- Uç Nokta Tanımlayıcısı
 
-USBX hem yüksek hem de tam hızda cihaz bileşeni tanımını destekler (düşük hız tam hızda aynı şekilde kabul edilir). Bu, cihazın yüksek hızda veya tam hızlı ana bilgisayara bağlıyken farklı şekilde çalışmasını sağlar. Tipik farklılıklar, her uç noktanın boyutudur ve cihaz tarafından tüketilen güçlerdir.
+USBX hem yüksek hem de tam hız için cihaz bileşeni tanımını destekler (düşük hız, tam hızda olduğu gibi kabul edilir). Bu, cihazın yüksek hızlı veya tam hızlı bir ana bilgisayara bağlandığında farklı çalışmasına olanak sağlar. Tipik farklar her uç noktanın boyutu ve cihaz tarafından tüketilen güçtür.
 
-Cihaz bileşeninin tanımı, USB belirtimini izleyen bir bayt dizesi biçimini alır. Tanım bitişik ve çerçevenin bellekte temsil edildiği sıra, numaralandırma sırasında ana bilgisayara döndürülen ile aynı olacaktır.
+Cihaz bileşeninin tanımı, USB belirtimlerini izleyen bir byte dizesi biçimi alır. Tanım bitişiktir ve çerçevenin bellekte temsil edilen sırası, numaralama sırasında ana bilgisayar için döndürülenle aynı olur.
 
-Yüksek hızlı USB flash disk için bir cihaz çerçevesi örneği aşağıda verilmiştir.
+Aşağıda, yüksek hızlı USB Flash Disk için bir cihaz çerçevesi örneği ve ardından ve bir örnek ve ardından ve bir örnek ve bir usb flash disk ve daha fazla bilgi edinebilirsiniz.
 
 ```c
 #define DEVICE_FRAMEWORK_LENGTH_HIGH_SPEED 60
@@ -99,13 +99,13 @@ UCHAR device_framework_high_speed[] = {
 };
 ```
 
-### <a name="definition-of-the-strings-of-the-device-framework"></a>Cihaz çerçevesi dizelerinin tanımı
+### <a name="definition-of-the-strings-of-the-device-framework"></a>Cihaz Çerçevesi Dizelerinin Tanımı
 
-Dizeler bir cihazda isteğe bağlıdır. Bu kişilerin amacı, USB konağının cihaz üreticisi, ürün adı ve Unicode dizeleri aracılığıyla düzeltme numarası hakkında bilgi sahibi sağlamaktır.
+Dizeler bir cihazda isteğe bağlıdır. Bunların amacı, USB ana bilgisayarının Unicode dizeleri aracılığıyla cihazın üreticisi, ürün adı ve düzeltme numarası hakkında bilgi sahibi olduğunu bilmektir.
 
-Ana dizeler, cihaz tanımlayıcılarında gömülü olan dizinlerdir. Ek dizeler dizinleri tek tek arabirimlere katıştırılabilir.
+Ana dizeler, cihaz tanımlayıcılarında gömülü dizinlerdir. Ek dize dizinleri ayrı arabirimlere katıştırabilirsiniz.
 
-Yukarıdaki cihaz çerçevesinin cihaz tanımlayıcısına eklenmiş üç dize dizini olduğunu varsayarsak, dize çerçevesi tanımı bu örnek koda benzeyebilir.
+Yukarıdaki cihaz çerçevesinin cihaz tanımlayıcısına eklenmiş üç dize dizini olduğunu varsayarak, dize çerçevesi tanımı bu örnek koda benzer olabilir.
 
 ```c
 /* String Device Framework:
@@ -132,15 +132,15 @@ UCHAR string_framework[] = {
 };
 ```
 
-Her hız için farklı dizelerin kullanılması gerekiyorsa, dizinlerin hız belirsiz olduğu için farklı dizinlerin kullanılması gerekir.
+Her hız için farklı dizeler kullanılmalıdır, dizinler hızdan bağımsız olduğu için farklı dizinler kullanılmalıdır.
 
-Dizenin kodlaması UNICODE tabanlıdır. UNICODE kodlama standardı hakkında daha fazla bilgi için aşağıdaki yayına başvurun:
+Dizenin kodlaması UNICODE tabanlıdır. UNICODE kodlama standardı hakkında daha fazla bilgi için aşağıdaki yayına bakın:
 
-*Unicode standart, dünya çapındaki karakter kodlaması, sürüm 1., birimler 1 ve 2, Unicode konsorsiyum, Addison-Wesley yayımlama şirketi, okuma MA.*
+*The Unicode Standard, Worldwide Character Encoding, Version 1., Volumes 1 and 2, The Unicode Consortium, Addison-Wesley Publishing Company, Reading MA.*
 
-### <a name="definition-of-the-languages-supported-by-the-device-for-each-string"></a>Her dize için cihaz tarafından desteklenen dillerin tanımı
+### <a name="definition-of-the-languages-supported-by-the-device-for-each-string"></a>Her Dize için Cihaz Tarafından Desteklenen Dillerin Tanımı
 
-USBX 'in varsayılan değer olan Ingilizce olmasına rağmen birden çok dili destekleme yeteneği vardır. Dize tanımlayıcıları için her dilin tanımı, aşağıdaki şekilde tanımlanan bir dil tanımı dizisi biçimindedir.
+VARSAYıLAN dil İngilizce olsa da USBX birden çok dili destekleyene sahip. Dize tanımlayıcıları için her dilin tanımı, aşağıdaki gibi tanımlanan bir dil tanımı dizisi şeklindedir.
 
 ```c
 #define LANGUAGE_ID_FRAMEWORK_LENGTH 2
@@ -150,18 +150,18 @@ UCHAR language_id_framework[] = {
 };
 ```
 
-Ek dilleri desteklemek için, varsayılan Ingilizce kodundan sonra dil kodu çift baytlı tanımını eklemeniz yeterlidir. Dil kodu belge içinde Microsoft tarafından tanımlandı.
+Ek dilleri desteklemek için dil kodunu varsayılan İngilizce kodun ardından çift bayt tanımı eklemeniz gerekir. Dil kodu, belgede Microsoft tarafından tanımlanmıştır.
 
-*Windows 95 ve Windows NT, Nadine Kano, Microsoft Press, Redmond WA için uluslararası yazılım geliştirme*
+*Windows 95 ve Windows NT Için Uluslararası Yazılım Geliştirme, Nadine International, Microsoft Press, Redmond WA*
 
 ## <a name="vbus-manager"></a>VBUS Yöneticisi
 
-Çoğu USB cihaz tasarımlarında, VBUS, USB cihaz çekirdeği 'nin bir parçası değildir, bunun yerine çizgi sinyalini izleyen bir harici GıO 'a bağlanır.
+ÇOĞU USB cihaz tasarımında VBUS, USB Cihazı çekirdeğinin parçası değildir, bunun yerine çizgi sinyalini izleyen bir dış GPIO'ya bağlanır.
 
-Sonuç olarak, VBUS 'ın cihaz denetleyicisi sürücüsünden ayrı olarak yönetilmesi gerekir.
+Sonuç olarak VBUS'nin cihaz denetleyicisi sürücüsünden ayrı olarak yönetilmelidir.
 
-Bu, cihaz denetleyicisine VBUS GÇ adresini sağlamak için uygulamaya çalışır. Cihaz denetleyicisi başlatılmadan önce VBUS başlatılmalıdır.
+Cihaz denetleyicisine VBUS G/A0 adresini sağlamak uygulamaya bağlı olur. VBUS, cihaz denetleyicisi başlatmadan önce başlatılmış olmalıdır.
 
-Sanal veri izleme platformu belirtimine bağlı olarak, VBUS GÇ başlatıldıktan sonra denetleyici sürücüsünün VBUS sinyalleri işlemesini sağlamak mümkündür veya bu mümkün değilse, uygulamanın VBUS işleme kodunu sağlaması gerekir.
+VBUS'u izlemek için platform belirtimsine bağlı olarak, VBUS GÇ başlatıldıktan sonra denetleyici sürücüsünün VBUS sinyallerini işlemesine izin verebilirsiniz veya bu mümkün yoksa uygulamanın VBUS'u işlemek için kodu belirtmesi gerekir.
 
-Uygulama VBUS 'ı kendisine göre işlemesini istiyorsa, tek gereksinimi, bir cihazın ayıklandığını algıladığında işlevi ***ux_device_stack_disconnect*** çağırmalıdır. Bir cihaz takıldığında denetleyiciyi bilgilendirmek gerekli değildir çünkü veri yolu SıFıRLAMA onayı/kaldırma sinyali algılandığında denetleyici uyandırır.
+Uygulama VBUS'u tek başına işlemek isterse, tek gereksinimi cihazın ***ayık*** ux_device_stack_disconnect işlevi çağırarak çağrısı yapmaktır. Denetleyici, BUS RESET onaylama/deassert sinyali algılandığında uyandırıldığından, bir cihaz ekildiğinde denetleyiciye bildirmeye gerek yoktur.

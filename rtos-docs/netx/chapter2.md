@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 80d6ba18f47ad2b017dfa32260c83ba074a6dbac
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 942250cf864fca3c35b97ae731549c070ac2f2f2ef3ef8897e5cbf1e705e7c6a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825637"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801827"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx"></a>Bölüm 2-Azure RTOS NetX yükleme ve kullanımı
 
@@ -19,7 +19,7 @@ Bu bölümde, Azure RTOS NetX yüksek performanslı ağ yığınının yüklenme
 
 ## <a name="host-considerations"></a>Ana bilgisayar konuları
 
-Katıştırılmış Geliştirme genellikle Windows veya Linux (UNIX) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlanır ve çalıştırılabilir dosya konakta üretildikten sonra, yürütme için hedef donanıma indirilir.
+katıştırılmış geliştirme genellikle Windows veya Linux (unıx) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlanır ve çalıştırılabilir dosya konakta üretildikten sonra, yürütme için hedef donanıma indirilir.
 
 Genellikle hedef indirme işlemi geliştirme aracının hata ayıklayıcı içinden yapılır. İndirmeden sonra, hata ayıklayıcı, hedef yürütme denetimi (go, dur, kesme noktası vb.) ve bellek ve işlemci kayıtlarına erişimi sağlamaktan sorumludur.
 
@@ -46,13 +46,13 @@ Depodaki birçok önemli dosyanın listesi aşağıda verilmiştir:
 
 ## <a name="netx-installation"></a>NetX yüklemesi
 
-GitHub deposunu yerel makinenize kopyalayarak NetX 'i yükleyebilirsiniz. Bilgisayarınızda NetX deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir:
+GitHub deposunu yerel makinenize kopyalayarak netx 'i yükleyebilirsiniz. Bilgisayarınızda NetX deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir:
 
 ```c
     git clone https://github.com/azure-rtos/netx
 ```
 
-Alternatif olarak, GitHub ana sayfasında **İndir** düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+alternatif olarak, GitHub ana sayfasındaki **indir** düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
 
 Ayrıca, çevrimiçi deponun ön sayfasında NetX kitaplığını oluşturmaya yönelik yönergeler de bulacaksınız.
 
@@ -208,11 +208,11 @@ NX_ENABLE_TCP_WINDOW_SCALING | TCP uygulamaları için pencere ölçeklendirme s
 
 ## <a name="netx-version-id"></a>NetX sürüm KIMLIĞI
 
-Geçerli NetX sürümü, çalışma zamanı sırasında hem Kullanıcı hem de uygulama yazılımı için kullanılabilir. Programcı, **nx_port. h** dosyasından NETX sürümünü alabilir. Buna ek olarak, bu dosya karşılık gelen bağlantı noktasının sürüm geçmişini içerir. Uygulama yazılımı, **_nx_port. h_** içindeki genel dize **_Nx_version_id** inceleyerek NETX sürümünü alabilir.  
+Geçerli NetX sürümü, çalışma zamanı sırasında hem Kullanıcı hem de uygulama yazılımı için kullanılabilir. Programcı, **nx_port. h** dosyasından NETX sürümünü alabilir. Ayrıca, bu dosya ilgili bağlantı noktasının sürüm geçmişini içerir. Uygulama yazılımı, **_nx_port.h'de_** genel dize **_nx_version_id Inceler** ve NetX sürümünü elde nx_port.  
 
-Uygulama yazılımı, aşağıda gösterilen sabitlerden sürüm bilgilerini elde edebilir ve bu, ***nx_api. h**. * içinde tanımlanmıştır.
+Uygulama yazılımı, sürüm bilgilerini aşağıda gösterilen ***nx_api.h .*** içinde tanımlanan sabitlerden de edinebilir
 
-Bu sabitler, geçerli ürün sürümünü ada ve ürünün büyük ve küçük sürümüne göre belirler.
+Bu sabitler, geçerli ürün sürümünü ad ve ana ve ikincil sürüme göre tanımladı.
 
 ```c
 #define EL_PRODUCT_NETX

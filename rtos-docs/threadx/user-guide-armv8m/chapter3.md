@@ -1,28 +1,28 @@
 ---
-title: Bölüm 3-ARMv8-d için ThreadX API 'Leri
-description: Bu bölümde ARMv8-l-specific ThreadX hizmetlerinin açıklaması.
+title: Bölüm 3 - ARMv8-M için ThreadX API'leri
+description: Bu bölümde ARMv8-M'ye özgü ThreadX hizmetlerinin açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 14bdfab3d56476d52ba91f859cec4af4ab7f4bef
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: 99633db55a5d93eb32ce4fb5429f3fe2f9ab5137cffc30b27982f702cece1ca5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377631"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791508"
 ---
-# <a name="chapter-3--threadx-apis-for-armv8-m"></a>ARMv8-d için Bölüm 3 ThreadX API 'Leri
+# <a name="chapter-3--threadx-apis-for-armv8-m"></a>ARMv8-M için Bölüm 3 ThreadX API'leri
 
-Bu bölüm, ARMv8-l 'e özgü ThreadX hizmetlerinin alfabetik sırada bir açıklamasını içerir. Adları, benzer tüm hizmetlerin birlikte gruplanabilmesi için tasarlanmıştır. Aşağıdaki açıklamaların "dönüş değerleri" bölümünde, **kalın yazı** DEĞERLERI, API hata denetimini devre dışı bırakmak için kullanılan tanımlama **TX_DISABLE_ERROR_CHECKING** etkilenmez; kalın olmayan ' de gösterilen değerler tamamen devre dışı kalır.
+Bu bölümde ARMv8 M'ye özgü ThreadX hizmetlerinin alfabetik sırada bir açıklaması yer almaktadır. Adları, benzer hizmetlerin hepsi birlikte grup olacak şekilde tasarlanmıştır. Aşağıdaki açıklamalarda yer alan "Dönüş Değerleri" **bölümünde,** BOLD'daki  değerler API hata TX_DISABLE_ERROR_CHECKING için kullanılan tanımdan etkilenmez; ise kalın olmayan değerler tamamen devre dışı bırakılır.
 
-- [tx_thread_secure_stack_allocate](#tx_thread_secure_stack_allocate) Güvenli bellekte bir iş parçacığı yığını ayırın.
-- [tx_thread_secure_stack_free](#tx_thread_secure_stack_free) Güvenli bellekte ücretsiz iş parçacığı yığını
+- [tx_thread_secure_stack_allocate](#tx_thread_secure_stack_allocate) Güvenli bellekte iş parçacığı yığını ayırma.
+- [tx_thread_secure_stack_free](#tx_thread_secure_stack_free) Güvenli bellekte boş iş parçacığı yığını
 
 ## <a name="tx_thread_secure_stack_allocate"></a>tx_thread_secure_stack_allocate
 
-Güvenli bellekte bir iş parçacığı yığını ayırın.
+Güvenli bellekte iş parçacığı yığını ayırma.
 
 ### <a name="prototype"></a>Prototype
 
@@ -32,31 +32,31 @@ UINT tx_thread_secure_stack_allocate(
     ULONG stack_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, güvenli bellekte stack_size bayt boyutunda bir yığın ayırır. Bu işlev, güvenli işlevleri çağıran her iş parçacığı için çağrılmalıdır.
+Bu hizmet, güvenli bellekte bayt stack_size yığın ayırır. Bu işlev, güvenli işlevleri çağıran her iş parçacığı için çağrılmalı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **thread_ptr** Daha önce oluşturulmuş iş parçacığına yönelik işaretçi.
+- **thread_ptr** Daha önce oluşturulan iş parçacığının işaretçisi.
 
 - **stack_size** Güvenli yığının boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS** (0x00) başarılı istek.
+- **TX_SUCCESS** (0x00) Başarılı istek.
 
-- **TX_SIZE_ERROR** (0x05) yığın boyutu Aralık dışında.
+- **TX_SIZE_ERROR** (0x05) Yığın boyutu aralık dışında.
 
-- **TX_THREAD_ERROR** (0x0E) geçersiz iş parçacığı işaretçisi.
+- **TX_THREAD_ERROR** (0x0E) Geçersiz iş parçacığı işaretçisi.
 
-- **TX_NO_MEMORY** (0x10) bellek ayrılamıyor.
+- **TX_NO_MEMORY** (0x10) Bellek ayrılamadı.
 
-- **TX_CALLER_ERROR** (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_CALLER_ERROR** (0x13) Bu hizmetin çağıranı geçersiz.
 
-- **TX_FEATURE_NOT_ENABLED** (0xFF) sistem güvenli modda çalışacak şekilde derlendi.
+- **TX_FEATURE_NOT_ENABLED** (0xFF) Sistem güvenli modda çalıştıracak şekilde derlenmiş.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
@@ -78,7 +78,7 @@ tx_thread_secure_stack_free
 
 ##  <a name="tx_thread_secure_stack_free"></a>tx_thread_secure_stack_free
 
-Güvenli bellekte bir iş parçacığı yığınını boşaltın. 
+Güvenli bellekte bir iş parçacığı yığınını serbest bırak. 
 
 ### <a name="prototype"></a>Prototype
 
@@ -86,25 +86,25 @@ Güvenli bellekte bir iş parçacığı yığınını boşaltın.
 UINT tx_thread_secure_stack_free(TX_THREAD *thread_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir iş parçacığının güvenli yığınını güvenli bellekte boşaltır. Bir iş parçacığının güvenli bir yığını varsa ve iş parçacığının artık güvenli işlevleri çağırması gerekmiyorsa veya iş parçacığı silinirse bu işlev çağrılmalıdır.
+Bu hizmet, bir iş parçacığının güvenli yığınını güvenli bellekte serbest bıraktır. Bir iş parçacığı güvenli bir yığına sahipse ve iş parçacığı artık güvenli işlevleri çağırmayacaksa veya iş parçacığı silindiğinde bu işlev çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **thread_ptr** Daha önce oluşturulmuş iş parçacığına yönelik işaretçi.
+- **thread_ptr** Daha önce oluşturulan iş parçacığının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS** (0x00) başarılı istek.
+- **TX_SUCCESS** (0x00) Başarılı istek.
 
-- **TX_THREAD_ERROR** (0x0E) geçersiz iş parçacığı işaretçisi.
+- **TX_THREAD_ERROR** (0x0E) Geçersiz iş parçacığı işaretçisi.
 
-- **TX_CALLER_ERROR** (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_CALLER_ERROR** (0x13) Bu hizmetin çağıranı geçersiz.
 
-- **TX_FEATURE_NOT_ENABLED** (0xFF) sistem güvenli modda çalışacak şekilde derlendi.
+- **TX_FEATURE_NOT_ENABLED** (0xFF) Sistem güvenli modda çalıştıracak şekilde derlenmiş.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 

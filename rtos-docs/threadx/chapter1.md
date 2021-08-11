@@ -1,174 +1,174 @@
 ---
-title: Bölüm 1-Azure RTOS ThreadX 'e giriş
-description: Bu bölümde, Azure RTOS ThreadX 'e giriş ve uygulamalarının ve avantajlarından ilgili bir açıklama yer almaktadır.
+title: Bölüm 1 - Azure RTOS ThreadX'e Giriş
+description: Bu bölümde, Azure RTOS ThreadX'e giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 83718ddf5469238e2429855908be2ea5d405f874
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 536b2d59bf9f2cf15d320b91277f0efc7bf96097329f690b0849b2145c5a3abc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826579"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802076"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-threadx"></a>Bölüm 1-Azure RTOS ThreadX 'e giriş
+# <a name="chapter-1---introduction-to-azure-rtos-threadx"></a>Bölüm 1 - Azure RTOS ThreadX'e Giriş
 
-Azure RTOS ThreadX, özellikle eklenmiş uygulamalar için tasarlanan yüksek performanslı bir gerçek zamanlı çekirlüdür. Bu bölümde, ürüne giriş ve uygulamaların ve avantajlarının açıklaması yer almaktadır.
+Azure RTOS ThreadX, özellikle katıştırılmış uygulamalar için tasarlanmış yüksek performanslı bir gerçek zamanlı çekirdektir. Bu bölümde ürüne giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır.
 
-## <a name="threadx-unique-features"></a>ThreadX benzersiz özellikleri
+## <a name="threadx-unique-features"></a>ThreadX Benzersiz Özellikleri
 
-Diğer gerçek zamanlı kernels uygulamalarından farklı olarak, ThreadX, güçlü CIC, RıSC ve DSP işlemcileri kullanan küçük mikro denetleyici tabanlı uygulamalar arasında kolayca ölçeklendirip çok yönlü olacak şekilde tasarlanmıştır.
+Diğer gerçek zamanlı çekirdeklerin aksine ThreadX, güçlü CISC, RISC ve DSP işlemcileri kullananlar aracılığıyla küçük mikrodenetleyici tabanlı uygulamalar arasında kolayca ölçeklendirme yapmak için çok yönlü olacak şekilde tasarlanmıştır.
 
-ThreadX, temel mimarisine göre ölçeklenebilir. ThreadX Hizmetleri bir C Kitaplığı olarak uygulandığından, yalnızca uygulama tarafından kullanılan hizmetler çalışma zamanı görüntüsüne getirilir. Bu nedenle, ThreadX gerçek boyutu uygulama tarafından tamamen belirlenir. Çoğu uygulama için, ThreadX yönerge görüntüsü, boyutu 2 Kbayt ile 15 kilobayt arasında değişir.
+ThreadX, temel alınan mimarisine göre ölçeklenebilir. ThreadX hizmetleri bir C kitaplığı olarak uygulana olduğundan, yalnızca uygulama tarafından kullanılan hizmetler çalışma zamanı görüntüsüne getiri. Bu nedenle, ThreadX'in gerçek boyutu uygulama tarafından tamamen belirlenir. Çoğu uygulama için ThreadX'in yönerge görüntüsü 2 KBayt ile 15 KBayt arasında bir boyuta sahiptir.
 
-### <a name="picokerneltrade-architecture"></a>*picokernel &trade; mimarisi*
+### <a name="picokerneltrade-architecture"></a>*picokernel &trade; Mimarisi*
 
-Kernel işlevlerini geleneksel *mikro çekirdek* mimarileri gibi birbirlerine göre katmanlama yerine, threadx Hizmetleri doğrudan kendi çekirdeğine takılır. Bu, en hızlı olası bağlam değiştirme ve hizmet çağrısı performansına neden olur. Bu katmansız tasarımı bir *picokernel* mimarisi olarak çağırıyoruz.
+ThreadX hizmetleri, geleneksel mikro kanal mimarileri gibi çekirdek işlevlerini birbirinin üzerine katmanlama yerine doğrudan çekirdeğine taktırır.  Bu, mümkün olan en hızlı bağlam değiştirme ve hizmet çağrısı performansıyla sonuç verir. Bu katman olmayan tasarıma *picokernel mimarisi çağrılır.*
 
-### <a name="ansi-c-source-code"></a>ANSI C kaynak kodu
+### <a name="ansi-c-source-code"></a>ANSI C Kaynak Kodu
 
-ThreadX, birincil olarak ANSI C 'de yazılmıştır. Çekirdeği temeldeki hedef işlemciye uyarlamak için küçük miktarda derleme dili gerekir. Bu tasarım, ThreadX 'in (genellikle hafta içinde) çok kısa bir süre içinde yeni bir işlemci ailesine bağlantı noktası kullanmasını mümkün kılar.
+ThreadX öncelikli olarak ANSI C'de yazılır. Çekirdeği temel alınan hedef işlemciye uyarlamak için az miktarda derleme dili gerekir. Bu tasarım, ThreadX'i yeni bir işlemci ailesine çok kısa bir sürede (genellikle haftalar içinde) bağlantı noktası olarak mümkün yapar!
 
-### <a name="advanced-technology"></a>Gelişmiş teknoloji
+### <a name="advanced-technology"></a>Gelişmiş Teknoloji
 
-Aşağıda, ThreadX gelişmiş teknolojisinin önemli noktaları verilmiştir.
+Aşağıda, ThreadX gelişmiş teknolojisinin öne çıkan özellikleri yer almaktadır.
 - Basit *picokernel* mimarisi
 - Otomatik ölçeklendirme (küçük ayak izi)
-- Belirleyici işleme
+- Belirlenmci işleme
 - Hızlı gerçek zamanlı performans
-- PreEmptive ve işbirlikçi zamanlaması
-- Esnek iş parçacığı önceliği desteği
+- Preemptive ve işbirliğine açık zamanlama
+- Esnek iş parçacığı öncelik desteği
 - Dinamik sistem nesnesi oluşturma
 - Sınırsız sayıda sistem nesnesi
 - İyileştirilmiş kesme işleme
-- Önalım-eşik&trade;
-- Öncelikli devralma
-- Olay zincirleme&trade;
-- Hızlı yazılım zamanlayıcılarını
+- Önmzeyde-eşik&trade;
+- Öncelik devralma
+- Olay zinciri&trade;
+- Hızlı yazılım süreçerleri
 - Çalışma zamanı bellek yönetimi
 - Çalışma zamanı performans izleme
-- Çalışma zamanı yığın Analizi
-- Yerleşik sistem izleme
-- Büyük işlemci desteği
-- Büyük geliştirme aracı desteği
+- Çalışma zamanı yığın analizi
+- Yerleşik sistem izlemesi
+- Geniş işlemci desteği
+- Geniş geliştirme aracı desteği
 - Tamamen endian nötr
 
-### <a name="not-a-black-box"></a>Siyah kutu değil
+### <a name="not-a-black-box"></a>Kara Kutu Değil
 
-ThreadX dağıtımları, tam C kaynak kodunu ve işlemciye özgü derleme dilini içerir. Bu, çok sayıda ticari kerels ile oluşan "kara kutu" sorunlarını ortadan kaldırır. ThreadX ile uygulama geliştiricileri, tam olarak çekirdeğin ne yaptığını görebilir; herhangi bir gizleyebilmektir!
+ThreadX'in çoğu dağıtımı, tam C kaynak kodunun yanı sıra işlemciye özgü derleme dilini içerir. Bu, birçok ticari çekirdekte oluşan "kara kutu" sorunlarını ortadan kaldırıyor. ThreadX ile uygulama geliştiricileri çekirdeğin tam olarak ne yaptığını görebilir; hiçbir şey olmaz!
 
-Kaynak kodu uygulamaya özgü değişikliklere de olanak tanır. Önerilmese de, kesinlikle gerekliyse çekirdeği değiştirme imkanına kesinlikle yarar vardır.
+Kaynak kod uygulamaya özgü değişikliklere de izin verir. Önerilmez, ancak kesinlikle gerekli ise çekirdeği değiştirme becerisine sahip olmak kesinlikle yararlıdır.
 
-Bu özellikler özellikle, kendi *Şirket içi çekirdekleri* ile çalışmaya alışkın olan geliştiricilere Comforting. Kaynak kodu ve çekirdeği değiştirme yeteneğinin olmasını bekler. ThreadX, bu tür geliştiriciler için en son çekirdedir.
+Bu özellikler özellikle kendi kendi çekirdekleriyle çalışmaya alışkın olan *geliştiricileri rahatlatıyor.* Kaynak koduna ve çekirdeği değiştirme özelliğine sahip olmasını beklerler. ThreadX, bu tür geliştiriciler için nihai çekirdektir.
 
-### <a name="the-rtos-standard"></a>RTOS standart
+### <a name="the-rtos-standard"></a>The RTOS Standard
 
-Çok yönlülük, yüksek performanslı *picokernel* mimarisi, gelişmiş teknoloji ve gösterilen taşınabilirlik nedeniyle, threadx bugün 2.000.000.000 ' den fazla cihazda dağıtılır. Bu, derin eklenmiş uygulamalar için ThreadX 'i RTOS standardını etkin hale getirir.
+Çok yönlülüğü, yüksek performanslı *picokernel* mimarisi, gelişmiş teknolojisi ve taşınabilirliği gösterdiğinden ThreadX bugün iki milyardan fazla cihaza dağıtılmıştır. Bu, ThreadX'i derinden eklenmiş uygulamalar için RTOS standardı yapar.
 
-## <a name="safety-certifications"></a>Güvenlik sertifikaları
+## <a name="safety-certifications"></a>Güvenlik Sertifikaları
 
 ### <a name="tv-certification"></a>TÜV Sertifikası
 
-ThreadX, SGS-TÜV Saar tarafından, IEC61508 ve ıEC-62304 ' e göre güvenlik açısından kritik sistemlerde kullanılmak üzere sertifikalandırilmiştir. Sertifika, "elektrik, elektronik ve programlanabilir elektronik güvenliği ile ilgili sistemlerin Işlevsel güvenliği" için Uluslararası Elektroteknik Komisyonu (ıEC) 61508 ve ıEC 62304 ' nin en yüksek güvenlik bütünlüğü düzeylerine yönelik güvenlik ile ilgili yazılımların geliştirilmesi için, ThreadX 'in kullanılabilir olduğunu onaylar. Almanya 'nun sgsgroup ve TÜV Saarland 'ın bir Joint girişim aracılığıyla oluşturulan SGS-TÜV Saar, dünya çapındaki güvenlikle ilgili sistemler için katıştırılmış yazılımları test etmek, denetlemek, doğrulamak ve sertifika almak için önde gelen acalacak, bağımsız şirket haline geldi. Endüstriyel güvenlik standardı IEC 61508 ve bundan türetilmiş tüm standartlar, 62304 IEC, elektronik ve programlanabilir elektronik güvenliği ile ilgili tıbbi cihazların, işlem denetim sistemlerinin, endüstriyel makinelerin ve demiryolu denetim sistemlerinin işlevsel güvenliğini güvence altına almak için kullanılır.
+ThreadX, IEC61508 ve IEC-62304'e göre, güvenlik açısından kritik sistemlerde kullanım için VELA-TÜV Saar tarafından onaylandı. Sertifikasyon, ThreadX'in "Elektrik, elektronik ve programlanabilir elektronik güvenlikle ilgili sistemlerin İşlevsel Güvenliği" için Uluslararası Elektroteknik Komisyonu (IEC) 61508 ve IEC 62304'te en yüksek güvenlik bütünlüğü düzeyleri için güvenlikle ilgili yazılımların geliştirilmesinde kullanılab olduğunu onaylar. Almanya'nınGROUPgroup ve TÜV Saarland'ın ortak girişimiyle oluşturulan VEPÜS-TÜV Saar, dünya çapında güvenlikle ilgili sistemler için ekli yazılımları test etme, denetleme, doğrulama ve onaylama konusunda yetkilendirilmiş, bağımsız lider şirket haline geldi. Endüstriyel güvenlik standardı IEC 61508 ve IEC 62304 dahil olmak üzere bundan türetilen tüm standartlar elektrik, elektronik ve programlanabilir elektronik güvenlikle ilgili tıbbi cihazlar, süreç denetim sistemleri, endüstriyel makineler ve demir yolu kontrol sistemlerinin işlevsel güvenliğini sağlamak için kullanılır.
 
-SGS-TÜV Saar, ISO 26262 standardına göre güvenlik açısından kritik bir oto dili sisteminde kullanılmak üzere sertifikalı ThreadX 'e sahiptir. Ayrıca, ThreadX, en yüksek ISO 26262 sertifikası düzeyini temsil eden, g/v güvenlik bütünlüğü düzeyi (asıl) D 'ye sertifikalı değildir.
+WINDOWS-TÜV Saar, ISO 26262 standardına göre güvenlik açısından kritik otomobil sistemlerinde kullanılacak ThreadX sertifikasına sahiptir. Ayrıca ThreadX, en yüksek ISO 26262 sertifika düzeyini temsil eden Otomotiv Güvenlik Bütünlüğü Düzeyi (VERIM) D sertifikasına da sahiptir.
 
-Ayrıca, SGS-TÜV Saar, güvenlik açısından kritik demiryolu uygulamalarında kullanılmak üzere sertifikalı threadx 'e sahiptir ve en fazla 50128 standart, en fazla ' a kadar.
+Buna ek olarak, SAFETY-TÜV Saar, güvenliği kritik demir yolu uygulamalarında kullanılacak ve SW-SIL 4'e kadar EN 50128 standardına uygun olacak şekilde threadX sertifikasına sahiptir.
 
 ![TÜV Sertifikası](./media/overview-threadx/partener-logo-sgs-tuv-saar-2.png)
 
-* IEC 61508, SIL 4 ' e kadar
+* SIL 4'e kadar IEC 61508
 
-* IEC 62304 en fazla SW güvenlik sınıfı C
+* SW güvenliği Sınıfı C'ye kadar IEC 62304
 
-* ISO 26262 ASIL D
+* ISO 26262İİSNA D
 
-* EN 50128 SW-SıL 4
-
-> [!NOTE]
-> *Tüm ThreadX sürümleri için TÜV veya test raporlarının, sertifikaların ve ilişkili belgelerin kullanılabilirliği hakkında daha fazla bilgi için lütfen bizimle iletişime geçin.*
-
-### <a name="misra-c-compliant"></a>MISRA C uyumlu
-
-MISRA C, C programlama dilini kullanan kritik sistemler için bir programlama yönergeleri kümesidir. Özgün MISRA C yönergeleri öncelikli olarak, ilk olarak bir oto ve uygulamaları hedeflenmiştir; Ancak, MISRA C artık tüm güvenlik açısından kritik uygulamalar için geçerli olduğu kadar büyük ölçüde tanınır. ThreadX, MISRA-C:2004 ve MISRA c:2012'nin tüm "zorunlu" ve "zorunlu" kuralları ile uyumludur. ThreadX, üç "Danışmanlık" kurallarıyla da uyumludur. Daha fazla ayrıntı için ***ThreadX_MISRA_Compliance.pdf*** belgesine bakın.
-
-### <a name="ul-certification"></a>UL sertifikası
-
-Bkz. ThreadX, UL 60730-1 Ek H, CSA E60730-1 Ek H, ıEC 60730-1 Ek H, UL 60335-1 ek R, ıEC 60335-1 ek R 1998 ve programlanabilir. Ek H 'de "yazılım kullanan denetimler" için gereksinimleri olan ıEC/UL 60730-1 ile birlikte ıEC 60335-1 standardı, ek R. ıEC 60730 ek H ve ıEC 60335-1 ek R içindeki "programlanabilir elektronik devreler" için gereksinimleri açıklar. Örneğin, yıkama makineleri, dishörler, kurutma, kurutıcılar, freezers ve ovens gibi gereçlerde kullanılan MCU donanım ve yazılımlarının güvenliğini ele.
-
-![UL sertifikası](./media/overview-threadx/partener-logo-c-ru-us-2.png)
-
-*UL/ıEC 60730, UL/ıEC 60335, UL 1998*
+* EN 50128 SW-SIL 4
 
 > [!NOTE]
-> *Hangi ThreadX sürümleri TÜV veya test raporlarının, sertifikaların ve ilişkili belgelerin kullanılabilirliği hakkında daha fazla bilgi için lütfen Microsoft 'a başvurun.*
+> *ThreadX'in hangi sürümünün TÜV tarafından onaylandı veya test raporları, sertifikalar ve ilişkili belgelerin kullanılabilirliği hakkında daha fazla bilgi için lütfen bizimle iletişime geçin.*
 
-### <a name="certification-pack"></a>Sertifika paketi
+### <a name="misra-c-compliant"></a>MISRA C Uyumlu
 
-ThreadX sertifika paketi, &trade; threadx tabanlı ürünü, güvenlik açısından kritik meydan, tıp ve endüstriyel sistemler için gereken en yüksek güvenilirlik ve önem düzeyi düzeylerine göre onaylamak veya başarıyla göndermek için gereken tüm threadx kanıtını sağlayan, sektöre özgü, tek başına 100 bir pakettir. Desteklenen sertifika sertifikaları şunlardır-178B, ED-12B, DO-278, FDA510 (k), IEC62304, ıEC-60601, ISO-14971, UL-1998, ıEC-61508, CENELEC EN50128, BS50128 ve 49CFR236. Sertifika paketi hakkında daha fazla bilgi için lütfen Microsoft 'a başvurun.
+MISRA C, C programlama dilini kullanan kritik sistemler için bir dizi programlama kılavuzudur. Özgün MISRA C yönergeleri öncelikli olarak otomotiv uygulamalarına yönelikti; ancak, MISRA C artık güvenlik açısından kritik herhangi bir uygulama için geçerli olduğu yaygın olarak kabul ediliyor. ThreadX, MISRA-C:2004 ve MISRA C:2012'nin tüm "gerekli" ve "zorunlu" kurallarıyla uyumludur. ThreadX ayrıca üç "danışmanlık" kuralıyla da uyumludur. Diğer ayrıntılar için ***ThreadX_MISRA_Compliance.pdf*** belgeye bakın.
 
-## <a name="embedded-applications"></a>Katıştırılmış uygulamalar
+### <a name="ul-certification"></a>UL Sertifikası
 
-Katıştırılmış uygulamalar, kablosuz iletişim cihazları, Otomobil motorları, lazer yazıcılar, tıbbi cihazlar vb. gibi ürünlerde bulunan mikro işlemcilerde yürütülür. Katıştırılmış uygulamaların başka bir şekilde ayrımı, yazılım ve donanımının özel bir amaca sahip olması olabilir.
+ThreadX, UL 60730-1 Ek H, CSA E60730-1 Ek H, IEC 60730-1 Ek H, UL 60335-1 Ek R, IEC 60335-1 Ek R ve programlanabilir bileşenlerde yazılım için UL 1998 güvenlik standartları ile uyumluluk için UL tarafından onaylandı. IEC/UL 60730-1 ile birlikte, Ek H'de "Yazılım Kullanan Denetimler" için gereksinimlere sahip olan IEC 60335-1 standardı, Ek R'de "Programlanabilir Elektronik Devreler" için gereksinimleri açıklar. IEC 60730 Ek H ve IEC 60335-1 Ek R; makine, makine, alet, bilgisayar gibi gereçlerde kullanılan MCU donanım ve yazılım güvenliğini ele alır.
 
-### <a name="real-time-software"></a>Gerçek zamanlı yazılım
+![UL Sertifikası](./media/overview-threadx/partener-logo-c-ru-us-2.png)
 
-Uygulama yazılımına zaman kısıtlamaları eklendiğinde, *gerçek* zamanlı yazılım olarak adlandırılır. Gömülü uygulamalar, dış olaylarla kendi kendine ait etkileşimlerinden dolayı neredeyse her zaman gerçek zamanlı olarak gerçekleştirilir.
+*UL/IEC 60730, UL/IEC 60335, UL 1998*
+
+> [!NOTE]
+> *ThreadX'in hangi sürümünün TÜV tarafından onaylandı veya test raporları, sertifikalar ve ilişkili belgelerin kullanılabilirliği hakkında daha fazla bilgi için lütfen Microsoft'a başvurun.*
+
+### <a name="certification-pack"></a>Sertifika Paketi
+
+ThreadX Sertifika Paketi, ThreadX tabanlı ürünü güvenlik açısından kritik Havacılık, Tıbbi ve Endüstriyel sistemler için gereken en yüksek güvenilirlik ve kritiklik düzeylerine sertifika veya başarıyla göndermek için gereken tüm ThreadX kanıtlarını sağlayan % 100 eksiksiz, anahtar teslim, sektöre özgü, tek başına bir &trade; pakettir. Desteklenen sertifikalar DO-178B, ED-12B, DO-278,CF510(k), IEC62304, IEC-60601, ISO-14971, UL-1998, IEC-61508, CENELEC EN50128, BS50128 ve 49CFR236'dır. Sertifikasyon Paketi hakkında daha fazla bilgi için lütfen Microsoft'a ulaşın.
+
+## <a name="embedded-applications"></a>Katıştırılmış Uygulamalar
+
+Katıştırılmış uygulamalar kablosuz iletişim cihazları, otomobil motorları, lazer yazıcılar, tıbbi cihazlar vb. ürünlerin içinde gömülü mikro işlemciler üzerinde yürütülür. Ekli uygulamaların bir diğer farkı da yazılım ve donanımlarının ayrılmış bir amacının yermasıdır.
+
+### <a name="real-time-software"></a>Gerçek Zamanlı Yazılım
+
+Uygulama yazılımına zaman kısıtlamaları uygulanıyorsa, buna gerçek zamanlı *yazılım denir.* Katıştırılmış uygulamalar, dış olaylarla doğal etkileşimi nedeniyle neredeyse her zaman gerçek zamanlıdır.
 
 ### <a name="multitasking"></a>Çok görevli
 
-Belirtildiği gibi, katıştırılmış uygulamaların adanmış bir amacı vardır. Bu amacı karşılamak için, yazılımın çeşitli *Görevler* gerçekleştirmesi gerekir. Görev, uygulamanın belirli bir vergileri yürüten yarı bir bağımsız bölümüdür. Ayrıca, bazı görevlerin diğerlerinden daha önemli olması da mümkündür. Katıştırılmış bir uygulamadaki önemli zorluklardaki bir tane, işlemcinin çeşitli uygulama görevleri arasında ayrılması. Rekabet görevleri arasında bu işleme ayırma, ThreadX 'in birincil amacıdır.
+Daha önce belirtildiği gibi, katıştırılmış uygulamaların ayrılmış bir amacı vardır. Bu amacı yerine getirmek için yazılımın çeşitli görevler gerçekleştirmesi *gerekir.* Görev, uygulamanın belirli bir görevi yerine taşıyan yarı bağımsız bir kısmıdır. Ayrıca bazı görevlerin diğer görevlerden daha önemli olduğu da bir durum vardır. Katıştırılmış uygulamanın başlıca güçlüklerinden biri, çeşitli uygulama görevleri arasında işlemcinin ayırmasıdır. Rakip görevler arasında bu işleme ayırması, ThreadX'in birincil amacıdır.
 
-### <a name="tasks-vs-threads"></a>Görevler ve Iş parçacıkları
+### <a name="tasks-vs-threads"></a>Görevler ve İş Parçacıkları karşılaştırması
 
-Görevlerle ilgili başka bir ayrım, *görev* teriminin çok çeşitli yollarla kullanılmalarıdır. Bazen ayrı olarak yüklenebilir bir program anlamına gelir. Diğer örneklerde, bir iç program segmentine başvurabilir. Bu nedenle, çağdaş işletim sistemlerinde görev kullanımını daha fazla veya daha az olan iki terim vardır: *işlem* ve *iş parçacığı*. *İşlem* , kendi adres alanına sahip tamamen bağımsız bir programdır, *iş parçacığı* bir işlem içinde yürüten yarı bağımsız bir program segmentleridir. İş parçacıkları aynı işlem adres alanını paylaşır. İş parçacığı yönetimiyle ilişkili ek yük düşüktür.
+Görevler arasındaki bir diğer fark da görev *teriminin* çeşitli yollarla kullanılmıştır. Bazen ayrı olarak yüklenebilir bir program anlamına gelir. Diğer örneklerde, bir iç program segmentini ifade ediyor olabilir. Bu nedenle, işletim sistemlerinde görev kullanımının yerini daha fazla veya daha az alan iki terim vardır: *işlem ve iş* *parçacığı.* Bir *işlem,* kendi adres alanı olan tamamen bağımsız bir programdır, *iş* parçacığı ise bir işlem içinde yürütülen yarı bağımsız bir program kesimidir. İş parçacıkları aynı işlem adres alanı paylaşır. İş parçacığı yönetimiyle ilişkili ek yük çok azdır.
 
-Çoğu gömülü uygulama, tam bir işlem odaklı işletim sistemiyle ilişkili ek yükü (hem bellek hem de performans) alamaz. Ayrıca, daha küçük mikro işlemciler, doğru bir işlem odaklı işletim sistemini desteklemeye yönelik donanım mimarisine sahip değildir. Bu nedenlerden dolayı, ThreadX gerçek zamanlı gömülü uygulamaların çoğu için son derece etkili ve pratik olan bir iş parçacığı modeli uygular.
+Çoğu ekli uygulama, tam performanslı işlem odaklı bir işletim sistemiyle ilişkili ek yükü (hem bellek hem de performans) karşılayamaz. Ayrıca, küçük mikro işlemciler gerçek bir işlem odaklı işletim sistemini destekleyecek donanım mimarisine sahip değildir. Bu nedenlerle ThreadX, gerçek zamanlı katıştırılmış uygulamaların çoğu için son derece verimli ve pratik olan bir iş parçacığı modeli uygulamaya almaktadır.
 
-Karışıklık olmaması için ThreadX, *görevini* kullanmaz. Bunun yerine, daha açıklayıcı ve çağdaş ad *iş parçacığı* kullanılır.
+Karışıklığı önlemek için ThreadX görevi terimini *kullanmaz.* Bunun yerine, daha açıklayıcı ve açıklayıcı ad *iş parçacığı* kullanılır.
 
-## <a name="threadx-benefits"></a>ThreadX avantajları
+## <a name="threadx-benefits"></a>ThreadX Avantajları
 
-ThreadX kullanmak, gömülü uygulamalara birçok avantaj sağlar. Tabii ki, birincil avantaj, gömülü uygulama iş parçacıklarının işleme zamanına nasıl ayrıldığı üzerine oturacaktır.
+ThreadX'in kullanımı, katıştırılmış uygulamalara birçok avantaj sağlar. Elbette birincil avantajı, katıştırılmış uygulama iş parçacıklarının işleme süresine nasıl ayrılmış olduğuyla ilgilidir.
 
-### <a name="improved-responsiveness"></a>İyileştirilmiş yanıt hızı
+### <a name="improved-responsiveness"></a>Geliştirilmiş Yanıt Hızı
 
-ThreadX gibi gerçek zamanlı çekirdekler öncesinde, genellikle C *Main* işlevinin içinden bir basit denetim döngüsüyle, en çok eklenmiş uygulamalar işlem süresi ayırmıştır. Bu yaklaşım, çok küçük veya basit uygulamalarda kullanılmaya devam etmektedir. Öte yandan, büyük veya karmaşık uygulamalarda, herhangi bir olaya yanıt süresi, denetim döngüsü boyunca bir geçiş işleminin en kötü durum işleme süresinin bir işlevi olduğundan pratik değildir. 
+ThreadX gibi gerçek zamanlı çekirdeklerden önce, çoğu katıştırılmış uygulama işlem süresine genellikle C ana işlevinden basit bir denetim *döngüsüyle ayrılmıştır.* Bu yaklaşım hala çok küçük veya basit uygulamalarda kullanılır. Ancak büyük veya karmaşık uygulamalarda, herhangi bir etkinliğe yanıt süresi denetim döngüsünde bir geçişin en kötü durum işleme süresine sahip bir işlev olduğundan pratik değildir. 
 
-Önemli hale getirmek, denetim döngüsünde değişiklik yapıldığında uygulamanın zamanlama özellikleri değişir. Bu, uygulamayı doğal olarak kararsız hale getirir ve üzerinde bakım ve iyileştirilmesine olanak sağlar.
+Daha da kötüsü, denetim döngüsünde değişiklikler yapılan her durumda uygulamanın zamanlama özellikleri değişir. Bu, uygulamanın doğal olarak kararsız ve bakımının ve geliştirmesini zorlaştırarak.
 
-ThreadX önemli dış olaylara hızlı ve belirleyici yanıt süreleri sağlar. ThreadX bunu, daha yüksek öncelikli bir iş parçacığının yürütülen düşük öncelikli iş parçacığını sağlamasına izin veren preemptive, öncelik tabanlı zamanlama algoritması aracılığıyla gerçekleştirir. Sonuç olarak, en kötü durum yanıt süresi bir bağlam anahtarı gerçekleştirmek için gereken zamana yaklaşır. Bu yalnızca belirleyici değildir, ancak son derece hızlıdır.
+ThreadX, önemli dış olaylara hızlı ve belirleyici yanıt süreleri sağlar. ThreadX bunu, yüksek öncelikli bir iş parçacığının daha düşük öncelikli bir iş parçacığını yürütmesini önlayan, öncelik tabanlı zamanlama algoritması aracılığıyla gerçekleştirmektedir. Sonuç olarak, en kötü durum yanıt süresi bağlam anahtarını gerçekleştirmek için gereken süreye yaklaşıyor. Bu yalnızca belirlenmci değildir, aynı zamanda son derece hızlıdır.
 
 ### <a name="software-maintenance"></a>Yazılım Bakımı
 
-ThreadX çekirdeği, uygulama geliştiricilerinin uygulamanın diğer alanlarının zamanlamasını değiştirme konusunda endişelenmenize gerek kalmadan uygulama iş parçacıklarının belirli gereksinimlerine odaklanmasını sağlar. Bu özellik ayrıca ThreadX kullanan bir uygulamayı onarmayı veya geliştirmeyi çok daha kolay hale getiriyor.
+ThreadX çekirdeği, uygulama geliştiricilerinin uygulamanın diğer alanlarının zamanlamasını değiştirmek zorunda kalmadan uygulama iş parçacıklarının belirli gereksinimlerine odaklanmalarını sağlar. Bu özellik, ThreadX kullanan bir uygulamayı onarmayı veya geliştirmeyi de çok daha kolay hale getirir.
 
-### <a name="increased-throughput"></a>Artan verimlilik
+### <a name="increased-throughput"></a>Artan Aktarım Hızı
 
-Denetim döngüsü yanıt süresi sorununa yönelik olası bir iş, daha fazla yoklama eklemektir. Bu işlem, yanıt verme süresini iyileştirir, ancak yine de sabit bir en kötü durum yanıt süresi garantisi vermez ve uygulamanın gelecekteki bir şekilde değiştirilmesini artırmaya hiçbir şey yapmaz. Ayrıca, işlemci artık fazladan yoklama nedeniyle daha gereksiz işlemler gerçekleştiriyor. Bu gereksiz işlemenin hepsi sistemin genel verimini azaltır.
+Denetim döngüsü yanıt süresi sorununa olası bir çözüm, daha fazla yoklama eklemektir. Bu, yanıt hızını artırsa da sabit bir en kötü durum yanıt süresi garanti etmemektedir ve uygulamanın gelecekteki değişikliklerini geliştirmek için hiçbir şey yapmaz. Ayrıca, fazladan yoklama nedeniyle işlemci artık daha da gereksiz işleme gerçekleştirmektedir. Tüm bu gereksiz işleme, sistemin genel aktarım hızını azaltır.
 
-Ek yükün ilgi çekici bir noktası, birçok geliştiricinin ThreadX gibi çok iş parçacıklı ortamların yük yükünü artırdığı ve toplam sistem verimlilik üzerinde olumsuz bir etkiye sahip olduğunu varsaymaktadır. Ancak bazı durumlarda, çoklu iş parçacığı denetim döngüsü ortamlarında oluşan tüm gereksiz yoklamayı ortadan kaldırarak yükü azaltır. Çok iş parçacıklı çekirdekler ile ilişkili ek yük, genellikle bağlam değiştirme için gereken sürenin bir işlevidir. Bağlam anahtarı süresi yoklama sürecinden küçükse ThreadX, daha az ek yük ve daha fazla verimlilik sağlayan bir çözüm sağlar. Bu, ThreadX ' i herhangi bir karmaşıklık veya boyut gerektiren uygulamalar için belirgin bir seçenek haline getirir.
+Ek yükle ilgili ilginç bir nokta, birçok geliştiricinin ThreadX gibi çok iş parçacıklı ortamların ek yükü artırarak toplam sistem aktarım hızı üzerinde olumsuz bir etkisi olduğunu varsaymadır. Ancak bazı durumlarda çoklu iş parçacığı kullanımı, denetim döngüsü ortamlarında oluşan tüm gereksiz yoklamaları ortadan kaldırarak ek yükü azaltır. Çok iş parçacıklı çekirdeklerle ilişkili ek yük genellikle bağlam değiştirme için gereken sürenin bir işlevidir. Bağlam değiştirme süresi yoklama işleminin altında ise ThreadX, daha az ek yük ve daha fazla aktarım hızı potansiyeline sahip bir çözüm sağlar. Bu, ThreadX'i herhangi bir derecede karmaşıklık veya boyuta sahip uygulamalar için belirgin bir seçenek yapar.
 
-### <a name="processor-isolation"></a>İşlemci yalıtımı
+### <a name="processor-isolation"></a>İşlemci Yalıtımı
 
-ThreadX, uygulama ile temel alınan işlemci arasında sağlam bir işlemcinin bağımsız arabirimi sağlar. Bu, geliştiricilerin önemli miktarda zaman öğrenme donanım ayrıntıları harcamasını yerine uygulamaya odaklanmasını sağlar.
+ThreadX, uygulama ve temel işlemci arasında güçlü ve işlemciden bağımsız bir arabirim sağlar. Bu, geliştiricilerin önemli miktarda zaman harcayarak donanım ayrıntılarını öğrenmek yerine uygulamaya odaklanmalarını sağlar.
 
-### <a name="dividing-the-application"></a>Uygulamayı bölme
+### <a name="dividing-the-application"></a>Uygulamayı Bölme
 
-Denetim döngüsü tabanlı uygulamalarda, her geliştiricinin tüm uygulamanın çalışma zamanı davranışı ve gereksinimleri hakkında bir intimate bilgisine sahip olması gerekir. Bunun nedeni, işlemci ayırma mantığının tüm uygulama genelinde yayılmasının nedeni. Bir uygulamanın boyutu veya karmaşıklığı arttıkça, tüm geliştiricilerin uygulamanın tamamına yönelik kesin işleme gereksinimlerini anımsamasını imkansız hale gelir.
+Denetim döngüsü tabanlı uygulamalarda, her geliştiricinin tüm uygulamanın çalışma zamanı davranışı ve gereksinimleri hakkında bilgi sahibi olması gerekir. Bunun nedeni, işlemci ayırma mantığının uygulamanın tamamına dağılmış durumdan kaynaklandı. Bir uygulamanın boyutu veya karmaşıklığı arttıkça, tüm geliştiricilerin uygulamanın tamamının hassas işleme gereksinimlerini hatırlaması imkansız hale gelir.
 
-ThreadX, her geliştiriciyi işlemci ayırması ile ilişkili olan worrıes 'nin serbest bırakır ve ekli uygulamanın belirli parçaları üzerinde yoğunlaşmasını sağlar. Ayrıca, ThreadX, uygulamayı açıkça tanımlanmış iş parçacığına bölünmeye zorlar. Tek başına, uygulamanın iş parçacıkları için bu bölümü geliştirmeyi çok daha kolay hale getirir.
+ThreadX, her geliştiriciyi işlemci ayırmayla ilgili endişelerden serbest bırakarak ekli uygulamanın belirli bir parçasına odaklanmalarına olanak sağlar. Ayrıca ThreadX, uygulamayı net bir şekilde tanımlanmış iş parçacıklarına bölünmeye de neden olur. Tek başına, uygulamanın iş parçacıklarına bölünmesi geliştirmeyi çok daha basit hale getirir.
 
-### <a name="ease-of-use"></a>Kullanım kolaylığı
+### <a name="ease-of-use"></a>Kullanım Kolaylığı
 
-ThreadX, uygulama geliştiricisi göz önünde bulundurularak tasarlanmıştır. ThreadX mimarisi ve hizmet çağrısı arabirimi kolayca anlaşılması için tasarlanmıştır. Sonuç olarak, ThreadX geliştiricileri gelişmiş özelliklerini hızlı bir şekilde kullanabilir.
+ThreadX, uygulama geliştiricisi tarafından tasarlanmıştır. ThreadX mimarisi ve hizmet çağrısı arabirimi, kolayca anlaşılacak şekilde tasarlanmıştır. Sonuç olarak, ThreadX geliştiricileri gelişmiş özelliklerini hızlı bir şekilde kullanabilir.
 
-### <a name="improve-time-to-market"></a>Pazarlamaya ulaşma süresini geliştirme
+### <a name="improve-time-to-market"></a>Pazara satış sürelerini geliştirme
 
-ThreadX 'in tüm avantajları yazılım geliştirme sürecini hızlandırır. ThreadX, çoğu işlemci sorununu ve en sık karşılaşılan güvenlik sertifikalarını ve bu çabayı geliştirme zamanlamalarından kaldırır. Tüm bu, pazara daha hızlı bir zaman sağlar!
+ThreadX'in tüm avantajları yazılım geliştirme sürecini hızlandırır. ThreadX, çoğu işlemci sorunuyla ve en yaygın güvenlik sertifikalarını ele alır, böylece bu çabayı geliştirme zaman çizelgesinden çıkarır. Bunların hepsi pazara daha hızlı bir şekilde devam ediyor!
 
-### <a name="protecting-the-software-investment"></a>Yazılım yatırımınızı koruma
+### <a name="protecting-the-software-investment"></a>Yazılım Yatırımlarını Koruma
 
-Mimarinin mimarisi nedeniyle, ThreadX yeni işlemci ve/veya geliştirme aracı ortamlarına kolayca gönderilir. Bu, ThreadX 'in uygulamaları temeldeki işlemcilerin ayrıntılarından yalıtılmış hale getiren olgusuna bağlı olarak, ThreadX uygulamalarının yüksek oranda taşınabilir olmasını sağlar. Sonuç olarak, uygulamanın geçiş yolu garanti edilir ve orijinal geliştirme yatırımı korunur.
+Mimarisi nedeniyle ThreadX, yeni işlemci ve/veya geliştirme aracı ortamlarına kolayca taşınabilir. Bu, ThreadX'in temel işlemcilerin ayrıntılarından uygulamaları dayanıklı bir şekilde bir parçası olarak, ThreadX uygulamalarını yüksek oranda taşınabilir yapar. Sonuç olarak, uygulamanın geçiş yolu garanti olur ve özgün geliştirme yatırımı korunur.

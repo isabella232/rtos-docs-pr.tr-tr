@@ -1,137 +1,137 @@
 ---
-title: Bölüm 3-USBX konak yığınının Işlevsel bileşenleri
-description: Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX Embedded USB konak yığınının açıklaması yer almaktadır.
+title: Bölüm 3 - USBX Konak Yığınının İşlevsel Bileşenleri
+description: Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX ekli USB konak yığınının açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 17b8d884dd2c71d60e91f5fcec40c360060f4fe8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a3cbbb2e26d66d3db26144a47a1b6cbb11387c7b5b2ba5e19d35df026e5e3598
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828367"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790934"
 ---
-# <a name="chapter-3---functional-components-of-usbx-host-stack"></a>Bölüm 3-USBX konak yığınının Işlevsel bileşenleri
+# <a name="chapter-3---functional-components-of-usbx-host-stack"></a>Bölüm 3 - USBX Konak Yığınının İşlevsel Bileşenleri
 
-Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX Embedded USB konak yığınının açıklaması yer almaktadır.
+Bu bölümde, işlevsel bir perspektiften yüksek performanslı USBX ekli USB konak yığınının açıklaması yer almaktadır.
 
-## <a name="execution-overview"></a>Yürütmeye genel bakış
+## <a name="execution-overview"></a>Yürütmeye Genel Bakış
 
 USBX çeşitli bileşenlerden oluşur:
 
 - Başlatma
 - Uygulama arabirimi çağrıları
-- Kök hub
-- Hub sınıfı
-- Konak sınıfları
-- USB ana bilgisayar yığını
-- Ana bilgisayar denetleyicisi
+- Kök Hub
+- Hub Sınıfı
+- Konak Sınıfları
+- USB Konak Yığını
+- Konak denetleyicisi
 
-Aşağıdaki diyagramda, USBX konak yığını gösterilmektedir.
+Aşağıdaki diyagramda USBX konak yığınını göstermektedir.
 
-![USBX konak yığını](./media/usbx-host-stack/usbx-host-stack.png)
+![USBX Konak Yığını](./media/usbx-host-stack/usbx-host-stack.png)
 
 ### <a name="initialization"></a>Başlatma
 
-USBX ' i etkinleştirmek için ***ux_system_initialize*** işlevi çağrılmalıdır. Bu işlev, USBX bellek kaynaklarını başlatır.
+USBX'i etkinleştirmek için işlev ***ux_system_initialize*** çağrılmalı. Bu işlev USBX'in bellek kaynaklarını başlatıyor.
 
-USBX konak tesislerini etkinleştirmek için ***ux_host_stack_initialize*** işlevi çağrılmalıdır. Bu işlev, Işparçacığıx iş parçacıkları, zaman uyumu sağlayıcılar ve semaforlar gibi USBX konak yığını tarafından kullanılan tüm kaynakları başlatacak.
+USBX konak olanaklarını etkinleştirmek için ***işlev*** ux_host_stack_initialize çağrılmalı. Bu işlev, ThreadX iş parçacıkları, mutex'ler ve semaforlar gibi USBX konak yığını tarafından kullanılan tüm kaynakları başlatacak.
 
-En az bir USB ana bilgisayar denetleyicisi ve bir veya daha fazla USB sınıfı etkinleştirmek için uygulama başlatması en iyisidir. Sınıflar yığına kaydedildiğinde ve konak denetleyicisi (ler) başlatma işlevi veri yolu etkin ve cihaz bulma başlayabilir. Ana bilgisayar denetleyicisinin kök hub 'ı eklenmiş bir cihaz algılarsa, USB topolojisi ücretlendirilmesi halinde USB numaralandırma iş parçacığı uyanma ve cihaz (ler) i numaralandırmaya devam edecektir.
+En az bir USB konak denetleyicisi ve bir veya daha fazla USB sınıflarını etkinleştirmek uygulama başlatmaya bağlı olur. Sınıflar yığına kaydedilenin ve konak denetleyicilerini başlatma işlevi çağrıldığı zaman veri sistemi etkindir ve cihaz bulma başlatabilirsiniz. Konak denetleyicisinin kök hub'ı bağlı bir cihaz algılarsa, USB topolojisi sorumlu USB numaralama iş parçacığı uyandırıp cihaz numaralama işlemine devam eder.
 
-Kök hub ve aşağı akış hub 'larının doğası gereği, ana bilgisayar denetleyicisi başlatma işlevi döndürüldüğünde bağlı olan tüm USB cihazlarının tamamen yapılandırılamamasından kaynaklanabilir. Özellikle kök hub ve USB cihazları arasında bir veya daha fazla hub varsa, tüm USB cihazlarının numaralandırılması birkaç saniye sürebilir.
+Kök hub'ın ve aşağı akış hub'larının yapısı nedeniyle, konak denetleyicisi başlatma işlevi döndür olduğunda tüm bağlı USB cihazlarının tamamen yapılandırılmamış olması mümkündür. Özellikle kök hub ile USB cihazları arasında bir veya daha fazla hub varsa, tüm USB cihazlarının numaralarını almak birkaç saniye sürebilir.
 
-### <a name="application-interface-calls"></a>Uygulama arabirimi çağrıları
+### <a name="application-interface-calls"></a>Uygulama Arabirimi Çağrıları
 
-USBX içinde iki API düzeyi vardır.
+USBX'te iki API düzeyi vardır.
 
-- USB ana bilgisayar yığını API 'Leri
-- USB ana bilgisayar sınıfı API 'Leri
+- USB Konak Yığını API'leri
+- USB Konak Sınıfı API'leri
 
-Normalde, bir USBX uygulamasının USB ana bilgisayar yığını API işlevlerinden herhangi birini çağırması gerekmez. Çoğu uygulama yalnızca USB sınıfı API işlevlerine erişir.
+Normalde, bir USBX uygulamasının USB konak yığını API'si işlevlerden herhangi birini çağıran bir şey olması gerekir. Çoğu uygulama yalnızca USB Sınıfı API işlevlerine erişecek.
 
-### <a name="usb-host-stack-apis"></a>USB ana bilgisayar yığını API 'Leri
+### <a name="usb-host-stack-apis"></a>USB Konak Yığını API'leri
 
-Ana bilgisayar yığını API 'SI işlevleri, USBX bileşenlerinin (konak sınıfları ve ana bilgisayar denetleyicileri), cihazların yapılandırmasının ve kullanılabilir cihaz uç noktaları için aktarım isteklerinin işlenmesinden sorumludur.
+Konak yığını API'si işlevleri USBX bileşenlerinin (konak sınıfları ve konak denetleyicileri), cihazların yapılandırmasını ve kullanılabilir cihaz uç noktaları için aktarım isteklerinin kaydından sorumludur.
 
-### <a name="usb-host-class-api"></a>USB ana bilgisayar sınıfı API 'SI
+### <a name="usb-host-class-api"></a>USB Konak Sınıfı API'si
 
-Sınıf API 'Leri her USB sınıfına çok özeldir. USB sınıflarının ortak API işlevlerinin çoğu, bir cihazı açma/kapatma ve bir cihazdan okuma ve bir cihaza yazma gibi hizmetler sağlar.
+Sınıf API'leri her USB sınıfına çok özeldir. USB sınıfları için yaygın API işlevlerinin çoğu, bir cihazı açma/kapatma ve cihazdan okuma ve yazma gibi hizmetler sağlar.
 
-### <a name="root-hub"></a>Kök hub
+### <a name="root-hub"></a>Kök Hub
 
-Her konak denetleyicisi örneğinde bir veya daha fazla USB kök hub vardır. Kök hub sayısı denetleyicinin doğası gereği belirlenir ya da denetleyiciden belirli Yazmaçları okuyarak alınabilir.
+Her konak denetleyicisi örneğinin bir veya daha fazla USB kök hub'ı vardır. Kök hub'ların sayısı denetleyicinin yapısına göre belirlenir veya denetleyiciden belirli yazmaylar okunarak alınabilirsiniz.
 
-### <a name="hub-class"></a>Hub sınıfı
+### <a name="hub-class"></a>Hub Sınıfı
 
-Hub sınıfı, USB hub 'larını çalıştırırken ücretsizdir. USB hub 'ı tek başına bir hub veya klavye ya da izleyici gibi bileşik bir cihazın parçası olabilir. Hub, kendi gücünü veya veri yolundan güç olabilir. Veri yolu ile desteklenen hub 'lar en fazla dört aşağı akış bağlantı noktasına sahiptir ve yalnızca, 100 ' den az güç kullanan, yalnızca kendi güç destekli veya veri yolundan destekli cihazların bağlanmasına izin verebilir. Hub 'lar basamaklı olabilir. Beş adede kadar hub birbirine bağlanabilir.
+Hub sınıfı, USB hub'larını kullanmadan sorumlu. USB hub'ı tek başına bir hub veya klavye ya da monitör gibi bileşik bir cihazın parçası olarak olabilir. Merkez kendi kendine veya veriyle güçlendirilmiş olabilir. Veri yoluyla desteklenen hub'lar en fazla dört aşağı akış bağlantı noktası içerir ve yalnızca 100 mA'dan az güç kullanan otomatik olarak çalışan veya veri yoluyla desteklenen cihazların bağlantılarına izin verir. Hub'lar basamaklı olarak kullanılabilir. En fazla beş merkez birbirine bağlanabilir.
 
-### <a name="usb-host-stack"></a>USB ana bilgisayar yığını
+### <a name="usb-host-stack"></a>USB Konak Yığını
 
-USB ana bilgisayar yığını, USBX 'in Merkez parçasıdır. Üç ana işleve sahiptir.
+USB ana bilgisayar yığını, USBX'in orta parçasıdır. Üç ana işlevi vardır.
 
-- USB 'nin topolojisini yönetin.
-- Bir USB cihazını bir veya daha fazla sınıfa bağlayın.
-- Cihaz tanımlayıcısı ve USB aktarımları gerçekleştirmek için sınıflara bir API sağlayın.
+- USB'nin topolojilerini yönetin.
+- USB cihazını bir veya daha fazla sınıfa bağlayın.
+- Cihaz tanımlayıcısı tanımlayıcısını ve USB aktarımlarını gerçekleştirmek için sınıflara bir API sağlama.
 
 ### <a name="topology-manager"></a>Topoloji Yöneticisi
 
-USB yığını topolojisi iş parçacığı, yeni bir cihaz bağlandığında veya bir cihazın bağlantısı kesildiğinde başlatılabilmesi uyandırılır. Kök hub veya normal Hub cihaz bağlantılarını kabul edebilir. Bir cihaz USB 'ye bağlandıktan sonra, topoloji Yöneticisi cihaz tanımlayıcısını alır. Bu tanımlayıcı, bu cihaz için kullanılabilir olası yapılandırmaların sayısını içerir. Çoğu cihazda yalnızca bir yapılandırma vardır. Bazı cihazlar, bağlandığı bağlantı noktasında kullanılabilir olan güce göre farklı şekilde çalışabilir. Bu durumda, cihazın kullanılabilir güce göre seçilebilirler birden fazla yapılandırması olacaktır. Cihaz topoloji Yöneticisi tarafından yapılandırıldığında, daha sonra yapılandırma tanımlayıcısında belirtilen güç miktarını çizmeye izin verilir.
+USB yığın topolojisi iş parçacığı, yeni bir cihaz bağlandığında veya bir cihazın bağlantısı kesildiğinde uyandırıldı. Kök hub veya normal hub cihaz bağlantılarını kabul eder. Bir cihaz USB'ye bağlandıktan sonra topoloji yöneticisi cihaz tanımlayıcısını alır. Bu tanımlayıcı, bu cihaz için kullanılabilen olası yapılandırma sayısını içerir. Çoğu cihaz yalnızca bir yapılandırmaya sahip olur. Bazı cihazlar, bağlı olduğu bağlantı noktası üzerinde bulunan kullanılabilir güçle farklı şekilde çalışabilirsiniz. Bu durumda, cihaz kullanılabilir güç bağlı olarak seçilecek birden çok yapılandırmaya sahip olur. Cihaz topoloji yöneticisi tarafından yapılandırıldığında, yapılandırma tanımlayıcısında belirtilen güç miktarını çizmesine izin verilir.
 
-## <a name="usb-class-binding"></a>USB sınıfı bağlama
+## <a name="usb-class-binding"></a>USB Sınıfı Bağlama
 
-Cihaz yapılandırıldığında, topoloji Yöneticisi sınıf yöneticisinin cihaz bulma işlemini cihaz arabirimi tanımlayıcılarına bakarak devam etmesine izin verir. Bir cihazda bir veya daha fazla arabirim tanımlayıcısı olabilir.
+Cihaz yapılandırıldığında topoloji yöneticisi, cihaz arabirimi tanımlayıcılarına bakarak sınıf yöneticisinin cihaz keşfine devamsına izin verir. Bir cihazda bir veya daha fazla arabirim tanımlayıcısı olabilir.
 
-Arabirim bir cihazdaki işlevi temsil eder. Örneğin, bir USB konuşmacının, biri ses akışı, biri ses denetimi için ve diğeri de çeşitli konuşmacı düğmelerini yönetmek için üç arabirimi vardır.
+Arabirim, bir cihaz içinde bir işlevi temsil eder. Örneğin USB konuşmacının biri ses akışı, biri ses denetimi ve biri de çeşitli konuşmacı düğmelerini yönetmek için olmak üzere üç arabirimi vardır.
 
-Sınıf Yöneticisi, cihaz arabirimini bir veya daha fazla sınıfa katmak için iki mekanizma içerir. Arabirim tanımlayıcısında bulunan bir PID/VıD (ürün KIMLIĞI ve satıcı KIMLIĞI) bileşimini ya da sınıf/alt sınıf/protokol birleşimini kullanabilir.
+Sınıf yöneticisi, cihaz arabirimlerini bir veya daha fazla sınıfa katacak iki mekanizmaya sahiptir. Arabirim tanımlayıcısında bulunan piD/VID (ürün kimliği ve satıcı kimliği) birleşimini veya Sınıf/Alt Sınıf/Protokol birleşimini kullanabilir.
 
-PID/VıD birleşimi, genel bir sınıf tarafından yönlendirilmeyen arabirimler için geçerlidir. Sınıf/alt sınıf/protokol birleşimi, bir yazıcı, hub, depolama, ses veya HID gibi bir USB-IF sertifikalı sınıfa ait arabirimler tarafından kullanılır.
+PID/VID birleşimi, genel bir sınıf tarafından yönlendirilene arabirimler için geçerlidir. Sınıf/Alt Sınıf/Protokol birleşimi yazıcı, hub, depolama, ses veya GIZLI GIBI USB-IF sertifikalı bir sınıfa ait arabirimler tarafından kullanılır.
 
-Sınıf Yöneticisi, USBX ' in başlatılmasından kayıtlı sınıfların bir listesini içerir. Sınıf Yöneticisi her bir sınıfı, bir sınıf için arabirimi yönetmek için kabul edene kadar her bir sınıfa çağırır. Bir sınıf yalnızca bir arabirimi yönetebilir. USB ses konuşmacının örneği için, sınıf Yöneticisi arabirimlerin her biri için tüm sınıfları çağırır.
+Sınıf yöneticisi, USBX'i başlatmadan itibaren kayıtlı sınıfların listesini içerir. Sınıf yöneticisi, bir sınıf o cihazın arabirimini yönetmeyi kabul edene kadar her sınıfı tek tek çağıracak. Bir sınıf yalnızca bir arabirimi yönetebilir. USB ses konuşmacısı örneği için sınıf yöneticisi arabirimlerin her biri için tüm sınıfları çağıracak.
 
-Bir sınıf bir arabirimi kabul ettiğinde, bu sınıfın yeni bir örneği oluşturulur. Sınıf Yöneticisi daha sonra arabirim için varsayılan alternatif ayarı arar. Bir cihazın her arabirim için bir veya daha fazla alternatif ayarı olabilir. 0 alternatif ayarı, bir sınıf bunu değiştirmeye karar verdiğinde varsayılan olarak kullanılan ' i olacaktır.
+Bir sınıf bir arabirimi kabul etti mi, bu sınıfın yeni bir örneği oluşturulur. Ardından sınıf yöneticisi, arabirim için varsayılan alternatif ayarı aratır. Bir cihazın her arabirim için bir veya daha fazla alternatif ayarı olabilir. Alternatif ayar 0, bir sınıf bunu değiştirmeye karar verinceye kadar varsayılan olarak kullanılan açık ayarıdır.
 
-Varsayılan alternatif ayar için, sınıf Yöneticisi alternatif ayarda bulunan tüm uç noktaları bağlayacaktır. Her uç noktanın bağlanması başarılı olursa, sınıf Yöneticisi, arabirimin başlatılmasını tamamlayacaksınız sınıfına dönerek işini tamamlar.
+Varsayılan alternatif ayar için, sınıf yöneticisi alternatif ayarda yer alan tüm uç noktaları bağlar. Her uç noktanın bağlaması başarılı olursa, sınıf yöneticisi arabirimin başlatmasını bitirecek sınıfına dönerek işini tamamlar.
 
-### <a name="usbx-apis"></a>USBX API 'Leri
+### <a name="usbx-apis"></a>USBX API'leri
 
-USB yığını, belirli uç noktalarda cihaz ve USB aktarımları için, USB sınıflarının belirli sayıda API 'sini dışa aktarır. Bu API işlevleri, bu başvuru el kitabında ayrıntılı olarak açıklanmıştır.
+USB yığını, belirli uç noktalarda cihaz ve USB aktarımları gerçekleştirmek üzere USB sınıflarının belirli sayıda API'sini dışarı aktarıyor. Bu API işlevleri bu başvuru kılavuzunda ayrıntılı olarak açıklanmıştır.
 
-### <a name="host-controller"></a>Ana bilgisayar denetleyicisi
+### <a name="host-controller"></a>Konak Denetleyicisi
 
-Ana bilgisayar denetleyicisi sürücüsü, belirli bir USB denetleyicisi türünü yönlendirmekten sorumludur. Bir USB ana bilgisayar denetleyicisinin içinde birden çok denetleyicisi olabilir. Örneğin, belirli Intel PC yonga seti iki UCı denetleyicisi içerir. Bazı USB 2,0 denetleyicileri, bir EHCı denetleyicisi 'nin bir örneğine ek olarak bir OHCı denetleyicinin birden çok örneğini içerir.
+Ana bilgisayar denetleyicisi sürücüsü belirli bir USB denetleyicisi türünü sürücüden sorumludur. Bir USB konak denetleyicisinin içinde birden çok denetleyici olabilir. Örneğin, belirli Intel PC yonga kümesi iki TANE TANECI denetleyici içerir. Bazı USB 2.0 denetleyicileri, EHCI denetleyicisinin bir örneğine ek olarak BIR AHCI denetleyicisinin birden çok örneğini içerir.
 
-Konak denetleyicisi yalnızca aynı denetleyicinin birden fazla örneğini yönetir. Çoğu USB 2,0 ana bilgisayar denetleyicisini barındırmak için, USBX 'in başlatılması sırasında OÇI denetleyicisini ve EHCı denetleyiciyi başlatmak gerekecektir.
+Konak denetleyicisi yalnızca aynı denetleyicinin birden çok örneğini yönetir. Çoğu USB 2.0 konak denetleyicisini sürücüye bağlamak için, USBX'in başlatılması sırasında hem OCHI denetleyicisinin hem de EHCI denetleyicisinin başlatılması gerekir.
 
-Ana bilgisayar denetleyicisi aşağıdakileri yönetmekten sorumludur.
+Konak denetleyicisi aşağıdakilerin yönetiminden sorumludur.
 
-- Kök hub
+- Kök Hub
 - Güç Yönetimi
 - Uç Noktalar
-- Girişinde
+- Transfer
 
-### <a name="root-hub"></a>Kök hub
+### <a name="root-hub"></a>Kök Hub
 
-Kök hub yönetimi, her denetleyici bağlantı noktasının kapatılmasından ve takılı bir cihazın olup olmadığını belirlemekten sorumludur. Bu işlevsellik, denetleyici aşağı akış bağlantı noktalarını sorgulanamıyor için USBX genel kök hub 'ı tarafından kullanılır.
+Kök hub yönetimi, her denetleyici bağlantı noktasının gücünden ve eklenen bir cihaz olup olmadığının belirlenmesinden sorumludur. Bu işlev USBX genel kök hub'ı tarafından denetleyici aşağı akış bağlantı noktalarını sorgulamak için kullanılır.
 
 ### <a name="power-management"></a>Güç Yönetimi
 
-Güç yönetimi işleme, Gang modunda askıya alma/sürdürme sinyallerinin işlenmesini sağlar, bu nedenle tüm denetleyici aşağı akış bağlantı noktalarını aynı anda veya denetleyici bu işlevselliği sunuyorsa tek tek ayrı ayrı etkiliyor olabilir.
+Güç yönetimi işleme, askıya alma/sürdürme sinyallerinin aynı anda tüm denetleyici aşağı akış bağlantı noktalarını etkilemesi veya denetleyicinin bu işlevi sunduğunda ayrı ayrı işlemesini sağlar.
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-Uç nokta yönetimi, denetleyiciye fiziksel uç noktaların oluşturulması veya yok edilmesi için sağlar. Fiziksel uç noktalar, denetleyici ana DMA 'Yı destekliyorsa veya denetleyiciye yazılmışsa, denetleyici tarafından Ayrıştırılan bellek varlıklarıdır. Fiziksel uç noktalar, denetleyici tarafından gerçekleştirilecek işlem bilgilerini içerir.
+Uç nokta yönetimi, denetleyiciye fiziksel uç noktaların oluşturulmasını veya yok edilmesi için sağlar. Fiziksel uç noktalar, denetleyici ana DMA'yı destekliyorsa veya denetleyicide yazılmışsa denetleyici tarafından ayrıştıran bellek varlıklarıdır. Fiziksel uç noktalar, denetleyici tarafından gerçekleştirilecek işlem bilgilerini içerir.
 
-### <a name="transfers"></a>Girişinde
+### <a name="transfers"></a>Transfer
 
-Aktarım yönetimi, oluşturulan her uç nokta üzerinde işlem gerçekleştirmek için bir sınıf sağlar. Her mantıksal uç nokta, USB aktarım istekleri için aktarım ISTEğI adlı bir bileşen içerir. Aktarım ISTEğI, işlemi betimleyen yığın tarafından kullanılır. Bu aktarım ISTEğI daha sonra yığına ve denetleyiciye geçirilir, bu da denetleyicinin özelliklerine bağlı olarak onu birkaç alt işleme bölebilir.
+Aktarım yönetimi, oluşturulan uç noktaların her biri üzerinde işlem gerçekleştirmek için bir sınıf sağlar. Her mantıksal uç nokta, USB aktarım istekleri için TRANSFER REQUEST adlı bir bileşen içerir. AKTARıM İsteği, işlemi açıklamak için yığın tarafından kullanılır. Bu AKTARıM İsteği daha sonra yığına ve denetleyiciye geçirerek denetleyicinin özelliklerine bağlı olarak birkaç alt işleme bölüştü.
 
-## <a name="usb-device-framework"></a>USB cihaz çerçevesi
+## <a name="usb-device-framework"></a>USB Cihaz Çerçevesi
 
-Bir USB cihaz, bir tanımlayıcı ağacı tarafından temsil edilir. Altı temel tanımlayıcı türü vardır.
+USB cihazı bir tanımlayıcı ağacıyla temsil edilen bir cihazdır. Altı ana tanımlayıcı türü vardır.
 
 - Cihaz tanımlayıcıları
 - Yapılandırma tanımlayıcıları
@@ -140,41 +140,41 @@ Bir USB cihaz, bir tanımlayıcı ağacı tarafından temsil edilir. Altı temel
 - Dize tanımlayıcıları
 - İşlevsel tanımlayıcılar
 
-USB cihazının çok basit bir açıklaması olabilir ve bu şekilde görünür.
-![Basit USB cihaz](./media/usbx-host-stack/usb-device-simple.png)
+USB cihazı çok basit bir açıklamaya sahip olabilir ve aşağıdakine benzer olabilir.
+![Basit USB cihazı](./media/usbx-host-stack/usb-device-simple.png)
 
-Yukarıdaki çizimde, cihazın yalnızca bir yapılandırması vardır. Tek bir arabirim bu yapılandırmaya iliştirilir, bu da cihazın yalnızca bir işlevi olduğunu ve yalnızca bir uç nokta olduğunu gösterir. Cihaz tanımlayıcısına eklenmiş, cihazın görünür bir tanımlamasını sağlayan bir dize tanımlayıcısıdır.
+Yukarıdaki çizimde, cihazın yalnızca bir yapılandırması vardır. Bu yapılandırmaya, cihazın yalnızca bir işlevi olduğunu ve yalnızca bir uç noktası olduğunu gösteren tek bir arabirim ekli. Cihaz tanımlayıcısına bağlı, cihazın görünür bir tanımlamasını sağlayan bir dize tanımlayıcısıdır.
 
 Ancak, bir cihaz daha karmaşık olabilir ve aşağıdaki gibi görünebilir.
 
-![Karmaşık USB cihaz](./media/usbx-host-stack/usb-device-complex.png)
+![Karmaşık USB cihazı](./media/usbx-host-stack/usb-device-complex.png)
 
-Yukarıdaki çizimde, cihazın cihaz tanımlayıcısına bağlı iki yapılandırma tanımlayıcısı vardır. Bu cihaz, iki güç moduna sahip olduğunu veya standart sınıflar ya da özel sınıflar tarafından yönlendirilme gösterebilir.
+Yukarıdaki çizimde, cihazın cihaz tanımlayıcısına bağlı iki yapılandırma tanımlayıcısı vardır. Bu cihaz iki güç modu olduğunu veya standart sınıflar ya da özel sınıflar tarafından yönlendiriLl olduğunu gösteriyor olabilir.
 
-İlk yapılandırmaya bağlı olarak iki arabirim vardır ve bu, cihazın iki mantıksal işleve sahip olduğunu gösterir. İlk işlevde 3 uç nokta tanımlayıcısı ve bir işlevsel tanımlayıcı bulunur. İşlevsel tanımlayıcı, bu arabirim hakkında normalde genel bir tanımlayıcı tarafından bulunmayan daha fazla bilgi edinmek için arabirimi sürücüden sorumlu sınıf tarafından kullanılabilir.
+İlk yapılandırmaya, cihazın iki mantıksal işlevi olduğunu gösteren iki arabirim eklidir. İlk işlevin 3 uç nokta tanımlayıcısı ve işlevsel tanımlayıcısı vardır. İşlevsel tanımlayıcı, normalde genel bir tanımlayıcı tarafından bulunamaz, bu arabirim hakkında daha fazla bilgi almak için arabirimini sürücüsünden sorumlu sınıfı tarafından kullanılabilir.
 
-### <a name="device-descriptors"></a>Cihaz tanımlayıcıları
+### <a name="device-descriptors"></a>Cihaz Tanımlayıcıları
 
-Her USB cihazının tek bir cihaz tanımlayıcısı vardır. Bu tanımlayıcı cihaz tanımlamasını, Desteklenen yapılandırmaların sayısını ve cihazı yapılandırmak için kullanılan varsayılan denetim uç noktasının özelliklerini içerir.
+Her USB cihazının tek bir cihaz tanımlayıcısı vardır. Bu tanımlayıcı cihaz tanımlamasını, desteklenen yapılandırma sayısını ve cihazı yapılandırmak için kullanılan varsayılan denetim uç noktasının özelliklerini içerir.
 
 | Uzaklık | Alan              | Boyut | Değer    | Açıklama                             |
 | ------ | ------------------ | ---- | -------- | --------------------------------------- |
 | 0      | BLength            | 1    | Sayı   | Bu tanımlayıcının bayt cinsinden boyutu |
-| 1      | bDescriptorType    | 1    | Sabit | CIHAZ tanımlayıcı türü |
-| 2      | bcdUSB             | 2    | 'De      | BinaryCoded Dec içindeki USB belirtim Yayın numarası<br />Örnek: 2,10, 0x210 ' a eşdeğerdir. Bu alan, cihazın ve tanımlayıcılarının uyumlu olduğu USB belirtiminin sürümünü tanımlar. |
-| 4      | bDeviceClass       | 1    | Sınıf    | Sınıf kodu (USB tarafından atanan).<br />Bu alan 0 olarak sıfırlandığında, bir yapılandırma içindeki her arabirim kendi sınıf bilgilerini belirtir ve çeşitli arabirimler bağımsız olarak çalışır.<br />Bu alan 1 ile 0xFE arasında bir değere ayarlanırsa, cihaz farklı arabirimlerde farklı sınıf belirtimlerini destekler ve arabirimler bağımsız olarak çalışmayabilir. Bu değer, toplam arabirimler için kullanılan sınıf tanımını tanımlar.<br />Bu alan 0xFF olarak ayarlandıysa, cihaz sınıfı satıcıya özeldir. |
-| 5      | bDeviceSubClass    | 1    | Sınıf | Alt sınıf kodu (USB tarafından atanan).<br />Bu kodlar bDeviceClass alanının değeri ile nitelenir. BDeviceClass alanı 0 olarak sıfırlandığında, bu alan de 0 olarak sıfırlanmalıdır. BDeviceClass alanı 0xFF olarak ayarlanmamışsa, tüm değerler USB tarafından atanmak üzere ayrılmıştır. |
-| 6      | bDeviceProtocol    | 1    | Protokol | Protokol kodu (USB tarafından atanan).<br />Bu kodlar bDeviceClass ve bDeviceSubClass alanlarının değeri ile nitelenir. Bir cihaz, bir cihaz temelinde sınıfa özgü protokolleri destekliyorsa, bu kod, cihazın cihaz sınıfının belirtimine göre tanımlandığı şekilde kullandığı protokolleri tanımlar. Bu alan 0 olarak sıfırlandığında, cihaz bir cihaz temelinde sınıfa özel protokoller kullanmaz.<br />Ancak, bir arabirim temelinde sınıfa özel protokoller kullanabilir.<br />Bu alan 0xFF olarak ayarlandıysa, cihaz bir cihaz temelinde satıcıya özgü protokol kullanır. |
-| 7      | bMaxPacketSize0    | 1    | Sayı   | Uç nokta sıfırı için maksimum paket boyutu (yalnızca 8, 16, 32 veya 64 bayt boyutları geçerlidir) |
-| 8      | ıdvendor           | 2    | ID       | Satıcı KIMLIĞI (USB tarafından atanan) |
-| 10     | ıdproduct          | 2    | ID       | Ürün KIMLIĞI (üretici tarafından atanan) |
-| 12     | bcdDevice          | 2    | 'De      | İkili kodlu ondalık olarak cihaz Yayın numarası |
-| 14     | iManufacturer      | 1    | Dizin oluşturma    | Üreticiyi açıklayan dize tanımlayıcısının dizini |
-| 15     | IProduct           | 1    | Dizin oluşturma    | Ürünü açıklayan dize tanımlayıcısının dizini |
-| 16     | iSerialNumbe       | 1    | Dizin oluşturma    | Cihazın seri numarasını açıklayan dize tanımlayıcısının dizini |
-| 17     | bNumConfigurations | 1    | Sayı   | Olası yapılandırmaların sayısı |
+| 1      | bDescriptorType    | 1    | Sabit | DEVICE Tanımlayıcı Türü |
+| 2      | bcdUSB             | 2    | Bcd      | BinaryCoded Ara Kodunda USB Belirtimi Sürüm Numarası<br />Örnek: 2.10, 0x210. Bu alan, cihazın ve tanımlayıcılarının uyumlu olduğu USB Belirtimi'nin yayınını tanımlar. |
+| 4      | bDeviceClass       | 1    | Sınıf    | Sınıf kodu (USB-IF tarafından atanır).<br />Bu alan 0'a sıfırlanırsa, yapılandırma içindeki her arabirim kendi sınıf bilgilerini belirtir ve çeşitli arabirimler bağımsız olarak çalışır.<br />Bu alan 1 ile 0xFE arasında bir değere ayarlanırsa, cihaz farklı arabirimlerde farklı sınıf belirtimlerini destekler ve arabirimler bağımsız olarak çalışmayabilirsiniz. Bu değer, toplama arabirimleri için kullanılan sınıf tanımını tanımlar.<br />Bu alan varsayılan olarak 0xFF cihaz sınıfı satıcıya özgü olur. |
+| 5      | bDeviceSubClass    | 1    | Alt | Alt sınıf kodu (USB-IF tarafından atanır).<br />Bu kodlar bDeviceClass alanı değerine göre niteliklidir. bDeviceClass alanı 0'a sıfırlanırsa, bu alan da 0'a sıfırlanır. bDeviceClass alanı bir 0xFF olarak ayarlanmazsa, tüm değerler USB tarafından atama için ayrılmıştır. |
+| 6      | bDeviceProtocol    | 1    | Protokol | Protokol kodu (USB-IF tarafından atanır).<br />Bu kodlar bDeviceClass ve bDeviceSubClass alanlarının değerine göre niteliklidir. Bir cihaz arabirim temelinden farklı olarak sınıfa özgü protokolleri destekliyorsa, bu kod cihazın kullandığı protokolleri cihaz sınıfının belirtimlerine göre tanımlandığı şekilde tanımlar. Bu alan 0'a sıfırlanırsa, cihaz cihaz bazında sınıfa özgü protokolleri kullanmaz.<br />Ancak, arabirim temelinde sınıfa özgü protokoller kullanabilir.<br />Bu alan bir 0xFF olarak ayarlanırsa, cihaz cihaz temelinde satıcıya özgü bir protokol kullanır. |
+| 7      | bMaxPacketSize0    | 1    | Sayı   | Uç nokta sıfır için en büyük paket boyutu (yalnızca 8, 16, 32 veya 64 byte boyutları geçerlidir) |
+| 8      | idVendor           | 2    | ID       | Satıcı Kimliği (USB-IF tarafından atanır) |
+| 10     | idProduct          | 2    | ID       | Ürün Kimliği (Üretici tarafından atanan) |
+| 12     | bcdDevice          | 2    | Bcd      | İkili kodlu ondalık kodlu cihaz yayın numarası |
+| 14     | iManufacturer      | 1    | Dizin oluşturma    | Üreticiyi açıklayan dize tanımlayıcısı dizini |
+| 15     | iProduct           | 1    | Dizin oluşturma    | Ürünü açıklayan dize tanımlayıcısı dizini |
+| 16     | iSerialNumbe       | 1    | Dizin oluşturma    | Cihazın seri numarasını açıklayan dize tanımlayıcısı dizini |
+| 17     | bNumConfigurations | 1    | Sayı   | Olası yapılandırma sayısı |
 
-USBX, bir USB cihaz tanımlayıcısını aşağıdaki şekilde tanımlar:
+USBX, usb cihaz tanımlayıcısını aşağıdaki gibi tanımlar:
 
 ```c
 typedef struct UX_DEVICE_DESCRIPTOR_STRUCT
@@ -196,7 +196,7 @@ typedef struct UX_DEVICE_DESCRIPTOR_STRUCT
 } UX_DEVICE_DESCRIPTOR;
 ```
 
-USB cihaz tanımlayıcısı şu şekilde açıklanan bir cihaz kapsayıcısının parçasıdır:
+USB cihaz tanımlayıcısı, şu şekilde açıklanan bir cihaz kapsayıcısı kapsamındadır:
 
 ```c
 typedef struct UX_DEVICE_STRUCT
@@ -224,9 +224,9 @@ typedef struct UX_DEVICE_STRUCT
 } UX_DEVICE;
 ```
 
-- **ux_device_handle**: cihazın tanıtıcısı. Bu, genellikle cihaz için bu yapının örneğinin adresidir.
-- **ux_device_type**: eski değer. Kullanılmıyor.
-- **ux_device_state**: aşağıdaki değerlerden birine sahip olabilecek cihaz durumu:
+- **ux_device_handle:** Cihazın tanıtıcısı. Bu genellikle cihaz için bu yapı örneğinin adresidir.
+- **ux_device_type:** Eski değer. Kullanılmıyor.
+- **ux_device_state:** Cihaz Durumu: Aşağıdaki değerlerden birini kullanabilirsiniz:
     - **UX_DEVICE_RESET**                0
     - **UX_DEVICE_ATTACHED**             1
     - **UX_DEVICE_ADDRESSED**            2
@@ -239,41 +239,41 @@ typedef struct UX_DEVICE_STRUCT
     - **UX_DEVICE_BUS_RESET_COMPLETED**  9
     - **UX_DEVICE_REMOVED**              10
     - **UX_DEVICE_FORCE_DISCONNECT**     11
-- **ux_device_address**: **SET_ADDRESS** komutu kabul edildikten sonra cihazın adresi (1 ile 127 arasında).
-- **ux_device_speed**: cihazın hızı:
+- **ux_device_address:** SET_ADDRESS komutu **kabul** edildikten sonra cihazın adresi (1 ile 127 arasında).
+- **ux_device_speed:** Cihazın hızı:
     - **UX_LOW_SPEED_DEVICE**      0
     - **UX_FULL_SPEED_DEVICE**     1
     - **UX_HIGH_SPEED_DEVICE**     2
-- **ux_device_port_location**: üst cihazın bağlantı noktasının dizini (kök hub veya hub).
-- **ux_device_max_power**: en fazla güç, cihazın seçili yapılandırmada işlem gösterebilir.
-- **ux_device_power_source**: aşağıdaki iki değerden biri olabilir:
+- **ux_device_port_location:** Üst cihazın bağlantı noktasının dizini (kök hub veya hub).
+- **ux_device_max_power:** Cihazın seçili yapılandırmada sahip olduğu maksimum mA gücü.
+- **ux_device_power_source:** Aşağıdaki iki değerden biri olabilir:
     - **UX_DEVICE_BUS_POWERED**     1
     - **UX_DEVICE_SELF_POWERED**    2
-- **ux_device_current_configuration**: Bu cihaz tarafından kullanılan geçerli yapılandırmanın dizini.
-- **ux_device_parent**: Bu cihazın üst öğesinin cihaz kapsayıcı işaretçisi. İşaretçi null ise, üst öğe denetleyicinin kök hub 'üdür.
-- **ux_device_class**: Bu cihazın sahibi olan sınıf türüne yönelik işaretçi.
-- **ux_device_class_instance**: Bu cihaza sahip olan sınıfın örneğine yönelik işaretçi.
-- **ux_device_hcd**: Bu cihazın eklendiği USB ana bilgisayar denetleyicisi örneği.
-- **ux_device_first_configuration**: Bu cihaz için ilk Yapılandırma kapsayıcısına yönelik işaretçi.
-- **ux_device_next_device**: USBX tarafından algılanan tüm veri yollarına cihaz listesinde sonraki cihaza yönelik işaretçi.
-- **ux_device_descriptor**: USB cihaz tanımlayıcısı.
-- **ux_device_control_endpoint**: Bu cihaz tarafından kullanılan varsayılan denetim uç noktasının tanımlayıcısı.
-- **ux_device_hub_tt**: cihaz Için bir hub TTs dizisi
+- **ux_device_current_configuration:** Bu cihaz tarafından kullanılan geçerli yapılandırmanın dizini.
+- **ux_device_parent:** Bu cihazın üst öğesi cihaz kapsayıcı işaretçisi. İşaretçi null ise, üst denetleyicinin kök hub'ıdır.
+- **ux_device_class:** Bu cihaza sahip olan sınıf türünün işaretçisi.
+- **ux_device_class_instance:** Bu cihaza sahip olan sınıfın örneğinin işaretçisi.
+- **ux_device_hcd:** Cihazın ekli olduğu USB Konak Denetleyicisi Örneği.
+- **ux_device_first_configuration:** Bu cihaz için ilk yapılandırma kapsayıcısı işaretçisi.
+- **ux_device_next_device:** USBX tarafından algılanan tüm veri yollarında cihaz listesinde bir sonraki cihazın işaretçisi.
+- **ux_device_descriptor:** USB cihaz tanımlayıcısı.
+- **ux_device_control_endpoint:** Bu cihaz tarafından kullanılan varsayılan denetim uç noktasının tanımlayıcısı.
+- **ux_device_hub_tt:** Cihaz için Hub TT dizisi
 
-### <a name="configuration-descriptors"></a>Yapılandırma tanımlayıcıları
+### <a name="configuration-descriptors"></a>Yapılandırma Tanımlayıcıları
 
-Yapılandırma tanımlayıcısı, belirli bir cihaz yapılandırmasıyla ilgili bilgileri açıklar. Bir USB cihaz, bir veya daha fazla yapılandırma tanımlayıcısı içerebilir. Cihaz tanımlayıcısındaki **Bnumconfigurations** alanı yapılandırma tanımlayıcılarının sayısını belirtir. Tanımlayıcı, ayarlanan yapılandırma isteğine parametre olarak kullanıldığında bir **Bconfigurationvalue** alanı içerir ve bu değer, küme yapılandırma isteğine parametre olarak kullanılır, cihazın açıklanan yapılandırmayı varsaymasına neden olur.
+Yapılandırma tanımlayıcısı belirli bir cihaz yapılandırmasıyla ilgili bilgileri açıklar. USB cihazı bir veya daha fazla yapılandırma tanımlayıcısı içerebilir. Cihaz **tanımlayıcısının bNumConfigurations** alanı, yapılandırma tanımlayıcılarının sayısını gösterir. Tanımlayıcı, YapılandırmaYı Ayarla isteği için parametre olarak kullanıldığında cihazın açıklanan yapılandırmayı varsaymalarını neden olan bir değere sahip **bir bConfigurationValue** alanı içerir.
 
-Tanımlayıcı, yapılandırma tarafından belirtilen arabirimlerin sayısını açıklar. Her arabirim, cihaz içindeki bir mantıksal işlevi temsil eder ve bağımsız olarak çalışmayabilir. Örneğin, bir USB ses konuşmacının, biri ses akışı, biri ses denetimi için bir tane olmak üzere üç arabirimi ve konuşmacı düğmelerini yönetmek için bir HID arabirimi olabilir.
+Tanımlayıcı, yapılandırma tarafından sağlanan arabirim sayısını açıklar. Her arabirim, cihaz içindeki bir mantıksal işlevi temsil eder ve bağımsız olarak çalışabilir. Örneğin, bir USB ses konuşmacısı biri ses akışı için, biri ses denetimi için ve biri konuşmacının düğmelerini yönetmek için bir ADET USB arabirimi olmak kaydıyla üç arabirime sahip olabilir.
 
-Ana bilgisayar yapılandırma tanımlayıcısı için GET_DESCRIPTOR isteği yayınlar, tüm ilgili arabirim ve uç nokta tanımlayıcıları döndürülür.
+Konak yapılandırma tanımlayıcısı GET_DESCRIPTOR bir istek oluşturduğunda, tüm ilgili arabirim ve uç nokta tanımlayıcıları döndürülür.
 
 | Uzaklık | Alan               | Boyut | Değer    | Açıklama                       |
 | ------ | ------------------- | ---- | -------- | --------------------------------- |
 | 0      | bLength             | 1    | Sayı   | Bu tanımlayıcının bayt cinsinden boyutu. |
 | 1      | bDescriptorType     | 1    | Sabit | YAPILANDIRMA                     |
-| 2      | wTotalLength        | 2    | Sayı   | Bu yapılandırma için döndürülen toplam veri uzunluğu. Bu yapılandırma için döndürülen tüm tanımlayıcılar (yapılandırma, arabirim, uç nokta ve sınıf veya satıcıya özgü) Birleşik uzunluğunu içerir. |
-| 4      | Bnumınterfaces      | 1    | Sayı   | Bu yapılandırma tarafından desteklenen arabirimlerin sayısı. |
+| 2      | wTotalLength        | 2    | Sayı   | Bu yapılandırma için döndürülen verilerin toplam uzunluğu. Bu yapılandırma için döndürülen tüm tanımlayıcıların (yapılandırma, arabirim, uç nokta ve sınıfa veya satıcıya özgü) birleşik uzunluğunu içerir. |
+| 4      | bNumInterfaces      | 1    | Sayı   | Bu yapılandırma tarafından desteklenen arabirimlerin sayısı. |
 | 5      | bConfigurationValue | 1    | Sayı   | Ayarlanacak bir bağımsız değişken olarak kullanılacak değer<br/>Bu yapılandırmayı seçmek için yapılandırma. |
 | 6      | Yapılandırma      | 1    | Dizin oluşturma    | Bu yapılandırmayı açıklayan dize tanımlayıcısının dizini. |
 | 7      | bMAttributes        | 1    | Biteş   | Yapılandırma özellikleri D7 Bus destekleniyor<br />D6 otomatik olarak destekleniyor<br />D5 uzaktan uyandırma<br />D4.. 0 ayrılmış (0 ' a sıfırlayın)<br />Veri yolundan ve yerel bir kaynaktan güç kullanan bir cihaz yapılandırması hem D7 hem de D6 ayarlar. Çalışma zamanında gerçek güç kaynağı, durumu Al cihaz isteği kullanılarak belirlenebilir.<br />Bir cihaz yapılandırması uzaktan uyandırma 'yi destekliyorsa, D5 1 olarak ayarlanır. |
@@ -342,11 +342,11 @@ Arabirimin USB tanımlayıcısı aşağıdaki gibidir:
 | 3      | bAltenateSetting   | 1    | Sayı    | Önceki alanda tanımlanan arabirim için alternatif ayarı seçmek için kullanılan değer. |
 | 4      | bNumEndpoints      | 1    | Sayı    | Bu arabirim tarafından kullanılan uç nokta sayısı (uç nokta sıfır hariç). Bu değer 0 ise, bu arabirim yalnızca bir uç nokta sıfır kullanır. |
 | 5      | bInterfaceClass    | 1    | Sınıf     | Sınıf kodu (USB tarafından atanan)<br />Bu alan 0 olarak sıfırlandığında arabirim, USB tarafından belirtilen herhangi bir cihaz sınıfına ait değildir.<br />Bu alan 0xFF olarak ayarlanırsa, arabirim sınıfı satıcıya özeldir.<br />Diğer tüm değerler USB tarafından atanmak üzere ayrılmıştır. |
-| 6      | Bınterfacesubclass | 1    | Sınıf  | Alt sınıf kodu (USB tarafından atanır).<br />Bu kodlar bInterfaceClass alanının değeri ile nitelenir. BInterfaceClass alanı 0 olarak sıfırlandığında, bu alan de 0 olarak sıfırlanmalıdır. BInterfaceClass alanı 0xFF olarak ayarlanmamışsa, tüm değerler USB tarafından atanmak üzere ayrılmıştır. |
-| 7      | Bınterfaceprotocol | 1    | Protokol  | Protokol kodu (USB tarafından atanır). Bu kodlar bInterfaceClass ve Bınterfacesubclass alanlarının değeri ile nitelenir. Bir arabirim sınıfa özgü istekleri destekliyorsa, bu kod, cihazın cihaz sınıfının belirtimine göre tanımlandığı şekilde kullandığı protokolleri tanımlar.<br />Bu alan 0 olarak sıfırlandığında, cihaz bu arabirim üzerinde sınıfa özgü bir protokol kullanmaz. Bu alan 0xFF olarak ayarlandıysa, cihaz bu arabirim için satıcıya özgü bir protokol kullanır. |
-| 8      | IInterface         | 1    | Dizin oluşturma     | Bu arabirimi açıklayan dize tanımlayıcısının dizini. |
+| 6      | Bınterfacesubclass | 1    | Alt  | Alt sınıf kodu (USB tarafından atanır).<br />Bu kodlar bInterfaceClass alanı değerine göre niteliklidir. bInterfaceClass alanı 0'a sıfırlanırsa, bu alan da 0'a sıfırlanır. bInterfaceClass alanı varsayılan olarak 0xFF tüm değerler USB tarafından atama için ayrılmıştır. |
+| 7      | bInterfaceProtocol | 1    | Protokol  | Protokol kodu (USB tarafından atanır). Bu kodlar bInterfaceClass ve bInterfaceSubClass alanlarının değerine göre niteliklidir. Arabirim sınıfa özgü istekleri destekliyorsa, bu kod cihazın kullandığı protokolleri cihaz sınıfının belirtimleri tarafından tanımlandığı şekilde tanımlar.<br />Bu alan 0'a sıfırlanırsa, cihaz bu arabirimde sınıfa özgü bir protokol kullanmaz. Bu alan varsayılan olarak 0xFF cihaz, bu arabirim için satıcıya özgü bir protokol kullanır. |
+| 8      | ıınterface         | 1    | Dizin oluşturma     | Bu arabirimi açıklayan dize tanımlayıcısı dizini. |
 
-USBX, bir USB arabirim tanımlayıcısını aşağıdaki şekilde tanımlar.
+USBX, bir USB arabirimi tanımlayıcısını aşağıdaki gibi tanımlar.
 
 ```c
 typedef struct UX_INTERFACE_DESCRIPTOR_STRUCT
@@ -363,7 +363,7 @@ typedef struct UX_INTERFACE_DESCRIPTOR_STRUCT
 } UX_INTERFACE_DESCRIPTOR;
 ```
 
-USB arabirim tanımlayıcısı, aşağıdaki gibi açıklanan arabirim kapsayıcısının bir parçasıdır.
+USB arabirim tanımlayıcısı, aşağıdaki şekilde açıklanan bir arabirim kapsayıcısı kapsamındadır.
 
 ```c
 typedef struct UX_INTERFACE_STRUCT
@@ -380,32 +380,32 @@ typedef struct UX_INTERFACE_STRUCT
 } UX_INTERFACE;
 ```
 
-- **ux_interface_handle**: arabirimin tanıtıcısı. Bu, genellikle arabirim için bu yapının örneğinin adresidir.
-- **ux_interface_state**: arabirimin durumu.
-- **ux_interface_descriptor**: USB arabirim tanımlayıcısı.
-- **ux_interface_class**: Bu arabirime sahip olan sınıf türüne yönelik işaretçi.
-- **ux_interface_class_instance**: Bu arabirime sahip olan sınıfın örneğine yönelik işaretçi.
-- **ux_interface_first_endpoint**: bu arabirimle kaydedilen ilk uç noktaya işaretçi.
-- **ux_interface_next_interface**: yapılandırmayla ilişkili bir sonraki arabirime yönelik işaretçi.
-- **ux_interface_configuration**: Bu arabirimin yapılandırma sahibine yönelik işaretçi.
+- **ux_interface_handle:** Arabirimin tanıtıcısı. Bu genellikle arabirim için bu yapı örneğinin adresidir.
+- **ux_interface_state:** Arabirimin durumu.
+- **ux_interface_descriptor:** USB arabirim tanımlayıcısı.
+- **ux_interface_class:** Bu arabirime sahip olan sınıf türünün işaretçisi.
+- **ux_interface_class_instance:** Bu arabirime sahip olan sınıfın örneğine işaretçi.
+- **ux_interface_first_endpoint:** Bu arabirimle kaydedilen ilk uç noktanın işaretçisi.
+- **ux_interface_next_interface:** Yapılandırmayla ilişkili sonraki arabirimin işaretçisi.
+- **ux_interface_configuration:** Bu arabirimin yapılandırma sahibine işaretçi.
 
-### <a name="endpoint-descriptors"></a>Uç nokta tanımlayıcıları
+### <a name="endpoint-descriptors"></a>Uç Nokta Tanımlayıcıları
 
-Bir arabirimle ilişkilendirilen her uç noktanın kendi uç nokta tanımlayıcısı vardır. Bu tanımlayıcı, her uç noktanın bant genişliği gereksinimlerini, uç noktayla ilişkili en fazla yükü, dönemsellik ve yönünü belirlemede konak yığınının gerektirdiği bilgileri içerir. Bir uç nokta tanımlayıcısı her zaman yapılandırma için bir GET_DESCRIPTOR komutu tarafından döndürülür.
+Bir arabirimle ilişkili her uç noktanın kendi uç nokta tanımlayıcısı vardır. Bu tanımlayıcı, her uç noktanın bant genişliği gereksinimlerini, uç noktayla ilişkili maksimum yükü, periyodikliğini ve yönünü belirlemek için konak yığını için gereken bilgileri içerir. Uç nokta tanımlayıcısı her zaman yapılandırma için bir GET_DESCRIPTOR komutu tarafından döndürülür.
 
-Cihaz tanımlayıcısıyla ilişkili varsayılan denetim uç noktası, arabirimle ilişkili uç noktalarının parçası olarak sayılmaz ve bu nedenle bu tanımlayıcıda döndürülmedi.
+Cihaz tanımlayıcısıyla ilişkili varsayılan denetim uç noktası, arabirimle ilişkili uç noktaların parçası olarak sayılmaz ve bu nedenle bu tanımlayıcıda döndürülz.
 
-Konak yazılımı bir arabirim için alternatif ayarı istediğinde, tüm ilişkili uç noktalar ve USB kaynakları yeni alternatif ayara göre değiştirilir.
+Konak yazılımı bir arabirim için alternatif ayarda değişiklik isteğinde olduğunda, ilişkili tüm uç noktalar ve USB kaynakları yeni alternatif ayara göre değiştirilir.
 
-Varsayılan denetim uç noktaları hariç, uç noktalar arabirimler arasında paylaşılamıyor.
+Varsayılan denetim uç noktaları dışında uç noktalar arabirimler arasında paylaşamaz.
 
 | Uzaklık | Alan            | Boyut | Değer    | Açıklama                       |
 | ------ | ---------------- | ---- | -------- | --------------------------------- |
 | 0      | bLength          | 1    | Sayı   | Bu tanımlayıcının bayt cinsinden boyutu. |
-| 1      | bDescriptorType  | 1    | Sabit | UÇ nokta tanımlayıcı türü. |
-| 2      | bEndpointAddress | 1    | Uç Nokta | USB cihazında bu tanımlayıcı tarafından tanımlanan bitiş noktasının adresi. Adres şu şekilde kodlanır:<br />Bit 3... 0: uç nokta numarası<br />Bit 6... 4: ayrılmış, sıfıra Sıfırla<br />Bit 7: Yön, denetim uç noktaları için yoksayıldı<br />0 = çıkış uç noktası<br />1 = uç noktada |
-| 3      | bmAttributes     | 1    | Biteş   | Bu alan, **Bconfigurationvalue** alanı kullanılarak yapılandırıldığında bitiş noktasının özniteliklerini açıklar. Bit 1.. 0: aktarım türü<br />00 = denetim<br />01 = zaman aralıklı<br />10 = toplu<br />11 = kesme<br />Zaman aralıklı bir uç nokta değilse, bit 5.. 2 ayrılmıştır ve sıfıra ayarlanmalıdır. Zaman aralıklı ise, bunlar aşağıdaki gibi tanımlanır:<br />Bit 3.. 2: eşitleme türü<br />00 = eşitleme yok<br />01 = zaman uyumsuz<br />10 = Uyarlamalı<br />11 = zaman uyumlu<br />Bit 5.. 4: kullanım türü<br />00 = veri uç noktası<br />01 = geri bildirim uç noktası<br />10 = örtük geri bildirim verileri uç noktası<br />11 = ayrılmış |
-| 4      | wMaxPacketSize   | 2    | Sayı   | En fazla paket boyutu bu uç nokta, bu yapılandırma seçildiğinde gönderme veya alma özelliğine sahiptir.<br />Zaman aralıklı uç noktalar için bu değer, (mikro) çerçeve veri yükleri için gereken zamanlamaya göre veri yolu ayırmak için kullanılır. Kanal, sürekli olarak, ayrılmış olandan daha az bant genişliği kullanır. Cihaz, gerekirse, normal, USB olmayan tanımlı mekanizmalar aracılığıyla kullanılan gerçek bant genişliğini raporlar.<br />Tüm uç noktalar için bit 10.. 0, en fazla paket boyutunu (bayt olarak) belirtir.<br />Yüksek hızlı zaman aralıklı ve kesme uç noktaları için:<br />BITS 12.. 11 mikro çerçeve başına ek işlem fırsatları sayısını belirtin: 00 = yok (mikro çerçeve başına 1 işlem)<br />01 = 1 ek (mikro çerçeve başına 2)<br />10 = 2 ek (mikro çerçeve başına 3)<br />11 = ayrılmış<br />Bit 15.. 13 ayrılmıştır ve sıfıra ayarlanmalıdır. |
+| 1      | bDescriptorType  | 1    | Sabit | ENDPOINT Tanımlayıcı Türü. |
+| 2      | bEndpointAddress | 1    | Uç Nokta | Bu tanımlayıcı tarafından açıklanan USB cihazında uç noktanın adresi. Adres aşağıdaki gibi kodlanmıştır:<br />Bit 3...0: Uç nokta numarası<br />Bit 6...4: Ayrılmış, sıfıra sıfırla<br />Bit 7: Denetim uç noktaları için yoksayılan yön<br />0 = OUT uç noktası<br />1 = IN uç noktası |
+| 3      | bmAttributes     | 1    | Bitmap   | Bu alan, **bConfigurationValue** alanı kullanılarak yapılandırıldığında uç noktanın özniteliklerini açıklar. Bit 1..0: Aktarım Türü<br />00 = Denetim<br />01 = Isochronous<br />10 = Toplu<br />11 = Kesinti<br />Bir zaman uyumsuz uç nokta yoksa, bit 5..2 ayrılmıştır ve sıfır olarak ayarlanır. isochronous ise, bunlar aşağıdaki gibi tanımlanır:<br />Bit 3..2: Eşitleme Türü<br />00 = Eşitleme Yok<br />01 = Zaman Uyumsuz<br />10 = Uyarlamalı<br />11 = Zaman Uyumlu<br />Bit 5..4: Kullanım Türü<br />00 = Veri uç noktası<br />01 = Geri bildirim uç noktası<br />10 = Örtülü geri bildirim veri uç noktası<br />11 = Ayrılmış |
+| 4      | wMaxPacketSize   | 2    | Sayı   | Bu uç noktanın bu yapılandırma seçildiğinde gönderebilecek veya alabilen maksimum paket boyutu.<br />Zaman uyumsuz uç noktalar için bu değer, veri verisi sürelerini zaman çizelgesinde (per-(micro)frame veri yüklerinin gerekli olduğu şekilde, zaman çizelgesinde rezervasyon yapmak için kullanılır. Kanal, sürekli olarak ayrılandan daha az bant genişliği kullanabilir. Cihaz, gerekirse normal, USB olmayan tanımlı mekanizmalar aracılığıyla kullanılan gerçek bant genişliğini raporlar.<br />Tüm uç noktalar için bit 10..0, en büyük paket boyutunu (bayt cinsinden) belirtir.<br />Yüksek hızlı zaman uyumsuz ve kesme uç noktaları için:<br />Bit 12...11 mikro çerçeve başına ek işlem fırsatı sayısını belirtir: 00 = Yok (mikro çerçeve başına 1 işlem)<br />01 = 1 ek (mikro çerçeve başına 2)<br />10 = 2 ek (mikro çerçeve başına 3)<br />11 = Ayrılmış<br />Bit 15..13 ayrılmıştır ve sıfır olarak ayarlanır. |
 | 6      | Bınterval        | 1     | Sayı   | Veri aktarımları için yoklama uç noktası için sayı aralığı.<br />Cihaz işletim hızına (yani, 1 milisaniyelik veya 125 μs birimi) bağlı olarak çerçeveler veya mikro çerçeveler olarak ifade edilir.<br />Tam/üst aralıklı zaman aralıklı uç noktalar için bu değer 1 ile 16 arasında olmalıdır. **Bınterval** , 2bınterval-1 değerinin üs değeri olarak kullanılır; Örneğin, bir **Bınterval** 4, 8 (24-1) süresini gösterir.<br />Tam/Low-Speed kesme uç noktaları için bu alanın değeri 1 ile 255 arasında olabilir.<br />Yüksek hızlı kesme uç noktaları için **Bınterval** , bir 2bınterval-1 değeri için üs olarak kullanılır; Örneğin, bir **Bınterval** 4, 8 (24-1) süresini gösterir. Bu değer 1 ile 16 arasında olmalıdır.<br />Yüksek hızda toplu/denetim noktaları için **Bınterval** , uç noktanın en fazla nak oranını belirtir. 0 değeri, uç noktayı hiçbir şekilde gösterir. Diğer değerler, her bir **bin** mikro kare için en fazla bir nak gösterir.<br />Bu değer 0 ile 255 arasında olmalıdır. |
 
 USBX, bir USB uç nokta tanımlayıcısını aşağıdaki şekilde tanımlar:

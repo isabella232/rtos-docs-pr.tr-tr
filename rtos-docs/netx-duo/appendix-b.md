@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 04207c5183d732ccb49200c117d7e85a4ff80e33
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d9063de460a09977ed4ee7a0a02ca578bdd116e9935394e600af75a74e8f34e1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826236"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789825"
 ---
 # <a name="appendix-b---azure-rtos-netx-duo-constants"></a>Ek B-Azure RTOS NetX Duo sabitleri
 
@@ -503,7 +503,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr class="odd">
 <td>NX_IP_ALL_EVENTS</td>
-<td>Ffffffff</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="even">
 <td>NX_IP_ARP_ENABLED</td>
@@ -1215,7 +1215,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr class="odd">
 <td>NX_MAX_PORT</td>
-<td>0xFFFF</td>
+<td>0xffff</td>
 </tr>
 <tr class="even">
 <td>NX_MORE_FRAGMENTS</td>
@@ -1285,7 +1285,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr class="even">
 <td>NX_OPTION_ERROR</td>
-<td>0x0A</td>
+<td>0x0a</td>
 </tr>
 <tr class="odd">
 <td>NX_OVERFLOW</td>
@@ -1308,7 +1308,7 @@ ms.locfileid: "104826236"
 <tr class="odd">
 <td>NX_PACKET_FREE</td>
 <td>
-<p>Ffffffff</p>
+<p>0xffffffff</p>
 </td>
 </tr>
 <tr class="even">
@@ -1423,7 +1423,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr>
 <td class="tg-0lax">NX_SUCCESS</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_TCP_ACK_BIT</td>
@@ -1455,7 +1455,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr>
 <td class="tg-0lax">NX_TCP_EOL_KIND</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_TCP_ESTABLISHED</td>
@@ -1673,7 +1673,7 @@ ms.locfileid: "104826236"
 </tr>
 <tr class="even">
 <td>NX_WAIT_FOREVER</td>
-<td>Ffffffff</td>
+<td>0xffffffff</td>
 </tr>
 <tr class="odd">
 <td>NX_WINDOW_OVERFLOW</td>
@@ -1682,7 +1682,7 @@ ms.locfileid: "104826236"
 </tbody>
 </table>
 
-## <a name="listings-by-value"></a>Değere göre listeler  
+## <a name="listings-by-value"></a>Değere Göre Listelemeler  
 
 <table>
 <tr>
@@ -1739,19 +1739,19 @@ ms.locfileid: "104826236"
 </tr>
 <tr>
 <td class="tg-0lax">NX_IPV6_ADDR_STATE_UNKNOWN</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_IPV6_ROUTE_TYPE_NOT_ROUTER</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_SUCCESS</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_TCP_EOL_KIND</td>
-<td class="tg-0lax">-</td>
+<td class="tg-0lax">0x00</td>
 </tr>
 <tr>
 <td class="tg-0lax">NX_FRAGMENT_OKAY</td>

@@ -1,49 +1,49 @@
 ---
-title: Bölüm 2-NAT yükleme ve kullanımı
-description: Bu bölümde, NetX Duo NAT hizmetlerini yüklemek, ayarlamak ve kullanmak için bir açıklama yer almaktadır.
+title: Bölüm 2 - NAT yükleme ve kullanma
+description: Bu bölümde NetX Duo NAT hizmetlerini yükleme, ayarlama ve kullanma hakkında bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 47816c8a62aed9e2b096b121d1676c66178ad825
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e1eb96e53f600eac56f8a82f3ca02ccfdaabf5cc12d95989e1e38e87775ff24f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825864"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797390"
 ---
-# <a name="chapter-2---installation-and-use-of-nat"></a>Bölüm 2-NAT yükleme ve kullanımı
+# <a name="chapter-2---installation-and-use-of-nat"></a>Bölüm 2 - NAT yükleme ve kullanma
 
-Bu bölümde, NetX Duo NAT hizmetlerini yüklemek, ayarlamak ve kullanmak için bir açıklama yer almaktadır.
+Bu bölümde NetX Duo NAT hizmetlerini yükleme, ayarlama ve kullanma hakkında bir açıklama yer almaktadır.
 
-## <a name="netx-duo-nat-installation"></a>NetX Duo NAT yüklemesi
+## <a name="netx-duo-nat-installation"></a>NetX Duo NAT Yüklemesi
 
-NetX Duo NAT, adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . NetX Duo NAT paketi, bir kaynak dosyası ve bir üst bilgi dosyası, bir demo uygulama dosyası ve bu belge için bir PDF dosyası içerir ve aşağıdaki gibi:
+NetX Duo NAT şu adreste [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) kullanılabilir: . NetX Duo NAT paketi, aşağıdaki gibi bir kaynak dosya ve bir üst bilgi dosyası, bir tanıtım uygulaması dosyası ve bu belge için bir PDF dosyası içerir:
 
-- **nx_nat. c** NetX Duo NAT için C kaynak dosyası
-- **nx_nat. h** NetX Duo NAT için C üstbilgi dosyası
-- **demo_netx_nat. c** Örnek ana bilgisayar NetX Duo C kaynak dosyası
-- **nx_nat.docx** NetX Duo NAT Kullanıcı kılavuzunun açıklaması (Bu belge)
+- **nx_nat.c** NetX Duo NAT için C Kaynak dosyası
+- **nx_nat.h** NetX Duo NAT için C Üst Bilgi dosyası
+- **demo_netx_nat.c** Örnek ana bilgisayar NetX Duo C kaynak dosyası
+- **nx_nat.docx** NetX Duo NAT Kullanıcı Kılavuzu açıklaması (bu belge)
 
-NetX Duo NAT kaynak kodu dosyalarını, NetX Duo ve ThreadX 'in yüklü olduğu dizine kopyalayın. Örneğin, NetX Duo ve ThreadX "*\threadx\mcf5485\green*" dizinine yüklenirse, *nx_nat. c*, *Nx_nat. h ve değiştirilmiş NETX Duo dosyaları* bu dizine kopyalanmalıdır. Değiştirilmiş NetX Duo dosyalarını mevcut NetX Duo dosyaları üzerine kopyalayın. Ethernet Denetleyicisi sürücü dosyalarını da bu dizine kopyalayın.
+NetX Duo NAT kaynak kodu dosyalarını NetX Duo ve ThreadX'in yüklü olduğu dizine kopyalayın. Örneğin, NetX Duo ve ThreadX "*\threadx\mcf5485\green*" dizinine *yüklenirse, nx_nat.c*, *nx_nat.h* ve değiştirilen NetX Duo dosyaları bu dizine kopyalanır. Değiştirilen NetX Duo dosyalarını mevcut NetX Duo dosyalarının üzerine kopyalayın. Ethernet denetleyicisi sürücü dosyalarını da bu dizine kopyalayın.
 
 NetX Duo NAT uygulaması oluşturmak için:
 
-- NetX Duo Kitaplığı *nxduo. a* , tanımlı NX_NAT_ENABLED oluşturulmalıdır. Bu, *nx_user. h*' de yapılabilir ( *nx_user. h* içindeki yapılandırma seçeneklerinin derlemede yer aldığından emin olmak için NX_INCLUDE_USER_DEFINE_FILE de tanımlandığından emin olun.
-- Uygulama Projesi, *tx_api. h* ve nx_api. h sonrasında *nx_nat. h* içermelidir. *Son iki başlık dosyası,* threadx ve NetX Duo hizmetlerini kullanmak için gereklidir.
-- Uygulama daha sonra *nx_nat_enable* hizmetini kullanarak daha önce oluşturulmuş bir IP örneğinde NAT 'yi mümkün.
-- Uygulama kodu, *nx_nat_enable* ve *NX_NAT_DISABLE* hizmetini çağırarak NAT 'ı dinamik olarak etkinleştirebilir/devre dışı bırakabilir.
-- Uygulama proje kodu derlenir ve çalıştırılabilir dosyayı oluşturmak için NAT etkin NetX Duo kitaplığıyla bağlanır.
-- TCP, UDP veya ıCMP protokollerini kullanarak NAT bağlantılarını desteklemek için, bu protokolü desteklemek üzere NetX Duo etkinleştirilmelidir. Bu, önceden oluşturulan IP örneği için *nx_tcp_enable, nx_udp_enable* ve *nx_icmp_enable* çağırarak yapılır.
+- NetX Duo kitaplığı *nxduo.a,* tanımlanan NX_NAT_ENABLED gerekir. Bu, *nx_user.h* içinde yapılabilir (NX_INCLUDE_USER_DEFINE_FILE.h'daki yapılandırma seçeneklerinin derlemeye dahil olduğundan emin olmak için *nx_user'nin de tanımlandığına* emin olun.
+- Uygulama projesi *nx_nat.h ve* *tx_api.h'den* sonra *nx_api.h'yi içermesi gerekir. ThreadX ve* NetX Duo hizmetlerini kullanmak için son iki üst bilgi dosyası gereklidir.
+- Uygulama daha sonra daha önce oluşturulan bir IP örneğinde NAT'yi nx_nat_enable *sağlar.*
+- Uygulama kodu, nx_nat_enable ve nx_nat_disable çağırarak NAT'yi *dinamik nx_nat_disable* etkinleştirebilir. 
+- Uygulama proje kodu derlenmiş ve yürütülebilir dosyayı oluşturmak için NAT özellikli NetX Duo kitaplığıyla bağlantılıdır.
+- TCP, UDP veya ICMP protokollerini kullanarak NAT bağlantılarını desteklemek için NetX Duo'nın bu protokolü destekleyecek şekilde etkinleştirilmesi gerekir. Bu, sırasıyla *önceden nx_tcp_enable IP nx_udp_enable* ve *nx_icmp_enable* ip adresi çağrılarak yapılır.
 
-## <a name="small-example-demo-nat-setup"></a>Küçük örnek Tanıtım NAT kurulumu
+## <a name="small-example-demo-nat-setup"></a>Küçük Örnek Tanıtım NAT Kurulumu
 
-Uygulamanın NetX Duo NAT 'yi nasıl ayarladığını gösteren bir örnek, aşağıdaki Şekil 4 ' te *tx_application_define* işlevinde gösterilmiştir. Yükleme CD 'sinde dağıtılan NetX Duo tanıtım dosyalarından farklı olarak, bu tanıtım, *_nx_ram_network_driver*() sanal ağ sürücüsünü kullanan BIR Windows bilgisayarı yerine iki Ethernet denetleyicisi olan gerçek bir işlemci panosunda çalışır. NAT cihazı, yerel arabirimindeki yerel bir anahtar üzerinden yerel etki alanına ve dış arabirimindeki ikinci anahtar aracılığıyla dış ağa bağlanır.
+Aşağıdaki Şekil 4'te bir uygulamanın NetX Duo *NAT'tx_application_define* bir örnek gösterilmiştir. Yükleme CD'sinde dağıtılan çoğu NetX Duo demo dosyalarından farklı olarak, bu tanıtım sanal ağ sürücüsü _nx_ram_network_driver () kullanan bir Windows pc yerine iki Ethernet denetleyicisine sahip gerçek bir işlemci *panosunda* çalışır. NAT cihazı, yerel arabiriminde bir yerel anahtar aracılığıyla yerel etki alanına ve dış arabiriminde ikinci anahtar aracılığıyla dış ağa bağlanır.
 
-NetXDuo temel yapılandırması demo_netx_nat. c içinde gösterilir. Özel ağ 192.168.2. xx olarak tanımlanır ve iki yerel konak düğümü vardır. Genel ağ, 192.168.0. xx olarak tanımlanır ve ağ geçidini 192.168.0.1 olarak ağ paketleri için tanımlar. NetX Duo IP örnekleri 118-171 satırları üzerinde oluşturulur ve ' RAM ' sürücüsünü çağırır; nat_ip örneği iliştirilmiş iki arabirim NAT local_ip yönlendiricisi olarak görev görür external_ip örneği eklenen bir arabirim dış konak olarak davranır.
+NetXDuo temel yapılandırması demo_netx_nat.c. Özel ağ 192.168.2.xx olarak tanımlanır ve iki yerel konak düğümüne sahip olur. Genel ağ 192.168.0.xx olarak tanımlanır ve ağ paketleri dışında ağ geçidini 192.168.0.1 olarak tanımlar. NetX Duo IP örnekleri 118-171. satırlarda oluşturulur ve 'ram' sürücüsünü çağırır; nat_ip ekli iki arabirim NAT yönlendiricisi olarak hareket local_ip ekli örnek yerel konak gibi davranır; external_ip ekli bir arabirim dış konak olarak hareket ediyor.
 
-NAT, satır 252 ' de oluşturulur ve dinamik çeviri girdilerini depolamak için önbelleği çağırır. Line319 ' de NAT özelliğini etkinleştirin, dış konağın yerel konağa erişmesine izin vermek için 362 satırlarında statik çeviri entrie (gelen girdisi) oluşturulur.
+NAT 252. satırda oluşturulur ve dinamik çeviri girişlerini depolamak için önbelleği çağırır. 319. satırda NAT özelliğini etkinleştirin; dış ana bilgisayar yerel ana bilgisayar erişimine izin vermek için satır 362'de statik çeviri girdisi (gelen giriş) oluşturulur.
 
 ```C
 /*
@@ -456,4 +456,4 @@ NX_PACKET   *my_packet;
 #endif
 ```
 
-**Şekil 5-NetX Duo NAT 'yi ayarlama**
+**Şekil 5 - NetX Duo NAT ayarlama**

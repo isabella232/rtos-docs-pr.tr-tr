@@ -1,89 +1,89 @@
 ---
-title: Bölüm 5-Azure RTOS ThreadX SMP için cihaz sürücüleri
-description: Bu bölümde, Azure RTOS ThreadX SMP için cihaz sürücülerinin bir açıklaması yer almaktadır.
+title: Bölüm 5 - ThreadX SMP Azure RTOS Cihaz Sürücüleri
+description: Bu bölümde, ThreadX SMP için cihaz Azure RTOS açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: acfb54a25cc8bc27b7d0aaeff48956529d90c9e1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 706ad47b2c3e7b2979da7262a4de8d681f4fbc53cb1af59a798b34094734060b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828018"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792352"
 ---
-# <a name="chapter-5---device-drivers-for-azure-rtos-threadx-smp"></a>Bölüm 5-Azure RTOS ThreadX SMP için cihaz sürücüleri
+# <a name="chapter-5---device-drivers-for-azure-rtos-threadx-smp"></a>Bölüm 5 - ThreadX SMP Azure RTOS Cihaz Sürücüleri
 
-Bu bölümde, Azure RTOS ThreadX SMP için cihaz sürücülerinin bir açıklaması yer almaktadır. Bu bölümde sunulan bilgiler, geliştiricilerin uygulamaya özgü sürücüleri yazmasına yardımcı olmak için tasarlanmıştır. 
+Bu bölümde, ThreadX SMP için cihaz Azure RTOS açıklaması yer almaktadır. Bu bölümde sunulan bilgiler, geliştiricilerin uygulamaya özgü sürücüler yazmanıza yardımcı olmak için tasarlanmıştır. 
 
-## <a name="device-driver-introduction"></a>Cihaz sürücüsü giriş
+## <a name="device-driver-introduction"></a>Cihaz Sürücüsüne Giriş
 
-Dış ortamla iletişim, çoğu katıştırılmış uygulamanın önemli bir bileşenidir. Bu iletişim, katıştırılmış uygulama yazılımının erişebileceği donanım cihazları aracılığıyla gerçekleştirilir. Bu cihazları yönetmeden sorumlu yazılım bileşenleri genellikle *cihaz sürücüleri* olarak adlandırılır.
+Dış ortamla iletişim, çoğu ekli uygulamanın önemli bir bileşenidir. Bu iletişim, katıştırılmış uygulama yazılımı tarafından erişilebilen donanım cihazları aracılığıyla başarılı olur. Bu tür cihazları yönetmekle sorumlu yazılım bileşenleri yaygın olarak Cihaz Sürücüleri *olarak da adlandırılan yazılım bileşenleridir.*
 
-Katıştırılmış ve gerçek zamanlı sistemlerdeki cihaz sürücüleri, doğal olarak uygulamaya bağımlıdır. Bu iki asıl nedenden dolayı geçerlidir: hedef donanımın büyük ölçüde çeşitliliğe ve gerçek zamanlı uygulamalara uygulanan eşit oranda performans gereksinimleridir. Bu nedenle, her uygulamanın gereksinimlerini karşılayacak ortak bir sürücü kümesi sağlanması neredeyse imkansızdır. Bu nedenlerden dolayı, bu bölümdeki bilgiler, kullanıcıların *raf dışı* THREADX SMP cihaz sürücülerini özelleştirmesini ve kendi belirli sürücülerini yazmasını sağlamak üzere tasarlanmıştır.
+Katıştırılmış, gerçek zamanlı sistemlerde cihaz sürücüleri doğal olarak uygulamaya bağımlıdır. Bu durum iki temel nedenden dolayı doğrudur: çok çeşitli hedef donanımlar ve gerçek zamanlı uygulamalara yönelik eşit derecede büyük performans gereksinimleri. Bu nedenle, her uygulamanın gereksinimlerini karşılayacak ortak bir sürücü kümesi sağlamak neredeyse imkansızdır. Bu nedenle, bu bölümdeki bilgiler kullanıcıların hazır *olmayan* ThreadX SMP cihaz sürücülerini özelleştirmelerine ve kendi özel sürücülerini yazmalarına yardımcı olmak için tasarlanmıştır.
 
-## <a name="driver-functions"></a>Sürücü Işlevleri
+## <a name="driver-functions"></a>Sürücü İşlevleri
 
-ThreadX SMP cihaz sürücüleri, aşağıdaki gibi sekiz temel işlevsel alandan oluşur:
+ThreadX SMP cihaz sürücüleri aşağıdaki gibi sekiz temel işlevsel alandan oluşur:
 
-- **Sürücü başlatma**
-- **Sürücü denetimi**
-- **Sürücü erişimi**
-- **Sürücü girişi**
-- **Sürücü çıkışı**
-- **Sürücü kesintileri**
-- **Sürücü durumu**
-- **Sürücü sonlandırma**
+- **Sürücü Başlatma**
+- **Sürücü Denetimi**
+- **Sürücü Erişimi**
+- **Sürücü Girişi**
+- **Sürücü Çıkışı**
+- **Sürücü Kesintileri**
+- **Sürücü Durumu**
+- **Sürücü Sonlandırma**
 
-Başlatma dışında, her sürücü işlevsel alanı isteğe bağlıdır. Ayrıca, her bir alandaki tam işleme cihaz sürücüsüne özeldir.
+Başlatma dışında her sürücü işlev alanı isteğe bağlıdır. Ayrıca, her alanda tam işlem cihaz sürücüsüne özeldir.
 
-### <a name="driver-initialization"></a>Sürücü başlatma 
-Bu işlevsel alan, gerçek donanım cihazının ve sürücünün iç veri yapılarının başlatılmasından sorumludur. Başlatma tamamlanana kadar diğer sürücü hizmetlerini çağırmaya izin verilmez.
+### <a name="driver-initialization"></a>Sürücü Başlatma 
+Bu işlevsel alan, gerçek donanım aygıtının ve sürücünün iç veri yapılarının başlatılama sorumluluğundadır. Başlatma işlemi tamamlanana kadar diğer sürücü hizmetlerini çağırmaya izin verilmez.
 
 > [!IMPORTANT]
-> Sürücünün başlatma işlevi bileşeni genellikle **tx_application_define** işlevden veya bir başlatma iş parçacığından çağırılır.
+> Sürücünün başlatma işlevi bileşeni genellikle tx_application_define **işlevinden veya bir** başlatma iş parçacığından çağrılır.
 
-### <a name="driver-control"></a>Sürücü denetimi 
-Sürücü başlatıldıktan ve işleme hazırladıktan sonra, bu işlevsel alan çalışma zamanı denetiminden sorumludur. Genellikle, çalışma zamanı denetimi, temel alınan donanım cihazında değişiklik yapmaktan oluşur. Örnek olarak, bir seri cihazın baud hızını değiştirme veya bir diskte yeni bir kesim arama sayılabilir.
+### <a name="driver-control"></a>Sürücü Denetimi 
+Sürücü başlatıldıktan ve işlem için hazır olduktan sonra, bu işlevsel alan çalışma zamanı denetiminden sorumludur. Genellikle, çalışma zamanı denetimi temel donanım cihazında değişiklik yapmakla oluşur. Örnek olarak seri bir cihazın sabit oranını değiştirme veya diskte yeni bir kesim arama örnek olarak verilmiştir.
 
-### <a name="driver-access"></a>Sürücü erişimi 
-Bazı cihaz sürücüleri yalnızca tek bir uygulama iş parçacığından çağırılır. Böyle durumlarda, bu işlevsel alan gerekli değildir. Ancak, birden çok iş parçacığının eşzamanlı sürücü erişimine ihtiyacı olan uygulamalarda, cihaz sürücüsüne atama/sürüm tesislerini ekleyerek etkileşiminin denetlenmesi gerekir. Alternatif olarak, uygulama sürücü erişimini denetlemek ve sürücü içinde ek yüke ve karmaşıkmaya engel olmak için bir semafor kullanabilir. 
+### <a name="driver-access"></a>Sürücü Erişimi 
+Bazı cihaz sürücüleri yalnızca tek bir uygulama iş parçacığından çağrılır. Böyle durumlarda bu işlevsel alan gerekli değildir. Ancak, birden çok iş parçacığının eşzamanlı sürücü erişimine ihtiyacı olan uygulamalarda, etkileşimleri cihaz sürücüsüne atama/sürüm özellikleri ek olarak denetlenmektedir. Alternatif olarak, uygulama sürücü erişimini kontrol etmek ve sürücü içinde ek yük ve sorunlardan kaçınmak için bir semafor kullanabilir. 
 
-### <a name="driver-input"></a>Sürücü girişi 
-Bu işlevsel alan tüm cihaz girişinden sorumludur. Sürücü girişiyle ilişkili asıl sorunlar genellikle girişin nasıl arabelleğe alınacağını ve iş parçacıklarının böyle bir girişi nasıl bekleyeceğini kapsar. 
+### <a name="driver-input"></a>Sürücü Girişi 
+Bu işlev alanı tüm cihaz girişlerini sorumludur. Sürücü girişiyle ilişkili asıl sorunlar genellikle girişin arabelleğe nasıl dahil olduğunu ve iş parçacıklarının bu girişi beklemesini içerir. 
 
-### <a name="driver-output"></a>Sürücü çıkışı 
-Bu işlevsel alan tüm cihaz çıktıından sorumludur. Sürücü çıkışıyla ilişkili asıl sorunlar genellikle çıktının nasıl arabelleğe alınacağını ve iş parçacıklarının çıktıyı gerçekleştirmeyi nasıl bekleyeceğini kapsar. 
+### <a name="driver-output"></a>Sürücü Çıkışı 
+Bu işlev alanı tüm cihaz çıkışından sorumludur. Sürücü çıkışıyla ilişkili asıl sorunlar genellikle çıkışın nasıl arabelleğe alma ve iş parçacıklarının çıkışı gerçekleştirmeyi beklemesi konularını içerir. 
 
-### <a name="driver-interrupts"></a>Sürücü kesintileri 
-Birçok gerçek zamanlı sistem, cihaz girişi, çıkış, denetim ve hata olaylarının sürücüsünü bilgilendirmek için donanım kesmelerini kullanır. Kesmeler, bu tür dış olaylara garantili bir yanıt süresi sağlar. Kesmeler yerine, sürücü yazılımı bu tür olaylar için düzenli olarak dış donanımı denetleyebilir. Bu teknik *yoklama* olarak adlandırılır. Kesmelerden daha az gerçek zamanlı, ancak yoklama bazı daha az gerçek zamanlı uygulamalar açısından anlamlı olabilir. 
+### <a name="driver-interrupts"></a>Sürücü Kesintileri 
+Gerçek zamanlı sistemlerin çoğu cihaz girişi, çıkışı, denetimi ve hata olaylarını sürücüye bildirmek için donanım kesintilerine güvenmektedir. Kesintiler, bu tür dış olaylara garantili bir yanıt süresi sağlar. Kesintiler yerine, sürücü yazılımı bu tür olaylar için dış donanımı düzenli aralıklarla kontrol ediyor olabilir. Bu teknik yoklama *olarak adlandırılan bir tekniktir.* Bu, kesintilere göre daha az gerçek zamanlıdır, ancak yoklama bazı daha az gerçek zamanlı uygulamalar için anlamlı olabilir. 
 
-### <a name="driver-status"></a>Sürücü durumu 
-Bu işlev alanı, sürücü işlemiyle ilişkili çalışma zamanı durumu ve istatistiklerini sağlamaktan sorumludur. Bu işlev alanı tarafından yönetilen bilgiler genellikle aşağıdakileri içerir: 
+### <a name="driver-status"></a>Sürücü Durumu 
+Bu işlev alanı, sürücü işlemiyle ilişkili çalışma zamanı durumunu ve istatistikleri sağlamakla sorumludur. Bu işlev alanı tarafından yönetilen bilgiler genellikle şunları içerir: 
 - Geçerli cihaz durumu
 - Giriş baytları
 - Çıkış baytları
 - Cihaz hata sayıları
 
-### <a name="driver-termination"></a>Sürücü sonlandırma 
-Bu işlevsel alan isteğe bağlıdır. Yalnızca sürücü ve/veya fiziksel donanım cihazının kapatılması gerekiyorsa gereklidir. Sonlandırıldıktan sonra, yeniden başlatılana kadar sürücünün yeniden çağrılmaması gerekir. 
+### <a name="driver-termination"></a>Sürücü Sonlandırma 
+Bu işlev alanı isteğe bağlıdır. Yalnızca sürücünün ve/veya fiziksel donanım aygıtının kapanması gerektiğinde gereklidir. Sonlandırıldıktan sonra, sürücü yeniden başlatılana kadar yeniden çağrılmama gerekir. 
 
-## <a name="simple-driver-example"></a>Basit sürücü örneği
+## <a name="simple-driver-example"></a>Basit Sürücü Örneği
 
-Bir aygıt sürücüsünü tanımlamanın en iyi yolu bir örnektir. Bu örnekte, sürücü bir yapılandırma kaydı, bir giriş kaydı ve bir çıkış kaydı ile basit bir seri donanım cihazı olduğunu varsayar. Bu basit sürücü örneği, başlatma, giriş, çıkış ve kesme işlevsel bölgelerini gösterir.
+Bir cihaz sürücüsünü açıklamanın en iyi yolu bir örnektir. Bu örnekte sürücü, yapılandırma yazmaci, giriş yazmaci ve çıkış yazmaci ile basit bir seri donanım cihazı varsayıyor. Bu basit sürücü örneği başlatma, giriş, çıkış ve kesme işlevsel alanlarını göstermektedir.
 
-### <a name="simple-driver-initialization"></a>Basit sürücü başlatma 
-Basit sürücünün ***tx_sdriver_initialize*** işlevi, sürücünün giriş ve çıkış işlemini yönetmek için kullanılan iki sayım semaforu oluşturur. Giriş semaforu, seri donanım aygıtı tarafından bir karakter alındığında giriş ıSR tarafından ayarlanır. Bu nedenle, giriş semaforu ilk sıfır sayısı ile oluşturulur.
+### <a name="simple-driver-initialization"></a>Basit Sürücü Başlatma 
+Basit ***tx_sdriver_initialize*** işlevi, sürücünün giriş ve çıkış işlemi yönetmek için kullanılan iki sayma semaforu oluşturur. Giriş semaforu, seri donanım cihazı tarafından bir karakter alınca giriş ISR tarafından ayarlanır. Bu nedenle, giriş semaforu ilk sıfır sayısıyla oluşturulur.
 
-Buna karşılık, çıkış semaforu seri donanım iletme kaydının kullanılabilirliğini gösterir. İlk olarak, iletme kaydının kullanılabilir olduğunu göstermek için bir değeriyle oluşturulur.
+Buna karşılık, çıkış semaforu seri donanım iletme yazmaca kullanılabilirliğini gösterir. İletme kaydının başlangıçta kullanılabilir olduğunu belirtmek için bir değeriyle oluşturulur.
 
-Başlatma işlevi, giriş ve çıkış bildirimleri için düşük düzeyli kesme vektör işleyicilerini yüklemeden de sorumludur. Diğer ThreadX SMP kesme hizmeti yordamları gibi, düşük düzey işleyicinin basit sürücü ıSR 'yi çağırmadan önce ***_tx_thread_context_save** _ ' i çağırması gerekir. Sürücü ıSR çağrıldıktan sonra, alt düzey işleyicinin _ * _ _tx_thread_context_restore_* * çağrısı gerekir.
+Başlatma işlevi ayrıca giriş ve çıkış bildirimleri için alt düzey kesme vektörü işleyicilerini yüklemekle de sorumludur. Diğer ThreadX SMP kesme hizmeti yordamları gibi, alt düzey işleyici basit sürücü **ISR'sini çağırmadan** önce * _tx_thread_context_save _ çağrısı yapmak gerekir. Sürücü ISR döndürdikten sonra, alt düzey işleyicinin _*_ tx_thread_context_restore **_çağrısında tx_thread_context_restore_ gerekir.
 
 > [!IMPORTANT]
-> Başlatmanın diğer sürücü işlevlerinden herhangi birinin önüne çağrılması önemlidir. Genellikle, **tx_application_define**'tan sürücü başlatma çağrılır.
+> Başlatmanın diğer sürücü işlevlerinden önce çağrılsı önemlidir. Genellikle, sürücü başlatma, 'den **tx_application_define.**
 
-Basit sürücünün başlatma kaynak kodu için sayfa 306 ' de Şekil 9 ' a bakın.
+Basit sürücünün başlatma kaynak kodu için sayfa 306'da Şekil 9'a bakın.
 
 ```C
 VOID     tx_sdriver_initialize(VOID)
@@ -104,17 +104,17 @@ VOID     tx_sdriver_initialize(VOID)
        generation, baud rate, stop bits, etc. */
 }
 ```
-**ŞEKIL 9. Basit sürücü başlatma**
+**ŞEKIL 9. Basit Sürücü Başlatma**
 
-### <a name="simple-driver-input"></a>Basit sürücü girişi 
-Giriş semaforu etrafında basit sürücü merkezlerinin girişi. Bir seri cihaz giriş kesmesi alındığında, giriş semaforu ayarlanır. Bir veya daha fazla iş parçacığı sürücüden bir karakter bekliyorsa, en uzun bekleme olan iş parçacığı sürdürülür. Bekleyen bir iş parçacığı yoksa semafor, bir iş parçacığı sürücü giriş işlevini çağırana kadar ayarlanmış olarak kalır.
+### <a name="simple-driver-input"></a>Basit Sürücü Girişi 
+Giriş semafor çevresinde basit sürücü merkezleri. Seri cihaz giriş kesintisi geldiğinde, giriş semaforu ayarlanır. Bir veya daha fazla iş parçacığı sürücüden bir karakter bekliyorsa, en uzun bekleyen iş parçacığı devam eder. Bekleyen iş parçacığı yoksa, bir iş parçacığı sürücü giriş işlevini çağırana kadar semafor yalnızca ayarlanmış olarak kalır.
 
-Basit sürücü girişi işleme için çeşitli sınırlamalar vardır. Giriş karakterlerinin düşürülme olasılığı en önemlidir. Bu, önceki karakter işlenmeden önce gelen giriş karakterlerini arabelleğe alma özelliği olmadığı için mümkündür. Bu, giriş karakter arabelleği eklenerek kolayca işlenir.
+Basit sürücü girişi işlemeyle ilgili birkaç sınırlama vardır. En önemli olan giriş karakterlerini bırakma potansiyelidir. Bunun nedeni, önceki karakter işlenmeden önce gelen giriş karakterlerini arabelleğe alma özelliği yoktur. Bu, bir giriş karakteri arabelleği ekleyerek kolayca iş görür.
 
 > [!IMPORTANT]
-> Yalnızca iş parçacıklarının **tx_sdriver_input** işlevini çağırması izin verilir.
+> Yalnızca iş parçacıklarının tx_sdriver_input **çağırmalarına izin** verilir.
 
-Şekil 10 ' da basit sürücü girişiyle ilişkili kaynak kodu gösterilmektedir.
+Şekil 10'da basit sürücü girişiyle ilişkili kaynak kodu gösterir.
 
 ```C
 UCHAR     tx_sdriver_input(VOID)
@@ -138,17 +138,17 @@ VOID     tx_sdriver_input_ISR(VOID)
     }
 }
 ```
-**ŞEKIL 10. Basit sürücü girişi**
+**ŞEKIL 10. Basit Sürücü Girişi**
 
-### <a name="simple-driver-output"></a>Basit sürücü çıktısı 
-Çıktı işleme, seri cihazın aktarım kaydı ücretsizdir sinyali almak için çıkış semaforu kullanır. Çıkış karakteri cihaza gerçekten yazılmadan önce, çıkış semaforu alınır. Mevcut değilse, önceki iletim henüz tamamlanmaz.
+### <a name="simple-driver-output"></a>Basit Sürücü Çıkışı 
+Çıkış işleme, seri cihazın iletim yazmaca serbest bırakılana işaret etmek için çıkış semaforu kullanır. Cihaza aslında bir çıkış karakteri yazmadan önce çıkış semaforu elde edilir. Kullanılamıyorsa, önceki iletme henüz tamamlanmadı.
 
-Çıkış ıSR, iletim tamamlanma kesmesini işlemekten sorumludur. Çıkış semaforu ayarlamak için çıkış ıSR miktarları işleme, böylece başka bir karakterin çıkışına izin veriliyor.
+Aktarım tamamlama kesme işleminin işlenmesinden çıkış ISR sorumludur. Çıkış ISR'sinde işlem, çıkış semaforu ayarlamaya ve böylece başka bir karakterin çıkışına izin verecek şekilde tutar.
 
 > [!IMPORTANT]
-> Yalnızca iş parçacıklarının **tx_sdriver_output** işlevini çağırması izin verilir.
+> Yalnızca iş parçacıklarının tx_sdriver_output **izin** verilir.
 
-Şekil 11 ' de, basit sürücü çıkışıyla ilişkili kaynak kodu gösterilmektedir.
+Şekil 11'de basit sürücü çıkışıyla ilişkili kaynak kodu gösterir.
 
 ```C
 VOID     tx_sdriver_output(UCHAR alpha)
@@ -170,27 +170,27 @@ VOID     tx_sdriver_output_ISR(VOID)
     tx_semaphore_put(&tx_sdriver_output_semaphore);
 }
 ```
-**ŞEKIL 11. Basit sürücü çıktısı**
+**ŞEKIL 11. Basit Sürücü Çıkışı**
 
-### <a name="simple-driver-shortcomings"></a>Basit sürücü eksikler 
-Bu basit cihaz sürücüsü örneği, bir ThreadX SMP cihaz sürücüsünün temel fikrini gösterir. Ancak, basit cihaz sürücüsü veri arabelleğe alma veya herhangi bir ek yük sorununu gidermez, ancak gerçek dünyada ThreadX SMP sürücülerini tam olarak göstermez. Aşağıdaki bölümde, cihaz sürücüleriyle ilişkili daha gelişmiş sorunlardan bazıları açıklanmaktadır.
+### <a name="simple-driver-shortcomings"></a>Basit Sürücü Eksikleri 
+Bu basit cihaz sürücüsü örneği, ThreadX SMP cihaz sürücüsünün temel fikirlerini gösterir. Ancak, basit cihaz sürücüsü veri arabelleğe alma veya ek yük sorunlarını ele almayacağı için gerçek dünya ThreadX SMP sürücülerini tam olarak temsil etmez. Aşağıdaki bölümde, cihaz sürücüleriyle ilişkili daha gelişmiş sorunlardan bazıları açık almaktadır.
 
-## <a name="advanced-driver-issues"></a>Gelişmiş sürücü sorunları
+## <a name="advanced-driver-issues"></a>Gelişmiş Sürücü Sorunları
 
-Daha önce belirtildiği gibi, cihaz sürücüleri, uygulamaları için benzersiz olan gereksinimlere sahiptir. Bazı uygulamalar, yüksek frekanslı cihaz kesintileri nedeniyle, başka bir uygulama en iyi duruma getirilmiş sürücü ISRs gerektirirken, çok büyük miktarda veri arabelleğe alma gerektirebilir.
+Daha önce belirtildiği gibi, cihaz sürücülerinin uygulamaları kadar benzersiz gereksinimleri vardır. Bazı uygulamalar çok büyük miktarda veri arabelleğe alma gerektirirken, başka bir uygulama yüksek sıklıkta cihaz kesintileri nedeniyle iyileştirilmiş sürücü ISR'leri gerektirebilir.
 
-### <a name="io-buffering"></a>G/ç arabelleğe alma 
-Gerçek zamanlı gömülü uygulamalarda veri arabelleğe alma, önemli bir planlama gerektirir. Tasarımın bazıları temel alınan donanım aygıtı tarafından dikte edilir. Cihaz temel bayt g/ç sağlıyorsa, büyük olasılıkla basit bir dairesel arabellek olabilir. Ancak, cihaz blok, DMA veya paket g/ç sağlıyorsa, büyük olasılıkla bir arabellek yönetimi düzeni garanti edilir. 
+### <a name="io-buffering"></a>I/O Arabelleğe Alma 
+Gerçek zamanlı ekli uygulamalarda veri arabelleğe alma için önemli planlamalar gerekir. Tasarımın bazıları, temel alınan donanım cihazı tarafından dikte edilen bir tasarımdır. Cihaz temel bir bayt I/O sağlarsa, büyük olasılıkla basit bir döngüsel arabellek sırasına göredir. Ancak, cihaz blok, DMA veya paket I/O sağlarsa, büyük olasılıkla bir arabellek yönetim şeması gerekir. 
 
-### <a name="circular-byte-buffers"></a>Dairesel bayt arabellekleri 
-Döngüsel bayt arabellekleri genellikle UART gibi basit bir seri donanım cihazını yöneten sürücülerde kullanılır. Genellikle giriş ve çıkış için bir tane olmak üzere iki dairesel arabellek çoğu zaman bu durumlarda kullanılır.
+### <a name="circular-byte-buffers"></a>Döngüsel Byte Arabellekleri 
+Döngüsel bayt arabellekleri genellikle UART gibi basit bir seri donanım cihazı yöneten sürücülerde kullanılır. İki döngüsel arabellek en çok bu tür durumlarda kullanılır: biri giriş, biri çıkış için.
 
-Her döngüsel bayt arabelleği bir bayt bellek alanından (genellikle bir Uchar dizisi), bir okuma işaretçisine ve bir yazma işaretçisine oluşur. Okuma işaretçisi ve yazma işaretçileri arabellekteki aynı bellek konumuna başvuru yaparken bir arabellek boş kabul edilir. Sürücü başlatma, hem okuma hem de yazma arabelleği işaretçilerini arabelleğin başlangıç adresine ayarlar.
+Her döngüsel bayt arabelleği bir bayt bellek alanı (genellikle bir UCHAR dizisi), okuma işaretçisi ve yazma işaretçisi içerir. Okuma işaretçisi ve yazma işaretçileri arabellekte aynı bellek konumuyla ilgili olduğunda arabellek boş olarak kabul edilir. Sürücü başlatma, hem okuma hem de yazma arabellek işaretçilerini arabelleğin başlangıç adresine ayarlar.
 
-### <a name="circular-buffer-input"></a>Döngüsel arabellek girişi 
-Giriş arabelleği, uygulamanın kendisine hazırlanmadan önce gelen karakterleri tutmak için kullanılır. Bir giriş karakteri alındığında (genellikle bir kesme hizmeti yordamında), yeni karakter donanım aygıtından alınır ve yazma işaretçisi tarafından işaret edilen konumdaki giriş arabelleğine konur. Yazma işaretçisi daha sonra arabellekte bir sonraki konuma ilerlemiş olur. Sonraki konum arabelleğin sonunu aşıyorsa, yazma işaretçisi arabelleğin başlangıcına ayarlanır. Yeni yazma işaretçisi okuma işaretçiyle aynıysa yazma işaretçisinin ilerleme durumu iptal edildiğinde sıranın tam koşulu işlenir.
+### <a name="circular-buffer-input"></a>Döngüsel Arabellek Girişi 
+Giriş arabelleği, uygulama hazır olmadan önce gelen karakterleri tutmak için kullanılır. Bir giriş karakteri (genellikle bir kesme hizmeti yordamında) alınca, yeni karakter donanım cihazından alınır ve yazma işaretçisi tarafından işaret ettiği konumda giriş arabelleğine yerleştirilir. Yazma işaretçisi daha sonra arabellekte bir sonraki konuma ileri doğru ilerler. Sonraki konum, arabelleğin sonunu geçmişse, yazma işaretçisi arabelleğin başına ayarlanır. Yeni yazma işaretçisi okuma işaretçisi ile aynı ise, kuyruk tam koşulu yazma işaretçisi ilerlemesi iptal edilir.
 
-Sürücüye yönelik uygulama giriş bayt istekleri, giriş arabelleğinin okuma ve yazma işaretçilerini ilk olarak inceler. Okuma ve yazma işaretçileri aynıysa, arabellek boştur. Aksi takdirde, okuma işaretçisi aynı değilse, okuma işaretçisi tarafından işaret edilen bayt giriş arabelleğinden kopyalanır ve okuma işaretçisi bir sonraki arabellek konumuna göre ilerlemiş olur. Yeni okuma işaretçisi arabelleğin sonunu aşıyorsa, başlangıca sıfırlanır. Şekil 12 ' de dairesel giriş arabelleğinin mantığı gösterilmektedir.
+Sürücüye yapılan uygulama giriş bayt istekleri önce giriş arabelleğinin okuma ve yazma işaretçilerini inceler. Okuma ve yazma işaretçileri aynı ise arabellek boştur. Aksi takdirde, okuma işaretçisi aynı değilse, okuma işaretçisi tarafından işaret eden bayt giriş arabelleğinden kopyalanır ve okuma işaretçisi sonraki arabellek konumu için gelişmiştir. Yeni okuma işaretçisi arabelleğin sonunu geçmişse en baştan sıfırlanır. Şekil 12'de döngüsel giriş arabelleğinin mantığı yer almaktadır.
 
 ```C
 UCHAR     tx_input_buffer[MAX_SIZE];
@@ -217,13 +217,13 @@ if (tx_input_read_ptr != tx_input_write_ptr)
         tx_input_read_ptr =  &tx_input_buffer[0];
 }
 ```
-**ŞEKIL 12. Döngüsel giriş arabelleği mantığı**
+**ŞEKIL 12. Döngüsel Giriş Arabelleği mantığı**
 
 > [!IMPORTANT]
-> Güvenilir bir işlem için hem giriş hem de çıkış dairesel arabelleklerinin okuma ve yazma işaretçilerini yaparken kesintileri kilitleme gerekebilir.
+> Güvenilir işlem için, hem giriş hem de çıkış döngüsel arabelleklerinin okuma ve yazma işaretçileri işlenebilirken kesmeleri kilitlemek gerekebilir.
 
-### <a name="circular-output-buffer"></a>Döngüsel çıkış arabelleği 
-Çıktı arabelleği, donanım aygıtı önceki baytı göndermeden önce çıkış için ulaşan karakterleri tutmak için kullanılır. Çıkış arabelleği işleme, giriş arabelleği işlemeye benzerdir, ancak iletim çıkış isteği çıkış okuma işaretçisini, uygulama çıktı isteği çıkış yazma işaretçisinden yararlanır. Aksi takdirde, çıkış arabelleği işleme aynıdır. Şekil 13, döngüsel çıkış arabelleğinin mantığını gösterir.
+### <a name="circular-output-buffer"></a>Döngüsel Çıkış Arabelleği 
+Çıkış arabelleği, donanım cihazı önceki baytı göndermeden önce çıkışa gelen karakterleri tutmak için kullanılır. Çıkış arabelleği işlemesi giriş arabelleği işlemeye benzer, ancak aktarım tam kesme işlemesi çıkış okuma işaretçisini, uygulama çıkış isteği ise çıkış yazma işaretçisini kullanır. Aksi takdirde, çıkış arabelleği işlemesi aynıdır. Şekil 13'te döngüsel çıkış arabelleğinin mantığı gösterildi.
 
 ```C
 UCHAR     tx_output_buffer[MAX_SIZE];
@@ -250,12 +250,12 @@ if (tx_output_write_ptr > &tx_output_buffer[MAX_SIZE-1])
 if (tx_output_write_ptr == tx_output_read_ptr)
     tx_output_write_ptr =  save_ptr;  /* Buffer full!  */
 ```
-**ŞEKIL 13. Döngüsel çıkış arabelleği mantığı**
+**ŞEKIL 13. Döngüsel Çıkış Arabelleği mantığı**
 
-### <a name="buffer-io-management"></a>Arabellek g/ç yönetimi 
-Gömülü mikro işlemcilerin performansını artırmak için, birçok çevresel cihaz cihazı yazılım tarafından sağlanan arabelleklerle veri iletir ve alır. Bazı uygulamalarda, tek tek veri paketlerini iletmek veya almak için birden çok arabellek kullanılabilir. 
+### <a name="buffer-io-management"></a>Arabellek I/O Yönetimi 
+Ekli mikro işlemcilerin performansını geliştirmek için birçok çevresel cihaz, yazılım tarafından sağlanan arabelleklerle veri iletir ve alır. Bazı uygulamalar, tek tek veri paketlerini iletmek veya almak için birden çok arabellek kullanılabilir. 
 
-G/ç arabelleklerinin boyutu ve konumu, uygulama ve/veya sürücü yazılımı tarafından belirlenir. Genellikle, arabellekler boyut olarak sabitlenir ve bir ThreadX SMP blok bellek havuzu içinde yönetilir. Şekil 14s tipik bir g/ç arabelleğini ve bunların ayırmasını yöneten bir ThreadX SMP blok bellek havuzunu açıklar.
+I/O arabelleklerinin boyutu ve konumu, uygulama ve/veya sürücü yazılımı tarafından belirlenir. Arabellekler genellikle boyut olarak sabittir ve bir ThreadX SMP blok bellek havuzu içinde yönetilir. Şekil 14'te tipik bir I/O arabelleği ve ayırmayı yöneten ThreadX SMP blok bellek havuzu yer alır.
 
 ```C
 typedef struct TX_IO_BUFFER_STRUCT
@@ -277,41 +277,41 @@ tx_block_pool_create(&tx_io_block_pool,
                   free_memory_ptr, 0x10000,
                   sizeof(TX_IO_BUFFER));
 ```
-**ŞEKIL 14. G/ç arabelleği**
+**ŞEKIL 14. I/O Arabelleği**
 
 ### <a name="tx_io_buffer"></a>TX_IO_BUFFER 
-TypeDef TX_IO_BUFFER iki işaretçisinden oluşur. ***Tx_next_packet** _ işaretçisi, giriş veya çıkış listesinde birden çok paketi bağlamak için kullanılır. _ *_Tx_next_buffer_** işaretçisi, cihazdan tek bir veri paketini oluşturan arabellekleri birbirine bağlamak için kullanılır. Arabellek havuzdan ayrıldığında, bu işaretçilerin her ikisi de NULL olarak ayarlanır. Ayrıca, bazı cihazlar arabellek alanının ne kadarının veri içerdiğini göstermek için başka bir alan gerektirebilir.
+Typedef TX_IO_BUFFER iki işaretçiden oluşur. ***tx_next_packet** _ işaretçisi, giriş veya çıkış listesinde birden çok paketin bağlantısını yapmak için kullanılır. _ *_tx_next_buffer_** işaretçisi, cihazdan tek bir veri paketinin yer alan arabelleklerini bir araya araya getirdi. Arabellek havuzdan ayrılırken bu işaretçilerin her ikisi de NULL olarak ayarlanır. Buna ek olarak, bazı cihazlar arabellek alanın gerçekte ne kadar veri içerdiğini belirtmek için başka bir alan gerektirmektedir.
 
-### <a name="buffered-io-advantage"></a>Arabelleğe alınan g/ç avantajı 
-Arabellek g/ç düzeninin avantajları nelerdir? En büyük avantaj, verilerin cihaz kayıtları ve uygulamanın belleği arasında kopyalanamaması. Bunun yerine, sürücü cihaza bir dizi arabellek işaretçisi sağlar. Fiziksel aygıt g/ç, sağlanan arabellek belleğini doğrudan kullanır.
+### <a name="buffered-io-advantage"></a>Arabelleğe Alındı I/O Avantajı 
+Arabellek I/O şemasının avantajları nelerdir? En büyük avantajı, verilerin cihaz kayıtları ile uygulamanın belleği arasında kopyalanmamalarındandır. Bunun yerine sürücü, cihaza bir dizi arabellek işaretçisi sağlar. Fiziksel cihaz I/O, sağlanan arabellek belleğini doğrudan kullanır.
 
-Bilgilerin giriş veya çıkış paketlerini kopyalamak için işlemcinin kullanılması son derece maliyetlidir ve yüksek performanslı iş g/ç durumunda kaçınılmalıdır.
+bilgi giriş veya çıkış paketlerini kopyalamak için işlemcinin kullanımı son derece maliyetlidir ve yüksek aktarım hızı G/Ç durumlarında kaçınılmalıdır.
 
-Ara belleğe alınan g/ç yaklaşımının bir diğer avantajı da giriş ve çıkış listelerinin tam koşulları olmaması olabilir. Tüm kullanılabilir arabellekler her iki listede de herhangi bir anda olabilir. Bu, daha önce bölümün başında sunulan basit bayt dairesel arabelleklerle karşıttır. Her birinin derlemede belirlenen sabit bir boyutu vardır.
+Arabelleğe alan G/Ç yaklaşımının bir diğer avantajı, giriş ve çıkış listelerinin tam koşulların yer almamış olduğudır. Kullanılabilir tüm arabellekler herhangi bir anda her iki listede de olabilir. Bu, bölümün önceki kısımlarında sunulan basit bayt döngüsel arabellekleriyle karşıttır. Her biri derlemede belirlenen sabit bir boyuta sahipti.
 
-### <a name="buffered-driver-responsibilities"></a>Arabellekli sürücü sorumlulukları 
-Arabelleğe alınmış cihaz sürücüleri yalnızca, g/ç arabelleklerinin bağlı listelerini yönetme ile ilgilidir. Uygulama yazılımı hazırlanmadan önce alınan paketlere yönelik bir giriş arabelleği listesi tutulur. Buna karşılık, bir çıkış arabelleği listesi, donanım cihazından daha hızlı gönderilmekte olan paketlerin bakımını sağlar. Sayfa 314 ' de şekil 15 ' te, veri paketlerinin basit giriş ve çıkış bağlantılı listeleri ve her bir paketi oluşturan arabellekler gösterilmektedir.
+### <a name="buffered-driver-responsibilities"></a>Arabelleğe Alındı Sürücü Sorumlulukları 
+Arabelleğe alan cihaz sürücüleri yalnızca bağlantılı I/O arabellek listelerini yönetmekle ilgilidir. Uygulama yazılımı hazır olmadan önce alınan paketler için bir giriş arabelleği listesi korunur. Buna karşılık, donanım aygıtının bunları işleyene kadar daha hızlı gönderilen paketler için bir çıkış arabellek listesi korunur. Şekil 314'te Şekil 15'te veri paketlerinin basit giriş ve çıkış bağlantılı listeleri ve her bir paketin arabellekleri görüntülenir.
 
-![Arabellekli sürücü sorumlulukları](media/image11.png)
+![Arabelleğe Alındı Sürücü Sorumlulukları](media/image11.png)
 
-**ŞEKIL 15. Input-Output listeleri**
+**ŞEKIL 15. Input-Output Listeleri**
 
-Aynı g/ç arabelleklerine sahip arabellekli sürücülerle uygulamalar arabirimi. İletim sırasında, uygulama yazılımı, iletmek için bir veya daha fazla arabelleme sahip olan sürücüyü sağlar. Uygulama yazılımı giriş istediğinde, sürücü g/ç arabelleklerinde giriş verilerini döndürür.
+Aynı I/O arabellekleri ile arabelleğe alan sürücülere sahip uygulamalar arabirimi. Aktarımda, uygulama yazılımı sürücüye iletilen bir veya daha fazla arabellek sağlar. Uygulama yazılımı giriş isteğinde olduğunda sürücü G/Ç arabellekleri içinde giriş verilerini döndürür.
 
 > [!IMPORTANT]
-> Bazı uygulamalarda, uygulamanın sürücüden gelen bir giriş arabelleği için boş bir arabellek alışverişi gerektirdiğini gerektiren bir sürücü giriş arabirimi oluşturmak yararlı olabilir. Bu, sürücünün içindeki bazı arabellek ayırma işlemlerini giderebilirler.
+> Bazı uygulamalarda, uygulamanın sürücüden bir giriş arabelleği için boş arabellek değiştirmesini gerektiren bir sürücü giriş arabirimi oluşturmak yararlı olabilir. Bu, sürücünün içindeki bazı arabellek ayırma işlemlerini hafifletmeye neden olabilir.
 
-### <a name="interrupt-management"></a>Kesme yönetimi 
-Bazı uygulamalarda, cihaz kesme sıklığı C 'de ıSR yazmayı veya her kesme üzerinde ThreadX SMP ile etkileşime geçmesini engelleyebilir. Örneğin, kesintiye uğramayan bağlamı kaydetmek ve geri yüklemek için 25 ABD sürüyorsa, kesme sıklığının 50 ABD olduğu durumlarda tam bağlam kaydetme işlemini gerçekleştirmek önerilmez. Bu gibi durumlarda, birçok cihaz kesmesi işlemek için küçük bir derleme dili ıSR kullanılır. Bu lowtavan ıSR yalnızca gerektiğinde ThreadX SMP ile etkileşime girebilmelidir.
+### <a name="interrupt-management"></a>Kesinti Yönetimi 
+Bazı uygulamalarda cihaz kesme sıklığı, ISR'nin C'de yazarak veya her kesmede ThreadX SMP ile etkileşim kurmasını yasaklar. Örneğin, kesintiye neden olan bağlamı kaydetmek ve geri yüklemek 25us sürerse, kesme sıklığı 50us ise tam bağlam kaydetmesi tavsiye edilemez. Bu gibi durumlarda, cihaz kesintilerinin çoğunu işlemek için küçük bir derleme dili ISR kullanılır. Bu düşük başlı ISR yalnızca gerektiğinde ThreadX SMP ile etkileşime geçmeli.
 
-Bölüm 3 ' ün sonundaki kesme yönetimi tartışmasında benzer bir tartışma bulunabilir.
+Benzer bir tartışma, Bölüm 3'in sonundaki kesme yönetimi tartışmalarında bulunabilir.
 
 > [!NOTE]
-> Sürücü kodunun kritik bölümlerini sürücü ıSR kodundan korumak için kesme kilidi kullanılacaksa, iş parçacığı düzeyi sürücü kodunun her zaman ıSR 'nin üzerinde işlendiği aynı çekirdek üzerinde yürütülmesi gerekir. Aksi halde, TX_DISABLE ve TX_RESTORE gibi iç ThreadX SMP temel elemanlarına, yerleşik tabanlı korumanın de yerleşik olarak kullanılması gerekir.
+> Sürücü kodunun kritik bölümlerini sürücü ISR kodundan korumak için kesme kilitleme kullanılacaksa, iş parçacığı düzeyinde sürücü kodu her zaman ISR'nin işlendiğinde aynı çekirdekte yürütülecektir. Aksi takdirde, çekirdekler arası koruma yerleşik TX_DISABLE TX_RESTORE iç ThreadX SMP temelleri de kullanılmalıdır.
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma 
-Bu bölümde daha önce sunulan basit sürücü örneğinde, bir karakter kullanılamıyorsa giriş hizmeti 'nin çağıranı askıya alınır. Bazı uygulamalarda bu, kabul edilebilir olmayabilir.
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma 
+Bu bölümün başlarında sunulan basit sürücü örneğinde, bir karakter yoksa giriş hizmetini çağıran askıya alır. Bazı uygulamalarda bu kabul edilebilir bir durum değildir.
 
-Örneğin, bir sürücüden gelen girişin işlenmesinden sorumlu iş parçacığının başka bir işi de varsa, yalnızca sürücü girişinin askıya alınması büyük olasılıkla işe gitmemelidir. Bunun yerine, sürücünün iş parçacığına diğer işleme isteklerinin yapılma biçimine benzer şekilde istek işleme için özelleştirilmelidir.
+Örneğin, bir sürücüden gelen girişi işlemeden sorumlu iş parçacığının başka görevleri de varsa, yalnızca sürücü girişinin askıya alınması büyük olasılıkla işe yaramayacaktır. Bunun yerine, diğer işleme isteklerinin iş parçacığına yapılmasına benzer şekilde, sürücünün istek işleme için özelleştirilebilir olması gerekir.
 
-Çoğu durumda, giriş arabelleği bağlı bir listeye yerleştirilir ve iş parçacığının giriş kuyruğuna bir giriş olayı iletisi gönderilir.
+Çoğu durumda, giriş arabelleği bağlantılı bir listeye yerleştirilir ve iş parçacığının giriş kuyruğuna bir giriş olayı iletisi gönderilir.

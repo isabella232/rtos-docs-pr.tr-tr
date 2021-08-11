@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4fdf1e46a7123c10d17e11d09c1b16c2f68f4a31
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 5a1bab2cb60ce5df6c0662eb1a31f542a3b1d7a87d4584d485cbd621e3342abc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550244"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791128"
 ---
 # <a name="chapter-4---usbx-pictbridge-implementation"></a>Bölüm 4-USBX PictBridge uygulama
 
@@ -208,7 +208,7 @@ UINT ux_pictbridge_jobinfo_object_data_read(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, DPS istemcisinin hedef PictBridge yazıcısına yazdırmak için bir veri bloğu alması gerektiğinde çağrılır.
 
@@ -289,30 +289,30 @@ Sonraki adım, yazdırma hizmetleri için PictBridge varsayılan değerlerini a�
 | Tarih baskılar [0]          | UX_PICTBRIDGE_DATE_PRINTS_DEFAULT      |
 | Tarih baskılar [1]          | UX_PICTBRIDGE_DATE_PRINTS_OFF          |
 | Tarih baskılar [2]          | UX_PICTBRIDGE_DATE_PRINTS_ON           |
-| Filenamebaskılar [0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
-| Dosyaadı[1] yazdırılıyor      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
-| Filenamebaskılar [2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
-| Imageoptimize [0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
-| Imageoptimize [1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
-| Imageoptimize [2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
-| Düzenler [0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
-| [1] düzenleri             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
-| [2] düzenleri             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
-| [3] düzenleri             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
-| Sabit boyutlar [0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
-| Sabit boyutlar [1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
-| Sabit boyutlar [2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
-| Sabit boyutlar [3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
-| Sabit boyutlar [4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
-| Sabit boyutlar [5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
-| Sabit boyutlar [6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
-| Croppings [0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
-| Croppings [1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
-| Croppings [2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
+| FileNamePrints[0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
+| FileNamePrints[1]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
+| FileNamePrints[2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
+| ImageOptimizes[0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
+| ImageOptimizes[1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
+| ImageOptimizes[2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
+| Düzenler[0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
+| Düzenler[1]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
+| Düzenler[2]             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
+| Düzenler[3]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
+| FixedSizes[0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
+| FixedSizes[1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
+| FixedSizes[2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
+| FixedSizes[3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
+| FixedSizes[4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
+| FixedSizes[5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
+| FixedSizes[6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
+| Kırpmalar[0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
+| Kırpmalar[1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
+| Kırpmalar[2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
 
-DPS ana bilgisayarının durum makinesi, boşta olarak ayarlanacak ve yeni bir yazdırma işini kabul etmeye hazırlanacaktır.
+DPS ana bilgisayarının durum makinesi Boşta olarak ayarlanır ve yeni yazdırma işini kabul etmeye hazır olur.
 
-Aşağıdaki örnekte gösterildiği gibi, PictBridge 'nin konak bölümü artık başlatılabilir:
+Pictbridge'in konak bölümü artık aşağıdaki örnekte olduğu gibi başlatabilirsiniz:
 
 ```C
 /* Activate the pictbridge dpshost. */
@@ -322,7 +322,7 @@ if (status != UX_SUCCESS)
     return;
 ```
 
-PictBridge ana bilgisayar işlevi, veriler yazdırılmaya hazırlandığı zaman bir geri çağırma gerektirir. Bu, aşağıdaki gibi, PictBridge ana bilgisayar yapısında bir işlev işaretçisi geçirerek gerçekleştirilir.
+Veriler yazdırılabilir hale geldiğinde Pictbridge konak işlevi için bir geri çağırma gerekir. Bu, pictbridge konak yapısında aşağıdaki gibi bir işlev işaretçisi geçerek yapılır.
 
 ```C
 /* Set a callback when an object is being received. */
@@ -334,7 +334,7 @@ Bu işlev aşağıdaki özelliklere sahiptir.
 
 ## <a name="ux_pictbridge_application_object_data_write"></a>ux_pictbridge_application_object_data_write
 
-Yazdırma için bir veri bloğu yazma
+Yazdırma için veri bloğu yazma
 
 ### <a name="prototype"></a>Prototype
 
@@ -347,22 +347,22 @@ UINT ux_pictbridge_application_object_data_write(
     ULONG length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, DPS sunucusunun yerel yazıcıya yazdırmak için DPS istemcisinden bir veri bloğu alması gerektiğinde çağrılır.
+Bu işlev, DPS sunucusunun yerel yazıcıya yazdırmak için DPS istemciden bir veri bloğu almaları gerekirken çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **PictBridge**: PictBridge sınıfı örneğine yönelik işaretçi.
-- **object_buffer**: nesne arabelleği işaretçisi
-- **object_offset**: veri bloğunu okumaya başlıyoruz
-- **total_length**: tüm nesne uzunluğu
-- **uzunluk**: Bu arabelleğin uzunluğu
+- **pictbridge:** pictbridge sınıf örneğinin işaretçisi.
+- **object_buffer:** Nesne arabelleği işaretçisi
+- **object_offset:** Veri bloğu okumaya başlamamız
+- **total_length:** Nesnenin tüm uzunluğu
+- **length:** Bu arabelleğin uzunluğu
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0x01) uygulama verileri yazdıramadı.
+- **UX_ERROR** (0x01) Uygulama verileri yazdıramdı.
 
 ### <a name="example"></a>Örnek
 

@@ -1,118 +1,118 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo SNMP aracı hizmetlerinin açıklaması
-description: Bu bölüm, tüm NetX Duo SNMP aracı hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo Azure RTOS SNMP aracı hizmetlerinin açıklaması
+description: Bu bölümde, tüm NetX Duo SNMP Aracısı hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cf4c4cb0edb7deb7bd0f257f48949b5c7355426b
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b24776c2eb25a53195ea4eb452497b23b933e4ab3f9f0a379ea64d8469c1c971
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825768"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790136"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-snmp-agent-services"></a>Bölüm 3-Azure RTOS NetX Duo SNMP aracı hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-snmp-agent-services"></a>Bölüm 3 - NetX Duo Azure RTOS SNMP aracı hizmetlerinin açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX Duo SNMP Aracısı Hizmetleri (aşağıda listelenmiştir) alfabetik sırayla bir açıklama içerir.
+Bu bölümde tüm NetX Duo SNMP Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
 - [nx_snmp_agent_auth_trap_key_use](#nx_snmp_agent_auth_trap_key_use)
-   - *Tuzak iletileri için kimlik doğrulama anahtarını belirtin (yalnızca SNMP v3)*
+   - *Yakalama iletileri için kimlik doğrulama anahtarını (yalnızca SNMP v3) belirtme*
 - [nx_snmp_agent_authenticate_key_use](#nx_snmp_agent_authenticate_key_use)
-   - *Yanıt iletileri için kimlik doğrulama anahtarını belirtin (yalnızca SNMP v3)*
+   - *Yanıt iletileri için kimlik doğrulama anahtarını (yalnızca SNMP v3) belirtme*
 - [nx_snmp_agent_community_get](#nx_snmp_agent_community_get)
-   - *Topluluk adını al*
+   - *Topluluk adını alma*
 - [nx_snmp_agent_context_engine_set](#nx_snmp_agent_context_engine_set)
-   - *Bağlam altyapısını ayarla (yalnızca SNMP v3)*
+   - *Bağlam altyapısını ayarlama (yalnızca SNMP v3)*
 - [nx_snmp_agent_context_name_set](#nx_snmp_agent_context_name_set)
-   - *Bağlam adını ayarla (yalnızca SNMP v3)*
+   - *Bağlam adını ayarlama (yalnızca SNMP v3)*
 - [nx_snmp_agent_create](#nx_snmp_agent_create)
-   - *SNMP Aracısı oluşturma*
+   - *SNMP aracısı oluşturma*
 - [nx_snmp_agent_current_version_get](#nx_snmp_agent_current_version_get)
-   - *Alınan paketin SNMP sürümünü al*
+   - *Alınan paketin SNMP sürümünü alın*
 - [nx_snmp_agent_request_get_type_test](#nx_snmp_agent_request_get_type_test)
-   - *Son SNMP isteğinin Al veya ayarla türü olduğunu belirtir*
+   - *Son SNMP isteğinin GET veya SET türü olduğunu belirt*
 - [nx_snmp_agent_private_string_test](#nx_snmp_agent_private_string_test)
-   - *Dizenin aracı özel dizesiyle eşleşip eşleşmediğini belirleme*
+   - *Dizenin aracı özel dizesiyle eş olup olmadığını belirleme*
 - [nx_snmp_agent_public_string_test](#nx_snmp_agent_public_string_test)
-   - *Dizenin aracı ortak dizesiyle eşleşip eşleşmediğini belirleme*
+   - *Dizenin aracı ortak dizesiyle eş olup olmadığını belirleme*
 - [nx_snmp_agent_set_interface](#nx_snmp_agent_set_interface)
-   - *SNMP mesajlaşma için ağ arabirimini ayarlama*
+   - *SNMP mesajlaşması için ağ arabirimi ayarlama*
 - [nx_snmp_agent_private_string_set](#nx_snmp_agent_private_string_set)
-   - *SNMP Aracısı özel topluluk dizesini ayarla*
+   - *SNMP aracısı özel topluluk dizesini ayarlama*
 - [nx_snmp_agent_public_string_set](#nx_snmp_agent_public_string_set)
-   - *SNMP Aracısı ortak topluluk dizesini ayarlama*
+   - *SNMP aracısı genel topluluk dizesini ayarlama*
 - [nx_snmp_agent_version_set](#nx_snmp_agent_version_set)
-   - *Tüm SNMP sürümleri için SNMP Aracısı durumunu ayarla*
+   - *Tüm SNMP sürümleri için SNMP aracı durumunu ayarlama*
 - [nx_snmp_agent_delete](#nx_snmp_agent_delete)
-   - *SNMP aracısını Sil*
+   - *SNMP aracıyı silme*
 - [nx_snmp_agent_md5_key_create](#nx_snmp_agent_md5_key_create)
-   - *MD5 anahtarı oluştur (yalnızca SNMP v3)*
+   - *Md5 anahtarı oluşturma (yalnızca SNMP v3)*
 - [nx_snmp_agent_md5_key_create_extended](#nx_snmp_agent_md5_key_create_extended)
-   - *MD5 anahtarı oluştur (yalnızca SNMP v3)*
+   - *Md5 anahtarı oluşturma (yalnızca SNMP v3)*
 - [nx_snmp_agent_priv_trap_key_use](#nx_snmp_agent_priv_trap_key_use)
-   - *Tuzak iletileri için şifreleme anahtarı (yalnızca SNMP v3) belirtin*
+   - *Yakalama iletileri için şifreleme anahtarını (yalnızca SNMP v3) belirtme*
 - [nx_snmp_agent_privacy_key_use](#nx_snmp_agent_privacy_key_use)
-   - *Yanıt iletileri için şifreleme anahtarı belirtin (yalnızca SNMP v3)*
+   - *Yanıt iletileri için şifreleme anahtarını (yalnızca SNMP v3) belirtme*
 - [nx_snmp_agent_sha_key_create](#nx_snmp_agent_sha_key_create)
-   - *Sha anahtarı oluştur (yalnızca SNMP v3)*
+   - *Sha anahtarı oluşturma (yalnızca SNMP v3)*
 - [nx_snmp_agent_sha_key_create_extended](#nx_snmp_agent_sha_key_create_extended)
-   - *Sha anahtarı oluştur (yalnızca SNMP v3)*
+   - *Sha anahtarı oluşturma (yalnızca SNMP v3)*
 - [nx_snmp_agent_start](#nx_snmp_agent_start)
-   - *SNMP aracısını Başlat*
+   - *SNMP aracıyı başlatma*
 - [nx_snmp_agent_stop](#nx_snmp_agent_stop)
-   - *SNMP aracısını durdur*
+   - *SNMP aracıyı durdurma*
 - [nx_snmp_agent_trap_send](#nx_snmp_agent_trap_send)
-   - *SNMP v1 tuzağı gönderme (yalnızca IPv4)*
+   - *SNMP v1 yakalaması gönderme (yalnızca IPv4)*
 - [nx_snmp_agent_trapv2_send](#nx_snmp_agent_trapv2_send)
-   - *SNMP v2 tuzağı gönderme (yalnızca IPv4)*
+   - *SNMP v2 yakalaması gönderme (yalnızca IPv4)*
 - [nx_snmp_agent_trapv2_oid_send](#nx_snmp_agent_trapv2_oid_send)
-   - *OID 'yi belirterek SNMP v2 tuzağı (yalnızca IPv4) gönderin*
+   - *OID'i belirten SNMP v2 yakalaması gönderme (yalnızca IPv4)*
 - [nx_snmp_agent_trapv3_send](#nx_snmp_agent_trapv3_send)
-   - *SNMP v3 yakalamasını gönder (yalnızca IPv4)*
+   - *SNMP v3 yakalaması gönderme (yalnızca IPv4)*
 - [nx_snmp_agent_trapv3_oid_send](#nx_snmp_agent_trapv3_oid_send)
-   - *OID 'yi belirterek SNMP v2 tuzağı (yalnızca IPv4) gönderin*
+   - *OID'i belirten SNMP v2 yakalaması gönderme (yalnızca IPv4)*
 - [nxd_snmp_agent_trap_send](#nxd_snmp_agent_trap_send)
-   - *SNMP v1 tuzağı (IPv4 ve IPv6) gönder*
+   - *SNMP v1 yakalaması gönderme (IPv4 ve IPv6)*
 - [nxd_snmp_agent_trapv2_send](#nxd_snmp_agent_trapv2_send)
-   - *SNMP v2 tuzağı (IPv4 ve IPv6) gönder*
+   - *SNMP v2 yakalaması gönderme (IPv4 ve IPv6)*
 - [nxd_snmp_agent_trapv2_oid_send](#nxd_snmp_agent_trapv2_oid_send)
-   - *OID 'yi belirten SNMP v2 tuzağı (IPv4/IPv6) gönderin*
+   - *OID'i belirten SNMP v2 yakalaması (IPv4/IPv6) gönderme*
 - [nxd_snmp_agent_trapv3_send](#nxd_snmp_agent_trapv3_send)
-   - *SNMP v3 yakalamasını (IPv4 ve IPv6) gönder*
+   - *SNMP v3 yakalaması gönderme (IPv4 ve IPv6)*
 - [nxd_snmp_agent_trapv3_oid_send](#nxd_snmp_agent_trapv3_oid_send)
-   - *OID 'yi belirten SNMP v2 tuzağı (IPv4/IPv6) gönderin*
+   - *OID'i belirten SNMP v2 yakalaması (IPv4/IPv6) gönderme*
 - [nx_snmp_agent_v3_context_boots_set](#nx_snmp_agent_v3_context_boots_set)
-   - *Yeniden başlatmalar sayısını ayarla*
+   - *Yeniden başlatma sayısını ayarlama*
 - [nx_snmp_object_compare](#nx_snmp_object_compare)
-   - *İki nesneyi karşılaştırın*
+   - *İki nesne karşılaştırma*
 - [nx_snmp_object_compare_extended](#nx_snmp_object_compare_extended)
-   - *İki nesneyi karşılaştırın*
+   - *İki nesne karşılaştırma*
 - [nx_snmp_object_copy](#nx_snmp_object_copy)
-   - *Nesne kopyalama*
+   - *Bir nesneyi kopyalama*
 - [nx_snmp_object_copy_extended](#nx_snmp_object_copy_extended)
-   - *Nesne kopyalama*
+   - *Bir nesneyi kopyalama*
 - [nx_snmp_object_counter_get](#nx_snmp_object_counter_get)
-   - *Sayaç nesnesi Al*
+   - *Sayaç nesnesini al*
 - [nx_snmp_object_counter_set](#nx_snmp_object_counter_set)
-   - *Sayaç nesnesi ayarla*
+   - *Sayaç nesnesini ayarlama*
 - [nx_snmp_object_counter64_get](#nx_snmp_object_counter64_get)
-   - *64 bitlik sayaç nesnesi Al*
+   - *64 bit sayaç nesnesi al*
 - [nx_snmp_object_counter64_set](#nx_snmp_object_counter64_set)
-   - *64 bitlik sayaç nesnesini ayarla*
+   - *64 bit sayaç nesnesi ayarlama*
 - [nx_snmp_object_end_of_mib](#nx_snmp_object_end_of_mib)
-   - *MIB sonu değerini ayarla*
+   - *Mib sonu değerini ayarlama*
 - [nx_snmp_object_gauge_get](#nx_snmp_object_gauge_get)
-   - *Ölçer nesnesini Al*
+   - *Ölçer nesnesini al*
 - [nx_snmp_object_gauge_set](#nx_snmp_object_gauge_set)
-   - *Ölçer nesnesi ayarla*
+   - *Ölçer nesnesini ayarlama*
 - [nx_snmp_object_id_get](#nx_snmp_object_id_get)
    - *Nesne kimliğini al*
 - [nx_snmp_object_id_set](#nx_snmp_object_id_set)
-   - *Nesne kimliğini ayarla*
+   - *Nesne kimliğini ayarlama*
 - [nx_snmp_object_integer_get](#nx_snmp_object_integer_get)
    - *Tamsayı nesnesi Al*
 - [nx_snmp_object_integer_set](#nx_snmp_object_integer_set)
@@ -151,7 +151,7 @@ Tuzak iletileri için kimlik doğrulama anahtarını belirt
 UINT nx_snmp_agent_auth_trap_key_use(NX_SNMP_AGENT *agent_ptr, 
                                      NX_SNMP_SECURITY_KEY *key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, tuzak iletilerindeki SNMPv3 güvenlik üstbilgisinde kimlik doğrulama parametrelerini ayarlamak için kullanılacak anahtarı belirtir. Anahtar için bir NX_NULL değeri sağlamak, kimlik doğrulamasını devre dışı bırakır.
 
@@ -193,7 +193,7 @@ Yanıt iletileri için kimlik doğrulama anahtarını belirtin
 UINT nx_snmp_agent_authenticate_key_use(NX_SNMP_AGENT *agent_ptr, 
                                         NX_SNMP_SECURITY_KEY *key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ayarlandıktan sonra yapılan tüm istekler için SNMPv3 güvenlik parametresindeki kimlik doğrulama parametreleri için kullanılacak anahtarı belirtir. Anahtar için bir NX_NULL değeri sağlamak, kimlik doğrulamasını devre dışı bırakır.
 
@@ -236,7 +236,7 @@ UINT nx_snmp_agent_community_get(NX_SNMP_AGENT *agent_ptr,
                                  UCHAR **community_string_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, topluluk adını SNMP Aracısı tarafından alınan en son SNMP isteğinden alır.
 
@@ -277,7 +277,7 @@ UINT nx_snmp_agent_request_get_type_test(NX_SNMP_AGENT *agent_ptr,
                                          UINT *is_get_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNMP Yöneticisi 'ndeki en son isteğin bir GET (GET, GETNEXT veya GETBULK) veya SET türünde olup olmadığını gösterir. İstek bir GET türüdür veya istek bir küme türü ise SNMP Aracısı özel dizesinde, SNMPv1 veya SNMPv2 uygulamasının alınan topluluk dizesini SNMP Aracısı ortak dizesiyle karşılaştırmak isteyeceğini, Kullanıcı adı geri çağırması ile kullanılması amaçlanmıştır.
 
@@ -319,9 +319,9 @@ UINT nx_snmp_agent_context_engine_set(NX_SNMP_AGENT *agent_ptr,
                                       UCHAR *context_engine, 
                                       UINT context_engine_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet SNMP aracısının bağlam altyapısını ayarlar. Yalnızca SNMPv3 işleme için geçerlidir. Uygulama kimlik doğrulama ve şifreleme kullanıyorsa, bu, anahtar oluşturma işleminde kullanıldığı için güvenlik anahtarları oluşturulmadan önce bu çağrılmalıdır. Aksi takdirde NetX Duo SNMP, *nxd_snmp. c* ' nin en üstünde varsayılan bir bağlam altyapısı kimliği sağlar:
+Bu hizmet SNMP aracısının bağlam altyapısını ayarlar. Yalnızca SNMPv3 işleme için geçerlidir. Uygulama kimlik doğrulaması ve şifreleme kullanıyorsa, anahtar oluşturma işlemi bağlam altyapısı kimliği kullanılırken güvenlik anahtarları oluşturmadan önce bu çağrıl kullanılmalıdır. Yoksa NetX Duo SNMP, *nxd_snmp.c'nin* üst kısmında varsayılan bir bağlam altyapısı kimliği sağlar:
 
 ```c
 UCHAR _nx_snmp_default_context_engine[NX_SNMP_MAX_CONTEXT_STRING] =  
@@ -331,20 +331,20 @@ UCHAR _nx_snmp_default_context_engine[NX_SNMP_MAX_CONTEXT_STRING] =
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
-- **context_engine** Bağlam motoru dizesinin işaretçisi.
-- **context_engine_size** Bağlam altyapısı dizesinin boyutu. Bağlam altyapısından en fazla bayt sayısının NX_SNMP_MAX_CONTEXT_STRING göre tanımlandığını unutmayın.
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
+- **context_engine** Bağlam altyapısı dizesinin işaretçisi.
+- **context_engine_size** Bağlam altyapısı dizesinin boyutu. Bir bağlam altyapısında bayt sayısı üst sayısının bir NX_SNMP_MAX_CONTEXT_STRING.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı SNMP bağlam altyapısı kümesi.
+- **NX_SUCCESS** (0x00) Başarılı SNMP bağlam altyapısı kümesi.
 - **NX_NOT_ENABLED** (0x14) SNMPv3 etkin değil
-- **NX_SNMP_ERROR** (0x100) bağlam altyapısı boyut hatası.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_SNMP_ERROR** (0x100) Bağlam altyapısı boyutu hatası.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -358,7 +358,7 @@ status =  nx_snmp_agent_context_engine_set(&my_agent, my_engine, 9);
 /* If status is NX_SUCCESS the context engine has been set.  */
 ```
 ## <a name="nx_snmp_agent_context_name_set"></a>nx_snmp_agent_context_name_set
-Bağlam adını ayarla (yalnızca SNMP v3)
+Bağlam adını ayarlama (yalnızca SNMP v3)
 
 ### <a name="prototype"></a>Prototype
 
@@ -368,25 +368,25 @@ UINT nx_snmp_agent_context_name_set(NX_SNMP_AGENT *agent_ptr,
                                     UINT context_name_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet SNMP aracısının bağlam adını ayarlar. Yalnızca SNMPv3 işleme için geçerlidir. Çağrılmıyorsa NetX Duo SNMP Aracısı bağlam adını boş bırakır.
+Bu hizmet, SNMP Aracısı'nın bağlam adını ayarlar. Yalnızca SNMPv3 işleme için geçerlidir. Çağrılmazsa NetX Duo SNMP Aracısı bağlam adını boş bırakır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
 - **context_name** Bağlam adı dizesinin işaretçisi.
-- **context_name_size** Bağlam adı dizesinin boyutu. Bağlam adındaki en fazla bayt sayısının NX_SNMP_MAX_CONTEXT_STRING göre tanımlandığını unutmayın.
+- **context_name_size** Bağlam adı dizesinin boyutu. Bir bağlam adı içinde bayt sayısı üst NX_SNMP_MAX_CONTEXT_STRING.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı SNMP bağlamı adı kümesi.
-- **NX_SNMP_ERROR** (0x100) bağlam adı boyutu hatası.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_SUCCESS** (0x00) Başarılı SNMP bağlam adı kümesi.
+- **NX_SNMP_ERROR** (0x100) Bağlam adı boyutu hatası.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -399,7 +399,7 @@ status =  nx_snmp_agent_context_name_set(&my_agent, “my_context_name”, 15);
 ```
 
 ## <a name="nx_snmp_agent_create"></a>nx_snmp_agent_create
-SNMP Aracısı oluşturma
+SNMP aracısı oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -419,32 +419,32 @@ UINT nx_snmp_agent_create(NX_SNMP_AGENT *agent_ptr,
                   *agent_ptr, UCHAR *object_requested, 
                   NX_SNMP_OBJECT_DATA *object_data));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneğinde bir SNMP Aracısı oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
-- **snmp_agent_name** SNMP aracı adı dizesinin işaretçisi.
-- **ip_ptr** IP örneği işaretçisi.
-- **stack_ptr** SNMP Aracısı iş parçacığı yığın işaretçisine yönelik işaretçi.
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
+- **snmp_agent_name** SNMP Aracısı ad dizesinin işaretçisi.
+- **ip_ptr** IP örneğine işaretçi.
+- **stack_ptr** SNMP Aracısı iş parçacığı yığını işaretçisi işaretçisi.
 - **stack_size** Bayt cinsinden yığın boyutu.
-- **pool_ptr** Bu SNMP Aracısı için varsayılan paket havuzunu işaretçisine getirin.
-- **snmp_agent_username_process** Uygulamanın Kullanıcı adı işleme yordamına yönelik işlev işaretçisi.
-- **snmp_agent_get_process** Uygulamanın alma isteği işleme yordamına yönelik işlev işaretçisi.
-- **snmp_agent_getnext_process** Uygulamanın GETNEXT istek işleme yordamına yönelik işlev işaretçisi.
-- **snmp_agent_set_process** Uygulamanın ayarlanan istek işleme yordamına yönelik işlev işaretçisi.
+- **pool_ptr** Bu SNMP Aracısı için varsayılan paket havuzunu işaretçi.
+- **snmp_agent_username_process** Uygulamanın kullanıcı adı işleme yordamına işlev işaretçisi.
+- **snmp_agent_get_process** Uygulamanın GET isteği işleme yordamına işlev işaretçisi.
+- **snmp_agent_getnext_process** Uygulamanın GETNEXT istek işleme yordamına işlev işaretçisi.
+- **snmp_agent_set_process** Uygulamanın SET isteği işleme yordamına işlev işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı SNMP Aracısı oluşturma.
+- **NX_SUCCESS** (0x00) Başarılı SNMP Aracısı oluşturma.
 - **NX_SNMP_ERROR** (0x100) SNMP Aracısı oluşturma hatası.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -461,7 +461,7 @@ status =  nx_snmp_agent_create(&my_agent, "My SNMP Agent", &ip_0, stack_start_pt
 ```
 
 ## <a name="nx_snmp_agent_current_version_get"></a>nx_snmp_agent_current_version_get
-SNMP paket sürümünü al
+SNMP paket sürümünü alın
 
 ### <a name="prototype"></a>Prototype
 
@@ -470,21 +470,21 @@ UINT nx_snmp_agent_current_version_get(NX_SNMP_AGENT *agent_ptr,
                                        UINT *version);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, alınan en son SNMP paketinden ayrıştırılmış SNMP sürümünü alır.
+Bu hizmet alınan en son SNMP paketinden ayrıştıran SNMP sürümünü aldı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
-- **sürümü** Alınan SNMP paketindeki SNMP sürümü işaretçisi
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
+- **sürüm** Alınan SNMP paketinden ayrıştırilen SNMP sürümünün işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı SNMP sürümü Al
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) Başarılı SNMP sürümü get
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -503,7 +503,7 @@ status =  nx_snmp_agent_current_version_get (&my_agent, &snmp_version);
 ```
 
 ## <a name="nx_snmp_agent_private_string_test"></a>nx_snmp_agent_private_string_test
-Özel dize ile eşleşen aracı özel dizesini doğrula
+Özel dizenin Aracı özel dizesiyle eş olduğunu doğrulama
 
 ### <a name="prototype"></a>Prototype
 
@@ -513,24 +513,24 @@ UINT nx_snmp_agent_private_string_test(NX_SNMP_AGENT *agent_ptr,
                                        UINT *is_private);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, null sonlandırılmış giriş topluluğu dizesini SNMP Aracısı özel dizesiyle karşılaştırır ve eşleşip eşleşmediğini belirtir.
+Bu hizmet, null sonlandırılan giriş topluluğu dizesini SNMP aracısı özel dizesiyle karşılaştırıldığında bunların eş olup olamalarını gösterir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
-- **community_string** Karşılaştırılacak dize işaretçisi
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
+- **community_string** Karşılaştırmak için dize işaretçisi
 - **is_private** Karşılaştırma sonucu işaretçisi  
-NX_TRUE dize eşleşmeleri  
-NX_FALSE dize eşleşmiyor
+NX_TRUE - dize eşleşmeleri  
+NX_FALSE - dize eşle değil
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı karşılaştırma
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) Başarılı karşılaştırma
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -551,7 +551,7 @@ status =  nx_snmp_agent_private_string_test(&my_agent, community_string_ptr,
 ```
 
 ## <a name="nx_snmp_agent_public_string_test"></a>nx_snmp_agent_public_string_test
-Alınan ortak dizenin, aracının ortak dizesiyle eşleştiğinden emin olun
+Alınan ortak dizenin Aracı'nın ortak dizesiyle eş olduğunu doğrulama
 
 ### <a name="prototype"></a>Prototype
 
@@ -560,17 +560,17 @@ UINT nx_snmp_agent_public_string_test(NX_SNMP_AGENT *agent_ptr,
                                       UCHAR *community_string,          
                                       UINT *is_public);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, null sonlandırılmış bir giriş topluluğu dizesini SNMP Aracısı genel dizesiyle karşılaştırır ve eşleşip eşleşmediğini belirtir.
+Bu hizmet, null sonlandırılan bir giriş topluluğu dizesini SNMP aracısı genel dizesiyle karşılaştırıldığında bunların eş olup olamaylarını gösterir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
-- **community_string** Karşılaştırılacak dize işaretçisi
+- **agent_ptr** SNMP Aracısı denetim bloğuna işaretçi.
+- **community_string** Karşılaştırmak için dize işaretçisi
 - **is_public** Karşılaştırma sonucu işaretçisi  
-NX_TRUE dize eşleşmeleri  
-NX_FALSE dize eşleşmiyor
+NX_TRUE - dize eşleşmeleri  
+NX_FALSE - dize eşle değil
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -609,7 +609,7 @@ UINT nx_snmp_agent_version_set(NX_SNMP_AGENT *agent_ptr,
                                UINT enable_v3);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet SNMP aracısındaki her bir SNMP sürümü, v1, v2 ve v3 için durumu (etkin/devre dışı) ayarlar. Kullanıcı tarafından yapılandırılabilir seçenekler, NX_SNMP_DISABLE_V1, NX_SNMP_DISABLE_V2 ve NX_SNMP_DISABLE_V3, bu çalışma zamanı ayarlarını geçersiz kıldığını unutmayın. Varsayılan olarak, SNMP Aracısı üç sürüm için etkinleştirilmiştir.
 
@@ -656,7 +656,7 @@ UINT nx_snmp_agent_private_string_set(NX_SNMP_AGENT *agent_ptr,
                                       UCHAR *community_string);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet SNMP Aracısı özel topluluk dizesini girdi null sonlandırılmış dizesiyle ayarlar. Varsayılan değer NULL (özel dize kümesi yoktur), "özel" topluluk dizesiyle alınan tüm SNMP paketleri, okuma/yazma erişimi için SNMP Aracısı tarafından kabul edilmez. Giriş dizesi Kullanıcı tarafından yapılandırılabilir NX_SNMP_MAX_USER_NAME-1 ' e eşit veya ondan küçük olmalıdır (null sonlandırma için odaya izin vermek için) boyutu.
 
@@ -697,7 +697,7 @@ UINT nx_snmp_agent_public_string_set(NX_SNMP_AGENT *agent_ptr,
                                      UCHAR *community_string);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet SNMP Aracısı ortak topluluk dizesini girdi null sonlandırılmış dizesiyle ayarlar. Topluluk dizesi, Kullanıcı tarafından yapılandırılabilir NX_SNMP_MAX_USER_NAME-1 ' e eşit veya ondan küçük olmalıdır (null sonlandırma için odaya izin vermek için) boyutu.
 
@@ -736,7 +736,7 @@ SNMP aracısını Sil
 ```C
 UINT nx_snmp_agent_delete(NX_SNMP_AGENT *agent_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önceden oluşturulmuş bir SNMP aracısını siler.
 
@@ -773,7 +773,7 @@ UINT nx_snmp_agent_set_interface(NX_SNMP_AGENT *agent_ptr,
                                  UINT if_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNMP aracısının SNMP ağ arabirimini giriş arabirimi dizini tarafından belirtilen şekilde ayarlar. Bu, yalnızca NetX Duo 5,6 veya üzeri olan SNMP ana bilgisayar uygulamaları için çok sayıda ağ arabirimini destekledikleri için yararlıdır. Ana bilgisayar tarafından belirtilmemişse, birincil arabirim için varsayılan değer sıfırdır.
 
@@ -813,7 +813,7 @@ UINT nx_snmp_agent_md5_key_create(NX_SNMP_AGENT *agent_ptr,
                                   NX_SNMP_SECURITY_KEY 
                                        *destination_key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama ve şifreleme için kullanılabilen bir MD5 anahtarı oluşturur.
 
@@ -859,7 +859,7 @@ UINT nx_snmp_agent_md5_key_create_extended(NX_SNMP_AGENT *agent_ptr,
                                            NX_SNMP_SECURITY_KEY 
                                            *destination_key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama ve şifreleme için kullanılabilen bir MD5 anahtarı oluşturur.
 
@@ -905,7 +905,7 @@ UINT nx_snmp_agent_priv_trap_key_use(NX_SNMP_AGENT *agent_ptr,
                                      NX_SNMP_SECURITY_KEY *key);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş bir gizlilik anahtarının, SNMPv3 tuzak iletilerinin şifrelenmesi ve şifresinin çözülmesi için kullanıldığını belirtir.
 
@@ -946,7 +946,7 @@ Yanıt iletileri için şifreleme anahtarı belirtin
 UINT nx_snmp_agent_privacy_key_use(NX_SNMP_AGENT *agent_ptr, 
                                    NX_SNMP_SECURITY_KEY *key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş anahtarın, SNMPv3 yanıt iletilerinin şifrelenmesi ve şifresinin çözülmesi için kullanıldığını belirtir.
 
@@ -989,7 +989,7 @@ UINT nx_snmp_agent_sha_key_create(NX_SNMP_AGENT *agent_ptr,
                                   NX_SNMP_SECURITY_KEY  
                                   *destination_key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama ve şifreleme için kullanılabilen bir SHA anahtarı oluşturur.
 
@@ -1035,7 +1035,7 @@ UINT nx_snmp_agent_sha_key_create_extended(NX_SNMP_AGENT *agent_ptr,
                                            NX_SNMP_SECURITY_KEY  
                                            *destination_key);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama ve şifreleme için kullanılabilen bir SHA anahtarı oluşturur.
 
@@ -1079,7 +1079,7 @@ SNMP aracısını Başlat
 ```c
 UINT nx_snmp_agent_start(NX_SNMP_AGENT *agent_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet UDP yuvasını SNMP bağlantı noktası 161 ' e bağlar ve SNMP Aracısı iş parçacığı görevini başlatır.
 
@@ -1114,7 +1114,7 @@ SNMP aracısını durdur
 ```c
 UINT nx_snmp_agent_stop(NX_SNMP_AGENT *agent_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet SNMP Aracısı iş parçacığı görevini durduruyor ve UDP yuvasının SNMP bağlantı noktasına bağlantısını kaldırır.
 
@@ -1153,7 +1153,7 @@ UINT nx_snmp_agent_trap_send(NX_SNMP_AGENT *agent_ptr,
                              NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IPv4 adresinde SNMP Yöneticisi 'ne SNMP tuzağı gönderir. NetX Duo 'da SNMP tuzağı göndermek için tercih edilen yöntem *nxd_snmp_agent_trap_send* hizmetini kullanmaktır. *nx_snmp_agent_trap_send* , mevcut NETX SNMP Aracısı uygulamalarını desteklemek üzere NETX Duo 'e dahildir.
 
@@ -1161,7 +1161,7 @@ Bu hizmet, belirtilen IPv4 adresinde SNMP Yöneticisi 'ne SNMP tuzağı gönderi
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IPv4 adresi.
-- **Kurumsal** Kurumsal nesne KIMLIĞI dizesi (sysObectID).
+- **kurumsal** Enterprise nesne kimliği dizesi (sysObectID).
 - **trap_type** İstenen tuzak türü, aşağıdaki gibi:  
    - NX_SNMP_TRAP_COLDSTART (0)  
    - NX_SNMP_TRAP_WARMSTART (1)  
@@ -1219,7 +1219,7 @@ UINT nxd_snmp_agent_trap_send(NX_SNMP_AGENT *agent_ptr,
             UINT trap_code, ULONG elapsed_time, 
             NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne SNMP tuzağı gönderir. NetX 'te SNMP tuzağı göndermek için eşdeğer Yöntem *nxd_snmp_agent_trap_send* hizmetidir.
 
@@ -1227,7 +1227,7 @@ Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne SNMP tuzağı gönderi
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IPv4 veya IPv6 adresi.
-- **Kurumsal** Kurumsal nesne KIMLIĞI dizesi (sysObectID).
+- **kurumsal** Enterprise nesne kimliği dizesi (sysObectID).
 - **trap_type** İstenen tuzak türü, aşağıdaki gibi:  
    - NX_SNMP_TRAP_COLDSTART (0)
    - NX_SNMP_TRAP_WARMSTART (1)
@@ -1291,7 +1291,7 @@ UINT nx_snmp_agent_trapv2_send(NX_SNMP_AGENT *agent_ptr,
             NXD_ADDRESS *ip_address, UCHAR *community, UINT trap_type, 
             ULONG elapsed_time, NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IPv4 adresindeki SNMP Yöneticisi 'ne bir SNMPv2 tuzak gönderir. NetX Duo 'da SNMP tuzağı göndermek için tercih edilen yöntem *nxd_snmp_agent_trapv2_send* hizmetini kullanmaktır. *nx_snmp_agent_trapv2_send* , mevcut NETX SNMP Aracısı uygulamalarını desteklemek üzere NETX Duo 'e dahildir.
 
@@ -1299,7 +1299,7 @@ Bu hizmet, belirtilen IPv4 adresindeki SNMP Yöneticisi 'ne bir SNMPv2 tuzak gö
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IPv4 adresi.
-- **topluluk** Topluluk adı (Kullanıcı adı).
+- **topluluk** Community adı (kullanıcı adı).
 - **trap_type**  
    İstenen tuzak türü. Standart olaylar şunlardır:  
    - NX_SNMP_TRAP_COLDSTART (0)
@@ -1355,7 +1355,7 @@ UINT nx_snmp_agent_trapv2_oid_send(NX_SNMP_AGENT *agent_ptr,
                                    NX_SNMP_TRAP_OBJECT 
                                             *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki (yalnızca IPv4) SNMP Yöneticisi 'ne bir SNMPv2 tuzak gönderir ve çağıranın OID 'yi doğrudan belirlemesine izin verir. NetX Duo 'da belirtilen OID ile SNMP tuzağı göndermek için tercih edilen yöntem *nxd_snmp_agent_trapv2_oid_send* hizmetini kullanmaktır. Mevcut NetX SNMP Aracısı uygulamalarını desteklemek için, NetX Duo 'e *nx_snmp_agent_trapv2_oid_ Send* işlemi dahildir.
 
@@ -1363,7 +1363,7 @@ Bu hizmet, belirtilen IP adresindeki (yalnızca IPv4) SNMP Yöneticisi 'ne bir S
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IP adresi.
-- **topluluk** Topluluk adı (Kullanıcı adı).
+- **topluluk** Community adı (kullanıcı adı).
 - **OID** OID içeren arabelleğin işaretçisi.
 - **Elapsed_Time** Zaman sistemi (sysUpTime).
 - **object_list_ptr** SNMP tuzağı dahil edilecek nesne dizisi ve bunlarla ilişkili değerler. Listenin sonlandırılması NX_NULL.
@@ -1408,7 +1408,7 @@ UINT nxd_snmp_agent_trapv2_send(NX_SNMP_AGENT *agent_ptr,
                                 ULONG elapsed_time, 
                                 NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne bir SNMP v2 tuzağı gönderir.
 
@@ -1416,7 +1416,7 @@ Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne bir SNMP v2 tuzağı g
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IP (IPv4 veya IPv6) adresi.
-- **topluluk** Topluluk adı (Kullanıcı adı).
+- **topluluk** Community adı (kullanıcı adı).
 - **trap_type**  
    İstenen tuzak türü. Standart olaylar şunlardır:  
    - NX_SNMP_TRAP_COLDSTART (0)
@@ -1482,7 +1482,7 @@ UINT nxd_snmp_agent_trapv2_oid_send(NX_SNMP_AGENT *agent_ptr,
                                     NX_SNMP_TRAP_OBJECT 
                                     *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki (IPv4/IPv6) SNMP Yöneticisi 'ne SNMP v2 tuzağı gönderir ve çağıranın OID 'yi doğrudan belirlemesine izin verir.
 
@@ -1490,7 +1490,7 @@ Bu hizmet, belirtilen IP adresindeki (IPv4/IPv6) SNMP Yöneticisi 'ne SNMP v2 tu
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IP adresi (IPv4/IPv6).
-- **topluluk** Topluluk adı (Kullanıcı adı).
+- **topluluk** Community adı (kullanıcı adı).
 - **OID** OID içeren arabelleğin işaretçisi.
 - **Elapsed_Time** Zaman sistemi (sysUpTime).
 - **object_list_ptr** SNMP tuzağı dahil edilecek nesne dizisi ve bunlarla ilişkili değerler. Listenin sonlandırılması NX_NULL.
@@ -1538,7 +1538,7 @@ UINT nx_snmp_agent_trapv3_send(NX_SNMP_AGENT *agent_ptr,
             ULONG elapsed_time, NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IPv4 adresinde SNMP Yöneticisi 'ne bir SNMPv3 tuzağı gönderir. NetX Duo 'da SNMP tuzağı göndermek için tercih edilen yöntem *nxd_snmp_agent_trapv3_send* hizmetini kullanmaktır. *nx_snmp_agent_trapv3_send* , mevcut NETX SNMP Aracısı uygulamalarını desteklemek üzere NETX Duo 'e dahildir.
 
@@ -1546,7 +1546,7 @@ Bu hizmet, belirtilen IPv4 adresinde SNMP Yöneticisi 'ne bir SNMPv3 tuzağı g�
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IPv4 adresi.
-- **Kullanıcı adı** Topluluk adı (Kullanıcı adı).
+- **kullanıcı** adı Community adı (kullanıcı adı).
 - **trap_type**  
    İstenen tuzak türü. Standart olaylar şunlardır:  
    - NX_SNMP_TRAP_COLDSTART (0)
@@ -1602,7 +1602,7 @@ UINT nx_snmp_agent_trapv3_oid_send(NX_SNMP_AGENT *agent_ptr,
                                    NX_SNMP_TRAP_OBJECT 
                                    *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki (yalnızca IPv4) SNMP yöneticisine bir SNMPv3 tuzağı gönderir ve çağıranın OID 'yi doğrudan belirlemesine izin verir. NetX Duo 'da belirtilen OID ile SNMP tuzağı göndermek için tercih edilen yöntem *nxd_snmp_agent_trapv3_oid_send* hizmetini kullanmaktır. Mevcut NetX SNMP Aracısı uygulamalarını desteklemek için, NetX Duo 'e *nx_snmp_agent_trapv3_oid_ Send* işlemi dahildir.
 
@@ -1610,7 +1610,7 @@ Bu hizmet, belirtilen IP adresindeki (yalnızca IPv4) SNMP yöneticisine bir SNM
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IP adresi.
-- **Kullanıcı adı** Topluluk adı (Kullanıcı adı).
+- **kullanıcı** adı Community adı (kullanıcı adı).
 - **OID** OID içeren arabelleğin işaretçisi.
 - **Elapsed_Time** Zaman sistemi (sysUpTime).
 - **object_list_ptr** SNMP tuzağı dahil edilecek nesne dizisi ve bunlarla ilişkili değerler. Listenin sonlandırılması NX_NULL.
@@ -1654,7 +1654,7 @@ UINT nxd_snmp_agent_trapv3_send(NX_SNMP_AGENT *agent_ptr,
                                 ULONG elapsed_time, 
                                 NX_SNMP_TRAP_OBJECT *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne SNMP tuzağı gönderir. Tuzak iletisi biçimi SNMP v3 PDU 'SU içinde içerilmediği sürece bu tuzak, SNMP v2 tuzağı temelde aynıdır.
 
@@ -1662,7 +1662,7 @@ Bu hizmet, belirtilen IP adresindeki SNMP Yöneticisi 'ne SNMP tuzağı gönderi
 
 - **agent_ptr** SNMP Aracısı denetim bloğu işaretçisi.
 - **ip_address** SNMP yöneticisinin IP (IPv4 veya IPv6) adresi.
-- **Kullanıcı adı** Topluluk adı (Kullanıcı adı).
+- **kullanıcı** adı Community adı (kullanıcı adı).
 - **trap_type**  
    İstenen tuzak türü. Standart olaylar şunlardır:
    - NX_SNMP_TRAP_COLDSTART (0)
@@ -1726,7 +1726,7 @@ UINT nxd_snmp_agent_trapv3_oid_send(NX_SNMP_AGENT *agent_ptr,
                                     NX_SNMP_TRAP_OBJECT 
                                             *object_list_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresindeki (IPv4/IPv6) SNMP Yöneticisi 'ne bir SNMPv3 tuzağı gönderir ve çağıranın OID 'yi doğrudan belirlemesine izin verir.
 
@@ -1779,7 +1779,7 @@ UINT nx_snmp_agent_v3_context_boots_set(NX_SNMP_AGENT *agent_ptr,
                                         UINT boots);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet SNMP Aracısı tarafından kaydedilen yeniden başlatmalar sayısını ayarlar. Bu hizmet yalnızca, önyükleme sayısı SNMPv3 protokolünde kullanıldığı için SNMP Aracısı için SNMPv3 etkin olduğunda kullanılabilir.
 
@@ -1821,7 +1821,7 @@ if (my_agent.nx_snmp_agent_v3_enabled == NX_TRUE)
 UINT nx_snmp_object_compare(UCHAR *object, UCHAR *reference_object);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan nesne KIMLIĞINI başvuru nesne KIMLIĞIYLE karşılaştırır. Her iki nesne kimliği de ASCII SMı gösteriminde, ör. her iki nesne da "1.3.6" ASCII dizesiyle başlamalıdır.
 
@@ -1867,7 +1867,7 @@ UINT nx_snmp_object_compare_extended(UCHAR *request_object,
                                      UCHAR *reference_object
                                      UINT reference_object_length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan nesne KIMLIĞINI başvuru nesne KIMLIĞIYLE karşılaştırır. Her iki nesne kimliği de ASCII SMı gösteriminde, ör. her iki nesne da "1.3.6" ASCII dizesiyle başlamalıdır.
 
@@ -1914,7 +1914,7 @@ Nesne kopyalama
 UINT  nx_snmp_object_copy(UCHAR *source_object_name, 
                           UCHAR *destination_object_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ASCII SIM gösterimi içindeki kaynak nesneyi hedef nesneye kopyalar.
 
@@ -1954,7 +1954,7 @@ UINT  nx_snmp_object_copy_extended(UCHAR *source_object_name,
                              UINT destination_object_name_buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ASCII SIM gösterimi içindeki kaynak nesneyi hedef nesneye kopyalar.
 
@@ -1997,7 +1997,7 @@ Sayaç nesnesi Al
 UINT  nx_snmp_object_counter_get(VOID *source_ptr, 
                                  NX_SNMP_OBJECT_DATA *object_data);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki sayaç nesnesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
 
@@ -2008,12 +2008,12 @@ Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki sayaç nesnesini a
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sayaç nesnesi başarıyla alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_SUCCESS** (0x00) Sayaç nesnesi başarıyla alınmıştır.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2026,7 +2026,7 @@ status =  nx_snmp_object_counter_get(&ifInOctets, my_object);
 ```
 
 ## <a name="nx_snmp_object_counter_set"></a>nx_snmp_object_counter_set
-Sayaç nesnesi ayarla 
+Sayaç nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2035,24 +2035,24 @@ UINT  nx_snmp_object_counter_set(VOID *destination_ptr,
                                  NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki sayacı NetX nesne verileri yapısındaki sayaç değeriyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, sayacı NetX nesne veri yapısında sayaç değeriyle hedef işaretçi tarafından belirtilen adrese ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **destination_ptr** Sayaç hedefi işaretçisi.
-- **object_data** Sayaç kaynak nesne yapısına yönelik işaretçi.
+- **object_data** Sayaç kaynağı nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sayaç nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_SUCCESS** (0x00) Sayaç nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2066,7 +2066,7 @@ status =  nx_snmp_object_counter_set(&ifInOctets, my_object);
 ```
 
 ## <a name="nx_snmp_object_counter64_get"></a>nx_snmp_object_counter64_get
-64 bitlik sayaç nesnesi Al 
+64 bit sayaç nesnesi al 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2075,23 +2075,23 @@ UINT  nx_snmp_object_counter64_get(VOID *source_ptr,
                                    NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki 64 bitlik sayaç nesnesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, kaynak işaretçi tarafından belirtilen adreste 64 bit sayaç nesnesini alan ve NetX nesne veri yapısına yer alan. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **source_ptr** Sayaç kaynağı işaretçisi.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sayaç nesnesi başarıyla alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Sayaç nesnesi başarıyla alınmıştır.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2105,7 +2105,7 @@ status =  nx_snmp_object_counter64_get(&my_64_bit_counter, my_object);
 ```
 
 ## <a name="nx_snmp_object_counter64_set"></a>nx_snmp_object_counter64_set
-64 bitlik sayaç nesnesini ayarla 
+64 bit sayaç nesnesi ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2113,24 +2113,24 @@ status =  nx_snmp_object_counter64_get(&my_64_bit_counter, my_object);
 UINT  nx_snmp_object_counter64_set(VOID *destination_ptr, 
                                    NX_SNMP_OBJECT_DATA *object_data);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki 64 bitlik sayacı NetX nesne verileri yapısında sayaç değeriyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, NetX nesne veri yapısında sayaç değeriyle hedef işaretçi tarafından belirtilen adreste 64 bit sayacı ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **destination_ptr** Sayaç hedefi işaretçisi.
-- **object_data** Sayaç kaynak nesne yapısına yönelik işaretçi.
+- **object_data** Sayaç kaynağı nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sayaç nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi.
+- **NX_SUCCESS** (0x00) Sayaç nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2143,7 +2143,7 @@ status =  nx_snmp_object_counter64_set(&my_64_bit_counter, my_object);
 ```
 
 ## <a name="nx_snmp_object_end_of_mib"></a>nx_snmp_object_end_of_mib
-MIB sonu değerini ayarla 
+Mib sonu değerini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2152,23 +2152,23 @@ UINT  nx_snmp_object_end_of_mib(VOID *not_used_ptr,
                               NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, MıB 'nin sonuna işaret eden bir nesne oluşturur ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, MIB'in sonuna işaret eder ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL olmalıdır.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) son MIB nesnesi başarıyla oluşturuldu.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Mib sonu nesnesi başarıyla oluşturuldu.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2180,7 +2180,7 @@ status =  nx_snmp_object_end_of_mib(NX_NULL, my_object);
 ```
 
 ## <a name="nx_snmp_object_gauge_get"></a>nx_snmp_object_gauge_get
-Ölçer nesnesini Al 
+Ölçer nesnesini al 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2189,23 +2189,23 @@ UINT  nx_snmp_object_gauge_get(VOID *source_ptr,
                                NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki ölçer nesnesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, kaynak işaretçi tarafından belirtilen adreste ölçer nesnesini almak ve NetX nesne veri yapısına yer almaktadır. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **source_ptr** Ölçer kaynağı işaretçisi.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) ölçer nesnesi başarıyla alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Ölçer nesnesi başarıyla alınmıştır.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2218,7 +2218,7 @@ status =  nx_snmp_object_gauge_get(&ifSpeed, my_object);
 ```
 
 ## <a name="nx_snmp_object_gauge_set"></a>nx_snmp_object_gauge_set
-Ölçer nesnesi ayarla 
+Ölçer nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2227,24 +2227,24 @@ UINT  nx_snmp_object_gauge_set(VOID *destination_ptr,
                                      NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki ölçerin değerini NetX nesne verileri yapısındaki ölçer değeriyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet ölçeri, NetX nesne veri yapısında ölçer değeriyle hedef işaretçi tarafından belirtilen adreste ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **destination_ptr** Ölçer hedefi işaretçisi.
-- **object_data** Ölçer kaynak nesne yapısına yönelik işaretçi.
+- **object_data** Kaynak nesne yapısını ölçer işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) ölçer nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Ölçer nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2265,7 +2265,7 @@ UINT  nx_snmp_object_id_get(VOID *source_ptr,
                             NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki nesne KIMLIĞINI (ASCII SIM gösteriminde) alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
 
@@ -2304,7 +2304,7 @@ UINT  nx_snmp_object_id_set(VOID *destination_ptr,
                              NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, hedef işaretçi tarafından belirtilen adresteki nesne KIMLIĞINI (ASCII SIM gösteriminde), NetX nesne verileri yapısındaki nesne KIMLIĞIYLE ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
 
@@ -2343,7 +2343,7 @@ UINT  nx_snmp_object_integer_get(VOID *source_ptr,
                                   NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki tamsayı nesnesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
 
@@ -2381,7 +2381,7 @@ UINT  nx_snmp_object_integer_set(VOID *destination_ptr,
                                       NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, hedef işaretçi tarafından belirtilen adresteki tamsayıyı NetX nesne verileri yapısındaki tamsayı değeriyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
 
@@ -2419,7 +2419,7 @@ UINT  nx_snmp_object_ip_address_get(VOID *source_ptr,
                                           NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki IP adresi nesnesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
 
@@ -2458,7 +2458,7 @@ UINT  nx_snmp_object_ipv6_address_get(VOID *source_ptr,
                                       *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki IPv6 adres nesnesini alır ve NetX nesne verileri yapısına koyar.
 Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
@@ -2499,24 +2499,24 @@ UINT  nx_snmp_object_ip_address_set(VOID *destination_ptr,
                                     NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, hedef işaretçi tarafından belirtilen adresteki IPv4 adresini NetX nesne verileri yapısındaki IP adresiyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **destination_ptr** Ayarlanacak IP adresi işaretçisi.
-- **object_data** IP adresi nesne yapısına yönelik işaretçi.
+- **destination_ptr** Ayar için IP adresi işaretçisi.
+- **object_data** IP adresi nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) IP adresi nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) IP adresi nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2528,7 +2528,7 @@ status =  nx_snmp_object_ip_address_set(&atNetworkAddress, my_object);
 ```
 
 ## <a name="nx_snmp_object_ipv6_address_set"></a>nx_snmp_object_ipv6_address_set
-IPv6 adres nesnesini ayarla 
+IPv6 adres nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2538,25 +2538,25 @@ UINT  nx_snmp_object_ipv6_address_set(VOID *destination_ptr,
                                       *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki IPv6 adresini NetX nesne verileri yapısındaki IP adresiyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, IPv6 adresini, NetX nesne veri yapısında IP adresiyle hedef işaretçi tarafından belirtilen adreste ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **destination_ptr** Ayarlanacak IP adresi işaretçisi.
-- **object_data** IP adresi nesne yapısına yönelik işaretçi.
+- **destination_ptr** Ayar için IP adresi işaretçisi.
+- **object_data** IP adresi nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) IPv6 adresi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
+- **NX_SUCCESS** (0x00) IPv6 adresi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
 - **NX_NOT_ENABLED** (0x14) IPv6 etkin değil
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2568,7 +2568,7 @@ status =  nx_snmp_object_ipv6_address_set(&atNetworkAddress, my_object);
 ```
 
 ## <a name="nx_snmp_object_no_instance"></a>nx_snmp_object_no_instance
-Örnek olmayan nesne ayarla 
+Örnek yok nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2577,23 +2577,23 @@ UINT  nx_snmp_object_no_instance(VOID *not_used_ptr,
                                  NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen nesnenin örneği olmadığını belirten bir nesne sinyali oluşturur ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, belirtilen nesnenin bir örneği olmadığını ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır sinyal bir nesne oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL olmalıdır.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) örnek olmayan nesne başarıyla oluşturuldu.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Örnek yok nesnesi başarıyla oluşturuldu.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2605,7 +2605,7 @@ status =  nx_snmp_object_no_instance(NX_NULL, my_object);
 ```
 
 ## <a name="nx_snmp_object_not_found"></a>nx_snmp_object_not_found
-Bulunamadı nesnesi ayarla 
+Bulunamadı nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2614,23 +2614,23 @@ UINT  nx_snmp_object_not_found(VOID *not_used_ptr,
                                NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, nesne bulunamadığı ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılan bir nesne sinyali oluşturur.
+Bu hizmet nesnenin bulunamadı olduğunu ve genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır bir nesne oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL olmalıdır.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **not_used_ptr** İşaretçi kullanılmadı – NX_NULL.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) olmayan nesne başarıyla oluşturuldu.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Bulunamadı nesnesi başarıyla oluşturuldu.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2642,7 +2642,7 @@ status =  nx_snmp_object_not_found(NX_NULL, my_object);
 ```
 
 ## <a name="nx_snmp_object_octet_string_get"></a>nx_snmp_object_octet_string_get
-Sekizli dize nesnesi Al 
+Sekizli dize nesnesini al 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2651,24 +2651,24 @@ UINT  nx_snmp_object_octet_string_get(VOID *source_ptr,
                                             NX_SNMP_OBJECT_DATA *object_data, 
                                       UINT length);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki sekizli dizeyi alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, kaynak işaretçi tarafından belirtilen adreste sekizli dizeyi alır ve NetX nesne veri yapısına yer alır. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **source_ptr** Sekizli dize kaynağı işaretçisi.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
-- **uzunluk** Sekizli dizedeki bayt sayısı.
+- **source_ptr** Sekizli dize kaynağının işaretçisi.
+- **object_data** Hedef nesne yapısına işaretçi.
+- **uzunluk** Sekizli dizede bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sekizli dize nesnesi başarıyla alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Sekizli dize nesnesi başarıyla alındı.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2681,7 +2681,7 @@ status =  nx_snmp_object_octet_string_get(ifPhysAddress, my_object, 6);
 ```
 
 ## <a name="nx_snmp_object_octet_string_set"></a>nx_snmp_object_octet_string_set
-Sekizli dize nesnesi ayarla 
+Sekizli dize nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2690,24 +2690,24 @@ UINT  nx_snmp_object_octet_string_set(VOID *destination_ptr,
                                       NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki sekizli dizeyi NetX nesne verileri yapısında sekizli dize olarak ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, NetX nesne veri yapısında sekizli dize ile hedef işaretçi tarafından belirtilen adreste sekizli dizeyi ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **destination_ptr** Sekizli dize hedefi işaretçisi.
-- **object_data** Sekizli dize kaynak nesne yapısına yönelik işaretçi.
+- **destination_ptr** Sekizli dize hedefinin işaretçisi.
+- **object_data** Sekizli dize kaynağı nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sekizli dize nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Sekizli dize nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2720,7 +2720,7 @@ status =  nx_snmp_object_octet_string_set(sysContact, my_object);
 ```
 
 ## <a name="nx_snmp_object_string_get"></a>nx_snmp_object_string_get
-ASCII dize nesnesi Al 
+ASCII dize nesnesini al 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2729,24 +2729,24 @@ UINT  nx_snmp_object_string_get(VOID *source_ptr,
                                 NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki ASCII dizesini alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, kaynak işaretçi tarafından belirtilen adreste ASCII dizesini alır ve NetX nesne veri yapısına yer alır. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **source_ptr** ASCII dize kaynağı işaretçisi.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **source_ptr** ASCII dize kaynağının işaretçisi.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_SUCCESS** (0x00) ASCII dize nesnesi başarıyla alındı.
-- **NX_SNMP_ERROR** (0x100) dize çok büyük  
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SNMP_ERROR** (0x100) Dizesi çok büyük  
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2759,7 +2759,7 @@ status =  nx_snmp_object_string_get(sysDescr, my_object);
 ```
 
 ## <a name="nx_snmp_object_string_set"></a>nx_snmp_object_string_set
-ASCII dize nesnesi ayarla 
+ASCII dize nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2768,26 +2768,26 @@ UINT  nx_snmp_object_string_set(VOID *destination_ptr,
                                 NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki ASCII dizesini NetX nesne verileri yapısında ASCII dizesiyle ayarlar. Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, ASCII dizesini, NetX nesne veri yapısında ASCII dizesiyle hedef işaretçi tarafından belirtilen adreste ayarlar. Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **destination_ptr** ASCII dize hedefi işaretçisi.
-- **object_data** ASCII dize kaynak nesne yapısına yönelik işaretçi.
+- **object_data** ASCII dizesi kaynak nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) ASCII dize nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR** (0x100) dize çok büyük.
-- **NX_SNMP_ERROR_BADVALUE** (0x03) dizede geçersiz karakter
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) ASCII dize nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR** (0x100) Dizesi çok büyük.
+- **NX_SNMP_ERROR_BADVALUE** (0x03) Dizedeki geçersiz karakter
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2800,7 +2800,7 @@ status =  nx_snmp_object_string_set(sysContact, my_object);
 ```
 
 ## <a name="nx_snmp_object_timetics_get"></a>nx_snmp_object_timetics_get
-Timetika nesnesini Al 
+Timetics nesnesini al 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2809,23 +2809,23 @@ UINT  nx_snmp_object_timetics_get(VOID *source_ptr,
                                   NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak işaretçi tarafından belirtilen adresteki zaman kaynaklarını alır ve NetX nesne verileri yapısına koyar. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağırılır.
+Bu hizmet, kaynak işaretçi tarafından belirtilen adreste saat saatlerini almak ve NetX nesne veri yapısına yer almaktadır. Bu yordam genellikle GET veya GETNEXT uygulama geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **source_ptr** Timetika kaynağı işaretçisi.
-- **object_data** Hedef nesne yapısına yönelik işaretçi.
+- **source_ptr** Timetics kaynağının işaretçisi.
+- **object_data** Hedef nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) timetika nesnesi başarıyla alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Timetics nesnesi başarıyla alındı.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2838,7 +2838,7 @@ status =  nx_snmp_object_timetics_get(sysUpTime, my_object);
 ```
 
 ## <a name="nx_snmp_object_timetics_set"></a>nx_snmp_object_timetics_set
-Timetika nesnesini ayarla 
+Timetics nesnesini ayarlama 
 
 ### <a name="prototype"></a>Prototype
 
@@ -2847,25 +2847,25 @@ UINT  nx_snmp_object_timetics_set(VOID *destination_ptr,
                                   NX_SNMP_OBJECT_DATA *object_data);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, hedef işaretçi tarafından belirtilen adresteki timetika değişkenini NetX nesne verileri yapısında zaman dilimlerle ayarlar.
-Bu yordam genellikle uygulama geri aramasını ayarla yordamından çağırılır.
+Bu hizmet, Hedef işaretçi tarafından belirtilen adreste saat saat değişkenlerini NetX nesne veri yapısında zamantiklerle ayarlar.
+Bu yordam genellikle SET uygulaması geri çağırma yordamından çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **destination_ptr** Timetika hedefi işaretçisi.
-- **object_data** Timetika kaynak nesne yapısına yönelik işaretçi.
+- **destination_ptr** Timetics hedefi işaretçisi.
+- **object_data** Zamantics kaynağı nesne yapısına işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) timetika nesnesi başarıyla ayarlandı.
-- **NX_SNMP_ERROR_WRONGTYPE** (0x07) geçersiz nesne türü.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi
+- **NX_SUCCESS** (0x00) Timetics nesnesi başarıyla ayarlanmıştır.
+- **NX_SNMP_ERROR_WRONGTYPE** (0x07) Geçersiz nesne türü.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 

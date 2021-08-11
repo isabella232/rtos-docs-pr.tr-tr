@@ -1,109 +1,109 @@
 ---
-title: Bölüm 2-Azure RTOS USBX konak yığını yüklemesi
-description: USBX konak yığınını yüklemeyi öğrenin.
+title: Bölüm 2 - Azure RTOS USBX Konak Yığını Yüklemesi
+description: USBX konak yığınını yükleme hakkında bilgi.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 4c33f95b8ac268c557fd947a1303ec3af315a37e
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: 77df2c4e4bf4ef38403fe78eb98f18820de4325aadb941fc69275e4c77754212
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377093"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790975"
 ---
-# <a name="chapter-2---azure-rtos-usbx-host-stack-installation"></a>Bölüm 2-Azure RTOS USBX konak yığını yüklemesi
+# <a name="chapter-2---azure-rtos-usbx-host-stack-installation"></a>Bölüm 2 - Azure RTOS USBX Konak Yığını Yüklemesi
 
-## <a name="host-considerations"></a>Ana bilgisayar konuları
+## <a name="host-considerations"></a>KonakLa ilgili Dikkat Edilmesi Gerekenler
 
-### <a name="computer-type"></a>Bilgisayar türü
+### <a name="computer-type"></a>Bilgisayar Türü
 
-Katıştırılmış Geliştirme genellikle Windows bılgısayar veya UNIX ana bilgisayarları üzerinde gerçekleştirilir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
+Katıştırılmış geliştirme genellikle bilgisayar veya Unix Windows bilgisayarlarda gerçekleştirilir. Uygulama derledikten, bağlandıktan ve konakta bulunduktan sonra, yürütme için hedef donanıma indirilir.
 
-### <a name="download-interfaces"></a>Arabirimleri indir
+### <a name="download-interfaces"></a>Arabirimleri İndirme
 
-Genellikle, paralel arabirimler, USB ve Ethernet daha popüler olsa da, hedef indirme bir RS-232 seri arabirimi üzerinden yapılır. Kullanılabilir seçenekler için geliştirme aracı belgelerine bakın.
+Genellikle, hedef indirme bir RS-232 seri arabirimi üzerinden yapılır, ancak paralel arabirimler, USB ve Ethernet daha popüler hale geliyor. Kullanılabilir seçenekler için geliştirme aracı belgelerine bakın.
 
-### <a name="debugging-tools"></a>Hata ayıklama araçları
+### <a name="debugging-tools"></a>Hata Ayıklama Araçları
 
-Hata ayıklama, genellikle program görüntüsü indirdiği bağlantıyla aynı bağlantı üzerinden yapılır. Arka plan hata ayıklama Izleyicisi (BDM) ve In-Circuit öykünücü (ıCE) araçları aracılığıyla hedefte çalışan küçük izleme programlarından farklı hata ayıklayıcılar vardır. ICE Aracı, gerçek hedef donanımının en sağlam hata ayıklamasını sağlar.
+Hata ayıklama genellikle program görüntüsü indirmeyle aynı bağlantı üzerinden yapılır. Arka Plan Hata Ayıklama İzleyicisi (BDM) ve arka plan (ICE) araçları aracılığıyla hedefte çalışan küçük monitör programlarından In-Circuit Emulator çeşitli hata ayıklayıcıları vardır. ICE aracı, gerçek hedef donanımın en güçlü hata ayıklamasını sağlar.
 
-### <a name="required-hard-disk-space"></a>Gerekli sabit disk alanı
+### <a name="required-hard-disk-space"></a>Gerekli Sabit Disk Alanı
 
-USBX için kaynak kodu ASCII biçiminde dağıtılır ve ana bilgisayarın sabit diskinde yaklaşık 500 Kbayt alan gerektirir.
+USBX kaynak kodu ASCII biçiminde teslim edilir ve konak bilgisayarın sabit diskte yaklaşık 500 KBayt alan gerektirir.
 
-## <a name="target-considerations"></a>Hedef konuları
+## <a name="target-considerations"></a>HedefLe ilgili Dikkat Edilmesi Gerekenler
 
-USBX, ana bilgisayar modundaki hedefte yalnızca 24 Kbayt ve 64 Kbayt arasında salt okuma belleği (ROM) arasında olmalıdır. Gerekli bellek miktarı, kullanılan denetleyicinin türüne ve USBX ile bağlantılı USB sınıflarına bağımlıdır. USBX genel veri yapıları ve bellek havuzu için hedefin rastgele erişim belleği (RAM) için bir 32 Kbayt gerekir. Bu bellek havuzu, USB üzerindeki beklenen cihaz sayısına ve USB denetleyicisinin türüne göre de ayarlanabilir. USBX cihaz tarafı, cihaz denetleyicisinin türüne göre kabaca 10-12 K ROM gerektirir. RAM bellek kullanımı, cihaz tarafından Öykünülen sınıfın türüne bağlıdır.
+USBX, konak modunda hedefte 24 KBayt ile 64 KBayt Arasında Salt Okunur Bellek (ROM) gerektirir. Gereken bellek miktarı, kullanılan denetleyici türüne ve USBX'e bağlı USB sınıflara bağlıdır. USBX genel veri yapıları ve bellek havuzu için hedefin Rastgele Erişim Belleği'nin (RAM) 32 KBayt daha olması gerekir. Bu bellek havuzu, USB'de beklenen cihaz sayısına ve USB denetleyicisinin türüne bağlı olarak da ayarlanabilir. USBX cihaz tarafı, cihaz denetleyicisinin türüne bağlı olarak yaklaşık 10-12 K ROM gerektirir. RAM bellek kullanımı, cihaz tarafından öykünülen sınıf türüne bağlıdır.
 
-USBX Ayrıca, Işparçacığıx semaforları, zaman uyumu sağlayıcılar ve birden çok iş parçacığı koruması için iş parçacıklarını ve USB veri yolu topolojisini izlemek için g/ç askıya alma ve düzenli işlemeyi kullanır.
+USBX ayrıca, birden çok iş parçacığı koruması için ThreadX semaforlarını, mutex'leri ve iş parçacıklarını ve USB veri verisi topolojisini izlemek için I/O askıya alma ve düzenli işlemeyi de kullanabilir.
 
-### <a name="product-distribution"></a>Ürün dağıtımı
+### <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS USBX, konumundaki ortak kaynak kodu depomızdan elde edilebilir <https://github.com/azure-rtos/usbx/> .
+Azure RTOS USBX, genel kaynak kodu depomuzdan <https://github.com/azure-rtos/usbx/> edinebilirsiniz.
 
-Depodaki birçok önemli dosyanın listesi aşağıda verilmiştir:
+Aşağıda, depoda yer alan birkaç önemli dosyanın listesi ve ardından yer alan liste ve bir liste ve ardından yer alan bilgileri bulabilirsiniz:
 
-- ***ux_api. h***: Bu C üstbilgi dosyası tüm sistem eş, veri yapılarını ve hizmet prototiplerini içerir.
-- ***ux_port. h***: Bu C üstbilgi dosyası, tüm geliştirme aracına özgü veri tanımlarını ve yapılarını içerir.
-- ***UX. lib***: Bu, USBX C kitaplığının ikili sürümüdür. Standart paketiyle dağıtılır.
-- ***demo_usbx. c***: basıt bır USBX tanıtımı içeren c dosyası
+- ***ux_api.h:*** Bu C üst bilgi dosyası tüm sistem eşitlerini, veri yapılarını ve hizmet prototiplerini içerir.
+- ***ux_port.h:*** Bu C üst bilgi dosyası, geliştirme aracına özgü tüm veri tanımlarını ve yapılarını içerir.
+- ***ux.lib:*** Bu, USBX C kitaplığının ikili sürümüdür. Standart paketle dağıtılır.
+- ***demo_usbx.c:*** Basit bir USBX demosu içeren C dosyası
 
-Tüm dosya adları küçük harfli. Bu adlandırma kuralı, komutları UNIX geliştirme platformlarına dönüştürmeyi kolaylaştırır.
+Tüm dosya adlarında küçük harf vardır. Bu adlandırma kuralı komutları Unix geliştirme platformlarına dönüştürmeyi kolaylaştırır.
 
-## <a name="usbx-installation"></a>USBX yüklemesi
+## <a name="usbx-installation"></a>USBX Yüklemesi
 
-USBX, GitHub deposu yerel makinenize kopyalanarak yüklenir. Aşağıda, bilgisayarınızda USBX deposunun bir kopyasını oluşturmak için tipik sözdizimi verilmiştir:
+USBX, depolama GitHub yerel makinenize kopya tarafından yüklenir. Aşağıdakiler, bilgisayarınızda USBX deposunun bir kopyasını oluşturmak için tipik söz dizimidir:
 
 ```powershell
     git clone https://github.com/azure-rtos/usbx
 ```
 
-Alternatif olarak, GitHub ana sayfasında İndir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+Alternatif olarak, ana sayfada yer alan indirme düğmesini kullanarak deponun bir GitHub indirebilirsiniz.
 
-Ayrıca, çevrimiçi deponun ön sayfasında USBX kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
+UsbX kitaplığını oluşturma yönergelerini çevrimiçi deponun ön sayfasında da bulabilirsiniz.
 
-Aşağıdaki genel yönergeler, neredeyse tüm yüklemeler için geçerlidir:
+Aşağıdaki genel yönergeler neredeyse tüm yüklemeler için geçerlidir:
 
-1. Konak sabit sürücüsüne daha önce ThreadX 'i yüklediğiniz dizini kullanın. Tüm USBX adları benzersizdir ve önceki USBX yüklemesine engel olmaz.
-2. _ *_Tx_application_define_* başlangıcına veya yanına ***ux_system_initialize** _ çağrısı ekleyin. * Bu, USBX kaynaklarının başlatıldığı yerdir.
-3. ***Ux_host_stack_initialize *** için bir çağrı ekleyin.
-4. Gerekli USBX 'i başlatmak için bir veya daha fazla çağrı ekleyin.
-5. Sistemde bulunan konak denetleyicilerini başlatmak için bir veya daha fazla çağrı ekleyin.
-6. Alt düzey donanım başlatma ve kesme vektör yönlendirmesi eklemek için tx_low_level_initialize. c dosyasını değiştirmeniz gerekebilir. Bu donanım platformuna özeldir ve burada ele alınmamalıdır.
-7. Uygulama kaynak kodunu derleme ve USBX ve ThreadX çalışma zamanı kitaplıkları (FileX ve/veya NETX), UX. a (veya UX. lib) ve TX. a (ya da TX. lib) ile bağlantı için gerekli olabilir. Sonuç hedefe indirilebilir ve yürütülür.
+1. Ana bilgisayar sabit sürücüsüne ThreadX'i daha önce yüklemiş olduğunuz dizini kullanın. Tüm USBX adları benzersizdir ve önceki USBX yüklemesini engellemez.
+2. * ux_system_initialize _ **ux_system_initialize** _tx_application_define başlangıcına bir *_çağrı ekleyin._* * USBX kaynakları burada başlatılır.
+3. ***ux_host_stack_initialize* çağrısı ekleyin.**
+4. Gerekli USBX'i başlatmak için bir veya daha fazla çağrı ekleyin.
+5. Sistemde kullanılabilen konak denetleyicilerini başlatmak için bir veya daha fazla çağrı ekleyin.
+6. Düşük düzeyli donanım başlatma ve kesme vektör yönlendirmesi eklemek için tx_low_level_initialize.c dosyasını değiştirmek gerekebilir. Bu, donanım platformuna özeldir ve burada ele alınmayacaktır.
+7. USB depolama sınıfı ve/veya USB ağ sınıfları içinde derlenmişse, ux.a (veya ux.lib) ve tx.a (veya tx.lib) ile uygulama kaynak kodunu ve USBX ve ThreadX çalışma zamanı kitaplıkları ile bağlantıyı derle (FileX ve/veya Netx de gerekli olabilir). Sonuçta hedefe indirilir ve yürütülür.
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-USBX kitaplığını oluşturmak için birkaç yapılandırma seçeneği vardır. Tüm Seçenekler ***ux_user. h*** içinde bulunur.
+USBX kitaplığını oluşturmanın çeşitli yapılandırma seçenekleri vardır. Tüm seçenekler ***ux_user.h içinde bulunur.***
 
-Aşağıdaki listede her yapılandırma seçeneğinin ayrıntıları verilmiştir.
+Aşağıdaki listede her yapılandırma seçeneği ayrıntılı olarak verilmiştir.
 
 
-- **UX_PERIODIC_RATE**: Bu değer, belirli bir donanım platformu için saniye başına kaç saat sayısını temsil eder. Varsayılan değer, her milisaniyeye göre bir değer belirten 1000 ' dir.
-- **UX_MAX_CLASS_DRIVER**: Bu değer, USBX tarafından yüklenebilen en fazla sınıf sayısıdır. Bu değer, bir sınıfın örnek sayısını değil, sınıf kapsayıcısını temsil eder. Örneğin, belirli bir USBX uygulamasının hub sınıfı, yazıcı sınıfı ve depolama sınıfı olması gerekiyorsa, bu sınıflara ait cihazların sayısından bağımsız olarak UX_MAX_CLASS_DRIVER değeri 3 olarak ayarlanabilir.
-- **UX_MAX_HCD**: Bu değer, sistemde kullanılabilir olan farklı konak denetleyicilerinin sayısını temsil eder. USB 1,1 desteği için bu değer genellikle 1 olacaktır. USB 2,0 desteği için bu değer 1 ' den fazla olabilir. Bu değer aynı anda çalışan eşzamanlı konak denetleyicilerinin sayısını temsil eder. Örneğin, iki adet OHCı çalışan ya da bir EHCı ve bir adet bir EHCı denetleyicisi çalışan iki örnek varsa, UX_MAX_HCD 2 olarak ayarlanmalıdır. 
-- **UX_MAX_DEVICES**: Bu değer, USB 'ye iliştirilebilecek maksimum cihaz sayısını temsil eder. Normalde, tek bir USB üzerinde teorik en büyük sayı 127 cihazlardır. Bu değer, belleği korumak için küçültülemez. Bu değerin sistemdeki USB veri yolu sayısından bağımsız olarak toplam cihaz sayısını temsil ettiğini unutmayın.
-- **UX_MAX_ED**: Bu değer, denetleyici havuzundaki en fazla EDS sayısını temsil eder. Bu sayı yalnızca bir denetleyiciye atanır. Birden çok denetleyici örneği varsa, bu değer her bir denetleyici tarafından kullanılır.
-- **UX_MAX_TD ve UX_MAX_ISO_TD**: Bu değer, denetleyici havuzundaki en fazla normal ve zaman aralıklı tds sayısını temsil eder. Bu sayı yalnızca bir denetleyiciye atanır. Birden çok denetleyici örneği varsa, bu değer her bir denetleyici tarafından kullanılır.
-- **UX_THREAD_STACK_SIZE**: Bu değer, USBX iş parçacıklarının bayt cinsinden yığınının boyutudur. Kullanılan işlemciye ve ana bilgisayar denetleyicisine bağlı olarak genellikle 1024 bayt veya 2048 bayt olabilir.
-- **UX_HOST_ENUM_THREAD_STACK_SIZE**: Bu değer, USB ana bilgisayar numaralandırma iş parçacığının yığın boyutudur. Bu sembol ayarlanmıyorum, USBX konak numaralandırma iş parçacığı yığın boyutu **UX_THREAD_STACK_SIZE** olarak ayarlanır. 
-- **UX_HOST_HCD_THREAD_STACK_SIZE**: Bu değer, USB Host HCD iş parçacığının yığın boyutudur. Bu sembol ayarlanmıyorum, USBX Host HCD iş parçacığı yığın boyutu **UX_THREAD_STACK_SIZE** olarak ayarlanır.
-- **UX_THREAD_PRIORITY_ENUM**: Bu, veri yolu topolojisini izleyen USBX sabit listesi Iş parçacıklarının threadx öncelik değeridir.
-- **UX_THREAD_PRIORITY_CLASS**: Bu, standart USBX iş parçacıkları Için threadx öncelik değeridir.
-- **UX_THREAD_PRIORITY_KEYBOARD**: Bu, USBX HID Klavye sınıfı Için threadx öncelik değeridir.
-- **UX_THREAD_PRIORITY_HCD**: Bu, konak denetleyicisi iş parçacığı Için threadx öncelik değeridir.
-- **UX_NO_TIME_SLICE**: Bu değer aslında iş parçacıkları için kullanılacak zaman dilimini tanımlar. Örneğin, 0 olarak tanımlanmışsa, ThreadX hedef bağlantı noktası zaman dilimlerini kullanmaz.
-- **UX_MAX_HOST_LUN**: Bu değer, konak depolama sınıfı sürücüsünde temsil edilen en fazla SCSI mantıksal birim sayısını temsil eder.
-- **UX_HOST_CLASS_STORAGE_INCLUDE_LEGACY_PROTOCOL_SUPPORT**: tanımlanmışsa, bu değer CB veya CBI protokolünü (disket gibi) kullanan depolama cihazlarını işleyecek kodu içerir. Varsayılan olarak kapalıdır çünkü bu protokoller artık neredeyse tüm modern depolama cihazlarının kullandığı toplu taşıma (BOT Protokolü) tarafından yerine geçti.
-- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE**: tanımlanmışsa, bu değer ux_host_class_hid_keyboard_key_get yalnızca, tuş basışları ve önemli yayınlar için anahtar değişikliklerini rapor etmesine neden olur. Varsayılan olarak, yalnızca bir anahtar aşağı olduğunda bildirir.
-- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_KEY_DOWN_ONLY**: yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** tanımlanmışsa kullanılır. Tanımlandıysa, ux_host_class_hid_keyboard_key_get yalnızca tuşu basılı/aşağı değişiklikleri rapor etmesine neden olur; anahtar serbest bırakıldı/yukarı değişiklikler bildirilmedi.
-- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_LOCK_KEYS**: yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** tanımlanmışsa kullanılır. Tanımlandıysa, ux_host_class_hid_keyboard_key_get kilit anahtarını (CapsLock/NumLock/ScrollLock) değişikliklerini rapor etmesine neden olur.
-- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_MODIFIER_KEYS**: yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** tanımlanmışsa kullanılır. Tanımlanmışsa, ux_host_class_hid_keyboard_key_get değiştirici anahtarı (Ctrl/Alt/Shift/GUI) değişikliklerini rapor etmesine neden olur.
-- **UX_HOST_CLASS_CDC_ECM_NX_PKPOOL_ENTRIES**: tanımlanmışsa, bu değer CDC-ECD ana bilgisayar sınıfındaki paketlerin sayısını temsil eder. Varsayılan değer 16 ' dır.
+- **UX_PERIODIC_RATE:** Bu değer, belirli bir donanım platformu için saniye başına kaç tık olduğunu temsil eder. Varsayılan değer, milisaniye başına bir tık olduğunu belirten 1000'tir.
+- **UX_MAX_CLASS_DRIVER:** Bu değer, USBX tarafından yüklen minimum sınıf sayısıdır. Bu değer, bir sınıfın örnek sayısını değil sınıf kapsayıcısı temsil eder. Örneğin, belirli bir USBX uygulaması hub sınıfına, yazıcı sınıfına ve depolama sınıfına ihtiyaç varsa, bu sınıflara ait cihaz sayısından bağımsız olarak UX_MAX_CLASS_DRIVER değeri 3'e ayarlanır.
+- **UX_MAX_HCD:** Bu değer, sistemde kullanılabilen farklı konak denetleyicilerinin sayısını temsil eder. USB 1.1 desteği için bu değer çoğunlukla 1 olur. USB 2.0 desteği için bu değer 1'den fazla olabilir. Bu değer, aynı anda çalışan eşzamanlı konak denetleyicisi sayısını temsil eder. Örneğin, çalışan iki AHCI örneği veya bir EHCI ve bir AHCI denetleyicisi çalışıyorsa, UX_MAX_HCD 2 olarak ayar gerekir. 
+- **UX_MAX_DEVICES:** Bu değer, USB'ye bağlanabilirsiniz maksimum cihaz sayısını temsil eder. Normalde, tek bir USB'de teorik olarak maksimum sayı 127 cihazdır. Bu değer, bellek tasarrufu yapmak için ölçeğini aşağıya doğru ölçeklendirin. Bu değerin, sistemdaki USB veri verisi sayısından bağımsız olarak toplam cihaz sayısını temsil ettiğine emin olun.
+- **UX_MAX_ED:** Bu değer denetleyici havuzunda en fazla SAYıDA ES'yi temsil eder. Bu sayı yalnızca bir denetleyiciye atanır. Birden çok denetleyici örneği varsa, bu değer her bir denetleyici tarafından kullanılır.
+- **UX_MAX_TD ve UX_MAX_ISO_TD:** Bu değer denetleyici havuzunda bulunan en fazla normal ve zaman uyumsuz TD sayısını temsil eder. Bu sayı yalnızca bir denetleyiciye atanır. Birden çok denetleyici örneği varsa, bu değer her bir denetleyici tarafından kullanılır.
+- **UX_THREAD_STACK_SIZE:** Bu değer, USBX iş parçacıkları için yığının bayt cinsinden boyutudur. Kullanılan işlemciye ve konak denetleyicisine bağlı olarak genellikle 1024 bayt veya 2048 bayt olabilir.
+- **UX_HOST_ENUM_THREAD_STACK_SIZE:** Bu değer, USB konak numaralama iş parçacığının yığın boyutudur. Bu simgeyi ayarlamazsanız, USBX ana bilgisayar numaralama iş parçacığı yığın boyutu **UX_THREAD_STACK_SIZE.** 
+- **UX_HOST_HCD_THREAD_STACK_SIZE:** Bu değer, USB ana bilgisayar HCD iş parçacığının yığın boyutudur. Bu simgeyi ayarlamazsanız, USBX ana bilgisayarı HCD iş parçacığı yığını boyutu **UX_THREAD_STACK_SIZE.**
+- **UX_THREAD_PRIORITY_ENUM:** Bu, veri verisi topolojisi izleyen USBX numaralama iş parçacıkları için ThreadX öncelik değeridir.
+- **UX_THREAD_PRIORITY_CLASS:** Standart USBX iş parçacıkları için ThreadX öncelik değeridir.
+- **UX_THREAD_PRIORITY_KEYBOARD:** Bu, USBX KEYBOARD klavye sınıfı için ThreadX öncelik değeridir.
+- **UX_THREAD_PRIORITY_HCD:** Bu, konak denetleyici iş parçacığı için ThreadX öncelik değeridir.
+- **UX_NO_TIME_SLICE:** Bu değer, iş parçacıkları için kullanılacak zaman dilimini tanımlar. Örneğin, 0 olarak tanımlanırsa, ThreadX hedef bağlantı noktası zaman dilimleri kullanmaz.
+- **UX_MAX_HOST_LUN:** Bu değer, konak depolama sınıfı sürücüsünde temsil edilen en fazla SCSI mantıksal birimi sayısını temsil eder.
+- **UX_HOST_CLASS_STORAGE_INCLUDE_LEGACY_PROTOCOL_SUPPORT:** Tanımlanmışsa, bu değer CB veya CBI protokolünü (disketler gibi) kullanan depolama cihazlarını işlemek için kod içerir. Varsayılan olarak kapalıdır çünkü bu protokoller kullanımdan kaldırılmış ve neredeyse tüm modern depolama cihazlarının kullanabileceği Toplu Taşıma (BOT protokolü) ile yenisi kaldırılmış durumdadır.
+- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE:** Tanımlandı ise, bu ux_host_class_hid_keyboard_key_get yalnızca tuş basmaları ve anahtar yayınlarını bildirmeye neden olur. Varsayılan olarak, yalnızca bir anahtar kapat olduğunda rapor sağlar.
+- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_KEY_DOWN_ONLY:** Yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** kullanılır. Tanımlanmışsa, yalnızca ux_host_class_hid_keyboard_key_get/aşağı doğru değişiklikleri bildirmeye neden olur; yayımlanan anahtar/yukarı değişiklikleri raporlanmaz.
+- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_LOCK_KEYS:** Yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** kullanılır. Tanımlanmışsa, kilit ux_host_class_hid_keyboard_key_get (CapsLock/NumLock/ScrollLock) değişiklikleri bildirmeye neden olur.
+- **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE_REPORT_MODIFIER_KEYS:** Yalnızca **UX_HOST_CLASS_HID_KEYBOARD_EVENTS_KEY_CHANGES_MODE** kullanılır. Tanımlandı ise, ux_host_class_hid_keyboard_key_get (Ctrl/Alt/Shift/GUI) değişikliklerini bildirmeye neden olur.
+- **UX_HOST_CLASS_CDC_ECM_NX_PKPOOL_ENTRIES:** Tanımlanırsa, bu değer CDC-ECM konak sınıfındaki paket sayısını temsil eder. Varsayılan değer 16'dır.
 
-## <a name="source-code-tree"></a>Kaynak kod ağacı
+## <a name="source-code-tree"></a>Kaynak Kod Ağacı
 
 USBX dosyaları birkaç dizinde sağlanır.
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 1a0ab96a454bea9f56ced0d7aa8de5d481b284e9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f68d6ac942c829dbf6eb9be334328b1b58a47ea370a73d37f471ec32cd46a360
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826662"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782396"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-pop3-client-services"></a>Bölüm 3-Azure RTOS NetX POP3 Istemci hizmetlerinin açıklaması
 
@@ -42,7 +42,7 @@ UINT nx_pop3_client_create(NX_POP3_CLIENT *client_ptr,
                         CHAR *client_name, CHAR *client_password);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, POP3 Istemcisinin bir örneğini oluşturur ve yapılandırmasını giriş parametreleriyle ayarlar.
 
@@ -100,7 +100,7 @@ POP3 Istemci örneğini silme
 UINT nx_pop3_client_delete(NX_POP3_CLIENT *client_ptr)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önceden oluşturulmuş bir POP3 Istemcisini siler. Bu hizmet POP3 Istemci paket havuzunu silmez. Cihaz uygulamasının artık paket havuzu için kullanımı gerekmiyorsa, bu kaynağı ayrı olarak silmesi gerekir.
 
@@ -137,7 +137,7 @@ UINT nx_pop3_client_mail_items_delete(NX_POP3_CLIENT *client_ptr,
                                     UINT mail_index)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen posta öğesini Istemci maildrop 'dan siler. Posta öğesi indirildikten sonra, bazı POP3 sunucuları, Istemci tarafından istendikten sonra posta öğelerini otomatik olarak silebilir.
 
@@ -182,7 +182,7 @@ UINT nx_pop3_client_mail_item_get(NX_POP3_CLIENT *client_ptr,
                                 UINT mail_item, ULONG *item_size)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Dizin mail_item tarafından belirtilen Istemci maildrop öğesinden bir posta öğesi almaya yönelik bir RETR isteği yapar. Bir RETR isteği yaptıktan ve sunucudan olumlu bir yanıt aldıktan sonra Istemci, *nx_pop3_client_mail_item_message_get* hizmetini kullanarak posta iletisini indirmeye başlayabilir. Hizmetin, sunucu yanıtlarından ayıklanan istenen posta öğesinin boyutunu da sağladığı unutulmamalıdır.
 
@@ -228,7 +228,7 @@ UINT nx_pop3_client_mail_items_get(NX_POP3_CLIENT *client_ptr,
                                 ULONG *maildrop_total_size)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, posta öğelerinin sayısını ve Istemci maildrop 'tan gelen posta iletisi verilerinin toplam boyutunu almak için bir STAT isteği yapar.
 
@@ -241,12 +241,12 @@ Bu hizmet, posta öğelerinin sayısını ve Istemci maildrop 'tan gelen posta i
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_SUCCESS**: (0x00) posta öğesi başarıyla alındı
-- **NX_POP3_INVALID_MAIL_ITEM**: (0Xb2) geçersiz posta öğesi dizini
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0Xb6) istemci paket yükü POP3 isteği için çok küçük.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0Xb4) sunucu, hata durumuyla yanıt verir 
-- NX_PTR_ERROR: (0x07) geçersiz giriş işaretçisi parametresi
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Geçersiz posta öğesi dizini
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:**(0xB6) İSTEMCI paket yükü POP3 isteği için çok küçük.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Sunucu hata durumuyla yanıt verir 
+- NX_PTR_ERROR: (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama kodu
 
@@ -265,7 +265,7 @@ status = nx_pop3_client_mail_item_get (&demo_client, 1, &number_mail_items,
 
 ## <a name="nx_pop3_client_mail_item_message_get"></a>nx_pop3_client_mail_item_message_get
 
-Belirtilen posta öğesi iletisini Al
+Belirtilen posta öğesi iletisini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -277,24 +277,24 @@ UINT nx_pop3_client_mail_item_message_get(
                 UINT *final_packet)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet posta öğesi iletisini, posta iletisinin boyutunu ve posta iletisindeki son paket ise alır. `final_packet`NX_TRUE, tarafından işaret edilen paket, `recv_packet_ptr` posta öğesi iletisindeki son pakettir.
+Bu hizmet posta öğesi iletisini, posta iletisinin boyutunu ve posta iletisinde son paketse alır. Bu `final_packet` NX_TRUE tarafından işaret eden `recv_packet_ptr` paket, posta öğesi iletisinde son pakettir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: istemci örneğine yönelik işaretçi
-- **recv_packet_ptr**: İleti verisi paketi alındı
-- **number_mail_item**: istemci maildrop 'daki posta sayısı
-- **maildrop_total_size**: tüm posta iletisinin boyutu işaretçisi
+- **client_ptr:** İstemci örneğine işaretçi
+- **recv_packet_ptr:** İleti verileri paketi alındı
+- **number_mail_item:** İstemci postası'nın posta sayısı
+- **maildrop_total_size:** Tüm posta iletisinin boyutunu gösteren işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) posta öğesi başarıyla alındı
-- **NX_POP3_CLIENT_INVALID_STATE**: (0Xb7) istemci paket yükü POP3 isteği için çok küçük.
-- NX_PTR_ERROR (0x07) geçersiz giriş işaretçisi parametresi
+- **NX_SUCCESS:**(0x00) Posta öğesi başarıyla alındı
+- **NX_POP3_CLIENT_INVALID_STATE:**(0xB7) POP3 isteği için çok küçük istemci paket yükü.
+- NX_PTR_ERROR (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama kodu
 
@@ -314,7 +314,7 @@ status = nx_pop3_client_mail_item_message_get (&demo_client, &recv_packet_ptr,
 
 ## <a name="nx_pop3_client_mail_item_size_get"></a>nx_pop3_client_mail_item_size_get
 
-Belirtilen posta öğesinin boyutunu al
+Belirtilen posta öğesinin boyutunu alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -324,26 +324,26 @@ UINT nx_pop3_client_mail_item_size_get(
                 UINT mail_item, ULONG *size)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen posta öğesinin boyutunu almak için bir LISTE isteği oluşturur.
+Bu hizmet, belirtilen posta öğesinin boyutunu almak için bir LIST isteği yapar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr**: istemci örneğine yönelik işaretçi
-- **mail_item**: istemci maildrop 'a Dizin
-- **Boyut**: posta iletisi boyutu işaretçisi
+- **client_ptr:** İstemci örneğine işaretçi
+- **mail_item:** İstemci postade dizin oluşturma
+- **boyut:** Posta iletisinin boyutunu gösteren işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) posta öğesi başarıyla alındı
-- **NX_POP3_INVALID_MAIL_ITEM**: (0Xb2) geçersiz posta öğesi dizini
-- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD**: (0Xb6) istemci paket yükü POP3 isteği için çok küçük.
-- **NX_POP3_SERVER_ERROR_STATUS**: (0Xb4) sunucu, hata durumuyla yanıt verir
-- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) geçersiz posta dizini girişi
-- NX_PTR_ERROR: (0x07) geçersiz giriş işaretçisi parametresi
+- **NX_SUCCESS:**(0x00) Posta öğesi başarıyla alındı
+- **NX_POP3_INVALID_MAIL_ITEM:**(0xB2) Geçersiz posta öğesi dizini
+- **NX_POP3_INSUFFICIENT_PACKET_PAYLOAD:**(0xB6) İSTEMCI paket yükü POP3 isteği için çok küçük.
+- **NX_POP3_SERVER_ERROR_STATUS:**(0xB4) Sunucu hata durumuyla yanıt verir
+- NX_POP3_CLIENT_INVALID_INDEX: (0xB8) Geçersiz posta dizini girişi
+- NX_PTR_ERROR: (0x07) Geçersiz giriş işaretçisi parametresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama kodu
 

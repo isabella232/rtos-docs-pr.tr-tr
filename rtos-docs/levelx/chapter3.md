@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3286e4ea7f16b28ff55fc95a87a1e0c313ec4240
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 950a4f260d032ebe032aca79ac99cc8217915a3b21b230be9475d82b267da18c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826267"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790590"
 ---
 # <a name="chapter-3---azure-rtos-levelx-nand-support"></a>Bölüm 3-Azure RTOS LevelX nve desteği
 
@@ -84,19 +84,19 @@ INT nand_driver_initialize(LX_NAND_FLASH *instance);
 - Blok silme
 - Blok silinme doğrulaması
 - Sayfa silindi doğrula
-- Engelleme durumu Al
-- Blok durumu kümesi
-- Ek baytları engelle al
-- Fazla bayt kümesini engelle
-- Sistem hata Işleyicisi
+- Blok Durumu Al
+- Durum Kümesi Engelleme
+- Ek Bayt Al'a Engelle
+- Ek Bayt Kümelerini Engelle
+- Sistem Hata İşleyicisi
 
-## <a name="driver-initialization"></a>Sürücü başlatma
+## <a name="driver-initialization"></a>Sürücü Başlatma
 
-Bu hizmetler, sürücünün başlatma işlevindeki **LX_NAND_FLASH** örneğindeki işlev işaretçileri ayarlanarak kurulumlardır. Sürücü başlatma işlevi aynı zamanda toplam blok sayısını, blok başına sayfa sayısını, sayfa başına baytları ve bir sayfadan oluşan belleği okumak için yeterince büyük bir RAM alanını belirtir. Sürücü başlatma işlevi büyük olasılıkla **LX_SUCCESS** döndürmeden önce ek cihaz ve/veya uygulamaya özgü başlatma görevlerini de gerçekleştiriyor.
+Bu hizmetler, sürücünün başlatma işlevi  içindeki LX_NAND_FLASH işaretçileri ayar aracılığıyla ayarlar. Sürücü başlatma işlevi ayrıca toplam blok sayısını, blok başına sayfa sayısını, sayfa başına bayt sayısını ve bir sayfayı belleğe okumak için yeterince büyük bir RAM alanı belirtir. Sürücü başlatma işlevi, büyük olasılıkla yeniden başlatmadan önce ek cihaz ve/veya uygulamaya özgü başlatma **görevlerini LX_SUCCESS.**
 
-## <a name="driver-read-page"></a>Sürücü okuma sayfası
+## <a name="driver-read-page"></a>Sürücü Okuma Sayfası
 
-LevelX nve sürücü "okuma sayfası" hizmeti, nve Flash 'ın belirli bir bloğundaki belirli bir sayfayı okumaktan sorumludur. Mantığın tüm hata denetlemesi ve düzeltilmesi, sürücü hizmetinin sorumluluğundadır. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "okuma sayfası" hizmetinin prototipi aşağıda verilmiştir.
+LevelX NAND sürücüsü "sayfayı okuma" hizmeti, BELIRLI bir sayfayı, NAND flash'ın belirli bir bloğunda okumaktan sorumludur. Tüm hata denetleme ve düzeltme mantığı sürücü hizmetinin sorumluluğundadır. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "okuma sayfası" hizmetinin prototipi aşağıda verilmiştir.
 
 ```c
 INT nand_driver_read_page(
@@ -106,11 +106,11 @@ INT nand_driver_read_page(
     ULONG words);
 ```
 
-Burada *blok* ve *sayfa* hangi sayfanın okunacağını ve *hedef* ve *sözcükleri* belirler sayfa içeriğinin nereye yerleştirileceğini ve kaç 32 bitlik kelime okunacağını belirtir.
+Burada *blok* ve *sayfa,* okunacak  sayfayı ve hedefle sözcükleri, sayfa içeriğinin nereye konacaklarını ve kaç tane 32 bit sözcüklerin okunacaklarını belirtir. 
 
-## <a name="driver-write-page"></a>Sürücü yazma sayfası
+## <a name="driver-write-page"></a>Sürücü Yazma Sayfası
 
-LevelX nve sürücü "yazma sayfası" hizmeti, belirli bir sayfanın belirtilen nve Flash bloğuna yazmasından sorumludur. Tüm hata denetimi ve ECC hesaplama, sürücü hizmetinin sorumluluğundadır. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "yazma sayfası" hizmetinin prototipi aşağıda gösterilmiştir.
+LevelX NAND sürücüsü "yazma sayfası" hizmeti, belirli bir sayfayı BELIRTILEN NAND flash bloğuna yazmaktan sorumludur. Tüm hata denetimi ve ECC hesaplaması, sürücü hizmetinin sorumluluğundadır. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "yazma sayfası" hizmetinin prototipi aşağıda gösterilmiştir.
 
 ```c
 INT nand_driver_write_page(
@@ -120,55 +120,55 @@ INT nand_driver_write_page(
     ULONG words);
 ```
 
-Burada *blok* ve *sayfa* hangi sayfanın yazılacağını ve *kaynak* ve *sözcükleri* belirler, yazma kaynağını ve kaç 32 bitlik sözcük yazılacağını belirtir.
+Burada *blok* ve *sayfa,* yazacak  sayfayı ve kaynak sözcükleri, yazma kaynağını ve kaç tane 32 bit sözcük yazacaklarını belirtir. 
 
 > [!NOTE]
-> LevelX, genellikle sayfanın geri okunmasını ve yazma işleminin başarılı olduğundan emin olmak için yazma arabelleğini karşılaştırarak, Flash sayfasına yazarken alt düzey hata algılaması için sürücüyü kullanır.
+> LevelX, flash sayfaya yazarken düşük düzeyli hata algılama için sürücüden kullanır. Bu, genellikle sayfayı geri okumayı ve yazmanın başarılı olduğundan emin olmak için yazma arabelleğiyle karşılaştırmayı içerir.
 
-## <a name="driver-block-erase"></a>Sürücü bloğunu silme
+## <a name="driver-block-erase"></a>Sürücü Blok Silme
 
-LevelX nve sürücü "blok silme" hizmeti, nve Flash 'un belirtilen bloğunu silmekten sorumludur. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "blok silme" hizmetinin prototipi aşağıdaki gibidir.
+LevelX NAND sürücüsü "blok silme" hizmeti, BELIRTILEN NAND flash bloğu silinerek sorumludur. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "blok silme" hizmetinin prototipi aşağıdaki gibidir.
 
 ```c
 INT nand_driver_block_erase(ULONG block,  
     ULONG erase_count);
 ```
 
-Burada *blok* hangi bloğun silinecek bloğunu belirler. *Erase_count* parametresi, tanılama amacıyla sağlanır. Örneğin, sürücü, silme sayısı belirli bir eşiği aştığında, uygulama yazılımının başka bir bölümüne uyarı vermek isteyebilir.
+Burada *blok,* silinecek bloğu tanımlar. Parametre *erase_count* tanılama amacıyla sağlanır. Örneğin, silme sayısı belirli bir eşiği aştı mı, sürücü uygulama yazılımının başka bir bölümünü uyarmak istiyor olabilir.
 
 > [!NOTE]
-> LevelX, blok silinince alt düzey hata algılaması için sürücüyü kullanır. Bu, genellikle bloktaki tüm sayfaların tümünün olduğundan emin olmayı içerir.
+> LevelX, blok silinebilirken düşük düzeyli hata algılama için sürücüye güvenmektedir. Bu durum genellikle bloğun tüm sayfalarının aynı olmasını sağlar.
 
-## <a name="driver-block-erased-verify"></a>Sürücü bloğunu silinen doğrulama
+## <a name="driver-block-erased-verify"></a>Sürücü Blok Silme Doğrulama
 
-LevelX nve sürücü "blok silinenler" hizmeti, nve Flash 'un belirtilen bloğunun silindiğini doğrulamaktan sorumludur. Silinirse, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Blok silinmeyen, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "blok silinenler" hizmetinin prototipi:
+LevelX NAND sürücüsü "silinen doğrulamayı engelle" hizmeti, BELIRTILEN NAND flash bloğu silindi doğrulamakla sorumludur. Silinirse, LevelX NAND sürücüsü **LX_SUCCESS.** Blok silinmezse LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "silinen doğrulamayı engelle" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_block_erased_verify(ULONG block);
 ```
 
-Burada *blok* , hangi bloğun silindiğini doğrulayabildiğini belirtir.
+Where *block* silindi doğrulamak için hangi bloğu belirtir.
 
 > [!NOTE]
-> LevelX, tüm sayfaları ve her bir sayfanın (yedek ve veri baytları dahil olmak üzere) silindiklerinden emin olmak için sürücüyü temel alır.
+> LevelX, silinecekleri (hepsini içerir) emin olmak için sürücünün tüm sayfaları ve her sayfanın tüm baytlarını (yedek ve veri bayt'ları dahil) incelemektedir.
 
-## <a name="driver-page-erased-verify"></a>Sürücü sayfası silinme doğrulaması
+## <a name="driver-page-erased-verify"></a>Sürücü Sayfası Silinen Doğrulama
 
-LevelX nve Driver "sayfa silinenler" hizmeti, belirtilen nve Flash bloğunun belirtilen sayfasının silinmesinden emin olmak için sorumludur. Silinirse, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Sayfa silinmeyen, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "sayfa silinverify" hizmetinin prototipi:
+LevelX NAND sürücüsü "sayfa silme doğrulama" hizmeti, BELIRTILEN NAND flash bloğunda belirtilen sayfanın silindi olduğunu doğrulamakla sorumludur. Silinirse, LevelX NAND sürücüsü **LX_SUCCESS.** Sayfa silinmezse LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "sayfa silme doğrulama" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_page_erased_verify(
     ULONG block,  
     ULONG page);
 ```
-Burada *blok* , hangi bloğun ve *sayfanın* silineceğini doğrulamak için sayfayı belirtir.
+Burada *blok* hangi bloğu belirtir ve *sayfa* silindi doğrulamak için sayfayı belirtir.
 
 > [!NOTE]
-> LevelX belirtilen sayfanın tüm baytlarını (yedek ve veri baytları dahil olmak üzere) inceleyerek, silindiklerinden emin olmak için sürücüyü kullanır (tümünü içerir).
+> LevelX, silinecekleri (hepsini içerir) emin olmak için belirtilen sayfanın tüm baytlarını (yedek ve veri baytları dahil) incelemek için sürücüye güvenmektedir.
 
-## <a name="driver-block-status-get"></a>Sürücü engelleme durumu Al
+## <a name="driver-block-status-get"></a>Sürücü Blok Durumu Al
 
-LevelX nve sürücü "blok durumu alma" hizmeti, nve Flash 'ın belirtilen bloğunun hatalı blok bayrağını almaktan sorumludur. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Bu başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "blok durumu Al" hizmetinin prototipi aşağıda verilmiştir: aşağıda gösterilmektedir.
+LevelX NAND sürücüsü "blok durumu alma" hizmeti, BELIRTILEN NAND flash bloğun hatalı blok bayrağını almakla sorumludur. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Bu başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "block status get" hizmetinin prototipi aşağıda gösterilmiştir.
 
 ```c
 INT nand_driver_block_status_get(
@@ -176,11 +176,11 @@ INT nand_driver_block_status_get(
     UCHAR *bad_block_byte);
 ```
 
-Burada *blok* , hangi bloğun ve *bad_block_byte* hatalı blok bayrağıyla ilgili hedefi belirtir.
+Burada *blok,* hatalı bad_block_byte *için* hedefi belirtir.
 
-## <a name="driver-block-status-set"></a>Sürücü bloğu durum kümesi
+## <a name="driver-block-status-set"></a>Sürücü Bloğu Durum Kümesi
 
-LevelX nve sürücü "blok durum kümesi" hizmeti, nve Flash 'ın belirtilen bloğunun hatalı blok bayrağını ayarlamaktan sorumludur. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Bu başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "blok durum kümesi" hizmetinin prototipi şunlardır:
+LevelX NAND sürücüsü "blok durumu kümesi" hizmeti, BELIRTILEN NAND flash bloğu için hatalı blok bayrağını ayarlamakla sorumludur. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Bu başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "blok durum kümesi" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_block_status_set(
@@ -188,11 +188,11 @@ INT nand_driver_block_status_set(
     UCHAR bad_block_byte);
 ```
 
-Burada *blok* , hangi bloğun ve *bad_block_byte* hatalı blok bayrağının değerini belirtir.
+Burada *blok,* hangi bloğun *bad_block_byte* hatalı blok bayrağının değerini belirtir.
 
-## <a name="driver-block-extra-bytes-get"></a>Sürücü bloğu ek baytları al
+## <a name="driver-block-extra-bytes-get"></a>Sürücü Bloğu Ek Bayt Al
 
-LevelX nve sürücüsü "fazladan bayt alma" işlemi, nve Flash 'un belirli bir bloğunun belirli bir sayfasıyla ilişkili ek baytları almaktan sorumludur. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Bu başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "ekstra bayt al" hizmeti 'nin prototipi:
+LevelX NAND sürücüsü "fazladan bayt alma bloğu" hizmeti, BELIRLI bir NAND flash bloğundan belirli bir sayfayla ilişkili ek baytların alınmasından sorumludur. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Bu başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "fazladan bayt bloklarını al" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_block_extra_bytes_get(
@@ -202,11 +202,11 @@ INT nand_driver_block_extra_bytes_get(
     UINT size);
 ```
 
-Burada *blok* hangi engellemeyi belirtir, *sayfa* belirli bir sayfayı belirtir ve *hedef* , ek baytlar için hedefi belirtir. Parametre *boyutu* kaç tane fazladan bayt alınacağını belirtir.
+Burada *blok* hangi bloğu belirtir, *sayfa* belirli bir sayfayı belirtir *ve* hedef ek baytlar için hedefi belirtir. Parametre *boyutu,* kaç tane ek bayt alacazı belirtir.
 
-## <a name="driver-block-extra-bytes-set"></a>Sürücü bloğu ek bayt kümesi
+## <a name="driver-block-extra-bytes-set"></a>Sürücü Bloğu Ek Bayt Kümesi
 
-LevelX nve sürücü "ekstra bayt kümesini engelle" hizmeti, nve Flash 'un belirli bir bloğunun belirli bir sayfasında fazladan baytlar ayarlamaktan sorumludur. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Bu başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve Driver "ekstra bayt kümesini engelle" hizmetinin prototipi şunlardır:
+LevelX NAND sürücüsü "fazladan bayt kümesi bloğu" hizmeti, BELIRLI bir NAND flash bloğunda belirli bir sayfada fazladan bayt ayarlamakla sorumludur. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Bu başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsünün "fazladan bayt kümesi engelleme" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_block_extra_bytes_set(
@@ -216,11 +216,11 @@ INT nand_driver_block_extra_bytes_set(
     UINT size);
 ```
 
-Burada *blok* hangi engellemeyi belirtir, *sayfa* belirli bir sayfayı belirtir ve *kaynak* , fazladan baytların kaynağını belirtir. Parametre *boyutu* , kaç tane fazladan bayt ayarlanacağını belirtir.
+Burada *blok* hangi bloğu belirtirse *sayfa* belirli bir sayfayı, *kaynak* ise ek baytların kaynağını belirtir. Parametre boyutu *ayar* için ek bayt sayısını belirtir.
 
-## <a name="driver-system-error"></a>Sürücü sistemi hatası
+## <a name="driver-system-error"></a>Sürücü Sistemi Hatası
 
-Levelx nve sürücü "sistem hatası işleyicisi" hizmeti, LevelX tarafından algılanan sistem hatalarının işlenmesini ayarlamaktan sorumludur. Bu yordamın işleme uygulamaya bağımlıdır. Başarılı olursa, LevelX nve sürücüsü **LX_SUCCESS** döndürür. Bu başarılı olmazsa, LevelX nve sürücüsü **LX_ERROR** döndürür. LevelX nve sürücü "sistem hatası" hizmetinin prototipi:
+LevelX TARAFıNDAN algılanan sistem hatalarını işlemeyi ayarlamadan LevelX NAND sürücüsü "sistem hata işleyicisi" hizmeti sorumludur. Bu yordamda işlem uygulamaya bağlıdır. Başarılı olursa, LevelX NAND sürücüsü **LX_SUCCESS.** Bu başarılı olmazsa, LevelX NAND sürücüsü **LX_ERROR.** LevelX NAND sürücüsü "sistem hatası" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nand_driver_system_error(
@@ -229,25 +229,25 @@ INT nand_driver_system_error(
     ULONG page);
 ```
 
-Burada *blok* hangi bloğun ve *sayfanın* *error_code* tarafından temsil edilen hatayı belirten sayfayı belirtir.
+Burada *blok,* hangi bloğu belirtir ve *sayfa,* hatanın hangi sayfayla temsil error_code *belirtir.*
 
-## <a name="nand-simulated-driver"></a>NVE sanal sürücü
+## <a name="nand-simulated-driver"></a>NAND Sanal Sürücüsü
 
-LevelX, bir nve Flash bölümü işleminin benzetimini yapmak için yalnızca RAM kullanan bir benzetimli nve Flash sürücüsü sağlar. Varsayılan olarak, nve sanal sürücü, blok başına 16 sayfa ve sayfa başına 2048 bayt içeren 8 nve Flash blokları sağlar.
+LevelX, YALNıZCA BIR NAND flash parçasının işlem simülasyonunu yapmak için RAM kullanan benzetimi yapılan bir NAND flash sürücü sağlar. VARSAYıLAN olarak, NAND sanal sürücüsü blok başına 16 sayfa ve sayfa başına 2048 bayt ile 8 NAND flash blok sağlar.
 
-Benzetimli nve Flash sürücü başlatma işlevi, ***lx_nand_flash_simulator_initialize** _ ve _ *_lx_nand_flash_simulator. c_* * içinde tanımlanmıştır. Bu sürücü Ayrıca belirli nve Flash sürücülerini yazmak için iyi bir şablon sağlar.
+Benzetimi yapılan NAND flash sürücü başlatma işlevi ***lx_nand_flash_simulator_initialize** _ olur ve _*_lx_nand_flash_simulator.c ** içinde_ tanımlanır. Bu sürücü ayrıca belirli NAND flash sürücüleri yazmak için iyi bir şablon sağlar.
 
-## <a name="nand-filex-integration"></a>NVE FileX tümleştirmesi
+## <a name="nand-filex-integration"></a>NAND FileX Tümleştirmesi
 
-Daha önce belirtildiği gibi, LevelX işlem için FileX 'i kullanmaz. Tüm LevelX API 'Leri, ham verileri, LevelX tarafından sunulan mantıksal sektörlerde depolamak/almak için doğrudan uygulama yazılımı tarafından çağrılabilir. Ancak, LevelX de Fılex 'i destekler.
+Daha önce belirtildiği gibi, LevelX işlem için FileX'i güvenmez. Ham verileri LevelX tarafından sağlanan mantıksal kesimlerde depolamak/almak için tüm LevelX API'leri doğrudan uygulama yazılımı tarafından çağrılebilir. Ancak LevelX, FileX'i de destekler.
 
-***Fx_nand_flash_simulated_driver. c*** dosyası, nve flash simülasyonu ile kullanılmak üzere bir örnek FileX sürücüsü içerir. Bu sürücünün ilgi çekici bir yönü, genellikle FileX tarafından, 2048 baytlık sayfalar kullanılarak LevelX benzeticisinde tek mantıksal kesim okuma/yazma istekleri olarak kullanılan 512 baytlık mantıksal kesimleri birleştirmesidir. Bu, nve flash belleğin daha verimli bir şekilde kullanılmasına neden olur. LevelX için nve Flash FileX sürücüsü, özel FileX sürücüleri yazmak için iyi bir başlangıç noktası sağlar.  
+***fx_nand_flash_simulated_driver.c*** dosyasında, NAND flash simülasyonu ile birlikte kullanmak üzere örnek bir FileX sürücüsü vardır. Bu sürücünün ilginç bir yönü, Genellikle FileX tarafından kullanılan 512 byte mantıksal kesimlerini 2048-byte sayfalarını kullanarak LevelX simülatörüne tek mantıksal kesimli okuma/yazma istekleri olarak birleştirmesidir. Bu, NAND flash belleğinin daha verimli bir şekilde kullanımıyla sonuç verir. LevelX için NAND flash FileX sürücüsü, özel FileX sürücüleri yazmak için iyi bir başlangıç noktası sağlar.  
   
 > [!NOTE]
-> FileX nve Flash biçimi, nve Flash tarafından sağlanan kesimlerin bir tam blok boyutu olmalıdır. Bu, aşınma düzeyi işleme sırasında en iyi performansı sağlamaya yardımcı olur. LevelX aşmalar seviyelendirme algoritmasındaki yazma performansını artırmaya yönelik ek teknikler şunlardır.
+> FileX NAND flash biçimi, NAND flash'ın sağladığından daha az kesimlerin tam blok boyutu olmalıdır. Bu, yıpranma düzeyi işleme sırasında en iyi performansı sağlamaya yardımcı olur. LevelX yıpranma düzeyi artırma algoritmasında yazma performansını geliştirmeye yardımcı olacak ek teknikler şunlardır.
 
-1. Tüm yazmamaların tam olarak bir veya daha fazla küme olduğundan emin olun ve tam küme sınırları üzerinde başlatın.
-1. API 'lerin FileX ***fx_file_allocate*** sınıfı aracılığıyla büyük dosya yazma işlemleri gerçekleştirmeden önce kümeleri önceden ayırın.
-1. FileX sürücüsünün yayın sektörü bilgilerini alacak şekilde etkinleştirildiğinden emin olun ve sürücü sürüm sektörlerine yapılan istekler ***lx_nor_flash_sector_release*** çağırarak sürücüde işlenir.
-1. Olabildiğince çok nve blok açmak için ***lx_nand_flash_defragment*** düzenli olarak kullanımı ve bu sayede yazma performansını artırma.
-1. Daha hızlı performans sağlamak için ***lx_nand_flash_extended_cache_enable*** API 'sini, ÇEŞITLI nve kaynak blok kaynakları IÇIN bir RAM önbelleği sağlamak üzere kullanın.
+1. Tüm yazmaların boyutu tam olarak bir veya daha fazla küme olduğundan emin olun ve tam olarak küme sınırlarıyla başlamayı seçin.
+1. Büyük dosya yazma işlemlerini FileX aracılığıyla gerçekleştirmeden önce kümeleri önceden ***fx_file_allocate*** API sınıfına ayırma.
+1. FileX sürücüsünün yayın kesimi bilgilerini almak için etkinleştirildiğinden ve sürücüye yayın kesimleri için yapılan isteklerin sürücüde ***lx_nor_flash_sector_release.***
+1. Mümkün olduğunca ***lx_nand_flash_defragment*** SAYıDA NAND bloğu serbest bırakarak yazma performansını artırmak için düzenli aralıklarla veri kullanımı.
+1. Performansta ***lx_nand_flash_extended_cache_enable*** için çeşitli NAND blok kaynaklarının RAM önbelleğini sağlamak üzere lx_nand_flash_extended_cache_enable API'sini kullanın.

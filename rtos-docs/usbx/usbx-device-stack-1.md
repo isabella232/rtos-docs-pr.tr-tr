@@ -1,27 +1,27 @@
 ---
-title: Bölüm 1-Azure RTOS USBX cihaz yığınına giriş
-description: USBX, derin eklenmiş uygulamalar için tam özellikli bir USB yığınıdır. Bu bölümde, avantajları ve uygulaması açıklanarak USBX tanıtılmıştır.
+title: Bölüm 1 - AZURE RTOS USBX Cihaz Yığınına Giriş
+description: USBX, derinden eklenmiş uygulamalar için tam özellikli bir USB yığınıdır. Bu bölümde USBX tanıtarak avantajlarını ve uygulamasını anlatabilirsiniz.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 8b1e08130d4531fd82629378761cd5b1752f0a07
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 0ec49e88c8dcb8ca200bc376da2f33eb5ddac340bf3693368dc3508f68220765
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550295"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791474"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-usbx-device-stack"></a>Bölüm 1-Azure RTOS USBX cihaz yığınına giriş
+# <a name="chapter-1---introduction-to-azure-rtos-usbx-device-stack"></a>Bölüm 1 - AZURE RTOS USBX Cihaz Yığınına Giriş
 
-USBX, derin eklenmiş uygulamalar için tam özellikli bir USB yığınıdır. Bu bölümde, uygulamaları ve avantajları açıklanarak USBX tanıtılmaktadır 
+USBX, derinden eklenmiş uygulamalar için tam özellikli bir USB yığınıdır. Bu bölümde, uygulamalarını ve avantajlarını açıklayan USBX tanıtılmalı 
 
 ## <a name="usbx-features"></a>USBX özellikleri
 
-USBX var olan üç USB belirtimini destekler: 1,1, 2,0 ve OTG. Ölçeklenebilir olacak şekilde tasarlanmıştır ve tek bir bağlı cihazla basit USB Topolojilerine ve birden çok cihaz ve basamaklı hub 'lara sahip karmaşık topolojilerle uyum sağlar. USBX, USB protokollerinin tüm veri aktarımı türlerini destekler: denetim, toplu, kesme ve zaman aralıklı.
+USBX, mevcut üç USB belirtimlerini destekler: 1.1, 2.0 ve OTG. Ölçeklenebilir olacak şekilde tasarlanmıştır ve yalnızca bir bağlı cihaza sahip basit USB topolojilerini ve birden çok cihaz ve basamaklı hub'lar içeren karmaşık topolojileri barındıracak. USBX, USB protokollerinin tüm veri aktarımı türlerini destekler: denetim, toplu, kesme ve zaman uyumsuz.
 
-USBX hem ana bilgisayar tarafını hem de cihaz tarafını destekler. Her bir kenar üç katmandan oluşur.
+USBX hem konak tarafını hem de cihaz tarafını destekler. Her taraf üç katmandan oluşur.
 
 - Denetleyici katmanı
 - Yığın katmanı
@@ -31,28 +31,28 @@ USB katmanları arasındaki ilişki aşağıdaki gibidir:
 
 ![USB katmanları](media/usbx-device-stack/usb-layers.png)
 
-## <a name="product-highlights"></a>Ürün vurguları
+## <a name="product-highlights"></a>Ürün Öne Çıkanları
 
-- Tüm ThreadX işlemci desteğini
-- Hiçbir çatı yok
-- Tamamen ANSI C kaynak kodu
+- Tam ThreadX işlemci desteği
+- Telif yok
+- ANSI C kaynak kodunu tamamlama
 - Gerçek zamanlı performans
 - Yanıt veren teknik destek
 - Birden çok sınıf desteği
 - Birden çok sınıf örneği
-- ThreadX, FileX ve NetX ile sınıfların tümleştirilmesi
+- ThreadX, FileX ve NetX ile sınıfların tümleştirmesi
 - Birden çok yapılandırmaya sahip USB cihazları için destek
-- USB Bileşik cihazları için destek
+- USB bileşik cihazları için destek
 - USB güç yönetimi desteği
 - USB OTG desteği
-- Trackingex için izleme olaylarını dışarı aktarma
+- TraceX için izleme olaylarını dışarı aktarma
 
-## <a name="powerful-services-of-usbx"></a>USBX güçlü Hizmetleri
+## <a name="powerful-services-of-usbx"></a>USBX'in Güçlü Hizmetleri
 
-### <a name="complete-usb-device-framework-support"></a>Tüm USB cihaz çerçevesi desteğini
+### <a name="complete-usb-device-framework-support"></a>Tam USB Cihaz Çerçevesi Desteği
 
-USBX, birden çok yapılandırma, birden çok arabirim ve birden çok farklı ayar dahil olmak üzere en zorlu USB cihazlarını destekleyebilir.
+USBX, birden çok yapılandırma, birden çok arabirim ve birden çok alternatif ayar dahil olmak üzere en zorlu USB cihazlarını desteklemektedir.
 
-### <a name="easy-to-use-apis"></a>Kullanımı kolay API 'Ler
+### <a name="easy-to-use-apis"></a>Kullanımı Kolay API'ler
 
-USBX, anlaşılması ve kullanılması kolay bir şekilde, en iyi şekilde gömülü USB yığınını sağlar. USBX API 'SI, Hizmetleri sezgisel ve tutarlı hale getirir. Belirtilen USBX sınıfı API 'Lerini kullanarak, Kullanıcı uygulamasının USB protokollerinin karmaşıklığını anlaması gerekmez.
+USBX, kolay anlaşılır ve kullanımı kolay bir şekilde en iyi şekilde eklenmiş USB yığınını sağlar. USBX API'si hizmetleri sezgisel ve tutarlı hale getirir. Sağlanan USBX sınıf API'lerini kullanarak, kullanıcı uygulamasının USB protokollerinin karmaşıklığını anlayacaktır.

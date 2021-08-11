@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3a0c73c2b45c32bf3f1ef56de684fa83c334b59e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d5d06fa66f0cae29eeb2a89560704b2ef510597e44a565499bf672a75555f208
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826260"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790573"
 ---
 # <a name="chapter-5---azure-rtos-levelx-nor-support"></a>Bölüm 5-Azure RTOS LevelX veya desteği
 
@@ -105,56 +105,56 @@ Burada "*flash_address*", bir veya Flash bellek bloğunda ve "*kaynak*" ve "*kel
 
 ## <a name="driver-block-erase"></a>Sürücü bloğunu silme
 
-LevelX ve sürücü "blok silme" hizmeti, belirtilen veya Flash bloğunu silmekten sorumludur. Başarılı olursa, LevelX ve sürücü **LX_SUCCESS** döndürür. Başarılı olmazsa, LevelX ve sürücü **LX_ERROR** döndürür. LevelX ve sürücü "blok silme" hizmetinin prototipi:
+LevelX NOR sürücüsü "silmeyi engelle" hizmeti, NOR flash'ın belirtilen bloğu silinerek sorumludur. Başarılı olursa, LevelX NOR sürücüsü **LX_SUCCESS.** Başarılı olmazsa, LevelX NOR sürücüsü **LX_ERROR.** LevelX NOR sürücüsünün "silmeyi engelle" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nor_driver_block_erase(ULONG block,  
     ULONG erase_count);
 ```
 
-Burada "*Block*" ne olduğunu veya silmeyi engellemeyi belirler. "*Erase_count*" parametresi, tanılama amacıyla sağlanır. Örneğin, sürücü, silme sayısı belirli bir eşiği aştığında, uygulama yazılımının başka bir bölümüne uyarı vermek isteyebilir.
+Burada "*block*" silinecek NOR bloğu'ları tanımlar. Tanılama amacıyla "*erase_count*" parametresi sağlanır. Örneğin, silme sayısı belirli bir eşiği aştı mı, sürücü uygulama yazılımının başka bir bölümünü uyarmak istiyor olabilir.
 
 > [!NOTE]
-> LevelX, silindiklerinden emin olmak için bloğun tüm baytlarını incelemek üzere sürücüyü kullanır (tümünü içerir).
+> LevelX, silineceklerini (hepsini içerir) emin olmak için bloğun tüm baytlarını incelemek için sürücüye güvenmektedir.
 
-## <a name="driver-block-erased-verify"></a>Sürücü bloğunu silinen doğrulama
+## <a name="driver-block-erased-verify"></a>Sürücü Blok Silme Doğrulama
 
-LevelX veya sürücünün "blok silinmi Verify" hizmeti, belirtilen veya Flash bloğunun silineceğini doğrulamadan sorumludur. Silinirse, LevelX ve sürücü **LX_SUCCESS** döndürür. Blok silinmeyen, LevelX ve sürücü **LX_ERROR** döndürür. LevelX ve sürücü "blok silinenler" hizmetinin prototipi:
+LevelX NOR sürücüsü "silinen doğrulamayı engelle" hizmeti, NOR flash'ın belirtilen bloğun silindi olduğunu doğrulamakla sorumludur. Silinirse, LevelX NOR sürücüsü **LX_SUCCESS.** Blok silinmezse LevelX NOR sürücüsü **LX_ERROR.** LevelX NOR sürücüsünün "silinen doğrulamayı engelle" hizmetinin prototipi şu şekildedir:
 
 ```c
 INT nor_driver_block_erased_verify(ULONG block);
 ```
 
-Burada "*Engelle*", hangi bloğun silindiğini doğrulayabildiğini belirtir.
+Burada "*block*" silindi olarak doğrulanmayacak bloğu belirtir.
 
 > [!NOTE]
-> LevelX, silindiklerinden emin olmak için belirtilen tüm baytları incelemek için sürücüyü kullanır (tümünü içerir).
+> LevelX, silineceklerini (hepsini içerir) emin olmak için belirtilen tüm baytları incelemek için sürücüye güvenmektedir.
 
-## <a name="driver-system-error"></a>Sürücü sistemi hatası
+## <a name="driver-system-error"></a>Sürücü Sistemi Hatası
 
-Levelx ve sürücü "sistem hatası işleyicisi" hizmeti, LevelX tarafından algılanan sistem hatalarının işlenmesini ayarlamaktan sorumludur. Bu yordamın işleme uygulamaya bağımlıdır. Başarılı olursa, LevelX ve sürücü **LX_SUCCESS** döndürür. Başarılı olmazsa, LevelX ve sürücü **LX_ERROR** döndürür. LevelX ve sürücü "sistem hatası" hizmetinin prototipi:
+LevelX NOR sürücüsü "sistem hata işleyicisi" hizmeti, LevelX tarafından algılanan sistem hatalarını işlemeyi ayarlamadan sorumludur. Bu yordamda işlem uygulamaya bağlıdır. Başarılı olursa, LevelX NOR sürücüsü **LX_SUCCESS.** Başarılı olmazsa, LevelX NOR sürücüsü **LX_ERROR.** LevelX NOR sürücüsü "sistem hatası" hizmetinin prototipi şöyledir:
 
 ```c
 INT nor_driver_system_error(UINT error_code);
 ```
 
-Burada "*error_code*" oluşan hatayı temsil eder.
+Burada "*error_code*" , meydana gelen hatayı temsil eder.
 
-## <a name="nor-simulated-driver"></a>VEYA sanal sürücü
+## <a name="nor-simulated-driver"></a>NOR Simulated Driver
 
-LevelX, veya Flash bölümü işleminin benzetimini yapmak için yalnızca RAM kullanan bir benzetimli veya Flash sürücü sağlar. Varsayılan olarak, veya sanal sürücü blok başına 16 512 baytlık sektörle 8 veya Flash blokları sağlar.
+LevelX, yalnızca BIR NOR flash parçasının işlem simülasyonunu yapmak için RAM kullanan sanal bir NOR flash sürücü sağlar. Varsayılan olarak, NOR sanal sürücüsü blok başına 16 512 bayt kesimli 8 NOR flash blok sağlar.
 
-Benzetimli veya Flash sürücü başlatma işlevi, ***lx_nor_flash_simulator_initialize** _ ve _ *_lx_nor_flash_simulator. c_* * içinde tanımlanmıştır. Bu sürücü Ayrıca, belirli veya Flash sürücüleri yazmak için iyi bir şablon sağlar.
+Benzetimi yapılan NOR flash sürücü başlatma işlevi ***lx_nor_flash_simulator_initialize** _ şeklindedir ve _*_lx_nor_flash_simulator.c ** içinde_ tanımlanır. Bu sürücü ayrıca belirli NOR flash sürücüleri yazmak için iyi bir şablon sağlar.
 
-## <a name="nor-filex-integration"></a>VEYA FileX tümleştirmesi
+## <a name="nor-filex-integration"></a>NOR FileX Tümleştirmesi
 
-Daha önce belirtildiği gibi, LevelX işlem için FileX 'i kullanmaz. Tüm LevelX API 'Leri, ham verileri, LevelX tarafından sunulan mantıksal sektörlerde depolamak/almak için doğrudan uygulama yazılımı tarafından çağrılabilir. Ancak, LevelX de Fılex 'i destekler.
+Daha önce belirtildiği gibi, LevelX işlem için FileX'i güvenmez. Ham verileri LevelX tarafından sağlanan mantıksal kesimlerde depolamak/almak için tüm LevelX API'leri doğrudan uygulama yazılımı tarafından çağrılebilir. Ancak LevelX, FileX'i de destekler.
 
-***Fx_nor_flash_simulated_driver. c*** dosyası, veya flash simülasyonu ile kullanılmak üzere bir örnek FileX sürücüsü içerir. LevelX için Flash FileX sürücüsü, özel FileX sürücüleri yazmak için iyi bir başlangıç noktası sağlar.
+***fx_nor_flash_simulated_driver.c dosyasında,*** NOR flash simülasyonu ile birlikte kullanmak üzere örnek bir FileX sürücüsü vardır. LevelX için NOR flash FileX sürücüsü, özel FileX sürücüleri yazmak için iyi bir başlangıç noktası sağlar.
 
 > [!NOTE]
-> FileX veya Flash biçimi, veya Flash tarafından sağlanan kesimlerin bir tam blok boyutu olmalıdır. Bu, aşınma düzeyi işleme sırasında en iyi performansı sağlamaya yardımcı olur. LevelX aşmalar seviyelendirme algoritmasındaki yazma performansını artırmaya yönelik ek teknikler şunlardır:
-> 1. Tüm yazmamaların tam olarak bir veya daha fazla küme olduğundan emin olun ve tam küme sınırları üzerinde başlatın.
-> 2. API 'lerin FileX ***fx_file_allocate*** sınıfı aracılığıyla büyük dosya yazma işlemleri gerçekleştirmeden önce kümeleri önceden ayırın.
-> 3.  ***Lx_nor_flash_defragment*** düzenli olarak kullanımı mümkün olduğunca çok sayıda ve blok ve bu sayede yazma performansını geliştirir.
-> 4. FileX sürücüsünün yayın sektörü bilgilerini alacak şekilde etkinleştirildiğinden emin olun ve sürücü sürüm sektörlerine yapılan istekler ***lx_nor_flash_sector_release*** çağırarak sürücüde işlenir.
+> FileX NOR flash biçimi, NOR flash'ın sağladığından daha küçük kesimlerin tam blok boyutunda olmalıdır. Bu, yıpranma düzeyi işleme sırasında en iyi performansı sağlamaya yardımcı olur. LevelX yıpranma düzeyi artırma algoritmasında yazma performansını geliştirmeye yardımcı olacak ek teknikler şunlardır:
+> 1. Tüm yazmaların boyutu tam olarak bir veya daha fazla küme olduğundan emin olun ve tam olarak küme sınırlarıyla başlamayı seçin.
+> 2. Büyük dosya yazma işlemlerini FileX aracılığıyla gerçekleştirmeden önce kümeleri önceden ***fx_file_allocate*** API sınıfına ayırma.
+> 3.  Mümkün olduğunca ***lx_nor_flash_defragment*** SAYıDA NOR bloğu serbest bırakarak yazma performansını artırmak için düzenli aralıklarla veri kullanımı.
+> 4. FileX sürücüsünün yayın kesimi bilgilerini almak için etkinleştirildiğinden ve sürücüye yayın kesimleri için yapılan isteklerin sürücüde ***lx_nor_flash_sector_release.***

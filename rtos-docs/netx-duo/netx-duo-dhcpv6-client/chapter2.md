@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: a154dbeb91b46a2c8bd5f4585e168a6b62d042ff
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 481e29cc674edfa7e437e8e14253172b89aeae6856114192f4ca5b35717c91e0
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826093"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791542"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dhcpv6-client"></a>Bölüm 2-Azure RTOS NetX Duo DHCPv6 Istemcisini yükleme ve kullanma
 
@@ -156,7 +156,7 @@ NX_DHCPV6_CLIENT_RESTORE_STATE, t DHCPv6 Istemci yapılandırması, sistemin ön
 
 Daha sonra uygulama, 552 satırındaki *nx_dhcpv6_request_release* hizmetini kullanarak atanan adresleri serbest bırakır. Uygulamayı yeniden başlatmak için, 567. satırdaki DHCPv6 Istemcisini *nx_dhcpv6_client_stop* hizmeti ile sonlandırır ve DHCPv6 istemcisi tarafından yapılandırılan IP örneğiyle kaydedilen tüm IPv6 adreslerini temizler. Bunu, satır 578 ' de *nx_dhcpv6_reinitialize* çağırarak yapar. Ardından, daha önce olduğu gibi *nx_dhcpv6_start* ve *Nx_dhcpv6_request_solicit* hizmetleriyle DHCPv6 istemci görevini yeniden başlatır.
 
-DHCPv6 Istemcisi, line626 içinde *nx_dhcpv6_delete* çağrısıyla silinir. Bu paket havuzu IP örneği tarafından da kullanıldığından, DHCPv6 Istemcisi için oluşturduğu *bir paket havuzunu* silmediğini unutmayın. Aksi halde, NetX Duo *nx_packet_pool_delete* hizmeti kullanılarak bu hizmet için başka bir kullanım yoksa, paket havuzunu silmesi gerekir.
+DHCPv6 Istemcisi, line626 içinde *nx_dhcpv6_delete* çağrısıyla silinir. Bu paket havuzu IP örneği tarafından da kullanıldığından, DHCPv6 Istemcisi için oluşturduğu *bir paket havuzunu* silmediğini unutmayın. Aksi takdirde, NetX Duo hizmetini kullanarak paket havuzunun başka bir kullanımı *yoksa paket havuzunu nx_packet_pool_delete* gerekir.
 
 ```C
 /* This is a small demo of the NetX Duo DHCPv6 Client for the high-performance NetX Duo stack. */

@@ -1,119 +1,119 @@
 - name: NetX belgeleri
   href: index.yml
-- name: NetX 'e genel bakış
+- name: NetX'e genel bakış
   href: overview-netx.md
-- name: NetX Kullanıcı Kılavuzu
+- name: NetX kullanıcı kılavuzu
   expanded: true
   items:
     - name: Bu Kılavuz Hakkında
       href: about-this-guide.md
-    - name: Denetleyebilirsiniz. 1-NetX 'e giriş
+    - name: Caner. 1 - NetX'e giriş
       href: chapter1.md
-    - name: Denetleyebilirsiniz. 2-NetX yükleme ve kullanımı
+    - name: Caner. 2 - NetX yükleme ve kullanımı
       href: chapter2.md
-    - name: Denetleyebilirsiniz. NetX için 3 işlevsel bileşenler
+    - name: Caner. 3 - NetX'in işlevsel bileşenleri
       href: chapter3.md
-    - name: Denetleyebilirsiniz. 4-NetX hizmetlerinin açıklaması
+    - name: Caner. 4 - NetX hizmetlerinin açıklaması
       href: chapter4.md
-    - name: Denetleyebilirsiniz. 5-NetX ağ sürücüleri
+    - name: Caner. 5 - NetX ağ sürücüleri
       href: chapter5.md
-    - name: Uygulamanızda. A-NetX Hizmetleri
+    - name: App. A - NetX hizmetleri
       href: appendix-a.md
-    - name: Uygulamanızda. B-NetX sabitleri
+    - name: App. B - NetX sabitleri
       href: appendix-b.md
-    - name: Uygulamanızda. C-NetX veri türleri
+    - name: App. C - NetX veri türleri
       href: appendix-c.md
-    - name: Uygulamanızda. D-BSD uyumlu yuva API 'SI
+    - name: App. D - BSD ile uyumlu yuva API'si
       href: appendix-d.md
-    - name: Uygulamanızda. E-ASCII karakter kodları
+    - name: App. E - ASCII karakter kodları
       href: appendix-e.md
 - name: NetX eklentileri
   items:
-    - name: NetX Oto IP Kullanıcı Kılavuzu
+    - name: NetX AutoIP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX oto 'ya giriş
+        - name: Caner. 1 - NetX AutoIP'e Giriş
           href: netx-auto-ip/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Oto IP 'yi yükleme ve kullanma
+        - name: Caner. 2 - NetX AutoIP yükleme ve kullanımı
           href: netx-auto-ip/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Oto IP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX AutoIP hizmetlerinin açıklaması
           href: netx-auto-ip/chapter3.md
-    - name: NetX BSD Kullanıcı Kılavuzu
+    - name: NetX BSD kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX BSD 'ye giriş
+        - name: Caner. 1 - NetX BSD'ye Giriş
           href: netx-bsd/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX BSD yüklemesi ve kullanımı
+        - name: Caner. 2 - NetX BSD Yükleme ve Kullanımı
           href: netx-bsd/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX BSD Hizmetleri
+        - name: Caner. 3 - NetX BSD Hizmetleri
           href: netx-bsd/chapter3.md
     - name: NetX DHCP istemcisi
       items:
-        - name: Denetleyebilirsiniz. 1-NetX DHCP istemcisine giriş
+        - name: Caner. 1 - NetX DHCP istemcisine giriş
           href: netx-dhcp-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX DHCP istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX DHCP istemcisi yükleme ve kullanma
           href: netx-dhcp-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX DHCP istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX DHCP istemci hizmetlerinin açıklaması
           href: netx-dhcp-client/chapter3.md
-        - name: Uygulamanızda. Bir-geri yükleme durumu özelliğinin açıklaması
+        - name: App. A - Geri Yükleme Durumu Özelliğinin Açıklaması
           href: netx-dhcp-client/appendix-a.md
-    - name: NetX DHCP sunucusu Kullanıcı Kılavuzu
+    - name: NetX DHCP sunucusu kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX DHCP sunucusuna giriş
+        - name: Caner. 1 - NetX DHCP sunucusuna giriş
           href: netx-dhcp-server/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX DHCP sunucusunu yükleme ve kullanma
+        - name: Caner. 2 - NetX DHCP sunucusunu yükleme ve kullanma
           href: netx-dhcp-server/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX DHCP sunucusu hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX DHCP sunucu hizmetlerinin açıklaması
           href: netx-dhcp-server/chapter3.md
-    - name: NetX DNS İstemcisi Kullanıcı Kılavuzu
+    - name: NetX DNS istemcisi kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX DNS istemcisine giriş
+        - name: Caner. 1 - NetX DNS istemcisine giriş
           href: netx-dns/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX DNS istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX DNS istemcisi yükleme ve kullanma
           href: netx-dns/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX DNS istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX DNS istemci hizmetlerinin açıklaması
           href: netx-dns/chapter3.md
-    - name: NetX FTP Kullanıcı Kılavuzu
+    - name: NetX FTP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX FTP 'ye giriş
+        - name: Caner. 1 - NetX FTP'ye Giriş
           href: netx-ftp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX FTP yüklemesi ve kullanımı
+        - name: Caner. 2 - NetX FTP yüklemesi ve kullanımı
           href: netx-ftp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX FTP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX FTP hizmetlerinin açıklaması
           href: netx-ftp/chapter3.md
     - name: NetX HTTP
       items:
-        - name: Denetleyebilirsiniz. 1-NetX HTTP 'ye giriş
+        - name: Caner. 1 - NetX HTTP'ye Giriş
           href: netx-http/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX HTTP 'nin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX HTTP yükleme ve kullanımı
           href: netx-http/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX HTTP hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX HTTP hizmetlerinin açıklaması
           href: netx-http/chapter3.md
-    - name: NetX LWM2M Kullanıcı Kılavuzu
+    - name: NetX LWM2M kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX LWM2M 'a giriş
+        - name: Caner. 1 - NetX LWM2M'ye Giriş
           href: netx-lwm2m/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX LWM2M yükleme ve kullanımı
+        - name: Caner. 2 - NetX LWM2M yükleme ve kullanımı
           href: netx-lwm2m/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX LWM2M 'ın işlevsel açıklaması
+        - name: Caner. 3 - NetX LWM2M'nin işlevsel açıklaması
           href: netx-lwm2m/chapter3.md
-        - name: Denetleyebilirsiniz. 4-NetX LWM2M hizmetlerinin açıklaması
+        - name: Caner. 4 - NetX LWM2M hizmetlerinin açıklaması
           href: netx-lwm2m/chapter4.md
-    - name: NetX POP3 istemcisi Kullanıcı Kılavuzu
+    - name: NetX POP3 istemci kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX POP3 'e giriş
+        - name: Caner. 1 - NetX POP3'e giriş
           href: netx-pop3-client/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX POP3 istemcisinin yüklenmesi ve kullanımı
+        - name: Caner. 2 - NetX POP3 istemcisi yükleme ve kullanımı
           href: netx-pop3-client/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX POP3 istemci hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX POP3 istemci hizmetlerinin açıklaması
           href: netx-pop3-client/chapter3.md
-    - name: NetX PPP Kullanıcı Kılavuzu
+    - name: NetX PPP kullanıcı kılavuzu
       items:
-        - name: Denetleyebilirsiniz. 1-NetX Noktadan Noktaya Protokolü giriş (PPP)
+        - name: Caner. 1 - NetX Noktadan Noktaya Protokolü (PPP)
           href: netx-ppp/chapter1.md
-        - name: Denetleyebilirsiniz. 2-NetX Noktadan Noktaya Protokolü yüklemesi ve kullanımı (PPP)
+        - name: Caner. 2 - NetX Noktadan Noktaya Protokolü (PPP) yükleme ve kullanımı
           href: netx-ppp/chapter2.md
-        - name: Denetleyebilirsiniz. 3-NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
+        - name: Caner. 3 - NetX Noktadan Noktaya Protokolü (PPP) hizmetlerinin açıklaması
           href: netx-ppp/chapter3.md
-    - name: NetX PPPoE istemci Kullanıcı Kılavuzu
+    - name: NetX PPPoE istemcisi kullanıcı kılavuzu
       items:
         - name: Bölüm 1-NetX PPPoE istemcisine giriş
           href: netx-pppoe-client/chapter1.md
@@ -137,7 +137,7 @@
       href: /azure/asc-for-iot
 - name: Microsoft bileşenleri
   items:
-    - name: Microsoft Azure RTOS
+    - name: Microsoft Azure RTO 'LAR
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml

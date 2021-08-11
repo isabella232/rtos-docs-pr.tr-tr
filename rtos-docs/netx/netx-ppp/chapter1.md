@@ -1,86 +1,86 @@
 ---
-title: Bölüm 1-Azure RTOS NetX Noktadan Noktaya Protokolü 'ye giriş (PPP)
-description: Genellikle NetX uygulamaları gerçek fiziksel ağa Ethernet üzerinden bağlanır.
+title: Bölüm 1 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP)
+description: NetX uygulamaları genellikle Ethernet üzerinden gerçek fiziksel ağa bağlanır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9f8cd9e6e0ab086fcbf76df890c03f8d73aa1a99
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 4027d79f80928804a757e5801c74865389ab1d0237510e63348945ebe2b30045
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826657"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801980"
 ---
-# <a name="chapter-1---introduction-to-the-azure-rtos-netx-point-to-point-protocol-ppp"></a>Bölüm 1-Azure RTOS NetX Noktadan Noktaya Protokolü 'ye giriş (PPP)
+# <a name="chapter-1---introduction-to-the-azure-rtos-netx-point-to-point-protocol-ppp"></a>Bölüm 1 - Azure RTOS NetX Noktadan Noktaya Protokolü (PPP)
 
-Genellikle NetX uygulamaları gerçek fiziksel ağa Ethernet üzerinden bağlanır. Bu, hem hızlı hem de verimli olan ağ erişimi sağlar. Ancak, uygulamanın Ethernet erişimi olmayan durumlar vardır. Bu gibi durumlarda, uygulama ağa doğrudan başka bir ağ üyesine bağlı bir seri arabirim aracılığıyla bağlanabilir. Böyle bir bağlantıyı yönetmek için kullanılan en yaygın yazılım Protokolü Noktadan Noktaya Protokolü (PPP).
+NetX uygulamaları genellikle Ethernet üzerinden gerçek fiziksel ağa bağlanır. Bu, hem hızlı hem de verimli ağ erişimi sağlar. Ancak, uygulamanın Ethernet erişimine sahip olduğu durumlar vardır. Böyle durumlarda uygulama, doğrudan başka bir ağ üyesine bağlı bir seri arabirim üzerinden ağa bağlanmaya devam ediyor olabilir. Bu tür bir bağlantıyı yönetmek için kullanılan en yaygın yazılım protokolü, Noktadan Noktaya Protokolü (PPP) protokolüdür.
 
-Seri iletişimi görece basittir, ancak PPP biraz karmaşıktır. PPP aslında bağlantı denetimi Protokolü (LCP), Internet Protokolü Denetim Protokolü (ıPCP), parola kimlik doğrulama protokolü (PAP) ve Challenge-Handshake kimlik doğrulama protokolü (CHAP) gibi birden çok protokolden oluşur. LCP, PPP için ana protokoldür. Bu, bağlantının temel bileşenlerinin eşler arası bir biçimde dinamik olarak anlaşılabileceği yerdir. Bağlantının temel özelliklerine başarıyla anlaşılırsa, bir bağlı eşin geçerli olduğundan emin olmak için PAP ve/veya CHAP kullanılır. Her iki eş de geçerliyse, bu, daha sonra eşler tarafından kullanılan IP adreslerini anlaşmak için kullanılır. IPCP tamamlandığında, PPP IP paketleri gönderebilip alabilir.
+Seri iletişim nispeten basit olsa da PPP biraz karmaşıktır. PPP aslında Bağlantı Denetimi Protokolü (LCP), İnternet Protokolü Denetim Protokolü (IPCP), Parola Kimlik Doğrulama Protokolü (PAP) ve Challenge-Handshake Kimlik Doğrulama Protokolü (CHAP) gibi birden çok protokolden oluşur. LCP, PPP için ana protokoldür. Bağlantının temel bileşenleri burada eşler arası bir şekilde dinamik olarak üzerinde anlaşma sağlar. Bağlantının temel özellikleri başarıyla anlaşıldıktan sonra, bağlı eşlerin geçerli olduğundan emin olmak için PAP ve/veya CHAP kullanılır. her iki eş de geçerli ise, IPCP eşler tarafından kullanılan IP adreslerini anlaşmak için kullanılır. IPCP tamamlandıktan sonra PPP, IP paketleri gönderip alır.
 
-NetX, PPP 'yi öncelikle bir cihaz sürücüsü olarak görüntüler. *Nx_ppp_driver* Işlevi NETX IP oluşturma işlevi, *nx_ip_create* için sağlanır. Aksi halde NetX, PPP 'nin doğrudan bir bilgisine sahip değildir.
+NetX PPP'yi öncelikli olarak bir cihaz sürücüsü olarak görüntüler. Nx_ppp_driver  işlevi, NetX IP oluşturma işlevine sağlanır ve *nx_ip_create.* Aksi takdirde, NetX'in PPP hakkında doğrudan bilgisi olmaz.
 
-## <a name="ppp-serial-communication"></a>PPP seri Iletişimi
+## <a name="ppp-serial-communication"></a>PPP Seri İletişimi
 
-NetX PPP paketi, uygulamanın bir seri iletişim sürücüsü sağlamasını gerektirir. Sürücü 8 bitlik karakterleri desteklemelidir ve ayrıca yazılım akış denetimi de kullanabilir. Bu, PPP örneği oluşturulmadan önce gerçekleştirilmesi gereken, uygulamanın, sürücünün başlatılması sorumluluğundadır.
+NetX PPP paketi, uygulamanın bir seri iletişim sürücüsü sağlamayı gerektirir. Sürücü 8 bit karakterleri desteklemeli ve yazılım akışı denetimi de içerebilir. PpP örneği oluşturmadan önce yapılması gereken sürücüyü başlatmak uygulamanın sorumluluğundadır.
 
-PPP paketleri göndermek için, PPP 'ye bir seri sürücü çıkış baytı sağlanması gerekir ( *nx_ppp_create* işlevinde belirtilen). Bu seri sürücü bayt çıkışı yordamı, tüm PPP paketinin iletilmesi için kaldı olarak adlandırılır. Çıktıyı arabelleğe almak için seri sürücünün sorumluluğundadır. Alma tarafında, her yeni bayt geldiğinde uygulamanın seri sürücüsü PPP *nx_ppp_byte_receive* işlevini çağırmalıdır. Bu genellikle bir kesme hizmeti yordamının (ıSR) bağlamı içinden yapılır. *Nx_ppp_byte_receive* işlevi, gelen baytı döngüsel bir arabelleğe koyar ve BT 'nin PPP alma iş parçacığını uyarır.
+PPP paketlerini göndermek için PPP'ye bir seri sürücü çıkış byte yordamı *sağlanmalıdır* (nx_ppp_create belirtilmelidir). Bu seri sürücü bayt çıkış yordamı, PPP paketinin tamamını iletmek için tekrar tekrar çağrılır. Çıktıyı arabelleğe almak seri sürücünün sorumluluğundadır. Alma tarafında, uygulamanın seri sürücüsü her yeni bir bayt geldiğinde PPP *nx_ppp_byte_receive* işlevini çağırdığında gerekir. Bu genellikle bir Kesme Hizmeti Yordamı (ISR) bağlamından yapılır. Bu *nx_ppp_byte_receive* gelen bayta döngüsel bir arabelleğe yer verir ve PPP'nin varlığının iş parçacığını alır.
 
-## <a name="ppp-over-ethernet-communication"></a>Ethernet üzerinden PPP Iletişimi
+## <a name="ppp-over-ethernet-communication"></a>Ethernet Üzerinden PPP İletişimi
 
-NetX PPP Ayrıca, Ethernet üzerinden PPP iletisi aktarabilir, bu durumda NetX PPP paketi uygulamanın bir Ethernet iletişim sürücüsü sağlamasını gerektirir.
+NetX PPP, PPP iletiyi Ethernet üzerinden de iletebilir. Bu durumda, NetX PPP paketi uygulamanın bir Ethernet iletişim sürücüsü sağlamalarını gerektirir.
 
-Ethernet üzerinden PPP paketleri göndermek için, PPP 'ye bir çıkış yordamının sağlanması gerekir ( *nx_ppp_packet_send_set* işlevinde belirtilen). Bu çıkış yordamı, tüm PPP paketinin iletilmesi için kaldı olarak adlandırılacaktır. Alma tarafında, her yeni paket geldiğinde uygulamanın alıcısının PPP *nx_ppp_packet_receive* işlevini çağırması gerekir.
+PPP paketlerini Ethernet üzerinden göndermek için PPP'ye bir çıkış yordamı *sağlanmalıdır* (nx_ppp_packet_send_set belirtilir). Bu çıkış yordamı, PPP paketinin tamamını iletmek için tekrar tekrar çağrılır. Alma tarafında, uygulamanın alıcısı her yeni paket geldiğinde PPP *nx_ppp_packet_receive* işlevini çağırdığında gerekir.
 
-## <a name="ppp-packet"></a>PPP paketi
+## <a name="ppp-packet"></a>PPP Paketi
 
-PPP, tüm PPP protokol denetimi ve Kullanıcı verilerini kapsüllemek için AHDLC çerçevelemeyi (HDLC 'nin bir alt kümesi) kullanır. AHDLC çerçevesi aşağıdaki gibi görünür:
+PPP, tüm PPP protokol denetimi ve kullanıcı verilerini kapsülleme için AHDLC çerçevelerini (HDLC'nin bir alt kümesi) kullanır. AHDLC çerçevesi aşağıdakine benzer:
 
-|**Bayrak**|**Addr**|**T**|**Bilgi**|**CRC**|**Bayrak**|
+|**Bayrak**|**Adresi**|**Ctrl**|**Bilgi**|**Crc**|**Bayrak**|
 |--------|--------|--------|---------------|-------|--------|
-|7E |BENZERI|03|[0-1502 bayt]|2 bayt| 7E|
+|7e |Ff|03|[0-1502 bayt]|2-byte| 7e|
 
-Her bir ve her PPP çerçevesinin bu genel görünümü vardır. Bilgi alanının ilk iki baytı PPP protokol türünü içerir. Geçerli değerler aşağıdaki gibi tanımlanır:
+Her PPP çerçevesi ve bu genel görünüme sahiptir. Bilgi alanı ilk iki bayt PPP protokol türünü içerir. Geçerli değerler aşağıdaki gibi tanımlanır:
 
 - C021: LCP
-- 8021: ıPCP
+- 8021: IPCP
 - C023: PAP
 - C223: CHAP
-- 0021: IP veri paketi
+- 0021: IP Veri Paketi
 
-0x0021 protokol türü varsa, IP paketi hemen ardından takip edilir. Aksi takdirde, diğer protokollerden biri varsa, aşağıdaki baytlar ilgili protokole karşılık gelir.
+Protokol 0x0021 varsa, IP paketi hemen takip eder. Aksi takdirde, diğer protokollerden biri varsa, aşağıdaki baytlar bu belirli protokole karşılık gelir.
 
-Benzersiz 0x7E başlangıcını/bitiş çerçevesi işaretleyicilerini sağlamak ve yazılım akış denetimini desteklemek için, AHANLAR çeşitli bayt değerlerini temsil etmek için kaçış dizileri kullanır. 0x7D değeri, aşağıdaki karakterin kodlanmış olduğunu belirtir, bu, temel olarak özgün karakterin 0x20 ile özel ORed. Örneğin, üstbilgideki CTRL alanı için 0x03 değeri iki baytlık bir sıra ile temsil edilir: 7D 23. Varsayılan olarak, 0x20 ' den küçük değerler bir kaçış dizisine, ayrıca bilgi alanında de 0x7E ve 0x7D değerlerine dönüştürülür. Kaçış sıralarının de CRC alanı için de uygulanacağını unutmayın.
+KARE işaretçilerinin başında/0x7E benzersiz değerler olduğundan emin olmak ve yazılım akışı denetimi desteklemek için AHDLC, çeşitli bayt değerlerini temsil etmek için kaçış dizilerini kullanır. 0x7D değeri, aşağıdaki karakterin kodlanmış olduğunu belirtir. Bu, temel olarak ORed'e özel olarak 0x20. Örneğin, üst 0x03 Ctrl alanı için varsayılan değer iki bayt dizisiyle temsil eder: 7D 23. Varsayılan olarak, 0x20 küçük değerler bir kaçış dizisine, bilgi 0x7E ve 0x7D değerlere dönüştürülür. Kaçış dizileri CRC alanına da uygulanır.
 
 ## <a name="link-control-protocol-lcp"></a>Bağlantı Denetimi Protokolü (LCP)
 
-LCP, birincil PPP protokolüdür ve çalıştırmak için ilk protokoldür. LCP, en fazla alma birimi (MRU) ve kullanılacak kimlik doğrulama protokolü (PAP, CHAP veya None) dahil olmak üzere çeşitli PPP parametrelerinin anlaşmasından sorumludur. LCP 'nin her iki tarafında da PPP parametrelerini kabul ettikten sonra, kimlik doğrulama protokolleri (varsa) çalışmaya başlayın.
+LCP birincil PPP protokolüdür ve çalıştıracak ilk protokoldür. LCP, Maksimum Alma Birimi (MRU) ve Kimlik Doğrulama Protokolü (PAP, CHAP veya hiçbiri) dahil olmak üzere çeşitli PPP parametreleri üzerinde anlaşma yapmakla sorumludur. LCP'nin her iki tarafı da PPP parametrelerini kabul etti mi, varsa kimlik doğrulama protokolleri çalışmaya başlar.
 
-## <a name="password-authentication-protocol-pap"></a>Parola kimlik doğrulama protokolü (PAP)
+## <a name="password-authentication-protocol-pap"></a>Parola Kimlik Doğrulama Protokolü (PAP)
 
-PAP, bağlantının bir tarafında (LCP sırasında anlaşılırken) sağlanan bir ad ve parolaya dayanan görece bir şekilde anlaşılır protokoldür. Diğer taraf bu bilgileri doğrular. Doğru ise, gönderene bir kabul iletisi döndürülür ve PPP daha sonra ıPCP eyalet makinesine devam edebilir. Aksi takdirde, ad veya parola yanlışsa bağlantı reddedilir.
-
->[!NOTE]
-> Arabirimin her iki tarafı PAP isteğinde bulunabilir, ancak PAP genellikle yalnızca bir yönde kullanılır.
-
-## <a name="challenge-handshake-authentication-protocol-chap"></a>Challenge-Handshake kimlik doğrulama protokolü (CHAP)
-
-CHAP, PAP 'dan daha karmaşık bir kimlik doğrulama protokolüdür. CHAP Authenticator, eşi için bir ad ve değer sağlar. Daha sonra eş, iki varlık arasında paylaşılan bir "gizli dizi" bulmak için sağlanan adı kullanır. Daha sonra bir hesaplama ID, Value ve "Secret" üzerinden yapılır. Bu hesaplamanın sonucu yanıtta döndürülür. Doğru ise, PPP ıPCP eyalet makinesine devam edebilir. Aksi takdirde, sonuç yanlışsa bağlantı reddedilir.
-
-CHAP 'nin başka bir ilgi çekici yönü, bir bağlantı kurulduktan sonra rastgele aralıklarda gerçekleşebilirler. Bu, bir bağlantının, kimlik doğrulamasından geçtikten sonra ele geçirilmesini engellemek için kullanılır. Bu rastgele zamanlarda bir zorluk başarısız olursa bağlantı hemen sonlandırılır.
+PAP, bağlantının bir tarafı tarafından sağlanan bir ad ve parolayı (LCP sırasında anlaşıldı) bağlı olan görece basit bir protokoldür. Diğer taraf da bu bilgileri doğrular. Doğruysa, gönderene bir kabul iletisi döndürülür ve PPP IPCP durum makinesine geçebilirsiniz. Aksi takdirde, ad veya parola yanlışsa bağlantı reddedilir.
 
 >[!NOTE]
-> Arabirimin her iki tarafı de CHAP isteğinde bulunabilir, ancak CHAP genellikle yalnızca bir yönde kullanılır.
+> Arabirimin her iki tarafı da PAP isteğinde kullanılmaktadır ancak PAP genellikle tek bir yönde kullanılır.
 
-## <a name="internet-protocol-control-protocol-ipcp"></a>Internet Protokolü Denetim Protokolü (ıPCP)
+## <a name="challenge-handshake-authentication-protocol-chap"></a>Challenge-Handshake Kimlik Doğrulama Protokolü (CHAP)
 
-IPCP, NetX IP veri aktarımı için PPP iletişimi kullanılabilir olmadan önce yürütülecek son protokoldür. Bu protokolün ana amacı, bir eşin IP adreslerini bilgilendirmek için kullanılır. IP adresi kurulduktan sonra NetX IP veri aktarımı etkinleştirilir.
+CHAP, PAP'den daha karmaşık bir kimlik doğrulama protokolüdür. CHAP kimlik doğrulayıcı, eşlerine bir ad ve değer sağlar. Eş daha sonra sağlanan adı iki varlık arasında paylaşılan bir "gizli" bulmak için kullanır. Daha sonra kimlik, değer ve "gizli" üzerinden hesaplama yapılır. Bu hesaplamanın sonucu yanıtta döndürülür. Doğruysa, PPP IPCP durum makinesine devam eder. Aksi takdirde, sonuç yanlışsa bağlantı reddedilir.
+
+CHAP'nin bir diğer ilginç yönü de bağlantı kurulduktan sonra rastgele aralıklarla ortaya çıkabilir. Bu, kimliği doğrulandıktan sonra bir bağlantının ele geçirilene kadar önlenmesi için kullanılır. Bu rastgele zamanlarda bir zorluk başarısız olursa bağlantı hemen sonlandırılır.
+
+>[!NOTE]
+> Arabirimin her iki tarafı da CHAP isteğinde olabilir, ancak CHAP genellikle yalnızca bir yönde kullanılır.
+
+## <a name="internet-protocol-control-protocol-ipcp"></a>İnternet Protokolü Denetim Protokolü (IPCP)
+
+IPCP, PPP iletişimi NetX IP veri aktarımı için kullanılabilir olmadan önce yürütülecek son protokoldür. Bu protokolün ana amacı, bir eş tarafından diğerini IP adresi konusunda bilgilendirmektir. IP adresi ayardikten sonra NetX IP veri aktarımı etkinleştirilir.
 
 ## <a name="data-transfer"></a>Veri Aktarımı
 
-Daha önce belirtildiği gibi, NetX IP veri paketleri, protokol KIMLIĞI 0x0021 olan PPP çerçevelerinde bulunur. Alınan tüm veri paketleri bir veya daha fazla NX_PACKET yapılarına konur ve NetX alma işlemine aktarılır. İletimde, NetX paket içerikleri AHDLC çerçevesine yerleştirilir ve iletilir.
+Daha önce belirtildiği gibi, NetX IP veri paketleri, ip adresine sahip protokol kimliğine sahip PPP 0x0021. Alınan tüm veri paketleri bir veya daha fazla NX_PACKET yapısına yerleştirilir ve NetX alma işlemesine aktarılır. İletim sırasında NetX paketi içerikleri bir AHDLC çerçevesine yerleştirilir ve iletildi.
 
-## <a name="ppp-rfcs"></a>PPP RFC 'Leri
+## <a name="ppp-rfcs"></a>PPP RFC'leri
 
-NetX PPP, RFC1332, RFC1334, RFC1661, RFC1994 ve ilgili RFC 'lerle uyumludur.
+NetX PPP RFC1332, RFC1334, RFC1661, RFC1994 ve ilgili RFC'ler ile uyumludur.

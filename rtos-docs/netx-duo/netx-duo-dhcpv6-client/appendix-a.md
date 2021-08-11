@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3e642af158202bb3b2a4e2a37397b47d707b566e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6840f89e66d713b1839ac84427b73273b3f9601d4b6d9d39cd94908ac77a77ca
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826099"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791338"
 ---
 # <a name="appendix-a---description-of-the-restore-state-feature-for-azure-rtos-netx-duo-dhcpv6-client"></a>Ek A-Azure RTOS NetX Duo DHCPv6 Istemcisi için geri yükleme durumu özelliğinin açıklaması
 
@@ -106,7 +106,7 @@ ULONG nx_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr,
                                   NX_DHCPV6_CLIENT_RECORD *record_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCPv6 Istemcisini record_ptr tarafından işaret edilen kayda kaydeder. Bu, DHCPv6 Istemci uygulamasının, bir güç kapatma ve yeniden başlatma gibi DHCPv6 Istemci durumunu geri yüklemesine olanak tanır.
 
@@ -158,7 +158,7 @@ ULONG nx_dhcpv6_client_restore_record(NX_DHCPV6 *dhcpv6_ptr,
                                       *record_ptr, ULONG time_elapsed);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DHCPv6 istemcisini record_ptr tarafından işaret edilen DHCPv6 istemci kaydıyla güncelleyerek ve DHCPv6 Istemci Kiralama üzerinde kalan süreyi time_elapsed girişi ile güncelleştirerek, bir DHCPv6 uygulamasının DHCPv6 Istemci durumunu önceki bir oturumdan yeniden oluşturmasını sağlar. Bu, DHCPv6 Istemci uygulamasının, DHCPv6 Istemcisini yeniden oluşturmasını sağlar, örneğin, kapatıldıktan sonra. Bu, DHCPv6 Istemci uygulamasının kapatmadan önce DHCPv6 Istemcisinin bir kaydını oluşturulmasını ve bu kaydın geçici olmayan belleğe kaydedilmesini gerektirir.
 

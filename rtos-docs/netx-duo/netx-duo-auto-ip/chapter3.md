@@ -1,34 +1,34 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo Oto IP Hizmetleri açıklaması
-description: Bu bölümde, tüm Azure RTOS NetX Duo Oto IP Hizmetleri (aşağıda listelenmiştir) alfabetik sırada bir açıklama bulunur.
+title: Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
+description: Bu bölümde, Tüm NetX Duo AutoIP Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 0935295ef9f7255c0851e1f64013884dce4c52f1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 82a186505104983dbe6964f92e89c8e775d545eedb6495e27f21542d7660bf42
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826165"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791202"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-autoip-services"></a>Bölüm 3-Azure RTOS NetX Duo Oto IP Hizmetleri açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-autoip-services"></a>Bölüm 3 - NetX Duo Azure RTOS hizmetlerinin açıklaması
 
-Bu bölümde, tüm Azure RTOS NetX Duo Oto IP Hizmetleri (aşağıda listelenmiştir) alfabetik sırada bir açıklama bulunur.
+Bu bölümde, Tüm NetX Duo AutoIP Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_auto_ip_create**: *Oto IP örneği oluştur*
-- **nx_auto_ip_delete**: *Oto IP örneğini Sil*
-- **nx_auto_ip_get_address**: *geçerli Oto IP adresini al*
-- **nx_auto_ip_set_interface**: *IP arabirimine bir Oto IP adresi ihtiyacı* olacak şekilde ayarla
-- **nx_auto_ip_start**: *Oto IP işlemesini Başlat*
-- **nx_auto_ip_stop**: *Oto IP işlemesini durdur*
+- **nx_auto_ip_create:** *AutoIP örneği oluşturma*
+- **nx_auto_ip_delete:** *AutoIP örneğini silme*
+- **nx_auto_ip_get_address:** Geçerli *AutoIP adresini al*
+- **nx_auto_ip_set_interface:** *AutoIP adresine ihtiyaç olan IP arabirimini ayarlama*
+- **nx_auto_ip_start:** *AutoIP işlemeyi başlatma*
+- **nx_auto_ip_stop:** *AutoIP işlemeyi durdurma*
 
 ## <a name="nx_auto_ip_create"></a>nx_auto_ip_create
 
-Oto IP örneği oluştur
+AutoIP örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -38,32 +38,32 @@ UINT nx_auto_ip_create(NX_AUTO_IP *auto_ip_ptr, CHAR *name,
                     UINT priority);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneğinde bir Oto IP örneği oluşturur.
+Bu hizmet, belirtilen IP örneğinde bir AutoIP örneği oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
-- **ad**: Oto IP örneğinin adı.
-- **ip_ptr**: IP örneğine yönelik işaretçi.
-- **stack_ptr**: Oto IP iş parçacığı yığın alanı işaretçisi.
-- **stack_size**: Oto IP iş parçacığı yığını alanının boyutu.
-- **Öncelik**: Oto IP iş parçacığının önceliği.
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
+- **name:** AutoIP örneğinin adı.
+- **ip_ptr:** IP örneğine işaretçi.
+- **stack_ptr:** AutoIP iş parçacığı yığın alanına işaretçi.
+- **stack_size:** AutoIP iş parçacığı yığın alanı boyutu.
+- **priority:** AutoIP iş parçacığının önceliği.
 
 > [!NOTE]
-> DHCP kullanılıyorsa, DHCP iş parçacığının IP örneği iş parçacığından ve Oto IP iş parçacığından daha yüksek bir önceliğe sahip olması gerekir.
+> DHCP kullanılıyorsa, DHCP iş parçacığı IP örneği iş parçacığından ve AutoIP iş parçacığından daha yüksek önceliğe sahip olmalıdır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı bir oto oluştur.
-- **NX_AUTO_IP_ERROR**: (0xa00) Oto IP oluşturma hatası.
-- NX_PTR_ERROR: (0x16) geçersiz Oto IP, ip_ptr veya yığın işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı AutoIP oluşturma.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP oluşturma hatası.
+- NX_PTR_ERROR: (0x16) Geçersiz AutoIP, ip_ptr veya yığın işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -80,7 +80,7 @@ nx_auto_ip_delete, nx_auto_ip_set_interface, nx_auto_ip_get_address, nx_auto_ip_
 
 ## <a name="nx_auto_ip_delete"></a>nx_auto_ip_delete
 
-Oto IP örneğini Sil
+AutoIP örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -88,22 +88,22 @@ Oto IP örneğini Sil
 UINT nx_auto_ip_delete(NX_AUTO_IP *auto_ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneğinde daha önce oluşturulmuş bir Oto IP örneğini siler.
+Bu hizmet, belirtilen IP örneğinde önceden oluşturulmuş bir AutoIP örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı Oto IP silme.
-- **NX_AUTO_IP_ERROR**: (0xa00) Oto IP silme hatası.
-- NX_PTR_ERROR: (0x16) geçersiz bir Oto IP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) AutoIP silme başarılı.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP silme hatası.
+- NX_PTR_ERROR: (0x16) Geçersiz AutoIP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -122,7 +122,7 @@ nx_auto_ip_create, nx_auto_ip_set_interface, nx_auto_ip_get_address, nx_auto_ip_
 
 ## <a name="nx_auto_ip_get_address"></a>nx_auto_ip_get_address
 
-Geçerli Oto IP adresini al
+Geçerli AutoIP adresini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -131,25 +131,25 @@ UINT nx_auto_ip_get_address(NX_AUTO_IP *auto_ip_ptr,
                             ULONG *local_ip_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet şu anda kurulum diğer IP adresini alır. Bir tane yoksa, 0.0.0.0 IP adresi döndürülür.
+Bu hizmet, o anda kurulumu yapılan AutoIP adresini alır. Yoksa, 0.0.0.0 IP adresi döndürülür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
-- **local_ip_address**: dönüş IP adresi hedefi.
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
+- **local_ip_address:** Dönüş IP adresi hedefi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı bir Oto IP adresi al.
-- **NX_AUTO_IP_NO_LOCAL**: (0xa01) geçerli bir Oto IP adresi yok.
-- NX_PTR_ERROR: (0x16) geçersiz bir Oto IP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı AutoIP adresi get.
+- **NX_AUTO_IP_NO_LOCAL:**(0xA01) Geçerli bir AutoIP adresi yok.
+- NX_PTR_ERROR: (0x16) Geçersiz AutoIP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, zamanlayıcılar, Iş parçacıkları, ISRs
+Başlatma, Süreerler, İş Parçacıkları, ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -168,7 +168,7 @@ nx_auto_ip_create, nx_auto_ip_set_interface, nx_auto_ip_delete, nx_auto_ip_start
 
 ## <a name="nx_auto_ip_set_interface"></a>nx_auto_ip_set_interface
 
-Oto IP için ağ arabirimini ayarla
+AutoIP için ağ arabirimi ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -177,24 +177,24 @@ UINT nx_auto_ip_set_interface(NX_AUTO_IP *auto_ip_ptr,
                             UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir ağ IP adresi için ağ arabirimi Oto IP 'si araştırmasını ayarlar. Varsayılan değer sıfırdır (birincil ağ arabirimi). Yalnızca çok sayfalı cihazlar için geçerlidir.
+Bu hizmet, AutoIP ağ arabiriminin bir ağ IP adresi için yoklama dizini ayarlar. Varsayılan değer sıfırdır (birincil ağ arabirimi). Yalnızca birden çok ana bilgisayara bağlı cihazlar için geçerlidir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
-- **interface_index**: IÇIN araştırma IP adresi arabirimi
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
+- **interface_index:** IÇIN IP adresini yoklama arabirimi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı bir oto arabirimi kümesi
-- **NX_AUTO_IP_BAD_INTERFACE_INDEX**: (0Xa02) geçersiz ağ arabirimi NX_PTR_ERROR (0x16) geçersiz bir Oto IP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı AutoIP arabirim kümesi
+- **NX_AUTO_IP_BAD_INTERFACE_INDEX:**(0xA02) Geçersiz ağ arabirimi NX_PTR_ERROR (0x16) Geçersiz AutoIP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, zamanlayıcılar, Iş parçacıkları, ISRs
+Başlatma, Süreerler, İş Parçacıkları, ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -213,7 +213,7 @@ nx_auto_ip_create, nx_auto_ip_get_address, nx_auto_ip_delete, nx_auto_ip_start, 
 
 ## <a name="nx_auto_ip_start"></a>nx_auto_ip_start
 
-Oto IP işlemesini Başlat
+AutoIP işlemeyi başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -222,25 +222,25 @@ UINT nx_auto_ip_start(NX_AUTO_IP *auto_ip_ptr,
                     ULONG starting_local_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş bir Oto IP örneğinde, Oto IP protokolünü başlatır.
+Bu hizmet, önceden oluşturulmuş bir AutoIP örneğinde AutoIP protokolünü başlatır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
-- **starting_local_address**: Isteğe bağlı otomatik IP başlangıç adresi. IP_ADDRESS değeri (0, 0, 0, 0) bir rastgele bir bir bir bir bir bir bir bir bir bir IP adresi elde edilmelidir. Aksi takdirde, geçerli bir bir bir bir bir bir bir bir bir bir bir IP adresi belirtilmişse NetX, bu adresi atamayı dener.
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
+- **starting_local_address:** İsteğe bağlı AutoIP başlangıç adresi. IP_ADDRESS (0,0,0,0,0) değeri, rastgele bir AutoIP adresinin türetilen gerektiğini belirtir. Aksi takdirde, geçerli bir AutoIP adresi belirtilirse, NetX AutoIP bu adresi atamaya çalışır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı bir oto başlatması.
-- **NX_AUTO_IP_ERROR**: (0xa00) Oto IP başlatma hatası.
-- NX_PTR_ERROR: (0x16) geçersiz bir Oto IP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı AutoIP başlatma.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP başlatma hatası.
+- NX_PTR_ERROR: (0x16) Geçersiz AutoIP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -257,7 +257,7 @@ nx_auto_ip_create, nx_auto_ip_set_interface, nx_auto_ip_delete, nx_auto_ip_get_a
 
 ## <a name="nx_auto_ip_stop"></a>nx_auto_ip_stop
 
-Oto IP işlemesini durdur
+AutoIP işlemeyi durdurma
 
 ### <a name="prototype"></a>Prototype
 
@@ -265,22 +265,22 @@ Oto IP işlemesini durdur
 UINT nx_auto_ip_stop(NX_AUTO_IP *auto_ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş ve başlatılan bir Oto IP örneğinde, Oto IP protokolünü sonlandırır. Bu hizmet genellikle IP adresi DHCP aracılığıyla veya bir oto olmayan IP adresine el ile değiştirildiğinde kullanılır.
+Bu hizmet, önceden oluşturulmuş ve başlatılan bir AutoIP örneğinde AutoIP protokolünü durdurur. Bu hizmet genellikle IP adresi DHCP aracılığıyla değiştirilirken veya el ile AutoIP olmayan bir adresle değiştirilirken kullanılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **auto_ip_ptr**: Oto IP denetim bloğu işaretçisi.
+- **auto_ip_ptr:** AutoIP denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS**: (0x00) başarılı bir oto durdur.
-- **NX_AUTO_IP_ERROR**: (0xa00) Oto IP durağı hatası.
-- NX_PTR_ERROR: (0x16) geçersiz bir Oto IP işaretçisi.
-- NX_CALLER_ERROR: (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS:**(0x00) Başarılı AutoIP durdurma.
+- **NX_AUTO_IP_ERROR:**(0xA00) AutoIP durdurma hatası.
+- NX_PTR_ERROR: (0x16) Geçersiz AutoIP işaretçisi.
+- NX_CALLER_ERROR: (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: aa66ad392171958e5d2cc765992fd1a9e41250a6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 906ccb4fb69925f5244192f06521bf508bd15ced2076fb03031649fea638171c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827371"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789987"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-threadx"></a>Bölüm 3-Azure RTOS ThreadX 'in Işlevsel bileşenleri
 
@@ -215,95 +215,95 @@ Bir iş parçacığının denetim bloğu bellekte herhangi bir yerde bulunabilir
 
 Diğer alanlardaki denetim bloğunun bulunması, dinamik olarak ayrılan tüm bellekte olduğu gibi biraz daha dikkatli bir değer gerektirir. Bir denetim bloğu bir C işlevi içinde ayrılmışsa, onunla ilişkili bellek, çağıran iş parçacığının yığınının bir parçasıdır. Genel olarak, denetim blokları için yerel depolama kullanmaktan kaçının çünkü işlev dönmesinden sonra, başka bir iş parçacığının bir denetim bloğu için kullanıp kullanmadığını bağımsız olarak tüm yerel değişken yığın alanı serbest bırakılır.
 
-Çoğu durumda, uygulama iş parçacığının denetim bloğunun içeriğine göre yükümlülüğü olur. Ancak, özellikle hata ayıklama sırasında bazı durumlar vardır, bu da bazı üyelere göz at yararlı olur. Daha kullanışlı denetim bloğu üyelerinden bazıları aşağıda verilmiştir.
+Çoğu durumda, uygulama iş parçacığının denetim bloğunun içeriğine göre yükümlülüğü olur. Ancak, özellikle hata ayıklama sırasında bazı durumlar vardır, bu da bazı üyelere göz at yararlı olur. Aşağıda, daha kullanışlı denetim bloğu üyelerinden bazıları ve ardından yer alan bilgiler ve daha faydalıdır.
 
-**tx_thread_run_count** , iş parçacığının zamanlandığı birçok kez bir sayaç içerir. Artan bir sayaç, iş parçacığının zamanlandığını ve yürütüldüğünü belirtir.
+**tx_thread_run_count,** iş parçacığının zamanlandığı sayıda sayacı içerir. Artan sayaç, iş parçacığının zamanlandığı ve yürütülmakta olduğunu gösterir.
 
-**tx_thread_state** ilişkili iş parçacığının durumunu içerir. Aşağıdaki, olası iş parçacığı durumlarını listeler.
+**tx_thread_state** iş parçacığının durumunu içerir. Olası iş parçacığı durumları aşağıda listelemektedir.
 
 |  İş parçacığı durumu   | Değer |
 | --------------- | ------ |
-| TX_READY       | - |
-| TX_COMPLETED   | 0x01 |
-| TX_TERMINATED  | 0x02 şeklindedir |
+| TX_READY       | (0x00) |
+| TX_COMPLETED   | (0x01) |
+| TX_TERMINATED  | (0x02) |
 | TX_SUSPENDED   | (0x03) |
 | TX_SLEEP       | (0x04) |
 | TX_QUEUE_SUSP | (0x05) |
 | TX_SEMAPHORE_SUSP | (0x06) |
 | TX_EVENT_FLAG   | (0x07) |
 | TX_BLOCK_MEMORY | (0x08) |
-| TX_BYTE_MEMORY  | 0x09 |
-| TX_MUTEX_SUSP   | 0x0D |
+| TX_BYTE_MEMORY  | (0x09) |
+| TX_MUTEX_SUSP   | (0x0D) |
 
 > [!NOTE]
-> *Tabii ki, yığın işaretçisi, saat dilimi değeri, öncelikler vb. dahil olmak üzere iş parçacığı denetim bloğunda çok sayıda ilginç alan vardır. Kullanıcılar denetim bloğu üyelerini incelemeye hoş geldiniz, ancak değişikliklere kesinlikle izin verilmez!*
+> *Elbette iş parçacığı denetim bloğunda yığın işaretçisi, zaman dilimi değeri, öncelikler vb. gibi birçok ilgi çekici alan daha vardır. Kullanıcılar denetim bloğu üyelerini gözden geçirebilirsiniz, ancak değişiklikler kesinlikle yasaktır!*
 
 > [!IMPORTANT]
-> *Bu bölümde daha önce bahsedilen "yürütülüyor" durumu için bir eş yoktur. Belirli bir zamanda yalnızca bir çalışan iş parçacığı olduğundan bu gerekli değildir. Yürütülen iş parçacığının durumu da* **TX_READY**.
+> *Bu bölümün önceki kısımlarında bahsedilen "yürütme" durumunun bir eşitliği yoktur. Belirli bir zamanda yalnızca bir yürüten iş parçacığı olduğundan bu gerekli değildir. Yürütülen iş parçacığının durumu da TX_READY.* 
 
-### <a name="currently-executing-thread"></a>Yürütülmekte olan Iş parçacığı
+### <a name="currently-executing-thread"></a>Şu Anda Yürütülen İş Parçacığı
 
-Daha önce bahsedildiği gibi, belirli bir zamanda yalnızca bir iş parçacığı yürütüyordur. Yürütülen iş parçacığını, isteği yapan iş parçacığına bağlı olarak belirlemenin birkaç yolu vardır.
-Program kesimi, ***tx_thread_identify*** çağırarak yürütülen iş parçacığının denetim bloğu adresini alabilir. Bu, birden çok iş parçacığından yürütülen uygulama kodunun paylaşılan bölümlerinde yararlıdır.
+Daha önce belirtildiği gibi, herhangi bir zamanda yürütülen yalnızca bir iş parçacığı vardır. İstekte bulunan iş parçacığına bağlı olarak, yürüten iş parçacığını tanımlamanın birkaç yolu vardır.
+Bir program kesimi, tx_thread_identify çağırarak yürütülen iş parçacığının denetim ***bloğu adresini tx_thread_identify.*** Bu, uygulama kodunun birden çok iş parçacığından yürütülen paylaşılan kısımlarında kullanışlıdır.
 
-Hata ayıklama oturumlarında, kullanıcılar iç ThreadX işaretçisini ***_tx_thread_current_ptr*** inceleyebilir. Şu anda yürütülmekte olan iş parçacığının denetim bloğu adresini içerir. Bu işaretçi NULL ise, uygulama iş parçacığı yürütülmüyor; Yani, ThreadX bir iş parçacığının hazırlanması için zamanlama döngüsünde bekliyor.
+Hata ayıklama oturumlarında, kullanıcılar iş parçacığında iç ThreadX işaretçisini ***_tx_thread_current_ptr.*** O anda yürütülen iş parçacığının denetim bloğu adresini içerir. Bu işaretçi NULL ise, hiçbir uygulama iş parçacığı yürütülmektedir; Diğer bir ifadeyle, ThreadX bir iş parçacığının hazır olması için zamanlama döngüsünde bekler.
 
-### <a name="thread-stack-area"></a>İş parçacığı yığın alanı
+### <a name="thread-stack-area"></a>İş Parçacığı Yığın Alanı
 
-Her iş parçacığının en son yürütme ve derleyici kullanımı bağlamını kaydetmek için kendi yığınına sahip olması gerekir. Çoğu C derleyicileri, işlev çağrıları yapmak ve yerel değişkenleri geçici olarak ayırmak için yığın kullanır. Şekil 6 ' da tipik bir iş parçacığının yığını gösterilmektedir.
+Her iş parçacığının son yürütme ve derleyici kullanımının bağlamını kaydeden kendi yığınına sahip olması gerekir. C derleyicilerinin çoğu, işlev çağrıları yapmak ve yerel değişkenleri geçici olarak kullanmak için yığını kullanır. Şekil 6'da tipik bir iş parçacığı yığınını gösterir.
 
-Bir iş parçacığı yığınının bellekte bulunduğu yer, uygulamaya göre yapılır. Yığın alanı, iş parçacığı oluşturma sırasında belirtilir ve hedefin adres alanının herhangi bir yerinden bulunabilir. Bu önemli bir özelliktir çünkü, yığınlarını yüksek hızlı RAM 'e yerleştirerek uygulamaların önemli iş parçacıklarının performansını artırmasına olanak tanır.
+Bellekte bir iş parçacığı yığınının bulunduğu yer uygulamaya bağlı olur. Yığın alanı iş parçacığı oluşturma sırasında belirtilir ve hedefin adres alanında herhangi bir yere yer olabilir. Uygulamaların yığınlarını yüksek hızlı RAM'e yerleştirerek önemli iş parçacıklarının performansını artırmalarına olanak sağlayan bu önemli bir özelliktir.
 
-**Yığın bellek alanı** (örnek)
+**Yığın Bellek Alanı** (örnek)
 
-![Tipik Iş parçacığı yığını](./media/user-guide/typical-thread-stack.png)
+![Tipik İş Parçacığı Yığını](./media/user-guide/typical-thread-stack.png)
 
-**ŞEKIL 6. Tipik Iş parçacığı yığını**
+**ŞEKIL 6. Tipik İş Parçacığı Yığını**
 
-Yığının ne kadar büyük olması, iş parçacıkları hakkında en sık sorulan sorulardan biridir. Bir iş parçacığının yığın alanı, en kötü durum işlevi çağrısı iç içe geçme, yerel değişken ayırma ve son yürütme bağlamını kaydetmeye yetecek kadar büyük olmalıdır.
+Yığının ne kadar büyük olması gerektiği, iş parçacıkları hakkında en sık sorulan sorulardan biri. Bir iş parçacığının yığın alanı iç içe yerleştirme, yerel değişken ayırma ve son yürütme bağlamını kaydetme gibi en kötü durum işlev çağrılarına uyum sağlayacak kadar büyük olması gerekir.
 
-Minimum yığın boyutu **TX_MINIMUM_STACK**, threadx tarafından tanımlanmıştır. Bu boyuttaki bir yığın, bir iş parçacığının bağlamını kaydetmeyi ve minimum işlev çağrısı sayısını ve yerel değişken ayırmayı destekler.
+en düşük yığın boyutu **TX_MINIMUM_STACK** ThreadX tarafından tanımlanır. Bu boyutta bir yığın, bir iş parçacığının bağlamını ve minimum işlev çağrısı miktarını ve yerel değişken ayırmayı kaydetmeyi destekler.
 
-Ancak, çoğu iş parçacığı için, en düşük yığın boyutu çok küçük olur ve Kullanıcı, işlev çağrısı iç içe ve yerel değişken ayırmayı inceleyerek en kötü durum boyutu gereksinimini yoklamayı sağlamalıdır. Kuşkusuz, daha büyük bir yığın alanıyla başlamak her zaman daha iyidir.
+Ancak çoğu iş parçacığı için en düşük yığın boyutu çok küçüktür ve kullanıcının işlev çağrısı iç içe geçme ve yerel değişken ayırmayı inceerek en kötü durum boyutu gereksinimini tespitsi gerekir. Elbette daha büyük bir yığın alanıyla başlamak her zaman daha iyidir.
 
-Uygulamanın hataları ayıklandıktan sonra, bellek scarce ise iş parçacığı yığın boyutlarını ayarlamak mümkündür. Sık kullanılan bir yol, iş parçacıklarını oluşturmadan önce (0xEFEF) gibi kolay tanımlanabilir bir veri düzeniyle tüm yığın alanlarının önceden ayarlanmasıdır. Uygulama, Paces üzerinden tamamen gerçekleştirildikten sonra, yığın alanlarının ne kadar yığın kullandığını görmek için veri deseninin hala bozulmakta olduğu yığının alanını buluyor. Şekil 7 ' de, tam iş parçacığı yürütme sonrasında 0xEFEF için bir yığın ön ayarı gösterilmektedir.
+Uygulama hata ayıklandıktan sonra, bellek azsa iş parçacığı yığını boyutlarını ayarlamak mümkündür. Sık kullanılan bir püf noktası, iş parçacıklarını oluşturmadan önce tüm yığın alanlarını (0xEFEF) gibi kolayca tanımlanabilir bir veri deseniyle önceden ayar yapmaktır. Uygulamanın hızı ayrıntılı bir şekilde incelendikten sonra yığın alanları incelendikten sonra, yığında veri deseninin hala bozulmamış olduğu alanı bularak ne kadar yığının gerçekten kullanılmış olduğunu görebilir. Şekil 7'de, kapsamlı iş parçacığı yürütmeden sonra 0xEFEF için önceden ayarlanmış bir yığın gösterir.
 
-**Yığın bellek alanı** (başka bir örnek)
+**Yığın Bellek Alanı** (başka bir örnek)
 
-![0xEFEF * için yığın önayarı](./media/user-guide/stack-preset.png)
+![0xEFEF* için Yığın Ön Ayarı](./media/user-guide/stack-preset.png)
 
-**ŞEKIL 7. Yığın önayarı 0xEFEF**
+**ŞEKIL 7. 0xEFEF için Stack Ön 0xEFEF**
 
 > [!IMPORTANT]
-> *Varsayılan olarak, ThreadX her bir iş parçacığı yığınının her baytını bir 0xEF değeri ile başlatır.*
+> *Varsayılan olarak, ThreadX her bir iş parçacığı yığınının her bayta değerini 0xEF.*
 
-### <a name="memory-pitfalls"></a>Bellek sınırları
+### <a name="memory-pitfalls"></a>Bellek Tuzakları
 
-İş parçacıkları için yığın gereksinimleri büyük olabilir. Bu nedenle, uygulamayı makul sayıda iş parçacığına sahip olacak şekilde tasarlamak önemlidir. Ayrıca, iş parçacıkları içinde aşırı yığın kullanımını önlemek için bazı dikkatli olunmalıdır. Özyinelemeli algoritmalar ve büyük yerel veri yapıları önlenmelidir.
+İş parçacıkları için yığın gereksinimleri büyük olabilir. Bu nedenle, uygulamayı makul sayıda iş parçacığına sahip olacak şekilde tasarlamak önemlidir. Ayrıca, iş parçacıklarında aşırı yığın kullanımından kaçınmak için bazı dikkatler gerekir. Cursive algoritmalardan ve büyük yerel veri yapılarından kaçınılmalıdır.
 
-Çoğu durumda, taşan bir yığın, iş parçacığı yürütmesinin yığın alanının bitişik (genellikle daha önce) bellek alanına ayrılmasına neden olur. Sonuçlar tahmin edilemez, ancak çoğu zaman program sayacında doğal olmayan bir değişikliğe neden olur. Bu, genellikle "Weeds 'e atlama" olarak adlandırılır. Kuşkusuz, bunu önlemenin tek yolu tüm iş parçacığı yığınlarının yeterince büyük olmasını sağlamaktır.
+Çoğu durumda taşan yığın, iş parçacığı yürütmenin yığın alanıyla bitişik belleği bozmasını (genellikle önce) sağlar. Sonuçlar tahmin edilemez ancak genellikle program sayacında doğal olmayan bir değişiklikle sonuçlandır. Buna genellikle "atlayanlar" denir. Elbette bunu önlemenin tek yolu tüm iş parçacığı yığınlarının yeterince büyük olduğundan emin olmaktır.
 
-### <a name="optional-run-time-stack-checking"></a>İsteğe bağlı çalışma zamanı yığın denetimi
+### <a name="optional-run-time-stack-checking"></a>İsteğe Bağlı Çalışma Zamanı Yığın Denetimi
 
-ThreadX, çalışma zamanı sırasında her bir iş parçacığının yığınını bozulma için denetleme olanağı sağlar. Varsayılan olarak, ThreadX, oluşturma sırasında bir 0xEF veri düzeniyle iş parçacığı yığınlarının her baytını doldurur. Uygulama, ThreadX kitaplığını tanımlı **TX_ENABLE_STACK_CHECKING** ile oluşturmazsa, threadx her iş parçacığının yığınını, askıya alındığından veya sürdürüldüğünde bozulma için inceler. Yığın bozulması algılanırsa, ThreadX, uygulamanın yığın hata işleme yordamını tx_thread_stack_error_notify _ çağrısıyla belirtilen şekilde çağırır ***. Aksi halde, yığın hata işleyicisi belirtilmemişse, ThreadX iç _* _ _tx_thread_stack_error_handler_ yordamını çağırır** .
+ThreadX, çalışma zamanı sırasında her iş parçacığının yığınında bozulma olup oluğu denetleme olanağı sağlar. Varsayılan olarak, ThreadX oluşturma sırasında iş parçacığı yığınlarının her bayta 0xEF veri deseniyle doldurur. Uygulama, iş parçacığı tanımlı TX_ENABLE_STACK_CHECKING  ThreadX kitaplığını derlemesi, askıya alınan veya sürdürülen her bir iş parçacığı yığınında bozulma olup olduğunu inceler. Yığın bozulması algılanırsa ThreadX, tx_thread_stack_error_notify _ çağrısı tarafından belirtilen şekilde uygulamanın yığın hatası işleme **_yordamını_*tx_thread_stack_error_notify. Aksi takdirde, yığın hatası işleyicisi belirtilmemişse ThreadX iç _ _* tx_thread_stack_error_handler** çağıracak.
 
 ### <a name="reentrancy"></a>Yeniden giriş
 
-Çoklu iş parçacıklı gerçek Beauties biri aynı C işlevinin birden çok iş parçacığından çağrılabilir olması olabilir. Bu harika bir güç sağlar ve ayrıca kod alanını azaltmaya yardımcı olur. Ancak, birden çok iş parçacığından çağrılan C işlevlerinin *yeniden kullanılabilir olmasını* gerektirir.
+Çoklu iş parçacığının gerçek nedenlerinden biri, aynı C işlevinin birden çok iş parçacığından çağrıl olmasıdır. Bu, harika bir güç sağlar ve kod alanı azaltmaya da yardımcı olur. Ancak, birden çok iş parçacığından çağrılan C işlevlerinin yeniden *çağrılmalarını gerektirir.*
 
-Temel olarak, bir yeniden alan işlevi çağıranın dönüş adresini geçerli yığında depolar ve daha önce ayarlamış olduğu genel veya statik C değişkenlerine bağlı değildir. Çoğu derleyiciler, dönüş adresini yığına yerleştirir. Bu nedenle, uygulama geliştiricileri yalnızca *genel* ve *statiklerin* kullanımı konusunda endişelenmelidir.
+Temel olarak, bir yenidenentrant işlevi çağıranın dönüş adresini geçerli yığında depolar ve daha önce ayarlayan genel veya statik C değişkenlerine güvenmez. Çoğu derleyici, dönüş adresini yığına yer alıyor. Bu nedenle, uygulama geliştiricilerinin yalnızca genel ve statik *kullanımı konusunda* *endişelenmesi gerekir.*
 
-Standart C Kitaplığı 'nda bulunan ***strtok*** dize belirteci, yeniden yer olmayan bir işleve bir örnektir. Bu işlev, sonraki çağrılarındaki önceki dize işaretçisini "anımsar". Bunu bir statik dize işaretçisi ile yapar. Bu işlev birden çok iş parçacığından çağrılırsa, büyük olasılıkla geçersiz bir işaretçi döndürür.
+Standart C kitaplığında bulunan ***strtok*** dize belirteci işlevi, yeniden kabul olmayan bir işleve örnektir. Bu işlev, sonraki çağrılarda önceki dize işaretçisini "anımsar". Bunu statik dize işaretçisi ile yapar. Bu işlev birden çok iş parçacığından çağrılsa, büyük olasılıkla geçersiz bir işaretçisi olacaktır.
 
-### <a name="thread-priority-pitfalls"></a>İş parçacığı önceliği sınırları
+### <a name="thread-priority-pitfalls"></a>İş Parçacığı Önceliği Tuzakları
 
-İş parçacığı önceliklerinin seçilmesi, çoklu iş parçacığı oluşturma 'nın en önemli özelliklerinden biridir. Çalışma zamanı sırasında tam olarak gerekli olanları belirlemek yerine, algılanan iş parçacığı önem derecesine göre öncelikler atamak çok önemlidir. İş parçacığı önceliklerinin kötüye kullanılması, diğer iş parçacıklarını gerçekleştirebilir, öncelik sürümü oluşturabilir, işlem bant genişliğini azaltabilir ve uygulamanın çalışma zamanı davranışını anlamayı zorlaştırır.
+İş parçacığı önceliklerini seçmek, çoklu iş parçacığının en önemli yönlerinden birisidir. Bazen çalışma zamanında tam olarak nelerin gerekli olduğunu belirlemek yerine iş parçacığı önemi algılanmasına dayalı olarak öncelik atamak çok cazip olabilir. İş parçacığı önceliklerinin kötüye kullanılması diğer iş parçacıklarını tüketebilir, öncelik ters çevirmesi oluşturabilir, işleme bant genişliğini azaltır ve uygulamanın çalışma zamanı davranışını anlamak zorlaştırabilirsiniz.
 
-Daha önce bahsedildiği gibi, ThreadX, öncelik temelli bir preemptive zamanlama algoritması sağlar. Düşük öncelikli iş parçacıkları, yürütmeye yönelik daha yüksek öncelikli iş parçacığı kalmayana kadar yürütülmez. Daha yüksek öncelikli iş parçacığı her zaman hazırsa, düşük öncelikli iş parçacıkları hiçbir zaman yürütülmez. Bu koşul, *iş parçacığı başlangıçadı* olarak adlandırılır.
+Daha önce belirtildiği gibi ThreadX, öncelik tabanlı, ön hazırlıklı bir zamanlama algoritması sağlar. Düşük öncelikli iş parçacıkları, yürütme için hazır daha yüksek öncelikli iş parçacıklarına sahip olana kadar yürütülmez. Daha yüksek öncelikli bir iş parçacığı her zaman hazırsa, düşük öncelikli iş parçacıkları hiçbir zaman yürütülmez. Bu koşul, iş *parçacığını açma olarak adlandırılan bir durumdur.*
 
-Çoğu iş parçacığı sorunu hata ayıklamada erken algılanır ve daha yüksek öncelikli iş parçacıklarının sürekli yürütülmeyeceğinden çözülebilirler. Alternatif olarak, yürütme şansı alınana kadar, mantıksal olarak yürütülen iş parçacıklarının önceliğini kademeli olarak başlatan uygulamaya de bir mantık eklenebilir.
+Çoğu iş parçacığı açma sorunu, hata ayıklamanın erken bir zamanlarında algılanır ve yüksek öncelikli iş parçacıklarının sürekli olarak yürütülmeyebileceğini sağlayarak çözülebilir. Alternatif olarak, yürütme şansı elde edilene kadar yavaş yavaş iş parçacıklarının önceliğini yükselten uygulamaya mantık eklenebilir.
 
-İş parçacığı öncelikleriyle ilişkili başka bir *giriş ise öncelikli bir sürümdür*. Düşük öncelikli bir iş parçacığında gerekli bir kaynak olduğundan, yüksek öncelikli bir iş parçacığı askıya alındığında öncelik Inversion gerçekleşir. Kuşkusuz, bazı örneklerde, farklı öncelikteki iki iş parçacığının ortak bir kaynağı paylaşması gerekir. Bu iş parçacıkları etkin tek bir sürümse, öncelik Inversion saati, düşük öncelikli iş parçacığı kaynağı tutan zamana göre sınırlanır. Bu koşul hem belirleyici hem de oldukça normaldir. Bununla birlikte, bu öncelik geçersiz kılma sırasında ara öncelikteki iş parçacıkları etkin hale gelirse, öncelik Inversion süresi artık belirleyici değildir ve bir uygulama hatasına neden olabilir.
+İş parçacığı öncelikleriyle ilişkili başka bir tuzak, *öncelikli ters çevirmedir.* Daha düşük öncelikli bir iş parçacığının gerekli bir kaynağa sahip olması nedeniyle daha yüksek öncelikli bir iş parçacığı askıya alınarak öncelik ters çevirmesi askıya alınır. Kuşkusuz, bazı örneklerde, farklı öncelikteki iki iş parçacığının ortak bir kaynağı paylaşması gerekir. Bu iş parçacıkları etkin tek bir sürümse, öncelik Inversion saati, düşük öncelikli iş parçacığı kaynağı tutan zamana göre sınırlanır. Bu koşul hem belirleyici hem de oldukça normaldir. Bununla birlikte, bu öncelik geçersiz kılma sırasında ara öncelikteki iş parçacıkları etkin hale gelirse, öncelik Inversion süresi artık belirleyici değildir ve bir uygulama hatasına neden olabilir.
 
 ThreadX 'te belirleyici olmayan öncelikli öncelikli sürümü önlemek için önemli ölçüde üç farklı yöntem vardır. İlk olarak, uygulama önceliği seçimleri ve çalışma zamanı davranışı, öncelik sürümü sorununun önlenebilmesini sağlayacak şekilde tasarlanabilir. İkincisi, daha yüksek öncelikli iş parçacıklarıyla kaynakları paylaştıklarında, daha düşük öncelikli iş parçacıkları *önalım eşiğini* kullanarak ara iş parçacıklarından önalım 'i engelleyebilir. Son olarak, sistem kaynaklarını korumak için ThreadX mutex nesnelerini kullanan iş parçacıkları, belirleyici olmayan öncelikli bir sürümü ortadan kaldırmak için isteğe bağlı mutex *önceliği devrmasından* yararlanabilir.
 
@@ -524,459 +524,459 @@ Genel olarak, *olay zincirleme* daha az iş parçacığı, daha az ek yük ve da
 
 ThreadX isteğe bağlı çalışma zamanı semaforu performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış **TX_SEMAPHORE_ENABLE_PERFORMANCE_INFO** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
   - semafor koyar
 
   - semafor alır
 
-  - semafor Get getirilmesi
+  - semafor askıya alma
 
-  - Semafor zaman aşımlarını al
+  - semafor zaman aşımı alma
 
-Her semaforun toplam sayısı:
+Her semafor için toplam sayı:
 
   - semafor koyar
 
   - semafor alır
 
-  - semafor Get getirilmesi
+  - semafor askıya alma
 
-  - Semafor zaman aşımlarını al
+  - semafor zaman aşımı alma
 
-Bu bilgiler, ***tx_semaphore_performance_info_get** _ ve _ *_tx_semaphore_performance_system_info_get_* * Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Semafor performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır. Örneğin, görece yüksek sayıda "semafor Get zaman aşımları", diğer iş parçacıklarının kaynakları çok uzun süre olarak tuttuklarından kaynaklanabilir.
+Bu bilgiler * tx_semaphore_performance_info_get **_** ve _* tx_semaphore_performance_system_info_get **_hizmetleri aracılığıyla çalışma zamanında_ kullanılabilir. Semafor performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemede yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır. Örneğin, görece yüksek sayıda "semafor zaman aşımı" olması, diğer iş parçacıklarının kaynakları çok uzun süre tutması önerisinde olabilir.
 
-### <a name="semaphore-control-block-tx_semaphore"></a>Semafor denetim bloğu TX_SEMAPHORE
+### <a name="semaphore-control-block-tx_semaphore"></a>Semaphore Denetim Bloğu TX_SEMAPHORE
 
-Her sayım semaforun özellikleri denetim bloğunda bulunur. Geçerli semafor sayısı gibi bilgileri içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır.
+Her sayma semaforu özellikleri denetim bloğunda bulunur. Geçerli semafor sayısı gibi bilgileri içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır.
 
-Semafor denetim blokları bellekte herhangi bir yerde bulunabilir, ancak herhangi bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
+Semafor denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline geldi.
 
-### <a name="deadly-embrace"></a>Dar küme
+### <a name="deadly-embrace"></a>Embrace'i Benimseme
 
-Karşılıklı dışlama için kullanılan semaforlarla ilişkili en ilgi çekici ve tehlikeli her bir tane, büyük *küme ayracı* olur. , *Bir veya daha* fazla iş parçacığının, birbirini zaten sahip olan Semaforlar alınmaya çalışılırken süresiz olarak askıya alındığı bir durumdur.
+Karşılıklı dışlama için kullanılan semaforlarla ilişkili en ilginç ve tehlikeli tuzaklardan biri, ile *kucaklamadır.* İki veya daha *fazla* iş parçacığının birbirine ait olan semaforları almaya çalışırken süresiz olarak askıya alınarak askıya alınan bir koşuldur.
 
-Bu koşul en iyi iki iş parçacığı, iki semafor örneği tarafından gösterilmiştir. İlk iş parçacığının ilk semafora sahip olduğunu ve ikinci iş parçacığının ikinci semafora sahip olduğunu varsayalım. İlk iş parçacığı ikinci semaforu almayı denerse ve ikinci iş parçacığı ilk semaforu almaya çalışırsa, her iki iş parçacığı de bir kilitlenme koşulu girer. Ayrıca, bu iş parçacıkları sonsuza kadar askıya alınırsa, ilişkili kaynakları da süresiz olarak kilitlenir. Şekil 8 ' de bu örnek gösterilmektedir.
+Bu koşul en iyi şekilde iki iş parçacığı tarafından gösterildi, iki semafor örneği. İlk iş parçacığının ilk semafora, ikinci iş parçacığının ise ikinci semafora sahip olduğunu varsayalım. İlk iş parçacığı ikinci semaforu almaya çalışır ve aynı zamanda ikinci iş parçacığı ilk semaforu almaya çalışırsa, her iki iş parçacığı da kilitlenme koşulu girer. Ayrıca, bu iş parçacıkları sonsuza kadar askıya alınırsa, ilişkili kaynakları da sonsuza kadar kilitlenir. Şekil 8'de bu örnek yer almaktadır.
 
-**Dar** (örnek)
+**Embrace (örnek)**
 
-![Askıya alınan Iş parçacıkları örneği](./media/user-guide/example-suspended-threads.png)
+![Askıya Alınan İş Parçacıkları Örneği](./media/user-guide/example-suspended-threads.png)
 
-**ŞEKIL 8. Askıya alınan Iş parçacıkları örneği**
+**ŞEKIL 8. Askıya Alınan İş Parçacıkları Örneği**
 
-Gerçek zamanlı sistemler için, iş parçacıklarının Semaforlar tarafından nasıl elde edileceği hakkında bazı kısıtlamalar yerleştirilerek, kilitlenmeleri engellenebilir. İş parçacıkları tek seferde yalnızca bir semafora sahip olabilir. Alternatif olarak, iş parçacıkları bunları aynı sırada topladıklarında birden fazla semafora sahip olabilir. Önceki örnekte, ilk ve ikinci semaforu sırayla ilk ve ikinci semaforu elde alıyorsa, bu, geçersiz ayraç engellenir.
+Gerçek zamanlı sistemlerde, iş parçacıklarının semaforları nasıl elde etmek için belirli kısıtlamalar koyarak kucaklamalar önlenebilir. İş parçacıkları aynı anda yalnızca bir semafora sahip olabilir. Alternatif olarak, iş parçacıkları aynı sırayla toplayarak birden çok semafora sahip olabilir. Önceki örnekte, birinci ve ikinci iş parçacığı sırasıyla birinci ve ikinci semaforu elde ettiyse, kucaklama engellenebilir.
 
 > [!TIP]
-> *Ayrıca, bir küme ayracından kurtarmak üzere alma işlemiyle ilişkili askıya alma zaman aşımını kullanmak da mümkündür.*
+> *Ayrıca alma işlemiyle ilişkili askıya alma zaman zamanlarını kullanarak bir kucaklamadan kurtulabilirsiniz.*
 
-### <a name="priority-inversion"></a>Öncelikli Inversion
+### <a name="priority-inversion"></a>Öncelik Ters Çevirme
 
-Karşılıklı dışlama semaforları ile ilişkili başka bir giriş de öncelikli bir sürümdür. Bu konu, "[Iş parçacığı önceliği](#thread-priority-pitfalls)konusundaki" bölümünde daha ayrıntılı olarak ele alınmıştır.
+Karşılıklı dışlama semaforları ile ilişkili başka bir tuzak, öncelik ters çevirmedir. Bu konu , " İş Parçacığı Önceliği[Tuzakları" başlığında daha tam olarak ele alınmıştır.](#thread-priority-pitfalls)
 
-Temel sorun, düşük öncelikli bir iş parçacığının daha yüksek öncelikli iş parçacığı gerektiren bir semafora sahip olduğu bir durumdan kaynaklanır. Bu, normal bir. Bununla birlikte, aralarında önceliklere sahip olan iş parçacıkları öncelik inen son kararlı olmayan bir süreye neden olabilir. Bu, iş parçacığı önceliklerinin dikkatli bir şekilde seçilebileceği, önalım-Threshold kullanılarak işlenebilir ve kaynağın sahibi olan iş parçacığının önceliği yüksek öncelikli iş parçacığından daha geçici olarak oluşturulur.
+Temel sorun, düşük öncelikli bir iş parçacığının daha yüksek öncelikli bir iş parçacığına gereken semafora sahip olduğu bir durumdan sonuç verir. Bu kendi içinde normaldir. Ancak, aralarında öncelikleri olan iş parçacıkları, öncelik ters çevirmenin belirsiz bir süreye kadar devam esnettiğine neden olabilir. Bu, iş parçacığı önceliklerinin dikkatli bir şekilde seçerek, ön atma eşiği kullanılarak ve kaynağın sahibi olan iş parçacığının önceliğini geçici olarak yüksek öncelikli iş parçacığının önceliğini yükselterek iş parçacığı önceliklerini ele alacağız.
 
 ## <a name="mutexes"></a>Zaman Uyumu Sağlayıcılar
 
-Semafora ek olarak, ThreadX bir mutex nesnesi de sağlar. Bir mutex, temelde bir iş parçacığının tek seferde bir mutex 'e sahip olabileceği anlamına gelen bir ikili semafor olur. Ayrıca, aynı iş parçacığı, sahip olunan bir mutex üzerinde başarılı bir mutex Get işlemini birden çok kez gerçekleştirebilir, 4.294.967.295 tam olarak olur. Mutex nesnesinde iki işlem vardır: ***tx_mutex_get** _ ve _ *_tx_mutex_put_* *. Get işlemi, başka bir iş parçacığına ait bulunmayan bir mutex edinir, PUT işlemi daha önce edinilen bir mutex 'i serbest bırakır. Bir mutex 'i serbest bırakmak için bir iş parçacığında, put işlemlerinin sayısı önceki Get işlemlerinin sayısına eşit olmalıdır.
+ThreadX, semaforlara ek olarak bir mutex nesnesi de sağlar. Bir mutex temelde ikili semafordan meydana gelir ve bu da aynı anda yalnızca bir iş parçacığının bir mutex'e sahip olduğu anlamına gelir. Ayrıca, aynı iş parçacığı sahip olunan bir mutex üzerinde tam olarak 4.294.967.295 olmak üzere birden çok kez başarılı bir mutex get işlemi gerçekleştirebilirsiniz. Mutex nesnesinde iki işlem var: ***tx_mutex_get** _ ve _*_tx_mutex_put_**. Alma işlemi başka bir iş parçacığına ait değil bir mutex elde ederken, put işlemi daha önce elde edilen bir mutex'i serbest bıraktır. Bir iş parçacığının bir mutex'i serbest bırakması için, put işlemlerinin sayısı önceki get işlemlerinin sayısına eşit olması gerekir.
 
-Her Mutex ortak bir kaynaktır. ThreadX, zaman uyumu sağlayıcılar için kullanım kısıtlamaları yoktur.
+Her mutex genel bir kaynaktır. ThreadX, mutex'lerin nasıl kullanıldıklarını kısıtlamaz.
 
-ThreadX *mukapsamalarla yalnızca karşılıklı dışlama* için kullanılır. Sayma semaforlarından farklı olarak, zaman uyumu sağlayıcılar olay bildirimi için bir yöntem olarak kullanılamaz.
+ThreadX mutex'leri yalnızca karşılıklı *dışlama için kullanılır.* Sayma semaforların aksine, mutex'ler olay bildirimi için yöntem olarak kullanmaz.
 
-### <a name="mutex-mutual-exclusion"></a>Mutex karşılıklı dışlaması
+### <a name="mutex-mutual-exclusion"></a>Karşılıklı Dışlama Mutex
 
-Sayım semaforu bölümündeki tartışmaya benzer şekilde, karşılıklı dışlama, iş parçacıklarının belirli uygulama bölgelerine erişimini denetlemeyle ( *kritik bölümler* veya *uygulama kaynakları* olarak da bilinir) ilgilidir. Kullanılabilir olduğunda, bir ThreadX mutex 'in sahiplik sayısı 0 olur. Mutex bir iş parçacığı tarafından alındıktan sonra, mutex üzerinde gerçekleştirilen başarılı alma işlemleri için bir kez, her başarılı Put işlemi için azaltılır.
+Sayma semaforu bölümündeki tartışmaya benzer şekilde, karşılıklı dışlama belirli uygulama alanlarına (kritik  bölümler veya uygulama kaynakları olarak da adlandırılan) iş parçacıklarının erişimini *denetlemeyle ilgilidir.* Kullanılabilir olduğunda, ThreadX mutex'in sahiplik sayısı 0 olur. Mutex bir iş parçacığı tarafından alındıktan sonra, mutex üzerinde gerçekleştirilen her başarılı alma işlemi için sahiplik sayısı bir kez artırılır ve her başarılı koyma işlemi için azaltılır.
 
-### <a name="creating-mutexes"></a>Birbirini kapsamayan oluşturma
+### <a name="creating-mutexes"></a>Mutex'ler Oluşturma
 
-ThreadX muizlik, başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Bir mutex 'in ilk koşulu her zaman "kullanılabilir" dır. Ayrıca, *Öncelik devralma* seçili olarak bir mutex oluşturulabilir.
+ThreadX mutex'leri başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanında oluşturulur. Bir mutex'in ilk koşulu her zaman "kullanılabilir" olur. Öncelik devralma seçiliyken bir mutex *de oluşturulabilir.*
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
 Uygulama iş parçacıkları, zaten başka bir iş parçacığına ait olan bir mutex üzerinde alma işlemi gerçekleştirmeye çalışırken askıya alabilir.
 
-Sahip iş parçacığı tarafından aynı sayıda Put işlemi gerçekleştirildikten sonra, askıya alınan iş parçacığının alma işlemi gerçekleştirilir, bu da mutex 'in sahipliğini verir ve iş parçacığı sürdürülür. Aynı mutex üzerinde birden fazla iş parçacığı askıya alınırsa, bunlar askıya alındığı sırada sürdürülür (FıFO).
+Aynı sayıda koyma işlemi sahip olan iş parçacığı tarafından gerçekleştirildikten sonra, askıya alınan iş parçacığının alma işlemi gerçekleştirilir, buna mutex sahipliği ve iş parçacığı devam ettirir. Aynı mutex üzerinde birden çok iş parçacığı askıya alınırsa, bunlar askıya alındıklarına (FIFO) aynı sırayla devam eder.
 
-Ancak, bir öncelik sürdürme, oluşturma sırasında mutex önceliği devralımı seçildiyse otomatik olarak yapılır. Uygulama, iş parçacığı askıya alma çağrısını askıya alan mutex put çağrısından önce ***tx_mutex_prioritize*** çağırdığında öncelik sürdürme de mümkündür. Mutex öncelik sıralaması hizmeti, en yüksek öncelikli iş parçacığını askıya alma listesinin önüne koyar, diğer tüm askıya alınan iş parçacıklarını aynı FıFO sırasıyla bırakır.
+Ancak, oluşturma sırasında mutex öncelik devralması seçildiyse öncelik yeniden verme işlemi otomatik olarak yapılır. Uygulama, iş parçacığının askıya alınmasına neden ***olan mutex put çağrısından tx_mutex_prioritize*** çağrısından önce çağrılsa da öncelik verme mümkündür. Mutex öncelik belirleme hizmeti en yüksek öncelikli iş parçacığını askıya alma listesinin önüne, diğer tüm askıya alınmış iş parçacıklarını aynı FIFO sırasına göre bırakarak yer alıyor.
 
-### <a name="run-time-mutex-performance-information"></a>Çalışma zamanı mutex performans bilgileri
+### <a name="run-time-mutex-performance-information"></a>Çalışma Zamanı Mutex Performans Bilgileri
 
-ThreadX isteğe bağlı çalışma zamanı mutex performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış **TX_MUTEX_ENABLE_PERFORMANCE_INFO** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
+ThreadX, isteğe bağlı çalışma zamanı mutex performans bilgileri sağlar. ThreadX kitaplığı ve uygulaması tanımlı bir **TX_MUTEX_ENABLE_PERFORMANCE_INFO,** ThreadX aşağıdaki bilgileri birikmektedir.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
-- mutex koyar
+- mutex puts
 
-- Mutex zaman alır
+- mutex alır
 
-- mutex Get getirilmesi
+- mutex get suspensions
 
-- Mutex zaman aşımlarını al
+- mutex get timeouts
 
-- mutex öncelik Inversions 'ları
+- mutex öncelik ters çevirmeleri
 
-- mutex öncelik Inheritances
+- mutex öncelik devralmaları
 
 Her bir mutex için toplam sayı:
 
-  - mutex koyar
+  - mutex puts
 
-  - Mutex zaman alır
+  - mutex alır
 
-  - mutex Get getirilmesi
+  - mutex get suspensions
 
-  - Mutex zaman aşımlarını al
+  - mutex get timeouts
 
-  - mutex öncelik Inversions 'ları
+  - mutex öncelik ters çevirmeleri
 
-  - mutex öncelik Inheritances
+  - mutex öncelik devralmaları
 
-Bu bilgiler, ***tx_mutex_performance_info_get** _ ve _ *_tx_mutex_performance_system_info_get_* * Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Mutex performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır. Örneğin, görece yüksek sayıda "mutex Get zaman aşımları", diğer iş parçacıklarının kaynakları çok uzun tuttuklarından kaynaklanabilir.
+Bu bilgiler * tx_mutex_performance_info_get **_** ve _* tx_mutex_performance_system_info_get ** hizmetleri aracılığıyla _çalışma zamanında_ kullanılabilir. Mutex performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemek için yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır. Örneğin, görece yüksek sayıda "mutex get timeouts" diğer iş parçacıklarının kaynakları çok uzun süre tutması önerisinde olabilir.
 
-### <a name="mutex-control-block-tx_mutex"></a>Mutex denetim bloğu TX_MUTEX
+### <a name="mutex-control-block-tx_mutex"></a>Mutex Denetim Bloğu TX_MUTEX
 
-Her bir mutex 'in özellikleri denetim bloğunda bulunur. Mutex sahibi olan iş parçacığının işaretçisi ile birlikte geçerli mutex sahiplik sayısı gibi bilgileri içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır. Mutex denetim blokları bellekte herhangi bir yerde bulunabilir, ancak herhangi bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
+Her bir mutex'in özellikleri denetim bloğunda bulunur. Geçerli mutex sahipliği sayısı gibi bilgileri ve mutex'in sahibi olan iş parçacığının işaretçisini içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır. Mutex denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline geliyor.
 
-### <a name="deadly-embrace"></a>Dar küme
+### <a name="deadly-embrace"></a>Embrace'i Benimseme
 
-Mutex sahipliğiyle ilişkili en ilgi çekici ve tehlikeli her bir tane, büyük *küme ayracı* olur. Bir veya daha fazla iş parçacığının, diğer iş parçacıklarından zaten sahip olan bir mutex alınmaya çalışılırken *süresiz olarak askıya* alındığı bir durumdur. Geçersiz kılmadan *ve düzeltmelerinin* tartışılması, mutex nesnesi için de tamamen geçerlidir.
+Mutex sahipliğiyle ilişkili en ilginç ve tehlikeli tuzaklardan biri, *benimsemektir.* Bir kucaklama ya da *çıkmaz,* diğer iş parçacıklarının sahip olduğu bir mutex'i almaya çalışırken iki veya daha fazla iş parçacığının süresiz olarak askıya alınarak askıya alınan bir koşuldur. Benimseme *tartışmaları ve* çözüm yolları, mutex nesnesi için de tamamen geçerlidir.
 
-### <a name="priority-inversion"></a>Öncelikli Inversion
+### <a name="priority-inversion"></a>Öncelik Ters Çevirme
 
-Daha önce belirtildiği gibi, karşılıklı dışlamaya ilişkin büyük bir ana hat öncelik Inversion olur. Bu konu, "[Iş parçacığı önceliği](#thread-priority-pitfalls)konusundaki" bölümünde daha ayrıntılı olarak ele alınmıştır.
+Daha önce belirtildiği gibi, karşılıklı dışlama ile ilişkili önemli bir tuzak öncelik ters çevirmedir. Bu konu , " İş Parçacığı Önceliği[Tuzakları" başlığında daha tam olarak ele alınmıştır.](#thread-priority-pitfalls)
 
-Temel sorun, düşük öncelikli bir iş parçacığının daha yüksek öncelikli iş parçacığı gerektiren bir semafora sahip olduğu bir durumdan kaynaklanır. Bu, normal bir. Bununla birlikte, aralarında önceliklere sahip olan iş parçacıkları öncelik inen son kararlı olmayan bir süreye neden olabilir. Daha önce tartışılan Semaforlardan farklı olarak, ThreadX mutex nesnesi isteğe bağlı *öncelikli devralıma* sahiptir Öncelikli mirasın arkasındaki temel düşünce, düşük öncelikli bir iş parçacığının önceliği geçici olarak, düşük öncelikli iş parçacığına ait olan aynı mutex 'i isteyen yüksek öncelikli bir iş parçacığının önceliği olarak yükseltilir. Düşük öncelikli iş parçacığı mutex 'i serbest bıraktığında, özgün önceliği geri yüklenir ve daha yüksek öncelikli iş parçacığına mutex 'in sahipliği verilir. Bu özellik, düşük öncelikli iş parçacığının mutex 'i tuttuğu zamana kadar Inversion miktarı arasında sınırlama yaparak belirleyici olmayan öncelikli sürümü ortadan kaldırır. Tabii ki, bu bölümde daha önce ele alınan önemli olmayan öncelik Inversion 'ı ele almak için bahsedilen teknikler de de aynı zamanda zaman uyumu sağlayıcılar ile de geçerlidir.
+Temel sorun, daha düşük öncelikli bir iş parçacığının daha yüksek öncelikli bir iş parçacığına gereken semafora sahip olduğu bir durumdan sonuç verir. Bu kendi içinde normaldir. Ancak, aralarında öncelikleri olan iş parçacıkları, öncelik ters çevirmenin belirsiz bir süreye kadar devam esnettiğine neden olabilir. Daha önce tartışılan semaforların aksine, ThreadX mutex nesnesinin isteğe bağlı öncelik *devralması vardır.* Öncelik devralmanın ardındaki temel fikir, düşük öncelikli bir iş parçacığının önceliğini geçici olarak, aynı mutex'in düşük öncelikli iş parçacığına ait olması gereken yüksek öncelikli iş parçacığının önceliğe yükseltmiş olmasıdır. Düşük öncelikli iş parçacığı mutex'i serbest bıraksa, özgün önceliği geri yüklenir ve yüksek öncelikli iş parçacığına mutex sahipliği verilir. Bu özellik, ters çevirme miktarını düşük öncelikli iş parçacığının mutex'i tutarken sınırlaarak belirlenemeyen öncelik ters çevirmeyi ortadan kaldırıyor. Elbette, bu bölümün önceki kısımlarında tartışılan ve belirlenimci olmayan öncelik ters çevirmeyi işlemek için kullanılan teknikler de mutex'lerde geçerlidir.
 
-## <a name="event-flags"></a>Olay bayrakları
+## <a name="event-flags"></a>Olay Bayrakları
 
-Olay bayrakları, iş parçacığı eşitlemesi için güçlü bir araç sağlar. Her olay bayrağı tek bir bit ile temsil edilir. Olay bayrakları 32 gruplar halinde düzenlenir. İş parçacıkları bir gruptaki tüm 32 olay bayraklarıyla aynı anda çalışabilir. Olaylar ***tx_event_flags_set** _ tarafından ayarlanır ve _ *_tx_event_flags_get_* * tarafından alınır.
+Olay bayrakları, iş parçacığı eşitleme için güçlü bir araç sağlar. Her olay bayrağı tek bir bitle temsil edildi. Olay bayrakları 32 grup halinde düzenlenmiştir. İş parçacıkları bir gruptaki 32 olay bayrağının hepsinde aynı anda çalışır. Olaylar * tx_event_flags_set **_** tarafından ayarlanır ve _* tx_event_flags_get **_tarafından_ alınır.
 
-Olay bayraklarını ayarlama, geçerli olay bayrakları ve yeni olay bayrakları arasındaki mantıksal bir ve/veya işlemle yapılır. ***Tx_event_flags_set*** çağrısında mantıksal işlemin türü (bir ve veya veya ya da) belirtilir.
+Olay bayraklarını ayarlama, geçerli olay bayrakları ile yeni olay bayrakları arasında mantıksal bir AND/OR işlemiyle yapılır. Mantıksal işlem türü (AND veya OR) çağrıda tx_event_flags_set ***belirtilir.***
 
-Olay bayraklarının alınması için benzer mantıksal seçenekler vardır. Get isteği, belirtilen tüm olay bayraklarının gerektiğini (mantıksal ve) belirtebilir.
+Olay bayraklarının alınması için benzer mantıksal seçenekler vardır. Bir get isteği, belirtilen tüm olay bayraklarının gerekli olduğunu (mantıksal AND) belirtebiliyor.
 
-Alternatif olarak, bir get isteği, belirtilen olay bayraklarının herhangi birinin isteği (mantıksal veya) yerine getireceğini belirtebilir. Olay bayrakları almayla ilişkili mantıksal işlemin türü ***tx_event_flags_get*** çağrısında belirtilmiştir.
+Alternatif olarak, bir get isteği belirtilen olay bayraklarının herhangi biri isteği (mantıksal VEYA) karşılar. Olay bayraklarını alma işlemiyle ilişkili mantıksal işlem türü, tx_event_flags_get ***belirtilir.***
 
 > [!IMPORTANT]
-> *Bir get isteğini karşılayan olay bayrakları* , *istek tarafından* **TX_OR_CLEAR** *veya* **TX_AND_CLEAR** belirtilmişse, yani sıfır olarak ayarlanır.
+> *Bir get isteğini karşılayan* olay bayrakları, istek tarafından belirtilirse TX_OR_CLEAR veya **TX_AND_CLEAR**   *olarak ayarlanır.*
 
-Her olay bayrakları grubu, ortak bir kaynaktır. ThreadX, olay bayrakları gruplarının nasıl kullanıldığına ilişkin bir kısıtlama yoktur.
+Her olay bayrak grubu genel bir kaynaktır. ThreadX, olay bayraklarının nasıl kullanıldıklarıyla ilgili hiçbir kısıtlama uygulamaz.
 
-### <a name="creating-event-flags-groups"></a>Olay bayrakları grupları oluşturma
+### <a name="creating-event-flags-groups"></a>Olay Bayrakları Grupları Oluşturma
 
-Olay bayrakları grupları, başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Oluşturma sırasında, gruptaki tüm olay bayrakları sıfır olarak ayarlanır. Bir uygulamadaki olay bayrakları gruplarının sayısı için bir sınır yoktur.
+Olay bayrakları grupları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanında oluşturulur. Oluşturma sırasında, gruptaki tüm olay bayrakları sıfır olarak ayarlanır. Bir uygulamanın olay bayraklarının sayısıyla ilgili bir sınır yoktur.
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
-Uygulama iş parçacıkları bir gruptan olay bayraklarının herhangi bir mantıksal birleşimini almaya çalışırken askıya alabilir. Bir olay bayrağı ayarlandıktan sonra, askıya alınmış tüm iş parçacıklarının get istekleri gözden geçirilir. Artık gerekli olay bayraklarına sahip olan tüm iş parçacıkları sürdürülür.
+Uygulama iş parçacıkları, bir gruptan herhangi bir mantıksal olay bayrağı birleşimini almaya çalışırken askıya alabilir. Bir olay bayrağı ayarlandıktan sonra, askıya alınan tüm iş parçacıklarının alma istekleri gözden geçirildi. Artık gerekli olay bayraklarına sahip olan tüm iş parçacıkları devam eder.
 
 > [!NOTE]
-> *Olay bayrağı grubundaki askıya alınmış tüm iş parçacıkları, olay bayrakları ayarlandığında gözden geçirilir. Kuşkusuz bu, ek yük getirir. Bu nedenle, aynı olay bayrağı grubunu kullanan iş parçacığı sayısını makul bir sayıyla sınırlamak iyi bir uygulamadır.*
+> *Bir olay bayrağı grubunda askıya alınan tüm iş parçacıkları, olay bayrakları ayarlanırken gözden geçirildi. Elbette bu ek yük getirir. Bu nedenle, aynı olay bayrağı grubunu kullanarak iş parçacığı sayısını makul bir sayıyla sınırlamak iyi bir uygulamadır.*
 
-### <a name="event-flags-set-notification"></a>Olay bayrakları ayarlama bildirimi
+### <a name="event-flags-set-notification"></a>Olay Bayrakları Bildirim Kümesi
 
-Bazı uygulamalar, bir olay bayrağı her ayarlandığında bildirim almak için yararlı bulabilir. ThreadX, ***tx_event_flags_set_notify*** hizmeti aracılığıyla bu yeteneği sağlar. Bu hizmet, belirtilen olay bayrakları grubuyla sağlanan uygulama bildirim işlevini kaydeder. Daha sonra ThreadX, gruptaki bir olay bayrağı ayarlandığında, bu uygulama bildirim işlevini çağırır. Uygulama bildirim işlevi içindeki tam işlem uygulama tarafından belirlenir, ancak genellikle yeni olay bayrağını işlemek için uygun iş parçacığını sürdürmeden oluşur.
+Bazı uygulamalar, bir olay bayrağı her ayar olduğunda bunun bildirilecek bir avantaj olduğunu bulabilir. ThreadX, bu özelliği tx_event_flags_set_notify ***sağlar.*** Bu hizmet, sağlanan uygulama bildirim işlevini belirtilen olay bayrakları grubuna kaydediyor. ThreadX daha sonra grupta bir olay bayrağı ayarlandığında bu uygulama bildirim işlevini çağırır. Uygulama bildirim işlevi içindeki tam işlem uygulama tarafından belirlenir, ancak genellikle yeni olay bayrağını işlemeye uygun iş parçacığını devamdan oluşur.
 
-### <a name="event-flags-event-chainingtrade"></a>Olay bayrakları olay zinciri&trade;
+### <a name="event-flags-event-chainingtrade"></a>Olay Bayrakları Olay zinciri&trade;
 
-ThreadX içindeki bildirim özellikleri, çeşitli eşitleme olaylarını birlikte "zincirleme" için kullanılabilir. Bu, genellikle tek bir iş parçacığının birden çok eşitleme olayını işlemesi gerektiğinde faydalıdır.
+ThreadX'in bildirim özellikleri çeşitli eşitleme olaylarını birlikte "zincirleme" için kullanılabilir. Bu genellikle tek bir iş parçacığının birden çok eşitleme olaylarını işlemesi gereken durumlarda kullanışlıdır.
 
-Örneğin, bir kuyruk iletisi, olay bayrakları ve semafor için ayrı iş parçacıkları askıya almak yerine, uygulama her nesne için bir bildirim yordamı kaydedebilir. Çağrıldığında, uygulama bildirimi yordamı tek bir iş parçacığını sürdürür, bu da her bir nesneye sorgulanamıyor, bu da yeni olayı bulup işleyebilir.
+Örneğin, bir kuyruk iletisi, olay bayrakları ve semafor için ayrı iş parçacıklarının askıya alınması yerine, uygulama her nesne için bir bildirim yordamını kaydedebilir. Çağrıldığında, uygulama bildirim yordamı tek bir iş parçacığını sürdürebilir ve bu da yeni olayı bulmak ve işlemek için her nesneyi sorgular.
 
-Genel olarak, *olay zincirleme* daha az iş parçacığı, daha az ek yük ve daha küçük RAM gereksinimlerine neden olur. Ayrıca, daha karmaşık sistemlerin eşitleme gereksinimlerini işlemek için yüksek düzeyde esnek bir mekanizma sağlar.
+Genel olarak, *olay zinciri daha az iş* parçacığına, daha az ek yüke ve daha küçük RAM gereksinimlerine neden olur. Ayrıca, daha karmaşık sistemlerin eşitleme gereksinimlerini işlemek için son derece esnek bir mekanizma sağlar.
 
-### <a name="run-time-event-flags-performance-information"></a>Çalışma zamanı olay bayrakları performans bilgileri
+### <a name="run-time-event-flags-performance-information"></a>Çalışma Zamanı Olay Bayrakları Performans Bilgileri
 
-ThreadX isteğe bağlı çalışma zamanı olay bayrakları performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış **TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
+ThreadX, isteğe bağlı çalışma zamanı olay bayrakları performans bilgileri sağlar. ThreadX kitaplığı ve uygulaması tanımlı bir **TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO,** ThreadX aşağıdaki bilgileri birikiyor.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
   - olay bayrakları kümeleri
 
-  - olay bayrakları alır
+  - olay bayrakları
 
-  - olay bayrakları getirilmesi al
+  - olay bayrakları askıya alındı
 
-  - olay bayrakları zaman aşımlarını al
+  - olay bayrakları zaman aşımına neden olur
 
-Her olay bayrakları grubu için toplam sayı:
+Her olay bayrak grubu için toplam sayı:
 
   - olay bayrakları kümeleri
 
-  - olay bayrakları alır
+  - olay bayrakları
 
-  - olay bayrakları getirilmesi al
+  - olay bayrakları askıya alındı
 
-  - olay bayrakları zaman aşımlarını al
+  - olay bayrakları zaman aşımına neden olur
 
-Bu bilgiler, ***tx_event_flags_performance_info_get** _ ve _*_tx_event_flags_performance_system_info_get_*_ Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Olay bayraklarının performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır. Örneğin, _ *_tx_event_flags_get_** hizmetindeki görece yüksek sayıda zaman aşımı, olay bayrakları askıya alma zaman aşımı değerinin çok kısa olduğunu önerebilir.
+Bu bilgiler çalışma zamanında * tx_event_flags_performance_info_get _ **ve tx_event_flags_performance_system_info_get.** _**_ Olay bayraklarının performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemede yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır. Örneğin,*___* tx_event_flags_get * hizmette görece yüksek sayıda zaman aşımı olması, olay bayraklarının askıya alınma zaman aşımının çok kısa olduğunu önermiş olabilir.
 
-### <a name="event-flags-group-control-block-tx_event_flags_group"></a>Olay bayrakları Grup denetim bloğu TX_EVENT_FLAGS_GROUP
+### <a name="event-flags-group-control-block-tx_event_flags_group"></a>Event Flags Grup Denetim Bloğu TX_EVENT_FLAGS_GROUP
 
-Her olay bayrakları grubunun özellikleri denetim bloğunda bulunur. Geçerli olay bayrakları ayarları ve olaylar için askıya alınan iş parçacığı sayısı gibi bilgileri içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır.
+Her olay bayrak grubunun özellikleri denetim bloğunda bulunur. Geçerli olay bayrakları ayarları ve olaylar için askıya alınan iş parçacığı sayısı gibi bilgileri içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır.
 
-Olay grubu denetim blokları bellekte herhangi bir yerde bulunabilir, ancak herhangi bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
+Olay grubu denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline yaygındır.
 
-### <a name="memory-block-pools"></a>Bellek blok havuzları
+### <a name="memory-block-pools"></a>Bellek Blok Havuzları
 
-Bellek hızlı ve belirleyici bir şekilde ayrılırken gerçek zamanlı uygulamalarda her zaman bir zorluk vardır. Bu aklınızda, ThreadX, birden çok sabit boyutlu bellek bloğu havuzu oluşturma ve yönetme olanağı sağlar.
+Belleğin hızlı ve belirlenimci bir şekilde belirlenmesi, gerçek zamanlı uygulamalarda her zaman bir zorlukdur. ThreadX, sabit boyutlu bellek bloklarından birden çok havuz oluşturma ve yönetme olanağı sağlar.
 
-Bellek blok havuzları sabit boyutlu bloklardan oluştuğundan hiçbir parçalama sorunu yoktur. Tabii ki parçalama, doğal olarak belirleyici olmayan davranışa neden olur. Ayrıca, sabit boyutlu bir bellek bloğunu ayırmak ve serbest bırakmak için gereken süre, basit bağlantılı liste işleme ile karşılaştırılabilir. Ayrıca, bellek bloğu ayırma ve ayırmayı kaldırma, kullanılabilir listenin başında yapılır. Bu, mümkün olan en hızlı bağlantılı liste işlemesini sağlar ve gerçek bellek bloğunu önbellekte tutmaya yardımcı olabilir.
+Bellek bloğu havuzları sabit boyutlu bloklardan oluşan olduğundan, hiçbir zaman parçalanma sorunu oluşturmaz. Elbette parçalanma, doğası gereği belirlenemeyen davranışlara neden olur. Ayrıca, sabit boyutlu bir bellek bloğu ayırmak ve serbest bırakma süresi, basit bağlantılı liste işlemesi ile karşılaştırılabilir. Ayrıca, kullanılabilir listenin başında bellek bloğu ayırma ve ayırmayı geri alır. Bu, mümkün olan en hızlı bağlantılı liste işlemeyi sağlar ve gerçek bellek bloğun önbellekte tutmaya yardımcı olabilir.
 
-Esneklik olmaması, sabit boyutlu bellek havuzlarının başlıca dezavantajıdır. Havuzun blok boyutu, kullanıcılarının en kötü durum bellek gereksinimlerini karşılayacak kadar büyük olmalıdır. Tabii ki aynı havuza çok sayıda farklı bellek isteği yapılırsa bellek harcanmayabilir. Olası bir çözüm, farklı boyutlardaki bellek blokları içeren birkaç farklı bellek bloğu havuzu oluşturmak olur.
+Esneklik eksikliği, sabit boyutlu bellek havuzlarının temel dezavantajıdır. Bir havuzun blok boyutu, kullanıcılarının en kötü durum bellek gereksinimlerini işecek kadar büyük olmalı. Elbette, aynı havuza çok sayıda farklı boyutta bellek isteği yapılırsa bellek boşa harcanmış olabilir. Olası bir çözüm, farklı boyutlu bellek blokları içeren birkaç farklı bellek bloğu havuzu yapmaktır.
 
-Her bellek blok havuzu bir ortak kaynaktır. ThreadX, havuzların nasıl kullanıldığına ilişkin bir kısıtlama yoktur.
+Her bellek bloğu havuzu genel bir kaynaktır. ThreadX, havuzların nasıl kullanıldıklarına hiçbir kısıtlama uygulamaz.
 
-### <a name="creating-memory-block-pools"></a>Bellek blok havuzları oluşturma
+### <a name="creating-memory-block-pools"></a>Bellek Blok Havuzları Oluşturma
 
-Bellek blok havuzları, başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Bir uygulamadaki bellek bloğu havuzlarının sayısı için bir sınır yoktur.
+Bellek bloğu havuzları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanında oluşturulur. Bir uygulamanın bellek bloğu havuzlarının sayısına bir sınır yoktur.
 
-### <a name="memory-block-size"></a>Bellek blok boyutu
+### <a name="memory-block-size"></a>Bellek Bloğu Boyutu
 
-Daha önce belirtildiği gibi, bellek blok havuzları bir dizi sabit boyutlu blok içerir. Havuzun oluşturulması sırasında blok boyutu bayt cinsinden belirtilir.
+Daha önce belirtildiği gibi, bellek blok havuzları bir dizi sabit boyutlu blok içerir. Bayt cinsinden blok boyutu, havuzun oluşturulması sırasında belirtilir.
 
 > [!NOTE]
-> *ThreadX, havuzdaki her bir bellek bloğuna küçük bir ek yük (C işaretçisi boyutu) ekler. Ayrıca, ThreadX ' in her bir bellek bloğunun başlangıcını doğru hizalamadan korumak için blok boyutunu doldurma gerekebilir.*
+> *ThreadX, havuza her bir bellek bloğuna küçük miktarda ek yük (C işaretçisi boyutu) ekler. Buna ek olarak, ThreadX'in her bellek bloğunun başlangıcını düzgün hizalamada tutmak için blok boyutunun hizalanması da gerekli olabilir.*
 
-### <a name="pool-capacity"></a>Havuz kapasitesi
+### <a name="pool-capacity"></a>Havuz Kapasitesi
 
-Bir havuzdaki bellek bloklarının sayısı, blok boyutunun bir işlevidir ve oluşturma sırasında sağlanan bellek alanındaki toplam bayt sayısıdır. Havuzun kapasitesi, blok boyutu (doldurma ve işaretçi ek yükü baytları dahil), sağlanan bellek alanındaki toplam bayt sayısına bölünerek hesaplanır.
+Havuzdaki bellek bloklarının sayısı, blok boyutuna ve oluşturma sırasında sağlanan bellek alanında sağlanan toplam bayt sayısına sahip bir işlevdir. Bir havuzun kapasitesi, blok boyutu (doldurma ve işaretçi ek yükü baytları dahil) sağlanan bellek alanında toplam bayt sayısına bölünerek hesaplanır.
 
-### <a name="pools-memory-area"></a>Havuzun bellek alanı
+### <a name="pools-memory-area"></a>Havuzun Bellek Alanı
 
-Daha önce belirtildiği gibi, blok havuzu için bellek alanı oluşturma sırasında belirtilir. ThreadX içindeki diğer bellek alanları gibi, hedefin adres alanında herhangi bir yerde bulunabilir.
+Daha önce belirtildiği gibi, blok havuzunun bellek alanı oluşturma sırasında belirtilir. ThreadX'in diğer bellek alanlarında olduğu gibi, hedefin adres alanı içinde herhangi bir yerde yer alıyor olabilir.
 
-Bu, sağladığı önemli esneklik nedeniyle önemli bir özelliktir. Örneğin, bir iletişim ürününün g/ç için bir Highspeed bellek alanı olduğunu varsayalım. Bu bellek alanı, bir ThreadX bellek blok havuzunda yapılarak kolayca yönetilebilir.
+Sağladığı önemli esneklik nedeniyle bu önemli bir özelliktir. Örneğin, bir iletişim ürününün, I/O için yüksek bir bellek alanına sahip olduğunu varsayalım. Bu bellek alanı, bir ThreadX bellek bloğu havuzuna dönüştürerek kolayca yönetilir.
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
-Uygulama iş parçacıkları boş havuzdan bir bellek bloğunun beklediği sırada askıya alabilir. Havuza bir blok döndürüldüğünde, askıya alınan iş parçacığına bu blok verilir ve iş parçacığı sürdürülür.
+Uygulama iş parçacıkları boş bir havuzdan bellek bloğu beklerken askıya alabilir. Havuza bir blok döndürüldü, askıya alınan iş parçacığına bu blok verilir ve iş parçacığı devam eder.
 
-Aynı bellek bloğu havuzunda birden çok iş parçacığı askıya alınırsa, bunlar askıya alındığı sırada sürdürülür (FıFO).
+Aynı bellek bloğu havuzunda birden çok iş parçacığı askıya alınırsa, bunlar askıya alındıklarına (FIFO) göre devam eder.
 
-Ancak, uygulama, iş parçacığı askıya alma işleminden önce blok yayın çağrısından önce ***tx_block_pool_prioritize*** çağırırsa öncelik sürdürme de mümkündür. Blok havuzu öncelik sıralaması hizmeti, en yüksek öncelikli iş parçacığını askıya alma listesinin önüne koyar, diğer tüm askıya alınan iş parçacıklarını aynı FıFO sırasıyla bırakır.
+Ancak uygulama, iş parçacığının askıya alınmasına neden ***olan blok tx_block_pool_prioritize*** çağrısından önce çağrılsa öncelik verme de mümkündür. Blok havuzu öncelik belirleme hizmeti en yüksek öncelikli iş parçacığını askıya alma listesinin önüne, diğer tüm askıya alınmış iş parçacıklarını da aynı FIFO sırasına göre bırakarak yer alıyor.
 
-### <a name="run-time-block-pool-performance-information"></a>Çalışma zamanı blok havuzu performans bilgileri
+### <a name="run-time-block-pool-performance-information"></a>Çalışma Zamanı Blok Havuzu Performans Bilgileri
 
-ThreadX isteğe bağlı çalışma zamanı blok havuzu performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış **TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
+ThreadX, isteğe bağlı çalışma zamanı blok havuzu performans bilgileri sağlar. ThreadX kitaplığı ve uygulaması tanımlı bir **TX_BLOCK_POOL_ENABLE_PERFORMANCE_INFO,** ThreadX aşağıdaki bilgileri birikiyor.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
   - ayrılan bloklar
 
-  - çıkarılan bloklar
+  - yayımlanan bloklar
 
-  - ayırma getirilmesi
+  - ayırma askıya almaları
 
-  - ayırma zaman aşımları
+  - ayırma zaman aşımı
 
 Her blok havuzu için toplam sayı:
 
   - ayrılan bloklar
 
-  - çıkarılan bloklar
+  - yayımlanan bloklar
 
-  - ayırma getirilmesi
+  - ayırma askıya almaları
 
-  - ayırma zaman aşımları
+  - ayırma zaman aşımı
 
-Bu bilgiler, ***tx_block_pool_performance_info_get** _ ve _ *_tx_block_pool_performance_system_info_get_* * Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Blok havuzu performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır. Örneğin, görece yüksek sayıda "Allocation getirilmesi", blok havuzunun çok küçük olmasını önerebilir.
+Bu bilgiler * tx_block_pool_performance_info_get **_** ve _* tx_block_pool_performance_system_info_get **_hizmetleri aracılığıyla çalışma zamanında_ kullanılabilir. Blok havuzu performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemede yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır. Örneğin, görece yüksek sayıda "ayırma askıya alma" blok havuzunun çok küçük olduğunu önerebiliriz.
 
-### <a name="memory-block-pool-control-block-tx_block_pool"></a>Bellek blok havuzu denetim bloğu TX_BLOCK_POOL
+### <a name="memory-block-pool-control-block-tx_block_pool"></a>Bellek Blok Havuzu Denetim Bloğu TX_BLOCK_POOL
 
-Her bir bellek bloğu havuzunun özellikleri denetim bloğunda bulunur. Kullanılabilir bellek bloğu sayısı ve bellek havuzu blok boyutu gibi bilgileri içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır.
+Her bellek bloğu havuzunun özellikleri denetim bloğunda bulunur. Kullanılabilir bellek bloğu sayısı ve bellek havuzu blok boyutu gibi bilgileri içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır.
 
-Havuz denetim blokları ayrıca bellekte herhangi bir yerde bulunabilir, ancak her bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak en yaygın hale gelir.
+Havuz denetim blokları bellekte herhangi bir yerde de yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline geldi.
 
-### <a name="overwriting-memory-blocks"></a>Bellek bloklarının üzerine yazma
+### <a name="overwriting-memory-blocks"></a>Bellek Bloklarının Üzerine Yazma
 
-Ayrılmış bir bellek bloğunun kullanıcısının sınırlarının dışına yazmadığından emin olmak önemlidir. Bu durumda, bir komşu (genellikle sonraki) bellek alanında bozulma oluşur. Sonuçlar tahmin edilemez ve genellikle uygulama için önemli olur.
+Ayrılmış bir bellek bloğu kullanıcılarının sınırlarının dışına yazmaması önemlidir. Bu durumda bozulma bitişik (genellikle sonraki) bir bellek alanında oluşur. Sonuçlar tahmin edilemez ve genellikle uygulama için önemli olur.
 
-## <a name="memory-byte-pools"></a>Bellek bayt havuzları
+## <a name="memory-byte-pools"></a>Bellek Byte Havuzları
 
-ThreadX bellek bayt havuzları standart C yığınına benzer. Standart C yığınının aksine, birden çok bellek bayt havuzu olması mümkündür. Ayrıca, iş parçacıkları istenen bellek kullanılabilir olana kadar bir havuzda askıda olabilir.
+ThreadX bellek bayt havuzları standart bir C yığınına benzer. Standart C yığınının aksine, birden çok bellek bayt havuzu olabilir. Ayrıca, istenen bellek kullanılabilir olana kadar iş parçacıkları bir havuzda askıya alabilir.
 
-Bellek bayt havuzlarından ayırmalar, istenen bellek miktarını (bayt cinsinden) içeren geleneksel ***malloc** _ çağrılarına benzerdir. Bellek, havuzdan bir _first uyacak şekilde ayrılır; Yani, isteği karşılayan ilk boş bellek bloğu kullanılır. Bu bloktaki aşırı bellek yeni bir bloğa dönüştürülür ve boş bellek listesine geri yerleştirilir. Bu işleme *parçalanma* adı verilir.
+Bellek bayt havuzlarından ayırmalar, istenen bellek miktarını (bayt cinsinden) içeren geleneksel ***malloc** _ çağrılarına benzer. Bellek havuzdan uygun* _first ayrılır; Başka bir ifadeyle isteği yerine gelen ilk boş bellek bloğu kullanılır. Bu bloktan fazla bellek yeni bir bloka dönüştürülür ve boş bellek listesine geri yerleştirilir. Bu işleme parçalanma *denir.*
 
-Bitişik boş bellek blokları, daha sonraki bir ayırma araması sırasında, çok sayıda boş bellek bloğu için birlikte *birleştirilir* . Bu işleme *birleştirme* adı verilir.
+Bitişik boş bellek blokları, *yeterli* sayıda boş bellek bloğu için sonraki ayırma araması sırasında birleştirilir. Bu işleme birleştirme *adı verilmektedir.*
 
-Her bellek bayt havuzu ortak bir kaynaktır. ThreadX, havuzların nasıl kullanıldığına ilişkin hiçbir kısıtlama vermez, bu da bellek bayt Hizmetleri ISRs 'den çağrılamaz.
+Her bellek bayt havuzu genel bir kaynaktır. ThreadX, havuzların nasıl kullanıldıklarına hiçbir kısıtlama uygulamaz ancak bellek bayt hizmetleri ISR'lerden çağrılanamaz.
 
-### <a name="creating-memory-byte-pools"></a>Bellek bayt havuzları oluşturma
+### <a name="creating-memory-byte-pools"></a>Bellek Byte Havuzları Oluşturma
 
-Bellek bayt havuzları, başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Bir uygulamadaki bellek baytı havuzlarının sayısı için bir sınır yoktur.
+Bellek bayt havuzları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanında oluşturulur. Bir uygulamanın bellek bayt havuzlarının sayısına bir sınır yoktur.
 
-### <a name="pool-capacity"></a>Havuz kapasitesi
+### <a name="pool-capacity"></a>Havuz Kapasitesi
 
-Bellek bayt havuzunda ayrılan ayrıtı bayt sayısı, oluşturma sırasında belirtilenden biraz daha düşüktür. Bunun nedeni, boş bellek alanının yönetiminde bazı ek yük tanıtılmaktadır. Havuzdaki her bir boş bellek bloğu, iki C ek yük işaretçinin eşdeğerini gerektirir. Ayrıca havuz, büyük bir boş blok ve bellek alanının sonunda küçük bir kalıcı olarak ayrılmış blok ile oluşturulur. Bu ayrılmış blok, ayırma algoritmasının performansını geliştirmek için kullanılır. Birleştirme sırasında havuz alanının sonuna sürekli denetleme gereksinimini ortadan kaldırır.
+Bir bellek bayt havuzu içinde allocatable bayt sayısı, oluşturma sırasında belirtilenden biraz daha azdır. Bunun nedeni, boş bellek alanı yönetiminin bazı ek yükler ortaya çıktısı. Havuzdaki her boş bellek bloğu, iki ek yük C işaretçisinin eşdeğerini gerektirir. Ayrıca havuz iki blokla oluşturulur: büyük bir boş blok ve bellek alanı sonunda kalıcı olarak ayrılan küçük bir blok. Ayrılan bu blok, ayırma algoritmasının performansını geliştirmek için kullanılır. Birleştirme sırasında havuz alanı sonunu sürekli denetleme ihtiyacı ortadan kaldırıyor.
 
-Çalışma zamanı sırasında havuzdaki ek yük miktarı genellikle artar. Bir sonraki bellek bloğunun doğru hizalamasını sağlamak için tek sayılı baytların ayırmaları doldurulur. Ayrıca, havuz daha parçalanmış hale geldiği için ek yük artar.
+Çalışma süresi sırasında havuza ek yük miktarı genellikle artar. Bir sonraki bellek bloğunda düzgün hizalama sağlamak için tek sayıda bayt ayırmaları dolgulu olarak gelir. Buna ek olarak, havuz daha parçalı hale geldi olarak ek yük artar.
 
-### <a name="pools-memory-area"></a>Havuzun bellek alanı
+### <a name="pools-memory-area"></a>Havuzun Bellek Alanı
 
-Bellek bayt havuzu için bellek alanı oluşturma sırasında belirtilir. ThreadX içindeki diğer bellek alanları gibi, hedefin adres alanında herhangi bir yerde bulunabilir. Bu, sağladığı önemli esneklik nedeniyle önemli bir özelliktir. Örneğin, hedef donanımın yüksek hızlı bellek alanı ve düşük hızlı bellek alanı varsa, her birinde bir havuz oluşturarak Kullanıcı her iki alan için bellek ayırmayı yönetebilir.
+Bir bellek bayt havuzunun bellek alanı oluşturma sırasında belirtilir. ThreadX'in diğer bellek alanlarında olduğu gibi, hedefin adres alanı içinde herhangi bir yerde yer alıyor olabilir. Sağladığı önemli esneklik nedeniyle bu önemli bir özelliktir. Örneğin, hedef donanım yüksek hızlı bir bellek alanına ve düşük hızlı bir bellek alanına sahipse, kullanıcı her iki alanda da bir havuz oluşturarak her iki alan için bellek ayırmayı yönetebilir.
 
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
+### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
-Bir havuzdan bellek baytları beklenirken uygulama iş parçacıkları askıya alabilir. Yeterli bitişik bellek kullanılabilir olduğunda, askıya alınan iş parçacıklarına istenen bellek verilir ve iş parçacıkları sürdürülür.
+Bir havuzdan bellek baytları beklerken uygulama iş parçacıkları askıya alabilir. Yeterli bitişik bellek kullanılabilir duruma geldiğinde, askıya alınan iş parçacıklarına istenen bellek verilir ve iş parçacıkları devam eder.
 
-Aynı bellek bayt havuzunda birden çok iş parçacığı askıya alınırsa, bunlar askıya alınan (FıFO) sırada bellek olarak verilir (devam ettirildi).
+Aynı bellek byte havuzunda birden çok iş parçacığı askıya alınırsa, askıya alındıklarına (FIFO) göre bellek verilir (sürdürür).
 
-Ancak, uygulama, iş parçacığı askıya alma işlemi için bayt yayın çağrısından önce ***tx_byte_pool_prioritize*** çağırdığında öncelik sürdürme de mümkündür. Bayt havuzu öncelik sıralaması hizmeti, en yüksek öncelikli iş parçacığını askıya alma listesinin önüne koyar, diğer tüm askıya alınan iş parçacıklarını aynı FıFO sırasıyla bırakır.
+Ancak, uygulama iş parçacığının askıya alınmasına neden ***olan tx_byte_pool_prioritize*** yayın çağrısından önce çağrılsa öncelik verme de mümkündür. Bayt havuzu hizmeti öncelik sırasına göre en yüksek öncelikli iş parçacığını askıya alma listesinin önüne, diğer tüm askıya alınmış iş parçacıklarını aynı FIFO sırasına göre bırakarak yer alıyor.
 
-### <a name="run-time-byte-pool-performance-information"></a>Çalışma zamanı bayt havuzu performans bilgileri
+### <a name="run-time-byte-pool-performance-information"></a>Çalışma Zamanı Byte Havuzu Performans Bilgileri
 
-ThreadX isteğe bağlı çalışma zamanı bayt havuzu performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış ***TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO*** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
+ThreadX, isteğe bağlı çalışma zamanı baytı havuzu performans bilgileri sağlar. ThreadX kitaplığı ve uygulaması tanımlı bir ***TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO,*** ThreadX aşağıdaki bilgileri birikiyor.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
-  - ayırmalarını
-
-  - yayınlar
-
-  - Aranan parçalar
-
-  - Birleştirilen parçalar
-
-  - oluşturulan parçalar
-
-  - ayırma getirilmesi
-
-  - ayırma zaman aşımları
-
-Her bayt havuzunun toplam sayısı:
-
-  - ayırmalarını
+  - Tahsisatları
 
   - yayınlar
 
-  - Aranan parçalar
+  - parçalar arandı
 
-  - Birleştirilen parçalar
+  - birleştirilen parçalar
 
   - oluşturulan parçalar
 
-  - ayırma getirilmesi
+  - ayırma askıya almaları
 
-  - ayırma zaman aşımları
+  - ayırma zaman aşımı
 
-Bu bilgiler, ***tx_byte_pool_performance_info_get** _ ve _ *_tx_byte_pool_performance_system_info_get_* * Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Bayt havuzu performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır. Örneğin, görece yüksek sayıda "Allocation getirilmesi", bayt havuzunun çok küçük olduğunu önerebilir.
+Her bir byte havuzu için toplam sayı:
 
-### <a name="memory-byte-pool-control-block-tx_byte_pool"></a>Bellek bayt havuzu denetim bloğu TX_BYTE_POOL
+  - Tahsisatları
 
-Her bir bellek bayt havuzunun özellikleri denetim bloğunda bulunur. Havuzdaki kullanılabilir bayt sayısı gibi yararlı bilgiler içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır.
+  - yayınlar
 
-Havuz denetim blokları ayrıca bellekte herhangi bir yerde bulunabilir, ancak her bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak en yaygın hale gelir.
+  - parçalar arandı
 
-### <a name="nondeterministic-behavior"></a>Belirleyici olmayan davranış
+  - birleştirilen parçalar
 
-Bellek bayt havuzları en esnek bellek ayırmayı sağlasa da, önemli olmayan davranışlardan de zarar verir. Örneğin, bir bellek bayt havuzunda 2.000 baytlık bellek bulunabilir, ancak 1.000 baytlık bir ayırma isteğini karşılayamayabilir. Bunun nedeni, boş baytların kaç tane bitişik olduğunu garanti etmez. 1.000 baytlık boş bir blok mevcut olsa bile, bloğu bulmak için ne kadar süreceğine ilişkin garanti yoktur. Tüm bellek havuzunun, 1.000 bayt bloğunu bulmak için aranması gerekebilir.
+  - oluşturulan parçalar
+
+  - ayırma askıya almaları
+
+  - ayırma zaman aşımı
+
+Bu bilgiler * tx_byte_pool_performance_info_get **_** ve _* tx_byte_pool_performance_system_info_get **_hizmetleri aracılığıyla çalışma zamanında_ kullanılabilir. Byte havuzu performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemede yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır. Örneğin, görece yüksek sayıda "ayırma askıya alma" bayt havuzunun çok küçük olduğunu önerebiliriz.
+
+### <a name="memory-byte-pool-control-block-tx_byte_pool"></a>Bellek Byte Havuzu Denetim Bloğu TX_BYTE_POOL
+
+Her bellek bayt havuzunun özellikleri denetim bloğunda bulunur. Havuza kullanılabilir bayt sayısı gibi yararlı bilgiler içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır.
+
+Havuz denetim blokları bellekte herhangi bir yerde de yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline geldi.
+
+### <a name="nondeterministic-behavior"></a>Belirsiz Davranış
+
+Bellek bayt havuzları en esnek bellek ayırmayı sağlasa da, belirsiz bir davranıştan da zarar alırlar. Örneğin, bir bellek bayt havuzu 2.000 bayt kullanılabilir belleğe sahip olabilir, ancak 1.000 baytlık bir ayırma isteğini karşılayamayabilirsiniz. Bunun nedeni, boş baytların kaç tane bitişik olduğuyla ilgili bir garanti yoktur. 1.000 bayt boş blok olsa bile, bloğun bulunamaz hale ne kadar sürecesi garanti edilemez. 1.000 bayt bloğu bulmak için bellek havuzunun tamamının aranmış olması tamamen mümkündür.
 
 > [!TIP]
-> *Bellek bayt havuzlarının belirleyici olmayan davranışının bir sonucu olarak, belirleyici ve gerçek zamanlı davranışın gerekli olduğu alanlarda bellek bayt hizmetlerini kullanmaktan kaçınmak genellikle iyi bir uygulamadır. Birçok uygulama başlatma veya çalışma zamanı yapılandırması sırasında gereken belleği önceden ayırır.*
+> *Bellek bayt havuzlarının belirleyici olmayan davranışının bir sonucu olarak, belirlenici, gerçek zamanlı davranışın gerekli olduğu alanlarda bellek bayt hizmetlerini kullanmaktan kaçınmak genellikle iyi bir yöntemdir. Birçok uygulama başlatma veya çalışma zamanı yapılandırması sırasında gerekli belleklerini önceden ayırır.*
 
-### <a name="overwriting-memory-blocks"></a>Bellek bloklarının üzerine yazma
+### <a name="overwriting-memory-blocks"></a>Bellek Bloklarının Üzerine Yazma
 
-Ayrılan bellek kullanıcısının sınırlarının dışına yazmadığından emin olmak önemlidir. Bu durumda, bir komşu (genellikle sonraki) bellek alanında bozulma oluşur. Sonuçlar tahmin edilemez ve genellikle program yürütmesi için çok zararlı olur.
+Ayrılan bellek kullanıcılarının sınırlarının dışına yazmaması önemlidir. Bu durumda bozulma bitişik (genellikle sonraki) bir bellek alanında oluşur. Sonuçlar öngörülemez ve genellikle program yürütme için yıkıcıdır.
 
-## <a name="application-timers"></a>Uygulama zamanlayıcıları
+## <a name="application-timers"></a>Uygulama Süre süreleri
 
-Zaman uyumsuz dış olaylara hızlı yanıt gerçek zamanlı, katıştırılmış uygulamaların en önemli işlevidir. Ancak, bu uygulamaların birçoğu önceden belirlenen zaman aralıklarında belirli etkinlikler gerçekleştirmelidir.
+Zaman uyumsuz dış olaylara hızlı yanıt, gerçek zamanlı, tümleşik uygulamaların en önemli işlevidir. Ancak, bu uygulamaların çoğu belirli etkinlikleri önceden belirlenecek zaman aralıklarında da gerçekleştirmesi gerekir.
 
-ThreadX uygulama zamanlayıcıları, uygulamalar için belirli zaman aralıklarında uygulama C işlevlerini yürütme yeteneği sağlar. Ayrıca, bir uygulama süreölçerinin yalnızca bir kez kullanım süreleri de mümkündür. Bu tür bir zamanlayıcıya tek bir *Zamanlayıcı* denir, ancak yineleme aralığı zamanlayıcıları *düzenli* zamanlayıcı olarak adlandırılır.
+ThreadX uygulama süreçerleri, uygulamalara belirli aralıklarla uygulama C işlevlerini yürütme olanağı sağlar. Bir uygulama zamanlayıcının süresinin yalnızca bir kez dolması da mümkündür. Aralık süreölçerleri yinelenen düzenli *süreölçerler olarak* çağrılırken, bu tür bir zamanlayıcı tek *atışlı zamanlayıcı olarak çağrılır.*
 
-Her uygulama süreölçeri ortak bir kaynaktır. ThreadX, uygulama süreölçerlerine ilişkin bir kısıtlama yoktur.
+Her uygulama zamanlayıcısı genel bir kaynaktır. ThreadX, uygulama süre sürelerini kısıtlamaz.
 
-### <a name="timer-intervals"></a>Süreölçer aralıkları
+### <a name="timer-intervals"></a>Zamanlayıcı Aralıkları
 
-ThreadX zaman aralıklarında düzenli Zamanlayıcı kesintileri ile ölçülür. Her süreölçer kesmeye Zamanlayıcı *onay* işareti denir. Zamanlayıcı işaretleri arasındaki gerçek süre uygulama tarafından belirtilir, ancak 10 MS çoğu uygulamanın norm olur. Düzenli süreölçer kurulumu genellikle ***tx_initialize_low_level*** derleme dosyasında bulunur.
+ThreadX zaman aralıklarında düzenli süreölçer kesintileri ölçülür. Her zamanlayıcı kesintisi, zamanlayıcı değer işareti *olarak adlandırılan bir değerdir.* Zamanlayıcı saat değerleri arasındaki gerçek süre uygulama tarafından belirtilir, ancak çoğu uygulama için 10 m'ler normdur. Düzenli süreölçer kurulumu genellikle tx_initialize_low_level ***dosyasında*** bulunur.
 
-Temel alınan donanımın, uygulama zamanlayıcılarının çalışması için düzenli kesmeler oluşturma yeteneğinin olması gerekir. Bazı durumlarda, işlemcinin yerleşik bir düzenli kesme özelliği vardır. İşlemcinin bu özelliği yoksa, kullanıcının panosunun düzenli kesmeler oluşturabilen bir çevresel cihaz olması gerekir.
+Temel alınan donanımın, uygulama süre önceleri için düzenli aralıklarla kesintiler oluşturabilme özelliğine sahip olması gerektiğini de ifade etmek gerekir. Bazı durumlarda işlemcinin yerleşik düzenli aralıklarla kesme özelliği vardır. İşlemcinin bu özelliği yoksa, kullanıcının panosunda düzenli aralıklarla kesintiler oluşturan bir çevre cihazı olması gerekir.
 
 > [!IMPORTANT]
-> *ThreadX, düzenli bir kesme kaynağı olmadan bile çalışmaya devam edebilir. Ancak, süreölçer ile ilgili tüm işlemler devre dışı bırakılır. Bu, zaman aşımlama, askıya alınma süresi ve Zamanlayıcı hizmetleri içerir.*
+> *ThreadX, düzenli aralıklarla kesme kaynağı olmadan bile işleve devam ediyor. Ancak, zamanlayıcıyla ilgili tüm işlemler devre dışı bırakılır. Buna zaman, askıya alma zaman zamanları ve zamanlayıcı hizmetleri dahildir.*
 
-### <a name="timer-accuracy"></a>Süreölçer doğruluğu
+### <a name="timer-accuracy"></a>Zamanlayıcı Doğruluğu
 
-Süreölçer süre sonları, onay işaretleri bakımından belirtilir. Belirtilen süre sonu değeri her bir Zamanlayıcı Tick 'i için azaltılır. Bir uygulama süreölçeri bir Zamanlayıcı kesmesinden (veya zamanlayıcı Tick 'ten) önce etkinleştirilemediğinden, gerçek süre sonu süresi erken bir kısa süre önce olabilir.
+Zamanlayıcı süre sonu, saat işareti olarak belirtilir. Belirtilen süre sonu değeri, her zamanlayıcı değer değerinde bir azaltıldı. Bir uygulama süreölçeri, zamanlayıcı kesintisi (veya zamanlayıcı onay işareti) öncesinde etkinleştirilenene kadar, gerçek süre sonu erken bir değere kadar olabilir.
 
-Süreölçer değer oranı 10ms ise, uygulama zamanlayıcıları yaklaşık 10 MS 'ye kadar zaman alabilir. Bu, 1 saniyelik zamanlayıcıdan daha fazla 10 MS Zamanlayıcı için daha önemlidir. Tabii ki Zamanlayıcı kesme sıklığını artırmak hatanın bu kenar boşluğunu düşürür.
+Süreölçer onay hızı 10 dakika ise, uygulama süreölçerleri 10 dakika erken sona erebilir. Bu, 10 m süreye sahip olan süreler için 1 saniyelik süreye göre daha önemlidir. Elbette zamanlayıcı kesme sıklığının artırılması bu hata marjını azaltıyor.
 
-### <a name="timer-execution"></a>Süreölçer yürütme
+### <a name="timer-execution"></a>Zamanlayıcı Yürütme
 
-Uygulama zamanlayıcıları etkin hale geldiği sırada yürütülür. Örneğin, aynı süre sonu değeri ile üç Zamanlayıcı oluşturulursa ve etkinleştirilirse, karşılık gelen süre sonu işlevlerinin etkinleştirildikleri sırada yürütülmesi garanti edilir.
+Uygulama sürelerini etkin hale geldiklerinde yürütürler. Örneğin, aynı süre sonu değeriyle üç süre sonu oluşturulur ve etkinleştirilirse, karşılık gelen süre sonu işlevlerinin etkinleştiril edildiklerine göre yürütülmesi garanti edilir.
 
-### <a name="creating-application-timers"></a>Uygulama zamanlayıcıları oluşturma
+### <a name="creating-application-timers"></a>Uygulama Süre sürelerini oluşturma
 
-Uygulama zamanlayıcıları, başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Bir uygulamadaki uygulama süreölçerinin sayısı için bir sınır yoktur.
+Uygulama süre sürelerini başlatma sırasında veya çalışma zamanında uygulama iş parçacıkları tarafından oluşturulur. Bir uygulamanın uygulama süre sürelerini sınırlamaz.
 
-### <a name="run-time-application-timer-performance-information"></a>Çalışma zamanı uygulama süreölçeri performans bilgileri
+### <a name="run-time-application-timer-performance-information"></a>Çalışma Zamanı Uygulama Süreölçeri Performans Bilgileri
 
-ThreadX isteğe bağlı çalışma zamanı uygulama süreölçeri performans bilgilerini sağlar. ThreadX kitaplığı ve uygulaması tanımlanmış **TX_TIMER_ENABLE_PERFORMANCE_INFO** ile derlenip, threadx aşağıdaki bilgileri biriktirir.
+ThreadX, isteğe bağlı çalışma zamanı uygulama süreölçeri performans bilgileri sağlar. ThreadX kitaplığı ve uygulaması tanımlı bir **TX_TIMER_ENABLE_PERFORMANCE_INFO,** ThreadX aşağıdaki bilgileri birikiyor.
 
-Genel sistem için toplam sayı:
+Genel sistemin toplam sayısı:
 
-- etkinleştir
+- Etkinleştirme
 
-- etkinleştirme kaldırma
+- devre dışı bırakmalar
 
-- yeniden etkinleştirme (dönemsel zamanlayıcılar)
+- yeniden etkinleştirmeler (düzenli süreerler)
 
-- süreleri
+- Süre sonu
 
 - süre sonu ayarlamaları
 
-Her uygulama süreölçerinin toplam sayısı:
+Her uygulama zamanlayıcısı için toplam sayı:
 
-- etkinleştir
+- Etkinleştirme
 
-- etkinleştirme kaldırma
+- devre dışı bırakmalar
 
-- yeniden etkinleştirme (dönemsel zamanlayıcılar)
+- yeniden etkinleştirmeler (düzenli süreerler)
 
-- süreleri
+- Süre sonu
 
 - süre sonu ayarlamaları
 
-Bu bilgiler, ***tx_timer_performance_info_get** _ ve _ *_tx_timer_performance_system_info_get_* * Hizmetleri aracılığıyla çalışma zamanında kullanılabilir. Uygulama süreölçer performans bilgileri, uygulamanın düzgün çalışıp çalışmadığını belirlemek için faydalıdır. Ayrıca, uygulamayı iyileştirmek için de kullanışlıdır.
+Bu bilgiler * tx_timer_performance_info_get **_** ve _* tx_timer_performance_system_info_get **_hizmetleri aracılığıyla çalışma zamanında_ kullanılabilir. Uygulama Süreölçeri performans bilgileri, uygulamanın düzgün şekilde olup olmadığını belirlemede yararlıdır. Ayrıca uygulamayı iyileştirmede de yararlıdır.
 
-### <a name="application-timer-control-block-tx_timer"></a>Uygulama Zamanlayıcı denetim bloğu TX_TIMER
+### <a name="application-timer-control-block-tx_timer"></a>Uygulama Süreölçeri Denetim Bloğu TX_TIMER
 
-Her bir uygulama süreölçerinin özellikleri denetim bloğunda bulunur. 32 bitlik süre sonu tanımlama değeri gibi yararlı bilgiler içerir. Bu yapı ***tx_api. h*** dosyasında tanımlanmıştır.
+Her uygulama zamanlayıcının özellikleri denetim bloğunda bulunur. 32 bit süre sonu tanımlama değeri gibi yararlı bilgiler içerir. Bu yapı, ***tx_api.h dosyasında*** tanımlanır.
 
-Uygulama Zamanlayıcı denetim blokları bellekte herhangi bir yerde bulunabilir, ancak herhangi bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
+Uygulama süreölçer denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak en yaygın olarak denetim bloğunun herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapıya sahip olmasıdır.
 
-### <a name="excessive-timers"></a>Aşırı Zamanlayıcı
+### <a name="excessive-timers"></a>Aşırı Süreye Neden Olan Süre
 
-Varsayılan olarak, uygulama zamanlayıcıları, genellikle herhangi bir uygulama iş parçacığından daha yüksek olan bir gizli sistem iş parçacığı içinden yürütülür. Bu nedenle, uygulama zamanlayıcıları içinde işleme en az bir olmalıdır.
+Varsayılan olarak, uygulama süreleri genellikle herhangi bir uygulama iş parçacığından daha yüksek olan, öncelik sıfırda çalışan gizli bir sistem iş parçacığı içinde yürütülür. Bu nedenle, uygulama sürelerini içinde işleme en düşük düzeyde tutulmalıdır.
 
-Mümkün olduğunda, her zaman Zamanlayıcı Tick 'i dolan zamanlayıcılar olmaması da önemlidir. Böyle bir durum, uygulamada aşırı yüke neden olur.
+Ayrıca, mümkün olan her zamanlayıcının süresinin dolması gibi bir süreölçerden kaçınmak da önemlidir. Böyle bir durum uygulamada aşırı yüke neden olabilir.
 
 > [!IMPORTANT]
-> *Daha önce belirtildiği gibi, uygulama zamanlayıcıları gizli bir sistem iş parçacığından yürütülür. Bu nedenle, uygulama süreölçerinin süre sonu işlevinin içinden yapılan tüm ThreadX hizmeti çağrılarında askıya alma ' yı seçmemelidir.*
+> *Daha önce belirtildiği gibi, uygulama süre sürelerini gizli bir sistem iş parçacığından yürütülür. Bu nedenle, uygulama süreölçeri süre sonu işlevinden yapılan hiçbir ThreadX hizmet çağrısında askıya alma seçmemesi önemlidir.*
 
-## <a name="relative-time"></a>Göreli saat
+## <a name="relative-time"></a>Göreli Saat
 
-ThreadX, daha önce bahsedilen uygulama zamanlayıcılar ' ne ek olarak tek bir sürekli artan 32 bit onay sayacı sağlar. Onay sayacı veya saati her bir Zamanlayıcı *kesilmesinde* bir artırılır.
+ThreadX, daha önce bahsedilen uygulama süre tutuculara ek olarak sürekli artan tek bir 32 bitlik onay sayacı sağlar. Her zamanlayıcı kesintisi *için* değer işareti sayacı veya süresi bir artırıldı.
 
-Uygulama, sırasıyla ***tx_time_get** _ ve _ *_tx_time_set_* * çağrıları aracılığıyla bu 32 bitlik sayacı okuyabilir veya ayarlayabilir. Bu onay sayacının kullanımı, uygulama tarafından tamamen belirlenir. Bu, Işparçacığıx tarafından dahili olarak kullanılmaz.
+Uygulama bu 32 bit sayacı sırasıyla * tx_time_get _ **ve** _* tx_time_set _**'a_ yapılan çağrılar aracılığıyla okuyabilir veya ayarlayabilirsiniz. Bu değer işareti sayacının kullanımı tamamen uygulama tarafından belirlenir. ThreadX tarafından dahili olarak kullanılmaz.
 
-## <a name="interrupts"></a>Kesmelerini
+## <a name="interrupts"></a>Kesme
 
-Zaman uyumsuz olaylara hızlı yanıt gerçek zamanlı, katıştırılmış uygulamaların asıl işlevidir. Uygulama, donanım kesintileri aracılığıyla böyle bir olayın mevcut olduğunu bilir.
+Zaman uyumsuz olaylara hızlı yanıt, gerçek zamanlı, katıştırılmış uygulamaların asıl işlevidir. Uygulama böyle bir olayın donanım kesintileri aracılığıyla mevcut olduğunu bilir.
 
-Kesme, işlemci yürütmede zaman uyumsuz bir değişiklik olur. Genellikle, bir kesme gerçekleştiğinde, *kesmeler* işlemcisi yığında geçerli yürütmenin küçük bir bölümünü kaydeder ve denetimi uygun kesme vektörüne aktarır. Kesme vektörü temel olarak yalnızca belirli tür kesmeyi işlemekten sorumlu olan yordamın adresidir. Kesin kesme işleme yordamı, işlemciye özeldir.
+Kesme, işlemci yürütmesinde zaman uyumsuz bir değişikliktir. Genellikle, bir kesme oluştuğunda, *Kesmeler* işlemcisi geçerli yürütmenin küçük bir kısmını yığına kaydeder ve denetimi uygun kesme vektörüne iletir. Kesme vektörü temelde belirli tür kesintilerini işlemeden sorumlu olan yordamın adresidir. Tam kesme işleme yordamı işlemciye özgüdür.
 
-### <a name="interrupt-control"></a>Kesme denetimi
+### <a name="interrupt-control"></a>Kesme Denetimi
 
-***Tx_interrupt_control*** hizmeti, uygulamaların kesmeleri etkinleştirmesine ve devre dışı bırakmasına izin verir. Önceki kesme etkinleştirme/devre dışı bırakma, bu hizmet tarafından döndürülür. Kesme denetiminin yalnızca yürütülmekte olan program segmentini etkileyeceğini bahsetmek önemlidir. Örneğin, bir iş parçacığı kesintileri devre dışı bırakırsa, bu iş parçacığının yürütülmesi sırasında yalnızca devre dışı kalır.
+Tx_interrupt_control ***hizmeti,*** uygulamaların kesmeleri etkinleştirmesini ve devre dışı bırakmasını sağlar. Önceki kesme etkinleştirme/devre dışı bırakma duruşu bu hizmet tarafından döndürülür. Kesme denetimi yalnızca o anda yürütülen program kesimini etkiler. Örneğin, bir iş parçacığı kesmeleri devre dışı bırakıyorsa, bunlar yalnızca o iş parçacığının yürütülmesi sırasında devre dışı kalır.
 
 > [!NOTE]
-> *Maskelenemeyen kesme (NMI), donanım tarafından devre dışı bırakılamaz. Bu tür bir kesme, ThreadX uygulamaları tarafından kullanılabilir. Ancak, uygulamanın NMI işleme yordamının ThreadX bağlam yönetimini veya herhangi bir API hizmetini kullanmasına izin verilmez.*
+> *Maskelenebilir Olmayan Kesinti (NMI), donanım tarafından devre dışı bırakılamaz bir kesintidir. Böyle bir kesinti ThreadX uygulamaları tarafından kullanılabilir. Ancak, uygulamanın NMI işleme yordamının ThreadX bağlam yönetimini veya api hizmetlerini kullanmasına izin verilmez.*
 
-### <a name="threadx-managed-interrupts"></a>ThreadX yönetilen kesmeler
+### <a name="threadx-managed-interrupts"></a>ThreadX Yönetilen Kesintileri
 
-ThreadX, tüm kesme yönetimine sahip uygulamalar sağlar. Bu yönetim, kesilen yürütmenin bağlamını kaydetmeyi ve geri yüklemeyi içerir. Ayrıca, ThreadX, belirli hizmetlerin kesme hizmeti yordamları (ISRS) içinden çağrılmasına izin verir. Aşağıda, uygulama ISRs 'den izin verilen ThreadX hizmetlerinin bir listesi verilmiştir.
+ThreadX, uygulamalara tam kesme yönetimi sağlar. Bu yönetim, kesintiye neden olan yürütme bağlamını kaydetmeyi ve geri yüklemeyi içerir. Ayrıca ThreadX, Bazı hizmetlerin Kesme Hizmeti Yordamları (ISR) içinde çağrılmalarını sağlar. Aşağıda uygulama ISR'lerinden izin verilen ThreadX hizmetlerinin bir listesi ve ardından yer vemektedir.
 
 ```c
 tx_block_allocate
@@ -1011,13 +1011,13 @@ tx_timer_performance_system_info_get
 ```
 
 > [!IMPORTANT]
-> *ISRs 'den askıya alma yapılmasına izin verilmez. Bu nedenle, bir ıSR 'den yapılan tüm ThreadX hizmeti çağrılarının **wait_option** parametresi **TX_NO_WAIT** olarak ayarlanmalıdır.*
+> *ISR'lerden askıya alınmaya izin verilmez. Bu **nedenle, wait_option** ISR'den yapılan tüm ThreadX hizmet çağrıları için **TX_NO_WAIT.***
 
-### <a name="isr-template"></a>ISR şablonu
+### <a name="isr-template"></a>ISR Şablonu
 
-Uygulama kesmelerini yönetmek için uygulama ISRs 'nin başında ve sonunda birkaç ThreadX yardımcı programı çağrılmalıdır. Kesme işleme için tam biçim, bağlantı noktaları arasında farklılık gösterir.
+Uygulama kesintilerini yönetmek için, uygulama ISR'lerinin başında ve sonunda birkaç ThreadX yardımcı programı çağrılmalı. Kesme işlemenin tam biçimi bağlantı noktaları arasında değişiklik gösterir.
 
-Aşağıdaki küçük kod segmenti, en çok ThreadX yönetilen ISRs 'nin tipik bir parçasıdır. Çoğu durumda, bu işlem derleme dilidir.
+Aşağıdaki küçük kod kesimi, Çoğu ThreadX tarafından yönetilen ISR'ler için tipiktir. Çoğu durumda, bu işlem derleme dilindedir.
 
 ```c
 _application_ISR_vector_entry:
@@ -1043,12 +1043,12 @@ CALL _tx_thread_context_save
 JUMP _tx_thread_context_restore
 ```
 
-### <a name="high-frequency-interrupts"></a>Yüksek frekanslı kesmeler
+### <a name="high-frequency-interrupts"></a>Yüksek Sıklık Kesintileri
 
-Bazı kesmeler, her kesme sırasında tam bağlam kaydetme ve geri yükleme işlemlerinin çok fazla işlem bant genişliği tükettiği bir sıklıkta oluşur. Bu gibi durumlarda, uygulamanın bu yüksek frekanslı kesmelerin çoğu için sınırlı miktarda işleme yapan küçük bir derleme dili ıSR olması yaygındır.
+Bazı kesintiler çok yüksek sıklıkta gerçekleşir ve her kesintiden sonra tam bağlamın kaydedilmesi ve geri yükleniyor olması aşırı işlem bant genişliği kullanır. Bu gibi durumlarda, uygulamanın bu yüksek sıklık kesmelerinin çoğu için sınırlı miktarda işleme işlemi yapmak için küçük bir derleme dili ISR'sine sahip olması yaygındır.
 
-Belirli bir noktadan sonra, küçük ıSR 'nin ThreadX ile etkileşimde olması gerekebilir. Bu, yukarıdaki şablonda açıklanan giriş ve çıkış işlevleri çağırarak gerçekleştirilir.
+Belirli bir noktadan sonra, küçük ISR'nin ThreadX ile etkileşim kurması gerekir. Bu, yukarıdaki şablonda açıklanan giriş ve çıkış işlevleri çağrılarak başarılı olur.
 
-### <a name="interrupt-latency"></a>Kesme gecikmesi
+### <a name="interrupt-latency"></a>Kesinti Gecikmesi
 
 ThreadX, kısa bir süre içinde kesmeleri kilitler. En fazla süre kesmesi devre dışı, bir iş parçacığının bağlamını kaydetmek veya geri yüklemek için gereken sürenin sıraındadır.

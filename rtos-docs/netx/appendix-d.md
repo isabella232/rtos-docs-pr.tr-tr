@@ -1,34 +1,34 @@
 ---
-title: Ek D-Azure RTOS NetX BSD-Compatible yuva API 'SI
-description: IPv4 için BSD-Compatible yuva API 'SI hakkında bilgi edinin.
+title: Ek D - Azure RTOS NetX BSD-Compatible Yuva API'si
+description: IPv4 için BSD-Compatible Yuva API'si hakkında bilgi edinin.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9062e27d8f447ac8d36e7a09afee5ac14f86f8c3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: bd4a35c19cd794a5135f01abe5595456d39b5306ba25ce2966c3bb1aea14ea17
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826897"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790097"
 ---
-# <a name="appendix-d---azure-rtos-netx-bsd-compatible-socket-api"></a>Ek D-Azure RTOS NetX BSD-Compatible yuva API 'SI
+# <a name="appendix-d---azure-rtos-netx-bsd-compatible-socket-api"></a>Ek D - Azure RTOS NetX BSD-Compatible Yuva API'si
 
-## <a name="bsd-compatible-socket-api"></a>BSD-Compatible yuva API 'SI
+## <a name="bsd-compatible-socket-api"></a>BSD-Compatible Yuvası API'si
 
-BSD-Compatible yuva API 'si, aşağıda Azure RTOS NetX temel sürümlerini kullanarak BSD yuvaları API çağrılarının (bazı sınırlamalara sahip) bir alt kümesini destekler. IPv4 protokolleri ve ağ adresleme desteklenir. Bu API iç NetX temel öğelerini kullandığından ve gereksiz NetX hata denetimini atladığı için bu BSD-Compatible yuvaları API katmanı tipik BSD uygulamalarından hızlı veya biraz daha hızlı bir şekilde gerçekleştirilmelidir.
+BSD-Compatible Yuva API'si, temel NetX temellerini kullanarak BSD YuvaLARı API çağrılarının bir alt kümesini (bazı sınırlamalarla) Azure RTOS destekler. IPv4 protokolleri ve ağ adresi desteği vardır. Bu BSD-Compatible Yuva API'si katmanı, iç NetX temel elemanlarını kullanır ve gereksiz NetX hata denetimlerini atlar.
 
-Yapılandırılabilir seçenekler, ana bilgisayar uygulamasının en fazla yuva sayısını, TCP maksimum pencere boyutunu ve dinleme kuyruğunun derinliğini tanımlamasını sağlar.
+Yapılandırılabilir seçenekler konak uygulamanın en fazla yuva sayısını, TCP maksimum pencere boyutunu ve dinleme kuyruğu derinliğini tanımlamasına olanak sağlar.
 
-Performans ve mimari kısıtlamalarından dolayı, bu BSD-Compatible Sockets API 'SI tüm BSD yuvaları çağrılarını desteklemez. Bunlara ek olarak, BSD Hizmetleri için tüm BSD seçenekleri yoktur, özellikle aşağıdakiler aşağıda verilmiştir:
+Performans ve mimari kısıtlamaları nedeniyle, bu BSD-Compatible Yuva API'si tüm BSD Yuva çağrılarını desteklemez. Ayrıca, BSD hizmetleri için tüm BSD seçenekleri mevcut değildir, özellikle de şunlardır:
 
-- ***Select** _ işlevi yalnızca _fd_set \* readfds * ile çalışır, bu çağrıdaki diğer bağımsız değişkenler (örneğin, *writefds*, *hariç tutulan tfds* ) desteklenmez.
-- *İnt Flags* bağımsız değişkeni ***Send** _*__, alma_*_, _*_SendTo_*_ ve _ *_recvfrom_** işlevleri için desteklenmez. BSD-Compatible Socket API 'SI yalnızca sınırlı sayıda BSD yuvası çağrısı kümesini destekler.
+- ***select** _ işlevi yalnızca _fd_set readfds* ile çalışır; bu çağrıda writefds gibi diğer bağımsız değişkenler \* *(örneğin,* *writefds*) desteklenmiyor.
+- *Int flags* bağımsız değişkeni ***send** _, _*_recv,_*_ _*_sendto_*_ ve _ *_recvfrom_** işlevleri için desteklenmiyor. BSD-Compatible Yuvası API'si yalnızca sınırlı sayıda BSD Yuva çağrısını destekler.
 
-Kaynak kodu basitlik için tasarlanmıştır ve yalnızca iki dosyadan oluşur, ***nx_bsd. c** _ ve _*_nx_bsd. h_*_. Yükleme, bu iki dosyayı derleme projesine (NetX kitaplığı değil) eklemeyi ve BSD yuvası hizmeti çağrılarını kullanacak konak uygulamasını oluşturmayı gerektirir. _ *_Nx_bsd. h_** dosyası da uygulama kaynağınıza dahil olmalıdır. Örnek demo dosyaları, NetX ile ücretsiz olarak kullanılabilen dağıtıma dahildir. Daha fazla ayrıntı, yardım BSD-Compatible yuva API **417** ve benioku dosyalarında BSD-Compatible soket API paketiyle birlikte sağlanır.
+Kaynak kodu basitlik için tasarlanmıştır ve yalnızca iki dosyadan oluşur,***nx_bsd.c** _ _*_ve nx_bsd.h_*_. Yükleme, bu iki dosyanın derleme projesine (NetX kitaplığına değil) eklerini ve BSD Yuva hizmeti çağrılarını kullanan konak uygulamasını oluşturmayı gerektirir. _ *_nx_bsd.h_** dosyasının da uygulama kaynağınıza dahil olması gerekir. Örnek tanıtım dosyaları, NetX ile ücretsiz olarak kullanılabilen dağıtıma dahil edilir. Yuva **API'si 417** BSD-Compatible Ve Beni Oku dosyaları, Yuva API'si paketiyle birlikte BSD-Compatible yardım içinde mevcuttur.
 
-BSD-Compatible Sockets API 'si aşağıdaki BSD yuvaları API çağrılarını destekler:
+BSD-Compatible Yuvaları API'si aşağıdaki BSD Yuva API çağrılarını destekler:
 
 ```C
 *INT bsd_initialize (NX_IP *default_ip, NX_PACKET_POOL *default_pool,

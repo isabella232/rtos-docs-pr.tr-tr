@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: dd58f77130fa252be9163bd70c29f7deee400d30
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: abe3e43e090890a5e51700fc2f587c59619fcdad5b71681fd4071c614dab5ce6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549785"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791417"
 ---
 # <a name="chapter-2---azure-rtos-usbx-device-stack-installation"></a>Bölüm 2-Azure RTOS USBX cihaz yığını yüklemesi
 
@@ -19,7 +19,7 @@ ms.locfileid: "106549785"
 
 ### <a name="computer-type"></a>Bilgisayar türü
 
-Katıştırılmış Geliştirme genellikle Windows bılgısayar veya UNIX ana bilgisayarları üzerinde gerçekleştirilir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
+katıştırılmış geliştirme genellikle Windows PC veya unıx konak bilgisayarlarda gerçekleştirilir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
 
 ### <a name="download-interfaces"></a>Arabirimleri indir
 
@@ -27,7 +27,7 @@ Genellikle, paralel arabirimler, USB ve Ethernet daha popüler olsa da, hedef in
 
 ### <a name="debugging-tools"></a>Hata ayıklama araçları
 
-Hata ayıklama, genellikle program görüntüsü indirdiği bağlantıyla aynı bağlantı üzerinden yapılır. Arka plan hata ayıklama Izleyicisi (BDM) ve In-Circuit öykünücü (ıCE) araçları aracılığıyla hedefte çalışan küçük izleme programlarından farklı hata ayıklayıcılar vardır. ICE Aracı, gerçek hedef donanımının en sağlam hata ayıklamasını sağlar.
+Hata ayıklama, genellikle program görüntüsü indirdiği bağlantıyla aynı bağlantı üzerinden yapılır. arka plan hata ayıklama izleyicisi (bdm) ve In-Circuit Emulator (ıce) araçları aracılığıyla hedefte çalışan küçük izleme programlarından farklı hata ayıklayıcıları mevcuttur. ICE Aracı, gerçek hedef donanımının en sağlam hata ayıklamasını sağlar.
 
 ### <a name="required-hard-disk-space"></a>Gerekli sabit disk alanı
 
@@ -54,13 +54,13 @@ Tüm dosya adları küçük harfli. Bu adlandırma kuralı, komutları UNIX geli
 
 ## <a name="usbx-installation"></a>USBX yüklemesi
 
-USBX, GitHub deposu yerel makinenize kopyalanarak yüklenir. Aşağıda, bilgisayarınızda USBX deposunun bir kopyasını oluşturmak için tipik sözdizimi verilmiştir:
+usbx, GitHub deposu yerel makinenize kopyalanarak yüklenir. Aşağıda, bilgisayarınızda USBX deposunun bir kopyasını oluşturmak için tipik sözdizimi verilmiştir:
 
 ```c
     git clone https://github.com/azure-rtos/usbx
 ```
 
-Alternatif olarak, GitHub ana sayfasında İndir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+alternatif olarak, GitHub ana sayfasındaki indir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
 
 Ayrıca, çevrimiçi deponun ön sayfasında USBX kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
 
@@ -80,7 +80,7 @@ USBX kitaplığını oluşturmak için birkaç yapılandırma seçeneği vardır
 
 Aşağıdaki listede her yapılandırma seçeneğinin ayrıntıları verilmiştir.
 
-| Yapılandırma &nbsp; seçeneği | Açıklama |
+| Yapılandırma &nbsp; seçeneği | Description |
 | --- | --- |
 | **UX_PERIODIC_RATE** | Bu değer, belirli bir donanım platformu için saniye başına kaç saat sayısını temsil eder. Varsayılan değer, milisaniye başına 1 değer belirten 1000 ' dir. |
 | **UX_THREAD_STACK_SIZE** | Bu değer, USBX iş parçacıklarının bayt cinsinden yığınının boyutudur. Kullanılan işlemciye ve ana bilgisayar denetleyicisine bağlı olarak genellikle 1024 bayt veya 2048 bayt olabilir. |
@@ -185,7 +185,7 @@ UINT ux_dcd_controller_initialize(ULONG dcd_io,
 
 Şu parametrelerle birlikte:
 
-| Pararmetre               | Açıklama                      |
+| Pararmetre               | Description                      |
 | ------------------------ | -------------------------------- |
 | ULONG dcd_io            | Denetleyici GÇ adresi     |
 | ULONG dcd_irq           | Denetleyici tarafından kullanılan kesme |

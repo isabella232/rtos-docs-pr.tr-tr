@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 39f3a71c28dd14e0093f72d1a3b1ff6837c6f1f7
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 28e733e37b06da7053f238e23e2b8b8046df2dd9940e50cd0321ccf15c27ec47
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828114"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802116"
 ---
 # <a name="chapter-2-usbx-host-classes-api"></a>Bölüm 2: USBX konak sınıfları API 'SI
 
@@ -38,7 +38,7 @@ UINT ux_host_class_printer_read(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, yazıcı arabiriminden okur. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür. Okumaya yalnızca çift yönlü yazıcılarda izin verilir.
 
@@ -80,7 +80,7 @@ UINT ux_host_class_printer_write(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, yazıcı arabirimine yazar. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
 
@@ -117,7 +117,7 @@ Yazıcıya yazılımdan sıfırlama işlemi gerçekleştirin.
 UINT ux_host_class_printer_soft_reset(UX_HOST_CLASS_PRINTER *printer)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, yazıcıya geçici bir sıfırlama işlemi gerçekleştirir.
 
@@ -153,7 +153,7 @@ UINT ux_host_class_printer_status_get(
     ULONG *printer_status)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, yazıcı durumunu alır. Yazıcı durumu, LPT durumuna (1284 standart) benzer.
 
@@ -192,7 +192,7 @@ UINT ux_host_class_printer_device_id_get(
     ULONG length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, yazıcı IEEE 1284 cihaz KIMLIĞI dizesini (big endian biçimindeki ilk iki baytın uzunluğu dahil) alır.
 
@@ -237,7 +237,7 @@ UINT ux_host_class_audio_read(
     *audio_transfer_request)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev ses arabiriminden okur. Çağrı engellenmemiş. Uygulama, ses akışı arabirimi için uygun alternatif ayarın seçildiğinden emin olmalıdır.
 
@@ -280,20 +280,20 @@ UINT ux_host_class_audio_write(
     UX_HOST_CLASS_AUDIO_TRANSFER_REQUEST *audio_transfer_request)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev ses arabirimine yazar. Çağrı engellenmemiş. Uygulama, ses akışı arabirimi için uygun alternatif ayarın seçildiğinden emin olmalıdır.
+Bu işlev ses arabirimine yazar. Çağrı engelleyici değil. Uygulama, ses akışı arabirimi için uygun alternatif ayarın seçildiğinden emin olmalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses sınıfı örneğine yönelik işaretçi
-- **audio_transfer_request**: ses aktarım yapısına yönelik işaretçi
+- **audio:** Ses sınıfı örneğinin işaretçisi
+- **audio_transfer_request:** Ses aktarım yapısının işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) işlev desteklenmiyor.
-- **ux_host_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) arabirimi yanlış.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) İşlevi desteklenmiyor.
+- **ux_host_CLASS_AUDIO_WRONG_INTERFACE:**(0x81) Arabirim yanlış.
 
 ### <a name="example"></a>Örnek
 
@@ -315,7 +315,7 @@ status = ux_host_class_audio_write(audio, audio_transfer_request);
 
 ## <a name="ux_host_class_audio_control_get"></a>ux_host_class_audio_control_get
 
-Ses denetim arabiriminden belirli bir denetim alın.
+Ses denetimi arabiriminden belirli bir denetim elde etmek.
 
 ### <a name="prototype"></a>Prototype
 
@@ -325,20 +325,20 @@ UINT ux_host_class_audio_control_get(
     UX_HOST_CLASS_AUDIO_CONTROL *audio_control)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ses denetim arabiriminden belirli bir denetimi okur.
+Bu işlev, ses denetimi arabiriminden belirli bir denetimi okur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses sınıfı örneğine yönelik işaretçi
-- **audio_control**: ses denetimi yapısına yönelik işaretçi
+- **audio:** Ses sınıfı örneğinin işaretçisi
+- **audio_control:** Ses denetimi yapısının işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) işlev desteklenmiyor
-- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) arabirim yanlış
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) İşlevi desteklenmiyor
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:**(0x81) Arabirim yanlış
 
 ### <a name="example"></a>Örnek
 
@@ -366,7 +366,7 @@ status = ux_host_class_audio_control_get(audio, &audio_control);
 
 ## <a name="ux_host_class_audio_control_value_set"></a>ux_host_class_audio_control_value_set
 
-Ses denetim arabirimine belirli bir denetim ayarlayın.
+Ses denetimi arabirimine belirli bir denetim ayarlayın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -376,20 +376,20 @@ UINT ux_host_class_audio_control_value_set(
     UX_HOST_CLASS_AUDIO_CONTROL *audio_control)
 ```
 
-* * Açıklama * *
+**Açıklama **
 
-Bu işlev, ses denetim arabirimine belirli bir denetim ayarlar.
+Bu işlev, ses denetimi arabirimine belirli bir denetim ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses sınıfı örneğine yönelik işaretçi
-- **audio_control**: ses denetimi yapısına yönelik işaretçi
+- **audio:** Ses sınıfı örneğinin işaretçisi
+- **audio_control:** Ses denetimi yapısının işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) işlev desteklenmiyor
-- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) arabirim yanlış
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) İşlevi desteklenmiyor
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:**(0x81) Arabirim yanlış
 
 ### <a name="example"></a>Örnek
 
@@ -428,21 +428,21 @@ UINT ux_host_class_audio_streaming_sampling_set
     UX_HOST_CLASS_AUDIO_SAMPLING *audio_sampling)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ses akış arabiriminin uygun alternatif ayar arabirimini belirli bir örnekleme yapısına göre ayarlar.
+Bu işlev, belirli bir örnekleme yapısına göre ses akışı arabiriminin uygun alternatif ayar arabirimini ayarlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses sınıfı örneğine yönelik işaretçi.
-- **audio_sampling**: ses örnekleme yapısına yönelik işaretçi.
+- **audio:** Ses sınıfı örneğinin işaretçisi.
+- **audio_sampling:** Ses örnekleme yapısının işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) işlev desteklenmiyor
-- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) arabirim yanlış
-- **UX_NO_ALTERNATE_SETTING**: (0x5E) örnekleme değerleri için alternatif ayar yok
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) İşlevi desteklenmiyor
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:**(0x81) Arabirim yanlış
+- **UX_NO_ALTERNATE_SETTING:**(0x5e) Örnekleme değerleri için alternatif ayar yok
 
 ### <a name="example"></a>Örnek
 
@@ -463,7 +463,7 @@ status = ux_host_class_audio_streaming_sampling_set(audio, &sampling);
 
 ## <a name="ux_host_class_audio_streaming_sampling_get"></a>ux_host_class_audio_streaming_sampling_get
 
-Ses akışı arabiriminin olası örnekleme ayarlarını öğrenin.
+Ses akışı arabiriminin olası örnekleme ayarlarını alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -473,21 +473,21 @@ UINT ux_host_class_audio_streaming_sampling_get(
     UX_HOST_CLASS_AUDIO_SAMPLING_CHARACTERISTICS *audio_sampling)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir diğeri, ses akış arabiriminin alternatif ayarlarında bulunan tüm olası örnekleme ayarlarını alır. İşlev ilk kez kullanıldığında, çağırma yapısı işaretçisindeki tüm alanların sıfırlanması gerekir. Bu işlev, alternatif ayarların sonuna ulaşılmadığı takdirde, return üzerinde belirli bir akış değeri kümesi döndürür. Bu işlev yeniden kullanıldığında, sonraki örnekleme değerlerini bulmak için önceki örnekleme değerleri kullanılacaktır.
+Bu işlev, ses akışı arabiriminin alternatif ayarlarının her birsinde kullanılabilen tüm olası örnekleme ayarlarını tek tek alır. İşlev ilk kez kullanılırken, çağrı yapısı işaretçisinde tüm alanların sıfır olması gerekir. İşlev, alternatif ayarların sonuna ulaşıldı değilse, dönüşte belirli bir akış değerleri kümesi geri döner. Bu işlev yeniden kullanılırken, sonraki örnekleme değerlerini bulmak için önceki örnekleme değerleri kullanılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ses**: ses sınıfı örneğine yönelik işaretçi.
-- **audio_sampling**: ses örnekleme yapısına yönelik işaretçi.
+- **audio:** Ses sınıfı örneğinin işaretçisi.
+- **audio_sampling:** Ses örnekleme yapısının işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) işlev desteklenmiyor
-- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE**: (0x81) arabirim yanlış
-- **UX_NO_ALTERNATE_SETTING**: (0x5E) örnekleme değerleri için alternatif ayar yok
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) İşlevi desteklenmiyor
+- **UX_HOST_CLASS_AUDIO_WRONG_INTERFACE:**(0x81) Arabirim yanlış
+- **UX_NO_ALTERNATE_SETTING:**(0x5e) Örnekleme değerleri için alternatif ayar yok
 
 ### <a name="example"></a>Örnek
 
@@ -528,21 +528,21 @@ UINT ux_host_class_asix_read(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, asix arabiriminden okur. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
+Bu işlev asix arabiriminden okur. Çağrı engelliyor ve yalnızca bir hata olduğunda veya aktarım tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **asix**: aaltısınıf örneği işaretçisi.
-- **data_pointer**: veri yükünün arabellek adresine yönelik işaretçi.
-- **requested_length**: alınacak uzunluk.
-- **actual_length**: Uzunluk gerçekten alındı.
+- **asix:** asix sınıf örneğinin işaretçisi.
+- **data_pointer:** Veri yükünün arabellek adresinin işaretçisi.
+- **requested_length:** Alınan uzunluk.
+- **actual_length:** Uzunluk gerçekten alındı.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) aktarım zaman aşımı, okuma tamamlanmadı.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Aktarım zaman aşımı, okuma tamamlanmamış.
 
 ### <a name="example"></a>Örnek
 
@@ -568,19 +568,19 @@ UINT ux_host_class_asix_write(
     NX_PACKET *packet)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, asix arabirimine yazar. Çağrı engellenmeyen bir.
+Bu işlev asix arabirimine yazar. Çağrı engelleyici değil.
 
 ### <a name="parameters"></a>Parametreler
 
-- **asix**: aaltısınıf örneği işaretçisi.
-- **paket**: NETX veri paketi
+- **asix:** asix sınıf örneğinin işaretçisi.
+- **paket:** Netx veri paketi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_ERROR**: (0xFF) aktarma istendi.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_ERROR:**(0xFF) Aktarım isteğine neden oldu.
 
 ### <a name="example"></a>Örnek
 
@@ -596,7 +596,7 @@ status = ux_host_class_asix_write(asix, packet);
 
 ## <a name="ux_host_class_pima_session_open"></a>ux_host_class_pima_session_open
 
-Başlatıcı ve Yanıtlayıcı arasında bir oturum açın.
+Başlatıcı ile Yanıtlayıcı arasında bir oturum açın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -606,19 +606,19 @@ UINT ux_host_class_pima_session_open(
     UX_HOST_CLASS_PIMA_SESSION *pima_session)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir PIMA başlatıcısı ile bir PIMA Yanıtlayıcısı arasında bir oturum açar. Bir oturum başarıyla açıldıktan sonra, çoğu PIMA komutları yürütülebilir.
+Bu işlev, PIMA Başlatıcısı ile PIMA Yanıtlayıcı arasında bir oturum açar. Bir oturum başarıyla açıldıktan sonra PIMA komutlarının çoğu yürütülebilirsiniz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_sessio**: Pima oturumu< işaretçisi
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_sessio:** PIMA oturum işaretçisi<
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) oturum başarıyla açıldı
-- **UX_HOST_CLASS_PIMA_RC_SESSION_ALREADY_OPENED**: (0X201e) oturum zaten açık
+- **UX_SUCCESS:**(0x00) Oturum başarıyla açıldı
+- **UX_HOST_CLASS_PIMA_RC_SESSION_ALREADY_OPENED:**(0x201E) Oturum zaten açık
 
 ### <a name="example"></a>Örnek
 
@@ -633,7 +633,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_session_close"></a>ux_host_class_pima_session_close
 
-Başlatıcı ve Yanıtlayıcı arasında bir oturumu kapatın.
+Başlatıcı ile Yanıtlayıcı arasındaki oturumu kapatın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -643,19 +643,19 @@ UINT ux_host_class_pima_session_close(
     UX_HOST_CLASS_PIMA_SESSION *pima_session)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, daha önce bir PIMA başlatıcısı ve bir PIMA Yanıtlayıcısı arasında açılan bir oturumu kapatır. Bir oturum kapatıldıktan sonra, çoğu PIMA komutları artık yürütülemez.
+Bu işlev daha önce PIMA Başlatıcısı ile PIMA Yanıtlayıcı arasında açılmış olan bir oturumu kapatır. Bir oturum kapatılana kadar çoğu PIMA komutu artık yürütülemeyecektir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumunun işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) oturum kapatıldı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı.
+- **UX_SUCCESS:**(0x00) Oturum kapatıldı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açık değil.
 
 ### <a name="example"></a>Örnek
 
@@ -667,7 +667,7 @@ status = ux_host_class_pima_session_close(pima, pima_session);
 
 ## <a name="ux_host_class_pima_storage_ids_get"></a>ux_host_class_pima_storage_ids_get
 
-Yanıtlayanın depolama KIMLIĞI dizisini edinin.
+Yanıtlayan'dan depolama kimliği dizisini alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -679,22 +679,22 @@ UINT ux_host_class_pima_storage_ids_get(
     ULONG storage_id_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, yanıtlayanın depolama KIMLIĞI dizisini edinir.
+Bu işlev yanıtlayandan depolama kimliği dizisini elde ediyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **storage_ids_array**: depolama kimliklerinin döndürüldüğü dizi
-- **storage_id_length**: depolama dizisinin uzunluğu
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **storage_ids_array:** Depolama kimlikleri döndürülecek dizi
+- **storage_id_length:** Depolama dizisinin uzunluğu
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) depolama kimliği dizisi doldurulmuş
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Depolama Kimliği dizisi doldurulmuş
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -714,7 +714,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_storage_info_get"></a>ux_host_class_pima_storage_info_get
 
-Yanıtlayanın depolama bilgilerini alın.
+Yanıtlayan'dan depolama bilgilerini alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -726,22 +726,22 @@ UINT ux_host_class_pima_storage_info_get(
     UX_HOST_CLASS_PIMA_STORAGE *storage)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, *storage_id* bir depolama kapsayıcısı için depolama bilgilerini edinir.
+Bu işlev, değeri olan bir depolama kapsayıcısı için depolama bilgilerini *storage_id.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **storage_id**: depolama kapsayıcısının kimliği
-- **depolama**: depolama bilgileri kapsayıcısına yönelik işaretçi
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **storage_id:** Depolama kapsayıcısı kimliği
+- **depolama:** Depolama bilgileri kapsayıcısı işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) depolama bilgileri alındı
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT** (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Depolama bilgileri alındı
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT** (0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -762,7 +762,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_num_objects_get"></a>ux_host_class_pima_num_objects_get
 
-Yanıtlayıcı 'dan bir depolama kapsayıcısındaki nesne sayısını alın.
+Yanıtlayan'dan bir depolama kapsayıcısı üzerinde nesne sayısını alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -774,59 +774,59 @@ UINT ux_host_class_pima_num_objects_get(
     ULONG object_format_code)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, belirli bir biçim kodu ile eşleşen storage_id belirli bir depolama kapsayıcısında depolanan nesne sayısını alır. Nesne sayısı, pima_session yapısının ux_host_class_pima_session_nb_objects: alanına döndürülür.
+Bu işlev, belirli bir biçim koduyla eşleşen belirli bir depolama kapsayıcısı storage_id nesne sayısını elde eder. Nesne sayısı şu alanda döndürülür: ux_host_class_pima_session_nb_objects yapısının pima_session döndürülür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **storage_id**: depolama kapsayıcısının kimliği
-- **object_format_code**: nesne biçimi kodu filtresi.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **storage_id:** Depolama kapsayıcısı kimliği
+- **object_format_code:** Nesneler kod filtresini biçimlendirin.
 
-Nesne biçim kodları aşağıdaki değerlerden birine sahip olabilir.
+Nesne Biçim Kodları aşağıdaki değerlerden birini kullanabilir.
 
-| Nesne biçim kodu               | Açıklama   |     USBX kodu                          |
+| Nesne Biçim Kodu               | Description   |     USBX kodu                          |
 |----------------------------------|---------------|------------------------------------------|
-| 0x3000                           | Tanımsız tanımsız görüntü olmayan nesne | UX_HOST_CLASS_PIMA_OFC_UNDEFINED   |
-| 0x3001                           | İlişki Ilişkilendirmesi (ör. klasörü) | UX_HOST_CLASS_PIMA_OFC_ASSOCIATION |
-| 0x3002                           | Betik cihazı-modele özgü betik | UX_HOST_CLASS_PIMA_OFC_SCRIPT      |
-| 0x3003                           | Yürütülebilir cihaz modeline özgü ikili yürütülebilir dosya | UX_HOST_CLASS_PIMA_OFC_EXECUTABLE  |
-| 0x3004                           | Metin metin dosyası  |   UX_HOST_CLASS_PIMA_OFC_TEXT        |
-| 0x3005                           | HTML köprü metni biçimlendirme dili dosyası (metin) | UX_HOST_CLASS_PIMA_OFC_HTML        |
-| 0x3006                           | DPOF dijital yazdırma sırası biçim dosyası (metin) | UX_HOST_CLASS_PIMA_OFC_DPOF        |
-| 0x3007                           | AıFF ses klibi  |  UX_HOST_CLASS_PIMA_OFC_AIFF        |
-| 0x3008                           | WAV ses klibi   |  UX_HOST_CLASS_PIMA_OFC_WAV         |
-| 0x3009                           | MP3 ses klibi   |  UX_HOST_CLASS_PIMA_OFC_MP3         |
-| 0x300A                           | AVI video klibi   |  UX_HOST_CLASS_PIMA_OFC_AVI         |
-| 0x300B                           | MPEG video klibi  |  UX_HOST_CLASS_PIMA_OFC_MPEG        |
-| 0x300C                           | ASF Microsoft Gelişmiş akış biçimi (video) | UX_HOST_CLASS_PIMA_OFC_ASF         |
-| 0x3800                           | Tanımsız bilinmeyen görüntü nesnesi | UX_HOST_CLASS_PIMA_OFC_QT          |
-| 0x3801                           | EXIF/JPEG takas edilebilir dosya biçimi, JEIDA standart | UX_HOST_CLASS_PIMA_OFC_EXIF_JPEG   |
-| 0x3802                           | Elektronik Fotoğrafçılık için TIFF/EP etiketi resim dosyası biçimi | UX_HOST_CLASS_PIMA_OFC_TIFF_EP     |
-| 0x3803                           | FlashPix yapılandırılmış depolama görüntü biçimi | UX_HOST_CLASS_PIMA_OFC_FLASHPIX    |
-| 0x3804                           | BMP Microsoft Windows bit eşlem dosyası | UX_HOST_CLASS_PIMA_OFC_BMP         |
-| 0x3805                           | CFF Canon kamera resim dosyası biçimi | UX_HOST_CLASS_PIMA_OFC_CIFF        |
-| 0x3806                           | Tanımsız ayrılmış |  |
+| 0x3000                           | Tanımsız Tanımlanmamış görüntü olmayan nesne | UX_HOST_CLASS_PIMA_OFC_UNDEFINED   |
+| 0x3001                           | İlişki İlişkisi (örn. klasör) | UX_HOST_CLASS_PIMA_OFC_ASSOCIATION |
+| 0x3002                           | Betik Cihaz modeline özgü betik | UX_HOST_CLASS_PIMA_OFC_SCRIPT      |
+| 0x3003                           | Yürütülebilir Cihaz modeline özgü ikili yürütülebilir dosya | UX_HOST_CLASS_PIMA_OFC_EXECUTABLE  |
+| 0x3004                           | Metin Metni dosyası  |   UX_HOST_CLASS_PIMA_OFC_TEXT        |
+| 0x3005                           | HTML Köprü Metni Biçimlendirme Dili dosyası (metin) | UX_HOST_CLASS_PIMA_OFC_HTML        |
+| 0x3006                           | DPOF Digital Print Order Format dosyası (metin) | UX_HOST_CLASS_PIMA_OFC_DPOF        |
+| 0x3007                           | AIFF Ses klibi  |  UX_HOST_CLASS_PIMA_OFC_AIFF        |
+| 0x3008                           | WAV Ses klibi   |  UX_HOST_CLASS_PIMA_OFC_WAV         |
+| 0x3009                           | MP3 Ses klibi   |  UX_HOST_CLASS_PIMA_OFC_MP3         |
+| 0x300A                           | AVI Video klibi   |  UX_HOST_CLASS_PIMA_OFC_AVI         |
+| 0x300B                           | MPEG Video klibi  |  UX_HOST_CLASS_PIMA_OFC_MPEG        |
+| 0x300C                           | ASF Microsoft Gelişmiş Akış Biçimi (video) | UX_HOST_CLASS_PIMA_OFC_ASF         |
+| 0x3800                           | Tanımsız Bilinmeyen görüntü nesnesi | UX_HOST_CLASS_PIMA_OFC_QT          |
+| 0x3801                           | EXIF/JPEG Değiştirilebilir Dosya Biçimi, JEIDA standardı | UX_HOST_CLASS_PIMA_OFC_EXIF_JPEG   |
+| 0x3802                           | Elektronik Görüntü Için TIFF/EP Etiket Görüntü Dosyası Biçimi | UX_HOST_CLASS_PIMA_OFC_TIFF_EP     |
+| 0x3803                           | FlashPix Yapılandırılmış Depolama Biçimi | UX_HOST_CLASS_PIMA_OFC_FLASHPIX    |
+| 0x3804                           | BMP Microsoft Windows Bit Eşlem dosyası | UX_HOST_CLASS_PIMA_OFC_BMP         |
+| 0x3805                           | CIFF Canon Kamera Görüntüsü Dosya Biçimi | UX_HOST_CLASS_PIMA_OFC_CIFF        |
+| 0x3806                           | Tanımsız Ayrılmış |  |
 | 0x3807                           | GIF Grafik Değişim Biçimi | UX_HOST_CLASS_PIMA_OFC_GIF         |
-| 0x3808                           | JJPEG dosya değişim biçimi | UX_HOST_CLASS_PIMA_OFC_JFIF        |
-| 0x3809                           | PCD PhotoCD Image Pac | UX_HOST_CLASS_PIMA_OFC_PCD         |
-| 0x380A                           | PICT QuickDraw resim biçimi | UX_HOST_CLASS_PIMA_OFC_PICT        |
+| 0x3808                           | JFIF JPEG Dosya Değişim Biçimi | UX_HOST_CLASS_PIMA_OFC_JFIF        |
+| 0x3809                           | PCD PhotoCD Görüntü Pac | UX_HOST_CLASS_PIMA_OFC_PCD         |
+| 0x380A                           | PICT Hızlı Çizim Görüntü Biçimi | UX_HOST_CLASS_PIMA_OFC_PICT        |
 | 0x380B                           | PNG Taşınabilir Ağ Grafikleri | UX_HOST_CLASS_PIMA_OFC_PNG         |
-| 0x380C                           | Tanımsız ayrılmış |   |
-| 0x380D                           | TIFF etiketi resim dosyası biçimi | UX_HOST_CLASS_PIMA_OFC_TIFF        |
-| 0x380E                           | Bilgi teknolojisi için TIFF/It etiketi görüntü dosyası biçimi (grafik sanatları) | UX_HOST_CLASS_PIMA_OFC_TIFF_IT     |
-| 0x380F                           | JP2 JPEG2000 ana hat dosyası biçimi | UX_HOST_CLASS_PIMA_OFC_JP2         |
-| 0x3810                           | JPX JPEG2000 genişletilmiş dosya biçimi | UX_HOST_CLASS_PIMA_OFC_JPX         |
-| 0011 MSN ile diğer tüm kodlar | Gelecekte kullanılmak üzere hiçbir tanımsız ayrılmış |                                    |
-| MSN 1011 ile diğer tüm kodlar | Satıcı tanımlı satıcı tanımlı tür: görüntü |                                    |
+| 0x380C                           | Tanımsız Ayrılmış |   |
+| 0x380D                           | TIFF Etiketi Görüntü Dosyası Biçimi | UX_HOST_CLASS_PIMA_OFC_TIFF        |
+| 0x380E                           | Bilgi Teknolojisi için TIFF/IT Etiketi Görüntü Dosyası Biçimi (grafik grafik) | UX_HOST_CLASS_PIMA_OFC_TIFF_IT     |
+| 0x380F                           | JP2 JPEG2000 Temel Dosya Biçimi | UX_HOST_CLASS_PIMA_OFC_JP2         |
+| 0x3810                           | JPX JPEG2000 Genişletilmiş Dosya Biçimi | UX_HOST_CLASS_PIMA_OFC_JPX         |
+| 0011'in MSN'i ile diğer tüm kodlar | Gelecekte kullanmak üzere Tanımlanmamış Tüm Ayrılmışlar |                                    |
+| 1011'in MSN'sinde diğer tüm kodlar | Satıcı Tanımlı Satıcı Tanımlı türler: Görüntü |                                    |
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -847,7 +847,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_handles_get"></a>ux_host_class_pima_object_handles_get
 
-Yanıtlayanın nesne tutamaçlarını alın.
+Yanıtlayan'dan nesne tanıtıcılarını alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -862,40 +862,40 @@ UINT ux_host_class_pima_object_handles_get(
     ULONG object_handle_association)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Storage_id parametresiyle belirtilen depolama kapsayıcısında bulunan nesne tanıtıcılarının dizisini döndürür. Tüm mağazaların içindeki toplanmış bir liste isteniyorsa, bu değer 0xFFFFFFFF olarak ayarlanmalıdır.
+storage_id parametresi tarafından belirtilen depolama kapsayıcısı içinde mevcut nesne storage_id döndürür. Tüm depolar genelinde toplu bir liste istenirse, bu değer 0xFFFFFFFF.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **object_handes_array**: tanıtıcıların döndürüldüğü dizi
-- **object_handles_length**: dizinin uzunluğu
-- **storage_id**: depolama kapsayıcısının kimliği
-- **object_format_code**: nesne için biçim kodu (bkz. işlev için tablo ux_host_class_pima_num_objects_get)
-- **object_handle_association**: isteğe bağlı nesne ilişkilendirme değeri
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **object_handes_array:** Tanıtıcıların döndürül olduğu dizi
+- **object_handles_length:** Dizinin uzunluğu
+- **storage_id:** Depolama kapsayıcısı kimliği
+- **object_format_code:** Nesne için kodu biçimlendirme (işlev kodu için tabloya ux_host_class_pima_num_objects_get)
+- **object_handle_association:** İsteğe bağlı nesne ilişkilendirme değeri
 
-Nesne tanıtıcısı ilişkilendirmesi aşağıdaki tablodaki değerden biri olabilir:
+Nesne tanıtıcısı ilişkilendirmesi aşağıdaki tabloda yer alan değerlerden biri olabilir:
 
-| Ilişki kodu                        | AssociationType      | Yorum       |
+| AssociationCode                        | Associationtype      | Yorum       |
 |----------------------------------------|----------------------|----------------------|
-| 0x0000                                 | Tanımlayan            | Tanımlayan            |
+| 0x0000                                 | Tanımsız            | Tanımsız            |
 | 0x0001                                 | GenericFolder        | Kullanılmıyor               |
-| 0x0002                                 | Albümün                | Ayrılmıştır             |
+| 0x0002                                 | Albüm                | Ayrılmıştır             |
 | 0x0003                                 | TimeSequence         | DefaultPlaybackDelta |
-| 0x0004                                 | Horizontalpanoramik  | Kullanılmıyor               |
-| 0x0005                                 | Verticalpanoramik    | Kullanılmıyor               |
-| 0x0006                                 | 2Dpanoramik          | Imaperrow         |
-| 0x0007                                 | Anlari verileri        | Tanımlayan            |
-| Bit 15 olan diğer tüm değerler 0 olarak ayarlanmıştır  | Ayrılmıştır             | Tanımlayan            |
-| Bit 15 olan tüm değerler 1 olarak ayarlanmıştır        | Satıcı tanımlı       | Satıcı tanımlı       |
+| 0x0004                                 | HorizontalPanoramic  | Kullanılmıyor               |
+| 0x0005                                 | VerticalPanoramic    | Kullanılmıyor               |
+| 0x0006                                 | 2DPanoramic          | ImagesPerRow         |
+| 0x0007                                 | AncillaryData        | Tanımsız            |
+| Bit 15 olan diğer tüm değerler 0 olarak ayarlanmıştır  | Ayrılmıştır             | Tanımsız            |
+| Bit 15 değeri 1 olan tüm değerler        | Satıcı Tanımlı       | Satıcı Tanımlı       |
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -917,7 +917,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_info_get"></a>ux_host_class_pima_object_info_get
 
-Yanıtlayanın nesne bilgilerini alın.
+Yanıtlayan'dan nesne bilgilerini alın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -929,22 +929,22 @@ UINT ux_host_class_pima_object_info_get(
     UX_HOST_CLASS_PIMA_OBJECT *object)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, nesne tanıtıcısı için nesne bilgilerini edinir.
+Bu işlev, bir nesne tanıtıcısı için nesne bilgilerini elde eder.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı
-- **nesne**: nesne bilgisi kapsayıcısının işaretçisi
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **object_handle:** Nesnenin tanıtıcısı
+- **object**: Nesne bilgisi kapsayıcısı işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -971,7 +971,7 @@ while (object_index < pima_session -> ux_host_class_pima_session_nb_objects)
 
 ## <a name="ux_host_class_pima_object_info_send"></a>ux_host_class_pima_object_info_send
 
-Nesne bilgilerini Yanıtlayıcıya gönderin.
+Nesne bilgilerini Yanıtlayan'a gönderin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -984,23 +984,23 @@ UINT ux_host_class_pima_object_info_send(
     UX_HOST_CLASS_PIMA_OBJECT *object)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, storage_id değer bir depolama kapsayıcısı için depolama bilgilerini gönderir. Başlatıcı, bir nesneyi yanıtlayanın göndermeden önce bu komutu kullanmalıdır.
+Bu işlev, bir depolama kapsayıcısı için depolama bilgilerini storage_id. Başlatıcı, yanıtlayıcıya nesne göndermeden önce bu komutu kullan gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi.
-- **storage_id**: hedef depolama kimliği.
-- **parent_object_id**: nesnenin yerleştirilmesi gereken yanıtlayana ObjectHandle.
-- **nesne**: nesne bilgisi kapsayıcısının işaretçisi.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumunun işaretçisi.
+- **storage_id:** Hedef depolama kimliği.
+- **parent_object_id:** Nesnenin yerleştiril gerektiği Yanıtlayan'da Üst ObjectHandle.
+- **object:** Nesne bilgisi kapsayıcısı işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -1020,7 +1020,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_open"></a>ux_host_class_pima_object_open
 
-Yanıtlayanda depolanan bir nesneyi açın.
+Yanıtlayan'da depolanan bir nesneyi açın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1032,23 +1032,23 @@ UINT ux_host_class_pima_object_open(
     UX_HOST_CLASS_PIMA_OBJECT *object)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, okumadan veya yazmadan önce Yanıtlayıcı üzerinde bir nesne açar.
+Bu işlev okuma veya yazmadan önce yanıtlayanda bir nesnesi açar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi.
-- **object_handle**: nesnenin tanıtıcısı.
-- **objec**: nesne bilgisi kapsayıcısına yönelik işaretçi.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumunun işaretçisi.
+- **object_handle:** nesnesinin tanıtıcısı.
+- **objectc:** Nesne bilgisi kapsayıcısı işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_ALREADY_OPENED**: (0X2021) nesne zaten açık.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_ALREADY_OPENED:**(0x2021) Nesnesi zaten açılmış.
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -1065,7 +1065,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_get"></a>ux_host_class_pima_object_get
 
-Yanıtlayanda depolanan bir nesne alın.
+Yanıtlayan'da depolanan bir nesneyi al.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1080,29 +1080,29 @@ UINT ux_host_class_pima_object_get(
     ULONG *object_actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, Yanıtlayıcıda bir nesne alır.
+Bu işlev yanıtlayanda bir nesnesi alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı
-- **nesne**: nesne bilgisi kapsayıcısının işaretçisi
-- **object_buffer**: nesne verilerinin adresi
-- **object_buffer_length**: istenen nesne uzunluğu
-- **object_actual_length**: döndürülen nesne uzunluğu
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **object_handle:** nesnesinin tanıtıcısı
+- **object**: Nesne bilgisi kapsayıcısı işaretçisi
+- **object_buffer:** Nesne verisi adresi
+- **object_buffer_length:** İstenen nesne uzunluğu
+- **object_actual_length:** Döndürülen nesnenin uzunluğu
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) nesne aktarıldı
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) nesnesi açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) nesne erişimi reddedildi
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: (0x2007) aktarım tamamlanmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
-- **UX_TRANSFER_ERROR**: (0x23) nesne okunurken aktarım hatası oluştu
+- **UX_SUCCESS:**(0x00) Nesne aktarıldı
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:**(0x2023) Nesne açılamıyor.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Nesne erişimi reddedildi
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:**(0x2007) Aktarım tamamlanmadı
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
+- **UX_TRANSFER_ERROR:**(0x23) Nesne okurken aktarım hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1164,7 +1164,7 @@ status = ux_host_class_pima_object_close(pima, pima_session,
 
 ## <a name="ux_host_class_pima_object_send"></a>ux_host_class_pima_object_send
 
-Yanıtlayanda depolanan bir nesne gönderin.
+Yanıtlayan'da depolanan bir nesneyi gönderin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1176,28 +1176,28 @@ UINT ux_host_class_pima_object_send(
     UCHAR *object_buffer, ULONG object_buffer_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, Yanıtlayıcıya bir nesnesi gönderir.
+Bu işlev yanıtlayana bir nesnesi gönderir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_sessio**: Pima oturumuna yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı
-- **nesne**: nesne bilgisi kapsayıcısının işaretçisi
-- **object_buffer**: nesne verilerinin adresi
-- **object_buffer_length**: istenen nesne uzunluğu
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_sessio:** PIMA oturumunun işaretçisi
+- **object_handle:** nesnesinin tanıtıcısı
+- **object**: Nesne bilgisi kapsayıcısı işaretçisi
+- **object_buffer:** Nesne verisi adresi
+- **object_buffer_length:** İstenen nesne uzunluğu
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) nesnesi açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) nesne erişimi reddedildi
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: (0x2007) aktarım tamamlanmadı
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
-- **UX_TRANSFER_ERROR**: (0x23) nesne yazılırken aktarım hatası
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açılamıyor
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:**(0x2023) Nesne açılamıyor.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Nesne erişimi reddedildi
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:**(0x2007) Aktarım tamamlanmadı
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
+- **UX_TRANSFER_ERROR:**(0x23) Nesne yazarken aktarım hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1249,7 +1249,7 @@ status = ux_host_class_pima_object_close(pima, pima_session, object_handle,
 
 ## <a name="ux_host_class_pima_thumb_get"></a>ux_host_class_pima_thumb_get
 
-Yanıtlayanın içinde depolanan bir Thumb nesnesi alın.
+Yanıtlayan'da depolanan bir parmak nesnesi elde edersiniz.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1263,29 +1263,29 @@ UINT ux_host_class_pima_thumb_get(
     ULONG *thumb_actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, Yanıtlayıcıda bir Thumb nesnesi alır.
+Bu işlev yanıtlayanda bir parmak nesnesi alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi.
-- **object_handle**: nesnenin tanıtıcısı.
-- **nesne**: nesne bilgisi kapsayıcısının işaretçisi.
-- **thumb_buffer**: Thumb nesne verilerinin adresi.
-- **thumb_buffer_length**: parmak nesnesi uzunluğu istendi.
-- **thumb_actual_length**: döndürülen Thumb nesnesinin uzunluğu.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumunun işaretçisi.
+- **object_handle:** nesnesinin tanıtıcısı.
+- **object:** Nesne bilgisi kapsayıcısı işaretçisi.
+- **thumb_buffer:** Parmak nesne verisi adresi.
+- **thumb_buffer_length:** İstenen başparmak nesnesi uzunluğu.
+- **thumb_actual_length:** Döndürülen başparmak nesnesinin uzunluğu.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) nesnesi açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) nesne erişimi reddedildi.
-- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER**: (0x2007) aktarma tamamlanmadı.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
-- **UX_TRANSFER_ERROR**: (0x23) nesne okunurken aktarım hatası oluştu.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açık değil.
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:**(0x2023) Nesne açılamıyor.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Nesne erişimi reddedildi.
+- **UX_HOST_CLASS_PIMA_RC_INCOMPLETE_TRANSFER:**(0x2007) Aktarım tamamlanmadı.
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
+- **UX_TRANSFER_ERROR:**(0x23) Nesne okurken aktarım hatası.
 
 ### <a name="example"></a>Örnek
 
@@ -1307,7 +1307,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_delete"></a>ux_host_class_pima_object_delete
 
-Yanıtlayanda depolanan bir nesneyi silin.
+Yanıtlayan'da depolanan bir nesneyi silin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1318,22 +1318,22 @@ UINT ux_host_class_pima_object_delete(
     ULONG object_handle)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, Yanıtlayıcıda bir nesneyi siler
+Bu işlev yanıtlayanda bir nesneyi siler
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi
-- **object_handle**: nesnenin tanıtıcısı
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumu işaretçisi
+- **object_handle:** nesnesinin tanıtıcısı
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) nesne silindi.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED**: (0x200f) nesne silinemiyor.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Nesne silindi.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açık değil.
+- **UX_HOST_CLASS_PIMA_RC_ACCESS_DENIED:**(0x200f) Nesne silinamadı.
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -1348,7 +1348,7 @@ if (status != UX_SUCCESS)
 
 ## <a name="ux_host_class_pima_object_close"></a>ux_host_class_pima_object_close
 
-Yanıtlayanın içinde depolanan bir nesneyi kapatma
+Yanıtlayan'da depolanan bir nesneyi kapatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1359,23 +1359,23 @@ UINT ux_host_class_pima_object_close(
     ULONG object_handle, UX_HOST_CLASS_PIMA_OBJECT *object)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, yanıtlayanın bir nesnesini kapatır.
+Bu işlev yanıtlayanda bir nesneyi kapatır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Pima**: Pima sınıfı örneğine yönelik işaretçi.
-- **pima_session**: Pima oturumuna yönelik işaretçi.
-- **object_handle**: nesnenin tanıtıcısı.
-- **nesne**: nesne işaretçisi.
+- **pima:** pima sınıfı örneğinin işaretçisi.
+- **pima_session:** PIMA oturumunun işaretçisi.
+- **object_handle:** Nesnenin tanıtıcısı.
+- **object:** Nesnenin işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) nesne kapatıldı.
-- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN**: (0x2003) oturum açılmadı.
-- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED**: (0X2023) nesnesi açılmadı.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) Pima komutu oluşturmak için yeterli bellek yok.
+- **UX_SUCCESS:**(0x00) Nesne kapatıldı.
+- **UX_HOST_CLASS_PIMA_RC_SESSION_NOT_OPEN:**(0x2003) Oturum açık değil.
+- **UX_HOST_CLASS_PIMA_RC_OBJECT_NOT_OPENED:**(0x2023) Nesne açılamıyor.
+- **UX_MEMORY_INSUFFICIENT:**(0x12) PIMA komutu oluşturmak için yeterli bellek yok.
 
 ### <a name="example"></a>Örnek
 
@@ -1399,22 +1399,22 @@ UINT ux_host_class_gser_read(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev genel seri arabiriminden okur. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
+Bu işlev genel seri arabiriminden okur. Çağrı engelliyor ve yalnızca bir hata olduğunda veya aktarım tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gser**: gser sınıfı örneğine yönelik işaretçi.
-- **interface_index**: okunacak arabirim dizini.
-- **data_pointer**: veri yükünün arabellek adresine yönelik işaretçi.
-- **requested_length**: alınacak uzunluk.
-- **actual_length**: Uzunluk gerçekten alındı.
+- **gser:** gser sınıf örneğinin işaretçisi.
+- **interface_index:** Okunan arabirim dizini.
+- **data_pointer:** Veri yükünün arabellek adresinin işaretçisi.
+- **requested_length:** Alınan uzunluk.
+- **actual_length:** Uzunluk gerçekten alındı.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) aktarım zaman aşımı, okuma tamamlanmadı.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Aktarım zaman aşımı, okuma tamamlanmamış.
 
 ### <a name="example"></a>Örnek
 
@@ -1442,22 +1442,22 @@ UINT ux_host_class_gser_write(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev genel seri arabirimine yazar. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
+Bu işlev genel seri arabirimine yazar. Çağrı engelliyor ve yalnızca bir hata olduğunda veya aktarım tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gser**: gser sınıfı örneğine yönelik işaretçi.
-- **interface_index**: yazılacak arabirim.
-- **data_pointer**: veri yükünün arabellek adresine yönelik işaretçi.
-- **requested_length**: gönderilecek uzunluk.
-- **actual_length**: Uzunluk gerçekten gönderildi.
+- **gser:** gser sınıf örneğinin işaretçisi.
+- **interface_index:** Yazacak arabirim.
+- **data_pointer:** Veri yükünün arabellek adresinin işaretçisi.
+- **requested_length:** Gönderilecek uzunluk.
+- **actual_length:** Uzunluk aslında gönderilir.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_TRANSFER_TIMEOUT**: (0x5c) aktarım zaman aşımı, yazma tamamlanmamış.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_TRANSFER_TIMEOUT:**(0x5c) Aktarım zaman aşımı, yazma eksik.
 
 ### <a name="example"></a>Örnek
 
@@ -1472,7 +1472,7 @@ status = ux_host_class_cdc_acm_write(gser, data_pointer, requested_length, &actu
 
 ## <a name="ux_host_class_gser_ioctl"></a>ux_host_class_gser_ioctl
 
-Genel seri arabirimine bir ıOCTL işlevi gerçekleştirin.
+Genel seri arabirime bir IOCTL işlevi gerçekleştirin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1483,22 +1483,22 @@ UINT ux_host_class_gser_ioctl(
     VOID *parameter)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, gser arabirimine belirli bir IOCTL işlevi gerçekleştirir. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da komut tamamlandığında döndürülür.
+Bu işlev, gser arabirimine belirli bir ioctl işlevini gerçekleştirir. Çağrı engelliyor ve yalnızca bir hata olduğunda veya komut tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gser**: gser sınıfı örneğine yönelik işaretçi.
-- **ioctl_function**: gerçekleştirilecek IOCTL işlevi. İzin verilen IOCTL işlevlerinden biri için aşağıdaki tabloya bakın.
-- **parametre**: IOCTL 'ye özgü bir parametreye pointerto
+- **gser:** gser sınıf örneğinin işaretçisi.
+- **ioctl_function:** gerçekleştirilecek ioctl işlevi. İzin verilen ioctl işlevlerinden biri için aşağıdaki tabloya bakın.
+- **parameter:** ioctl'ye özgü bir parametrenin işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) veri aktarımı tamamlandı.
-- **UX_MEMORY_INSUFFICIENT**: (0x12) yeterli bellek yok.
-- **UX_HOST_CLASS_UNKNOWN**: (0x59) yanlış sınıf örneği
-- **UX_FUNCTION_NOT_SUPPORTED**: (0x54) bilinmeyen IOCTL işlevi.
+- **UX_SUCCESS:**(0x00) Veri aktarımı tamamlandı.
+- **UX_MEMORY_INSUFFICIENT:**(0x12) Yeterli bellek yok.
+- **UX_HOST_CLASS_UNKNOWN:**(0x59) Yanlış sınıf örneği
+- **UX_FUNCTION_NOT_SUPPORTED:**(0x54) Bilinmeyen IOCTL işlevi.
 
 ### <a name="ioctl-functions"></a>IOCTL işlevleri
 
@@ -1527,7 +1527,7 @@ status = ux_host_class_gser_ioctl(gser,
 
 ## <a name="ux_host_class_gser_reception_start"></a>ux_host_class_gser_reception_start
 
-Genel Seri arabirimde almayı Başlat
+Genel seri arabiriminde alımı başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1537,20 +1537,20 @@ UINT ux_host_class_gser_reception_start(
     UX_HOST_CLASS_GSER_RECEPTION *gser_reception)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, genel seri sınıf arabirimindeki alımı başlatır. Bu işlev, engellenmemiş alım için izin verir. Bir arabellek alındığında uygulamaya çağrılan bir geri çağırma işlemi.
+Bu işlev, genel seri sınıf arabiriminde sinyal alımını başlatır. Bu işlev engelleyici olmayan sinyal alımına olanak sağlar. Bir arabellek alınca, içinde bir geri çağırma uygulamaya çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gser** Gser sınıfı örneğine yönelik işaretçi.
-- **gser_reception** Alım parametrelerini içeren yapı
+- **gser** gser sınıfı örneğinin işaretçisi.
+- **gser_reception** Sinyal parametrelerini içeren yapı
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_UNKNOWN** (0x59) yanlış sınıf örneği
-- **UX_ERROR** (0x01) hatası
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_UNKNOWN** (0x59) Yanlış sınıf örneği
+- **UX_ERROR** (0x01) Hatası
 
 ### <a name="example"></a>Örnek
 
@@ -1572,7 +1572,7 @@ ux_host_class_gser_reception_start(gser, &gser_reception);
 
 ## <a name="ux_host_class_gser_reception_stop"></a>ux_host_class_gser_reception_stop
 
-Genel Seri arabirimde alımı durdur
+Genel seri arabirimde alımı durdurma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1582,20 +1582,20 @@ UINT ux_host_class_gser_reception_stop(
     UX_HOST_CLASS_GSER_RECEPTION *gser_reception)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, genel seri sınıf arabirimindeki alımı sonlandırır.
+Bu işlev, genel seri sınıf arabiriminde alımı durdurur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **gser** Gser sınıfı örneğine yönelik işaretçi.
-- **gser_reception** Alım parametrelerini içeren yapı
+- **gser** gser sınıfı örneğinin işaretçisi.
+- **gser_reception** Sinyal parametrelerini içeren yapı
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_HOST_CLASS_UNKNOWN** (0x59) yanlış sınıf örneği
-- **UX_ERROR** (0x01) hatası
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_HOST_CLASS_UNKNOWN** (0x59) Yanlış sınıf örneği
+- **UX_ERROR** (0x01) Hatası
 
 ### <a name="example"></a>Örnek
 

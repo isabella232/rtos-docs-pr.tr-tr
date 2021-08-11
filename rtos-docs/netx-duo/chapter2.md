@@ -1,121 +1,121 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo yüklemesi ve kullanımı
-description: Bu bölümde, Azure RTOS NetX Duo yüksek performanslı ağ yığınının yüklenmesiyle, kurulumuyla ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Duo'Azure RTOS Yükleme ve Kullanma
+description: Bu bölümde NetX Duo'da yüksek performanslı ağ yığınının yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli Azure RTOS açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ac41672959c0873d90bdafe0d6b959efdddf8ecc
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 32a9efaac3c85d415316fba2e9536cc40939f1f6debcbe3e2fa588de613a694d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115178230"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788839"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Bölüm 2-Azure RTOS NetX Duo yüklemesi ve kullanımı
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo"></a>Bölüm 2 - NetX Duo'Azure RTOS Yükleme ve Kullanma
 
-Bu bölümde, aşağıdakiler de dahil olmak üzere yüksek performanslı ağ yığınının Azure RTOS NetX Duo 'i yükleme, kurulum ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır: 
+Bu bölümde NetX Duo'da yüksek performanslı ağ yığınının yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların Azure RTOS açıklaması yer almaktadır. Bunlar: 
 
-## <a name="host-considerations"></a>Ana bilgisayar konuları
+## <a name="host-considerations"></a>KonakLa ilgili Dikkat Edilmesi Gerekenler
 
-katıştırılmış geliştirme genellikle Windows veya Linux (unıx) ana bilgisayar bilgisayarlarında gerçekleştirilir. Uygulama derlendikten, bağlanır ve çalıştırılabilir dosya konakta üretildikten sonra, yürütme için hedef donanıma indirilir.
+Katıştırılmış geliştirme genellikle linux (Unix) Windows bilgisayarlarda gerçekleştirilir. Uygulama derledikten, bağlandıktan ve yürütülebilir dosya konakta üretildikten sonra, yürütülebilir dosya yürütülebilirlik için hedef donanıma indirilir.
 
-Genellikle hedef indirme işlemi geliştirme aracının hata ayıklayıcı içinden yapılır. İndirmeden sonra, hata ayıklayıcı, hedef yürütme denetimi (go, dur, kesme noktası vb.) ve bellek ve işlemci kayıtlarına erişimi sağlamaktan sorumludur.
+Hedef indirme genellikle geliştirme aracının hata ayıklayıcısından yapılır. İndirmeden sonra, hata ayıklayıcısı hedef yürütme denetimi (go, durdurma, kesme noktası vb.) sağlamanın yanı sıra bellek ve işlemci kayıtlarına erişim sağlamakla sorumludur.
 
-Çoğu geliştirme aracı hata ayıklayıcıları, JTAG (IEEE 1149,1) ve arka plan hata ayıklama modu (BDM) gibi yonga hata ayıklama (OCD) bağlantıları aracılığıyla hedef donanımla iletişim kurar. Hata ayıklayıcılar Ayrıca In-Circuit öykünme (buz) bağlantıları aracılığıyla hedef donanımla iletişim kurar. OCD ve ıCE bağlantıları, hedef yerleşik yazılımda en az yetkisiz erişim sağlayan güçlü çözümler sağlar.
+Çoğu geliştirme aracı hata ayıklayıcısı, JTAG (IEEE 1149.1) ve Arka Plan Hata Ayıklama Modu (BDM) gibi yonga üzerinde hata ayıklama (OCD) bağlantıları aracılığıyla hedef donanımla iletişim kurar. Hata ayıklayıcılar ayrıca Öykünme (ICE) In-Circuit hedef donanımla iletişim kurar. Hem OCD hem de ICE bağlantıları, hedef yerleşik yazılıma en az izinsiz girişle sağlam çözümler sağlar.
 
-Konakta kullanılan kaynaklar için, NetX Duo kaynak kodu ASCII biçiminde dağıtılır ve ana bilgisayarın sabit diskinde yaklaşık 1 MB boş alan gerektirir.
+Konakta kullanılan kaynaklar için olduğu gibi NetX Duo'nun kaynak kodu ASCII biçiminde teslim edilir ve konak bilgisayarın sabit diskte yaklaşık 1 Mbayt alan gerektirir.
 
-## <a name="target-considerations"></a>Hedef konuları
+## <a name="target-considerations"></a>HedefLe ilgili Dikkat Edilmesi Gerekenler
 
-NetX Duo, hedefte 5 Kbayt ve 45 Kbayt Read-Only bellek (ROM) arasında olmalıdır. NetX Duo iş parçacığı yığını ve diğer genel veri yapıları için hedefin rastgele erişim belleği (RAM) için bir adet 1-5 KB gerekir.
+NetX Duo, hedefte 5 KBayt ile 45 KBayt Read-Only Bellek (ROM) gerektirir. NetX Duo iş parçacığı yığını ve diğer genel veri yapıları için hedefin Rastgele Erişim Belleği'nin (RAM) 1 ile 5KBayt arasında bir bölümü daha gereklidir.
 
-Ayrıca NetX Duo, iki ThreadX Zamanlayıcı nesnesinin ve bir ThreadX mutex nesnesinin kullanılmasını gerektirir. Bu tesisler, NetX Duo protokol yığını içinde düzenli işleme ihtiyaçları ve iş parçacığı koruması için kullanılır.
+Ayrıca NetX Duo, iki ThreadX zamanlayıcı nesnesinin ve bir ThreadX mutex nesnesinin kullanımını gerektirir. Bu tesisler NetX Duo protokol yığını içinde düzenli işlem ihtiyaçları ve iş parçacığı koruması için kullanılır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-Azure RTOS NetX Duo, konumundaki ortak kaynak kodu deposundan elde edilebilir <https://github.com/azure-rtos/netxduo/> .
+Azure RTOS NetX Duo, genel kaynak kod depomuzdan <https://github.com/azure-rtos/netxduo/> edinebilirsiniz.
 
-Depodaki birçok önemli dosyanın listesi aşağıda verilmiştir:
+Aşağıda, depoda yer alan birkaç önemli dosyanın listesi ve ardından yer alan liste ve bir liste ve ardından yer alan bilgileri bulabilirsiniz:
 
-**nx_api. h**  
-Tüm sistem eşlerini, veri yapılarını ve hizmet prototiplerini içeren C üstbilgi dosyası.
+**nx_api.h**  
+Tüm sistem eşitlerini, veri yapılarını ve hizmet prototiplerini içeren C üst bilgi dosyası.
 
-**nx_port. h** Tüm geliştirme araçlarını ve targetspecific veri tanımlarını ve yapılarını içeren C üstbilgi dosyası. 
+**nx_port.h** Tüm geliştirme aracı ve hedef veri tanımlarını ve yapılarını içeren C üst bilgi dosyası. 
 
-**demo_netx. c** Küçük bir demo uygulaması içeren C dosyası.
+**demo_netx.c** Küçük bir tanıtım uygulaması içeren C dosyası.
 
-**NX. a (veya NX. lib)**  
-Standart paketiyle dağıtılan NetX C kitaplığının ikili sürümü.
+**nx.a (veya nx.lib)**  
+Standart paketle dağıtılan NetX C kitaplığının ikili sürümü.
 
-## <a name="netx-duo-installation"></a>NetX Duo yüklemesi
+## <a name="netx-duo-installation"></a>NetX Duo Yüklemesi
 
-netx Duo, GitHub deposu yerel makinenize kopyalanarak yüklenir. Bilgisayarınızda NetX Duo deposunun bir kopyasını oluşturmak için tipik sözdizimi aşağıda verilmiştir:
+NetX Duo, GitHub yerel makinenize kopyalandı. Aşağıda, bilgisayarınızda NetX Duo deposunun bir kopyasını oluşturmak için tipik bir söz dizimi ve söz dizimi ve ardından yer alan genel bir söz dizimi ve ardından gelir:
 
 ```c
     git clone https://github.com/azure-rtos/netxduo
 ```
 
-alternatif olarak, GitHub ana sayfasındaki indir düğmesini kullanarak deponun bir kopyasını indirebilirsiniz.
+Alternatif olarak, ana sayfada yer alan indirme düğmesini kullanarak deponun bir GitHub indirebilirsiniz.
 
-Ayrıca, çevrimiçi deponun ön sayfasında NetX Duo kitaplığını oluşturmaya yönelik yönergeleri de bulacaksınız.
+Çevrimiçi deponun ön sayfasında NetX Duo kitaplığını oluşturma yönergelerini de bulabilirsiniz.
 
 > [!IMPORTANT]
-> *Uygulama yazılımının NetX Duo kitaplık dosyasına (genellikle **NX. a** veya **NX. lib**) ve C içerme dosyalarına **nx_api. h ve nx_port. h** erişimi olması gerekir. Bu, geliştirme araçları için uygun yol ayarlanarak veya bu dosyaları uygulama geliştirme alanına kopyalayarak gerçekleştirilir.*
+> *Uygulama yazılımının NetX Duo kitaplık dosyasına **(genellikle nx.a veya** **nx.lib)** erişmesi ve C'nin **nx_api.h ve nx_port.h dosyalarına erişmesi gerekir.** Bu, geliştirme araçları için uygun yolu ayarlayıp veya bu dosyaları uygulama geliştirme alanına kopyalayıp bunu gerçekleştirebilirsiniz.*
 
 ## <a name="using-netx-duo"></a>NetX Duo kullanma
 
-NetX Duo kullanmak kolaydır. Temel olarak, uygulama kodu derleme sırasında ***nx_api. h** _ Içermeli ve NETX Duo Kitaplığı _*_NX. a_*_ (veya _ *_NX. lib_*) * ile bağlantı içermelidir.
+NetX Duo'ları kullanmak oldukça kolaydır. Temel olarak, uygulama kodu derleme sırasında ***nx_api.h** _ öğesini içermeli ve NetX Duo kitaplığı _*_nx.a_*_ (veya _ *_nx.lib_*)* ile bağlantı oluşturmalı.
 
-NetX Duo uygulaması oluşturmak için gereken dört kolay adım aşağıda verilmiştir:
+Bir NetX Duo uygulaması oluşturmak için gereken dört kolay adım aşağıda ve ve aşağıda ve listelemektedir:
 
 | Adım  | Description  |
 |---|---|
-|&nbsp;1. Adım: |NetX Duo Hizmetleri veya veri yapıları kullanan tüm uygulama dosyalarına ***nx_api. h*** dosyasını dahil edin.|
-|&nbsp;2. Adım: |_ *_Tx_application_define_** işlevinden veya bir uygulama iş parçacığından ***Nx_system_initialize** _ çağırarak NETX Duo sistemini başlatın.|
-|Adım &nbsp; 3: |Bir IP örneği oluşturun, gerekirse Adres Çözümleme Protokolü 'Nü (ARP) ve ***nx_system_initialize*** sonra tüm yuvaları etkinleştirin.|
-|&nbsp;4. Adım: |Uygulama kaynağını derleyin ve NetX Duo çalışma zamanı kitaplığıyla bağlayın ***NX. a** _ (veya _ *_NX. lib_* *). Elde edilen görüntü hedefe indirilebilir ve yürütülür!|
+|&nbsp;1. Adım: |NetX Duo nx_api veri yapılarını kullanan tüm uygulama dosyalarına ***nx_api.h*** dosyasını dahil etmek.|
+|&nbsp;2. Adım: |_ tx_application_define * işlevinden veya **bir uygulama iş parçacığından****_nx_system_initialize_* _ çağırarak NetX Duo sistemini başlatma.|
+|&nbsp;3. Adım: |Gerekirse bir IP örneği oluşturun, Gerekirse Adres Çözümleme Protokolü'nx_system_initialize ***etkinleştirin.***|
+|&nbsp;4. Adım: |Uygulama kaynağını ve bağlantısını NetX Duo çalışma zamanı kitaplığı ***nx.a** _ (veya _*_nx.lib **) ile derle._ Sonuçta elde edilen görüntü hedefe indirilir ve yürütülür!|
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Her NetX Duo bağlantı noktası, gerçek bir ağ üzerinde veya sanal ağ sürücüsü aracılığıyla yürütülen bir veya daha fazla gösterimle birlikte dağıtılır. Öncelikle tanıtım sisteminin çalıştırılması her zaman iyi bir fikirdir.
+Her NetX Duo bağlantı noktası, gerçek bir ağ üzerinde veya sanal ağ sürücüsü aracılığıyla yürütülen bir veya daha fazla gösterimle birlikte teslim edilir. Tanıtım sisteminin ilk olarak çalıştırılana kadar her zaman iyi bir fikirdir.
 
-Tanıtım sistemi düzgün çalışmıyorsa, sorunu daraltmak için aşağıdaki işlemleri gerçekleştirin:
+Tanıtım sistemi düzgün çalışmazsa, sorunu daraltmak için aşağıdaki işlemleri gerçekleştirin:
 
-1. Tanıtım 'in ne kadarının çalıştığını belirleme.
-2. Yeni uygulama iş parçacıklarında yığın boyutlarını artırın.
-3. NetX Duo kitaplığını yapılandırma seçeneği bölümünde listelenen uygun hata ayıklama seçenekleriyle yeniden derleyin.
-4. Paketlerin gönderilip gönderilmediğini veya alındığını görmek için NX_IP yapısını inceleyin.
-5. Kullanılabilir paketlerin olup olmadığını görmek için varsayılan paket havuzunu inceleyin.
-6. Ağ sürücüsünün, IPv4 veya IPv6 bağlantısı gerektiren uygulamalar için 4 baytlık sınırlardaki üst bilgilerini içeren ARP ve IP paketleri sağladığı emin olun.
-7. Sorunun kaybolup olmadığını veya değişiklik olduğunu görmek için son değişiklikleri geçici olarak atlayın. Bu tür bilgiler, Microsoft Destek mühendislerinin yararlı olduğunu kanıtlamaları gerekir.
+1. Gösterimin ne kadar çalıştırı olduğunu belirleme.
+2. Yeni uygulama iş parçacıklarında yığın boyutlarını artırma.
+3. NetX Duo kitaplığını yapılandırma seçeneği bölümünde listelenen uygun hata ayıklama seçenekleriyle yeniden derleme.
+4. Paketlerin gönder NX_IP alınarak alın mı olduğunu görmek için NX_IP yapısını inceleme.
+5. Varsayılan paket havuzunu incelenin ve kullanılabilir paket olup olamay olduğunu kontrol etmek için.
+6. Ağ sürücüsünün IPv4 veya IPv6 bağlantısı gerektiren uygulamalar için 4 bayt sınırlarda üst bilgileriyle birlikte ARP ve IP paketleri temin olduğundan emin olun.
+7. Sorunun kaybolur mu yoksa değişir mi olduğunu görmek için son yapılan değişiklikleri geçici olarak atlar. Bu tür bilgiler Microsoft destek mühendisleri için faydalı olacaktır.
 
-Sorun giderme adımlarından toplanan bilgileri göndermek için sayfa 12 ' de "sizin bizim için gerekenler" bölümünde özetlenen yordamları izleyin.
+Sorun giderme adımlarından toplanan bilgileri göndermek için 12. sayfada yer alan "What We Need From You" (Sizden NeLere Ihtiyacımız Var) sayfasında açıklanan yordamları izleyin.
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NETX Duo kitaplığı ve NetX Duo kullanan uygulamayı oluştururken birkaç yapılandırma seçeneği vardır. Yapılandırma seçenekleri, aksi belirtilmedikçe, uygulama kaynağında, komut satırında veya ***nx_user. h*** içerme dosyası içinde tanımlanabilir.
+NetX Duo kitaplığını ve uygulamayı NetX Duo kullanarak oluşturmanın çeşitli yapılandırma seçenekleri vardır. Yapılandırma seçenekleri uygulama kaynağında, komut satırı üzerinde veya aksi belirtilmedikçe ***nx_user.h*** include dosyasında tanımlanabilir.
 
 > [!NOTE]
-> ***Nx_user. h** içinde tanımlanan seçenekler, yalnızca uygulama ve NETX Duo kitaplığı, tanımlı NX_INCLUDE_USER_DEFINE_FILE ile derlenme durumunda uygulanır* . * 
+> ***nx_user.h'de tanımlanan*** seçenekler yalnızca uygulama ve NetX Duo kitaplığı NX_INCLUDE_USER_DEFINE_FILE **uygulanır.***
 
-Aşağıdaki bölümlerde NetX Duo 'da kullanılabilen yapılandırma seçenekleri listelenmektedir. Hem IPv4 hem de IPv6 için geçerli olan genel seçenekler önce, ardından IPv6 'ya özgü seçenekler tarafından listelenir.
+Aşağıdaki bölümlerde NetX Duo'da kullanılabilen yapılandırma seçenekleri listelanmaktadır. Hem IPv4 hem de IPv6 için geçerli genel seçenekler önce listelenir ve ardından IPv6'ya özgü seçenekler listelenir.
 
-### <a name="system-configuration-options"></a>Sistem yapılandırma seçenekleri
+### <a name="system-configuration-options"></a>Sistem Yapılandırma Seçenekleri
 
 | Seçenek  | Açıklama  |
 |---|---|
-| NX_ASSERT_FAIL    | Bir onaylama başarısız olduğunda kullanılacak hata ayıklama ifadesini tanımlayan simge.                               |
-| NX_DEBUG           | Tanımlı, RAM Ethernet ağ sürücüsünden kullanılabilen isteğe bağlı yazdırma hata ayıklama bilgilerini sunar. |
-| NX_DEBUG_PACKET   | , İsteğe bağlı hata ayıklama paketi dökümünü RAM Ethernet ağ sürücüsünde kullanılabilir olarak sunar.      |
-| NX_DISABLE_ASSERT | Tanımlı, kaynak koddaki onay denetimlerini devre dışı bırakır. Varsayılan olarak bu seçenek tanımlı değildir.            |
-|NX_DISABLE_ERROR_CHECKING | Tanımlanmıştır, temel NetX Duo hata denetimi API 'sini kaldırır ve performansı geliştirir. Hata denetimini devre dışı bırakarak etkilenmeyen API dönüş kodları, API tanımında kalın yazı tipiyle listelenmiştir. Bu tanımlama genellikle uygulamanın yeterince hata ayıklaması yapıldıktan ve kullanımı performansı artırdığında ve kod boyutunu azalttığında kullanılır.|
-|NX_DRIVER_DEFERRED_PROCESSING | Tanımlı, ertelenmiş ağ sürücüsü paket işleme etkinleştirilir. Bu, ağ sürücüsünün IP örneğine bir paket yerleştirmesini ve NetX Duo iç IP Yardımcısı iş parçacığından, gerçek işleme yordamının çağrılmasına izin verir.|
-|NX_DUAL_PACKET_POOL_ENABLE | ***NX_ENABLE_DUAL_PACKET_POOL** _ olarak yeniden adlandırıldı. Yine de desteklenmekle birlikte, yeni tasarımların _ *_NX_ENABLE_DUAL_PACKET_POOL_* * kullanması önerilir.|
-|NX_ENABLE_DUAL_PACKET_POOL | Tanımlı, yığının büyük yük boyutu ve diğeri daha küçük yük boyutuyla iki paket havuzu kullanmasına izin verir. Varsayılan olarak bu seçenek etkin değildir.|
-|NX_ENABLE_EXTENDED_NOTIFY_SUPPORT| Tanımlı, yığında daha fazla geri çağırma kancaları sunar. Bu geri çağırma işlevleri, BSD sarmalayıcı katmanı tarafından kullanılır. Varsayılan olarak bu seçenek tanımlı değildir.|
-|NX_ENABLE_INTERFACE_CAPABILITY| Tanımlı, arabirim aygıt sürücüsünün sağlama toplamı yükleme gibi ek yetenek bilgileri belirtmesini sağlar. Varsayılan olarak bu seçenek tanımlı değildir.|
+| NX_ASSERT_FAIL    | Onay başarısız olduğunda kullanmak üzere hata ayıklama deyimini tanımlayan sembol.                               |
+| NX_DEBUG           | Tanımlı, RAM Ethernet ağ sürücüsünden kullanılabilen isteğe bağlı yazdırma hata ayıklama bilgilerini sağlar. |
+| NX_DEBUG_PACKET   | Tanımlı, RAM Ethernet ağ sürücüsünde kullanılabilen isteğe bağlı hata ayıklama paketi dökümlerini sağlar.      |
+| NX_DISABLE_ASSERT | Tanımlı, kaynak kodda ASSERT denetimlerini devre dışı bırakıyor. Varsayılan olarak bu seçenek tanımlanmamıştır.            |
+|NX_DISABLE_ERROR_CHECKING | Tanımlanan, temel NetX Duo hata denetleme API'sini kaldırır ve performansı artırır. Hata denetimi devre dışı bırakarak etkilenmeen API dönüş kodları, API tanımında kalın yazı tipiyle listelenir. Bu tanım genellikle uygulama yeterince hata ayıklandıktan sonra kullanılır ve kullanımı performansı artırır ve kod boyutunu artırır.|
+|NX_DRIVER_DEFERRED_PROCESSING | Tanımlı, ertelenen ağ sürücüsü paket işlemeyi sağlar. Bu, ağ sürücüsünün IP örneğine bir paket depolamasını ve NetX Duo iç IP yardımcı iş parçacığından çağrılan gerçek işleme yordamını edinerek sağlar.|
+|NX_DUAL_PACKET_POOL_ENABLE | ***** NX_ENABLE_DUAL_PACKET_POOL _. Hala desteklense de, yeni tasarımların __*_ veya **NX_ENABLE_DUAL_PACKET_POOL teşvik edilmiştir.|
+|NX_ENABLE_DUAL_PACKET_POOL | Tanımlı, yığının biri büyük yük boyutuna ve biri daha küçük yük boyutuna sahip olmak üzere iki paket havuzu kullanmalarına olanak sağlar. Varsayılan olarak bu seçenek etkin değildir.|
+|NX_ENABLE_EXTENDED_NOTIFY_SUPPORT| Tanımlı, yığında daha fazla geri çağırma kancası sağlar. Bu geri çağırma işlevleri BSD sarmalayıcı katmanı tarafından kullanılır. Varsayılan olarak bu seçenek tanımlanmamıştır.|
+|NX_ENABLE_INTERFACE_CAPABILITY| Tanımlı, arabirim cihazı sürücüsünün sağlama dışı yükleme gibi ek özellik bilgileri belirtmesine olanak sağlar. Varsayılan olarak bu seçenek tanımlanmamıştır.|
 |NX_ENABLE_SOURCE_ADDRESS_CHECK| Tanımlı, gelen paketin kaynak adresinin denetlenir. Varsayılan olarak bu seçenek devre dışıdır.|
 | NX_IPSEC_ENABLE  | Tanımlı, NetX Duo kitaplığının IPsec işlemlerini desteklemesini sağlar. Bu özellik, isteğe bağlı NetX Duo IPsec modülünü gerektirir. Bu özellik varsayılan olarak etkin değildir.            |
 | NX_LITTLE_ENDIAN | Tanımlı, protokol üst bilgilerini düzgün bir biçimde little endian için gerekli bayt değiştirme işlemini big endian gerçekleştirir. Varsayılan değerin genellikle ***nx_port.h olarak ayar olduğunu unutmayın.***|
@@ -210,38 +210,38 @@ ve uygulama IP parçalanma özelliğini veya IPsec özelliğini kullanmaz. Varsa
 |NX_DISABLE_TCP_RX_CHECKSUM | Tanımlı, alınan TCP paketlerindeki sağlama sayısı mantığını devre dışı bırakmıştır. Bu yalnızca bağlantı katmanında güvenilir sağlama grubu veya CRC işlemesi olan ya da arabirim sürücüsünün donanımda TCP sağlama sağlamasını doğrulaya sahip olduğu ve uygulamanın IPsec kullanmamış olduğu durumlarda yararlıdır.|
 |NX_DISABLE_TCP_TX_CHECKSUM | Tanımlı, TCP paketleri göndermek için sağlama sayısı mantığını devre dışı bıraktır. Bu yalnızca, alıcı ağ düğümünün TCP sağlama kümesi mantığının devre dışı bırakılmıştır veya temel ağ sürücüsünün TCP sağlamalarını oluşturabilen ve uygulamanın IPsec kullanmamış olduğu durumlarda yararlıdır.|
 |NX_ENABLE_TCP_KEEPALIVE | Tanımlı, isteğe bağlı TCP keepalive zamanlayıcıyı sağlar. Varsayılan ayarlar etkin değildir.|
-|NX_ENABLE_TCP_MSS_CHECK | Tanımlı, TCP bağlantısını kabulmeden önce en düşük eş MSS'nin doğrulanmasına olanak sağlar. Bu özelliği kullanmak ***için,*** NX_ENABLE_TCP_MSS_MINIMUM tanımlanmalıdır. Varsayılan olarak, bu seçenek etkin değildir.|
-|NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY| Tanımlı, uygulamanın TCP iletme kuyruğu derinliği artık en yüksek değerde olmadığı zaman çağrılan bir geri çağırma işlevi yüklemesini sağlar. Bu geri çağırma, TCP yuvasının daha fazla veri aktarmaya hazır olduğunu gösteren bir göstergedir. Varsayılan olarak bu seçenek etkin değildir.|
-|NX_ENABLE_TCP_WINDOW_SCALING | TCP uygulamaları için pencere ölçeklendirme seçeneğini sağlar. Tanımlanmışsa, TCP bağlantı aşamasında pencere ölçeklendirme seçeneği belirlenebilir ve uygulama 64.000'den büyük bir pencere boyutu belirtebilir. Varsayılan ayar etkin değildir (tanımlanmamış).|
-|NX_MAX_LISTEN_REQUESTS | En fazla sunucu dinleme isteği sayısını belirtir. Varsayılan değer 10'dır ve ***nx_api.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_ACK_EVERY_N_PACKETS | ACK göndermeden önce alacak TCP paketlerinin sayısını belirtir. ***** NX_TCP_IMMEDIATE_ACK _ etkinse ancak _ *_NX_TCP_ACK_EVERY_N_PACKETS_** etkinse, geriye dönük uyumluluk için bu değer otomatik olarak 1 olarak ayarlanır.|
-|NX_TCP_ACK_TIMER_RATE | Tcp gecikmeli ACK işlemesi için zamanlayıcı NX_IP_PERIODIC_RATE sistem işaretlerinin (NX_IP_PERIODIC_RATE) nasıl bölündüklerini belirtir. Varsayılan değer 5'tir ve 200 m'yi temsil eder ve ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_ENABLE_KEEPALIVE | ***** NX_ENABLE_TCP_KEEPALIVE _. Hala desteklense de, yeni tasarımların __*_ veya **NX_ENABLE_TCP_KEEPALIVE teşvik edilmiştir.|
-|NX_TCP_ENABLE_MSS_CHECK | ***** NX_ENABLE_TCP_MSS_CHECK _. Hala desteklense de, yeni tasarımların _ veya *_NX_ENABLE_TCP_MSS_CHECK._**|
-|NX_TCP_ENABLE_WINDOW_SCALING | ***** NX_ENABLE_TCP_WINDOW_SCALING _. Hala desteklense de, yeni tasarımların __*_ veya **NX_ENABLE_TCP_WINDOW_SCALING teşvik edilmiştir.|
-|NX_TCP_FAST_TIMER_RATE | NetX Duo iç tık sayısının (NX_IP_PERIODIC_RATE) hızlı TCP zamanlayıcı oranını hesaplamak için nasıl bölündüklerini belirtir. Hızlı TCP zamanlayıcısı, gecikmeli ACK zamanlayıcısı da dahil olmak üzere çeşitli TCP süreölçerlerini kullanmak için kullanılır. Varsayılan değer 10'dır ve ThreadX zamanlayıcının 10ms'de çalıştırılı olduğunu varsayarak 100 m'yi temsil eder. Bu değer ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_IMMEDIATE_ACK| Tanımlı, isteğe bağlı TCP anında ACK yanıt işlemeyi sağlar. Bu simgeyi tanımlamak, 1  ***NX_TCP_ACK_EVERY_N_PACKETS*** tanımlamaya eşdeğerdir.|
-|NX_TCP_KEEPALIVE_INITIAL | Keepalive süreölçeri etkinleştirmeden önce, etkin değil olarak saniye sayısını belirtir. Varsayılan değer 2 saati temsil eden ve * nx_tcp.h _ içinde tanımlanan **7200'tir.** Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_KEEPALIVE_RETRIES | Bağlantının bozuk olduğu kabul edildiklerine kadar kaç tane sürekli yeniden denemeye izin verilmiyorsa bunu belirtir. Varsayılan değer 10'dır ve 10 yeniden denemeyi temsil eder ve ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_KEEPALIVE_RETRY | Bağlantının diğer tarafının yanıt vermey olduğunu varsayarak, sürekli zamanlayıcının yeniden denemeleri arasındaki saniye sayısını belirtir. Varsayılan değer, yeniden denemeler arasında 75 saniyeyi temsil eden ve ***nx_tcp.h _ içinde tanımlanan 75'tir.** Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_MAX_OUT_OF_ORDER_PACKETS | En fazla sırasız TCP paketi sayısını tanımlayan sembol, TCP yuvası alma kuyruğunda tutulmalıdır. Bu sembol, TCP alma yuvasında kuyruğa alınan paket sayısını sınırlamak için kullanılabilir ve paket havuzunun aç bırakılamaması önlenebilir. Varsayılan olarak bu simge tanımlanmamıştır, bu nedenle TCP yuvasında kuyruğa alınan sipariş dışında paket sayısına bir sınır yoktur.|
-|NX_TCP_MAXIMUM_RETRIES | Bağlantının bozuk olduğu kabul olmadan önce kaç tane veri iletme yeniden denemesine izin ver verilmiyorsa bunu belirtir. Varsayılan değer 10'dır ve 10 yeniden denemeyi temsil eder ve ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_MAXIMUM_RX_QUEUE | TCP yuvaları için en yüksek alma kuyruğu tanımlayan sembol. Bu özellik, tarafından ***NX_ENABLE_LOW_WATERMARK.***|
-|NX_TCP_MAXIMUM_TX_QUEUE | TCP gönderme istekleri askıya alınmadan veya reddedmeden önce TCP aktarım kuyruğu en yüksek derinliğini belirtir. Varsayılan değer 20'dir, yani herhangi bir zamanda aktarım kuyruğunda en fazla 20 paket olabilir. Paketlerin, bağlantının diğer tarafından paket verilerinden bir veya hepsini kapsayan bir ACK alınana kadar aktarım kuyruğunda kalacağına dikkat edin. Bu sabit ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_MSS_MINIMUM | NetX Duo TCP modülünün kabulladığı en düşük MSS değerini tanımlayan sembol. Bu özellik, tarafından ***NX_ENABLE_TCP_MSS_CHECK.***|
-|NX_TCP_QUEUE_DEPTH_UPDATE_NOTIFY_ENABLE | ***** NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY _. Hala desteklense de, yeni tasarımların __*_ veya **NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY teşvik edilmiştir.|
-|NX_TCP_RETRY_SHIFT | Yeniden denemeler arasında yeniden iletim zaman aşımı döneminin nasıl değişiklik gösterir. Bu değer 0 ise, ilk yeniden iletim zaman aşımı sonraki yeniden iletim zaman aşımı ile aynıdır. Bu değer 1 ise, her bir birbirinin tekrarı iki kat uzun olur. Bu değer 2 ise, izleyen her yeniden iletim zaman aşımı dört kat uzun olur. Varsayılan değer 0'dır ve ***nx_tcp.h _ içinde** tanımlanır. Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
-|NX_TCP_TRANSMIT_TIMER_RATE | TCP iletme yeniden deneme işleminin zamanlayıcı oranını **hesaplamak için sistem işaretlerinin**(* NX_IP_PERIODIC_RATE _) nasıl bölündüklerini belirtir. Varsayılan değer 1'tir ve 1 saniyeyi temsil eder ve _*_nx_tcp.h içinde tanımlanır._*_ Uygulama, _ *_nx_api.h_** dahil olmadan önce değeri tanımlayarak varsayılan değeri geçersiz kabilirsiniz.|
+|NX_ENABLE_TCP_MSS_CHECK | Tanımlı, bir TCP bağlantısını kabul etmeden önce en düşük eş ağın doğrulanmasını mümkün. Bu özelliği kullanmak için sembol ***NX_ENABLE_TCP_MSS_MINIMUM*** tanımlanmalıdır. Varsayılan olarak, bu seçenek etkin değildir.|
+|NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY| Tanımlı, uygulamanın TCP iletim sırası derinliği artık maksimum değer olmadığında çağrılan bir geri arama işlevini yüklemesine izin verir. Bu geri arama, TCP yuvasının daha fazla veri aktarmaya hazırlandığını belirten bir bildirim görevi görür. Varsayılan olarak bu seçenek etkin değildir.|
+|NX_ENABLE_TCP_WINDOW_SCALING | TCP uygulamaları için pencere ölçeklendirme seçeneğini sunar. Tanımlı ise, TCP bağlantı aşamasında pencere ölçekleme seçeneği görüşülür ve uygulama 64 ' ten büyük bir pencere boyutu belirtebilir. Varsayılan ayar etkin değil (tanımlı değil).|
+|NX_MAX_LISTEN_REQUESTS | Maksimum sunucu dinleme isteği sayısını belirtir. Varsayılan değer 10 ' dur ve ***nx_api. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_ACK_EVERY_N_PACKETS | ACK gönderilmeden önce alacak olan TCP paketlerinin sayısını belirtir. Not ***NX_TCP_IMMEDIATE_ACK** _ etkinse ancak _ *_NX_TCP_ACK_EVERY_N_PACKETS_** yoksa, bu değer geriye dönük uyumluluk için otomatik olarak 1 ' e ayarlanır.|
+|NX_TCP_ACK_TIMER_RATE | TCP Gecikmeli onay işleme için süreölçer oranını hesaplamak üzere sistem işaretleri (NX_IP_PERIODIC_RATE) sayısının nasıl bölüneceğini belirtir. Varsayılan değer, 200ms 'yi temsil eden 5 ' tir ve ***nx_tcp. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_ENABLE_KEEPALIVE | ***NX_ENABLE_TCP_KEEPALIVE** _ olarak yeniden adlandırıldı. Yine de desteklenmekle birlikte, yeni tasarımların _ *_NX_ENABLE_TCP_KEEPALIVE_* * kullanması önerilir.|
+|NX_TCP_ENABLE_MSS_CHECK | ***NX_ENABLE_TCP_MSS_CHECK** _ olarak yeniden adlandırıldı. Yine de desteklenmekle birlikte, yeni tasarımların _ NX_ENABLE_TCP_MSS_CHECK kullanması önerilir *_._**|
+|NX_TCP_ENABLE_WINDOW_SCALING | ***NX_ENABLE_TCP_WINDOW_SCALING** _ olarak yeniden adlandırıldı. Yine de desteklenmekle birlikte, yeni tasarımların _ *_NX_ENABLE_TCP_WINDOW_SCALING_* * kullanması önerilir.|
+|NX_TCP_FAST_TIMER_RATE | NetX Duo iç onay işareti (NX_IP_PERIODIC_RATE) sayısının hızlı TCP Zamanlayıcı hızını hesaplamak için nasıl bölüneceğini belirtir. Hızlı TCP süreölçeri, Gecikmeli onay süreölçeri dahil olmak üzere çeşitli TCP zamanlayıcılarını sağlamak için kullanılır. Varsayılan değer 10 ' dur ve ThreadX zamanlayıcısının 10ms 'de çalıştığı varsayılarak 100 ms 'yi temsil eder. Bu değer ***nx_tcp. h** _ içinde tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_IMMEDIATE_ACK| Tanımlı, isteğe bağlı TCP anında BILDIRIM yanıtı işlemesini mümkün bir şekilde sunar. Bu sembolün tanımlanması  ***NX_TCP_ACK_EVERY_N_PACKETS*** 1 olarak tanımlanmasıyla eşdeğerdir.|
+|NX_TCP_KEEPALIVE_INITIAL | KeepAlive süreölçeri etkinleşmeden önce geçen işlem yapılmayan saniye sayısını belirtir. Varsayılan değer, 2 saati temsil eden 7200 ' dir ve ***nx_tcp. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_KEEPALIVE_RETRIES | Bağlantının bozuk olması için kaç tane canlı tutma yeniden denemeye izin verileceğini belirtir. Varsayılan değer 10 yeniden denemeyi temsil eden 10 ' dur ve ***nx_tcp. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_KEEPALIVE_RETRY | Canlı tutma zamanlayıcısında bağlantının diğer tarafının yanıt vermediğini varsayarak geçen saniye sayısını belirtir. Varsayılan değer, yeniden denemeler arasındaki 75 saniyeyi temsil eden 75 ' dir ve ***nx_tcp. h** _ içinde tanımlanır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_MAX_OUT_OF_ORDER_PACKETS | TCP yuvası alma kuyruğunda en fazla sıralı TCP paketi sayısını tanımlayan simge. Bu simge, TCP alma yuvasında sıraya alınmış paketlerin sayısını sınırlandırmak için kullanılabilir ve paket havuzunun başlatılmasını önler. Varsayılan olarak, bu simge tanımlı değildir, bu nedenle TCP yuvasında sırada sıraya alınan paketlerin sayısı için bir sınır yoktur.|
+|NX_TCP_MAXIMUM_RETRIES | Bağlantının bozuk olması için kaç veri aktarımı yeniden denenmesine izin verileceğini belirtir. Varsayılan değer 10 yeniden denemeyi temsil eden 10 ' dur ve ***nx_tcp. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_MAXIMUM_RX_QUEUE | TCP yuvaları için en fazla alma sırasını tanımlayan simge. Bu özellik ***NX_ENABLE_LOW_WATERMARK*** tarafından etkinleştirilir.|
+|NX_TCP_MAXIMUM_TX_QUEUE | TCP gönderme istekleri askıya alınmadan veya reddedilmeden önce TCP iletme sırasının en yüksek derinliğini belirtir. Varsayılan değer 20 ' dir ve bu, en fazla 20 paketin belirli bir zamanda iletme kuyruğunda olabileceği anlamına gelir. Paket verilerinin bir kısmını veya tümünü içeren bir ACK bağlantının diğer tarafından alınana kadar, paket paketleri iletme sırasında kalır. Bu sabit, ***nx_tcp. h** _ içinde tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_MSS_MINIMUM | NetX Duo TCP modülünün kabul ettiği minimum en düşük, değeri tanımlayan simge. Bu özellik ***NX_ENABLE_TCP_MSS_CHECK*** tarafından etkinleştirilir.|
+|NX_TCP_QUEUE_DEPTH_UPDATE_NOTIFY_ENABLE | ***NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY** _ olarak yeniden adlandırıldı. Yine de desteklenmekle birlikte, yeni tasarımların _ *_NX_ENABLE_TCP_QUEUE_DEPTH_UPDATE_NOTIFY_* * kullanması önerilir.|
+|NX_TCP_RETRY_SHIFT | Yeniden aktarım zaman aşımı süresinin yeniden denemeler arasındaki değişiklik şeklini belirtir. Bu değer 0 ise, ilk yeniden aktarım zaman aşımı sonraki yeniden aktarım zaman aşımları ile aynıdır. Bu değer 1 ise, art arda yapılan her yeniden aktarım uzun olur. Bu değer 2 ise, sonraki her yeniden aktarım zaman aşımı süresi dört kez olur. Varsayılan değer 0 ' dır ve ***nx_tcp. h** _ ' de tanımlanmıştır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
+|NX_TCP_TRANSMIT_TIMER_RATE | TCP iletme yeniden deneme işleminin Zamanlayıcı oranını hesaplamak için sistem işaretleri (***NX_IP_PERIODIC_RATE** _) sayısının nasıl bölüneceğini belirtir. Varsayılan değer 1 ' dir ve _*_nx_tcp. h_*_ içinde tanımlanır. Uygulama, _ *_nx_api. h_** dahil olmak üzere değeri tanımlayarak varsayılan değeri geçersiz kılabilir.|
 
-### <a name="udp-configuration-options"></a>UDP Yapılandırma Seçenekleri
+### <a name="udp-configuration-options"></a>UDP yapılandırma seçenekleri
 
 | Seçenek  | Açıklama  |
 |---|---|
-|NX_DISABLE_UDP_INFO | Tanımlandı, UDP bilgi toplamayı devre dışı bırakıyor.|
-|NX_DISABLE_UDP_RX_CHECKSUM | Tanımlı, gelen UDP paketlerde UDP sağlama sayısı hesaplamasını devre dışı bıraktır. Bu, ağ arabirimi sürücüsü donanımda UDP üst bilgi sağlamasını doğrulayana ve uygulama IPsec veya IP parçalanma mantığını etkinleştirmezse yararlıdır.|
-|NX_DISABLE_UDP_TX_CHECKSUM | Tanımlı, giden UDP paketlerde UDP sağlama süresi hesaplamasını devre dışı bıraktır. Bu, ağ arabirimi sürücüsünün VERILERI iletmeden önce UDP üst bilgi sağlama toplamlarını hesaplanması ve değeri IP başına eklemesi ve uygulamanın IPsec veya IP parçalanma mantığını etkinleştirmesi durumuyla ilgili faydalıdır.|
+|NX_DISABLE_UDP_INFO | Tanımlı, UDP bilgi toplamayı devre dışı bırakır.|
+|NX_DISABLE_UDP_RX_CHECKSUM | Tanımlı, gelen UDP paketlerindeki UDP sağlama toplamı hesaplamasını devre dışı bırakır. Bu, ağ arabirimi sürücüsü donanımdaki UDP üst bilgi sağlama toplamını doğrulayabiliyor ve uygulama IPSec veya IP parçalama mantığını etkinleştirmezse yararlı olur.|
+|NX_DISABLE_UDP_TX_CHECKSUM | Tanımlı, giden UDP paketlerinde UDP sağlama toplamı hesaplamasını devre dışı bırakır. Bu, ağ arabirimi sürücüsü UDP üst bilgisi sağlama toplamını hesaplarken ve verileri iletmeden önce IP başlığına değer eklerken kullanışlıdır ve uygulama IPSec veya IP parçalama mantığını etkinleştirmez.|
 
-### <a name="ipv6-options"></a>IPv6 Seçenekleri  
+### <a name="ipv6-options"></a>IPv6 seçenekleri  
 
 | Seçenek  | Açıklama  |
 |---|---|

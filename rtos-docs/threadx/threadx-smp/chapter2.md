@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cc352ebd7965c84c341d25dfa7bff2671dfb5e66
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: d0a63f3798adbc634a43cdda7e9d44941de655d9333f9ae0fb4181f1a6c0566e
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550261"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801912"
 ---
 # <a name="chapter-2---installation--use-of-azure-rtos-threadx-smp"></a>Bölüm 2-Azure RTOS ThreadX SMP 'in yükleme & kullanımı
 
@@ -19,7 +19,7 @@ Bu bölümde, HighPerformance Azure RTOS ThreadX SMP çekirdeğini yükleme, kur
 
 ## <a name="host-considerations"></a>Ana bilgisayar konuları
 
-Katıştırılmış yazılım genellikle Windows veya Linux (UNIX) ana bilgisayar bilgisayarlarında geliştirilmiştir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
+katıştırılmış yazılım genellikle Windows veya Linux (unıx) ana bilgisayar bilgisayarlarında geliştirilmiştir. Uygulama derlendikten, bağlandıktan ve konakta bulunuyorsa, yürütme için hedef donanıma indirilir.
 
 Genellikle hedef indirme, geliştirme aracı hata ayıklayıcısı içinden yapılır. İndirmeden sonra, hata ayıklayıcı, hedef yürütme denetimi (go, dur, kesme noktası vb.) ve bellek ve işlemci kayıtlarına erişimi sağlamaktan sorumludur.
 

@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 98561fe1d131e1d1b0893b7d89eb720881a82ac8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 015e5feedd1d5e90c6491e156c2d0d57a9abaa47518868d375a34e618770d4aa
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828349"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116795408"
 ---
 # <a name="chapter-9---azure-rtos-usbx-trace-events"></a>Bölüm 9-Azure RTOS USBX izleme olayları
 
@@ -53,8 +53,8 @@ Aşağıda, TraceX tarafından görünen USBX olaylarının bir listesi verilmi�
 | ![Cihaz sınıfı Pima nesneleri numara Gönder simgesi](./media/user-guide/usbx-events/image28.png)    | **Cihaz sınıfı Pima nesneleri numara gönderme** *(ux_device_class_pima_objects_number_send)* |
 | ![Device Class Pima kısmi nesne verileri al simgesi](./media/user-guide/usbx-events/image29.png)    | **Device Class Pima kısmi nesne verileri al** *(ux_device_class_pima_partial_object_data_get)* |
 | ![Cihaz sınıfı Pima yanıtı gönderme simgesi](./media/user-guide/usbx-events/image30.png)    | **Cihaz sınıfı Pima yanıtı gönderme** *(ux_device_class_pima_response_send)*|
-| ![Cihaz sınıfı Pima depolama g D Gönder simgesi](./media/user-guide/usbx-events/image31.png)    | **Cihaz sınıfı Pima depolama kimliği gönderme** *(ux_device_class_pima_storage_id_send)* |
-| ![Cihaz sınıfı Pima depolama bilgileri gönderme simgesi](./media/user-guide/usbx-events/image32.png)    | **Cihaz sınıfı Pima depolama bilgileri gönderme** *(ux_device_class_pima_storage_info_send)* |
+| ![cihaz sınıfı pima Depolama t gönder simgesi](./media/user-guide/usbx-events/image31.png)    | **cihaz sınıfı pima Depolama kimliği gönderme** *(ux_device_class_pima_storage_id_send)* |
+| ![Device Class pima Depolama ınfo gönder simgesi](./media/user-guide/usbx-events/image32.png)    | **cihaz sınıfı pima Depolama bilgi gönderme** *(ux_device_class_pima_storage_info_send)* |
 | ![Cihaz sınıfı R N D ı etkinleştirme simgesi](./media/user-guide/usbx-events/image33.png)    | **Cihaz sınıfı rndis etkinleştir** *(ux_device_class_rndis_activate)* |
 | ![Cihaz sınıfı R N D ı devre dışı bırak simgesi](./media/user-guide/usbx-events/image34.png)    | **Cihaz sınıfı rndis devre dışı bırak** *(ux_device_class_rndis_deactivate)* |
 | ![Cihaz sınıfı R N D ı Ileti Keep Aliveicon](./media/user-guide/usbx-events/image35.png)    | **Cihaz sınıfı rndis Iletisi canlı tut** *(ux_device_class_rndis_msg_keep_alive)* |
@@ -63,279 +63,279 @@ Aşağıda, TraceX tarafından görünen USBX olaylarının bir listesi verilmi�
 | ![Cihaz sınıfı R N D ı Ileti kümesi simgesi](./media/user-guide/usbx-events/image38.png)    | **Cihaz sınıfı rndis Ileti kümesi** *(ux_device_class_rndis_msg_set)* |
 | ![Cihaz sınıfı R N D ı paket alma simgesi](./media/user-guide/usbx-events/image39.png)    | **Cihaz sınıfı rndis paket alma** *(ux_device_class_rndis_packet_receive)* |
 | ![Cihaz sınıfı R N D ı paket Iletme simgesi](./media/user-guide/usbx-events/image40.png)    | **Cihaz sınıfı rndis paket iletimi** *(ux_device_class_rndis_packet_transmit)* |
-| ![Cihaz sınıfı depolama etkinleştirme simgesi](./media/user-guide/usbx-events/image41.png)    | **Cihaz sınıfı depolama etkinleştir** *(ux_device_class_storage_activate)* |
-| ![Cihaz sınıfı depolamayı devre dışı bırakma simgesi](./media/user-guide/usbx-events/image42.png)    | **Cihaz sınıfı depolamayı devre dışı bırakma** *(ux_device_class_storage_deactivate)* |
-| ![Cihaz sınıfı depolama biçimi simgesi](./media/user-guide/usbx-events/image43.png)    | **Cihaz sınıfı depolama biçimi** *(ux_device_class_storage_format)* |
-| ![Cihaz sınıfı depolama sorgulama simgesi](./media/user-guide/usbx-events/image44.png)    | **Cihaz sınıfı depolama sorgusu** *(ux_device_class_storage_inquiry)* |
-| ![Cihaz sınıfı depolama modu seçme simgesi](./media/user-guide/usbx-events/image45.png)    | **Cihaz sınıfı depolama modu seçme** *(ux_device_class_storage_mode_select)* |
-| ![Cihaz sınıfı depolama modu algılama simgesi](./media/user-guide/usbx-events/image46.png)    | **Cihaz sınıfı depolama modu algılama** *(ux_device_class_storage_mode_sense)* |
-| ![Cihaz sınıfı depolaması medya kaldırma simgesine Izin vermeyi engelliyor](./media/user-guide/usbx-events/image47.png)    | **Cihaz sınıfı depolaması medya kaldırılmasına Izin vermeyi engelliyor** *(ux_device_class_storage_prevent_allow_media_removal)* |
-| ![Cihaz sınıfı depolama okuma simgesi](./media/user-guide/usbx-events/image48.png)    | **Cihaz sınıfı depolama okuma** *(ux_device_class_storage_read)* |
-| ![Cihaz sınıfı depolama okuma kapasitesi simgesi](./media/user-guide/usbx-events/image49.png)    | **Cihaz sınıfı depolama okuma kapasitesi** *(ux_device_class_storage_read_capacity)* |
-| ![Cihaz sınıfı depolama okuma biçimi kapasitesi simgesi](./media/user-guide/usbx-events/image50.png)    | **Cihaz sınıfı depolama okuma biçimi kapasitesi** *(ux_device_class_storage_read_format_capacity)* |
-| ![Device Class depolama okuma TOC simgesi](./media/user-guide/usbx-events/image51.png)    | **Device Class DEPOLAMASı TOC okuma** *(ux_device_class_storage_read_toc)* |
-| ![Cihaz sınıfı depolama Isteği algılama simgesi](./media/user-guide/usbx-events/image52.png)    | **Cihaz sınıfı depolama Isteği algılama** *(ux_device_class_storage_request_sense)* |
-| ![Cihaz sınıfı depolama başlatma durdurma simgesi](./media/user-guide/usbx-events/image53.png)    | **Cihaz sınıfı depolama başlatma durdurma** *(ux_device_class_storage_start_stop)* |
-| ![Cihaz sınıfı depolama sınaması hazırlanıyor simgesi](./media/user-guide/usbx-events/image54.png)    | **Cihaz sınıfı depolama sınaması hazırlanıyor** *(ux_device_class_storage_test_ready)* |
-| ![Cihaz sınıfı depolama doğrulama simgesi](./media/user-guide/usbx-events/image55.png)    | **Cihaz sınıfı depolama doğrulaması** *(ux_device_class_storage_verify)* |
-| ![Cihaz sınıfı depolama yazma simgesi](./media/user-guide/usbx-events/image56.png)    | **Cihaz sınıfı depolama yazma** *(ux_device_class_storage_write)* |
-| ![Cihaz yığını alternatif ayarı al simgesi](./media/user-guide/usbx-events/image57.png)    | **Cihaz yığını alternatif ayarı al** *(ux_device_stack_alternate_setting_get)* |
-| ![Cihaz yığını alternatif ayarı kümesi simgesi](./media/user-guide/usbx-events/image58.png)    | **Cihaz yığını alternatif ayar kümesi** *(ux_device_stack_alternate_setting_set)* |
-| ![Cihaz yığını sınıfı kayıt simgesi](./media/user-guide/usbx-events/image59.png)    | **Cihaz yığını sınıf kaydı** *(ux_device_stack_class_register)* |
-| ![Cihaz yığını temiz Özellik simgesi](./media/user-guide/usbx-events/image60.png)    | **Cihaz yığını temiz Özellik** *(ux_device_stack_clear_feature)* |
-| ![Cihaz yığını yapılandırması Get simgesi](./media/user-guide/usbx-events/image61.png)    | **Cihaz yığını yapılandırma Get** *(ux_device_stack_configuration_get)* |
-| ![Cihaz yığını yapılandırma kümesi simgesi](./media/user-guide/usbx-events/image62.png)    | **Cihaz yığını yapılandırma kümesi** *(ux_device_stack_configuration_set)* |
-| ![Cihaz yığını bağlantı simgesi](./media/user-guide/usbx-events/image63.png)    | **Cihaz yığını bağlantısı** *(ux_device_stack_connect)* |
-| ![Cihaz yığını tanımlayıcısı gönderme simgesi](./media/user-guide/usbx-events/image64.png)    | **Cihaz yığını tanımlayıcısı gönderme** *(ux_device_stack_descriptor_send)* |
-| ![Cihaz yığını bağlantı kesme simgesi](./media/user-guide/usbx-events/image65.png)    | **Cihaz yığını bağlantısını kesme** *(ux_device_stack_disconnect)* |
-| ![Cihaz yığını uç noktası kabin simgesi](./media/user-guide/usbx-events/image66.png)    | **Cihaz yığını uç noktası kabini** *(ux_device_stack_endpoint_stall)* |
-| ![Cihaz yığını durum Al simgesi](./media/user-guide/usbx-events/image67.png)    | **Cihaz yığını Get durumu** *(ux_device_stack_get_status)* |
-| ![Cihaz yığını ana bilgisayarı uyandırma simgesi](./media/user-guide/usbx-events/image68.png)    | **Cihaz yığın ana bilgisayarı uyandırma** *(ux_device_stack_host_wakeup)* |
-| ![Cihaz yığını başlatma simgesi](./media/user-guide/usbx-events/image69.png)    | **Cihaz yığını başlatma** *(ux_device_stack_initialize)* |
-| ![Cihaz yığını arabirimi silme simgesi](./media/user-guide/usbx-events/image70.png)    | **Cihaz yığını arabirimini silme** *(ux_device_stack_interface_delete)* |
-| ![Cihaz yığını arabirimi al simgesi](./media/user-guide/usbx-events/image71.png)    | **Cihaz yığını arabirimi al** *(ux_device_stack_interface_get)* |
-| ![Cihaz yığını arabirim kümesi simgesi](./media/user-guide/usbx-events/image72.png)    | **Cihaz yığını arabirim kümesi** *(ux_device_stack_interface_set)* |
-| ![Cihaz yığını kümesi özellik simgesi](./media/user-guide/usbx-events/image73.png)    | **Cihaz yığını kümesi özelliği** *(ux_device_stack_set_feature)* |
-| ![Cihaz yığını aktarım Iptali simgesi](./media/user-guide/usbx-events/image74.png)    | **Cihaz yığını aktarımı iptali** *(ux_device_stack_transfer_abort)* |
-| ![* Cihaz yığını tüm Isteği Iptal et simgesi](./media/user-guide/usbx-events/image75.png)    | **Cihaz yığın aktarımı tüm Istek iptali** *(ux_device_stack_transfer_all_request_abort)* |
-| ![Cihaz yığını aktarım Isteği simgesi](./media/user-guide/usbx-events/image76.png)    | **Cihaz yığını aktarım isteği** *(ux_device_stack_transfer_request)* |
-| ![Ana bilgisayar sınıfı ASIX etkinleştir simgesi](./media/user-guide/usbx-events/image77.png)    | **Ana bilgisayar sınıfı Aaltıetkinleştir** *(ux_host_class_asix_activate)* |
-| ![Ana makine sınıfı ASIX devre dışı simgesi](./media/user-guide/usbx-events/image78.png)    | **Ana bilgisayar sınıfı aaltı devre dışı** *(ux_host_class_asix_deactivate)* |
-| ![Ana bilgisayar sınıfı Aaltıkesme bildirimi simgesi](./media/user-guide/usbx-events/image79.png)    | **Ana bilgisayar sınıfı asix kesme bildirimi** *(ux_host_class_asix_interrupt_notification)* |
-| ![Ana bilgisayar sınıfı Aaltıoku simgesi](./media/user-guide/usbx-events/image80.png)    | **Ana bilgisayar sınıfı Aaltıokuma** *(ux_host_class_asix_read)* |
-| ![Ana bilgisayar sınıfı Aaltıyaz simgesi](./media/user-guide/usbx-events/image81.png)    | **Ana bilgisayar sınıfı Aaltıyaz** *(ux_host_class_asix_write)* |
-| ![Konak sınıfı ses etkinleştirme simgesi](./media/user-guide/usbx-events/image82.png)    | **Konak sınıfı ses etkinleştirme** *(ux_host_class_audio_activate)* |
-| ![Konak sınıfı ses denetimi değeri Al simgesi](./media/user-guide/usbx-events/image83.png)    | **Konak sınıfı ses denetimi değeri Get** *(ux_host_class_audio_control_value_get)* |
-| ![Konak sınıfı ses denetimi değer kümesi simgesi](./media/user-guide/usbx-events/image84.png)    | **Konak sınıfı ses denetimi değer kümesi** *(ux_host_class_audio_control_value_set)* |
-| ![Konak sınıfı ses devre dışı bırakma simgesi](./media/user-guide/usbx-events/image85.png)    | **Konak sınıfı ses devre dışı bırakma** *(ux_host_class_audio_deactivate)* |
-| ![Konak sınıfı ses okuma simgesi](./media/user-guide/usbx-events/image86.png)    | **Ana bilgisayar sınıfı ses okuma** *(ux_host_class_audio_read)* |
-| ![Konak sınıfı ses akışı örneklemesi alma simgesi](./media/user-guide/usbx-events/image87.png)    | **Konak sınıfı ses akışı örneklemesi alma** *(ux_host_class_audio_streaming_sampling_get)* |
-| ![Konak sınıfı ses akışı örnekleme kümesi simgesi](./media/user-guide/usbx-events/image88.png)    | **Konak sınıfı ses akışı örnekleme kümesi** *(ux_host_class_audio_streaming_sampling_set)* |
-| ![Konak sınıfı ses yazma simgesi](./media/user-guide/usbx-events/image89.png)    | **Ana bilgisayar sınıfı ses yazma** *(ux_host_class_audio_write)* |
-| ![Ana bilgisayar sınıfı C D C A C M etkinleştirme simgesi](./media/user-guide/usbx-events/image90.png)    | **Ana bilgisayar sınıfı CDC ACM Activate** *(ux_host_class_cdc_acm_activate)* |
-| ![Ana bilgisayar sınıfı C D C A C M devre dışı bırakma simgesi](./media/user-guide/usbx-events/image91.png)    | **Ana bilgisayar sınıfı CDC ACM Deactivate** *(ux_host_class_cdc_acm_deactivate)* |
-| ![Ana bilgisayar sınıfı C D C bir C M ı O C T ı kanal simgesi](./media/user-guide/usbx-events/image92.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL-kanal** *(ux_host_class_cdc_acm_ioctl_abort_in_pipe)* |
-| ![Ana bilgisayar sınıfı C D C A C M ı u C T L I](./media/user-guide/usbx-events/image93.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL Iptal kanalı** *(ux_host_class_cdc_acm_ioctl_abort_out_pipe)* |
-| ![Ana bilgisayar sınıfı C D C A C M ı O C T I cihaz durum simgesi al](./media/user-guide/usbx-events/image94.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL cihaz durumunu Al** *(ux_host_class_cdc_acm_ioctl_get_device_status)* |
-| ![Ana bilgisayar sınıfı C D C A C M ı O C T m](./media/user-guide/usbx-events/image95.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL al satırı kodlama** *(ux_host_class_cdc_acm_ioctl_get_line_coding)* |
-| ![Ana bilgisayar sınıfı C D C A C M ı O C T m](./media/user-guide/usbx-events/image96.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL bildirimi geri araması** *(ux_host_class_cdc_acm_ioctl_notification_callback)* |
-| ![Ana bilgisayar sınıfı C D C c M I m C T ı gönder kesme simgesi](./media/user-guide/usbx-events/image97.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL gönderme sonu** *(ux_host_class_cdc_acm_ioctl_send_break)* |
-| ![Ana bilgisayar sınıfı C D C c M ı O C T m](./media/user-guide/usbx-events/image98.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL kümesi satırı kodlama** *(ux_host_class_cdc_acm_ioctl_set_line_coding)* |
-| ![Ana bilgisayar sınıfı C D C c M ı O C T ı](./media/user-guide/usbx-events/image99.png)    | **Ana bilgisayar sınıfı CDC ACM IOCTL kümesi satır durumu** *(ux_host_class_cdc_acm_ioctl_set_line_state)* |
-| ![Ana bilgisayar sınıfı C D C bir C M oku simgesi](./media/user-guide/usbx-events/image100.png)    | **Ana bilgisayar sınıfı CDC ACM okuma** *(ux_host_class_cdc_acm_read)* |
-| ![Ana bilgisayar sınıfı C D C A C M alma başlangıç simgesi](./media/user-guide/usbx-events/image101.png)    | **Ana bilgisayar sınıfı CDC ACM alma başlangıcı** *(ux_host_class_cdc_acm_reception_start)* |
-| ![Ana bilgisayar sınıfı C D C bir C M alımı durdur simgesi](./media/user-guide/usbx-events/image102.png)    | **Ana bilgisayar sınıfı CDC ACM alımı durdur** *(ux_host_class_cdc_acm_reception_stop)* |
-| ![Ana bilgisayar sınıfı C D C c M yazma simgesi](./media/user-guide/usbx-events/image103.png)    | **Ana bilgisayar sınıfı CDC ACM yazma** *(ux_host_class_cdc_acm_write)* |
-| ![Host Class Dpump etkinleştir simgesi](./media/user-guide/usbx-events/image104.png)    | **Konak sınıfı Dpump etkinleştir** *(ux_host_class_dpump_activate)* |
-| ![Konak sınıfı Dpump etkinliğini kaldırma simgesi](./media/user-guide/usbx-events/image105.png)    | **Ana sınıf Dpump devre dışı bırakma** *(ux_host_class_dpump_deactivate)* |
-| ![Konak sınıfı Dpump oku simgesi](./media/user-guide/usbx-events/image106.png)    | **Ana bilgisayar sınıfı Dpump okuma** *(ux_host_class_dpump_read)* |
-| ![Ana sınıf Dpump yazma simgesi](./media/user-guide/usbx-events/image107.png)    | **Ana bilgisayar sınıfı Dpump yazma** *(ux_host_class_dpump_write)* |
-| ![Konak sınıfı HID etkinleştirme simgesi](./media/user-guide/usbx-events/image108.png)    | **Host Class HID etkinleştir** *(ux_host_class_hid_activate)* |
-| ![Konak sınıfı HID Istemci kaydı simgesi](./media/user-guide/usbx-events/image109.png)    | **Konak sınıfı HID Istemci kaydı** *(ux_host_class_hid_client_register)* |
-| ![Konak sınıfı HID devre dışı bırakma simgesi](./media/user-guide/usbx-events/image110.png)    | **Konak sınıfı HID etkinliğini kaldırma** *(ux_host_class_hid_deactivate)* |
-| ![Konak sınıfı HID boşta al al simgesi](./media/user-guide/usbx-events/image111.png)    | **Ana bilgisayar sınıfı HID boşta al** *(ux_host_class_hid_idle_get)* |
-| ![Konak sınıfı HID boşta kümesi simgesi](./media/user-guide/usbx-events/image112.png)    | **Ana bilgisayar sınıfı HID boşta kümesi** *(ux_host_class_hid_idle_set)* |
-| ![Host Class HID Klavye etkinleştirme simgesi](./media/user-guide/usbx-events/image113.png)    | **Host Class HID Klavye etkinleştir** *(ux_host_class_hid_keyboard_activate)* |
-| ![Host Class HID Klavye devre dışı simgesi](./media/user-guide/usbx-events/image114.png)    | **Host Class HID Klavye devre dışı bırakma** *(ux_host_class_hid_keyboard_deactivate)* |
-| ![Host Class HID fare etkinleştirme simgesi](./media/user-guide/usbx-events/image115.png)    | **Host Class HID fare etkinleştir** *(ux_host_class_hid_mouse_activate)* |
-| ![Konak sınıfı HID fare devre dışı simgesi](./media/user-guide/usbx-events/image116.png)    | **Host Class HID fare devre dışı bırakma** *(ux_host_class_hid_mouse_deactivate)* |
-| ![Konak sınıfı HID uzaktan denetim etkinleştirme simgesi](./media/user-guide/usbx-events/image117.png)    | **Konak sınıfı HID uzaktan denetim etkinleştirme** *(ux_host_class_hid_remote_control_activate)* |
-| ![Konak sınıfı HID uzaktan denetim devre dışı simgesi](./media/user-guide/usbx-events/image118.png)    | **Konak sınıfı HID uzaktan denetim devre dışı** *(ux_host_class_hid_remote_control_deactivate)* |
-| ![Konak sınıfı HID raporu al simgesi](./media/user-guide/usbx-events/image119.png)    | **Konak sınıfı HID raporu Get** *(ux_host_class_hid_report_get)* |
-| ![Konak sınıfı HID rapor kümesi simgesi](./media/user-guide/usbx-events/image120.png)    | **Konak sınıfı HID rapor kümesi** *(ux_host_class_hid_report_set)* |
-| ![Konak sınıfı hub etkinleştirme simgesi](./media/user-guide/usbx-events/image121.png)    | **Konak sınıfı hub 'ı etkinleştir** *(ux_host_class_hub_activate)* |
-| ![Host Class hub değişikliği algılama simgesi](./media/user-guide/usbx-events/image122.png)    | **Ana bilgisayar sınıf hub değişikliği algılaması** *(ux_host_class_hub_change_detect)* |
-| ![* Konak sınıfı hub 'ı devre dışı bırakma simgesi](./media/user-guide/usbx-events/image123.png)    | **Konak sınıfı hub 'ı devre dışı bırakma** *(ux_host_class_hub_deactivate)* |
-| ![Konak sınıf hub 'ı bağlantı noktası değişiklik bağlantı Işlemi simgesi](./media/user-guide/usbx-events/image124.png)    | **Konak sınıf hub 'ı bağlantı noktası değiştirme bağlantı işlemi** *(ux_host_class_hub_port_change_connection_process)* |
-| ![Konak sınıfı hub bağlantı noktası değişikliği etkinleştirme Işlemi simgesi](./media/user-guide/usbx-events/image125.png)    | **Host Class hub bağlantı noktası değişikliği etkinleştirme işlemi** *(ux_host_class_hub_port_change_enable_process)* |
-| ![Ana sınıf hub 'ı bağlantı noktası geçerli Işlem simgesi değişikliği](./media/user-guide/usbx-events/image126.png)    | Geçerli Işlem *(ux_host_class_hub_port_change_over_current_process)* **üzerinde ana bilgisayar sınıfı hub bağlantı noktası değişikliği** |
-| ![Konak sınıf hub 'ı bağlantı noktası değişiklik sıfırlama Işlemi simgesi](./media/user-guide/usbx-events/image127.png)    | **Konak sınıf hub 'ı bağlantı noktası değişiklik sıfırlama işlemi** *(ux_host_class_hub_port_change_reset_process)* |
-| ![Konak sınıf hub 'ı bağlantı noktası değiştirme Işlemi askıya alma simgesi](./media/user-guide/usbx-events/image128.png)    | **Host Class hub bağlantı noktası değiştirme askıya alma işlemi** *(ux_host_class_hub_port_change_suspend_process)* |
-| ![Konak sınıfı Pima etkinleştirme simgesi](./media/user-guide/usbx-events/image129.png)    | **Konak sınıfı Pima etkinleştir** *(ux_host_class_prima_activate)* |
-| ![Konak sınıfı Pima devre dışı bırakma simgesi](./media/user-guide/usbx-events/image130.png)    | **Konak sınıfı Pima devre dışı bırakma** *(ux_host_class_pima_deactivate)* |
-| ![Konak sınıfı Pima cihaz bilgileri al simgesi](./media/user-guide/usbx-events/image131.png)    | **Konak sınıfı Pima cihaz bilgileri Get** *(ux_host_class_pima_device_info_get)* |
-| ![Konak sınıfı Pima cihazı sıfırlama simgesi](./media/user-guide/usbx-events/image132.png)    | **Konak sınıfı Pima cihazı sıfırlama** *(ux_host_class_pima_device_reset)* |
-| ![Konak sınıfı Pima bildirimi simgesi](./media/user-guide/usbx-events/image133.png)    | **Konak sınıfı Pima bildirimi** *(ux_host_class_pima_notification)* |
-| ![Konak sınıfı Pima sayısı nesneleri Al simgesi](./media/user-guide/usbx-events/image134.png)    | **Konak sınıfı Pima sayısı nesneleri Al** *(ux_host_class_pima_num_objects_get)* |
-| ![Ana sınıf Pima nesnesi kapatma simgesi](./media/user-guide/usbx-events/image135.png)    | **Konak sınıfı Pima nesnesi kapat** *(ux_host_class_pima_object_close)* |
-| ![Konak sınıfı Pima nesnesi kopyalama simgesi](./media/user-guide/usbx-events/image136.png)    | **Konak sınıfı Pima nesne kopyası** *(ux_host_class_pima_object_copy)* |
-| ![Konak sınıfı Pima nesnesi silme simgesi](./media/user-guide/usbx-events/image137.png)    | **Konak sınıfı Pima nesnesi silme** *(ux_host_class_pima_object_delete)* |
-| ![Ana sınıf Pima nesnesi Al simgesi](./media/user-guide/usbx-events/image138.png)    | **Konak sınıfı Pima nesnesi Get** *(ux_host_class_pima_object_get)* |
-| ![Konak sınıfı Pima nesnesi bilgileri al simgesi](./media/user-guide/usbx-events/image139.png)    | **Konak sınıfı Pima nesnesi bilgileri al** *(ux_host_class_pima_object_info_get)* |
-| ![Konak sınıfı Pima nesne bilgileri gönderme simgesi](./media/user-guide/usbx-events/image140.png)    | **Konak sınıfı Pima nesne bilgileri gönderme** *(ux_host_class_pima_object_info_send)* |
-| ![Konak sınıfı Pima nesnesi taşıma simgesi](./media/user-guide/usbx-events/image141.png)    | **Konak sınıfı Pima nesnesi taşıma** *(ux_host_class_pima_object_move)* |
-| ![Ana sınıf Pima nesnesi Gönder simgesi](./media/user-guide/usbx-events/image142.png)    | **Konak sınıfı Pima nesnesi gönderme** *(ux_host_class_pima_object_send)* |
-| ![Konak sınıfı Pima nesne aktarımı Iptali simgesi](./media/user-guide/usbx-events/image143.png)    | **Konak sınıfı Pima nesnesi aktarımı iptali** *(ux_host_class_object_transfer_abort)* |
-| ![Konak sınıfı Pima oku simgesi](./media/user-guide/usbx-events/image144.png)    | **Ana bilgisayar sınıfı Pima okuma** *(ux_host_class_pima_read)* |
-| ![Konak sınıfı Pima Isteği Iptal simgesi](./media/user-guide/usbx-events/image145.png)    | **Konak sınıfı Pima Isteği iptali** *(ux_host_class_pima_request_cancel)* |
-| ![Ana sınıf Pima oturumu kapatma simgesi](./media/user-guide/usbx-events/image146.png)    | **Ana bilgisayar sınıfı Pima oturumu kapalı** *(ux_host_class_pima_session_close)* |
-| ![Konak sınıfı Pima oturumu açma simgesi](./media/user-guide/usbx-events/image147.png)    | **Konak sınıfı Pima oturumu açık** *(ux_host_class_pima_session_open)* |
-| ![Konak sınıfı Pima depolama kimlikleri al simgesi](./media/user-guide/usbx-events/image148.png)    | **Konak sınıfı Pima depolama kimlikleri al** *(ux_host_class_pima_storage_ids_get)* |
-| ![Konak sınıfı Pima depolama bilgileri al simgesi](./media/user-guide/usbx-events/image149.png)    | **Konak sınıfı Pima depolama bilgileri Get** *(ux_host_class_pima_storage_info_get)* |
-| ![Konak sınıfı Pima Thumb al simgesi](./media/user-guide/usbx-events/image150.png)    | **Konak sınıfı Pima Parmak Izi al** *(ux_host_class_pima_thumb_get)* |
-| ![Konak sınıfı Pima yazma simgesi](./media/user-guide/usbx-events/image151.png)    | **Konak sınıfı Pima yazma** *(ux_host_class_pima_write)* |
-| ![Konak sınıfı yazıcı etkinleştirme simgesi](./media/user-guide/usbx-events/image152.png)    | **Konak sınıfı yazıcısını etkinleştir** *(ux_host_class_printer_activate)* |
-| ![Konak sınıfı yazıcı devre dışı simgesi](./media/user-guide/usbx-events/image153.png)    | **Konak sınıfı yazıcısını devre dışı bırak** *(ux_host_class_printer_deactivate)* |
-| ![Konak sınıfı yazıcı adı Al simgesi](./media/user-guide/usbx-events/image154.png)    | **Ana bilgisayar sınıfı yazıcı adı Get** *(ux_host_class_printer_name_get)* |
-| ![Ana bilgisayar sınıfı yazıcı okuma simgesi](./media/user-guide/usbx-events/image155.png)    |  **Ana bilgisayar sınıfı yazıcı okuma** *(ux_host_class_printer_read)* |
-| ![Konak sınıfı yazıcı geçici sıfırlama simgesi](./media/user-guide/usbx-events/image156.png)    | **Konak sınıfı yazıcı yazılımdan sıfırlama** *(ux_host_class_printer_soft_reset)* |
-| ![Konak sınıfı yazıcı durumu Al simgesi](./media/user-guide/usbx-events/image157.png)    | **Konak sınıfı yazıcı durumu Al** *(ux_host_class_printer_status_get)* |
-| ![Konak sınıfı yazıcı yazma simgesi](./media/user-guide/usbx-events/image158.png)    | **Ana bilgisayar sınıfı yazıcı yazma** *(ux_host_class_printer_write)* |
-| ![Konak sınıfı Prolific etkinleştirme simgesi](./media/user-guide/usbx-events/image159.png)    | **Konak sınıfı Prolific etkinleştir** *(ux_host_class_prolific_activate)* |
-| ![Konak sınıfı Prolific devre dışı bırakma simgesi](./media/user-guide/usbx-events/image160.png)    | **Konak sınıfı Prolific etkinliğini kaldır** *(ux_host_class_prolific_deactivate)* |
-| ![Kanal simgesinde ana bilgisayar sınıfı proo C T L durdur](./media/user-guide/usbx-events/image161.png)    | **Ana bilgisayar sınıfı Işlem kanalında IOCTL iptali** *(ux_host_class_prolific_ioctl_abort_in_pipe)* |
-| ![Ana bilgisayar sınıfı proo C T L m ı Durdur kanal simgesi](./media/user-guide/usbx-events/image162.png)    | **Ana bilgisayar sınıfı Prolific IOCTL Iptal kanalı** *(ux_host_class_prolific_ioctl_abort_out_pipe)* |
-| ![Konak sınıfı Prolific g T C T L bir cihaz durumu simgesi al](./media/user-guide/usbx-events/image163.png)    | **Konak sınıfı Prolific IOCTL cihaz durumunu Al** *(ux_host_class_prolific_ioctl_get_device_status)* |
-| ![Konak sınıfı Prolific ı T C T L Class for satırı kodlama simgesi](./media/user-guide/usbx-events/image164.png)    | **Konak sınıfı Prolific IOCTL al satır kodlama** *(ux_host_class_prolific_ioctl_get_line_coding)* |
-| ![Ana bilgisayar sınıfı Prolific T I do u simgesi](./media/user-guide/usbx-events/image165.png)    | **Ana makine sınıfı, IOCTL Temizleme** *(ux_host_class_prolific_ioctl_purge)* |
-| ![Konak sınıfı Prolific ı T C T m rapor cihaz durumu değiştirme simgesi](./media/user-guide/usbx-events/image166.png)    | **Konak sınıfı Prolific IOCTL rapor cihaz durumu değişikliği** *(ux_host_class_prolific_ioctl_report_device_status_change)* |
-| ![Konak sınıfı Prolific ı T C T L gönderme sonu simgesi](./media/user-guide/usbx-events/image167.png)    | **Ana bilgisayar sınıfı, IOCTL gönderme sonu** *(ux_host_class_prolific_ioctl_send_break)* |
-| ![Konak sınıfı Prolific ı T C T L Class for satırı kodlama simgesi](./media/user-guide/usbx-events/image168.png)    | **Konak sınıfı Prolific IOCTL kümesi satırı kodlama** *(ux_host_class_prolific_ioctl_set_line_coding)* |
-| ![Konak sınıfı Prolific ı T C T L s satır durumu simgesi](./media/user-guide/usbx-events/image169.png)    | **Konak sınıfı Prolific IOCTL kümesi satır durumu** *(ux_host_class_prolific_ioctl_set_line_state)* |
-| ![Konak sınıfı Prolific okuma simgesi](./media/user-guide/usbx-events/image170.png)    | **Ana bilgisayar sınıfı, okuma** *(ux_host_class_prolific_read)* |
-| ![Konak sınıfı Prolific alma başlangıç simgesi](./media/user-guide/usbx-events/image171.png)    | **Ana bilgisayar sınıfı Prolific alma başlangıcı** *(ux_host_class_prolific_reception_start)* |
-| ![Konak sınıfı Prolific alımı durdurma simgesi](./media/user-guide/usbx-events/image172.png)    | **Konak sınıfı Prolific alma durdurma** *(ux_host_class_prolific_reception_stop)* |
-| ![Ana makine sınıfı başlangıç yazma simgesi](./media/user-guide/usbx-events/image173.png)    | **Ana bilgisayar sınıfı başlangıç yazma** *(ux_host_class_prolific_write)* |
-| ![Konak sınıfı depolama etkinleştirme simgesi](./media/user-guide/usbx-events/image174.png)    | **Konak sınıfı depolama etkinleştir** *(ux_host_class_storage_activate)* |
-| ![Konak sınıfı depolamayı devre dışı bırakma simgesi](./media/user-guide/usbx-events/image175.png)    | **Konak sınıfı depolamayı devre dışı bırakma** (*ux_host_class_storage_deactivate)* |
-| ![Konak sınıfı depolama medyası kapasitesi al simgesi](./media/user-guide/usbx-events/image176.png)    | **Konak sınıfı depolama medyası kapasitesi al** *(ux_host_class_storage_media_capacity_get)* |
-| ![Konak sınıfı depolama medya biçimi kapasitesi al simgesi](./media/user-guide/usbx-events/image177.png)    | **Konak sınıfı depolama medya biçimi kapasitesi al** *(ux_host_class_storage_media_format_capacity_get)* |
-| ![Konak sınıfı depolama medyası bağlama simgesi](./media/user-guide/usbx-events/image178.png)    | **Konak sınıfı depolama medyası bağlama** (ux_host_class_storage_media_mount) * |
-| ![Konak sınıfı depolama medyası açık simgesi](./media/user-guide/usbx-events/image179.png)    | **Konak sınıfı depolama medyası açık** *(ux_host_class_storage_media_open)* |
-| ![Konak sınıfı depolama medyası okuma simgesi](./media/user-guide/usbx-events/image180.png)    | **Konak sınıfı depolama medyası okuma** *(ux_host_class_storage_media_read)* |
-| ![Konak sınıfı depolama medyası yazma simgesi](./media/user-guide/usbx-events/image181.png)    | **Konak sınıfı depolama medyası yazma** *(ux_host_class_storage_media_write)* |
-| ![Konak sınıfı depolama Isteği algılama simgesi](./media/user-guide/usbx-events/image182.png)    | **Konak sınıfı depolama Isteği algılama** *(ux_host_class_storage_request_sense)* |
-| ![Konak sınıfı depolama başlatma durdurma simgesi](./media/user-guide/usbx-events/image183.png)    | **Konak sınıfı depolama başlatma durdurma** *(ux_host_class_storage_start_stop)* |
-| ![Konak sınıfı depolama birimi için Ready test simgesi](./media/user-guide/usbx-events/image184.png)    | **Konak sınıfı depolama birimi Için hazırlanma testi** *(ux_host_class_storage_activate)* |
-| ![Konak yığını sınıf örneği oluşturma simgesi](./media/user-guide/usbx-events/image185.png)    | **Konak yığını sınıf örneği oluşturma** *(ux_host_stack_class_instance_create)* |
-| ![Konak yığını sınıf örneği yok etme simgesi](./media/user-guide/usbx-events/image186.png)    | **Konak yığını sınıf örneği yok etme** *(ux_host_stack_class_instance_destroy)* |
-| ![Konak yığını yapılandırması silme simgesi](./media/user-guide/usbx-events/image187.png)    | **Konak yığını yapılandırması silme** *(ux_host_stack_configuration_delete)* |
-| ![Konak yığını yapılandırması sıralama simgesi](./media/user-guide/usbx-events/image188.png)    | **Konak yığını yapılandırması numaralandırması** *(ux_host_stack_configuration_enumerate)* |
-| ![Konak yığını yapılandırma örneği oluşturma simgesi](./media/user-guide/usbx-events/image189.png)    | **Konak yığını yapılandırma örneği oluşturma** *(ux_host_stack_configuration_instance_create)* |
-| ![Konak yığını yapılandırma örneği silme simgesi](./media/user-guide/usbx-events/image190.png)    | **Konak yığını yapılandırma örneği silme** *(ux_host_stack_configuration_instance_delete)* |
-| ![Konak yığını yapılandırma kümesi simgesi](./media/user-guide/usbx-events/image191.png)    | **Konak yığını yapılandırma kümesi** *(ux_host_stack_configuration_set)* |
-| ![Konak yığını cihaz adresi kümesi simgesi](./media/user-guide/usbx-events/image192.png)    | **Konak yığını cihaz adresi kümesi** *(ux_host_stack_device_set)* |
-| ![Konak yığını cihaz yapılandırması Get simgesi](./media/user-guide/usbx-events/image193.png)    | **Konak yığını cihaz yapılandırması Get** *(ux_host_stack_device_configuration_get)* |
-| ![Konak yığını cihaz yapılandırması seçim simgesi](./media/user-guide/usbx-events/image194.png)    | **Konak yığını cihaz yapılandırması seçme** *(ux_host_stack_device_configuration_select)* |
-| ![Konak yığını cihaz tanımlayıcısı okuma simgesi](./media/user-guide/usbx-events/image195.png)    | **Konak yığını cihaz tanımlayıcısı okuma** *(ux_host_stack_device_descriptor_read)* |
-| ![Konak yığını cihazının al simgesi](./media/user-guide/usbx-events/image196.png)    | **Konak yığını cihazının Get** (ux_host_stack_device_get) |
-| ![Konak yığını cihaz kaldırma simgesi](./media/user-guide/usbx-events/image197.png)    | **Konak yığını cihazını kaldır** (ux_host_stack_device_get) |
-| ![Ana bilgisayar yığını cihaz kaynağı boş simgesi](./media/user-guide/usbx-events/image198.png)    | **Ana bilgisayar yığını cihaz kaynağı boş** (ux_host_stack_device_resource_free) |
-| ![Konak yığını uç noktası örneği oluşturma simgesi](./media/user-guide/usbx-events/image199.png)    | **Konak yığını uç noktası örneği oluşturma** (ux_host_stack_endpoint_instance_create) |
-| ![Konak yığın uç noktası örneği silme simgesi](./media/user-guide/usbx-events/image200.png)    | **Konak yığını uç noktası örneği silme** (ux_host_stack_endpoint_instance_delete) |
-| ![Konak yığını uç noktası sıfırlama simgesi](./media/user-guide/usbx-events/image201.png)    | **Konak yığını uç noktası sıfırlama** (ux_host_stack_endpoint_reset) |
-| ![Konak yığını uç noktası aktarımı Iptal simgesi](./media/user-guide/usbx-events/image202.png)    | **Konak yığını uç noktası aktarımı iptal** (ux_host_stack_endpoint_transfer_abort) |
-| ![Konak yığını konak denetleyicisi kayıt simgesi](./media/user-guide/usbx-events/image203.png)    | **Konak yığını konak denetleyicisi kaydı** *(ux_host_stack_hcd_register)* |
-| ![Konak yığını başlatma simgesi](./media/user-guide/usbx-events/image204.png)    | **Konak yığını başlatma** *(ux_host_stack_initialize)* |
-| ![Konak yığını arabirimi uç noktası al simgesi](./media/user-guide/usbx-events/image205.png)    | **Konak yığını arabirim uç noktası al** *(ux_host_stack_interface_endpoint_get)* |
-| ![Konak yığını arabirim örneği oluşturma simgesi](./media/user-guide/usbx-events/image206.png)    | **Konak yığını arabirim örneği oluşturma** *(ux_host_stack_interface_instance_create)* |
-| ![Konak yığını arabirim örneği silme simgesi](./media/user-guide/usbx-events/image207.png)    | **Konak yığını arabirim örneği silme** *(ux_host_stack_interface_instance_delete)* |
-| ![Konak yığını arabirim kümesi simgesi](./media/user-guide/usbx-events/image208.png)    | **Konak yığını arabirim kümesi** *(ux_host_stack_interface_set)* |
-| ![Konak yığın arabirimi ayarı seçme simgesi](./media/user-guide/usbx-events/image209.png)    | **Konak yığını arabirim ayarı seçimi** *(ux_host_stack_interface_setting_select)* |
-| ![Konak yığını yeni yapılandırma Oluştur simgesi](./media/user-guide/usbx-events/image210.png)    | **Ana bilgisayar yığını yeni yapılandırma oluşturma** *(ux_host_stack_new_configuration_create)* |
-| ![Konak yığını yeni cihaz Oluştur simgesi](./media/user-guide/usbx-events/image211.png)    | **Ana bilgisayar yığını yeni cihaz oluşturma** *(ux_host_stack_new_device_create)* |
-| ![Ana bilgisayar yığını yeni uç nokta Oluştur simgesi](./media/user-guide/usbx-events/image212.png)    | **Ana bilgisayar yığını yeni uç nokta oluşturma** *(ux_host_stack_new_endpoint_create)* |
-| ![Konak yığını kök hub 'ı değiştirme Işlemi simgesi](./media/user-guide/usbx-events/image213.png)    | **Konak yığını kök hub 'ı değişiklik işlemi** *(ux_host_stack_rh_change_process)* |
-| ![Konak yığını kök hub cihazı ayıklama simgesi](./media/user-guide/usbx-events/image214.png)    | **Konak yığını kök hub cihazı ayıklama** *(ux_host_stack_rh_device_extraction)* |
-| ![Konak yığını kök hub cihazı ekleme simgesi](./media/user-guide/usbx-events/image215.png)    | **Konak yığını kök hub cihazı ekleme** *(ux_host_stack_rh_device_insertion)* |
-| ![Konak yığını aktarım Isteği simgesi](./media/user-guide/usbx-events/image216.png)    | **Ana bilgisayar yığını aktarım isteği** *(ux_host_stack_transfer_request)* |
-| ![Konak yığını aktarım Isteği Iptali simgesi](./media/user-guide/usbx-events/image217.png)    | **Ana bilgisayar yığını aktarım Isteği iptali** *(ux_host_stack_transfer_request_abort)* |
-| ![U S B X hata simgesi](./media/user-guide/usbx-events/image218.png)    | **USBX hatası** *(ux_error)* |
+| ![cihaz sınıfı Depolama etkinleştirme simgesi](./media/user-guide/usbx-events/image41.png)    | **cihaz sınıfı Depolama etkinleştir** *(ux_device_class_storage_activate)* |
+| ![cihaz sınıfı Depolama devre dışı bırakma simgesi](./media/user-guide/usbx-events/image42.png)    | **cihaz sınıfı Depolama devre dışı bırak** *(ux_device_class_storage_deactivate)* |
+| ![cihaz sınıfı Depolama biçim simgesi](./media/user-guide/usbx-events/image43.png)    | **cihaz sınıfı Depolama biçimi** *(ux_device_class_storage_format)* |
+| ![cihaz sınıfı Depolama sorgulama simgesi](./media/user-guide/usbx-events/image44.png)    | **cihaz sınıfı Depolama sorgulama** *(ux_device_class_storage_inquiry)* |
+| ![cihaz sınıfı Depolama modu seçme simgesi](./media/user-guide/usbx-events/image45.png)    | **cihaz sınıfı Depolama modu seçme** *(ux_device_class_storage_mode_select)* |
+| ![cihaz sınıfı Depolama modu algılama simgesi](./media/user-guide/usbx-events/image46.png)    | **cihaz sınıfı Depolama modu algılama** *(ux_device_class_storage_mode_sense)* |
+| ![Cihaz Sınıfı Depolama Medya Kaldırmaya İzin Ver simgesini engelle](./media/user-guide/usbx-events/image47.png)    | **Cihaz Sınıfı Depolama Medya Kaldırmaya İzin Ver** *(ux_device_class_storage_prevent_allow_media_removal)* |
+| ![Cihaz Sınıfı Depolama Okuma simgesi](./media/user-guide/usbx-events/image48.png)    | **Cihaz Sınıfı Depolama Okuma** *(ux_device_class_storage_read)* |
+| ![Cihaz Sınıfı Depolama Okuma Kapasitesi simgesi](./media/user-guide/usbx-events/image49.png)    | **Cihaz Sınıfı Depolama Okuma Kapasitesi** *(ux_device_class_storage_read_capacity)* |
+| ![Cihaz Sınıfı Depolama Okuma Biçimi Kapasitesi simgesi](./media/user-guide/usbx-events/image50.png)    | **Cihaz Sınıfı Depolama Okuma Biçimi Kapasitesi** *(ux_device_class_storage_read_format_capacity)* |
+| ![Cihaz Sınıfı Depolama Okuma ToC simgesi](./media/user-guide/usbx-events/image51.png)    | **Device Class Depolama Read TOC** *(ux_device_class_storage_read_toc)* |
+| ![Device Class Depolama Request Sense simgesi](./media/user-guide/usbx-events/image52.png)    | **Device Class Depolama Request Sense** *(ux_device_class_storage_request_sense)* |
+| ![Cihaz Sınıfı Depolama Başlat Durdurma simgesi](./media/user-guide/usbx-events/image53.png)    | **Cihaz Sınıfı Depolama Başlatma Durdurma** *(ux_device_class_storage_start_stop)* |
+| ![Cihaz Sınıfı Depolama Teste Hazır simgesi](./media/user-guide/usbx-events/image54.png)    | **Cihaz Sınıfı Depolama Test Hazır** *(ux_device_class_storage_test_ready)* |
+| ![Cihaz Sınıfı Depolama Doğrulama simgesi](./media/user-guide/usbx-events/image55.png)    | **Cihaz Sınıfı Depolama Doğrulama** *(ux_device_class_storage_verify)* |
+| ![Cihaz Sınıfı Depolama Yazma simgesi](./media/user-guide/usbx-events/image56.png)    | **Cihaz Sınıfı Depolama Yazma** *(ux_device_class_storage_write)* |
+| ![Cihaz Yığını Alternatif Ayar Al simgesi](./media/user-guide/usbx-events/image57.png)    | **Cihaz Yığını Alternatif Ayar Al** *(ux_device_stack_alternate_setting_get)* |
+| ![Cihaz Yığını Alternatif Ayar Kümesi simgesi](./media/user-guide/usbx-events/image58.png)    | **Cihaz Yığını Alternatif Ayar Kümesi** *(ux_device_stack_alternate_setting_set)* |
+| ![Cihaz Yığını Sınıf Kaydı simgesi](./media/user-guide/usbx-events/image59.png)    | **Cihaz Yığını Sınıf Kaydı** *(ux_device_stack_class_register)* |
+| ![Cihaz Yığını Temizleme Özelliği simgesi](./media/user-guide/usbx-events/image60.png)    | **Cihaz Yığını Temizleme Özelliği** *(ux_device_stack_clear_feature)* |
+| ![Cihaz Yığını Yapılandırması Al simgesi](./media/user-guide/usbx-events/image61.png)    | **Cihaz Yığını Yapılandırma Get** *(ux_device_stack_configuration_get)* |
+| ![Cihaz Yığını Yapılandırma Kümesi simgesi](./media/user-guide/usbx-events/image62.png)    | **Cihaz Yığını Yapılandırma Kümesi** *(ux_device_stack_configuration_set)* |
+| ![Cihaz Yığını Bağlan simgesi](./media/user-guide/usbx-events/image63.png)    | **Cihaz Yığını Bağlan** *(ux_device_stack_connect)* |
+| ![Cihaz Yığını Tanımlayıcısı Gönder simgesi](./media/user-guide/usbx-events/image64.png)    | **Cihaz Yığını Tanımlayıcı Gönderme** *(ux_device_stack_descriptor_send)* |
+| ![Cihaz Yığını Bağlantısını Kes simgesi](./media/user-guide/usbx-events/image65.png)    | **Cihaz Yığını Bağlantısını Kesme** *(ux_device_stack_disconnect)* |
+| ![Cihaz Yığını Uç Noktası Durak simgesi](./media/user-guide/usbx-events/image66.png)    | **Cihaz Yığını Uç Noktası Durak** *(ux_device_stack_endpoint_stall)* |
+| ![Cihaz Yığını Durum Al simgesi](./media/user-guide/usbx-events/image67.png)    | **Cihaz Yığını Durum Al** *(ux_device_stack_get_status)* |
+| ![Cihaz Yığını Konak Uyandırma simgesi](./media/user-guide/usbx-events/image68.png)    | **Cihaz Yığını Ana Bilgisayarı Uyandırma** *(ux_device_stack_host_wakeup)* |
+| ![Cihaz Yığını Başlat simgesi](./media/user-guide/usbx-events/image69.png)    | **Cihaz Yığını Başlatma** *(ux_device_stack_initialize)* |
+| ![Cihaz Yığını Arabirimi Silme simgesi](./media/user-guide/usbx-events/image70.png)    | **Cihaz Yığını Arabirimi Silme** *(ux_device_stack_interface_delete)* |
+| ![Cihaz Yığını Arabirimi Al simgesi](./media/user-guide/usbx-events/image71.png)    | **Cihaz Yığını Arabirimi Al** *(ux_device_stack_interface_get)* |
+| ![Cihaz Yığını Arabirim Kümesi simgesi](./media/user-guide/usbx-events/image72.png)    | **Cihaz Yığını Arabirim Kümesi** *(ux_device_stack_interface_set)* |
+| ![Cihaz Yığın Kümesi Özellik simgesi](./media/user-guide/usbx-events/image73.png)    | **Cihaz Yığın Kümesi Özelliği** *(ux_device_stack_set_feature)* |
+| ![Cihaz Yığını Aktarım Durdurma simgesi](./media/user-guide/usbx-events/image74.png)    | **Cihaz Yığını Aktarım Durdurma** *(ux_device_stack_transfer_abort)* |
+| ![*Cihaz Yığını Aktarımı Tüm İstek durdurma simgesi](./media/user-guide/usbx-events/image75.png)    | **Cihaz Yığını Aktarımı Tüm İstek Durdurma** *(ux_device_stack_transfer_all_request_abort)* |
+| ![Cihaz Yığını Aktarım İsteği simgesi](./media/user-guide/usbx-events/image76.png)    | **Cihaz Yığını Aktarım İsteği** *(ux_device_stack_transfer_request)* |
+| ![Konak Sınıfı Asix Etkinleştirme simgesi](./media/user-guide/usbx-events/image77.png)    | **Konak Sınıfı Asix Etkinleştirmesi** *(ux_host_class_asix_activate)* |
+| ![Konak Sınıfı Asix Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image78.png)    | **Konak Sınıfı Asix Devre Dışı Bırakma** *(ux_host_class_asix_deactivate)* |
+| ![Konak Sınıfı Ek Kesme Bildirimi simgesi](./media/user-guide/usbx-events/image79.png)    | **Konak Sınıfı Asix Kesme Bildirimi** *(ux_host_class_asix_interrupt_notification)* |
+| ![Konak Sınıfı Ek Okuma simgesi](./media/user-guide/usbx-events/image80.png)    | **Konak Sınıfı Asix Okuma** *(ux_host_class_asix_read)* |
+| ![Konak Sınıfı Asix Yazma simgesi](./media/user-guide/usbx-events/image81.png)    | **Konak Sınıfı Asix Yazma** *(ux_host_class_asix_write)* |
+| ![Konak Sınıfı Ses Etkinleştirme simgesi](./media/user-guide/usbx-events/image82.png)    | **Konak Sınıfı Ses Etkinleştirme** *(ux_host_class_audio_activate)* |
+| ![Konak Sınıfı Ses Denetimi Değeri Al simgesi](./media/user-guide/usbx-events/image83.png)    | **Konak Sınıfı Ses Denetimi Değer Al** *(ux_host_class_audio_control_value_get)* |
+| ![Konak Sınıfı Ses Denetimi Değer Kümesi simgesi](./media/user-guide/usbx-events/image84.png)    | **Konak Sınıfı Ses Denetimi Değer Kümesi** *(ux_host_class_audio_control_value_set)* |
+| ![Konak Sınıfı Ses Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image85.png)    | **Konak Sınıfı Ses Devre Dışı Bırakma** *(ux_host_class_audio_deactivate)* |
+| ![Konak Sınıfı Ses Okuma simgesi](./media/user-guide/usbx-events/image86.png)    | **Konak Sınıfı Ses Okuma** *(ux_host_class_audio_read)* |
+| ![Konak Sınıfı Ses Akışı Örnekleme Alma simgesi](./media/user-guide/usbx-events/image87.png)    | **Konak Sınıfı Ses Akışı Örnekleme Alma** *(ux_host_class_audio_streaming_sampling_get)* |
+| ![Konak Sınıfı Ses Akışı Örnekleme Kümesi simgesi](./media/user-guide/usbx-events/image88.png)    | **Konak Sınıfı Ses Akışı Örnekleme Kümesi** *(ux_host_class_audio_streaming_sampling_set)* |
+| ![Konak Sınıfı Ses Yazma simgesi](./media/user-guide/usbx-events/image89.png)    | **Konak Sınıfı Ses Yazma** *(ux_host_class_audio_write)* |
+| ![Konak Sınıfı C D C A C M Etkinleştirme simgesi](./media/user-guide/usbx-events/image90.png)    | **Konak Sınıfı Cdc Acm Etkinleştirme** *(ux_host_class_cdc_acm_activate)* |
+| ![Konak Sınıfı C D C A C M Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image91.png)    | **Konak Sınıfı Cdc Acm Devre Dışı Bırakma** *(ux_host_class_cdc_acm_deactivate)* |
+| ![Kanalda Konak Sınıfı C D C A C M O C T L simgesi](./media/user-guide/usbx-events/image92.png)    | **Kanalda Konak Sınıfı Cdc Acm Ioctl Abort** *(ux_host_class_cdc_acm_ioctl_abort_in_pipe)* |
+| ![Konak Sınıfı C D C A C M O C T L Kanaldan Çıkma simgesini durdurma](./media/user-guide/usbx-events/image93.png)    | **Konak Sınıfı Cdc Acm Ioctl Kanal Durdurma** *(ux_host_class_cdc_acm_ioctl_abort_out_pipe)* |
+| ![Konak Sınıfı C D C A C M O C T L Cihaz Durumunu Al simgesi](./media/user-guide/usbx-events/image94.png)    | **Konak Sınıfı Cdc Acm Ioctl Cihaz Durumunu Al** *(ux_host_class_cdc_acm_ioctl_get_device_status)* |
+| ![Konak Sınıfı C D C A C M O C T L Satır Kodlaması Al simgesi](./media/user-guide/usbx-events/image95.png)    | **Konak Sınıfı Cdc Acm Ioctl Satır Kodlaması Al** *(ux_host_class_cdc_acm_ioctl_get_line_coding)* |
+| ![Konak Sınıfı C D C A C M O C T L Bildirim Geri Çağırma simgesi](./media/user-guide/usbx-events/image96.png)    | **Konak Sınıfı Cdc Acm Ioctl Bildirim Geri Çağırma** *(ux_host_class_cdc_acm_ioctl_notification_callback)* |
+| ![Konak Sınıfı C D C A C M O C T L Kesme Gönder simgesi](./media/user-guide/usbx-events/image97.png)    | **Konak Sınıfı Cdc Acm Ioctl Send Break** *(ux_host_class_cdc_acm_ioctl_send_break)* |
+| ![Konak Sınıfı C D C A C M O C T L Set Line Coding simgesi](./media/user-guide/usbx-events/image98.png)    | **Konak Sınıfı Cdc Acm Ioctl Set Line Coding** *(ux_host_class_cdc_acm_ioctl_set_line_coding)* |
+| ![Konak Sınıfı C D C A C M O C T L Satır Durumunu Ayarla simgesi](./media/user-guide/usbx-events/image99.png)    | **Konak Sınıfı Cdc Acm Ioctl Set Line State** *(ux_host_class_cdc_acm_ioctl_set_line_state)* |
+| ![Konak Sınıfı C D C A C M Okuma simgesi](./media/user-guide/usbx-events/image100.png)    | **Konak Sınıfı Cdc Acm Read** *(ux_host_class_cdc_acm_read)* |
+| ![Konak Sınıfı C D C A C M Sinyal Başlatma simgesi](./media/user-guide/usbx-events/image101.png)    | **Konak Sınıfı Cdc Acm Sinyal Başlatma** *(ux_host_class_cdc_acm_reception_start)* |
+| ![Konak Sınıfı C D C A C M Sinyal Durdurma simgesi](./media/user-guide/usbx-events/image102.png)    | **Konak Sınıfı Cdc Acm Sinyal Durdurma** *(ux_host_class_cdc_acm_reception_stop)* |
+| ![Konak Sınıfı C D C A C M Yazma simgesi](./media/user-guide/usbx-events/image103.png)    | **Konak Sınıfı Cdc Acm Yazma** *(ux_host_class_cdc_acm_write)* |
+| ![Konak Sınıfı Dpump Etkinleştirme simgesi](./media/user-guide/usbx-events/image104.png)    | **Konak Sınıfı Dpump Etkinleştirmesi** *(ux_host_class_dpump_activate)* |
+| ![Konak Sınıfı Dpump Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image105.png)    | **Konak Sınıfı Dpump Devre Dışı Bırakma** *(ux_host_class_dpump_deactivate)* |
+| ![Konak Sınıfı Dpump Okuma simgesi](./media/user-guide/usbx-events/image106.png)    | **Konak Sınıfı Dpump Okuma** *(ux_host_class_dpump_read)* |
+| ![Konak Sınıfı Dpump Yazma simgesi](./media/user-guide/usbx-events/image107.png)    | **Konak Sınıfı Dpump Yazma** *(ux_host_class_dpump_write)* |
+| ![Konak Sınıfı Etkinleştir simgesi](./media/user-guide/usbx-events/image108.png)    | **Host Classını Etkinleştirme** *(ux_host_class_hid_activate)* |
+| ![Konak SınıfıNız İstemci Kaydı simgesi](./media/user-guide/usbx-events/image109.png)    | **Konak Sınıfı Gizli İstemci Kaydı** *(ux_host_class_hid_client_register)* |
+| ![Konak Sınıfı Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image110.png)    | **Konak Sınıfı Devre Dışı Bırakma** *(ux_host_class_hid_deactivate)* |
+| ![Host Class Idle Get simgesi](./media/user-guide/usbx-events/image111.png)    | **Host Class Idle Get** *(ux_host_class_hid_idle_get)* |
+| ![Konak Sınıfı Boşta Kalma Kümesi simgesi](./media/user-guide/usbx-events/image112.png)    | **Host Class Idle Set** *(ux_host_class_hid_idle_set)* |
+| ![Konak Sınıfı Klavye Etkinleştirme simgesi](./media/user-guide/usbx-events/image113.png)    | **Host ClassNizi Klavye Etkinleştirme** *(ux_host_class_hid_keyboard_activate)* |
+| ![Konak Sınıfı Klavyeyi Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image114.png)    | **Konak Sınıfı Klavyeyi Devre Dışı Bırakma** *(ux_host_class_hid_keyboard_deactivate)* |
+| ![Konak Sınıfı Fare Etkinleştirme simgesi](./media/user-guide/usbx-events/image115.png)    | **Host Class Mouse Activate** *(ux_host_class_hid_mouse_activate)* |
+| ![Konak Sınıfı Fare Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image116.png)    | **Konak Sınıfı FareYi Devre Dışı Bırakma** *(ux_host_class_hid_mouse_deactivate)* |
+| ![Konak Sınıfı Uzaktan Denetim Etkinleştirme simgesi](./media/user-guide/usbx-events/image117.png)    | **Konak Sınıfı Remote Control Etkinleştirme** *(ux_host_class_hid_remote_control_activate)* |
+| ![Konak Sınıfı Remote Control Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image118.png)    | **Konak Sınıfı Remote Control'u Devre Dışı Bırakma** *(ux_host_class_hid_remote_control_deactivate)* |
+| ![Konak Sınıfı Gizli Rapor Al simgesi](./media/user-guide/usbx-events/image119.png)    | **Host Classını Rapor Al** *(ux_host_class_hid_report_get)* |
+| ![Konak Sınıfıınır Rapor Kümesi simgesi](./media/user-guide/usbx-events/image120.png)    | **Host Classınıd Rapor Kümesi** *(ux_host_class_hid_report_set)* |
+| ![Konak Sınıfı Hub'ı Etkinleştirme simgesi](./media/user-guide/usbx-events/image121.png)    | **Konak Sınıfı Hub'ı Etkinleştirme** *(ux_host_class_hub_activate)* |
+| ![Konak Sınıfı Hub'ı Değişiklik Algılama simgesi](./media/user-guide/usbx-events/image122.png)    | **Konak Sınıfı Hub'ı Değişiklik Algılama** *(ux_host_class_hub_change_detect)* |
+| ![*Konak Sınıfı Hub'ı Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image123.png)    | **Konak Sınıfı Hub'ı Devre Dışı** *Bırakma (ux_host_class_hub_deactivate)* |
+| ![Konak Sınıfı Hub'ı Bağlantı Noktası Değiştirme Bağlantı Süreci simgesi](./media/user-guide/usbx-events/image124.png)    | **Konak Sınıfı Hub'ı Bağlantı Noktası Değiştirme Bağlantı Ux_host_class_hub_port_change_connection_process)**  |
+| ![Konak Sınıfı Hub'ı Bağlantı Noktası Değişikliği işlemi etkinleştir simgesi](./media/user-guide/usbx-events/image125.png)    | **Konak Sınıfı Hub'ı Bağlantı Noktası Değişikliği etkinleştirme işlemi** *(ux_host_class_hub_port_change_enable_process)* |
+| ![Konak Sınıfı Hub'ı Geçerli İşlem Üzerinden Bağlantı Noktası Değişikliği simgesi](./media/user-guide/usbx-events/image126.png)    | **Geçerli İşlem Üzerinden Konak Sınıfı Hub'ı** Bağlantı Noktası Değişikliği *(ux_host_class_hub_port_change_over_current_process)* |
+| ![Konak Sınıfı Hub'ı Bağlantı Noktası Değiştirme Sıfırlama süreci simgesi](./media/user-guide/usbx-events/image127.png)    | **Konak Sınıfı Hub'ı Bağlantı Noktası Değiştirme Sıfırlama işlemi** *(ux_host_class_hub_port_change_reset_process)* |
+| ![Konak Sınıfı Hub'ı Bağlantı Noktası Değişikliği İşlem Askıya Alma simgesi](./media/user-guide/usbx-events/image128.png)    | **Konak Sınıfı Hub'ı Bağlantı Noktası Değişikliği Askıya Alma işlemi** *(ux_host_class_hub_port_change_suspend_process)* |
+| ![Konak Sınıfı Pima Etkinleştirme simgesi](./media/user-guide/usbx-events/image129.png)    | **Pima Etkinleştirme Konak Sınıfı** *(ux_host_class_prima_activate)* |
+| ![Konak Sınıfı Pima Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image130.png)    | **Konak Sınıfı Pima Devre Dışı Bırakma** *(ux_host_class_pima_deactivate)* |
+| ![Konak Sınıfı Pima Cihaz Bilgileri Al simgesi](./media/user-guide/usbx-events/image131.png)    | **Konak Sınıfı Pima Cihaz Bilgileri Al** *(ux_host_class_pima_device_info_get)* |
+| ![Konak Sınıfı Pima Cihaz Sıfırlama simgesi](./media/user-guide/usbx-events/image132.png)    | **Konak Sınıfı Pima Cihaz Sıfırlama** *(ux_host_class_pima_device_reset)* |
+| ![Konak Sınıfı Pima Bildirimi simgesi](./media/user-guide/usbx-events/image133.png)    | **Konak Sınıfı Pima Bildirimi** *(ux_host_class_pima_notification)* |
+| ![Konak Sınıfı Pima Numarası Nesneleri Al simgesi](./media/user-guide/usbx-events/image134.png)    | **Konak Sınıfı Pima Sayı NesneleriNin Al** *(ux_host_class_pima_num_objects_get)* |
+| ![Konak Sınıfı Pima Nesnesi Kapatma simgesi](./media/user-guide/usbx-events/image135.png)    | **Konak Sınıfı Pima Nesnesi Kapatma** *(ux_host_class_pima_object_close)* |
+| ![Konak Sınıfı Pima Nesne Kopyalama simgesi](./media/user-guide/usbx-events/image136.png)    | **Konak Sınıfı Pima Nesne Kopyalama** *(ux_host_class_pima_object_copy)* |
+| ![Konak Sınıfı Pima Nesne Silme simgesi](./media/user-guide/usbx-events/image137.png)    | **Konak Sınıfı Pima Nesne Silme** *(ux_host_class_pima_object_delete)* |
+| ![Konak Sınıfı Pima Nesnesi Al simgesi](./media/user-guide/usbx-events/image138.png)    | **Konak Sınıfı Pima Nesne Al** *(ux_host_class_pima_object_get)* |
+| ![Konak Sınıfı Pima Nesne Bilgileri Al simgesi](./media/user-guide/usbx-events/image139.png)    | **Konak Sınıfı Pima Nesne Bilgisi Al** *(ux_host_class_pima_object_info_get)* |
+| ![Konak Sınıfı Pima Nesne Bilgisi Gönderme simgesi](./media/user-guide/usbx-events/image140.png)    | **Konak Sınıfı Pima Nesne Bilgisi Gönderme** *(ux_host_class_pima_object_info_send)* |
+| ![Konak Sınıfı Pima Nesnesi Taşıma simgesi](./media/user-guide/usbx-events/image141.png)    | **Konak Sınıfı Pima Nesne Taşıma** *(ux_host_class_pima_object_move)* |
+| ![Konak Sınıfı Pima Nesne Gönderme simgesi](./media/user-guide/usbx-events/image142.png)    | **Konak Sınıfı Pima Nesne Gönderme** *(ux_host_class_pima_object_send)* |
+| ![Konak Sınıfı Pima Nesne Aktarımı Durdurma simgesi](./media/user-guide/usbx-events/image143.png)    | **Konak Sınıfı Pima Nesne Aktarımı Durdurma** *(ux_host_class_object_transfer_abort)* |
+| ![Konak Sınıfı Pima Okuma simgesi](./media/user-guide/usbx-events/image144.png)    | **Konak Sınıfı Pima Read** *(ux_host_class_pima_read)* |
+| ![Konak Sınıfı Pima İsteği İptal simgesi](./media/user-guide/usbx-events/image145.png)    | **Konak Sınıfı Pima İstek İptali** *(ux_host_class_pima_request_cancel)* |
+| ![Konak Sınıfı Pima Oturumu Kapat simgesi](./media/user-guide/usbx-events/image146.png)    | **Konak Sınıfı Pima Oturumu Kapatma** *(ux_host_class_pima_session_close)* |
+| ![Konak Sınıfı Pima Oturumu Aç simgesi](./media/user-guide/usbx-events/image147.png)    | **Konak Sınıfı Pima Oturumu Açık** *(ux_host_class_pima_session_open)* |
+| ![Konak Sınıfı Pima Depolama Kimlikleri Al simgesi](./media/user-guide/usbx-events/image148.png)    | **Konak Sınıfı Pima Depolama Kimlikleri Al** *(ux_host_class_pima_storage_ids_get)* |
+| ![Konak Sınıfı Pima Depolama Bilgi Al simgesi](./media/user-guide/usbx-events/image149.png)    | **Konak Sınıfı Pima Depolama Bilgi Al** *(ux_host_class_pima_storage_info_get)* |
+| ![Konak Sınıfı Pima Parmak Al simgesi](./media/user-guide/usbx-events/image150.png)    | **Konak Sınıfı Pima Thumb Get** *(ux_host_class_pima_thumb_get)* |
+| ![Konak Sınıfı Pima Yazma simgesi](./media/user-guide/usbx-events/image151.png)    | **Konak Sınıfı Pima Yazma** *(ux_host_class_pima_write)* |
+| ![Konak Sınıfı Yazıcı Etkinleştirme simgesi](./media/user-guide/usbx-events/image152.png)    | **Konak Sınıfı Yazıcı Etkinleştirme** *(ux_host_class_printer_activate)* |
+| ![Konak Sınıfı Yazıcı devre dışı bırak simgesi](./media/user-guide/usbx-events/image153.png)    | **Konak Sınıfı Yazıcıyı Devre Dışı Bırakma** *(ux_host_class_printer_deactivate)* |
+| ![Konak Sınıfı Yazıcı Adı Al simgesi](./media/user-guide/usbx-events/image154.png)    | **Konak Sınıfı Yazıcı Adı Al** *(ux_host_class_printer_name_get)* |
+| ![Konak Sınıfı Yazıcı Okuma simgesi](./media/user-guide/usbx-events/image155.png)    |  **Konak Sınıfı Yazıcı Okuma** *(ux_host_class_printer_read)* |
+| ![Konak Sınıfı YazıcıSı Yazılım Sıfırlama simgesi](./media/user-guide/usbx-events/image156.png)    | **Konak Sınıfı YazıcıSı Yazılım Sıfırlaması** *(ux_host_class_printer_soft_reset)* |
+| ![Konak Sınıfı Yazıcı Durumu Al simgesi](./media/user-guide/usbx-events/image157.png)    | **Konak Sınıfı Yazıcı Durumu Al** *(ux_host_class_printer_status_get)* |
+| ![Konak Sınıfı Yazıcı Yazma simgesi](./media/user-guide/usbx-events/image158.png)    | **Konak Sınıfı Yazıcı Yazma** *(ux_host_class_printer_write)* |
+| ![Konak Sınıfı Üretken Etkinleştirme simgesi](./media/user-guide/usbx-events/image159.png)    | **Konak Sınıfı Üretken Etkinleştirme** *(ux_host_class_prolific_activate)* |
+| ![Konak Sınıfı Prolific Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image160.png)    | **Konak Sınıfı Prolific Devre Dışı Bırakma** *(ux_host_class_prolific_deactivate)* |
+| ![Kanalda Konak Sınıfı Prolific I O C T L Durdurma simgesi](./media/user-guide/usbx-events/image161.png)    | **Kanalda Konak Sınıfı Prolific Ioctl Abort** *(ux_host_class_prolific_ioctl_abort_in_pipe)* |
+| ![Host Class Prolific I O C T L Abort Out Pipe simgesi](./media/user-guide/usbx-events/image162.png)    | **Konak Sınıfı Prolific Ioctl Abort Out Pipe** *(ux_host_class_prolific_ioctl_abort_out_pipe)* |
+| ![Konak Sınıfı Prolific I O C T L Cihaz Durumunu Al simgesi](./media/user-guide/usbx-events/image163.png)    | **Konak Sınıfı Prolific Ioctl Cihaz Durumunu Al** *(ux_host_class_prolific_ioctl_get_device_status)* |
+| ![Konak Sınıfı Prolific I O C T L Satır Kodlaması Al simgesi](./media/user-guide/usbx-events/image164.png)    | **Konak Sınıfı Prolific Ioctl Satır Kodlaması Al** *(ux_host_class_prolific_ioctl_get_line_coding)* |
+| ![Konak Sınıfı Prolific I O C T L Temizleme simgesi](./media/user-guide/usbx-events/image165.png)    | **Konak Sınıfı Prolific Ioctl Purge** *(ux_host_class_prolific_ioctl_purge)* |
+| ![Konak Sınıfı Prolific I O C T L Rapor Cihaz Durumu Değişikliği simgesi](./media/user-guide/usbx-events/image166.png)    | **Konak Sınıfı Prolific Ioctl Rapor Cihaz Durumu Değişikliği** *(ux_host_class_prolific_ioctl_report_device_status_change)* |
+| ![Konak Sınıfı Prolific I O C T L Kesme Gönder simgesi](./media/user-guide/usbx-events/image167.png)    | **Konak Sınıfı Prolific Ioctl Send Break** *(ux_host_class_prolific_ioctl_send_break)* |
+| ![Konak Sınıfı Prolific I O C T L Set Line Coding simgesi](./media/user-guide/usbx-events/image168.png)    | **Konak Sınıfı Prolific Ioctl Set Line Coding** *(ux_host_class_prolific_ioctl_set_line_coding)* |
+| ![Konak Sınıfı Prolific I O C T L Set Line State simgesi](./media/user-guide/usbx-events/image169.png)    | **Konak Sınıfı Prolific Ioctl Set Line State** *(ux_host_class_prolific_ioctl_set_line_state)* |
+| ![Konak Sınıfı Üretken Okuma simgesi](./media/user-guide/usbx-events/image170.png)    | **Konak Sınıfı Prolific Read** *(ux_host_class_prolific_read)* |
+| ![Konak Sınıfı Prolific Sinyal Başlatma simgesi](./media/user-guide/usbx-events/image171.png)    | **Konak Sınıfı Prolific Sinyal Başlatma** *(ux_host_class_prolific_reception_start)* |
+| ![Konak Sınıfı Üretken Sinyal Durdurma simgesi](./media/user-guide/usbx-events/image172.png)    | **Konak Sınıfı Üretken Sinyal Durdurma (ux_host_class_prolific_reception_stop)**  |
+| ![Konak Sınıfı Üretken Yazma simgesi](./media/user-guide/usbx-events/image173.png)    | **Konak Sınıfı Üretken Yazma** *(ux_host_class_prolific_write)* |
+| ![Konak Sınıfı Depolama Etkinleştir simgesi](./media/user-guide/usbx-events/image174.png)    | **Konak Sınıfı Depolama Etkinleştirme** *(ux_host_class_storage_activate)* |
+| ![Konak Sınıfı Depolama Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image175.png)    | **Konak Sınıfı Depolama Devre Dışı Bırakma** (*ux_host_class_storage_deactivate)* |
+| ![Konak Sınıfı Depolama Medya Kapasitesi Al simgesi](./media/user-guide/usbx-events/image176.png)    | **Konak Sınıfı Depolama Medya Kapasitesi Al** *(ux_host_class_storage_media_capacity_get)* |
+| ![Konak Sınıfı Depolama Medya Biçimi Kapasitesi Al simgesi](./media/user-guide/usbx-events/image177.png)    | **Konak Sınıfı Depolama Medya Biçimi Kapasitesi Al** *(ux_host_class_storage_media_format_capacity_get)* |
+| ![Konak Sınıfı Depolama Medya Bağlama simgesi](./media/user-guide/usbx-events/image178.png)    | **Konak Sınıfı Depolama Medya Bağlama** (ux_host_class_storage_media_mount)* |
+| ![Konak Sınıfı Depolama Medya Aç simgesi](./media/user-guide/usbx-events/image179.png)    | **Host Class Depolama Media Open** *(ux_host_class_storage_media_open)* |
+| ![Konak Sınıfı Depolama Medya Okuma simgesi](./media/user-guide/usbx-events/image180.png)    | **Konak Sınıfı Depolama Medya Okuma** *(ux_host_class_storage_media_read)* |
+| ![Konak Sınıfı Depolama Medya Yazma simgesi](./media/user-guide/usbx-events/image181.png)    | **Konak Sınıfı Depolama Medya Yazma** *(ux_host_class_storage_media_write)* |
+| ![Konak Sınıfı Depolama İstek Algısı simgesi](./media/user-guide/usbx-events/image182.png)    | **İstek Depolama Konak Sınıfı** *(ux_host_class_storage_request_sense)* |
+| ![Konak Sınıfı Depolama Başlat Durdurma simgesi](./media/user-guide/usbx-events/image183.png)    | **Konak Sınıfı Depolama Başlatma Durdurma** *(ux_host_class_storage_start_stop)* |
+| ![Konak Sınıfı Depolama Birim Hazır Test simgesi](./media/user-guide/usbx-events/image184.png)    | **Konak Sınıfı Depolama Birim Hazır Testi** *(ux_host_class_storage_activate)* |
+| ![Konak Yığını Sınıf Örneği Oluştur simgesi](./media/user-guide/usbx-events/image185.png)    | **Konak Yığını Sınıf Örneği Oluşturma** *(ux_host_stack_class_instance_create)* |
+| ![Konak Yığını Sınıf Örneği Yok Etme simgesi](./media/user-guide/usbx-events/image186.png)    | **Konak Yığını Sınıf Örneği Yok Etme** *(ux_host_stack_class_instance_destroy)* |
+| ![Konak Yığını Yapılandırması Silme simgesi](./media/user-guide/usbx-events/image187.png)    | **Konak Yığını Yapılandırma Silme** *(ux_host_stack_configuration_delete)* |
+| ![Konak Yığını Yapılandırması Numarala simgesi](./media/user-guide/usbx-events/image188.png)    | **Konak Yığını Yapılandırma Numarala** *(ux_host_stack_configuration_enumerate)* |
+| ![Konak Yığını Yapılandırma Örneği Oluşturma simgesi](./media/user-guide/usbx-events/image189.png)    | **Konak Yığını Yapılandırma Örneği Oluşturma** *(ux_host_stack_configuration_instance_create)* |
+| ![Konak Yığını Yapılandırma Örneği Silme simgesi](./media/user-guide/usbx-events/image190.png)    | **Konak Yığını Yapılandırma Örneği Silme** *(ux_host_stack_configuration_instance_delete)* |
+| ![Konak Yığını Yapılandırma Kümesi simgesi](./media/user-guide/usbx-events/image191.png)    | **Konak Yığını Yapılandırma Kümesi** *(ux_host_stack_configuration_set)* |
+| ![Konak Yığını Cihaz Adres Kümesi simgesi](./media/user-guide/usbx-events/image192.png)    | **Konak Yığını Cihaz Adres Kümesi** *(ux_host_stack_device_set)* |
+| ![Konak Yığını Cihaz Yapılandırması Al simgesi](./media/user-guide/usbx-events/image193.png)    | **Konak Yığını Cihaz Yapılandırma Get** *(ux_host_stack_device_configuration_get)* |
+| ![Konak Yığını Cihaz Yapılandırması Seç simgesi](./media/user-guide/usbx-events/image194.png)    | **Konak Yığını Cihaz Yapılandırması Seçme** *(ux_host_stack_device_configuration_select)* |
+| ![Konak Yığını Cihaz Tanımlayıcısı Okuma simgesi](./media/user-guide/usbx-events/image195.png)    | **Konak Yığını Cihaz Tanımlayıcısı Okuma** *(ux_host_stack_device_descriptor_read)* |
+| ![Konak Yığını Cihazı Al simgesi](./media/user-guide/usbx-events/image196.png)    | **Konak Yığını Cihaz Al** (ux_host_stack_device_get) |
+| ![Konak Yığını Cihazı Kaldır simgesi](./media/user-guide/usbx-events/image197.png)    | **Konak Yığını Cihazı Kaldırma** (ux_host_stack_device_get) |
+| ![Konak Yığını Cihaz Kaynağı Ücretsiz simgesi](./media/user-guide/usbx-events/image198.png)    | **Konak Yığını Cihaz Kaynağı Ücretsiz** (ux_host_stack_device_resource_free) |
+| ![Konak Yığını Uç Nokta Örneği Oluştur simgesi](./media/user-guide/usbx-events/image199.png)    | **Konak Yığını Uç Nokta Örneği Oluşturma** (ux_host_stack_endpoint_instance_create) |
+| ![Konak Yığını Uç Nokta Örneği Silme simgesi](./media/user-guide/usbx-events/image200.png)    | **Konak Yığını Uç Nokta Örneği Silme** (ux_host_stack_endpoint_instance_delete) |
+| ![Konak Yığını Uç Noktası Sıfırlama simgesi](./media/user-guide/usbx-events/image201.png)    | **Konak Yığını Uç Noktası Sıfırlama** (ux_host_stack_endpoint_reset) |
+| ![Konak Yığını Uç Nokta Aktarım Durdurma simgesi](./media/user-guide/usbx-events/image202.png)    | **Konak Yığını Uç Nokta Aktarım Durdurma** (ux_host_stack_endpoint_transfer_abort) |
+| ![Konak Yığını Konak Denetleyicisi Kayıt simgesi](./media/user-guide/usbx-events/image203.png)    | **Konak Yığını Konak Denetleyicisi Kaydı** *(ux_host_stack_hcd_register)* |
+| ![Konak Yığını Başlat simgesi](./media/user-guide/usbx-events/image204.png)    | **Konak Yığını Başlatma** *(ux_host_stack_initialize)* |
+| ![Konak Yığını Arabirimi Uç Noktası Al simgesi](./media/user-guide/usbx-events/image205.png)    | **Konak Yığını Arabirimi Uç Noktası Al** *(ux_host_stack_interface_endpoint_get)* |
+| ![Konak Yığını Arabirim Örneği Oluşturma simgesi](./media/user-guide/usbx-events/image206.png)    | **Konak Yığını Arabirim Örneği Oluşturma** *(ux_host_stack_interface_instance_create)* |
+| ![Konak Yığını Arabirim Örneği Silme simgesi](./media/user-guide/usbx-events/image207.png)    | **Konak Yığını Arabirim Örneği Silme** *(ux_host_stack_interface_instance_delete)* |
+| ![Konak Yığını Arabirim Kümesi simgesi](./media/user-guide/usbx-events/image208.png)    | **Konak Yığını Arabirim Kümesi** *(ux_host_stack_interface_set)* |
+| ![Konak Yığını Arabirim Ayarı Seç simgesi](./media/user-guide/usbx-events/image209.png)    | **Konak Yığını Arabirim Ayarı Seçme** *(ux_host_stack_interface_setting_select)* |
+| ![Konak Yığını Yeni Yapılandırma Oluştur simgesi](./media/user-guide/usbx-events/image210.png)    | **Konak Yığını Yeni Yapılandırma Oluşturma** *(ux_host_stack_new_configuration_create)* |
+| ![Konak Yığını Yeni Cihaz Oluştur simgesi](./media/user-guide/usbx-events/image211.png)    | **Konak Yığını Yeni Cihaz Oluşturma** *(ux_host_stack_new_device_create)* |
+| ![Konak Yığını Yeni Uç Nokta Oluştur simgesi](./media/user-guide/usbx-events/image212.png)    | **Konak Yığını Yeni Uç Nokta Oluşturma** *(ux_host_stack_new_endpoint_create)* |
+| ![Konak Yığını Kök Hub'ı Değiştirme süreci simgesi](./media/user-guide/usbx-events/image213.png)    | **Konak Yığını Kök Hub'ı Değişiklik Süreci** *(ux_host_stack_rh_change_process)* |
+| ![Konak Yığını Kök Hub'ı Cihaz Ayıklama simgesi](./media/user-guide/usbx-events/image214.png)    | **Konak Yığını Kök Hub'ı Cihaz Ayıklama** *(ux_host_stack_rh_device_extraction)* |
+| ![Konak Yığını Kök Hub Cihazı Ekleme simgesi](./media/user-guide/usbx-events/image215.png)    | **Konak Yığını Kök Hub Cihazı Ekleme** *(ux_host_stack_rh_device_insertion)* |
+| ![Konak Yığını Aktarım İsteği simgesi](./media/user-guide/usbx-events/image216.png)    | **Konak Yığını Aktarım İsteği** *(ux_host_stack_transfer_request)* |
+| ![Konak Yığını Aktarım İsteği Durdurma simgesi](./media/user-guide/usbx-events/image217.png)    | **Konak Yığın Aktarım İsteği Durdurma** *(ux_host_stack_transfer_request_abort)* |
+| ![U S B X Hata simgesi](./media/user-guide/usbx-events/image218.png)    | **USBX Hatası** *(ux_error)* |
 
 ## <a name="event-descriptions"></a>Olay Açıklamaları
 
-Aşağıdaki sayfalar, USBX Izleme olaylarını anlatmaktadır.
+Aşağıdaki sayfalarda USBX İzleme Olayları açık bir şekilde anlatılır.
 
-### <a name="device-class-cdc-activate"></a>Aygıt sınıfı CDC etkinleştirme 
+### <a name="device-class-cdc-activate"></a>Cihaz Sınıfı Cdc Etkinleştirme 
 
 #### <a name="ux_device_class_cdc_activate"></a>ux_device_class_cdc_activate
 
-**Simge** ![ Cihaz sınıfı C D C etkinleştir simgesi](./media/user-guide/usbx-events/image1.png)
+**Simge** ![ Cihaz Sınıfı C D C Etkinleştirme simgesi](./media/user-guide/usbx-events/image1.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı CDC Activate olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Cdc Etkinleştirme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-cdc-deactivate"></a>Device Class CDC devre dışı bırak 
+### <a name="device-class-cdc-deactivate"></a>Cihaz Sınıfı Cdc Devre Dışı Bırakma 
 
 #### <a name="ux_device_class_cdc_deactivate"></a>ux_device_class_cdc_deactivate
 
-**Simge** ![ Cihaz sınıfı C D C devre dışı bırakma simgesi](./media/user-guide/usbx-events/image2.png)
+**Simge** ![ Cihaz Sınıfı C D C Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image2.png)
 
 **Açıklama**
 
-Bu olay, bir USBX cihaz sınıfını CDC devre dışı bırakın.
+Bu olay bir USBX Cihaz Sınıfı Cdc Devre Dışı Bırak'ı temsil eder.
 
-Bilgi alanları 
+Bilgi Alanları 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-cdc-read"></a>Aygıt sınıfı CDC okuma 
+### <a name="device-class-cdc-read"></a>Cihaz Sınıfı Cdc Okuma 
 
 #### <a name="ux_device_class_cdc_read"></a>ux_device_class_cdc_read
 
-**Simge** ![ Cihaz sınıfı C D C okuma simgesi](./media/user-guide/usbx-events/image3.png)
+**Simge** ![ Cihaz Sınıfı C D C Okuma simgesi](./media/user-guide/usbx-events/image3.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı CDC okuma olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Cdc Okuma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-cdc-write"></a>Aygıt sınıfı CDC yazma 
+### <a name="device-class-cdc-write"></a>Cihaz Sınıfı Cdc Yazma 
 
 #### <a name="ux_device_class_cdc_write"></a>ux_device_class_cdc_write
 
-**Simge** ![ Cihaz sınıfı C D C yazma simgesi](./media/user-guide/usbx-events/image4.png)
+**Simge** ![ Cihaz Sınıfı C D C Yazma simgesi](./media/user-guide/usbx-events/image4.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı CDC yazma olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Cdc Yazma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-dpump-activate"></a>Cihaz sınıfı Dpump etkinleştir 
+### <a name="device-class-dpump-activate"></a>Cihaz Sınıfı Dpump Etkinleştirme 
 
 #### <a name="ux_device_class_dpump_activate"></a>ux_device_class_dpump_activate
 
-**Simge** ![ Device Class Dpump etkinleştir simgesi](./media/user-guide/usbx-events/image5.png)
+**Simge** ![ Cihaz Sınıfı Dpump Etkinleştirme simgesi](./media/user-guide/usbx-events/image5.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Dpump Activate olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Dpump Etkinleştirme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-dpump-deactivate"></a>Cihaz sınıfı Dpump devre dışı bırakma 
+### <a name="device-class-dpump-deactivate"></a>Cihaz Sınıfı Dpump Devre Dışı Bırakma 
 
 #### <a name="ux_device_class_dpump_deactivate"></a>ux_device_class_dpump_deactivate
 
-**Simge** ![ Cihaz sınıfı Dpump devre dışı bırakma simgesi](./media/user-guide/usbx-events/image6.png)
+**Simge** ![ Cihaz Sınıfı Dpump Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image6.png)
 
 **Açıklama**
 
@@ -509,532 +509,532 @@ Bu olay bir USBX cihaz sınıfı HID rapor kümesi olayını temsil eder.
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima Activate olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Etkinleştirme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-deactivate"></a>Cihaz sınıfı Pima devre dışı 
+### <a name="device-class-pima-deactivate"></a>Cihaz Sınıfı Pima Devre Dışı Bırakma 
 
 #### <a name="ux_device_class_pima_deactivate"></a>ux_device_class_pima_deactivate
 
-**Simge** ![ Cihaz sınıfı Pima devre dışı bırakma simgesi](./media/user-guide/usbx-events/image17.png)
+**Simge** ![ Cihaz Sınıfı Pima Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image17.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima etkinliğini kaldırma olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-device-info-send"></a>Cihaz sınıfı Pima cihaz bilgileri gönderme 
+### <a name="device-class-pima-device-info-send"></a>Cihaz Sınıfı Pima Cihaz Bilgisi Gönderme 
 
 #### <a name="ux_device_class_pima_device_info_send"></a>ux_device_class_pima_device_info_send
 
-**Simge** ![ Cihaz sınıfı Pima cihaz bilgileri gönderme simgesi](./media/user-guide/usbx-events/image18.png)
+**Simge** ![ Cihaz Sınıfı Pima Cihaz Bilgileri Gönderme simgesi](./media/user-guide/usbx-events/image18.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima cihaz bilgileri gönderme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Cihaz Bilgisi Gönderme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
 
-### <a name="device-class-pima-event-get"></a>Cihaz sınıfı Pima olayı Get 
+### <a name="device-class-pima-event-get"></a>Cihaz Sınıfı Pima Olay Al 
 
 #### <a name="ux_device_class_pima_event_get"></a>ux_device_class_pima_event_get
 
-**Simge** ![ Device Class Pima olayı al simgesi](./media/user-guide/usbx-events/image19.png)
+**Simge** ![ Cihaz Sınıfı Pima Olayı Al simgesi](./media/user-guide/usbx-events/image19.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima olayı Get olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Olay Al Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: Pima olayı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Pima olayı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-event-set"></a>Device Class Pima olay kümesi 
+### <a name="device-class-pima-event-set"></a>Cihaz Sınıfı Pima Olay Kümesi 
 
 #### <a name="ux_device_class_pima_event_set"></a>ux_device_class_pima_event_set
 
-**Simge** ![ Cihaz sınıfı Pima olayı kümesi simgesi](./media/user-guide/usbx-events/image20.png)
+**Simge** ![ Cihaz Sınıfı Pima Olay Kümesi simgesi](./media/user-guide/usbx-events/image20.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima olay kümesi olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Olay Kümesi Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: Pima olayı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Pima olayı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-add"></a>Cihaz sınıfı Pima nesnesi ekleme 
+### <a name="device-class-pima-object-add"></a>Cihaz Sınıfı Pima Nesnesi Ekleme 
 
 #### <a name="ux_device_class_pima_object_add"></a>ux_device_class_pima_object_add
 
-**Simge** ![ Cihaz sınıfı Pima nesnesi ekleme simgesi](./media/user-guide/usbx-events/image21.png)
+**Simge** ![ Device Class Pima Object Add simgesi](./media/user-guide/usbx-events/image21.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima nesnesi Add olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesnesi Ekleme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-data-get"></a>Cihaz sınıfı Pima nesnesi veri al 
+### <a name="device-class-pima-object-data-get"></a>Cihaz Sınıfı Pima Nesne Verilerini Al 
 
 #### <a name="ux_device_class_pima_object_data_get"></a>ux_device_class_pima_object_data_get
 
-**Simge** ![ Aygıt sınıfı Pima nesnesi verileri al simgesi](./media/user-guide/usbx-events/image22.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Verileri Al simgesi](./media/user-guide/usbx-events/image22.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima nesne verileri al olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Verileri Al Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-data-send"></a>Cihaz sınıfı Pima nesnesi verileri gönderme 
+### <a name="device-class-pima-object-data-send"></a>Cihaz Sınıfı Pima Nesne Veri Gönderme 
 
 #### <a name="ux_device_class_pima_object_data_send"></a>ux_device_class_pima_object_data_send
 
-**Simge** ![ Cihaz sınıfı Pima nesnesi verileri gönderme simgesi](./media/user-guide/usbx-events/image23.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Verileri Gönderme simgesi](./media/user-guide/usbx-events/image23.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima nesnesi veri gönderme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Veri Gönderme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-delete"></a>Device Class Pima nesnesi silme 
+### <a name="device-class-pima-object-delete"></a>Cihaz Sınıfı Pima Nesne Silme 
 
 #### <a name="ux_device_class_pima_object_delete"></a>ux_device_class_pima_object_delete
 
-**Simge** ![ Device Class Pima nesnesi silme simgesi](./media/user-guide/usbx-events/image24.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Silme simgesi](./media/user-guide/usbx-events/image24.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima nesnesi silme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Silme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-handles-send"></a>Cihaz sınıfı Pima nesnesi gönderme tutamaçları 
+### <a name="device-class-pima-object-handles-send"></a>Cihaz Sınıfı Pima Nesne Tanıtıcıları Gönderme 
 
 #### <a name="ux_device_class_pima_object_handles_send"></a>ux_device_class_pima_object_handles_send
 
-**Simge** ![ Cihaz sınıfı Pima nesnesi gönderme simgesini Işler](./media/user-guide/usbx-events/image25.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Tanıtıcıları Gönderme simgesi](./media/user-guide/usbx-events/image25.png)
 
 **Açıklama**
 
-Bu olay, bir USBX cihaz sınıfı Pima nesnesi gönderme olayını Işler.
+Bu olay, Bir USBX Cihaz Sınıfı Pima Nesnesi Gönderme Olayı tanıtıcılarını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: depolama KIMLIĞI.
-- Bilgi alanı 3: nesne biçimi kodu.
-- Bilgi alanı 4: nesne ilişkilendirmesi.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Depolama kimliği.
+- Bilgi Alanı 3: Nesne biçimi kodu.
+- Bilgi Alanı 4: Nesne ilişkilendirme.
 
-### <a name="device-class-pima-object-info-get"></a>Device Class Pima nesne bilgisi al 
+### <a name="device-class-pima-object-info-get"></a>Cihaz Sınıfı Pima Nesne Bilgileri Al 
 
 #### <a name="ux_device_class_pima_object_info_send"></a>ux_device_class_pima_object_info_send
 
-**Simge** ![ Device Class Pima nesne bilgisi al simgesi](./media/user-guide/usbx-events/image26.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Bilgileri Al simgesi](./media/user-guide/usbx-events/image26.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima nesne bilgileri al olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Bilgisi Al Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-object-info-send"></a>Device Class Pima nesne bilgileri gönderme 
+### <a name="device-class-pima-object-info-send"></a>Cihaz Sınıfı Pima Nesne Bilgisi Gönderme 
 
 #### <a name="ux_device_class_pima_object_info_send"></a>ux_device_class_pima_object_info_send
 
-**Simge** ![ Device Class Pima nesne bilgileri gönderme simgesi](./media/user-guide/usbx-events/image27.png)
+**Simge** ![ Cihaz Sınıfı Pima Nesne Bilgisi Gönderme simgesi](./media/user-guide/usbx-events/image27.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima nesne bilgileri gönderme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Bilgisi Gönderme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-objects-number-send"></a>Cihaz sınıfı Pima nesneleri sayı gönderme 
+### <a name="device-class-pima-objects-number-send"></a>Cihaz Sınıfı Pima Nesne Numarası Gönderme 
 
 #### <a name="ux_device_class_pima_object_number_send"></a>ux_device_class_pima_object_number_send
 
-**Simge** ![ Cihaz sınıfı Pima nesneleri numara Gönder simgesi](./media/user-guide/usbx-events/image28.png)
+**Simge** ![ Device Class Pima Objects Number Send simgesi](./media/user-guide/usbx-events/image28.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima nesne numarası gönderme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Nesne Numarası Gönderme olayıdır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: depolama KIMLIĞI.
-- Bilgi alanı 3: nesne biçimi kodu.
-- Bilgi alanı 4: nesne ilişkilendir.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Depolama kimliği.
+- Bilgi Alanı 3: Nesne biçimi kodu.
+- Bilgi Alanı 4: Nesne ilişkilendirmesi.
 
-### <a name="device-class-pima-partial-object-data-get"></a>Device Class Pima kısmi nesne verileri al
+### <a name="device-class-pima-partial-object-data-get"></a>Cihaz Sınıfı Pima Kısmi Nesne Verileri Al
 
 #### <a name="ux_device_class_pima_partial_object_data_get"></a>ux_device_class_pima_partial_object_data_get
 
-**Simge** ![ Device Class Pima kısmi nesne verileri al simgesi](./media/user-guide/usbx-events/image29.png)
+**Simge** ![ Cihaz Sınıfı Pima Kısmi Nesne Verileri Al simgesi](./media/user-guide/usbx-events/image29.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima kısmi nesne verileri al olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Kısmi Nesne Verileri Al Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: nesne tanıtıcısı.
-- Bilgi alanı 3: istenen fark.
-- Bilgi alanı 4: Uzunluk istendi.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Nesne tanıtıcısı.
+- Bilgi Alanı 3: Uzaklık isteği.
+- Bilgi Alanı 4: Uzunluk istenen.
 
-### <a name="device-class-pima-response-send"></a>Cihaz sınıfı Pima yanıtı gönderme 
+### <a name="device-class-pima-response-send"></a>Cihaz Sınıfı Pima Yanıt Gönderme 
 
 #### <a name="ux_device_class_pima_response_send"></a>ux_device_class_pima_response_send
 
-**Simge** ![ Cihaz sınıfı Pima yanıtı gönderme simgesi](./media/user-guide/usbx-events/image30.png)
+**Simge** ![ Cihaz Sınıfı Pima Yanıt Gönderme simgesi](./media/user-guide/usbx-events/image30.png)
 
 **Açıklama**
 
-Bu olay bir USBX Device Class Pima yanıtı gönderme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Pima Yanıt Gönderme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: yanıt kodu.
-- Bilgi alanı 3: sayı parametresi.
-- Bilgi alanı 4: Pima parametresi 1.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Yanıt kodu.
+- Bilgi Alanı 3: Sayı parametresi.
+- Bilgi Alanı 4: Pima parametresi 1.
 
-### <a name="device-class-pima-storage-id-send"></a>Cihaz sınıfı Pima depolama kimliği gönderme 
+### <a name="device-class-pima-storage-id-send"></a>Cihaz Sınıfı Pima Depolama Kimliği Gönderme 
 
 #### <a name="ux_device_class_pima_storage_id_send"></a>ux_device_class_pima_storage_id_send
 
-**Simge** ![ Cihaz sınıfı Pima depolama kimliği gönderme simgesi](./media/user-guide/usbx-events/image31.png)
+**Simge** ![ Cihaz Sınıfı Pima Depolama Kimliği Gönder simgesi](./media/user-guide/usbx-events/image31.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima depolama kimliği gönderme olayını temsil eder.
+Bu olay, bir USBX Cihaz Sınıfı Pima Depolama Kimliği Gönderme Olayı'Depolama temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-pima-storage-info-send"></a>Cihaz sınıfı Pima depolama bilgileri gönderme 
+### <a name="device-class-pima-storage-info-send"></a>Cihaz Sınıfı Pima Depolama Bilgi Gönderme 
 
 #### <a name="ux_device_class_pima_storage_info_send"></a>ux_device_class_pima_storage_info_send
 
-**Simge** ![ Cihaz sınıfı Pima depolama bilgileri gönderme simgesi](./media/user-guide/usbx-events/image32.png)
+**Simge** ![ Cihaz Sınıfı Pima Depolama Bilgi Gönderme simgesi](./media/user-guide/usbx-events/image32.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı Pima depolama bilgileri gönderme olayını temsil eder.
+Bu olay, Bilgi Gönderme Olayı'Depolama USBX Cihaz Sınıfı Pima'yı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-activate"></a>Cihaz sınıfı rndis etkinleştir 
+### <a name="device-class-rndis-activate"></a>Cihaz Sınıfı Rndis Etkinleştirme 
 
 #### <a name="ux_device_class_rndis_activate"></a>ux_device_class_rndis_activate
 
-**Simge** ![ Cihaz sınıfı rndis etkinleştir simgesi](./media/user-guide/usbx-events/image33.png)
+**Simge** ![ Cihaz Sınıfı Rndis Etkinleştirme simgesi](./media/user-guide/usbx-events/image33.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis Activate olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis Etkinleştirme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-deactivate"></a>Cihaz sınıfı rndis devre dışı bırak 
+### <a name="device-class-rndis-deactivate"></a>Cihaz Sınıfı Rndis Devre Dışı Bırakma 
 
 #### <a name="ux_device_class_rndis_deactivate"></a>ux_device_class_rndis_deactivate
 
-**Simge** ![ Cihaz sınıfı rndis devre dışı bırakma simgesi](./media/user-guide/usbx-events/image34.png)
+**Simge** ![ Cihaz Sınıfı Rndis Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image34.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis devre dışı bırakma olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-message-keep-alive"></a>Cihaz sınıfı rndis Ileti canlı tut 
+### <a name="device-class-rndis-message-keep-alive"></a>Cihaz Sınıfı Rndis İletisi Canlı Tut 
 
 #### <a name="ux_device_class_rndis_msg_keep_alive"></a>ux_device_class_rndis_msg_keep_alive
 
-**Simge** ![ Cihaz sınıfı rndis Ileti canlı tut simgesi](./media/user-guide/usbx-events/image35.png)
+**Simge** ![ Cihaz Sınıfı Rndis İletisi Canlı Tut simgesi](./media/user-guide/usbx-events/image35.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfını rndis Iletisi etkin tut olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis İleti etkin tutma olayı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-message-query"></a>Cihaz sınıfı rndis Ileti sorgusu 
+### <a name="device-class-rndis-message-query"></a>Cihaz Sınıfı Rndis İleti Sorgusu 
 
 #### <a name="ux_device_class_rndis_msg_keep_query"></a>ux_device_class_rndis_msg_keep_query
 
-**Simge** ![ Cihaz sınıfı rndis Iletisi sorgu simgesi](./media/user-guide/usbx-events/image36.png)
+**Simge** ![ Cihaz Sınıfı Rndis İleti Sorgusu simgesi](./media/user-guide/usbx-events/image36.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis Iletisi sorgu olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis İleti Sorgu Olayı'nı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: rndis OID.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Rndis OID.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-message-reset"></a>Cihaz sınıfı rndis Ileti sıfırlama 
+### <a name="device-class-rndis-message-reset"></a>Cihaz Sınıfı Rndis İleti Sıfırlama 
 
 #### <a name="ux_device_class_rndis_msg_reset"></a>ux_device_class_rndis_msg_reset
 
-**Simge** ![ Cihaz sınıfı rndis Ileti sıfırlama simgesi](./media/user-guide/usbx-events/image37.png)
+**Simge** ![ Cihaz Sınıfı Rndis İleti Sıfırlama simgesi](./media/user-guide/usbx-events/image37.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis Ileti sıfırlama olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis İleti Sıfırlama Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
 
-### <a name="device-class-rndis-message-set"></a>Cihaz sınıfı rndis Ileti kümesi 
+### <a name="device-class-rndis-message-set"></a>Cihaz Sınıfı Rndis İleti Kümesi 
 
 #### <a name="ux_device_class_rndis_msg_set"></a>ux_device_class_rndis_msg_set
 
-**Simge** ![ Cihaz sınıfı rndis Ileti kümesi simgesi](./media/user-guide/usbx-events/image38.png)
+**Simge** ![ Cihaz Sınıfı Rndis İleti Kümesi simgesi](./media/user-guide/usbx-events/image38.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis Ileti kümesi olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis İleti Kümesi Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: rndis OID.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Rndis OID.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-packet-receive"></a>Cihaz sınıfı rndis paket alma 
+### <a name="device-class-rndis-packet-receive"></a>Cihaz Sınıfı Rndis Paket Alma 
 
 #### <a name="ux_device_class_rndis_packet_receive"></a>ux_device_class_rndis_packet_receive
 
-**Simge** ![ Cihaz sınıfı rndis paket alma simgesi](./media/user-guide/usbx-events/image39.png)
+**Simge** ![ Cihaz Sınıfı Rndis Paket Alma simgesi](./media/user-guide/usbx-events/image39.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis paket alma olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis Paket Alma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-rndis-packet-transmit"></a>Cihaz sınıfı rndis paket Iletimi 
+### <a name="device-class-rndis-packet-transmit"></a>Cihaz Sınıfı Rndis Paket İletme 
 
 #### <a name="ux_device_class_rndis_packet_transmit"></a>ux_device_class_rndis_packet_transmit
 
-**Simge** ![ Cihaz sınıfı rndis paket Iletme simgesi](./media/user-guide/usbx-events/image40.png)
+**Simge** ![ Cihaz Sınıfı Rndis Paket İletme simgesi](./media/user-guide/usbx-events/image40.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı rndis paket Iletme olayını temsil eder.
+Bu olay bir USBX Cihaz Sınıfı Rndis Paket İletme Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-activate"></a>Cihaz sınıfı depolamayı etkinleştirme 
+### <a name="device-class-storage-activate"></a>Cihaz Sınıfı Depolama Etkinleştirme 
 
 #### <a name="ux_device_class_storage_activate"></a>ux_device_class_storage_activate
 
-**Simge** ![ Cihaz sınıfı depolama etkinleştirme simgesi](./media/user-guide/usbx-events/image41.png)
+**Simge** ![ Cihaz Sınıfı Depolama Etkinleştir simgesi](./media/user-guide/usbx-events/image41.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama etkinleştirme olayını temsil eder.
+Bu olay, Etkinleştirme Olayı'nın bir USBX Depolama sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-deactivate"></a>Cihaz sınıfı depolamayı devre dışı bırakma 
+### <a name="device-class-storage-deactivate"></a>Cihaz Sınıfı Depolama Devre Dışı Bırakma 
 
 #### <a name="ux_device_class_storage_deactivate"></a>ux_device_class_storage_deactivate
 
-**Simge** ![ Cihaz sınıfı depolamayı devre dışı bırakma simgesi](./media/user-guide/usbx-events/image42.png)
+**Simge** ![ Cihaz Sınıfı Depolama Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image42.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolaması devre dışı bırakma olayını temsil eder.
+Bu olay, Devre Dışı Bırakma Olayı'Depolama USBX Cihaz Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-format"></a>Cihaz sınıfı depolama biçimi 
+### <a name="device-class-storage-format"></a>Cihaz Sınıfı Depolama Biçimi 
 
 #### <a name="ux_device_class_storage_format"></a>ux_device_class_storage_format
 
-**Simge** ![ Cihaz sınıfı depolama biçimi simgesi](./media/user-guide/usbx-events/image43.png)
+**Simge** ![ Cihaz Sınıfı Depolama Biçimi simgesi](./media/user-guide/usbx-events/image43.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama biçimi olayını temsil eder.
+Bu olay, BIR USBX Cihaz Sınıfı Depolama Olay'ını temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: LUN.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Lun.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-inquiry"></a>Cihaz sınıfı depolama sorgusu 
+### <a name="device-class-storage-inquiry"></a>Cihaz Sınıfı Depolama Sorgulama 
 
 #### <a name="ux_device_class_storage_inquiry"></a>ux_device_class_storage_inquiry
 
-**Simge** ![ Cihaz sınıfı depolama sorgulama simgesi](./media/user-guide/usbx-events/image44.png)
+**Simge** ![ Cihaz Sınıfı Depolama Sorgulama simgesi](./media/user-guide/usbx-events/image44.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama sorgulama olayını temsil eder.
+Bu olay, Bir USBX Cihaz Sınıfı Depolama Olay'ını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: LUN.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Lun.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-mode-select"></a>Cihaz sınıfı depolama modu seçme
+### <a name="device-class-storage-mode-select"></a>Cihaz Sınıfı Depolama Modu Seçme
 
 #### <a name="ux_device_class_storage_mode_select"></a>ux_device_class_storage_mode_select
 
-**Simge** ![ Cihaz sınıfı depolama modu seçme simgesi](./media/user-guide/usbx-events/image45.png)
+**Simge** ![ Cihaz Sınıfı Depolama Modu Seç simgesi](./media/user-guide/usbx-events/image45.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama modu seçme olayını temsil eder.
+Bu olay, BIR USBX Cihaz Sınıfı Depolama Modu Seçme Olayı'Depolama temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: LUN.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf Örneği.
+- Bilgi Alanı 2: Lun.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-class-storage-mode-sense"></a>Cihaz sınıfı depolama modu algılama 
+### <a name="device-class-storage-mode-sense"></a>Device Class Depolama Mode Sense 
 
 #### <a name="ux_device_class_storage_mode_sense"></a>ux_device_class_storage_mode_sense
 
-**Simge** ![ Cihaz sınıfı depolama modu algılama simgesi](./media/user-guide/usbx-events/image46.png)
+**Simge** ![ Device Class Depolama Mode Sense simgesi](./media/user-guide/usbx-events/image46.png)
 
 **Açıklama**
 
-Bu olay, bir USBX cihaz sınıfı depolama modu Sense olayını temsil eder.
+Bu olay, Bir USBX Cihaz Sınıfı Depolama Algı olayı temsil eder.
 
-Bilgi alanları 
+Bilgi Alanları 
 
 - NFO alanı 1: sınıf örneği.
 - Bilgi alanı 2: LUN.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-prevent-allow-media-removal"></a>Cihaz sınıfı depolaması medya kaldırılmasına Izin vermeyi engelliyor 
+### <a name="device-class-storage-prevent-allow-media-removal"></a>cihaz sınıfı Depolama medya kaldırılmasına izin vermeyi engelliyor 
 
 #### <a name="ux_device_class_storage_prevent_allow_media_removal"></a>ux_device_class_storage_prevent_allow_media_removal
 
-**Simge** ![ Cihaz sınıfı depolaması medya kaldırma simgesine Izin vermeyi engelliyor](./media/user-guide/usbx-events/image47.png)
+**Simge** ![ cihaz sınıfı Depolama medya kaldırma simgesine izin vermeyi engelliyor](./media/user-guide/usbx-events/image47.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolaması, medya kaldırma olayına Izin vermeyi engelliyor.
+bu olay, medya kaldırma olayına izin vermeyi engellemek Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları**
 
@@ -1043,15 +1043,15 @@ Bu olay bir USBX cihaz sınıfı depolaması, medya kaldırma olayına Izin verm
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-read"></a>Cihaz sınıfı depolama okuma 
+### <a name="device-class-storage-read"></a>Depolama cihaz sınıfı okuma 
 
 #### <a name="ux_device_class_storage_read"></a>ux_device_class_storage_read
 
-**Simge** ![ Cihaz sınıfı depolama okuma simgesi](./media/user-guide/usbx-events/image48.png)
+**Simge** ![ cihaz sınıfı Depolama okuma simgesi](./media/user-guide/usbx-events/image48.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama okuma olayını temsil eder.
+bu olay, Read olayı Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları**
 
@@ -1060,15 +1060,15 @@ Bu olay bir USBX cihaz sınıfı depolama okuma olayını temsil eder.
 - Bilgi alanı 3: sektör.
 - Bilgi alanı 4: sayı kesimleri.
 
-### <a name="device-class-storage-read-capacity"></a>Cihaz sınıfı depolama okuma kapasitesi 
+### <a name="device-class-storage-read-capacity"></a>cihaz sınıfı Depolama okuma kapasitesi 
 
 #### <a name="ux_device_class_storage_read_capacity"></a>ux_device_class_storage_read_capacity
 
-**Simge** ![ Cihaz sınıfı depolama okuma kapasitesi simgesi](./media/user-guide/usbx-events/image49.png)
+**Simge** ![ cihaz sınıfı Depolama okuma kapasitesi simgesi](./media/user-guide/usbx-events/image49.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama okuma kapasitesi olayını temsil eder.
+bu olay, okuma kapasitesi olayını Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1077,15 +1077,15 @@ Bu olay bir USBX cihaz sınıfı depolama okuma kapasitesi olayını temsil eder
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-read-format-capacity"></a>Cihaz sınıfı depolama okuma biçimi kapasitesi 
+### <a name="device-class-storage-read-format-capacity"></a>cihaz sınıfı Depolama okuma biçimi kapasitesi 
 
 #### <a name="ux_device_class_storage_read_format_capacity"></a>ux_device_class_storage_read_format_capacity
 
-**Simge** ![ Cihaz sınıfı depolama okuma biçimi kapasitesi simgesi](./media/user-guide/usbx-events/image50.png)
+**Simge** ![ cihaz sınıfı Depolama okuma biçimi kapasitesi simgesi](./media/user-guide/usbx-events/image50.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama okuma biçimi kapasitesi olayını temsil eder.
+bu olay bir usbx cihaz sınıfını Depolama okuma biçimi kapasitesi olayını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1094,15 +1094,15 @@ Bu olay bir USBX cihaz sınıfı depolama okuma biçimi kapasitesi olayını tem
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-read-toc"></a>Device Class depolaması TOC okuma 
+### <a name="device-class-storage-read-toc"></a>Device Class Depolama TOC 'yi oku 
 
 #### <a name="ux_device_class_storage_read_toc"></a>ux_device_class_storage_read_toc
 
-**Simge** ![ Device Class depolama okuma TOC simgesi](./media/user-guide/usbx-events/image51.png)
+**Simge** ![ Device Class Depolama içindekileri oku simgesi](./media/user-guide/usbx-events/image51.png)
 
 **Açıklama**
 
-Bu olay, bir USBX cihaz sınıfı depolama okuma TOC olayını temsil eder.
+bu olay bir usbx cihaz sınıfını temsil eder Depolama TOC olayını okur.
 
 **Bilgi alanları**
 
@@ -1111,15 +1111,15 @@ Bu olay, bir USBX cihaz sınıfı depolama okuma TOC olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-request-sense"></a>Cihaz sınıfı depolama Istek algılaması 
+### <a name="device-class-storage-request-sense"></a>cihaz sınıfı Depolama istek algılaması 
 
 #### <a name="ux_device_class_storage_request_sense"></a>ux_device_class_storage_request_sense
 
-**Simge** ![ Cihaz sınıfı depolama Isteği algılama simgesi](./media/user-guide/usbx-events/image52.png)
+**Simge** ![ cihaz sınıfı Depolama istek algılama simgesi](./media/user-guide/usbx-events/image52.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama Istek algılama olayını temsil eder.
+bu olay, istek algılama olayını Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1128,15 +1128,15 @@ Bu olay bir USBX cihaz sınıfı depolama Istek algılama olayını temsil eder.
 - Bilgi alanı 3: Sense anahtarı.
 - Bilgi alanı 4: kod.
 
-### <a name="device-class-storage-start-stop"></a>Cihaz sınıfı depolama başlangıç durağı 
+### <a name="device-class-storage-start-stop"></a>cihaz sınıfı Depolama başlat durdur 
 
 #### <a name="ux_device_class_storage_start_stop"></a>ux_device_class_storage_start_stop
 
-**Simge** ![ Cihaz sınıfı depolama başlatma durdurma simgesi](./media/user-guide/usbx-events/image53.png)
+**Simge** ![ cihaz sınıfı Depolama başlangıcı durdur simgesi](./media/user-guide/usbx-events/image53.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama başlatma durdurma olayını temsil eder.
+bu olay, başlatma durdurma olayını Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları**
 
@@ -1145,15 +1145,15 @@ Bu olay bir USBX cihaz sınıfı depolama başlatma durdurma olayını temsil ed
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-test-ready"></a>Cihaz sınıfı depolama sınaması hazırlanıyor 
+### <a name="device-class-storage-test-ready"></a>cihaz sınıfı Depolama Test hazırlanıyor 
 
 #### <a name="ux_device_class_storage_test_ready"></a>ux_device_class_storage_test_ready
 
-**Simge** ![ Cihaz sınıfı depolama sınaması hazırlanıyor simgesi](./media/user-guide/usbx-events/image54.png)
+**Simge** ![ cihaz sınıfı Depolama Test Ready simgesi](./media/user-guide/usbx-events/image54.png)
 
 **Açıklama**
 
-Bu olay, bir USBX cihaz sınıfı depolama testinin Ready olayını temsil eder.
+bu olay, Test Ready olayı Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1162,15 +1162,15 @@ Bu olay, bir USBX cihaz sınıfı depolama testinin Ready olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-verify"></a>Cihaz sınıfı depolama doğrulaması 
+### <a name="device-class-storage-verify"></a>cihaz sınıfı Depolama doğrulaması 
 
 #### <a name="ux_device_class_storage_verify"></a>ux_device_class_storage_verify
 
-**Simge** ![ Cihaz sınıfı depolama doğrulama simgesi](./media/user-guide/usbx-events/image55.png)
+**Simge** ![ cihaz sınıfı Depolama doğrulama simgesi](./media/user-guide/usbx-events/image55.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama doğrulama olayını temsil eder.
+bu olay, Verify olayını Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1179,15 +1179,15 @@ Bu olay bir USBX cihaz sınıfı depolama doğrulama olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-class-storage-write"></a>Cihaz sınıfı depolama yazma 
+### <a name="device-class-storage-write"></a>cihaz sınıfı Depolama yazma 
 
 #### <a name="ux_device_class_storage_write"></a>ux_device_class_storage_write
 
-**Simge** ![ Cihaz sınıfı depolama yazma simgesi](./media/user-guide/usbx-events/image56.png)
+**Simge** ![ cihaz sınıfı Depolama yazma simgesi](./media/user-guide/usbx-events/image56.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz sınıfı depolama yazma olayını temsil eder.
+bu olay, Write olayı Depolama bir usbx cihaz sınıfını temsil eder.
 
 **Bilgi alanları** 
 
@@ -1296,11 +1296,11 @@ Bu olay bir USBX cihaz yığını yapılandırma kümesi olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="device-stack-connect"></a>Cihaz yığını bağlantısı 
+### <a name="device-stack-connect"></a>cihaz yığını Bağlan 
 
 #### <a name="ux_device_stack_connect"></a>ux_device_stack_connect
 
-**Simge** ![ Cihaz yığını bağlantı simgesi](./media/user-guide/usbx-events/image63.png)
+**Simge** ![ cihaz yığını Bağlan simgesi](./media/user-guide/usbx-events/image63.png)
 
 **Açıklama**
 
@@ -1359,173 +1359,173 @@ Bu olay bir USBX cihaz yığını uç nokta kabini olayını temsil eder.
 
 **Bilgi alanları** 
 
-- Bilgi alanı 1: uç nokta.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Uç nokta.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-get-status"></a>Cihaz yığını Get durumu 
+### <a name="device-stack-get-status"></a>Cihaz Yığını Durumu Al 
 
 #### <a name="ux_device_stack_get_status"></a>ux_device_stack_get_status
 
-**Simge** ![ Cihaz yığını durum Al simgesi](./media/user-guide/usbx-events/image67.png)
+**Simge** ![ Cihaz Yığını Durum Al simgesi](./media/user-guide/usbx-events/image67.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını al durum olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Durum Al Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-host-wakeup"></a>Cihaz yığını ana bilgisayarı uyandırma 
+### <a name="device-stack-host-wakeup"></a>Cihaz Yığını Ana Bilgisayarı Uyandırma 
 
 #### <a name="ux_device_stack_host_wakeup"></a>ux_device_stack_host_wakeup
 
-**Simge** ![ Cihaz yığını ana bilgisayarı uyandırma simgesi](./media/user-guide/usbx-events/image68.png)
+**Simge** ![ Cihaz Yığını Konak Uyandırma simgesi](./media/user-guide/usbx-events/image68.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını ana bilgisayarı uyandırma olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Konak Uyandırma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-initialize"></a>Cihaz yığını başlatma 
+### <a name="device-stack-initialize"></a>Cihaz Yığını Başlatma 
 
 #### <a name="ux_device_stack_initialize"></a>ux_device_stack_initialize
 
-**Simge** ![ Cihaz yığını başlatma simgesi](./media/user-guide/usbx-events/image69.png)
+**Simge** ![ Cihaz Yığını Başlat simgesi](./media/user-guide/usbx-events/image69.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını başlatma olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Başlatma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-interface-delete"></a>Cihaz yığını arabirimini silme 
+### <a name="device-stack-interface-delete"></a>Cihaz Yığını Arabirimi Silme 
 
 #### <a name="ux_device_stack_interface_delete"></a>ux_device_stack_interface_delete
 
-**Simge** ![ Cihaz yığını arabirimi silme simgesi](./media/user-guide/usbx-events/image70.png)
+**Simge** ![ Cihaz Yığını Arabirimi Silme simgesi](./media/user-guide/usbx-events/image70.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını arabirimi silme olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Arabirimi Silme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: arabirim.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Arabirim.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-interface-get"></a>Cihaz yığını arabirimi al 
+### <a name="device-stack-interface-get"></a>Cihaz Yığını Arabirimi Al 
 
 #### <a name="ux_device_stack_interface_get"></a>ux_device_stack_interface_get
 
-**Simge** ![ Cihaz yığını arabirimi al simgesi](./media/user-guide/usbx-events/image71.png)
+**Simge** ![ Cihaz Yığını Arabirimi Al simgesi](./media/user-guide/usbx-events/image71.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını arabirimi Get olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Arabirimi Olay Al'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: arabirim değeri.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Arabirim değeri.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-interface-set"></a>Cihaz yığını arabirim kümesi 
+### <a name="device-stack-interface-set"></a>Cihaz Yığını Arabirim Kümesi 
 
 #### <a name="ux_device_stack_interface_set"></a>ux_device_stack_interface_set
 
-**Simge** ![ Cihaz yığını arabirim kümesi simgesi](./media/user-guide/usbx-events/image72.png)
+**Simge** ![ Cihaz Yığını Arabirim Kümesi simgesi](./media/user-guide/usbx-events/image72.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını arabirim kümesi olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Arabirim Kümesi Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: Istek değeri. Bilgi alanı 2: Istek dizini.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İstek değeri. Bilgi Alanı 2: İstek dizini.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-set-feature"></a>Cihaz yığını kümesi özelliği 
+### <a name="device-stack-set-feature"></a>Cihaz Yığın Kümesi Özelliği 
 
 #### <a name="ux_device_stack_set_feature"></a>ux_device_stack_set_feature
 
-**Simge** ![ Cihaz yığını kümesi özellik simgesi](./media/user-guide/usbx-events/image73.png)
+**Simge** ![ Cihaz Yığın Kümesi Özellik simgesi](./media/user-guide/usbx-events/image73.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını kümesi özelliği olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Kümesi Özellik Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: Istek değeri. Bilgi alanı 2: Istek dizini.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: İstek değeri. Bilgi Alanı 2: İstek dizini.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-transfer-abort"></a>Cihaz yığını aktarımı Iptali 
+### <a name="device-stack-transfer-abort"></a>Cihaz Yığını Aktarım Durdurma 
 
 #### <a name="ux_device_stack_transfer_abort"></a>ux_device_stack_transfer_abort
 
-**Simge** ![ Cihaz yığını aktarım Iptali simgesi](./media/user-guide/usbx-events/image74.png)
+**Simge** ![ Cihaz Yığını Aktarım Durdurma simgesi](./media/user-guide/usbx-events/image74.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını aktarımı Iptali olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Aktarım Durdurma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: aktarım isteği.
-- Bilgi alanı 2: tamamlanma kodu.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Aktarım isteği.
+- Bilgi Alanı 2: Tamamlama kodu.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-transfer-all-request-abort"></a>Cihaz yığın aktarımı tüm Istek Iptali 
+### <a name="device-stack-transfer-all-request-abort"></a>Cihaz Yığını Aktarımı Tüm İstek Durdurma 
 
 #### <a name="ux_device_stack_transfer_all_request_abort"></a>ux_device_stack_transfer_all_request_abort
 
-**Simge** ![ Cihaz yığını tüm Isteği Iptal et simgesi](./media/user-guide/usbx-events/image75.png)
+**Simge** ![ Cihaz Yığını Aktarım Tüm İstek Durdurma simgesi](./media/user-guide/usbx-events/image75.png)
 
 **Açıklama**
 
-Bu olay, tüm Istek Iptali olayını aktar bir USBX cihaz yığınını temsil eder.
+Bu olay bir USBX Cihaz Yığını Aktarımı Tüm İstek Durdurma Olaylarını temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: uç nokta.
-- Bilgi alanı 2: tamamlanma kodu.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Uç nokta.
+- Bilgi Alanı 2: Tamamlama kodu.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="device-stack-transfer-request"></a>Cihaz yığını aktarım Isteği 
+### <a name="device-stack-transfer-request"></a>Cihaz Yığını Aktarım İsteği 
 
 #### <a name="ux_device_stack_transfer_request"></a>ux_device_stack_transfer_request
 
-**Simge** ![ Cihaz yığını aktarım Isteği simgesi](./media/user-guide/usbx-events/image76.png)
+**Simge** ![ Cihaz Yığını Aktarım İsteği simgesi](./media/user-guide/usbx-events/image76.png)
 
 **Açıklama**
 
-Bu olay bir USBX cihaz yığını aktarım Isteği olayını temsil eder.
+Bu olay bir USBX Cihaz Yığını Aktarım İsteği Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
 - Bilgi alanı 1: aktarım isteği.
 - Bilgi alanı 2: kullanılmıyor.
@@ -1696,175 +1696,175 @@ Bu olay bir USBX konak sınıfı sesi devre dışı bırakma olayını temsil ed
 Bu olay bir USBX konak sınıfı ses okuma olayını temsil eder.
 
 - Bilgi alanları 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-audio-streaming-sampling-get"></a>Konak sınıfı ses akışı örneklemesi alma 
+### <a name="host-class-audio-streaming-sampling-get"></a>Konak Sınıfı Ses Akışı Örnekleme Alma 
 
 #### <a name="ux_host_class_audio_streaming_sampling_get"></a>ux_host_class_audio_streaming_sampling_get
 
-**Simge** ![ Konak sınıfı ses akışı örneklemesi alma simgesi](./media/user-guide/usbx-events/image87.png)
+**Simge** ![ Konak Sınıfı Ses Akışı Örnekleme Alma simgesi](./media/user-guide/usbx-events/image87.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı ses akışı örnekleme Get olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Ses Akışı Örnekleme Alma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-audio-streaming-sampling-set"></a>Konak sınıfı ses akışı örnekleme kümesi 
+### <a name="host-class-audio-streaming-sampling-set"></a>Konak Sınıfı Ses Akışı Örnekleme Kümesi 
 
 #### <a name="ux_host_class_audio_streaming_sampling_set"></a>ux_host_class_audio_streaming_sampling_set
 
-**Simge** ![ Konak sınıfı ses akışı örnekleme kümesi simgesi](./media/user-guide/usbx-events/image88.png)
+**Simge** ![ Konak Sınıfı Ses Akışı Örnekleme Kümesi simgesi](./media/user-guide/usbx-events/image88.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı ses akışı örnekleme kümesi olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Ses Akışı Örnekleme Kümesi Olayı'ı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: ses örnekleme.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Ses Örnekleme.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-audio-write"></a>Konak sınıfı ses yazma 
+### <a name="host-class-audio-write"></a>Konak Sınıfı Ses Yazma 
 
 #### <a name="ux_host_class_audio_write"></a>ux_host_class_audio_write
 
-**Simge** ![ Konak sınıfı ses yazma simgesi](./media/user-guide/usbx-events/image89.png)
+**Simge** ![ Konak Sınıfı Ses Yazma simgesi](./media/user-guide/usbx-events/image89.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı ses yazma olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Ses Yazma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-activate"></a>Ana bilgisayar sınıfı CDC ACM Activate 
+### <a name="host-class-cdc-acm-activate"></a>Konak Sınıfı Cdc Acm Etkinleştirme 
 
 #### <a name="ux_host_class_cdc_acm_activate"></a>ux_host_class_cdc_acm_activate
 
-**Simge** ![ Ana bilgisayar sınıfı C D C A C M etkinleştirme simgesi](./media/user-guide/usbx-events/image90.png)
+**Simge** ![ Konak Sınıfı C D C A C M Etkinleştirme simgesi](./media/user-guide/usbx-events/image90.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı CDC ACM Activate olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Cdc Acm Etkinleştirme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-deactivate"></a>Ana bilgisayar sınıfı CDC ACM Deactivate 
+### <a name="host-class-cdc-acm-deactivate"></a>Konak Sınıfı Cdc Acm Devre Dışı Bırakma 
 
 #### <a name="ux_host_class_cdc_acm_deactivate"></a>ux_host_class_cdc_acm_deactivate
 
-**Simge** ![ Ana bilgisayar sınıfı C D C A C M devre dışı bırakma simgesi](./media/user-guide/usbx-events/image91.png)
+**Simge** ![ Konak Sınıfı C D C A C M Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image91.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı CDC ACM Deactivate olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Cdc Acm Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-ioctl-abort-in-pipe"></a>Ana bilgisayar sınıfı CDC ACM IOCTL Iptal kanalı 
+### <a name="host-class-cdc-acm-ioctl-abort-in-pipe"></a>Kanalda Ana Bilgisayar Sınıfı Cdc Acm Ioctl Abort 
 
 #### <a name="ux_host_class_cdc_acm_ioctl_abort_in_pipe"></a>ux_host_class_cdc_acm_ioctl_abort_in_pipe
 
-**Simge** ![ Ana bilgisayar sınıfı C D C c](./media/user-guide/usbx-events/image92.png)
+**Simge** ![ Konak Sınıfı C D C A C M O C T L Kanalda Durdurma simgesi](./media/user-guide/usbx-events/image92.png)
 
 **Açıklama**
 
-Bu olay, kanal olayında bir USBX konak sınıfını CDC ACM IOCTL Iptali ' ni temsil eder.
+Bu olay, Bir USBX Ana Bilgisayar Sınıfı Cdc Acm Ioctl KanalDa Durdurma Olayı'nın temsil eder.
 
-Bilgi alanları 
+Bilgi Alanları 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: uç nokta.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Uç nokta.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-ioctl-abort-out-pipe"></a>Ana bilgisayar sınıfı CDC ACM IOCTL durdurma kanalı 
+### <a name="host-class-cdc-acm-ioctl-abort-out-pipe"></a>Ana Bilgisayar Sınıfı Cdc Acm Ioctl Kanal Durdurma 
 
 #### <a name="ux_host_class_cdc_acm_ioct_abort_out_pipe"></a>ux_host_class_cdc_acm_ioct_abort_out_pipe
 
-**Simge** ! [[Ana bilgisayar sınıfı c D c a c m I ı c T ı Durdur kanal simgesi](./media/user-guide/usbx-events/image93.png)
+**Simge** ! [[Konak Sınıfı C D C A C M O C T L Kanaldan Çıkma simgesini durdurma](./media/user-guide/usbx-events/image93.png)
 
 **Açıklama**
 
-Bu olay, bir USBX konak sınıfını CDC ACM IOCTL Abort Out kanal olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Cdc Acm Ioctl Abort Out Pipe Event'i temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: uç nokta.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Uç nokta.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-ioctl-get-device-status"></a>Ana bilgisayar sınıfı CDC ACM IOCTL cihaz durumunu al 
+### <a name="host-class-cdc-acm-ioctl-get-device-status"></a>Konak Sınıfı Cdc Acm Ioctl Cihaz Durumunu Al 
 
 #### <a name="ux_host_class_cdc_acm_ioctl_get_device_status"></a>ux_host_class_cdc_acm_ioctl_get_device_status
 
-**Simge** ![ Ana bilgisayar sınıfı C D C A C M ı O C T I cihaz durum simgesi al](./media/user-guide/usbx-events/image94.png)
+**Simge** ![ Konak Sınıfı C D C A C M O C T L Cihaz Durumunu Al simgesi](./media/user-guide/usbx-events/image94.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı CDC ACM IOCTL Get cihaz durumu olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Cdc Acm Ioctl Get Device Status Event'i temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: cihaz durumu.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Cihaz durumu.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-ioctl-get-line-coding"></a>Ana bilgisayar sınıfı CDC ACM IOCTL al satırı kodlama 
+### <a name="host-class-cdc-acm-ioctl-get-line-coding"></a>Konak Sınıfı Cdc Acm Ioctl Satır Kodlaması Al 
 
 #### <a name="ux_host_class_cdc_acm_ioctl_get_line_coding"></a>ux_host_class_cdc_acm_ioctl_get_line_coding
 
-**Simge** ![ Ana bilgisayar sınıfı C D C A C M ı O C T m](./media/user-guide/usbx-events/image95.png)
+**Simge** ![ Konak Sınıfı C D C A C M O C T L Satır Kodlaması Al simgesi](./media/user-guide/usbx-events/image95.png)
 
 **Açıklama**
 
-Bu olay, bir USBX konak sınıfını CDC ACM IOCTL Get satırı kodlama olayını temsil eder.
+Bu olay bir USBX Ana Bilgisayar Sınıfı Cdc Acm Ioctl Satır KodlamaSı Olayı Al'ı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: parametre.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Parametre.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-cdc-acm-ioctl-notification-callback"></a>Ana bilgisayar sınıfı CDC ACM IOCTL bildirimi geri araması
+### <a name="host-class-cdc-acm-ioctl-notification-callback"></a>Konak Sınıfı Cdc Acm Ioctl Bildirim Geri Çağırma
 
 #### <a name="ux_host_class_cdc_acm_ioctl_notification_callback"></a>ux_host_class_cdc_acm_ioctl_notification_callback
 
-**Simge** ![ Ana bilgisayar sınıfı C D C A C M ı O C T m](./media/user-guide/usbx-events/image96.png)
+**Simge** ![ Konak Sınıfı C D C A C M O C T L Bildirim Geri Çağırma simgesi](./media/user-guide/usbx-events/image96.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı CDC ACM IOCTL Notification geri çağırma olayını temsil eder.
+Bu olay bir USBX Ana Bilgisayar Sınıfı Cdc Acm Ioctl Bildirim Geri Çağırma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
 - Bilgi alanı 1: sınıf örneği.
 - Bilgi alanı 2: parametre.
@@ -2036,175 +2036,175 @@ Bu olay bir USBX konak sınıfı Dpump okuma olayını temsil eder.
 **Bilgi alanları**
 
 - Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-dpump-write"></a>Konak sınıfı Dpump yazma 
+### <a name="host-class-dpump-write"></a>Konak Sınıfı Dpump Yazma 
 
 #### <a name="ux_host_class_dpump_write"></a>ux_host_class_dpump_write
 
-**Simge** ![ Ana sınıf Dpump yazma simgesi](./media/user-guide/usbx-events/image107.png)
+**Simge** ![ Konak Sınıfı Dpump Yazma simgesi](./media/user-guide/usbx-events/image107.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı Dpump yazma olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Dpump Yazma Olayı'ı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: veri işaretçisi.
-- Bilgi alanı 3: Istenen uzunluk.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Veri işaretçisi.
+- Bilgi Alanı 3: İstenen uzunluk.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-activate"></a>Konak sınıfı HID etkinleştirme 
+### <a name="host-class-hid-activate"></a>Host Classını Etkinleştirme 
 
 #### <a name="ux_host_class_hid_activate"></a>ux_host_class_hid_activate
 
-**Simge** ![ Konak sınıfı HID etkinleştirme simgesi](./media/user-guide/usbx-events/image108.png)
+**Simge** ![ Konak Sınıfı Etkinleştir simgesi](./media/user-guide/usbx-events/image108.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı HID etkinleştirme olayını temsil eder.
+Bu olay bir USBX Ana Bilgisayar Sınıfını Etkinleştirme Olayı'ı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-client-register"></a>Konak sınıfı HID Istemci kaydı 
+### <a name="host-class-hid-client-register"></a>Konak Sınıfı Gizli İstemci Kaydı 
 
 #### <a name="ux_host_class_hid_client_register"></a>ux_host_class_hid_client_register
 
-**Simge** ![ Konak sınıfı HID Istemci kaydı simgesi](./media/user-guide/usbx-events/image109.png)
+**Simge** ![ Konak SınıfıNız İstemci Kaydı simgesi](./media/user-guide/usbx-events/image109.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı HID Istemci kaydı olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Gizli İstemci Kaydetme Olayı'ı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: HID istemci adı.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: gizli istemci adı.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-deactivate"></a>Konak sınıfı HID devre dışı 
+### <a name="host-class-hid-deactivate"></a>Konak Sınıfını Devre Dışı Bırakma 
 
 #### <a name="ux_host_class_hid_deactivate"></a>ux_host_class_hid_deactivate
 
-**Simge** ![ Konak sınıfı HID devre dışı bırakma simgesi](./media/user-guide/usbx-events/image110.png)
+**Simge** ![ Konak Sınıfı Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image110.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı HID devre dışı bırakma olayını temsil eder.
+Bu olay bir USBX Konak Sınıfını Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-idle-get"></a>Konak sınıfı HID boşta al 
+### <a name="host-class-hid-idle-get"></a>Konak Sınıfı Boşta Al 
 
 #### <a name="ux_host_class_hid_idle_get"></a>ux_host_class_hid_idle_get
 
-**Simge** ![ Konak sınıfı HID boşta al al simgesi](./media/user-guide/usbx-events/image111.png)
+**Simge** ![ Host Class Idle Get simgesi](./media/user-guide/usbx-events/image111.png)
 
 **Açıklama**
 
-Bu olay, bir USBX ana bilgisayar sınıfı HID boşta al Get olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı BoşTakil Al Olayı'dır.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-idle-set"></a>Konak sınıfı HID boşta kümesi 
+### <a name="host-class-hid-idle-set"></a>Konak Sınıfı BoşTakil Küme 
 
 #### <a name="ux_host_class_hid_idle_set"></a>ux_host_class_hid_idle_set
 
-**Simge** ![ Konak sınıfı HID boşta kümesi simgesi](./media/user-guide/usbx-events/image112.png)
+**Simge** ![ Konak Sınıfı Boşta Kalma Kümesi simgesi](./media/user-guide/usbx-events/image112.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı HID boşta ayarlama olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Boşta Kalma Kümesi Olayı'ı temsil eder.
 
-**Bilgi alanları** 
+**Bilgi Alanları** 
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-keyboard-activate"></a>Host Class HID Klavye etkinleştirme 
+### <a name="host-class-hid-keyboard-activate"></a>Konak SınıfıNasla Klavye Etkinleştirme 
 
 #### <a name="ux_host_class_hid_keyboard_activate"></a>ux_host_class_hid_keyboard_activate
 
-**Simge** ![ Host Class HID Klavye etkinleştirme simgesi](./media/user-guide/usbx-events/image113.png)
+**Simge** ![ Konak Sınıfı Klavye Etkinleştirme simgesi](./media/user-guide/usbx-events/image113.png)
 
 **Açıklama**
 
-Bu olay bir USBX Host Class HID Klavye etkinleştirme olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Klavye Etkinleştirme Olayı'ı temsil eder.
 
-**Bilgi alanları**
-<p>Bilgi alanı 1: sınıf örneği.
-<p>Bilgi alanı 2: HID istemci örneği.
-<p>Bilgi alanı 3: kullanılmıyor.
-<p>Bilgi alanı 4: kullanılmıyor.
+**Bilgi Alanları**
+<p>Bilgi Alanı 1: Sınıf örneği.
+<p>Bilgi Alanı 2: Gizli istemci örneği.
+<p>Bilgi Alanı 3: Kullanılmaz.
+<p>Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-keyboard-deactivate"></a>Host Class HID Klavye devre dışı 
+### <a name="host-class-hid-keyboard-deactivate"></a>Konak Sınıfı Klavyeyi Devre Dışı Bırakma 
 
 #### <a name="ux_host_class_hid_keyboard_deactivate"></a>ux_host_class_hid_keyboard_deactivate
 
-**Simge** ![ Host Class HID Klavye devre dışı simgesi](./media/user-guide/usbx-events/image114.png)
+**Simge** ![ Konak Sınıfı Klavyeyi Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image114.png)
 
 **Açıklama**
 
-Bu olay bir USBX Host Class HID Klavye devre dışı bırakma olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı KlavyeYi Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: HID istemci örneği.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Gizli istemci örneği.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-mouse-activate"></a>Konak sınıfı HID fare etkinleştirme 
+### <a name="host-class-hid-mouse-activate"></a>Konak Sınıfı Fare Etkinleştirme 
 
 #### <a name="ux_host_class_hid_mouse_activate"></a>ux_host_class_hid_mouse_activate
 
-**Simge** ![ Host Class HID fare etkinleştirme simgesi](./media/user-guide/usbx-events/image115.png)
+**Simge** ![ Konak Sınıfı Fare Etkinleştirme simgesi](./media/user-guide/usbx-events/image115.png)
 
 **Açıklama**
 
-Bu olay bir USBX Host Class HID fare etkinleştirme olayını temsil eder.
+Bu olay bir USBX Konak Sınıfı Fare Etkinleştirme Olayı'ı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: HID istemci örneği.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Gizli istemci örneği.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-hid-mouse-deactivate"></a>Konak sınıfı HID fare devre dışı 
+### <a name="host-class-hid-mouse-deactivate"></a>Konak Sınıfı FareYi Devre Dışı Bırakma 
 
 #### <a name="ux_host_class_hid_mouse_deactivate"></a>ux_host_class_hid_mouse_deactivate
 
-**Simge** ![ Konak sınıfı HID fare devre dışı simgesi](./media/user-guide/usbx-events/image116.png)
+**Simge** ![ Konak Sınıfı Fare Devre Dışı Bırak simgesi](./media/user-guide/usbx-events/image116.png)
 
 **Açıklama**
 
-- Bu olay bir USBX Host Class HID fare devre dışı bırakma olayını temsil eder.
+- Bu olay bir USBX Konak Sınıfı Fare Devre Dışı Bırakma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
+- Bilgi Alanı 1: Sınıf örneği.
 - Bilgi alanı 2: HID istemci örneği.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
@@ -2730,38 +2730,38 @@ Bu olay bir USBX konak sınıfı Pima oturumu kapatma olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="host-class-pima-storage-ids-get"></a>Konak sınıfı Pima depolama kimliklerini al 
+### <a name="host-class-pima-storage-ids-get"></a>konak sınıfı pima Depolama kimlikleri al 
 
 #### <a name="ux_host_class_pima_session_ids_get"></a>ux_host_class_pima_session_ids_get
 
-**Simge** ![ Konak sınıfı Pima depolama kimlikleri al simgesi](./media/user-guide/usbx-events/image148.png)
+**Simge** ![ konak sınıfı pima Depolama kimlikleri al simgesi](./media/user-guide/usbx-events/image148.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı Pima depolama kimlikleri al olayını temsil eder.
+bu olay bir usbx konak sınıfı pima Depolama ıds Get olayını temsil eder.
 
 **Bilgi alanları**
 
 - Bilgi alanı 1: sınıf örneği.
-- NFO alanı 2: depolama KIMLIĞI dizisi.
-- Bilgi alanı 3: depolama KIMLIĞI uzunluğu.
+- nfo alan 2: Depolama ıd dizisi.
+- bilgi alanı 3: Depolama kimliği uzunluğu.
 Bilgi alanı 4: kullanılmıyor.
 
-### <a name="host-class-pima-storage-info-get"></a>Konak sınıfı Pima depolama bilgileri Get 
+### <a name="host-class-pima-storage-info-get"></a>konak sınıfı pima Depolama bilgi al 
 
 #### <a name="ux_host_class_pima_storage_info_get"></a>ux_host_class_pima_storage_info_get
 
-**Simge** ![ Konak sınıfı Pima depolama bilgileri al simgesi](./media/user-guide/usbx-events/image149.png)
+**Simge** ![ konak sınıfı pima Depolama bilgileri al simgesi](./media/user-guide/usbx-events/image149.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı Pima depolama bilgi al olayını temsil eder.
+bu olay bir usbx konak sınıfı pima Depolama ınfo Get olayını temsil eder.
 
 **Bilgi alanları**
 
 - Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: depolama KIMLIĞI.
-- Bilgi alanı 3: depolama.
+- bilgi alanı 2: Depolama kimliği.
+- bilgi alanı 3: Depolama.
 - Bilgi alanı 4: kullanılmıyor.
 
 ### <a name="host-class-pima-thumb-get"></a>Ana sınıf Pima parmak izi al 
@@ -3172,15 +3172,15 @@ Bu olay bir USBX konak sınıfı Prolific yazma olayını temsil eder.
 - Bilgi alanı 3: Istenen uzunluk.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="host-class-storage-activate"></a>Konak sınıfı depolamayı etkinleştirme 
+### <a name="host-class-storage-activate"></a>konak sınıfı Depolama etkinleştir 
 
 #### <a name="ux_host_class_storage_activate"></a>ux_host_class_storage_activate
 
-**Simge** ![ Konak sınıfı depolama etkinleştirme simgesi](./media/user-guide/usbx-events/image174.png)
+**Simge** ![ konak sınıfı Depolama etkinleştir simgesi](./media/user-guide/usbx-events/image174.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama etkinleştirme olayını temsil eder.
+bu olay, Activate olayını Depolama bir usbx konak sınıfını temsil eder.
 
 **Bilgi alanları**
 
@@ -3189,15 +3189,15 @@ Bu olay bir USBX konak sınıfı depolama etkinleştirme olayını temsil eder.
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="host-class-storage-deactivate"></a>Konak sınıfı depolamayı devre dışı bırakma 
+### <a name="host-class-storage-deactivate"></a>konak sınıfı Depolama devre dışı bırak 
 
 #### <a name="ux_host_class_storage_deactivate"></a>ux_host_class_storage_deactivate
 
-**Simge** ![ Konak sınıfı depolamayı devre dışı bırakma simgesi](./media/user-guide/usbx-events/image175.png)
+**Simge** ![ konak sınıfı Depolama devre dışı bırak simgesi](./media/user-guide/usbx-events/image175.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolaması devre dışı bırakma olayını temsil eder.
+bu olay, devre dışı bırakma olayı Depolama bir usbx konak sınıfını temsil eder.
 
 **Bilgi alanları**
 
@@ -3206,191 +3206,191 @@ Bu olay bir USBX konak sınıfı depolaması devre dışı bırakma olayını te
 - Bilgi alanı 3: kullanılmıyor.
 - Bilgi alanı 4: kullanılmıyor.
 
-### <a name="host-class-storage-media-capacity-get"></a>Konak sınıfı depolama medyası kapasitesi al 
+### <a name="host-class-storage-media-capacity-get"></a>konak sınıfı Depolama medya kapasitesini al 
 
 #### <a name="ux_host_class_storage_media_capacity_get"></a>ux_host_class_storage_media_capacity_get
 
-**Simge** ![ Konak sınıfı depolama medyası kapasitesi al simgesi](./media/user-guide/usbx-events/image176.png)
+**Simge** ![ konak sınıfı Depolama medya kapasitesini al simgesi](./media/user-guide/usbx-events/image176.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası kapasitesini al olayını temsil eder.
+bu olay bir usbx konak sınıfını Depolama medya kapasitesi Get olayını temsil eder.
 
 **Bilgi alanları**
 
 - Bilgi alanı 1: sınıf örneği.
 - Bilgi alanı 2: kullanılmıyor.
 - Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-storage-media-format-capacity-get"></a>Konak sınıfı depolama medyası biçim kapasitesini al
+### <a name="host-class-storage-media-format-capacity-get"></a>Konak Sınıfı Depolama Medya Biçimi Kapasitesi Al
 
 #### <a name="ux_host_class_storage_media_format_capacity_get"></a>ux_host_class_storage_media_format_capacity_get
 
-**Simge** ![ Konak sınıfı depolama medya biçimi kapasitesi al simgesi](./media/user-guide/usbx-events/image177.png)
+**Simge** ![ Konak Sınıfı Depolama Medya Biçimi Kapasitesi Al simgesi](./media/user-guide/usbx-events/image177.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası biçimlendirme kapasitesini al olayını temsil eder.
+Bu olay, Medya Biçimi Kapasite Al Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-#### <a name="host-class-storage-media-mount"></a>Konak sınıfı depolama medyası bağlama 
+#### <a name="host-class-storage-media-mount"></a>Konak Sınıfı Depolama Medya Bağlama 
 
 #### <a name="ux_host_class_storage_media_mount"></a>ux_host_class_storage_media_mount
 
-**Simge** ![ Konak sınıfı depolama medyası bağlama simgesi](./media/user-guide/usbx-events/image178.png)
+**Simge** ![ Konak Sınıfı Depolama Medya Bağlama simgesi](./media/user-guide/usbx-events/image178.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası bağlama olayını temsil eder.
+Bu olay, Medya Bağlama Olayı'nda bir USBX Depolama sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: sektör.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kesim.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-storage-media-open"></a>Konak sınıfı depolama medyası açık 
+### <a name="host-class-storage-media-open"></a>Host Class Depolama Media Open 
 
 #### <a name="ux_host_class_storage_media_open"></a>ux_host_class_storage_media_open
 
-**Simge** ![ Konak sınıfı depolama medyası açık simgesi](./media/user-guide/usbx-events/image179.png)
+**Simge** ![ Konak Sınıfı Depolama Medya Aç simgesi](./media/user-guide/usbx-events/image179.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası açık olayını temsil eder.
+Bu olay, Media Open Olayı'na Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: medya.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Medya.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-storage-media-read"></a>Konak sınıfı depolama medyası okuma 
+### <a name="host-class-storage-media-read"></a>Konak Sınıfı Depolama Medya Okuma 
 
 #### <a name="ux_host_class_storage_media_read"></a>ux_host_class_storage_media_read
 
-**Simge** ![ Konak sınıfı depolama medyası okuma simgesi](./media/user-guide/usbx-events/image180.png)
+**Simge** ![ Konak Sınıfı Depolama Medya Okuma simgesi](./media/user-guide/usbx-events/image180.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası okuma olayını temsil eder.
+Bu olay, Medya Okuma Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kesim başlangıcı.
-- Bilgi alanı 3: sektör sayısı.
-- Bilgi alanı 4: veri işaretçisi.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Sektör başlangıcı.
+- Bilgi Alanı 3: Kesim sayısı.
+- Bilgi Alanı 4: Veri işaretçisi.
 
-### <a name="host-class-storage-media-write"></a>Konak sınıfı depolama medyası yazma 
+### <a name="host-class-storage-media-write"></a>Konak Sınıfı Depolama Medya Yazma 
 
 #### <a name="ux_host_class_storage_media_write"></a>ux_host_class_storage_media_write
 
-**Simge** ![ Konak sınıfı depolama medyası yazma simgesi](./media/user-guide/usbx-events/image181.png)
+**Simge** ![ Konak Sınıfı Depolama Medya Yazma simgesi](./media/user-guide/usbx-events/image181.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama medyası yazma olayını temsil eder.
+Bu olay, Medya Yazma Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kesim başlangıcı.
-- Bilgi alanı 3: sektör sayısı.
-- Bilgi alanı 4: veri işaretçisi.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Sektör başlangıcı.
+- Bilgi Alanı 3: Kesim sayısı.
+- Bilgi Alanı 4: Veri işaretçisi.
 
-### <a name="host-class-storage-request-sense"></a>Konak sınıfı depolama Istek algılaması 
+### <a name="host-class-storage-request-sense"></a>Konak Sınıfı Depolama İstek Algısı 
 
 #### <a name="ux_host_class_storage_request_sense"></a>ux_host_class_storage_request_sense
 
-**Simge** ![ Konak sınıfı depolama Isteği algılama simgesi](./media/user-guide/usbx-events/image182.png)
+**Simge** ![ Konak Sınıfı Depolama İstek Algısı simgesi](./media/user-guide/usbx-events/image182.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama Istek algılama olayını temsil eder.
+Bu olay, İstek Algısı Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-storage-start-stop"></a>Konak sınıfı depolama başlatma durdurma 
+### <a name="host-class-storage-start-stop"></a>Konak Sınıfı Depolama Başlatma Durdurma 
 
 #### <a name="ux_host_class_storage_start_stop"></a>ux_host_class_storage_start_stop
 
-**Simge** ![ Konak sınıfı depolama başlatma durdurma simgesi](./media/user-guide/usbx-events/image183.png)
+**Simge** ![ Konak Sınıfı Depolama Başlat Durdurma simgesi](./media/user-guide/usbx-events/image183.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak sınıfı depolama başlangıç durdurma olayını temsil eder.
+Bu olay, Başlatma Durdurma Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: durdurma sinyalini başlatın.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Başlatma durdurma sinyali.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-class-storage-unit-ready-test"></a>Konak sınıfı depolama birimi için hazırlanma testi 
+### <a name="host-class-storage-unit-ready-test"></a>Konak Sınıfı Depolama Birim Hazır Testi 
 
 #### <a name="ux_host_class_storage_unit_ready_test"></a>ux_host_class_storage_unit_ready_test
 
-**Simge** ![ Konak sınıfı depolama birimi için Ready test simgesi](./media/user-guide/usbx-events/image184.png)
+**Simge** ![ Konak Sınıfı Depolama Birim Hazır Test simgesi](./media/user-guide/usbx-events/image184.png)
 
 **Açıklama**
 
-Bu olay, bir USBX konak sınıfı depolama birimi için hazırlanma sınama olayını temsil eder.
+Bu olay, Birim Hazır Test Olayı'Depolama USBX Konak Sınıfını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf örneği.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf örneği.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-class-instance-create"></a>Konak yığını sınıf örneği oluşturma 
+### <a name="host-stack-class-instance-create"></a>Konak Yığını Sınıf Örneği Oluşturma 
 
 #### <a name="ux_host_class_instance_create"></a>ux_host_class_instance_create
 
-**Simge** ![ Konak yığını sınıf örneği oluşturma simgesi](./media/user-guide/usbx-events/image185.png)
+**Simge** ![ Konak Yığını Sınıf Örneği Oluştur simgesi](./media/user-guide/usbx-events/image185.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını sınıf örneği oluşturma olayını temsil eder.
+Bu olay bir USBX Konak Yığını Sınıf Örneği Oluşturma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf.
-- Bilgi alanı 2: sınıf örneği.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf.
+- Bilgi Alanı 2: Sınıf Örneği.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-class-instance-destroy"></a>Konak yığını sınıf örneği yok etme 
+### <a name="host-stack-class-instance-destroy"></a>Konak Stack Sınıf Örneği Yok Etme 
 
 #### <a name="ux_host_class_instance_create"></a>ux_host_class_instance_create
 
-**Simge** ![ Konak yığını sınıf örneği yok etme simgesi](./media/user-guide/usbx-events/image186.png)
+**Simge** ![ Konak Yığını Sınıf Örneği Yok Etme simgesi](./media/user-guide/usbx-events/image186.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığın sınıfı örneği yok etme olayını temsil eder.
+Bu olay bir USBX Konak Yığını Sınıf Örneği Yok Etme Olayı'ı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: sınıf.
-- Bilgi alanı 2: sınıf örneği.
-- Bilgi alanı 3: kullanılmıyor.
+- Bilgi Alanı 1: Sınıf.
+- Bilgi Alanı 2: Sınıf Örneği.
+- Bilgi Alanı 3: Kullanılmaz.
 - Bilgi alanı 4: kullanılmıyor.
 
 ### <a name="host-stack-configuration-delete"></a>Konak yığını yapılandırması silme 
@@ -3561,176 +3561,176 @@ Bu olay bir USBX konak yığını cihaz Get olayını temsil eder.
 - Bilgi alanı 1: cihaz dizini.
 - Bilgi alanı 2: kullanılmıyor.
 - Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-device-remove"></a>Konak yığını cihazını kaldırma 
+### <a name="host-stack-device-remove"></a>Konak Yığını Cihazı Kaldırma 
 
 #### <a name="ux_host_stack_device_remove"></a>ux_host_stack_device_remove
 
-**Simge** ![ Konak yığını cihaz kaldırma simgesi](./media/user-guide/usbx-events/image197.png)
+**Simge** ![ Konak Yığını Cihazı Kaldır simgesi](./media/user-guide/usbx-events/image197.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını cihaz kaldırma olayını temsil eder.
+Bu olay bir USBX Konak Yığını Cihazı Kaldırma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: HCD.
-- Bilgi alanı 2: üst öğe.
-- Bilgi alanı 3: bağlantı noktası dizini.
-- Bilgi alanı 4: cihaz.
+- Bilgi Alanı 1: Hcd.
+- Bilgi Alanı 2: Üst.
+- Bilgi Alanı 3: Bağlantı Noktası Dizini.
+- Bilgi Alanı 4: Cihaz.
 
-### <a name="host-stack-device-resource-free"></a>Konak yığını cihaz kaynağı boş 
+### <a name="host-stack-device-resource-free"></a>Konak Yığını Cihaz Kaynağı Ücretsiz 
 
 #### <a name="ux_host_stack_device_resource_free"></a>ux_host_stack_device_resource_free
 
-**Simge** ![ Ana bilgisayar yığını cihaz kaynağı boş simgesi](./media/user-guide/usbx-events/image198.png)
+**Simge** ![ Konak Yığını Cihaz Kaynağı Ücretsiz simgesi](./media/user-guide/usbx-events/image198.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını cihaz kaynağı ücretsiz olayını temsil eder.
+Bu olay bir USBX Konak Yığını Cihazı Kaynağı Boş Olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: cihaz.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Cihaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-endpoint-instance-create"></a>Konak yığını uç noktası örneği oluşturma 
+### <a name="host-stack-endpoint-instance-create"></a>Konak Yığını Uç Nokta Örneği Oluşturma 
 
 #### <a name="ux_host_stack_endpoint_instance_create"></a>ux_host_stack_endpoint_instance_create
 
-**Simge** ![ Konak yığını uç noktası örneği oluşturma simgesi](./media/user-guide/usbx-events/image199.png)
+**Simge** ![ Konak Yığını Uç Nokta Örneği Oluştur simgesi](./media/user-guide/usbx-events/image199.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını uç noktası örneği oluşturma olayını temsil eder.
+Bu olay bir USBX Konak Yığını Uç Nokta Örneği Oluşturma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: cihaz.
-- Bilgi alanı 2: uç nokta.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Cihaz.
+- Bilgi Alanı 2: Uç nokta.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-endpoint-instance-delete"></a>Konak yığın uç noktası örneği silme 
+### <a name="host-stack-endpoint-instance-delete"></a>Konak Yığını Uç Nokta Örneği Silme 
 
 #### <a name="ux_host_stack_endpoint_instance_delete"></a>ux_host_stack_endpoint_instance_delete
 
-**Simge** ![ Konak yığın uç noktası örneği silme simgesi](./media/user-guide/usbx-events/image200.png)
+**Simge** ![ Konak Yığını Uç Nokta Örneği Silme simgesi](./media/user-guide/usbx-events/image200.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını uç noktası örneği silme olayını temsil eder.
+Bu olay bir USBX Konak Yığını Uç Nokta Örneği Silme Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 2: uç nokta.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 2: Uç nokta.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-endpoint-reset"></a>Konak yığını uç noktası sıfırlama 
+### <a name="host-stack-endpoint-reset"></a>Konak Yığını Uç Noktası Sıfırlama 
 
 #### <a name="ux_host_stack_endpoint_reset"></a>ux_host_stack_endpoint_reset
 
-**Simge** ![ Konak yığını uç noktası sıfırlama simgesi](./media/user-guide/usbx-events/image201.png)
+**Simge** ![ Konak Yığını Uç Noktası Sıfırlama simgesi](./media/user-guide/usbx-events/image201.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını uç noktası sıfırlama olayını temsil eder.
+Bu olay bir USBX Konak Yığını Uç Noktası Sıfırlama Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: cihaz.
-- Bilgi alanı 2: uç nokta.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Cihaz.
+- Bilgi Alanı 2: Uç nokta.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-endpoint-transfer-abort"></a>Konak yığını uç noktası aktarımı Iptali 
+### <a name="host-stack-endpoint-transfer-abort"></a>Konak Yığını Uç Nokta Aktarım Durdurma 
 
 #### <a name="ux_host_stack_endpoint_transfer_abort"></a>ux_host_stack_endpoint_transfer_abort
 
-**Simge** ![ Konak yığını uç noktası aktarımı Iptal simgesi](./media/user-guide/usbx-events/image202.png)
+**Simge** ![ Konak Yığını Uç Nokta Aktarım Durdurma simgesi](./media/user-guide/usbx-events/image202.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını uç nokta aktarımı Iptali olayını temsil eder.
+Bu olay bir USBX Konak Yığını Uç Nokta Aktarımı Durdurma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: uç nokta.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Uç nokta.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-host-controller-register"></a>Konak yığını konak denetleyicisi kaydı 
+### <a name="host-stack-host-controller-register"></a>Konak Yığını Konak Denetleyicisi Kaydı 
 
 #### <a name="ux_host_stack_hcd_register"></a>ux_host_stack_hcd_register
 
-**Simge** ![ Konak yığını konak denetleyicisi kayıt simgesi](./media/user-guide/usbx-events/image203.png)
+**Simge** ![ Konak Yığını Konak Denetleyicisi Kayıt simgesi](./media/user-guide/usbx-events/image203.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını konak denetleyicisi kaydını temsil eder.
+Bu olay bir USBX Konak Yığını Konak Denetleyicisi Kaydını temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: HCD adı.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Hcd Adı.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-initialize"></a>Konak yığını başlatma 
+### <a name="host-stack-initialize"></a>Konak Yığını Başlatma 
 
 #### <a name="ux_host_stack_initialize"></a>ux_host_stack_initialize
 
-**Simge** ![ Konak yığını başlatma simgesi](./media/user-guide/usbx-events/image204.png)
+**Simge** ![ Konak Yığını Başlat simgesi](./media/user-guide/usbx-events/image204.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak Stack Initialize olayını temsil eder.
+Bu olay bir USBX Konak Yığını Başlatma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: kullanılmıyor.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Kullanılmaz.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-interface-endpoint-get"></a>Konak yığını arabirimi uç noktası al 
+### <a name="host-stack-interface-endpoint-get"></a>Konak Yığını Arabirimi Uç Noktası Al 
 
 #### <a name="interface_-tcp-retry-entry"></a>Interface_ TCP yeniden deneme girdisi
 
-**Simge** ![ Konak yığını arabirimi uç noktası al simgesi](./media/user-guide/usbx-events/image205.png)
+**Simge** ![ Konak Yığını Arabirimi Uç Noktası Al simgesi](./media/user-guide/usbx-events/image205.png)
 
 **Açıklama**
 
-Bu olay bir iç NetX TCP yeniden deneme olayını temsil eder.
+Bu olay bir iç NetX TCP yeniden deneme olayı temsil eder.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: arabirim.
-- Bilgi alanı 2: uç nokta dizini.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Arabirim.
+- Bilgi Alanı 2: Uç nokta dizini.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
-### <a name="host-stack-interface-instance-create"></a>Konak yığını arabirim örneği oluşturma 
+### <a name="host-stack-interface-instance-create"></a>Konak Yığını Arabirim Örneği Oluşturma 
 
 #### <a name="ux_host_stack_interface_instance_create"></a>ux_host_stack_interface_instance_create
 
-**Simge** ![ Konak yığını arabirim örneği oluşturma simgesi](./media/user-guide/usbx-events/image206.png)
+**Simge** ![ Konak Yığını Arabirim Örneği Oluşturma simgesi](./media/user-guide/usbx-events/image206.png)
 
 **Açıklama**
 
-Bu olay bir USBX konak yığını arabirim örneği oluşturma olayını temsil eder.
+Bu olay bir USBX Konak Yığını Arabirim Örneği Oluşturma Olayı'dır.
 
-**Bilgi alanları**
+**Bilgi Alanları**
 
-- Bilgi alanı 1: arabirim.
-- Bilgi alanı 2: kullanılmıyor.
-- Bilgi alanı 3: kullanılmıyor.
-- Bilgi alanı 4: kullanılmıyor.
+- Bilgi Alanı 1: Arabirim.
+- Bilgi Alanı 2: Kullanılmadı.
+- Bilgi Alanı 3: Kullanılmaz.
+- Bilgi Alanı 4: Kullanılmadı.
 
 ### <a name="host-stack-interface-instance-delete"></a>Konak yığını arabirim örneği silme 
 

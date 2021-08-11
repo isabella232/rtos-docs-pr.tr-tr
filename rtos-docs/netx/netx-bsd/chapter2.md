@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 7539565ccd4956c5354be45000efab8318dc606c
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c04175ec18dff160faf853d675c9c85c9a0c6fbc5e834c410a7cb97a739c69f8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826843"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796711"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-bsd"></a>Bölüm 2-Azure RTOS NetX BSD yüklemesi ve kullanımı
 
@@ -142,33 +142,33 @@ INT setsockopt(INT sockID, INT option_level, INT option_name, const
 Çalışma zamanı yuva düzeyi seçeneklerinin listesi aşağıda gösterilmiştir.
 
 - **So_broadcast**: ayarlandıysa, NETX yuvalarından yayın paketlerinin gönderilmesini ve alınmasına izin vermez. Bu, NetX için varsayılan davranıştır. Tüm yuvalarda bu yetenek vardır.
-- **SO_ERROR**: *getsockopt* hizmeti kullanılarak belirtilen yuvanın önceki yuva işleminde yuva durumunu elde etmek için kullanılır. Tüm yuvalarda bu yetenek vardır.
-- **SO_KEEPALIVE**: AYARLANıRSA, TCP canlı tut özelliğini sunar. Bu, NetX kitaplığının *nx_user. h* içinde tanımlanan NX_TCP_ENABLE_KEEPALIVE oluşturulması gerekir. Bu özellik varsayılan olarak devre dışıdır.
-- **SO_RCVTIMEO**: Bu, NETX BSD yuvalarda paketlerin alınması için saniye cinsinden bekleme seçeneğini ayarlar. Varsayılan değer NX_WAIT_FOREVER (0xFFFFFFFF) veya engelleyici olmayan bir etkin ise, NX_NO_WAIT (0x0).
-- **SO_RCVBUF**: Bu, TCP yuvasının pencere boyutunu ayarlar. NX_BSD_TCP_WINDOW varsayılan değeri, BSD TCP yuvaları için 64K olarak ayarlanmıştır. 65535 üzerinden boyutu ayarlamak için NetX kitaplığının NX_TCP_ENABLE_WINDOW_SCALING tanımlanması gerekir.
-- **SO_REUSEADDR**: ayarlandıysa, bu, birden çok yuvaların bir bağlantı noktasıyla eşleştirilmesini sağlar. Genel kullanım, TCP sunucu soketi içindir. Bu, NetX yuvalarının varsayılan davranışıdır.
+- **SO_ERROR:** *getsockopt* hizmetini kullanarak belirtilen yuvanın önceki yuva işleminde yuva durumunu almak için kullanılır. Tüm yuvalar bu özelliktedir.
+- **SO_KEEPALIVE:** Ayarlanırsa, TCP Canlı Tut özelliğini sağlar. Bu, NetX kitaplığının *nx_user.h* içinde tanımlanan NX_TCP_ENABLE_KEEPALIVE ile nx_user gerektirir. Bu özellik varsayılan olarak devre dışıdır.
+- **SO_RCVTIMEO:** Bu, NetX BSD yuvalarında paketleri almak için bekleme seçeneğini saniyeler içinde ayarlar. Varsayılan değer, NX_WAIT_FOREVER (0xFFFFFFFF) veya engelleyici olmayan etkinleştirilirse NX_NO_WAIT (0x0).
+- **SO_RCVBUF:** Bu, TCP yuvasının pencere boyutunu ayarlar. Varsayılan değer olan NX_BSD_TCP_WINDOW BSD TCP yuvaları için 64k olarak ayarlanır. Boyutu 65535'in üzerine ayarlamak için NetX kitaplığının tanımlandığı NX_TCP_ENABLE_WINDOW_SCALING gerekir.
+- **SO_REUSEADDR:** Ayarlanırsa, birden çok yuvanın bir bağlantı noktasına eşlenmiş olması gerekir. Tipik kullanım TCP Sunucusu yuvası için kullanılır. Bu, NetX yuvalarının varsayılan davranışıdır.
 
-Çalışma zamanı yuva seçeneklerinin ikinci türü, IP seçenek düzeyidir. Bir IP düzeyi seçeneğini etkinleştirmek için, *setsockopt* ' i çağırın option_level IP_PROTO olarak ayarlayın ve option_name IP_MULTICAST_TTL seçeneğine ayarlayın. Bir seçenek ayarı almak için, option_level tekrar IP_PROTO olarak ayarlanan option_name için *getsockopt* çağırın.
+İkinci tür çalışma zamanı yuva seçenekleri, IP seçeneği düzeyidir. BIR IP düzeyi seçeneğini etkinleştirmek için, option_level olarak IP_PROTO option_name *setesockopt* çağrısı IP_MULTICAST_TTL. Bir seçenek ayarını almak için, yeniden option_level olarak ayarlanmış şekilde option_name için *getsockopt* IP_PROTO.
 
 Çalışma zamanı IP düzeyi seçeneklerinin listesi aşağıda gösterilmiştir.
 
-- **IP_MULTICAST_TTL**: Bu, UDP yuvaları için yaşam süresini ayarlar. Yuva oluşturulduğunda varsayılan değer NX_IP_TIME_TO_LIVE (0x80). Bu değer, bu yuva seçeneği ile *setsockopt* çağırarak geçersiz kılınabilir.
-- **IP_ADD_MEMBERSHIP**: ayarlanırsa, belirtilen IGMP grubuna katılması için bu seçenekler BSD yuvasını (yalnızca UDP yuvaları için geçerlidir) sağlar.
-- **IP_DROP_MEMBERSHIP**: ayarlanırsa, bu seçenekler belirtilen IGMP grubunu BıRAKMAK için BSD yuvasını (yalnızca UDP yuvaları için geçerlidir) sağlar.
+- **IP_MULTICAST_TTL:** Udp yuvaları için yaşam süresi ayarlar. Yuva oluşturulduğunda NX_IP_TIME_TO_LIVE (0x80) varsayılan değerdir. Bu değer, bu yuva seçeneğiyle *setsockopt çağrılarak* geçersiz kılınabilir.
+- **IP_ADD_MEMBERSHIP:** Ayarlanırsa, bu seçenekler BSD yuvasının (yalnızca UDP yuvaları için geçerlidir) belirtilen IGMP grubunu birleştirmesini sağlar.
+- **IP_DROP_MEMBERSHIP:** Ayarlanırsa, bu seçenekler BSD yuvasının (yalnızca UDP yuvaları için geçerlidir) belirtilen IGMP grubundan ayrılmasını sağlar.
 
-## <a name="small-example-system"></a>Küçük örnek sistem
+## <a name="small-example-system"></a>Küçük Örnek Sistem
 
-NetX BSD kullanmanın bir örneği aşağıda şekil 1,0 ' de gösterilmiştir. Bu örnekte, içerme dosyası *nx_bsd. h* , 7. satırda getirilir. Ardından, IP örneği *bsd_ip* ve paket havuzu *bsd_pool* , 20 ve 21. satırda genel değişkenler olarak oluşturulur. Bu tanıtımın bir RAM (sanal) ağ sürücüsü (satır 41) kullandığını unutmayın. İstemci ve sunucu, bu örnekteki tek IP örneğinde aynı IP adresini paylaşır.
+Aşağıdaki Şekil 1.0'da NetX BSD'yi kullanma örneği gösterilmiştir. Bu örnekte, *nx_bsd.h* dahil dosyası 7. satıra getiri. Ardından, IP örneği *bsd_ip* ve *paket havuzu bsd_pool* 20. ve 21. satırda genel değişkenler olarak oluşturulur. Bu tanıtımda ram (sanal) ağ sürücüsü (satır 41) kullanılır. İstemci ve sunucu, bu örnekteki tek BIR IP örneğinde aynı IP adresini paylaşır.
 
-İstemci ve sunucu iş parçacıkları, uygulamayı ayarlayan ve satırlar 293-361 ' de tanımlanan *tx_application_define* için 303 ve 309. satırda oluşturulur. Satır 327 ' de IP örneği başarıyla oluşturulduktan sonra, IP örneği 350. satırdaki TCP hizmetleri için etkinleştirilir. BSD Hizmetleri 'nin kullanılabilmesi için son gereksinim, BSD için gereken tüm veri yapılarını ve NetX ve ThreadX kaynaklarını ayarlamak üzere 360 satırındaki *bsd_initialize* çağırmalıdır.
+İstemci ve sunucu iş parçacıkları, uygulamayı ayaran ve 293-361 *tx_application_define* 303. ve 309. satırlarda oluşturulur. 327. satırda IP örneği başarıyla etkinleştirilmişse 350. satırda TCP hizmetleri için IP örneği etkinleştirilir. BSD hizmetlerinin kullanılamadan önceki son *gereksinimi, BSD* için gereken tüm veri yapılarını ve NetX bsd_initialize ThreadX kaynaklarını ayarlamak için 360. satırda bsd_initialize çağrısı yapmaktır.
 
-Sunucu iş parçacığı girişi işlevinde, 381-397 satırlarında tanımlanan *thread_1_entry* , uygulama sürücünün ağ parametreleriyle NETX başlatmasını bekler. Bu işlem tamamlandıktan sonra, TCP sunucu yuvasını ayarlama ayrıntılarını işlemek için 146-253 satırlarında tanımlanan *Tcpserver* 'ı çağırır.
+381-397. satırlarda tanımlanan thread_1_entry sunucu iş parçacığı giriş işlevinde uygulama, sürücünün ağ parametreleriyle NetX'i başlatması için bekler.  Bu yapıldıktan sonra, TCP sunucu yuvası ayarlama ayrıntılarını işlemek için 146-253. satırlarda tanımlanan *tcpServer'ı* arar.
 
-*Tcpserver* , 159. satırda *yuva* hizmetini çağırarak ana yuvayı oluşturur ve 176. satırdaki *bağlama* çağrısını kullanarak dinleme yuvasına bağlar. Daha sonra 191 satırındaki bağlantı isteklerini dinlemek üzere yapılandırılır. Ana yuvanın bir bağlantı isteğini kabul etmediğini unutmayın. Bağlantı isteklerini algılamak için her seferinde *seçimi* çağıran bir sürekli döngüde çalışır. BSD yuvaları dizisinden seçilen bir ikincil BSD yuvasına, 218 satırı üzerinde *Accept* hizmeti çağrıldıktan sonra bağlantı isteği atanır.
+*tcpServer,* 159.  satırda yuva hizmetini çağırarak ana yuvayı oluşturur  ve 176. satırda bağlama çağrısını kullanarak dinleme yuvasına bağlar. Ardından 191. satırda bağlantı isteklerini dinlemek için yapılandırılır. Ana yuvanın bir bağlantı isteğini kabul etmey olduğunu unutmayın. Bağlantı isteklerini algılamak için her zaman *select* çağrısı yapılan bir sürekli döngüde çalışır. BSD yuva dizilerinden seçilen ikincil bir BSD yuvasına, 218. satırda *kabul* hizmeti çağrıldikten sonra bağlantı isteği atanır.
 
-Istemci tarafında, 366-377 satırlarında tanımlanan *thread_0_entry* istemci iş parçacığı girişi işlevi, ayrıca NETX 'in sürücü tarafından başlatılmasını bekler. Burada sunucu tarafının bunu yapması Bekleniyorduk. Daha sonra, TCP istemci yuvasını ayarlama ve bir TCP bağlantısı isteme ayrıntılarını işlemek için, satır 54-142 ' de tanımlanan *TcpClient* öğesini çağırır.
+İstemci tarafında, 366-377 satırlarında tanımlanan thread_0_entry istemci iş parçacığı giriş işlevi de NetX'in sürücü tarafından başlatılmasını beklemektedir.  Burada yalnızca sunucu tarafının bunu yapmalarını bekleriz. Ardından 54-142. satırda tanımlanan *tcpClient'ı* çağırarak TCP istemci yuvanızı ayarlama ve TCP bağlantısı isteğiyle ilgili ayrıntıları işlemesini sağlar.
 
-TCP istemci yuvası 68. satırda oluşturulur. Yuva belirtilen IP adresine bağlıdır ve 84. satırdaki *Connect* 'ı çağırarak TCP sunucusuna bağlanmaya çalışır. Artık paket göndermeye ve almaya başlamaya hazırdır.
+TCP istemci yuvası 68. satırda oluşturulur. Yuva belirtilen IP adresine bağlı ve 84. satırda *Connect* çağrısıyla TCP sunucusuna bağlanmaya çalışır. Artık paket göndermeye ve almaya başlamaya hazırdır.
 
 ```c
 1 /*  This is a small demo of BSD Wrapper for the high-performance NetX TCP/IP stack.

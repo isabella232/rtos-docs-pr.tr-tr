@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 269a3b4e9754fdc19e2cf1482d483fad2b841de9
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9bc5ce189980dbceaf12a2f2e8429d9267e7d37f559c88d10c54e399d01ec259
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825612"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796897"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-autoip"></a>Bölüm 2-Azure RTOS NetX oto 'nin yüklenmesi ve kullanımı
 

@@ -1,37 +1,37 @@
 ---
-title: USBX PictBridge uygulama
-description: UBSX hem konakta hem de cihazda tam PictBridge uygulamasını destekler. PictBridge, her iki tarafta da USBX PIMA sınıfının üstünde yer alır.
+title: USBX Pictbridge uygulaması
+description: UBSX hem konakta hem de cihazda tam Pictbridge uygulamasını destekler. Pictbridge, iki tarafta da USBX PIMA sınıfının üzerinde yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: ce291f794cbc458d402cbefa3fd81dcc6f371b57
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9f4ba97741d2fc5f93afe6866b9ae6e9dc1e98a977eb3d6050c4a7489804c93c
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828037"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790721"
 ---
-# <a name="chapter-4-usbx-pictbridge-implementation"></a>Bölüm 4: USBX PictBridge uygulama
+# <a name="chapter-4-usbx-pictbridge-implementation"></a>Bölüm 4: USBX Pictbridge uygulaması
 
-UBSX hem konakta hem de cihazda tam PictBridge uygulamasını destekler. PictBridge, her iki tarafta da USBX PIMA sınıfının üstünde yer alır. 
+UBSX hem konakta hem de cihazda tam Pictbridge uygulamasını destekler. Pictbridge, iki tarafta da USBX PIMA sınıfının üzerinde yer almaktadır. 
 
-PictBridge standartları, dijital bir kamera veya akıllı telefonun doğrudan bılgısayar olmadan bir yazıcıya bağlantısının yapılmasına izin verir ve belirli bir PictBridge kullanan yazıcılara doğrudan yazdırmayı etkinleştirir.
+PictBridge standartları, dijital bir halat kamerasının veya akıllı telefonun bilgisayar olmadan doğrudan yazıcıya bağlantısına olanak sağlayarak, Belirli Pictbridge uyumlu yazıcılara doğrudan yazdırmayı sağlar.
 
-Bir kamera veya telefon bir yazıcıya bağlıyken, yazıcı USB ana bilgisayarı ve kamera USB aygıtıdır. Ancak, PictBridge ile kamera ana bilgisayar olarak görünür ve bu da komutlar kameradan çalıştırılır. Kamera, depolama istemcisini yazıcı olan depolama sunucusudur. Kamera, yazdırma istemcsahiptir ve yazıcı, yazdırma sunucusudur.
+Yazıcıya bir kamera veya telefon bağlandığında yazıcı USB ana bilgisayarı, kamera ise USB cihazıdır. Ancak, Pictbridge ile kamera ana bilgisayar olarak görünür ve komutlar kameradan çalıştırılır. Kamera depolama sunucusu, yazıcı ise depolama istemcisidir. Kamera yazdırma istemcisidir ve yazıcı elbette yazdırma sunucusudur.
 
-PictBridge, USB 'yi bir aktarım katmanı olarak kullanır, ancak iletişim protokolüne ait PTP (resim aktarma protokolü) kullanır.
+Pictbridge aktarım katmanı olarak USB kullanır, ancak iletişim protokolü için PTP 'yi (Resim Aktarım Protokolü) kullanır.
 
-Aşağıda, bir yazdırma işi gerçekleştiğinde DPS istemcisi ile DPS sunucusu arasındaki komutların/yanıtların bir diyagramı verilmiştir.
+Aşağıda, bir yazdırma işi oluştuğunda DPS istemcisi ile DPS sunucusu arasındaki komutların/yanıtların diyagramı yer almaktadır.
 
-![Bir yazdırma işi gerçekleştiğinde D P S istemcisiyle D P S sunucusu arasındaki komutların/yanıtların diyagramı.](./media/usbx-host-stack-supplemental/dps-client-server.png)
+![Yazdırma işi oluştuğunda D P S istemcisi ile D P S sunucusu arasındaki komutların/yanıtların diyagramı.](./media/usbx-host-stack-supplemental/dps-client-server.png)
 
-## <a name="pictbridge-client-implementation"></a>PictBridge istemci uygulama
+## <a name="pictbridge-client-implementation"></a>Pictbridge istemci uygulaması
 
-İstemci üzerindeki PictBridge, USBX cihaz yığınını ve PIMA sınıfının önce çalıştırılmasını gerektirir.
+İstemcide Pictbridge, önce USBX cihaz yığınının ve PIMA sınıfının çalışıyor olması gerekir.
 
-Bir cihaz çerçevesi, PIMA sınıfını aşağıdaki şekilde açıklar.
+Cihaz çerçevesi PIMA sınıfını aşağıdaki şekilde açıklar.
 
 ```C
 UCHAR device_framework_full_speed[] =
@@ -53,11 +53,11 @@ UCHAR device_framework_full_speed[] =
 };
 ```
 
-Pima sınıfı, 0x06 ID alanını kullanıyor ve alt sınıfı hala görüntü için 0x01 ve ıZMA 15740 için, protokol 0x01.
+Pima sınıfı, 0x06 ID alanını kullanıyor ve hala Görüntü için 0x01 alt sınıfına sahip ve protokol PIMA 15740 için 0x01 olarak sınıflandırıldı.
 
-3 uç noktalar Bu sınıfta tanımlanmıştır, veri gönderme/alma ve olaylar için bir kesme için 2 bulur.
+Bu sınıfta 3 uç nokta tanımlanmıştır, veri göndermek/almak için 2 toplu ve olaylar için bir kesme vardır.
 
-Diğer USBX cihaz uygulamalarından farklı olarak, PictBridge uygulamasının bir sınıfın kendisini tanımlamasına gerek yoktur. Bunun yerine ***ux_pictbridge_dpsclient_start*** işlevini çağırır. Aşağıda bir örnek verilmiştir:
+Diğer USBX cihaz uygulamalarının aksine, Pictbridge uygulamasının bir sınıfın kendisini tanımlaması gerek yoktur. Bunun yerine işlevi ***ux_pictbridge_dpsclient_start.*** Aşağıda bir örnek verilmiştir:
 
 ```C
 /* Initialize the Pictbridge string components. */
@@ -83,7 +83,7 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-PictBridge istemcisine geçirilen parametreler aşağıdaki gibidir:
+pictbridge istemcisine geçirilen parametreler aşağıdaki gibidir:
 
 ```C
 pictbridge.ux_pictbridge_dpslocal.ux_pictbridge_devinfo_vendor_name
@@ -94,9 +94,9 @@ pictbridge.ux_pictbridge_dpslocal.ux_pictbridge_devinfo_vendor_name
     : Value set to 0x0100;
 ```
 
-Sonraki adım cihaz ve ana bilgisayarın eşitlenmesi ve bilgi alışverişi için hazırlanmaya yöneliktir.
+Sonraki adım, cihazın ve ana bilgisayar tarafından eşitlenmesi ve bilgi alışverişi için hazır olmasıdır.
 
-Bu, aşağıdaki gibi bir olay bayrağına karşı bekleyerek yapılır:
+Bu, aşağıdaki gibi bir olay bayrağı beklenerek yapılır:
 
 ```C
 /* We should wait for the host and the client to discover one another. */
@@ -106,9 +106,9 @@ status = ux_utility_event_flags_get
     UX_PICTBRIDGE_EVENT_TIMEOUT);
 ```
 
-Durum makinesi **DISCOVERY_COMPLETE** durumundaysa, kamera tarafı (DPS istemcisi) yazıcıyla ve özellikleri hakkında bilgi toplar.
+Durum makinesi DISCOVERY_COMPLETE **durumda** ise, kamera tarafı (DPS istemcisi) yazıcı ve özellikleriyle ilgili bilgi toplar.
 
-DPS istemcisi bir yazdırma işini kabul etmeye hazırsanız, durumu **UX_PICTBRIDGE_NEW_JOB_TRUE** olarak ayarlanır. Bu, aşağıda denetlenebilir:
+DPS istemcisi yazdırma işini kabul etmeye hazırsa, durumu **UX_PICTBRIDGE_NEW_JOB_TRUE.** Aşağıdan denetlenebilirsiniz:
 
 ```C
 /* Check if the printer is ready for a print job. */
@@ -118,7 +118,7 @@ if (pictbridge.ux_pictbridge_dpsclient.ux_pictbridge_devinfo_newjobok ==
     /* We can print something … */
 ```
 
-Sonraki bazı Print joıb tanımlayıcılarının aşağıdaki şekilde doldurulması gerekir:
+Sonraki adımlarda bazı yazdırma joib tanımlayıcıları aşağıdaki gibi doldurulmalıdır:
 
 ```C
 /* We can start a new job. Fill in the JobConfig and PrintInfo structures. */
@@ -182,7 +182,7 @@ ux_utility_string_to_unicode("JPEG Image", object ->
 status =ux_pictbridge_dpsclient_api_start_job(&pictbridge);
 ```
 
-PictBridge istemcisinin şimdi yapması için bir yazdırma işi vardır ve alanda tanımlanan geri çağırma aracılığıyla uygulamadan bir seferde görüntü bloklarını getirecek.
+Pictbridge istemcisinin artık yapacak bir yazdırma işi vardır ve alanda tanımlanan geri arama aracılığıyla görüntü bloklarını uygulamadan aynı anda getirir.
 
 ```C
 jobinfo ->ux_pictbridge_jobinfo_object_data_read
@@ -192,7 +192,7 @@ Bu işlevin prototipi aşağıdaki gibi tanımlanır.
 
 ## <a name="ux_pictbridge_jobinfo_object_data_read"></a>ux_pictbridge_jobinfo_object_data_read
 
-Yazdırma için Kullanıcı alanından bir veri bloğunu kopyalama.
+Yazdırma için kullanıcı alanı veri bloğu kopyalama.
 
 ### <a name="prototype"></a>Prototype
 
@@ -205,22 +205,22 @@ UINT **ux_pictbridge_jobinfo_object_data_read(
     ULONG *actual_length)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, DPS istemcisinin hedef PictBridge yazıcısına yazdırmak için bir veri bloğu alması gerektiğinde çağrılır.
+Bu işlev, DPS istemcisinin hedef Pictbridge yazıcıya yazdırmak için bir veri bloğu almaları gerekende çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **PictBridge**: PictBridge sınıfı örneğine yönelik işaretçi.
-- **object_buffer**: nesne arabelleği işaretçisi
-- **object_offset**: veri bloğunu okumaya başlıyoruz
-- **object_length**: döndürülecek uzunluk
-- **actual_length**: gerçek uzunluk döndürüldü
+- **pictbridge:** pictbridge sınıf örneğinin işaretçisi.
+- **object_buffer:** Nesne arabelleği işaretçisi
+- **object_offset:** Veri bloğu okumaya başlamamız
+- **object_length:** Döndürülen uzunluk
+- **actual_length:** Gerçek uzunluk döndürüldü
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR**: (0x01) uygulama verileri alamadı.
+- **UX_SUCCESS:**(0x00) Bu işlem başarılı oldu.
+- **UX_ERROR:**(0x01) Uygulama verileri aamadı.
 
 ### <a name="example"></a>Örnek
 
@@ -242,11 +242,11 @@ UINT ux_demo_object_data_copy(UX_PICTBRIDGE *pictbridge,UCHAR *object_buffer,
 }
 ```
 
-## <a name="pictbridge-host-implementation"></a>PictBridge ana bilgisayar uygulama
+## <a name="pictbridge-host-implementation"></a>Pictbridge konak uygulaması
 
-PictBridge 'nin ana bilgisayar uygulanması istemciden farklıdır.
+Pictbridge'in konak uygulaması istemciden farklıdır.
 
-Bir PictBridge ana bilgisayar ortamında yapmanız gereken ilk şey, aşağıdaki örnekte gösterildiği gibi Pima sınıfını kaydetmeişdir:
+Pictbridge konak ortamında ilk olarak aşağıdaki örnekte olduğu gibi Pima sınıfını kaydetmek gerekir:
 
 ```C
 status = ux_host_stack_class_register(ux_system_host_class_pima_name,
@@ -255,60 +255,60 @@ if(status != UX_SUCCESS)
     return;
 ```
 
-Bu sınıf, USB ana bilgisayar yığını ve PictBridge katmanı arasında oturan genel PTP katmanıdır.
+Bu sınıf, USB konak yığını ile Pictbridge katmanı arasında bulunan genel PTP katmanıdır.
 
-Sonraki adım, yazdırma hizmetleri için PictBridge varsayılan değerlerini aşağıda gösterildiği gibi başlatmalıdır.
+Sonraki adım, yazdırma hizmetleri için Pictbridge varsayılan değerlerini aşağıdaki gibi başlatmaktır.
 
-| PictBridge alanı       | Değer                                  |
+| Pictbridge alanı       | Değer                                  |
 |------------------------|----------------------------------------|
-| DpsVersion [0]          | 0x00010000                             |
-| DpsVersion [1]          | 0x00010001                             |
-| DpsVersion [2]          | 0x00000000                             |
+| DpsVersion[0]          | 0x00010000                             |
+| DpsVersion[1]          | 0x00010001                             |
+| DpsVersion[2]          | 0x00000000                             |
 | VendorSpecificVersion  | 0x00010000                             |
 | PrintServiceAvailable  | 0x30010000                             |
-| Kaliteleri [0]           | UX_PICTBRIDGE_QUALITIES_DEFAULT        |
-| Kaliteleri [1]           | UX_PICTBRIDGE_QUALITIES_NORMAL         |
-| Kaliteleri [2]           | UX_PICTBRIDGE_QUALITIES_DRAFT          |
-| Kaliteleri [3]           | UX_PICTBRIDGE_QUALITIES_FINE           |
-| Kağıt boyutları [0]          | UX_PICTBRIDGE_PAPER_SIZES_DEFAULT      |
-| Kağıt boyutları [1]          | UX_PICTBRIDGE_PAPER_SIZES_4IX6I        |
-| Kağıt boyutları [2]          | UX_PICTBRIDGE_PAPER_SIZES_L            |
-| Kağıt boyutları [3]          | UX_PICTBRIDGE_PAPER_SIZES_2L           |
-| Kağıt boyutları [4]          | UX_PICTBRIDGE_PAPER_SIZES_LETTER       |
-| PaperTypes [0]          | UX_PICTBRIDGE_PAPER_TYPES_DEFAULT      |
-| PaperTypes [1]          | UX_PICTBRIDGE_PAPER_TYPES_PLAIN        |
-| PaperTypes [2]          | UX_PICTBRIDGE_PAPER_TYPES_PHOTO        |
-| Fıletypes [0]           | UX_PICTBRIDGE_FILE_TYPES_DEFAULT       |
-| Fıletypes [1]           | UX_PICTBRIDGE_FILE_TYPES_EXIF_JPEG     |
-| Fıletypes [2]           | UX_PICTBRIDGE_FILE_TYPES_JFIF          |
-| Fıletypes [3]           | UX_PICTBRIDGE_FILE_TYPES_DPOF          |
-| Tarih baskılar [0]          | UX_PICTBRIDGE_DATE_PRINTS_DEFAULT      |
-| Tarih baskılar [1]          | UX_PICTBRIDGE_DATE_PRINTS_OFF          |
-| Tarih baskılar [2]          | UX_PICTBRIDGE_DATE_PRINTS_ON           |
-| Filenamebaskılar [0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
-| Dosyaadı[1] yazdırılıyor      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
-| Filenamebaskılar [2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
-| Imageoptimize [0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
-| Imageoptimize [1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
-| Imageoptimize [2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
-| Düzenler [0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
-| [1] düzenleri             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
-| [2] düzenleri             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
-| [3] düzenleri             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
-| Sabit boyutlar [0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
-| Sabit boyutlar [1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
-| Sabit boyutlar [2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
-| Sabit boyutlar [3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
-| Sabit boyutlar [4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
-| Sabit boyutlar [5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
-| Sabit boyutlar [6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
-| Croppings [0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
-| Croppings [1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
-| Croppings [2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
+| Kaliteler[0]           | UX_PICTBRIDGE_QUALITIES_DEFAULT        |
+| Kaliteler[1]           | UX_PICTBRIDGE_QUALITIES_NORMAL         |
+| Kaliteler[2]           | UX_PICTBRIDGE_QUALITIES_DRAFT          |
+| Kaliteler[3]           | UX_PICTBRIDGE_QUALITIES_FINE           |
+| PaperSizes[0]          | UX_PICTBRIDGE_PAPER_SIZES_DEFAULT      |
+| PaperSizes[1]          | UX_PICTBRIDGE_PAPER_SIZES_4IX6I        |
+| PaperSizes[2]          | UX_PICTBRIDGE_PAPER_SIZES_L            |
+| PaperSizes[3]          | UX_PICTBRIDGE_PAPER_SIZES_2L           |
+| PaperSizes[4]          | UX_PICTBRIDGE_PAPER_SIZES_LETTER       |
+| PaperTypes[0]          | UX_PICTBRIDGE_PAPER_TYPES_DEFAULT      |
+| PaperTypes[1]          | UX_PICTBRIDGE_PAPER_TYPES_PLAIN        |
+| PaperTypes[2]          | UX_PICTBRIDGE_PAPER_TYPES_PHOTO        |
+| FileTypes[0]           | UX_PICTBRIDGE_FILE_TYPES_DEFAULT       |
+| FileTypes[1]           | UX_PICTBRIDGE_FILE_TYPES_EXIF_JPEG     |
+| FileTypes[2]           | UX_PICTBRIDGE_FILE_TYPES_JFIF          |
+| FileTypes[3]           | UX_PICTBRIDGE_FILE_TYPES_DPOF          |
+| DatePrints[0]          | UX_PICTBRIDGE_DATE_PRINTS_DEFAULT      |
+| DatePrints[1]          | UX_PICTBRIDGE_DATE_PRINTS_OFF          |
+| DatePrints[2]          | UX_PICTBRIDGE_DATE_PRINTS_ON           |
+| FileNamePrints[0]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_DEFAULT |
+| FileNamePrints[1]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_OFF     |
+| FileNamePrints[2]      | UX_PICTBRIDGE_FILE_NAME_PRINTS_ON      |
+| ImageOptimizes[0]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_DEFAULT  |
+| ImageOptimizes[1]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_OFF      |
+| ImageOptimizes[2]      | UX_PICTBRIDGE_IMAGE_OPTIMIZES_ON       |
+| Düzenler[0]             | UX_PICTBRIDGE_LAYOUTS_DEFAULT          |
+| Düzenler[1]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDER      |
+| Düzenler[2]             | UX_PICTBRIDGE_LAYOUTS_INDEX_PRINT      |
+| Düzenler[3]             | UX_PICTBRIDGE_LAYOUTS_1_UP_BORDERLESS  |
+| FixedSizes[0]          | UX_PICTBRIDGE_FIXED_SIZE_DEFAULT       |
+| FixedSizes[1]          | UX_PICTBRIDGE_FIXED_SIZE_35IX5I        |
+| FixedSizes[2]          | UX_PICTBRIDGE_FIXED_SIZE_4IX6I         |
+| FixedSizes[3]          | UX_PICTBRIDGE_FIXED_SIZE_5IX7I         |
+| FixedSizes[4]          | UX_PICTBRIDGE_FIXED_SIZE_7CMX10CM      |
+| FixedSizes[5]          | UX_PICTBRIDGE_FIXED_SIZE_LETTER        |
+| FixedSizes[6]          | UX_PICTBRIDGE_FIXED_SIZE_A4            |
+| Kırpmalar[0]           | UX_PICTBRIDGE_CROPPINGS_DEFAULT        |
+| Kırpmalar[1]           | UX_PICTBRIDGE_CROPPINGS_OFF            |
+| Kırpmalar[2]           | UX_PICTBRIDGE_CROPPINGS_ON             |
 
-DPS ana bilgisayarının durum makinesi, boşta olarak ayarlanacak ve yeni bir yazdırma işini kabul etmeye hazırlanacaktır.
+DPS ana bilgisayarının durum makinesi Boşta olarak ayarlanır ve yeni yazdırma işini kabul etmeye hazır olur.
 
-Aşağıdaki örnekte gösterildiği gibi, PictBridge 'nin konak bölümü artık başlatılabilir.
+Pictbridge'in konak bölümü artık aşağıdaki örnekte olduğu gibi başlatabilirsiniz.
 
 ```C
 /* Activate the pictbridge dpshost. */
@@ -318,7 +318,7 @@ if (status != UX_SUCCESS)
     return;
 ```
 
-PictBridge ana bilgisayar işlevi, veriler yazdırılmaya hazırlandığı zaman bir geri çağırma gerektirir. Bu, aşağıdaki gibi, PictBridge ana bilgisayar yapısında bir işlev işaretçisi geçirerek gerçekleştirilir.
+Veriler yazdırılabilir hale geldiğinde Pictbridge konak işlevi için bir geri çağırma gerekir. Bu, pictbridge konak yapısında aşağıdaki gibi bir işlev işaretçisi geçerek yapılır.
 
 ```C
 /* Set a callback when an object is being received. */
@@ -344,22 +344,22 @@ UINT **ux_pictbridge_application_object_data_write(
     ULONG length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, DPS sunucusunun yerel yazıcıya yazdırmak için DPS istemcisinden bir veri bloğu alması gerektiğinde çağrılır.
+Bu işlev, DPS sunucusunun yerel yazıcıya yazdırmak için DPS istemciden bir veri bloğu almaları gerekirken çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **PictBridge**: PictBridge sınıfı örneğine yönelik işaretçi.
-- **object_buffer**: nesne arabelleği işaretçisi
-- **object_offset**: veri bloğunu okumaya başlıyoruz
-- **total_length**: tüm nesne uzunluğu
-- **uzunluk**: Bu arabelleğin uzunluğu
+- **pictbridge:** pictbridge sınıf örneğinin işaretçisi.
+- **object_buffer:** Nesne arabelleği işaretçisi
+- **object_offset:** Veri bloğu okumaya başlamamız
+- **total_length:** Nesnenin tüm uzunluğu
+- **length:** Bu arabelleğin uzunluğu
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS**: (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR**: (0x01) uygulama, verileri yazdıramadı.
+- **UX_SUCCESS:**(0x00) Bu işlem başarılı oldu.
+- **UX_ERROR:**(0x01) Uygulama verileri yazdıramdı.
 
 ### <a name="example"></a>Örnek
 

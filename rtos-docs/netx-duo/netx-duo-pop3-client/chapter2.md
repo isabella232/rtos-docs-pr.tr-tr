@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6ef4b6ba7aadf77ab95a4a12235eda847f32f3d5
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5a3cbded6224617571941f58ffb6a08bde9575eba8791544182fb8499c14bf43
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825846"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797206"
 ---
 # <a name="chapter-2---installation-and-use-of-netx-duo-pop3-client"></a>Bölüm 2-NetX Duo POP3 Istemcisinin yüklenmesi ve kullanımı
 

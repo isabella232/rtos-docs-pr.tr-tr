@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 703071cd5a1d0677a3e995fccfe35d8b1dbbd9f3
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 09add7bb20a8e104ba41583c0dbf4d574b8e6c9e6b3a3deed71d8fa8c8942ce2
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825967"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796489"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-http-services"></a>Bölüm 3-Azure RTOS NetX Duo HTTP hizmetlerinin açıklaması
 
@@ -78,7 +78,7 @@ UINT nx_http_client_create(NX_HTTP_CLIENT *client_ptr,
             ULONG window_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneğinde bir HTTP Istemci örneği oluşturur.
 
@@ -119,7 +119,7 @@ HTTP Istemci örneğini silme
 UINT nx_http_client_delete(NX_HTTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş bir HTTP Istemci örneğini siler.
 
@@ -159,7 +159,7 @@ UINT nx_http_client_get_start(NX_HTTP_CLIENT *client_ptr,
             ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulan HTTP Istemci örneğinde "kaynak" işaretçisi tarafından belirtilen kaynakla bir GET isteği oluşturmaya ve gönderilmeye çalışır. Bu yordam NX_SUCCESS döndürürse, uygulama, istenen kaynak içeriğine karşılık gelen veri paketlerini almak için *nx_http_client_get_packet* için birden fazla çağrı yapabilir.
 
@@ -240,7 +240,7 @@ UINT nx_http_client_get_start_extended(NX_HTTP_CLIENT *client_ptr,
             ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulan HTTP Istemci örneğinde "kaynak" işaretçisi tarafından belirtilen kaynakla bir GET isteği oluşturmaya ve gönderilmeye çalışır. Bu yordam NX_SUCCESS döndürürse, uygulama, istenen kaynak içeriğine karşılık gelen veri paketlerini almak için *nx_http_client_get_packet* için birden fazla çağrı yapabilir.
 
@@ -317,7 +317,7 @@ UINT nxd_http_client_get_start(NX_HTTP_CLIENT *client_ptr,
                 CHAR *input_ptr, UINT input_size, CHAR *username, CHAR *password, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulan HTTP Istemci örneğinde "kaynak" işaretçisi tarafından belirtilen kaynakla bir GET isteği oluşturmaya ve gönderilmeye çalışır. Bu, IPv4 veya IPv6 ağına bağlanmak için kullanılabilir. Bu yordam NX_SUCCESS döndürürse, uygulama, istenen kaynak içeriğine karşılık gelen veri paketlerini almak için *nx_http_client_get_packet* için birden fazla çağrı yapabilir.
 
@@ -401,46 +401,46 @@ UINT nxd_http_client_get_start_extended(NX_HTTP_CLIENT *client_ptr,
                 password_length, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulan HTTP Istemci örneğinde "kaynak" işaretçisi tarafından belirtilen kaynakla bir GET isteği oluşturmaya ve gönderilmeye çalışır. Bu, IPv4 veya IPv6 ağına bağlanmak için kullanılabilir. Bu yordam NX_SUCCESS döndürürse, uygulama, istenen kaynak içeriğine karşılık gelen veri paketlerini almak için *nx_http_client_get_packet* için birden fazla çağrı yapabilir.
+Bu hizmet, daha önce oluşturulan HTTP İstemcisi örneğinde "kaynak" işaretçisi tarafından belirtilen kaynakla bir GET isteği oluşturma ve göndermeye çalışır. IPv4 veya IPv6 ağına bağlanmak için kullanılabilir. Bu yordam NX_SUCCESS döndürürse, uygulama istenen kaynak *içeriğine karşılık gelen veri paketlerini nx_http_client_get_packet* için birden çok çağrı nx_http_client_get_packet çağrısında olabilir.
 
 > [!NOTE]
-> Kaynak dizesi yerel bir dosyaya başvurabilir, örneğin ``` “/index.htm” ``` başka BIR URL 'ye başvurabilir, ÖRNEĞIN ```http://abc.website.com/index.htm``` http sunucusu, başvuran Get isteklerini desteklediğini gösteriyorsa.
+> Kaynak dizesi, örneğin yerel bir dosyaya veya başka bir URL'ye (örneğin, HTTP Sunucusu başvuran GET isteklerini desteklediğini gösteriyorsa) ``` “/index.htm” ``` ```http://abc.website.com/index.htm``` başvurabilirsiniz.
 
-Bu hizmet *nxd_http_client_get_start ()* yerini alır. Çağıranın kaynak, Kullanıcı adı ve parola uzunluğunu belirtmesini gerektirir.
+Bu hizmet, *nxd_http_client_get_start() ile değiştirilir.* Çağıranın kaynağın uzunluğunu, kullanıcı adını ve parolayı belirtmesini gerektirir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **Server_ip** HTTP sunucusunun IP adresi.
- - **kaynak** İstenen kaynak için URL dizesine yönelik işaretçi.
- - **resource_length** İstenen kaynak için URL dizesi uzunluğu.
- - **input_ptr** GET isteği için ek verilere yönelik işaretçi. Bu isteğe bağlıdır. Geçerliyse, belirtilen giriş iletinin içerik alanına yerleştirilir ve GET işlemi yerine bir POST kullanılır.
- - **input_size** İsteğe bağlı ek girişte tarafından işaret edilen bayt sayısı ```input_ptr``` .
- - **Kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adına işaretçi.
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **Server_ip** HTTP Sunucusunun IP adresi.
+ - **kaynak** İstenen kaynak için URL dizesi işaretçisi.
+ - **resource_length** İstenen kaynak için URL dizesinin uzunluğu.
+ - **input_ptr** GET isteği için ek verilerin işaretçisi. Bu isteğe bağlıdır. Geçerli ise, belirtilen giriş iletinin içerik alanına yerleştirilir ve GET işlemi yerine post kullanılır.
+ - **input_size** tarafından işaret eden isteğe bağlı ek girişte bayt ```input_ptr``` sayısı.
+ - **kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adının işaretçisi.
  - **username_length** Kimlik doğrulaması için isteğe bağlı kullanıcı adının uzunluğu.
  - **parola** Kimlik doğrulaması için isteğe bağlı parola işaretçisi.
- - **password_length** Kimlik doğrulaması için isteğe bağlı parolanın uzunluğu.
- - **wait_option** Hizmetin HTTP Istemcisi alma başlangıcını işlemek için dahili olarak bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **password_length** Kimlik doğrulaması için isteğe bağlı parola uzunluğu.
+ - **wait_option** Hizmetin HTTP İstemcisi'nin başlamasını işlemesi için ne kadar süre bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (0x1-0xFFFFFFFE) seçildiğinde, HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer saat sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) GET isteği başarıyla gönderildi
- - **NX_HTTP_PASSWORD_TOO_LONG** (0xf0) parolası arabellek boyutunu aşıyor
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi kullanılamıyor
- - **NX_HTTP_FAILED** (0xE2) geçersiz paket parametreleri.
- - **NX_HTTP_AUTHENTICATION_ERROR** (0xeb) geçersiz ad veya parola
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Get isteği başarıyla gönderildi
+ - **NX_HTTP_PASSWORD_TOO_LONG** (0xF0) Parola arabellek boyutunu aşıyor
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi hazır değil
+ - **NX_HTTP_FAILED** (0xE2) Geçersiz paket parametreleri.
+ - **NX_HTTP_AUTHENTICATION_ERROR** (0xEB) Geçersiz ad veya parola
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -474,7 +474,7 @@ status =  nxd_http_client_get_start_extended(&my_client, server_ip_address,
 
 ## <a name="nx_http_client_get_packet"></a>nx_http_client_get_packet
 
-Sonraki kaynak veri paketini al
+Sonraki kaynak veri paketini alın
 
 ### <a name="prototype"></a>Prototype
 
@@ -484,32 +484,32 @@ UINT nx_http_client_get_packet(NX_HTTP_CLIENT *client_ptr,
                                wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceki *nx_http_client_get_start* çağrısı tarafından istenen kaynağın sonraki içerik paketini alır. NX_HTTP_GET_DONE geri dönüş durumu alınana kadar bu yordama yönelik ardışık çağrılar yapılmalıdır.
+Bu hizmet, önceki nx_http_client_get_start çağrısı tarafından istenen kaynağın sonraki *içerik nx_http_client_get_start* alınır. Bu yordama yapılan başarılı çağrılar, uygulamanın dönüş durumu alınana NX_HTTP_GET_DONE gerekir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **packet_ptr** Kısmi kaynak içeriği içeren paket işaretçisi hedefi.
- - **wait_option** Hizmetin HTTP Istemcisi alma paketi için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **packet_ptr** Kısmi kaynak içeriği içeren paket işaretçisi için hedef.
+ - **wait_option** Hizmetin HTTP İstemcisi paket almak için ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (0x1-0xFFFFFFFE) seçildiğinde, HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer saat sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http istemcisi Get paketi.
- - **NX_HTTP_GET_DONE** (0xEC) http istemcisi Get paketi bitti
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi Get modunda değil.
- - **NX_HTTP_BAD_PACKET_LENGTH** (0faksla) geçersiz paket uzunluğu
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı HTTP İstemcisi get paketi.
+ - **NX_HTTP_GET_DONE** (0xEC) HTTP İstemcisi get paketi bitti
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi get modunda değil.
+ - **NX_HTTP_BAD_PACKET_LENGTH** (0xED) Geçersiz paket uzunluğu
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -539,41 +539,41 @@ UINT nx_http_client_put_start(NX_HTTP_CLIENT *client_ptr,
                                ULONG total_bytes, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP adresindeki HTTP sunucusuna belirtilen kaynağa sahip bir PUT isteği gönderme girişiminde bulunur. Bu yordam başarılı olursa, uygulama kodu kaynak içeriğini HTTP sunucusuna göndermek için *nx_http_client_put_packet ()* yordamına art arda çağrılar yapmalıdır.
+Bu hizmet, belirtilen kaynağa sahip bir PUT isteğini sağlanan IP adresinden HTTP Sunucusuna göndermeye çalışır. Bu yordam başarılı olursa, kaynak içeriklerini HTTP Sunucusuna göndermek için uygulama kodu *nx_http_client_put_packet() yordamına* başarılı çağrılar göndermektedir.
 
 > [!NOTE]
-> Kaynak dizesi yerel bir dosyaya başvurabilir, örneğin ``` “/index.htm” ``` başka BIR URL 'ye başvurabilir, örneğin ```http://abc.website.com/index.htm``` , http sunucusu başvuran put isteklerini desteklediğini gösteriyorsa.
+> Kaynak dizesi, örneğin yerel bir dosyaya veya başka bir URL'ye (örneğin, HTTP Sunucusu başvuran PUT isteklerini desteklediğini gösteriyorsa) ``` “/index.htm” ``` ```http://abc.website.com/index.htm``` başvurabilirsiniz.
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nxd_http_client_put_start_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nxd_http_client_put_start_extended() nxd_http_client_put_start_extended.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **ip_address** HTTP sunucusunun IP adresi.
- - **kaynak** İstenen kaynak için URL dizesine yönelik işaretçi.
- - **Kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adına işaretçi.
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **ip_address** HTTP Sunucusunun IP adresi.
+ - **kaynak** İstenen kaynak için URL dizesi işaretçisi.
+ - **kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adının işaretçisi.
  - **parola** Kimlik doğrulaması için isteğe bağlı parola işaretçisi.
- - **total_bytes** Gönderilen toplam kaynak bayt sayısı. *Nx_http_client_put_packet* sonraki çağrılar aracılığıyla gönderilen tüm paketlerin toplam uzunluğunun bu değere eşit olması gerektiğini unutmayın.
- - **wait_option** Hizmetin HTTP Istemcisi PUT başlatması için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **total_bytes** Gönderilen kaynağın toplam bayt sayısı. Sonraki çağrılar aracılığıyla gönderilen tüm paketlerin birleşik uzunluğunun nx_http_client_put_packet *bu* değere eşit olması gerektiğini unutmayın.
+ - **wait_option** Hizmetin HTTP İstemcisi PUT başlatması için ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer seçilmesi (0x1-0xFFFFFFFE), HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı sayısını belirtir
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) PUT isteği başarıyla gönderildi
- - **NX_HTTP_USERNAME_TOO_LONG** (0xf1) Kullanıcı adı arabellek için çok büyük
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi kullanılamıyor
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_SIZE_ERROR (0x09) Toplam kaynak boyutu geçersiz
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Put isteği başarıyla gönderildi
+ - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) Kullanıcı Adı arabellek için fazla büyük
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi hazır değil
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_SIZE_ERROR (0x09) Kaynağın toplam boyutu geçersiz
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -602,44 +602,44 @@ UINT nx_http_client_put_start_extended(NX_HTTP_CLIENT *client_ptr,
            UINT password_length, ULONG total_bytes, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP adresindeki HTTP sunucusuna belirtilen kaynağa sahip bir PUT isteği gönderme girişiminde bulunur. Bu yordam başarılı olursa, uygulama kodu kaynak içeriğini HTTP sunucusuna göndermek için *nx_http_client_put_packet ()* yordamına art arda çağrılar yapmalıdır.
+Bu hizmet, belirtilen kaynağa sahip bir PUT isteğini sağlanan IP adresinden HTTP Sunucusuna göndermeye çalışır. Bu yordam başarılı olursa, kaynak içeriklerini HTTP Sunucusuna göndermek için uygulama kodu *nx_http_client_put_packet() yordamına* başarılı çağrılar göndermektedir.
 
 > [!NOTE]
-> Kaynak dizesi yerel bir dosyaya başvurabilir, örneğin ``` “/index.htm” ``` başka BIR URL 'ye başvurabilir, örneğin ```http://abc.website.com/index.htm``` , http sunucusu başvuran put isteklerini desteklediğini gösteriyorsa.
+> Kaynak dizesi, örneğin yerel bir dosyaya veya başka bir URL'ye (örneğin, HTTP Sunucusu başvuran PUT isteklerini desteklediğini gösteriyorsa) ``` “/index.htm” ``` ```http://abc.website.com/index.htm``` başvurabilirsiniz.
 
-Bu hizmet *nx_http_client_put_start ()* yerini alır. Çağıranın kaynak, Kullanıcı adı ve parola uzunluğunu belirtmesini gerektirir.
+Bu hizmet, *nx_http_client_put_start() ile değiştirilir.* Çağıranın kaynağın uzunluğunu, kullanıcı adını ve parolayı belirtmesini gerektirir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **ip_address** HTTP sunucusunun IP adresi.
- - **kaynak** İstenen kaynak için URL dizesine yönelik işaretçi.
- - **resource_length** Sunucuya gönderilen kaynağın URL dizesi uzunluğu.
- - **Kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adına işaretçi.
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **ip_address** HTTP Sunucusunun IP adresi.
+ - **kaynak** İstenen kaynak için URL dizesi işaretçisi.
+ - **resource_length** Sunucuya göndermek istediğiniz kaynağın URL dizesinin uzunluğu.
+ - **kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adının işaretçisi.
  - **username_length** Kimlik doğrulaması için isteğe bağlı kullanıcı adının uzunluğu.
  - **parola** Kimlik doğrulaması için isteğe bağlı parola işaretçisi.
- - **password_length** Kimlik doğrulaması için isteğe bağlı parolanın uzunluğu.
- - **total_bytes** Gönderilen toplam kaynak bayt sayısı. *Nx_http_client_put_packet* sonraki çağrılar aracılığıyla gönderilen tüm paketlerin toplam uzunluğunun bu değere eşit olması gerektiğini unutmayın.
- - **wait_option** Hizmetin HTTP Istemcisi PUT başlatması için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **password_length** Kimlik doğrulaması için isteğe bağlı parola uzunluğu.
+ - **total_bytes** Gönderilen kaynağın toplam bayt sayısı. Sonraki çağrılar aracılığıyla gönderilen tüm paketlerin birleşik uzunluğunun nx_http_client_put_packet *bu* değere eşit olması gerektiğini unutmayın.
+ - **wait_option** Hizmetin HTTP İstemcisi PUT başlatması için ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (0x1-0xFFFFFFFE) seçildiğinde, HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer saat sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) PUT isteği başarıyla gönderildi
- - **NX_HTTP_USERNAME_TOO_LONG** (0xf1) Kullanıcı adı arabellek için çok büyük
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi kullanılamıyor
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_SIZE_ERROR (0x09) Toplam kaynak boyutu geçersiz
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Put isteği başarıyla gönderildi
+ - **NX_HTTP_USERNAME_TOO_LONG** (0xF1) Kullanıcı Adı arabellek için fazla büyük
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi hazır değil
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_SIZE_ERROR (0x09) Kaynağın toplam boyutu geçersiz
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -657,7 +657,7 @@ status =  nx_http_client_put_start_extended(&my_client, IP_ADDRESS(1, 2, 3, 5),
 
 ## <a name="nxd_http_client_put_start"></a>nxd_http_client_put_start
 
-HTTP PUT isteği (IPv4 veya IPv6) başlatma
+HTTP PUT isteği başlatma (IPv4 veya IPv6)
 
 ### <a name="prototype"></a>Prototype
 
@@ -668,42 +668,42 @@ UINT nxd_http_client_put_start(NX_HTTP_CLIENT *client_ptr,
                                ULONG total_bytes, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen kaynağı HTTP sunucusunda IPv6 üzerinden sağlanan IP adresine (gönderme) (Gönderen) yüklemeye çalışır. Bu yordam başarılı olursa, uygulama kodu kaynak içeriğini HTTP sunucusuna göndermek için *nx_http_client_put_packet ()* yordamına art arda çağrılar yapmalıdır.
+Bu hizmet, belirtilen kaynağı IPv6 üzerinden sağlanan IP adresinde HTTP Sunucusu'nda PUT (göndermeye) çalışır. Bu yordam başarılı olursa, kaynak içeriklerini HTTP Sunucusuna göndermek için uygulama kodu *nx_http_client_put_packet() yordamına* başarılı çağrılar göndermektedir.
 
 > [!NOTE]
-> Kaynak dizesi yerel bir dosyaya başvurabilir, örneğin ``` “/index.htm” ``` başka BIR URL 'ye başvurabilir, örneğin ```http://abc.website.com/index.htm``` , http sunucusu başvuran put isteklerini desteklediğini gösteriyorsa.
+> Kaynak dizesi, örneğin yerel bir dosyaya veya başka bir URL'ye (örneğin, HTTP Sunucusu başvuran PUT isteklerini desteklediğini gösteriyorsa) ``` “/index.htm” ``` ```http://abc.website.com/index.htm``` başvurabilirsiniz.
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nxd_http_client_put_start_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nxd_http_client_put_start_extended() nxd_http_client_put_start_extended.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **server_ip** HTTP sunucusunun IP adresi.
- - **kaynak** Sunucuya gönderilen kaynağın URL dizesi işaretçisi.
- - **Kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adına işaretçi.
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **server_ip** HTTP Sunucusunun IP adresi.
+ - **kaynak** Kaynağın Sunucuya göndermesi için URL dizesinin işaretçisi.
+ - **kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adının işaretçisi.
  - **parola** Kimlik doğrulaması için isteğe bağlı parola işaretçisi.
- - **total_bytes** Gönderilen toplam kaynak bayt sayısı. *Nx_http_client_put_packet* sonraki çağrılar aracılığıyla gönderilen tüm paketlerin toplam uzunluğunun bu değere eşit olması gerektiğini unutmayın.
- - **wait_option** Hizmetin HTTP Istemcisi PUT başlatması için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **total_bytes** Gönderilen kaynağın toplam bayt sayısı. Sonraki çağrılar aracılığıyla gönderilen tüm paketlerin birleşik uzunluğunun nx_http_client_put_packet *bu* değere eşit olması gerektiğini unutmayın.
+ - **wait_option** Hizmetin HTTP İstemcisi PUT başlatması için ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (0x1-0xFFFFFFFE) seçildiğinde, HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer saat sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) http istemcisi PUT isteği başarıyla gönderildi
- - **NX_HTTP_ERROR** (0xE0) http istemcisi iç hatası
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi kullanılamıyor
- - **NX_HTTP_FAILED** (0xE2) http sunucusuyla ILETIŞIM kurarken http istemci hatası
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_SIZE_ERROR (0x09) Toplam kaynak boyutu geçersiz
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) HTTP İstemcisi PUT isteği başarıyla gönderildi
+ - **NX_HTTP_ERROR** (0xE0) HTTP İstemcisi iç hatası
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi hazır değil
+ - **NX_HTTP_FAILED** (0xE2) HTTP Sunucusu ile iletişim kurarken HTTP İstemcisi hatası
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_SIZE_ERROR (0x09) Kaynağın toplam boyutu geçersiz
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -734,7 +734,7 @@ status =  nxd_http_client_put_start(&my_client, &server_ip_address,
 
 ## <a name="nxd_http_client_put_start_extended"></a>nxd_http_client_put_start_extended
 
-HTTP PUT isteği (IPv4 veya IPv6) başlatma
+HTTP PUT isteği başlatma (IPv4 veya IPv6)
 
 ### <a name="prototype"></a>Prototype
 
@@ -745,39 +745,39 @@ UINT nxd_http_client_put_start_extended(NX_HTTP_CLIENT *client_ptr,
           UINT password_length, ULONG total_bytes, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen kaynağı HTTP sunucusunda IPv6 üzerinden sağlanan IP adresine (gönderme) (Gönderen) yüklemeye çalışır. Bu yordam başarılı olursa, uygulama kodu kaynak içeriğini HTTP sunucusuna göndermek için *nx_http_client_put_packet ()* yordamına art arda çağrılar yapmalıdır.
+Bu hizmet, belirtilen kaynağı IPv6 üzerinden sağlanan IP adresinde HTTP Sunucusu'nda PUT (göndermeye) çalışır. Bu yordam başarılı olursa, kaynak içeriklerini HTTP Sunucusuna göndermek için uygulama kodu *nx_http_client_put_packet() yordamına* başarılı çağrılar göndermektedir.
 
 > [!NOTE]
-> Kaynak dizesi yerel bir dosyaya başvurabilir, örneğin ``` “/index.htm” ``` başka BIR URL 'ye başvurabilir, örneğin ```http://abc.website.com/index.htm``` , http sunucusu başvuran put isteklerini desteklediğini gösteriyorsa.
+> Kaynak dizesi, örneğin yerel bir dosyaya veya başka bir URL'ye (örneğin, HTTP Sunucusu başvuran PUT isteklerini desteklediğini gösteriyorsa) ``` “/index.htm” ``` ```http://abc.website.com/index.htm``` başvurabilirsiniz.
 
-Bu hizmet *nxd_http_client_put_start ()* yerini alır. Çağıranın kaynak, Kullanıcı adı ve parola uzunluğunu belirtmesini gerektirir.
+Bu hizmet, *nxd_http_client_put_start() ile değiştirilir.* Çağıranın kaynağın uzunluğunu, kullanıcı adını ve parolayı belirtmesini gerektirir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **client_ptr** HTTP Istemci denetim bloğu işaretçisi.
- - **ip_address** HTTP sunucusunun IP adresi.
- - **kaynak** İstenen kaynak için URL dizesine yönelik işaretçi.
- - **resource_length** Sunucuya gönderilen kaynağın URL dizesi uzunluğu.
- - **Kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adına işaretçi.
+ - **client_ptr** HTTP İstemcisi denetim bloğu işaretçisi.
+ - **ip_address** HTTP Sunucusunun IP adresi.
+ - **kaynak** İstenen kaynak için URL dizesi işaretçisi.
+ - **resource_length** Sunucuya göndermek istediğiniz kaynağın URL dizesinin uzunluğu.
+ - **kullanıcı adı** Kimlik doğrulaması için isteğe bağlı kullanıcı adının işaretçisi.
  - **username_length** Kimlik doğrulaması için isteğe bağlı kullanıcı adının uzunluğu.
  - **parola** Kimlik doğrulaması için isteğe bağlı parola işaretçisi.
- - **password_length** Kimlik doğrulaması için isteğe bağlı parolanın uzunluğu.
- - **total_bytes** Gönderilen toplam kaynak bayt sayısı. *Nx_http_client_put_packet* sonraki çağrılar aracılığıyla gönderilen tüm paketlerin toplam uzunluğunun bu değere eşit olması gerektiğini unutmayın.
- - **wait_option** Hizmetin HTTP Istemcisi PUT başlatması için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **zaman aşımı değeri** (0x00000001 üzerinden 0xfffffffe)
-    - **TX_WAIT_FOREVER** (0xffffffff)
+ - **password_length** Kimlik doğrulaması için isteğe bağlı parola uzunluğu.
+ - **total_bytes** Gönderilen kaynağın toplam bayt sayısı. Sonraki çağrılar aracılığıyla gönderilen tüm paketlerin birleşik uzunluğunun nx_http_client_put_packet *bu* değere eşit olması gerektiğini unutmayın.
+ - **wait_option** Hizmetin HTTP İstemcisi PUT başlatması için ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **zaman out değeri** (0x00000001 0xFFFFFFFE)
+    - **TX_WAIT_FOREVER** (0xFFFFFFFF)
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının HTTP sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, HTTP Sunucusu i isteği yanıtlayana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (0x1-0xFFFFFFFE) seçildiğinde, HTTP sunucusu yanıtı beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (0x1-0xFFFFFFFE) seçmek, HTTP Sunucusu yanıtını beklerken askıya alınan süreölçer saat sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) http istemcisi PUT isteği başarıyla gönderildi
- - **NX_HTTP_ERROR** (0xE0) http istemcisi iç hatası
- - **NX_HTTP_NOT_READY** (0xea) http istemcisi kullanılamıyor
+ - **NX_SUCCESS** (0x00) HTTP İstemcisi PUT isteği başarıyla gönderildi
+ - **NX_HTTP_ERROR** (0xE0) HTTP İstemcisi iç hatası
+ - **NX_HTTP_NOT_READY** (0xEA) HTTP İstemcisi hazır değil
  - NX_HTTP_FAILED (0xE2) http sunucusuyla iletişim kurarken HTTP Istemci hatası
  - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
  - NX_SIZE_ERROR (0x09) Toplam kaynak boyutu geçersiz
@@ -824,7 +824,7 @@ UINT nx_http_client_put_packet(NX_HTTP_CLIENT *client_ptr,
                                ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kaynak içeriğinin bir sonraki paketini HTTP sunucusuna gönderilmeye çalışır.
 
@@ -881,7 +881,7 @@ UINT nx_http_client_set_connect_port(NX_HTTP_CLIENT *client_ptr,
                                       UINT port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, HTTP sunucusuna, çalışma zamanında belirtilen bağlantı noktasına bağlanırken bağlantı noktasını değiştirir. Aksi takdirde, bağlantı noktası varsayılan olarak 80 ' dir. Bunun *nx_http_client_get_start ()* ve *nx_http_client_put_start ()* öncesinde ÇAĞRıLMASı gerekir, örneğin http istemcisi sunucusuyla bağlanır.
 
@@ -925,7 +925,7 @@ UINT nx_http_server_cache_info_callback_set(NX_HTTP_SERVER *server_ptr,
                                                       *date));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen kaynağın yaş ve son değiştirilme tarihini elde etmek için çağrılan geri çağırma hizmetini ayarlar.
 
@@ -974,7 +974,7 @@ UINT nx_http_server_callback_data_send(NX_HTTP_SERVER *server_ptr,
                                        ULONG data_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan paketteki verileri uygulamanın geri arama yordamından gönderir. Bu, genellikle GET/POST istekleri ile ilişkili dinamik verileri göndermek için kullanılır.
 
@@ -1043,7 +1043,7 @@ UINT nx_http_server_callback_generate_response_header(
                         CHAR *content_type, CHAR* additional_header);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, HTTP sunucusu Istemci GET, put ve DELETE isteklerine yanıt verdiğinde iç işlevi *_nx_http_server_generate_response_header* çağırır. HTTP sunucusu uygulaması Istemciye yanıtını tasarlarken HTTP sunucusu geri çağırma işlevlerinde kullanılmak üzere tasarlanmıştır.
 
@@ -1057,16 +1057,16 @@ Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nxd_http_server_c
     - **NX_HTTP_STATUS_OK**
     - **NX_HTTP_STATUS_MODIFIED**
     - **NX_HTTP_STATUS_INTERNAL_ERROR**
- - **CONTENT_LENGTH** İçerik boyutu (bayt)
- - **content_type** HTTP türü, örneğin "metin/düz"
- - **additional_header** Ek üst bilgi metnine yönelik işaretçi
+ - **content_length** İçeriğin bayt cinsinden boyutu
+ - **content_type** HTTP türü ( "text/plain" gibi)
+ - **additional_header** Ek üst bilgi metni işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarıyla oluşturuldu üst bilgisi
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Başarıyla oluşturulan üst bilgi
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1139,7 +1139,7 @@ sizeof(temp_string));
 
 ## <a name="nx_http_server_callback_generate_response_header_extended"></a>nx_http_server_callback_generate_response_header_extended
 
-Geri arama işlevinde yanıt üst bilgisi oluşturma
+Geri çağırma işlevinde yanıt üst bilgisi oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1154,33 +1154,33 @@ UINT nx_http_server_callback_generate_response_header_extended(
                         UINT additional_header_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, HTTP sunucusu Istemci GET, put ve DELETE isteklerine yanıt verdiğinde *_nx_http_server_generate_response_header ()* iç işlevini çağırır. HTTP sunucusu uygulaması Istemciye yanıtını tasarlarken HTTP sunucusu geri çağırma işlevlerinde kullanılmak üzere tasarlanmıştır.
+HTTP sunucusu İstemcinin get, put ve delete isteklerine yanıt vermesinde bu hizmet *_nx_http_server_generate_response_header()* iç işlevini çağırıyor. HTTP sunucusu uygulaması İstemciye yanıtını tasarlarken HTTP sunucusu geri çağırma işlevlerinde kullanılmak üzere tasarlanmıştır.
 
-Bu hizmet *nx_http_server_callback_generate_response_header ()* yerini alır. Bu sürüm, geri çağırma işlevine ek uzunluk bilgileri sağlar.
+Bu hizmet, *nx_http_server_callback_generate_response_header() ile değiştirilir.* Bu sürüm, geri çağırma işlevine ek uzunluk bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
  - **packet_pptr** İleti için ayrılmış bir paket işaretçisi işaretçisi
- - **status_code** Kaynağın durumunu belirtin. Örnekler:
+ - **status_code** Kaynağın durumunu gösterir. Örnekler:
     - **NX_HTTP_STATUS_OK**
     - **NX_HTTP_STATUS_MODIFIED**
     - **NX_HTTP_STATUS_INTERNAL_ERROR**
- - **status_code** Durum kodu uzunluğu
- - **CONTENT_LENGTH** İçerik boyutu (bayt)
- - **content_type** HTTP türü, örneğin "metin/düz"
+ - **status_code** Durum kodunun uzunluğu
+ - **content_length** İçeriğin bayt cinsinden boyutu
+ - **content_type** HTTP türü ( "text/plain" gibi)
  - **content_type_length** HTTP türünün uzunluğu
- - **additional_header** Ek üst bilgi metnine yönelik işaretçi
+ - **additional_header** Ek üst bilgi metni işaretçisi
  - **additional_header_length** Ek üst bilgi metninin uzunluğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarıyla oluşturuldu üst bilgisi
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Başarıyla oluşturulan üst bilgi
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1254,7 +1254,7 @@ sizeof(temp_string));
 
 ## <a name="nx_http_server_callback_packet_send"></a>nx_http_server_callback_packet_send
 
-Geri çağırma işlevinden HTTP paketi gönder
+Geri çağırma işlevinden HTTP paketi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1263,25 +1263,25 @@ UINT nx_http_server_callback_packet_send(NX_HTTP_SERVER *server_ptr,
                                          NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, HTTP geri çağrısından gelen bir HTTP Sunucu yanıtı gönderir. HTTP sunucusu, paketi NX_HTTP_SERVER _TIMEOUT_SEND gönderecek. HTTP üst bilgisi ve verilerinin pakete eklenmesi gerekir. Dönüş durumu bir hata gösteriyorsa, HTTP uygulaması paketi serbest bırakmalıdır.
+Bu hizmet, bir HTTP geri çağırmadan tam bir HTTP sunucusu yanıtı gönderir. HTTP sunucusu paketi NX_HTTP_SERVER _TIMEOUT_SEND. HTTP üst bilgisi ve verileri pakete ek gerekir. Dönüş durumu bir hata gösteriyorsa, HTTP uygulamasının paketi serbest bırakması gerekir.
 
-Geri çağırma NX_HTTP_CALLBACK_COMPLETED döndürmelidir.
+Geri çağırma, geri çağırmayı NX_HTTP_CALLBACK_COMPLETED.
 
-Daha ayrıntılı bir örnek için bkz. *nx_http_server_callback_generate_response_header ()* .
+Daha ayrıntılı nx_http_server_callback_generate_response_header için bkz. *nx_http_server_callback_generate_response_header()* .
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
- - **packet_ptr** Gönderilmek üzere paket işaretçisi
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
+ - **packet_ptr** Göndermek için paket işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) sunucu paketi başarıyla gönderildi
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Sunucu paketi başarıyla gönderildi
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1304,7 +1304,7 @@ Daha ayrıntılı bir örnek için bkz. *nx_http_server_callback_generate_respon
 
 ## <a name="nx_http_server_callback_response_send"></a>nx_http_server_callback_response_send
 
-Geri çağırma işlevinden yanıt gönder
+Geri çağırma işlevinden yanıt gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1315,27 +1315,27 @@ UINT nx_http_server_callback_response_send(NX_HTTP_SERVER *server_ptr,
                                            CHAR additional_info);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan yanıt bilgilerini uygulamanın geri arama yordamından gönderir. Bu, genellikle GET/POST istekleri ile ilişkili özel yanıtları göndermek için kullanılır.
+Bu hizmet, uygulamanın geri çağırma yordamından sağlanan yanıt bilgilerini gönderir. Bu genellikle GET/POST istekleriyle ilişkili özel yanıtlar göndermek için kullanılır.
 
 > [!NOTE]
-> Bu işlev kullanılırsa, geri çağırma yordamının NX_HTTP_CALLBACK_COMPLETED durumunu döndürmesi gerekir.
+> Bu işlev kullanılırsa, geri çağırma yordamı, geri çağırma yordamının NX_HTTP_CALLBACK_COMPLETED.
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nxd_http_server_callback_response_send_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nxd_http_server_callback_response_send_extended() 'a geçişleri teşvik edilecektir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
  - **üst bilgi** Yanıt üst bilgisi dizesinin işaretçisi.
  - **bilgi** Bilgi dizesinin işaretçisi.
  - **additional_info** Ek bilgi dizesinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) sunucu yanıtı başarıyla gönderildi
+ - **NX_SUCCESS** (0x00) Sunucu yanıtı başarıyla gönderildi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1368,7 +1368,7 @@ UINT  my_request_notify(NX_HTTP_SERVER *server_ptr, UINT request_type,
 
 ## <a name="nx_http_server_callback_response_send_extended"></a>nx_http_server_callback_response_send_extended
 
-Geri çağırma işlevinden yanıt gönder
+Geri çağırma işlevinden yanıt gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1383,18 +1383,18 @@ UINT nx_http_server_callback_response_send_extended(
                                           UINT additional_info_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan yanıt bilgilerini uygulamanın geri arama yordamından gönderir. Bu, genellikle GET/POST istekleri ile ilişkili özel yanıtları göndermek için kullanılır.
+Bu hizmet, uygulamanın geri çağırma yordamından sağlanan yanıt bilgilerini gönderir. Bu genellikle GET/POST istekleriyle ilişkili özel yanıtlar göndermek için kullanılır.
 
 > [!NOTE]
-> Bu işlev kullanılırsa, geri çağırma yordamının NX_HTTP_CALLBACK_COMPLETED durumunu döndürmesi gerekir.
+> Bu işlev kullanılırsa, geri çağırma yordamı, geri çağırma yordamının NX_HTTP_CALLBACK_COMPLETED.
 
-Bu hizmet *nx_http_server_callback_response_send ()* yerini alır. Bu sürüm, ek uzunluk bilgilerini bağımsız değişken olarak alır.
+Bu hizmet, *nx_http_server_callback_response_send() hizmetinin yerini almaktadır.* Bu sürüm, bağımsız değişken olarak ek uzunluk bilgileri alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
  - **üst bilgi** Yanıt üst bilgisi dizesinin işaretçisi.
  - **header_length** Yanıt üst bilgisi dizesinin uzunluğu.
  - **bilgi** Bilgi dizesinin işaretçisi.
@@ -1404,9 +1404,9 @@ Bu hizmet *nx_http_server_callback_response_send ()* yerini alır. Bu sürüm, e
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) sunucu yanıtı başarıyla gönderildi
+ - **NX_SUCCESS** (0x00) Sunucu yanıtı başarıyla gönderildi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1453,31 +1453,31 @@ UINT nx_http_server_content_get(NX_HTTP_SERVER *server_ptr,
                                 UINT *actual_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, POST veya PUT HTTP Client isteğinden belirtilen miktarda içeriği almaya çalışır. HTTP sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağrısından (*nx_http_server_create*) çağrılmalıdır.
+Bu hizmet, POST veya PUT HTTP İstemcisi isteğinden belirtilen miktarda içeriği almaya çalışır. Http Sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağırmadan çağrıl *nx_http_server_create.*
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nx_http_server_content_get_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nx_http_server_content_get_extended() nx_http_server_content_get_extended.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
- - **packet_ptr** HTTP Istemcisi istek paketine yönelik işaretçi. Bu paketin istek bildirimi geri araması tarafından yayımlanmamalıdır.
- - **byte_offset** İçerik alanına kaydırılacağı bayt sayısı.
- - **destination_ptr** İçerik için hedef alana yönelik işaretçi.
- - **destination_size** Hedef alanda kullanılabilir en fazla bayt sayısı.
- - **actual_size** Kopyalanmış içeriğin gerçek boyutuna ayarlanacak hedef değişkene yönelik işaretçi.
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
+ - **packet_ptr** HTTP İstemcisi istek paketinin işaretçisi. Bu paketin istek bildirim geri çağırma tarafından serbest bırakması gerektiğini unutmayın.
+ - **byte_offset** İçerik alanına uzaklığı yapılan bayt sayısı.
+ - **destination_ptr** İçerik için hedef alana işaretçi.
+ - **destination_size** Hedef alanda kullanılabilen maksimum bayt sayısı.
+ - **actual_size** Kopyalanan içeriğin gerçek boyutuna ayarilecek hedef değişkenin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http sunucusu içerik al
- - **NX_HTTP_ERROR** (0xE0) http sunucusu iç hatası
- - **NX_HTTP_DATA_END** (0xE7) Istek içeriğinin sonu
- - **NX_HTTP_TIMEOUT** (0XE1) sonraki içerik paketini alma sırasında http sunucusu zaman aşımı
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı HTTP Sunucusu içeriği
+ - **NX_HTTP_ERROR** (0xE0) HTTP Sunucusu iç hatası
+ - **NX_HTTP_DATA_END** (0xE7) İstek içeriği sonu
+ - **NX_HTTP_TIMEOUT** paketi 0xE1 http sunucusu zaman aşımına (veya zaman aşımına) neden oluyor
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1496,7 +1496,7 @@ status =  nx_http_server_content_get(&my_server, packet_ptr,
 
 ## <a name="nx_http_server_content_get_extended"></a>nx_http_server_content_get_extended
 
-İstekten içerik al/sıfır uzunlukta Içerik uzunluğunu destekler
+İstekten içerik al/sıfır uzunluğunu destekler İçerik Uzunluğu
 
 ### <a name="prototype"></a>Prototype
 
@@ -1509,31 +1509,31 @@ UINT nx_http_server_content_get_extended(NX_HTTP_SERVER *server_ptr,
                                          UINT *actual_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet neredeyse *nx_http_server_content_get ()* ile AYNıDıR; Post veya put http Client isteğinden belirtilen miktarda içeriği almaya çalışır. Ancak, geçerli bir istek olarak sıfır değeri (' boş istek ') Içerik uzunluğundaki istekleri işler. Bu, HTTP sunucusu oluşturma (*nx_http_server_create ()*) sırasında uygulamanın istek bildirimi geri çağrısından çağrılmalıdır.
+Bu hizmet, nx_http_server_content_get() ile neredeyse *aynıdır;* POST veya PUT HTTP İstemcisi isteğinden belirtilen miktarda içeriği almaya çalışır. Ancak, İçerik Uzunluğu sıfır değere ('boş istek') sahip istekleri geçerli bir istek olarak işler. Http Sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirim geri çağrısından çağrılmalı (*nx_http_server_create()*).
 
-Bu hizmet *nx_http_server_content_get ()* yerini alır. Bu sürüm, çağıranın ek uzunluk bilgileri sağlaması için gereklidir.
+Bu hizmet, *nx_http_server_content_get() ile değiştirilir.* Bu sürüm, çağıranın ek uzunluk bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucu denetim bloğu işaretçisi.
- - **packet_ptr** HTTP Istemcisi istek paketine yönelik işaretçi. Bu paketin istek bildirimi geri araması tarafından yayımlanmamalıdır.
- - **byte_offset** İçerik alanına kaydırılacağı bayt sayısı.
- - **destination_ptr** İçerik için hedef alana yönelik işaretçi.
- - **destination_size** Hedef alanda kullanılabilir en fazla bayt sayısı.
- - **actual_size** Kopyalanmış içeriğin gerçek boyutuna ayarlanacak hedef değişkene yönelik işaretçi.
+ - **server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
+ - **packet_ptr** HTTP İstemcisi istek paketinin işaretçisi. Bu paketin istek bildirim geri çağırma tarafından serbest bırakması gerektiğini unutmayın.
+ - **byte_offset** İçerik alanına uzaklığı yapılan bayt sayısı.
+ - **destination_ptr** İçerik için hedef alana işaretçi.
+ - **destination_size** Hedef alanda kullanılabilen maksimum bayt sayısı.
+ - **actual_size** Kopyalanan içeriğin gerçek boyutuna ayarilecek hedef değişkenin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http içerik al
- - **NX_HTTP_ERROR** (0xE0) http sunucusu iç hatası
- - **NX_HTTP_DATA_END** (0xE7) Istek içeriğinin sonu
- - **NX_HTTP_TIMEOUT** (0XE1) sonraki paketi alma sırasında http sunucusu zaman aşımı
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı HTTP içeriği get
+ - **NX_HTTP_ERROR** (0xE0) HTTP Sunucusu iç hatası
+ - **NX_HTTP_DATA_END** (0xE7) İstek içeriği sonu
+ - **NX_HTTP_TIMEOUT** paketi 0xE1 http sunucusu zaman aşımına (genel)
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1552,7 +1552,7 @@ status =  nx_http_server_content_get_extended(&my_server, packet_ptr,
 
 ## <a name="nx_http_server_content_length_get"></a>nx_http_server_content_length_get
 
-İstekteki içerik uzunluğunu al
+İstekte içeriğin uzunluğunu al
 
 ### <a name="prototype"></a>Prototype
 
@@ -1560,21 +1560,21 @@ status =  nx_http_server_content_get_extended(&my_server, packet_ptr,
 UINT nx_http_server_content_length_get(NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan paketteki HTTP içerik uzunluğunu almaya çalışır. HTTP içeriği yoksa, bu yordam sıfır değerini döndürür. Bu, HTTP sunucusu oluşturma (*nx_http_server_create ()*) sırasında uygulamanın istek bildirimi geri çağrısından çağrılmalıdır.
+Bu hizmet, sağlanan pakette HTTP içerik uzunluğunu almaya çalışır. HTTP içeriği yoksa, bu yordam sıfır değeri döndürür. Http Sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirim geri çağrısından çağrılmalı (*nx_http_server_create()*).
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nx_http_server_content_length_get_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nx_http_server_content_length_get_extended() 'a geçişleri teşvik edilecektir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **packet_ptr** HTTP Istemcisi istek paketine yönelik işaretçi. Bu paketin istek bildirimi geri araması tarafından yayımlanmamalıdır.
+ - **packet_ptr** HTTP İstemcisi istek paketinin işaretçisi. Bu paketin istek bildirim geri çağırma tarafından serbest bırakması gerektiğini unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **içerik uzunluğu** Hatada, sıfır değeri döndürülür  
+ - **içerik uzunluğu** Hatada sıfır değeri döndürülür  
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1591,7 +1591,7 @@ length =  nx_http_server_content_length_get(packet_ptr);
 
 ## <a name="nx_http_server_content_length_get_extended"></a>nx_http_server_content_length_get_extended
 
-İstekteki içerik uzunluğunu al/sıfır değerinin Içerik uzunluğunu destekler
+İstekte içeriğin uzunluğunu al/İçerik Uzunluğunu sıfır değeriyle destekler
 
 ### <a name="prototype"></a>Prototype
 
@@ -1600,24 +1600,24 @@ UINT nx_http_server_content_length_get_extended(NX_PACKET *packet_ptr,
                                                 UINT *content_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet *nx_http_server_content_length_get benzerdir;* sağlanan paketteki http içerik uzunluğunu alma girişiminde bulunur. Ancak, dönüş değeri başarıyla tamamlanma durumunu gösterir ve giriş İşaretçisinde gerçek uzunluk değeri döndürülür ```content_length``` . HTTP içeriği/Içerik uzunluğu = 0 yoksa, bu yordam yine de başarılı bir tamamlanma durumu döndürür ve content_length giriş işaretçisi geçerli bir uzunluğa (sıfır) işaret eder. HTTP sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağrısından (*nx_http_server_create*) çağrılmalıdır.
+Bu hizmet, nx_http_server_content_length_get *pakette* HTTP içerik uzunluğunu almaya çalışır. Ancak, dönüş değeri başarılı tamamlanma durumunu gösterir ve giriş işaretçisinde gerçek uzunluk değeri ```content_length``` döndürülür. HTTP içeriği/İçerik Uzunluğu = 0 yoksa, bu yordam yine de başarılı bir tamamlanma durumu döndürür ve content_length giriş işaretçisi geçerli bir uzunluğu (sıfır) işaret eder. Http Sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağırmadan çağrıl *nx_http_server_create.*
 
-Bu hizmet *nx_http_server_content_length_get ()* yerini alır.
+Bu hizmet, *nx_http_server_content_length_get() değiştirir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **packet_ptr** HTTP Istemcisi istek paketine yönelik işaretçi. Bu paketin istek bildirimi geri araması tarafından yayımlanmamalıdır.
- - **CONTENT_LENGTH** Içerik uzunluğu alanından alınan değer işaretçisi
+ - **packet_ptr** HTTP İstemcisi istek paketinin işaretçisi. Bu paketin istek bildirim geri çağırma tarafından serbest bırakması gerektiğini unutmayın.
+ - **content_length** İçerik Uzunluğu alanından alınan değer işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı sunucu içeriği al
- - **NX_HTTP_INCOMPLETE_PUT_ERROR** (0xEF) yanlış http üst bilgi biçimi
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Başarılı Sunucu içeriği
+ - **NX_HTTP_INCOMPLETE_PUT_ERROR** (0xEF) Hatalı HTTP üst bilgisi biçimi
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1636,7 +1636,7 @@ status =  nx_http_server_content_length_get_extended(packet_ptr, &content_length
 
 ## <a name="nx_http_server_create"></a>nx_http_server_create
 
-HTTP sunucusu örneği oluşturma
+HTTP Sunucusu örneği oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1651,30 +1651,30 @@ UINT nx_http_server_create(NX_HTTP_SERVER *http_server_ptr,
             UINT request_type, CHAR *resource, NX_PACKET *packet_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet kendi ThreadX iş parçacığı bağlamında çalışan bir HTTP sunucu örneği oluşturur. İsteğe bağlı *authentication_check* ve request_notify uygulama geri çağırma yordamları, HTTP sunucusunun temel işlemleri üzerinde uygulama yazılım denetimi sağlar.
+Bu hizmet, kendi ThreadX iş parçacığı bağlamında çalışan bir HTTP Sunucusu örneği oluşturur. İsteğe *authentication_check* request_notify geri çağırma yordamları, uygulama yazılım denetimine HTTP Sunucusunun temel işlemleri üzerinde denetim verir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucu denetim bloğu işaretçisi.
- - **http_server_name** HTTP sunucusu adı işaretçisi.
- - **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
- - **media_ptr** Daha önce oluşturulan FileX medya örneğine yönelik işaretçi.
- - **stack_ptr** HTTP sunucusu iş parçacığı yığın alanı işaretçisi.
- - **stack_size** HTTP sunucusu iş parçacığı yığın boyutu işaretçisi.
- - **authentication_check** Uygulamanın kimlik doğrulama denetimi yordamına yönelik işlev işaretçisi. Belirtilmişse, bu yordam her HTTP Istemci isteği için çağırılır. Bu parametre NULL ise, kimlik doğrulaması gerçekleştirilmez.
- - **request_notify** Uygulamanın istek bildirim yordamına yönelik işlev işaretçisi. Belirtilmişse, bu yordam isteğin HTTP sunucu işlemeden önce çağırılır. Bu, HTTP Istemci isteği tamamlanmadan önce kaynak adının yeniden yönlendirilmesine veya bir kaynak içindeki alanların güncelleştirilmesini sağlar.
+ - **http_server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
+ - **http_server_name** HTTP Sunucusunun adının işaretçisi.
+ - **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+ - **media_ptr** Daha önce oluşturulan FileX medya örneğinin işaretçisi.
+ - **stack_ptr** HTTP Sunucusu iş parçacığı yığın alanı işaretçisi.
+ - **stack_size** HTTP Sunucusu iş parçacığı yığını boyutunun işaretçisi.
+ - **authentication_check** Uygulamanın kimlik doğrulama denetimi yordamına işlev işaretçisi. Belirtilirse, bu yordam her HTTP İstemcisi isteği için çağrılır. Bu parametre NULL ise, hiçbir kimlik doğrulaması gerçekleştirilecek.
+ - **request_notify** Uygulamanın istek bildirim yordamına işlev işaretçisi. Belirtilirse, bu yordam isteğin HTTP sunucusu işlemeden önce çağrılır. Bu, kaynak adının yeniden yönlendirilmesine veya HTTP İstemcisi isteğini tamamlamadan önce bir kaynak içindeki alanların güncelleştirilmesini sağlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http sunucusu oluşturma.
- - NX_PTR_ERROR (0x07) geçersiz HTTP sunucusu, IP, medya, yığın veya paket havuzu işaretçisi.
- - NX_HTTP_POOL_ERROR (0xE9) havuzun paket yükü, tüm HTTP isteklerini içerecek kadar büyük değil.
+ - **NX_SUCCESS** (0x00) Başarılı HTTP Sunucusu oluşturma.
+ - NX_PTR_ERROR (0x07) Geçersiz HTTP Sunucusu, IP, medya, yığın veya paket havuzu işaretçisi.
+ - NX_HTTP_POOL_ERROR (0xE9) Havuzun paket yükü, tam HTTP isteğini içerecek kadar büyük değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -1689,7 +1689,7 @@ status =  nx_http_server_create(&my_server, “my server”, &ip_0, &ram_disk,
 
 ## <a name="nx_http_server_delete"></a>nx_http_server_delete
 
-HTTP sunucusu örneğini silme
+HTTP Sunucusu örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1697,21 +1697,21 @@ HTTP sunucusu örneğini silme
 UINT nx_http_server_delete(NX_HTTP_SERVER *http_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir HTTP sunucusu örneğini siler.
+Bu hizmet, daha önce oluşturulmuş bir HTTP Sunucusu örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucu denetim bloğu işaretçisi.
+ - **http_server_ptr** HTTP Sunucusu denetim bloğu işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http sunucusu silme
- - NX_PTR_ERROR (0x07) geçersiz HTTP sunucusu işaretçisi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı HTTP Sunucusu silme
+ - NX_PTR_ERROR (0x07) Geçersiz HTTP Sunucusu işaretçisi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1726,7 +1726,7 @@ status =  nx_http_server_delete(&my_server);
 
 ## <a name="nx_http_server_get_entity_content"></a>nx_http_server_get_entity_content
 
-Varlık verilerinin konumunu ve uzunluğunu alma
+Varlık verisi konumunu ve uzunluğunu alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1737,30 +1737,30 @@ UINT nx_http_server_get_entity_content(NX_HTTP_SERVER *server_ptr,
                                        ULONG *available_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, alınan Istemci iletilerindeki geçerli çok parçalı varlıktaki verilerin başlangıç konumunu ve sınır dizesini dahil olmayan veri uzunluğunu belirler. Dahili HTTP sunucusu, bu işlevin birden çok varlığa sahip iletiler için aynı Istemci veri biriminde yeniden çağrılabilmesi için kendi uzaklıklarını güncelleştirir. Paket işaretçisi, Istemci iletisinin çoklu paket veri birimi olduğu bir sonraki pakete güncelleştirilir.
+Bu hizmet, alınan İstemci iletisinde geçerli çok parçalı varlık içindeki veri başlangıcının konumunu ve sınır dizesi dahil değil veri uzunluğunu belirler. Dahili OLARAK HTTP sunucusu, kendi uzaklıklarını günceller, böylece bu işlev birden çok varlık içeren iletiler için aynı İstemci veri birimi üzerinde yeniden çağrılabilirsiniz. Paket işaretçisi, İstemci iletisi çok paketli bir veri birimi olduğu bir sonraki pakete güncelleştirilir.
 
 > [!NOTE]
-> Bu hizmeti kullanmak için NX_HTTP_MULTIPART_ENABLE etkinleştirilmesi gerekir.
+> NX_HTTP_MULTIPART_ENABLE kullanmak için etkinleştirilmelidir.
 
-Daha fazla bilgi için bkz. [*nx_http_server_get_entity_header*](#nx_http_server_get_entity_header) .
+Daha [*nx_http_server_get_entity_header*](#nx_http_server_get_entity_header) için bkz.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucusu işaretçisi
- - **packet_pptr** Paket işaretçisinin konumu işaretçisi. Uygulamanın bu paketi serbest bırakmadığını unutmayın.
- - **available_offset** Paket önüne işaretçisinden varlık verilerinin uzaklığa yönelik işaretçi
+ - **server_ptr** HTTP Sunucusu İşaretçisi
+ - **packet_pptr** Paket işaretçisinin konumu için işaretçi. Uygulamanın bu paketi serbest bırakması gerektiğini unutmayın.
+ - **available_offset** Paket ön uç işaretçisinde varlık verilerini kaydırma işaretçisi
  - **available_length** Varlık verisi uzunluğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) varlık içeriğinin boyutunu ve konumunu başarıyla aldı
- - HTTP sunucusu iç çok parçalı işaretçiler için **NX_HTTP_BOUNDARY_ALREADY_FOUND** (0xf4) içeriği zaten var
- - NX_HTTP_ERROR (0xE0) Iç HTTP hatası
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Varlık içeriğinin boyutu ve konumu başarıyla alındı
+ - **NX_HTTP_BOUNDARY_ALREADY_FOUND** (0xF4) HTTP sunucusu iç çok parçalı işaretçileri için içerik zaten bulundu
+ - NX_HTTP_ERROR (0xE0) İç HTTP hatası
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1785,7 +1785,7 @@ status =  nx_http_server_get_entity_content(&my_server, &packet_ptr, *offset,
 
 ## <a name="nx_http_server_get_entity_header"></a>nx_http_server_get_entity_header
 
-Varlık üstbilgisinin içeriğini alma
+Varlık üst bilgisi içeriğini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1796,30 +1796,30 @@ UINT nx_http_server_get_entity_header(NX_HTTP_SERVER *server_ptr,
                                       ULONG buffer_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet varlık üstbilgisini belirtilen arabelleğe alır. Dahili HTTP sunucusu, birden çok varlık üst bilgilerine sahip bir Istemci veri biriminde bir sonraki çok parçalı varlığı bulmak için kendi işaretçilerini güncelleştirir. Paket işaretçisi, Istemci iletisinin çoklu paket veri birimi olduğu bir sonraki pakete güncelleştirilir.
+Bu hizmet varlık üst bilgilerini belirtilen arabelleğe alır. Dahili OLARAK HTTP Sunucusu, birden çok varlık üst bilgisi olan bir İstemci veri biriminde bir sonraki çok parçalı varlığı bulmak için kendi işaretçilerini günceller. Paket işaretçisi, İstemci iletisi çok paketli bir veri birimi olduğu bir sonraki pakete güncelleştirilir.
 
 > [!NOTE]
-> Bu hizmeti kullanmak için NX_HTTP_MULTIPART_ENABLE etkinleştirilmesi gerekir.
+> NX_HTTP_MULTIPART_ENABLE kullanmak için etkinleştirilmelidir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucusu işaretçisi
- - **packet_pptr** Paket işaretçisinin konumu işaretçisi. Uygulamanın bu paketi serbest bırakmadığını unutmayın.
- - **entity_header_buffer** Varlık üstbilgisinin depolanacak konuma işaretçi
- - **Buffer_size** Giriş arabelleğinin boyutu
+ - **server_ptr** HTTP Sunucusu İşaretçisi
+ - **packet_pptr** Paket işaretçisinin konumu için işaretçi. Uygulamanın bu paketi serbest bırakması gerektiğini unutmayın.
+ - **entity_header_buffer** Varlık üst bilgisini depolamak için konuma işaretçi
+ - **buffer_size** Giriş arabelleğinin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) varlık Heade başarıyla alındı
- - **NX_HTTP_NOT_FOUND** **(0xE6)** varlık üst bilgisi alanı bulunamadı
- - Çok müşterili istemci ileti için sonraki paketi almak üzere **NX_HTTP_TIMEOUT** **(0XE1)** süresi geçildi
- - NX_HTTP_ERROR (0xE0) Iç HTTP hatası
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Varlık başı başarıyla alındı
+ - **NX_HTTP_NOT_FOUND** **(0xE6)** Varlık üst bilgisi alanı bulunamadı
+ - **NX_HTTP_TIMEOUT** **(0xE1) Çoklu** paket istemci iletisi için sonraki paketi almak için süre doldu
+ - NX_HTTP_ERROR (0xE0) İç HTTP hatası
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1888,7 +1888,7 @@ return(NX_HTTP_CALLBACK_COMPLETED);
 
 ## <a name="nx_http_server_gmt_callback_set"></a>nx_http_server_gmt_callback_set
 
-GMT Tarih ve saati almak için geri aramayı ayarlayın
+GMT tarih ve saati almak için geri çağırmayı ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1897,22 +1897,22 @@ UINT nx_http_server_gmt_callback_set(NX_HTTP_SERVER *server_ptr,
                      VOID (*gmt_get)(NX_HTTP_SERVER_DATE *date);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş bir HTTP sunucusu ile GMT Tarih ve saati alacak şekilde geri aramayı ayarlar. Bu hizmet HTTP sunucusu, Istemciye HTTP sunucu yanıtlarında bir üst bilgi oluşturuyor.
+Bu hizmet, daha önce oluşturulmuş bir HTTP sunucusuyla GMT tarih ve saati almak için geri çağırmayı ayarlar. Bu hizmet, HTTP sunucusu İstemciye http sunucusu yanıtlarında bir üst bilgi oluştururken çağrılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucusu işaretçisi
- - **gmt_getv** GMT geri çağırması işaretçisi
- - **Tarih v** Alınan tarihin işaretçisi
+ - **server_ptr** HTTP Sunucusu İşaretçisi
+ - **gmt_getv** GMT geri çağırma işaretçisi
+ - **datev** Alınan tarih işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) geri çağırma başarıyla ayarlandı
- - NX_PTR_ERROR (0x07) geçersiz paket veya parametre işaretçisi.
+ - **NX_SUCCESS** (0x00) Geri çağırmayı başarıyla ayarlama
+ - NX_PTR_ERROR (0x07) Geçersiz paket veya parametre işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1935,7 +1935,7 @@ status =  nx_http_server_gmt_callback_set(&my_server, gmt_get);
 
 ## <a name="nx_http_server_invalid_userpassword_notify_set"></a>nx_http_server_invalid_userpassword_notify_set
 
-Geri çağırma işlemini geçersiz kullanıcı/parola işleyecek şekilde ayarla
+Geçersiz kullanıcı/parolayı işlemek için geri çağırmayı olarak ayarlayın
 
 ### <a name="prototype"></a>Prototype
 
@@ -1948,13 +1948,13 @@ UINT nx_http_server_invalid_userpassword_notify_set(
                         UINT request_type));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir Istemci alma, yerleştirme veya silme isteğinde, Özet veya temel kimlik doğrulamasından göre geçersiz bir Kullanıcı adı ve parola alındığında çağrılan geri aramayı ayarlar. HTTP sunucusu daha önce oluşturulmuş olmalıdır.
+Bu hizmet, bir İstemci alma, koyma veya silme isteğinde özet veya temel kimlik doğrulaması ile geçersiz bir kullanıcı adı ve parola geldiğinde çağrılan geri çağırmayı ayarlar. HTTP sunucusunun daha önce oluşturulmuş olması gerekir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **server_ptr** HTTP sunucusu işaretçisi
+ - **server_ptr** HTTP Sunucusu İşaretçisi
  - **invalid_username_password_callback** Geçersiz Kullanıcı/geçiş geri çağırması işaretçisi
  - **kaynak** İstemci tarafından belirtilen kaynak işaretçisi
  - **client_address** İstemci adresi işaretçisi. IPv4 veya IPv6 olabilir
@@ -2006,7 +2006,7 @@ UINT nx_http_server_mime_maps_additional_set(
                         UINT mime_maps_num);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, HTTP uygulama geliştiricisinin NetX Duo HTTP sunucusu tarafından sağlanan varsayılan MIME türlerinden ek MIME türleri eklemesine izin verir (tanımlı türlerin listesi için bkz. *nx_http_server_get_type* ).
 
@@ -2061,7 +2061,7 @@ UINT nx_http_server_packet_content_find(NX_HTTP_SERVER *server_ptr,
                                         UINT *content_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, HTTP üstbilgisinden içerik uzunluğunu ayıklar. Ayrıca, sağlanan paketi aşağıdaki gibi güncelleştirir: paket önüne işaretçisi (yazılacak paket arabelleğinin konumu), http içeriğine (veri) yalnızca http üst bilgisini geçirilmiş şekilde ayarlanır.
 
@@ -2114,7 +2114,7 @@ UINT nx_http_server_packet_get(NX_HTTP_SERVER *server_ptr,
                               NX_PACKET **packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, HTTP sunucusu yuvasında alınan bir sonraki paketi döndürür. Bir paket almak için bekle seçeneği NX_HTTP_SERVER_TIMEOUT_RECEIVE.
 
@@ -2158,7 +2158,7 @@ UINT nx_http_server_param_get(NX_PACKET *packet_ptr,
                               UINT max_param_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan istek paketinde belirtilen HTTP URL parametresini almaya çalışıyor. İstenen HTTP parametresi yoksa, bu yordam NX_HTTP_NOT_FOUND durumunu döndürür. Bu yordam, HTTP sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağrısından çağrılmalıdır (*nx_http_server_create*).
 
@@ -2205,27 +2205,27 @@ UINT nx_http_server_query_get(NX_PACKET *packet_ptr, UINT query_number,
                    CHAR *query_ptr, UINT max_query_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan istek paketinde belirtilen HTTP URL sorgusunu almaya çalışıyor. İstenen HTTP sorgusu yoksa, bu yordam NX_HTTP_NOT_FOUND durumunu döndürür. Bu yordam, HTTP sunucusu oluşturma sırasında belirtilen uygulamanın istek bildirimi geri çağrısından çağrılmalıdır (*nx_http_server_create*).
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **packet_ptr** HTTP Istemci isteği paketine yönelik işaretçi. Uygulamanın bu paketi serbest bırakmadığını unutmayın.
- - **query_number** Sıfırdan başlayan parametrenin mantıksal numarası, sorgu listesinde soldan sağa.
+ - **packet_ptr** HTTP İstemcisi istek paketinin işaretçisi. Uygulamanın bu paketi serbest bırakması gerektiğini unutmayın.
+ - **query_number** Sorgu listesinde soldan sağa sıfırdan başlayan parametrenin mantıksal sayısı.
  - **query_ptr** Sorguyu kopyalamak için hedef alan.
- - **max_query_size** Sorgu hedefi alanının maksimum boyutu.
+ - **max_query_size** Sorgu hedef alanı için en büyük boyut.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı http sunucusu sorgusu al
- - **NX_HTTP_FAILED** (0xE2) sorgu boyutu çok küçük.
- - **NX_HTTP_NOT_FOUND** (0xE6) belirtilen sorgu bulunamadı
- - **NX_HTTP_NO_QUERY_PARSED** (0xF2) istemci Isteğinde sorgu yok
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı HTTP Sunucusu sorgusu get
+ - **NX_HTTP_FAILED** (0xE2) Sorgu boyutu çok küçük.
+ - **NX_HTTP_NOT_FOUND** (0xE6) Belirtilen sorgu bulunamadı
+ - **NX_HTTP_NO_QUERY_PARSED** (0xF2) İstemci isteğinde sorgu yok
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2243,7 +2243,7 @@ status =  nx_http_server_query_get(request_packet_ptr, 0, query_destination,
 
 ## <a name="nx_http_server_start"></a>nx_http_server_start
 
-HTTP sunucusunu başlatma
+HTTP Sunucusunu başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2251,22 +2251,22 @@ HTTP sunucusunu başlatma
 UINT nx_http_server_start(NX_HTTP_SERVER *http_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturma HTTP sunucu örneğini başlatır.
+Bu hizmet, daha önce oluşturulan HTTP Sunucusu örneğini başlatır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucusu örneğine yönelik işaretçi.
+ - **http_server_ptr** HTTP Sunucusu örneğine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı sunucu başlatması
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+ - **NX_SUCCESS** (0x00) Başarılı Sunucu başlatma
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -2279,7 +2279,7 @@ status =  nx_http_server_start(&my_server);
 
 ## <a name="nx_http_server_stop"></a>nx_http_server_stop
 
-HTTP sunucusunu durdur
+HTTP Sunucusunu Durdurma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2287,21 +2287,21 @@ HTTP sunucusunu durdur
 UINT nx_http_server_stop(NX_HTTP_SERVER *http_server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturma HTTP sunucu örneğini durduruyor. Bu yordam, bir HTTP sunucu örneği silinmeden önce çağrılmalıdır.
+Bu hizmet, daha önce oluşturulan HTTP Sunucusu örneğini durdurur. Bu yordam, bir HTTP Sunucusu örneği silmeden önce çağrılmalı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucusu örneğine yönelik işaretçi.
+ - **http_server_ptr** HTTP Sunucusu örneğine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **NX_SUCCESS** (0x00) başarılı sunucu durdu
- - NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
- - NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+ - **NX_SUCCESS** (0x00) Başarılı Sunucu durdurma
+ - NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+ - NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2316,7 +2316,7 @@ status =  nx_http_server_stop(&my_server);
 
 ## <a name="nx_http_server_type_get"></a>nx_http_server_type_get
 
-Istemci HTTP isteğinden dosya türünü Ayıkla
+İstemci HTTP isteğinden dosya türünü ayıklama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2325,35 +2325,35 @@ UINT nx_http_server_type_get(NX_HTTP_SERVER *http_server_ptr,
                              CHAR *name, CHAR *http_type_string);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 > [!NOTE]
-> Bu hizmet kullanımdan kaldırılmıştır. Kullanıcıların *nx_http_server_type_retrieve ()* hizmetini kullanması önerilir.
+> Bu hizmet kullanım dışıdır. Kullanıcıların *nx_http_server_type_retrieve() hizmetini kullanmaları teşvik edilecektir.*
 
-Bu hizmet, arabellek http_type_string HTTP istek türünü ve giriş arabelleği adından (genellikle URL) gelen dönüş değerindeki uzunluğu ayıklar. MIME eşlemesi bulunmazsa, varsayılan olarak "metin/düz" tür olur. Aksi takdirde, bir eşleşme için ayıklanan tür, HTTP sunucusu varsayılan MIME eşlemeleriyle karşılaştırılır. NetX Duo HTTP sunucusundaki varsayılan MIME haritaları şunlardır:
+Bu hizmet, arabelleğin içinde HTTP istek türünü http_type_string dönüş değerindeki uzunluğunu giriş arabelleği adıyla (genellikle URL) ayıklar. MiME eşlemesi bulunamazsa varsayılan olarak "text/plain" türü kullanılır. Aksi takdirde, ayıklanan türü bir eşleşme için HTTP Sunucusu varsayılan MIME eşlemeleri ile karşılaştırıldığında. NetX Duo HTTP Sunucusu'daki varsayılan MIME eşlemeleri:
 
- - **HTML** metni/HTML
- - **htm** metin/html
- - **txt** metin/düz
- - **GIF** resmi/GIF
- - **jpg** resmi/JPEG
- - **ICO** resmi/x-simgesi
+ - **html** metni/html
+ - **html metin/html**
+ - **txt** metni/düz
+ - **gif** görüntüsü/gif
+ - **jpg** image/jpeg
+ - **ico** görüntüsü/x-icon
 
-Sağlanırsa, Kullanıcı tanımlı ek MIME haritaları kümesi de arar. Kullanıcı tanımlı haritalar hakkında daha fazla bilgi için bkz. *nx_http_server_mime_maps_addtional_set ()* .
+Sağlanırsa, kullanıcı tanımlı bir dizi ek MIME eşlemesi de aranacak. Kullanıcı tanımlı nx_http_server_mime_maps_addtional_set hakkında daha fazla bilgi için bkz. *nx_http_server_mime_maps_addtional_set()* .
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nx_http_server_type_get_extended ()* uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin *nx_http_server_type_get_extended() nx_http_server_type_get_extended.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucusu örneğine yönelik işaretçi
- - Aranacak arabelleğe yönelik **işaretçiyi adlandırın**
- - **http_type_string** (ayıklanan HTML türüne yönelik işaretçi)
+ - **http_server_ptr** HTTP Sunucusu örneğine işaretçi
+ - **arama için arabelleğe** ad İşaretçisi
+ - **http_type_string** (Ayıklanan HTML türüne işaretçi)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **Bayt cinsinden dize uzunluğu** Sıfır olmayan değer başarılı. Sıfır hatayı gösterir.
+ - **Bayt cinsinden dize uzunluğu** Sıfır olmayan değer başarılıdır. Sıfır, hatayı gösterir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Uygulama
 
@@ -2375,7 +2375,7 @@ UINT string_length;
 
 ## <a name="nx_http_server_type_get_extended"></a>nx_http_server_type_get_extended
 
-Istemci HTTP isteğinden dosya türünü Ayıkla
+İstemci HTTP isteğinden dosya türünü ayıklama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2386,32 +2386,32 @@ UINT nx_http_server_type_get_extended(
                                     UINT http_type_string_max_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, arabellek *HTTP_TYPE_STRING* http istek türünü ve giriş arabelleği *ADıNDAN*(genellikle URL) gelen dönüş değerindeki uzunluğu ayıklar. MIME eşlemesi bulunmazsa, varsayılan olarak "metin/düz" tür olur. Aksi takdirde, bir eşleşme için ayıklanan tür, HTTP sunucusu varsayılan MIME eşlemeleriyle karşılaştırılır. NetX Duo HTTP sunucusundaki varsayılan MIME haritaları şunlardır:
+Bu hizmet, arabelleğin içinde HTTP istek *türünü http_type_string* ve dönüş değerindeki uzunluğunu giriş arabelleği *adıyla*(genellikle URL) ayıklar. MiME eşlemesi bulunamazsa varsayılan olarak "text/plain" türü kullanılır. Aksi takdirde, ayıklanan türü bir eşleşme için HTTP Sunucusu varsayılan MIME eşlemeleri ile karşılaştırıldığında. NetX Duo HTTP Sunucusu'daki varsayılan MIME eşlemeleri:
 
- - **HTML** metni/HTML
- - **htm** metin/html
- - **txt** metin/düz
- - **GIF** resmi/GIF
- - **jpg** resmi/JPEG
- - **ICO** resmi/x-simgesi
+ - **html** metni/html
+ - **html metin/html**
+ - **txt** metni/düz
+ - **gif** görüntüsü/gif
+ - **jpg** image/jpeg
+ - **ico** görüntüsü/x-icon
 
-Sağlanırsa, Kullanıcı tanımlı ek MIME haritaları kümesi de arar. Kullanıcı tanımlı haritalar hakkında daha fazla bilgi için bkz. *nx_http_server_mime_maps_addtional_set ()* .
+Sağlanırsa, kullanıcı tanımlı bir dizi ek MIME eşlemesi de aranacak. Kullanıcı tanımlı nx_http_server_mime_maps_addtional_set hakkında daha fazla bilgi için bkz. *nx_http_server_mime_maps_addtional_set()* .
 
-Bu hizmet *nx_http_server_type_get ()* yerini alır. Bu sürüm, ek uzunluk bilgilerini sağlar.
+Bu hizmet, *nx_http_server_type_get() ile değiştirilir.* Bu sürüm ek uzunluk bilgileri sağlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
- - **http_server_ptr** HTTP sunucusu örneğine yönelik işaretçi
- - **ad** Aranacak arabelleğin işaretçisi
+ - **http_server_ptr** HTTP Sunucusu örneğine işaretçi
+ - **name** Arama için arabelleğe işaretçi
  - **name_length** Aranacak arabelleğin uzunluğu
- - **http_type_string** (ayıklanan HTML türüne yönelik işaretçi)
+ - **http_type_string** (Ayıklanan HTML türüne işaretçi)
  - **http_type_string_max_size** Http_type_string arabelleğinin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
- - **Bayt cinsinden dize uzunluğu** Sıfır olmayan değer başarılı. Sıfır hatayı gösterir.
+ - **Bayt cinsinden dize uzunluğu** Sıfır olmayan değer başarılıdır. Sıfır, hatayı gösterir.
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -2464,7 +2464,7 @@ UINT nx_http_server_digest_authenticate_notify_set(
                                            ));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet Özet kimlik doğrulaması gerçekleştirildiğinde çağrılan geri aramayı ayarlar.
 
@@ -2528,7 +2528,7 @@ UINT nx_http_server_authentication_check_set(
                                             ));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, kimlik doğrulama denetiminin geri çağırma işlevini ayarlar.
 

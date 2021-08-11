@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: dbd81082524f50787765dfacf494248dda740fd6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: a7fe51fd1e141c0c525a98986ca3058732b61843f8bd79bf24fc5ac986147501
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826975"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797050"
 ---
 # <a name="chapter-1-introduction-to-azure-rtos-netx-secure-dtls"></a>Bölüm 1: Azure RTOS NetX güvenli DTLS 'ye giriş
 
@@ -26,7 +26,7 @@ Diğer TLS/DTLS uygulamalarından farklı olarak, NetX güvenli, çok çeşitli 
 NetX güvenli, TLS ve DTLS ile ilgili aşağıdaki protokolleri destekler. TLS/DTLS ve şifrelemeye ilişkin çok sayıda RFC olduğundan, liste kapsamlı değildir. NetX güvenli, küçük bellek ayak ve verimli yürütme ile gerçek zamanlı bir işletim sisteminin kısıtlamalarına göre tüm genel önerilere ve temel gereksinimlere uyar.
 
 
-| RFC | Açıklama |
+| RFC | Description |
 | --- | ----------- |
 | RFC 6347 | Veri birimi Aktarım Katmanı Güvenliği sürüm 1,2. |
 | RFC 2246 | TLS protokol sürümü 1,0|

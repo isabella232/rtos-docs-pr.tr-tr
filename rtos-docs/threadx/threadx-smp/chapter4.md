@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4432001b773b4ef4f99b1b34193e90863966aad4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 71b964963968b0ec6fa3c8cc70cc46576e8ff33e2cfad0315182afe1f1afcc5b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828024"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802167"
 ---
 # <a name="chapter-4---description-of-azure-rtos-threadx-smp-services"></a>Bölüm 4-Azure RTOS ThreadX SMP hizmetlerinin açıklaması
 
@@ -114,7 +114,7 @@ Sabit boyutlu bellek bloğunu ayır
 UINT tx_block_allocate(TX_BLOCK_POOL *pool_ptr, VOID **block_ptr,
                           ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen bellek havuzundan sabit boyutlu bir bellek bloğu ayırır. Bellek bloğunun gerçek boyutu bellek havuzu oluşturma sırasında belirlenir.
 
@@ -191,7 +191,7 @@ UINT tx_block_pool_create(TX_BLOCK_POOL *pool_ptr,
                           CHAR *name_ptr, ULONG block_size,
                           VOID *pool_start, ULONG pool_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet sabit boyutlu bellek blokları havuzu oluşturur. Belirtilen bellek alanı, formülü kullanılarak olabildiğince çok sabit boyutlu bellek bloklarına ayrılmıştır:    
 **Toplam blok** = (**toplam bayt**)/(**blok boyutu** + sizeof (void *))
@@ -221,7 +221,7 @@ Başlatma ve iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -260,7 +260,7 @@ Bellek blok havuzunu Sil
 ```C
 UINT tx_block_pool_delete(TX_BLOCK_POOL *pool_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen blok bellek havuzunu siler. Bu havuzdan bir bellek bloğunun beklediği tüm iş parçacıkları sürdürülür ve TX_DELETED bir dönüş durumu verilir.
 
@@ -322,7 +322,7 @@ UINT tx_block_pool_info_get(TX_BLOCK_POOL *pool_ptr, CHAR **name,
                           ULONG *suspended_count,
                           TX_BLOCK_POOL **next_pool);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen blok bellek havuzu hakkında bilgi alır.
 
@@ -393,7 +393,7 @@ UINT tx_block_pool_performance_info_get(TX_BLOCK_POOL *pool_ptr,
        ULONG *suspensions, ULONG *timeouts));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen bellek bloğu havuzuyla ilgili performans bilgilerini alır.
 
@@ -460,7 +460,7 @@ Blok havuzu sistem performans bilgilerini al
 UINT tx_block_pool_performance_system_info_get(ULONG *allocates,
        ULONG *releases, ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamadaki tüm bellek blok havuzlarıyla ilgili performans bilgilerini alır.
 
@@ -521,7 +521,7 @@ Blok havuzunu askıya alma listesini önceliklendir
 ```C
 UINT tx_block_pool_prioritize(TX_BLOCK_POOL *pool_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, askıya alma listesinin önünde bu havuzdaki bellek bloğu için en yüksek öncelikli iş parçacığını askıya aldı. Diğer tüm iş parçacıkları ' de askıya alındığı FıFO sırasında kalır.
 
@@ -540,7 +540,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -568,34 +568,34 @@ status = tx_block_pool_prioritize(&my_pool);
 
 ## <a name="tx_block_release"></a>tx_block_release
 
-Sabit boyutlu bellek bloğunu serbest bırakma
+Sabit boyutlu bellek bloğu serbest bırakma
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_block_release(VOID *block_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet önceden ayrılmış bir bloğu, ilişkili bellek havuzuna geri yayınlar. Bu havuzdan bellek blokları bekleyen bir veya daha fazla iş parçacığı varsa, askıya alınan ilk iş parçacığına bu bellek bloğu verilir ve devam edilir.
+Bu hizmet, daha önce ayrılmış bir bloğu ilişkili bellek havuzuna geri serbest bıraktır. Bu havuzdan bellek blokları beklerken askıya alınmış bir veya daha fazla iş parçacığı varsa, askıya alınan ilk iş parçacığına bu bellek bloğu verilir ve devam eder.
 
 > [!IMPORTANT]
-> Uygulamanın, havuza geri sunulduktan sonra bir bellek bloğu alanını kullanmasını engellemesi gerekir.
+> Uygulama, havuza geri serbest bırakıldıktan sonra bir bellek bloğu alanı kullanmayı engellemesi gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **block_ptr**: önceden ayrılmış bellek bloğuna yönelik işaretçi.
+- **block_ptr:** Daha önce ayrılan bellek bloğuna yönelik işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek bloğu sürümü.
-- TX_PTR_ERROR: (0x03) bellek bloğunun işaretçisi geçersiz.
+- **TX_SUCCESS:**(0x00) Başarılı bellek bloğu sürümü.
+- TX_PTR_ERROR: (0x03) Bellek bloğu için geçersiz işaretçi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -626,7 +626,7 @@ status = tx_block_release((VOID *) memory_ptr);
 
 ## <a name="tx_byte_allocate"></a>tx_byte_allocate
 
-Bellek baytları ayır
+Bellek baytlarını ayırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -635,49 +635,49 @@ UINT tx_byte_allocate(TX_BYTE_POOL *pool_ptr,
                           VOID **memory_ptr, ULONG memory_size,
                           ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen bellek bayt havuzundan belirtilen sayıda bayt ayırır.
+Bu hizmet, belirtilen bellek bayt havuzundan belirtilen bayt sayısını ayırır.
 
 > [!WARNING]
-> Uygulama kodunun ayrılan bellek bloğunun dışına yazmadığından emin olmak önemlidir. Bu durumda, bir komşu (genellikle sonraki) bellek bloğunda bozulma oluşur. Sonuçlar tahmin edilemez ve genellikle önemli olur!
+> Uygulama kodunun ayrılan bellek bloğunun dışına yazmaması önemlidir. Bu durumda bozulma bitişik (genellikle sonraki) bir bellek bloğunda oluşur. Sonuçlar tahmin edilemez ve genellikle önemlidir!
 
 > [!IMPORTANT]
-> Bu hizmetin performansı, blok boyutunun ve havuzdaki parçalanma miktarının bir işlevidir. Bu nedenle, bu hizmet yürütmenin zaman kritik iş parçacıkları sırasında kullanılmamalıdır.
+> Bu hizmetin performansı, blok boyutuna ve havuza parçalanma miktarına sahip bir işlevdir. Bu nedenle, bu hizmet yürütmenin zaman açısından kritik iş parçacıkları sırasında kullanılmamalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr**: daha önce oluşturulmuş bir bellek havuzuna yönelik işaretçi.
-- **memory_ptr**: hedef bellek işaretçisine yönelik işaretçi. Başarılı bir ayırma sırasında, ayrılan bellek alanının adresi bu parametrenin işaret ettiği yere yerleştirilir.
-- **memory_size**: istenen bayt sayısı.
-- **wait_option**: yeterli kullanılabilir bellek yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000)
-    - **TX_WAIT_FOREVER**: (0xffffffff)
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **pool_ptr:** Önceden oluşturulmuş bir bellek havuzunun işaretçisi.
+- **memory_ptr:** Hedef bellek işaretçisinin işaretçisi. Başarılı ayırmada, ayrılan bellek alanı adresi bu parametrenin üzerine yerleştirilir.
+- **memory_size:** İstenen bayt sayısı.
+- **wait_option:** Kullanılabilir yeterli bellek yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000)
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. *Bu, hizmet başlatma işleminden çağrıldığında geçerli tek seçenektir.*
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. *Hizmet başlatmadan çağrılırsa bu tek geçerli seçenektir.*
 
-    TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının yeterli bellek kullanılabilir olana kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER yeterli bellek kullanılabilir olana kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (1-0xFFFFFFFE) seçildiğinde, bellek beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçmek, bellek beklerken askıya alınan süreölçer sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek ayırma.
-- **TX_DELETED**: (0x01) bellek havuzu, iş parçacığı askıya alınırken silindi.
-- **TX_NO_MEMORY**: (0x10) hizmeti, belleği, belirtilen süre içinde beklemek için ayıramadı.
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_POOL_ERROR: (0x02) geçersiz bellek havuzu işaretçisi.
-- TX_PTR_ERROR: (0x03) hedef işaretçisine geçersiz işaretçi.
-- TX_SIZE_ERROR: (0X05) Istenen Boyut sıfır veya havuzdan büyük.
-- TX_WAIT_ERROR: (0x04) iş parçacığından oluşan çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı bellek ayırma.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken bellek havuzu silindi.
+- **TX_NO_MEMORY:**(0x10) Hizmet, belirtilen süre içinde bellek ayıramadı.
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_POOL_ERROR: (0x02) Geçersiz bellek havuzu işaretçisi.
+- TX_PTR_ERROR: (0x03) Hedef işaretçi için geçersiz işaretçi.
+- TX_SIZE_ERROR: (0X05) İstenen boyut havuzdan sıfır veya daha büyük.
+- TX_WAIT_ERROR: (0x04) Bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -709,7 +709,7 @@ status =  tx_byte_allocate(&my_pool, (VOID **) &memory_ptr,
 
 ## <a name="tx_byte_pool_create"></a>tx_byte_pool_create
 
-Bayt bellek havuzu oluştur
+Bayt bellek havuzu oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -718,32 +718,32 @@ UINT tx_byte_pool_create(TX_BYTE_POOL *pool_ptr,
                           CHAR *name_ptr, VOID *pool_start,
                           ULONG pool_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen alanda bir bellek bayt havuzu oluşturur. İlk olarak havuz, temel olarak bir çok büyük ücretsiz bloğundan oluşur. Ancak, ayırmalar yapıldığından havuz daha küçük bloklar halinde bozulur.
+Bu hizmet, belirtilen alanda bir bellek bayt havuzu oluşturur. Başlangıçta havuz temelde çok büyük bir serbest blok oluşur. Ancak, ayırmalar yapıldıktan sonra havuz daha küçük bloklara kırılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr**: bellek havuzu denetim bloğuna yönelik işaretçi.
-- **name_ptr**: bellek havuzunun adına yönelik işaretçi.
-- **pool_start**: bellek havuzunun başlangıç adresi. Başlangıç adresi ULONG veri türünün boyutuna hizalanmalıdır.
-- **pool_size**: bellek havuzu için kullanılabilen toplam bayt sayısı.
+- **pool_ptr:** Bellek havuzu denetim bloğuna işaretçi.
+- **name_ptr:** Bellek havuzunun adının işaretçisi.
+- **pool_start:** Bellek havuzunun başlangıç adresi. Başlangıç adresi, ULONG veri türünün boyutuna hizalanmış olması gerekir.
+- **pool_size:** Bellek havuzu için kullanılabilir toplam bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek havuzu oluşturma.
-- TX_POOL_ERROR: (0x02) geçersiz bellek havuzu işaretçisi. İşaretçi NULL ya da havuz zaten oluşturulmuş.
-- TX_PTR_ERROR: (0x03) havuzun başlangıç adresi geçersiz.
-- TX_SIZE_ERROR: (0x05) havuzun boyutu geçersiz.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı bellek havuzu oluşturma.
+- TX_POOL_ERROR: (0x02) Geçersiz bellek havuzu işaretçisi. İşaretçi NULL'tir veya havuz zaten oluşturulmuştur.
+- TX_PTR_ERROR: (0x03) Havuzun başlangıç adresi geçersiz.
+- TX_SIZE_ERROR: (0x05) Havuzun boyutu geçersiz.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -771,35 +771,35 @@ status =  tx_byte_pool_create(&my_pool, "my_pool_name",
 
 ## <a name="tx_byte_pool_delete"></a>tx_byte_pool_delete
 
-Bellek bayt havuzunu Sil
+Bellek byte havuzunu silme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_byte_pool_delete(TX_BYTE_POOL *pool_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen bellek bayt havuzunu siler. Bu havuzdan bellek beklemeyi askıya alınmış tüm iş parçacıkları sürdürülür ve TX_DELETED bir dönüş durumu verilir.
+Bu hizmet, belirtilen bellek bayt havuzunu siler. Bu havuzdan bellek beklerken askıya alınan tüm iş parçacıkları devam eder ve bir TX_DELETED durumu verilir.
 
 > [!IMPORTANT]
-> Bu hizmet tamamlandıktan sonra kullanılabilir olan havuz ile ilişkili bellek alanını yönetmek uygulamanın sorumluluğundadır. Ayrıca, uygulamanın silinen bir havuzun veya daha önce ayrılmış belleğin kullanımını önlemesi gerekir.
+> Bu hizmet tamamlandıktan sonra kullanılabilir olan havuzla ilişkili bellek alanı, uygulamanın sorumluluğundadır. Ayrıca, uygulamanın silinmiş bir havuzun veya önceden ayrılmış belleğin kullanımını engellemesi gerekir.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **pool_ptr**: daha önce oluşturulmuş bir bellek havuzuna yönelik işaretçi.
+- **pool_ptr:** Önceden oluşturulmuş bir bellek havuzunun işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek havuzu silme.
-- TX_POOL_ERROR: (0x02) geçersiz bellek havuzu işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı bellek havuzu silme.
+- TX_POOL_ERROR: (0x02) Geçersiz bellek havuzu işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -827,7 +827,7 @@ status =   tx_byte_pool_delete(&my_pool);
 
 ## <a name="tx_byte_pool_info_get"></a>tx_byte_pool_info_get
 
-Bayt havuzu hakkında bilgi alın
+Byte havuzu hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -838,35 +838,35 @@ UINT tx_byte_pool_info_get(TX_BYTE_POOL *pool_ptr, CHAR **name,
                           ULONG *suspended_count,
                           TX_BYTE_POOL **next_pool);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen bellek bayt havuzu hakkında bilgi alır.
+Bu hizmet, belirtilen bellek bayt havuzuyla ilgili bilgileri almaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr**: daha önce oluşturulmuş bellek havuzuna yönelik işaretçi.
-- **ad**: bayt havuzunun adı işaretçisinin hedef işaretçisi.
-- **kullanılabilir**: havuzdaki kullanılabilir bayt sayısı için hedef işaretçisi.
-- **parçalar**: bayt havuzundaki toplam bellek parçası sayısı için hedef işaretçisi.
-- **first_suspended**: Bu bayt havuzunun askıya alınma listesindeki iş parçacığına işaretçi için hedef işaretçisi.
-- **suspended_count**: Bu bayt havuzunda Şu anda askıya alınan iş parçacığı sayısı için hedef işaretçisi.
-- **next_pool**: sonraki oluşturulan bayt havuzunun işaretçisi için hedef işaretçisi.
+- **pool_ptr:** Daha önce oluşturulan bellek havuzunun işaretçisi.
+- **name:** Byte havuzunun adına işaretçi için hedef işaretçisi.
+- **kullanılabilir:** Havuza kullanılabilir bayt sayısı için hedef işaretçisi.
+- **parçalar:** Byte havuzunda toplam bellek parçası sayısı için hedefin işaretçisi.
+- **first_suspended:** Bu bayt havuzunun askıya alma listesinde ilk olarak iş parçacığının işaretçisi için hedefe işaretçi.
+- **suspended_count:** Şu anda bu bayt havuzunda askıya alınmış olan iş parçacığı sayısı için hedefin işaretçisi.
+- **next_pool:** Sonraki oluşturulan byte havuzunun işaretçisi için hedef işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı havuz bilgileri alma.
-- TX_POOL_ERROR: (0x02) geçersiz bellek havuzu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı havuz bilgileri alınır.
+- TX_POOL_ERROR: (0x02) Geçersiz bellek havuzu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -902,7 +902,7 @@ status =  tx_byte_pool_info_get(&my_pool, &name,
 
 ## <a name="tx_byte_pool_performance_info_get"></a>tx_byte_pool_performance_info_get
 
-Bayt havuzu performans bilgilerini al
+Byte havuzu performans bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -912,36 +912,36 @@ UINT tx_byte_pool_performance_info_get(TX_BYTE_POOL *pool_ptr,
         ULONG *fragments_searched, ULONG *merges, ULONG *splits,
         ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen bellek bayt havuzuyla ilgili performans bilgilerini alır.
+Bu hizmet, belirtilen bellek baytı havuzuyla ilgili performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr**: daha önce oluşturulan bellek bayt havuzuna yönelik işaretçi.
-- ayır: Bu havuzda gerçekleştirilen **ayrılan** istek sayısı için hedef işaretçisi.
-- **yayınlar**: Bu havuzda gerçekleştirilen yayın isteği sayısı için hedef işaretçisi.
-- **fragments_searched**: Bu havuzdaki ayırma istekleri sırasında aranan iç bellek parçacıklarının sayısı için hedef işaretçisi.
-- **birleştirmeler**: Bu havuzdaki ayırma istekleri sırasında birleştirilmiş iç bellek blokları sayısı için hedef işaretçisi.
-- **bölmeler**: Bu havuzdaki ayırma istekleri sırasında oluşturulan iç bellek blokları sayısı (parçalar) için hedef işaretçisi.
-- **getirilmesi**: Bu havuzdaki iş parçacığı ayırma getirilmesi sayısı için hedef işaretçisi.
-- **zaman aşımları**: Bu havuzda askıya alınma zaman aşımı sayısı için hedef işaretçisi.
+- **pool_ptr:** Daha önce oluşturulan bellek bayt havuzunun işaretçisi.
+- **allocates:** Bu havuzda gerçekleştirilen ayırma isteklerinin sayısı için hedefin işaretçisi.
+- **releases:** Bu havuzda gerçekleştirilen yayın isteklerinin sayısı için hedefin işaretçisi.
+- **fragments_searched:** Bu havuz üzerinde ayırma istekleri sırasında aranan iç bellek parçalarının sayısı için hedefin işaretçisi.
+- **birleştirmeleri:** Bu havuz üzerinde ayırma istekleri sırasında birleştirilen iç bellek bloklarının sayısı için hedefe işaretçi.
+- **splits:** Bu havuz üzerinde ayırma istekleri sırasında oluşturulan bölünmüş iç bellek bloklarının (parçalar) sayısı için hedefe işaretçi.
+- **askıya almalar:** Bu havuz üzerinde iş parçacığı ayırma askıya alma sayısı için hedefe işaretçi.
+- **zaman aşımı:** Bu havuz üzerinde ayırma askıya alma zaman aşımı sayısı için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlamak, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TX_SUCCESS: (0x00) başarılı bayt havuzu performans Get.
-- **TX_PTR_ERROR**: (0x03) geçersiz bayt havuzu işaretçisi.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- TX_SUCCESS: (0x00) Başarılı byte pool performance get.
+- **TX_PTR_ERROR:**(0x03) Geçersiz bayt havuzu işaretçisi.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -978,7 +978,7 @@ status =  tx_byte_pool_performance_info_get(&my_pool,
 
 ## <a name="tx_byte_pool_performance_system_info_get"></a>tx_byte_pool_performance_system_info_get
 
-Bayt havuzu sistem performans bilgilerini al
+Byte havuz sistemi performans bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -987,34 +987,34 @@ UINT  tx_byte_pool_performance_system_info_get(ULONG *allocates,
         ULONG *releases, ULONG *fragments_searched, ULONG *merges,
         ULONG *splits, ULONG *suspensions, ULONG *timeouts);;
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet sistemdeki tüm bellek bayt havuzlarıyla ilgili performans bilgilerini alır.
+Bu hizmet, sistemde bulunan tüm bellek baytı havuzlarına ilişkin performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_BYTE_POOL_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- ayır: Bu havuzda gerçekleştirilen **ayrılan** istek sayısı için hedef işaretçisi.
-- **yayınlar**: Bu havuzda gerçekleştirilen yayın isteği sayısı için hedef işaretçisi.
-- **fragments_searched**: tüm bayt havuzlarındaki ayırma istekleri sırasında aranan iç bellek parçacıklarının toplam sayısı için hedef işaretçisi.
-- **birleştirmeler**: tüm bayt havuzlarındaki ayırma istekleri sırasında birleştirilmiş iç bellek bloklarının toplam sayısı için hedef işaretçisi.
-- **bölmeler**: tüm bayt havuzlarındaki ayırma istekleri sırasında oluşturulan toplam iç bellek bloğu sayısı (parça) için hedef işaretçisi.
-- **getirilmesi**: tüm bayt havuzlarındaki iş parçacığı ayırma getirilmesi toplam sayısı için hedef işaretçisi.
-- **zaman aşımları**: tüm bayt havuzlarında askıya alınma zaman aşımlarının toplam sayısı için hedef işaretçisi.
+- **allocates:** Bu havuzda gerçekleştirilen ayırma isteklerinin sayısı için hedefin işaretçisi.
+- **releases:** Bu havuzda gerçekleştirilen yayın isteklerinin sayısı için hedefin işaretçisi.
+- **fragments_searched:** Tüm bayt havuzlarında ayırma istekleri sırasında aranan toplam iç bellek parçası sayısı için hedefe işaretçi.
+- **birleştirmeleri:** Tüm bayt havuzlarında ayırma istekleri sırasında birleştirilen toplam iç bellek bloğu sayısı için hedefe işaretçi.
+- **splits:** Tüm bayt havuzlarında ayırma istekleri sırasında oluşturulan toplam dahili bellek bloğu bölme (parça) sayısı için hedefe işaretçi.
+- **askıya almalar:** Tüm bayt havuzlarında toplam iş parçacığı ayırma askıya alma sayısı için hedefin işaretçisi.
+- **zaman aşımı:** Tüm bayt havuzlarında toplam ayırma askıya alma zaman aşımı sayısı için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlamak, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bayt havuzu performans Get.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı bayt havuzu performansı get.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -1049,33 +1049,33 @@ tx_byte_pool_performance_system_info_get(&fragments_searched,
 
 ## <a name="tx_byte_pool_prioritize"></a>tx_byte_pool_prioritize
 
-Bayt havuzunun askıya alınma listesini önceliklendir
+Byte havuzu askıya alma listesini önceliklendirme
 
 ### <a name="prototype"></a>Prototype
 
 ```c
 UINT tx_byte_pool_prioritize(TX_BYTE_POOL *pool_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu havuzdaki bellek için askıya alınan en yüksek öncelikli iş parçacığını askıya alma listesinin önüne koyar. Diğer tüm iş parçacıkları ' de askıya alındığı FıFO sırasında kalır.
+Bu hizmet, en yüksek öncelikli iş parçacığını bu havuza bellek için askıya alma listesinin önüne yer almaktadır. Diğer tüm iş parçacıkları askıya alındıklarında aynı FIFO sırasına göre kalır.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **pool_ptr**: bellek havuzu denetim bloğuna yönelik işaretçi.
+- **pool_ptr:** Bellek havuzu denetim bloğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek havuzu önceliği belirleme.
-- TX_POOL_ERROR: (0x02) geçersiz bellek havuzu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı bellek havuzu önceliklerini belirleme.
+- TX_POOL_ERROR: (0x02) Geçersiz bellek havuzu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1111,28 +1111,28 @@ Baytları bellek havuzuna geri bırakma
 ```C
 UINT tx_byte_release(VOID *memory_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet önceden ayrılmış bir bellek alanını ilişkili havuzuna geri yayınlar. Bu havuzdan bellek beklemeyi askıya alınmış bir veya daha fazla iş parçacığı varsa, askıya alınan her iş parçacığına bellek verilir ve bellek tükenene veya daha fazla askıya alınmış iş parçacığı kalmayana kadar devam sürdürülür. Askıya alınan iş parçacıkları için bellek ayırma işlemi, her zaman askıya alınan ilk iş parçacığı ile başlar.
+Bu hizmet, önceden ayrılmış bir bellek alanı ile ilişkili havuzuna geri serbest bıraktır. Bu havuzdan bellek beklerken askıya alınmış bir veya daha fazla iş parçacığı varsa, askıya alınan her iş parçacığına bellek verilir ve bellek tükenene veya askıya alınmış iş parçacıklarının fazlası olana kadar devam eder. Askıya alınan iş parçacıklarına bellek bu işlemi her zaman ilk iş parçacığının askıya alınmış olarak başlar.
 
 > [!IMPORTANT]
-> Uygulamanın, serbest bırakıldıktan sonra bellek alanını kullanmasını önleyecek olması gerekir.
+> Uygulama, yayından sonra bellek alanı kullanmayı engellemeli.
 
 ### <a name="parameters"></a>Parametreler
 
-- **memory_ptr**: önceden ayrılmış bellek alanına yönelik işaretçi.
+- **memory_ptr:** Daha önce ayrılan bellek alanı işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı bellek sürümü.
-- TX_PTR_ERROR: (0x03) geçersiz bellek alanı işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı bellek sürümü.
+- TX_PTR_ERROR: (0x03) Geçersiz bellek alanı işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1161,7 +1161,7 @@ status =  tx_byte_release((VOID *) memory_ptr);
 
 ## <a name="tx_event_flags_create"></a>tx_event_flags_create
 
-Olay bayrakları grubu oluştur
+Olay bayrakları grubu oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1169,28 +1169,28 @@ Olay bayrakları grubu oluştur
 UINT tx_event_flags_create(TX_EVENT_FLAGS_GROUP *group_ptr,
                           CHAR *name_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir 32 olay bayrağı grubu oluşturur. Gruptaki tüm 32 olay bayrakları sıfır olarak başlatılır. Her olay bayrağı tek bir bit ile temsil edilir.
+Bu hizmet 32 olay bayrağı grubu oluşturur. Gruptaki 32 olay bayrağının hepsi sıfır olarak başlatılır. Her olay bayrağı tek bir bitle temsil edildi.
 
 ### <a name="parameters"></a>Parametreler
 
-- **group_ptr**: bir olay bayrakları Grup denetim bloğuna yönelik işaretçi. 
-- **name_ptr**: olay bayrakları grubunun adı işaretçisi.
+- **group_ptr:** Bir olay bayraklarının grup denetim bloğuna işaretçisi. 
+- **name_ptr:** Olay bayrakları grubunun adının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay grubu oluşturma.
-- TX_GROUP_ERROR: (0x06) geçersiz olay grubu işaretçisi. İşaretçi NULL ya da olay grubu zaten oluşturulmuş.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı olay grubu oluşturma.
+- TX_GROUP_ERROR: (0x06) Geçersiz olay grubu işaretçisi. İşaretçi NULL veya olay grubu zaten oluşturulmuştur.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1217,35 +1217,35 @@ status = tx_event_flags_create(&my_event_group,
 
 ## <a name="tx_event_flags_delete"></a>tx_event_flags_delete
 
-Olay bayrakları grubunu sil
+Olay bayrakları grubunu silme
 
 ### <a name="prototype"></a>Prototype
 
 ```c
 UINT tx_event_flags_delete(TX_EVENT_FLAGS_GROUP *group_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen olay bayrakları grubunu siler. Bu gruptan gelen olayların beklediği tüm iş parçacıkları sürdürülür ve TX_DELETED bir dönüş durumu verilir.
+Bu hizmet belirtilen olay bayrakları grubunu siler. Bu gruptan olay bekleyen tüm iş parçacıkları askıya alınır ve geri dönüş TX_DELETED verilir.
 
 > [!IMPORTANT]
-> Uygulama, olay bayrakları grubu silinmeden önce bu olay bayrakları grubu için bir küme bildirme geri çağrısının tamamlandığını (veya devre dışı) içerdiğinden emin olmalıdır. Ayrıca, uygulamanın, silinen bir olay bayrakları grubunun gelecekteki tüm kullanımını önlemesi gerekir.
+> Uygulama, olay bayrakları grubunu silmeden önce bu olay bayrakları grubu için bir küme bildirim geri çağırmanın tamamlandığından (veya devre dışı bırakıldı olduğundan) emin olmalı. Ayrıca, uygulamanın gelecekte silinen olay bayrakları grubunun tüm kullanımını engellemesi gerekir.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **group_ptr**: daha önce oluşturulmuş bir olay bayrakları grubuna yönelik işaretçi.
+- **group_ptr:** Önceden oluşturulmuş bir olay bayrakları grubunun işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay bayrakları grubu silme.
-- TX_GROUP_ERROR: (0x06) geçersiz olay bayrakları grup işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı olay bayrakları grubu silme.
+- TX_GROUP_ERROR: (0x06) Geçersiz olay bayrakları grup işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1284,50 +1284,50 @@ UINT tx_event_flags_get(TX_EVENT_FLAGS_GROUP *group_ptr,
                           ULONG requested_flags, UINT get_option,
                           ULONG *actual_flags_ptr, ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen olay bayrakları grubundan olay bayraklarını alır. Her olay bayrakları grubu 32 olay bayrağını içerir. Her bayrak tek bir bit ile temsil edilir. Bu hizmet, giriş parametreleri tarafından seçilen çeşitli olay bayrağı kombinasyonlarını alabilir.
+Bu hizmet, belirtilen olay bayrakları grubundan olay bayraklarını almaktadır. Her olay bayrakları grubu 32 olay bayrağı içerir. Her bayrak tek bir bitle temsil edildi. Bu hizmet, giriş parametreleri tarafından seçilen çeşitli olay bayrağı birleşimlerini alabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **group_ptr**: daha önce oluşturulmuş bir olay bayrakları grubuna yönelik işaretçi.
-- **requested_flags**: istenen olay bayraklarını temsil eden 32 bitlik işaretsiz değişken.
-- **get_option**: istenen olay bayraklarının tümünün veya herhangi birinin gerekli olup olmadığını belirtir. Aşağıdakiler geçerli seçimlerdir:
-    - **TX_AND**: (0x02)
-    - **TX_AND_CLEAR**: (0x03)
-    - **TX_OR**: (0x00)
-    - **TX_OR_CLEAR**: (0x01)
+- **group_ptr:** Önceden oluşturulmuş bir olay bayrakları grubunun işaretçisi.
+- **requested_flags:** İstenen olay bayraklarını temsil eden 32 bit imzasız değişken.
+- **get_option:** İstenen olay bayraklarının hepsini veya herhangi birini gerekli olup olmadığını belirtir. Aşağıdakiler geçerli seçimlerdir:
+    - **TX_AND:**(0x02)
+    - **TX_AND_CLEAR:**(0x03)
+    - **TX_OR:**(0x00)
+    - **TX_OR_CLEAR:**(0x01)
 
-    TX_AND veya TX_AND_CLEAR seçilmesi, tüm olay bayraklarının grupta mevcut olması gerektiğini belirtir. TX_OR veya TX_OR_CLEAR seçilmesi herhangi bir olay bayrağının tatmin edici olduğunu belirtir. TX_AND_CLEAR veya TX_OR_CLEAR belirtilirse, isteği karşılayan olay bayrakları temizlenir (sıfır olarak ayarlanır).
+    Bir TX_AND TX_AND_CLEAR tüm olay bayraklarının grupta mevcut olması gerektiğini belirtir. Bir TX_OR veya TX_OR_CLEAR, herhangi bir olay bayrağının tatmin edici olduğunu belirtir. İsteği karşılayan olay bayrakları, herhangi bir TX_AND_CLEAR veya TX_OR_CLEAR olarak ayarlanır.
 
-- **actual_flags_ptr**: alınan olay bayraklarının yerleştirildiği hedefin hedefi işaretçisi. Alınan gerçek bayrakların istenmedi bayrakları içerebileceğini unutmayın.
-- **wait_option**: seçili olay bayrakları ayarlanmamışsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000)
-    - **TX_WAIT_FOREVER**: (0xffffffff)
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **actual_flags_ptr:** Alınan olay bayraklarının yerleştiril olduğu hedefin işaretçisi. Elde edilen gerçek bayrakların, istenen bayraklar içere içere içere olduğunu unutmayın.
+- **wait_option:** Seçilen olay bayrakları ayarlanmazsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000)
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. Bu, hizmet iş parçacığından çağrıldığında tek geçerli seçenektir; Örneğin, başlatma, süreölçer veya ıSR.
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. Bu, hizmet iş parçacığı olmayan bir iş parçacığından çağrılıyorsa geçerli tek seçenektir; Örneğin Başlatma, zamanlayıcı veya ISR.
 
-    TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının olay bayrakları kullanılabilir olana kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, olay bayrakları kullanılabilir olana kadar çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (1-0xFFFFFFFE) seçildiğinde, olay bayrakları beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçmek, olay bayraklarını beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay bayrakları al.
-- **TX_DELETED**: (0x01) olay bayrakları grubu, iş parçacığı askıya alınırken silindi.
-- **TX_NO_EVENTS**: (0x07) hizmet, belirtilen olayları beklemek için belirtilen süre içinde alamadı.
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_GROUP_ERROR: (0x06) geçersiz olay bayrakları grup işaretçisi.
-- TX_PTR_ERROR: (0x03) gerçek olay bayrakları için geçersiz işaretçi.
-- TX_WAIT_ERROR: (0x04) iş parçacığından oluşan çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
-- TX_OPTION_ERROR: (0x08) geçersiz Get-OPTION belirtildi.
+- **TX_SUCCESS:**(0x00) Başarılı olay bayrakları alındı.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken olay bayrakları grubu silindi.
+- **TX_NO_EVENTS:**(0x07) Hizmet belirtilen süre içinde belirtilen olayları alamadı.
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_GROUP_ERROR: (0x06) Geçersiz olay bayrakları grup işaretçisi.
+- TX_PTR_ERROR: (0x03) Gerçek olay bayrakları için geçersiz işaretçi.
+- TX_WAIT_ERROR: (0x04) Bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- TX_OPTION_ERROR: (0x08) Geçersiz get-option belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1360,7 +1360,7 @@ status = tx_event_flags_get(&my_event_flags_group, 0x111,
 
 ## <a name="tx_event_flags_info_get"></a>tx_event_flags_info_get
 
-Olay bayrakları grubu hakkında bilgi al
+Olay bayrakları grubu hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1371,34 +1371,34 @@ UINT tx_event_flags_info_get(TX_EVENT_FLAGS_GROUP *group_ptr,
                          ULONG *suspended_count,
                          TX_EVENT_FLAGS_GROUP **next_group);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen olay bayrakları grubu hakkında bilgi alır.
+Bu hizmet, belirtilen olay bayrakları grubuyla ilgili bilgileri almaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **group_ptr**: bir olay bayrakları Grup denetim bloğuna yönelik işaretçi.
-- **Name**: olay bayrakları grubunun adına işaretçi için hedef işaretçisi.
-- **current_flags**: olay bayrakları grubundaki geçerli küme bayrakları için hedef işaretçisi.
-- **first_suspended**: Bu olay bayrakları grubunun askıya alınma listesindeki iş parçacığına işaretçi için hedef işaretçisi.
-- **suspended_count**: Bu olay bayrakları grubunda askıya alınmış olan iş parçacıklarının sayısı için hedef işaretçisi.
-- **next_group**: sonraki oluşturulan olay bayrakları grubunun işaretçisi için hedef işaretçisi.
+- **group_ptr:** Bir olay bayraklarının grup denetim bloğuna işaretçisi.
+- **name:** Olay bayrakları grubunun adının işaretçisi için hedefin işaretçisi.
+- **current_flags:** Olay bayrakları grubunda geçerli küme bayrakları için hedefin işaretçisi.
+- **first_suspended:** Bu olay bayrakları grubunun askıya alma listesinde ilk olarak iş parçacığının işaretçisi için hedef işaretçisi.
+- **suspended_count:** Şu anda bu olay bayrakları grubunda askıya alınmış olan iş parçacığı sayısı için hedefe işaretçi.
+- **next_group:** Sonraki oluşturulan olay bayrakları grubunun işaretçisi için hedef işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay grubu bilgilerini alma.
-- TX_GROUP_ERROR: (0x06) geçersiz olay grubu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı olay grubu bilgileri alma.
+- TX_GROUP_ERROR: (0x06) Geçersiz olay grubu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1442,33 +1442,33 @@ UINT tx_event_flags_performance_info_get(TX_EVENT_FLAGS_GROUP
                         *group_ptr, ULONG *sets, ULONG *gets,
                         ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen olay bayrakları grubuyla ilgili performans bilgilerini alır.
+Bu hizmet, belirtilen olay bayrakları grubuyla ilgili performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek için bu hizmetin tanımlanmış **TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **group_ptr**: daha önce oluşturulan olay bayrakları grubuna yönelik işaretçi.
-- **Ayarlar**: Bu grupta gerçekleştirilen olay bayrak kümesi isteklerinin sayısı için hedef işaretçisi.
-- **alır**: Bu grupta gerçekleştirilen olay bayrakları Al istekleri sayısı için hedef işaretçisi.
-- **getirilmesi**: Bu grupta getirilmesi al iş parçacığı olay bayrakları sayısı için hedef işaretçisi.
-- **zaman aşımları**: olay bayraklarının sayısı için hedefin işaretçisi bu gruptaki askıya alma zaman aşımlarını al.
+- **group_ptr:** Önceden oluşturulmuş olay bayrakları grubunun işaretçisi.
+- **sets:** Olay bayraklarının sayısı için hedefin işaretçisi, bu grupta gerçekleştirilen istekleri ayarlar.
+- **gets:** Olay bayraklarının sayısı için hedef işaretçisi bu grupta gerçekleştirilen istekleri alır.
+- **askıya almalar:** İş parçacığı olay bayraklarının sayısı için hedefe işaretçi, bu grupta askıya almalar alıyor.
+- **zaman aşımı:** Olay bayraklarının sayısı için hedefin işaretçisi bu grupta askıya alma zaman aşımı alıyor.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay bayrakları grup performansı al.
-- **TX_PTR_ERROR**: (0x03) geçersiz olay bayrakları grup işaretçisi.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı olay bayrakları grup performansı get.
+- **TX_PTR_ERROR:**(0x03) Geçersiz olay bayrakları grup işaretçisi.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -1500,7 +1500,7 @@ status =  tx_event_flags_performance_info_get(&my_event_flag_group,
 
 ## <a name="tx_event_flags_performance_system_info_get"></a>tx_event_flags_performance_system_info_get
 
-Performans sistemi bilgilerini al
+Performans sistemi bilgilerini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1508,31 +1508,31 @@ Performans sistemi bilgilerini al
 UINT  tx_event_flags_performance_system_info_get(ULONG *sets,
         ULONG *gets,ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet sistemdeki tüm olay bayrakları gruplarıyla ilgili performans bilgilerini alır.
+Bu hizmet, sistemde tüm olay bayrakları gruplarıyla ilgili performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek için bu hizmetin tanımlanmış **TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_EVENT_FLAGS_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **Ayarlar**: tüm gruplarda gerçekleştirilen olay bayrakları kümesi isteklerinin toplam sayısı için hedef işaretçisi.
-- **alır**: tüm gruplarda gerçekleştirilen olay bayrakları al isteklerinin toplam sayısı için hedef işaretçisi.
-- **getirilmesi**: tüm gruplar üzerinde getirilmesi al iş parçacığı olay bayraklarının toplam sayısı için hedef işaretçisi.
-- **zaman aşımları**: olay bayraklarının toplam sayısı için hedefin işaretçisi tüm gruplardaki askıya alınma zaman aşımlarını alır.
+- **sets:** Toplam olay bayrağı sayısı için hedefin işaretçisi, tüm gruplarda gerçekleştirilen istekleri ayarlar.
+- **gets:** Olay bayraklarının toplam sayısı için hedefin işaretçisi tüm gruplarda gerçekleştirilen istekleri alır.
+- **askıya almalar:** Toplam iş parçacığı olay bayraklarının sayısı için hedefin işaretçisi tüm gruplarda askıya alındı.
+- **zaman aşımı:** Toplam olay bayrağı sayısı için hedefe işaretçi tüm gruplarda askıya alma zaman aşımı alıyor.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay bayrakları sistem performansı al.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı olay bayrakları sistem performansı get.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -1562,7 +1562,7 @@ status = tx_event_flags_performance_system_info_get(&sets, &gets,
 
 ## <a name="tx_event_flags_set"></a>tx_event_flags_set
 
-Olay bayrakları grubundaki olay bayraklarını ayarlama
+Olay bayrakları grubunda olay bayrakları ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1570,29 +1570,29 @@ Olay bayrakları grubundaki olay bayraklarını ayarlama
 UINT tx_event_flags_set(TX_EVENT_FLAGS_GROUP *group_ptr,
                           ULONG  flags_to_set,UINT set_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen set-Option öğesine bağlı olarak bir olay bayrakları grubundaki olay bayraklarını ayarlar veya temizler. Olay bayrakları isteği artık karşılanan tüm askıya alınmış iş parçacıkları devam ettirildi.
+Bu hizmet, belirtilen ayar seçeneğine bağlı olarak bir olay bayrakları grubunda olay bayraklarını ayarlar veya temizler. Olay bayrakları isteğine artık yanıt verildiği askıya alınmış tüm iş parçacıkları devam eder.
 
 ### <a name="parameters"></a>Parametreler
 
-- **group_ptr**: önceden oluşturulan olay bayrakları Grup denetim bloğuna yönelik işaretçi.
-- **flags_to_set**: seçili küme seçeneğine göre ayarlanacak veya temizlenecek olay bayraklarını belirtir.
-- **set_option**: belirtilen olay bayraklarının, grubun geçerli olay bayraklarına mi yoksa ORed mi olduğunu belirtir. Aşağıdakiler geçerli seçimlerdir:
-    - **TX_AND**: (0x02)
-    - **TX_OR**: (0x00) TX_AND seçilmesi, belirtilen olay bayraklarının gruptaki geçerli olay bayraklarına olduğunu **ve** bulunduğunu belirtir. Bu seçenek, genellikle bir gruptaki olay bayraklarını temizlemek için kullanılır. Aksi takdirde, TX_OR belirtilirse, belirtilen olay bayrakları gruptaki geçerli olayla **birlikte olur.**
+- **group_ptr:** Önceden oluşturulmuş olay bayrakları grup denetim bloğuna işaretçi.
+- **flags_to_set:** Seçilen ayar seçeneğine göre ayarilecek veya temizilecek olay bayraklarını belirtir.
+- **set_option:** Belirtilen olay bayraklarının grubun geçerli olay bayraklarına ANDed veya ORed olduğunu belirtir. Aşağıdakiler geçerli seçimlerdir:
+    - **TX_AND:**(0x02)
+    - **TX_OR:**(0x00) TX_AND'ı seçmek, belirtilen olay bayraklarının **gruptaki** geçerli olay bayraklarına AND olarak alınarak belirlendi olduğunu belirtir. Bu seçenek genellikle bir gruptaki olay bayraklarını temizlemek için kullanılır. Aksi takdirde TX_OR, belirtilen olay bayrakları **gruptaki** geçerli olayla BIRLIKTE OR olur.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı olay bayrakları kümesi.
-- TX_GROUP_ERROR: (0x06) olay bayrakları grubuna yönelik geçersiz işaretçi.
-- TX_OPTION_ERROR: (0x08) geçersiz set-OPTION belirtildi.
+- **TX_SUCCESS:**(0x00) Başarılı olay bayrakları kümesi.
+- TX_GROUP_ERROR: (0x06) Olay bayrakları grubuna geçersiz işaretçi.
+- TX_OPTION_ERROR: (0x08) Geçersiz ayar seçeneği belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1622,7 +1622,7 @@ status =  tx_event_flags_set(&my_event_flags_group,
 
 ## <a name="tx_event_flags_set_notify"></a>tx_event_flags_set_notify
 
-Olay bayrakları ayarlandığında uygulamaya bildir
+Olay bayrakları ayarlanırken uygulamayı bilgilendirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1630,26 +1630,26 @@ Olay bayrakları ayarlandığında uygulamaya bildir
 UINT tx_event_flags_set_notify(TX_EVENT_FLAGS_GROUP *group_ptr,
        VOID (*events_set_notify)(TX_EVENT_FLAGS_GROUP *));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen olay bayrakları grubunda bir veya daha fazla olay bayrağı ayarlandığında çağrılan bir bildirim geri arama işlevini kaydeder. Bildirim geri çağrısının işlenmesi uygulama tarafından tanımlanır.
+Bu hizmet, belirtilen olay bayrakları grubunda bir veya daha fazla olay bayrağı ayar olduğunda çağrılır bir bildirim geri çağırma işlevini kaydediyor. Bildirim geri çağırma işlemi uygulama tarafından tanımlanır.
 
 > [!NOTE]
-> Uygulamanın olay bayrakları kümesi bildirim geri çağrısının, askıya alma seçeneğiyle herhangi bir ThreadX SMP API çağrısı yapmasına izin verilmez.
+> Uygulamanın olay bayrakları ayarlanmış bildirim geri çağırmanın askıya alma seçeneğiyle herhangi bir ThreadX SMP API'sini çağırmasına izin verilmez.
 
 ### <a name="parameters"></a>Parametreler 
-- **group_ptr**: daha önce oluşturulan olay bayrakları grubuna yönelik işaretçi.
-- **events_set_notify**: uygulamanın olay bayrakları kümesi bildirim işlevi işaretçisi. Bu değer TX_NULL, bildirim devre dışı bırakılır.
+- **group_ptr:** Önceden oluşturulmuş olay bayrakları grubunun işaretçisi.
+- **events_set_notify:** Uygulamanın olay bayraklarının işaretçisi bildirim işlevini ayarlayın. Bu değer doğru TX_NULL bildirim devre dışı bırakılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) olay bayrakları ayarlama bildiriminin başarılı kaydı.
-- TX_GROUP_ERROR: (0x06) geçersiz olay bayrakları grup işaretçisi.
-- TX_FEATURE_NOT_ENABLED: (0xFF) sistem, bildirim özellikleri devre dışı olarak derlendi.
+- **TX_SUCCESS:**(0x00) Olay bayraklarının başarıyla kaydı bildirim ayarladı.
+- TX_GROUP_ERROR: (0x06) Geçersiz olay bayrakları grup işaretçisi.
+- TX_FEATURE_NOT_ENABLED: (0xFF) Sistem bildirim özellikleri devre dışı bırakılmıştır.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -1686,31 +1686,31 @@ Kesmeleri etkinleştirme ve devre dışı bırakma
 ```C
 UINT tx_interrupt_control(UINT new_posture);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, **new_posture** giriş parametresi tarafından belirtilen kesintileri etkinleştirilir veya devre dışı bırakır.
+Bu hizmet, 'de giriş parametresi tarafından belirtilen kesmeleri **new_posture.**
 
 > [!IMPORTANT]
-> Bu hizmet bir uygulama iş parçacığından çağrılırsa, kesme sonrası bu iş parçacığı bağlamının bir parçası olarak kalır. Örneğin, iş parçacığı kesintileri devre dışı bırakmak ve sonra askıya almak için bu yordamı çağırırsa, kesintiler yeniden devre dışı bırakılır.
+> Bu hizmet bir uygulama iş parçacığından çağrılsa, kesme duruşu o iş parçacığının bağlamının bir parçası kalır. Örneğin, iş parçacığı kesmeleri devre dışı bırakmak için bu yordamı çağırıyorsa ve sonra sürdürdüğü zaman askıya alırsa, kesmeler yeniden devre dışı bırakılır.
 
 > [!WARNING]
-> Bu hizmet, başlatma sırasında kesmeleri etkinleştirmek için kullanılmamalıdır! Bunun yapılması öngörülemeyen sonuçlara neden olabilir.
+> Bu hizmet başlatma sırasında kesintileri etkinleştirmek için kullanılmamalı! Bunu yapmak öngörülemeyen sonuçlara neden olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **new_posture**: Bu parametre, kesmelerin devre dışı veya etkin olup olmadığını belirtir. Yasal değerler **TX_INT_DISABLE ve TX_INT_ENABLE içerir.** Bu parametrelerin gerçek değerleri bağlantı noktasına özeldir. Bunlara ek olarak, bazı işleme mimarileri ek kesme devre dışı bırakmayı destekleyebilir. Daha fazla ayrıntı için lütfen dağıtım diskinde sağlanan **_readme_threadx.txt_** bilgilerine bakın.
+- **new_posture:** Bu parametre kesmelerin devre dışı mı yoksa etkin mi olduğunu belirtir. Yasal değerler arasında **TX_INT_DISABLE ve TX_INT_ENABLE.** Bu parametrelerin gerçek değerleri bağlantı noktasına özgü değerlerdir. Buna ek olarak, bazı işleme mimarileri ek kesme devre dışı bırakma duruşlarını desteklemektedir. Diğer ayrıntılar **_içinreadme_threadx.txt_** diskte sağlanan dağıtım bilgilerine bakın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- önceki duruşunu: Bu hizmet, çağrıyı yapana önceki kesme sonrası geri döndürür. Bu, hizmet kullanıcılarının kesintiler devre dışı bırakıldıktan sonra önceki duruşunu geri yüklemesine olanak tanır.
+- önceki duruş: Bu hizmet, çağıranın önceki kesme duruşlarını döndürür. Bu, kesintiler devre dışı bırakılmıştırktan sonra hizmet kullanıcılarının önceki duruşu geri yüklemesini sağlar.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, zamanlayıcılar ve ISRs
+İş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1728,11 +1728,11 @@ tx_interrupt_control(my_old_posture);
 ```
 ### <a name="see-also"></a>Ayrıca Bkz.
 
-Yok
+Hiçbiri
 
 ## <a name="tx_mutex_create"></a>tx_mutex_create
 
-Karşılıklı dışlama mutex oluştur
+Karşılıklı dışlama mutex'i oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1740,30 +1740,30 @@ Karşılıklı dışlama mutex oluştur
 UINT tx_mutex_create(TX_MUTEX *mutex_ptr,
                           CHAR *name_ptr, UINT priority_inherit);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
     
-Bu hizmet, kaynak koruması için iş parçacıkları arası karşılıklı dışlama için bir mutex oluşturur.
+Bu hizmet, kaynak koruması için iş parçacığılar arası karşılıklı dışlama için bir mutex oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mutex_ptr**: Mutex denetim bloğuna yönelik işaretçi.
-- **name_ptr**: mutex adının işaretçisi.
-- **priority_inherit**: bu mutex 'in öncelik devralmayı destekleyip desteklemediğini belirtir. Bu değer TX_INHERIT, öncelikli devralma desteklenir. Ancak TX_NO_INHERIT belirtilirse, bu mutex tarafından öncelik devralımı desteklenmez.
+- **mutex_ptr:** Bir mutex denetim bloğuna işaretçi.
+- **name_ptr:** Köşenin adının işaretçisi.
+- **priority_inherit:** Bu mutex'in öncelik devralmayı destekleyip desteklemey olmadığını belirtir. Bu değer TX_INHERIT, öncelik devralması de desteklemektedir. Ancak, TX_NO_INHERIT, öncelik devralma bu mutex tarafından desteklenmiyor.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı mutex oluşturma.
-- TX_MUTEX_ERROR: (0x1C) geçersiz MUTEX işaretçisi. İşaretçi NULL ya da mutex zaten oluşturulmuş.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
-- TX_INHERIT_ERROR: (0x1F) geçersiz öncelik devralma parametresi.
+- **TX_SUCCESS:**(0x00) Başarılı mutex oluşturma.
+- TX_MUTEX_ERROR: (0x1C) Geçersiz mutex işaretçisi. İşaretçi NULL'tir veya mutex zaten oluşturulmuştur.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
+- TX_INHERIT_ERROR: (0x1F) Geçersiz öncelik parametreyi devralın.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1791,35 +1791,35 @@ status =  tx_mutex_create(&my_mutex,"my_mutex_name",
 
 ## <a name="tx_mutex_delete"></a>tx_mutex_delete
 
-Karşılıklı dışlama mutex 'i Sil
+Karşılıklı dışlama mutex'i silme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_mutex_delete(TX_MUTEX *mutex_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen mutex 'i siler. Mutex bekleniyor olan tüm iş parçacıkları sürdürülür ve TX_DELETED dönüş durumu verilir.
+Bu hizmet belirtilen mutex'i siler. Mutex için bekleyen tüm iş parçacıkları askıya alınır ve geri dönüş TX_DELETED verilir.
 
 > [!IMPORTANT]
-> Silinen bir mutex 'in kullanımını önleyen uygulamanın sorumluluğundadır.
+> Silinen bir mutex'in kullanımını önlemek uygulamanın sorumluluğundadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mutex_ptr**: daha önce oluşturulmuş bir mutex işaretçisi.
+- **mutex_ptr:** Önceden oluşturulmuş bir mutex'in işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı mutex silme.
-- TX_MUTEX_ERROR: (0x1C) geçersiz MUTEX işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı mutex silme.
+- TX_MUTEX_ERROR: (0x1C) Geçersiz mutex işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1848,51 +1848,51 @@ status =  tx_mutex_delete(&my_mutex);
 
 ## <a name="tx_mutex_get"></a>tx_mutex_get
 
-Mutex sahipliğini al
+Mutex sahipliğini alma
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_mutex_get(TX_MUTEX *mutex_ptr, ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen mutex 'in özel sahipliğini almaya çalışır. Çağıran iş parçacığı zaten mutex 'e sahipse, bir iç sayaç artırılır ve başarılı bir durum döndürülür.
+Bu hizmet, belirtilen mutex'in özel sahipliğini elde etmek için çalışır. Çağıran iş parçacığı zaten mutex'e sahipse, iç sayaç artırılır ve başarılı bir durum döndürülür.
 
-Mutex, başka bir iş parçacığına aitse ve bu iş parçacığı daha yüksek önceliktir ve öncelikli devralma, karşılıklı dışlama oluşturma sırasında belirtilmişse, daha düşük öncelikli iş parçacığının önceliği geçici olarak çağıran iş parçacığından çıkarılır.
+Mutex başka bir iş parçacığına aitse ve bu iş parçacığı daha yüksek önceliğe sahipse ve mutex oluşturma sırasında öncelik devralma belirtildi ise, düşük öncelikli iş parçacığının önceliği geçici olarak çağıran iş parçacığının önceliğini yükseltir.
 
 > [!IMPORTANT]
-> Prioritykalýtým ile bir mutex sahibi olan düşük öncelikli iş parçacığının önceliği, zaman uyumu sahipliği sırasında asla bir dış iş parçacığı tarafından değiştirilmemelidir.
+> Önceliğe sahip bir mutex'e sahip olan düşük öncelikli iş parçacığının önceliği, mutex sahipliği sırasında hiçbir zaman dış iş parçacığı tarafından değiştirilmemelidir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mutex_ptr**: daha önce oluşturulmuş bir mutex işaretçisi.
-- **wait_option**: mutex 'in zaten başka bir iş parçacığına ait olması durumunda hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000)
-    - **TX_WAIT_FOREVER**: (0xffffffff)
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **mutex_ptr:** Önceden oluşturulmuş bir mutex'in işaretçisi.
+- **wait_option:** Mutex zaten başka bir iş parçacığına aitse hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000)
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. *Bu, hizmet başlatma işleminden çağrıldığında geçerli tek seçenektir.*
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. *Bu, hizmet Başlatma'dan çağrılsa geçerli tek seçenektir.*
 
-    TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının mutex kullanılabilir olana kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, çağrıyı yapılan iş parçacığının mutex kullanılabilir olana kadar süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal değer (1-0xFFFFFFFE) seçildiğinde, mutex için beklerken askıya alınması için en fazla Zamanlayıcı sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçmek, mutex'i beklerken askıya alınan süreölçer sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı mutex al işlemi.
-- **TX_DELETED**: (0x01) mutex, iş parçacığı askıya alınırken silindi.
-- **TX_NOT_AVAILABLE**: (0x1d) hizmeti, mutex 'in sahipliğini, belirtilen süre içinde beklemek için alamadı.
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_MUTEX_ERROR: (0x1C) geçersiz MUTEX işaretçisi.
-- TX_WAIT_ERROR: (0x04) iş parçacığından oluşan çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı mutex get işlemi.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken Mutex silindi.
+- **TX_NOT_AVAILABLE:**(0x1D) Hizmet belirtilen süre içinde bekleme süresi içinde mutex'in sahipliğini alamadı.
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_MUTEX_ERROR: (0x1C) Geçersiz mutex işaretçisi.
+- TX_WAIT_ERROR: (0x04) Bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma ve iş parçacıkları ve zamanlayıcılar
+Başlatma ve iş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1919,7 +1919,7 @@ status =  tx_mutex_get(&my_mutex, TX_WAIT_FOREVER);
 
 ## <a name="tx_mutex_info_get"></a>tx_mutex_info_get
 
-Mutex hakkında bilgi alın
+Mutex hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1929,35 +1929,35 @@ UINT tx_mutex_info_get(TX_MUTEX *mutex_ptr, CHAR **name,
                           TX_THREAD **first_suspended,
                           ULONG *suspended_count, TX_MUTEX **next_mutex);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen mutex 'ten bilgileri alır.
+Bu hizmet, belirtilen mutex'den bilgileri almaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mutex_ptr**: Mutex denetim bloğu işaretçisi.
-- **ad**: zaman uyumu adının işaretçisi için hedef işaretçisi.
-- **Count**: mutex 'in sahiplik sayısı için hedef işaretçisi.
-- **sahip**: sahibi olan iş parçacığının işaretçisi için hedef işaretçisi.
-- **first_suspended**: bu mutex 'in askıya alınma listesindeki ilk iş parçacığına işaretçi için hedef işaretçisi.
-- **suspended_count**: bu mutex üzerinde şu anda askıya alınan iş parçacığı sayısı için hedef işaretçisi.
-- **next_mutex**: sonraki oluşturulan mutex işaretçisinin işaretçisi için hedef işaretçisi.
+- **mutex_ptr:** Mutex denetim bloğu işaretçisi.
+- **name:** Mutex'in adına işaretçi için hedefin işaretçisi.
+- **count:** Mutex'in sahiplik sayısı için hedefe işaretçi.
+- **owner:** Sahip olan iş parçacığının işaretçisi için hedefin işaretçisi.
+- **first_suspended:** Bu mutex'in askıya alma listesinde ilk olarak iş parçacığının işaretçisi için hedefe işaretçi.
+- **suspended_count:** Şu anda bu mutex üzerinde askıya alınmış olan iş parçacığı sayısı için hedefin işaretçisi.
+- **next_mutex:** Sonraki oluşturulan mutex işaretçisi için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı mutex bilgisi alma.
-- TX_MUTEX_ERROR: (0x1C) geçersiz MUTEX işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı mutex bilgileri alma.
+- TX_MUTEX_ERROR: (0x1C) Geçersiz mutex işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2002,35 +2002,35 @@ UINT tx_mutex_performance_info_get(TX_MUTEX *mutex_ptr, ULONG *puts,
        ULONG *gets, ULONG *suspensions, ULONG *timeouts,
        ULONG *inversions, ULONG *inheritances);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen mutex hakkında performans bilgilerini alır.
+Bu hizmet, belirtilen mutex hakkında performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_MUTEX_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_MUTEX_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **mutex_ptr**: daha önce oluşturulmuş mutex için işaretçi.
-- **koyar**: bu mutex üzerinde gerçekleştirilen put isteklerinin sayısı için hedef işaretçisi.
-- **Al: Bu** mutex üzerinde gerçekleştirilen GET isteklerinin sayısı için hedef işaretçisi.
-- **getirilmesi**: bu mutex üzerinde getirilmesi al iş parçacığı mutex 'i için hedef işaretçisi.
-- **zaman aşımları**: bu mutex 'teki mutex alma zaman aşımı sayısı için hedef işaretçisi.
-- **Inversions**: bu mutex 'teki iş parçacığı önceliği ınsürümlerin sayısı için hedef işaretçisi.
-- **Inheritances**: bu mutex 'teki iş parçacığı önceliği devralma işlemleri sayısı için hedef işaretçisi.
+- **mutex_ptr:** Önceden oluşturulmuş mutex işaretçisi.
+- **puts:** Bu mutex üzerinde gerçekleştirilen put isteklerinin sayısı için hedefe işaretçi.
+- **gets:** Bu mutex üzerinde gerçekleştirilen get isteklerinin sayısı için hedefin işaretçisi.
+- **askıya almalar:** İş parçacığı mutex sayısı için hedefe işaretçi, bu mutex üzerinde askıya almaları alıyor.
+- **zaman aşımı:** Bu mutex üzerinde askıya alma askıya alma zaman aşımı sayısı için hedefe işaretçi.
+- **inversions:** Bu mutex'te iş parçacığı öncelik ters çevirmelerinin sayısı için hedefe işaretçi.
+- **devralmalar:** Bu mutex üzerinde iş parçacığı önceliği devralma işlemlerinin sayısı için hedefe işaretçi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı mutex performansı Get. 
-- **TX_PTR_ERROR**: (0x03) geçersiz mutex işaretçisi.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı mutex performans get. 
+- **TX_PTR_ERROR:**(0x03) Geçersiz mutex işaretçisi.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -2073,7 +2073,7 @@ UINT  tx_mutex_performance_system_info_get(ULONG *puts, ULONG *gets,
         ULONG *suspensions, ULONG *timeouts,
         ULONG *inversions, ULONG *inheritances);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sistemdeki tüm zaman uyumu sağlayıcılar hakkındaki performans bilgilerini alır.
 
@@ -2139,7 +2139,7 @@ Mutex askıya alma listesini önceliklendir
 ```C
 UINT tx_mutex_prioritize(TX_MUTEX *mutex_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, askıya alma listesinin önünde mutex 'in sahipliği için askıya alınan en yüksek öncelik iş parçacığını koyar. Diğer tüm iş parçacıkları ' de askıya alındığı FıFO sırasında kalır.
 
@@ -2158,7 +2158,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2195,7 +2195,7 @@ Mutex 'in sahipliğini serbest bırakma
 ```C
 UINT tx_mutex_put(TX_MUTEX *mutex_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen mutex 'in sahiplik sayısını azaltır. Sahiplik sayısı sıfırsa, mutex kullanılabilir hale getirilir.
 
@@ -2253,7 +2253,7 @@ UINT tx_queue_create(TX_QUEUE *queue_ptr, CHAR *name_ptr,
                           UINT message_size,
                           VOID *queue_start, ULONG queue_size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, genellikle karşılıklı iş parçacığı iletişimi için kullanılan bir ileti kuyruğu oluşturur. Toplam ileti sayısı, belirtilen ileti boyutundan ve sıradaki toplam bayt sayısından hesaplanır.
 
@@ -2264,25 +2264,25 @@ Bu hizmet, genellikle karşılıklı iş parçacığı iletişimi için kullanı
 
 - **queue_ptr**: ileti kuyruğu denetim bloğuna yönelik işaretçi.
 - **name_ptr**: ileti sırasının adı işaretçisi.
-- **message_size**: kuyruktaki her iletinin boyutunu belirtir. İleti boyutları 1 32 bitlik sözcükten 16 32 bit sözcüklere kadar değişir. Geçerli ileti boyutu seçenekleri, 1 ile 16 arasında (dahil) sayısal değerlerdir.
-- **queue_start**: ileti sırasının başlangıç adresi. Başlangıç adresi ULONG veri türünün boyutuna hizalanmalıdır.
-- **queue_size**: ileti kuyruğu için kullanılabilen toplam bayt sayısı.
+- **message_size**: kuyruktaki her iletinin boyutunu belirtir. İleti boyutları 1 32 bit sözcük ile 16 32 bit sözcük arasında olabilir. Geçerli ileti boyutu seçenekleri, dahil olmak 1 ile 16 arasında sayısal değerlerdir.
+- **queue_start:** İleti kuyruğu başlangıç adresi. Başlangıç adresi, ULONG veri türünün boyutuna hizalanmış olması gerekir.
+- **queue_size:** İleti kuyruğu için kullanılabilen toplam bayt sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı ileti kuyruğu oluşturma.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi. İşaretçi NULL ya da sıra zaten oluşturulmuş.
-- TX_PTR_ERROR: (0x03) ileti sırasının başlangıç adresi geçersiz.
-- TX_SIZE_ERROR: (0x05) ileti sırasının boyutu geçersiz.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı ileti kuyruğu oluşturma.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi. İşaretçi NULL'tır veya kuyruk zaten oluşturulmuştur.
+- TX_PTR_ERROR: (0x03) İleti kuyruğun başlangıç adresi geçersiz.
+- TX_SIZE_ERROR: (0x05) İleti kuyruğu boyutu geçersiz.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2315,37 +2315,37 @@ status = tx_queue_create(&my_queue, "my_queue_name",
 
 ## <a name="tx_queue_delete"></a>tx_queue_delete
 
-İleti kuyruğunu sil
+İleti kuyruğu silme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_queue_delete(TX_QUEUE *queue_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ileti sırasını siler. Bu kuyruktan bir ileti beklemeden askıya alınmış tüm iş parçacıkları sürdürülür ve TX_DELETED dönüş durumu verilir.
+Bu hizmet belirtilen ileti kuyruğunı siler. Bu kuyruktan iletiyi beklerken askıya alınan tüm iş parçacıkları devam eder ve bir TX_DELETED durumu verilir.
 
 > [!IMPORTANT]
-> Uygulama, kuyruk silinmeden önce bu sıra için gönderilen bildirim geri çağrısının tamamlandı (veya devre dışı) olduğundan emin olmalıdır. Ayrıca, uygulamanın, silinen bir kuyruğun gelecekteki kullanımını önlemesi gerekir.
+> Uygulama, kuyruğu silmeden önce bu kuyruk için gönderme bildirimi geri çağırmalarının tamamlandığından (veya devre dışı bırakıldıklardan) emin olması gerekir. Ayrıca, uygulamanın gelecekte silinen bir kuyruğun kullanımını engellemesi gerekir.
 
-*Ayrıca, bu hizmet tamamlandıktan sonra kullanılabilir olan Kuyrukla ilişkili bellek alanını yönetmek için uygulamanın sorumluluğundadır.*
+*Bu hizmet tamamlandıktan sonra kullanılabilen kuyrukla ilişkili bellek alanı da uygulamanın sorumluluğundadır.*
 
 ### <a name="parameters"></a>Parametreler 
 
-- **queue_ptr**: daha önce oluşturulmuş bir ileti kuyruğuna yönelik işaretçi.
+- **queue_ptr:** Önceden oluşturulmuş bir ileti kuyruğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı ileti kuyruğu silme.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) başarılı ileti kuyruğu silme.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -2378,31 +2378,31 @@ status = tx_queue_delete(&my_queue);
 
 ## <a name="tx_queue_flush"></a>tx_queue_flush
 
-İleti sırasındaki boş iletiler
+İleti kuyruğunda boş iletiler
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_queue_flush(TX_QUEUE *queue_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ileti kuyruğunda depolanan tüm iletileri siler. Sıra doluysa, askıya alınmış tüm iş parçacıklarının iletileri atılır. Askıya alınan her iş parçacığı daha sonra ileti gönderme işleminin başarılı olduğunu belirten bir dönüş durumuyla sürdürülür. Sıra boşsa, bu hizmet hiçbir şey yapmaz.
+Bu hizmet, belirtilen ileti kuyruğunda depolanan tüm iletileri siler. Kuyruk dolu ise askıya alınan tüm iş parçacıklarının iletileri atılır. Askıya alınan her iş parçacığı daha sonra ileti göndermenin başarılı olduğunu belirten bir dönüş durumuyla devam eder. Kuyruk boşsa bu hizmet hiçbir şey yapmadı.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **queue_ptr**: daha önce oluşturulmuş bir ileti kuyruğuna yönelik işaretçi.
+- **queue_ptr:** Önceden oluşturulmuş bir ileti kuyruğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı ileti kuyruğu Temizleme.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı ileti kuyruğu boşaltma.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -2435,7 +2435,7 @@ status =  tx_queue_flush(&my_queue);
 
 ## <a name="tx_queue_front_send"></a>tx_queue_front_send
 
-Kuyruğun önüne ileti gönder
+Kuyruğun önüne ileti gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2443,40 +2443,40 @@ Kuyruğun önüne ileti gönder
 UINT tx_queue_front_send(TX_QUEUE *queue_ptr,
                            VOID *source_ptr, ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ileti sırasının ön konumuna bir ileti gönderir. İleti, kaynak işaretçi tarafından belirtilen bellek alanından kuyruğun önüne **kopyalanır** .
+Bu hizmet, belirtilen ileti kuyruğun ön konuma bir ileti gönderir. İleti, **kaynak işaretçi** tarafından belirtilen bellek alanında kuyruğun önüne kopyalanır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **queue_ptr**: ileti kuyruğu denetim bloğuna yönelik işaretçi.
-- **source_ptr**: ileti işaretçisi.
-- **wait_option**: ileti sırası doluysa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000)
-    - **TX_WAIT_FOREVER**: (0xffffffff)
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **queue_ptr:** İleti kuyruğu denetim bloğuna işaretçi.
+- **source_ptr:** İletinin işaretçisi.
+- **wait_option:** İleti kuyruğu dolu ise hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000)
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. *Bu, hizmet iş parçacığından çağrıldığında tek geçerli seçenektir; Örneğin, başlatma, süreölçer veya ıSR.*
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. *Bu, hizmet iş parçacığı olmayan bir iş parçacığından çağrılıyorsa geçerli tek seçenektir; Örneğin Başlatma, zamanlayıcı veya ISR.*
 
-    TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının sırada yer açılıncaya kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, kuyrukta yer olana kadar çağrı iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (1-0xFFFFFFFE) seçilmesi, sıradaki Oda beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçmek, kuyrukta yer beklerken askıya alınan süreölçer sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) Ileti gönderme başarılı oldu.
-- **TX_DELETED**: (0x01) ileti kuyruğu iş parçacığı askıya alınırken silindi.
-- **TX_QUEUE_FULL**: (0x0B) hizmet, belirtilen süre için sıra dolu olduğundan ileti gönderemedi.
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
-- TX_PTR_ERROR: (0x03) ileti için geçersiz kaynak işaretçisi.
-- TX_WAIT_ERROR: (0x04) iş parçacığından oluşan çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- **TX_SUCCESS:**(0x00) İleti gönderme başarılı.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken ileti kuyruğu silindi.
+- **TX_QUEUE_FULL:**(0x0B) Kuyruk belirtilen süre boyunca dolu olduğundan hizmet ileti gönderemiyor.
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
+- TX_PTR_ERROR: (0x03) İleti için geçersiz kaynak işaretçisi.
+- TX_WAIT_ERROR: (0x04) Bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -2522,35 +2522,35 @@ UINT tx_queue_info_get(TX_QUEUE *queue_ptr, CHAR **name,
         TX_THREAD **first_suspended, ULONG *suspended_count,
         TX_QUEUE **next_queue);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ileti kuyruğu hakkında bilgi alır.
+Bu hizmet, belirtilen ileti kuyruğuyla ilgili bilgileri alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **queue_ptr**: daha önce oluşturulmuş bir ileti kuyruğuna yönelik işaretçi.
-- **ad**: kuyruğun adına işaretçi için hedef işaretçisi.
-- **sıraya alındı**: Şu anda kuyruktaki ileti sayısı için hedef işaretçisi.
-- **available_storage**: sıranın Şu anda alana sahip olduğu ileti sayısı için hedef işaretçisi.
-- **first_suspended**: bu sıranın askıya alınma listesindeki iş parçacığına yönelik işaretçinin hedefi işaretçisi.
-- **suspended_count**: bu kuyrukta askıya alınmış olan iş parçacığı sayısı için hedef işaretçisi.
-- **next_queue**: sonraki oluşturulan sıranın işaretçisi için hedef işaretçisi.
+- **queue_ptr:** Önceden oluşturulmuş bir ileti kuyruğuna işaretçi.
+- **name:** Kuyruğun adına işaretçinin hedefine işaretçi.
+- **enqueued:** Kuyrukta şu anda ileti sayısı için hedefin işaretçisi.
+- **available_storage:** Kuyruğun şu anda için alanı olan ileti sayısı için hedefin işaretçisi.
+- **first_suspended:** Bu kuyruğun askıya alma listesinde ilk sırada olan iş parçacığının işaretçisi için hedefe işaretçi.
+- **suspended_count:** Şu anda bu kuyrukta askıya alınmış olan iş parçacığı sayısı için hedefin işaretçisi.
+- **next_queue:** Sonraki oluşturulan kuyruğun işaretçisi için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı kuyruk bilgileri alma.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı kuyruk bilgileri get.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2589,7 +2589,7 @@ status = tx_queue_info_get(&my_queue, &name,
 
 ## <a name="tx_queue_performance_info_get"></a>tx_queue_performance_info_get
 
-Sıra performans bilgilerini al
+Kuyruk performansı bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -2599,35 +2599,35 @@ UINT  tx_queue_performance_info_get(TX_QUEUE *queue_ptr,
         ULONG *empty_suspensions, ULONG *full_suspensions,
         ULONG *full_errors, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen sıra hakkındaki performans bilgilerini alır.
+Bu hizmet, belirtilen kuyrukla ilgili performans bilgilerini döndürür.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_QUEUE_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_QUEUE_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **queue_ptr**: daha önce oluşturulan sıraya yönelik işaretçi.
-- **messages_sent**: bu kuyrukta gerçekleştirilen gönderme isteği sayısı için hedef işaretçisi.
-- **messages_received**: bu kuyrukta gerçekleştirilen alma isteği sayısı için hedef işaretçisi.
-- **empty_suspensions**: Bu kuyruktaki sıra boş getirilmesi sayısı için hedef işaretçisi.
-- **full_suspensions**: Bu kuyruktaki Queue Full getirilmesi sayısı için hedef işaretçisi.
-- **full_errors**: Bu kuyruktaki sıranın tam hatalarının sayısı için hedef işaretçisi.
-- **zaman aşımları**: Bu kuyruktaki iş parçacığı askıya alma zaman aşımı sayısı için hedef işaretçisi.
+- **queue_ptr:** Önceden oluşturulmuş kuyruğun işaretçisi.
+- **messages_sent:** Bu kuyrukta gerçekleştirilen gönderme isteklerinin sayısı için hedefin işaretçisi.
+- **messages_received:** Bu kuyrukta gerçekleştirilen alma isteklerinin sayısı için hedefin işaretçisi.
+- **empty_suspensions:** Bu kuyrukta boş olan askıya alma sayısı için hedefin işaretçisi.
+- **full_suspensions:** Bu kuyrukta tam askıya alma sayısı için hedefin işaretçisi.
+- **full_errors:** Bu kuyrukta kuyrukta tam hata sayısı için hedefin işaretçisi.
+- **zaman aşımı:** Bu kuyrukta iş parçacığı askıya alma zaman aşımı sayısı için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı kuyruk performansı alma.
-- **TX_PTR_ERROR**: (0x03) geçersiz kuyruk işaretçisi.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı kuyruk performansı get.
+- **TX_PTR_ERROR:**(0x03) Geçersiz kuyruk işaretçisi.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -2664,7 +2664,7 @@ status = tx_queue_performance_info_get(&my_queue, &messages_sent,
 
 ## <a name="tx_queue_performance_system_info_get"></a>tx_queue_performance_system_info_get
 
-Sıra sistemi performans bilgilerini al
+Kuyruk sistemi performans bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -2674,33 +2674,33 @@ UINT  tx_queue_performance_system_info_get(ULONG *messages_sent,
         ULONG *full_suspensions, ULONG *full_errors,
         ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet sistemdeki tüm kuyruklarla ilgili performans bilgilerini alır.
+Bu hizmet, sistemde yer alan tüm kuyruklar hakkında performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_QUEUE_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_QUEUE_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **messages_sent**: tüm kuyruklarda gerçekleştirilen gönderme isteklerinin toplam sayısı için hedef işaretçisi.
-- **messages_received**: tüm kuyruklarda gerçekleştirilen Alım isteklerinin toplam sayısı için hedef işaretçisi.
-- **empty_suspensions**: tüm kuyruklarda boş kuyruk boş getirilmesi sayısı için hedef işaretçisi.
-- **full_suspensions**: tüm kuyruklarda toplam Queue Full getirilmesi sayısı için hedef işaretçisi.
-- **full_errors**: tüm sıralarda toplam sıra tam hatalarının toplam sayısı için hedef işaretçisi.
-- **zaman aşımları**: tüm sıralarda toplam iş parçacığı askıya alma zaman aşımı sayısı için hedef işaretçisi.
+- **messages_sent:** Tüm kuyruklarda gerçekleştirilen gönderme isteklerinin toplam sayısı için hedefin işaretçisi.
+- **messages_received:** Tüm kuyruklarda gerçekleştirilen toplam alma isteği sayısı için hedefin işaretçisi.
+- **empty_suspensions:** Tüm kuyruklarda toplam kuyruk boş askıya alma sayısı için hedefin işaretçisi.
+- **full_suspensions:** Tüm kuyruklarda tam askıya alınan toplam kuyruk askıya alma sayısı için hedefin işaretçisi.
+- **full_errors:** Tüm kuyruklarda toplam kuyruk tam hatası sayısı için hedefin işaretçisi.
+- **zaman aşımı:** Tüm kuyruklarda toplam iş parçacığı askıya alma zaman aşımı sayısı için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı kuyruk sistem performansı alma.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı kuyruk sistemi performansı get.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -2736,7 +2736,7 @@ status = tx_queue_performance_system_info_get(&messages_sent,
 
 ## <a name="tx_queue_prioritize"></a>tx_queue_prioritize
 
-Sıra askıya alma listesini önceliklendir
+Kuyruk askıya alma listesini önceliklendirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2744,26 +2744,26 @@ Sıra askıya alma listesini önceliklendir
 UINT tx_queue_prioritize(TX_QUEUE *queue_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, askıya alma listesinin önünde bu kuyruğa bir ileti (veya bir ileti yerleştirmek için) için askıya alınan en yüksek öncelik iş parçacığını yerleştirir. Diğer tüm iş parçacıkları ' de askıya alındığı FıFO sırasında kalır.
+Bu hizmet, askıya alma listesinin önüne bu kuyruğa bir ileti (veya ileti yer alma) için en yüksek öncelikli iş parçacığını askıya alır. Diğer tüm iş parçacıkları askıya alındıklarında aynı FIFO sırasına göre kalır.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **queue_ptr**: daha önce oluşturulmuş bir ileti kuyruğuna yönelik işaretçi.
+- **queue_ptr:** Önceden oluşturulmuş bir ileti kuyruğuna işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı sıra önceliği belirleme.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı kuyruk öncelikleri.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2803,43 +2803,43 @@ status = tx_queue_prioritize(&my_queue);
 UINT tx_queue_receive(TX_QUEUE *queue_ptr,
                           VOID *destination_ptr, ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ileti sırasından bir ileti alır. Alınan ileti, kuyruktan hedef işaretçi tarafından belirtilen bellek alanına **kopyalanır** . Bu ileti daha sonra kuyruktan kaldırılır.
+Bu hizmet, belirtilen ileti kuyruğundan bir ileti alır. Alınan ileti **kuyruktan hedef** işaretçi tarafından belirtilen bellek alanına kopyalanır. Bu ileti daha sonra kuyruktan kaldırılır.
 
 > [!WARNING]
-> Belirtilen hedef bellek alanı iletiyi tutabilecek kadar büyük olmalıdır; Yani, **destination_ptr** tarafından işaret edilen ileti hedefi en az bu sıranın ileti boyutu kadar büyük olmalıdır. Aksi takdirde, hedef yeterince büyük değilse, aşağıdaki bellek alanında bellek bozulması oluşur.
+> Belirtilen hedef bellek alanı iletiyi tutacak kadar büyük olmalı; Başka bir ifadeyle, destination_ptr hedef, bu kuyruğun ileti boyutu kadar büyük olması gerekir.  Aksi takdirde, hedef yeterince büyük değilse, aşağıdaki bellek alanında bellek bozulması oluşur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **queue_ptr**: daha önce oluşturulmuş bir ileti kuyruğuna yönelik işaretçi.
-- **destination_ptr**: iletinin kopyalanacağı konum.
-- **wait_option**: ileti sırası boş ise hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000) 
-    - **TX_WAIT_FOREVER**: (0xffffffff) 
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **queue_ptr:** Önceden oluşturulmuş bir ileti kuyruğuna işaretçi.
+- **destination_ptr:** İletinin kopyalan yer konumu.
+- **wait_option:** İleti kuyruğu boşsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000) 
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF) 
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. Bu, hizmet iş parçacığından çağrıldığında tek geçerli seçenektir; Örneğin, başlatma, süreölçer veya ıSR.
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. Bu, hizmet iş parçacığı olmayan bir iş parçacığından çağrılıyorsa geçerli tek seçenektir; Örneğin Başlatma, zamanlayıcı veya ISR.
 
-    TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının bir ileti kullanılabilir olana kadar süresiz olarak askıda kalmasına neden olur.
+    Bu TX_WAIT_FOREVER, bir ileti kullanılabilir olana kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-    Sayısal bir değer (1-0xFFFFFFFE) seçildiğinde, ileti beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçerek ileti beklerken askıya alınan süreölçer sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) iletiyi başarıyla alma.
-- **TX_DELETED**: (0x01) ileti kuyruğu iş parçacığı askıya alınırken silindi.
-- **TX_QUEUE_EMPTY**: (0X0a) hizmeti, belirtilen sürenin süresi boyunca sıra boş olduğundan bir iletiyi alamadı.
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_QUEUE_ERROR: (0x09) geçersiz ileti kuyruğu işaretçisi.
-- TX_PTR_ERROR: (0x03) ileti için geçersiz hedef işaretçi.
-- TX_WAIT_ERROR: (0x04) iş parçacığından oluşan çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- **TX_SUCCESS:**(0x00) İletinin başarıyla alınması.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken ileti kuyruğu silindi.
+- **TX_QUEUE_EMPTY:**(0x0A) Kuyruk belirtilen süre boyunca boş olduğundan Hizmet bir ileti alamadı.
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_QUEUE_ERROR: (0x09) Geçersiz ileti kuyruğu işaretçisi.
+- TX_PTR_ERROR: (0x03) İleti için geçersiz hedef işaretçi.
+- TX_WAIT_ERROR: (0x04) Bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -2883,7 +2883,7 @@ status =  tx_queue_receive(&my_queue, my_message,
 UINT tx_queue_send(TX_QUEUE *queue_ptr,
                           VOID *source_ptr, ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen ileti kuyruğuna bir ileti gönderir. Gönderilen ileti, kaynak işaretçi tarafından belirtilen bellek alanından kuyruğa **kopyalanır** .
 
@@ -2958,7 +2958,7 @@ status =  tx_queue_send(&my_queue, my_message, TX_NO_WAIT);
 UINT  tx_queue_send_notify(TX_QUEUE *queue_ptr,
         VOID (*queue_send_notify)(TX_QUEUE *));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen sıraya bir ileti gönderildiğinde çağrılan bir bildirim geri arama işlevini kaydeder. Bildirim geri çağrısının işlenmesi uygulama tarafından tanımlanır.
 
@@ -3019,7 +3019,7 @@ Tavan ile sayım semafora bir örnek yerleştirme
 UINT  tx_semaphore_ceiling_put(TX_SEMAPHORE *semaphore_ptr,
         ULONG ceiling);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, gerçekte belirtilen sayım semafora bir örnek koyar ve bu da gerçekteki sayım semaforu bir tane artırır. Sayım semaforun geçerli değeri belirtilen tavan değerinden büyük veya bu değere eşitse, örnek yerleştirmeyecektir ve bir TX_CEILING_EXCEEDED hatası döndürülür.
 
@@ -3072,29 +3072,29 @@ Sayım semaforu oluştur
 UINT tx_semaphore_create(TX_SEMAPHORE *semaphore_ptr,
                            CHAR *name_ptr, ULONG initial_count);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, iş parçacıkları arası eşitleme için bir sayım semaforu oluşturur. İlk semafor sayısı bir giriş parametresi olarak belirtilir.
+Bu hizmet, iş parçacığı arası eşitleme için sayma semaforu oluşturur. İlk semafor sayısı bir giriş parametresi olarak belirtilir.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **semaphore_ptr**: semafor denetim bloğuna yönelik işaretçi. 
-- **name_ptr**: semafor adı işaretçisi.
-- **initial_count**: Bu semafor için başlangıç sayısını belirtir. Yasal değerler 0x00000000 ile 0xFFFFFFFF arasında değişir.
+- **semaphore_ptr:** Semafor denetim bloğuna işaretçi. 
+- **name_ptr:** Semafor adının işaretçisi.
+- **initial_count:** Bu semafor için başlangıç sayısını belirtir. Yasal değerler, 0x00000000 ve 0xFFFFFFFF.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı semafor oluşturma.
-- TX_SEMAPHORE_ERROR: (0x0C) geçersiz semafor işaretçisi. İşaretçi NULL ya da semafor zaten oluşturulmuş.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı semafor oluşturma.
+- TX_SEMAPHORE_ERROR: (0x0C) Geçersiz semafor işaretçisi. İşaretçi NULL veya semafor zaten oluşturulmuştur.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3126,35 +3126,35 @@ status = tx_semaphore_create(&my_semaphore,
 
 ## <a name="tx_semaphore_delete"></a>tx_semaphore_delete
 
-Sayım semaforu Sil
+Semafor sayımını silme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_semaphore_delete(TX_SEMAPHORE *semaphore_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen sayım semaforu siler. Bir semafor örneği için bekleyen askıya alınan tüm iş parçacıkları sürdürülür ve TX_DELETED dönüş durumu verilir.
+Bu hizmet belirtilen sayma semaforu siler. Semafor örneği bekleyen tüm iş parçacıkları askıya alınır ve geri dönüş TX_DELETED verilir.
 
 > [!IMPORTANT]
-> Uygulama, semafor silinmeden önce Bu semafor için bir put bildirimi geri çağrısının tamamlandığından (veya devre dışı bırakıldığından) emin olmalıdır. Ayrıca, uygulamanın, silinen semaforun gelecekteki tüm kullanımını önlemesi gerekir.
+> Uygulama, semaforu silmeden önce bu semafor için bir put notify geri çağırmanın tamamlandığından (veya devre dışı bırakıldı olduğundan) emin olmalı. Ayrıca, uygulamanın gelecekte silinen semaforların tüm kullanımını engellemesi gerekir.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **semaphore_ptr**: daha önce oluşturulmuş bir semafor işaretçisi.
+- **semaphore_ptr:** Önceden oluşturulmuş bir semafor işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) semafor silme işlemi başarıyla sayılıyor.
-- TX_SEMAPHORE_ERROR: (0x0C) geçersiz sayma semaforu işaretçisi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı sayma semafor silme.
+- TX_SEMAPHORE_ERROR: (0x0C) Geçersiz sayma semafor işaretçisi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3185,7 +3185,7 @@ status = tx_semaphore_delete(&my_semaphore);
 
 ## <a name="tx_semaphore_get"></a>tx_semaphore_get
 
-Sayım semafordan örnek al
+Semafor sayma örneğinden örnek al
 
 ### <a name="prototype"></a>Prototype
 
@@ -3193,38 +3193,38 @@ Sayım semafordan örnek al
 UINT tx_semaphore_get(TX_SEMAPHORE *semaphore_ptr,
                           ULONG wait_option)
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen sayım semafordan bir örnek (tek bir sayı) alır. Sonuç olarak, belirtilen Semaforun sayısı bir ile azaltılır.
+Bu hizmet, belirtilen sayma semafordan bir örnek (tek bir sayı) almaktadır. Sonuç olarak, belirtilen semafor sayısı bir azaltıldı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **semaphore_ptr**: daha önce oluşturulmuş bir sayım semaforu işaretçisi.
-- **wait_option**: semaforun kullanılabilir bir örneği yoksa hizmetin nasıl davranacağını tanımlar; Yani, semafor sayısı sıfırdır. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
-    - **TX_NO_WAIT**: (0x00000000)
-    - **TX_WAIT_FOREVER**: (0xffffffff)
-    - zaman aşımı değeri: (0x00000001 üzerinden 0xFFFFFFFE)
+- **semaphore_ptr:** Önceden oluşturulmuş sayma semaforu işaretçisi.
+- **wait_option:** Kullanılabilir semafor örneği yoksa hizmetin nasıl davranacağını tanımlar; Örneğin semafor sayısı sıfırdır. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+    - **TX_NO_WAIT:**(0x00000000)
+    - **TX_WAIT_FOREVER:**(0xFFFFFFFF)
+    - zaman aşımı değeri: (0x00000001 aracılığıyla 0xFFFFFFFE)
 
-    TX_NO_WAIT seçilmesi, başarılı olup olmamasından bağımsız olarak bu hizmetten anında geri dönerek sonuçlanır. *Bu, hizmet iş parçacığından çağrıldığında tek geçerli seçenektir; Örneğin, başlatma, süreölçer veya ıSR.*
+    Bu TX_NO_WAIT, başarılı olup olmadığı bağımsız olarak bu hizmetten hemen geri dönüşle sonuç verir. *Bu, hizmet iş parçacığı olmayan bir iş parçacığından çağrılıyorsa geçerli tek seçenektir; Başlatma, zamanlayıcı veya ISR gibi.*
 
-    TX_WAIT_FOREVER seçilmesi, çağıran iş parçacığının bir semafor örneği kullanılabilir olana kadar süresiz olarak askıda kalmasına neden olur. 
+    Bir TX_WAIT_FOREVER, bir semafor örneği kullanılabilir olana kadar çağırma iş parçacığının süresiz olarak askıya alınmasına neden olur. 
 
-    Bir sayısal değer (1-0xFFFFFFFE) seçilmesi, bir semafor örneği beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+    Sayısal bir değer (1-0xFFFFFFFE) seçmek, semafor örneği beklerken askıya alınan süreölçer sayısı üst sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) bir semafor örneğinin başarılı bir şekilde alımı.
-- **TX_DELETED**: (0x01) iş parçacığı askıya alınırken sayım semaforu silindi.
-- **TX_NO_INSTANCE**: (0x0D) hizmeti, sayım semaforun bir örneğini alamadı (semafor sayısı, belirtilen süre içinde beklenecek şekilde sıfır).
-- **TX_WAIT_ABORTED**: (0x1A) askıya alma başka bir iş parçacığı, ZAMANLAYıCı veya ISR tarafından iptal edildi.
-- TX_SEMAPHORE_ERROR: (0x0C) geçersiz sayma semaforu işaretçisi.
-- TX_WAIT_ERROR: (0x04) iş parçacığı olmayan bir çağrıda TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
+- **TX_SUCCESS:**(0x00) Semafor örneğinin başarıyla alınması.
+- **TX_DELETED:**(0x01) İş parçacığı askıya alınırken semafor sayma silindi.
+- **TX_NO_INSTANCE:**(0x0D) Hizmet sayma semaforu örneğini alamadı (semafor sayısı, belirtilen bekleme süresi içinde sıfırdır).
+- **TX_WAIT_ABORTED:**(0x1A) Askıya alma işlemi başka bir iş parçacığı, zamanlayıcı veya ISR tarafından durduruldu.
+- TX_SEMAPHORE_ERROR: (0x0C) Geçersiz sayma semafor işaretçisi.
+- TX_WAIT_ERROR: (0x04) bir iş parçacığından TX_NO_WAIT dışında bir bekleme seçeneği belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3257,7 +3257,7 @@ status =  tx_semaphore_get(&my_semaphore, TX_WAIT_FOREVER);
 
 ## <a name="tx_semaphore_info_get"></a>tx_semaphore_info_get
 
-Semafor hakkında bilgi alın
+Semafor hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3268,9 +3268,9 @@ UINT tx_semaphore_info_get(TX_SEMAPHORE *semaphore_ptr,
                           ULONG *suspended_count,
                           TX_SEMAPHORE **next_semaphore)
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet belirtilen semafor hakkında bilgi alır.
+Bu hizmet, belirtilen semaforla ilgili bilgileri almaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3295,7 +3295,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3341,7 +3341,7 @@ UINT  tx_semaphore_performance_info_get(TX_SEMAPHORE *semaphore_ptr,
         ULONG *puts, ULONG *gets,
         ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen semafor hakkında performans bilgilerini alır.
 
@@ -3408,7 +3408,7 @@ Semafor sistem performans bilgilerini al
 UINT tx_semaphore_performance_system_info_get(ULONG *puts,
        ULONG *gets, ULONG *suspensions, ULONG *timeouts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet sistemdeki tüm Semaforlar hakkındaki performans bilgilerini alır.
 
@@ -3471,7 +3471,7 @@ Semafor askıya alma listesini önceliklendir
 ```C
 UINT tx_semaphore_prioritize(TX_SEMAPHORE *semaphore_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, askıya alma listesinin önündeki semafor örneği için askıya alınan en yüksek öncelik iş parçacığını koyar. Diğer tüm iş parçacıkları ' de askıya alındığı FıFO sırasında kalır.
 
@@ -3490,7 +3490,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3524,7 +3524,7 @@ Sayım semafora bir örnek yerleştirme
 ```C
 UINT tx_semaphore_put(TX_SEMAPHORE *semaphore_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, gerçekte belirtilen sayım semafora bir örnek koyar ve bu da gerçekteki sayım semaforu bir tane artırır.
 
@@ -3583,7 +3583,7 @@ Semafor yerleştirayarlandığında uygulamaya bildir
 UINT  tx_semaphore_put_notify(TX_SEMAPHORE *semaphore_ptr,
         VOID (*semaphore_put_notify)(TX_SEMAPHORE *));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen semafor her gerçekleştiğinde çağrılan bir bildirim geri çağırma işlevini kaydeder. Bildirim geri çağrısının işlenmesi uygulama tarafından tanımlanır.
 
@@ -3649,7 +3649,7 @@ UINT tx_thread_create(TX_THREAD *thread_ptr,
                           UINT preempt_threshold, ULONG time_slice,
                           UINT auto_start);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen görev girişi işlevinde yürütmeyi Başlatan bir uygulama iş parçacığı oluşturur. Yığın, öncelik, önalım-Threshold ve zaman dilimi, giriş parametreleri tarafından belirtilen özniteliklerin arasındadır. Ayrıca, iş parçacığının ilk yürütme durumu da belirtilir.
 
@@ -3677,15 +3677,15 @@ Bu hizmet, belirtilen görev girişi işlevinde yürütmeyi Başlatan bir uygula
 - TX_PTR_ERROR: (0x03) giriş noktasının başlangıç adresi geçersiz veya yığın alanı geçersiz, genellikle NULL.
 - TX_SIZE_ERROR: (0x05) yığın alanının boyutu geçersiz. İş parçacıklarının yürütülmesi için en az **TX_MINIMUM_STACK** bayt olması gerekir.
 - TX_PRIORITY_ERROR: (0x0F) geçersiz iş parçacığı önceliği (0-(TX_MAX_PRIORITIES-1) aralığı dışında bir değer.
-- TX_THRESH_ERROR: (0x18) geçersiz preemptionthreshold belirtildi. Bu değer, iş parçacığının ilk önceliğine eşit veya ondan küçük geçerli bir öncelik olmalıdır.
-- TX_START_ERROR: (0x10) geçersiz otomatik başlatma seçimi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- TX_THRESH_ERROR: (0x18) Geçersiz preemptionthreshold belirtildi. Bu değer, iş parçacığının ilk önceliğe eşit veya daha küçük geçerli bir öncelik olmalıdır.
+- TX_START_ERROR: (0x10) Geçersiz otomatik başlatma seçimi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma ve iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3751,38 +3751,38 @@ VOID my_thread_entry (ULONG initial_input)
 
 ## <a name="tx_thread_delete"></a>tx_thread_delete
 
-Uygulama iş parçacığını Sil
+Uygulama iş parçacığını silme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_thread_delete(TX_THREAD *thread_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen uygulama iş parçacığını siler. Belirtilen iş parçacığının sonlandırılmış veya tamamlanmış durumda olması gerektiğinden, bu hizmet kendisini silmeye çalışan bir iş parçacığından çağrılamaz.
+Bu hizmet belirtilen uygulama iş parçacığını siler. Belirtilen iş parçacığı sonlandırıldı veya tamamlandı durumda olması gerekir, bu hizmet kendisini silen bir iş parçacığından çağrılamaz.
 
 > [!IMPORTANT]
-> Bu hizmet tamamlandıktan sonra kullanılabilir olan iş parçacığının yığınında ilişkili bellek alanını yönetmek uygulamanın sorumluluğundadır. Ayrıca, uygulamanın silinen bir iş parçacığının kullanımını önlemesi gerekir.
+> Bu hizmet tamamlandıktan sonra kullanılabilen iş parçacığı yığınıyla ilişkili bellek alanı, uygulamanın sorumluluğundadır. Ayrıca, uygulamanın silinen bir iş parçacığının kullanımını engellemesi gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **thread_ptr**: daha önce oluşturulmuş bir uygulama iş parçacığına yönelik işaretçi.
+- **thread_ptr:** Önceden oluşturulmuş bir uygulama iş parçacığının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı iş parçacığı silme.
-- TX_THREAD_ERROR: (0x0E) geçersiz uygulama iş parçacığı işaretçisi.
-- **TX_DELETE_ERROR**: (0x11) belirtilen iş parçacığı sonlandırılmış veya tamamlanmış durumda değil.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) başarılı iş parçacığı silme.
+- TX_THREAD_ERROR: (0x0E) Geçersiz uygulama iş parçacığı işaretçisi.
+- **TX_DELETE_ERROR:**(0x11) Belirtilen iş parçacığı sonlandırıldı veya tamamlandı durumda değil.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları ve zamanlayıcılar
+İş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3820,7 +3820,7 @@ status =  tx_thread_delete(&my_thread);
 
 ## <a name="tx_thread_entry_exit_notify"></a>tx_thread_entry_exit_notify
 
-İş parçacığı girdisi ve çıkış sonrasında uygulamayı bilgilendir
+İş parçacığı girişi ve çıkışından sonra uygulamayı bilgilendirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3828,27 +3828,27 @@ status =  tx_thread_delete(&my_thread);
 UINT  tx_thread_entry_exit_notify(TX_THREAD *thread_ptr,
         VOID (*entry_exit_notify)(TX_THREAD *, UINT));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen iş parçacığı girildiğinde veya çıktığında çağrılan bir bildirim geri arama işlevini kaydeder. Bildirim geri çağrısının işlenmesi uygulama tarafından tanımlanır.
+Bu hizmet, belirtilen iş parçacığı girilirken veya çıkarken çağrılır bir bildirim geri çağırma işlevini kaydettirmektedir. Bildirim geri çağırma işlemi uygulama tarafından tanımlanır.
 
 > [!NOTE]
-> Uygulamanın iş parçacığı giriş/çıkış bildirimi geri çağrısının, askıya alma seçeneğiyle herhangi bir ThreadX SMP API çağrısı yapmasına izin verilmez.
+> Uygulamanın iş parçacığı girişi/çıkış bildirimi geri çağırması, askıya alma seçeneğiyle herhangi bir ThreadX SMP API'sini çağıramadı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **thread_ptr**: daha önce oluşturulmuş iş parçacığına yönelik işaretçi.
-- **entry_exit_notify**: uygulamanın iş parçacığı giriş/çıkış bildirimi işlevine yönelik işaretçi. Giriş/çıkış bildirimi işlevinin ikinci parametresi, bir giriş veya çıkış varsa belirler. TX_THREAD_ENTRY (0x00) değeri, iş parçacığının girildiğini belirtir, ancak değer TX_THREAD_EXIT (0x01), iş parçacığının çıkış olduğunu gösterir. Bu değer TX_NULL, bildirim devre dışı bırakılır.
+- **thread_ptr:** Daha önce oluşturulan iş parçacığının işaretçisi.
+- **entry_exit_notify:** Uygulamanın iş parçacığı giriş/çıkış bildirim işlevinin işaretçisi. entry/exit notification işlevinin ikinci parametresi, bir giriş veya çıkış olup ola bir giriş olup ola bir şey olduğunu belirtir. İş parçacığı TX_THREAD_ENTRY (0x00) iş parçacığının girilirken, TX_THREAD_EXIT (0x01) iş parçacığının çıkış olduğunu gösterir. Bu değer doğru TX_NULL bildirim devre dışı bırakılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) iş parçacığı giriş/çıkış bildirimi işlevinin başarılı kaydı.
-- TX_THREAD_ERROR: (0x0E) geçersiz iş parçacığı işaretçisi.
-- **TX_FEATURE_NOT_ENABLED (0xFF)** Sistem, bildirim özellikleri devre dışı olarak derlendi.
+- **TX_SUCCESS:**(0x00) İş parçacığı girişi/çıkış bildirimi işlevinin başarıyla kaydı.
+- TX_THREAD_ERROR: (0x0E) Geçersiz iş parçacığı işaretçisi.
+- **TX_FEATURE_NOT_ENABLED(0xFF)** Sistem, bildirim özellikleri devre dışı bırakılmıştır.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -3896,19 +3896,19 @@ void my_entry_exit_notify(TX_THREAD *thread_ptr, UINT condition)
 
 ## <a name="tx_thread_identify"></a>tx_thread_identify
 
-Şu anda yürütülmekte olan iş parçacığına olan işaretçiyi alır
+O anda yürütülen iş parçacığının işaretçisini aldı
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 TX_THREAD* tx_thread_identify(VOID);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet şu anda yürütülmekte olan iş parçacığına bir işaretçi döndürür. İş parçacığı yürütülerek, bu hizmet null bir işaretçi döndürür.
+Bu hizmet, o anda yürütülen iş parçacığına bir işaretçi döndürür. Yürütülen bir iş parçacığı yoksa, bu hizmet bir null işaretçi döndürür.
 
 > [!IMPORTANT]
-> Bu hizmet bir ıSR 'den çağrılırsa, dönüş değeri yürütülen kesme işleyicisinden önce çalışan iş parçacığını temsil eder.
+> Bu hizmet bir ISR'den çağrılsa, dönüş değeri kesme işleyicisi yürütüldüğünden önce çalışan iş parçacığını temsil eder.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3916,15 +3916,15 @@ Hiçbiri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- iş parçacığı işaretçisi: Şu anda yürütülmekte olan iş parçacığına yönelik Işaretçi. İş parçacığı yürütülerek, dönüş değeri TX_NULL.
+- iş parçacığı işaretçisi: O anda yürütülen iş parçacığının işaretçisi. Yürütülen bir iş parçacığı yoksa, dönüş değeri TX_NULL.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları ve ISRs
+İş Parçacıkları ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3975,49 +3975,49 @@ UINT tx_thread_info_get(TX_THREAD *thread_ptr, CHAR **name,
                           TX_THREAD **next_thread,
                           TX_THREAD **suspended_thread);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen iş parçacığı hakkındaki bilgileri alır.
+Bu hizmet, belirtilen iş parçacığıyla ilgili bilgileri almaktadır.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **thread_ptr**: iş parçacığı denetim bloğu işaretçisi.
-- **ad**: iş parçacığının adına işaretçi için hedef işaretçisi.
-- **durum**: iş parçacığının geçerli yürütme durumu için hedef işaretçisi. Olası değerler aşağıdaki gibidir:
-    - **TX_READY**: (0x00)
-    - **TX_COMPLETED**: (0x01)
-    - **TX_TERMINATED**: (0x02)
-    - **TX_SUSPENDED**: (0x03)
-    - **TX_SLEEP**: (0x04)
-    - **TX_QUEUE_SUSP**: (0x05)
-    - **TX_SEMAPHORE_SUSP**: (0x06)
-    - **TX_EVENT_FLAG**: (0x07)
-    - **TX_BLOCK_MEMORY**: (0x08)
-    - **TX_BYTE_MEMORY**: (0x09)
-    - **TX_MUTEX_SUSP**: (0x0D)
+- **thread_ptr:** İş parçacığı denetim bloğuna işaretçi.
+- **name:** İş parçacığının adına işaretçi için hedefin işaretçisi.
+- **state:** İş parçacığının geçerli yürütme durumu için hedefin işaretçisi. Olası değerler aşağıdaki gibidir:
+    - **TX_READY:**(0x00)
+    - **TX_COMPLETED:**(0x01)
+    - **TX_TERMINATED:**(0x02)
+    - **TX_SUSPENDED:**(0x03)
+    - **TX_SLEEP:**(0x04)
+    - **TX_QUEUE_SUSP:**(0x05)
+    - **TX_SEMAPHORE_SUSP:**(0x06)
+    - **TX_EVENT_FLAG:**(0x07)
+    - **TX_BLOCK_MEMORY:**(0x08)
+    - **TX_BYTE_MEMORY:**(0x09)
+    - **TX_MUTEX_SUSP:**(0x0D)
 
-- **run_count**: iş parçacığının çalışma sayısı için hedef işaretçisi. 
-- **Öncelik**: iş parçacığının önceliği için hedef işaretçisi.
-- **preemption_threshold**: iş parçacığının önalım-Threshold için hedef işaretçisi.
-- **time_slice**: iş parçacığının zaman dilimi için hedef işaretçisi. 
-- **next_thread**: sonraki oluşturulan iş parçacığı işaretçisinin hedefi işaretçisi.
-- **suspended_thread**: askıya alma listesindeki bir sonraki iş parçacığına işaretçi için hedef işaretçisi.
+- **run_count:** İş parçacığının çalıştırma sayısı için hedefin işaretçisi. 
+- **priority:** İş parçacığının önceliği için hedefe işaretçi.
+- **preemption_threshold:** İş parçacığının ön ön eşiği için hedefe işaretçi.
+- **time_slice:** İş parçacığının zaman dilimi için hedefin işaretçisi. 
+- **next_thread:** Sonraki oluşturulan iş parçacığı işaretçisi için hedefin işaretçisi.
+- **suspended_thread:** Askıya alma listesinde sonraki iş parçacığının işaretçisi için hedefin işaretçisi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı iş parçacığı bilgileri alma.
-- TX_THREAD_ERROR: (0x0E) geçersiz iş parçacığı denetim işaretçisi.
+- **TX_SUCCESS:**(0x00) Başarılı iş parçacığı bilgileri alma.
+- TX_THREAD_ERROR: (0x0E) Geçersiz iş parçacığı denetim işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4076,39 +4076,39 @@ UINT  tx_thread_performance_info_get(TX_THREAD *thread_ptr,
         ULONG *relinquishes, ULONG *timeouts, ULONG *wait_aborts,
         TX_THREAD **last_preempted_by);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen iş parçacığıyla ilgili performans bilgilerini alır.
+Bu hizmet, belirtilen iş parçacığıyla ilgili performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> Bu hizmetin performans bilgilerini döndürmesi için ThreadX SMP kitaplığı ve uygulamasının tanımlanmış **TX_THREAD_ENABLE_PERFORMANCE_INFO** ile oluşturulması gerekir.
+> Bu hizmetin performans bilgilerini iade etmek için ThreadX SMP **TX_THREAD_ENABLE_PERFORMANCE_INFO** ve uygulaması, tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler 
 
-- **thread_ptr**: daha önce oluşturulmuş iş parçacığına yönelik işaretçi.
-- **bağlantının sürdürülmesi**: Bu iş parçacığının bağlantının sürdürülmesi sayısı için hedef işaretçisi.
-- **getirilmesi**: Bu iş parçacığının getirilmesi sayısı için hedef işaretçisi.
-- **solicited_preemptions**: Bu iş parçacığı tarafından yapılan bir THREADX API hizmeti çağrısının sonucu olarak, preemptions sayısı için hedef işaretçisi.
-- **interrupt_preemptions**: kesme işlemenin sonucu olarak bu iş parçacığının preemptions sayısı için hedef işaretçisi.
-- **priority_inversions**: Bu iş parçacığının öncelik Inin sayısı için hedef işaretçisi.
-- **time_slices**: Bu iş parçacığının zaman içindeki zaman sayısı için hedef işaretçisi.
-- **relinquishes**: Bu iş parçacığı tarafından gerçekleştirilen iş parçacığı relinleri sayısı için hedef işaretçisi.
-- **zaman aşımları**: Bu iş parçacığında askıya alınma zaman aşımları sayısı için hedef işaretçisi.
-- **wait_aborts**: Bu iş parçacığında gerçekleştirilen bekleme iptal sayısı için hedef işaretçisi.
-- **last_preempted_by**: Bu iş parçacığını en son alan iş parçacığı işaretçisinin hedefi işaretçisi.
+- **thread_ptr:** Daha önce oluşturulan iş parçacığının işaretçisi.
+- **resumptions:** Bu iş parçacığının yeniden dizilerinin sayısı için hedefin işaretçisi.
+- **askıya almalar:** Bu iş parçacığının askıya alınma sayısı için hedefin işaretçisi.
+- **solicited_preemptions:** Bu iş parçacığı tarafından yapılan Bir ThreadX API hizmet çağrısının sonucu olarak önkasyon sayısı için hedefe işaretçi.
+- **interrupt_preemptions:** Kesme işleminin bir sonucu olarak bu iş parçacığının önkasyonlarının sayısı için hedefe işaretçi.
+- **priority_inversions:** Bu iş parçacığının öncelik ters çevirme sayısı için hedefe işaretçi.
+- **time_slices:** Bu iş parçacığının zaman çerçevelerinin sayısı için hedefin işaretçisi.
+- **relinquishes:** Bu iş parçacığı tarafından gerçekleştirilen iş parçacığı sonları sayısı için hedefe işaretçi.
+- **zaman aşımı:** Bu iş parçacığında askıya alma zaman aşımı sayısı için hedefin işaretçisi.
+- **wait_aborts:** Bu iş parçacığında gerçekleştirilen bekleme durdurmalarının sayısı için hedefe işaretçi.
+- **last_preempted_by:** Bu iş parçacığını en son önden alan iş parçacığı işaretçisi için hedefe işaretçi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı iş parçacığı performansı al.
-- **TX_PTR_ERROR**: (0x03) geçersiz iş parçacığı işaretçisi.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı iş parçacığı performansı get.
+- **TX_PTR_ERROR:**(0x03) Geçersiz iş parçacığı işaretçisi.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -4171,38 +4171,38 @@ UINT tx_thread_performance_system_info_get(ULONG *resumptions,
        ULONG *wait_aborts, ULONG *non_idle_returns,
        ULONG *idle_returns);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sistemdeki tüm iş parçacıkları hakkındaki performans bilgilerini alır.
+Bu hizmet, sistemde yer alan tüm iş parçacıklarıyla ilgili performans bilgilerini almaktadır.
 
 > [!IMPORTANT]
-> Bu hizmetin performans bilgilerini döndürmesi için ThreadX SMP kitaplığı ve uygulamasının tanımlanmış **TX_THREAD_ENABLE_PERFORMANCE_INFO** ile oluşturulması gerekir.
+> Bu hizmetin performans bilgilerini iade etmek için ThreadX SMP **TX_THREAD_ENABLE_PERFORMANCE_INFO** ve uygulaması, tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **bağlantının sürdürülmesi**: toplam iş parçacığı sayısı için hedef işaretçisi bağlantının sürdürülmesi.
-- **getirilmesi**: toplam iş parçacığı sayısı için hedef işaretçisi getirilmesi.
-- **solicited_preemptions**: THREADX API hizmetini çağıran bir iş parçacığının sonucu olarak, toplam iş parçacığı sayısı için hedef işaretçi preemptions.
-- **interrupt_preemptions**: kesme işlemenin sonucu olarak toplam iş parçacığı sayısı için hedef işaretçi preemptions.
-- **priority_inversions**: toplam iş parçacığı önceliği ınsürümlerin sayısı için hedef işaretçisi.
-- **time_slices**: iş parçacığı zaman dilimlerinin toplam sayısı için hedef işaretçisi.
-- **relinquishes**: toplam iş parçacığı yeniden sayısı için hedef işaretçisi.
-- **zaman aşımları**: toplam iş parçacığı askıya alma zaman aşımı sayısı için hedef işaretçisi.
-- **wait_aborts**: toplam iş parçacığı bekleme sayısı için hedef işaretçisi. 
-- **non_idle_returns**: başka bir iş parçacığı yürütülmeye hazırlandığınızda, bir iş parçacığının sisteme kaç kez geri döndüğünü gösteren hedef işaretçisi. 
-- **idle_returns**: başka bir iş parçacığı yürütülmeye hazırlanmışsa (boştaki sistem), bir iş parçacığının sisteme kaç kez geri döndüğünü gösteren hedef işaretçisi.
+- **resumptions:** Toplam iş parçacığı yeniden dizilerinin sayısı için hedefin işaretçisi.
+- **askıya almalar:** Toplam iş parçacığı askıya alma sayısı için hedefin işaretçisi.
+- **solicited_preemptions:** ThreadX API'si hizmetini çağıran bir iş parçacığının sonucu olarak toplam iş parçacığı ön eklerinin sayısı için hedefe işaretçi.
+- **interrupt_preemptions:** Kesme işleme sonucunda iş parçacığı ön işlemelerinin toplam sayısı için hedefe işaretçi.
+- **priority_inversions:** Toplam iş parçacığı öncelik ters çevirme sayısı için hedefe işaretçi.
+- **time_slices:** Toplam iş parçacığı zaman dilimi sayısı için hedefe işaretçi.
+- **relinquishes:** Toplam iş parçacığı son dakika sayısı için hedefe işaretçi.
+- **zaman aşımı:** Toplam iş parçacığı askıya alma zaman aşımı sayısı için hedefin işaretçisi.
+- **wait_aborts:** Toplam iş parçacığı bekleme durdurma sayısı için hedefin işaretçisi. 
+- **non_idle_returns:** Başka bir iş parçacığı yürütülmaya hazır olduğunda bir iş parçacığının sisteme dönüş sayısı için hedefe işaretçi. 
+- **idle_returns:** Başka bir iş parçacığı yürütülmaya hazır olduğunda (boşta sistem) bir iş parçacığının sisteme kaç kez geri dönüş sayısı için hedefe işaretçi.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı iş parçacığı sistem performansı al.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı iş parçacığı sistem performansı get.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -4253,7 +4253,7 @@ status = tx_thread_performance_system_info_get(&resumptions,
 
 ## <a name="tx_thread_preemption_change"></a>tx_thread_preemption_change
 
-Önalım-uygulama iş parçacığının eşiğini değiştirme
+Uygulama iş parçacığının ön eşiğini değiştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -4261,32 +4261,32 @@ status = tx_thread_performance_system_info_get(&resumptions,
 UINT tx_thread_preemption_change(TX_THREAD *thread_ptr,
                           UINT new_threshold, UINT *old_threshold);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen iş parçacığının önalım eşiğini değiştirir. Önalım-Threshold, önalım-Threshold değerine eşit veya daha küçük olan iş parçacıkları tarafından belirtilen iş parçacığının önalım ' i engelliyor.
+Bu hizmet, belirtilen iş parçacığının önsemption eşiğini değiştirir. Önsemption eşiği, belirtilen iş parçacığının preemption-threshold değerine eşit veya daha küçük iş parçacıkları tarafından önlenliğini önler.
 
 > [!IMPORTANT]
-> Önalım-Threshold kullanılması, belirtilen iş parçacığı için zaman dilimini devre dışı bırakır.
+> Önsemption eşiğinin kullanımı, belirtilen iş parçacığı için zaman yalıtma özelliğini devre dışı bırakmanızı sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **thread_ptr**: daha önce oluşturulmuş bir uygulama iş parçacığına yönelik işaretçi.
-- **new_threshold**: New önalım-Threshold öncelik düzeyi (0 ila (TX_MAX_PRIORITIES-1)).
-- **old_threshold**: önceki önalım-Threshold döndürecek konuma yönelik işaretçi.
+- **thread_ptr:** Önceden oluşturulmuş bir uygulama iş parçacığının işaretçisi.
+- **new_threshold:** Yeni ön ön eşik öncelik düzeyi (0 ile (TX_MAX_PRIORITIES-1)).
+- **old_threshold:** Önceki ön eşik değerine dönmek için bir konumun işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı önalım-eşik değişikliği.
-- TX_THREAD_ERROR: (0x0E) geçersiz uygulama iş parçacığı işaretçisi.
-- **TX_THRESH_ERROR**: (0X18) belirtilen yeni önalım-Threshold geçerli iş parçacığı önceliğine göre geçerli bir iş parçacığı önceliği ((0 ila (TX_MAX_PRIORITIES-1) veya daha büyük (düşük öncelik) değil.
-- TX_PTR_ERROR: (0x03) önceki preemptionthreshold depolama konumuna yönelik geçersiz işaretçi.
-- TX_CALLER_ERROR: (0x13) Bu hizmet için geçersiz çağrı.
+- **TX_SUCCESS:**(0x00) Başarılı ön ön-eşik değişikliği.
+- TX_THREAD_ERROR: (0x0E) Geçersiz uygulama iş parçacığı işaretçisi.
+- **TX_THRESH_ERROR:**(0x18) Belirtilen yeni önsemption-eşik geçerli bir iş parçacığı önceliği (0 ile (TX_MAX_PRIORITIES-1)) dışında bir değer değil veya geçerli iş parçacığı öncelik değerinden büyüktür (düşük öncelik).
+- TX_PTR_ERROR: (0x03) Önceki preemptionthreshold depolama konumunu geçersiz işaretçi.
+- TX_CALLER_ERROR: (0x13) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları ve zamanlayıcılar
+İş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -4338,7 +4338,7 @@ Uygulama iş parçacığının önceliğini değiştirme
 UINT tx_thread_priority_change(TX_THREAD *thread_ptr,
                           UINT new_priority, UINT *old_priority);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen iş parçacığının önceliğini değiştirir. Geçerli öncelikler 0 ile (TX_MAX_PRIORITES-1) arasındadır; burada 0 en yüksek öncelik düzeyini temsil eder.
 
@@ -4411,7 +4411,7 @@ Diğer uygulama iş parçacıklarıyla denetimi yeniden oluşturma
 ```C
 VOID tx_thread_relinquish(VOID);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, aynı veya daha yüksek önceliğe sahip başka bir hazırlık iş parçacığına işlemci denetimini yeniden oluşturur.
 
@@ -4424,7 +4424,7 @@ Hiçbiri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-Yok
+Hiçbiri
 
 ### <a name="allowed-from"></a>İzin verilen
 
@@ -4502,7 +4502,7 @@ VOID my_second_thread(ULONG thread_input)
 ```C
 UINT tx_thread_reset(TX_THREAD *thread_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen iş parçacığını iş parçacığı oluşturma sırasında tanımlanan giriş noktasında yürütülecek şekilde sıfırlar. İş parçacığı sıfırlanmak için bir **TX_COMPLETED** veya **TX_TERMINATED** durumunda olmalıdır
 
@@ -4563,7 +4563,7 @@ Askıya alınmış uygulama iş parçacığını sürdürür
 ```C
 UINT tx_thread_resume(TX_THREAD *thread_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce bir ***tx_thread_suspend*** çağrısıyla askıya alınmış bir iş parçacığını yürütmeye devam eder veya hazırlar. Ayrıca, bu hizmet otomatik başlatma olmadan oluşturulan iş parçacıklarını sürdürür.
 
@@ -4627,7 +4627,7 @@ Belirtilen süre boyunca geçerli iş parçacığını askıya al
 ```C
 UINT tx_thread_sleep(ULONG timer_ticks);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, çağıran iş parçacığının belirtilen sayıda süreölçer onay işareti için askıda olmasına neden olur. Süreölçer Tick ile ilişkili fiziksel sürenin miktarı uygulamaya özgüdür. Bu hizmet, yalnızca bir uygulama iş parçacığından çağrılabilir.
 
@@ -4692,7 +4692,7 @@ Bir çekirdek kümesinde iş parçacığı yürütmeyi hariç tutma
 UINT  tx_thread_smp_core_exclude(TX_THREAD *thread_ptr,
                           ULONG exclusion_map);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, belirtilen iş parçacığını "*exclusion_map*" adlı bit eşlemesinde belirtilen çekirdekler üzerinde yürütmeyi dışlar. "*Exclusion_map*" içindeki her bir bit, bir çekirdeği temsil eder (bit 0, Core 0, vb.). Bit ayarlandıysa, ilgili çekirdeğin belirtilen iş parçacığını yürütmesi dışında tutulur.
 
@@ -4735,7 +4735,7 @@ tx_thread_smp_core_exclude(&thread_0, 0x01);
 UINT tx_thread_smp_core_exclude_get(TX_THREAD *thread_ptr,
                          ULONG *exclusion_map_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, geçerli çekirdek dışlama listesini döndürür.
 
@@ -4776,7 +4776,7 @@ tx_thread_smp_core_exclude_get(&thread_0, &excluded_cores);
 ```C
 UINT  tx_thread_smp_core_get(void);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, bu hizmeti yürüten çekirdeğin çekirdek KIMLIĞINI döndürür.
 
@@ -4815,7 +4815,7 @@ core = tx_thread_smp_core_get();
 ```C
 UINT tx_thread_stack_error_notify(VOID (*error_handler)(TX_THREAD *));
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iş parçacığı yığın hatalarını işlemek için bir bildirim geri çağırma işlevi kaydeder. ThreadX SMP yürütme sırasında bir iş parçacığı yığını hatası algıladığında, hatayı işlemek için bu bildirim işlevini çağırır. Hatanın işlenmesi uygulama tarafından tamamen tanımlanmıştır. Sistemin tamamını sıfırlamak için ihlal iş parçacığını askıya almadan herhangi bir şey yapılabilir.
 
@@ -4875,7 +4875,7 @@ Uygulama iş parçacığını askıya al
 ```C
 UINT tx_thread_suspend(TX_THREAD *thread_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen uygulama iş parçacığını askıya alır. Bir iş parçacığı, kendisini askıya almak için bu hizmeti çağırabilir.
 
@@ -4944,7 +4944,7 @@ Uygulama iş parçacığını sonlandırır
 ```C
 UINT tx_thread_terminate(TX_THREAD *thread_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, iş parçacığının askıya alınmadığına bakılmaksızın belirtilen uygulama iş parçacığını sonlandırır. Bir iş parçacığı, kendisini sonlandırmak için bu hizmeti çağırabilir.
 
@@ -5014,7 +5014,7 @@ Değişiklik saati-uygulama iş parçacığının dilimi
 UINT tx_thread_time_slice_change(TX_THREAD *thread_ptr,
                           ULONG new_time_slice, ULONG *old_time_slice);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama iş parçacığının zaman dilimini değiştirir. Bir iş parçacığı için zaman dilimi seçme, aynı veya daha yüksek önceliklerin diğer iş parçacıklarının yürütme şansı olması için belirtilen sayıda süreölçer işareti yürütümeyeceğini yöntem.
 
@@ -5040,7 +5040,7 @@ Bu hizmet, belirtilen uygulama iş parçacığının zaman dilimini değiştirir
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5083,7 +5083,7 @@ status = tx_thread_time_slice_change(&my_thread, 20,
 
 ## <a name="tx_thread_wait_abort"></a>tx_thread_wait_abort
 
-Belirtilen iş parçacığını askıya alma işlemini durdur
+Belirtilen iş parçacığının askıya alınması durduruldu
 
 ### <a name="prototype"></a>Prototype
 
@@ -5091,28 +5091,28 @@ Belirtilen iş parçacığını askıya alma işlemini durdur
 UINT tx_thread_wait_abort(TX_THREAD *thread_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen iş parçacığının uyku veya diğer nesne askıya alınma işlemini iptal eder. Bekleme iptal edildiğinde, iş parçacığının beklediği hizmetten bir TX_WAIT_ABORTED değeri döndürülür.
+Bu hizmet, belirtilen iş parçacığının uyku veya diğer nesne askıya almalarını iptal eder. Bekleme durdurulsa, TX_WAIT_ABORTED iş parçacığının beklediği hizmetten bir değer döndürülür.
 
 > [!IMPORTANT]
-> Bu hizmet, tx_thread_suspend hizmeti tarafından yapılan açık askıya alma sürümü oluşturmaz.
+> Bu hizmet, hizmet tarafından yapılan açık bir askıya alma tx_thread_suspend bırakmaz.
 
 ### <a name="parameters"></a>Parametreler
 
-- **thread_ptr**: daha önce oluşturulmuş bir uygulama iş parçacığına yönelik işaretçi.
+- **thread_ptr:** Önceden oluşturulmuş bir uygulama iş parçacığının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı iş parçacığı bekleme iptali.
-- TX_THREAD_ERROR: (0x0E) geçersiz uygulama iş parçacığı işaretçisi.
-- **TX_WAIT_ABORT_ERROR**: (0x1B) belirtilen iş parçacığı bekleme durumunda değil.
+- **TX_SUCCESS:**(0x00) Başarılı iş parçacığı bekleme durdurma.
+- TX_THREAD_ERROR: (0x0E) Geçersiz uygulama iş parçacığı işaretçisi.
+- **TX_WAIT_ABORT_ERROR:**(0x1B) Belirtilen iş parçacığı bekleme durumuna sahip değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -5151,19 +5151,19 @@ status =  tx_thread_wait_abort(&my_thread);
 
 ## <a name="tx_time_get"></a>tx_time_get
 
-Geçerli saati alır
+Geçerli saati alma
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 ULONG tx_time_get(VOID);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, iç sistem saatinin içeriğini döndürür. Her timertick, iç sistem saatini bir artırır. Sistem saati, başlatma sırasında sıfır olarak ayarlanır ve hizmet ***tx_time_set*** belirli bir değere değiştirilebilir.
+Bu hizmet iç sistem saatinin içeriğini döndürür. Her zamanlayıcı, iç sistem saatini bir artırır. Sistem saati, başlatma sırasında sıfır olarak ayarlanır ve hizmet tarafından belirli bir değere ***tx_time_set.***
 
 > [!IMPORTANT]
-> Her Zamanlayıcı-onay her temsil eden gerçek zaman uygulamaya özgüdür.
+> Her zamanlayıcı-tık'ın temsil ettiği gerçek saat uygulamaya özgü olur.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -5171,15 +5171,15 @@ Hiçbiri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- sistem saat işaretleri: iç, ücretsiz çalışan, sistem saatinin değeri.
+- sistem saati tıklar: dahili, serbest çalışan, sistem saatinin değeri.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5205,28 +5205,28 @@ Geçerli saati ayarlar
 ```C
 VOID tx_time_set(ULONG new_time);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, iç sistem saatini belirtilen değere ayarlar. Her Zamanlayıcı-onay, iç sistem saatini bir artırır.
+Bu hizmet iç sistem saatini belirtilen değere ayarlar. Her zamanlayıcı saat işareti iç sistem saatini bir artırır.
 
 > [!IMPORTANT]
-> Her Zamanlayıcı-onay her temsil eden gerçek zaman uygulamaya özgüdür.
+> Her zamanlayıcı-tık'ın temsil ettiği gerçek saat uygulamaya özgü olur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **new_time**: yeni saat, sistem saatine yerleştirilecek, yasal değerler 0 ile 0xFFFFFFFF arasındadır.
+- **new_time:** Sistem saatinin içine koymak için yeni zaman, yasal değerler 0 ile 0xFFFFFFFF.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-Yok
+Hiçbiri
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-İş parçacıkları, zamanlayıcılar ve ISRs
+İş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5243,37 +5243,37 @@ tx_time_set(0x1234);
 
 ## <a name="tx_timer_activate"></a>tx_timer_activate
 
-Uygulama zamanlayıcısını etkinleştir
+Uygulama zamanlayıcıyı etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT tx_timer_activate(TX_TIMER *timer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen uygulama zamanlayıcısını etkinleştirir. Aynı anda süresi dolan zamanlayıcılar için geçen süre sonu yordamları, etkinleştirildikleri sırada yürütülür.
+Bu hizmet belirtilen uygulama zamanlayıcıyı etkinleştirir. Süre sonu aynı anda sona eren süre sonu yordamları, etkinleştiril edildikleri sırayla yürütülür.
 
 > [!NOTE]
-> Zaman aşımına uğradı bir tek bir zamanlayıcının yeniden etkinleştirilmeden önce **tx_timer_change** aracılığıyla sıfırlanması gerekir.
+> Süresi dolan bir tek kullanımlık süreölçeri yeniden **tx_timer_change** önce bu süreölçer aracılığıyla sıfırlanır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **timer_ptr**: daha önce oluşturulmuş bir uygulama süreölçeri işaretçisi.
+- **timer_ptr:** Önceden oluşturulmuş bir uygulama zamanlayıcının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı uygulama süreölçeri etkinleştirmesi.
-- **TX_TIMER_ERROR**: (0x15) geçersiz uygulama süreölçeri işaretçisi.
-- **TX_ACTIVATE_ERROR**: (0x17) Zamanlayıcı zaten etkin veya zaten süresi geçmiş tek bir görüntü süreölçeri.
+- **TX_SUCCESS:**(0x00) Başarılı uygulama süreölçer etkinleştirmesi.
+- **TX_TIMER_ERROR:**(0x15) Geçersiz uygulama süreölçeri işaretçisi.
+- **TX_ACTIVATE_ERROR:**(0x17) Süreölçer zaten etkindi veya süresi dolmuş tek kullanımlık bir zamanlayıcı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5308,7 +5308,7 @@ Uygulama zamanlayıcısını değiştirme
 UINT tx_timer_change(TX_TIMER *timer_ptr,
                           ULONG initial_ticks, ULONG reschedule_ticks);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama süreölçerinin süre sonu özelliklerini değiştirir. Bu hizmet çağrılmadan önce zamanlayıcı devre dışı bırakılmalıdır.
 
@@ -5337,7 +5337,7 @@ Bu hizmet, belirtilen uygulama süreölçerinin süre sonu özelliklerini deği�
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5378,7 +5378,7 @@ UINT tx_timer_create(TX_TIMER *timer_ptr, CHAR *name_ptr,
                           ULONG expiration_input, ULONG initial_ticks,
                           ULONG reschedule_ticks, UINT auto_activate)
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen süre sonu işleviyle ve periyodik olarak bir uygulama süreölçeri oluşturur.
 
@@ -5410,7 +5410,7 @@ Başlatma ve iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5451,7 +5451,7 @@ Uygulama zamanlayıcısını devre dışı bırak
 UINT tx_timer_deactivate(TX_TIMER *timer_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama zamanlayıcısını devre dışı bırakır. Süreölçer zaten devre dışı bırakılmışsa, bu hizmetin bir etkisi yoktur.
 
@@ -5470,7 +5470,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5504,7 +5504,7 @@ Uygulama zamanlayıcısını Sil
 ```C
 UINT tx_timer_delete(TX_TIMER *timer_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama zamanlayıcısını siler.
 
@@ -5527,7 +5527,7 @@ Bu hizmet, belirtilen uygulama zamanlayıcısını siler.
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5564,7 +5564,7 @@ UINT tx_timer_info_get(TX_TIMER *timer_ptr, CHAR **name,
                           ULONG *reschedule_ticks,
                           TX_TIMER **next_timer)
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama süreölçeri hakkında bilgi alır.
 
@@ -5591,7 +5591,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5637,7 +5637,7 @@ UINT  tx_timer_performance_info_get(TX_TIMER *timer_ptr,
         ULONG *deactivates, ULONG *expirations,
         ULONG *expiration_adjusts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen uygulama süreölçeri hakkında performans bilgilerini alır.
 
@@ -5706,32 +5706,32 @@ UINT  tx_timer_performance_system_info_get(ULONG *activates,
         ULONG *reactivates, ULONG *deactivates,
         ULONG *expirations, ULONG *expiration_adjusts);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sistemdeki tüm uygulama zamanlayıcıları hakkındaki performans bilgilerini alır.
 
 > [!IMPORTANT]
-> ThreadX SMP kitaplığı ve uygulaması, performans bilgilerini döndürmek üzere bu hizmetin tanımladığı **TX_TIMER_ENABLE_PERFORMANCE_INFO** oluşturulmalıdır.
+> ThreadX SMP kitaplığı ve uygulaması, bu hizmetin performans **bilgilerini TX_TIMER_ENABLE_PERFORMANCE_INFO** için tanımlanan bir uygulamayla birlikte üretlanmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **etkinleştirir**: tüm zamanlayıcılar üzerinde gerçekleştirilen etkinleştirme isteklerinin toplam sayısı için hedef işaretçisi.
-- yeniden **etkinleştirilen**: tüm düzenli zamanlayıcıların toplam otomatik yeniden etkinleştirme sayısı için hedef işaretçisi.
-- **devre dışı bırakır**: tüm zamanlayıcılar üzerinde gerçekleştirilen devre dışı bırakma isteklerinin toplam sayısı için hedef işaretçisi.
-- **süre sonu**: tüm zamanlayıcılar üzerindeki toplam süre sonu sayısı için hedef işaretçisi.
-- **expiration_adjusts**: tüm zamanlayıcılar üzerinde gerçekleştirilen iç süre sonu ayarlamaları toplam sayısı için hedef işaretçisi. Bu ayarlamalar, varsayılan Zamanlayıcı listesi boyutundan daha büyük olan zamanlayıcılar için süreölçer kesme işlemi sırasında yapılır (varsayılan süre sonu 32 ' den büyük olan zamanlayıcılar).
+- **etkinleştirir:** Tüm süreerlerde gerçekleştirilen etkinleştirme isteklerinin toplam sayısı için hedefin işaretçisi.
+- **yeniden etkinleştiriliyor:** Tüm düzenli süreerlerde gerçekleştirilen toplam otomatik yeniden etkinleştirme sayısı için hedefin işaretçisi.
+- **devre dışı:** Tüm süreerlerde gerçekleştirilen toplam devre dışı bırakma isteği sayısı için hedefin işaretçisi.
+- **süre sonu:** Tüm süre sonu sürelerinin toplam sayısı için hedefin işaretçisi.
+- **expiration_adjusts:** Tüm süre sonu ayarlarının toplam sayısı için hedefin işaretçisi. Bu ayarlamalar, varsayılan süreölçer listesi boyutundan daha büyük süreölçerler (varsayılan süre sonu 32 tık'tan büyük süreölçerler tarafından) için zamanlayıcı kesme işlemesinde yapılır.
 
 > [!IMPORTANT]
-> Herhangi bir parametre için TX_NULL sağlama, parametrenin gerekli olmadığını gösterir.
+> Herhangi bir TX_NULL için bir parametre belirterek parametrenin gerekli olmadığını gösterir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS**: (0x00) başarılı Zamanlayıcı sistem performansı al.
-- **TX_FEATURE_NOT_ENABLED**: (0xFF) sistem, etkin performans bilgileri ile derlenmedi.
+- **TX_SUCCESS:**(0x00) Başarılı zamanlayıcı sistemi performansı get.
+- **TX_FEATURE_NOT_ENABLED:**(0xFF) Sistem, performans bilgileri etkin olarak derlenmiş değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
+Başlatma, iş parçacıkları, süreerler ve ISR'ler
 
 ### <a name="example"></a>Örnek
 
@@ -5762,33 +5762,33 @@ status =  tx_timer_performance_system_info_get(&activates,
 
 ## <a name="tx_timer_smp_core_exclude"></a>tx_timer_smp_core_exclude
 
-Bir çekirdek kümesinde süreölçer yürütmeyi hariç tutma
+Bir çekirdek kümesinde zamanlayıcı yürütmesini dışlama
 
 ### <a name="prototype"></a>Prototype
 
 ```C
 UINT  tx_timer_smp_core_exclude(TX_TIMER *timer_ptr, ULONG exclusion_map);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, belirtilen süreölçeri "*exclusion_map*" adlı bit eşlemesinde belirtilen çekirdekler üzerinde yürütmeyi dışlar. "*Exclusion_map*" içindeki her bir bit, bir çekirdeği temsil eder (bit 0, Core 0, vb.). Bit ayarlandıysa, ilgili çekirdek belirtilen zamanlayıcının yürütülmesi dışında tutulur.
+Bu işlev, belirtilen zamanlayıcının " exclusion_map . " adlı bit haritasında belirtilen çekirdeklerde *yürütülmesini dışlar.* " exclusion_map "*içinde her* bit bir çekirdeği temsil eder (bit 0, çekirdek 0'a vb.) sahiptir. Bit ayarlanırsa, karşılık gelen çekirdek belirtilen zamanlayıcının yürütülmesinin dışında tutulacak.
 
 > [!IMPORTANT]
-> İşlemci dışlamanın kullanımı, en iyi eşleşmeyi bulmak için iş parçacığında temel eşleme mantığına ek işlemeye neden olabilir. Bu işlem, Ready iş parçacıklarının sayısıyla sınırlıdır.
+> İşlemci dışlamanın kullanımı, en uygun eşleşmeyi bulmak için iş parçacığında çekirdek eşleme mantığında ek işlemeye neden olabilir. Bu işleme, hazır iş parçacıklarının sayısına göre sınırlandı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **timer_ptr**: çekirdek dışlamasını değiştirmek için süreölçer işaretçisi.
-- **exclusion_map**: bir oturbitin, çekirdeğin dışlandığını gösterdiği bit eşlem. 0 değeri sağlamak, zamanlayıcının herhangi bir çekirdek üzerinde (varsayılan) yürütülmesine olanak sağlar.
+- **timer_ptr:** Çekirdek dışlamayı değiştirmek için zamanlayıcı işaretçisi.
+- **exclusion_map:** Bir sit biti olan bit eşlemesi, çekirdeğin dışlanmış olduğunu gösterir. 0 değeri sağlamak, zamanlayıcının herhangi bir çekirdekte (varsayılan) yürütmesini sağlar.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **TX_SUCCESS** (0x00) başarılı çekirdek dışlama.
-- **TX_TIMER_ERROR** (0x0E) geçersiz süreölçer işaretçisi.
+- **TX_SUCCESS** (0x00) Başarılı çekirdek dışlama.
+- **TX_TIMER_ERROR** (0x0E) Geçersiz zamanlayıcı işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, ISRs, iş parçacıkları ve zamanlayıcılar
+Başlatma, ISR'ler, iş parçacıkları ve süreerler
 
 ### <a name="example"></a>Örnek
 
@@ -5803,7 +5803,7 @@ tx_timer_smp_core_exclude(&timer_0, 0x01);
 
 ## <a name="tx_timer_smp_core_exclude_get"></a>tx_timer_smp_core_exclude_get
 
-Zamanlayıcının geçerli çekirdek dışlamasını alır
+Zamanlayıcının geçerli çekirdek dışlamasini alır
 
 ### <a name="prototype"></a>Prototype
 
@@ -5811,24 +5811,24 @@ Zamanlayıcının geçerli çekirdek dışlamasını alır
 UINT tx_timer_smp_core_exclude_get(TX_TIMER *timer_ptr,
                          ULONG *exclusion_map_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, geçerli çekirdek dışlama listesini döndürür.
+Bu işlev geçerli çekirdek dışlama listesini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **timer_ptr**: çekirdek dışlamanın alınacağı zamanlayıcıya yönelik işaretçi.
-- **exclusion_map_ptr**: geçerli çekirdek dışlama bit eşlemesi için hedef.
+- **timer_ptr:** Çekirdek dışlamanın alınarak zamanlayıcının işaretçisi.
+- **exclusion_map_ptr:** Geçerli çekirdek dışlama bit eşlemesi hedefi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- TX_SUCCESS: (0x00) zamanlayıcının çekirdek dışlamasını başarıyla alma.
-- TX_TIMER_ERROR: (0x0E) geçersiz süreölçer işaretçisi.
-- TX_PTR_ERROR: (0x03) geçersiz dışlama hedefi işaretçisi.
+- TX_SUCCESS: (0x00) Zamanlayıcının çekirdek dışlama başarıyla alınması.
+- TX_TIMER_ERROR: (0x0E) Geçersiz zamanlayıcı işaretçisi.
+- TX_PTR_ERROR: (0x03) Geçersiz dışlama hedef işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, ISRs, iş parçacıkları ve zamanlayıcılar
+Başlatma, ISR'ler, iş parçacıkları ve süreerler
 
 ### <a name="example"></a>Örnek
 

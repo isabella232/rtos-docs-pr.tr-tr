@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: a9fdd86d47bd4680409cc550c87bc6f456d146a9
-ms.sourcegitcommit: d8edbb3207fe99f8afb431597dac063e73383e68
+ms.openlocfilehash: abe9b3e4f36a50af9c1267b2e6285b77feecd946660bf23691e70cb66f8bc042
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106377059"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791009"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-usbx-host-stack"></a>Bölüm 1-Azure RTOS USBX konak yığınına giriş
 

@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c17af40df7a45a0cdb9961f12e1dcd775b081975
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c749dc2656894e817f8dcce430e7552763f0fa319cd91d4390983f3cd6a95221
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826590"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801861"
 ---
 # <a name="appendix-b---azure-rtos-threadx-constants"></a>Ek B-Azure RTOS ThreadX sabitleri
 
@@ -172,12 +172,12 @@ ms.locfileid: "104826590"
 | TX_WAIT_ABORT_ERROR | 0x1B |
 | TX_MUTEX_ERROR | 0x1C |
 | TX_NOT_AVAILABLE | 0x1D |
-| TX_NOT_OWNED | Dosyasında |
+| TX_NOT_OWNED | 0x1e |
 | TX_INHERIT_ERROR | 0x1F |
 | TX_NOT_DONE | 0x20 |
 | TX_CEILING_EXCEEDED | 0x21 |
 | TX_INVALID_CEILING | 0x22 |
-| TX_FEATURE_NOT_ENABLED | 0xFF |
-| TX_STACK_FILL | 0Xefefefepartisi |
+| TX_FEATURE_NOT_ENABLED | 0xff |
+| TX_STACK_FILL | 0xEFEFEFEFUL |
 | TX_WAIT_FOREVER | 0xFFFFFFFFUL |
 |               |   |

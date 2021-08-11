@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: 2e9e2e0286300b3f79f7f9e6ad2d7fab96ba7337
-ms.sourcegitcommit: 62cfdf02628530807f4d9c390d6ab623e2973fee
+ms.openlocfilehash: 62750ab4a5540b243665a7a7d9000a0d60c4435313b6de2e1579ae7f1c20fe55
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2021
-ms.locfileid: "115177754"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790675"
 ---
 # <a name="chapter-5---usbx-host-classes-api"></a>Bölüm 5-USBX konak sınıfları API 'SI
 
@@ -698,9 +698,9 @@ Bu işlev, cdc_acm okur. Çağrı engelliyor ve yalnızca bir hata olduğunda ve
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
 - **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) cdc_acm örneği geçersiz.
-- **UX_TRANSFER_TIMEOUT** (0x5c) aktarım zaman aşımı, okuma tamamlanmadı.
+- **UX_TRANSFER_TIMEOUT** (0x5c) Aktarım zaman aşımı, okuma tamamlanmamış.
 
 ### <a name="example"></a>Örnek
 
@@ -717,7 +717,7 @@ status = ux_host_class_cdc_acm_read(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_write"></a>ux_host_class_cdc_acm_write
 
-Cdc_acm arabirimine yaz
+Cdc_acm arabirimine yazma
 
 ### <a name="prototype"></a>Prototype
 
@@ -731,20 +731,20 @@ UINT ux_host_class_cdc_acm_write(
 
 ### <a name="description"></a>Description
 
-Bu işlev cdc_acm arabirimine yazar. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da aktarım tamamlandığında döndürülür.
+Bu işlev, cdc_acm yazar. Çağrı engelliyor ve yalnızca bir hata olduğunda veya aktarım tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm** Cdc_acm sınıfı örneğine yönelik işaretçi.
-- **data_pointer** Veri yükünün arabellek adresine yönelik işaretçi.
+- **cdc_acm** Cdc_acm sınıfı örneğine işaretçi.
+- **data_pointer** Veri yükünün arabellek adresinin işaretçisi.
 - **requested_length** Gönderilecek uzunluk.
-- **actual_length** Gerçekte gönderilen uzunluk.
+- **actual_length** Aslında gönderilen uzunluk.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
 - **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) cdc_acm örneği geçersiz.
-- **UX_TRANSFER_TIMEOUT** (0x5c) aktarım zaman aşımı, yazma tamamlanmamış.
+- **UX_TRANSFER_TIMEOUT** (0x5c) Aktarım zaman aşımı, yazma eksik.
 
 ### <a name="example"></a>Örnek
 
@@ -761,7 +761,7 @@ status = ux_host_class_cdc_acm_write(cdc_acm, data_pointer,
 
 ## <a name="ux_host_class_cdc_acm_ioctl"></a>ux_host_class_cdc_acm_ioctl
 
-Cdc_acm arabirimine bir ıOCTL işlevi gerçekleştirin.
+Cdc_acm arabirimine bir IOCTL işlevi gerçekleştirin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -774,20 +774,20 @@ UINT ux_host_class_cdc_acm_ioctl(
 
 ### <a name="description"></a>Description
 
-Bu işlev cdc_acm arabirimine belirli bir IOCTL işlevi gerçekleştirir. Çağrı engelleniyor ve yalnızca bir hata olduğunda ya da komut tamamlandığında döndürülür.
+Bu işlev, belirli bir ioctl işlevini cdc_acm gerçekleştirir. Çağrı engelliyor ve yalnızca bir hata olduğunda veya komut tamamlandığında döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm** Cdc_acm sınıfı örneğine yönelik işaretçi.
-- gerçekleştirilecek **ioctl_function** IOCTL işlevi. İzin verilen IOCTL işlevlerinden biri için aşağıdaki tabloya bakın.
-- **parametre** IOCTL 'ye özgü parametreye yönelik işaretçi
+- **cdc_acm** Cdc_acm sınıfı örneğine işaretçi.
+- **ioctl_function** ioctl işlevini kullanın. İzin verilen ioctl işlevlerinden biri için aşağıdaki tabloya bakın.
+- **parametre** ioctl'ye özgü parametre işaretçisi
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_MEMORY_INSUFFICIENT** (0x12) yeterli bellek yok.
-- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0X5B) CDC-ACM örneği geçersiz bir durumda.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) bilinmeyen IOCTL işlevi.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Yeterli bellek yok.
+- **UX_HOST_CLASS_INSTANCE_UNKNOWN** (0x5b) CDC-ACM örneği geçersiz durumda.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Bilinmeyen IOCTL işlevi.
 
 ### <a name="ioctl-functions"></a>IOCTL işlevleri:
 
@@ -813,7 +813,7 @@ status = ux_host_class_cdc_acm_ioctl(cdc_acm,
 
 ## <a name="ux_host_class_cdc_acm_reception_start"></a>ux_host_class_cdc_acm_reception_start
 
-Cihazdan verilerin arka planda alınması başladı.
+Cihazdan verilerin arka planda alımını başlar.
 
 ### <a name="prototype"></a>Prototype
 
@@ -825,15 +825,15 @@ UINT ux_host_class_cdc_acm_reception_start(
 
 ### <a name="description"></a>Description
 
-Bu işlev, USBX 'in arka planda Cihazdaki verileri sürekli okuyamasına neden olur. Her bir işlemin tamamlanmasından sonra, **cdc_acm_reception** ' de belirtilen geri çağırma çağrılır, böylece uygulama işlemin verilerinin daha fazla işlenmesini gerçekleştirebilir.
+Bu işlev, USBX'in arka planda cihazdan sürekli veri okuması sağlar. Her işlem tamamlandıktan sonra, cdc_acm_reception  uygulamanın işlem verilerini daha fazla işlemesi için bu işlemde belirtilen geri çağırma çağrılır.
 
 > [!NOTE]
-> **ux_host_class_cdc_acm_read** , arka plan alımı kullanımda iken kullanılmamalıdır.
+> **ux_host_class_cdc_acm_read,** arka plan sinyal alımı kullanılırken kullanılmamalı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm** Cdc_acm sınıfı örneğine yönelik işaretçi.
-- **cdc_acm_reception** Arka plan Alım davranışını tanımlayan değerleri içeren parametreye yönelik işaretçi. Bu parametrenin düzeni aşağıdadır:
+- **cdc_acm** Cdc_acm sınıfı örneğine işaretçi.
+- **cdc_acm_reception** Arka plan alımının davranışını tanımlayan değerleri içeren parametre işaretçisi. Bu parametrenin düzeni şu şekildedir:
 
 ```c
 typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
@@ -851,8 +851,8 @@ typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) arka plan alımı başarıyla başlatıldı.
-- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) yanlış sınıf örneği.
+- **UX_SUCCESS** (0x00) Arka plan sinyal alımı başarıyla başlatıldı.
+- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) Yanlış sınıf örneği.
 
 ```c
 UINT status;
@@ -885,7 +885,7 @@ status = ux_host_class_cdc_acm_reception_start(cdc_acm_host_data, &cdc_acm_recep
 
 ## <a name="ux_host_class_cdc_acm_reception_stop"></a>ux_host_class_cdc_acm_reception_stop
 
-Paketlerin arka planda alımına yanıt vermez.
+Paketlerin arka plan alımını durdurur.
 
 ### <a name="prototype"></a>Prototype
 
@@ -897,12 +897,12 @@ UINT ux_host_class_cdc_acm_reception_stop(
 
 ### <a name="description"></a>Description
 
-Bu işlev, USBX 'in daha önce **ux_host_class_cdc_acm_reception_start** tarafından başlatılan arka plan alımını durdurmasına neden olur.
+Bu işlev, USBX'in önceden tarafından başlatılan arka plan alımını **durdurması** ux_host_class_cdc_acm_reception_start.
 
 ### <a name="parameters"></a>Parametreler
 
-- **cdc_acm** Cdc_acm sınıfı örneğine yönelik işaretçi.
-- **cdc_acm_reception** Arka plan alımı başlatmak için kullanılan aynı parametreye yönelik işaretçi. Bu parametrenin düzeni aşağıdadır:
+- **cdc_acm** Cdc_acm sınıfı örneğine işaretçi.
+- **cdc_acm_reception** Arka plan alımını başlatmak için kullanılan aynı parametrenin işaretçisi. Bu parametrenin düzeni şu şekildedir:
 
 ```c
 typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
@@ -921,8 +921,8 @@ typedef struct UX_HOST_CLASS_CDC_ACM_RECEPTION_STRUCT
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) arka plan alımı başarıyla durduruldu.
-- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) yanlış sınıf örneği.
+- **UX_SUCCESS** (0x00) Arka plan sinyal başarıyla durduruldu.
+- **UX_HOST_CLASS_INSTANCE _UNKNOWN** (0x5b) Yanlış sınıf örneği.
 
 ```c
 UINT status;

@@ -1,121 +1,115 @@
-### YamlMime:Hub
+### YamlMime:Hub 
 title: Microsoft Azure RTOS belgeleri
 summary: Azure RTOS belgelerini inceleyin.
 brand: azure
 metadata:
-  title: Microsoft Azure RTOS belge hub 'ı
+  title: Microsoft Azure RTOS Belge Merkezi
   description: Azure RTOS belgelerini inceleyin.
   ms.service: rtos
   ms.topic: hub-page
   author: philmea
   ms.author: philmea
   ms.date: 5/19/2020
-  ms.openlocfilehash: 12f6535be21d072fd9500c43d7a10f5f7bf0b10a
-  ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
-  ms.translationtype: MT
-  ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/22/2021
-  ms.locfileid: "104798015"
 highlightedContent:
   items:
-  - title: Azure RTOS nedir?
-    itemType: overview
-    url: overview-rtos.md
-  - title: Katıştırılmış cihaz geliştirmeye başlama
-    itemType: quickstart
-    url: https://docs.microsoft.com/azure/iot-develop/quickstart-device-development
-  - title: GitHub 'da kaynak kodunu indirin
-    itemType: download
-    url: https://github.com/azure-rtos/
-  - title: IoT için Defender-RTOS (Önizleme)
-    itemType: overview
-    url: https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos
+    - title: Azure RTOS nedir?
+      itemType: overview
+      url: overview-rtos.md
+    - title: Katıştırılmış cihaz geliştirmeye başlama
+      itemType: quickstart
+      url: 'https://docs.microsoft.com/azure/iot-develop/quickstart-device-development'
+    - title: GitHub kaynak kodunu indirin
+      itemType: download
+      url: 'https://github.com/azure-rtos/'
+    - title: IoT için Defender-RTOS (Önizleme)
+      itemType: overview
+      url: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 conceptualContent:
   title: Azure RTOS
   summary: Derin gömülü IoT uygulamaları ve uç cihazlar oluşturun.
   items:
-  - title: Katıştırılmış uygulamanızı oluşturma
-    links:
-    - url: ./threadx/overview-threadx.md
-      itemType: overview
-      text: Azure RTOS ThreadX nedir?
-    - url: ./threadx/about-this-guide.md
-      itemType: how-to-guide
-      text: Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./threadx/index.yml
-      text: Daha fazla göster
-  - title: Dosya yönetimini etkinleştir
-    links:
-    - url: ./filex/overview-filex.md
-      itemType: overview
-      text: Azure RTOS FileX nedir?
-    - url: ./filex/about-this-guide.md
-      itemType: how-to-guide
-      text: Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./filex/index.yml
-      text: Daha fazla göster
-  - title: Grafik öğelerini tümleştirme
-    links:
-    - url: ./guix/overview-guix.md
-      itemType: overview
-      text: Azure RTOS Gux nedir?
-    - url: ./guix/about-guix.md
-      itemType: how-to-guide
-      text: Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./guix/index.yml
-      text: Daha fazla göster
-  - title: Hata ayıklama ve sorunları çözme
-    links:
-    - url: ./tracex/overview-tracex.md
-      itemType: overview
-      text: Azure RTOS TraceX nedir?
-    footerLink:
-      url: ./tracex/index.yml
-      text: Daha fazla göster
-  - title: Ağ bağlantısını etkinleştir
-    links:
-    - url: ./netx/overview-netx.md
-      itemType: overview
-      text: Azure RTOS NetX nedir?
-    - url: ./netx/about-this-guide.md
-      itemType: how-to-guide
-      text: Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./netx/index.yml
-      text: Daha fazla göster
-  - title: Ağ bağlantısı ve IPv6 özelliklerini etkinleştirme
-    links:
-    - url: ./netx-duo/overview-netx-duo.md
-      itemType: overview
-      text: Azure RTOS NetX Duo nedir?
-    - url: ./netx-duo/about-this-guide.md
-      itemType: how-to-guide
-      text: Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./netx-duo/index.yml
-      text: Daha fazla göster
-  - title: USB cihazlarıyla arabirim
-    links:
-    - url: ./usbx/overview-usbx.md
-      itemType: overview
-      text: Azure RTOS USBX nedir?
-    - url: ./usbx/usbx-device-stack-about.md
-      itemType: how-to-guide
-      text: Cihaz yığını Kullanıcı kılavuzunu keşfet
-    - url: ./usbx/usbx-host-stack-about.md
-      itemType: how-to-guide
-      text: Konak yığını Kullanıcı kılavuzunu keşfet
-    footerLink:
-      url: ./usbx/index.yml
-      text: Daha fazla göster
-  - title: Flash bellek aşdengelemesi sağlama
-    links:
-    - url: ./levelx/chapter1.md
-      itemType: overview
-      text: Azure RTOS LevelX nedir?
-    footerLink:
-      url: ./levelx/index.yml
-      text: Daha fazla göster
+    - title: Katıştırılmış uygulamanızı oluşturma
+      links:
+        - url: ./threadx/overview-threadx.md
+          itemType: overview
+          text: Azure RTOS ThreadX nedir?
+        - url: ./threadx/about-this-guide.md
+          itemType: how-to-guide
+          text: Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./threadx/index.yml
+        text: Daha fazla göster
+    - title: Dosya yönetimini etkinleştir
+      links:
+        - url: ./filex/overview-filex.md
+          itemType: overview
+          text: Azure RTOS FileX nedir?
+        - url: ./filex/about-this-guide.md
+          itemType: how-to-guide
+          text: Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./filex/index.yml
+        text: Daha fazla göster
+    - title: Grafik öğelerini tümleştirme
+      links:
+        - url: ./guix/overview-guix.md
+          itemType: overview
+          text: Azure RTOS Gux nedir?
+        - url: ./guix/about-guix.md
+          itemType: how-to-guide
+          text: Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./guix/index.yml
+        text: Daha fazla göster
+    - title: Hata ayıklama ve sorunları çözme
+      links:
+        - url: ./tracex/overview-tracex.md
+          itemType: overview
+          text: Azure RTOS TraceX nedir?
+      footerLink:
+        url: ./tracex/index.yml
+        text: Daha fazla göster
+    - title: Ağ bağlantısını etkinleştir
+      links:
+        - url: ./netx/overview-netx.md
+          itemType: overview
+          text: Azure RTOS NetX nedir?
+        - url: ./netx/about-this-guide.md
+          itemType: how-to-guide
+          text: Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./netx/index.yml
+        text: Daha fazla göster
+    - title: Ağ bağlantısı ve IPv6 özelliklerini etkinleştirme
+      links:
+        - url: ./netx-duo/overview-netx-duo.md
+          itemType: overview
+          text: Azure RTOS NetX Duo nedir?
+        - url: ./netx-duo/about-this-guide.md
+          itemType: how-to-guide
+          text: Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./netx-duo/index.yml
+        text: Daha fazla göster
+    - title: USB cihazlarıyla arabirim
+      links:
+        - url: ./usbx/overview-usbx.md
+          itemType: overview
+          text: Azure RTOS USBX nedir?
+        - url: ./usbx/usbx-device-stack-about.md
+          itemType: how-to-guide
+          text: Cihaz yığını Kullanıcı kılavuzunu keşfet
+        - url: ./usbx/usbx-host-stack-about.md
+          itemType: how-to-guide
+          text: Konak yığını Kullanıcı kılavuzunu keşfet
+      footerLink:
+        url: ./usbx/index.yml
+        text: Daha fazla göster
+    - title: Flash bellek aşdengelemesi sağlama
+      links:
+        - url: ./levelx/chapter1.md
+          itemType: overview
+          text: Azure RTOS LevelX nedir?
+      footerLink:
+        url: ./levelx/index.yml
+        text: Daha fazla göster

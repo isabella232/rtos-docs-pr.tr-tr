@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 73bb94768396b4b8461791a164a102d1f8ef159f
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d92b6c10921b4d04345610e139101e93c7a439ff695a89a79245894ad9ef1fec
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827064"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790301"
 ---
 # <a name="chapter-4---azure-rtos-levelx-nand-apis"></a>Bölüm 4-Azure RTOS LevelX nve API 'Leri
 
@@ -39,7 +39,7 @@ NVE Flash örneğini kapat
 UINT lx_nand_flash_close(LX_NAND_FLASH *nand_flash);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılmış nve Flash örneğini kapatır.
 
@@ -88,7 +88,7 @@ NVE Flash örneğini birleştirin
 UINT lx_nand_flash_defragment(LX_NAND_FLASH *nand_flash);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce açılan nve Flash örneğini birleştirir. Birleştirme işlemi, serbest sayfa ve blok sayısını en üst düzeye çıkarır.
 
@@ -141,7 +141,7 @@ UINT lx_nand_flash_extended_cache_enable(
     ULONG size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulama tarafından sağlanan belleği kullanarak RAM 'de bir önbellek katmanı uygular. Tam önbellek işlemi için gereken toplam bellek miktarı şu şekilde hesaplanabilir:
 
@@ -203,9 +203,9 @@ NVE Flash desteğini başlatma
 UINT lx_nand_flash_initialize(void);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, LevelX nve Flash desteğini başlatır. Diğer bir LevelX nve API 'lerden önce çağrılmalıdır.
+Bu hizmet, LevelX nve Flash desteğini başlatır. Diğer LevelX NAND API'leri öncesinde çağrılmalı.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -213,12 +213,12 @@ Bu hizmet, LevelX nve Flash desteğini başlatır. Diğer bir LevelX nve API 'le
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) nve Flash desteği başlatılırken hata oluştu.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) NAND flash desteğini başlatma hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -244,7 +244,7 @@ status = lx_nand_flash_initialize();
 
 ## <a name="lx_nand_flash_open"></a>lx_nand_flash_open
 
-NVE Flash örneğini aç
+NAND flash örneğini açma
 
 ### <a name="prototype"></a>Prototype
 
@@ -255,23 +255,23 @@ UINT lx_nand_flash_open(
     UINT (*nand_driver_initialize) (LX_NAND_FLASH *));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen nve Flash denetim bloğu ve sürücü başlatma işlevi ile bir nve Flash örneği açar. Sürücü başlatma işlevinin, bu nve Flash örneğiyle ilişkili nve donanımının blok/sayfalarını okuma, yazma ve silme işlemleri için çeşitli işlev işaretçileri yüklememesinden sorumlu olduğunu unutmayın.
+Bu hizmet, belirtilen NAND flash denetim bloğuna ve sürücü başlatma işlevine sahip bir NAND flash örneği açar. Sürücü başlatma işlevinin, bu NAND flash örneğiyle ilişkili NAND donanımının bloklarını/sayfalarını okuma, yazma ve silme için çeşitli işlev işaretçilerini yüklemekle sorumlu olduğunu unutmayın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **ad**: nve Flash örneğinin adı.
-- **nand_driver_initialize**: nve Flash sürücü başlatma işlevine işlev işaretçisi. NVE Flash sürücü sorumlulukları hakkında daha fazla bilgi için lütfen bu kılavuzun Bölüm 3 ' e başvurun.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **name:** NAND flash örneğinin adı.
+- **nand_driver_initialize:** NAND flash sürücü başlatma işlevinin işlev işaretçisi. NAND flash sürücü sorumlulukları hakkında daha fazla bilgi için bu kılavuzun 3. bölüme bakın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) nve Flash örneği açılırken hata oluştu.
-- **LX_NO_MEMORY**: (0x08) sürücü, BIR sayfayı RAM 'e okumak için arabellek sağlamadı.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) NAND flash örneği açma hatası.
+- **LX_NO_MEMORY:**(0x08) Sürücü, RAM'e bir sayfa okumak için arabellek sağlamadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -300,7 +300,7 @@ status = lx_nand_flash_open(&my_nand_flash,"my nand flash",
 
 ## <a name="lx_nand_flash_page_ecc_check"></a>lx_nand_flash_page_ecc_check
 
-Düzeltme ile ECC hataları için sayfayı denetle
+Düzeltmeli ECC hataları için denetim sayfası
 
 ### <a name="prototype"></a>Prototype
 
@@ -311,25 +311,25 @@ UINT lx_nand_flash_page_ecc_check(
     UCHAR *ecc_buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet sağlanan ECC ile sağlanan nve sayfa arabelleğinin bütünlüğünü doğrular. Sayfa boyutu (nve Flash örneği İşaretçisinde tanımlanmıştır), 256 baytlık bir katı kabul edilir ve sağlanan ECC kodu, sayfanın her 256-Byte bölümünde 1 bit hatası düzeltiyor olabilir.
+Bu hizmet, sağlanan ECC ile sağlanan NAND sayfa arabelleğinin bütünlüğünü doğrular. Sayfa boyutu (NAND flash örnek işaretçisinde tanımlanır) 256 bayt'ın katları olduğu varsayılır ve sağlanan ECC kodu sayfanın her 256 baytlık bölümünde 1 bitlik bir hatayı düzeltebilirsiniz.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **page_buffer**: nve Flash sayfa arabelleğinin işaretçisi.
-- **ecc_buffer**: nve Flash SAYFASıNA yönelik ECC işaretçisi. Sayfanın 256 baytlık bölümü başına 3 ECC bayt olduğunu unutmayın.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **page_buffer:** NAND flash sayfa arabelleğinin işaretçisi.
+- **ecc_buffer:** NAND flash sayfası için ECC işaretçisi. Sayfanın 256 baytlık bölümü başına 3 ECC bayt olduğunu unutmayın.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) nve sayfasında hata yok.
-- **LX_NAND_ERROR_CORRECTED**: (0x06) nve sayfasında 1 bitlik bir hata düzeltildi — düzeltmeler sayfa arabelleğinde.
-- **LX_NAND_ERROR_NOT_CORRECTED**: (0x07) nve sayfasında düzeltmeniz için çok fazla hata var.
+- **LX_SUCCESS:**(0x00) NAND sayfasında hata yok.
+- **LX_NAND_ERROR_CORRECTED:**(0x06) NAND sayfasında bir veya daha fazla 1 bitlik hatalar düzeltildi; sayfa arabelleğinde düzeltmeler var.
+- **LX_NAND_ERROR_NOT_CORRECTED:**(0x07) NAND sayfasında düzeltilen çok fazla hata var.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-LevelX sürücüsü
+LevelX Sürücüsü
 
 ### <a name="example"></a>Örnek
 
@@ -355,7 +355,7 @@ status = lx_nand_flash_page_ecc_check(&my_nand_flash, page_pointer, ecc_pointer)
 
 ## <a name="lx_nand_flash_page_ecc_compute"></a>lx_nand_flash_page_ecc_compute
 
-Sayfa için işlem ECC
+Sayfa için ECC hesaplama
 
 ### <a name="prototype"></a>Prototype
 
@@ -366,24 +366,24 @@ UINT lx_nand_flash_page_ecc_compute(
     UCHAR *ecc_buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sağlanan nve sayfa arabelleğinin ECC 'sini hesaplar ve sağlanan ECC arabelleğindeki ECC 'yi döndürür. Sayfa boyutu, 256 baytlık bir (nve Flash örnek İşaretçisinde tanımlanan) bir katı kabul edilir. ECC kodu, sayfanın daha sonra okunışında bütünlüğünü doğrulamak için kullanılır.
+Bu hizmet, sağlanan NAND sayfa arabelleğinin ECC'lerini hesaplar ve sağlanan ECC arabelleğinde ECC'i döndürür. Sayfa boyutunun 256 bayt'ın katları olduğu varsayıldı (NAND flash örnek işaretçisinde tanımlanır). ECC kodu daha sonra okunan sayfanın bütünlüğünü doğrulamak için kullanılır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **page_buffer**: nve Flash sayfa arabelleğinin işaretçisi.
-- **ecc_buffer**: nve Flash sayfasının ECC 'si için hedef işaretçisi. Sayfanın 256 baytlık bölümü başına 3 bayt ECC depolaması olması gerektiğini unutmayın. Örneğin, 2048 baytlık bir sayfa ECC için 24 bayt gerektirir.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **page_buffer:** NAND flash sayfa arabelleğinin işaretçisi.
+- **ecc_buffer:** NAND flash sayfasının ECC'sinin hedefine işaretçi. Sayfanın 256 baytlık bölümü başına 3 bayt ECC depolama alanı olması gerektiğini unutmayın. Örneğin, bir 2048 bayt sayfası ECC için 24 bayt gerektirir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) ECC başarıyla hesaplandı.
-- **LX_ERROR**: (0x01) ECC hesaplama hatası.
+- **LX_SUCCESS:**(0x00) ECC başarıyla hesaplandı.
+- **LX_ERROR:**(0x01) ECC hesaplanırken hata oluştu.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-LevelX sürücüsü
+LevelX Sürücüsü
 
 ### <a name="example"></a>Örnek
 
@@ -409,7 +409,7 @@ status = lx_nand_flash_page_ecc_compute(&my_nand_flash, page_pointer, ecc_pointe
 
 ## <a name="lx_nand_flash_partial_defragment"></a>lx_nand_flash_partial_defragment
 
-NVE Flash örneğinin kısmi birleştirmesi
+NAND flash örneğinin kısmi birleştiricisi
 
 ### <a name="prototype"></a>Prototype
 
@@ -419,21 +419,21 @@ UINT lx_nand_flash_partial_defragment(
     UINT max_blocks);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden açılan nve Flash örneğini belirtilen en fazla blok sayısına kadar birleştirir. Birleştirme işlemi, serbest sayfa ve blok sayısını en üst düzeye çıkarır.
+Bu hizmet, önceden açılmış OLAN NAND flash örneğini belirtilen en fazla blok sayısına kadar bir hale getirmektedir. Birleştirme işlemi, boş sayfa ve blok sayısını en üst düzeye çıkartır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **max_blocks**: en fazla blok sayısı.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **max_blocks:** En fazla blok sayısı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) Flash örneği birleştirme hatası.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) Flash örneği birleştirme hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -461,7 +461,7 @@ status = lx_nand_flash_partial_defragment(&my_nand_flash, 1);
 
 ## <a name="lx_nand_flash_sector_read"></a>lx_nand_flash_sector_read
 
-NVE Flash kesimini oku
+READ NAND flash sektör
 
 ### <a name="prototype"></a>Prototype
 
@@ -472,22 +472,22 @@ UINT lx_nand_flash_sector_read(
     VOID *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, nve Flash örneğinden mantıksal kesimi okur ve başarılı olursa, sağlanan arabellekteki içerik döndürülür. NVE sektör boyutunun her zaman temeldeki nve donanımın sayfa boyutu olduğunu unutmayın.
+Bu hizmet, NAND flash örneğinden mantıksal kesimi okur ve başarılı olursa sağlanan arabellekte içeriği döndürür. NAND kesim boyutunun her zaman temel alınan NAND donanımının sayfa boyutu olduğunu unutmayın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **logical_sector**: okunacak mantıksal kesim.
-- **buffer**: mantıksal sektörün içerikleri için hedef işaretçisi. Arabelleğin nve Flash sayfa boyutunun boyutu olduğunu ve ULONG erişimi için hizalandığını unutmayın.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **logical_sector:** Okunacak mantıksal kesim.
+- **buffer:** Mantıksal kesimin içeriği için hedefe işaretçi. Arabelleğin, NAND flash sayfa boyutunun boyutu olduğu ve ULONG erişimi için hizalı olduğu varsayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) nve Flash sektörü okunurken hata oluştu.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) NAND flash kesimi okuma hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -515,7 +515,7 @@ status = lx_nand_flash_sector_read(&my_nand_flash, 20, buffer);
 
 ## <a name="lx_nand_flash_sector_release"></a>lx_nand_flash_sector_release
 
-Yayın nve Flash sektörü
+NAND flash sektörünü serbest bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -525,21 +525,21 @@ UINT lx_nand_flash_sector_release(
     ULONG logical_sector);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, nve Flash örneğindeki mantıksal kesim eşlemesini yayınlar. Kullanılmayan bir mantıksal kesimi serbest bırakmak, LevelX aşumu seviyelendirmenin daha verimli olmasını sağlar.
+Bu hizmet, NAND flash örneğinde mantıksal kesim eşlemesini serbest bırakmıştır. Kullanılmadan mantıksal bir kesimin serbest bırakılması, LevelX yıpranma düzeyinin daha verimli hale getirir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **logical_sector**: serbest bırakmak için mantıksal kesim.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **logical_sector:** Yayın için mantıksal kesim.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
-- **LX_ERROR**: (0x01) hata nve Flash sektör yazma.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
+- **LX_ERROR:**(0x01) NAND flash kesim yazma hatası.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -567,7 +567,7 @@ status = lx_nand_flash_sector_release(&my_nand_flash, 20);
 
 ## <a name="lx_nand_flash_sector_write"></a>lx_nand_flash_sector_write
 
-NVE Flash kesimini yaz
+NAND flash kesimi yazma
 
 ### <a name="prototype"></a>Prototype
 
@@ -578,19 +578,19 @@ UINT lx_nand_flash_sector_write(
     VOID *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, nve Flash örneğinde belirtilen mantıksal kesimi yazar.
+Bu hizmet, BELIRTILEN mantıksal kesimi NAND flash örneğine yazar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **nand_flash**: nve Flash örnek işaretçisi.
-- **logical_sector**: yazılacak mantıksal kesim.
-- **buffer**: mantıksal sektörün içeriğine yönelik işaretçi. Arabelleğin nve Flash sayfa boyutunun boyutu olduğunu ve ULONG erişimi için hizalandığını unutmayın.
+- **nand_flash:** NAND flash örnek işaretçisi.
+- **logical_sector:** Yazacak mantıksal kesim.
+- **buffer:** Mantıksal kesimin içeriklerinin işaretçisi. Arabelleğin, NAND flash sayfa boyutunun boyutu olduğu ve ULONG erişimi için hizalı olduğu varsayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **LX_SUCCESS**: (0x00) başarılı istek.
+- **LX_SUCCESS:**(0x00) Başarılı istek.
 - **LX_NO_SECTORS**: (0x02) yazma işlemini gerçekleştirmek için kullanılabilir daha fazla boş sektör yok.
 - **LX_ERROR**: (0x01) nve Flash kesimini serbest bırakma hatası.
 

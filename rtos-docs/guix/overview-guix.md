@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 0a6ac2c7a76893d516b9beae9b893c9764de60ba
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: faa1bc0d4697a7b5e79430097c2921fd4dde4be9e6390398befc0b89074f2fe6
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754939"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116790803"
 ---
 # <a name="overview-of-azure-rtos-guix-and-azure-rtos-guix-studio"></a>GUIX Azure RTOS GUIX Studio'Azure RTOS genel bakış
 
@@ -70,7 +70,7 @@ Azure GUIX embedded GUI, Microsoft'un derinden eklenmiş, gerçek zamanlı ve Io
 
 * Boştayken GUIX Azure RTOS iş parçacığını otomatik olarak askıya alır
 * Kullanıcı arabirimi tasarımında popüler olan olay odaklı programlama modeli
-* GuiX çizim iş parçacığından Azure RTOS sürücülerini zorlar
+* GuiX çizim iş parçacığından Azure RTOS sürücülerini yalıtır
 * Olay gönderme ve alma işlevleri
 * GuiX pencere öğesi türleri için tüm Azure RTOS önceden tanımlanmış olay türleri
 * Desteklenen kullanıcı tanımlı özel olaylar
@@ -130,9 +130,9 @@ Azure RTOS GUIX ve Azure RTOS GUIX Studio, benzersiz şekilde zarif kullanıcı 
 
 <img alt="Screenshot of the GUIX industrial control" class="img-responsive" src="./media/overview/demo_guix_industrial.png"/>
 
-Her Azure RTOS GUIX başvurusu, başvuru Azure RTOS tüm grafik öğelerini tanımlayan ilgili bir GUIX Studio projesine sahiptir. Başvuru tasarımını değiştirmek kolaydır. İlgili GUIX Azure RTOS ilgili dosyayı açın, istediğiniz değişiklikleri yapın, projeyi kaydedin ve ardından *Project.*
+Her Azure RTOS GUIX başvurusu, başvuru Azure RTOS tüm grafik öğelerini tanımlayan ilgili bir GUIX Studio projesine sahiptir. Başvuru tasarımını değiştirmek kolaydır. GuiX projesinde ilgili Azure RTOS açın, istediğiniz değişiklikleri yapın, projeyi kaydedin ve ardından *Project.*
 
-GUIX için C kodunu oluşturmak için Tüm Çıkış Azure RTOS oluştur. Ardından, değiştirilmiş başvuru tasarımını gözlemlemek için hedef uygulamayı yeniden oluşturmanız ve çalıştırmanız gerekir.
+GuiX için C kodunu oluşturmak için Tüm Çıkış Azure RTOS oluştur. Ardından, değiştirilmiş başvuru tasarımını gözlemlemek için hedef uygulamayı yeniden oluşturmanız ve çalıştırmanız gerekir.
 
 ### <a name="guix-memory-footprint"></a>GUIX Bellek ayak izi
 

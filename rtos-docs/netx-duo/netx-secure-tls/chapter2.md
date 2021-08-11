@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: b3ef82bd113518b35105fb2eefe23bd3e755ca06
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d11e50b2ab74ee147f682567d142768de6108fc18264e9d8bc69bbfc8a32cc0a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826951"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801878"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-secure"></a>Bölüm 2-Azure RTOS NetX güvenli yükleme ve kullanımı
 
@@ -630,11 +630,11 @@ NetX güvenli oluşturmak için birkaç yapılandırma seçeneği vardır. Aşa�
 | **NX_SECURE_DISABLE_ECC_CIPHERSUITE**               | Tanımlı, bu seçenek Eliptik Eğri Şifreleme (ECC) cipherpaketlerine yönelik tüm TLS mantığını kaldırır. Bu ciphersuites, TLS 1,2 ve önceki sürümlerde isteğe bağlıdır ve bunların devre dışı bırakılması, önemli kod ve veri boyutu azalmasına neden olabilir.|
 | **NX_SECURE_TLS_ENABLE_TLS_1_3**                    | Tanımlı, bu seçenek TLSv 1.3 modunu etkinleştirmesine izin vermez. TLS 1,3, en yeni TLS sürümüdür ve varsayılan olarak devre dışıdır. |
 | **NX_SECURE_TLS_ENABLE_TLS_1_0**                    | Tanımlı, bu seçenek eski TLSv 1.0 modunu sunar. TLSv 1.0 kullanımdan kalktı, bu nedenle yalnızca eski uygulamalarla geriye dönük uyumluluk için etkinleştirilmelidir. |
-| **NX_SECURE_TLS_ENABLE_TLS_1_1**                    | Tanımlı, bu seçenek eski TLSv 1.1 modunu sunar. TLSv 1.1 kullanımdan kalkmıştır, bu nedenle yalnızca eski uygulamalarla geriye dönük uyumluluk için etkinleştirilmelidir. |
-| **NX_SECURE_TLS_DISABLE_TLS_1_1**                   | Tanımlı, bu seçenek TLSv 1.1 modunu devre dışı bırakır. Varsayılan olarak tanımlanmıştır. TLSv 1.1 yalnızca daha güvenli TLSv 1.2<sup>5</sup>kullanımı için devre dışı bırakılmıştır.  |
-| **NX_SECURE_X509_STRICT_NAME_COMPARE**              | Bu seçenek, sertifika arama ve doğrulama için X. 509.440 sertifikaları için katı ayırt edici ad karşılaştırmayı mümkün bir şekilde sunar. Varsayılan değer yalnızca ayırt edici adların ortak ad alanlarını karşılaştıramaktır.|
-| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES** | Bu seçenek, X. 509.440 sertifikaları için ek bellek kullanımı masrafındaki isteğe bağlı X. 509.952 ayırt edici ad alanlarını mümkün bir şekilde sunar. |
+| **NX_SECURE_TLS_ENABLE_TLS_1_1**                    | Tanımlı, bu seçenek eski TLSv1.1 modunu sağlar. TLSv1.1 eski olarak kabul edilir, bu nedenle yalnızca eski uygulamalarla geriye dönük uyumluluk için etkinleştirilmesi gerekir. |
+| **NX_SECURE_TLS_DISABLE_TLS_1_1**                   | Tanımlı, bu seçenek TLSv1.1 modunu devre dışı bırakıyor. Varsayılan olarak tanımlanır. TLSv1.1 yalnızca daha güvenli TLSv1.2 5 kullanılarak devre<sup>dışı bırakılır.</sup>  |
+| **NX_SECURE_X509_STRICT_NAME_COMPARE**              | Tanımlanan bu seçenek, sertifika arama ve doğrulama için X.509 sertifikaları için katı ayırt edici ad karşılaştırmasını sağlar. Varsayılan değer, Ayırt Edici Adlar'ın yalnızca Ortak Ad alanlarını karşılaştırmaktır.|
+| **NX_SECURE_X509_USE_EXTENDED_DISTINGUISHED_NAMES** | Tanımlanan bu seçenek, X.509 sertifikaları için ek bellek kullanımı karşılığında isteğe bağlı X.509 Ayırt Edici Ad alanlarını sağlar. |
 
-4. Bu seçeneğin yalnızca kodun uygulamayla bağlantılandırılmasına izin olduğunu unutmayın. Özelliğin, Istemci sertifikası doğrulamasını kullanmak için nx_secure_tls_session_client_verify_enable API hizmeti ile etkinleştirilmesi veya nx_secure_tls_session_x509_client_verify_configure kullanılarak yapılandırılması gerekir.
+4. Bu seçeneğin yalnızca kodun uygulamaya bağlı olması için izinli olduğunu unutmayın. İstemci Sertifikası Doğrulamasını kullanmak için özelliğin API nx_secure_tls_session_client_verify_enable etkinleştirilmesi veya nx_secure_tls_session_x509_client_verify_configure kullanılarak yapılandırılması gerekir.
 
-5. Yalnızca TLS 1,0 veya TLS 1,1 kullanılıyorsa TLSv 1.2 'yi devre dışı bırakmak de mümkün olduğunu unutmayın. Ancak, bu önerilmez ve doğrudan desteklenmez.
+5. Yalnızca TLS 1.0 veya TLS 1.1 kullanıyorsanız TLSv1.2'yi devre dışı bırakmanın da mümkün olduğunu unutmayın. Ancak bu önerilmez ve doğrudan desteklmemektedir.

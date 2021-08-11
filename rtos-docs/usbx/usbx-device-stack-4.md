@@ -1,23 +1,23 @@
 ---
-title: Bölüm 4-USBX cihaz hizmetlerinin açıklaması
-description: USBX cihaz hizmetleri hakkında bilgi edinin.
+title: Bölüm 4 - USBX Cihaz Hizmetleri Açıklaması
+description: USBX Cihaz Hizmetleri hakkında bilgi edinebilirsiniz.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: article
-ms.openlocfilehash: d4aea7470ba2d9075296164b9d1fb61db4f88523
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 9d88d9bd177a251a00fec6757fc1f1494b56bab9655a55f973481f273f0683ee
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828138"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797561"
 ---
-# <a name="description-of-usbx-device-services"></a>USBX cihaz hizmetlerinin açıklaması
+# <a name="description-of-usbx-device-services"></a>USBX Cihaz Hizmetleri açıklaması
 
 ### <a name="ux_device_stack_alternate_setting_get"></a>ux_device_stack_alternate_setting_get
 
-Bir arabirim değeri için geçerli alternatif ayarı al
+Arabirim değeri için geçerli alternatif ayarı al
 
 ### <a name="prototype"></a>Prototype
 
@@ -25,18 +25,18 @@ Bir arabirim değeri için geçerli alternatif ayarı al
 UINT ux_device_stack_alternate_setting_get(ULONG interface_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, USB ana bilgisayarı tarafından belirli bir arabirim değeri için geçerli alternatif ayarı elde etmek üzere kullanılır. Bir **GET_INTERFACE** isteği alındığında denetleyici sürücü tarafından çağrılır.
+Bu işlev USB ana bilgisayarı tarafından belirli bir arabirim değeri için geçerli alternatif ayarı elde etmek için kullanılır. Bir istek alınca denetleyici sürücüsü **GET_INTERFACE** çağrılır.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-- **Interface_value** Geçerli alternatif ayarın sorgulandığı arabirim değeri
+- **Interface_value** Geçerli alternatif ayarın sorgulandır olduğu arabirim değeri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_ERROR** (0xFF) yanlış arabirim değeri.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_ERROR** (0xFF) Arabirim değeri yanlış.
 
 ### <a name="example"></a>Örnek
 
@@ -52,7 +52,7 @@ status = ux_device_stack_alternate_setting_get(interface_value);
 
 ### <a name="ux_device_stack_alternate_setting_set"></a>ux_device_stack_alternate_setting_set
 
-Bir arabirim değeri için geçerli alternatif ayarı ayarla
+Arabirim değeri için geçerli alternatif ayarı ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -62,23 +62,23 @@ UINT ux_device_stack_alternate_setting_set(
     ULONG alternate_setting_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, USB ana bilgisayarı tarafından belirli bir arabirim değeri için geçerli alternatif ayarı ayarlamak üzere kullanılır. Bir **SET_INTERFACE** isteği alındığında denetleyici sürücü tarafından çağrılır. **SET_INTERFACE** tamamlandığında, alternatif ayarların değerleri sınıfa uygulanır.
+Bu işlev USB ana bilgisayarı tarafından belirli bir arabirim değeri için geçerli alternatif ayarı ayarlamak için kullanılır. Bir istek alınca denetleyici **SET_INTERFACE** çağrılır. Uygulama **SET_INTERFACE,** alternatif ayarların değerleri sınıfına uygulanır.
 
-Cihaz yığını, alternatif ayarın değiştirilmesini yansıtmak için bu arabirime sahip olan sınıfa bir **UX_SLAVE_CLASS_COMMAND_CHANGE** yayımlayacak.
+Cihaz yığını, bu **UX_SLAVE_CLASS_COMMAND_CHANGE** sahip olan sınıfa alternatif ayar değişikliğini yansıtacak bir uygulama verir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **interface_value**: geçerli alternatif ayarın ayarlandığı arabirim değeri.
-- **alternate_setting_value**: yeni alternatif ayar değeri.
+- **interface_value:** Geçerli alternatif ayarın ayar olduğu arabirim değeri.
+- **alternate_setting_value:** Yeni alternatif ayar değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) hiç arabirim eklenmedi.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) cihaz yapılandırılmadı.
-- **UX_ERROR** (0xFF) yanlış arabirim değeri.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_INTERFACE_HANDLE_UNKNOWN** (0x52) Arabirim ekli değil.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Cihaz yapılandırılmadı.
+- **UX_ERROR** (0xFF) Arabirim değeri yanlış.
 
 ### <a name="example"></a>Örnek
 
@@ -95,7 +95,7 @@ status = ux_device_stack_alternate_setting_set(interface_value, alternate_settin
 
 ### <a name="ux_device_stack_class_register"></a>ux_device_stack_class_register
 
-Yeni bir USB cihaz sınıfı Kaydet
+Yeni bir USB cihaz sınıfı kaydetme
 
 ### <a name="prototype"></a>Prototype
 
@@ -108,28 +108,28 @@ UINT ux_device_stack_class_register(
     VOID *parameter);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, uygulama tarafından yeni bir USB cihaz sınıfı kaydetmek için kullanılır. Bu kayıt, sınıfının bir örneğini değil, bir sınıf kapsayıcısını başlatır. Bir sınıf etkin bir iş parçacığına sahip olmalı ve belirli bir arabirime eklenmelidir.
+Bu işlev, uygulama tarafından yeni bir USB cihaz sınıfı kaydetmek için kullanılır. Bu kayıt, sınıfın bir örneğini değil bir sınıf kapsayıcısı başlatır. Bir sınıfın etkin bir iş parçacığı olmalı ve belirli bir arabirime bağlı olması gerekir.
 
-Bazı sınıflar bir parametre veya parametre listesi bekler. Örneğin, cihaz depolama sınıfı, öykünmeye çalıştığı depolama cihazının geometrisini bekler. Bu nedenle parametre alanı, sınıf gereksinimine bağımlıdır ve sınıf değerleriyle doldurulmuş bir yapı için bir değer veya işaretçi olabilir.
+Bazı sınıflar bir parametre veya parametre listesi bekler. Örneğin, cihaz depolama sınıfı öykünmeye çalıştığı depolama aygıtının geometrisini bekler. Bu nedenle parametre alanı sınıf gereksinimine bağlıdır ve sınıf değerleriyle doldurulmuş bir yapıya yönelik bir değer veya işaretçi olabilir.
 
 > [!NOTE]
-> Class_name C dizesi NULL ile sonlandırılmış olmalı ve bunun uzunluğu (NULL-Sonlandırıcı kendisi olmadan) **UX_MAX_CLASS_NAME_LENGTH** daha büyük olmamalıdır.
+> Dizenin C class_name NULL ile sonlandırılmalı ve uzunluğu (NULL-sonlandırıcının kendisi olmadan) **UX_MAX_CLASS_NAME_LENGTH.**
 
 ### <a name="parameters"></a>Parametreler
 
-- **class_name** Sınıf adı
-- **class_entry_function** Sınıfın giriş işlevi.
-- **configuration_number** Bu sınıfın iliştirildiği yapılandırma numarası.
-- **interface_number** Bu sınıfın iliştirildiği arabirim numarası.
-- **parametre** Sınıfa özgü bir parametre listesi işaretçisi.
+- **class_name** Sınıf Adı
+- **class_entry_function** sınıfının giriş işlevi.
+- **configuration_number** Bu sınıfın ekli olduğu yapılandırma numarası.
+- **interface_number** Bu sınıfın ekli olduğu arabirim numarası.
+- **parametre** Sınıfa özgü parametre listesinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) sınıf kaydettirildi
-- **UX_MEMORY_INSUFFICIENT** (0x12) sınıf tablosunda hiçbir giriş kalmadı.
-- **UX_THREAD_ERROR** (0x16) bir sınıf iş parçacığı oluşturamaz.
+- **UX_SUCCESS** (0x00) Sınıfı kaydedildi
+- **UX_MEMORY_INSUFFICIENT** (0x12) Sınıf tablosunda hiç giriş kalmadı.
+- **UX_THREAD_ERROR** (0x16) Sınıf iş parçacığı oluşturulamaz.
 
 ### <a name="example"></a>Örnek
 
@@ -145,7 +145,7 @@ status = ux_device_stack_class_register(_ux_system_slave_class_storage_name ux_d
 
 ### <a name="ux_device_stack_class_unregister"></a>ux_device_stack_class_unregister
 
-USB cihaz sınıfının kaydını silme
+USB cihaz sınıfının kaydını geri ala
 
 ### <a name="prototype"></a>Prototype
 
@@ -155,22 +155,22 @@ UINT ux_device_stack_class_unregister(
     UINT (*class_entry_function)(struct UX_SLAVE_CLASS_COMMAND_STRUCT*));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, uygulama tarafından USB cihaz sınıfının kaydını silmek için kullanılır.
+Bu işlev, uygulama tarafından BIR USB cihaz sınıfının kaydının kaydının geri alımı için kullanılır.
 
 > [!NOTE]
-> Class_name C dizesi NULL ile sonlandırılmış olmalı ve bunun uzunluğu (NULL-Sonlandırıcı kendisi olmadan) **UX_MAX_CLASS_NAME_LENGTH** daha büyük olmamalıdır.
+> Dizenin C class_name NULL ile sonlandırılmalı ve uzunluğu (NULL-sonlandırıcının kendisi olmadan) **UX_MAX_CLASS_NAME_LENGTH.**
 
 ### <a name="parameters"></a>Parametreler
 
-- **class_name**: sınıf adı
-- **class_entry_function**: sınıfının giriş işlevi.
+- **class_name:** Sınıf Adı
+- **class_entry_function:** sınıfının giriş işlevi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) sınıfın kaydı silindi.
-- **UX_NO_CLASS_MATCH** (0x57) Sınıf kayıtlı değil.
+- **UX_SUCCESS** (0x00) Sınıfın kaydı alındı.
+- **UX_NO_CLASS_MATCH** (0x57) Sınıfı kayıtlı değil.
 
 ### <a name="example"></a>Örnek
 
@@ -193,17 +193,17 @@ Geçerli yapılandırmayı al
 UINT ux_device_stack_configuration_get(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayar tarafından cihazda çalışan geçerli yapılandırmayı almak için kullanılır.
+Bu işlev, konak tarafından cihazda çalışan geçerli yapılandırmayı almak için kullanılır.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-Yok
+Hiçbiri
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
 
 ### <a name="example"></a>Örnek
 
@@ -218,7 +218,7 @@ status = ux_device_stack_configuration_get();
 
 ### <a name="ux_device_stack_configuration_set"></a>ux_device_stack_configuration_set
 
-Geçerli yapılandırmayı ayarla
+Geçerli yapılandırmayı ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -226,17 +226,17 @@ Geçerli yapılandırmayı ayarla
 UINT ux_device_stack_configuration_set(ULONG configuration_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayar tarafından cihazda çalışan geçerli yapılandırmayı ayarlamak için kullanılır. Bu komutun alınması sırasında, USB cihaz yığını bu yapılandırmaya bağlı her arabirimin 0 alternatif ayarını etkinleştireceğiz.
+Bu işlev, konak tarafından cihazda çalışan geçerli yapılandırmayı ayarlamak için kullanılır. Bu komutun alımının ardından, USB cihaz yığını bu yapılandırmaya bağlı her arabirimin 0 alternatif ayarını etkinleştirir.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
 - **configuration_value** Konak tarafından seçilen yapılandırma değeri.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) yapılandırma başarıyla ayarlandı.
+- **UX_SUCCESS** (0x00) Yapılandırma başarıyla ayarlanmıştır.
 
 ### <a name="example"></a>Örnek
 
@@ -252,7 +252,7 @@ status = ux_device_stack_configuration_set(configuration_value);
 
 ### <a name="ux_device_stack_descriptor_send"></a>ux_device_stack_descriptor_send
 
-Konağa tanımlayıcı gönder
+Ana bilgisayar için bir tanımlayıcı gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -263,25 +263,25 @@ UINT ux_device_stack_descriptor_send(
     ULONG host_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, konak için bir tanımlayıcı döndürmek üzere cihaz tarafında kullanılır. Bu tanımlayıcı bir cihaz tanımlayıcısı, bir yapılandırma tanımlayıcısı veya dize tanımlayıcı olabilir.
+Bu işlev, cihaz tarafı tarafından konak için bir tanımlayıcıyı geri dönmek için kullanılır. Bu tanımlayıcı bir cihaz tanımlayıcısı, yapılandırma tanımlayıcısı veya dize tanımlayıcısı olabilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **descriptor_type**: tanımlayıcının türü. Aşağıdaki değerlerden biri olmalıdır.
+- **descriptor_type:** Tanımlayıcının türü. Aşağıdaki değerlerden biri olması gerekir.
   - **UX_DEVICE_DESCRIPTOR_ITEM**
   - **UX_CONFIGURATION_DESCRIPTOR_ITEM**
   - **UX_STRING_DESCRIPTOR_ITEM**
   - **UX_DEVICE_QUALIFIER_DESCRIPTOR_ITEM**
   - **UX_OTHER_SPEED_DESCRIPTOR_ITEM**
-- **request_index**: tanımlayıcının dizini.
-- **host_length**: konağın gerektirdiği uzunluk.
+- **request_index:** Tanımlayıcının dizini.
+- **host_length:** Konak için gereken uzunluk.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **UX_SUCCESS** (0x00) veri aktarımı tamamlandı.
-- **UX_ERROR** (0xFF) aktarma tamamlanmadı.
+- **UX_SUCCESS** (0x00) Veri aktarımı tamamlandı.
+- **UX_ERROR** (0xFF) Aktarım tamamlanmadı.
 
 ### <a name="example"></a>Örnek
 
@@ -299,7 +299,7 @@ status = ux_device_stack_descriptor_send(descriptor_type, request_index, host_le
 
 ### <a name="ux_device_stack_disconnect"></a>ux_device_stack_disconnect
 
-Cihaz yığınının bağlantısını kes
+Cihaz yığınının bağlantısını kesme
 
 ### <a name="prototype"></a>Prototype
 
@@ -307,17 +307,17 @@ Cihaz yığınının bağlantısını kes
 UINT ux_device_stack_disconnect(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bir cihaz bağlantısının kesilmesi durumunda VBUS Yöneticisi bu işlevi çağırır. Cihaz yığını, bu cihaza kayıtlı tüm sınıfları bilgilendirir ve sonra tüm cihaz kaynaklarını serbest bırakacaktır.
+VbUS yöneticisi, bir cihaz bağlantısı kesi olduğunda bu işlevi çağırıyor. Cihaz yığını, bu cihaza kayıtlı tüm sınıfları bilgilendir ve bundan sonra tüm cihaz kaynaklarını serbest bırakacak.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-Yok
+Hiçbiri
 
 ### <a name="return-value"></a>Dönüş Değeri
 
-- **UX_SUCCESS** (0x00) cihazın bağlantısı kesildi.
+- **UX_SUCCESS** (0x00) Cihazın bağlantısı kesildi.
 
 ### <a name="example"></a>Örnek
 
@@ -332,7 +332,7 @@ status = ux_device_stack_disconnect();
 
 ### <a name="ux_device_stack_endpoint_stall"></a>ux_device_stack_endpoint_stall
 
-İstek uç noktası kabini koşulu
+İstek uç noktası Durak koşulu
 
 ### <a name="prototype"></a>Prototype
 
@@ -340,18 +340,18 @@ status = ux_device_stack_disconnect();
 UINT ux_device_stack_endpoint_stall(UX_SLAVE_ENDPOINT*endpoint);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uç noktanın konağa bir kabin koşulu döndürmesi gerektiğinde USB cihaz sınıfı tarafından çağrılır.
+Bu işlev USB cihaz sınıfı tarafından bir uç noktanın ana bilgisayara Bir Durak koşulu iade etmek zorunda olduğu zaman çağrılır.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-- **uç nokta** Kabin koşulunun istendiği uç nokta.
+- **uç nokta** Durak koşulu istenen uç nokta.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0xFF) cihaz geçersiz bir durumda.
+- **UX_ERROR** (0xFF) Cihaz geçersiz durumda.
 
 ### <a name="example"></a>Örnek
 
@@ -366,7 +366,7 @@ status = ux_device_stack_endpoint_stall(endpoint);
 
 ### <a name="ux_device_stack_host_wakeup"></a>ux_device_stack_host_wakeup
 
-Konağı uyandırma
+Ana bilgisayarı uyandırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -374,18 +374,18 @@ Konağı uyandırma
 UINT ux_device_stack_host_wakeup(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, cihaz ana bilgisayarı uyandırmayı istediğinde çağrılır. Bu komut yalnızca cihaz askıda kalma modundayken geçerlidir. Bu cihaz, USB konağını uyku modundan çıkarmak isteyip istemediğinize karar vermek için kullanılır. Örneğin, bir USB Modem, telefon hattında halka sinyali algıladığında bir ana bilgisayarı uyandırabilirler.
+Cihaz, ana bilgisayarı uyandırmak istediği zaman bu işlev çağrılır. Bu komut yalnızca cihaz askıya alma modunda olduğunda geçerlidir. USB ana bilgisayarlarını ne zaman uyandırmak istediği cihaz uygulamasına göre karar verir. Örneğin USB modem, telefon hattında bir RING sinyali algılayan bir ana bilgisayarı uyandırabilir.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-Yok
+Hiçbiri
 
 ### <a name="return-values"></a>Dönüş değerleri
 
-- **UX_SUCCESS** (0x00) çağrı başarılı oldu.
-- **UX_FUNCTION_NOT_SUPPORTED** (0x54) çağrı başarısız oldu (cihaz muhtemelen askıya alınmış modda değildi).
+- **UX_SUCCESS** (0x00) Çağrı başarılı oldu.
+- **UX_FUNCTION_NOT_SUPPORTED** (0x54) Çağrı başarısız oldu (cihaz büyük olasılıkla askıya alınmış modda değil).
 
 ### <a name="example"></a>Örnek
 
@@ -400,7 +400,7 @@ status = ux_device_stack_host_wakeup();
 
 ### <a name="ux_device_stack_initialize"></a>ux_device_stack_initialize
 
-USB cihaz yığınını Başlat
+USB cihaz yığınını başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -417,27 +417,27 @@ UINT ux_device_stack_initialize(
     UINT (*ux_system_slave_change_function)(ULONG)));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, USB cihaz yığınını başlatmak için uygulama tarafından çağırılır. Herhangi bir sınıfı veya denetleyicisi başlatmaz. Bu, ayrı işlev çağrılarında yapılmalıdır. Bu çağrı, genellikle, USB işlevinin cihaz çerçevesi ile yığın sağlar. Her hız için tamamen ayrı ayrı cihaz çerçevesine sahip olma olasılığa sahip hem yüksek hem de tam hızları destekler. Dize çerçevesi ve birden çok dil desteklenir.
+Bu işlev, uygulama tarafından USB cihaz yığınını başlatmak için çağrılır. Hiçbir sınıfı veya denetleyiciyi başlatmaz. Bu, ayrı işlev çağrıları ile yapılması gerekir. Bu çağrı temel olarak USB işlevi için cihaz çerçevesiyle birlikte yığını sağlar. Her hız için tamamen ayrı cihaz çerçevesine sahip olma olasılığıyla hem yüksek hem de tam hızları destekler. Dize çerçevesi ve birden çok dil de destekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **device_framework_high_speed**: yüksek hız çerçevesine yönelik işaretçi.
-- **device_framework_length_high_speed**: yüksek hız çerçevesinin uzunluğu.
-- **device_framework_full_speed**: tam hız çerçevesine yönelik işaretçi.
-- **device_framework_length_full_speed**: tam hız çerçevesinin uzunluğu.
-- **string_framework**: dize çerçevesi işaretçisi.
-- **string_framework_length**: dize çerçevesinin uzunluğu.
-- **language_id_framework**: dize Language Framework işaretçisi.
-- **language_id_framework_length**: dize dili çerçevesinin uzunluğu.
-- **ux_system_slave_change_function**: cihaz durumu değiştiğinde çağrılacak işlev.
+- **device_framework_high_speed:** Yüksek hızlı çerçevenin işaretçisi.
+- **device_framework_length_high_speed:** Yüksek hızlı çerçevenin uzunluğu.
+- **device_framework_full_speed:** Tam hızlı çerçevenin işaretçisi.
+- **device_framework_length_full_speed:** Tam hızlı çerçevenin uzunluğu.
+- **string_framework:** Dize çerçevesi işaretçisi.
+- **string_framework_length:** Dize çerçevesinin uzunluğu.
+- **language_id_framework:** Dize dili çerçevesinin işaretçisi.
+- **language_id_framework_length:** Dize dili çerçevesinin uzunluğu.
+- **ux_system_slave_change_function:** Cihaz durumu değişirken çağrılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_MEMORY_INSUFFICIENT** (0x12) yığının başlatılması için yeterli bellek yok.
-- **UX_DESCRIPTOR_CORRUPTED** (0x42) tanımlayıcı geçersiz.
+- **UX_MEMORY_INSUFFICIENT** (0x12) Yığını başlatmak için yeterli bellek yok.
+- **UX_DESCRIPTOR_CORRUPTED** (0x42) Tanımlayıcı geçersiz.
 
 ### <a name="example"></a>Örnek
 
@@ -527,12 +527,12 @@ UCHAR language_id_framework[] = {
 };
 ```
 
-Bu uygulama, denetleyici durumunu değiştirdiğinde bir geri arama isteğinde bulunabilir. Denetleyicinin iki ana durumu şunlardır:
+Denetleyici durumunu değiştirirken uygulama geri çağrı isteğinde olabilir. Denetleyici için iki ana eyalet vardır:
 
 - **UX_DEVICE_SUSPENDED**
 - **UX_DEVICE_RESUMED**
 
-Uygulamanın askıya alma/sürdürülme sinyalleri gerekmiyorsa, bir UX_NULL işlevi sağlar.
+Uygulamanın Askıya Alma/Sürdürme sinyallerine ihtiyacı yoksa, bir UX_NULL sağlar.
 
 ```c
 UINT status;
@@ -558,13 +558,13 @@ Yığın arabirimini silme
 UINT ux_device_stack_interface_delete(UX_SLAVE_INTERFACE*interface);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir arabirim kaldırılması gerektiğinde çağrılır. Bir cihaz ayıklanırken veya bir veri yolu sıfırlaması sonrasında ya da yeni bir alternatif ayar olduğunda arabirim kaldırılır.
+Bu işlev, bir arabirimin kaldırılması gerektiği zaman çağrılır. Arabirim, cihaz ayıklanan veya veri veri yol sıfırlaması yapılan veya yeni bir alternatif ayar olduğunda kaldırılan bir arabirimdir.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-- **arabirim**: kaldırılacak arabirime yönelik işaretçi.
+- **interface:** Kaldır için arabirim işaretçisi.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
@@ -583,7 +583,7 @@ status = ux_device_stack_interface_delete(interface);
 
 ### <a name="ux_device_stack_interface_get"></a>ux_device_stack_interface_get
 
-Geçerli arabirim değerini Al
+Geçerli arabirim değerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -591,21 +591,21 @@ Geçerli arabirim değerini Al
 UINT ux_device_stack_interface_get(UINT interface_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayar geçerli arabirimi sorguladığında çağrılır. Cihaz geçerli arabirim değerini döndürür.
+Konak geçerli arabirimi sorgularken bu işlev çağrılır. Cihaz geçerli arabirim değerini döndürür.
 
 > [!NOTE]
-> Bu işlev kullanım dışıdır. Bu, eski yazılımlar için kullanılabilir, ancak yeni yazılımların bunun yerine ***ux_device_stack_alternate_setting_get*** işlevini kullanması gerekir.
+> Bu işlev kullanım dışıdır. Eski yazılımlar için kullanılabilir, ancak yeni  yazılımlar bunun yerine ux_device_stack_alternate_setting_get kullandır.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-- **interface_value** Döndürülecek arabirim değeri.
+- **interface_value** İade etmek için arabirim değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0xFF) arabirim yok.
+- **UX_ERROR** (0xFF) Arabirim yok.
 
 ### <a name="example"></a>Örnek
 
@@ -633,20 +633,20 @@ UINT ux_device_stack_interface_set(
     ULONG alternate_setting_value);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayar arabirim için alternatif ayarda bir değişiklik istediğinde çağrılır.
+Bu işlev, konak arabirim için alternatif ayarda değişiklik isteğinde olduğunda çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **device_framework**: Bu arabirim için cihaz çerçevesinin adresi.
-- **device_framework_length**: cihaz çerçevesinin uzunluğu.
-- **alternate_setting_value**: Bu arabirim tarafından kullanılacak alternatif ayar değeri.
+- **device_framework:** Bu arabirim için cihaz çerçevesinin adresi.
+- **device_framework_length:** Cihaz çerçevesinin uzunluğu.
+- **alternate_setting_value:** Bu arabirim tarafından kullanılacak alternatif ayar değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_ERROR** (0xFF) arabirim yok.
+- **UX_ERROR** (0xFF) Arabirim yok.
 
 ### <a name="example"></a>Örnek
 
@@ -665,7 +665,7 @@ status = ux_device_stack_interface_set(device_framework,
 
 ### <a name="ux_device_stack_interface_start"></a>ux_device_stack_interface_start
 
-Arabirim örneğine sahip bir sınıf için Aramayı başlatma
+Arabirim örneğine sahip olmak için sınıf aramaya başlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -673,18 +673,18 @@ Arabirim örneğine sahip bir sınıf için Aramayı başlatma
 UINT ux_device_stack_interface_start(UX_SLAVE_INTERFACE*interface);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, ana bilgisayar tarafından bir arabirim seçildiğinde ve cihaz yığınının bu arabirim örneğine sahip olmak için bir cihaz sınıfı araması gerektiğinde çağrılır.
+Bu işlev, konak tarafından bir arabirim seçildiğinde ve cihaz yığınının bu arabirim örneğine sahip olmak için bir cihaz sınıfı araması gerektirse çağrılır.
 
-### <a name="input-parameter"></a>Giriş parametresi
+### <a name="input-parameter"></a>Giriş Parametresi
 
-- **arabirim**: oluşturulan arabirime yönelik işaretçi.
+- **interface:** Oluşturulan arabirimin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_NO_CLASS_MATCH** (0x57) Bu arabirim için hiçbir sınıf yok.
+- **UX_NO_CLASS_MATCH** (0x57) Bu arabirim için sınıf yok.
 
 ### <a name="example"></a>Örnek
 
@@ -699,7 +699,7 @@ status = ux_device_stack_interface_start(interface);
 
 ### <a name="ux_device_stack_transfer_request"></a>ux_device_stack_transfer_request
 
-Konağa veri aktarma isteği
+Verileri ana bilgisayarla aktarma isteği
 
 ### <a name="prototype"></a>Prototype
 
@@ -710,21 +710,21 @@ UINT ux_device_stack_transfer_request(
     ULONG host_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir sınıf veya yığın konağa veri aktarmak istediğinde çağrılır. Konak, cihazı her zaman yoklar, ancak cihaz verileri önceden hazırlayabilir.
+Bu işlev, bir sınıf veya yığın konakta veri aktarımı yapmak istiyorsa çağrılır. Konak her zaman cihazı yoklar ancak cihaz verileri önceden hazırlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **transfer_request**: aktarım isteğine yönelik işaretçi.
-- **slave_length**: cihazın geri dönmek istediği uzunluk.
-- **host_length**: konağın istediği uzunluk.
+- **transfer_request:** Aktarım isteğinin işaretçisi.
+- **slave_length:** Cihazın geri dönmek istediği uzunluk.
+- **host_length:** Ana bilgisayar tarafından istenen uzunluk.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **UX_SUCCESS** (0x00) Bu işlem başarılı oldu.
-- **UX_TRANSFER_NOT_READY** (0x25) cihaz geçersiz bir durumda; **eklenmiş**, **yapılandırılmış** veya **Çözümlenmiş** olmalıdır.
-- **UX_ERROR** (0xFF) aktarım hatası.
+- **UX_TRANSFER_NOT_READY** (0x25) Cihaz geçersiz durumda; **İLIŞTIRILMIŞ,** **YALITILMIŞ** veya ADRESLI **olması gerekir.**
+- **UX_ERROR** (0xFF) Aktarım hatası.
 
 ### <a name="example"></a>Örnek
 
@@ -769,14 +769,14 @@ UINT ux_device_stack_transfer_abort(
     ULONG completion_code);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın bir aktarım isteğini iptal etmek gerektiğinde veya yığının bir uç noktayla ilişkili bir aktarım isteğini iptal etmek gerektiğinde çağrılır.
+Bu işlev, uygulamanın bir aktarım isteğini iptal etmesi veya yığının uç noktayla ilişkili bir aktarım isteğini durdurması gerekirken çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **transfer_request**: aktarım isteğine yönelik işaretçi.
-- **completion_code**: Bu aktarım isteğinin tamamlanmasını bekleyen sınıfa döndürülecek hata kodu.
+- **transfer_request:** Aktarım isteğinin işaretçisi.
+- **completion_code:** Bu aktarım isteğinin tamamlandıktan sonra sınıfına döndürülen hata kodu.
 
 ### <a name="return-value"></a>Dönüş Değeri
 
@@ -796,7 +796,7 @@ status = ux_device_stack_transfer_abort(transfer_request, UX_TRANSFER_BUS_RESET)
 
 ### <a name="ux_device_stack_uninitialize"></a>ux_device_stack_uninitialize
 
-Yığın kaldırma
+Yığını birimleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -804,9 +804,9 @@ Yığın kaldırma
 UINT ux_device_stack_uninitialize();
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, bir uygulamanın USBX cihaz yığınını geri almaması gerektiğinde çağrılır – tüm cihaz yığını kaynakları serbest bırakılır. Bu, tüm sınıfların ux_device_stack_class_unregister aracılığıyla kaydolduktan sonra çağrılmalıdır.
+Bu işlev, bir uygulamanın USBX cihaz yığınını birimleştirmesi gerekirken çağrılır. Tüm cihaz yığını kaynakları serbest bırakılmış olur. Bu çağrı, tüm sınıfların kayıttan silindikten sonra ux_device_stack_class_unregister.
 
 ### <a name="parameters"></a>Parametreler
 

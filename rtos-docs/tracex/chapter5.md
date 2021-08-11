@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: f296137d23b9f3c1c4fd115947bb50a32b768123
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7d5c90675728fc7e374d625f5a9ae27340268ca8398200c68fb7113a84aa2983
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827521"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801796"
 ---
 # <a name="chapter-5---generating-trace-buffers"></a>Bölüm 5-izleme arabellekleri oluşturma
 
@@ -87,7 +87,7 @@ UINT tx_trace_enable (VOID *trace_buffer_start,
      ULONG trace_buffer_size, ULONG registry_entries);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 Bu hizmet, ThreadX içinde olay izlemeye izin vermez. İzleme arabelleği ve en fazla ThreadX nesnesi sayısı uygulama tarafından sağlanır.
 
 > [!IMPORTANT]
@@ -135,7 +135,7 @@ Belirtilen olayları filtrele
 UINT tx_trace_event_filter (ULONG  vent_filter_bits);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, belirtilen olayların etkin izleme arabelleğine eklenmesini, filtre uygular. Varsayılan olarak, *tx_trace_enable* çağrıldıktan sonra hiçbir olay filtrelenmediğini unutmayın.
 
@@ -217,7 +217,7 @@ Belirtilen olayların filtreleneceğini kaldır
 UINT tx_trace_event_unfilter (ULONG event_unfilter_bits);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, belirtilen olayların (ler) etkin izleme arabelleğine eklenecekleri şekilde filtreleyeceğini kaldırır.
 
@@ -299,7 +299,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_disable, tx_trace_isr_enter_ins
 UINT tx_trace_disable (VOID);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, ThreadX içindeki olay izlemeyi devre dışı bırakır. Bu, uygulamanın geçerli olay izleme arabelleğini dondurmak ve muhtemelen çalışma zamanı sırasında dışarıdan aktarımı istiyorsa yararlı olabilir. Devre dışı bırakıldıktan sonra, yeniden izlemeye başlamak için **tx_trace_enable** çağrılabilir.
 
@@ -343,7 +343,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_isr_en
 VOID tx_trace_isr_enter_insert (ULONG isr_id);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, hata izleme arabelleğine ıSR ENTER olayını ekler. Bu, ıSR işlemenin başlangıcında uygulama tarafından çağrılmalıdır. Sağlanan parametre, uygulamaya yönelik belirli bir ıSR 'yi tanımlamalıdır.
 
@@ -385,7 +385,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_disabl
 VOID tx_trace_isr_exit_insert (ULONG isr_id);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, hata izleme arabelleğine ıSR girişi olayını ekler. Bu, ıSR işlemenin başlangıcında uygulama tarafından çağrılmalıdır. Sağlanan parametre, uygulamanın ıSR 'sini tanımlamalıdır.
 
@@ -428,7 +428,7 @@ tx_trace_enable, tx_trace_event_filter, tx_trace_event_unfilter, tx_trace_disabl
 VOID tx_trace_buffer_full_notify (VOID (*full_buffer_callback)(VOID *));
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, izleme arabelleği dolduğunda ThreadX tarafından çağrılan bir uygulama geri çağırma işlevini kaydeder. Uygulama daha sonra izlemeyi devre dışı bırakmayı ve/veya büyük olasılıkla yeni bir izleme arabelleği kurulumunu seçebilir.
 
@@ -481,7 +481,7 @@ UINT tx_trace_user_event_insert (ULONG event_id,
    ULONG info_field_3, ULONG info_field_4);
 ```
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 
 Bu hizmet, Kullanıcı olayını izleme arabelleğine ekler. Kullanıcı olay kimlikleri 4096 olarak tanımlanan sabit **TX_TRACE_USER_EVENT_START** daha büyük olmalıdır. En fazla Kullanıcı olayı, 65535 olarak tanımlanan sabit **TX_TRACE_USER_EVENT_END** tarafından tanımlanır. Bu aralıktaki tüm olaylar uygulama için kullanılabilir. Bilgi alanları uygulamaya özeldir.
 

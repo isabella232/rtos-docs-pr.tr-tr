@@ -1,104 +1,104 @@
 ---
-title: Bölüm 1-Azure RTOS NetX Duo 'e giriş
-description: Bu bölümde, Azure RTOS NetX Duo 'e giriş ve uygulamalarının ve avantajlarından ilgili bir açıklama yer almaktadır.
+title: Bölüm 1 - NetX Duo Azure RTOS Giriş
+description: Bu bölümde NetX Duo Azure RTOS a giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 91dfd0e62cb565f677faa7d52fe22abc1f0e19a1
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: c9b5e0ea82319bd369318cca753cf1db222ca29b0b4db3da150642ca007f1191
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826224"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116789874"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-duo"></a>Bölüm 1-Azure RTOS NetX Duo 'e giriş
+# <a name="chapter-1---introduction-to-azure-rtos-netx-duo"></a>Bölüm 1 - NetX Duo Azure RTOS Giriş
 
-Azure RTOS NetX Duo, katıştırılmış Azure RTOS ThreadX tabanlı uygulamalar için özel olarak tasarlanmış TCP/IP standartlarının yüksek performanslı gerçek zamanlı uygulamasıdır. Bu bölüm NetX Duo 'e giriş ve uygulamalarının ve avantajlarından oluşan bir açıklama içerir. 
+Azure RTOS NetX Duo, özel olarak ekli ve ThreadX tabanlı uygulamalar için tasarlanmış TCP/IP standartlarının yüksek performanslı Azure RTOS gerçek zamanlı uygulamasıdır. Bu bölümde NetX Duo'ya giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır. 
 
-## <a name="netx-duo-unique-features"></a>NetX Duo benzersiz özellikleri
+## <a name="netx-duo-unique-features"></a>NetX Duo Benzersiz Özellikleri
 
-NetX Duo, diğer TCP/IP uygulamalarından farklı olarak, küçük mikro denetleyici tabanlı uygulamalardan güçlü RıSC ve DSP işlemcileri kullanan uygulamalara kolayca ölçeklenirken çok yönlü olacak şekilde tasarlanmıştır. Bu, başlangıçta iş istasyonu ortamları için tasarlanan, ancak ekli tasarımlara sıkıştırılan genel etki alanı veya diğer ticari uygulamalar için keskin karşıtlığa sahiptir.
+Diğer TCP/IP uygulamalarından farklı olarak NetX Duo, küçük mikro denetleyici tabanlı uygulamalardan güçlü RISC ve DSP işlemcileri kullanan uygulamalara kolayca ölçeklendirilen çok yönlü olacak şekilde tasarlanmıştır. Bu, ilk olarak iş istasyonu ortamlarına yönelik genel etki alanı veya diğer ticari uygulamalara karşı net bir karşıtlıktır, ancak daha sonra eklenmiş tasarımlara dahil edilmiştir.
 
-### <a name="piconettrade-architecture"></a>Piconet &trade; mimarisi
+### <a name="piconettrade-architecture"></a>Piconet &trade; Mimarisi
 
-NetX Duo 'un üstün ölçeklenebilirlik ve performansının temelindeki <em>piconet</em>, özellikle katıştırılmış sistemler için tasarlanmış bir yazılım mimarisidir. Piconet mimarisi, NetX Duo hizmetlerini C Kitaplığı olarak uygulayarak ölçeklenebilirliği en üst düzeye çıkarır. Bu şekilde, yalnızca uygulama tarafından kullanılan hizmetler son çalışma zamanı görüntüsüne getirilir. Bu nedenle, NetX Duo gerçek boyutu uygulama tarafından belirlenir. Çoğu uygulama için, NetX Duo yönerge görüntüsü gereksinimleri 5 Kbayt ile 30 kilobayt arasında değişir. IPv6 adres yapılandırması ve komşu bulma protokolleri için IPv6 ve ICMPv6 etkinken NetX Duo, 30 Kbayt ila 45 Kbayt boyutunda.
+NetX Duo'nun üstün ölçeklenebilirliği ve performansı, özellikle tümleşik sistemler için tasarlanmış bir yazılım mimarisi olan <em>Piconet'tir.</em> Piconet mimarisi, NetX Duo hizmetlerini C kitaplığı olarak kullanarak ölçeklenebilirliği en üst düzeye çıkarmaktadır. Bu şekilde, yalnızca uygulama tarafından kullanılan hizmetler son çalışma zamanı görüntüsüne getiri. Bu nedenle NetX Duo'nın gerçek boyutu uygulama tarafından belirlenir. Çoğu uygulama için NetX Duo'daki yönerge görüntüsü gereksinimleri 5 KBayt ile 30 KBayt arasında bir boyuta sahiptir. IPv6 adres yapılandırması ve komşu bulma protokolleri için IPv6 ve ICMPv6 etkinleştirildiğinde, NetX Duo boyutu 30 kbayt ile 45 kbayt arasında değişebilir.
 
-NetX Duo, iç bileşen işlev çağrılarını yalnızca gerekli olduğunda katmanlayarak üstün ağ performansına erişir. Ayrıca, NetX Duo işlemenin çoğu doğrudan satır içinde gerçekleştirilir ve bu, geçmişte yerleşik tasarımlarda kullanılan iş istasyonu ağ yazılımının üstün performans avantajları elde edilir.
+NetX Duo, yalnızca gerektiğinde iç bileşen işlev çağrılarını katmanlamayla üstün ağ performansı elde eder. Buna ek olarak, NetX Duo işlemenin büyük bölümü doğrudan satır içinde kullanılmaktadır ve bu da geçmişte ekli tasarımlarda kullanılan iş istasyonu ağ yazılımına göre olağanüstü performans avantajları sağlar.
 
-### <a name="zero-copy-implementation"></a>Sıfır-uygulama kopyalama
+### <a name="zero-copy-implementation"></a>Sıfır KopyaLı Uygulama
 
-NetX Duo, TCP/IP 'nin paket tabanlı, sıfır kopya bir uygulamasını sağlar. Sıfır kopya, uygulamanın paket arabelleğindeki verilerin hiçbir şekilde NetX Duo içinde kopyalanmadığı anlamına gelir. Bu, performansı önemli ölçüde artırır ve uygulama için, katıştırılmış uygulamalarda önemli olan değerli işlemci döngülerini serbest bırakır.
+NetX Duo, TCP/IP'nin paket tabanlı, sıfır kopyalı bir uygulamasını sağlar. Sıfır kopyalama, uygulamanın paket arabelleğinde bulunan verilerin hiçbir zaman NetX Duo'nun içine kopyalanmayacağı anlamına gelir. Bu, performansı büyük ölçüde artırır ve değerli işlemci döngülerini uygulamaya serbest bırakarak ekli uygulamalarda önemlidir.
 
-### <a name="udp-fast-pathtrade-technology"></a>UDP hızlı yol &trade; teknolojisi
+### <a name="udp-fast-pathtrade-technology"></a>UDP Hızlı Yol &trade; Teknolojisi
 
-NETX Duo, <em>UDP hızlı yol teknolojisi</em>ile en hızlı olası UDP işlemesini sağlar. Gönderme tarafında, isteğe bağlı UDP sağlama toplamı da dahil olmak üzere UDP işleme, <em>**nx_udp_socket_send**</em> hizmeti içinde yer alır. Paket, iç NetX Duo IP gönderme yordamı aracılığıyla gönderilmeye hazırlanana kadar başka hiçbir işlev çağrısı yapılmaz. Bu yordam ayrıca düz (yani, işlev çağrısı iç içe geçme en az bir deyişle, paket uygulamanın ağ sürücüsüne hızlı bir şekilde gönderilir. UDP paketi alındığında, NetX Duo paket alma işlemi, paketi doğrudan uygun UDP yuvasının alma kuyruğuna koyar veya UDP yuvasının alma sırasından alınan bir alma paketi için bekleyen ilk iş parçacığına izin verir. Ek bir ThreadX bağlam anahtarı gerekmez.
+UDP <em>Hızlı Yol Teknolojisi ile</em>NetX Duo mümkün olan en hızlı UDP işlemeyi sağlar. Gönderme tarafında, isteğe bağlı UDP sağlama toplamları da dahil olmak üzere UDP işleme, nx_udp_socket_send <em>**içinde**</em> yer alan bir hizmettir. Paket iç NetX Duo IP gönderme yordamı aracılığıyla gönderilmeye hazır olana kadar ek işlev çağrısı gönderilmez. Bu yordam aynı zamanda düzdür (yani işlev çağrısını iç içe yerleştirme en düşük düzeydedir), bu nedenle paket uygulamanın ağ sürücüsüne hızla sevk edilir. UDP paketi alınırken, NetX Duo paket alma işlemi paketi doğrudan uygun UDP yuvasının alma kuyruğuna yer verir veya UDP yuvasının alma kuyruğundan bir alma paketi beklerken askıya alınan ilk iş parçacığına verir. Ek ThreadX bağlam anahtarı gerekmez.
 
-### <a name="ansi-c-source-cod"></a>ANSI C kaynak COD
+### <a name="ansi-c-source-cod"></a>ANSI C Kaynak Cod
 
-NetX Duo, ANSI C 'de tamamen yazılır ve doğrudan bir ANSI C derleyicisi ve ThreadX desteği olan tüm işlemci mimarisine taşınabilir. 
+NetX Duo tamamen ANSI C ile yazılmıştır ve ANSI C derleyicisi ve ThreadX desteğine sahip neredeyse tüm işlemci mimarileri için taşınabilir. 
 
-### <a name="not-a-black-box"></a>Siyah kutu değil
+### <a name="not-a-black-box"></a>Kara Kutu Değil
 
-NetX Duo dağıtımların çoğu, tüm C kaynak kodunu içerir. Bu, birçok ticari ağ yığınlarıyla oluşan "siyah kutu" sorunlarını ortadan kaldırır. NetX Duo kullanarak, uygulamalar, ağ yığınının tam olarak neler yaptığını görebilir; herhangi bir gizleyebilmektir!
+NetX Duo dağıtımlarının çoğunda tam C kaynak kodu yer almaktadır. Bu, birçok ticari ağ yığınında oluşan "kara kutu" sorunlarını ortadan kaldırıyor. NetX Duo'yı kullanarak, uygulama geliştiricileri ağ yığınının tam olarak ne yaptığını görebilir; hiçbir şey olmaz!
 
-Kaynak kodun olması, uygulamaya özgü değişikliklere de izin verir. Önerilmese de, gerekirse ağ yığınını değiştirme imkanına sahip olmanız yararlı olur.
+Kaynak kodun olması, uygulamaya özgü değişikliklere de olanak sağlar. Önerilmez, ancak gerekirse ağ yığınını değiştirebilme özelliğine sahip olmak faydalıdır.
 
-Bu özellikler özellikle, şirket içi veya genel etki alanı ağ yığınları ile çalışmaya alışkın olan geliştiricilere Comforting. Bunlar, kaynak kodu ve değişiklik yapabilme yeteneğinin olmasını bekler. NetX Duo, bu tür geliştiriciler için en son ağ yazılımıdır.
+Bu özellikler özellikle, kendi içinde veya genel etki alanı ağ yığınları ile çalışmaya alışkın olan geliştiricileri rahatlatıyor. Kaynak koduna ve kodu değiştirme özelliğine sahip olmasını beklerler. NetX Duo, bu tür geliştiriciler için en üst düzey ağ yazılımıdır.
 
-### <a name="bsd-compatible-socket-api"></a>BSD-Compatible yuva API 'SI
+### <a name="bsd-compatible-socket-api"></a>BSD-Compatible Yuvası API'si
 
-Eski uygulamalarda NetX Duo, altında yüksek performanslı NetX Duo API 'sine çağrı yapan bir BSD uyumlu yuva arabirimi de sağlar. Bu, var olan ağ uygulama kodunu NetX Duo 'e geçirmeye yardımcı olur.
+Eski uygulamalar için NetX Duo, altta yüksek performanslı NetX Duo API'sini çağıran BSD uyumlu bir yuva arabirimi de sağlar. Bu, var olan ağ uygulaması kodunun NetX Duo'ya(NetX Duo)'ya (NetX Duo' ))/NetX Duo'ya (NetX Duo) (NetX Duo'ya) (Net
 
-## <a name="rfcs-supported-by-netx-duo"></a>NetX Duo tarafından desteklenen RFC 'Ler
+## <a name="rfcs-supported-by-netx-duo"></a>NetX Duo Tarafından Desteklenen RFC'ler
 
-Temel ağ protokollerini tanımlayan RFC 'Lerde NetX Duo desteği, ancak aşağıdaki ağ protokolleriyle sınırlı değildir. NetX Duo, küçük bellek ayak ve verimli yürütme ile gerçek zamanlı bir işletim sisteminin kısıtlamaları dahilinde tüm genel önerilere ve temel gereksinimlere uyar.
+Temel ağ protokollerini açıklayan RFC'ler için NetX Duo desteği, aşağıdaki ağ protokollerini içerir ancak bunlarla sınırlı değildir. NetX Duo, küçük bellek ayak izine ve verimli yürütmeye sahip gerçek zamanlı bir işletim sisteminin kısıtlamaları dahilinde tüm genel önerileri ve temel gereksinimleri izler.
 
 | **RFC**  | **Açıklama**                                        |
 | -------- | ------------------------------------------------------ |
-|RFC 1112 | IP çok noktaya yayın için konak uzantıları (IGMPv1)           |
-|RFC 1122 | Internet konakları için gereksinimler-Iletişim katmanları |
-|RFC 2236 | Internet Grup Yönetimi Protokolü, sürüm 2          |
-|RFC 768  | Kullanıcı veri birimi Protokolü (UDP)                           |
-|RFC 791  | Internet Protokolü (IP)                                 |
-|RFC 792  | Internet Denetim Iletisi Protokolü (ıCMP)               |
+|RFC 1112 | IP Çok Noktaya Yayın için Konak Uzantıları (IGMPv1)           |
+|RFC 1122 | İnternet Konakları Için Gereksinimler - İletişim Katmanları |
+|RFC 2236 | İnternet Grup Yönetimi Protokolü, Sürüm 2          |
+|RFC 768  | Kullanıcı Veri Birimi Protokolü (UDP)                           |
+|RFC 791  | İnternet Protokolü (IP)                                 |
+|RFC 792  | İnternet Denetim İletisi Protokolü (ICMP)               |
 |RFC 793  | İletim Denetimi Protokolü (TCP)                    |
 |RFC 826  | Ethernet Adres Çözümleme Protokolü (ARP) |
 |RFC 903  | Ters Adres Çözümleme Protokolü (RARP) |
-|RFC 5681 | TCP tıkanıklık denetimi                     |
+|RFC 5681 | TCP Tıkanıklığı Denetimi                     |
 
-NetX Duo tarafından desteklenen IPv6 ile ilgili RFC 'Ler aşağıda verilmiştir.
+Aşağıda NetX Duo tarafından desteklenen IPv6 ile ilgili RFC'ler verilmiştir.
 
 |**RFC** |**Açıklama**|
 -------- | ------------------------------------------ |
-|RFC 1981 |Internet Protokolü V6 için yol MTU Keşfi (IPv6)|
-|RFC 2460 | Internet Protokolü V6 (IPv6) belirtimi|
-|RFC 2464 |Ethernet ağları üzerinden IPv6 paketlerinin iletimi|
-|RFC 4291 |Internet Protokolü V6 (IPv6) adresleme mimarisi|
-|RFC 4443 |Internet Protokolü V6 (IPv6) belirtimi için Internet Denetim Iletisi Protokolü (Icmpv6)|
-|RFC 4861 |IP V6 için komşu bulma|
-|RFC 4862 |IPv6 durum bilgisiz adresi otomatik yapılandırması|
+|RFC 1981 |İnternet Protokolü v6 (IPv6) için Yol MTU Bulma|
+|RFC 2460 | İnternet Protokolü v6 (IPv6) Belirtimi|
+|RFC 2464 |Ethernet Ağları üzerinden IPv6 Paketlerinin İletimi|
+|RFC 4291 |İnternet Protokolü v6 (IPv6) Adres mimarisi|
+|RFC 4443 |İnternet Protokolü v6 (IPv6) Belirtimi için İnternet Denetim İletisi Protokolü (ICMPv6)|
+|RFC 4861 |IP v6 için Komşu Bulma|
+|RFC 4862 |IPv6 Durum Bilgisiz Adres Otomatik Yapılandırması|
 
-## <a name="embedded-network-applications"></a>Katıştırılmış ağ uygulamaları
+## <a name="embedded-network-applications"></a>Katıştırılmış Ağ Uygulamaları
 
-Katıştırılmış ağ uygulamaları, cep telefonları, iletişim donatımı, oto motor, lazer yazıcılar, tıbbi cihazlar vb. gibi ürünlerin içinde gizlenen mikro işlemcilerde ağ erişimi ve yürütme gerektiren uygulamalardır. Bu uygulamalarda neredeyse her zaman bazı bellek ve performans kısıtlamaları vardır. Katıştırılmış ağ uygulamalarının başka bir ayrım, yazılım ve donanımının özel bir amaca sahip olması olabilir.
+Ekli ağ uygulamaları cep telefonu, iletişim ekipmanı, otomotiv motorları, yazıcılar, tıbbi cihazlar vb. ürünlerin içine gizlenmiş mikro işlemciler üzerinde ağ erişimi ve yürütmesi gereken uygulamalardır. Bu tür uygulamalar neredeyse her zaman bazı bellek ve performans kısıtlamalarına sahiptir. Ekli ağ uygulamalarının bir diğer ayrımı, yazılım ve donanımlarının ayrılmış bir amacının yermasıdır.
 
-İşlemesini tam bir süre içinde gerçekleştirmesi gereken ağ yazılımlarına *gerçek* zamanlı *ağ* yazılımı denir ve ağ uygulamalarına zaman kısıtlamaları eklendiğinde bunlar gerçek zamanlı uygulamalar olarak sınıflandırılır. Gömülü ağ uygulamaları, dış dünya ile ilgili etkileşimlerinden dolayı neredeyse her zaman gerçek zamanlı olarak gerçekleştirilir.
+İşlemlerini tam bir süre içinde gerçekleştirmesi gereken   ağ yazılımına gerçek zamanlı ağ yazılımı denir ve ağ uygulamalarına zaman kısıtlamaları uygulanarak gerçek zamanlı uygulamalar olarak sınıflandırılır. Katıştırılmış ağ uygulamaları, dış dünyayla doğal etkileşimi nedeniyle neredeyse her zaman gerçek zamanlıdır.
 
-## <a name="netx-duo-benefits"></a>NetX Duo avantajları
+## <a name="netx-duo-benefits"></a>NetX Duo Avantajları
 
-Gömülü uygulamalar için NetX Duo kullanmanın başlıca avantajları, yüksek hızlı Internet bağlantısı ve küçük bellek gereksinimleridir. NetX Duo, yüksek performanslı, çok görevli ThreadX gerçek zamanlı işletim sistemiyle de tümleşiktir.
+Ekli uygulamalar için NetX Duo kullanmanın temel avantajları, yüksek hızlı İnternet bağlantısı ve küçük bellek gereksinimleridir. NetX Duo, yüksek performanslı, çok görevli ThreadX gerçek zamanlı işletim sistemiyle de tümleştirilmiştir.
 
-### <a name="improved-responsiveness"></a>İyileştirilmiş yanıt hızı
+### <a name="improved-responsiveness"></a>Geliştirilmiş Yanıt Hızı
 
-Yüksek performanslı NetX Duo protokol yığını, katıştırılmış ağ uygulamalarının daha önce hiç olmadığı kadar hızlı yanıt vermesini sağlar. Bu özellikle, tek bir pakette önemli miktarda ağ trafiği veya katı işleme gereksinimi olan eklenmiş uygulamalar için önemlidir.
+Yüksek performanslı NetX Duo protokol yığını, tümleşik ağ uygulamalarının hiç bu kadar hızlı yanıt vermesini sağlar. Bu özellikle, önemli miktarda ağ trafiğine veya tek bir pakette sıkı işleme gereksinimlerine sahip katıştırılmış uygulamalar için önemlidir.
 
 ### <a name="software-maintenance"></a>Yazılım Bakımı
 
-NetX Duo kullanımı, geliştiricilerin katıştırılmış uygulamalarının ağ yönlerini kolayca bölümlememesini sağlar. Bu bölümlendirme, tüm geliştirme sürecini kolaylaştırır ve gelecekteki yazılım bakımını önemli ölçüde geliştirir.
+NetX Duo kullanmak, geliştiricilerin ekli uygulamalarının ağ yönlerini kolayca bölümlemelerine olanak sağlar. Bu bölümleme, geliştirme sürecinin tamamını kolaylaştırır ve gelecekteki yazılım bakımını önemli ölçüde iyiler.
 
-### <a name="increased-throughput"></a>Artan verimlilik
+### <a name="increased-throughput"></a>Artan Aktarım Hızı
 
 NetX Duo, en düşük düzeyde paket işleme yükü tarafından elde edilen en yüksek performanslı ağı sağlar. Bu, daha fazla verim artışı da sunar.
 

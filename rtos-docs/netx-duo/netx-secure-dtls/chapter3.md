@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 347bd83fa8c72ced2e8678a92ec5c5f8393c136d
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 7db319e45c6d1f4a2030734fc01fefc4f3907aebeec1b3f47a5bde57dd5bfcc4
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550210"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797100"
 ---
 # <a name="chapter-3-functional-description-of-azure-rtos-netx-secure-dtls"></a>Bölüm 3: Azure RTOS NetX güvenli DTLS 'nin Işlevsel açıklaması
 
@@ -79,104 +79,104 @@ DTLS el sıkışma kayıt üstbilgisinin alanları aşağıdaki gibi tanımlanı
 
 Şekil 3 ' te tipik bir DTLS el sıkışması gösterilmektedir. Genellikle önemli bir farka sahip olan tipik TLS el sıkışması ile neredeyse aynıdır: ClientHello iletisi ilk gönderildiğinde, sunucu yeni bir DTLS-özel iletisiyle yanıt verir, "tanımlama bilgisi" içeren bir *Helloverifyrequest* . DTLS Istemcisi, el sıkışma devam etmeden önce bu tanımlama bilgisini içeren ikinci bir ClientHello iletisiyle yanıt vermelidir. Bu mekanizma, UDP 'nin bağlantısız bir protokol olduğundan, belirli hizmet reddi (DoS) saldırılarını engellemek için DTLS 'e eklenmiştir (TCP 'nin aynı sorundan devam edebilmesi için adanmış bir bağlantı/bağlantı noktası olması gerekir).
 
-Istemci DTLS sunucusuna bir *ClientHello* iletisi GÖNDERDIĞINDE DTLS el sıkışması başlar ve bunu BIR DTLS oturumu başlatmak zorunda olduğunu gösterir. İleti, istemci oturum için kullanmak istediğiniz şifreleme hakkında bilgiler içerir ve bu da oturum anahtarlarını daha sonra el ile oluşturmak için kullanılan bilgilerle birlikte. Oturum anahtarları üretilene kadar DTLS el sıkışmasının içindeki tüm iletiler şifrelenmez. Yukarıda belirtildiği gibi, DTLS sunucusu ClientHello yanıt olarak, istemciyi ikinci bir güncelleştirilmiş ClientHello ile yanıt vermeye zorlayarak bir HelloVerifyRequest gönderebilir.
+Istemci DTLS sunucusuna bir *ClientHello* iletisi GÖNDERDIĞINDE DTLS el sıkışması başlar ve bunu BIR DTLS oturumu başlatmak zorunda olduğunu gösterir. İleti, istemci oturum için kullanmak istediğiniz şifreleme hakkında bilgiler içerir ve bu da oturum anahtarlarını daha sonra el ile oluşturmak için kullanılan bilgilerle birlikte. Oturum anahtarları oluşturulana kadar DTLS el sıkışması içinde yer alan tüm iletiler şifrelenmez. Yukarıda belirtildiği gibi DTLS Sunucusu ClientHello'ya yanıt olarak bir HelloVerifyRequest gönderebilir ve istemciyi güncelleştirilmiş ikinci bir ClientHello ile yanıt vermeye zorlar.
 
-İkinci ClientHello iletisini aldıktan sonra DTLS sunucusu tanımlama bilgisini doğrular ve doğru olursa, istemci tarafından sunulan şifreleme seçeneklerinden seçim gösteren bir ServerHello iletisi ile yanıt verir. ServerHello, sunucunun kimliğini istemciye kimliğini doğrulamak için dijital bir sertifika sağladığı bir sertifika iletisi (X. 509.440 doğrulaması kullanılırsa) tarafından izlenir. Son olarak, sunucu gönderilecek daha fazla ileti olmadığını göstermek için bir ServerHelloDone iletisi gönderir. Sunucu isteğe bağlı olarak Sunucushello 'yu izleyen diğer iletileri gönderebilir ve bazı durumlarda bir sertifika iletisi gönderemeyebilir (örneğin, önceden paylaşılan anahtarlar kullanıldığında), bu nedenle ServerHelloDone iletisi gerekir.
+İkinci ClientHello iletisi aldıktan sonra DTLS Sunucusu tanımlama bilgisini doğrular ve doğruysa istemci tarafından sağlanan şifreleme seçeneklerinden bir seçim olduğunu belirten bir ServerHello iletisiyle yanıt verir. ServerHello'nun ardından, sunucunun istemciye kimliğini doğrulamak için bir dijital sertifika sağladığı (X.509 doğrulaması kullanılırsa) bir Sertifika iletisi takip ediyor. Son olarak, sunucu bir ServerHelloDone iletisi gönderebilirsiniz. Sunucu isteğe bağlı olarak ServerHello'dan sonra başka iletiler gönderebilir ve bazı durumlarda bir Sertifika iletisi (örneğin, Önceden Paylaşılan Anahtarlar kullanılırken) göndermeyebilirsiniz, bu nedenle ServerHelloDone iletisine ihtiyaç vardır.
 
-İstemci tüm sunucu iletilerini aldıktan sonra, oturum anahtarlarını oluşturmak için yeterli bilgiye sahip olur. TLS/DTLS bunu, sabit boyutlu *gizli anahtar* adı verilen ve şifreli olarak bilinen ve şifreleme etkinleştirildikten sonra gereken tüm anahtarları oluşturmak için bir çekirdek olarak kullanılan, paylaşılan bir bit olarak adlandırılan bir rastgele verileri oluşturarak yapar. Asıl ön gizlilik, Merhaba iletilerde belirtilen ortak anahtar algoritması (ör. RSA) kullanılarak şifrelenir (ortak anahtar algoritmaları hakkında bilgi için aşağıya bakın) ve sertifikasında sunucu tarafından sağlanmış ortak anahtar. Önceden paylaşılan anahtarlar (PSK) adlı isteğe bağlı bir TLS/DTLS özelliği, sertifika kullanmayan cipherpaketlerine izin verebilir, bunun yerine ana bilgisayarlar arasında paylaşılan bir gizli değer (genellikle fiziksel aktarım veya diğer güvenli yöntem aracılığıyla) kullanır. PSK etkin olduğunda, önceden paylaşılan gizli anahtar, ön yönetici gizli anahtarı oluşturmak için kullanılır. Aşağıdaki "kimlik doğrulama metotları" bölümünde önceden paylaşılan anahtarlar hakkında bölümüne bakın.
+İstemci tüm sunucu iletilerini aldıktan sonra, oturum anahtarlarını oluşturmak için yeterli bilgiye sahip olur. TLS/DTLS bunu, sabit boyutlu olan ve şifreleme etkinleştirildikten sonra gereken tüm anahtarları oluşturmak için çekirdek olarak kullanılan Ana Gizli Anahtar Öncesi adlı paylaşılan bir rastgele veri biti oluşturarak yapar. Ana Anahtar Öncesi Gizli Anahtar, Hello iletisinde belirtilen ortak anahtar algoritması (örneğin RSA) kullanılarak şifrelenir (ortak anahtar algoritmaları hakkında bilgi için aşağıya bakın) ve sertifikada sunucu tarafından sağlanan ortak anahtar. Önceden Paylaşılan Anahtarlar (PSK) adlı isteğe bağlı bir TLS/DTLS özelliği, sertifika kullanmayan ancak bunun yerine konaklar arasında paylaşılan bir gizli anahtar değeri (genellikle fiziksel aktarım veya diğer güvenli yöntemler aracılığıyla) kullanan şifrelemeleri sağlar. PSK etkinleştirildiğinde, Ana Gizli Anahtar Öncesi oluşturmak için önceden paylaşılan gizli anahtar kullanılır. Aşağıdaki "Kimlik Doğrulama Yöntemleri" içinde Önceden Paylaşılan Anahtarlar bölümüne bakın.
 
-Olağan bir TLS/DTLS anlaşmasında, şifrelenmiş ön ana gizlilik parolası ClientKeyExchange iletisindeki sunucusuna gönderilir. Sunucu, ClientKeyExchange iletisini aldıktan sonra, özel anahtarını kullanarak ana ön parolanın şifresini çözer ve oturum anahtarlarını TLS/DTLS istemcisiyle paralel olarak oluşturmaya devam eder.
+Normal bir TLS/DTLS el sıkışması içinde, şifrelenmiş Ana Anahtar Öncesi Gizli Anahtar ClientKeyExchange iletisinde sunucuya gönderilir. Sunucu, ClientKeyExchange iletisi aldıktan sonra özel anahtarını kullanarak Ana Ana Gizli Anahtarın şifresini çözebilir ve TLS/DTLS istemcisiyle paralel olarak oturum anahtarları oluşturmak için devam eder.
 
-Oturum anahtarları oluşturulduktan sonra, diğer tüm iletiler, Merhaba iletilerde seçili olan özel anahtar algoritması (ör. AES) kullanılarak şifrelenir. Diğer tüm iletilerin şifrelendiğini belirtmek için hem istemci hem de sunucu tarafından, Changeccrypspec adlı bir son şifreli ileti gönderilir.
+Oturum anahtarları oluşturulurken, diğer tüm iletiler Hello iletisinde seçilen özel anahtar algoritması (örneğin AES) kullanılarak şifrelenir. ChangeCipherSpec adlı son bir şifresiz ileti hem istemci hem de sunucu tarafından göndererek diğer tüm iletilerin şifrelenir olduğunu gösterir.
 
-Hem istemci hem de sunucu tarafından gönderilen ilk şifreli ileti ayrıca, tamamlandı olarak adlandırılan son TLS el sıkışma iletisidir. Bu ileti alınan ve gönderilen tüm el sıkışma iletilerinin karmasını içerir. Bu karma, el sıkışmasının hiçbir iletiden değiştirilmediğini veya bozulmadığını (güvenlik ihlali olasılığı olduğunu gösterir) doğrulamak için kullanılır.
+Hem istemci hem de sunucu tarafından gönderilen ilk şifrelenmiş ileti de Son TLS el sıkışma iletisidir ve Bitti olarak adlandırılan son iletidir. Bu ileti, alınan ve gönderilen tüm el sıkışma iletilerinin karması içerir. Bu karma, el sıkışmada iletilerden hiçbirinin üzerinde oynanmadığını veya bozulmuş olmadığını doğrulamak için kullanılır (güvenlik ihlaline neden olabilir).
 
-Tamamlanan iletiler alındıktan ve el sıkışma karmaları doğrulandıktan sonra, TLS/DTLS oturumu başlar ve uygulama veri göndermeye ve almaya başlar. TLS/DTLS oturumu sırasında her iki taraf tarafından gönderilen tüm veriler öncelikle, oluşturulan oturum anahtarlarına sahip seçili özel anahtar algoritması kullanılarak, Merhaba iletilerde seçilen karma algoritma (ileti bütünlüğü sağlamak için) kullanılarak karma hale getirilir.
+Bitti iletileri alındıktan ve el sıkışma karmaları doğrulandıktan sonra TLS/DTLS oturumu başlar ve uygulama veri göndererek almaya başlar. TLS/DTLS oturumu sırasında her iki taraf tarafından gönderilen tüm veriler ilk olarak Hello iletilerde seçilen karma algoritması kullanılarak karma (ileti bütünlüğü sağlamak için) ve oluşturulan oturum anahtarları ile seçilen özel anahtar algoritması kullanılarak şifrelenir.
 
-Son olarak, bir TLS/DTLS oturumu yalnızca Istemci veya sunucu bunu yapmayı seçerse başarılı bir şekilde sonlandırgirebilir. Kesilen oturum, bir güvenlik ihlali olarak değerlendirilir (bir saldırgan tüm verilerin alınmasını engellemeye çalışıyor olabilir), bu nedenle her iki taraf da oturumu sonlandırmak istediğinde, bir CloseNotify uyarısı olarak adlandırılan özel bir bildirim gönderilir. Başarılı bir oturum kapatması için hem istemci hem de sunucu bir CloseNotify uyarısı göndermelidir ve işlemelidir.
+Son olarak, TLS/DTLS oturumu yalnızca İstemci veya Sunucu bunu seçerse başarıyla sona erer. Kesilmiş bir oturum bir güvenlik ihlali olarak kabul edilir (bir saldırgan gönderilen tüm verilerin alınabilmesini engellemeye çalışsa da), bu nedenle her iki taraf da oturumu sona erdirerek CloseNotify uyarısı olarak adlandırılan özel bir bildirim gönderilir. Başarılı bir oturum kapatma işlemi için hem istemci hem de sunucu bir CloseNotify uyarısı göndermeli ve işlemeli.
 
 ![Tipik bir DTLS el sıkışma oturumunun diyagramı.](media/image4.png)
 
-**Şekil 3-tipik DTLS el sıkışma**
+**Şekil 3- Tipik DTLS el sıkışması**
 
 ### <a name="initialization"></a>Başlatma
 
-NETX ve NetXDuo yığınının NetX güvenli DTLS kullanılmadan önce başlatılması gerekir. UDP işlemi için TCP/IP yığınını doğru şekilde başlatma hakkında bilgi için NetX veya NetXDuo Kullanıcı kılavuzuna bakın.
+NetX Veya NetXDuo yığını, NetX Secure DTLS'nin kullanımından önce başlatılmış olması gerekir. UDP işlemi için TCP/IP yığınını düzgün bir şekilde başlatma hakkında bilgi için NetX veya NetXDuo Kullanıcı Kılavuzu'na bakın.
 
-NetX UDP başlatıldıktan sonra DTLS etkinleştirilebilir. Dahili olarak, tüm DTLS ağ trafiği ve işleme, kullanıcı müdahalesine gerek kalmadan NetX/NetXDuo Stack tarafından işlenir. Ancak, DTLS, temel ağ yığınından ayrı olarak işlenmesi gereken bazı özel gereksinimlere sahiptir. DTLS Istemci işlemi bu parametreler, ***NX_SECURE_DTLS_SESSION** _ ADLı DTLS denetim bloğuna atanır. DTLS sunucu işlemi için, denetim bloğu _ *_NX_SECURE_DTLS_SERVER_** olarak adlandırılır ve tek bir UDP bağlantı noktasında birden çok DTLS oturumunu işlemek için gereken altyapıyı içerir – bu, her bir TLS oturumunun tek bir TCP bağlantı noktasına bağlandığı TLS 'den farklı olduğunu unutmayın.
+NetX UDP başlatıldıktan sonra DTLS etkinleştirilebilir. Dahili olarak, tüm DTLS ağ trafiği ve işlemesi, kullanıcı müdahalesi gerektirmeden NetX/NetXDuo yığını tarafından işlanır. Ancak, DTLS'nin temel ağ yığınından ayrı olarak ele alınmalıdır bazı özel gereksinimleri vardır. DTLS İstemcisi işlemi Bu parametreler * NX_SECURE_DTLS_SESSION _ adlı DTLS **denetim bloğuna** atanır. DTLS Sunucusu işlemi için denetim bloğu _ *_NX_SECURE_DTLS_SERVER_** olarak adlandırılır ve tek bir UDP bağlantı noktası üzerinde birden çok DTLS oturumunu işlemek için gereken altyapıyı içerir. Bunun her TLS oturumunun tek bir TCP bağlantı noktasına bağlı olduğu TLS'den farklı olduğunu unutmayın.
 
-İki DTLS modu, sunucu ve Istemci, bir uygulamada etkinleştirilebilir (ancak NetX yuvası başına yalnızca bir mod) ve her birinin aşağıda ayrıntılı olarak belirli gereksinimleri vardır.
+İki DTLS modu (Sunucu ve İstemci) bir uygulamada etkinleştirilebilir (netX yuvası başına yalnızca bir mod) ve her birinin aşağıda ayrıntılı olarak açıklanmıştır kendi özel gereksinimleri vardır.
 
-### <a name="initialization--dtls-server"></a>Başlatma – DTLS sunucusu
+### <a name="initialization--dtls-server"></a>Başlatma – DTLS Sunucusu
 
-NetX güvenli DTLS sunucu modu, temeldeki ağ aktarım protokolü için UDP kullanılması nedeniyle TLS sunucu modundan farklıdır. TCP ile bağlantı noktası, TLS oturumu süresince tek bir uzak ana bilgisayara bağlanır. UDP, uzak ana bilgisayarla ilgili olarak bir durum kavramı yoktur, bu nedenle farklı konaklardaki DTLS isteklerinin hepsi aynı UDP arabiriminde alınır. Bu nedenle, DTLS 'in, TLS ve TCP gibi yuvaya güvenmek yerine oturum durumu koruması gerekir. Bu nedenle, DTLS sunucu denetim bloğu (NX_SECURE_DTLS_SERVER), uzak ana bilgisayar bilgilerinin (IP adresi ve bağlantı noktası) DTLS oturumlarına eşleşmesini sağlar. Bir DTLS sunucusuna atanan UDP yuvasında tüm gelen veriler, uzak ana bilgisayara bağlı olarak mevcut veya yeni bir DTLS oturumuna eşlenir. Bu nedenle, DTLS sunucusu oluşturma, TLS ve DTLS Istemcisinin gerek duyduğu birkaç ek parametre gerektirir.
+Temel ağ aktarım protokolü için UDP kullanımından dolayı NetX Güvenli DTLS Sunucusu modu TLS Sunucu modundan farklıdır. TCP ile, bağlantı noktası TLS oturumu süresince tek bir uzak ana bilgisayara bağlı olur. UDP'nin uzak ana bilgisayar ile ilgili durum diye bir durumu yoktur, bu nedenle farklı konaklardan gelen DTLS isteklerinin hepsi aynı UDP arabiriminde alınmıştır. Bu nedenle DTLS, TLS ve TCP ile olduğu gibi yuvaya güvenmek yerine oturum durumunu korumalı. Bu nedenle DTLS Sunucu denetim bloğu (NX_SECURE_DTLS_SERVER), uzak konak bilgileri (IP adresi ve bağlantı noktası) ile DTLS oturumlarının eşlemesini sürdürür. Bir DTLS Sunucusuna atanan UDP yuvasında gelen tüm veriler, uzak ana bilgisayarı temel alan mevcut veya yeni bir DTLS oturumuna eşlenmiş olur. Bu nedenle DTLS sunucusu oluşturma işlemi TLS ve DTLS İstemcisi'nin ihtiyaçlarının ötesinde birkaç ek parametre gerektirir.
 
-DTLS sunucu denetim bloğu, TLS cipherpaketlerine ve şifre karalama alanı/meta veri arabelleğinin yanı sıra DTLS sunucuları, DTLS oturumlarını sürdürmek için bir arabellek ve gelen DTLS kayıtlarının şifresini çözmek için kullanılan bir paket yeniden birleştirme arabelleği gerektirir.
+DTLS Sunucu denetim bloğuna, TLS şifrelemelerine ve şifreleme karalama alanı/meta veri arabelleğine ek olarak, DTLS Sunucularının DTLS oturumlarını korumak için bir arabellek ve gelen DTLS kayıtlarının şifresini çözmek için kullanılan bir paket yeniden değerlendirme arabelleği gerekir.
 
-DTLS sunucuları, oturum arabelleklerine ek olarak, bağlanan TLS istemcisine TLS sunucusunu tanımlamak için kullanılan bir belge olan *dijital bir sertifika* ve genellikle RSA şifreleme algoritması için de karşılık gelen *özel anahtarı* gerektirir. International Telekomünikasyon Birliği X. 509.440 standart, TLS/DTLS tarafından kullanılan sertifika biçimini belirtir ve X. 509.952 dijital sertifikaları oluşturmak için çok sayıda yardımcı program vardır.
+DTLS Sunucuları, oturum arabelleklerinin yanı sıra, bağlanan TLS istemcisine TLS sunucusunu ve genellikle RSA şifreleme algoritması için karşılık gelen özel anahtarı tanımlamak için kullanılan bir belge olan Dijital Sertifika gerektirir. International Telecommunications Union X.509 standardı TLS/DTLS tarafından kullanılan sertifika biçimini belirtir ve X.509 dijital sertifikaları oluşturmak için birçok yardımcı program vardır.
 
-NetX güvenli DTLS için, X. 509.440 sertifikası ASN. 1 ' in Distinguished Encoding Rules (DER) biçimi kullanılarak ikili kodlanmış olmalıdır. DER, sertifikalar için Standart TLS-kablolu ikili biçimidir.
+NetX Secure DTLS için, X.509 sertifikası ASN.1'in Distinguished Encoding Rules (DER) biçimi kullanılarak ikili olarak kodlanmış olmalıdır. DER, sertifikalar için standart tlS over-the-wire ikili biçimidir.
 
-Belirtilen sertifikayla ilişkili özel anahtar DER-Encoded PKCS # 1 biçiminde olmalıdır. Özel anahtar yalnızca cihazda kullanılır ve hiçbir şekilde kablo üzerinden aktarılmaz. TLS/DTLS iletişimleri için güvenlik sağlayan özel anahtarları güvende tutun!
+Sağlanan sertifikayla ilişkilendirilmiş özel anahtar PKCS#1 DER-Encoded biçiminde olmalıdır. Özel anahtar yalnızca cihazda kullanılır ve hiçbir zaman kablo üzerinden aktarılamayacak. TLS/DTLS iletişimleri için güvenlik sağlarken özel anahtarları güvende tutma!
 
-DTLS sunucu sertifikasını başlatmak için, uygulama DER ile kodlanmış X. 509.952 sertifikasını ve isteğe bağlı DER kodlu PKCS # 1 RSA özel anahtar verilerini, ***nx_secure_x509_certificate_intialize*** hizmetini kullanarak, **NX_SECURE_X509_CERT** yapısını TLS tarafından kullanılmak üzere uygun sertifika verileriyle dolduran bir arabelleğe işaretçi sağlamalıdır.
+DTLS Sunucusu sertifikasını başlatmak için uygulamanın DER ile kodlanmış X.509 sertifikasını içeren bir arabelleğe ve ***nx_secure_x509_certificate_intialize*** hizmetini kullanarak isteğe bağlı DER ile kodlanmış PKCS#1 RSA özel anahtar verilerini içeren bir arabelleğe işaretçisi sağlaması gerekir. Bu, **NX_SECURE_X509_CERT** yapısını TLS tarafından kullanmak üzere uygun sertifika verileriyle doldurmak için kullanılır.
 
-Sunucu sertifikası başlatıldıktan sonra, ***nx_secure_dtls_server_local_certificate_add*** HIZMETI kullanılarak TLS denetim bloğuna eklenmelidir.
+Sunucu sertifikası başlatıldıktan sonra, nx_secure_dtls_server_local_certificate_add hizmeti kullanılarak TLS denetim ***bloğuna eklenmiştir.***
 
-Sunucunun sertifikası DTLS sunucu denetim bloğuna eklendikten sonra, sunucu güvenli DTLS iletişimleri için kullanılabilir (Yukarıdaki örneğe bakın).
+Sunucunun sertifikası DTLS Sunucusu denetim bloğuna eklendiktan sonra, sunucu güvenli DTLS iletişimleri için kullanılabilir (yukarıdaki örneğine bakın).
 
-### <a name="initialization--dtls-client"></a>Başlatma – DTLS Istemcisi
+### <a name="initialization--dtls-client"></a>Başlatma – DTLS İstemcisi
 
-UDP yuvası üzerinden uzak ana bilgisayara yalnızca tek bir giden bağlantı olduğundan, NetX güvenli DTLS Istemci modu, DTLS sunucusuyla karşılaştırıldığında basit bir işlemdir.
+UDP yuvası üzerinden uzak ana bilgisayara yalnızca tek bir giden bağlantı olduğu için NetX Güvenli DTLS İstemci modu, DTLS sunucusuna kıyasla basittir.
 
-Bir DTLS Istemcisini ayarlamak için, güvenilen sertifika yetkililerinden (CA 'lar) X. 509.952 kodlu dijital sertifikaların bir koleksiyonu olan *Güvenilen bir sertifika deposu* gerekir. Bu sertifikaların, DTLS protokolünün "güvenilir" olması ve DTLS sunucu varlıklarının NetX güvenli DTLS Istemci uygulamasına verdiği sertifikaların kimlik doğrulaması için temel olarak kabul edilir.
+Bir DTLS İstemcisi'nin kurulumu için güvenilen Sertifika Yetkililerinden (CA) X.509 ile kodlanmış dijital sertifika koleksiyonu olan Güvenilen Sertifika Deposu gerekir. Bu sertifikalar, DTLS protokolü tarafından "güvenilir" olduğu varsayılır ve DTLS sunucu varlıkları tarafından NetX Secure DTLS İstemci uygulamasına sağlanan sertifikaların kimlik doğrulamasını sağlamak için temel olarak kullanılır.
 
-Güvenilen CA sertifikası, başka bir CA tarafından *otomatik olarak imzalanmış* veya imzalı olabilir, bu durumda sertifikaya BIR *ara CA* (ICA) denir. Tipik bir TLS/DTLS uygulamasında sunucu, sunucu sertifikasıyla birlikte ICA sertifikalarını sağlar, ancak başarılı kimlik doğrulaması için tek gereksinim, sunucu sertifikasından güvenilen sertifika deposundaki güvenilir bir CA sertifikasına geri doğru şekilde izlenebilir. Bu zincir bir *güven zinciri* veya *sertifika zinciri* olarak bilinir.
+Güvenilen CA sertifikası, otomatik *olarak* imzalanan veya başka bir CA tarafından imzalanmış olabilir; bu durumda sertifika Ara *CA* (ICA) olarak çağrılır. Tipik bir TLS/DTLS uygulamasında sunucu, sunucu sertifikasıyla birlikte ICA sertifikalarını sağlar, ancak başarılı kimlik doğrulaması için tek gereksinim, sertifika verenler zincirinin (diğer sertifikaları imzalamak için kullanılan sertifikalar) sunucu sertifikasından Güvenilen Sertifika Deposu'na güvenilen bir CA sertifikasına geri izlenebilir olmasıdır. Bu zincir güven zinciri veya *sertifika zinciri* *olarak bilinir.*
 
-Güvenilen bir CA veya ICA sertifikası başlatmak için, uygulamanın, _ *NX_SECURE_X509_CERT** yapısını TLS tarafından kullanılmak üzere uygun sertifika verileriyle dolduran, ***nx_secure_x509_certificate_intialize** _ hizmetini kullanarak der kodlu X. 509.440 sertifikasını içeren bir arabellek işaretçisi sağlaması gerekir.
+Güvenilen bir CA veya ICA sertifikası başlatmak için, uygulama ***nx_secure_x509_certificate_intialize** _ hizmetini kullanarak DER kodlanmış X.509 sertifikasını içeren bir arabelleğe işaretçi sağlamış olmalı ve _ *NX_SECURE_X509_CERT** yapısını TLS tarafından kullanım için uygun sertifika verileriyle doldurmaktadır.
 
-DTLS Istemcisinin Ayrıca gelen sunucu sertifikasının ayrılması için (önceden paylaşılan anahtar modunun kullanılmadığını varsayarak) ve paketlerin Şifresi çözülecek DTLS kayıtlarına paket montajı için alan bulunması gerekir. Bu arabellekler ***nx_secure_dtls_session_create*** hizmetine parametreler olarak geçirilir (daha fazla bilgi için bkz. API Başvurusu).
+DTLS İstemcisi ayrıca gelen sunucu sertifikasının ayrılacağı (Önceden Paylaşılan Anahtar modunun kullanılmayacağı varsayılır) ve paketlerin DTLS kayıtlarına birleştirerek şifresinin çözülmesi için bir arabellek gerekir. Bu arabellekler, nx_secure_dtls_session_create ***hizmetine*** parametre olarak geçirildi (daha fazla bilgi için bkz. API başvurusu).
 
-Başlatılmış olan güvenilen sertifikalar, ***nx_secure_dtls_session_trusted_certificate_add*** hizmeti kullanılarak oluşturulan DTLS oturum denetim bloğuna eklenir. Bir sertifika eklenemedi DTLS Istemci oturumunun, uzak sunucu konaklarının kimliğini doğrulamak için DTLS protokolünün bir yolu olacağı için başarısız olmasına neden olur.
+Başlatılan güvenilen sertifikalar daha sonra oluşturulan DTLS oturum denetim bloğuna, nx_secure_dtls_session_trusted_certificate_add ***eklenir.*** DTLS protokolünün uzak sunucu konakları için kimlik doğrulaması yapma yolu olmayacaktır. Sertifikanın eklenene kadar başarısız olması DTLS İstemcisi oturumunun başarısız olmasına neden olur.
 
-Güvenilen sertifika deposu oluşturulduktan sonra, oturum güvenli bir TLS Istemci bağlantısı kurmak için kullanılabilir.
+Güvenilen Sertifika Deposu oluşturulduktan sonra, güvenli bir TLS İstemci bağlantısı kurmak için oturum kullanılabilir.
 
-### <a name="application-interface-calls"></a>Uygulama arabirimi çağrıları
+### <a name="application-interface-calls"></a>Uygulama Arabirimi Çağrıları
 
-NetX güvenli DTLS uygulamaları, genellikle ThreadX RTOS altında çalışan uygulama iş parçacıklarında işlev çağrıları yapar. Özellikle temel ağ iletişim protokolleri (örn. UDP ve IP) için bazı başlatma, ***tx_application_define *** öğesinden çağrılabilir. Ağ iletişimlerini başlatma hakkında daha fazla bilgi için bkz. NetX/NetXDuo Kullanıcı Kılavuzu.
+NetX Güvenli DTLS uygulamaları genellikle ThreadX RTOS altında çalışan uygulama iş parçacıklarının içinde işlev çağrıları yapacaktır. Özellikle temel ağ iletişim protokolleri (UDP ve IP gibi) için bazı başlatmalar * ağ iletişim **protokollerinden* tx_application_define* olabilir.** Ağ iletişimlerini başlatma hakkında daha fazla bilgi için bkz. NetX/NetXDuo Kullanıcı Kılavuzu.
 
-DTLS, işlemci yoğunluklu işlemler olan şifreleme yordamlarının yoğun bir şekilde kullanılmasını sağlar. Genellikle, bu işlemler çağıran iş parçacığı bağlamında gerçekleştirilir.
+DTLS, yoğun işlemci kullanan işlemler olan şifreleme yordamlarını yoğun olarak kullanır. Genellikle, bu işlemler çağıran iş parçacığı bağlamında gerçekleştirilir.
 
-### <a name="dtls-session-start"></a>DTLS oturum başlangıcı
+### <a name="dtls-session-start"></a>DTLS Oturum Başlatma
 
-DTLS, çalışması için temeldeki bir aktarım katmanı ağı Protokolü gerektirir. Genellikle kullanılan protokol TCP 'dir. NetX güvenli TLS oturumu oluşturmak için, DTLS Istemcileri için **_nx_secure_dtls_client_session_start_** hizmetine bir **NX_UDP_SOCKET** oluşturulması ve geçirilmesi gerekir.
+DTLS'nin çalışması için temel alınan bir aktarım katmanı ağ protokolü gerekir. Kullanılan protokol genellikle TCP'dir. NetX Secure TLS oturumu kurmak için bir **NX_UDP_SOCKET** DTLS İstemcileri için **_nx_secure_dtls_client_session_start_** hizmetine geçir gerekir.
 
-DTLS sunucuları farklı şekilde çalışır. Gelen DTLS Istemci istekleri için kullanılan UDP yuvası NX_SECURE_DTLS_SERVER denetim bloğunda bulunur ve yerel UDP bağlantı noktasını parametre olarak alan ***nx_secure_dtls_server_create** _ çağrısıyla başlatılır. Daha sonra hizmet _*_nx_secure_dtls_server_start_*_ , gelen istekleri işlemek için DTLS sunucusunu başlatmak üzere kullanılır. Tüm gelen istekler, _nx_secure_dtls_server_create *: biri bağlantılar ve diğeri alma bildirimleri için sunulan geri çağırma yordamlarında işlenir. Bir bağlantı bildirimi alındığında DTLS oturumunun başlamasını işleyecek uygulamanın (Connect Notification geri araması DTLS tarafından çağrılır), ***nx_secure_dtls_server_session_start** çağırarak uygulamaya kadar_ olur. Ayrıca, _ *_nx_secure_dtls_session_receive_* * çağırarak, alma bildirimi geri araması çağrıldığında (tamamlanmış bir DTLS el sıkışmasını izleyen) uygulamanın gelen verileri işlemesi gerekir. Bunun Ayrıntıları yukarıdaki örnekte ve yukarıda bahsedilen hizmetlerin her biri için API başvurusunda verilmiştir.
+DTLS Sunucuları farklı çalışır. Gelen DTLS İstemci istekleri için kullanılan UDP yuvası, NX_SECURE_DTLS_SERVER denetim bloğunda yer alır ve yerel UDP bağlantı noktasını parametre olarak alan ***nx_secure_dtls_server_create** _ çağrısında başlatılır. Bu _*_nx_secure_dtls_server_start_*_ gelen istekleri işlemek üzere DTLS Sunucusunu başlatmak için kullanılır. Tüm gelen istekler, biri bağlantılar ve biri de alma bildirimleri için olmak nx_secure_dtls_server_create* için sağlanan geri çağırma _yordamlarında ele alır. Bir bağlantı bildirimi_(bağlantı bildirimi geri çağırma DTLS tarafından çağrılır) * veya çağrısıyla DTLS oturumunun başlatılacak şekilde nx_secure_dtls_server_session_start. Ayrıca , _* çağrısıyla alma bildirimi geri çağırma çağrıldığında (tamamlanmış bir DTLS el sıkışmasını izleyen) gelen verileri de _işlemesi_ nx_secure_dtls_session_receive ** . Bunun ayrıntıları yukarıdaki örnekte ve yukarıda belirtilen hizmetlerin her biri için API başvurusunda sağlanmıştır.
 
-### <a name="dtls-packet-allocation"></a>DTLS paket ayırması
+### <a name="dtls-packet-allocation"></a>DTLS Paket Ayırma
 
-NetX güvenli DTLS, _*_nx_packet_allocate_*_ hizmetini çağırmak yerine NETX/NetXDuo TCP (***NX_PACKET** _) ile aynı paket yapısını kullanır; bu nedenle, DTLS üst bilgisi için alanın doğru ayrılabileceği şekilde _ *_nx_secure_dtls_packet_allocate_** hizmetinin çağrılması gerekir.
+NetX Secure DTLS, NetX/NetXDuo TCP (***NX_PACKET** _) ile aynı paket yapısını kullanır. Bunun _*_dışında, nx_packet_allocate_*_ hizmetinin çağrılması yerine _ *_nx_secure_dtls_packet_allocate_** hizmetinin çağrılması gerekir. Bu nedenle DTLS üst bilgisi için alan düzgün bir şekilde ayrılır.
 
-### <a name="dtls-session-send"></a>DTLS oturum gönderme
+### <a name="dtls-session-send"></a>DTLS Oturum Gönderme
 
-TLS oturumu başladıktan sonra, uygulama ***nx_secure_dtls_session_send*** hizmetini kullanarak veri gönderebilir. Gönderme hizmeti, gönderilen verileri, hedef IP adresini ve hedef UDP bağlantı noktasını içeren bir _ *_NX_PACKET_** veri yapısı alarak, ***nx_udp_socket_send** _ hizmetinde kullanılan ile aynıdır.
+TLS oturumu başlatıldıktan sonra uygulama, nx_secure_dtls_session_send hizmetini ***kullanarak veri*** gönderebilir. Gönderme hizmeti, gönderilen verileri içeren bir _ **NX_PACKET*** veri yapısını, bir hedef IP adresini ve hedef UDP bağlantı noktasını alarak **_nx_udp_socket_send_* _ hizmetiyle kullanımda aynıdır.
 
 > [!IMPORTANT]
-> Nx_secure_dtls_session_send kullanarak veri gönderirken, oturumu yeni bir adrese ve UDP bağlantı noktasına (yaygın değil) taşımak için bir mekanizma olmadıkça, DTLS oturumunu kurmak için kullanılan aynı IP adresi ve bağlantı noktasının kullanılması önemlidir.
+> nx_secure_dtls_session_send kullanarak veri gönderirken, oturumu yeni bir adrese ve udp bağlantı noktasına hareket sırasında taşımak için bir mekanizma yoksa DTLS oturumunu kurmak için kullanılan aynı IP adresini ve bağlantı noktasını kullanmak önemlidir (bu yaygın değildir).
 
-DTLS üzerinden gönderilen tüm veriler NX güvenli DTLS yığını ve gönderilmeden önce yapılandırılan şifreleme yordamları tarafından şifrelenir.
+DTLS üzerinden gönderilen tüm veriler, gönderilmeden önce NX Güvenli DTLS yığını ve yapılandırılmış şifreleme yordamları tarafından şifrelenir.
 
-### <a name="dtls-session-receive"></a>DTLS oturum alma
+### <a name="dtls-session-receive"></a>DTLS Oturumu Alma
 
-DTLS oturumu başlatıldıktan sonra uygulama, ***nx_secure_Dtls_session_receive** _ hizmetini kullanarak veri almaya başlayabilir. DTLS oturumunun gönderilmesi gibi, bu hizmet, gelen verilerin, paket yapısına döndürülmeden önce DTLS Stack tarafından çözülmesi ve doğrulanması dışında _ *_nx_udp_socket_receive_* * ile aynıdır.
+DTLS oturumu başlatıldıktan sonra uygulama , * nx_secure_Dtls_session_receive _ **hizmetini kullanarak veri almaya** başlayabilir. DTLS Oturumu gönderme işlemi gibi bu hizmet de _*_nx_udp_socket_receive_** ile aynıdır, ancak gelen verilerin şifresi çözülerek paket yapısında döndürülmeden önce DTLS yığını tarafından doğrulanır.
 
-### <a name="tls-session-close"></a>TLS oturumu kapatma
+### <a name="tls-session-close"></a>TLS Oturumu Kapatma
 
-DTLS oturumu tamamlandıktan sonra, her iki DTLS istemcisi ve sunucusu, oturumu kapatmak için diğer tarafa bir CloseNotify uyarısı göndermelidir. Başarılı bir oturumun kapatılmasını sağlamak için her iki taraf da uyarıyı alıp işlemelidir.
+DTLS oturumu tamamlandıktan sonra, hem DTLS istemcisinin hem de sunucusunun oturumu kapatmak için diğer tarafa bir CloseNotify uyarısı göndermesi gerekir. Oturumun başarıyla kapatılması için her iki taraf da uyarıyı almalı ve işlemeli.
 
-Uzak ana bilgisayar bir CloseNotify uyarısı gönderirse, ***nx_secure_dtls_session_receive** _ hizmetine yapılan tüm çağrılar uyarıyı işler, karşılık gelen uyarıyı uzak ana bilgisayara geri gönderir ve _ *_NX_SECURE_TLS_SESSION_CLOSED_* * değerini döndürür. Oturum kapatıldıktan sonra, bu DTLS oturumunda veri gönderme veya alma girişimleri başarısız olur.
+Uzak konak bir CloseNotify uyarısı gönderirse, ***nx_secure_dtls_session_receive** _ hizmetine yapılan tüm çağrılar uyarıyı işler, ilgili uyarıyı uzak ana bilgisayara geri gönderir ve __*_ NX_SECURE_TLS_SESSION_CLOSED **. Oturum kapatılana kadar bu DTLS oturumuyla veri gönderme veya alma girişimleri başarısız olur.
 
-Uygulama TLS oturumunu kapatmayı istiyorsa, ***nx_secure_dtls_session_end** _ hizmeti çağrılmalıdır. Hizmet, CloseNotify uyarısını gönderir ve yanıt CloseNotify 'ı işler. Yanıt alınmıyorsa, DTLS oturumunun hatalı bir güvenlik ihlali olup olmadığını belirten bir _ *_NX_SECURE_TLS_SESSION_CLOSE_FAIL_** hata değeri döndürülür.
+Uygulama TLS oturumunu kapatmak isterse ***** nx_secure_dtls_session_end _ hizmetinin çağrılsı gerekir. Hizmet CloseNotify uyarıyı gönderir ve CloseNotify yanıtını işler. Yanıt alınmıyorsa, DTLS oturumunun hatalı bir güvenlik ihlali olup olmadığını belirten bir _ *_NX_SECURE_TLS_SESSION_CLOSE_FAIL_** hata değeri döndürülür.
 
 ### <a name="tlsdtls-alerts"></a>TLS/DTLS uyarıları
 
@@ -285,63 +285,63 @@ PSK ciphersuites, bir TLS/DTLS oturumunun yapılabilmesi için her iki cihazda d
 
 PSK ciphersuites, RFC 4279 ' de açıklanan çeşitli biçimlerde gelir. İlki, Standart TLS el sıkışmaları içinde sertifikada aktarılan ortak anahtarlarla aynı şekilde kullanılan RSA veya Diffie-Hellman anahtarlarını kullanır. Kaynak kısıtlı bir ortamda daha fazla kullanılan ikinci form, oturum anahtarlarını doğrudan oluşturmak için kullanılan bir PSK kullanır (örneğin, AES tarafından kullanılmak üzere), pahalı RSA veya Diffie-Hellman işlemlerinin kullanılmasını önler.
 
-NetX güvenli,, uygulamaların tüm ortak anahtar şifreleme kodunu ve bellek kullanımını kaldırmasını sağlayan PSK ciphersuites 'in ikinci biçimini destekler. PSK kendisi bir AES anahtarı değil, ancak gerçek anahtarların oluşturulduğu bir parola gibi kabul edilebilir. PSK değeri ile ilgili olarak daha uzun değerler daha fazla güvenlik (parolalarla aynı şekilde) sağlayabilse de daha fazla kısıtlama vardır.
+NetX Secure, psk şifrelemelerinin ikinci formunu destekler ve uygulamaların tüm ortak anahtar şifreleme kodunu ve bellek kullanımını kaldırmasını sağlar. PSK'nin kendisi bir AES anahtarı değildir, ancak gerçek anahtarların oluşturularak oluşturulan bir parola gibi kabul edilir. PSK değerinin ne olduğuyla ilgili birkaç kısıtlama vardır, ancak daha uzun değerler daha fazla güvenlik sağlar (parolalarla aynı şekilde).
 
-NetX güvenli uygulamanızla PSK 'yi kullanmak için, önce genel makro **NX_SECURE_ENABLE_PSK_CIPHERSUITES** tanımlamanız gerekir. Bu genellikle derleyici ayarlarınız aracılığıyla yapılır, ancak tanım nx_secure_tls. h üst bilgi dosyasına da yerleştirilebilirler. Tanımlanan makro ile, PSK ciphersuite desteği NetX güvenli DTLS uygulamanıza derlenir.
+PSK'yi NetX Secure uygulamanıza kullanmak için öncelikle ile genel **makroyu** NX_SECURE_ENABLE_PSK_CIPHERSUITES. Bu genellikle derleyici ayarlarınız aracılığıyla yapılır, ancak tanım nx_secure_tls.h üst bilgi dosyasına da yer değiştirebilir. Makro tanımlandığı zaman PSK şifreleme desteği NetX Secure DTLS uygulamanıza derlenmiş olur.
 
-PSK desteği etkinken, uygulamanız için PSKs 'i kurmak üzere DTLS API 'sini kullanabilirsiniz. Her PSK için bir PSK değeri (gerçek gizli anahtar "anahtarı" – Bu değeri güvenli tut), belirli bir PSK 'yi tanımlamak için kullanılan bir "Identity" değeri ve bir TLS sunucusu tarafından belirli bir PSK değeri seçmek için kullanılan bir "kimlik ipucu" gerekir.
+PSK desteği etkinleştirildiğinde, uygulamanıza PSK'leri ayarlamak için DTLS API'sini kullanabilirsiniz. Her PSK için bir PSK değeri (gerçek gizli "anahtar" – bu değeri güvende tutma), belirli PSK'yi tanımlamak için kullanılan "kimlik" değeri ve belirli bir PSK değerini seçmek için TLS sunucusu tarafından kullanılan bir "kimlik ipucu" gerekir.
 
-PSK, bir ağ bağlantısı üzerinden hiçbir şekilde gönderilmediğinden herhangi bir ikili değer olabilir. PSK, 64 bayta kadar olan herhangi bir değer olabilir.
+PSK'nin kendisi herhangi bir ikili değer olabilir çünkü hiçbir zaman bir ağ bağlantısı üzerinden gönderilmez. PSK, 64 bayt'a kadar herhangi bir değer olabilir.
 
-Kimliğin ve ipucunun UTF-8 kullanılarak biçimlendirilen yazdırılabilir karakter dizeleri olması gerekir. Kimlik ve ipucu değerleri 128 bayta kadar olan uzunlukta olabilir.
+Kimlik ve ipucu, UTF-8 kullanılarak biçimlendirilmiş yazdırılabilir karakter dizeleri olmalıdır. Kimlik ve ipucu değerleri en fazla 128 bayt uzunluğunda olabilir.
 
-Identity ve PSK, ağdaki bir birbirleriyle iletişim kurması gereken her cihaza yüklenen benzersiz bir çift oluşturur.
+Kimlik ve PSK, ağ üzerinde birbirleriyle iletişim kurması gereken her cihaza yüklenen benzersiz bir çifttir.
 
-"İpucu", birincil olarak, bir işlev veya hizmete göre PSKs 'leri gruplandırmak için belirli uygulama profillerinin tanımlanması için kullanılır. Bu değerler önceden anlaşılmalıdır ve uygulamaya bağımlı olur. Örnek olarak, OpenSSL komut satırı sunucu uygulaması (PSK etkin ile), TLS el sıkışması ile devam edebilmek için bir TLS istemcisi tarafından sağlanması gereken varsayılan "Client_identity" dizesini kullanır.
+"İpucu" öncelikli olarak işleve veya hizmete göre PSK'leri gruplayarak belirli uygulama profillerini tanımlamak için kullanılır. Bu değerler önceden kabul edilir ve uygulamaya bağımlıdır. Örneğin, OpenSSL komut satırı sunucu uygulaması (PSK etkinken) TLS el sıkışması ile devam etmek için bir TLS istemcisi tarafından sağlanmalıdır varsayılan "Client_identity" dizesini kullanır.
 
-PSKs hakkında daha fazla bilgi için, aşağıdaki hizmetler için NetX Secure API başvurusuna bakın: nx_secure_dtls_psk_add, nx_secure_dtls_server_psk_add.
+PSK'ler hakkında daha fazla bilgi için şu hizmetler için NetX Güvenli API başvurusuna bakın: nx_secure_dtls_psk_add, nx_secure_dtls_server_psk_add.
 
-## <a name="importing-x509-certificates-into-netx-secure"></a>X. 509.440 sertifikalarını NetX ile alma güvenli
+## <a name="importing-x509-certificates-into-netx-secure"></a>X.509 sertifikalarını NetX Secure'e aktarma
 
-Internet üzerindeki çoğu TLS bağlantısı için dijital sertifikalar gerekir. Sertifikalar, genellikle *sertifika yetkilileri* veya CA olarak adlandırılan güvenilen Aracılar kullanılarak Internet üzerinden daha önce bilinmeyen Konakları kimlik doğrulaması için bir yöntem sağlar. NetX güvenli cihazınızı ticari bir bulut hizmetiyle (örneğin, Amazon Web Services) bağlamak için, bu sertifikaları cihazınıza yükleyerek uygulamanıza aktarmanız gerekir.
+İnternet'e bağlı çoğu TLS bağlantısı için dijital sertifikalar gereklidir. Sertifikalar, genellikle Sertifika Yetkilileri veya CA'lar olarak adlandırılan güvenilir aracılar  aracılığıyla İnternet üzerinden önceden bilinmeyen konakların kimliklerini doğrulamaya yönelik bir yöntem sağlar. NetX Secure cihazınızı ticari bir bulut hizmetine (Amazon Web Services gibi) bağlamak için, sertifikaları cihazınıza yükerek uygulamanıza aktarmanız gerekir.
 
-Sertifikalarla birlikte, bazen sertifikalarınızla ilişkili bir *özel anahtara* da ihtiyacınız olacaktır. Bazı uygulamalarda (Istemci sertifikası kimlik doğrulaması kullanılmazsa TLS Istemcisi gibi), sertifika tek başına yeterli olacaktır, ancak sertifikanız cihazınızı tanımlamak için kullanılıyorsa özel bir anahtara ihtiyacınız olur. Özel anahtarlar genellikle sertifikanızı oluşturduğunuzda oluşturulur ve genellikle bir parolayla şifrelenir ve ayrı bir dosyada depolanır.
+Sertifikalarla birlikte, bazen sertifikanız ile *ilişkili bir* özel anahtar da gerekir. Bazı uygulamalarda (İstemci Sertifikası Kimlik Doğrulaması kullanılmazken TLS İstemcisi gibi) yalnızca sertifika yeterli olacaktır, ancak sertifikanız cihazınızı tanımlamak için kullanılıyorsa özel bir anahtara ihtiyacınız olacaktır. Özel anahtarlar genellikle sertifikanızı 7.000.000'e kadar olan bir dosyada depolarsanız ve genellikle parolayla şifrelenirseniz oluşturulur.
 
-Sertifikaları NetX güvenli uygulamalarına aktarma hakkında ayrıntılı bir açıklama için lütfen NetX güvenli TLS kullanıcı kılavuzunda Bölüm 3 ' e başvurun.
+Sertifikaları NetX Secure uygulamalarına aktarmanın ayrıntılı açıklaması için lütfen NetX Güvenli TLS Kullanıcı Kılavuzu'nın 3. Bölüm'e bakın.
 
-## <a name="client-certificate-authentication-in-netx-secure-tls"></a>NetX güvenli TLS 'de istemci sertifikası kimlik doğrulaması
+## <a name="client-certificate-authentication-in-netx-secure-tls"></a>NetX Secure TLS'de İstemci Sertifikası Kimlik Doğrulaması
 
-X. 509.440 sertifika kimlik doğrulaması kullanılırken, TLS/DTLS Protokolü, DTLS sunucu örneğinin kimlik için bir sertifika sağlamasını gerektirir, ancak varsayılan olarak DTLS Istemci örneğinin kimlik doğrulama için bir sertifika sağlaması gerekmez (örn. bir Kullanıcı adı/parola birleşimi). Bu, Web siteleri için Internet 'te en yaygın TLS kullanımıyla eşleşir. Örneğin, bir çevrimiçi perakende sitesi, sunucunun meşru olduğunu bir Web tarayıcısı kullanarak potansiyel bir müşteriyi kanıtlamaları gerekir, ancak kullanıcı belirli bir hesaba erişmek için bir oturum açma/parola kullanacaktır.
+X.509 sertifika kimlik doğrulaması kullanılırken TLS/DTLS protokolü, DTLS Sunucusu örneğinin kimlik doğrulaması için bir sertifika sağlamasını gerektirir, ancak varsayılan olarak DTLS İstemci örneğinin kimlik doğrulaması için başka bir kimlik doğrulaması biçimi (kullanıcı adı/parola bileşimi gibi) sağlamak zorunda değildir. Bu, Web siteleri için internet üzerinde en yaygın TLS kullanımıyla eştir. Örneğin, bir çevrimiçi perakende satış sitesi, web tarayıcısı kullanan potansiyel bir müşteriye sunucunun meşru olduğunu kanıtlamalı, ancak kullanıcı belirli bir hesaba erişmek için bir oturum açma/parola kullanır.
 
-Ancak, varsayılan durum her zaman tercih edilmez, bu nedenle TLS/DTLS isteğe bağlı olarak DTLS sunucu örneğinin uzak Istemciden bir sertifika istemesine izin verir. Bu özellik etkinleştirildiğinde, DTLS sunucusu el sıkışma sırasında DTLS Istemcisine bir CertificateRequest iletisi gönderir. Istemci kendi sertifikası ile yanıt vermelidir ve Istemcinin bu sertifikayla ilişkili eşleşen özel anahtara sahip olduğunu belirten bir şifreleme belirteci içeren bir CertificateVerify iletisi. Doğrulama başarısız olursa veya sertifika sunucuda güvenilir bir sertifikaya bağlı değilse, TLS el sıkışması başarısız olur.
+Ancak, varsayılan durum her zaman tercih edilmez, bu nedenle TLS/DTLS isteğe bağlı olarak DTLS Sunucu örneğinin uzak İstemciden sertifika isteğine izin verir. Bu özellik etkinleştirildiğinde, DTLS Sunucusu el sıkışma sırasında DTLS İstemcisi'ne bir CertificateRequest iletisi gönderir. İstemci, kendi sertifikası ve İstemcinin bu sertifikayla ilişkilendirilmiş eşleşen özel anahtara sahip olduğunu kanıtlayan bir şifreleme belirteci içeren bir CertificateVerify iletisiyle yanıt ver ver versin. Doğrulama başarısız olursa veya sertifika Sunucu'da güvenilir bir sertifikaya bağlı olmazsa TLS el sıkışması başarısız olur.
 
-TLS 'de Istemci sertifikası kimlik doğrulaması için iki ayrı durum vardır: aşağıdaki bölümlerde her iki durum da ele alınmaktadır.
+TLS'de İstemci Sertifikası Kimlik Doğrulaması için iki ayrı durum vardır; aşağıdaki bölümlerde her iki durum da yer almaktadır.
 
-### <a name="client-certificate-authentication-for-dtls-clients"></a>DTLS Istemcileri için istemci sertifikası kimlik doğrulaması
+### <a name="client-certificate-authentication-for-dtls-clients"></a>DTLS İstemcileri için İstemci Sertifikası Kimlik Doğrulaması
 
-DTLS Istemcisi, istemci kimlik doğrulaması için bir sertifika isteyen bir sunucuya bağlantı deneyebilir. Bu durumda, Istemcinin sunucuya bir sertifika sağlaması ve eşleşen özel anahtara sahip olduğunu doğrulaması gerekir ya da sunucu DTLS el sıkışmasını sonlandırır.
+DTLS İstemcisi, istemci kimlik doğrulaması için sertifika talep etmek için sunucuyla bağlantı girişiminde olabilir. Bu durumda İstemcinin sunucuya bir sertifika sağlaması ve eşleşen özel anahtara sahip olduğunu doğrulaması gerekir, yoksa Sunucu DTLS el sıkışmasını sonlandırılır.
 
-NetX güvenli DTLS 'de, bu özelliği desteklemeye yönelik özel bir yapılandırma yoktur, ancak uygulamanın *nx_secure_tls_session_local_certificate_add* HIZMETINI kullanarak TLS istemci örneği için bir yerel kimlik sertifikası sağlaması gerekecektir. Uygulama tarafından bir sertifika sağlanmazsa ancak uzak sunucu Istemci sertifikası kimlik doğrulamasını kullanıyorsa ve bir sertifika isterse, DTLS el sıkışması başarısız olur. DTLS oturumu *nx_secure_dtls_session_local_certificate_add* Ile DTLS oturumuna sunulan sertifika, DTLS el sıkışma 'nı tamamlayabilmeniz için uzak sunucu tarafından tanınmalıdır.
+NetX Secure DTLS'de bu özelliği destekleyecek özel bir yapılandırma yoktur, ancak uygulamanın nx_secure_tls_session_local_certificate_add hizmetini kullanarak TLS İstemci örneği için yerel bir *kimlik sertifikası sağlaması* gerekir. Uygulama tarafından sertifika sağlanıyorsa ama uzak sunucu İstemci Sertifikası Kimlik Doğrulaması kullanıyorsa ve bir sertifika talep ediyorsa, DTLS el sıkışması başarısız olur. DTLS el sıkışmasını *tamamlamak için nx_secure_dtls_session_local_certificate_add* ile DTLS Oturumuna sağlanan sertifikanın uzak sunucu tarafından tanınması gerekir.
 
-### <a name="client-certificate-authentication-for-tls-servers"></a>TLS sunucuları için istemci sertifikası kimlik doğrulaması
+### <a name="client-certificate-authentication-for-tls-servers"></a>TLS Sunucuları için İstemci Sertifikası Kimlik Doğrulaması
 
-Istemci sertifikası kimlik doğrulaması için DTLS sunucu durumu, özelliğin isteğe bağlı olması nedeniyle DTLS Istemci durumundan biraz daha karmaşıktır. Bu durumda, TLS sunucusunun özel olarak uzak TLS Istemcisinden bir sertifika istemesi, ardından uzak Istemcinin eşleşen özel anahtara sahip olduğunu doğrulamak için CertificateVerify iletisini işlemesi gerekir ve ardından sunucu, Istemci tarafından belirtilen sertifikanın, yerel güvenilen sertifika deposundaki bir sertifikaya izlenip izlenmeyeceğini denetmelidir.
+İstemci Sertifikası Kimlik Doğrulaması için DTLS Sunucusu durumu, özelliğin isteğe bağlı olması nedeniyle DTLS İstemcisi örneğinden biraz daha karmaşıktır. Bu durumda, TLS Sunucusunun özellikle uzak TLS İstemcisi'den bir sertifika isteğinde olması, ardından uzak İstemcinin eşleşen özel anahtara sahip olduğunu doğrulamak için CertificateVerify iletiyi işlemesi gerekir ve ardından Sunucu, İstemci tarafından sağlanan sertifikanın yerel güvenilen sertifika depolama alanı içinde bir sertifikaya izlenebilir olup olamı gerektiğini denetlemesi gerekir.
 
-NetX güvenli TLS sunucusu örneklerinde, Istemci sertifikası kimlik doğrulaması *nx_secure_dtls_server_x509_client_verify_configure* ve *nx_secure_dtls_server_x509_client_verify_disable* Hizmetleri tarafından denetlenir.
+NetX Güvenli TLS Sunucusu örneklerde İstemci Sertifikası Kimlik Doğrulaması, nx_secure_dtls_server_x509_client_verify_configure *ve* *nx_secure_dtls_server_x509_client_verify_disable* denetlenmektedir.
 
-Istemci sertifikası kimlik doğrulamasını etkinleştirmek için bir uygulamanın, *nx_secure_dtls_server_start* çağrılmadan önce DTLS sunucusu oturum örneğiyle birlikte *nx_secure_dtls_server_x509_client_verify_configure* çağırması gerekir. Doğrulamanın, nx_secure_dtls_server_x509_client_verify_configure için bir parametre olarak belirtilen gelen istemci sertifikaları için ayrılan alan olması gerekir *.* Arabelleğin, *DTLS sunucu oturumlarının sayısı* tarafından verilen maksimum boyut sertifika zincirini tutabilecek kadar büyük olması gerektiğini unutmayın. Her sunucu oturumu için, tek bir belirtilen arabellekten ayrılacak alan gerekir. Arabelleğin yeterince büyük olduğundan emin olun veya belirtilen Istemci sertifikası zinciri çok büyükse bir hata meydana gelir.
+İstemci Sertifikası Kimlik Doğrulamasını etkinleştirmek için, bir *uygulamanın* nx_secure_dtls_server_x509_client_verify_configure çağırmadan önce DTLS Sunucusu oturum *örneğiyle* nx_secure_dtls_server_start. Doğrulama, gelen istemci sertifikaları için ayrılan alan gerektirir ve bu da sertifikayı *nx_secure_dtls_server_x509_client_verify_configure.* Arabelleğin, istemci tarafından sağlanan en büyük boyutlu sertifika zincirini *DTLS* sunucu oturumlarının sayısını kat kat tutacak kadar büyük olması gerektiğini unutmayın. Her sunucu oturumu için, sağlanan tek arabellekten ayrılan alan gerekir. Arabelleğin yeterince büyük olduğundan emin olun veya sağlanan İstemci sertifika zinciri çok büyükse bir hata oluşur.
 
-Istemci sertifikası kimlik doğrulaması etkinleştirildiğinde, DTLS sunucusu, DTLS el sıkışması sırasında uzak DTLS Istemcisinden bir sertifika ister. NetX güvenli DTLS sunucusunda, Istemci sertifikası X. 509.952 Issuer zincirini izleyerek *nx_secure_dtls_server_trusted_certificate_add* oluşturulan güvenilir sertifikaların deposuna karşı denetlenir. Uzak Istemci, kimlik sertifikasını Güvenilen depodaki bir sertifikaya bağlayan bir zincir sağlamalıdır veya DTLS el sıkışması başarısız olur. Ayrıca, CertificateVerify iletisi işlemi başarısız olursa DTLS el sıkışması da başarısız olur.
+İstemci Sertifikası Kimlik Doğrulaması etkinleştirildiğinde, DTLS Sunucusu DTLS el sıkışması sırasında uzak DTLS İstemcisi'den bir sertifika isteği gönderir. NetX Secure DTLS Server'da İstemci sertifikası, X.509 sertifikayı nx_secure_dtls_server_trusted_certificate_add ile oluşturulan güvenilen sertifika deposuna karşı denetlenir.  Uzak İstemcinin kimlik sertifikasını güvenilen depoda bir sertifikaya bağlayan bir zincir sağlaması gerekir, yoksa DTLS el sıkışması başarısız olur. Ayrıca CertificateVerify ileti işlemesi başarısız olursa DTLS el sıkışması da başarısız olur.
 
-CertificateVerify yöntemi için kullanılan imza yöntemleri TLS sürüm 1,0 ve TLS sürüm 1,1 için düzeltilir ve bu, ağ düzeyinde güvenli DTLS 'lerin temel aldığı TLS sürümü 1,2. DTLS 1,2 için, desteklenen imza yöntemleri genellikle şifreleme yöntemi tablosunda sağlanan ilgili yöntemleri izler, ancak genellikle SHA-256 ile RSA (şifreleme yöntemleriyle TLS başlatma hakkında daha fazla bilgi için bkz. "NetX güvenli TLS 'de şifreleme" bölümüne bakın).
+CertificateVerify yöntemi için kullanılan imza yöntemleri TLS sürüm 1.0 ve TLS sürüm 1.1 için sabittir ve NetX Secure DTLS'nin temel olduğu TLS sürüm 1.2'de TLS Sunucusu tarafından belirtilir. DTLS 1.2 için desteklenen imza yöntemleri genellikle şifreleme yöntemi tablosunda sağlanan ilgili yöntemleri kullanır, ancak genellikle SHA-256 ile RSA 'yı kullanır (şifreleme yöntemleriyle TLS'yi başlatma hakkında daha fazla bilgi için "NetX Secure TLS'de şifreleme" bölümüne bakın).
 
-## <a name="cryptography-in-netx-secure-tls"></a>NetX güvenli TLS 'de şifreleme
+## <a name="cryptography-in-netx-secure-tls"></a>NetX Secure TLS'de şifreleme
 
-TLS, ağ iletişimlerini güvenli hale getirmek için şifreleme kullanılabilecek bir protokol tanımlar. Bu nedenle, TLS kullanıcıları için oldukça geniş kapsamlı açık kullanılacak şekilde gerçek şifrelemeyi bırakır. Belirtim yalnızca tek bir ciphersuite 'in uygulanması için gereklidir; TLS 1,2 olması durumunda bu ciphersuite TLS_RSA_WITH_AES_128_CBC_SHA, ortak anahtar işlemleri için RSA kullanımını ve oturum şifreleme için 128 bit anahtarlarla CBC modunda AES modunu ve ileti kimlik doğrulama karmaları için SHA-1 ' i belirtir.
+TLS, şifrelemenin ağ iletişimlerini güvenli hale almak için kullanıla bir protokol tanımlar. Bu nedenle, kullanılacak gerçek şifrelemeyi TLS kullanıcıları için oldukça açık bırakır. Belirtim için yalnızca tek bir şifrelemenin uygulanması gerekir. TLS 1.2 olması durumunda bu şifreleme TLS_RSA_WITH_AES_128_CBC_SHA şeklindedir ve ortak anahtar işlemleri için RSA, oturum şifrelemesi için 128 bit anahtarlı CBC modunda AES ve ileti kimlik doğrulama karmaları için SHA-1 kullanılır.
 
-TLS 1,2 uyumlu olduğu, NetX güvenliği, zorunlu TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite 'i varsayılan olarak sağlar, ancak donanım özellikleri ve diğer hususlar nedeniyle her bir şifreleme yöntemi için olası uygulama sayısına veriliyorsa, NetX güvenliği, kullanıcının TLS ile hangi şifreleme yöntemlerinin kullanılacağını belirtmesini sağlayan bir genel şifreleme API 'SI sağlar.
+TLS 1.2 ile uyumlu olan NetX Secure, varsayılan olarak zorunlu TLS_RSA_WITH_AES_128_CBC_SHA şifrelemesini sağlar ancak donanım özellikleri ve diğer önemli noktalar nedeniyle şifreleme yöntemlerinin her biri için olası uygulama sayısı göz önünde bulundurularak NetX Secure, kullanıcının TLS ile hangi şifreleme yöntemlerinin kullanılamayacaklarını belirtmesini sağlayan genel bir şifreleme API'si sağlar.
 
 > [!NOTE]
-> Genel şifreleme API mekanizması, kullanıcıların kendi ciphersuites 'leri uygulamasına izin verir, ancak bu, TLS cipherpaketlerine ve uzantılarına alışkın olan ileri düzey kullanıcılar için önerilir. Kendi cipherpaketlerinizi desteklemeye ilgileniyorsanız lütfen hızlı mantık temsilcinizle iletişime geçin.
+> Genel şifreleme API'si mekanizması kullanıcıların kendi şifrelerini uygulamasına da olanak sağlar, ancak bu, TLS şifrelemeleri ve uzantıları hakkında bilgi sahibi olan ileri düzey kullanıcılar için önerilir. Kendi şifrelerinizi desteklemekle ilgileniyorsanız lütfen Express Logic temsilcinize başvurun.
 
-Lütfen DTLS için şifreleme yöntemlerinin nasıl yapılandırılacağı hakkında ayrıntılı bir tartışma için bkz. NetX güvenli TLS Kullanıcı Kılavuzu, Bölüm 3. Aynı işlem hem TLS hem de DTLS için geçerlidir.
+DTLS şifreleme yöntemlerini yapılandırma hakkında ayrıntılı bilgi için lütfen NetX Güvenli TLS Kullanıcı Kılavuzu Bölüm 3'e bakın. Aynı işlem hem TLS hem de DTLS için geçerlidir.

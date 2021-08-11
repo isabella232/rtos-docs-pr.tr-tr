@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8bdbdfcb2da6425fb99cadc7b2f6815dedc12953
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: dbe2cb25607162b62b048251927bdc7671c5884d2a3b45b6b24bae539e08d24a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825852"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797305"
 ---
 # <a name="chapter-4---description-of-nat-services"></a>Bölüm 4-NAT hizmetlerinin açıklaması
 
@@ -33,7 +33,7 @@ UINT nx_nat_create(NX_NAT_DEVICE *nat_ptr, NX_IP *ip_ptr,
     UINT dynamic_cache_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet NAT sunucusunun bir örneğini oluşturur.
 
@@ -82,7 +82,7 @@ Bir NAT sunucusunu silme
 UINT nx_nat_delete(NX_NAT_DEVICE *nat_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş bir NAT sunucusunu siler.
 
@@ -118,7 +118,7 @@ NAT için IP örneğini etkinleştirme
 UINT nx_nat_enable(NX_NAT_DEVICE *nat_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet NAT için IP örneğini (örn. alınan paketleri NAT sunucusuna ilet) sağlar.
 
@@ -154,7 +154,7 @@ NAT için IP örneğini devre dışı bırakma
 UINT nx_nat_disable(NX_NAT_DEVICE *nat_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, IP örneğinde NAT 'yi devre dışı bırakır.
 
@@ -192,7 +192,7 @@ UINT nx_nat_cache_notify_set(NX_NAT_DEVICE *nat_ptr,
     (NX_NAT_DEVICE *nat_ptr)));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Kullanıcı tanımlı önbellek tam bildirim işlevine işaret eden cache_full_notify_cb giriş işlevi işaretçisi ile önbellek tam geri çağırma işlemini kaydeder.
 
@@ -234,7 +234,7 @@ UINT nx_nat_inbound_entry_create(NX_NAT_DEVICE *nat_ptr,
     USHORT local_port, UCHAR protocol);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir gelen girişi statik (kalıcı giriş, süresiz) olarak oluşturur ve NAT çeviri tablosuna ekler. Bu girişler genellikle, dış ağdaki bir konaktan bir bağlantının başlatıldığı yerel ana bilgisayar sunucuları için oluşturulur. NAT sunucusu, dış bağlantı noktasının çeviri tablosunda zaten kullanımda olmadığını veya aynı protokolün daha önce var olan bir NetX Duo yuvasına göre bağlandığını denetler.
 
@@ -280,7 +280,7 @@ UINT nx_nat_inbound_entry_delete(NX_NAT_DEVICE *nat_ptr,
     NX_NAT_TRANSLATION_ENTRY *delete_entry_ptr)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen gelen girdiyi çeviri tablosundan siler.
 

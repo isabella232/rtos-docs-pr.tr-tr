@@ -1,151 +1,151 @@
 ---
-title: Azure RTOS NetX Duo 'i anlama
-description: Azure RTOS NetX Duo, özellikle de gömülü gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanan bir gelişmiş, endüstriyel sınıf TCP/IP ağ yığını.
+title: NetX Duo Azure RTOS anlama
+description: Azure RTOS NetX Duo gelişmiş ve endüstriyel düzeyde bir TCP/IP ağ yığınıdır. Bu yığın özellikle derin eklenmiş gerçek zamanlı ve IoT uygulamaları için tasarlanmıştır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: b40a57bf385ddcf623ff7cbe0d2e798c547227d7
-ms.sourcegitcommit: dbbec3ba6a7eb6097c7888b235c433a2efd6e5b9
+ms.openlocfilehash: 4fa67f9a740e731618c200b80e2ff3278530abe8aaf7f1d73b9a7f4acc02e543
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113754905"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791642"
 ---
-# <a name="overview-of-azure-rtos-netx-duo"></a>Azure RTOS NetX Duo 'e genel bakış
+# <a name="overview-of-azure-rtos-netx-duo"></a>Azure RTOS NetX Duo'ya genel bakış
 
-Azure RTOS NetX Duo katıştırılmış TCP/IP ağ yığını, özellikle de daha fazla gömülü, gerçek zamanlı ve IoT uygulamaları için tasarlanan Microsoft 'un gelişmiş, endüstriyel sınıf ikili IPv4 ve IPv6 TCP/IP ağ yığınıdır. NetX Duo, IPv4, IPv6, TCP ve UDP gibi çekirdek ağ protokollerine ve ek ve daha üst düzey eklenti protokollerinin eksiksiz bir paketini içeren katıştırılmış uygulamalar sağlar. Azure RTOS NetX Duo, Azure RTOS NetX güvenli IPSec ve Azure RTOS NetX güvenli SSL/TLS/DTLS dahil ek eklenti güvenlik ürünleri aracılığıyla güvenlik sağlar. Bunun hepsi küçük bir ayak izi, Hızlı yürütme ve üstün kullanım kolaylığıyla Azure RTOS NetX Duo, en zorlu ekli IoT uygulamalarına yönelik ideal seçenektir.
+Azure RTOS NetX Duo ekli TCP/IP ağ yığını, Microsoft'un ayrıntılı, gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış gelişmiş, endüstriyel sınıf çift IPv4 ve IPv6 TCP/IP ağ yığınıdır. NetX Duo; IPv4, IPv6, TCP ve UDP gibi temel ağ protokollerinin yanı sıra ek, üst düzey eklenti protokollerinin eksiksiz bir paketini içeren tümleşik uygulamalar sağlar. Azure RTOS NetX Duo, Azure RTOS NetX Secure IPsec ve Azure RTOS NetX Secure SSL/TLS/DTLS gibi ek ek güvenlik ürünleri aracılığıyla güvenlik sunar. Bunların hepsi küçük bir ayak izi, hızlı yürütme ve üstün kullanım kolaylığıyla bir araya Azure RTOS NetX Duo'yu en zorlu tümleşik IoT uygulamaları için ideal seçenektir.
 
 ## <a name="api-protocols"></a>API protokolleri
 
 ### <a name="mqtt"></a>MQTT
 
-* Mesajlaşma kuyruğu telemetri aktarımı (MQTT)
+* Mesajlaşma Kuyruğu Telemetri Taşıma (MQTT)
 * En az 2,7 KB FLASH
 
 ### <a name="auto-ip"></a>Otomatik IP
 
-* Otomatik IPv4 adresi ataması
+* Otomatik IPv4 adres ataması
 * En az 1,2 KB, 300 bayt RAM
 
 ### <a name="http-https"></a>HTTP, HTTPS
-NetX Duo, aşağıdaki HTTP/HTTPS protokollerini destekler.
+NetX Duo aşağıdaki HTTP/HTTPS protokollerini destekler.
 
-#### <a name="http-10"></a>HTTP 1,0
+#### <a name="http-10"></a>HTTP 1.0
 
 * Köprü Metni Aktarım Protokolü (HTTP)
-* Minimum 2,8 KB-4,8 KB, FLASH/0,4 KB ile 1,0 KB arasında
+* En az 2,8 KB - 4,8 KB FLASH / 0,4 KB ile 1,0 KB RAM
 * İstemci ve sunucu desteği
 
-#### <a name="httphttps-11"></a>HTTP/HTTPS 1,1
+#### <a name="httphttps-11"></a>HTTP/HTTPS 1.1
 
 * Köprü Metni Aktarım Protokolü (HTTP)
-* Minimum 3,0 KB-9,5 KB FLASH/0,5 KB-2 KB RAM
+* En az 3,0 KB ile 9,5 KB FLASH / 0,5 KB ile 2 KB RAM arasında
 * İstemci ve sunucu desteği
 * Birden çok gelen istemci oturumu
-* Düz metin ve şifreli HTTPS
+* Düz metin ve şifrelenmiş HTTPS
 * Kalıcı bağlantı desteği
-* Çok parçalı dosya yükleme
-* Azure RTOS NetX güvenli TLS ile tam olarak tümleşik
+* Çok parçalı dosyayı karşıya yükleme
+* NetX Secure TLS Azure RTOS tam olarak tümleştirilmiştir
 
 ### <a name="smtp"></a>SMTP
 
-* Basit küçük/küçük Aktarım Protokolü (SMTP)
+* Basit Alışveriş Aktarım Protokolü (SMTP)
 * En az 4,1 KB ve 0,6 KB RAM ayak izi
 * İstemci desteği
 
 ### <a name="dhcp"></a>DHCP
 
 * Dinamik Ana Bilgisayar Yapılandırma Protokolü (DHCP)
-* Minimum 3,6 KB-4,6 KB FLASH, 2,7 KB RAM ayak izi
+* En az 3,6 KB ile 4,6 KB FLASH, 2,7 KB RAM ayak izi
 * İstemci ve sunucu desteği
 * IPv4 ve IPv6 desteği
 
 ### <a name="nat"></a>NAT
 
 * Ağ Adresi Çevirisi (NAT)
-* Minimum 3,5 K6 ve 0,6 KB RAM ayak izi
-* IPv4 adresi desteği
-* NAT yalnızca Azure RTOS NetX Duo ile kullanılabilir
+* En az 3,5K6 ve 0,6 KB RAM ayak izi
+* IPv4 adres desteği
+* NAT yalnızca NetX Duo Azure RTOS kullanılabilir
 
 ### <a name="snmp"></a>SNMP
 
 * Basit Ağ Yönetim Protokolü (SNMP)
 * En az 10,9 KB ve 2,6 KB RAM ayak izi
-* VI, v2 ve v3 için aracı desteği
+* VI, V2 ve V3 için aracı desteği
 
 ### <a name="dns-mdns-dns-sd"></a>DNS, mDNS, DNS-SD
 
 * Etki Alanı Adı Sistemi (DNS)
-* Çok noktaya yayın etki alanı adı sistemi (mDNS)
+* Çok Noktaya Yayın Etki Alanı Adı Sistemi (mDNS)
 * DNS tabanlı hizmet bulma (DNS-SD)
-* DNS en az 2,4 KB-3 KB FLASH, 1 KB RAM ayak
+* DNS En Az 2,4 KB ile 3 KB FLASH, 1 KB RAM ayak izi
 * İstemci desteği
-* mDNS ve DNS-SD yalnızca Azure RTOS NetX Duo ile kullanılabilir
+* mDNS ve DNS-SD yalnızca NetX Duo Azure RTOS kullanılabilir
 
 ### <a name="pop3"></a>POP3
 
-* Post Office protokolü sürüm 3 (POP3)
+* Post Office Protocol Version 3 (POP3)
 * En az 8,1 KB ve 1,4 KB RAM ayak izi
 * İstemci desteği
 
-### <a name="telnet"></a>Sun
+### <a name="telnet"></a>Telnet
 
 * En az 0,5 KB ve 0,3 KB RAM ayak izi
 * İstemci ve sunucu desteği
-* Sezgisel Telnet API 'Leri *: \* nx_telnet_*
+* Sezgisel Telnet API'leri: *nx_telnet_ \**
 
 ### <a name="ftp-tftp"></a>FTP, TFTP
 
 * Dosya Aktarım Protokolü (FTP)
 * Önemsiz Dosya Aktarım İletişim Kuralı (TFTP)
-* FTP en az 1,8 KB-7,2 KB FLASH, 0,6 KB ile 2,1 KB RAM ayak izi
-* TFTP en az 1,7 KB-2,4 KB FLASH, 0,3 KB ile 1,8 KB RAM ayak izi
+* FTP En Az 1,8 KB ile 7,2 KB FLASH, 0,6 KB ile 2,1 KB RAM ayak izi
+* TFTP En Az 1,7 KB ile 2,4 KB FLASH, 0,3 KB ile 1,8 KB RAM ayak izi
 * İstemci ve sunucu desteği
-* Sezgisel FTP ve TFTP API 'Leri *: \* nx_ftp_* veya *nx_tftp_ \**
+* Sezgisel FTP ve TFTP *API'leri: nx_ftp_ \** veya *nx_tftp_ \**
 
 ### <a name="ppp-pppoe"></a>PPP, PPPoE
 
-* POlNT noktadan noktaya Protokolü (PPP)
-* Ethernet üzerinden Noktadan Noktaya Protokolü (PPPoE)
+* Polnt-to-PoInt Protokolü (PPP)
+* Noktadan Noktaya Protokolü Ethernet (PPPoE) üzerinden bağlantı
 * En az 7,1 KB ve 3,8 KB RAM ayak izi
-* Sezgisel PPP API 'Leri *: \* nx_ppp_*
+* Sezgisel PPP API'leri: *nx_ppp_ \**
 
-* PPPoE yalnızca Azure RTOS NetX Duo ile kullanılabilir
+* PPPoE yalnızca NetX Duo Azure RTOS kullanılabilir
 
 ### <a name="sntp"></a>SNTP
 
-* Basit ağ zaman Protokolü (SNTP)
+* Basit Ağ Zamanı Protokolü (SNTP)
 * En az 4 KB ve 0,5 KB RAM
 * İstemci desteği
-* Sezgisel SNTP API 'Leri *: \* nx_sntp_*
+* Sezgisel SNTP API'leri: *nx_sntp_ \**
 
 ### <a name="legacy-code-support"></a>Eski kod desteği
 
-* Eski yuva kodu taşıma için isteğe bağlı BSD katmanı
+* Eski yuva kodunun taşınabilirliği için isteğe bağlı BSD katmanı
 
-### <a name="igmp"></a>IGMP
+### <a name="igmp"></a>ıgmp
 
 * Internet Grup Yönetimi Protokolü (IGMP)
 * En az 2,5 KB FLASH
 * IPv4 çok noktaya yayın grubu desteği
-* IXIA IxANVL doğrulanan
-* İsteğe bağlı ıGMP istatistikleri
+* I HIP IxANVL doğrulandı
+* İsteğe bağlı IGMP istatistikleri
 * Azure RTOS ThreadX aracılığıyla sistem düzeyinde izleme
-* Sezgisel ıGMP API 'Leri *: \* nx_igmp_*
+* Sezgisel IGMP API'leri: *nx_igmp_ \**
 
-### <a name="azure-rtos-netx-secure-dtls"></a>Azure RTOS NetX güvenli DTLS
+### <a name="azure-rtos-netx-secure-dtls"></a>Azure RTOS NetX Secure DTLS
 
-* Veri birimi Aktarım Katmanı Güvenliği (DTLS) 1,0 ve 1,2
+* Veri Birimi Aktarım Katmanı Güvenliği (DTLS) 1.0 ve 1.2
 * En az 11 KB FLASH
-* Fast, Software RSA 2048-bit anahtar boyutu ~ 1-saniye @120MHz
-* Kolaylaştırılmış X. 509.440 uygulama
-* Azure RTOS NetX Duo UDP yuvaları ile tam olarak tümleşik
-* Donanım şifreleme desteği
-* Yazılım şifreleme desteği: RSA (tüm anahtar boyutları), AES, DES/3DES, ECC, HMAC, MD5, SHA-1, SHA-2 (SHA-224, SHA-256, SHA-384, SHA-512)
-* P eğrileri 192/224/256/384/521 dahil olmak üzere ECDSA (imzalama) ve ECDH (şifreleme) ile Eliptik Eğri Şifreleme (ECC)
-* Şifrelenmiş anahtar desteği (donanıma bağımlı)
+* Hızlı, yazılım RSA 2048 bit anahtar boyutu ~1 saniye @120MHz
+* Kolaylaştırılmış X.509 Uygulaması
+* NetX Duo UDP Azure RTOS tam olarak tümleştirilmiştir
+* Donanım Şifreleme Desteği
+* Yazılım Şifreleme Desteği: RSA (tüm anahtar boyutları), AES, DES/3DES, ECC, HMAC, MD5, SHA-1, SHA-2 (SHA-224, SHA-256, SHA-384, SHA-512)
+* P eğrileri 192/224/256/384/521 dahil ECDSA (imzalama) ve ECDH (şifreleme) ile Üç Nokta Eğri Şifrelemesi (ECC)
+* Şifrelenmiş Anahtar Desteği (donanıma bağımlı)
 
 ### <a name="azure-rtos-netx-secure-tls"></a>Azure RTOS NetX Secure TLS
 
@@ -175,8 +175,8 @@ NetX Duo, aşağıdaki HTTP/HTTPS protokollerini destekler.
 ### <a name="udp"></a>UDP
 
 * Kullanıcı Veri Birimi Protokolü (UDP)
-* En az 2,5 KB FLASH, yuva başına 124 yuva bayt RAM
-* Hızlı, kabloya yakın TCP paket işleme:
+* Yuva başına en az 2,5 KB FLASH, 124 yuva bayt RAM
+* Hızlı, kabloya yakın TCP paketi işleme:
     * 100 Mb/sn Ethernet üzerinde RX 95 Mb/sn, MCU @100MHz , %14 MCU kullanımı
     * 100 Mb/sn Ethernet üzerinde TX 94 Mb/sn, MCU @100MHz , %10 MCU kullanımı
 * UDP Hızlı Yolu™ teknolojisi
@@ -252,7 +252,7 @@ NetX Duo, aşağıdaki HTTP/HTTPS protokollerini destekler.
 
 ## <a name="safe-and-secure"></a>Kasa ve güvenli
 
-Azure RTOS NetX Duo güvenlidir. Bu güvenlik, IPsec, SSL, TLS ve DTLS gibi ek güvenlik ürünleri aracılığıyla sağlanır. Ayrıca uygulamanın NetX Duo'ya tüm dış erişim üzerinde tam Azure RTOS güvenlik riski belirlemeyi çok daha kolay hale getirmiştir.
+Azure RTOS NetX Duo güvenlidir. Bu güvenlik IPsec, SSL, TLS ve DTLS gibi eklenti güvenlik ürünleri aracılığıyla sağlanır. Ayrıca uygulamanın NetX Duo'ya tüm dış erişim üzerinde tam Azure RTOS güvenlik riski belirlemeyi çok daha kolay hale getirmiştir.
 
 Microsoft Azure RTOS, OEM'lere iletişimin güvenliğini sağlamak ve temel MCU/MPU donanım koruma mekanizmalarını kullanarak kod ve veri yalıtımı oluşturmak için bileşenler sağlar. Son olarak cihaz oluşturucusu, cihazın kendi özel kullanım durumuyla ilişkili gelişen güvenlik gereksinimlerini tam olarak karşılamasını sağlamaktır.
 
@@ -266,7 +266,7 @@ Azure RTOS NetX Duo, sıkı IPv6-Ready Logo sertifikası elde etmek için ekli t
 
 ## <a name="comprehensive-iot-solution"></a>Kapsamlı IoT çözümü
 
-NetX Duo, derinden eklenmiş IoT uygulamaları için en kapsamlı TCP/IP ağlarından birini içerir. Bu destek aşağıdaki eklenti protokol ürünlerini içerir.
+NetX Duo, derin eklenmiş IoT uygulamaları için en kapsamlı TCP/IP ağıyla biridir. Bu destek, aşağıdaki eklenti protokol ürünlerini içerir.
 
 * MQTT
 * CoAP
@@ -274,34 +274,34 @@ NetX Duo, derinden eklenmiş IoT uygulamaları için en kapsamlı TCP/IP ağlar�
 * 6LoWPAN
 * SSL/TLS/DTLS
 * IPsec
-* AutoIP
+* Oto IP
 * DHCP
 * DNS
-* Mdns
+* mDNS
 * DNS-SD
 * FTP
 * HTTP
 * IPsec
 * NAT
 * POP3
-* Ppp
-* Pppoe
+* SUNUCULARıYLA
+* Birleştiren
 * SMTP
 * SNMP v1/2/3
-* Telnet
-* Tftp
+* Sun
+* TFTP
 
 ## <a name="advanced-technology"></a>Gelişmiş teknoloji
 
-Azure RTOS NetX Duo, aşağıdakilere sahip gelişmiş bir teknolojidir.
+Azure RTOS NetX Duo, aşağıdakileri içeren gelişmiş bir teknolojidir.
 
 * Piconet™ mimarisi
 * Otomatik ölçeklendirme
-* UDP Fast-Path Technology™
+* UDP Fast-Path teknolojisi™
 * Esnek paket yönetimi
-* Sıfır kopya API'si ve uygulaması
-* Birden çok ana bilgisayar desteği
-* Tüm askıya almada isteğe bağlı zaman aşımı
+* Sıfır-API ve uygulama kopyalama
+* Çok sayfalı destek
+* Tüm askıya alma sırasında isteğe bağlı zaman aşımı
 * Statik yönlendirme desteği
 * IPsec
 * SSL/TLS/DTLS
@@ -311,35 +311,35 @@ Azure RTOS NetX Duo, aşağıdakilere sahip gelişmiş bir teknolojidir.
 
 NetX Duo aşağıdaki ek hizmetleri sağlar.
 
-* Azure IoT Ara Yazılımı
+* Azure IoT ara yazılımı
 * Azure Defender
 * IoT Hub için cihaz güncelleştirmesi.
 
-### <a name="azure-iot-middleware"></a>Azure IoT Ara Yazılımı
+### <a name="azure-iot-middleware"></a>Azure IoT ara yazılımı
 
-NetX Duo, Azure IoT hizmetleriyle bağlantıyı kolaylaştırmak için Azure RTOS ile Embedded C için Azure SDK arasında bağlama katmanı olarak hareket eden platforma özgü bir kitaplık olan Azure RTOS için [Azure IoT Ara](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md)Yazılımı'na sahiptir. Azure IoT Ara Yazılımı'nın hedefleri aşağıdaki gibidir.
-* Geliştiricilerin uygulamaları için ihtiyaç IoTHub_Client (DeviceProvisioning_Client, uygulama arabirimi) akıllı istemci arabirimlerini sağlar.
-* Embedded C SDK'sı ile platform arasındaki etkileşimi düzenleme.
-* Platform Azure RTOS sağlama.
-* IoT Tak Çalıştır desteği.
+NetX Duo, Azure IoT hizmetlerine bağlanmayı kolaylaştırmak amacıyla Azure RTOS ve Embedded C için Azure SDK arasında bağlama katmanı görevi gören platforma özel bir kitaplık olan Azure [RTOS Için Azure IoT ara yazılımı](https://github.com/azure-rtos/netxduo/blob/master/addons/azure_iot/docs/README.md)içerir. Azure IoT ara yazılımı amaçları şunlardır.
+* Geliştiricilerin uygulamaları için ihtiyaç duyduğu akıllı istemci arabirimlerini (IoTHub_Client, DeviceProvisioning_Client) sağlayın.
+* Gömülü C SDK 'Sı ve platformu arasındaki etkileşimi düzenleyin.
+* Azure RTOS platformu başlatma sağlayın.
+* IoT Tak ve Kullan desteği.
 * Güvenlik özellikleri.
-* Kaynak sınırlamaya dikkat.
+* Kaynak sınırlaması fark edilir.
 * Protokol desteği.
 
-![Azure RTOS NetX Duo ile İlgili Hizmetler](./media/overview-netx-duo/related-services.png)
+![Azure RTOS NetX Duo ile Ilgili hizmetler](./media/overview-netx-duo/related-services.png)
 
 ### <a name="azure-defender"></a>Azure Defender
 
-Yeni IoT için Azure Defender modülü, cihazlarınız için kapsamlı bir güvenlik Azure RTOS sağlar. Azure RTOS için Güvenlik Modülü kötü amaçlı ağ etkinliği algılama, özel uyarı tabanlı cihaz davranışı temel oluşturma ve cihaz güvenlik durumu iyileştirmeye yardımcı olur. Azure RTOS için [Güvenlik Modülü hakkında](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) daha fazla bilgi edinmek veya hızlı başlangıç için Güvenlik [Modülünü Azure RTOS](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module) başlama.
+IoT için Azure Defender güvenlik modülü, Azure RTOS cihazları için kapsamlı bir güvenlik çözümü sağlar. Azure RTOS için güvenlik modülü, kötü amaçlı ağ etkinliği algılama, özel uyarı tabanlı cihaz davranışı taban çizgisi sağlar ve cihaz güvenliği Hygiene 'ın artırılmasına yardımcı olur. [Azure RTOS güvenlik modülü](https://docs.microsoft.com/azure/asc-for-iot/iot-security-azure-rtos) hakkında daha fazla bilgi edinin veya [Azure RTOS hızlı başlangıç Için güvenlik yapılandırması modülünü](https://docs.microsoft.com/azure/asc-for-iot/quickstart-azure-rtos-security-module) kullanmaya başlayın.
 
-### <a name="device-update-for-iot-hub"></a>IoT Hub için Cihaz Güncelleştirmesi
+### <a name="device-update-for-iot-hub"></a>IoT Hub için cihaz güncelleştirmesi
 
-IoT Hub için [Azure Cihaz](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update) Güncelleştirmesi, IoT cihazlarınız için havadan güncelleştirmeleri (OTA) dağıtmanıza olanak sağlayan bir hizmettir. IoT Hub için Cihaz Güncelleştirmesi modülü, NetX Duo'da IoT Hub Agent için Cihaz Azure RTOS uygulamasıdır. Cihaz oluşturucularının Cihaz Güncelleştirmesi özelliğini uygulamalarıyla tümleştiren basit API'ler sağlar.
+[IoT Hub Için Azure cihaz güncelleştirmesi](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update) , IoT cihazlarınız için kablosuz güncelleştirmeleri (OTA) dağıtmanıza olanak sağlayan bir hizmettir. IoT Hub modülü için cihaz güncelleştirmesi, Azure RTOS NetX Duo 'da IoT Hub aracısının cihaz güncelleştirme uygulamasıdır. Cihaz oluşturucuların, uygulamasındaki cihaz güncelleştirme yeteneklerini tümleştirmeleri için basit API 'Ler sağlar.
 
-Cihazlara havadan (OTA) güncelleştirmeleri yapılandırmayı, derlemeyi ve dağıtmayı öğrenmek için başlama kılavuzlarını içeren temel yarı iletken değerlendirme panoları örneklerine bakın.
+Cihazlarda AIR (OTA) güncelleştirmelerini yapılandırma, oluşturma ve dağıtma hakkında bilgi edinmek için Başlarken kılavuzlarını içeren anahtar yarı iletkeni değerlendirme panoları örneklerine bakın.
 
-Ayrıca, Azure RTOS ile cihaz için [Cihaz Güncelleştirmesi'IoT Hub kullanma hakkında daha fazla Azure RTOS.](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-azure-real-time-operating-system)
+[Azure RTOS ile IoT Hub Için cihaz güncelleştirme](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-azure-real-time-operating-system)kullanma hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-NetX Duo hakkında daha fazla bilgi edinmek için netx [duo Azure RTOS kılavuzu ile çalışmaya başlayabilirsiniz.](about-this-guide.md)
+NetX Duo hakkında daha fazla bilgi edinmek için [Azure RTOS NetX Duo Kullanıcı kılavuzuyla](about-this-guide.md)başlayın.

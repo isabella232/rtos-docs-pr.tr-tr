@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 305c333bf3fb3f6fe76d661426c196afe25fbd5d
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: a0d18929f33f15a342e8fb8b3d01d4ce934d6ec7dc287707f960adb36fb4f44b
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106549802"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788856"
 ---
 # <a name="chapter-5---azure-rtos-netx-duo-network-drivers"></a>Bölüm 5-Azure RTOS NetX Duo ağ sürücüleri
 
@@ -250,78 +250,78 @@ Bağlantı durumu, *nx_ip_driver_interface* işaretçisine göre işaret edilen 
 | NX_IP_DRIVER &nbsp; üyesi       | Anlamı                  |
 | --------------------------- | -------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_STATUS    |
-| nx_ip_driver_ptr         | IP örneği işaretçisi   |
-| nx_ip_driver_return_ptr | Durumu yerleştirilecek hedefe yönelik işaretçi. |
-| nx_ip_driver_interface   | Arabirim örneği işaretçisi   |
-| nx_ip_driver_status      | Tamamlanma durumu. Sürücü belirli bir durum alamazsanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr         | IP örneğine işaretçi   |
+| nx_ip_driver_return_ptr | Durumu yer alan hedefin işaretçisi. |
+| nx_ip_driver_interface   | Arabirim örneğinin işaretçisi   |
+| nx_ip_driver_status      | Tamamlanma durumu. Sürücü belirli bir durumu alamasa da sıfır olmayan bir hata durumu döndürür. |
 
 > [!NOTE]  
-> ***nx_ip_status_check** _, birincil arabirimin durumunu denetlemek için hala kullanılabilir. Ancak, uygulama geliştiricilerinin arabirime özgü hizmeti kullanması önerilir: _ *_nx_ip_interface_status_check._**
+> ***nx_ip_status_check** _ birincil arabirimin durumunu denetlemeye devam ediyor. Ancak, uygulama geliştiricilerinin arabirime özgü hizmeti kullanmaları teşvik edilecektir: _ *_nx_ip_interface_status_check._**
 
-### <a name="get-link-speed"></a>Bağlantı hızını al  
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, belirtilen hedefte bağlantının hat hızını depolar. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı hattı hız isteği için kullanılır.
+### <a name="get-link-speed"></a>Bağlantı Hızını Al  
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının hat hızını sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER bağlantı çizgisi hızı isteği için kullanılır.
 
-| NX_IP_DRIVER &nbsp; üyesi   | Anlamı                   |
+| NX_IP_DRIVER &nbsp; üye   | Anlamı                   |
 | ------------------------| ------------------------- |
 | nx_ip_driver_command     | NX_LINK_GET_SPEED          |
-| nx_ip_driver_ptr         | IP örneği işaretçisi                                                                                         |
-| nx_ip_driver_return_ptr | Satır hızını yerleştirmek için hedefin işaretçisi                                                             |
-| nx_ip_driver_interface   | Arabirim örneği işaretçisi                                                                              |
-| nx_ip_driver_status      | Tamamlanma durumu. Sürücü hız bilgilerini alamazsanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr         | IP örneğine işaretçi                                                                                         |
+| nx_ip_driver_return_ptr | Çizgi hızının yer İşaretçisi                                                             |
+| nx_ip_driver_interface   | Arabirim örneğinin işaretçisi                                                                              |
+| nx_ip_driver_status      | Tamamlanma durumu. Sürücü hız bilgilerini alamayacaksa sıfır olmayan bir hata durumu döndürür. |
 
 > [!IMPORTANT]  
-> *Bu Istek NetX Duo tarafından dahili olarak kullanılmadığından, uygulamanın isteğe bağlı olması önerilir*.
+> *Bu istek NetX Duo tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-duplex-type"></a>Çift yönlü tür al   
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının çift yönlü türünü sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER üyeleri çift yönlü tür isteği için kullanılır.
+### <a name="get-duplex-type"></a>Çift Yönlü Türü Al   
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının çift yönlü türünü sağlanan hedefte depolar. Aşağıdaki NX_IP_DRIVER çift yönlü tür isteği için kullanılır.
 
-| NX_IP_DRIVER &nbsp; üyesi   | Anlamı                                                                                                    |
+| NX_IP_DRIVER &nbsp; üye   | Anlamı                                                                                                    |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | nx_ip_driver_command     | NX_LINK_GET_DUPLEX_TYPE                                                                                    |
-| nx_ip_driver_ptr         | IP örneği işaretçisi                                                                                         |
-| nx_ip_driver_return_ptr | Çift yönlü türü yerleştirmek için hedefin işaretçisi                                                            |
-| nx_ip_driver_interface   | Arabirim örneği işaretçisi                                                                              |
-| nx_ip_driver_status      | Tamamlanma durumu. Sürücü çift yönlü bilgileri alamazsanız, sıfır dışında bir hata durumu döndürür. |
+| nx_ip_driver_ptr         | IP örneğine işaretçi                                                                                         |
+| nx_ip_driver_return_ptr | Çift yönlü türün yer İşaretçisi                                                            |
+| nx_ip_driver_interface   | Arabirim örneğinin işaretçisi                                                                              |
+| nx_ip_driver_status      | Tamamlanma durumu. Sürücü çift yönlü bilgileri alamayacaksa sıfır olmayan bir hata durumu döndürür. |
 
 > [!IMPORTANT]  
-> *Bu Istek NetX Duo tarafından dahili olarak kullanılmadığından, uygulamanın isteğe bağlı olması önerilir*.
+> *Bu istek NetX Duo tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-error-count"></a>Hata sayısını Al   
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının hata sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün işlem hatalarını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı hata sayısı isteği için kullanılır.
+### <a name="get-error-count"></a>Hata Sayısını Al   
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının hata sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün işlem hatalarını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER bağlantı hatası sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER &nbsp; üyesi   | Anlamı                   |
+| NX_IP_DRIVER &nbsp; üye   | Anlamı                   |
 | --------------------------- | -------------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_ERROR_COUNT   |
-| nx_ip_driver_ptr         | IP örneği işaretçisi   |
-| nx_ip_driver_return_ptr | Hata sayısını yerleştirmek için hedefin işaretçisi |
-| nx_ip_driver_interface   | Arabirim örneği işaretçisi|
-| nx_ip_driver_status      | Tamamlanma durumu. Sürücü hata sayısını alamazsanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr         | IP örneğine işaretçi   |
+| nx_ip_driver_return_ptr | Hata sayısını yer alan hedefin işaretçisi |
+| nx_ip_driver_interface   | Arabirim örneğinin işaretçisi|
+| nx_ip_driver_status      | Tamamlanma durumu. Sürücü hata sayısını alamasa da sıfır olmayan bir hata durumu döndürür. |
 
 > [!IMPORTANT]
-> *Bu Istek NetX Duo tarafından dahili olarak kullanılmadığından, uygulamanın isteğe bağlı olması önerilir*.
+> *Bu istek NetX Duo tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-receive-packet-count"></a>Alma paketi sayısını Al    
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının alma paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün alınan paket sayısını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı alma paketi sayısı isteği için kullanılır.
+### <a name="get-receive-packet-count"></a>Alma Paketi Sayısını Alma    
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının alma paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün alınan paket sayısını izlemesi gerekir. Aşağıdaki NX_IP_DRIVER, bağlantı alma paket sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER &nbsp; üyesi       | Anlamı                        |
+| NX_IP_DRIVER &nbsp; üye       | Anlamı                        |
 | --------------------------- | -------------------------------|
 | nx_ip_driver_command     | NX_LINK_GET_RX_COUNT      |
-| nx_ip_driver_ptr         | IP örneği işaretçisi  |
-| nx_ip_driver_return_ptr | Alma paketi sayısını yerleştirmek için hedefin işaretçisi   |
-| nx_ip_driver_interface   | Fiziksel ağ arabirimine yönelik işaretçi  |
-| nx_ip_driver_status      | Tamamlanma durumu. Sürücü alma sayısı alamadıysanız, sıfır olmayan bir hata durumu döndürür. |
+| nx_ip_driver_ptr         | IP örneğine işaretçi  |
+| nx_ip_driver_return_ptr | Alma paketi sayısını almak için hedefin işaretçisi   |
+| nx_ip_driver_interface   | Fiziksel ağ arabirimi işaretçisi  |
+| nx_ip_driver_status      | Tamamlanma durumu. Sürücü alma sayısını alamasa da sıfır olmayan bir hata durumu döndürür. |
 
 > [!IMPORTANT]  
-> *Bu Istek NetX Duo tarafından dahili olarak kullanılmadığından, uygulamanın isteğe bağlı olması önerilir*.
+> *Bu istek NetX Duo tarafından dahili olarak kullanılmaz, bu nedenle uygulaması isteğe bağlıdır.*
 
-### <a name="get-transmit-packet-count"></a>Iletme paketi sayısını Al   
-Bu istek ***nx_ip_driver_direct_command*** hizmeti içinden yapılır. Sürücü, bağlantının aktarım paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün her bir arabirimde ilettiği her bir paketi izlemesi gerekir. Aşağıdaki NX_IP_DRIVER üyeleri bağlantı iletme paketi sayısı isteği için kullanılır.
+### <a name="get-transmit-packet-count"></a>İletim Paketi Sayısını Al   
+Bu istek, hizmetten ***nx_ip_driver_direct_command*** yapılır. Sürücü, bağlantının aktarım paketi sayısını sağlanan hedefte depolar. Bu özelliği desteklemek için sürücünün her arabirime ilettiği her paketi izlemesi gerekir. Aşağıdaki NX_IP_DRIVER bağlantı iletme paket sayısı isteği için kullanılır.
 
-| NX_IP_DRIVER &nbsp; üyesi   | Anlamı                   |
+| NX_IP_DRIVER &nbsp; üye   | Anlamı                   |
 | ----------------------- | ------------------------- |
 | nx_ip_driver_command | NX_LINK_GET_TX_COUNT  |
-| nx_ip_driver_ptr     | IP örneği işaretçisi    |
-| nx_ip_driver_return_ptr | İletme paketi sayısını yerleştirmek için hedefin işaretçisi  |
+| nx_ip_driver_ptr     | IP örneğine işaretçi    |
+| nx_ip_driver_return_ptr | İletme paketi sayısını yer alan hedefin işaretçisi  |
 | nx_ip_driver_interface   | Arabirim örneği işaretçisi   |
 | nx_ip_driver_status      | Tamamlanma durumu. Sürücü, iletim sayısını alamıyor, sıfır olmayan bir hata durumu döndürür. |
 
@@ -405,56 +405,56 @@ Aşağıdaki özellikler kullanılabilir:
 
 Donanımda gerçekleştirilebilecek bir sağlama toplamı hesaplaması için, sürücünün donanım veya arabellek tanımlayıcılarını doğru ayarlaması gerekir, böylece bir çıkış paketinin sağlama toplamı donanım tarafından oluşturulabilir ve üstbilgiye eklenebilir. Bir paket alındığında, donanım sağlama toplamı mantığı, sağlama toplamı değerini doğrulayabilmelidir. Sağlama toplamı değeri yanlışsa, alınan çerçeve atılmalıdır.
 
-Donanımda sağlama toplamı hesaplaması gerçekleştirme özelliği de dahil olmak üzere, IP örneği sağlama toplamı özelliğini hala korur. Bazı senaryolarda, IPSec korumasından geçen bir UDP veri birimi gibi bazı senaryolarda, UDP çerçevesini yığına geçirmeden önce UDP sağlama toplamı yazılımda hesaplanmalıdır. Çoğu donanım sağlama toplamı özelliği, IPSec tarafından korunan bir veri segmenti için sağlama toplamı hesaplamasını desteklemez. Parçalanması gereken bir UDP veya ıCMP çerçevesi için, yazılımın UDP veya ıCMP sağlama toplamı 'nda hesaplanması gerekir. Çoğu donanım sağlama toplamı mantığı, verilerin birden çok çerçeveye bölündüğü durumu işlemez.
+Donanımda sağlamam hesaplaması gerçekleştirme özelliğine rağmen IP örneği sağlama sağlamam özelliğini korumaya devam ediyor. Belirli senaryolarda, örneğin IPsec koruması üzerinden geçen bir UDP veri birimi, UDP sağlama toplaması yığından aşağı UDP çerçevesini geçirmeden önce yazılımda hesaplanır. Çoğu donanım sağlama toplama özelliği, IPsec tarafından korunan bir veri kesimi için sağlama toplama hesaplamasını desteklemez. Parçalanması gereken bir UDP veya ICMP çerçevesi için, UDP veya ICMP sağlamaları, yazılımda hesaplanması gerekir. Çoğu donanım sağlama sağlama mantığı, verilerin birden çok kareye bölünmesi durumlarını işlemez.
 
-## <a name="driver-output"></a>Sürücü çıkışı  
+## <a name="driver-output"></a>Sürücü Çıkışı  
 
-Daha önce bahsedilen tüm paket iletme istekleri, sürücüde uygulanan bir çıkış işlevi gerektirir. Belirli bir iletme mantığı donanıma özeldir, ancak genellikle paketin hemen gönderilmesi için donanım kapasitesini denetlemesinin oluşur. Mümkünse, paket yükü (ve paket zincirindeki ek yükleri) bir veya daha fazla donanım gönderme arabelleğine yüklenir ve bir iletme işlemi başlatılır. Paket, kullanılabilir iletim arabelleklerine uymuyorsa, paketin kuyruğa alınması ve iletim arabelleklerinin kullanılabilir hale gelmesi durumunda iletilmesi gerekir.
+Daha önce bahsedilen tüm paket iletme istekleri, sürücüde uygulanan bir çıkış işlevi gerektirir. Belirli bir iletme mantığı donanıma özeldir, ancak genellikle paketi hemen göndermek için donanım kapasitesini denetlemeyi içerir. Mümkünse, paket yükü (ve paket zincirinde ek yükler) bir veya daha fazla donanım iletme arabelleklerine yüklenir ve bir iletme işlemi başlatılır. Paket, kullanılabilir aktarım arabellekleri içine sığmayacaksa, paket kuyruğa alınarak iletim arabellekleri kullanılabilir olduğunda ilet gerekir.
 
-Önerilen iletim kuyruğu, hem baş hem de tail işaretçilerine sahip olan listedir bağlantılı bir listesidir. Yeni paketler sıranın sonuna eklenir ve en eski paketin ön tarafında tutulması sağlanır. *Nx_packet_queue_next* alanı, paketin sıradaki sonraki bağlantısı olarak kullanılır. Sürücü, iletme sırasının baş ve kuyruklu işaretçilerini tanımlar.
+Önerilen iletme kuyruğu tek başına bağlantılı bir listedir ve hem baş hem de kuyruk işaretçileri içerir. Kuyruğun sonuna yeni paketler eklenir ve en eski paket önde olur. Nx_packet_queue_next  alanı, paketin kuyrukta bir sonraki bağlantısı olarak kullanılır. Sürücü, iletme kuyruğunu baş ve kuyruk işaretçilerini tanımlar.
 
 > [!CAUTION]  
-> *Bu kuyruğa, sürücünün iş parçacığından ve kesme bölümlerinden erişildiği için, kesme koruması sıra işlemelerinin çevresine yerleştirilmelidir*.
+> *Bu kuyruğa iş parçacığından erişilip* sürücünün kesme bölümlerine erişilemediklerinden, kesme koruması kuyruk düzenlemelerinin etrafına yerleştirilsin.
 
-Fiziksel donanım uygulamalarının çoğu, paket iletimi tamamlandıktan sonra bir kesme üretir. Sürücü böyle bir kesme aldığında, genellikle yalnızca iletilmekte olan paketle ilişkili kaynakları serbest bırakır. Aktarım mantığının verileri NX_PACKET arabelleğinden doğrudan okuduğu durumlarda, sürücü, ilet Tamam kesmesi ile ilişkili paketi kullanılabilir paket havuzuna yeniden yayınlamak için ***nx_packet_transmit_release*** hizmetini kullanmalıdır. Daha sonra sürücü, gönderilmesi bekleyen ek paketlere yönelik iletim sırasını inceler. Donanım iletme arabelleklerine sığan sıraya alınmış iletim paketlerinin birçoğu sıraya alınır ve arabelleklere yüklenir. Bu, başka bir gönderme işleminin başlatılması ile izlenir.
+Çoğu fiziksel donanım uygulaması, paket iletme tamamlandıktan sonra bir kesintiye neden olur. Sürücü böyle bir kesinti aldığında, genellikle yeni iletilen paketle ilişkili kaynakları serbest bıraktır. İletme mantığının verileri doğrudan NX_PACKET okuması durumunda sürücü, aktarım tamamlama kesmesi ile ilişkili paketi kullanılabilir paket havuzuna geri serbest bırakmak için ***nx_packet_transmit_release*** hizmetini kullandır. Ardından sürücü, gönderilmek üzere bekleyen ek paketler için aktarım kuyruğuna bakarak. Donanım iletme arabelleğine sığan kuyruğa alınan iletim paketlerinin çoğu kuyruğa alınarak arabelleklere yüklenir. Bunun ardından başka bir gönderme işlemi başlatıldı.
 
-NX_PACKET veriler, (veya bir sürücünün sıfır-kopyalama işlemini desteklemesi durumunda, NX_PACKET verileri iletilmiş olması durumunda), nx_packet_transmit_release çağrılmadan önce sürücünün *NX_PACKET_PREPEND_PTR* IP üstbilgisinin başına taşınması gerekir)**.** _ _Nx_packet_length * alanını uygun şekilde ayarlamayı unutmayın. Bir IP çerçevesi birden çok paketten yapılırsa, yalnızca paket zincirinin kafa bırakılması gerekir.
+NX_PACKET'daki veriler verici FIFO'ya taşındığı anda (veya bir sürücünün sıfır kopyalamayı desteklemesi durumunda, NX_PACKET'daki veriler iletildi), *  nx_packet_prepend_ptr çağırmadan önce sürücünün IP üst bilgisinin başına **nx_packet_transmit_release.** _ Bu alanı* _nx_packet_length ayarlamayı unutmayın. Bir IP çerçevesi birden çok paketden meydana geliyorsa, yalnızca paket zincirinin başı serbest bırakılana kadar devam etmek gerekir.
 
-## <a name="driver-input"></a>Sürücü girişi
+## <a name="driver-input"></a>Sürücü Girişi
 
-Alınan bir paket kesmesi alındıktan sonra, ağ sürücüsü paketi fiziksel donanım alma arabelleklerinden alır ve geçerli bir NetX Duo paketi oluşturur. Geçerli bir NetX Duo paketi oluşturmak, uygun uzunluk alanını ayarlamayı ve gelen paketin boyutu tek bir paket yükünden daha büyükse birden çok paketi birlikte zincirlemeyi içerir. Düzgün derlendikten sonra, *prepend_ptr* fiziksel katman üst bilgisi ve alma paketi NETX Duo 'a gönderilir.
+Alınan paket kesintisi alındı sonra, ağ sürücüsü paketi fiziksel donanım alma arabelleklerinden alır ve geçerli bir NetX Duo paketi derlemez. Geçerli bir NetX Duo paketi oluşturmak için uygun uzunluk alanını ayarlamanız ve gelen paketin boyutu tek bir paket yükünden büyükse birden çok paketi zincirlemeniz gerekir. Düzgün bir şekilde *prepend_ptr,* fiziksel katman üst bilgiden sonra taşınır ve alma paketi NetX Duo'ya sevk edilir.
 
-NetX Duo, IP (IPv4 ve IPv6) ve ARP başlıklarının bir **ulong** sınırında hizalandığını varsayar. Bu nedenle NetX Duo sürücüsü, bu hizalamadan emin olmalıdır. Ethernet ortamlarında bu, paketin başından Ethernet üst bilgisi iki bayt başlatılarak yapılır. *Nx_packet_prepend_ptr* Ethernet üstbilgisinin dışına taşındığında, temeldeki IP (IPv4 ve IPv6) veya ARP üst bilgisi 4 bayt hizalı olur.
+NetX Duo, IP (IPv4 ve IPv6) ve ARP üst bilgilerini bir ULONG sınırında **hizalı olarak kabul** eder. Bu nedenle NetX Duo sürücüsünün bu hizalamadan emin olması gerekir. Ethernet ortamlarında bu, Ethernet üst bilgisi paketin başından iki bayt başlatarak yapılır. Bağlantı *nx_packet_prepend_ptr* Ethernet üst bilgisi dışına taşındığında, temel alınan IP (IPv4 ve IPv6) veya ARP üst bilgisi 4 bayt hizalı olur.
 
 > [!WARNING] 
-> *IPv6 ve IPv6 Ethernet üstbilgileri arasındaki önemli farklılıklar için aşağıdaki "Ethernet üstbilgileri" bölümüne bakın*.
+> *IPv6 ve IPv6 Ethernet* üst bilgileri arasındaki önemli farklar için aşağıdaki "Ethernet Üst Bilgileri" bölümüne bakın.
 
-NetX Duo içinde çeşitli alma paketi işlevleri mevcuttur. Alınan paket bir ARP paketidir, _* **nx_arp_packet_deferred_receive**_ çağırılır. Alınan paket bir RARP paketi ise, _ _*_nx_rarp_packet_deferred_receive_*_ çağrılır. Gelen IP paketlerini işlemek için çeşitli seçenekler vardır. IP paketlerinin en hızlı şekilde yönetilmesi için _ _*_nx_ip_packet_receive_*_ çağrılır. Bu yaklaşım en az yüke sahiptir, ancak sürücünün alma kesme hizmeti işleyicisinde (ıSR) daha fazla işlem gerektirir. En az ıSR işleme __ *_nx_ip_packet_deferred_receive_** çağırılır.
+NetX Duo'da çeşitli alma paketi işlevleri vardır. Alınan paket bir ARP paketi ise, _* **nx_arp_packet_deferred_receive**_ çağrılır. Alınan paket bir RARP paketi ise _ _*_nx_rarp_packet_deferred_receive_*_ çağrılır. Gelen IP paketlerini işlemeye çeşitli seçenekler vardır. IP paketlerinin en hızlı işlenmesi için _ _*_nx_ip_packet_receive_*_ çağrılır. Bu yaklaşım en az ek yüke sahiptir, ancak sürücünün alma kesme hizmeti işleyicisinde (ISR) daha fazla işlem gerektirir. Minimum ISR işleme *____* nx_ip_packet_deferred_receive * çağrılır.
 
-Yeni alma paketi düzgün derlendikten sonra, fiziksel donanımın Alma arabellekleri daha fazla veri alacak şekilde ayarlanır. Bu, NetX Duo paketleri ayırmayı ve yük adresini donanım alma arabelleğine yerleştirmeyi gerektirebilir veya donanım alma arabelleğindeki bir ayarı değiştirmek yalnızca miktar olabilir. Taşma olasılıklarını en aza indirmek için, bir paket alındıktan sonra donanımın Alım arabelleklerinin kullanılabilir arabellekler olması önemlidir.
+Yeni alma paketi düzgün bir şekilde edildikten sonra, fiziksel donanımın alma arabellekleri daha fazla veri alacak şekilde ayarlar. Bu, NetX Duo paketlerinin ayrılarak ve yük adresinin donanım alma arabelleğine yerleştirilmesini veya yalnızca donanım alma arabelleğinde bir ayarın değiştirilmesini gerektirir. Fazla çalıştırma olanaklarını en aza indirmek için, bir paket alındıktan sonra donanımın alma arabelleklerinin kullanılabilir arabelleklere sahip olduğu önemlidir.
 
 > [!IMPORTANT] 
-> *İlk alma arabellekleri, sürücü başlatma sırasında ayarlanır*.
+> *İlk alma arabellekleri, sürücü başlatması sırasında kurulumuna başlar.*
 
-### <a name="deferred-receive-packet-handling"></a>Ertelenmiş alma paketi Işleme  
-Sürücü, alma paketi işlemini NetX Duo IP Yardımcısı iş parçacığına erteedebilir. Bazı uygulamalarda, bu, ıSR işleminin yanı sıra bırakılan paketleri de en aza indirmek için gerekli olabilir. 
+### <a name="deferred-receive-packet-handling"></a>Ertelenmiş Alma Paketi İşleme  
+Sürücü, paket işlemeyi NetX Duo IP yardımcı iş parçacığına erteleyebilirsiniz. Bazı uygulamalarda, bırakılan paketlerin yanı sıra ISR işlemeyi en aza indirmek için bu gerekli olabilir. 
 
-Ertelenmiş paket işlemeyi kullanmak için, önce NetX Duo Kitaplığı ***NX_DRIVER_DEFERRED_PROCESSING** _ tanımlı ile derlenmelidir. Bu, ertelenen paket mantığını NetX Duo IP Yardımcısı iş parçacığına ekler. Sonra, bir veri paketi alındığında sürücü __nx_ip_packet_deferred_receive () öğesini çağırmalıdır:*
+Ertelenen paket işlemeyi kullanmak için NetX Duo kitaplığının önce * NX_DRIVER_DEFERRED_PROCESSING _ tanımlı **olarak derlenmiş** olması gerekir. Bu, ertelenen paket mantığını NetX Duo IP yardımcı iş parçacığına ekler. Ardından, bir veri paketi alırken sürücünün __nx_ip_packet_deferred_receive():*
 
 ```c
 _nx_ip_packet_deferred_receive(ip_ptr, packet_ptr);
 ```
-Ertelenmiş alma işlevi, *packet_ptr* tarafından temsil edilen alma PAKETINI bir FIFO (bağlantılı liste) olarak koyar ve IP Yardımcısı iş parçacığına bildirir. Yürütmeden sonra, IP Yardımcısı kaldı her ertelenmiş paketi işlemek için ertelenmiş işleme işlevini çağırır. Ertelenmiş işleyici işleme genellikle paketin fiziksel katman üst bilgisini (genellikle Ethernet) kaldırmayı ve bu NetX Duo alma işlevlerinden birine bağlamayı içerir:
+Ertelenen alma işlevi, bir FIFO (bağlantılı liste) üzerinde bir *packet_ptr* tarafından temsil edilen alma paketini yer alır ve IP yardımcı iş parçacığına bilgi verir. Yürüttkten sonra, IP yardımcısı ertelenen her paketin işlenmesi için ertelenen işleme işlevini tekrar tekrar çağırıyor. Ertelenen işleyici işleme genellikle paketin fiziksel katman üst bilgisini (genellikle Ethernet) kaldırmayı ve bu NetX Duo alma işlevlerinden birini göndermeyi içerir:
 
 - ***_nx_ip_packet_receive***
 - ***_nx_arp_packet_deferred_receive***
 - ***_nx_rarp_packet_deferred_receive***
 
-## <a name="ethernet-headers"></a>Ethernet üstbilgileri 
+## <a name="ethernet-headers"></a>Ethernet Üst Bilgileri 
 
-Ethernet üst bilgileri için IPv6 ve IPv4 arasındaki en önemli farklılıklardan biri çerçeve türü ayarıdır. Paket gönderirken, Ethernet sürücüsü giden paketlerde Ethernet çerçeve türünü ayarlamaktan sorumludur. IPv6 paketleri için çerçeve türü 0x86DD; olmalıdır. IPv4 paketleri için çerçeve türü 0x0800 olmalıdır.
+Ethernet Üst Bilgileri için IPv6 ile IPv4 arasındaki en önemli farklardan biri çerçeve türü ayarıdır. Paketleri gönderirken, Ethernet sürücüsü giden paketlerde Ethernet çerçeve türünü ayarlamadan sorumludur. IPv6 paketleri için çerçeve türü 0x86DD; IPv4 paketleri için çerçeve türü 0x0800.
 
-Aşağıdaki kod segmenti bu süreci göstermektedir:
+Aşağıdaki kod kesimi bu işlemi göstermektedir:
 
 ```c
 NX_PACKET *packet_ptr;
@@ -484,22 +484,22 @@ else
    nx_packet_transmit_release(packet_ptr);
 }
 ```
-Benzer şekilde, gelen paketler için, Ethernet sürücüsü, Ethernet çerçeve türünden paket türünü belirlemelidir. IPv6 (0x86DD), IPv4 (0x0800), ARP (0x0806) ve RARP (0x8035) çerçeve türlerini kabul etmek için uygulanmalıdır.
+Benzer şekilde, gelen paketler için, Ethernet sürücüsü Ethernet çerçeve türünden paket türünü belirlemeli. IPv6 (0x86DD), IPv4 (0x0800), ARP (0x0806) ve RARP (0x8035) çerçeve türlerini kabul etmek için uygulanması gerekir.
 
-## <a name="example-ram-ethernet-network-driver"></a>Örnek RAM Ethernet ağ sürücüsü
+## <a name="example-ram-ethernet-network-driver"></a>Örnek RAM Ethernet Ağ Sürücüsü
 
-NetX Duo demo sistemi, ***nx_ram_network_driver. c*** dosyasında tanımlanan küçük bir RAM tabanlı ağ sürücüsüyle birlikte dağıtılır. Bu sürücü, IP örneklerinin aynı ağ üzerinde olduğunu varsayar ve her bir cihaz örneğine sanal donanım adreslerini (MAC adresleri) oluşturuldukları şekilde atar. Bu dosya, NetX Duo fiziksel ağ sürücülerinin temel yapısına iyi bir örnek sağlar. Kullanıcılar, bu örnekte sunulan sürücü çerçevesini kullanarak kendi ağ sürücülerini geliştirebilir.
+NetX Duo tanıtım sistemi, nx_ram_network_driver.c dosyasında tanımlanan ram ***tabanlı küçük bir ağ sürücüsüyle birlikte teslim edilir.*** Bu sürücü, IP örneklerinin hepsinin aynı ağ üzerinde olduğunu ve sanal donanım adreslerini (MAC adresleri) oluşturuldukları anda her cihaz örneğine atadığınız varsayır. Bu dosya NetX Duo fiziksel ağ sürücülerinin temel yapısına iyi bir örnek sağlar. Kullanıcılar bu örnekte sunulan sürücü çerçevesini kullanarak kendi ağ sürücülerini geliştirebilir.
 
-Ağ sürücüsünün giriş işlevi, "**_nx_ram_network_driver (),** _ ve IP örneği oluşturma çağrısı ' ne geçirilir. Ek ağ arabirimleri için giriş işlevleri _nx_ip_interface_attach () * hizmetine geçirilebilir. IP örneği çalışmaya başladıktan sonra, cihazı başlatmak ve etkinleştirmek için sürücü girdisi işlevi çağrılır (durum **NX_LINK_INITIALIZE** ve **NX_LINK_ENABLE**). **NX_LINK_ENABLE** komutu verildikten sonra, cihaz paketleri iletmeye ve almaya hazırlanmalıdır. 
+Ağ sürücüsünün giriş işlevi ***_nx_ram_network_driver() ()** şeklindedir ve bu işlev IP örneği oluşturma çağrısına geçirildi. Ek ağ arabirimleri için giriş işlevleri _nx_ip_interface_attach()* hizmetine geçirebilirsiniz. IP örneği çalışmaya başladıktan sonra, cihazı başlatmak ve etkinleştirmek için sürücü girdisi işlevi çağrılır (cihazı başlatmak ve etkinleştirmek için **NX_LINK_INITIALIZE** **ve NX_LINK_ENABLE).** NX_LINK_ENABLE **komutu** verdikten sonra cihazın paketleri iletmeye ve almaya hazır olması gerekir. 
 
-IP örneği şu komutlardan biri aracılığıyla ağ paketlerini iletir:
+IP örneği, ağ paketlerini şu komutlardan biri aracılığıyla iletir:
 
 | Komut                         |  Açıklama                                                   |
 | ------------------------------- | -------------------------------------------------------------- |
-| ***NX_LINK_PACKET_SEND***    | Bir IPv4 veya IPv6 paketi iletiliyor,                   |
-| ***NX_LINK_ARP_SEND***       | Bir ARP isteği veya ARP yanıt paketi iletiliyor,    |
-| ***NX_LINK_ARP_RARP_SEND*** | Ters ARP isteği veya yanıt paketi iletiliyor, |
+| ***NX_LINK_PACKET_SEND***    | Bir IPv4 veya IPv6 paketi iletildi,                   |
+| ***NX_LINK_ARP_SEND***       | Bir ARP isteği veya ARP yanıt paketi iletildi,    |
+| ***NX_LINK_ARP_RARP_SEND*** | Ters ARP isteği veya yanıt paketi iletildi, |
 
-Bu komutları işlerken, ağ sürücüsünün uygun Ethernet çerçeve üst bilgisini eklemesi ve ardından iletim için temel alınan donanıma gönderilmesi gerekir. İletim işlemi sırasında, ağ sürücüsü paket arabelleği alanının dışlamalı sahipliğine sahiptir. Bu nedenle, veriler aktarıldıktan sonra (veya veriler iç aktarım arabelleğine kopyalandıktan sonra), önce paket arabelleğini serbest bırakmaktan önce, ilk olarak Ethernet üst bilgisini IP üstbilgisine taşıyarak (ve paket uzunluğunu uygun olarak ayarlayarak) ve ardından paketi serbest bırakmak için ***nx_packet_transmit_release ()*** hizmetini çağırarak paket arabelleğini yayınlamaktan sorumludur. Veri iletimi paketlerin sızmasına neden olduktan sonra paketin serbest bırakılmamasına neden olur.
+Bu komutları işlerken, ağ sürücüsünün uygun Ethernet çerçevesi üst bilgisini hazırlaması ve ardından iletim için temel alınan donanıma göndermesi gerekir. İletim işlemi sırasında ağ sürücüsü paket arabellek alanı için özel sahiplik sahibidir. Bu nedenle, veriler iletilmesinin ardından (veya veriler sürücü iç aktarım arabelleğine kopyalandıktan sonra), ağ sürücüsü önce ön uç işaretçisini Ethernet üst bilgisini IP üst bilgisine geçerek (ve paket uzunluğunu uygun şekilde ayarlayalım) ve ardından paketi serbest bırakmak için ***nx_packet_transmit_release()*** hizmetini çağırarak paket arabelleğinin serbest bırakılmasından sorumludur. Veri iletiminden sonra paketi serbest bırakmama, paketlerin sızıntıya neden olur.
 
-Ağ aygıtı sürücüsü, gelen veri paketlerini işlemekten de sorumludur. RAM sürücüsü örneğinde, alınan paket ***_nx_ram_network_driver_receive ()*** işlevi tarafından işlenir. Cihaz bir Ethernet çerçevesini aldıktan sonra, verilerin NX_PACKET yapıda depolanmasından sürücü sorumludur. NetX Duo, IP üstbilgisinin 4 baytlık hizalanmış adresten başlayacağını varsaydığını unutmayın. Ethernet üstbilgisinin uzunluğu 14byte olduğundan, IP üstbilgisinin 4 baytlık hizalanmış adreste başlamasını sağlamak için sürücünün Ethernet üstbilgisinin başlangıcını 2 baytlık hizalanmış adreste depolaması gerekir.
+Ağ cihazı sürücüsü de gelen veri paketlerinin işlenmesinden sorumludur. RAM sürücüsü örneğinde, alınan paket ***_nx_ram_network_driver_receive() işlevi tarafından işlenir.*** Cihaz bir Ethernet çerçevesi aldığında, sürücü verileri farklı bir yapıda NX_PACKET sorumludur. NetX Duo'da IP üst bilgisi 4 bayt hizalı adresten başladığı varsayıldı. Ethernet üst bilgisi uzunluğu 14bayt olduğu için, IP üst bilgisi 4 bayt hizalı adresle başladığından emin olmak için sürücünün Ethernet üst bilgisi başlatmayı 2 bayt hizalı adreste depolaması gerekir.

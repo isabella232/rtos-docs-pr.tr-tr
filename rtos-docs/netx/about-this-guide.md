@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 01077e3315e87b918cdfd47423d8e0c1b6bbdbbd
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 7d77997e8c5bac598f382e1169a56727af09ab108f57c90cc6265df0691b5926
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550278"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796421"
 ---
 # <a name="about-the-azure-rtos-netx-user-guide"></a>Azure RTOS NetX Kullanıcı Kılavuzu hakkında
 
@@ -47,7 +47,7 @@ Temel ağ kavramlarıyla, Azure RTOS ThreadX ve C programlama diliyle tanıdık 
 
 Aşağıda, Azure RTOS NetX hizmeti çağrı veri türleri ve bunlarla ilişkili anlamlarıyla ilgili bir liste verilmiştir:
 
-| Veri Türleri | Açıklama  |
+| Veri Türleri | Description  |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | **U**  | Temel işaretsiz tamsayı. Bu tür 32 bitlik işaretsiz verileri desteklemelidir; Ancak, en uygun imzasız veri türüne eşlenir. |
 | **'TUR** | İmzasız Long türü. Bu tür 32 bitlik işaretsiz verileri desteklemelidir.                                                                      |

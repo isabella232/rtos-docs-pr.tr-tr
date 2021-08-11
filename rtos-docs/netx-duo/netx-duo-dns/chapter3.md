@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9634adab3944c29f64d26dd688b5053dc1bd9bcb
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 10368edf3cdf15d32bddbd5bd943681b3ff3dd1aa1a7042d1b9bb2bf0e71699f
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826015"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791915"
 ---
 # <a name="chapter-3---description-of-azure-rtos-netx-duo-dns-client-services"></a>Bölüm 3-Azure RTOS NetX Duo DNS Istemci hizmetlerinin açıklaması
 
@@ -85,7 +85,7 @@ UINT nx_dns_authority_zone_start_get (NX_DNS *dns_ptr, UCHAR *host_name,
                                       UINT *record_count, 
                                       ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 NX_DNS_ENABLE_EXTENDED_RR_TYPES tanımlanmışsa, bu hizmet giriş etki alanı adı için yetki bölgesinin başlangıcını almak üzere belirtilen etki alanı adına sahip SOA türünde bir sorgu gönderir. DNS Istemcisi, DNS sunucusu yanıtında döndürülen SOA kayıtlarını *record_buffer* bellek konumuna kopyalar.
 
@@ -208,7 +208,7 @@ UINT nx_dns_cache_initialize(NX_DNS *dns_ptr,
                             VOID *cache_ptr, UINT cache_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir DNS önbelleği oluşturur ve başlatır.
 
@@ -247,7 +247,7 @@ DNS önbelleği tam bildirim işlevini temizle
 UINT nx_dns_cache_notify_clear(NX_DNS *dns_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önbellek tam bildirim işlevini temizler.
 
@@ -283,7 +283,7 @@ UINT nx_dns_cache_notify_set(NX_DNS *dns_ptr,
                             VOID (*cache_full_notify_cb)(NX_DNS *dns_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet önbellek tam bildirim işlevini ayarlar.
 
@@ -321,7 +321,7 @@ UINT nx_dns_cname_get(NX_DNS *dns_ptr, UCHAR *host_name,
                      ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 NX_DNS_ENABLE_EXTENDED_RR_TYPES *nxd_dns. h* içinde tanımlanmışsa, bu hizmet kurallı etki alanı adını almak için belirtilen etki alanı ADıNA sahip CNAME türünde bir sorgu gönderir. DNS Istemcisi, DNS sunucusu yanıtında döndürülen CNAME dizesini *record_buffer* bellek konumuna kopyalar.
 
@@ -381,7 +381,7 @@ DNS Istemci örneği oluşturma
 ```C
 UINT nx_dns_create(NX_DNS *dns_ptr, NX_IP *ip_ptr, CHAR *domain_name);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulan IP örneği için bir DNS Istemci örneği oluşturur.
 
@@ -424,7 +424,7 @@ DNS Istemci örneğini silme
 ```C
 UINT nx_dns_delete(NX_DNS *dns_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, önceden oluşturulmuş bir DNS Istemci örneğini siler ve kaynaklarını boşaltır. 
 
@@ -465,7 +465,7 @@ UINT nx_dns_domain_name_server_get(NX_DNS *dns_ptr, UCHAR *host_name,
                                    UINT *record_count, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 NX_DNS_ENABLE_EXTENDED_RR_TYPES tanımlanmışsa, bu hizmet giriş etki alanı adının ad sunucularını almak için belirtilen etki alanı adına sahip NS türünde bir sorgu gönderir. DNS Istemcisi, DNS sunucusu yanıtında döndürülen NS kayıtlarını *record_buffer* bellek konumuna kopyalar.
 
@@ -497,13 +497,13 @@ Giriş *record_buffer* , sunucu YANıTıNDA tüm NS verilerini tutamazsa, *recor
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_SUCCESS** (0x00) NS verileri başarıyla alındı
-- **NX_DNS_NO_SERVER** (0xA1) istemci sunucu listesi boş
-- **NX_DNS_QUERY_FAILED** (0xA3) GEÇERLI bir DNS yanıtı alınmadı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi olmayan giriş
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_DNS_NO_SERVER** (0xA1) İstemci sunucusu listesi boş
+- **NX_DNS_QUERY_FAILED** (0xA3) Geçerli bir DNS yanıtı alınmamıştır
+- NX_DNS_PARAM_ERROR (0xA8) İşaretçi olmayan giriş geçersiz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -571,7 +571,7 @@ hostname = ns4.www.my_example.com
 
 ## <a name="nx_dns_domain_mail_exchange_get"></a>nx_dns_domain_mail_exchange_get
 
-Giriş ana bilgisayar adı için posta alışverişinin aranacağı
+Giriş ana bilgisayar adı için posta değişimlerini bulun
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -582,47 +582,47 @@ UINT nx_dns_domain_mail_exchange_get(NX_DNS *dns_ptr, UCHAR *host_name,
                                      ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-NX_DNS_ENABLE_EXTENDED_RR_TYPES tanımlanmışsa, bu hizmet giriş etki alanı adı için posta değişimini almak üzere belirtilen etki alanı adına sahip MX türünde bir sorgu gönderir. DNS Istemcisi, DNS sunucusu yanıtında döndürülen MX kayıtlarını *record_buffer* bellek konumuna kopyalar. 
+Bu NX_DNS_ENABLE_EXTENDED_RR_TYPES, giriş etki alanı adı için posta değişimini almak üzere belirtilen etki alanı adına sahip MX türünde bir sorgu gönderir. DNS İstemcisi, DNS Sunucusu yanıtta döndürülen MX kayıtlarını record_buffer *kopyalar.* 
 
 > [!NOTE]
-> *Record_buffer* , verileri almak için 4 baytlık hizalı olmalıdır.
+> Verilerin *record_buffer* için 4 baytı uyumlu olması gerekir.
 
-NetX Duo DNS Istemcisinde, posta değişim kayıt türü NX_DNS_MAIL_EXCHANGE_ENTRY, dört parametre olarak kaydedilir, 12 baytı toplam olarak kaydeder:
+NetX Duo DNS İstemcisi'ne, NX_DNS_MAIL_EXCHANGE_ENTRY posta değişim kayıt türü, toplam 12 bayt olmak üzere dört parametre olarak kaydedilir:
 
 - **nx_dns_mx_ipv4_address** Posta değişimi IPv4 adresi 4 bayt
 - **nx_dns_mx_preference** Tercih 2 bayt
-- **nx_dns_mx_reserved0** Ayrılan 2 bayt
-- **nx_dns_mx_hostname_ptr** Posta Exchange Server ana bilgisayar adı 4 bayt işaretçisi
+- **nx_dns_mx_reserved0** Ayrılmış 2 bayt
+- **nx_dns_mx_hostname_ptr** Posta exchange sunucusu ana bilgisayar adı 4 bayt işaretçisi
 
-Dört MX kaydı içeren bir arabellek aşağıda gösterilmiştir. Her kayıt, yukarıdaki listeden sabit uzunluklu verileri içerir. Posta Exchange Server ana bilgisayar adının işaretçisi, arabelleğin alt kısmındaki karşılık gelen ana bilgisayar adına işaret eder.
+Dört MX kaydı içeren bir arabellek aşağıda gösterilmiştir. Her kayıt, yukarıdaki listeden sabit uzunluktaki verileri içerir. Posta exchange sunucusu ana bilgisayar adının işaretçisi, arabelleğin altındaki ilgili ana bilgisayar adına işaret ediyor.
 
 ![Dört MX kaydı içeren bir arabellek](media/image6.png)
 
-Giriş *record_buffer* , sunucu YANıTıNDA tüm MX verilerini tutamazsa, *record_buffer* sığacak kadar çok kayıt tutar ve arabellekteki kayıt sayısını döndürür.
+Giriş *record_buffer* sunucu yanıtta tüm MX verilerini tutamazsa,  record_buffer sığacak kadar kayıt tutar ve arabellekte kayıt sayısını döndürür.
 
-**Record_count* ' de döndürülen MX kayıtlarının sayısı ile, uygulama, *record_buffer* her kaydın posta ana bilgisayar adı da dahil olmak üzere MX parametrelerini ayrıştırabilirler.
+* record_count içinde döndürülen MX kayıtlarının *sayısıyla,* uygulama MX parametrelerini ayrıştırarak *record_buffer.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** DNS Istemcisi işaretçisi.  
+- **dns_ptr** DNS İstemcisi işaretçisi.  
 - **host_name** MX verilerini almak için ana bilgisayar adı işaretçisi
-- **record_buffer** MX verilerinin ayıklanacağı konum işaretçisi
-- **Buffer_size** MX verilerini tutan arabelleğin boyutu
-- **record_count** Alınan MX kaydı sayısının işaretçisi
-- **wait_option** DNS sunucusu yanıtı alma seçeneğini bekle
+- **record_buffer** MX verilerini ayıklamak için konum işaretçisi
+- **buffer_size** MX verilerini tutmak için arabellek boyutu
+- **record_count** Alınan MX kaydı sayısına işaretçi
+- **wait_option** DNS Sunucusu yanıtını almak için bekleme seçeneği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_SUCCESS** (0x00) MX verileri başarıyla alındı
-- **NX_DNS_NO_SERVER** (0xA1) istemci sunucu listesi boş
-- **NX_DNS_QUERY_FAILED** (0xA3) GEÇERLI bir DNS yanıtı alınmadı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi olmayan giriş
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_DNS_NO_SERVER** (0xA1) İstemci sunucusu listesi boş
+- **NX_DNS_QUERY_FAILED** (0xA3) Geçerli bir DNS yanıtı alınmamıştır
+- NX_DNS_PARAM_ERROR (0xA8) İşaretçi olmayan giriş geçersiz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -701,7 +701,7 @@ hostname = alt2.aspmx.l.www.my_example.com
 
 ## <a name="nx_dns_domain_service_get"></a>nx_dns_domain_service_get
 
-Giriş ana bilgisayar adı tarafından belirtilen hizmet (ler) i ara
+Giriş ana bilgisayar adı tarafından sağlanan hizmetleri veya hizmetleri kontrol eder
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -710,49 +710,49 @@ UINT nx_dns_domain_service_get (NX_DNS *dns_ptr, UCHAR *host_name,
                                 UINT *record_count, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-NX_DNS_ENABLE_EXTENDED_RR_TYPES tanımlanmışsa, bu hizmet, hizmet (ler) i ve belirtilen etki alanıyla ilişkili bağlantı noktası numaralarını aramak için belirtilen etki alanı adına sahip SRV türünde bir sorgu gönderir. DNS Istemcisi, DNS sunucusu yanıtında döndürülen SRV kayıtlarını *record_buffer* bellek konumuna kopyalar. 
+Bu NX_DNS_ENABLE_EXTENDED_RR_TYPES, belirtilen etki alanıyla ilişkilendirilmiş hizmet ve bağlantı noktası numarasını araması için belirtilen etki alanı adına sahip SRV türünde bir sorgu gönderir. DNS İstemcisi, DNS Sunucusu yanıtta döndürülen SRV kayıtlarını record_buffer *kopyalar.* 
 
 > [!NOTE]
-> *Record_buffer* , verileri almak için 4 baytlık hizalı olmalıdır.
+> Verilerin *record_buffer* için 4 baytı uyumlu olması gerekir.
 
-NetX Duo DNS Istemcisinde, hizmet kayıt türü NX_DNS_SRV_ GIRDISI, altı parametre olarak kaydedilir ve 16 baytlık bir toplam olur. Bu, değişken uzunlukta SRV verilerinin bellek verimli şekilde depolanmasını sağlar:
+NetX Duo DNS İstemcisi'ne, NX_DNS_SRV_ ENTRY hizmet kayıt türü, toplam 16 bayt olmak üzere altı parametre olarak kaydedilir. Bu, değişken uzunluktaki SRV verilerini bellek açısından verimli bir şekilde depolar:
 
 - **Sunucu IPv4 adresi** nx_dns_srv_ipv4_address 4 bayt
 - **Sunucu önceliği** nx_dns_srv_priority 2 bayt
 - **Sunucu ağırlığı** nx_dns_srv_weight 2 bayt
 - **Hizmet bağlantı noktası numarası** nx_dns_srv_port_number 2 bayt
-- **4 baytlık hizalama Için ayrılan** 2 bayt nx_dns_srv_reserved0
-- **Sunucu ana bilgisayar adı** * nx_dns_srv_hostname_ptr 4 bayt işaretçisi
+- **4 baytlık hizalama için ayrılmış nx_dns_srv_reserved0** 2 bayt
+- **Sunucu ana bilgisayar adı işaretçisi** *nx_dns_srv_hostname_ptr 4 bayt
 
-Dört SRV kaydı, sağlanan arabellekte depolanır. Her bir NX_DNS_SRV_ENTRY kaydı, kayıt arabelleğinin alt kısmındaki karşılık gelen ana bilgisayar adı dizesine işaret eden *nx_dns_srv_hostname_ptr* bir işaretçi içerir:
+Sağlanan arabellekte dört SRV kaydı depolanır. Her NX_DNS_SRV_ENTRY kaydı, kayıt *arabelleğinin altındaki ilgili* konak adı dizesine işaret edecek bir işaretçi (nx_dns_srv_hostname_ptr) içerir:
 
 ![Dört SRV kaydı](media/image7.png)
 
-Giriş *record_buffer* , sunucu YANıTıNDA tüm SRV verilerini tutamazsa, *record_buffer* sığacak kadar çok kayıt tutar ve arabellekteki kayıt sayısını döndürür.
+Giriş *record_buffer* sunucu yanıtta tüm SRV verilerini tutamazsa,  record_buffer kadar kayıt tutar ve arabellekte kayıt sayısını döndürür.
 
-**Record_count* ' de döndürülen SRV kayıtlarının sayısı ile, uygulama, *record_buffer* her kaydın sunucu ana bilgisayar adı da dahil olmak üzere SRV parametrelerini ayrıştırabilirler.
+* record_count içinde döndürülen SRV kayıtlarının *sayısıyla,* uygulama, record_buffer'daki her kaydın sunucu ana bilgisayar adı dahil olmak üzere SRV *parametrelerini ayrıştırabilirsiniz.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** DNS Istemcisi işaretçisi.  
-- **host_name** İçin SRV verilerini almak üzere ana bilgisayar adı işaretçisi
-- **record_buffer** SRV verilerinin ayıklanacağı konum işaretçisi
-- **Buffer_size** SRV verilerini tutan arabelleğin boyutu
-- **record_count** Alınan SRV kaydı sayısının işaretçisi
-- **wait_option** DNS sunucusu yanıtı alma seçeneğini bekle
+- **dns_ptr** DNS İstemcisi işaretçisi.  
+- **host_name** SRV verilerini almak için ana bilgisayar adı işaretçisi
+- **record_buffer** SRV verilerini ayıklamak için konum işaretçisi
+- **buffer_size** SRV verilerini tutmak için arabellek boyutu
+- **record_count** Alınan SRV kayıtlarının sayısına işaretçi
+- **wait_option** DNS Sunucusu yanıtını almak için bekleme seçeneği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00), SRV verileri başarıyla alındı
-- **NX_DNS_NO_SERVER** (0xA1) istemci sunucu listesi boş
-- **NX_DNS_QUERY_FAILED** (0xA3) GEÇERLI bir DNS yanıtı alınmadı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi parametresi.
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) SRV verileri başarıyla alındı
+- **NX_DNS_NO_SERVER** (0xA1) İstemci sunucusu listesi boş
+- **NX_DNS_QUERY_FAILED** (0xA3) Geçerli bir DNS yanıtı alınmamıştır
+- NX_DNS_PARAM_ERROR (0xA8) Geçersiz işaretçi olmayan parametre.
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -834,28 +834,28 @@ hostname = alt1.xmpp.l.www.my_example.com
 
 ## <a name="nx_dns_get_serverlist_size"></a>nx_dns_get_serverlist_size
 
-DNS Istemcisinin sunucu listesinin boyutunu döndürür
+DNS İstemcisi'nin Sunucu listesinin boyutunu iade
 
 ### <a name="prototype"></a>Prototype
 ```C
 UINT nx_dns_get_serverlist_size (NX_DNS *dns_ptr, UINT *size);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci listesinde geçerli DNS sunucularının (hem IPv4 hem de IPv6) sayısını döndürür.
+Bu hizmet, İstemci listesinde geçerli DNS Sunucularının (hem IPv4 hem de IPv6) sayısını döndürür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dns_ptr** DNS denetim bloğu işaretçisi  
-- **Boyut** Listedeki sunucu sayısını döndürür
+- **boyut** Listede sunucu sayısını döndürür
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucusu liste boyutu başarıyla döndürüldü
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) DNS Sunucusu liste boyutu başarıyla döndürüldü
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -872,7 +872,7 @@ status =  nx_dns_get_serverlist_size (&my_dns, 5, &my_listsize);
 
 ## <a name="nx_dns_info_by_name_get"></a>nx_dns_info_by_name_get
 
-IP adresini ve DNS sunucusunun bağlantı noktasını ana bilgisayar adına göre döndür
+Dns sunucusunun ip adresini ve bağlantı noktasını ana bilgisayar adına göre iade
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -881,27 +881,27 @@ UINT nx_dns_info_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name,
                              USHORT *host_port_ptr, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DNS sorgusunun giriş ana bilgisayar adına göre sunucu IP 'sini ve bağlantı noktasını (hizmet kaydı) döndürür. Bir hizmet kaydı bulunamazsa, bu yordam giriş adresi İşaretçisinde sıfır bir IP adresi döndürür ve bir hatayı bildirmek için sıfır olmayan bir hata durumu döndürür.
+Bu hizmet, DNS sorgusuna göre giriş ana bilgisayar adına göre Sunucu IP'sini ve bağlantı noktasını (hizmet kaydı) döndürür. Bir hizmet kaydı bulunamasa, bu yordam giriş adresi işaretçisinde sıfır IP adresi döndürür ve hata sinyali olarak sıfır olmayan bir hata durumu döndürür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dns_ptr** DNS denetim bloğu işaretçisi  
-- **host_name** Ana bilgisayar adı arabelleği işaretçisi
-- **host_address_ptr** Döndürülecek adres işaretçisi
-- **host_port_ptr** Döndürülecek bağlantı noktası işaretçisi
+- **host_name** Konak adı arabelleği işaretçisi
+- **host_address_ptr** Dönüş için adres işaretçisi
+- **host_port_ptr** Dönüş için bağlantı noktası işaretçisi
 - **wait_option** DNS yanıtı için bekleme seçeneği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucusu kaydı başarıyla döndürüldü
-- **NX_DNS_NO_SERVER** (0xA1) ana bilgisayar adına sorgu göndermek için istemciyle bırlıkte kayıtlı DNS sunucusu yok
-- **NX_DNS_QUERY_FAILED** (0xA3) DNS sorgusu başarısız oldu; giriş ana bilgisayar adı için Istemci listesindeki herhangi bir DNS sunucusundan yanıt yok veya hizmet kaydı yok.
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) geçersiz çağıran
+- **NX_SUCCESS** (0x00) DNS Sunucusu kaydı başarıyla döndürüldü
+- **NX_DNS_NO_SERVER** (0xA1) Ana bilgisayar adına sorgu göndermek için İstemci ile kayıtlı DNS Sunucusu yok
+- **NX_DNS_QUERY_FAILED** (0xA3) DNS sorgusu başarısız oldu; İstemci listesinde herhangi bir DNS sunucusundan yanıt yok veya giriş ana bilgisayar adı için hizmet kaydı yok.
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Geçersiz çağıran
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -919,7 +919,7 @@ status =  nx_dns_info_by_name_get(&my_dns, “www.abc1234.com”, &ip_address, &
 
 ## <a name="nx_dns_ipv4_address_by_name_get"></a>nx_dns_ipv4_address_by_name_get
 
-Giriş ana bilgisayar adı için IPv4 adresini arayın
+Giriş ana bilgisayar adı için IPv4 adresini look up
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -930,39 +930,39 @@ UINT nx_ dns_ipv4_address_by_name_get (NX_DNS *dns_ptr,
                                       ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, giriş ana bilgisayar adı için IP adreslerini almak üzere belirtilen ana bilgisayar adına sahip A türünde bir sorgu gönderir. DNS Istemcisi, IPv4 adresini DNS sunucusu yanıtında döndürülen bir kayıt (lar) dan *record_buffer* bellek konumuna kopyalar.
+Bu hizmet, giriş ana bilgisayar adının IP adreslerini almak için belirtilen ana bilgisayar adına sahip Tür A sorgusunu gönderir. DNS İstemcisi, DNS Sunucusu yanıtta döndürülen A kayıtlarından IPv4 adresini record_buffer *kopyalar.*
 
 > [!NOTE]
-> *Record_buffer* , verileri almak için 4 baytlık hizalı olmalıdır.
+> Verilerin *record_buffer* için 4 baytı uyumlu olması gerekir.
 
-Aşağıda gösterildiği gibi, 4 baytlık hizalanmış arabellekte birden çok IPv4 adresi depolanır:
+Aşağıda gösterildiği gibi 4 byte hizalı arabellekte birden çok IPv4 adresi depolanır:
 
-![birden çok adres 4-bayt hizalı arabellek](media/image8.png)
+![birden çok adres 4 byte hizalı arabellek](media/image8.png)
 
-Sağlanan arabellek tüm IP adresi verilerini tutamıyorsa, kalan kayıtlar *record_buffer* depolanmaz. Bu, uygulamanın sunucu yanıtında kullanılabilir IP adresi verilerinin bir kısmını veya tamamını almasını sağlar.
+Sağlanan arabellek tüm IP adresi verilerini tutamazsa, kalan A kayıtları *record_buffer.* Bu, uygulamanın sunucu yanıtını kullanarak kullanılabilir IP adresi verilerinden birini veya hepsini alasını sağlar.
 
-**Record_count* döndürülen kayıt sayısı ile uygulama, IPv4 adresi verilerini *record_buffer* ayrıştırabilirler.
+* içinde döndürülen A kayıtlarının *record_count* uygulama, IPv4 adres verilerini *record_buffer.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** DNS Istemcisi işaretçisi.  
+- **dns_ptr** DNS İstemcisi işaretçisi.  
 - **host_name_ptr** IPv4 adresini almak için ana bilgisayar adı işaretçisi
-- **arabellek** IPv4 verilerinin ayıklanacağı konum işaretçisi
-- **Buffer_size** IPv4 verilerini tutan arabelleğin boyutu
-- **wait_option** DNS sunucusu yanıtı alma seçeneğini bekle
+- **buffer (arabellek)** IPv4 verilerini ayıklamak için konuma işaretçi
+- **buffer_size** IPv4 verilerini tutmak için arabellek boyutu
+- **wait_option** DNS Sunucusu yanıtını almak için bekleme seçeneği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) IPv4 verileri başarıyla alındı
-- **NX_DNS_NO_SERVER** (0xA1) istemci sunucu listesi boş
-- **NX_DNS_QUERY_FAILED** (0xA3) GEÇERLI bir DNS yanıtı alınmadı
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi parametresi.
+- **NX_SUCCESS** (0x00) Başarıyla IPv4 verileri alındı
+- **NX_DNS_NO_SERVER** (0xA1) İstemci sunucusu listesi boş
+- **NX_DNS_QUERY_FAILED** (0xA3) Geçerli bir DNS yanıtı alınmamıştır
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
+- NX_DNS_PARAM_ERROR (0xA8) Geçersiz işaretçi olmayan parametre.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1023,7 +1023,7 @@ record 4: IP address: 192.2.2.14
 
 ## <a name="nxd_dns_ipv6_address_by_name_get"></a>nxd_dns_ipv6_address_by_name_get
 
-Giriş ana bilgisayar adı için IPv6 adresini arayın
+Giriş ana bilgisayar adı için IPv6 adresini look up
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1034,39 +1034,39 @@ UINT nxd_ dns_ipv6_address_by_name_get(NX_DNS *dns_ptr,
                                       ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, giriş etki alanı adının IP adreslerini almak için belirtilen etki alanı adına sahip AAAA türünde bir sorgu gönderir. DNS Istemcisi, IPv6 adresini DNS sunucusu yanıtında döndürülen AAAA kaydından *record_buffer* bellek konumuna kopyalar. 
+Bu hizmet, giriş etki alanı adının IP adreslerini almak için belirtilen etki alanı adıyla AAAA türünde bir sorgu gönderir. DNS İstemcisi, DNS Sunucusu yanıtta döndürülen AAAA kayıtlarından IPv6 adresini record_buffer *kopyalar.* 
 
 > [!NOTE]
-> *Record_buffer* , verileri almak için 4 baytlık hizalı olmalıdır.
+> Verilerin *record_buffer* için 4 baytı uyumlu olması gerekir.
 
-4 baytlık hizalanmış arabellekte depolanan IPv6 adreslerinin biçimi aşağıda gösterilmiştir:
+4 byte hizalı arabellekte depolanan IPv6 adreslerinin biçimi aşağıda gösterilmiştir:
 
-![IPv6 biçimi 4-bayt hizalanmış arabellek](media/image9.png)
+![IPv6 biçim 4-byte hizalı arabellek](media/image9.png)
 
-Giriş *record_buffer* , sunucu YANıTıNDA tüm aaaa verilerini tutamazsa, *record_buffer* sığacak kadar çok kayıt tutar ve arabellekteki kayıt sayısını döndürür.
+Giriş *record_buffer* sunucu yanıtını tüm AAAA verilerini tutamazsa,  record_buffer sığacak kadar kayıt tutar ve arabellekte kayıt sayısını döndürür.
 
-* Record_count ' de döndürülen AAAA kaydı sayısı ile *,* uygulama *record_buffer* her bir kayıttaki IPv6 adreslerini ayrıştırabilirler.
+* record_count içinde döndürülen AAAA kayıtlarının *sayısıyla,* uygulama IPv6 adreslerini *record_buffer.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** DNS Istemcisi işaretçisi.  
+- **dns_ptr** DNS İstemcisi işaretçisi.  
 - **host_name_ptr** IPv6 adresini almak için ana bilgisayar adı işaretçisi
-- **arabellek** IPv6 verilerinin ayıklanacağı konum işaretçisi
-- **Buffer_size** IPv6 verilerini tutan arabelleğin boyutu
-- **wait_option** DNS sunucusu yanıtı alma seçeneğini bekle
+- **buffer (arabellek)** IPv6 verilerini ayıklamak için konuma işaretçi
+- **buffer_size** IPv6 verilerini tutmak için arabellek boyutu
+- **wait_option** DNS Sunucusu yanıtını almak için bekleme seçeneği
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) IPv6 verileri başarıyla alındı
-- **NX_DNS_NO_SERVER** (0xA1) istemci sunucu listesi boş
-- **NX_DNS_QUERY_FAILED** (0xA3) GEÇERLI bir DNS yanıtı alınmadı
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi parametresi.
+- **NX_SUCCESS** (0x00) Başarıyla IPv6 verileri alındı
+- **NX_DNS_NO_SERVER** (0xA1) İstemci sunucusu listesi boş
+- **NX_DNS_QUERY_FAILED** (0xA3) Geçerli bir DNS yanıtı alınmamıştır
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
+- NX_DNS_PARAM_ERROR (0xA8) Geçersiz işaretçi olmayan parametre.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1127,7 +1127,7 @@ record 0: IP address: 2001:0db8:0000:f101: 0000: 0000: 0000:01003
 
 ## <a name="nx_dns_host_by_address_get"></a>nx_dns_host_by_address_get
 
-Bir IP adresinden ana bilgisayar adı ara
+IP adresine bir konak adı bakma
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1137,38 +1137,38 @@ UINT nx_dns_host_by_address_get(NX_DNS *dns_ptr, ULONG ip_address,
                                 ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS sunucusundan sağlanan IP adresinin ad çözümlemesini ister. Başarılı olursa, NULL ile sonlandırılmış ana bilgisayar adı *host_name_ptr* tarafından belirtilen dizede döndürülür. Bu, *nxd_dns_host_by_address_get* hizmeti için bir sarmalayıcı Işlevidir ve IPv6 adreslerini kabul etmez.
+Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS Sunucusundan sağlanan IP adresinin ad çözümlemesini ister. Başarılı olursa, null sonlandırılan konak adı, host_name_ptr *tarafından belirtilen dizede döndürülür.* Bu, bir sarmalayıcı işlevidir *nxd_dns_host_by_address_get* IPv6 adreslerini kabul etmez.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** Daha önce oluşturulan DNS örneğine yönelik işaretçi.
-- **ip_address** Bir ada çözülecek IP adresi
-- **host_name_ptr** Ana bilgisayar adı için hedef alan işaretçisi
-- **max_host_name_size** Ana bilgisayar adı için hedef alanın boyutu
-- **wait_option** Her DNS sorgusunun ve sorgusunun yeniden denendikten sonra, hizmetin bir DNS sunucusu yanıtı için Zamanlayıcı işaretlerini ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **dns_ptr** Daha önce oluşturulan DNS örneğinin işaretçisi.
+- **ip_address** Bir adı çözümlemek için IP adresi
+- **host_name_ptr** Konak adı için hedef alana işaretçi
+- **max_host_name_size** Konak adı için hedef alan boyutu
+- **wait_option** Her DNS sorgusu ve sorgu yeniden denemesi sonrasında hizmetin bir DNS sunucusu yanıtı için zamanlayıcıda ne kadar süre bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
   zaman aşımı değeri (0x00000001-0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
 
-  TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının bir DNS sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+  Bir TX_WAIT_FOREVER dns sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-  Sayısal bir değer (1-0xFFFFFFFE) seçilmesi, DNS çözümlemesi beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+  Sayısal bir değer (1-0xFFFFFFFE) seçmek, DNS çözümlemesi için beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı DNS çözümlemesi  
-- **NX_DNS_TIMEOUT** (0xA2), DNS mutex 'i alma sırasında zaman aşımına uğradı
-- **NX_DNS_NO_SERVER** (0xA1) DNS sunucusu adresi belirtilmedi
-- **NX_DNS_QUERY_FAILED** (0xA3) sorguya yanıt almadı
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null giriş adresi
-- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) dizin noktaları geçersiz adres türüne (örn. IPv6)
-- **NX_DNS_PARAM_ERROR** (0Xa8) geçersiz işaretçi girişi
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0xb3) IPv6 devre dışı olarak kayıt işlenemiyor
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) Başarılı DNS çözümlemesi  
+- **NX_DNS_TIMEOUT** (0xA2) DNS mutex'i alma zamanlandı
+- **NX_DNS_NO_SERVER** (0xA1) Dns Sunucusu adresi belirtilmedi
+- **NX_DNS_QUERY_FAILED** (0xA3) Sorguya yanıt yok
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Null giriş adresi
+- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) Dizin geçersiz adres türüne işaret ediyor (örn. IPv6)
+- **NX_DNS_PARAM_ERROR** (0xA8) İşaretçi olmayan giriş geçersiz
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) IPv6 devre dışı bırakılmış kayıt iş olamaz
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1188,7 +1188,7 @@ status =  nx_dns_host_by_address_get(&my_dns, IP_ADDRESS(192.2.2.10),
 
 ## <a name="nxd_dns_host_by_address_get"></a>nxd_dns_host_by_address_get
 
-IP adresinden bir ana bilgisayar adı ara
+IP adresine bir ana bilgisayar adı bakma
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1199,37 +1199,37 @@ UINT nxd_dns_host_by_address_get(NX_DNS *dns_ptr,
                                  ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS sunucusundan *ip_address* giriş bağımsız değişkeninde IPv6 veya IPv4 adresinin ad çözümlemesini ister. Başarılı olursa, NULL ile sonlandırılmış ana bilgisayar adı *host_name_ptr* tarafından belirtilen dizede döndürülür.
+Bu hizmet, uygulama tarafından daha önce belirtilen bir veya  daha fazla DNS Sunucusunun ip_address bağımsız değişkende IPv6 veya IPv4 adresinin ad çözümlemesini ister. Başarılı olursa, null sonlandırılan konak adı, host_name_ptr *tarafından belirtilen dizede döndürülür.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** Daha önce oluşturulan DNS örneğine yönelik işaretçi.
-- **ip_address** Bir ada çözülecek IP adresi
-- **host_name_ptr** Ana bilgisayar adı için hedef alan işaretçisi
-- **max_host_name_size** Ana bilgisayar adı için hedef alanın boyutu
-- **wait_option** Her DNS sorgusunun ve sorgusunun yeniden denendikten sonra, hizmetin bir DNS sunucusu yanıtı için Zamanlayıcı işaretlerini ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **dns_ptr** Daha önce oluşturulan DNS örneğinin işaretçisi.
+- **ip_address** Bir adı çözümlemek için IP adresi
+- **host_name_ptr** Konak adı için hedef alana işaretçi
+- **max_host_name_size** Konak adı için hedef alan boyutu
+- **wait_option** Her DNS sorgusu ve sorgu yeniden denemesi sonrasında hizmetin bir DNS sunucusu yanıtı için zamanlayıcıda ne kadar süre bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-  zaman aşımı değeri (0x00000001-0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
+  zaman aşımı değeri (0x00000001 ile 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
 
-  TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının bir DNS sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+  Bir TX_WAIT_FOREVER dns sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-  Sayısal bir değer (1-0xFFFFFFFE) seçilmesi, DNS çözümlemesi beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+  Sayısal bir değer (1-0xFFFFFFFE) seçmek, DNS çözümlemesi için beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı DNS çözümlemesi  
-- **NX_DNS_TIMEOUT** (0xA2), DNS mutex 'i alma sırasında zaman aşımına uğradı
-- **NX_DNS_NO_SERVER** (0xA1) DNS sunucusu adresi belirtilmedi
-- **NX_DNS_QUERY_FAILED** (0xA3) sorguya yanıt almadı
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null giriş adresi
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0xb3) IPv6 devre dışı olarak kayıt işlenemiyor
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) Başarılı DNS çözümlemesi  
+- **NX_DNS_TIMEOUT** (0xA2) DNS mutex'i alma zamanlandı
+- **NX_DNS_NO_SERVER** (0xA1) Dns Sunucusu adresi belirtilmedi
+- **NX_DNS_QUERY_FAILED** (0xA3) Sorguya yanıt yok
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Null giriş adresi
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) IPv6 devre dışı bırakılmış kayıt iş olamaz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
+- NX_DNS_PARAM_ERROR (0xA8) İşaretçi olmayan giriş geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1271,7 +1271,7 @@ else
 
 ## <a name="nx_dns_host_by_name_get"></a>nx_dns_host_by_name_get
 
-Ana bilgisayar adından bir IP adresi ara
+Ana bilgisayar adını kullanarak bir IP adresine bakma
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1279,33 +1279,33 @@ UINT nx_dns_host_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name,
                              ULONG *host_address_ptr, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS sunucusundan sağlanan adın ad çözümlemesini ister. Başarılı olursa, ilişkili IP adresi host_address_ptr tarafından işaret edilen hedefte döndürülür. Bu, *nxd_dns_host_by_name_get* hizmeti için bir sarmalayıcı Işlevidir ve IPv4 adresi girişi ile sınırlıdır.
+Bu hizmet, uygulama tarafından önceden belirtilen bir veya daha fazla DNS Sunucusundan sağlanan adın ad çözümlemesi ister. Başarılı olursa, ilişkili IP adresi hedefte, ip adresi tarafından host_address_ptr. Bu, nxd_dns_host_by_name_get *hizmeti için bir sarmalayıcı* işlevidir ve IPv4 adres girişiyle sınırlıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** Daha önce oluşturulan DNS örneğine yönelik işaretçi.
+- **dns_ptr** Daha önce oluşturulan DNS örneğinin işaretçisi.
 - **host_name** Ana bilgisayar adı işaretçisi
-- **host_address_ptr** DNS sunucusu IP adresi döndürüldü
-- **wait_option** Hizmetin DNS çözümlemesi için bekleyeceği süreyi tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **host_address_ptr** DNS Sunucusu IP adresi döndürüldü
+- **wait_option** Hizmetin DNS çözümlemesi için ne kadar süre bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-  zaman aşımı değeri (0x00000001-0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
+  zaman aşımı değeri (0x00000001 ile 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)
 
-  TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının bir DNS sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+  Bir TX_WAIT_FOREVER dns sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-  Sayısal bir değer (1-0xFFFFFFFE) seçilmesi, DNS çözümlemesi beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+  Sayısal bir değer (1-0xFFFFFFFE) seçmek, DNS çözümlemesi için beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı DNS çözümlemesi.
-- **NX_DNS_NO_SERVER** (0xA1) DNS sunucusu adresi belirtilmedi
-- **NX_DNS_QUERY_FAILED** (0xA3) sorguya yanıt almadı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi girişi
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) Başarılı DNS çözümlemesi.
+- **NX_DNS_NO_SERVER** (0xA1) Dns Sunucusu adresi belirtilmedi
+- **NX_DNS_QUERY_FAILED** (0xA3) Sorguya yanıt yok
+- NX_DNS_PARAM_ERROR (0xA8) İşaretçi olmayan giriş geçersiz
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1345,7 +1345,7 @@ IP address: 192.2.2.10
 
 ## <a name="nxd_dns_host_by_name_get"></a>nxd_dns_host_by_name_get
 
-Ana bilgisayar adından bir IP adresi ara
+Ana bilgisayar adlarından bir IP adresi arama
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1354,37 +1354,37 @@ UINT nxd_dns_host_by_name_get(NX_DNS *dns_ptr, ULONG *host_name,
                               ULONG wait_option, UINT lookup_type);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS sunucusundan sağlanan IP adresinin ad çözümlemesini ister. Başarılı olursa, ilişkili IP adresi *host_address_ptr* tarafından işaret edilen bir NXD_ADDRESS döndürülür. Çağıran lookup_type girişi özel olarak NX_IP_VERSION_V6 olarak ayarladığında, bu hizmet bir ana bilgisayar IPv6 adresi (AAAA kaydı) için sorgu gönderir. Çağıran lookup_type girişi özel olarak NX_IP_VERSION_V4 olarak ayarladığında, bu hizmet bir ana bilgisayar IPv4 adresi (bir kayıt) için sorgu gönderir.
+Bu hizmet, uygulama tarafından daha önce belirtilen bir veya daha fazla DNS Sunucusundan sağlanan IP adresinin ad çözümlemesini ister. Başarılı olursa, ilişkili IP adresi NXD_ADDRESS tarafından işaret *host_address_ptr.* Çağıranın özel olarak lookup_type giriş NX_IP_VERSION_V6, bu hizmet bir konak IPv6 adresi (AAAA kaydı) için sorgu gönderir. Çağıranın özel olarak lookup_type giriş NX_IP_VERSION_V4, bu hizmet bir konak IPv4 adresi (A kaydı) için sorgu gönderir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** Daha önce oluşturulan DNS Istemci örneğine yönelik işaretçi.
-- **host_name** IP adresi bulmak için ana bilgisayar adı işaretçisi
-- **host_address_ptr** IP adresini içeren NXD_ADDRESS hedefi işaretçisi
-- **wait_option** Hizmetin her sorgu iletimi ve yeniden aktarım için DNS sunucusu yanıtı için Zamanlayıcı işaretlerini ne kadar bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **dns_ptr** Daha önce oluşturulan DNS İstemcisi örneğinin işaretçisi.
+- **host_name** IP adresini bulmak için ana bilgisayar adı işaretçisi
+- **host_address_ptr** IP adresini içeren NXD_ADDRESS hedef işaretçisi
+- **wait_option** Hizmetin her sorgu iletimi ve yeniden iletim için DNS Sunucusu yanıtı için zamanlayıcıda ne kadar süre bekleyeceğini tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 
-  zaman aşımı değeri (0x00000001-0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
+  zaman aşımı değeri (0x00000001 ile 0xFFFFFFFE) TX_WAIT_FOREVER (0xFFFFFFFF)  
 
-  TX_WAIT_FOREVER seçildiğinde çağıran iş parçacığının bir DNS sunucusu isteğe yanıt verene kadar süresiz olarak askıda kalmasına neden olur.
+  Bir TX_WAIT_FOREVER dns sunucusu itene yanıt verene kadar çağrıyı çağıran iş parçacığının süresiz olarak askıya alınmasına neden olur.
 
-  Sayısal bir değer (1-0xFFFFFFFE) seçilmesi, DNS çözümlemesi beklenirken askıya alınması için en fazla Zamanlayıcı onay işareti sayısını belirtir.
+  Sayısal bir değer (1-0xFFFFFFFE) seçmek, DNS çözümlemesi için beklerken askıya alınan süreölçer işaretlerinin maksimum sayısını belirtir.
 
-- **lookup_type** Arama türünü belirtin (bir vs AAAA).
+- **lookup_type** Arama türünü (A ve AAAA) belirt.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı DNS çözümlemesi.
-- **NX_DNS_NO_SERVER** (0xA1) DNS sunucusu adresi belirtilmedi
-- **NX_DNS_QUERY_FAILED** (0xA3) sorguya yanıt almadı
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null giriş adresi
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0xb3) IPv6 devre dışı olarak kayıt işlenemiyor
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
-- NX_DNS_PARAM_ERROR (0xA8) geçersiz işaretçi girişi
+- **NX_SUCCESS** (0x00) Başarılı DNS çözümlemesi.
+- **NX_DNS_NO_SERVER** (0xA1) Dns Sunucusu adresi belirtilmedi
+- **NX_DNS_QUERY_FAILED** (0xA3) Sorguya yanıt yok
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Null giriş adresi
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) IPv6 devre dışı bırakılmış kayıt iş olamaz
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
+- NX_DNS_PARAM_ERROR (0xA8) İşaretçi olmayan giriş geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1427,7 +1427,7 @@ Test AAAA:
 IP address: 2607:f8b0:4007:800:0:0:0:1008
 ```
 
-Bu zaman hizmetini kullanmanın başka bir örneği olan bu kez IPv4 adreslerini ve kayıt türlerini kullanarak aşağıda gösterilmektedir:
+Bu kez IPv4 adresleri ve A kayıt türleri kullanan bu zaman hizmetini kullanmanın başka bir örneği aşağıda gösterilmiştir:
 ```C
 /* Create a query to obtain the IPv4 address for the host “www.my_example.com”. */
 status =  nxd_dns_host_by_name_get(&my_dns, “www.my_example.com”, &ip_address, 4000, 
@@ -1461,7 +1461,7 @@ IP address: 192.2.2.10
 
 ## <a name="nx_dns_host_text_get"></a>nx_dns_host_text_get
 
-Giriş etki alanı adı için metin dizesini arayın
+Giriş etki alanı adı için metin dizesini arama
 
 ### <a name="prototype"></a>Prototype
 ```C
@@ -1470,21 +1470,21 @@ UINT nx_dns_host_text_get(NX_DNS *dns_ptr, UCHAR *host_name,
                           UINT buffer_size, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, rastgele dize verileri elde etmek için belirtilen etki alanı adı ve arabellekle TXT türünde bir sorgu gönderir.
+Bu hizmet, rastgele dize verilerini almak için belirtilen etki alanı adına ve arabelleğe sahip TXT türünde bir sorgu gönderir.
 
-DNS Istemcisi, DNS sunucusu yanıtındaki TXT kaydındaki metin dizesini *record_buffer* bellek konumuna kopyalar. 
+DNS İstemcisi, DNS Sunucusu yanıtını TXT kaydında yer alan metin dizesini record_buffer *kopyalar.* 
 
 > [!NOTE]
-> Record_buffer verileri almak için 4 baytlık hizalı olması gerekmez.
+> Verilerin record_buffer için verilerin 4 bayta hizalanmasına gerek yok.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dns_ptr** DNS Istemcisi işaretçisi.  
-- **host_name** Arama yapılacak konağın adı işaretçisi
-- **record_buffer** TXT verilerinin ayıklanacağı konum işaretçisi
-- **Buffer_size** TXT verilerini tutan arabelleğin boyutu
+- **dns_ptr** DNS İstemcisi işaretçisi.  
+- **host_name** Aranan ana bilgisayar adının işaretçisi
+- **record_buffer** TXT verilerini ayıklamak için konum işaretçisi
+- **buffer_size** TXT verilerini tutmak için arabellek boyutu
 - **wait_option** DNS sunucusu yanıtı alma seçeneğini bekle
 
 ### <a name="return-values"></a>Dönüş Değerleri
@@ -1541,7 +1541,7 @@ DNS Istemcisi paket havuzunu ayarlama
 ```C
 UINT nx_dns_packet_pool_set(NX_DNS *dns_ptr, NX_PACKET_POOL *pool_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulmuş bir paket havuzunu DNS Istemcisi paket havuzu olarak ayarlar. DNS Istemcisi, DNS sorguları göndermek için bu paket havuzunu kullanır, bu nedenle paket yükü, Ethernet, IP ve UDP üst bilgilerini içeren ve *nxd_dns. h* içinde tanımlanan NX_DNS_PACKET_PAYLOAD daha az olmamalıdır. 
 
@@ -1595,7 +1595,7 @@ DNS sunucusu IP adresi ekle
 ```C
 UINT nx_dns_server_add(NX_DNS *dns_ptr, ULONG server_address);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sunucu listesine bir IPv4 DNS sunucusu ekler.
 
@@ -1635,7 +1635,7 @@ Istemci listesine DNS sunucusu Ekle
 ```C
 UINT nxd_dns_server_add(NX_DNS *dns_ptr, NXD_ADDRESS *server_address);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, DNS sunucusunun IP adresini DNS Istemci sunucusu listesine ekler. Server_address bir IPv4 veya IPv6 adresi olabilir. Istemci, IPv4 adresi veya IPv6 adresiyle aynı sunucuya erişebiliyorsa, sunucu listesine her iki IP adresini de girdi olarak eklemesi gerekir.
 
@@ -1687,7 +1687,7 @@ UINT nx_dns_server_get(NX_DNS *dns_ptr, UINT index,
                         ULONG *dns_server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen dizindeki sunucu listesinden IPv4 DNS sunucusu adresini döndürür. 
 
@@ -1737,32 +1737,32 @@ UINT nxd_dns_server_get(NX_DNS *dns_ptr, UINT index,
                         NXD_ADDRESS *dns_server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen dizindeki sunucu listesinden DNS sunucusu IP adresini döndürür. 
+Bu hizmet, belirtilen dizinde sunucu listesinden DNS Sunucusu IP adresini döndürür. 
 
 > [!NOTE]
-> Dizin sıfır tabanlıdır. Giriş dizini DNS Istemci listesinin boyutunu aşarsa veya belirtilen dizinde null bir adres bulunursa bir hata döndürülür. Sunucu listesindeki DNS sunucularının sayısını almak için öncelikle *nx_dns_get_serverlist_size* hizmeti çağrılabilir.
+> Dizin sıfır tabanlıdır. Giriş dizini DNS İstemcisi listesinin boyutunu aşarsa veya belirtilen dizinde null adres bulunursa bir hata döndürülür. Sunucu *nx_dns_get_serverlist_size* dns sunucularının sayısını almak için ilk olarak sunucu hizmeti çağrıl olabilir.
 
-Bu hizmet, IPv4 ve IPv6 adreslerini destekler.
+Bu hizmet IPv4 ve IPv6 adreslerini destekler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dns_ptr** DNS denetim bloğu işaretçisi  
-- **Dizin** DNS Istemcisinin sunucu listesini dizine ekleyin
-- **dns_server_address** DNS sunucusunun IP adresi işaretçisi
+- **dizin** DNS İstemcisi'nin sunucu listesinde dizin oluşturma
+- **dns_server_address** DNS Sunucusunun IP adresine işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sunucu IP adresini başarıyla döndürdü
-- Boş yuvaya **NX_DNS_SERVER_NOT_FOUND** (0xA9) dizin noktaları
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null sunucu adresine ait dizin noktaları
-- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) dizin noktaları geçersiz adres türüne (örn. IPv6)
-- **NX_DNS_PARAM_ERROR** (0Xa8) geçersiz işaretçi girişi
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) Başarılı bir şekilde döndürülen sunucu IP adresi
+- **NX_DNS_SERVER_NOT_FOUND** (0xA9) Dizin boş yuvaya işaret ediyor
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Dizin null sunucu adresine işaret ediyor
+- **NX_DNS_INVALID_ADDRESS_TYPE** (0xB2) Dizin geçersiz adres türüne işaret ediyor (örn. IPv6)
+- **NX_DNS_PARAM_ERROR** (0xA8) İşaretçi olmayan giriş geçersiz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1779,31 +1779,31 @@ status =  nxd_dns_server_get(&my_dns, 5, &my_server_addres);
 
 ## <a name="nx_dns_server_remove"></a>nx_dns_server_remove
 
-Bir IPv4 DNS sunucusunu Istemci listesinden kaldır
+İstemci listesinden IPv4 DNS Sunucusu kaldırma
 
 ### <a name="prototype"></a>Prototype
 ```C
 UINT nx_dns_server_remove(NX_DNS *dns_ptr, ULONG server_address);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir IPv4 DNS sunucusunu Istemci listesinden kaldırır. *Nxd_dns_server_remove* için bir sarmalayıcı işlevidir.
+Bu hizmet, bir IPv4 DNS Sunucusunu İstemci listesinden kaldırır. Bu, işlevi için bir sarmalayıcı *nxd_dns_server_remove.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dns_ptr** DNS denetim bloğu işaretçisi.
-- **server_address** DNS sunucusunun IP adresi.
+- **server_address** DNS Sunucusunun IP adresi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucusu başarıyla kaldırıldı
-- **NX_DNS_SERVER_NOT_FOUND** (0xA9) sunucu istemci listesinde değil
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null sunucu adresi girişi
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0xb3) IPv6 devre dışı olarak kayıt işlenemiyor
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) DNS Sunucusu başarıyla kaldırıldı
+- **NX_DNS_SERVER_NOT_FOUND** (0xA9) sunucusu İstemci listesinde değil
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Null sunucu adresi girişi
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) IPv6 devre dışı bırakılmış kayıt iş olamaz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1818,32 +1818,32 @@ status =  nx_dns_server_remove(&my_dns, IP_ADDRESS(202,2,2,13));
 
 ## <a name="nxd_dns_server_remove"></a>nxd_dns_server_remove
 
-Istemci listesinden bir DNS sunucusunu kaldırma
+İstemci listesinden bir DNS Sunucusu kaldırma
 
 ### <a name="prototype"></a>Prototype
 ```C
 UINT nxd_dns_server_remove(NX_DNS *dns_ptr, NXD_ADDRESS *server_address);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP adresinin bir DNS sunucusunu Istemci listesinden kaldırır. Giriş IP adresi hem IPv4 hem de IPv6 adreslerini kabul eder. Sunucu kaldırıldıktan sonra, kalan sunucular aşağı doğru bir dizin taşır ve bu da yuvaları doldurur.
+Bu hizmet, belirtilen IP adresinin DNS Sunucusunu İstemci listesinden kaldırır. Giriş IP adresi hem IPv4 hem de IPv6 adreslerini kabul eder. Sunucu kaldırıldıktan sonra, kalan sunucular boş yuvayı doldurmak için listede bir dizin aşağı doğru ilerler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dns_ptr** DNS denetim bloğu işaretçisi.
-- **server_address** DNS sunucusu işaretçisi sunucu IP adresini içeren verileri NXD_ADDRESS.
+- **server_address** DNS Sunucusu işaretçisi NXD_ADDRESS IP adresi içeren verileri içerir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucusu başarıyla kaldırıldı
-- **NX_DNS_SERVER_NOT_FOUND** (0xA9) sunucu istemci listesinde değil
-- **NX_DNS_BAD_ADDRESS_ERROR** (0xa4) null sunucu adresi girişi
-- **NX_DNS_IPV6_NOT_SUPPORTED** (0xb3) IPv6 devre dışı olarak kayıt işlenemiyor
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
-- NX_DNS_INVALID_ADDRESS_TYPE (0xB2) dizin noktaları geçersiz adres türüne (örn. IPv6)
+- **NX_SUCCESS** (0x00) DNS Sunucusu başarıyla kaldırıldı
+- **NX_DNS_SERVER_NOT_FOUND** (0xA9) sunucusu İstemci listesinde değil
+- **NX_DNS_BAD_ADDRESS_ERROR** (0xA4) Null sunucu adresi girişi
+- **NX_DNS_IPV6_NOT_SUPPORTED** (0xB3) IPv6 devre dışı bırakılmış kayıt iş olamaz
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
+- NX_DNS_INVALID_ADDRESS_TYPE (0xB2) Dizin geçersiz adres türüne işaret ediyor (örneğin, IPv6)
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1866,15 +1866,15 @@ status =  nxd_dns_server_remove(&my_dns,&server_ADDRESS);
 
 ## <a name="nx_dns_server_remove_all"></a>nx_dns_server_remove_all
 
-Tüm DNS sunucularını Istemci listesinden kaldır
+İstemci listesinden tüm DNS Sunucularını kaldırma
 
 ### <a name="prototype"></a>Prototype
 ```C
 UINT nx_dns_server_remove_all(NX_DNS *dns_ptr);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, tüm DNS sunucularını Istemci listesinden kaldırır.
+Bu hizmet, tüm DNS Sunucularını İstemci listesinden kaldırır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -1882,12 +1882,12 @@ Bu hizmet, tüm DNS sunucularını Istemci listesinden kaldırır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucuları başarıyla kaldırıldı
-- **NX_DNS_ERROR** (0xa0) koruma mutex 'i alınamıyor
-- NX_PTR_ERROR (0x07) geçersiz IP veya DNS işaretçisi.
-- NX_CALLER_ERROR (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) DNS Sunucuları başarıyla kaldırıldı
+- **NX_DNS_ERROR** (0xA0) Koruma mutex'i alınamıyor
+- NX_PTR_ERROR (0x07) Geçersiz IP veya DNS işaretçisi.
+- NX_CALLER_ERROR (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 

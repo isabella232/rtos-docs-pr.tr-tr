@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: cde19a0e84f369f1199ea4027fa09e6bd038e837
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: faf9d84b8b2bce12a99a72198a396b121055a8eef975349f53833a180092e0a3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825907"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797543"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-mqtt-client"></a>Bölüm 2-Azure RTOS NetX Duo MQTT istemcisini yükleme ve kullanma
 
@@ -47,6 +47,7 @@ NetX Duo için MQTT istemcisi oluşturmaya yönelik birkaç yapılandırma seçe
 Bu sembolün tanımlanması için NetX güvenli TLS modülünün yüklenmesi gerekir.
 *NX_SECURE_ENABLE* varsayılan olarak etkinleştirilmemiştir. * *
 - **NXD_MQTT_REQUIRE_TLS**: tanımlı, uygulamanın MQTT aracısına bağlanmak için TLS kullanması gerekir. Bu özellik için *NX_SECURE_ENABLE* tanımlanmalıdır. Varsayılan olarak, bu simge tanımlı değildir.
+- **NXD_MQTT_MAXIMUM_TRANSMIT_QUEUE_DEPTH**: TANıMLı, MQTT iletme sırası derinliği etkin. Pozitif tamsayı olmalıdır.
 - **NXD_MQTT_MAX_TOPIC_NAME_LENGTH**: kullanım dışı.
 - **NXD_MQTT_MAX_MESSAGE_LENGTH**: kullanım dışı.
 - **NXD_MQTT_KEEPALIVE_TIMER_RATE**: threadx Zamanlayıcı işaretleri içinde MQTT Zamanlayıcı hızını tanımlar. Bu süreölçer, son MQTT denetimi iletisinin gönderilme zamanından sonraki süreyi izlemek için kullanılır ve canlı tutma süresi dolmadan önce bir MQTT PINGREQ iletisi gönderir. Bu süreölçer, istemci, etkin tut zamanlayıcı değeri kümesiyle aracıya bağlanırsa etkinleştirilir. Varsayılan değer, tek saniyelik bir Zamanlayıcı olan TX_TIMER_TICKS_PER_SECOND.

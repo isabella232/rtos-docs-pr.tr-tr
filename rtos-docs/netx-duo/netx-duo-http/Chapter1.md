@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/15/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 442149536ac6847808fbba183b96ac78832a82c0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 45f35f2c1bec142e10d29eedb6e5a88a8eb74771e5d4adf1d85b04a87ad59ab7
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825972"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796217"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-duo-http"></a>Bölüm 1-Azure RTOS NetX Duo HTTP 'ye giriş
 
@@ -43,7 +43,7 @@ HTTP protokolü, Web 'de içerik aktarmak için tasarlanmıştır. İstenen içe
 
 | Dahili numara | Anlamı |
 | --------- | ------- |
-| . htm (veya. html) | Köprü Metni Biçimlendirme Dili (HTML) |
+| .htm (veya .html) | Köprü Metni Biçimlendirme Dili (HTML) |
 | .txt | Düz ASCII metni |
 | .gif | İkili GIF resmi |
 | . XBM | İkili Xbit eşlem resmi |
@@ -91,32 +91,32 @@ Daha önce belirtildiği gibi, HTTP sunucusu, Istemci isteklerini alan iyi bilin
 2.  İstemci "**Get Resource http/1.0**" isteği gönderir (diğer üst bilgi bilgileriyle birlikte).
 3.  Sunucu "**http/1.0 200 Tamam**" iletisini, daha sonra kaynak içeriği (varsa) tarafından hemen izlenir.
 4.  Sunucu bir bağlantı kesmeyi gerçekleştiriyor.
-5.  İstemci bir bağlantı kesilmesi gerçekleştirir.
+5.  İstemci bağlantıyı keser.
 
-### <a name="http-put-request"></a>HTTP PUT Isteği:
+### <a name="http-put-request"></a>HTTP PUT İsteği:
 
-1.  İstemci, 80 numaralı sunucu bağlantı noktasına TCP Connect sorunları.
-2.  İstemci "**PUT Resource http/1.0**" isteği ve diğer başlık bilgilerini ve ardından kaynak içeriğini gönderir.
-3.  Sunucu, daha sonra kaynak içeriği tarafından izlenen ek bilgiler içeren bir "**http/1.0 200 Tamam**" iletisi oluşturur.
-4.  Sunucu bir bağlantı kesmeyi gerçekleştiriyor.
-5.  İstemci bir bağlantı kesilmesi gerçekleştirir.
+1.  İstemci, SUNUCU bağlantı noktası 80'e TCP bağlantısı verir.
+2.  İstemci diğer üst bilgi bilgileriyle birlikte " PUT kaynağı **HTTP/1.0**" isteğini ve ardından kaynak içeriğini gönderir.
+3.  Sunucu, ek bilgilerle birlikte hemen kaynak içeriğinin takip ettiği bir "**HTTP/1.0 200 Tamam"** iletisi derleme.
+4.  Sunucu bağlantıyı keser.
+5.  İstemci bağlantıyı keser.
 
 > [!NOTE]
->Daha önce bahsedildiği gibi, HTTP Istemcisi varsayılan bağlantı bağlantı noktasını 80 ' dan başka bir bağlantı noktasına değiştirerek istemcilere bağlanmak için alternatif bağlantı noktaları kullanan Web sunucularının *nx_http_client_set_connect_port* .
+>Daha önce belirtildiği gibi HTTP İstemcisi, istemcilere bağlanmak için alternatif  bağlantı noktaları kullanan web sunucularının nx_http_client_set_connect_port bağlantı noktasını kullanarak varsayılan bağlantı noktasını 80'den başka bir bağlantı noktasına değiştirebilir.
 
-## <a name="http-authentication"></a>HTTP kimlik doğrulaması
+## <a name="http-authentication"></a>HTTP Kimlik Doğrulaması
 
-HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web istekleri için gerekli değildir. Temel ve Özet gibi iki kimlik doğrulama özelliği vardır. Temel kimlik doğrulaması, birçok protokolde bulunan ad ve parola kimlik doğrulamasına eşdeğerdir. HTTP temel kimlik doğrulamasında ad ve parolalar, Base64 biçiminde birleştirilir ve kodlanır. Temel kimlik doğrulamasının ana dezavantajı, bu ad ve parolanın istekte openly olarak aktarılmasıdır. Bu, ad ve parolanın çalınabilmesini kolaylaştırır. Özet kimlik doğrulaması, istekte hiçbir şekilde adı ve parolayı ileterek bu sorunu giderir. Bunun yerine, ad, parola ve diğer bilgilerden 128 bitlik bir anahtar veya Özet türetmek için bir algoritma kullanılır. NetX HTTP sunucusu standart MD5 Özet algoritmasını destekler.
+HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web istekleri için gerekli değildir. Kimlik doğrulamasının iki çeşidi vardır: temel ve özet. Temel kimlik doğrulaması, birçok protokolde bulunan ad ve parola kimlik doğrulaması ile eşdeğerdir. HTTP temel kimlik doğrulamasında ad ve parolalar base64 biçiminde bir olur ve kodlanmış olur. Temel kimlik doğrulamasının temel dezavantajı, istekte açık bir şekilde iletilen ad ve paroladır. Bu, ad ve parolanın çalınmalarını biraz kolaylaştırır. Özet kimlik doğrulaması, istekte adı ve parolayı hiçbir zaman ileterek bu sorunu çözmektedir. Bunun yerine, ad, parola ve diğer bilgilerden 128 bitlik bir anahtar veya özet türetmek için bir algoritma kullanılır. NetX HTTP Sunucusu standart MD5 özet algoritmasını destekler.
 
-Kimlik doğrulaması ne zaman gerekir? Temel olarak, HTTP sunucusu, istenen bir kaynağın kimlik doğrulaması gerektirip gerektirmediğini belirler. Kimlik doğrulaması gerekliyse ve Istemci isteği uygun kimlik doğrulamasını içermiyorsa, gerekli kimlik doğrulama türüne sahip "HTTP/1.0 401 Yetkisiz" yanıtı Istemciye gönderilir. Daha sonra Istemci, doğru kimlik doğrulamasıyla yeni bir istek oluşturacak şekilde beklenir.
+Kimlik doğrulaması ne zaman gereklidir? Temelde HTTP Sunucusu istenen bir kaynağın kimlik doğrulaması gerektir olup olduğuna karar verir. Kimlik doğrulaması gerekli ise ve İstemci isteği doğru kimlik doğrulamasını içermezse, gerekli kimlik doğrulaması türüne sahip bir "HTTP/1.0 401 Yetkisiz" yanıtı İstemciye gönderilir. İstemcinin daha sonra uygun kimlik doğrulamasıyla yeni bir istek oluşturması beklenir.
 
-## <a name="http-authentication-callback"></a>HTTP kimlik doğrulaması geri araması
+## <a name="http-authentication-callback"></a>HTTP Kimlik Doğrulaması Geri Çağırma
 
-Daha önce belirtildiği gibi, HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web aktarımları için gerekli değildir. Ayrıca, kimlik doğrulama genellikle kaynağa bağımlıdır. Sunucu üzerindeki bazı kaynaklara erişim için kimlik doğrulaması gerekir, diğerleri desteklemez. NetX HTTP sunucu paketi, uygulamanın, her HTTP Istemci isteğini işlemenin başlangıcında çağrılan bir kimlik doğrulama geri çağırma yordamı ( *nx_http_server_create* çağrısı aracılığıyla) belirtmesini sağlar.
+Daha önce belirtildiği gibi HTTP kimlik doğrulaması isteğe bağlıdır ve tüm Web aktarımları için gerekli değildir. Ayrıca kimlik doğrulaması genellikle kaynağa bağımlıdır. Sunucu'da bazı kaynaklara erişim kimlik doğrulaması gerektirirken diğerleri kimlik doğrulaması gerektirmez. NetX HTTP Server paketi, uygulamanın her HTTP İstemcisi isteğini *işlemenin* başında çağrılır bir kimlik doğrulama geri çağırma yordamı (nx_http_server_create çağrısı aracılığıyla) belirtmesini sağlar.
 
-Geri arama yordamı, NetX HTTP sunucusunu kaynakla ilişkili Kullanıcı adı, parola ve bölge dizeleri sağlar ve gereken kimlik doğrulaması türünü döndürür. Kaynak için kimlik doğrulaması gerekli değilse, kimlik doğrulama geri araması **NX_HTTP_DONT_AUTHENTICATE** değerini döndürmelidir. Aksi halde, belirtilen kaynak için temel kimlik doğrulaması gerekliyse, yordam **NX_HTTP_BASIC_AUTHENTICATE** döndürmelidir. Son olarak, MD5 Özet kimlik doğrulaması gerekliyse, geri arama yordamı **NX_HTTP_DIGEST_AUTHENTICATE** döndürmelidir. HTTP sunucusu tarafından sunulan herhangi bir kaynak için kimlik doğrulaması gerekmiyorsa, geri çağırma gerekmez ve HTTP sunucusu oluşturma çağrısına boş bir işaretçi sağlanması gerekir.
+Geri çağırma yordamı, NetX HTTP Sunucusuna kaynakla ilişkili kullanıcı adı, parola ve alan dizelerini sağlar ve gerekli kimlik doğrulama türünü geri gönderir. Kaynak için kimlik doğrulaması gerekli yoksa, kimlik doğrulaması geri çağırma değeri olarak **NX_HTTP_DONT_AUTHENTICATE.** Aksi takdirde, belirtilen kaynak için temel kimlik doğrulaması gerekli ise, yordam **NX_HTTP_BASIC_AUTHENTICATE.** Son olarak, MD5 özet kimlik doğrulaması gerekli ise, geri çağırma yordamı **NX_HTTP_DIGEST_AUTHENTICATE.** HTTP Sunucusu tarafından sağlanan herhangi bir kaynak için kimlik doğrulaması gerekmiyorsa, geri çağırma gerekmez ve HTTP Sunucusu oluşturma çağrısına NULL işaretçisi sağlanmalıdır.
 
-Uygulama kimlik doğrulaması geri arama yordamının biçimi çok basittir ve aşağıda tanımlanmıştır:
+Uygulama kimlik doğrulaması geri çağırma yordamının biçimi çok basittir ve aşağıda tanımlanmıştır:
 
 ```c
 UINT nx_http_server_authentication_check(NX_HTTP_SERVER *server_ptr,
@@ -128,19 +128,19 @@ Giriş parametreleri aşağıdaki gibi tanımlanır:
 
 | Parametre | Anlamı |
 | --------- | --------|
-| *request_type* | HTTP Istemci isteğini belirtir, geçerli istekler şu şekilde tanımlanır: <br/> **NX_HTTP_SERVER_GET_REQUEST**<br/>**NX_HTTP_SERVER_POST_REQUEST**<br/>**NX_HTTP_SERVER_HEAD_REQUEST**<br/>**NX_HTTP_SERVER_PUT_REQUEST**<br/>**NX_HTTP_SERVER_DELETE_REQUEST** |
-| *Kaynak* | Belirli bir kaynak istendi. |
-| *ada* | Gerekli Kullanıcı adına işaretçinin hedefi. |
-| *parola* | Gerekli parolaya yönelik işaretçinin hedefi. |
-| *bölgesindeki* | Bu kimlik doğrulaması için bölge işaretçisinin hedefi. |
+| *request_type* | HTTP İstemcisi isteğini belirtir, geçerli istekler şu şekilde tanımlanır: <br/> **NX_HTTP_SERVER_GET_REQUEST**<br/>**NX_HTTP_SERVER_POST_REQUEST**<br/>**NX_HTTP_SERVER_HEAD_REQUEST**<br/>**NX_HTTP_SERVER_PUT_REQUEST**<br/>**NX_HTTP_SERVER_DELETE_REQUEST** |
+| *kaynak* | Belirli bir kaynak isteği. |
+| *Adı* | Gerekli kullanıcı adı işaretçisi için hedef. |
+| *parola* | Gerekli parolanın işaretçisi için hedef. |
+| *Bölge* | Bu kimlik doğrulaması için alelade işaretçinin hedefi. |
 
-Kimlik doğrulama yordamının dönüş değeri, kimlik doğrulamasının gerekli olup olmadığını belirtir. ```name, password, and realm```**NX_HTTP_DONT_AUTHENTICATE** , kimlik doğrulama geri çağırma yordamı tarafından döndürülürse, işaretçiler kullanılmaz. Aksi halde, HTTP sunucu geliştiricisi, *nxd_http_server. h* içinde tanımlanan **NX_HTTP_MAX_USERNAME** ve **NX_HTTP_MAX_PASSWORD** kimlik doğrulama geri aramasında belirtilen Kullanıcı adı ve parola için yeterince büyük olduğundan emin olmalıdır. Bunların ikisi de varsayılan olarak 20 karakter olacak şekilde ayarlanır.
+Kimlik doğrulama yordamının dönüş değeri, kimlik doğrulamasının gerekli olup olduğunu belirtir. ```name, password, and realm``` kimlik doğrulama geri çağırma **yordamı NX_HTTP_DONT_AUTHENTICATE** işaretçiler kullanılamaz. Aksi takdirde HTTP sunucusu **geliştiricisi, nxd_http_server.h'de** tanımlanan NX_HTTP_MAX_USERNAME ve *NX_HTTP_MAX_PASSWORD'ların* kimlik doğrulama geri çağırmada belirtilen kullanıcı adı ve parola için yeterince büyük olduğundan emin olması gerekir.  Bunların ikisi de varsayılan olarak 20 karakter boyutundadır.
 
-## <a name="http-invalid-usernamepassword-callback"></a>HTTP geçersiz Kullanıcı adı/parola geri çağırması
+## <a name="http-invalid-usernamepassword-callback"></a>HTTP Geçersiz Kullanıcı Adı/Parola Geri Çağırma
 
-HTTP sunucusu bir Istemci isteğinde geçersiz bir Kullanıcı adı ve parola birleşimi alırsa NetX HTTP sunucusunda isteğe bağlı geçersiz Kullanıcı adı/parola geri çağırması çağrılır. HTTP sunucusu uygulaması HTTP sunucusu ile bir geri çağırma kaydederse, *nx_http_server_get_process*, *nx_http_server_put_process* veya *nx_http_server_delete_process*' de temel veya Özet kimlik doğrulaması başarısız olursa çağrılacaktır.
+HTTP sunucusu bir İstemci isteğinde geçersiz kullanıcı adı ve parola birleşimi aldığında NetX HTTP Sunucusunda isteğe bağlı geçersiz kullanıcı adı/parola geri çağırma çağrılır. HTTP sunucusu uygulaması HTTP sunucusuna bir geri çağırma kaydettirilirse, temel veya özet kimlik doğrulaması nx_http_server_get_process , *nx_http_server_put_process* *veya* içinde başarısız olursa *nx_http_server_delete_process.*
 
-HTTP sunucusuyla bir geri çağırma kaydetmek için, NetX Duo HTTP sunucusunda aşağıdaki hizmet tanımlanmıştır.
+HTTP sunucusuna geri arama kaydetmek için NetX Duo HTTP Sunucusu'da aşağıdaki hizmet tanımlanmıştır.
 
 ```c
 UINT nx_http_server_invalid_userpassword_notify_set(
@@ -158,13 +158,13 @@ UINT nx_http_server_invalid_userpassword_notify_set(
  - **NX_HTTP_SERVER_PUT_REQUEST**
  - **NX_HTTP_SERVER_DELETE_REQUEST**
 
-## <a name="http-insert-gmt-date-header-callback"></a>HTTP ekleme GMT Tarih üst bilgisi geri araması
+## <a name="http-insert-gmt-date-header-callback"></a>HTTP Insert GMT Date Header Callback
 
-NetX Duo HTTP sunucusunda, yanıt iletilerinde bir tarih üst bilgisi eklemek için isteğe bağlı bir geri çağırma vardır. HTTP sunucusu bir put veya GET isteğine yanıt vermediğinde bu geri çağırma çağrılır
+NetX Duo HTTP Sunucusunda yanıt iletilerine tarih üst bilgisi eklemek için isteğe bağlı bir geri çağırma vardır. HTTP Sunucusu bir put veya get isteğine yanıt veriyorsa bu geri çağırma çağrılır
 
-NetX Duo HTTP sunucusunda, yanıt iletilerinde bir tarih üst bilgisi eklemek için isteğe bağlı bir geri çağırma vardır. HTTP sunucusu bir put veya GET isteğine yanıt vermediğinde bu geri çağırma çağrılır
+NetX Duo HTTP Sunucusunda yanıt iletilerine tarih üst bilgisi eklemek için isteğe bağlı bir geri çağırma vardır. HTTP Sunucusu bir put veya get isteğine yanıt veriyorsa bu geri çağırma çağrılır
 
-HTTP sunucusuna bir GMT Tarih geri çağırması kaydetmek için, NetX Duo HTTP sunucusunda aşağıdaki hizmet tanımlanmıştır.
+BIR GMT tarih geri aramasını HTTP sunucusuna kaydetmek için NetX Duo HTTP Sunucusunda aşağıdaki hizmet tanımlanır.
 
 ```c
 UINT  _nx_http_server_gmt_callback_set(
@@ -172,7 +172,7 @@ UINT  _nx_http_server_gmt_callback_set(
                     VOID (*gmt_get)(NX_HTTP_SERVER_DATE *date)
 ```
 
-NX_HTTP_SERVER_DATE veri türü aşağıdaki gibi tanımlanır:
+Veri NX_HTTP_SERVER_DATE türü aşağıdaki gibi tanımlanır:
 
 ```c
 typedef struct NX_HTTP_SERVER_DATE_STRUCT
@@ -187,11 +187,11 @@ typedef struct NX_HTTP_SERVER_DATE_STRUCT
 } NX_HTTP_SERVER_DATE;
 ```
 
-## <a name="http-cache-info-get-callback"></a>HTTP önbellek bilgileri geri çağırma al
+## <a name="http-cache-info-get-callback"></a>HTTP Önbellek Bilgileri Geri Çağırma Alma
 
-HTTP sunucusu, belirli bir kaynak için HTTP uygulamasından maksimum yaş ve Tarih istemek üzere bir geri çağırma işlemi içerir. Bu bilgiler, HTTP sunucusunun bir Istemci GET isteğine yanıt olarak tüm sayfayı gönderip göndermediğini tespit etmek için kullanılır. Istemci isteğindeki "değiştirilme sonrasında" veya alma önbelleği geri araması tarafından döndürülen "son değiştirilme" tarihi ile eşleşmiyorsa, sayfanın tamamı gönderilir.
+HTTP Sunucusunun belirli bir kaynak için HTTP uygulamasından en yüksek yaş ve tarihi talep etmek için bir geri çağırması vardır. Bu bilgiler, HTTP sunucusunun bir İstemci Get isteğine yanıt olarak sayfanın tamamını gönder olup olmadığını belirlemek için kullanılır. İstemci isteğinde "bu tarihten sonra değiştirildiyse" bulunamasa veya get önbelleği geri çağırma tarafından döndürülen "son değiştirme" tarihiyle eşlenemezse, sayfanın tamamı gönderilir.
 
-Geri aramayı HTTP sunucusuna kaydetmek için aşağıdaki hizmet tanımlanmıştır:
+Geri çağırmayı HTTP sunucusuna kaydetmek için aşağıdaki hizmet tanımlanır:
 
 ```c
 UINT  _nx_http_server_cache_info_callback_set(
@@ -200,9 +200,9 @@ UINT  _nx_http_server_cache_info_callback_set(
                                     (CHAR *, UINT *, NX_HTTP_SERVER_DATE *))
 ```
 
-## <a name="http-multipart-support"></a>HTTP çok parçalı desteği
+## <a name="http-multipart-support"></a>HTTP Çok Parçalı Desteği
 
-Çok amaçlı Internet posta uzantıları (MIME) başlangıçta SMTP protokolüne yöneliktir, ancak kullanımı HTTP 'ye yayılmıştır. MIME, iletilerin aynı ileti içinde karma ileti türlerini (ör. image/jpg ve metin/düz) içermesini sağlar. NetX Duo HTTP sunucusu, Istemciden MIME içeren HTTP iletilerindeki içerik türünü belirlemede hizmetler ekledi. HTTP çok parçalı desteğini etkinleştirmek ve bu hizmetleri kullanmak için **NX_HTTP_MULTIPART_ENABLE** yapılandırma seçeneğinin tanımlanması gerekir.
+Çok Amaçlı İnternet Posta Uzantıları (MIME) başlangıçta SMTP protokolü için tasarlanmıştır, ancak kullanımı HTTP'ye yayılmıştır. MIME, iletilerin aynı ileti içinde karışık ileti türleri (görüntü/jpg ve metin/düz gibi) içermesini sağlar. NetX Duo HTTP Sunucusu, İstemciden MIME içeren HTTP iletilerinden içerik türünü belirlemek için hizmetler ekledi. HTTP çok parçalı desteğini etkinleştirmek ve bu hizmetleri kullanmak için, NX_HTTP_MULTIPART_ENABLE **yapılandırma** seçeneği tanımlanmalıdır.
 
 ```c
 UINT  nx_http_server_get_entity_header(NX_HTTP_SERVER *server_ptr,
@@ -216,12 +216,12 @@ UINT  nx_http_server_get_entity_content(NX_HTTP_SERVER *server_ptr,
                                         ULONG *available_length)
 ```
 
-Bu hizmetlerin kullanımı hakkında daha fazla bilgi için, Bölüm 3 "HTTP hizmetlerinin açıklaması" bölümünde açıklamasına bakın.
+Bu hizmetlerin kullanımı hakkında daha fazla ayrıntı için 3. Bölüm "HTTP Hizmetlerinin Açıklaması" bölümünde açıklamalarına bakın.
 
-## <a name="http-multi-thread-support"></a>HTTP çoklu Iş parçacığı desteği
+## <a name="http-multi-thread-support"></a>HTTP Çoklu İş Parçacığı Desteği
 
-NetX HTTP Istemci Hizmetleri birden çok iş parçacığından aynı anda çağrılabilir. Ancak, belirli bir HTTP Istemci örneği için okuma veya yazma istekleri aynı iş parçacığından sırayla yapılmalıdır.
+NetX HTTP İstemcisi hizmetleri aynı anda birden çok iş parçacığından çağrılabilirsiniz. Ancak, belirli bir HTTP İstemcisi örneğine yönelik okuma veya yazma istekleri aynı iş parçacığından sırasıyla yapılmalı.
 
-## <a name="http-rfcs"></a>HTTP RFC 'Leri
+## <a name="http-rfcs"></a>HTTP RFC'leri
 
-NetX HTTP, RFC1945 "Hypertext Transfer Protocol/1.0, RFC 2581", RFC 1122 "Internet konakları için gereksinimler" ve ilgili RFC 'Ler ile uyumludur.
+NetX HTTP RFC1945 "Köprü Metni Aktarım Protokolü/1.0, RFC 2581 "TCP Tıkanıklığı Denetimi", RFC 1122 "İnternet Konakları için Gereksinimler" ve ilgili RFC'ler ile uyumludur.

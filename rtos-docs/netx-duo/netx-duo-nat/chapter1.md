@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/14/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3d01aa6f68e21ea82f65a59a19c4f5c7958a6b92
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 8639b87decd78f58a34fe6b8033a2427b560c872814abfdbbcb6057166412d0d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825870"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797474"
 ---
 # <a name="chapter-1---an-introduction-to-network-address-translation"></a>Bölüm 1-ağ adresi çevirisine giriş
 
@@ -144,6 +144,6 @@ Kısıtlamaları
 
 NetX Duo NAT uygulamasında, aşağıdaki RFC 'lerde sunulan bilgiler temel alınarak verilmiştir:
 
-- RFC 2663: IP ağ adresi çeviricisi (NAT) terimleri ve konuları
-- RFC 3022: geleneksel IP netowrk adres çeviricisi (geleneksel NAT)
-- RFC 4787: tek noktaya yayın UDP için ağ adresi çevirisi (NAT) davranış gereksinimleri
+- RFC 2663: ıp ağ adresi Çeviri (NAT) terimleri ve konuları
+- RFC 3022: geleneksel ıp netowrk Çeviri (geleneksel NAT)
+- RFC 4787: Tek Noktaya Yayın UDP için Ağ Adresi Çevirisi (NAT) Davranış Gereksinimleri

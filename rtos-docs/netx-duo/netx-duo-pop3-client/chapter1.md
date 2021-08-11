@@ -6,16 +6,16 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4d41da1e1e87e59c5c40674a58b288ac62ec8c78
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 0143b142a39bbda28ae20d41adf08119b8b2f8f99d510a456743b4f447802833
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825847"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116797237"
 ---
 # <a name="chapter-1---introduction-to-azure-rtos-netx-pop3"></a>Bölüm 1-Azure RTOS NetX POP3 'e giriş
 
-Postane Protokolü sürüm 3 (POP3), küçük iş istasyonlarının Istemci postasını almak için POP3 sunucularındaki Istemci mailtirmelere erişmesi için bir posta aktarım sistemi sağlamak üzere tasarlanmış bir protokoldür. POP3, posta aktarımı gerçekleştirmek için Iletim Denetim Protokolü (TCP) hizmetlerini kullanır. Bu nedenle, POP3 son derece güvenilir bir içerik aktarım protokolüdür.
+Post Office protokol sürümü 3 (POP3), küçük iş istasyonlarının istemci postasını almak için POP3 sunucularındaki istemci mailtirmelere erişmesi için posta aktarım sistemi sağlamak üzere tasarlanmış bir protokoldür. POP3, posta aktarımı gerçekleştirmek için Iletim Denetim Protokolü (TCP) hizmetlerini kullanır. Bu nedenle, POP3 son derece güvenilir bir içerik aktarım protokolüdür.
 
 Ancak POP3, posta işleme konusunda kapsamlı işlemler sağlamaz. Genellikle, posta Istemci tarafından indirilir ve ardından sunucunun maildrop 'dan silinir.
 

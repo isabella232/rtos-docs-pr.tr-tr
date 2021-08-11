@@ -1,34 +1,34 @@
 ---
-title: USBX DPUMP sınıfı değerlendirmeleri
+title: USBX DPUMP Sınıf Konuları
 description: USBX, konak ve cihaz tarafı için bir DPUMP sınıfı içerir.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 9960b391418fa2f9203e761115bcba71cc3619e8
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 72aa9c1e2200049bf81d64543b690edd001c4ecf9c2cdeb4c3bea5f1b03aa5b8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828073"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802591"
 ---
-# <a name="chapter-3-usbx-dpump-class-considerations"></a>Bölüm 3: USBX DPUMP sınıfı konuları
+# <a name="chapter-3-usbx-dpump-class-considerations"></a>Bölüm 3: USBX DPUMP Sınıf Konuları
 
-USBX, konak ve cihaz tarafı için bir DPUMP sınıfı içerir. Bu sınıf kendi kendine standart bir sınıf değildir, bunun yerine iki toplu kanal kullanarak basit bir cihaz oluşturmayı ve bu iki kanal üzerinde veri göndermeyi ve geriye doğru göndermeyi gösteren bir örnek. DPUMP sınıfı, özel bir sınıf veya eski RS232 cihazları başlatmak için kullanılabilir.
+USBX, konak ve cihaz tarafı için bir DPUMP sınıfı içerir. Bu sınıf kendi içinde standart bir sınıf değildir, bunun yerine iki toplu kanallar kullanarak ve bu iki kanallar üzerinde ileri ve geri veri göndererek basit bir cihaz oluşturmayı gösteren bir örnektir. DPUMP sınıfı, özel bir sınıf başlatmak veya eski RS232 cihazları için kullanılabilir.
 
 USB DPUMP akış grafiği:
 
 ![USB DPUMP akış grafiği](./media/usbx-host-stack-supplemental/usb-dpump-flow-chart.png)
 
-## <a name="usbx-dpump-host-class"></a>USBX DPUMP Host sınıfı
+## <a name="usbx-dpump-host-class"></a>USBX DPUMP Konak Sınıfı
 
-DPUMP sınıfının konak tarafında, biri veri göndermek için bir tane olmak üzere iki işlev vardır:
+DPUMP Sınıfının ana bilgisayar tarafında biri veri göndermek, biri de veri almak için olmak için olmak için iki işlev vardır:
 
 - `ux_host_class_dpump_write`
 - `ux_host_class_dpump_read`
 
-Her iki işlev de DPUMP uygulamasını daha kolay hale getirmek için engelleniyor. Aynı anda hem kanalların hem de aynı anda çalıştırılması gerekiyorsa, uygulamanın bir iletme iş parçacığı ve alma iş parçacığı oluşturması gerekir.
+Her iki işlev de DPUMP uygulamasını daha kolay hale getirir. Her iki borunun da (IN ve OUT) aynı anda çalışıyor olması gerekiyorsa, uygulamanın bir iletme iş parçacığı ve bir alma iş parçacığı oluşturması gerekir.
 
 Yazma işlevinin prototipi aşağıdaki gibidir.
 
@@ -41,12 +41,12 @@ UINT ux_host_class_dpump_write(UX_HOST_CLASS_DPUMP *dpump,
 
 Konum:
 
-- dpump, sınıfının örneğidir
-- data_pointer gönderilecek arabelleğin işaretçisi
-- requested_length, gönderileceği uzunluktadır
-- actual_length, aktarımın tamamlanmasından sonra, başarıyla veya kısmen gönderilen uzunluktadır.
+- dpump sınıfının örneğidir
+- data_pointer, gönderilecek arabelleğin işaretçisi
+- requested_length uzunluğu
+- actual_length, aktarım tamamlandıktan sonra başarıyla veya kısmen gönderilen uzunluk olur.
 
-Alma işlevinin prototipi benzerdir.
+Alıcı işlevin prototipi de benzerdir.
 
 ```C
 UINT ux_host_class_dpump_read(
@@ -56,7 +56,7 @@ UINT ux_host_class_dpump_read(
     ULONG *actual_length)
 ```
 
-Bir uygulamanın cihaz tarafına bir paket yazdığı ve alımda aynı paketi aldığı konak DPUMP sınıfına bir örnek aşağıda verilmiştir:
+Bir uygulamanın cihaz tarafına paket yazdığı ve aynı paketi sinyalden aldığı konak DPUMP sınıfı örneği:
 
 ```C
 /* We start with a 'A' in buffer. */
@@ -90,6 +90,6 @@ while(1)
 }
 ```
 
-## <a name="usbx-dpump-device-class"></a>USBX DPUMP cihaz sınıfı
+## <a name="usbx-dpump-device-class"></a>USBX DPUMP Cihaz Sınıfı
 
-Device DPUMP sınıfı, USB konakla bağlantı kurulduğunda başlatılan bir iş parçacığı kullanır. İş parçacığı, toplu çıkış uç noktasında gelen bir paketi bekler. Paket alındığında, içeriği toplu uç nokta arabelleğine kopyalar ve bu uç noktada, konağın bu uç noktadan okuma isteği vermesini bekleyen bir işlem gönderir. Bu, toplu ve toplu uç noktalar arasında bir geri döngü mekanizması sağlar.
+Cihaz DPUMP sınıfı, USB ana bilgisayarıyla bağlantıdan sonra başlatan bir iş parçacığı kullanır. İş parçacığı, Toplu Dışarı Uç Noktasına gelen bir paketi bekler. Bir paket alınca, içeriği Toplu Uç Nokta arabelleğine kopyalar ve bu uç noktada bir işlem gönderir ve ana bilgisayar tarafından bu uç noktadan okunacak bir istekte bulunduracak şekilde bekler. Bu, Toplu Dışarı ve Toplu Alma uç noktaları arasında bir geri döngü mekanizması sağlar.

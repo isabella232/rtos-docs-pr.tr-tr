@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 04e732bc1fd6012636aab3a57391829f529724cf
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5bd4cdae28a293ec9ef259bbd29fdb8f8d6dc43f964cbc184290b82ee8f590a3
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826812"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116788821"
 ---
 # <a name="chapter-4---azure-rtos-netx-crypto-api-description"></a>Bölüm 4-Azure RTOS NetX şifreleme API 'SI açıklaması
 
@@ -25,7 +25,7 @@ NetX güvenli kitaplığını başlatır
 UINT nx_crypto_initialize(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, Azure RTOS NetX şifre kitaplığı modülünü başlatır. Diğer şifreleme işlevlerinin hiçbirini kullanmadan önce, uygulamanın başlatma işlemini gerçekleştirmek ve kitaplığın bütünlüğünü doğrulamak için bu işlevi çağırması gerekir. Diğer NetX şifreleme hizmetlerini kullanmadan önce bu işlevi çağırmaya yönelik hata döndürülmeyecektir.
 
@@ -52,7 +52,7 @@ FIPS etkin modülünün geçerli durumunu alma
 UINT nx_crypto_module_state_get(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet yalnızca FIPS derleme kitaplığı 'nda kullanılabilir. NetX şifre kitaplığının geçerli durumunun durumunu döndürür.
 
@@ -90,7 +90,7 @@ UINT _nx_crypto_method_aes_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, AES denetim bloğunu verilen anahtar dizesiyle başlatır. AES denetim bloğu başlatıldıktan sonra, sonraki AES işlemi aynı anahtar ve anahtar boyutunu kullanacaktır.
 
@@ -149,7 +149,7 @@ UINT _nx_crypto_method_aes_operation(UINT op,
     VOID (*nx_crypto_hw_process_callback)(VOID *packet_ptr, UINT status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev AES şifreleme veya şifre çözme işlemi gerçekleştirir. AES denetim bloğunun _ *nx_crypto_method_aes_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek AES algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -196,7 +196,7 @@ AES denetim bloğunu temizleyin.
 UINT _nx_crypto_method_aes_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu AES oturumunun artık gerekli olmadığını belirlediğinde AES denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -225,7 +225,7 @@ UINT _nx_crypto_method_3des_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, Üçlü DES (3DES) denetim bloğunu verilen üç anahtar dizesi ile başlatır. Anahtar dizeleri her biri 8 bayt olmalıdır. Üç DES tuşu, 24 baytlık bir arabelleğin bitişik belleğine birleştirilmiş olmalıdır. FIPS uyumlu derleme için, üç anahtar her birinden farklı olmalıdır veya işlev NX_CRYPTO_INVALID_KEY hatası döndürür. 3DES denetim bloğu başlatıldıktan sonra, sonraki 3DES işlemleri de aynı anahtarları kullanır.
 
@@ -273,7 +273,7 @@ UINT _nx_crypto_method_3des_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev 3DES şifrelemesini veya şifre çözme işlemini gerçekleştirir. 3DES denetim bloğunun _ *nx_crypto_method_3des_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek 3DES algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -296,23 +296,23 @@ Giriş arabelleğinde kısıtlama yoktur.
 - **output_buffer** Şifresiz metin verilerini depolamak için 3DES bellek alanına yönelik işaretçi. Uygulama, çıkış arabelleği için alan ayırmalıdır. Çıkış arabelleği, giriş arabelleğiyle çakışabilir. Aynı başlangıç adresini paylaştıkları takdirde çıkış arabelleği giriş arabelleğiyle çakışabilir.
 - **output_buffer_size** Çıkış arabelleğinin bayt cinsinden boyutu. Çıkış arabelleği boyutunun en az girdi arabellek boyutuyla aynı olması ve çıkış arabelleği boyutunun 8 baytın katlarından biri olması gerekir.
 - **crypto_metadata** *_Nx_crypto_method_3des_init ()* IÇINDE kullanılan 3DES denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. 3DES için meta veri boyutu *sizeof olmalıdır (NX_3DES)*
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. 3DES için meta veri boyutunun *sizeof(NX_3DES) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev 3DES şifrelemesini gerçekleştirir. 3DES denetim bloğunun _ *nx_crypto_moethod_3des_init ()* ile başlatılmış olması gerekir. Bu işlem durum bilgilerini saklar ve 3DES denetim bloğunda anahtar malzemesini değiştirmez. Bu işlev tarafından, çağıranın, şifreleme işlemini çağırmadan önce doldurmayı işlemesi gerekecektir.
+Bu işlev 3DES şifrelemesi gerçekleştirir. 3DES denetim bloğu _ *nx_crypto_moethod_3des_init() ile başlatılmış olması gerekir.* Bu işlem durum bilgilerini tutmaz ve 3DES denetim bloğunda anahtar malzemeyi değiştirmez. Doldurmanın bu işlev tarafından eklenmez, bu nedenle çağıranın şifreleme işlemi çağrılmadan önce doldurmayı işlemesi gerekir.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Anahtar ve anahtar boyutuyla 3DES denetim bloğunun başarılı bir şekilde başlatılması **NX_CRYPTO_SUCCESS** (0x00).
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR (0x07)** Anahtar için geçersiz işaretçi veya crypto_metadata ya da crypto_metadata_size geçersiz veya crypto_metadata 4 baytlık hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) Anahtar ve anahtar boyutuyla 3DES denetim bloğu başarıyla başlatıldı.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR (0x07)** Anahtarın geçersiz işaretçisi veya geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4 bayta hizalanmamış.
 
 ## <a name="_nx_crypto_method_3des_cleanup"></a>_nx_crypto_method_3des_cleanup
 
-3DES denetim bloğunu temizleyin.
+3DES denetim bloğu'ları temizleyin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -320,22 +320,22 @@ Bu işlev 3DES şifrelemesini gerçekleştirir. 3DES denetim bloğunun _ *nx_cry
 UINT _nx_crypto_method_3des_cleanup(VOID *crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Uygulama, bu 3DES oturumunun daha sonra gerekli olmadığını belirlerse, 3DES denetim bloğunu temizlemek için bu işlevi çağırır.
+Uygulama, bu 3DES oturumuna artık gerek olmadığını tespit ettikten sonra 3DES denetim bloğunun temizlenmesi için bu işlevi çağırıyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **tanıtıcı** *_Nx_crypto_method_3des_init ()* tarafından başlatılan tanıtıcı.
+- **handle (tanıtıcı)** *_nx_crypto_method_3des_init() tarafından başlatılan tanıtıcı.*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00), 3Des oturumunun başarıyla temizlendi.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
+- **NX_CRYPTO_SUCCESS** (0x00) 3DES oturumu başarıyla temizlendi.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
 
 ## <a name="_nx_crypto_method_drbg_init"></a>_nx_crypto_method_drbg_init
 
-DRBG şifreleme denetim bloğunu başlatır
+DRBG şifreleme denetim bloğu başlatılır
 
 ### <a name="prototype"></a>Prototype
 
@@ -349,31 +349,31 @@ UINT _nx_crypto_method_drbg_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, DRBG denetim bloğunu verilen anahtar dizesiyle başlatır. DRBG denetim bloğu başlatıldıktan sonra, sonraki DRBG işlemi aynı denetim bloğunu kullanıyor olacaktır.
+Bu işlev, VERILEN anahtar dizesiyle DRBG denetim bloğu başlatılır. DRBG denetim bloğu başlatıldıktan sonra, sonraki DRBG işlemi aynı denetim bloğu kullanıyor olur.
 
-Uygulama birden çok DRBG denetim bloğu oluşturabilir, her biri bir oturumu temsil eder. DRBG denetim bloğunun başlatılması yeni bir karma hesaplama oturumu başlatır. DRBG denetim bloğunu yeniden başlatmak geçerli oturum ve yıldızların yeni bir kopyasını terk eden.
+Uygulama birden çok DRBG denetim bloğu oluşturabilir ve her biri bir oturumu temsil eder. DRBG denetim bloğu başlatılırken yeni bir karma hesaplama oturumu başlatılır. DRBG denetim bloğu yeniden başlatıla, geçerli oturumdan vazgeçer ve yeni bir oturum sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yöntemi** Geçerli bir DRBG şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
+- **yöntem** Geçerli bir DRBG şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
   - *crypto_method_drbg*
 - **anahtar** Bu alan DRBG için kullanılmaz.
 - **key_size_in_bits** Bu alan DRBG için kullanılmaz.
-- **tanıtıcı** Bu hizmet, çağırana bir tanıtıcı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmıyor. Uygulama tanıtıcı için NULL değer geçirecektir.
-- **crypto_metadata** DRBG denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanının başlangıç adresi 4 bayt hizalı olmalıdır.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. DRBG için meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_DRBG)*
+- **handle (tanıtıcı)** Bu hizmet çağıranın tanıtıcısı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmaz. Uygulama tanıtıcı için NULL değerini geçsin.
+- **crypto_metadata** DRBG denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanı başlangıç adresi 4 bayta hizalanmış olması gerekir.
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. DRBG için meta veri boyutu *sizeof(NX_CRYPTO_DRBG)*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Anahtar ve anahtar boyutuyla DRBG denetim bloğunun başarılı bir şekilde başlatılması **NX_CRYPTO_SUCCESS** (0x00).
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) anahtar için geçersiz işaretçi veya geçersiz crypto_metadata veya crypto_metadata_size ya da crypto_metadata 4 bayt hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) Anahtar ve anahtar boyutuyla DRBG denetim bloğu başarıyla başlatılacak.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Anahtar için geçersiz işaretçi ya da geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4-byte hizalanmamış.
 
 ## <a name="_nx_crypto_method_drbg_operation"></a>_nx_crypto_method_drbg_operation
 
-DRBG işlemi gerçekleştir
+DRBG işlemi gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -395,43 +395,43 @@ UINT __nx_crypto_method_drbg_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev DRBG işlemini gerçekleştirir. DRBG denetim bloğunun _ *nx_crypto_method_drbg_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek DRBG algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır. Varsayılan olarak, DRBG için AES-128 kullanılır.
+Bu işlev DRBG işlemini gerçekleştirir. DRBG denetim bloğu _ *nx_crypto_method_drbg_init() ile başlatılmış olması gerekir.* Gerçekleştirilecek DRBG algoritması, yöntem denetim bloğunda belirtilen *algoritmaya* dayalıdır. Varsayılan olarak DRBG için AES-128 kullanılır.
 
-İşlem NX_CRYPTO_DRBG_OPTIONS_SET olduğunda, giriş NX_CRYPTO_DRBG_OPTIONS yapısına işaret eder. İşlem NX_CRYPTO_DRBG_INSTANTIATE olduğunda, anahtar nonce 'e işaret eder, giriş noktaları kişiselleştirme dizesine işaret eder. İşlem NX_CRYPTO_DRBG_RESEED veya NX_CRYPTO_DRBG_GENERATE, giriş ek girişe işaret eder.
+İşlem başarısız NX_CRYPTO_DRBG_OPTIONS_SET, giriş bir yapıya NX_CRYPTO_DRBG_OPTIONS eder. İşlem başarısız NX_CRYPTO_DRBG_INSTANTIATE, giriş kişiselleştirme dizesini ifade eder. İşlem bir NX_CRYPTO_DRBG_RESEED NX_CRYPTO_DRBG_GENERATE ek girişe doğru ilerler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **op** Gerçekleştirilecek işlemin türü. Geçerli işlem:
+- **op (op)** Gerçekleştirecek işlem türü. Geçerli işlem:
   - *NX_CRYPTO_DRBG_OPTIONS_SET*
   - *NX_CRYPTO_DRBG_INSTANTIATE*
   - *NX_CRYPTO_DRBG_RESEED NX_CRYPTO_DRBG_GENERATE*
-- **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli DRBG şifre yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi _ *nx_crypto_method_drbg_init ()* içinde kullanılan aynı olmalıdır.
-- **anahtar** Örnek oluşturma işlemi için nonce işaretçisine yönelik işaretçi. Bu alan diğer işlemler için kullanılmaz.
-- **key_size_in_bits** Nonce 'in bit cinsinden boyutu. Bu alan diğer işlemler için kullanılmaz.
-- **giriş** Op NX_CRYPTO_DRBG_OPTIONS_SET olduğunda, bu alan DRBG seçeneklerine işaret eder. Op NX_CRYPTO_DRBG_INSTANTIATE olduğunda, bu alan kişiselleştirme dizesine işaret eder. Op NX_CRYPTO_DRBG_RESEED veya NX_CRYPTO_DRBG_GENERATE olduğunda, bu alan ek giriş verilerine işaret eder.
-- **input_length_in_byte** Giriş verilerinin bayt cinsinden boyutu.
+- **handle (tanıtıcı)** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **yöntem** Geçerli DRBG şifreleme yönteminin işaretçisi. Burada kullanılan şifreleme yöntemi , _ *nx_crypto_method_drbg_init() içinde aynı şekilde kullanılmalıdır.*
+- **anahtar** Örnek işlem için nonce işaretçisi. Bu alan diğer işlemler için kullanılmaz.
+- **key_size_in_bits** Bit olarak nonce boyutu. Bu alan diğer işlemler için kullanılmaz.
+- **input (giriş)** İşlem tamam NX_CRYPTO_DRBG_OPTIONS_SET bu alan DRBG seçeneklerine sahiptir. İşlem NX_CRYPTO_DRBG_INSTANTIATE, bu alan kişiselleştirme dizesini ifade ediyor. İşlem, NX_CRYPTO_DRBG_RESEED NX_CRYPTO_DRBG_GENERATE ek giriş verilerine yöneliktir.
+- **input_length_in_byte** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan DRBG için kullanılmaz.
-- **Çıkış** Op NX_CRYPTO_DRBG_GENERATE olduğunda, bu alan oluşturulan DRBG için bellek alanını gösterir. Aksi takdirde, bu alan kullanılmaz.
+- **output (çıktı)** İşlem NX_CRYPTO_DRBG_GENERATE, bu alan oluşturulan DRBG için bellek alanını kullanır. Aksi takdirde, bu alan kullanılmaz.
 - **output_length_in_byte** Çıkış arabelleğinin bayt cinsinden boyutu.
-- **crypto_metadata** *_Nx_crypto_method_drbg_init ()* içinde kullanılan drbg denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. DRBG için meta veri boyutu *sizeof (NX_CRYPTO_DRBG)* olmalıdır
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata** _nx_crypto_method_drbg_init() içinde kullanılan DRBG *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. DRBG için meta veri boyutunun *boyutof(NX_CRYPTO_DRBG) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) drbg işlemi başarıyla yürütüldü.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi veya uzunluğu geçersiz.
-- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) geçersiz drbg algoritması belirtildi.
-- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) geçersiz çıkış arabelleği boyutu.
+- **NX_CRYPTO_SUCCESS** (0x00) DRBG işlemi başarıyla yürütülür.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi veya geçersiz uzunluk.
+- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) Geçersiz DRBG algoritması belirtiliyor.
+- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) Geçersiz çıkış arabellek boyutu.
 
 ## <a name="_nx_crypto_method_drbg_cleanup"></a>_nx_crypto_method_drbg_cleanup
 
-DRBG denetim bloğunu temizleyin.
+DRBG denetim bloğu temizleme.
 
 ### <a name="prototype"></a>Prototype
 
@@ -439,7 +439,7 @@ DRBG denetim bloğunu temizleyin.
 UINT _nx_crypto_method_drbg_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu DRBG oturumunun artık gerekli olmadığını belirlediğinde DRBG denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -468,7 +468,7 @@ UINT _nx_crypto_method_ecdh_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ECDH denetim bloğunu verilen anahtar dizesiyle başlatır. ECDH denetim bloğu başlatıldıktan sonra, sonraki ECDH işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -514,7 +514,7 @@ UINT _nx_crypto_method_ecdh_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev ECDH işlemini gerçekleştirir. ECDH denetim bloğunun _ *nx_crypto_method_ecdh_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek ECDH algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -561,7 +561,7 @@ ECDH denetim bloğunu temizleyin.
 UINT _nx_crypto_method_ecdh_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu ECDH oturumu artık gerekli olmadığını belirledikten sonra ECDH denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -590,31 +590,31 @@ UINT _nx_crypto_method_ecdsa_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, ECDSA denetim bloğunu verilen anahtar dizesiyle başlatır. ECDSA denetim bloğu başlatıldıktan sonra, sonraki ECDSA işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
-Uygulama birden fazla ECDSA denetim bloğu oluşturabilir, her biri bir oturumu temsil eder. ECDSA denetim bloğunun başlatılması yeni bir karma hesaplama oturumu başlatır. ECDSA denetim bloğunun yeniden başlatılması geçerli oturum ve yıldızların yeni bir kopyasını terk eden.
+Uygulama birden çok ECDSA denetim bloğu oluşturabilir ve her biri bir oturumu temsil eder. ECDSA denetim bloğu başlatılırken yeni bir karma hesaplama oturumu başlatılır. ECDSA denetim bloğu yeniden başlatıldı, geçerli oturumdan vazgeçer ve yeni bir oturum başlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yöntemi** Geçerli bir ECDSA şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
+- **yöntem** Geçerli bir ECDSA şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
   - *crypto_method_ecdsa*
 - **anahtar** Bu alan ECDSA için kullanılmaz.
 - **key_size_in_bits** Bu alan ECDSA için kullanılmaz.
-- **tanıtıcı** Bu hizmet, çağırana bir tanıtıcı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmıyor. Uygulama tanıtıcı için NULL değer geçirecektir.
-- **crypto_metadata** ECDSA denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanının başlangıç adresi 4 bayt hizalı olmalıdır.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. ECDSA için meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_ECDSA)*
+- **handle (tanıtıcı)** Bu hizmet çağıranın tanıtıcısı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmaz. Uygulama tanıtıcı için NULL değerini geçsin.
+- **crypto_metadata** ECDSA denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanı başlangıç adresi 4 bayta hizalanmış olması gerekir.
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. ECDSA için meta veri boyutunun *sizeof(NX_CRYPTO_ECDSA) olması gerekir*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Anahtar ve anahtar boyutuyla ECDSA denetim bloğunun başarılı bir şekilde başlatılması **NX_CRYPTO_SUCCESS** (0x00).
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) anahtar için geçersiz işaretçi veya geçersiz crypto_metadata veya crypto_metadata_size ya da crypto_metadata 4 bayt hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) ANAHTAR ve anahtar boyutuyla ECDSA denetim bloğu başarıyla başlatıldı.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Anahtar için geçersiz işaretçi ya da geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4-byte hizalanmamış.
 
 ## <a name="_nx_crypto_method_ecdsa_operation"></a>_nx_crypto_method_ecdsa_operation
 
-ECDSA işlemi gerçekleştir
+ECDSA işlemi gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -636,43 +636,43 @@ UINT _nx_crypto_method_ecdsa_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev ECDSA işlemini gerçekleştirir. ECDSA denetim bloğunun _ *nx_crypto_method_ecdsa_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek ECDSA algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
+Bu işlev ECDSA işlemini gerçekleştirir. ECDSA denetim bloğu _ *nx_crypto_method_ecdsa_init() ile başlatılmış olması gerekir.* Gerçekleştirilecek ECDSA algoritması, yöntem denetim bloğunda belirtilen *algoritmaya* dayalıdır.
 
-İşlem NX_CRYPTO_EC_CURVE_SET olduğunda, giriş Eliptik Eğri Şifreleme yöntemine işaret eder. İşlem NX_CRYPTO_EC_KEY_PAIR_GENERATE olduğunda, çıkış NX_CRYPTO_EXTENDED_OUTPUT yapısına işaret eder ve anahtar çifti nx_crypto_extended_output_data kopyalanır.
+İşlem başarısız NX_CRYPTO_EC_CURVE_SET, giriş Üç Nokta Eğrisi şifreleme yönteminin olduğunu ifade eder. İşlem başarısız NX_CRYPTO_EC_KEY_PAIR_GENERATE, çıkış NX_CRYPTO_EXTENDED_OUTPUT ve anahtar çifti nx_crypto_extended_output_data.
 
 ### <a name="parameters"></a>Parametreler
 
-- **op** Gerçekleştirilecek işlemin türü. Geçerli işlem:
+- **op (op)** Gerçekleştirecek işlem türü. Geçerli işlem:
   - *NX_CRYPTO_EC_CURVE_SET*
   - *NX_CRYPTO_AUTHENTICATE*
   - *NX_CRYPTO_VERIFY*
-- **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli ECDSA şifreleme yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi _ *nx_crypto_method_ecdsa_init ()* içinde kullanılan aynı olmalıdır.
-- **anahtar** Op NX_CRYPTO_VERIFY, anahtarı işaret eder. Anahtar arabelleğinde kısıtlama yoktur. Bu alan, diğer op değerleri için kullanılmaz.
-- **key_size_in_bits** Anahtarın bit cinsinden boyutu.
-- **giriş** Op NX_CRYPTO_EC_CURVE_SET olduğunda, bu alan Eliptik Eğri Şifreleme yöntemine işaret eder. Aksi takdirde, bu alan giriş metin verilerini içeren bir arabelleğe işaret eder.
-- **input_length_in_byte** Giriş verilerinin bayt cinsinden boyutu.
+- **handle (tanıtıcı)** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **yöntem** Geçerli ECDSA şifreleme yönteminin işaretçisi. Burada kullanılan şifreleme yöntemi _ *nx_crypto_method_ecdsa_init() içinde kullanılanla aynı olması gerekir.*
+- **anahtar** İşlem doğru olduğunda anahtarı NX_CRYPTO_VERIFY. Anahtar arabelleğiyle ilgili kısıtlamalar yoktur. Bu alan diğer op değerleri için kullanılmaz.
+- **key_size_in_bits** Bit olarak anahtarın boyutu.
+- **input (giriş)** İşlem tamam NX_CRYPTO_EC_CURVE_SET, bu alan Eliptik Eğri şifreleme yöntemini ifade ediyor. Aksi takdirde, bu alan giriş metin verilerini içeren bir arabelleği belirtir.
+- **input_length_in_byte** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan ECDSA için kullanılmaz.
-- **Çıkış** Op NX_CRYPTO_EC_CURVE_SET olduğunda, bu alan kullanılmaz. Op NX_CRYPTO_AUTHENTICATE olduğunda, bu alan oluşturulan ECDSA imzasının bellek alanını gösterir. Op NX_CRYPTO_VERIFY olduğunda, bu alan doğrulanan ECDSA imzasının bellek alanını gösterir.
+- **output (çıktı)** İşlem NX_CRYPTO_EC_CURVE_SET bu alan kullanılmaz. İşlem tamam NX_CRYPTO_AUTHENTICATE, bu alan oluşturulan ECDSA imzası için bellek alanını kullanır. İşlem tamamlandıktan NX_CRYPTO_VERIFY, bu alan doğrulanmış ECDSA imzası için bellek alanını belirtir.
 - **output_length_in_byte** Çıkış arabelleğinin bayt cinsinden boyutu.
-- **crypto_metadata** *_Nx_crypto_method_ecdsa_init ()* içinde kullanılan ECDSA denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. ECDSA için meta veri boyutu sizeof olmalıdır *(NX_CRYPTO_ECDSA)*
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata** _nx_crypto_method_ecdsa_init() içinde kullanılan ECDSA *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. ECDSA için meta veri boyutunun *boyutof(NX_CRYPTO_ECDSA) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) ECDSA işlemini başarıyla yürütüldü.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi veya uzunluğu geçersiz.
-- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) GEÇERSIZ ECDSA algoritması belirtildi.
-- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) geçersiz çıkış arabelleği boyutu.
+- **NX_CRYPTO_SUCCESS** (0x00) ECDSA işlemi başarıyla yürütülür.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi veya geçersiz uzunluk.
+- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) Geçersiz ECDSA algoritması belirtiliyor.
+- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) Geçersiz çıkış arabellek boyutu.
 
 ## <a name="_nx_crypto_method_ecdsa_cleanup"></a>_nx_crypto_method_ecdsa_cleanup
 
-ECDSA denetim bloğunu temizleyin.
+ECDSA denetim bloğu temizleyin.
 
 ### <a name="prototype"></a>Prototype
 
@@ -680,22 +680,22 @@ ECDSA denetim bloğunu temizleyin.
 UINT _nx_crypto_method_ecdsa_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Uygulama, bu ECDSA oturumunun artık gerekli olmadığını belirlediğinde ECDSA denetim bloğunu temizlemek için bu işlevi çağırır.
+Uygulama, bu ECDSA oturumuna artık gerek olmadığını tespit ettikten sonra ECDSA denetim bloğunun temizlenmesi için bu işlevi çağırıyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **crypto_metadata** *_Nx_crypto_method_ecdsa_init ()* içinde kullanılan ECDSA denetim bloğuna yönelik işaretçi.
+- **crypto_metadata** _nx_crypto_method_ecdsa_init() içinde kullanılan ECDSA *denetim bloğuna işaretçi.*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
 - **NX_CRYPTO_SUCCESS** (0x00) ECDSA oturumu başarıyla temizlendi.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
 
 ## <a name="_nx_crypto_method_hmac_md5_init"></a>_nx_crypto_method_hmac_md5_init
 
-HMAC MD5 şifreleme denetim bloğunu başlatır
+HMAC MD5 şifreleme denetim bloğu başlatılır
 
 ### <a name="prototype"></a>Prototype
 
@@ -709,28 +709,28 @@ UINT _nx_crypto_method_hmac_md5_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, HMAC MD5 denetim bloğunu verilen anahtar dizesiyle başlatır. HMAC MD5 denetim bloğu başlatıldıktan sonra, sonraki HMAC MD5 işlemi aynı denetim bloğunu kullanıyor olacaktır.
+Bu işlev, HMAC MD5 denetim bloğuna verilen anahtar dizesiyle başlatılır. HMAC MD5 denetim bloğu başlatıldıktan sonra, sonraki HMAC MD5 işlemi aynı denetim bloğu kullanıyor olur.
 
-Uygulama birden çok HMAC MD5 denetim bloğu oluşturabilir, her biri bir oturumu temsil eder. HMAC MD5 denetim bloğunun başlatılması yeni bir karma hesaplama oturumu başlatır. HMAC MD5 denetim bloğunu yeniden başlatmak geçerli oturumu ve yıldızları yeni bir kez terk edin.
+Uygulama birden çok HMAC MD5 denetim bloğu oluşturabilir ve her biri bir oturumu temsil eder. HMAC MD5 denetim bloğu başlatılırken yeni bir karma hesaplama oturumu başlatılır. HMAC MD5 denetim bloğu yeniden başlatıldı, geçerli oturumdan vazgeçer ve yeni bir oturum sunar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yöntemi** Geçerli bir HMAC MD5 şifreleme yöntemi denetim bloğu işaretçisi.
+- **yöntem** Geçerli bir HMAC MD5 şifreleme yöntemi denetim bloğuna işaretçi.
 Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
   - *crypto_method_hmac_md5*
-- **anahtar** Anahtarı işaret eder. Anahtar arabelleğinde kısıtlama yoktur.
-- **key_size_in_bits** Anahtarın bit cinsinden boyutu.
-- **tanıtıcı** Bu hizmet, çağırana bir tanıtıcı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmıyor. Uygulama tanıtıcı için NULL değer geçirecektir.
-- **crypto_metadata** HMAC MD5 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanının başlangıç adresi 4 bayt hizalı olmalıdır.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. HMAC MD5 için meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_MD5_HMAC)*
+- **anahtar** anahtarına puanlar. Anahtar arabelleğiyle ilgili kısıtlamalar yoktur.
+- **key_size_in_bits** Bit olarak anahtarın boyutu.
+- **handle (tanıtıcı)** Bu hizmet çağıranın tanıtıcısı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmaz. Uygulama tanıtıcı için NULL değerini geçsin.
+- **crypto_metadata** HMAC MD5 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanı başlangıç adresi 4 bayta hizalanmış olması gerekir.
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. HMAC MD5 için meta veri boyutunun *sizeof(NX_CRYPTO_MD5_HMAC) olması gerekir*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) anahtar ve anahtar boyutuyla HMAC MD5 denetim bloğunun başarılı bir şekilde başlatılması.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) anahtar için geçersiz işaretçi veya geçersiz crypto_metadata veya crypto_metadata_size ya da crypto_metadata 4 bayt hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) Anahtar ve anahtar boyutu ile HMAC MD5 denetim bloğu başarıyla başlatıldı.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Anahtar için geçersiz işaretçi ya da geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4-byte hizalanmamış.
 
 ## <a name="_nx_crypto_method_hmac_md5_operation"></a>_nx_crypto_method_hmac_md5_operation
 
@@ -756,46 +756,46 @@ UINT _nx_crypto_method_hmac_md5_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev HMAC MD5 karma işlemini gerçekleştirir. HMAC MD5 denetim bloğunun _ *nx_crypto_method_hmac_md5_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek HMAC MD5 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
+Bu işlev HMAC MD5 karma işlemini gerçekleştirir. HMAC MD5 denetim bloğu _ *nx_crypto_method_hmac_md5_init() ile başlatılmış olması gerekir.* Gerçekleştirilecek HMAC MD5 algoritması, yöntem denetim bloğunda belirtilen *algoritmaya* dayalıdır.
 
-Son *NX_CRYPTO_HASH_CALCULATE* işlemi için, çıkış arabelleği boyutu 16 bayt olmalıdır.
+Son işlem *NX_CRYPTO_HASH_CALCULATE* arabellek boyutu 16 bayt olmalıdır.
 
-Bu işlem durum bilgilerini saklar ve HMAC MD5 denetim bloğunda anahtar malzemesini değiştirmez.
+Bu işlem durum bilgilerini tutmaz ve HMAC MD5 denetim bloğunda anahtar malzemeyi değiştirmez.
 
 ### <a name="parameters"></a>Parametreler
 
-- **op** Gerçekleştirilecek işlemin türü. Geçerli işlem:
+- **op (op)** Gerçekleştirecek işlem türü. Geçerli işlem:
   - *NX_CRYPTO_HASH_INITIALIZE*
   - *NX_CRYPTO_HASH_UPDATE*
   - *NX_CRYPTO_HASH_CALCULATE*
-- **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli HMAC MD5 şifreleme yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi, *nx_crypto_method_hmac_md5_init ()* içinde kullanılan aynı olmalıdır.
-- **anahtar** Anahtarı işaret eder. Anahtar arabelleğinde kısıtlama yoktur.
-- **key_size_in_bits** Anahtarın bit cinsinden boyutu.
-- **input_data** Girdi metin verileri içeren bir arabelleğe işaret eder. Giriş arabelleğinde kısıtlama yoktur.
-- **input_data_size** Giriş verilerinin bayt cinsinden boyutu.
+- **handle (tanıtıcı)** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **yöntem** Geçerli HMAC MD5 şifreleme yönteminin işaretçisi. Burada kullanılan şifreleme yöntemi, *nx_crypto_method_hmac_md5_init() içinde de aynı şekilde kullanılmalıdır.*
+- **anahtar** anahtarına puanlar. Anahtar arabelleğiyle ilgili kısıtlamalar yoktur.
+- **key_size_in_bits** Bit olarak anahtarın boyutu.
+- **input_data** Giriş metin verilerini içeren bir arabelleği belirtir. Giriş arabelleğiyle ilgili bir kısıtlama yoktur.
+- **input_data_size** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan HMAC MD5 için kullanılmaz.
 - **iv_size** Bu alan HMAC MD5 için kullanılmaz.
-- **output_buffer** Oluşturulan HMAC MD5 karması için bellek alanına yönelik işaretçi.
+- **output_buffer** Oluşturulan HMAC MD5 karması için bellek alanına işaretçi.
 - **output_buffer_size** Çıkış arabelleğinin bayt cinsinden boyutu.
-- **crypto_metadata** *_Nx_crypto_method_hmac_md5_init ()* IÇINDE kullanılan HMAC MD5 denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. HMAC MD5 için meta veri boyutu sizeof olmalıdır *(NX_CRYPTO_MD5_HMAC)*
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata** _nx_crypto_method_hmac_md5_init() içinde kullanılan HMAC MD5 *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. HMAC MD5 için meta veri boyutunun *boyutof(NX_CRYPTO_MD5_HMAC) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) HMAC MD5 işlemini başarıyla yürütüldü.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi veya uzunluğu geçersiz.
-- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) GEÇERSIZ HMAC MD5 algoritması belirtildi.
-- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) geçersiz çıkış arabelleği boyutu.
+- **NX_CRYPTO_SUCCESS** (0x00) HMAC MD5 işlemi başarıyla yürütülür.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi veya geçersiz uzunluk.
+- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) Geçersiz HMAC MD5 algoritması belirtiliyor.
+- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) Geçersiz çıkış arabellek boyutu.
 
 ## <a name="_nx_crypto_method_hmac_sha1_init"></a>_nx_crypto_method_hmac_sha1_init
 
-HMAC SHA1 şifreleme denetim bloğunu başlatır
+HMAC SHA1 şifreleme denetim bloğu başlatılır
 
 ### <a name="prototype"></a>Prototype
 
@@ -809,31 +809,31 @@ UINT _nx_crypto_method_hmac_sha1_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, HMAC SHA1 denetim bloğunu verilen anahtar dizesiyle başlatır. HMAC SHA1 denetim bloğu başlatıldıktan sonra, sonraki HMAC SHA1 işlemi aynı denetim bloğunu kullanıyor olacaktır.
+Bu işlev, HMAC SHA1 denetim bloğuna verilen anahtar dizesiyle başlatılır. HMAC SHA1 denetim bloğu başlatıldıktan sonra, sonraki HMAC SHA1 işlemi aynı denetim bloğu kullanıyor olur.
 
-Uygulama birden çok HMAC SHA1 denetim bloğu oluşturabilir, her biri bir oturumu temsil eder. HMAC SHA1 denetim bloğunu başlatmak yeni bir karma hesaplama oturumu başlatır. HMAC SHA1 denetim bloğunu yeniden başlatmak, geçerli oturumu ve yıldızları yeni bir kez terk.
+Uygulama birden çok HMAC SHA1 denetim bloğu oluşturabilir ve her biri bir oturumu temsil eder. HMAC SHA1 denetim bloğu başlatılırken yeni bir karma hesaplama oturumu başlatılır. HMAC SHA1 denetim bloğu yeniden başlatıla, geçerli oturumdan vazgeçer ve yeni bir oturum sunar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yöntemi** Geçerli bir HMAC SHA1 şifreleme yöntemi denetim bloğu işaretçisi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
+- **yöntem** Geçerli bir HMAC SHA1 şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
   - *crypto_method_hmac_sha1*
-- **anahtar** Anahtarı işaret eder. Anahtar arabelleğinde kısıtlama yoktur.
-- **key_size_in_bits** Anahtarın bit cinsinden boyutu.
-- **tanıtıcı** Bu hizmet, çağırana bir tanıtıcı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmıyor. Uygulama tanıtıcı için NULL değer geçirecektir.
-- **crypto_metadata** HMAC SHA1 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanının başlangıç adresi 4 bayt hizalı olmalıdır.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. HMAC SHA1 için, meta veri boyutu sizeof olmalıdır *(NX_CRYPTO_SHA1_HMAC)*
+- **anahtar** anahtarına puanlar. Anahtar arabelleğiyle ilgili kısıtlamalar yoktur.
+- **key_size_in_bits** Bit olarak anahtarın boyutu.
+- **handle (tanıtıcı)** Bu hizmet çağıranın tanıtıcısı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmaz. Uygulama tanıtıcı için NULL değerini geçsin.
+- **crypto_metadata** HMAC SHA1 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanı başlangıç adresi 4 bayta hizalanmış olması gerekir.
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. HMAC SHA1 için meta veri boyutu *boyutof(NX_CRYPTO_SHA1_HMAC)*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) anahtar ve anahtar boyutuyla HMAC SHA1control bloğunun başarıyla başlatılması.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) anahtar için geçersiz işaretçi veya geçersiz crypto_metadata veya crypto_metadata_size ya da crypto_metadata 4 bayt hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) Anahtar ve anahtar boyutu ile HMAC SHA1control bloğu başarıyla başlatılacak.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Anahtar için geçersiz işaretçi ya da geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4-byte hizalanmamış.
 
 ## <a name="_nx_crypto_method_hmac_sha1_operation"></a>_nx_crypto_method_hmac_sha1_operation
 
-HMAC SHA1 karma işlemi gerçekleştir
+HMAC SHA1 karma işlemi gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -855,30 +855,30 @@ UINT _nx_crypto_method_hmac_sha1_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev HMAC SHA1 karma işlem gerçekleştirir. HMAC SHA1 denetim bloğunun _ *nx_crypto_method_hmac_sha1_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek HMAC SHA1 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
+Bu işlev HMAC SHA1 karma işlemini gerçekleştirir. HMAC SHA1 denetim bloğu _ *nx_crypto_method_hmac_sha1_init() ile başlatılmış olması gerekir.* Gerçekleştirilecek HMAC SHA1 algoritması, yöntem denetim bloğunda belirtilen *algoritmaya* dayalıdır.
 
-Son *NX_CRYPTO_HASH_CALCULATE* işlemi için, çıkış arabelleği boyutu 20 bayt olmalıdır.
+Son işlem *NX_CRYPTO_HASH_CALCULATE* arabellek boyutu 20 bayt olmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **op** Gerçekleştirilecek işlemin türü. Geçerli işlem:
+- **op (op)** Gerçekleştirecek işlem türü. Geçerli işlem:
   - *NX_CRYPTO_HASH_INITIALIZE*
   - *NX_CRYPTO_HASH_UPDATE*
   - *NX_CRYPTO_HASH_CALCULATE*
-- **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli HMAC SHA1 şifreleme yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi _ *nx_crypto_method_hmac_sha1_init ()* içinde kullanılan aynı olmalıdır.
-- **anahtar** Anahtarı işaret eder. Anahtar arabelleğinde kısıtlama yoktur.
-- **key_size_in_bits** Anahtarın bit cinsinden boyutu.
-- **input_data** Girdi metin verileri içeren bir arabelleğe işaret eder. Giriş arabelleğinde kısıtlama yoktur.
-- **input_data_size** Giriş verilerinin bayt cinsinden boyutu.
+- **handle (tanıtıcı)** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **yöntem** Geçerli HMAC SHA1 şifreleme yönteminin işaretçisi. Burada kullanılan şifreleme yöntemi, _ *nx_crypto_method_hmac_sha1_init() içinde kullanılanla aynı olması gerekir.*
+- **anahtar** anahtarına puanlar. Anahtar arabelleğiyle ilgili kısıtlamalar yoktur.
+- **key_size_in_bits** Bit olarak anahtarın boyutu.
+- **input_data** Giriş metin verilerini içeren bir arabelleği belirtir. Giriş arabelleğiyle ilgili bir kısıtlama yoktur.
+- **input_data_size** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan HMAC SHA1 için kullanılmaz.
 - **iv_size** Bu alan HMAC SHA1 için kullanılmaz.
-- **output_buffer** Oluşturulan HMAC SHA1 karması için bellek alanına yönelik işaretçi.
+- **output_buffer** Oluşturulan HMAC SHA1 karması için bellek alanına işaretçi.
 - **output_buffer_size** Çıkış arabelleğinin bayt cinsinden boyutu.
-- **crypto_metadata** *_Nx_crypto_method_hmac_sha1_init ()* IÇINDE kullanılan HMAC SHA1 denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. HMAC SHA1 için, meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_SHA1_HMAC)*
+- **crypto_metadata** _nx_crypto_method_hmac_sha1_init() içinde kullanılan HMAC SHA1 *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. HMAC SHA1 için, meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_SHA1_HMAC)*
 - **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
 - **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
 
@@ -900,7 +900,7 @@ HMAC SHA1 denetim bloğunu temizleyin.
 UINT _nx_crypto_method_hmac_sha1_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama bu HMAC SHA1 denetim bloğunu, bu HMAC SHA1 oturumunun artık gerekli olmadığını belirledikten sonra temizlemek için bu işlevi çağırır.
 
@@ -929,7 +929,7 @@ UINT _nx_crypto_method_hmac_sha256_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, HMAC SHA256 denetim bloğunu verilen anahtar dizesiyle başlatır. HMAC SHA256 denetim bloğu başlatıldıktan sonra, sonraki HMAC SHA256 işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -976,7 +976,7 @@ UINT _nx_crypto_method_hmac_sha256_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev HMAC SHA256 karma işlemi gerçekleştirir. HMAC SHA256 denetim bloğu _ *nx_crypto_method_hmac_sha256_init ()* ile başlatılmış olmalıdır. Gerçekleştirilecek HMAC SHA256 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -1021,7 +1021,7 @@ HMAC SHA256 denetim bloğunu temizleyin.
 UINT _nx_crypto_method_hmac_sha256_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu HMAC SHA256 oturumunun artık gerekli olmadığını belirlediğinde HMAC SHA256 denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -1050,7 +1050,7 @@ UINT _nx_crypto_method_hmac_sha512_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, HMAC SHA512 olur denetim bloğunu verilen anahtar dizesiyle başlatır. HMAC SHA512 olur denetim bloğu başlatıldıktan sonra, sonraki HMAC SHA512 olur işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -1097,7 +1097,7 @@ UINT _nx_crypto_method_hmac_sha512_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev HMAC SHA512 olur karma işlemi gerçekleştirir. HMAC SHA512 olur denetim bloğu _ *nx_crypto_method_hmac_sha512_init ()* ile başlatılmış olmalıdır. Gerçekleştirilecek HMAC SHA512 olur algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -1142,7 +1142,7 @@ HMAC SHA512 olur denetim bloğunu temizleyin.
 UINT _nx_crypto_method_hmac_sha512_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu HMAC SHA512 olur oturumunun artık gerekli olmadığını belirlediğinde HMAC SHA512 olur denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -1173,7 +1173,7 @@ UINT _nx_crypto_method_md5_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, MD5 denetim bloğunu verilen anahtar dizesiyle başlatır. MD5 denetim bloğu başlatıldıktan sonra, sonraki MD5 işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -1221,7 +1221,7 @@ UINT _nx_crypto_method_md5_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, MD5 karma işlemini gerçekleştirir. MD5 denetim bloğunun _ *nx_crypto_method_md5_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek MD5 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -1266,7 +1266,7 @@ MD5 denetim bloğunu temizleyin.
 UINT _nx_crypto_method_md5_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, MD5 denetim bloğunu, bu MD5 oturumunun artık gerekli olmadığını belirledikten sonra temizlemek için bu işlevi çağırır.
 
@@ -1295,7 +1295,7 @@ UINT _nx_crypto_method_sha1_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, SHA1 denetim bloğunu verilen anahtar dizesiyle başlatır. SHA1 denetim bloğu başlatıldıktan sonra, sonraki SHA1 işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -1341,7 +1341,7 @@ UINT _nx_crypto_method_sha1_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, SHA1 karma işlemini gerçekleştirir. SHA1 denetim bloğunun _ *nx_crypto_method_sha1_init ()* ile başlatılmış olması gerekir. Gerçekleştirilecek SHA1 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -1354,31 +1354,31 @@ Son *NX_CRYPTO_HASH_CALCULATE* işlemi için, çıkış arabelleği boyutu 20 ba
   - *NX_CRYPTO_HASH_UPDATE*
   - *NX_CRYPTO_HASH_CALCULATE*
 - **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli SHA1 şifreleme yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi, *nx_crypto_method_sha1_init ()* içinde kullanılan aynı olmalıdır.
-- **input_data** Girdi metin verileri içeren bir arabelleğe işaret eder. Giriş arabelleğinde kısıtlama yoktur.
-- **input_data_size** Giriş verilerinin bayt cinsinden boyutu.
+- **yöntemi** Geçerli SHA1 şifreleme yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi, *nx_crypto_method_sha1_init() içinde aynı şekilde kullanılmalıdır.*
+- **input_data** Giriş metin verilerini içeren bir arabelleği belirtir. Giriş arabelleğiyle ilgili bir kısıtlama yoktur.
+- **input_data_size** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan SHA1 için kullanılmaz.
 - **iv_size** Bu alan SHA1 için kullanılmaz.
-- **output_buffer** Oluşturulan SHA1 karması için bellek alanına yönelik işaretçi.
+- **output_buffer** Oluşturulan SHA1 karması için bellek alanına işaretçi.
 - **output_buffer_size** Çıkış arabelleğinin bayt cinsinden boyutu. SHA1 için arabellek boyutu 20 bayt olmalıdır.
-- **crypto_metadata** *_Nx_crypto_method_sha1_init ()* IÇINDE kullanılan SHA1 denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. SHA1 için meta veri boyutu *sizeof (NX_CRYPTO_SHA1)* olmalıdır
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata** _nx_crypto_method_sha1_init() içinde kullanılan SHA1 *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. SHA1 için meta veri boyutunun *boyutof(NX_CRYPTO_SHA1) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00), SHA1 işlemini başarıyla yürütüldü.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi veya uzunluğu geçersiz.
-- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) geçersiz SHA1 algoritması belirtildi.
-- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) geçersiz çıkış arabelleği boyutu.
+- **NX_CRYPTO_SUCCESS** (0x00) SHA1 işlemi başarıyla yürütülür.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi veya geçersiz uzunluk.
+- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) Geçersiz SHA1 algoritması belirtiliyor.
+- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) Geçersiz çıkış arabellek boyutu.
 
 ### <a name="example"></a>Örnek
 
 ## <a name="_nx_crypto_method_sha1_cleanup"></a>_nx_crypto_method_sha1_cleanup
 
-SHA1 denetim bloğunu temizleyin.
+SHA1 denetim bloğu temizleme.
 
 ### <a name="prototype"></a>Prototype
 
@@ -1386,22 +1386,22 @@ SHA1 denetim bloğunu temizleyin.
 UINT _nx_crypto_method_sha1_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Uygulama, bu SHA1 oturumunun artık gerekli olmadığını belirlediğinde SHA1 denetim bloğunu temizlemek için bu işlevi çağırır.
+Uygulama, bu SHA1 oturumunun artık gerekli olmadığını tespit ettikten sonra SHA1 denetim bloğunun temizlenmesi için bu işlevi çağırıyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **crypto_metadata** *_Nx_crypto_method_sha1_init ()* IÇINDE kullanılan SHA1 denetim bloğuna yönelik işaretçi.
+- **crypto_metadata** _nx_crypto_method_sha1_init() içinde kullanılan SHA1 *denetim bloğuna işaretçi.*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00), SHA1 oturumunun başarıyla temizlendi.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
+- **NX_CRYPTO_SUCCESS** (0x00) SHA1 oturumu başarıyla temizlendi.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
 
 ## <a name="_nx_crypto_method_sha256_init"></a>_nx_crypto_method_sha256_init
 
-SHA256 şifre denetim bloğunu başlatır
+SHA256 şifreleme denetim bloğu başlatılır
 
 ### <a name="prototype"></a>Prototype
 
@@ -1415,32 +1415,32 @@ UINT _nx_crypto_method_sha256_init(
     ULONG crypto_metadata_size)
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev, SHA256 denetim bloğunu verilen anahtar dizesiyle başlatır. SHA256 denetim bloğu başlatıldıktan sonra, sonraki SHA256 işlemi aynı denetim bloğunu kullanıyor olacaktır.
+Bu işlev, SHA256 denetim bloğuna verilen anahtar dizesiyle başlatılır. SHA256 denetim bloğu başlatıldıktan sonra, sonraki SHA256 işlemi aynı denetim bloğu kullanıyor olur.
 
-Uygulama birden çok SHA256 denetim bloğu oluşturabilir, her biri bir oturumu temsil eder. SHA256 denetim bloğunu başlatmak yeni bir karma hesaplama oturumu başlatır. SHA256 denetim bloğunu yeniden başlatmak geçerli oturumu ve yıldızları yeni bir kez terk edin.
+Uygulama birden çok SHA256 denetim bloğu oluşturabilir ve her biri bir oturumu temsil eder. SHA256 denetim bloğu başlatılırken yeni bir karma hesaplama oturumu başlatılır. SHA256 denetim bloğu yeniden başlatıla, geçerli oturumdan vazgeçer ve yeni bir oturum sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **yöntemi** Geçerli bir SHA256 şifreleme yöntemi denetim bloğuna yönelik işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
+- **yöntem** Geçerli bir SHA256 şifreleme yöntemi denetim bloğuna işaretçi. Aşağıdaki önceden tanımlanmış şifreleme yöntemleri kullanılabilir:
   - *crypto_method_sha256*
   - *crypto_method_sha224*
 - **anahtar** Bu alan SHA256 için kullanılmaz.
-- **key_size_in_bits** Bu alan SHA256 için kullanılmıyor
-- **tanıtıcı** Bu hizmet, çağırana bir tanıtıcı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmıyor. Uygulama tanıtıcı için NULL değer geçirecektir.
-- **crypto_metadata** SHA256 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanının başlangıç adresi 4 bayt hizalı olmalıdır.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. SHA256 için meta veri boyutu *sizeof olmalıdır (NX_CRYPTO_SHA256)*
+- **key_size_in_bits** Bu alan SHA256 için kullanılmaz
+- **handle (tanıtıcı)** Bu hizmet çağıranın tanıtıcısı döndürür. Tanıtıcı uygulamaya bağımlıdır ve bu uygulamada kullanılmaz. Uygulama tanıtıcı için NULL değerini geçsin.
+- **crypto_metadata** SHA256 denetim bloğu için geçerli bir bellek alanı işaretçisi. Bellek alanı başlangıç adresi 4 bayta hizalanmış olması gerekir.
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. SHA256 için meta veri boyutunun *sizeof(NX_CRYPTO_SHA256) olması gerekir*
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- Anahtar ve anahtar boyutuyla SHA256 denetim bloğunun başarılı bir şekilde başlatılması **NX_CRYPTO_SUCCESS** (0x00).
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) anahtar için geçersiz işaretçi veya geçersiz crypto_metadata veya crypto_metadata_size ya da crypto_metadata 4 bayt hizalı değil.
+- **NX_CRYPTO_SUCCESS** (0x00) ANAHTAR ve anahtar boyutuyla SHA256 denetim bloğu başarıyla başlatılacak.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Anahtar için geçersiz işaretçi ya da geçersiz crypto_metadata veya crypto_metadata_size veya crypto_metadata 4-byte hizalanmamış.
 
 ## <a name="_nx_crypto_method_sha256_operation"></a>_nx_crypto_method_sha256_operation
 
-SHA256 karma işlemi gerçekleştir
+SHA256 karma işlemi gerçekleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1462,38 +1462,38 @@ UINT _nx_crypto_method_sha256_operation(UINT op,
     status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu işlev SHA256 karma işlem gerçekleştirir. SHA256 denetim bloğu _ ***nx_crypto_method_sha256_init ()*** ile başlatılmış olmalıdır. Gerçekleştirilecek SHA256 algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
+Bu işlev SHA256 karma işlemini gerçekleştirir. SHA256 denetim bloğu _ ***nx_crypto_method_sha256_init() ile başlatılmış olması gerekir.*** Gerçekleştirilecek SHA256 algoritması, yöntem denetim bloğunda belirtilen *algoritmaya* dayalıdır.
 
-Son *NX_CRYPTO_HASH_CALCULATE* işlemi için, çıkış ARABELLEĞI boyutu SHA256 için 32 bayt veya SHA224 için 28 bayt olmalıdır.
+Son işlem *NX_CRYPTO_HASH_CALCULATE,* çıkış arabellek boyutu SHA256 için 32 bayt veya SHA224 için 28 bayt olmalıdır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **op** Gerçekleştirilecek işlemin türü. Geçerli işlem:
+- **op (op)** Gerçekleştirecek işlem türü. Geçerli işlem:
   - *NX_CRYPTO_HASH_INITIALIZE*
   - *NX_CRYPTO_HASH_UPDATE*
   - *NX_CRYPTO_HASH_CALCULATE*
-- **tanıtıcı** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **yöntemi** Geçerli SHA256 şifre yöntemine yönelik işaretçi. Burada kullanılan şifreleme yöntemi _ *nx_crypto_method_sha256_init ()* içinde kullanılan aynı olmalıdır.
-- **input_data** Girdi metin verileri içeren bir arabelleğe işaret eder. Giriş arabelleğinde kısıtlama yoktur.
-- **input_data_size** Giriş verilerinin bayt cinsinden boyutu.
+- **handle (tanıtıcı)** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **yöntem** Geçerli SHA256 şifreleme yönteminin işaretçisi. Burada kullanılan şifreleme yöntemi , _ *nx_crypto_method_sha256_init() içinde aynı şekilde kullanılmalıdır.*
+- **input_data** Giriş metin verilerini içeren bir arabelleği belirtir. Giriş arabelleğiyle ilgili bir kısıtlama yoktur.
+- **input_data_size** Giriş verisi boyutu (bayt cinsinden).
 - **iv_ptr** Bu alan SHA256 için kullanılmaz.
 - **iv_size** Bu alan SHA256 için kullanılmaz.
-- **output_buffer** Oluşturulan SHA256 karması için bellek alanına yönelik işaretçi.
+- **output_buffer** Oluşturulan SHA256 karması için bellek alanına işaretçi.
 - **output_buffer_size** Çıkış arabelleğinin bayt cinsinden boyutu. SHA256 için arabellek boyutu 32 bayt olmalıdır. SHA224 için arabellek boyutu 28 bayt olmalıdır.
-- **crypto_metadata** *_Nx_crypto_method_sha2_init ()* IÇINDE kullanılan SHA2 denetim bloğuna yönelik işaretçi.
-- **crypto_metadata_size** Crypto_metadata alanının bayt cinsinden boyutu. SHA256 için meta veri boyutu sizeof olmalıdır *(NX_CRYPTO_SHA256)*
-- **packet_ptr** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
-- **nx_crypto_hw_process_callback** Bu alan, NetX şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yok sayılır.
+- **crypto_metadata** _nx_crypto_method_sha2_init() içinde kullanılan SHA2 *denetim bloğuna işaretçi.*
+- **crypto_metadata_size** Veri alanı bayt cinsinden crypto_metadata. SHA256 için meta veri boyutunun *boyutof(NX_CRYPTO_SHA256) olması gerekir*
+- **packet_ptr** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
+- **nx_crypto_hw_process_callback** Bu alan, NetX Şifreleme kitaplığının yazılım uygulamasında kullanılmaz. Geçirilen tüm değerler sessizce yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_CRYPTO_SUCCESS** (0x00) SHA256 işlemini başarıyla yürütüldü.
-- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) şifre kitaplığı geçersiz bir durumda ve kullanılamaz.
-- **NX_PTR_ERROR** (0x07) geçersiz giriş işaretçisi veya uzunluğu geçersiz.
-- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) geçersiz SHA256 algoritması belirtildi.
-- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) geçersiz çıkış arabelleği boyutu.
+- **NX_CRYPTO_SUCCESS** (0x00) SHA256 işlemi başarıyla yürütülür.
+- **NX_CRYPTO_INVALID_LIBRARY** (0x20001) Şifreleme kitaplığı geçersiz durumda ve kullanılamaz.
+- **NX_PTR_ERROR** (0x07) Geçersiz giriş işaretçisi veya geçersiz uzunluk.
+- **NX_CRYPTO_INVALID_ALGORITHM** (0x20004) Geçersiz SHA256 algoritması belirtiliyor.
+- **NX_CRYPTO_INVALID_BUFFER_SIZE** (0x20005) Geçersiz çıkış arabellek boyutu.
 
 ## <a name="_nx_crypto_method_sha256_cleanup"></a>_nx_crypto_method_sha256_cleanup
 
@@ -1505,7 +1505,7 @@ SHA256 denetim bloğunu temizleyin.
 UINT _nx_crypto_method_sha256_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu SHA256 oturumunun artık gerekli olmadığını belirledikten sonra SHA256 denetim bloğunu temizlemek için bu işlevi çağırır.
 
@@ -1534,7 +1534,7 @@ UINT _nx_crypto_method_sha512_init(
     ULONG crypto_metadata_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev, SHA512 olur denetim bloğunu verilen anahtar dizesiyle başlatır. SHA512 olur denetim bloğu başlatıldıktan sonra, sonraki SHA512 olur işlemi aynı denetim bloğunu kullanıyor olacaktır.
 
@@ -1580,7 +1580,7 @@ UINT _nx_crypto_method_sha512_operation(UINT op,
     VOID (*nx_crypto_hw_process_callback)(VOID *packet_ptr, UINT status));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu işlev SHA512 olur karma işlem gerçekleştirir. SHA512 olur denetim bloğu _ *nx_crypto_method_sha512_init ()* ile başlatılmış olmalıdır. Gerçekleştirilecek SHA512 olur algoritması, *Yöntem* denetim bloğunda belirtilen algoritmayı temel alır.
 
@@ -1623,7 +1623,7 @@ SHA512 olur denetim bloğunu temizleyin.
 UINT _nx_crypto_method_sha512_cleanup(VOID* crypto_metadata);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Uygulama, bu SHA512 olur oturumunun artık gerekli olmadığını belirledikten sonra SHA512 olur denetim bloğunu temizlemek için bu işlevi çağırır.
 

@@ -1,30 +1,30 @@
 ---
-title: Bölüm 4-Azure RTOS NetX hizmetlerinin açıklaması
-description: Bu bölümde, tüm Azure RTOS NetX Hizmetleri alfabetik sırada bir açıklama bulunur.
+title: Bölüm 4 - netx Azure RTOS açıklaması
+description: Bu bölümde, Tüm NetX Azure RTOS alfabetik sırada bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 720e573b53070a754618830134f63a8421b9fd29
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: f1ebbd4d78f96a257fc6cf62474917a1d618524ff6f27f99c108f904589f84fe
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825642"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801946"
 ---
-# <a name="chapter-4---description-of-azure-rtos-netx-services"></a>Bölüm 4-Azure RTOS NetX hizmetlerinin açıklaması
+# <a name="chapter-4---description-of-azure-rtos-netx-services"></a>Bölüm 4 - netx Azure RTOS açıklaması
 
-Bu bölümde, tüm Azure RTOS NetX Hizmetleri alfabetik sırada bir açıklama bulunur. Hizmet adları, benzer tüm hizmetlerin birlikte gruplanabilmesi için tasarlanmıştır. Örneğin, bu bölümün başlangıcında tüm ARP hizmetleri bulunur.
+Bu bölümde, Tüm NetX Azure RTOS alfabetik sırada bir açıklama yer almaktadır. Hizmet adları, benzer hizmetlerin hepsi birlikte grup olacak şekilde tasarlanmıştır. Örneğin, tüm ARP hizmetleri bu bölümün başında bulunur.
 
 > [!NOTE]
-> *Yüksek performanslı NetX API 'den tam olarak yararlanmayan eski uygulama kodu için BSD-Compatible yuva API 'SI kullanılabilir olduğunu unutmayın. BSD-Compatible yuva API 'SI hakkında daha fazla bilgi için ek D 'ye bakın.*
+> *Yüksek performanslı NetX APIBSD-Compatible den tam olarak yararlanan eski uygulama kodu için bir BSD-Compatible Yuva API'si olduğunu unutmayın. Yuva API'si hakkında daha fazla bilgi için ek DBSD-Compatible bakın.*
 
-Her açıklamanın "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan NX_DISABLE_ERROR_CHECKING seçeneğinden etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır. "Izin verilen" bölümler, her bir NetX hizmetinin çağrılabilecek olduğunu gösterir.
+Her açıklamanın "Dönüş Değerleri" **bölümünde, KALıN** olmayan değerler api hata NX_DISABLE_ERROR_CHECKING devre dışı bırakmak için kullanılan NX_DISABLE_ERROR_CHECKING seçeneği tarafından etkilenmez ve kalın olmayan değerler tamamen devre dışı bırakılır. "İzin VerilenLer" bölümleri, her NetX hizmetinin hangilerinden çağrıl olduğunu belirtmektedir.
 
 ## <a name="nx_arp_dynamic_entries_invalidate"></a>nx_arp_dynamic_entries_invalidate
 
-ARP önbelleğindeki tüm dinamik girdileri geçersiz kıl
+ARP önbelleğinde tüm dinamik girişleri geçersiz kılın
 
 ### <a name="prototype"></a>Prototype
 
@@ -32,28 +32,28 @@ ARP önbelleğindeki tüm dinamik girdileri geçersiz kıl
 UINT nx_arp_dynamic_entries_invalidate(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, şu anda ARP önbelleğindeki tüm dinamik ARP girdilerini geçersiz kılar.
+Bu hizmet şu anda ARP önbelleğinde bulunan tüm dinamik ARP girişlerini geçersiz kılınır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı ARP önbelleği geçersiz kılar.
+- **NX_SUCCESS** (0x00) Başarılı ARP önbelleği geçersiz kılındı.
 - **NX_NOT_ENABLED** (0x14) ARP etkin değil.
-- **NX_PTR_ERROR** (0x07) geçersiz IP adresi.
-- **NX_CALLER_ERROR** (0x11) çağıran bir iş parçacığı değil.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP adresi.
+- **NX_CALLER_ERROR** (0x11) Çağıran bir iş parçacığı değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -72,7 +72,7 @@ status = nx_arp_dynamic_entries_invalidate(&ip_0);
 
 ## <a name="nx_arp_dynamic_entry_set"></a>nx_arp_dynamic_entry_set
 
-Dinamik ARP girdisi ayarla
+Dinamik ARP girişini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -84,33 +84,33 @@ UINT nx_arp_dynamic_entry_set(
     ULONG physical_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet ARP önbelleğinden dinamik bir giriş ayırır ve belirtilen IP 'yi fiziksel adres eşlemesi olarak ayarlar. Sıfır fiziksel adresi belirtilmişse, fiziksel adresin çözülebilmesi için ağa gerçek bir ARP isteği gönderilir. Ayrıca, ARP eskime etkin olduğunda veya ARP önbelleği tükenirse ve en son kullanılan ARP girişi ise bu girişin kaldırılacağını unutmayın.
+Bu hizmet, ARP önbelleğinden dinamik bir giriş ayırır ve belirtilen IP'yi fiziksel adres eşlemeye ayarlar. Sıfır bir fiziksel adres belirtilirse, fiziksel adresin çözülmesi için ağa gerçek bir ARP isteği gönderilir. Ayrıca, ARP eskime etkinse veya ARP önbelleği tükenmişse ve bu en son kullanılan ARP girdisi ise bu girişin kaldırılacaktır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **ip_address** Eşlenecek IP adresi.
-- **physical_msw** Fiziksel adresin ilk 16 bit (47-32).
-- **physical_lsw** Fiziksel adresin düşük 32 bitleri (31-0).
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **ip_address** Eşlene IP adresi.
+- **physical_msw** Fiziksel adresin ilk 16 biti (47-32).
+- **physical_lsw** Fiziksel adresin daha düşük 32 biti (31-0).
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı ARP dinamik giriş kümesi.
-- **NX_NO_MORE_ENTRIES** (0x17) ARP önbelleğinde daha fazla ARP girişi bulunmamaktadır.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP adresi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP örneği işaretçisi.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı ARP dinamik giriş kümesi.
+- **NX_NO_MORE_ENTRIES** (0x17) ARP önbelleğinde artık ARP girişi yok.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP adresi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP örneği işaretçisi.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -132,7 +132,7 @@ status = nx_arp_dynamic_entry_set(&ip_0, IP_ADDRESS(1,2,3,4),
 
 ## <a name="nx_arp_enable"></a>nx_arp_enable
 
-Adres Çözümleme Protokolü (ARP) etkinleştirilir.
+Adres Çözümleme Protokolü'ne (ARP) olanak sağlar.
 
 ### <a name="prototype"></a>Prototype
 
@@ -143,31 +143,31 @@ UINT nx_arp_enable(
     ULONG arp_cache_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli IP örneği için NetX ARP bileşenini başlatır. ARP başlatma, ARP iletilerinin gönderilmesi ve alınması için gereken ARP önbelleğini ve çeşitli ARP işleme yordamlarını ayarlamayı içerir.
+Bu hizmet, belirli BIR IP örneği için NetX'in ARP bileşenini başlatıyor. ARP başlatma, ARP önbelleğini ayarlamayı ve ARP iletileri göndererek almak için gereken çeşitli ARP işleme yordamlarını içerir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **arp_cache_memory** ARP önbelleğinin yerleştirileceği bellek alanı işaretçisi.
-- **arp_cache_size** Her ARP girişi 52 bayttır, ARP girişlerinin toplam sayısı, bu nedenle boyut 52 ' ye bölünür.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **arp_cache_memory** ARP önbelleğini yer alan bellek alanına işaretçi.
+- **arp_cache_size** Her ARP girişi 52 bayttır; bu nedenle toplam ARP girişi sayısı 52'ye bölünür.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı ARP etkin.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya önbellek bellek işaretçisi.
-- **NX_SIZE_ERROR** (0x09) Kullanıcı tarafından sağlanan ARP önbelleği belleği çok küçük.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_ALREADY_ENABLED** (0x15) Bu bileşen zaten etkinleştirilmiş.
+- **NX_SUCCESS** (0x00) Başarılı ARP etkinleştirmesi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya önbellek bellek işaretçisi.
+- **NX_SIZE_ERROR** (0x09) Kullanıcı tarafından sağlanan ARP önbellek belleği çok küçük.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_ALREADY_ENABLED** (0x15) Bu bileşen zaten etkinleştirilmiştir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -187,7 +187,7 @@ status = nx_arp_enable(&ip_0, (void *) pointer, 1024);
 
 ## <a name="nx_arp_gratuitous_send"></a>nx_arp_gratuitous_send
 
-Gereksiz ARP isteği gönder
+İsteksiz ARP isteği gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -197,19 +197,19 @@ UINT nx_arp_gratuitous_send(
     VOID (*response_handler) (NX_IP *ip_ptr, NX_PACKET *packet_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, arabirim IP adresi geçerli olduğu sürece gereksiz ARP isteklerini iletmek için tüm fiziksel arabirimlerin üzerinden geçer. Bir ARP yanıtı alındıktan sonra, sağlanan yanıt işleyicisi, gereksiz ARP için yanıtı işlemek üzere çağırılır.
+Bu hizmet, arabirim IP adresi geçerli olduğu sürece gratuitous ARP isteklerini iletmek için tüm fiziksel arabirimleri geçen bir hizmettir. Daha sonra bir ARP yanıtı alındıktan sonra, yanıt gratuitous ARP'ye yanıt işlemesi için sağlanan yanıt işleyicisi çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **response_handler** Yanıt işleme işlevine yönelik işaretçi. NX_NULL sağlanırsa, yanıtlar yok sayılır.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **response_handler** Yanıt işleme işlevinin işaretçisi. Bu NX_NULL yanıt yoksayılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı gereksiz ARP gönderme.
-- **NX_NO_PACKET** (0x01) kullanılabilir paket yok.
+- **NX_SUCCESS** (0x00) Başarılı gratuitous ARP send.
+- **NX_NO_PACKET** (0x01) Paket yok.
 - **NX_NOT_ENABLED** (0x14) ARP etkin değil.
 - **NX_IP_ADDRESS_ERROR** (0x21) geçerli IP adresi geçersiz.
 - **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
@@ -221,7 +221,7 @@ Bu hizmet, arabirim IP adresi geçerli olduğu sürece gereksiz ARP isteklerini 
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -253,7 +253,7 @@ UINT nx_arp_hardware_address_find(
     ULONG *physical_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresiyle ilişkili ARP önbelleğinde fiziksel bir donanım adresi bulmaya çalışır.
 
@@ -279,7 +279,7 @@ Bu hizmet, belirtilen IP adresiyle ilişkili ARP önbelleğinde fiziksel bir don
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -323,7 +323,7 @@ UINT nx_arp_info_get(
     ULONG *arp_invalid_messages);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ilişkili IP örneği için ARP etkinlikleri hakkında bilgi alır.
 
@@ -354,7 +354,7 @@ Bu hizmet, ilişkili IP örneği için ARP etkinlikleri hakkında bilgi alır.
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -396,7 +396,7 @@ UINT nx_arp_ip_address_find(
     ULONG physical_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, ARP önbelleğinde sağlanan fiziksel adresle ilişkili bir IP adresi bulmaya çalışır.
 
@@ -422,7 +422,7 @@ Bu hizmet, ARP önbelleğinde sağlanan fiziksel adresle ilişkili bir IP adresi
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -454,7 +454,7 @@ Tüm statik ARP girdilerini Sil
 UINT nx_arp_static_entries_delete(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet ARP önbelleğindeki tüm statik girişleri siler.
 
@@ -475,7 +475,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -511,7 +511,7 @@ UINT nx_arp_static_entry_create(
     ULONG physical_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için ARP önbelleğinde statik bir IP-fiziksel adres eşlemesi oluşturur. Statik ARP girdileri ARP düzenli güncelleştirmelerine tabi değildir.
 
@@ -538,7 +538,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -577,7 +577,7 @@ UINT nx_arp_static_entry_delete(
     ULONG physical_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için ARP önbelleğinde önceden oluşturulmuş bir statik IP-fiziksel adres eşlemeyi bulur ve siler.
 
@@ -604,7 +604,7 @@ Bu hizmet, belirtilen IP örneği için ARP önbelleğinde önceden oluşturulmu
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -635,7 +635,7 @@ Internet Denetim Iletisi Protokolü 'Nü (ıCMP) etkinleştir
 UINT nx_icmp_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için ıCMP bileşenini sunar.
 ICMP bileşeni, Internet hata iletilerini ve ping isteklerini ve yanıtlarını işlemekten sorumludur.
@@ -657,7 +657,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -689,7 +689,7 @@ UINT nx_icmp_info_get(
     ULONG *icmp_unhandled_messages);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için ıCMP etkinlikleri hakkında bilgi alır.
 
@@ -718,7 +718,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -756,7 +756,7 @@ UINT nx_icmp_ping(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP adresine bir ping isteği gönderir ve bir ping yanıtı iletisi için belirtilen süre için bekler. Yanıt alınmadığında bir hata döndürülür. Aksi takdirde, tüm yanıt iletisi response_ptr tarafından işaret edilen değişkende döndürülür.
 
@@ -792,7 +792,7 @@ Bu hizmet, belirtilen IP adresine bir ping isteği gönderir ve bir ping yanıt�
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -822,7 +822,7 @@ Internet Grubu Yönetim Protokolü 'Nü (ıGMP) etkinleştir
 UINT nx_igmp_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneğindeki ıGMP bileşenini sunar.
 IGMP bileşeni, IP çok noktaya yayın grup yönetimi işlemlerine yönelik destek sağlamaktan sorumludur.
@@ -844,7 +844,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -876,7 +876,7 @@ UINT nx_igmp_info_get(
     ULONG *current_groups_joined);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için ıGMP etkinlikleri hakkında bilgi alır.
 
@@ -892,18 +892,18 @@ Bu hizmet, belirtilen IP örneği için ıGMP etkinlikleri hakkında bilgi alır
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarıyla IGMP bilgileri alma.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı IGMP bilgileri alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -927,7 +927,7 @@ status = nx_igmp_info_get(
 
 ## <a name="nx_igmp_loopback_disable"></a>nx_igmp_loopback_disable
 
-IGMP geri döngüsünü devre dışı bırak
+IGMP geri döngüyü devre dışı bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -935,27 +935,27 @@ IGMP geri döngüsünü devre dışı bırak
 UINT nx_igmp_loopback_disable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sonraki tüm çok noktaya yayın gruplarına katılmış ıGMP geri döngüsünü devre dışı bırakır
+Bu hizmet, sonraki tüm çok noktaya yayın grupları için IGMP geri döngüyü devre dışı bırakmaktadır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarıyla IGMP geri döngü devre dışı.
+- **NX_SUCCESS** (0x00) Başarılı IGMP geri döngü devre dışı bırakma.
 - **NX_NOT_ENABLED** (0x14) IGMP etkin değil.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) çağıran bir iş parçacığı veya başlatma değil.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Çağıran bir iş parçacığı veya başlatma değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -974,7 +974,7 @@ status = nx_igmp_loopback_disable(&ip_0);
 
 ## <a name="nx_igmp_loopback_enable"></a>nx_igmp_loopback_enable
 
-IGMP geri döngüsünü etkinleştir
+IGMP geri döngüyü etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -982,27 +982,27 @@ IGMP geri döngüsünü etkinleştir
 UINT nx_igmp_loopback_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, sonraki tüm çok noktaya yayın gruplarına katılmış ıGMP geri döngüsüne izin vermez.
+Bu hizmet, sonraki tüm çok noktaya yayın grupları için IGMP geri döngüye olanak sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarıyla IGMP geri döngü devre dışı.
+- **NX_SUCCESS** (0x00) Başarılı IGMP geri döngü devre dışı bırakma.
 - **NX_NOT_ENABLED** (0x14) IGMP etkin değil.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) çağıran bir iş parçacığı veya başlatma değil.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Çağıran bir iş parçacığı veya başlatma değildir.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1015,13 +1015,13 @@ status = nx_igmp_loopback_enable(&ip_0);
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
-- nx_igmp_enable, nx_igmp_info_get, nx_igmp_loopback_disable,
+- nx_igmp_enable, nx_igmp_info_get,nx_igmp_loopback_disable,
 - nx_igmp_multicast_interface_join, nx_igmp_multicast_join,
 - nx_igmp_multicast_leave
 
 ## <a name="nx_igmp_multicast_interface_join"></a>nx_igmp_multicast_interface_join
 
-IP örneğini bir arabirim aracılığıyla belirtilen çok noktaya yayın grubuna ekleyin
+IP örneğini bir arabirim aracılığıyla belirtilen çok noktaya yayın grubuna birleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1032,33 +1032,33 @@ UINT nx_igmp_multicast_interface_join(
     UINT interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ağ arabirimi aracılığıyla bir IP örneğini belirtilen çok noktaya yayın grubuna birleştirir. Aynı grubun kaç kez katıldığını izlemek için bir iç sayaç tutulur. Çok noktaya yayın grubuna katıldıktan sonra, ıGMP bileşeni, belirtilen ağ arabirimi aracılığıyla bu grup adresiyle IP paketlerinin alımına ve ayrıca bu IP 'nin bu çok noktaya yayın grubunun bir üyesi olduğu yönlendiricilere rapor vermeyecektir. IGMP üyelik birleşimi, rapor ve çıkış iletileri belirtilen ağ arabirimi aracılığıyla da gönderilir.
+Bu hizmet, bir IP örneğini belirtilen ağ arabirimi aracılığıyla belirtilen çok noktaya yayın grubuna ekler. Aynı grubun katılma sayısını izlemek için bir iç sayaç korunur. Çok noktaya yayın grubuna katıldıktan sonra, IGMP bileşeni belirtilen ağ arabirimi aracılığıyla bu grup adresine sahip IP paketlerinin alımına izin verir ve yönlendiricilere bu IP'nin bu çok noktaya yayın grubunun üyesi olduğunu bildirecek. IGMP üyeliğine katılma, bildirme ve bırakma iletileri de belirtilen ağ arabirimi üzerinden gönderilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **group_address** Ana bilgisayar bayt düzeninde katılacak sınıf D IP çok noktaya yayın grubu adresi.
-- **interface_index** NetX örneğine iliştirilmiş arabirimin dizini.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **group_address** Konak bayta sırasıyla katılmak için D sınıfı IP çok noktaya yayın grubu adresi.
+- **interface_index** NetX örneğine bağlı Arabirimin dizini.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı çok noktaya yayın grubu katılımı.
-- **NX_NO_MORE_ENTRIES** (0x17) daha fazla çok noktaya yayın grubu birleştirilemez, en fazla sınır aşıldı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_INVALID_INTERFACE** (0x4C) cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
-- **NX_IP_ADDRESS_ERROR** (0x21) belirtilen çok noktaya yayın grubu adresi geçerli bir sınıf D adresi değil.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) IP çok noktaya yayın desteği etkin değil.
+- **NX_SUCCESS** (0x00) Başarılı çok noktaya yayın grubu birleştirme.
+- **NX_NO_MORE_ENTRIES** (0x17) Daha fazla çok noktaya yayın grubu birleştirilemeyecek, maksimum değer aşılır.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_INVALID_INTERFACE** (0x4C) Cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
+- **NX_IP_ADDRESS_ERROR** (0x21) Çok Noktaya Yayın grup adresi geçerli bir D sınıfı adres değildir.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) IP çok noktaya yayın desteği etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1076,13 +1076,13 @@ status = nx_igmp_multicast_interface_join
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
-- nx_igmp_enable, nx_igmp_info_get, nx_igmp_loopback_disable,
+- nx_igmp_enable, nx_igmp_info_get,nx_igmp_loopback_disable,
 - nx_igmp_loopback_enable, nx_igmp_multicast_join,
 - nx_igmp_multicast_leave
 
 ## <a name="nx_igmp_multicast_join"></a>nx_igmp_multicast_join
 
-IP örneğini belirtilen çok noktaya yayın grubuna ekleyin
+IP örneğini belirtilen çok noktaya yayın grubuna birleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1092,35 +1092,35 @@ UINT nx_igmp_multicast_join(
     ULONG group_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir IP örneğini belirtilen çok noktaya yayın grubuna birleştirir. Aynı grubun kaç kez katıldığını izlemek için bir iç sayaç tutulur. Bu, konağın gruba katılması için bir ağ üzerinde ilk JOIN isteği olduğunu belirten bir ıGMP raporu göndermek için kullanılır. Birleştirme sonrasında, ıGMP bileşeni, bu IP 'nin bu çok noktaya yayın grubunun üyesi olduğu yönlendiricilerle bu grup adresi ve raporla IP paketleri alımına izin verir.
+Bu hizmet, bir IP örneğini belirtilen çok noktaya yayın grubuna katıyor. Aynı grubun katılma sayısını izlemek için bir iç sayaç korunur. Sürücüden, ağ üzerinde ana bilgisayar grubunun katılma amacını belirten ilk birleştirme isteği ise bir IGMP raporu göndermesi komutu kullanılır. Birleştirmeden sonra, IGMP bileşeni bu grup adresine sahip IP paketlerinin alımına ve bu IP'nin bu çok noktaya yayın grubunun üyesi olduğu yönlendiricilere rapora izin verecek.
 
 > [!NOTE]
-> *Birincil olmayan bir cihazdaki çok noktaya yayın grubuna katmak için, hizmet **nx_igmp_multicast_interface_join kullanın.***
+> *Birincil olmayan bir cihazda çok noktaya yayın grubuna katılmak için hizmet **nx_igmp_multicast_interface_join.***
 
 - **Parametreler**
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **group_address** Katılacak sınıf D IP çok noktaya yayın grubu adresi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **group_address** Katılmak için D SıNıFı IP çok noktaya yayın grubu adresi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı çok noktaya yayın grubu katılımı.
-- **NX_NO_MORE_ENTRIES** (0x17) daha fazla çok noktaya yayın grubu birleştirilemez, en fazla sınır aşıldı.
-- **NX_INVALID_INTERFACE** (0x4C) cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP grubu adresi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı çok noktaya yayın grubu birleştirme.
+- **NX_NO_MORE_ENTRIES** (0x17) Daha fazla çok noktaya yayın grubu birleştirilemeyecek, maksimum değer aşılır.
+- **NX_INVALID_INTERFACE** (0x4C) Cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP grubu adresi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1135,13 +1135,13 @@ status = nx_igmp_multicast_join(&ip_0, IP_ADDRESS(224,0,0,200));
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
-- nx_igmp_enable, nx_igmp_info_get, nx_igmp_loopback_disable,
+- nx_igmp_enable, nx_igmp_info_get,nx_igmp_loopback_disable,
 - nx_igmp_loopback_enable, nx_igmp_multicast_interface_join,
 - nx_igmp_multicast_leave
 
 ## <a name="nx_igmp_multicast_leave"></a>nx_igmp_multicast_leave
 
-IP örneğinin belirtilen çok noktaya yayın grubuna ayrılma nedeni
+IP örneğinin belirtilen çok noktaya yayın grubundan ayrılmaya neden olur
 
 ### <a name="prototype"></a>Prototype
 
@@ -1151,32 +1151,32 @@ UINT nx_igmp_multicast_leave(
     ULONG group_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, çıkış isteklerinin sayısı, JOIN isteklerinin sayısı ile eşleşiyorsa bir IP örneğinin belirtilen çok noktaya yayın grubunu bırakmasını sağlar. Aksi takdirde, iç ekleme sayısı yalnızca azaltılır.
+Bu hizmet, bırakma isteklerinin sayısı birleştirme isteklerinin sayısıyla eşiliyorsa bir IP örneğinin belirtilen çok noktaya yayın grubundan ayrılmasını sağlar. Aksi takdirde, iç birleşim sayısı yalnızca kullanımdan sayılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **group_address** Bırakılacak çok noktaya yayın grubu.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **group_address** Ayrılılacak çok noktaya yayın grubu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı çok noktaya yayın grubu katılımı.
-- **NX_ENTRY_NOT_FOUND** (0x16) önceki JOIN isteği bulunamadı.
-- **NX_INVALID_INTERFACE** (0x4C) cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP grubu adresi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı çok noktaya yayın grubu birleştirme.
+- **NX_ENTRY_NOT_FOUND** (0x16) Önceki birleştirme isteği bulunamadı.
+- **NX_INVALID_INTERFACE** (0x4C) Cihaz dizini geçersiz bir ağ arabirimine işaret ediyor.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP grubu adresi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1195,7 +1195,7 @@ status = nx_igmp_multicast_leave(&ip_0, IP_ADDRESS(224,0,0,200);
 
 ## <a name="nx_ip_address_change_notifiy"></a>nx_ip_address_change_notifiy
 
-IP adresi değişirse uygulamayı bilgilendir
+IP adresi değişirse uygulamaya bildirme
 
 
 ### <a name="prototype"></a>Prototype
@@ -1207,29 +1207,29 @@ UINT nx_ip_address_change_notify(
     VOID *additional_info);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP adresi her değiştirildiğinde çağrılan bir uygulama bildirim işlevini kaydeder.
+Bu hizmet, IP adresi her değiştiriken çağrılan bir uygulama bildirimi işlevini kaydettirmektedir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **change_notify** IP değişikliği bildirim işlevine yönelik işaretçi. Bu parametre NX_NULL, IP adresi değişiklik bildirimi devre dışı bırakılır.
-- **additional_info** IP adresi değiştirildiğinde bildirim işlevine de sağlanan isteğe bağlı ek bilgilere yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **change_notify** IP değişiklik bildirimi işlevinin işaretçisi. Bu parametre doğru NX_NULL IP adresi değişiklik bildirimi devre dışı bırakılır.
+- **additional_info** IP adresi değiştiriken bildirim işlevine de sağlanan isteğe bağlı ek bilgilerin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP adresi değişikliği bildirimi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP adresi değişiklik bildirimi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1252,7 +1252,7 @@ status = nx_ip_address_change_notify(&ip_0, my_ip_changed, NX_NULL);
 
 ## <a name="nx_ip_address_get"></a>nx_ip_address_get
 
-IP adresi ve ağ maskesini al
+IP adresini ve ağ maskesini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1263,32 +1263,32 @@ UINT nx_ip_address_get(
     ULONG *network_mask);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, birincil ağ arabiriminin IP adresini ve alt ağ maskesini alır.
+Bu hizmet IP adresini ve birincil ağ arabiriminin alt ağ maskesini verir.
 
-* İkincil cihaz hakkında bilgi edinmek için hizmetini kullanın
-- **nx_ip_interface_address_get**. *
+*İkincil cihazın bilgilerini almak için hizmetini kullanın
+- **nx_ip_interface_address_get**.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **ip_address** IP adresi için hedef işaretçisi.
-- **network_mask** Ağ maskesi için hedef işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **ip_address** IP adresi için hedefin işaretçisi.
+- **network_mask** Ağ maskesi için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP adresi al.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya dönüş değişkeni işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP adresi get.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya dönüş değişkeni işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1313,7 +1313,7 @@ status = nx_ip_address_get(&ip_0,
 
 ## <a name="nx_ip_address_set"></a>nx_ip_address_set
 
-IP adresi ve ağ maskesini ayarla
+IP adresini ve ağ maskesini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1324,32 +1324,32 @@ UINT nx_ip_address_set(
     ULONG network_mask);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, birincil ağ arabirimi için IP adresi ve ağ maskesini ayarlar.
+Bu hizmet, birincil ağ arabirimi için IP adresini ve ağ maskesini ayarlar.
 
-*İkincil cihaz için IP adresi ve ağ maskesini ayarlamak için, hizmet **nx_ip_interface_address_set** kullanın.*
+*İkincil cihazın IP adresini ve ağ maskesini ayarlamak için, **nx_ip_interface_address_set.***
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 - **ip_address** Yeni IP adresi.
 - **network_mask** Yeni ağ maskesi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP adresi kümesi.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP adresi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP adresi kümesi.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP adresi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1390,38 +1390,38 @@ UINT nx_ip_create(
     UINT priority);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Kullanıcı tarafından sağlanan IP adresi ve ağ sürücüsüne sahip bir IP örneği oluşturur. Ayrıca, uygulamanın, iç paket ayırması için kullanacağı IP örneği için önceden oluşturulmuş bir paket havuzu sağlaması gerekir. Sağlanan uygulama ağ sürücüsünün bu IP iş parçacığı yürütülene kadar çağrılmadığını unutmayın.
+Bu hizmet, kullanıcı tarafından sağlanan IP adresi ve ağ sürücüsü ile bir IP örneği oluşturur. Buna ek olarak, uygulamanın IÇ paket ayırma için kullanmak üzere IP örneği için önceden oluşturulmuş bir paket havuzu sağlamak gerekir. Sağlanan uygulama ağ sürücüsünün, bu IP'nin iş parçacığı yürütülene kadar çağrılmay olduğunu unutmayın.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Yeni bir IP örneği oluşturmak için denetim bloğu işaretçisi.
-- **ad** Bu yeni IP örneğinin adı.
+- **ip_ptr** Yeni bir IP örneği oluşturmak için denetim bloğuna işaretçi.
+- **name** Bu yeni IP örneğinin adı.
 - **ip_address** Bu yeni IP örneğinin IP adresi.
-- **network_mask** Alt ağ ve süper netme kullanımları için IP adresinin ağ bölümünü maskelemek için maske.
-- **default_pool** Daha önce oluşturulmuş NetX paket havuzunun denetim bloğuna yönelik işaretçi.
-- **ip_network_driver** IP paketleri göndermek ve almak için kullanılan Kullanıcı tarafından sağlanan ağ sürücüsü.
-- **memory_ptr** IP Yardımcısı iş parçacığının yığın alanı için bellek alanı işaretçisi.
-- **memory_size** IP Yardımcısı iş parçacığı yığınının bellek alanındaki bayt sayısı.
-- **Öncelik** IP Yardımcısı iş parçacığının önceliği.
+- **network_mask** Alt ve süper olumsuzluk kullanımları için IP adresinin ağ bölümünü ifade etmek için maskeleme.
+- **default_pool** Daha önce oluşturulan NetX paket havuzunun denetim bloğuna işaretçi.
+- **ip_network_driver** IP paketlerini göndermek ve almak için kullanılan kullanıcı tarafından sağlanan ağ sürücüsü.
+- **memory_ptr** IP yardımcı iş parçacığının yığın alanı için bellek alanına işaretçi.
+- **memory_size** IP yardımcı iş parçacığı yığını için bellek alanında bayt sayısı.
+- **öncelik** IP yardımcı iş parçacığının önceliği.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı IP örneği oluşturma.
-- **NX_NOT_IMPLEMENTED** (0x4A) NETX kitaplığı yanlış yapılandırılmış.
-- **NX_PTR_ERROR** (0x07) geçersiz IP, ağ sürücüsü işlev işaretçisi, paket havuzu veya bellek işaretçisi.
-- **NX_SIZE_ERROR** (0x09) sağlanan yığın boyutu çok küçük.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_IP_ADDRESS_ERROR** (0x21) sağlanan IP adresi geçersiz.
-- **NX_OPTION_ERROR** (0x21) sağlanan IP iş parçacığı önceliği geçersiz.
+- **NX_SUCCESS** (0x00) Başarılı IP örneği oluşturma.
+- **NX_NOT_IMPLEMENTED** (0x4A) NetX kitaplığı yanlış yapılandırılmış.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP, ağ sürücüsü işlev işaretçisi, paket havuzu veya bellek işaretçisi.
+- **NX_SIZE_ERROR** (0x09) Sağlanan yığın boyutu çok küçük.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_IP_ADDRESS_ERROR** (0x21) Sağlanan IP adresi geçersiz.
+- **NX_OPTION_ERROR** (0x21) Sağlanan IP iş parçacığı önceliği geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1455,7 +1455,7 @@ status = nx_ip_create(
 
 ## <a name="nx_ip_delete"></a>nx_ip_delete
 
-Önceden oluşturulan IP örneğini Sil
+Daha önce oluşturulan IP örneğini silme
 
 
 ### <a name="prototype"></a>Prototype
@@ -1464,25 +1464,25 @@ status = nx_ip_create(
 UINT nx_ip_delete(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir IP örneğini siler ve IP örneğinin sahip olduğu tüm sistem kaynaklarını serbest bırakır.
+Bu hizmet, önceden oluşturulmuş bir IP örneğini siler ve IP örneğine ait tüm sistem kaynaklarını serbest bıraktır.
 
 ### <a name="parameters"></a>Parametreler
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP silme işlemi.
-- **NX_SOCKETS_BOUND** (0x28) bu IP örneğine, bağımlı UDP veya TCP yuvaları hala sahip. IP örneği silinmeden önce tüm yuvaların bağlantısı kesildi ve silinmemelidir.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) BAŞARıLı IP silme.
+- **NX_SOCKETS_BOUND** (0x28) Bu IP örneğine bağlı UDP veya TCP yuvaları hala vardır. IP örneği silinmeden önce tüm yuvaların sınırsız olması ve silinmesi gerekir.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -1506,7 +1506,7 @@ status = nx_ip_delete(&ip_0);
 
 ## <a name="nx_ip_driver_direct_command"></a>nx_ip_driver_direct_command
 
-Ağ sürücüsüne komut verme
+Ağ sürücüsüne sorun komutu
 
 ### <a name="prototype"></a>Prototype
 
@@ -1517,18 +1517,18 @@ UINT nx_ip_driver_direct_command(
     ULONG *return_value_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uygulamanın ***nx_ip_create*** çağrısı sırasında belirtilen birincil ağ arabirimi sürücüsüne doğrudan bir arabirim sağlar.
+Bu hizmet, uygulamanın birincil ağ arabirimi sürücüsüne çağrı sırasında belirtilen doğrudan ***nx_ip_create*** sağlar.
 
-Uygulamaya özgü komutlar, sayısal değerleri NX_LINK_USER_COMMAND daha büyük veya eşit bir değere göre kullanılabilir.
+Uygulamaya özgü komutlar, sayısal değerlerin belirli bir değerden büyük veya bu değere eşit olması NX_LINK_USER_COMMAND.
 
-*İkincil cihaz için komut vermek üzere **nx_ip_driver_interface_direct_command** hizmetini kullanın.*
+*İkincil cihaza komut komutu nx_ip_driver_interface_direct_command **kullanın.***
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **komut** Sayısal komut kodu. Standart komutlar aşağıdaki gibi tanımlanır:
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **komutu** Sayısal komut kodu. Standart komutlar aşağıdaki gibi tanımlanır:
 
 - NX_LINK_GET_STATUS (10)
 - NX_LINK_GET_SPEED (11)
@@ -1539,23 +1539,23 @@ Uygulamaya özgü komutlar, sayısal değerleri NX_LINK_USER_COMMAND daha büyü
 - NX_LINK_GET_ALLOC_ERRORS (16)
 - NX_LINK_USER_COMMAND (50)
 
-- **return_value_ptr** Çağıran değişkenin dönüş işaretçisi.
+- **return_value_ptr** Çağıranda değişken dönüş işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) ağ sürücüsü doğrudan komutu başarıyla açıldı.
-- **NX_UNHANDLED_COMMAND** (0x44) işlenmemiş veya uygulanmayan ağ sürücüsü komutu.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya dönüş değeri işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz arabirim dizini.
+- **NX_SUCCESS** (0x00) Başarılı ağ sürücüsü doğrudan komutu.
+- **NX_UNHANDLED_COMMAND** (0x44) İşsiz veya uygulanmamış ağ sürücüsü komutu.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya dönüş değeri işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz arabirim dizini.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-- **Önalım mümkün**
+- **Önserme Olası**
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1582,7 +1582,7 @@ status = nx_ip_driver_direct_command(
 
 ## <a name="nx_ip_driver_interface_direct_command"></a>nx_ip_driver_interface_direct_command
 
-Ağ sürücüsüne komut verme
+Ağ sürücüsüne sorun komutu
 
 ### <a name="prototype"></a>Prototype
 
@@ -1594,14 +1594,14 @@ UINT nx_ip_driver_interface_direct_command(
     ULONG *return_value_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP örneğindeki uygulamanın ağ aygıtı sürücüsüne doğrudan bir komut sağlar. Uygulamaya özgü komutlar, sayısal değerleri *NX_LINK_USER_COMMAND* daha büyük veya eşit bir değere göre kullanılabilir.
+Bu hizmet, IP örneğinde uygulamanın ağ cihazı sürücüsüne doğrudan bir komut sağlar. Uygulamaya özgü komutlar, sayısal değerlerin NX_LINK_USER_COMMAND'den büyük veya *bu değere eşit olması NX_LINK_USER_COMMAND.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **komut** Sayısal komut kodu. Standart komutlar aşağıdaki gibi tanımlanır:
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **komutu** Sayısal komut kodu. Standart komutlar aşağıdaki gibi tanımlanır:
 - NX_LINK_GET_STATUS (10)
 - NX_LINK_GET_SPEED (11)
 - NX_LINK_GET_DUPLEX_TYPE (12)
@@ -1610,23 +1610,23 @@ Bu hizmet, IP örneğindeki uygulamanın ağ aygıtı sürücüsüne doğrudan b
 - NX_LINK_GET_TX_COUNT (15)
 - NX_LINK_GET_ALLOC_ERRORS (16)
 - NX_LINK_USER_COMMAND (50)
-- **interface_index** Komutun gönderilmesi gereken ağ arabiriminin dizini.
-- **return_value_ptr** Çağıran değişkenin dönüş işaretçisi.
+- **interface_index** Komutun gönder gerektiği ağ arabirimi dizini.
+- **return_value_ptr** Çağıranda değişken dönüş işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) ağ sürücüsü doğrudan komutu başarıyla açıldı.
-- **NX_UNHANDLED_COMMAND** (0x44) işlenmemiş veya uygulanmayan ağ sürücüsü komutu.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz arabirim dizini
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya dönüş değeri işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı ağ sürücüsü doğrudan komutu.
+- **NX_UNHANDLED_COMMAND** (0x44) İşsiz veya uygulanmamış ağ sürücüsü komutu.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz arabirim dizini
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya dönüş değeri işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1656,7 +1656,7 @@ UINT interface_index = 0;
 
 ## <a name="nx_ip_forwarding_disable"></a>nx_ip_forwarding_disable
 
-IP paket iletmeyi devre dışı bırak
+IP paketi iletmeyi devre dışı bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1664,27 +1664,27 @@ IP paket iletmeyi devre dışı bırak
 UINT nx_ip_forwarding_disable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP paketlerinin NetX IP bileşeni içinde iletilmesini devre dışı bırakır. Bu hizmet, IP görevini oluştururken otomatik olarak devre dışı bırakılır.
+Bu hizmet, NETX IP bileşeni içinde IP paketlerini iletmeyi devre dışı bırakıyor. IP görevi oluşturulurken bu hizmet otomatik olarak devre dışı bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP iletimi devre dışı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP iletme devre dışı bırak.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar
+Başlatma, iş parçacıkları, süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1706,7 +1706,7 @@ status = nx_ip_forwarding_disable(&ip_0);
 
 ## <a name="nx_ip_forwarding_enable"></a>nx_ip_forwarding_enable
 
-IP paket iletmeyi etkinleştir
+IP paketi iletmeyi etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1714,26 +1714,26 @@ IP paket iletmeyi etkinleştir
 UINT nx_ip_forwarding_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP paketlerinin NetX IP bileşeni içinde iletilmesine izin vermez. Bu hizmet, IP görevini oluştururken otomatik olarak devre dışı bırakılır.
+Bu hizmet, NETX IP bileşeni içinde IP paketlerini iletmeyi sağlar. IP görevi oluşturulurken bu hizmet otomatik olarak devre dışı bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı IP iletimi etkin.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP iletme etkinleştirmesi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar
+Başlatma, iş parçacıkları, süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1763,7 +1763,7 @@ IP paketi fragmenting devre dışı bırak
 UINT nx_ip_fragment_disable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, IP paketi fragmenting devre dışı bırakır ve işlevselliği yeniden birleştirir. Yeniden birleştirilme bekleyen paketler için, bu hizmet bu paketleri yayınlar. Bu hizmet, IP görevini oluştururken otomatik olarak devre dışı bırakılır.
 
@@ -1783,7 +1783,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1813,7 +1813,7 @@ IP paketi fragmenting etkinleştir
 UINT nx_ip_fragment_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, IP paketi fragmenting ve yeniden birleştirilen işlevselliği sunar. Bu hizmet, IP görevini oluştururken otomatik olarak devre dışı bırakılır.
 
@@ -1834,7 +1834,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1866,7 +1866,7 @@ UINT nx_ip_gateway_address_set(
     ULONG ip_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, IP ağ geçidi IP adresini ayarlar. Tüm ağ dışı trafik, iletim için bu ağ geçidine yönlendirilir. Ağ geçidine ağ arabirimlerinden biri aracılığıyla doğrudan erişilebilir olması gerekir.
 
@@ -1888,7 +1888,7 @@ Başlatma, iş parçacığı
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1925,7 +1925,7 @@ UINT nx_ip_info_get(
     ULONG *ip_total_fragments_received);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için IP etkinlikleri hakkında bilgi alır.
 
@@ -1957,7 +1957,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -1989,7 +1989,7 @@ status = nx_ip_info_get(&ip_0,
 
 ## <a name="nx_ip_interface_address_get"></a>nx_ip_interface_address_get
 
-Arabirim IP adresini al
+Arabirim IP adresini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2001,33 +2001,33 @@ UINT nx_ip_interface_address_get (
     ULONG *network_mask);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ağ arabiriminin IP adresini alır.
+Bu hizmet, belirtilen bir ağ arabiriminin IP adresini verir.
 
-*Birincil cihaz değilse belirtilen cihaz, daha önce IP örneğine eklenmiş olmalıdır.*
+*Birincil cihaz yoksa, belirtilen cihaz daha önce IP örneğine ekli olması gerekir.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **interface_index** Arabirim dizini, IP örneğine iliştirilmiş ağ arabiriminin diziniyle aynı değer.
-- **ip_address** Cihaz arabirimi IP adresi için hedef işaretçisi.
-- **network_mask** Cihaz arabirimi ağ maskesi için hedef işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **interface_index** Arabirim dizini, IP örneğine bağlı ağ arabiriminin diziniyle aynı değerdir.
+- **ip_address** Cihaz arabirimi IP adresi için hedefin işaretçisi.
+- **network_mask** Cihaz arabirimi ağ maskesi için hedefin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP adresi al.
-- **NX_INVALID_INTERFACE** (0x4C) belirtilen ağ arabirimi geçersiz.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
+- **NX_SUCCESS** (0x00) Başarılı IP adresi get.
+- **NX_INVALID_INTERFACE** (0x4C) Belirtilen ağ arabirimi geçersiz.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2050,7 +2050,7 @@ status = nx_ip_interface_address_get(ip_ptr,INTERFACE_INDEX,
 
 ## <a name="nx_ip_interface_address_set"></a>nx_ip_interface_address_set
 
-Arabirim IP adresi ve ağ maskesini ayarla
+Arabirim IP adresini ve ağ maskesini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2062,34 +2062,34 @@ UINT nx_ip_interface_address_set(
     ULONG network_mask);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP arabirimi için IP adresini ve ağ maskesini ayarlar.
 
-*Belirtilen arabirim daha önce IP örneğine eklenmiş olmalıdır.*
+*Belirtilen arabirim daha önce IP örneğine ekli olması gerekir.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **interface_index** NetX örneğine iliştirilmiş arabirimin dizini.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **interface_index** NetX örneğine bağlı arabirimin dizini.
 - **ip_address** Yeni ağ arabirimi IP adresi.
-- **network_mask** Yeni Arabirim ağ maskesi.
+- **network_mask** Yeni arabirim ağ maskesi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP adresi kümesi.
-- **NX_INVALID_INTERFACE** (0x4C) belirtilen ağ arabirimi geçersiz.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçiler.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP adresi
+- **NX_SUCCESS** (0x00) Başarılı IP adresi kümesi.
+- **NX_INVALID_INTERFACE** (0x4C) Belirtilen ağ arabirimi geçersiz.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçiler.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP adresi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2112,7 +2112,7 @@ successfully set. */
 
 ## <a name="nx_ip_interface_attach"></a>nx_ip_interface_attach
 
-Ağ arabirimini IP örneğine Ekle
+IP örneğine ağ arabirimi ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2126,43 +2126,43 @@ UINT nx_ip_interface_attach(
     (struct NX_IP_DRIVER_STRUCT *));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP arabirimine bir fiziksel ağ arabirimi ekler. Bu durumda, her ek arabirimin birincil arabirime ikincil olması için, IP örneğinin birincil arabirimle oluşturulduğunu aklınızda bulunur. IP örneğine (birincil arabirim dahil) bağlı olan ağ arabirimlerinin toplam sayısı **NX_MAX_PHYSICAL_INTERFACES** aşamaz.
+Bu hizmet, IP arabirimine bir fiziksel ağ arabirimi ekler. IP örneğinin birincil arabirimle oluşturularak her ek arabirimin birincil arabirime ikincil olduğunu unutmayın. IP örneğine bağlı ağ arabirimlerinin toplam sayısı (birincil arabirim dahil) ağ arabirimini **NX_MAX_PHYSICAL_INTERFACES.**
 
-IP iş parçacığı henüz çalışmıyorsa, ikincil arabirimler tüm fiziksel arabirimleri Başlatan IP iş parçacığı başlatma sürecinin bir parçası olarak başlatılır.
+IP iş parçacığı henüz çalışmamışsa, ikincil arabirimler tüm fiziksel arabirimleri başlatan IP iş parçacığı başlatma işleminin bir parçası olarak başlatılır.
 
-IP iş parçacığı henüz çalışmıyorsa, ikincil arabirim ***nx_ip_interface_attach*** hizmetin bir parçası olarak başlatılır.
+IP iş parçacığı henüz çalışmıyorsa, ikincil arabirim nx_ip_interface_attach ***başlatılır.***
 
-*ip_ptr geçerli bir NetX IP yapısına işaret etmelidir.*
+*ip_ptr geçerli bir NetX IP yapısına işaret etmek gerekir.*
 
-- *IP örneği için ağ arabirimlerinin sayısı için **NX_MAX_PHYSICAL_INTERFACES** yapılandırılması gerekir. Varsayılan değer bir değeridir.*
+- ***NX_MAX_PHYSICAL_INTERFACES** IP örneğinin ağ arabirimlerinin sayısı için yapılandırıldığından emin olun. Varsayılan değer birdir.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 - **interface_name** Arabirim adı dizesinin işaretçisi.
-- **ip_address** Konak bayt düzeninde cihaz IP adresi.
-- **network_mask** Konak bayt düzeninde cihaz ağ maskesi.
+- **ip_address** Konak bayt sırasına göre cihaz IP adresi.
+- **network_mask** Konak bayt sırasına göre cihaz ağ maskesi.
 - **ip_link_driver** Arabirim için Ethernet sürücüsü.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) girişi statik yönlendirme tablosuna eklenir.
-- **NX_NO_MORE_ENTRIES** (0x17) en fazla arabirim sayısı.
+- **NX_SUCCESS** (0x00) Girişi statik yönlendirme tablosuna eklenir.
+- **NX_NO_MORE_ENTRIES** (0x17) En fazla arabirim sayısı.
 - **NX_MAX_PHYSICAL_INTERFACES** aşıldı.
-- **NX_DUPLICATED_ENTRY** (0x52) sağlanan IP adresı bu IP örneğinde zaten kullanılıyor.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP adresi girişi.
+- **NX_DUPLICATED_ENTRY** (0x52) Sağlanan IP adresi bu IP örneğinde zaten kullanılıyor.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP adresi girişi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2185,7 +2185,7 @@ status = nx_ip_interface_attach(ip_ptr, “secondary_port”,
 
 ## <a name="nx_ip_interface_info_get"></a>nx_ip_interface_info_get
 
-Ağ arabirimi parametrelerini al
+Ağ arabirimi parametrelerini alma
 
 
 ### <a name="prototype"></a>Prototype
@@ -2202,37 +2202,37 @@ UINT nx_ip_interface_info_get(
     ULONG *physical_address_lsw);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen ağ arabirimi için ağ parametreleriyle ilgili bilgileri alır. Tüm veriler ana bilgisayar bayt düzeninde alınır.
+Bu hizmet, belirtilen ağ arabirimi için ağ parametreleriyle ilgili bilgileri verir. Tüm veriler konak bayt sırasına göre alınır.
 
-*ip_ptr geçerli bir NetX IP yapısına işaret etmelidir. Belirtilen arabirim, birincil arabirim değilse, daha önce IP örneğine eklenmelidir.*
+*ip_ptr geçerli bir NetX IP yapısına işaret etmek gerekir. Birincil arabirim yoksa, belirtilen arabirimin daha önce IP örneğine eklenmiş olması gerekir.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **interface_index** Ağ arabirimini belirten Dizin.
-- **interface_name** Ağ arabiriminin adını tutan arabelleğin işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **interface_index** Ağ arabirimini belirten dizin.
+- **interface_name** Ağ arabiriminin adını tutan arabelleğe işaretçi.
 - **ip_address** Arabirimin IP adresi için hedefin işaretçisi.
-- **network_mask** Ağ maskesi için hedef işaretçisi.
-- **mtu_size** Bu arabirim için en fazla aktarım birimi için hedef işaretçisi.
-- **physical_address_msw** Cihaz MAC adresi için en iyi 16 bit için hedef işaretçisi.
-- **physical_address_lsw** Cihaz MAC adresinin daha düşük 32 bitleri için hedef işaretçisi.
+- **network_mask** Ağ maskesi için hedefin işaretçisi.
+- **mtu_size** Bu arabirim için maksimum aktarım birimi için hedefe işaretçi.
+- **physical_address_msw** Cihaz MAC adresinin ilk 16 biti için hedefe işaretçi.
+- **physical_address_lsw** Cihaz MAC adresinin daha düşük 32 biti için hedefe işaretçi.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) arabirim bilgisi alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) hizmeti sistem başlatma veya iş parçacığı bağlamından çağrılmıyor.
+- **NX_SUCCESS** (0x00) Arabirim bilgileri elde edildi.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Hizmeti sistem başlatma veya iş parçacığı bağlamından çağrılmaz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2260,7 +2260,7 @@ status = nx_ip_interface_info_get(ip_ptr, INTERFACE_INDEX,
 
 ## <a name="nx_ip_interface_status_check"></a>nx_ip_interface_status_check
 
-Bir IP örneğinin durumunu denetleme
+IP örneğinin durumunu denetleme
 
 
 ### <a name="prototype"></a>Prototype
@@ -2274,15 +2274,15 @@ UINT nx_ip_interface_status_check(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce oluşturulmuş bir IP örneğinin ağ arabiriminin belirtilen durumunu denetler ve isteğe bağlı olarak bekler.
+Bu hizmet, önceden oluşturulmuş bir IP örneğinin ağ arabiriminin belirtilen durumunu denetler ve isteğe bağlı olarak bekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 - **interface_index** Arabirim dizin numarası
-- **needed_status** Aşağıdaki gibi bit eşleme biçiminde tanımlanan IP durumu istendi:
+- **needed_status** İstenen IP durumu, bit eşlemesi formunda aşağıdaki gibi tanımlanır:
     - NX_IP_INITIALIZE_DONE (0x0001)
     - NX_IP_ADDRESS_RESOLVED (0x0002)
     - NX_IP_LINK_ENABLED (0x0004)
@@ -2292,28 +2292,28 @@ Bu hizmet, daha önce oluşturulmuş bir IP örneğinin ağ arabiriminin belirti
     - NX_IP_IGMP_ENABLED (0x0040)
     - NX_IP_RARP_COMPLETE (0x0080)
     - NX_IP_INTERFACE_LINK_ENABLED (0x0100)
-- **actual_status** Gerçek bitler kümesinin hedefi işaretçisi.
-- **wait_option** İstenen durum bitleri yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **actual_status** Ayarlanmış gerçek bitlerin hedefine işaretçi.
+- **wait_option** İstenen durum bitleri kullanılamıyorsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
     - NX_NO_WAIT (0x00000000)
     - NX_WAIT_FOREVER (0xFFFFFFFF)
-    - ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+    - tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP durum denetimi.
-- **NX_NOT_SUCCESSFUL** (0x43) durum isteği belirtilen zaman aşımı süresi içinde karşılanmadı.
-- **NX_PTR_ERROR** (0x07) IP işaretçisi veya geçersiz hale geldi ya da gerçek durum işaretçisi geçersiz.
-- **NX_OPTION_ERROR** (0X0a) geçersiz gerekli durum seçeneği.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_INVALID_INTERFACE** (0x4C) Interface_index Aralık dışında. ya da arabirim geçerli değil.
+- **NX_SUCCESS** (0x00) Başarılı IP durum denetimi.
+- **NX_NOT_SUCCESSFUL** (0x43) Durum isteği belirtilen zaman aşımı içinde karşılanmaz.
+- **NX_PTR_ERROR** (0x07) IP işaretçisi geçersiz hale geldi veya gerçek durum işaretçisi geçersiz.
+- **NX_OPTION_ERROR** (0x0a) Geçersiz gerekli durum seçeneği.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_INVALID_INTERFACE** (0x4C) Interface_index aralık dışında. veya arabirimi geçerli değil.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2335,7 +2335,7 @@ status = nx_ip_interface_status_check(&ip_0, 1, NX_IP_LINK_ENABLED,
 
 ## <a name="nx_ip_link_status_change_notify_set"></a>nx_ip_link_status_change_notify_set
 
-Bağlantı durumu değiştirme bildirimi geri arama işlevini ayarla
+Bağlantı durumu değişikliği bildirim geri çağırma işlevini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -2345,30 +2345,30 @@ UINT nx_ip_link_status_change_notify_set(
     VOID (*link_status_change_notify)(NX_IP *ip_ptr, UINT interface_index, UINT link_up));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bağlantı durumu değişikliği bildirim geri arama işlevini yapılandırır. Kullanıcı tarafından sağlanan *link_status_change_notify* yordamı, birincil veya ikincil arabirim durumu DEĞIŞTIRILDIĞINDE (IP adresi değiştirildiğinde) çağrılır. *LINK_STATUS_CHANGE_NOTIFY* null ise, bağlantı durumu değiştirme bildirimi geri arama özelliği devre dışıdır.
+Bu hizmet, bağlantı durumu değişikliği bildirim geri çağırma işlevini yapılandırıyor. Birincil veya *ikincil link_status_change_notify* (IP adresi değişti gibi) değiştiriken kullanıcı tarafından sağlanan kullanıcı tarafından sağlanan yordam çağrılır.) Null *link_status_change_notify,* bağlantı durumu değişikliği geri çağırma bildirimi özelliği devre dışı bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
 - **ip_ptr** IP denetim bloğu işaretçisi
-- **link_status_change_notify** Fiziksel arabirimde bir değişiklikten sonra çağrılacak Kullanıcı tarafından sağlanan geri arama işlevi.
+- **link_status_change_notify** Fiziksel arabirimde yapılan bir değişiklik üzerine çağrılarak kullanıcı tarafından sağlanan geri çağırma işlevi.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı küme
-- **NX_PTR_ERROR** (0x07) geçersiz IP denetim bloğu işaretçisi veya yeni fiziksel adres işaretçisi
-- **NX_CALLER_ERROR** (0x11) hizmeti sistem başlatma veya iş parçacığı bağlamından çağrılmıyor.
+- **NX_SUCCESS** (0x00) Başarılı küme
+- **NX_PTR_ERROR** (0x07) Geçersiz IP denetim bloğu işaretçisi veya yeni fiziksel adres işaretçisi
+- **NX_CALLER_ERROR** (0x11) Hizmeti sistem başlatma veya iş parçacığı bağlamından çağrılmaz.
 
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2389,7 +2389,7 @@ status = nx_ip_link_status_change_notify_set(&ip_0, my_change_cb);
 
 ## <a name="nx_ip_raw_packet_disable"></a>nx_ip_raw_packet_disable
 
-Ham paket göndermeyi/almayı devre dışı bırak
+Ham paket gönderme/alma özelliğini devre dışı bırakma
 
 
 ### <a name="prototype"></a>Prototype
@@ -2398,27 +2398,27 @@ Ham paket göndermeyi/almayı devre dışı bırak
 UINT nx_ip_raw_packet_disable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu IP örneği için ham IP paketlerinin aktarımını ve alımını devre dışı bırakır. Ham paket hizmeti önceden etkinleştirildiyse ve alma kuyruğunda ham paketler varsa, bu hizmet alınan tüm ham paketleri serbest bırakabilir.
+Bu hizmet, bu IP örneği için ham IP paketlerinin iletimini ve alımını devre dışı bırakıyor. Ham paket hizmeti daha önce etkinleştirilmişse ve alma kuyruğunda ham paketler varsa, bu hizmet alınan tüm ham paketleri serbest bırakmıştır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP ham paket devre dışı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP ham paketi devre dışı bırakma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2437,7 +2437,7 @@ status = nx_ip_raw_packet_disable(&ip_0);
 
 ## <a name="nx_ip_raw_packet_enable"></a>nx_ip_raw_packet_enable
 
-Ham paket işlemeyi etkinleştir
+Ham paket işlemeyi etkinleştirme
 
 
 ### <a name="prototype"></a>Prototype
@@ -2446,27 +2446,27 @@ Ham paket işlemeyi etkinleştir
 UINT nx_ip_raw_packet_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bu IP örneği için ham IP paketleri aktarımına ve alımına izin vermez. Gelen TCP, UDP, ıCMP ve ıGMP paketleri hala NetX tarafından işlenir. Bilinmeyen üst katman protokol türlerine sahip paketler, ham paket alma yordamına göre işlenir.
+Bu hizmet, bu IP örneği için ham IP paketlerinin iletimini ve alımını sağlar. Gelen TCP, UDP, ICMP ve IGMP paketleri NetX tarafından işlenmeye devam ediyor. Bilinmeyen üst katman protokol türlerine sahip paketler ham paket alımı yordamı tarafından işlenir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP ham paket etkin.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı IP ham paketi etkinleştirme.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2485,7 +2485,7 @@ status = nx_ip_raw_packet_enable(&ip_0);
 
 ## <a name="nx_ip_raw_packet_interface_send"></a>nx_ip_raw_packet_interface_send
 
-Belirtilen ağ arabirimi aracılığıyla ham IP paketi gönder
+Belirtilen ağ arabirimi aracılığıyla ham IP paketi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2498,41 +2498,41 @@ UINT nx_ip_raw_packet_interface_send(
     ULONG type_of_service);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak adres olarak belirtilen yerel IP adresini ve ilişkili ağ arabirimini kullanarak hedef IP adresine bir ham IP paketi gönderir. Bu yordamın hemen geri döndüğüne ve bu nedenle, IP paketinin gerçekten gönderildiyse bilinmediğini unutmayın. Ağ sürücüsü, iletim tamamlandığında paketin serbest bırakılmasından sorumlu olacaktır. Bu hizmet, paketin gerçekten gönderilip gönderilmediğini bilmenin bir yolu olmadığından diğer hizmetlerden farklıdır. Internet 'te kaybolabilir.
+Bu hizmet, kaynak adres olarak belirtilen yerel IP adresini kullanarak ve ilişkili ağ arabirimi aracılığıyla hedef IP adresine bir ham IP paketi gönderir. Bu yordamın hemen döndür olduğunu ve bu nedenle IP paketinin gerçekten gönder olup olmadığının bilinmey olduğunu unutmayın. İletim tamamlandığında paketi serbest bırakmak ağ sürücüsünden sorumludur. Bu hizmet diğer hizmetlerden farklıdır ve paketin gerçekten gönder olup olmadığını öğrenmenin bir yolu yoktur. İnternet'e bağlı olarak kaybolabilir.
 
-*Ham IP işlemenin etkin olması gerektiğini unutmayın.*
+*Ham IP işlemenin etkinleştirilmesi gerektiğini unutmayın.*
 
-*Bu hizmet **nx_ip_raw_packet_send** benzerdir, ancak bu hizmet, bir uygulamanın belirtilen fiziksel ARABIRIMLERDEN ham IP paketi göndermesini sağlar.*
+*Bu hizmet, nx_ip_raw_packet_send **bir** uygulamanın belirtilen fiziksel arabirimlerden ham IP paketi göndermesini sağlar.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP görevi işaretçisi.
-- **packet_ptr** İletilecek paket işaretçisi.
-- **destination_ip** Paketin gönderileceği IP adresi.
-- **address_index** Paketin dışına gönderilmesi için arabirim adresinin dizini.
-- **Type_of_service** Paket için hizmet türü.
+- **ip_ptr** Daha önce oluşturulan IP görevinin işaretçisi.
+- **packet_ptr** İletmek için paket işaretçisi.
+- **destination_ip** Paket göndermek için IP adresi.
+- **address_index** Paketin gönderln olduğu arabirimin adresinin dizini.
+- **type_of_service** Paket için hizmet türü.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) paketi başarıyla iletildi.
-- **NX_IP_ADDRESS_ERROR** (0x21) uygun bir giden arabirim yok.
-- **NX_NOT_ENABLED** (0x14) ham IP paket işleme etkin değil.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi.
-- **NX_OPTION_ERROR** (0X0a) geçersiz hizmet türü belirtildi.
-- **NX_OVERFLOW** (0x03) geçersiz paket önüne işaretçisi.
-- **NX_UNDERFLOW** (0x02) geçersiz paket önüne işaretçisi.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz arabirim dizini belirtildi.
+- **NX_SUCCESS** (0x00) Paketi başarıyla iletildi.
+- **NX_IP_ADDRESS_ERROR** (0x21) Uygun giden arabirim yok.
+- **NX_NOT_ENABLED** (0x14) Ham IP paketi işleme etkinleştirilmedi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi.
+- **NX_OPTION_ERROR** (0x0A) Geçersiz hizmet türü belirtildi.
+- **NX_OVERFLOW** (0x03) Geçersiz paket ön uç işaretçisi.
+- **NX_UNDERFLOW** (0x02) Geçersiz paket ön uç işaretçisi.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz arabirim dizini belirtildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2553,7 +2553,7 @@ status = nx_ip_raw_packet_interface_send(ip_ptr, packet_ptr,
 
 ## <a name="nx_ip_raw_packet_receive"></a>nx_ip_raw_packet_receive
 
-Ham IP paketi al
+Ham IP paketi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2564,37 +2564,37 @@ UINT nx_ip_raw_packet_receive(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneğinden bir ham IP paketi alır. Ham paket alma kuyruğunda IP paketleri varsa, arayana ilk (en eski) paket döndürülür. Aksi takdirde, kullanılabilir bir paket yoksa, çağıran bekleme seçeneğinde belirtilen şekilde askıya alabilir.
+Bu hizmet, belirtilen IP örneğinden bir ham IP paketi alır. Ham paket alma kuyruğunda IP paketleri varsa, ilk (en eski) paket çağırana döndürülür. Aksi takdirde, kullanılabilir paket yoksa, çağıranı bekleme seçeneği tarafından belirtilen şekilde askıya alabilir.
 
-*NX_SUCCESS, döndürülürse, uygulama artık gerekli olmadığında alınan paketi serbest bırakmaktan sorumludur.*
+*Bir NX_SUCCESS döndürülürse, uygulama artık gerekli olmadığı zaman alınan paketi serbest bırakmakla sorumludur.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **packet_ptr** Alınan ham IP paketinin yerleştirileceği işaretçiye işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **packet_ptr** Alınan ham IP paketinin yer aldığı işaretçi.
 - **wait_option** Kullanılabilir ham IP paketleri yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı IP ham paket alma.
-- **NX_NO_PACKET** (0x01) kullanılabilir paket yok.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya dönüş paketi işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı
+- **NX_SUCCESS** (0x00) Başarılı IP ham paketi alma.
+- **NX_NO_PACKET** (0x01) Paket yok.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, tx_thread_wait_abort.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya dönüş paket işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2614,7 +2614,7 @@ status = nx_ip_raw_packet_receive(&ip_0, &packet_ptr, 4);
 
 ## <a name="nx_ip_raw_packet_send"></a>nx_ip_raw_packet_send
 
-Ham IP paketi gönder
+Ham IP paketi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2626,13 +2626,13 @@ UINT nx_ip_raw_packet_send(
     ULONG type_of_service);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet hedef IP adresine bir ham IP paketi gönderir. Bu yordamın hemen geri döndüğüne ve bu nedenle IP paketinin gerçekten gönderilip gönderilmediğini bilinmediğini unutmayın. Ağ sürücüsü, iletim tamamlandığında paketin serbest bırakılmasından sorumlu olacaktır.
+Bu hizmet, hedef IP adresine bir ham IP paketi gönderir. Bu yordam hemen döner ve bu nedenle IP paketinin gerçekten gönderip gönderilmediği bilinmemektedir. İletim tamamlandığında paketi serbest bırakmak ağ sürücüsünden sorumludur.
 
-NetX, çok ana bir sistem için hedef IP adresini kullanarak uygun bir ağ arabirimi bulur ve arabirimin IP adresini kaynak adres olarak kullanır. Hedef IP adresi yayın veya çok noktaya yayın ise, ilk geçerli arabirim kullanılır. Uygulamalar bu durumda ***nx_ip_raw_packet_interface_send*** kullanır.
+NetX, çok girişli bir sistem için hedef IP adresini kullanarak uygun bir ağ arabirimi bulur ve kaynak adres olarak arabirimin IP adresini kullanır. Hedef IP adresi yayın veya çok noktaya yayın ise, ilk geçerli arabirim kullanılır. Uygulamalar bu ***nx_ip_raw_packet_interface_send*** kullanır.
 
-*Bir hata döndürülmediği takdirde, uygulama bu çağrıdan sonra paketi serbest bırakmamalıdır. Bunu yapmak öngörülemeyen sonuçlara neden olur çünkü ağ sürücüsü iletim sonrasında paketi serbest bırakacaktır.*
+*Bir hata döndürül olmadığı sürece, uygulama bu çağrıdan sonra paketi serbest bırakmamalı. Ağ sürücüsü iletimden sonra paketi serbest bıraktıracak olduğundan, bunu yapmak öngörülemeyen sonuçlara neden olur.*
 
 ### <a name="parameters"></a>Parametreler
 
@@ -2664,7 +2664,7 @@ NetX, çok ana bir sistem için hedef IP adresini kullanarak uygun bir ağ arabi
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2698,7 +2698,7 @@ UINT nx_ip_static_route_add(
     ULONG next_hop);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, statik yönlendirme tablosuna bir giriş ekler. *Next_hop* adresine yerel ağ aygıtlarından birinden doğrudan erişilebilir olması gerektiğini unutmayın.
 
@@ -2726,7 +2726,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2758,7 +2758,7 @@ UINT nx_ip_static_route_delete(
     ULONG net_mask);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, statik yönlendirme tablosundan bir girişi siler.
 
@@ -2776,7 +2776,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2807,7 +2807,7 @@ UINT nx_ip_status_check(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulmuş bir IP örneğinin birincil ağ arabiriminin belirtilen durumunu denetler ve isteğe bağlı olarak bekler. İkincil arabirimlerde durum almak için, uygulamalar hizmeti ***nx_ip_interface_status_check kullanacaktır.***
 
@@ -2844,7 +2844,7 @@ Bu hizmet, daha önce oluşturulmuş bir IP örneğinin birincil ağ arabirimini
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2880,7 +2880,7 @@ UINT nx_packet_allocate(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet belirtilen havuzdan bir paket ayırır ve belirtilen paket türüne göre paketteki preppointer 'ı ayarlar. Kullanılabilir bir paket yoksa hizmet, sağlanan bekleme seçeneğine göre askıya alır.
 
@@ -2910,7 +2910,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs (uygulama ağ sürücü
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -2946,7 +2946,7 @@ UINT nx_packet_copy(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan paketteki bilgileri sağlanan paket havuzundan ayrılan bir veya daha fazla yeni pakete kopyalar. Başarılı olursa, yeni pakete yönelik işaretçi **new_packet_ptr** tarafından işaret edilen hedefte döndürülür.
 
@@ -2977,7 +2977,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3014,7 +3014,7 @@ UINT nx_packet_data_append(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, verileri belirtilen paketin sonuna ekler. Sağlanan veri alanı pakete kopyalanır. Yeterli kullanılabilir bellek yoksa ve zincirleme paket özelliği etkinse, isteği karşılamak için bir veya daha fazla paket ayrılır. Zincirleme paket özelliği etkinleştirilmemişse, *NX_SIZE_ERROR* döndürülür.
 
@@ -3047,7 +3047,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs (uygulama ağ sürücü
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3082,7 +3082,7 @@ UINT nx_packet_data_extract_offset(
     ULONG *bytes_copied);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir NetX paketinden (veya paket zincirinden), belirtilen boyutun bayt cinsinden belirtilen baytından başlayarak belirtilen bir arabellekteki verileri kopyalar. Gerçekten kopyalanmış olan bayt sayısı *bytes_copied döndürülür.* Bu hizmet, paketten verileri kaldırmaz veya önüne işaretçisini veya diğer iç durum bilgilerini ayarlar.
 
@@ -3106,7 +3106,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3140,7 +3140,7 @@ UINT nx_packet_data_retrieve(
     ULONG *bytes_copied);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan paketten verileri sağlanan arabelleğe kopyalar. Hedef, **bytes_copied** tarafından işaret edilen hedefte döndürülen gerçek bayt sayısı.
 
@@ -3166,7 +3166,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3201,7 +3201,7 @@ UINT nx_packet_length_get(
     ULONG *length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen paketteki verilerin uzunluğunu alır.
 
@@ -3216,7 +3216,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3250,32 +3250,32 @@ UINT nx_packet_pool_create(
     ULONG memory_size);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Kullanıcı tarafından sağlanan bellek alanında belirtilen paket boyutunun bir paket havuzunu oluşturur.
+Bu hizmet, kullanıcı tarafından sağlanan bellek alanında belirtilen paket boyutunda bir paket havuzu oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr** Paket havuzu denetim bloğu işaretçisi.
-- **ad** Paket havuzu için uygulama adı işaretçisi.
-- **payload_size** Havuzdaki her paketteki bayt sayısı. Bu değer en az 40 bayt olmalıdır ve ayrıca 4 ile eşit olarak bölünebilmelidir.
-- **memory_ptr** Paket havuzunun yerleştirileceği bellek alanına yönelik işaretçi. İşaretçi bir ULONG sınırında hizalanmalıdır.
-- **memory_size** Havuz belleği alanının boyutu.
+- **pool_ptr** Paket havuzu denetim bloğuna işaretçi.
+- **name** Paket havuzu için uygulamanın adının işaretçisi.
+- **payload_size** Havuza gelen her pakette bulunan bayt sayısı. Bu değer en az 40 bayt olmalı ve ayrıca 4'e bölünebilir olmalıdır.
+- **memory_ptr** Paket havuzunun yer alan bellek alanına işaretçisi. İşaretçi bir ULONG sınırında hizalanmış olması gerekir.
+- **memory_size** Havuz bellek alanı boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı paket havuzu oluşturma.
-- **NX_PTR_ERROR** (0x07) geçersiz havuz veya bellek işaretçisi.
-- **NX_SIZE_ERROR** (0x09) geçersiz blok veya bellek boyutu.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı paket havuzu oluşturma.
+- **NX_PTR_ERROR** (0x07) Geçersiz havuz veya bellek işaretçisi.
+- **NX_SIZE_ERROR** (0x09) Geçersiz blok veya bellek boyutu.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3298,7 +3298,7 @@ status = nx_packet_pool_create(&pool_0, "Default Pool", 128,
 
 ## <a name="nx_packet_pool_delete"></a>nx_packet_pool_delete
 
-Önceden oluşturulmuş paket havuzunu Sil
+Daha önce oluşturulan paket havuzunu silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3306,9 +3306,9 @@ status = nx_packet_pool_create(&pool_0, "Default Pool", 128,
 UINT nx_packet_pool_delete(NX_PACKET_POOL *pool_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir paket havuzunu siler. NetX, paket havuzundaki paketlerde Şu anda askıya alınmış olan her iş parçacığını denetler ve askıya alınma 'yi temizler.
+Bu hizmet, önceden oluşturulmuş bir paket havuzunu siler. NetX, paket havuzunda askıya alınmış olan iş parçacıklarını denetler ve askıya almayı temizler.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3316,15 +3316,15 @@ Bu hizmet, önceden oluşturulmuş bir paket havuzunu siler. NetX, paket havuzun
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı paket havuzu silme.
-- **NX_PTR_ERROR** (0x07) geçersiz havuz işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı paket havuzu silme.
+- **NX_PTR_ERROR** (0x07) Geçersiz havuz işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3348,7 +3348,7 @@ status = nx_packet_pool_delete(&pool_0);
 
 ## <a name="nx_packet_pool_info_get"></a>nx_packet_pool_info_get
 
-Bir paket havuzu hakkında bilgi alma
+Paket havuzu hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3362,34 +3362,34 @@ UINT nx_packet_pool_info_get(
     ULONG *invalid_packet_releases);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen paket havuzu hakkında bilgi alır.
+Bu hizmet, belirtilen paket havuzuyla ilgili bilgileri almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **pool_ptr** Daha önce oluşturulan paket havuzuna yönelik işaretçi.
-- **total_packets** Havuzdaki toplam paket sayısı için hedef işaretçisi.
-- **free_packets** Şu anda boş olan paketlerin toplam sayısı için hedef işaretçisi.
-- **empty_pool_requests** Havuz boş olduğunda toplam ayırma isteği sayısının hedefi işaretçisi.
-- **empty_pool_suspensions** Boş havuz getirilmesi toplam sayısının hedefi işaretçisi.
-- **invalid_packet_releases** Toplam geçersiz paket sürümü sayısının hedefi işaretçisi.
+- **pool_ptr** Daha önce oluşturulan paket havuzunun işaretçisi.
+- **total_packets** Havuzdaki toplam paket sayısı için hedefe işaretçi.
+- **free_packets** Toplam boş paket sayısı için hedefin işaretçisi.
+- **empty_pool_requests** Havuz boş olduğunda toplam ayırma isteği sayısının hedefine işaretçi.
+- **empty_pool_suspensions** Toplam boş havuz askıya alma sayısının hedefine işaret ediyor.
+- **invalid_packet_releases** Toplam geçersiz paket sürümü sayısının hedefine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı paket havuzu bilgileri alma.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı paket havuzu bilgileri alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları ve zamanlayıcılar
+Başlatma, iş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3415,7 +3415,7 @@ status = nx_packet_pool_info_get(&pool_0,
 
 ## <a name="nx_packet_release"></a>nx_packet_release
 
-Önceden ayrılmış paketi serbest bırak
+Daha önce ayrılan paketi serbest bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3423,11 +3423,11 @@ status = nx_packet_pool_info_get(&pool_0,
 UINT nx_packet_release(NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen pakete zincirleme ek paketler de dahil olmak üzere bir paket yayınlar. Paket ayırma üzerinde başka bir iş parçacığı engellenirse, paket verilir ve sürdürülür.
+Bu hizmet, belirtilen pakete zincirlenmiş ek paketler de dahil olmak üzere bir paket serbest bıraktır. Paket ayırmada başka bir iş parçacığı engellenirse, paket verilir ve devam eder.
 
-*Uygulamanın, bir paketin birden çok kez serbest bırakılmasını önlemesi gerekir, çünkü bunu yapmak öngörülemeyen sonuçlara neden olur.*
+*Uygulama, bir paketin birden çok kez serbest bırakılmasını engellemeli çünkü bunu yapmak öngörülemeyen sonuçlara neden olur.*
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3435,16 +3435,16 @@ Bu hizmet, belirtilen pakete zincirleme ek paketler de dahil olmak üzere bir pa
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı paket sürümü.
-- **NX_PTR_ERROR** (0x07) geçersiz paket işaretçisi.
-- **NX_UNDERFLOW** (0x02) Prepend işaretçisi yük başlangıcından daha küçüktür.
-- **NX_OVERFLOW** (0x03) ekleme işaretçisi yük ucundan daha büyük.
+- **NX_SUCCESS** (0x00) Başarılı paket sürümü.
+- **NX_PTR_ERROR** (0x07) Geçersiz paket işaretçisi.
+- **NX_UNDERFLOW** (0x02) Ön Uç işaretçisi yük başlangıcından küçük.
+- **NX_OVERFLOW** (0x03) Ekleme işaretçisi yük ucundan büyüktür.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs (uygulama ağ sürücüleri)
+Başlatma, iş parçacıkları, süreerler ve ISR'ler (uygulama ağ sürücüleri)
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3467,7 +3467,7 @@ status = nx_packet_release(packet_ptr);
 
 ## <a name="nx_packet_transmit_release"></a>nx_packet_transmit_release
 
-İletilen bir paketi serbest bırakma
+İletilen paketi serbest bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3475,11 +3475,11 @@ status = nx_packet_release(packet_ptr);
 UINT nx_packet_transmit_release(NX_PACKET *packet_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, TCP olmayan paketler için, belirtilen pakete zincirleme ek paketler de dahil olmak üzere, iletilen bir paket yayınlar. Paket ayırma üzerinde başka bir iş parçacığı engellenirse, paket verilir ve sürdürülür. İletilen bir TCP paketi için paket aktarılmakta olarak işaretlenir ancak paket onaylanana kadar serbest bırakılmaz. Bu hizmet genellikle bir paket iletildikten sonra uygulamanın ağ sürücüsünden çağrılır.
+TCP olmayan paketler için bu hizmet, belirtilen pakete zincirlenmiş ek paketler de dahil olmak üzere iletilen bir paket serbest bıraktır. Paket ayırmada başka bir iş parçacığı engellenirse, paket verilir ve devam eder. İletilen bir TCP paketi için paket iletili olarak işaretlenir, ancak paket onay olana kadar serbest bıraklanmaz. Bu hizmet genellikle bir paket iletildikten sonra uygulamanın ağ sürücüsünden çağrılır.
 
-*Ağ sürücüsünün fiziksel medya üstbilgisini kaldırması ve bu hizmeti çağırmadan önce paketin uzunluğunu ayarlaması gerekir.*
+*Ağ sürücüsü, bu hizmeti çağırmadan önce fiziksel medya üst bilgilerini kaldırmalı ve paketin uzunluğunu ayarlamalı.*
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3487,16 +3487,16 @@ Bu hizmet, TCP olmayan paketler için, belirtilen pakete zincirleme ek paketler 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı iletme paketi sürümü.
-- **NX_PTR_ERROR** (0x07) geçersiz paket işaretçisi.
-- **NX_UNDERFLOW** (0x02) Prepend işaretçisi yük başlangıcından daha küçüktür.
-- **NX_OVERFLOW** (0x03) ekleme işaretçisi yük ucundan daha büyük.
+- **NX_SUCCESS** (0x00) Başarılı iletme paketi sürümü.
+- **NX_PTR_ERROR** (0x07) Geçersiz paket işaretçisi.
+- **NX_UNDERFLOW** (0x02) Ön Uç işaretçisi yük başlangıcından küçük.
+- **NX_OVERFLOW** (0x03) Ekleme işaretçisi yük ucundan büyüktür.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar, uygulama ağ sürücüleri (ISRS dahil)
+Başlatma, iş parçacıkları, süreerler, Uygulama ağ sürücüleri (ISR'ler dahil)
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -3520,7 +3520,7 @@ status = nx_packet_transmit_release(packet_ptr);
 
 ## <a name="nx_rarp_disable"></a>nx_rarp_disable
 
-Ters adres çözümleme protokolünü devre dışı bırak (RARP)
+Ters Adres Çözümleme Protokolünü (RARP) Devre Dışı Bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3528,28 +3528,28 @@ Ters adres çözümleme protokolünü devre dışı bırak (RARP)
 UINT nx_rarp_disable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli IP örneği için NetX 'in RARP bileşenini devre dışı bırakır. Bu hizmet, çok ana bir sistem için tüm arabirimlerde RARP 'yi devre dışı bırakır.
+Bu hizmet, belirli bir IP örneği için NetX'in RARP bileşenini devre dışı bırakıyor. Çok girişli bir sistem için bu hizmet tüm arabirimlerde RARP'yi devre dışı bırakıyor.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı RARP devre dışı.
-- **NX_NOT_ENABLED** (0x14) RARP etkin değildi.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı RARP devre dışı bırakma.
+- **NX_NOT_ENABLED** (0x14) RARP etkinleştirilmedi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3566,7 +3566,7 @@ status = nx_rarp_disable(&ip_0);
 
 ## <a name="nx_rarp_enable"></a>nx_rarp_enable
 
-Ters adres çözümleme protokolünü etkinleştir (RARP)
+Ters Adres Çözümleme Protokolünü (RARP) Etkinleştirme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3574,29 +3574,29 @@ Ters adres çözümleme protokolünü etkinleştir (RARP)
 UINT nx_rarp_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli IP örneği için NetX 'in RARP bileşenini sunar. RARP bileşenleri, sıfır IP adresi için tüm bağlı ağ arabirimlerini arar. Sıfır IP adresi, arabirimin henüz IP adresi ataması olmadığını gösterir. RARP, bu arabirimde RARP işlemini etkinleştirerek IP adresini çözümlemeye çalışır.
+Bu hizmet, belirli BIR IP örneği için NetX'in RARP bileşenini sağlar. RARP bileşenleri, sıfır IP adresi için tüm bağlı ağ arabirimlerini arar. Sıfır IP adresi, arabirimin henüz IP adresi ataması olmadığını gösterir. RARP, bu arabirimde RARP işlemini etkinleştirerek IP adresini çözümlemeye çalışır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı RARP etkinleştirmesi.
-- **NX_IP_ADDRESS_ERROR** (0x21) IP adresi zaten geçerli.
-- **NX_ALREADY_ENABLED** (0x15) RARP zaten etkin.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Başarılı RARP etkinleştirmesi.
+- **NX_IP_ADDRESS_ERROR** (0x21) IP adresi zaten geçerlidir.
+- **NX_ALREADY_ENABLED** (0x15) RARP zaten etkindi.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar
+Başlatma, iş parçacıkları, süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3614,7 +3614,7 @@ status = nx_rarp_enable(&ip_0);
 
 ## <a name="nx_rarp_info_get"></a>nx_rarp_info_get
 
-RARP etkinlikleri hakkında bilgi alın
+RARP etkinlikleri hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3626,33 +3626,33 @@ UINT nx_rarp_info_get(
     ULONG *rarp_invalid_messages);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneği için RARP etkinlikleriyle ilgili bilgileri alır.
+Bu hizmet, belirtilen IP örneği için RARP etkinlikleri hakkında bilgi almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **rarp_requests_sent** Gönderilen toplam RARP isteği sayısı için hedef işaretçisi.
-- **rarp_responses_received** Alınan toplam RARP yanıtı sayısı için hedef işaretçisi.
-- **rarp_invalid_messages** Toplam geçersiz ileti sayısının hedefi işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **rarp_requests_sent** Gönderilen toplam RARP isteği sayısı için hedefe işaretçi.
+- **rarp_responses_received** Alınan toplam RARP yanıtı sayısı için hedefin işaretçisi.
+- **rarp_invalid_messages** Toplam geçersiz ileti sayısının hedefine işaretçi.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı bir RARP bilgileri alma.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) BAŞARıLı RARP bilgileri alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3673,7 +3673,7 @@ status = nx_rarp_info_get(&ip_0,
 
 ## <a name="nx_system_initialize"></a>nx_system_initialize
 
-NetX sistemini Başlat
+NetX Sistemini Başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3681,9 +3681,9 @@ NetX sistemini Başlat
 VOID nx_system_initialize(VOID);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kullanıma hazırlık aşamasında temel NetX sistem kaynaklarını başlatır. Başlatma sırasında ve diğer bir NetX çağrısının yapılabilmesi için uygulama tarafından çağrılmalıdır.
+Bu hizmet, kullanım hazırlığında temel NetX sistem kaynaklarını başlatıyor. Başlatma sırasında ve başka bir NetX çağrısı öncesinde uygulama tarafından çağrılmalı.
 
 ### <a name="parameters"></a>Parametreler
 
@@ -3691,15 +3691,15 @@ Hiçbiri
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-Yok
+Hiçbiri
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları, zamanlayıcılar, ISRs
+Başlatma, iş parçacıkları, süreerler, ISR'ler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3721,7 +3721,7 @@ nx_system_initialize();
 
 ## <a name="nx_tcp_client_socket_bind"></a>nx_tcp_client_socket_bind
 
-İstemci TCP yuvasını TCP bağlantı noktasına bağlama
+İstemci TCP yuvalarını TCP bağlantı noktasına bağlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -3731,38 +3731,38 @@ UINT nx_tcp_client_socket_bind(
     UINT port, ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulan TCP istemci yuvasını belirtilen TCP bağlantı noktasına bağlar. Geçerli TCP Yuvaları 0 ile 0xFFFF arasındadır. Belirtilen TCP bağlantı noktası kullanılamıyorsa, hizmet sağlanan bekleme seçeneğine göre askıya alınır.
+Bu hizmet, daha önce oluşturulan TCP istemci yuvalarını belirtilen TCP bağlantı noktasına bağlar. Geçerli TCP yuvaları 0 ile 0xFFFF. Belirtilen TCP bağlantı noktası kullanılamıyorsa, hizmet sağlanan bekleme seçeneğine göre askıya alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan TCP yuva örneğine yönelik işaretçi.
-- **bağlantı noktası** Bağlanacak bağlantı noktası numarası (1 ile 0xFFFF arasında). Bağlantı noktası numarası NX_ANY_PORT (0x0000) ise, IP örneği bir sonraki boş bağlantı noktasını arar ve bu bağlantıyı bağlama için kullanır.
-- **wait_option** Bağlantı noktası zaten başka bir yuvaya bağlanmışsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **socket_ptr** Daha önce oluşturulan TCP yuvası örneğinin işaretçisi.
+- **bağlantı noktası** Bağlanacak bağlantı noktası numarası (1 ile 0xFFFF). Bağlantı noktası numarası NX_ANY_PORT (0x0000), IP örneği bir sonraki boş bağlantı noktasını arayacak ve bağlama için bunu kullanacak.
+- **wait_option** Bağlantı noktası zaten başka bir yuvaya bağlı ise hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva bağlaması.
-- **NX_ALREADY_BOUND** (0x22) bu yuva zaten başka bir TCP bağlantı noktasına bağlıydı.
-- **NX_PORT_UNAVAILABLE** (0x23) bağlantı noktası zaten farklı bir yuvaya bağlıydı.
-- **NX_NO_FREE_PORTS** (0x45) boş bağlantı noktası yok.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği *tx_thread_wait_abort* bir çağrı tarafından iptal edildi.
-- **NX_INVALID_PORT** (0x46) geçersiz bağlantı noktası.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva bağlaması.
+- **NX_ALREADY_BOUND** (0x22) Bu yuva zaten başka bir TCP bağlantı noktasına bağlı.
+- **NX_PORT_UNAVAILABLE** (0x23) Bağlantı Noktası zaten farklı bir yuvaya bağlı.
+- **NX_NO_FREE_PORTS** (0x45) Ücretsiz bağlantı noktası yok.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, *tx_thread_wait_abort.*
+- **NX_INVALID_PORT** (0x46) Geçersiz bağlantı noktası.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3790,7 +3790,7 @@ status = nx_tcp_client_socket_bind(&client_socket, 12, 7);
 
 ## <a name="nx_tcp_client_socket_connect"></a>nx_tcp_client_socket_connect
 
-İstemci TCP yuvasını bağlama
+Bağlan TCP yuvası
 
 ### <a name="prototype"></a>Prototype
 
@@ -3802,41 +3802,41 @@ UINT nx_tcp_client_socket_connect(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş ve bağlı TCP istemci yuvasını belirtilen sunucunun bağlantı noktasına bağlar. Geçerli TCP sunucusu bağlantı noktaları 0 ile 0xFFFF arasındadır. Bağlantı hemen tamamlanmazsa, hizmet sağlanan bekleme seçeneğine göre askıya alınır.
+Bu hizmet, önceden oluşturulmuş ve bağlanan TCP istemci yuvalarını belirtilen sunucunun bağlantı noktasına bağlar. Geçerli TCP sunucusu bağlantı noktaları 0 ile 0xFFFF. Bağlantı hemen tamamlanmazsa, hizmet sağlanan bekleme seçeneğine göre askıya alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan TCP yuva örneğine yönelik işaretçi.
+- **socket_ptr** Daha önce oluşturulan TCP yuvası örneğinin işaretçisi.
 - **server_ip** Sunucunun IP adresi.
-- **SERVER_PORT** Bağlanılacak sunucu bağlantı noktası numarası (1 ile 0xFFFF arasında).
-- **wait_option** Bağlantı kurulurken hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **server_port** Bağlanacak sunucu bağlantı noktası numarası (1 ile 0xFFFF).
+- **wait_option** Bağlantı kurulurken hizmetin nasıl davrandığını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva bağlantısı.
-- **NX_NOT_BOUND** (0x24) yuva bağlanmadı.
-- **NX_NOT_CLOSED** (0x35) yuva kapalı durumda değil.
-- **NX_IN_PROGRESS** (0x37) bekleme belirtilmedi, bağlantı girişimi devam ediyor.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz arabirim sağlandı.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
-- **NX_IP_ADDRESS_ERROR** (0x21) GEÇERSIZ sunucu IP adresi.
-- **NX_INVALID_PORT** (0x46) geçersiz bağlantı noktası.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva bağlantısı.
+- **NX_NOT_BOUND** (0x24) Yuva bağlı değil.
+- **NX_NOT_CLOSED** (0x35) Yuva kapalı durumda değil.
+- **NX_IN_PROGRESS** (0x37) Bekleme belirtilmedi, bağlantı girişimi devam ediyor.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz arabirim sağlanmadı.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, tx_thread_wait_abort.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz sunucu IP adresi.
+- **NX_INVALID_PORT** (0x46) Geçersiz bağlantı noktası.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3868,7 +3868,7 @@ status = nx_tcp_client_socket_connect(&client_socket,
 
 ## <a name="nx_tcp_client_socket_port_get"></a>nx_tcp_client_socket_port_get
 
-İstemci TCP yuvasına bağlantı noktası numarasını al
+İstemci TCP yuvasına bağlı bağlantı noktası numarasını al
 
 ### <a name="prototype"></a>Prototype
 
@@ -3878,7 +3878,7 @@ UINT nx_tcp_client_socket_port_get(
     UINT *port_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, yuvanın bağlandığı zamanda NX_ANY_PORT belirtildiği durumlarda NetX tarafından ayrılan bağlantı noktasını bulmak için yararlı olan yuva ile ilişkili bağlantı noktası numarasını alır.
 
@@ -3901,7 +3901,7 @@ Bu hizmet, yuvanın bağlandığı zamanda NX_ANY_PORT belirtildiği durumlarda 
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -3937,7 +3937,7 @@ TCP bağlantı noktasından TCP istemci yuvasının bağlantısını kaldır
 UINT nx_tcp_client_socket_unbind(NX_TCP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet TCP istemci yuvası ile bir TCP bağlantı noktası arasındaki bağlamayı yayınlar. Başka bir yuvayı aynı bağlantı noktası numarasına bağlamayı bekleyen başka iş parçacıkları varsa, ilk askıya alınan iş parçacığı bu bağlantı noktasına bağlanır.
 
@@ -3995,7 +3995,7 @@ NetX TCP bileşenini etkinleştir
 UINT nx_tcp_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, NetX 'in Iletim Denetim Protokolü (TCP) bileşenini sunar. Etkinleştirildikten sonra, uygulama tarafından TCP bağlantıları kurulabilir.
 
@@ -4016,7 +4016,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4052,7 +4052,7 @@ UINT nx_tcp_free_port_find(
     UINT port, UINT *free_port_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulama tarafından sağlanan bağlantı noktasından başlayarak ücretsiz bir TCP bağlantı noktasını (ilişkisiz) bulmaya çalışır. Arama mantığı, en fazla 0xFFFF bağlantı noktası değerine ulaşmak için arama gerçekleşeceği gibi kaydırılır. Arama başarılı olursa, *free_port_ptr* tarafından işaret edilen değişkende boş bağlantı noktası döndürülür.
 
@@ -4066,20 +4066,20 @@ Bu hizmet, uygulama tarafından sağlanan bağlantı noktasından başlayarak ü
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı boş bağlantı noktası bul.
-- **NX_NO_FREE_PORTS** (0x45) boş bağlantı noktası bulunamadı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
-- **NX_INVALID_PORT** (0x46) belirtilen bağlantı noktası numarası geçersiz.
+- **NX_SUCCESS** (0x00) Başarılı ücretsiz bağlantı noktası bulma.
+- **NX_NO_FREE_PORTS** (0x45) Boş bağlantı noktası bulunamadı.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
+- **NX_INVALID_PORT** (0x46) Belirtilen bağlantı noktası numarası geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4107,7 +4107,7 @@ status = nx_tcp_free_port_find(&ip_0, 12, &free_port);
 
 ## <a name="nx_tcp_info_get"></a>nx_tcp_info_get
 
-TCP etkinlikleri hakkında bilgi alın
+TCP etkinlikleri hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -4127,41 +4127,41 @@ UINT nx_tcp_info_get(
     ULONG *tcp_retransmit_packets);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneği için TCP etkinlikleri hakkında bilgi alır.
+Bu hizmet, belirtilen IP örneği için TCP etkinlikleri hakkında bilgi almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **tcp_packets_sent** Gönderilen toplam TCP paketi sayısı için hedef işaretçisi.
-- **tcp_bytes_sent** Gönderilen TCP baytlarının toplam sayısı için hedef işaretçisi.
-- **tcp_packets_received** Alınan toplam TCP paketi sayısının hedefi işaretçisi.
-- **tcp_bytes_received** Alınan TCP baytlarının toplam sayısının hedefi işaretçisi.
-- **tcp_invalid_packets** Geçersiz TCP paketlerinin toplam sayısının hedefi işaretçisi.
-- **tcp_receive_packets_dropped** Bırakılan TCP alma paketlerinin toplam sayısının hedefi işaretçisi.
-- **tcp_checksum_errors** Toplam TCP paketi sayısının sağlama toplamı hataları olan hedefi işaretçisi.
-- **tcp_connections** Toplam TCP bağlantısı sayısının hedefi işaretçisi.
-- **tcp_disconnections** Toplam TCP bağlantısı sayısının hedefi işaretçisi.
-- **tcp_connections_dropped** Bırakılan toplam TCP bağlantısı sayısının hedefi işaretçisi.
-- **tcp_retransmit_packets** Yeniden iletilen TCP paketlerinin toplam sayısının hedefi işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **tcp_packets_sent** Gönderilen toplam TCP paketi sayısı için hedefin işaretçisi.
+- **tcp_bytes_sent** Gönderilen toplam TCP bayt sayısı için hedefe işaretçi.
+- **tcp_packets_received** Alınan toplam TCP paketi sayısının hedefine işaretçi.
+- **tcp_bytes_received** Alınan toplam TCP bayt sayısının hedefine işaretçi.
+- **tcp_invalid_packets** Toplam geçersiz TCP paketi sayısının hedefine işaretçi.
+- **tcp_receive_packets_dropped** Bırakılan toplam TCP alma paketi sayısının hedefine işaretçi.
+- **tcp_checksum_errors** Sağlama toplamı hatalarına sahip toplam TCP paketi sayısının hedefine işaretçi.
+- **tcp_connections** Toplam TCP bağlantısı sayısının hedefine işaretçi.
+- **tcp_disconnections** Toplam TCP bağlantı kesintisi sayısının hedefine işaretçi.
+- **tcp_connections_dropped** Bırakılan toplam TCP bağlantısı sayısının hedefine işaretçi.
+- **tcp_retransmit_packets** Toplam TCP paketi sayısının hedefine giden işaretçi yeniden aktarıldı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) TCP bilgilerinin başarıyla alımı.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı TCP bilgileri alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4198,7 +4198,7 @@ status = nx_tcp_info_get(&ip_0,
 
 ## <a name="nx_tcp_server_socket_accept"></a>nx_tcp_server_socket_accept
 
-TCP bağlantısını kabul et
+TCP bağlantısını kabul etme
 
 ### <a name="prototype"></a>Prototype
 
@@ -4208,39 +4208,39 @@ UINT nx_tcp_server_socket_accept(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, daha önce dinlemek üzere ayarlanmış bir bağlantı noktası için TCP istemci yuvası bağlantı isteğini kabul eder (veya kabul edilmeye hazırlanır). Bu hizmet, uygulama dinlemesi veya yeniden dinleme hizmetini çağırırsa ya da istemci bağlantısı gerçekten mevcut olduğunda dinleme geri çağırma yordamından çağrıldıktan sonra çağrılabilir. Bağlantı hemen kurulamazsa, hizmet sağlanan bekleme seçeneğine göre askıya alınır.
+Bu hizmet, daha önce dinleme için ayarlanmış bir bağlantı noktası için bir TCP istemci yuvası bağlantı isteğini kabul eder (veya kabul etmeye hazırlar). Bu hizmet, uygulama dinleme veya yeniden dinleme hizmetini çağıran hemen sonra veya istemci bağlantısı gerçekten mevcut olduğunda dinleme geri çağırma yordamı çağrıldıktan sonra çağrılmalıdır. Bağlantı hemen kurulamazsa, hizmet sağlanan bekleme seçeneğine göre askıya alır.
 
-*Sunucu yuvasının sunucu bağlantı noktasına bağlamasını kaldırmak için bağlantı artık gerekmiyorsa, uygulamanın **nx_tcp_server_socket_unaccept** çağrısı gerekir.*
+*Sunucu yuvasının **sunucu nx_tcp_server_socket_unaccept** kaldırmak için bağlantı artık gerekli olmadığı için uygulamanın nx_tcp_server_socket_unaccept çağrısında olması gerekir.*
 
-*Uygulama geri çağırma yordamları, IP 'nin yardımcı iş parçacığı içinden çağrılır.*
+*Uygulama geri çağırma yordamları, IP'nin yardımcı iş parçacığından çağrılır.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** TCP sunucusu yuva denetim bloğu işaretçisi.
-- **wait_option** Bağlantı kurulurken hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **socket_ptr** TCP sunucusu yuva denetim bloğuna işaretçi.
+- **wait_option** Bağlantı kurulurken hizmetin nasıl davrandığını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı TCP sunucusu yuvası kabulü (pasif bağlantı).
-- **NX_NOT_LISTEN_STATE** (0x36) sağlanan sunucu yuvası bir dinleme durumunda değil.
-- **NX_IN_PROGRESS** (0x37) bekleme belirtilmedi, bağlantı girişimi devam ediyor.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği *tx_thread_wait_abort* bir çağrı tarafından iptal edildi.
-- **NX_PTR_ERROR** (0x07) yuva işaretçisi hatası.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı TCP sunucu yuvası kabul (pasif bağlantı).
+- **NX_NOT_LISTEN_STATE** (0x36) Sağlanan sunucu yuvası dinleme durumda değil.
+- **NX_IN_PROGRESS** (0x37) Bekleme belirtilmedi, bağlantı girişimi devam ediyor.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, *tx_thread_wait_abort.*
+- **NX_PTR_ERROR** (0x07) Yuva işaretçisi hatası.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4365,7 +4365,7 @@ UINT nx_tcp_server_socket_listen(
     VOID (*listen_callback)(NX_TCP_SOCKET *socket_ptr, UINT port));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen TCP bağlantı noktasında istemci bağlantı isteği dinlemeyi mümkün. İstemci bağlantı isteği alındığında, sağlanan sunucu yuvası belirtilen bağlantı noktasına bağlanır ve sağlanan dinleme geri çağırma işlevi çağırılır.
 
@@ -4401,7 +4401,7 @@ Uygulama aynı bağlantı noktasında ek istemci bağlantılarını ele istiyors
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4527,7 +4527,7 @@ UINT nx_tcp_server_socket_relisten(
     NX_TCP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce dinlemek üzere ayarlanan bir bağlantı noktasında bir bağlantı alındıktan sonra çağrılır. Bu hizmetin ana amacı, sonraki istemci bağlantısı için yeni bir sunucu yuvası sağlamaktır. Bir bağlantı isteği sıraya alınmışsa, bu hizmet çağrısı sırasında bağlantı hemen işlenir.
 
@@ -4556,7 +4556,7 @@ Bu hizmet, daha önce dinlemek üzere ayarlanan bir bağlantı noktasında bir b
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4677,7 +4677,7 @@ Yuva ilişkilendirmesini dinleme bağlantı noktasıyla kaldır
 UINT nx_tcp_server_socket_unaccept(NX_TCP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bu sunucu yuvası ile belirtilen sunucu bağlantı noktası arasındaki ilişkiyi kaldırır. Uygulamanın, bir bağlantının kesilmesi veya bir başarısız kabul çağrısından sonra bu hizmeti çağırması gerekir.
 
@@ -4699,7 +4699,7 @@ Bu hizmet, bu sunucu yuvası ile belirtilen sunucu bağlantı noktası arasında
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4816,7 +4816,7 @@ TCP bağlantı noktasındaki istemci bağlantısını dinlemeyi devre dışı b�
 UINT nx_tcp_server_socket_unlisten(NX_IP *ip_ptr, UINT port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen TCP bağlantı noktasındaki istemci bağlantı isteğini dinlemeyi devre dışı bırakır.
 
@@ -4840,7 +4840,7 @@ Bu hizmet, belirtilen TCP bağlantı noktasındaki istemci bağlantı isteğini 
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -4957,7 +4957,7 @@ UINT nx_tcp_socket_bytes_available(
     ULONG *bytes_available);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen TCP yuvasında alınabilmeleri için kullanılabilen bayt sayısını alır. TCP yuvasının zaten bağlı olması gerektiğini unutmayın.
 
@@ -4980,7 +4980,7 @@ Bu hizmet, belirtilen TCP yuvasında alınabilmeleri için kullanılabilen bayt 
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5024,7 +5024,7 @@ UINT nx_tcp_socket_create(
     VOID (*disconnect_callback)(NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için bir TCP istemcisi veya sunucu yuvası oluşturur.
 
@@ -5044,25 +5044,25 @@ Bu hizmet, belirtilen IP örneği için bir TCP istemcisi veya sunucu yuvası ol
 - NX_IP_MIN_COST (0x00020000)
 
 - **parça**  IP fragmenting izin verilip verilmeyeceğini belirtir. NX_FRAGMENT_OKAY (0x0) belirtilmişse, IP fragmenting izin verilir. NX_DONT_FRAGMENT (0x4000) belirtilirse, IP fragmenting devre dışı bırakılır.
-- **Time_to_live** Bu paketin oluşturulmadan önce kaç yönlendirici geçebileceğini tanımlayan 8 bitlik değeri belirtir. Varsayılan değer NX_IP_TIME_TO_LIVE tarafından belirtilir.
-- **window_size** Bu yuva için alma sırasında izin verilen en fazla bayt sayısını tanımlar
-- **urgent_data_callback** Alma akışında acil verilerin her ne zaman algılandığına çağrılan uygulama işlevi. Bu değer NX_NULL, acil veriler yok sayılır.
-- **disconnect_callback** Bağlantının diğer ucundaki yuva tarafından her bir bağlantı kesilmesi verildiğinde çağrılan uygulama işlevi. Bu değer NX_NULL ise, bağlantıyı kes geri çağırma işlevi devre dışı bırakılır.
+- **time_to_live** Bu paketin atmadan önce kaç yönlendirici geçeceği tanımlayan 8 bit değerini belirtir. Varsayılan değer, varsayılan değer NX_IP_TIME_TO_LIVE.
+- **window_size** Bu yuva için alma kuyruğunda izin verilen en fazla bayt sayısını tanımlar
+- **urgent_data_callback** Alma akışında acil veriler algılandığında çağrılması gereken uygulama işlevi. Bu değer önemli NX_NULL acil veriler yoksayılır.
+- **disconnect_callback** Bağlantının diğer ucundaki yuva tarafından her bağlantı kesisinde çağrılır uygulama işlevi. Bu değer bir NX_NULL kesme geri çağırma işlevi devre dışı bırakılır.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı TCP istemci yuvası oluşturma.
-- **NX_OPTION_ERROR** (0X0a) geçersiz hizmet türü, parça, geçersiz pencere boyutu veya zaman tolive seçeneği.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı TCP istemci yuvası oluşturma.
+- **NX_OPTION_ERROR** (0x0A) Geçersiz hizmet türü, parça, geçersiz pencere boyutu veya yaşam süresi seçeneği.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma ve Iş parçacıkları
+Başlatma ve İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5097,7 +5097,7 @@ status = nx_tcp_socket_create(&ip_0, &client_socket,
 
 ## <a name="nx_tcp_socket_delete"></a>nx_tcp_socket_delete
 
-TCP yuvasını Sil
+TCP yuvayı silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -5105,30 +5105,30 @@ TCP yuvasını Sil
 UINT nx_tcp_socket_delete(NX_TCP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir TCP yuvasını siler. Yuva hala bağlı veya bağlı ise, hizmet bir hata kodu döndürür.
+Bu hizmet, daha önce oluşturulmuş bir TCP yuvayı siler. Yuva hala bağlı veya bağlı ise hizmet bir hata kodu döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Önceden oluşturulmuş TCP yuvası
+- **socket_ptr** Daha önce oluşturulan TCP yuvası
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva silme.
-- **NX_NOT_CREATED** (0x27) yuva oluşturulmadı.
-- **NX_STILL_BOUND** (0x42) yuva hala bağımlı.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva silme.
+- **NX_NOT_CREATED** (0x27) Yuvası oluşturulmadı.
+- **NX_STILL_BOUND** (0x42) Yuva hala bağlı.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5154,7 +5154,7 @@ status = nx_tcp_socket_delete(&client_socket);
 
 ## <a name="nx_tcp_socket_disconnect"></a>nx_tcp_socket_disconnect
 
-İstemci ve sunucu yuvası bağlantılarının bağlantısını kes
+İstemci ve sunucu yuvası bağlantılarının bağlantısını kesme
 
 ### <a name="prototype"></a>Prototype
 
@@ -5164,33 +5164,33 @@ UINT nx_tcp_socket_disconnect(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kurulan bir istemci veya sunucu yuvası bağlantısını keser. Sunucu yuvasının bağlantısının kesilmesi, geri kabul edilmemiş bir istek gelmelidir, ancak bağlantısı kesilen bir istemci yuvası, başka bir bağlantı isteği için bir durumda bırakılır. Bağlantıyı kesme işlemi hemen tamamlanmazsa, hizmet sağlanan bekleme seçeneğine göre askıya alınır.
+Bu hizmet, kurulmuş bir istemci veya sunucu yuvası bağlantısını keser. Sunucu yuvası bağlantısının kesilmesini kabul etmeyen bir istek izlenirken bağlantısı kesilmiş bir istemci yuvası başka bir bağlantı isteği için hazır durumda bıraktır. Bağlantı kesme işlemi hemen tamamlanamazsa, hizmet sağlanan bekleme seçeneğine göre askıya alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce bağlı olan istemci veya sunucu yuvası örneği işaretçisi.
-- **wait_option** Bağlantının kesilmesi devam ederken hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **socket_ptr** Daha önce bağlı istemci veya sunucu yuvası örneğinin işaretçisi.
+- **wait_option** Bağlantı kesme devam ederken hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva bağlantısı kesilemedi.
-- **NX_NOT_CONNECTED** (0x38) belirtilen yuva bağlı değil.
-- **NX_IN_PROGRESS** (0x37) bağlantı kesilmesi devam ediyor, hiçbir bekleme belirtilmedi.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Yuva bağlantısının kesilmesi.
+- **NX_NOT_CONNECTED** (0x38) Belirtilen yuva bağlı değil.
+- **NX_IN_PROGRESS** (0x37) Bağlantı kesiliyor, bekleme belirtilmemiş.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, tx_thread_wait_abort.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -5220,7 +5220,7 @@ status = nx_tcp_socket_disconnect(&client_socket, 400);
 
 ## <a name="nx_tcp_socket_disconnect_complete_notify"></a>nx_tcp_socket_disconnect_complete_notify
 
-TCP bağlantı kesmeyi yüklemeyi bildirme geri çağırma işlevi
+TCP bağlantısının kesilmesi tamamlandı bildirimi geri çağırma işlevini yükleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -5231,31 +5231,31 @@ UINT nx_tcp_socket_disconnect_complete_notify(
     (NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir yuva bağlantı kesme işlemi tamamlandıktan sonra çağrılan bir geri arama işlevini kaydeder. NetX seçeneği ile derlenip, TCP yuvası bağlantı kesme tamam geri çağırma işlevi kullanılabilir
+Bu hizmet, yuva bağlantısını kesme işlemi tamamlandıktan sonra çağrılan bir geri çağırma işlevini kaydedmektedir. NetX seçeneğiyle yerleşikse TCP yuvası tam bağlantı kesme geri çağırma işlevi kullanılabilir
 
-- ***NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** tanımlandı.
+- ***NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** tanımlı.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce bağlı olan istemci veya sunucu yuvası örneği işaretçisi.
-- **tcp_disconnect_complete_notify** Yüklenecek geri çağırma işlevi.
+- **socket_ptr** Daha önce bağlı istemci veya sunucu yuvası örneğinin işaretçisi.
+- **tcp_disconnect_complete_notify** Yüklenmek için geri çağırma işlevi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) geri çağırma işlevi başarıyla kaydedildi.
-- **NX_NOT_SUPPORTED** (0x4b) genişletilmiş bildirim özelliği NETX kitaplığında yerleşik değildir
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) TCP özelliği etkin değil.
+- **NX_SUCCESS** (0x00) Geri çağırma işlevini başarıyla kaydetti.
+- **NX_NOT_SUPPORTED** (0x4B) Genişletilmiş bildirim özelliği NetX kitaplığında yerleşik değil
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) TCP özelliği etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5276,7 +5276,7 @@ status = nx_tcp_socket_disconnect_complete_notify(&client_socket,
 
 ## <a name="nx_tcp_socket_establish_notify"></a>nx_tcp_socket_establish_notify
 
-TCP kurma bildirimi geri aramasını ayarla işlevi
+TCP kurma notify callback işlevini ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -5286,30 +5286,30 @@ UINT nx_tcp_socket_establish_notify(
     VOID (*tcp_establish_notify)(NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir TCP yuvası bağlantı yaptığında çağrılan bir geri arama işlevini kaydeder. NetX, ***NX_ENABLE_EXTENDED_NOTIFY_SUPPORT*** tanımlı seçeneği ile DERLENIP, TCP yuvası oluşturma geri çağırma işlevi kullanılabilir.
+Bu hizmet, TCP yuvası bağlantı verdikten sonra çağrılan bir geri çağırma işlevini kaydedmektedir. NetX, tanımlandığı gibi bir seçenekle NX_ENABLE_EXTENDED_NOTIFY_SUPPORT ***kullanılabilir.***
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce bağlı olan istemci veya sunucu yuvası örneği işaretçisi.
-- **tcp_establish_notify** Bir TCP bağlantısı kurulduktan sonra geri çağırma işlevi başlatıldı.
+- **socket_ptr** Daha önce bağlı istemci veya sunucu yuvası örneğinin işaretçisi.
+- **tcp_establish_notify** TCP bağlantısı kurulduktan sonra çağrılan geri çağırma işlevi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00), bildirim işlevini başarıyla ayarlıyor.
-- **NX_NOT_SUPPORTED** (0x4b) genişletilmiş bildirim özelliği NETX kitaplığında yerleşik değildir
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) TCP, uygulama tarafından etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) notify işlevini başarıyla ayarlar.
+- **NX_NOT_SUPPORTED** (0x4B) Genişletilmiş bildirim özelliği NetX kitaplığında yerleşik değil
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) TCP uygulama tarafından etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5330,7 +5330,7 @@ status = nx_tcp_socket_establish_notify(&client_socket, callback);
 
 ## <a name="nx_tcp_socket_info_get"></a>nx_tcp_socket_info_get
 
-TCP yuva etkinlikleri hakkında bilgi alın
+TCP yuva etkinlikleri hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -5350,33 +5350,33 @@ UINT nx_tcp_socket_info_get(
     ULONG *tcp_receive_window);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen TCP yuvası örneği için TCP yuva etkinlikleri hakkında bilgi alır.
+Bu hizmet, belirtilen TCP yuva örneği için TCP yuva etkinlikleri hakkında bilgi almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan TCP yuva örneğine yönelik işaretçi.
-- **tcp_packets_sent** Yuvada Gönderilen TCP paketlerinin toplam sayısı için hedef işaretçisi.
-- **tcp_bytes_sent** Yuvada Gönderilen TCP baytlarının toplam sayısı için hedef işaretçisi.
-- **tcp_packets_received** Yuvada alınan toplam TCP paketi sayısının hedefi işaretçisi.
-- **tcp_bytes_received** Yuvada alınan TCP baytlarının toplam sayısının hedefi işaretçisi.
-- **tcp_retransmit_packets** Toplam TCP paketi yeniden aktarımlar sayısının hedefi işaretçisi.
-- **tcp_packets_queued** Yuvada sıraya alınan TCP paketlerinin toplam sayısının hedefi işaretçisi.
-- **tcp_checksum_errors** Yuvada sağlama toplamı hataları olan toplam TCP paketi sayısının hedefi işaretçisi.
-- **tcp_socket_state** Yuvanın geçerli durumunun hedefi işaretçisi.
-- **tcp_transmit_queue_depth** Toplam iletim paketi sayısının hedefe yönelik işaretçisi, hala ACK için bekleyen sıraya alındı.
-- **tcp_transmit_window** Geçerli iletme penceresi boyutunun hedefi işaretçisi.
-- **tcp_receive_window** Geçerli alma penceresi boyutunun hedefi işaretçisi.
+- **socket_ptr** Daha önce oluşturulan TCP yuvası örneğinin işaretçisi.
+- **tcp_packets_sent** Yuvada gönderilen toplam TCP paketi sayısı için hedefe işaretçi.
+- **tcp_bytes_sent** Yuvada gönderilen toplam TCP bayt sayısı için hedefin işaretçisi.
+- **tcp_packets_received** Yuvada alınan toplam TCP paketi sayısının hedefine işaretçi.
+- **tcp_bytes_received** Yuvada alınan toplam TCP bayt sayısının hedefine işaretçi.
+- **tcp_retransmit_packets** Toplam TCP paketi yeniden iletim sayısının hedefine işaretçi.
+- **tcp_packets_queued** Yuvadaki toplam kuyruğa alınan TCP paketlerinin hedefine işaretçi.
+- **tcp_checksum_errors** Yuvada sağlama toplamı hataları olan toplam TCP paketi sayısının hedefine işaretçi.
+- **tcp_socket_state** Yuvanın geçerli durumunun hedefine işaretçi.
+- **tcp_transmit_queue_depth** Toplam iletme paketi sayısının hedefine giden işaretçi hala ACK beklerken kuyruğa alındı.
+- **tcp_transmit_window** Geçerli iletme penceresi boyutunun hedefine işaretçi.
+- **tcp_receive_window** Geçerli alma penceresi boyutunun hedefine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) TCP yuvası bilgilerinin alımı başarılı oldu.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı TCP yuva bilgisi alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -5398,13 +5398,13 @@ status = nx_tcp_socket_info_get(&socket_0,
 /* If status is NX_SUCCESS, TCP socket information was retrieved. */
 ```
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5440,7 +5440,7 @@ status = nx_tcp_socket_info_get(&socket_0,
 
 ## <a name="nx_tcp_socket_mss_get"></a>nx_tcp_socket_mss_get
 
-Yuvanın düzeyini al
+Yuvanın MSS'lerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -5450,14 +5450,14 @@ UINT nx_tcp_socket_mss_get(
     ULONG *mss);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen yuvanın yerel en büyük kesim boyutunu (Bu) alır.
+Bu hizmet, belirtilen yuvanın yerel En Büyük Kesim Boyutunu (MSS) alır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulmuş yuvanın işaretçisi.
--  , ' İ döndürmek için hedef.
+- **socket_ptr** Daha önce oluşturulan yuvanın işaretçisi.
+- **mss** MsS döndüren hedef.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
@@ -5472,7 +5472,7 @@ Başlatma ve iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5506,7 +5506,7 @@ UINT nx_tcp_socket_mss_peer_get(
     ULONG *mss);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Eş yuva tarafından tanıtılan en büyük kesim boyutunu (,) alır.
 
@@ -5529,7 +5529,7 @@ Bu hizmet, Eş yuva tarafından tanıtılan en büyük kesim boyutunu (,) alır.
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5563,7 +5563,7 @@ UINT nx_tcp_socket_mss_set(
     ULONG mss);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen yuvanın en büyük kesim boyutunu (Bu) ayarlar. Bu değer, IP ve TCP üstbilgileri için odaya izin veren ağ arabirimi IP MTU 'SU içinde olmalıdır.
 
@@ -5589,7 +5589,7 @@ Başlatma ve iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5623,7 +5623,7 @@ UINT nx_tcp_socket_peer_info_get(
     ULONG *peer_port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bağlı TCP yuvasının IP ağı üzerinden eş IP adresini ve bağlantı noktası bilgilerini alır.
 
@@ -5647,7 +5647,7 @@ Bu hizmet, bağlı TCP yuvasının IP ağı üzerinden eş IP adresini ve bağla
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5671,7 +5671,7 @@ status = nx_tcp_socket_peer_info_get(&my_socket, &peer_ip_address,
 
 ## <a name="nx_tcp_socket_receive"></a>nx_tcp_socket_receive
 
-TCP yuvasından veri al
+TCP yuvasından veri alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -5682,44 +5682,44 @@ UINT nx_tcp_socket_receive(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen yuvadan TCP verileri alır. Belirtilen yuvada hiçbir veri sıraya alınmaz, çağıran, sağlanan bekleme seçeneğine göre askıya alır.
+Bu hizmet, belirtilen yuvadan TCP verilerini alır. Belirtilen yuvada kuyruğa alınan veri yoksa, çağıran sağlanan bekleme seçeneğine göre askıya alır.
 
-*NX_SUCCESS döndürülürse, uygulama artık gerekli olmadığında alınan paketi serbest bırakmaktan sorumludur.*
+*Bir NX_SUCCESS döndürülürse, uygulama artık gerekli olmadığı zaman alınan paketi serbest bırakmakla sorumludur.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan TCP yuva örneğine yönelik işaretçi.
-- **packet_ptr** TCP paket işaretçisine yönelik işaretçi.
-- **wait_option** Şu anda bu yuvada sıraya alınmış veri yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **socket_ptr** Daha önce oluşturulan TCP yuvası örneğinin işaretçisi.
+- **packet_ptr** TCP paket işaretçisi işaretçisi.
+- **wait_option** Şu anda bu yuvada kuyruğa alınan veri yoksa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
-- **NX_SUCCESS** (0x00) başarılı yuva verileri alma.
-- **NX_NOT_BOUND** (0x24) yuva henüz bağlanmamış.
-- **NX_NO_PACKET** (0x01) veri alınmadı.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
-- **NX_NOT_CONNECTED** (0x38) yuva artık bağlı değil.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva veya dönüş paketi işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva verileri alma.
+- **NX_NOT_BOUND** (0x24) Yuva henüz bağlı değil.
+- **NX_NO_PACKET** (0x01) Veri alınmamıştır.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, tx_thread_wait_abort.
+- **NX_NOT_CONNECTED** (0x38) Yuva artık bağlı değil.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva veya dönüş paket işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
-/* Önceden oluşturulmuş ve bağlı TCP istemci yuvasından bir paket alın. Kullanılabilir bir paket yoksa, vermeden önce 200 Zamanlayıcı onay işareti bekleyin. */Status = nx_tcp_socket_receive (&client_socket, &packet_ptr, 200);
+/* Önceden oluşturulmuş ve bağlı TCP istemci yuvasından bir paket alır. Paket yoksa, vazgeçmeden önce 200 zamanlayıcı onay işareti bekleyin. */ status = nx_tcp_socket_receive(&client_socket, &packet_ptr, 200);
 
-/* Durum NX_SUCCESS ise, alınan paket "packet_ptr" tarafından işaret edilir. */
+/* Durum NX_SUCCESS, alınan paket "packet_ptr". */
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
@@ -5735,7 +5735,7 @@ Hayır
 
 ## <a name="nx_tcp_socket_receive_notify"></a>nx_tcp_socket_receive_notify
 
-Alınan paketlerin uygulamasına bildirme
+Alınan paketleri uygulamaya bildirme
 
 
 ### <a name="prototype"></a>Prototype
@@ -5746,29 +5746,29 @@ UINT nx_tcp_socket_receive_notify(
     VOID (*tcp_receive_notify) (NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bildirim al işlev işaretçisini uygulama tarafından belirtilen geri çağırma işleviyle yapılandırır. Bu geri çağırma işlevi, daha sonra yuvada bir veya daha fazla paket alındığında çağrılır. NX_NULL bir işaretçi sağlanırsa, bildir işlevi devre dışı bırakılır.
+Bu hizmet, alma bildirimi işlevi işaretçisini uygulama tarafından belirtilen geri çağırma işleviyle yapılandırıyor. Bu geri çağırma işlevi daha sonra yuvada bir veya daha fazla paket alınarak çağrılır. Bir NX_NULL işaretçisi sağlanırsa notify işlevi devre dışı bırakılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** TCP yuvasına yönelik işaretçi.
-- **tcp_receive_notify** Yuvada bir veya daha fazla paket alındığında çağrılan uygulama geri çağırma işlev işaretçisi.
+- **socket_ptr** TCP yuvasının işaretçisi.
+- **tcp_receive_notify** Yuvada bir veya daha fazla paket alınca çağrılır uygulama geri çağırma işlevi işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva alma bildirimi.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) TCP özelliği etkin değil.
+- **NX_SUCCESS** (0x00) Başarılı yuva alma bildirimi.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) TCP özelliği etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 Başlatma, iş parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5806,31 +5806,31 @@ UINT nx_tcp_socket_send(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, TCP verilerini daha önce bağlı bir TCP yuvası üzerinden gönderir. Alıcının en son tanıtılan pencere boyutu bu istekten azsa, hizmet isteğe bağlı olarak, belirtilen bekleme seçeneğine göre askıya alınır. Bu hizmet, IP katmanına, \ ' dan daha büyük bir paket verisi gönderilmesini güvence altına alır.
+Bu hizmet, TCP verilerini daha önce bağlı bir TCP yuvası üzerinden gönderir. Alıcının son tanıtan pencere boyutu bu istekten küçükse, hizmet belirtilen bekleme seçeneğine göre isteğe bağlı olarak askıya alır. Bu hizmet, IP katmanına MSS'den büyük hiçbir paket verisi gönderilmez.
 
-*Bir hata döndürülmediği takdirde, uygulama bu çağrıdan sonra paketi serbest bırakmamalıdır. Bunu yapmak öngörülemeyen sonuçlara neden olur çünkü ağ sürücüsü iletim sonrasında paketi serbest bırakmaya da çalışacaktır.*
+*Bir hata döndürül olmadığı sürece, uygulama bu çağrıdan sonra paketi serbest bırakmamalı. Ağ sürücüsü de iletimden sonra paketi serbest bırakmayı deneyecek olduğundan, bunu yapmak öngörülemeyen sonuçlara neden olur.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce bağlı TCP yuvası örneğine yönelik işaretçi.
+- **socket_ptr** Daha önce bağlı olan TCP yuva örneğinin işaretçisi.
 - **packet_ptr** TCP veri paketi işaretçisi.
-- **wait_option** İstek alıcının pencere boyutundan fazlaysa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **wait_option** İstek, alıcının pencere boyutundan büyükse hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva gönderme.
-- **NX_NOT_BOUND** (0x24) yuva herhangi bir bağlantı noktasına bağlanmadı.
-- **NX_NO_INTERFACE_ADDRESS** (0x50) uygun giden arabirim bulunamadı.
-- **NX_NOT_CONNECTED** (0x38) yuva artık bağlı değil.
-- **NX_WINDOW_OVERFLOW** (0x39) isteği, alıcının tanıtılan pencere boyutundan bayt cinsinden daha büyük.
-- **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
-- **NX_INVALID_PACKET** (0x12) paketi ayrılmadı.
-- **NX_TX_QUEUE_DEPTH** (0x49) en yüksek iletim sırası derinliğine ulaşıldı.
+- **NX_SUCCESS** (0x00) Başarılı yuva gönderme.
+- **NX_NOT_BOUND** (0x24) Yuva hiçbir bağlantı noktasına bağlı değil.
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Uygun giden arabirim bulunamadı.
+- **NX_NOT_CONNECTED** (0x38) Yuva artık bağlı değil.
+- **NX_WINDOW_OVERFLOW** (0x39) İsteği, alıcının tanıtmış olduğu pencere boyutundan bayt cinsinden büyüktür.
+- **NX_WAIT_ABORTED** (0x1A) İstenen askıya alma isteği, tx_thread_wait_abort.
+- **NX_INVALID_PACKET** (0x12) Paketi ayrılır.
+- **NX_TX_QUEUE_DEPTH** (0x49) En yüksek aktarım kuyruğu derinliğine ulaşıldı.
 - **NX_OVERFLOW** (0x03) paket ekleme işaretçisi geçersiz.
 - **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
 - **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
@@ -5843,7 +5843,7 @@ Bu hizmet, TCP verilerini daha önce bağlı bir TCP yuvası üzerinden gönderi
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5880,7 +5880,7 @@ UINT nx_tcp_socket_state_wait(
     UINT desired_state, 
     ULONG wait_option);
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, yuvanın istenen durumu girmesini bekler. Yuva istenen durumda değilse, hizmet sağlanan bekleme seçeneğine göre askıya alınır.
 
@@ -5919,7 +5919,7 @@ Bu hizmet, yuvanın istenen durumu girmesini bekler. Yuva istenen durumda değil
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -5957,7 +5957,7 @@ UINT nx_tcp_socket_timed_wait_callback(
     VOID (*tcp_timed_wait_callback) (NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, TCP yuvası zamanlanmış bekleme durumunda olduğunda çağrılan bir geri arama işlevini kaydeder. Bu hizmeti kullanmak için, NetX kitaplığı tanımlı ***NX_ENABLE_EXTENDED_NOTIFY*** seçeneği ile oluşturulmalıdır.
 
@@ -5980,7 +5980,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6014,7 +6014,7 @@ UINT nx_tcp_socket_transmit_configure(
     ULONG timeout_shift);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen TCP yuvasının çeşitli iletim parametrelerini yapılandırır.
 
@@ -6039,7 +6039,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6078,7 +6078,7 @@ UINT nx_tcp_socket_window_update_notify_set(
     (NX_TCP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir yuva penceresi güncelleştirme geri arama yordamını yüklüyor. Bu yordam, belirtilen yuva uzak konağın pencere boyutunda bir artışı gösteren bir paket aldığında otomatik olarak çağrılır.
 
@@ -6100,7 +6100,7 @@ Başlatma, iş parçacıkları
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6137,7 +6137,7 @@ NetX 'in UDP bileşenini etkinleştir
 UINT nx_udp_enable(NX_IP *ip_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, NetX 'in Kullanıcı Datagram Protokolü (UDP) bileşenini sunar. Etkinleştirildikten sonra, uygulama tarafından UDP veri birimleri gönderilebilir ve alınabilir.
 
@@ -6158,7 +6158,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6194,7 +6194,7 @@ UINT nx_udp_free_port_find(
     UINT *free_port_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulama tarafından sağlanan bağlantı noktası numarasından başlayarak ücretsiz bir UDP bağlantı noktası (ilişkisiz) arar. Arama mantığı, en fazla 0xFFFF bağlantı noktası değerine ulaşırsa, arama mantığı sarmalacaktır. Arama başarılı olursa, *free_port_ptr* tarafından işaret edilen değişkende boş bağlantı noktası döndürülür.
 
@@ -6213,16 +6213,16 @@ Bu hizmet, uygulama tarafından sağlanan bağlantı noktası numarasından baş
 - **NX_NO_FREE_PORTS** (0x45) boş bağlantı noktası bulunamadı.
 - **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
 - **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
-- **NX_INVALID_PORT** (0x46) belirtilen bağlantı noktası numarası geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
+- **NX_INVALID_PORT** (0x46) Belirtilen bağlantı noktası numarası geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6248,7 +6248,7 @@ status = nx_udp_free_port_find(&ip_0, 12, &free_port);
 
 ## <a name="nx_udp_info_get"></a>nx_udp_info_get
 
-UDP etkinlikleri hakkında bilgi alın
+UDP etkinlikleri hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -6264,38 +6264,38 @@ UINT nx_udp_info_get(
     ULONG *udp_checksum_errors);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen IP örneği için UDP etkinlikleriyle ilgili bilgileri alır.
+Bu hizmet, belirtilen IP örneği için UDP etkinlikleri hakkında bilgi almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **udp_packets_sent** Gönderilen toplam UDP paketi sayısı için hedef işaretçisi.
-- **udp_bytes_sent** Gönderilen toplam UDP bayt sayısı için hedef işaretçisi.
-- **udp_packets_received** Alınan toplam UDP paketi sayısının hedefi işaretçisi.
-- **udp_bytes_received** Alınan UDP baytlarının toplam sayısının hedefi işaretçisi.
-- **udp_invalid_packets** Toplam geçersiz UDP paketi sayısının hedefi işaretçisi.
-- **udp_receive_packets_dropped** Bırakılan UDP alma paketlerinin toplam sayısının hedefi işaretçisi.
-- **udp_checksum_errors** Toplam UDP paketi sayısının sağlama toplamı hataları olan hedefi işaretçisi.
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **udp_packets_sent** Gönderilen toplam UDP paketi sayısı için hedefin işaretçisi.
+- **udp_bytes_sent** Gönderilen toplam UDP bayt sayısı için hedefe işaretçi.
+- **udp_packets_received** Alınan toplam UDP paketi sayısının hedefine işaretçi.
+- **udp_bytes_received** Alınan toplam UDP bayt sayısının hedefine işaretçi.
+- **udp_invalid_packets** Toplam geçersiz UDP paketi sayısının hedefine işaretçi.
+- **udp_receive_packets_dropped** Bırakılan toplam UDP alma paketlerinin hedef işaretçisi.
+- **udp_checksum_errors** Sağlama toplamı hatalarına sahip UDP paketlerinin toplam sayısının hedefine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı UDP bilgisi alma.
-- **NX_PTR_ERROR** (0x07) geçersiz IP işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı UDP bilgileri alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları ve zamanlayıcılar
+Başlatma, iş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6325,7 +6325,7 @@ status = nx_udp_info_get(&ip_0, &udp_packets_sent,
 
 ## <a name="nx_udp_packet_info_extract"></a>nx_udp_packet_info_extract
 
-UDP paketindeki ağ parametrelerini Ayıkla
+UDP paketinden ağ parametrelerini ayıklama
 
 ### <a name="prototype"></a>Prototype
 
@@ -6338,32 +6338,32 @@ UINT nx_udp_packet_info_extract(
     UINT *interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, IP adresi, eş bağlantı noktası numarası, protokol türü (Bu hizmet her zaman UDP türünü döndürür) gibi ağ parametrelerini, gelen bir arabirimde alınan bir paketten ayıklar.
+Bu hizmet IP adresi, eş bağlantı noktası numarası, protokol türü (bu hizmet her zaman UDP türünü döndürür) gibi ağ parametrelerini gelen arabirimde alınan bir paketten ayıklar.
 
 ### <a name="parameters"></a>Parametreler
 
 - **packet_ptr** Paket işaretçisi.
-- **ip_address** Gönderenin IP adresi işaretçisi.
+- **ip_address** Gönderen IP adresinin işaretçisi.
 - **protokol** Protokol işaretçisi (UDP).
-- **bağlantı noktası** Gönderenin bağlantı noktası numarası işaretçisi.
-- **interface_index** Arabirim dizini alma işaretçisi.
+- **bağlantı noktası** Gönderenin bağlantı noktası numarasının işaretçisi.
+- **interface_index** Arabirim dizinini alma işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) paket arabirimi verileri başarıyla ayıklandı.
-- **NX_INVALID_PACKET** (0x12) PAKETI, IP çerçevesi içermiyor.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi girişi
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
+- **NX_SUCCESS** (0x00) Paket arabirimi verileri başarıyla ayıklandı.
+- **NX_INVALID_PACKET** (0x12) Paketi IP çerçevesi içermez.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi girişi
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6389,7 +6389,7 @@ status = nx_udp_packet_info_extract( packet_ptr, &ip_address,
 
 ## <a name="nx_udp_socket_bind"></a>nx_udp_socket_bind
 
-UDP yuvasını UDP bağlantı noktasına bağla
+UDP yuvasını UDP bağlantı noktasına bağlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -6400,24 +6400,24 @@ UINT nx_udp_socket_bind(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulan UDP yuvasını belirtilen UDP bağlantı noktasına bağlar. Geçerli UDP yuvaları 0 ile 0xFFFF arasındadır. İstenen bağlantı noktası numarası başka bir yuvaya bağlıysa, bu hizmet, yuvanın bağlantı noktası numarasından bağlantısını kesmek için belirtilen süre boyunca bekler.
+Bu hizmet, daha önce oluşturulan UDP yuvasını belirtilen UDP bağlantı noktasına bağlar. Geçerli UDP yuvaları 0 ile 0xFFFF. İstenen bağlantı noktası numarası başka bir yuvaya bağlı ise, bu hizmet yuvanın bağlantı noktası numarasından çıkarıla kadar belirtilen süre boyunca bekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan UDP yuva örneğine yönelik işaretçi.
-- **bağlantı noktası** Bağlanacak bağlantı noktası numarası (1 ile 0xFFFF arasında). Bağlantı noktası numarası NX_ANY_PORT (0x0000) ise, IP örneği bir sonraki boş bağlantı noktasını arar ve bu bağlantıyı bağlama için kullanır.
-- **wait_option** Bağlantı noktası zaten başka bir yuvaya bağlanmışsa hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
+- **socket_ptr** Daha önce oluşturulan UDP yuva örneğinin işaretçisi.
+- **bağlantı noktası** Bağlanacak bağlantı noktası numarası (1 ile 0xFFFF). Bağlantı noktası numarası NX_ANY_PORT (0x0000), IP örneği bir sonraki boş bağlantı noktasını arayacak ve bağlama için bunu kullanacak.
+- **wait_option** Bağlantı noktası zaten başka bir yuvaya bağlı ise hizmetin nasıl davranacağını tanımlar. Bekleme seçenekleri aşağıdaki gibi tanımlanır:
 - NX_NO_WAIT (0x00000000)
 - NX_WAIT_FOREVER (0xFFFFFFFF)
-- ticks içinde zaman aşımı değeri (0x00000001-0xFFFFFFFE)
+- tıklar içinde zaman aşımı değeri (0x00000001 aracılığıyla 0xFFFFFFFE)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva bağlaması.
-- **NX_ALREADY_BOUND** (0x22) bu yuva zaten başka bir bağlantı noktasına bağlıydı.
-- **NX_PORT_UNAVAILABLE** (0x23) bağlantı noktası zaten farklı bir yuvaya bağlıydı.
+- **NX_SUCCESS** (0x00) Başarılı yuva bağlaması.
+- **NX_ALREADY_BOUND** (0x22) Bu yuva zaten başka bir bağlantı noktasına bağlı.
+- **NX_PORT_UNAVAILABLE** (0x23) Bağlantı Noktası zaten farklı bir yuvaya bağlı.
 - **NX_NO_FREE_PORTS** (0x45) boş bağlantı noktası yok.
 - **NX_WAIT_ABORTED** (0x1A) askıya alma isteği tx_thread_wait_abort bir çağrı tarafından iptal edildi.
 - **NX_INVALID_PORT** (0x46) geçersiz bağlantı noktası belirtildi.
@@ -6431,7 +6431,7 @@ Bu hizmet, önceden oluşturulan UDP yuvasını belirtilen UDP bağlantı noktas
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6468,7 +6468,7 @@ UINT nx_udp_socket_bytes_available(
     ULONG *bytes_available);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen UDP yuvasında alım için kullanılabilen bayt sayısını alır.
 
@@ -6491,7 +6491,7 @@ Bu hizmet, belirtilen UDP yuvasında alım için kullanılabilen bayt sayısın�
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6524,7 +6524,7 @@ UDP yuvası için sağlama toplamını devre dışı bırak
 UINT nx_udp_socket_checksum_disable(NX_UDP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen UDP yuvasında paketleri göndermek ve almak için sağlama toplamı mantığını devre dışı bırakır. Sağlama toplamı mantığı devre dışı bırakıldığında, bu yuva aracılığıyla gönderilen tüm paketler için UDP üstbilgisinin sağlama toplamı alanına sıfır değeri yüklenir. UDP üst bilgisindeki sıfır değerli sağlama toplamı değeri, bu paket için sağlama toplamı hesaplanmayan alıcıyı işaret eder.
 
@@ -6548,7 +6548,7 @@ Başlatma, iş parçacıkları, süreölçer
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6581,7 +6581,7 @@ UDP yuvası için sağlama toplamını etkinleştir
 UINT nx_udp_socket_checksum_enable(NX_UDP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen UDP yuvasında paket göndermek ve almak için sağlama toplamı mantığını sunar. Sağlama toplamı, tüm UDP veri alanının yanı sıra sözde IP üst bilgisini de içerir.
 
@@ -6605,7 +6605,7 @@ Başlatma, iş parçacıkları, süreölçer
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6642,40 +6642,40 @@ UINT nx_udp_socket_create(
     UINT time_to_live, ULONG queue_maximum);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen IP örneği için bir UDP yuvası oluşturur.
 
 ### <a name="parameters"></a>Parametreler
 
-- **ip_ptr** Daha önce oluşturulan IP örneğine yönelik işaretçi.
-- **socket_ptr** Yeni UDP yuva denetimi Bloc işaretçisi.
-- **ad** Bu UDP yuvasının uygulama adı.
-- **Type_of_service** İletim için hizmet türünü tanımlar, yasal değerler aşağıdaki gibidir:
+- **ip_ptr** Daha önce oluşturulan IP örneğinin işaretçisi.
+- **socket_ptr** Yeni UDP yuva denetimi blok işaretçisi.
+- **name** Bu UDP yuvasının uygulama adı.
+- **type_of_service** İletim için hizmet türünü tanımlar, yasal değerler aşağıdaki gibidir:
     - NX_IP_NORMAL (0x00000000)
     - NX_IP_MIN_DELAY (0x00100000)
     - NX_IP_MAX_DATA (0x00080000)
     - NX_IP_MAX_RELIABLE (0x00040000)
     - NX_IP_MIN_COST (0x00020000)
-- **parça** IP fragmenting izin verilip verilmeyeceğini belirtir. NX_FRAGMENT_OKAY (0x0) belirtilmişse, IP fragmenting izin verilir. NX_DONT_FRAGMENT (0x4000) belirtilirse, IP fragmenting devre dışı bırakılır.
-- **Time_to_live** Bu paketin oluşturulmadan önce kaç yönlendirici geçebileceğini tanımlayan 8 bitlik değeri belirtir. Varsayılan değer NX_IP_TIME_TO_LIVE tarafından belirtilir.
-- **queue_maximum** Bu yuva için sıraya alınabilen en fazla UDP veri birimi sayısını tanımlar. Kuyruk sınırına ulaşıldığında, alınan her yeni paket için en eski UDP paketi yayımlanır.
+- **parça** IP parçalanmasına izin verili olup olmadığını belirtir. Ip NX_FRAGMENT_OKAY (0x0) belirtilirse IP parçalanmasına izin verilir. Ip NX_DONT_FRAGMENT (0x4000) belirtilirse IP parçalanması devre dışı bırakılır.
+- **time_to_live** Bu paketin atmadan önce kaç yönlendirici geçeceği tanımlayan 8 bit değerini belirtir. Varsayılan değer, varsayılan değer NX_IP_TIME_TO_LIVE.
+- **queue_maximum** Bu yuva için kuyruğa alınarak en fazla UDP veri birimi sayısını tanımlar. Kuyruk sınırına ulaşıldıktan sonra, alınan her yeni paket için en eski UDP paketi serbest bırakıldı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı UDP yuvası oluşturma.
-- **NX_OPTION_ERROR** (0X0a) geçersiz hizmet türü, parça veya yaşam süresi seçeneği.
-- **NX_PTR_ERROR** (0x07) geçersiz IP veya yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı UDP yuva oluşturma.
+- **NX_OPTION_ERROR** (0x0A) Geçersiz hizmet türü, parça veya yaşam süresi seçeneği.
+- **NX_PTR_ERROR** (0x07) Geçersiz IP veya yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma ve Iş parçacıkları
+Başlatma ve İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6701,7 +6701,7 @@ status = nx_udp_socket_create(&ip_0, &udp_socket, "Sample UDP Socket",
 
 ## <a name="nx_udp_socket_delete"></a>nx_udp_socket_delete
 
-UDP yuvasını Sil
+UDP yuvasını silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -6709,29 +6709,29 @@ UDP yuvasını Sil
 UINT nx_udp_socket_delete(NX_UDP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir UDP yuvasını siler. Yuva bir bağlantı noktasına bağlıysa, önce yuvanın bağlantısı kaldırılmalıdır.
+Bu hizmet, önceden oluşturulmuş bir UDP yuvasını siler. Yuva bir bağlantı noktasına bağlı ise, önce yuvanın bağlantı dışı olması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan UDP yuva örneğine yönelik işaretçi.
+- **socket_ptr** Daha önce oluşturulan UDP yuva örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva silme.
-- **NX_STILL_BOUND** (0x42) yuva hala bağımlı.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva silme.
+- **NX_STILL_BOUND** (0x42) Yuva hala bağlı.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6756,7 +6756,7 @@ status = nx_udp_socket_delete(&udp_socket);
 
 ## <a name="nx_udp_socket_info_get"></a>nx_udp_socket_info_get
 
-UDP yuva etkinlikleri hakkında bilgi alın
+UDP yuva etkinlikleri hakkında bilgi alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -6772,37 +6772,37 @@ UINT nx_udp_socket_info_get(
     ULONG *udp_checksum_errors);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen UDP yuva örneği için UDP yuva etkinlikleri hakkında bilgi alır.
+Bu hizmet, belirtilen UDP yuva örneği için UDP yuva etkinlikleri hakkında bilgi almaktadır.
 
-*Hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülmez.*
+*Bir hedef işaretçi NX_NULL, bu belirli bilgiler çağırana döndürülz.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Önceden oluşturulmuş UDP yuva örneğine yönelik işaretçi.
-- **udp_packets_sent** Yuvada gönderilen toplam UDP paketi sayısı için hedef işaretçisi.
-- **udp_bytes_sent** Yuvada gönderilen UDP baytlarının toplam sayısı için hedef işaretçisi.
-- **udp_packets_received** Yuvada alınan UDP paketlerinin toplam sayısının hedefi işaretçisi.
-- **udp_bytes_received** Yuvada alınan UDP baytlarının toplam sayısının hedefi işaretçisi.
-- **udp_packets_queued** Yuva üzerindeki toplam sıraya alınmış UDP paketi sayısının hedefi işaretçisi.
-- **udp_receive_packets_dropped** Sıra boyutunun aşılması nedeniyle yuva için bırakılan toplam UDP alma paketi sayısının hedefi işaretçisi.
-- **udp_checksum_errors** Yuvada sağlama toplamı hataları olan toplam UDP paketi sayısının hedefi işaretçisi.
+- **socket_ptr** Önceden oluşturulmuş UDP yuva örneğinin işaretçisi.
+- **udp_packets_sent** Yuvada gönderilen toplam UDP paketi sayısı için hedefe işaretçi.
+- **udp_bytes_sent** Yuvada gönderilen toplam UDP bayt sayısı için hedefe işaretçi.
+- **udp_packets_received** Yuvada alınan toplam UDP paketlerinin hedef işaretçisi.
+- **udp_bytes_received** Yuvada alınan toplam UDP bayt sayısının hedefine işaretçi.
+- **udp_packets_queued** Yuvadaki kuyruğa alınan UDP paketlerinin toplam sayısının hedefine işaretçi.
+- **udp_receive_packets_dropped** Kuyruk boyutu aşılırken yuva için bırakılan toplam UDP alma paketlerinin hedef işaretçisi.
+- **udp_checksum_errors** Yuvada sağlama toplamı hatalarına sahip udp paketlerinin toplam sayısının hedefine işaretçi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı UDP yuvası bilgileri alma.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı UDP yuva bilgisi alma.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, iş parçacıkları ve zamanlayıcılar
+Başlatma, iş parçacıkları ve süreerler
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6841,7 +6841,7 @@ UDP yuvasına göre bağlantı noktası numarasını seçin
 UINT nx_udp_socket_port_get(NX_UDP_SOCKET *socket_ptr, UINT *port_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, yuvanın bağlandığı zamanda NX_ANY_PORT belirtildiği durumlarda NetX tarafından ayrılan bağlantı noktasını bulmak için yararlı olan yuva ile ilişkili bağlantı noktası numarasını alır.
 
@@ -6864,7 +6864,7 @@ Bu hizmet, yuvanın bağlandığı zamanda NX_ANY_PORT belirtildiği durumlarda 
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6900,7 +6900,7 @@ UINT nx_udp_socket_receive(
     ULONG wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen yuvadan bir UDP veri birimi alır. Belirtilen yuvada hiçbir veri birimi sıraya alınmaz, çağıran, sağlanan bekleme seçeneğine göre askıya alır.
 
@@ -6921,7 +6921,7 @@ Bu hizmet, belirtilen yuvadan bir UDP veri birimi alır. Belirtilen yuvada hiçb
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -6959,7 +6959,7 @@ UINT nx_udp_socket_receive_notify(
     (NX_UDP_SOCKET *socket_ptr));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bildirim al işlev işaretçisini uygulama tarafından belirtilen geri çağırma işlevine ayarlar. Bu geri çağırma işlevi, yuva üzerinde her paket alındığında çağrılır. NX_NULL bir işaretçi sağlanırsa, alma bildirme işlevi devre dışı bırakılır.
 
@@ -6974,7 +6974,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar ve ISRs
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -7014,41 +7014,41 @@ UINT nx_udp_socket_send(
     UINT port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, daha önce oluşturulmuş ve bağlantılı bir UDP yuvası aracılığıyla bir UDP datagramı gönderir. NetX, hedef IP adresini temel alarak kaynak adresi olarak uygun bir yerel IP adresi bulur. Belirli bir arabirim ve kaynak IP adresi belirtmek için, uygulamanın **nx_udp_socket_interface_send** hizmetini kullanması gerekir.
 
-Bu hizmetin UDP veri biriminin başarıyla gönderilip gönderilmediğini ne olursa olsun, hemen geri dönmediğine unutmayın.
+UDP veri biriminin başarıyla gönderip gönderilmeden bağımsız olarak bu hizmetin hemen döndür olduğunu unutmayın.
 
-Yuva yerel bir bağlantı noktasına bağlanmalıdır.
+Yuvanın yerel bir bağlantı noktasına bağlı olması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Önceden oluşturulan UDP yuva örneği işaretçisi
+- **socket_ptr** Daha önce oluşturulan UDP yuva örneğinin işaretçisi
 - **packet_ptr** UDP veri birimi paket işaretçisi
 - **ip_address** Hedef IP adresi
-- **bağlantı noktası** Ana bilgisayar bayt düzeninde geçerli hedef bağlantı noktası numarası 1 ile 0xFFFF arasında)
+- **bağlantı noktası** Konak byte sırasına göre 1 ile 0xFFFF arasında geçerli hedef bağlantı noktası numarası
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı UDP yuvası gönderme
-- **NX_NOT_BOUND** (0x24) yuva herhangi bir bağlantı noktasına bağlanmadı
-- **NX_NO_INTERFACE_ADDRESS** (0x50) uygun bir giden arabirim bulunamıyor.
-- **NX_IP_ADDRESS_ERROR** (0x21) GEÇERSIZ sunucu IP adresi
-- **NX_UNDERFLOW** (0x02) paketteki UDP üst bilgisi için yeterli yer yok
-- **NX_OVERFLOW** (0x03) paket ekleme işaretçisi geçersiz
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı
-- **NX_NOT_ENABLED** (0x14) UDP etkin değil
-- **NX_INVALID_PORT** (0x46) bağlantı noktası numarası geçerli bir Aralık içinde değil
+- **NX_SUCCESS** (0x00) Başarılı UDP yuva gönderme
+- **NX_NOT_BOUND** (0x24) Yuva hiçbir bağlantı noktasına bağlı değil
+- **NX_NO_INTERFACE_ADDRESS** (0x50) Uygun bir giden arabirim bulunamadı.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz sunucu IP adresi
+- **NX_UNDERFLOW** (0x02) Pakette UDP üst bilgisi için yeterli alan yok
+- **NX_OVERFLOW** (0x03) Paket ekleme işaretçisi geçersiz
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz
+- **NX_NOT_ENABLED** (0x14) UDP etkinleştirilmedi
+- **NX_INVALID_PORT** (0x46) Bağlantı noktası numarası geçerli bir aralık içinde değil
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -7079,7 +7079,7 @@ status = nx_udp_socket_send(&client_socket, packet_ptr,
 
 ## <a name="nx_udp_socket_interface_send"></a>nx_udp_socket_interface_send
 
-UDP yuvası üzerinden veri birimi gönderin.
+UDP yuvası üzerinden veri birimi gönderme.
 
 ### <a name="prototype"></a>Prototype
 
@@ -7092,38 +7092,38 @@ UINT nx_udp_socket_interface_send(
     UINT address_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, kaynak adresi olarak belirtilen IP adresine sahip ağ arabirimi aracılığıyla daha önce oluşturulmuş ve bağlantılı bir UDP yuvası aracılığıyla bir UDP datagramı gönderir. UDP veri biriminin başarıyla gönderilip gönderilmediğini ne olursa olsun hizmetin hemen geri döndüğünü unutmayın.
+Bu hizmet, kaynak adres olarak belirtilen IP adresine sahip ağ arabirimi aracılığıyla önceden oluşturulmuş ve bağlı bir UDP yuvası üzerinden bir UDP veri birimi gönderir. UDP veri biriminin başarıyla gönderip gönderilmeden bağımsız olarak hizmetin hemen geri döndüğünden dikkat edin.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Paketin üzerine iletilmesi için yuva.
-- **packet_ptr** İletilecek paket işaretçisi.
-- **ip_address** Paketin gönderileceği hedef IP adresi.
+- **socket_ptr** Paketin üzerinden iletilen yuva.
+- **packet_ptr** İletmek için paket işaretçisi.
+- **ip_address** Paketin gönderilecek hedef IP adresi.
 - **bağlantı noktası** Hedef bağlantı noktası.
-- **address_index** Paketin gönderileceği arabirimle ilişkili adresin dizini.
+- **address_index** Paket göndermek için arabirimle ilişkili adresin dizini.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) paketi başarıyla gönderildi.
-- **NX_NOT_BOUND** (0x24) yuva bir bağlantı noktasına bağlanmadı.
-- **NX_IP_ADDRESS_ERROR** (0x21) geçersiz IP adresi.
-- **NX_NOT_ENABLED** (0x14) UDP işleme etkin değil.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi.
-- **NX_OVERFLOW** (0x03) geçersiz paket ekleme işaretçisi.
-- **NX_UNDERFLOW** (0x02) geçersiz paket önüne işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_INVALID_INTERFACE** (0x4C) geçersiz adres dizini.
-- **NX_INVALID_PORT** (0x46) bağlantı noktası numarası en fazla bağlantı noktası numarasını aşıyor.
+- **NX_SUCCESS** (0x00) Paketi başarıyla gönderildi.
+- **NX_NOT_BOUND** (0x24) Yuva bir bağlantı noktasına bağlı değil.
+- **NX_IP_ADDRESS_ERROR** (0x21) Geçersiz IP adresi.
+- **NX_NOT_ENABLED** (0x14) UDP işleme etkinleştirilmedi.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi.
+- **NX_OVERFLOW** (0x03) Geçersiz paket ekleme işaretçisi.
+- **NX_UNDERFLOW** (0x02) Geçersiz paket ön uç işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_INVALID_INTERFACE** (0x4C) Geçersiz adres dizini.
+- **NX_INVALID_PORT** (0x46) Bağlantı noktası numarası en fazla bağlantı noktası numarasını aşıyor.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 
@@ -7152,7 +7152,7 @@ status = nx_udp_packet_interface_send(socket_ptr, packet_ptr,
 
 ## <a name="nx_udp_socket_unbind"></a>nx_udp_socket_unbind
 
-UDP bağlantı noktasından UDP yuvasının bağlantısını kaldır.
+UDP bağlantı noktasıyla udp yuvasını bağlayın.
 
 ### <a name="prototype"></a>Prototype
 
@@ -7160,29 +7160,29 @@ UDP bağlantı noktasından UDP yuvasının bağlantısını kaldır.
 UINT nx_udp_socket_unbind(NX_UDP_SOCKET *socket_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, UDP yuvası ile UDP bağlantı noktası arasındaki bağlamayı yayınlar. Alma sırasında depolanan tüm alınan paketler, ciltten çıkarma işleminin bir parçası olarak serbest bırakılır.
+Bu hizmet, UDP yuvası ile UDP bağlantı noktası arasındaki bağlamayı serbest bıraktır. Alma kuyruğunda depolanan tüm alınan paketler, bağlantısız işlem kapsamında serbest bırakıldı.
 
-İlişkisiz bağlantı noktasına başka bir yuva bağlamayı bekleyen başka iş parçacıkları varsa, ilk askıya alınan iş parçacığı daha sonra yeni ilişkisiz bağlantı noktasına bağlanır.
+Giden bağlantı noktasına başka bir yuva bağlamayı bekleyen başka iş parçacıkları varsa, ilk askıya alınan iş parçacığı daha sonra yeni gelen bağlantı noktasına bağlanmıştır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **socket_ptr** Daha önce oluşturulan UDP yuva örneğine yönelik işaretçi.
+- **socket_ptr** Daha önce oluşturulan UDP yuva örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı yuva bağlantısı kesiliyor.
-- **NX_NOT_BOUND** (0x24) yuva herhangi bir bağlantı noktasına bağlanmadı.
-- **NX_PTR_ERROR** (0x07) geçersiz yuva işaretçisi.
-- **NX_CALLER_ERROR** (0x11) Bu hizmet için geçersiz çağrı.
-- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmemiş.
+- **NX_SUCCESS** (0x00) Başarılı yuva bağlantıdan çıkar.
+- **NX_NOT_BOUND** (0x24) Yuva hiçbir bağlantı noktasına bağlı değil.
+- **NX_PTR_ERROR** (0x07) Geçersiz yuva işaretçisi.
+- **NX_CALLER_ERROR** (0x11) Bu hizmetin çağıranı geçersiz.
+- **NX_NOT_ENABLED** (0x14) Bu bileşen etkinleştirilmedi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
-### <a name="preemption-possible"></a>Önalım mümkün
+### <a name="preemption-possible"></a>Önserme Olası
 
 Yes
 
@@ -7209,7 +7209,7 @@ status = nx_udp_socket_unbind(&udp_socket);
 
 ## <a name="nx_udp_source_extract"></a>nx_udp_source_extract
 
-UDP veri kaynağından IP ve gönderme bağlantı noktasını Ayıkla
+UDP veri biriminden IP ayıklama ve bağlantı noktası gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -7219,7 +7219,7 @@ UINT nx_udp_source_extract(
     ULONG *ip_address, UINT *port);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, gönderenin IP ve bağlantı noktası numarasını, sağlanan UDP veri biriminin IP ve UDP üst bilgilerinden ayıklar.
 
@@ -7241,7 +7241,7 @@ Başlatma, iş parçacıkları, zamanlayıcılar, ıSR
 
 ### <a name="preemption-possible"></a>Önalım mümkün
 
-Hayır
+No
 
 ### <a name="example"></a>Örnek
 

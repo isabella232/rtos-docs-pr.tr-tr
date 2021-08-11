@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 07/09/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 6f9e3d023f1bdbde4546a94da1bc1ccb48578d0e
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: b27671f82c100db4e6a70a568e8a68f14b3ab45e3a33f46dd1f2e1852010f500
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825919"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796438"
 ---
 # <a name="chapter-2---installation-and-use-of-mdns"></a>Bölüm 2-mDNS yüklemesi ve kullanımı
 
@@ -28,7 +28,7 @@ NetX Duo mDNS, adresinde bulunabilir [https://github.com/azure-rtos/netxduo](htt
 
 ## <a name="netx-duo-mdns-installation"></a>NetX Duo mDNS yüklemesi
 
-NetX Duo mDNS API 'Lerini kullanmak için, daha önce bahsedilen tüm dağıtımın, NetX Duo 'un yüklü olduğu dizine kopyalanması gerekir. Örneğin, "*c:\netxduo*" dizininde NETX Duo yüklüyse, *nxd_mdns. h* ve *nxd_mdns. c* bu dizine kopyalanmalıdır.
+NetX Duo mDNS API 'Lerini kullanmak için, daha önce bahsedilen tüm dağıtımın, NetX Duo 'un yüklü olduğu dizine kopyalanması gerekir. Örneğin, "*c: \netxduo*" dizininde NETX Duo yüklüyse, *nxd_mdns. h* ve *nxd_mdns. c* bu dizine kopyalanmalıdır.
 
 ## <a name="using-netx-duo-mdns"></a>NetX Duo mDNS kullanma
 

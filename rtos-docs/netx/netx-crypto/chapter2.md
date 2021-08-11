@@ -1,47 +1,47 @@
 ---
-title: Bölüm 2 - NetX Şifrelemesi'Azure RTOS yükleme ve kullanma
-description: Bu bölümde NetX Crypto bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
+title: Bölüm 2-Azure RTOS NetX şifre yüklemesi ve kullanımı
+description: Bu bölümde, NetX şifreleme bileşeninin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 3323af5eaf31ac9c167966522df6477c82e99fdc
-ms.sourcegitcommit: c98e5360c9cedbe773af5a44f5163f563c85b570
+ms.openlocfilehash: 6e04ea357c4e24f28d15f4f141bc001d4bbe8ac06bb641e10a7bd81653e60fda
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/24/2021
-ms.locfileid: "110337015"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796792"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-crypto"></a>Bölüm 2 - NetX Şifrelemesi'Azure RTOS yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-crypto"></a>Bölüm 2-Azure RTOS NetX şifre yüklemesi ve kullanımı
 
-Bu bölümde, NetX Crypto bileşeninin yüklenmesi, Azure RTOS ve kullanımı açık almaktadır.
+Bu bölümde, Azure RTOS NetX şifreleme bileşeninin yükleme, kurulum ve kullanımı açıklanmaktadır.
 
-## <a name="product-distribution"></a>Ürün Dağıtımı
+## <a name="product-distribution"></a>Ürün dağıtımı
 
-Azure RTOS NetX Şifrelemesi şu [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) şekildedir: . Paket kaynak dosyaları, ekleme dosyalarını ve bu belgeyi içeren bir PDF dosyasını aşağıdaki gibi içerir:
+Azure RTOS NetX şifrelemesi adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Paket, kaynak dosyaları, içerme dosyaları ve bu belgeyi içeren bir PDF dosyasını aşağıdaki gibi içerir:
 
-- **nx_crypto.h:** Genel API üst bilgi dosyası NetX Şifreleme modülü
-- **nx_crypto_*.c/h:** NetX Crypto için C/H Kaynak dosyaları
-- **nx_crypto_port.h:** Tüm geliştirme aracını içeren ve belirli veri tanımlarını ve yapılarını hedef alan C üst bilgi dosyası.
-- **NetX_Crypto_User_Guide.pdf:** NetX Şifreleme Modülünün PDF açıklaması.
+- **nx_crypto. h**: ortak API üstbilgi dosyası NETX şifreleme modülü
+- **nx_crypto_ *. c/h**: NETX şifrelemesi için c/h kaynak dosyaları
+- **nx_crypto_port. h**: tüm geliştirme araçlarını ve hedef belirli veri tanımlarını ve yapıları Içeren C üstbilgi dosyası.
+- **NetX_Crypto_User_Guide.pdf**: NETX şifre modülünün PDF açıklaması.
 
-## <a name="netx-crypto-installation"></a>NetX Şifreleme Yüklemesi
+## <a name="netx-crypto-installation"></a>NetX şifre yüklemesi
 
-Daha önce bahsedilen dağıtımın tamamı **NetX** Duo crypto_libraries kök düzeyinde mevcut olan bir dizinde mevcuttur.
+Daha önce bahsedilen tüm dağıtım, NetX Duo deposunun kök düzeyinde bulunan **crypto_libraries** dizininde mevcuttur.
 
-NetX Şifrelemesini kullanmak için, daha önce bahsedilen dağıtımın tamamı NetX'in yüklü olduğu dizin düzeyine kopyalanır. Örneğin, "\threadx\arm7\NetX" dizininde NetX yüklüyse,*nx_crypto.* dizinleri "\threadx\arm7\NetXCrypto" dizinine kopyalanır.
+NetX şifre kullanabilmesi için, daha önce bahsedilen dağıtımın tamamı, NetX 'in yüklü olduğu aynı dizin düzeyine kopyalanmalıdır. Örneğin, "\threadx\arm7\NetX" dizininde NetX yüklüyse nx_crypto *.* dizinler "\Threadx\arm7\netxşifre" dizinine kopyalanmalıdır.
 
-NetX Şifrelemesi'nin tek başına modda kullanılası için, daha önce bahsedilen dağıtımın tamamı uygulama projesine kopyalanır. Örneğin **crypto_libraries** bir dizin uygulama projesine kopyalanmış olmalı veya crypto_libraries dizini olan **bir kitaplık** projesi oluşturularak uygulama projesine bağlan olmalıdır. 
+Tek başına modda kullanılmak üzere NetX şifrelemesi için, daha önce bahsedilen dağıtımın tamamının uygulama projesine kopyalanması gerekir. Örneğin **crypto_libraries** dizin uygulama projesine kopyalanmalıdır ya da **crypto_libraries** dizine sahip bir kitaplık projesi oluşturulup uygulama projesine bağlanmalıdır. 
 
-## <a name="using-netx-crypto"></a>NetX Şifrelemesi Kullanma
+## <a name="using-netx-crypto"></a>NetX şifre kullanımı
 
-Uygulama kodunun *nx_crypto.h içermesi gerekir.*  Uygulama *nx_crypto.h* ekli olduktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen NetX Crypto işlev çağrılarını mümkün hale gelir.
+Uygulama kodu *nx_crypto. h*'yi içermelidir.  *Nx_crypto. h* dahil olduğunda, uygulama kodu daha sonra bu kılavuzda belirtilen NETX şifre işlev çağrılarını yapabilir.
 
-## <a name="configuration-options"></a>Yapılandırma Seçenekleri
+## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-NetX Şifrelemesi'nin inşası için çeşitli yapılandırma seçenekleri vardır. Aşağıda, her biri ayrıntılı olarak açıklanan tüm seçeneklerin listesi velanmıştır:
+NetX şifrelemesi oluşturmak için birkaç yapılandırma seçeneği vardır. Aşağıda, her birinin ayrıntılı olarak açıklandığı tüm seçeneklerin bir listesi verilmiştir:
 
-- **NX_CRYPTO_MAX_RSA_MODULUS_SIZE:** Tanımlanan, bu seçenek bit olarak beklenen en fazla RSA modu sağlar. Varsayılan değer 4096 bit mod için 4096'dır. Diğer değerler 3072, 2048 veya 1024 olabilir (önerilmez).
-- **NX_CRYPTO_SELF_TEST:** Tanımlandı, NetX Şifreleme modülü için kendi kendine testlere olanak sağlar. **NX_CRYPTO_FIPS** simgesi artık kullanım dışı bırakıldı ve yeniden **adlandırıldı NX_CRYPTO_SELF_TEST**
-- **NX_CRYPTO_STANDALONE_ENABLE:** Tanımlı, NetX Şifrelemesi'nin tek başına modda (tek başına şifreleme olmadan) Azure RTOS. Varsayılan olarak bu simge tanımlanmamıştır.
+- **NX_CRYPTO_MAX_RSA_MODULUS_SIZE**: tanımlı, bu seçenek bit cinsinden beklenen maksimum RSA mod sayısını verir. 4096 bit mod için varsayılan değer 4096 ' dir. Diğer değerler 3072, 2048 veya 1024 (önerilmez) olabilir.
+- **NX_CRYPTO_SELF_TEST**: tanımlı, NETX şifre modülü için kendi kendini testlere izin verebilir. **NX_CRYPTO_FIPS** sembol artık kullanım dışıdır ve **NX_CRYPTO_SELF_TEST** olarak yeniden adlandırıldı
+- **NX_CRYPTO_STANDALONE_ENABLE**: tanımlı, NETX şifrelemesi 'nin tek başına modda kullanılmasını sağlar (Azure RTOS olmadan). Varsayılan olarak bu simge tanımlı değildir.

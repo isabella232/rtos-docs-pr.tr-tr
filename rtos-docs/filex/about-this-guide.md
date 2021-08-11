@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 640d9ed4c8037d3af6c5f45158c9496ad1258a3c
-ms.sourcegitcommit: 60ad844b58639d88830f2660ab0c4ff86b92c10f
+ms.openlocfilehash: 48fe70fc3cff6e656328d38b2583116e58a6c98510d5f0554f81a7b728f95457
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550108"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116782413"
 ---
 # <a name="about-this-filex-user-guide"></a>Bu FileX Kullanıcı Kılavuzu hakkında
 
@@ -57,7 +57,7 @@ Bu kılavuz, Microsoft 'un yüksek performanslı ve gerçek zamanlı katıştır
 
 Aşağıda, Azure RTOS FileX hizmeti çağrı veri türleri ve bunlarla ilişkili anlamlarıyla ilgili bir liste verilmiştir.
 
-| Tür  | Açıklama  |
+| Tür  | Description  |
 |---|---|
 | **U** | Temel işaretsiz tamsayı. Bu tür 8 bit işaretsiz verileri desteklemelidir; Ancak, en uygun imzasız veri türüne eşlenir. |
 | **'TUR** | İmzasız Long türü. Bu tür 32 bitlik işaretsiz verileri desteklemelidir. |

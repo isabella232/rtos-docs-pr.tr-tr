@@ -1,64 +1,64 @@
 ---
-title: Bölüm 1-Azure RTOS NetX güvenliğine giriş
-description: Bu bölümde, Azure RTOS NetX güvenli 'ye giriş ve uygulamalarının ve avantajlarından ilgili bir açıklama yer almaktadır.
+title: Bölüm 1 - NetX Secure Azure RTOS giriş
+description: Bu bölümde NetX Secure'Azure RTOS giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 8f4c7a97564cd2f702f9887181b36297b42fa492
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1d6b0f23d7353626f340fe0ab93ee1e04800edaaa1f00da49afd83f84339df86
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825684"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791610"
 ---
-# <a name="chapter-1---introduction-to-azure-rtos-netx-secure"></a>Bölüm 1-Azure RTOS NetX güvenliğine giriş
+# <a name="chapter-1---introduction-to-azure-rtos-netx-secure"></a>Bölüm 1 - NetX Secure Azure RTOS giriş
 
-Azure RTOS NetX güvenli, tümleşik ThreadX tabanlı uygulamalar için özel olarak tasarlanan TLS/SSL dahil olmak üzere, şifreleme ağ güvenlik standartlarının yüksek performanslı bir gerçek zamanlı uygulamasıdır. Bu bölümde NetX güvenli 'ye giriş ve bunların uygulamalarının ve avantajlarının açıklaması yer almaktadır.
+Azure RTOS NetX Secure, ekli ThreadX tabanlı uygulamalar için özel olarak tasarlanmış TLS/SSL dahil olmak üzere şifreleme ağ güvenlik standartlarının yüksek performanslı gerçek zamanlı bir uygulamasıdır. Bu bölümde NetX Secure'e giriş ve uygulamalarının ve avantajlarının açıklaması yer almaktadır.
 
-## <a name="netx-secure-unique-features"></a>NetX güvenli benzersiz özellikler
+## <a name="netx-secure-unique-features"></a>NetX Secure Benzersiz Özellikleri
 
-Diğer birçok TLS uygulamasının aksine, NetX Secure, çok çeşitli ekli donanım platformlarını desteklemek ve küçük mikro denetleyici uygulamalarından kolayca bulunan en güçlü katıştırılmış işlemciye kolayca ölçeklenebilmeniz için baştan sona tasarlanmıştır. Kod, ekli sistemlerin sınırlı kaynaklarıyla yazılır ve TLS üzerinden güvenli ağ iletişimleri sağlamak için gereken bellek parmak izini azaltmak için bir dizi yapılandırma seçeneği sunar.
+Diğer çoğu TLS uygulamasından farklı olarak NetX Secure, çok çeşitli tümleşik donanım platformlarını destekleyecek şekilde tasarlanmıştır ve küçük mikro denetleyici uygulamalardan kullanılabilen en güçlü tümleşik işlemcilere kadar kolayca ölçeklendirebilirsiniz. Kod, tümleşik sistemlerin sınırlı kaynaklarıyla yazılır ve TLS üzerinden güvenli ağ iletişimi sağlamak için gereken bellek ayak izini azaltmak için bir dizi yapılandırma seçeneği sunar.
 
-## <a name="rfcs-supported-by-netx-secure"></a>NetX güvenli tarafından desteklenen RFC 'Ler 
+## <a name="rfcs-supported-by-netx-secure"></a>NetX Secure Tarafından Desteklenen RFC'ler 
 
-NetX güvenli, TLS ile ilgili aşağıdaki protokolleri destekler. TLS ve şifrelemeye ilişkin çok sayıda RFC olduğundan liste kapsamlı değildir. NetX güvenli, küçük bellek ayak ve verimli yürütme ile gerçek zamanlı bir işletim sisteminin kısıtlamalarına göre tüm genel önerilere ve temel gereksinimlere uyar.
+NetX Secure, TLS ile ilgili aşağıdaki protokolleri destekler. TLS ve şifrelemeyle ilgili çok sayıda RFC olduğu için liste mutlaka kapsamlı değildir. NetX Secure, küçük bellek ayak izine ve verimli yürütmeye sahip gerçek zamanlı bir işletim sisteminin kısıtlamaları dahilinde tüm genel önerileri ve temel gereksinimleri izler.
 
-| RFC      | Açıklama                                                                                                 | Sayfa |
+| RFC      | Description                                                                                                 | Sayfa |
 |----------|-------------------------------------------------------------------------------------------------------------|------|
-| RFC 2104 | HMAC: Ileti kimlik doğrulaması için Keyed-Hashing                                                              | 33   |
-| RFC 2246 | TLS protokol sürümü 1,0                                                                                | 19   |
-| RFC 3268 | Aktarım Katmanı Güvenliği (TLS) için Gelişmiş Şifreleme Standardı (AES) Ciphersuites                          | 31   |
-| RFC 3447 | Public-Key şifreleme standartları (PKCS) #1: RSA şifreleme özellikleri sürüm 2,1                    | 32   |
-| RFC 4279 | TLS için önceden paylaşılan anahtar Ciphersuites                                                                         | 39   |
-| RFC 4346 | Aktarım Katmanı Güvenliği (TLS) Protokolü sürüm 1,1                                                     | 19   |
-| RFC 5246 | Aktarım Katmanı Güvenliği (TLS) Protokolü sürüm 1,2                                                     | 19   |
-| RFC 5280 | X. 509.440 PKI sertifikaları (v3)                                                                                 | 41   |
-| RFC 5746 | Aktarım Katmanı Güvenliği (TLS) yeniden anlaşması gösterge uzantısı                                           |      |
-| RFC 5869 | HMAC tabanlı ayıklama ve genişletme anahtar türetme Işlevi (HKDF)                                                | 19   |
-| RFC 6066<sup>1</sup> | Aktarım Katmanı Güvenliği (TLS) uzantıları: uzantı tanımları                                            | 19   |
-| RFC 6234 | ABD güvenli karma algoritmaları (SHA ve SHA tabanlı HMAC ve HKDF)                                                 | 33   |
-| RFC 8443 | Aktarım Katmanı Güvenliği (TLS) sürümleri 1,2 ve öncesi için Eliptik Eğri Şifreleme (ECC) şifre paketleri |      |
-| RFC 8446 | Aktarım Katmanı Güvenliği (TLS) Protokolü sürüm 1,3                                                     | 19   |
+| RFC 2104 | HMAC: Keyed-Hashing Kimlik Doğrulaması için yapılandırma                                                              | 33   |
+| RFC 2246 | TLS Protokolü Sürüm 1.0                                                                                | 19   |
+| RFC 3268 | Gelişmiş Şifreleme Standardı Katmanı Güvenliği (TLS) için Gelişmiş Şifreleme Standardı (AES) Şifrelemeleri                          | 31   |
+| RFC 3447 | Public-Key Şifreleme Standartları (PKCS) #1: RSA Şifreleme Belirtimleri Sürüm 2.1                    | 32   |
+| RFC 4279 | TLS için Önceden Paylaşılan Anahtar Şifrelemeleri                                                                         | 39   |
+| RFC 4346 | Aktarım Katmanı Güvenliği (TLS) Protokolü Sürüm 1.1                                                     | 19   |
+| RFC 5246 | Aktarım Katmanı Güvenliği (TLS) Protokolü Sürüm 1.2                                                     | 19   |
+| RFC 5280 | X.509 PKI Sertifikaları (v3)                                                                                 | 41   |
+| RFC 5746 | Aktarım Katmanı Güvenliği (TLS) Yeniden Yapılanma Göstergesi Uzantısı                                           |      |
+| RFC 5869 | HMAC Tabanlı Ayıklama ve Genişletme Anahtarı Türetme İşlevi (HKDF)                                                | 19   |
+| RFC 6066<sup>1</sup> | Aktarım Katmanı Güvenliği (TLS) Uzantıları: Uzantı Tanımları                                            | 19   |
+| RFC 6234 | ABD Güvenli Karma Algoritmaları (SHA ve SHA tabanlı HMAC ve HKDF)                                                 | 33   |
+| RFC 8443 | Aktarım Katmanı Güvenliği (TLS) 1.2 ve Önceki Sürümler için Eliptik Eğri Şifrelemesi (ECC) Şifreleme Paketleri |      |
+| RFC 8446 | Aktarım Katmanı Güvenliği (TLS) Protokolü Sürüm 1.3                                                     | 19   |
 
-1. Sürüm 6,0 itibariyle yalnızca RFC 6066 ' den Sunucu Adı Belirtme (SNı) uzantısı tam olarak desteklenmektedir.
+1. Sürüm 6.0'dan itibaren yalnızca RFC 6066'dan Sunucu Adı Belirtme (SNI) uzantısı tam olarak de destekleni.
 
-## <a name="netx-secure-requirements"></a>NetX güvenli gereksinimleri
+## <a name="netx-secure-requirements"></a>NetX Güvenli Gereksinimleri
 
-Düzgün çalışması için, NetX güvenli çalışma zamanı kitaplığı bir NetX IP örneğinin zaten oluşturulmuş olmasını gerektirir. Ayrıca, uygulamaya bağlı olarak bir veya daha fazla DER-Encoded X. 509.440 dijital sertifikası gerekir, bu, bir TLS örneğini belirlemek veya uzak bir ana bilgisayardan gelen sertifikaları doğrulamak için gereklidir. NetX güvenli paketinin daha fazla gereksinimi yoktur.
+NetX Secure çalışma zamanı kitaplığının düzgün çalışması için bir NetX IP örneğinin önceden oluşturulmuş olması gerekir. Ayrıca, uygulamaya bağlı olarak bir TLS örneğini tanımlamak veya uzak bir konaktan gelen sertifikaları doğrulamak için bir veya daha fazla DER kodlanmış X.509 Dijital Sertifika gerekir. NetX Secure paketinin başka bir gereksinimleri yoktur.
 
-## <a name="netx-secure-constraints"></a>NetX güvenli kısıtlamalar
+## <a name="netx-secure-constraints"></a>NetX Güvenli Kısıtlamaları
 
-NetX güvenli protokolü, TLS 1,2 için RFC 5246 standartların ve TLS 1,3 için RFC 8446 'ın gereksinimlerini uygular ve isteğe bağlı (varsayılan olarak devre dışı) RFC 4346 (TLS 1,1) ve 2246 (TLS 1,0) ile geriye dönük uyumluluk sağlar. Ancak, aşağıdaki kısıtlamalar vardır:
+NetX Secure protokolü, TLS 1.2 ve RFC 8446 için RFC 5246 Standartlarının gereksinimlerini uygulamanın yanı sıra Isteğe bağlı (varsayılan olarak devre dışı) RFC 4346 (TLS 1.1) ve 2246 (TLS 1.0) ile geriye dönük uyumluluk sağlar. Ancak, aşağıdaki kısıtlamalar vardır:
 
-- Yalnızca SHA-256 kullanan ciphersuites, TLS 1,2 ve TLS 1,3 için desteklenir. TLS 1,2 ' den önceki sürümlerde, TLS el sıkışması, TLS el sıkışma iletilerinin üzerinde oynanmadığını doğrulamak için sabit bir karma yordam kullanır. Sürüm 1,2 ' den başlayarak, el sıkışma ciphersuite ile birlikte sunulan karma yordamını kullanır. TLS, karma yordamın ne zaman kullanılacağını bilmez ve el sıkışma iletilerini önbelleğe almalıdır. Karma değeri SHA-256 olarak düzelterek NetX güvenli TLS, diğer TLS uygulamalarından daha küçük bir RAM parmak izi ile çalışabilir. Bu sınırlama, bellek kullanımının düzgün şekilde giderildiği bir sonraki sürümde kaldırılacaktır. * ÖNEMLI bir DIKKAT: Bu sınırlama **yalnızca** ciphersuite seçeneği için geçerlidir. X. 509.440 Sertifika imzaları aynı sınırlamaya tabi değildir ve desteklenen karma yordamlarından herhangi biri kullanılabilir.
-- Gömülü cihazların doğası gereği, bazı uygulamaların 16KB 'LıK en fazla TLS kayıt boyutunu destekleyecek kaynaklara sahip olmayabilir. NetX Secure, yeterli kaynağa sahip cihazlarda 16KB kayıtlarını işleyebilir. TLS yeniden birleştirme arabelleği (bkz. *nx_secure_tls_session_packet_buffer_set* için API başvurusu **),** birlikte çalışabilirlik sorunları açısından 16kb 'den daha küçük bir boyuta ayarlanabilir. Yeniden birleştirme arabelleğinden daha büyük geçerli bir TLS kaydı alınmışsa, NetX güvenli TLS, TLS oturumunu bir hata ile iptal eder. Genel olarak, arabellek her zaman en az 18KB olarak ayarlanmalıdır (şifreleme dolgusu için 16KB TLS kayıt boyutu + 2KB) ve yalnızca denetimli ayarlarda daha küçük hale getirilir (örn. uzak ana bilgisayar, en fazla TLS kayıt boyutunu garanti eder).
+- YALNıZCA SHA-256 kullanan şifreler TLS 1.2 ve TLS 1.3 için de destek sağlar. TLS 1.2'den önceki sürümlerde TLS el sıkışması, TLS el sıkışma iletilerinin değiştirilmediğini doğrulamak için sabit bir karma yordamı kullanır. Sürüm 1.2'den başlayarak, el sıkışması şifreleme ile sağlanan karma yordamını kullanır. TLS hangi karma yordamının kullan olacağını önceden bilmiyor ve el sıkışma iletilerini önbelleğe alıyor olması gerekir. NetX Secure TLS, karma değeri SHA-256'ya düzelterek diğer TLS uygulamalarına göre daha küçük bir RAM ayak iziyle işlev görüyor. Bellek kullanımı düzgün bir şekilde ele alındıktan sonra bu sınırlama gelecekteki bir sürümde kaldırılacaktır. *ÖNEMLİ NOT: Bu sınırlama **yalnızca** şifre seçimi için geçerlidir. X.509 sertifika imzaları aynı sınırlamaya tabi değildir ve desteklenen karma yordamlardan herhangi biri kullanılabilir.
+- Katıştırılmış cihazların yapısı nedeniyle, bazı uygulamalar maksimum 16 KB TLS kayıt boyutunu destekleyecek kaynaklara sahip olabilir. NetX Secure, yeterli kaynaklara sahip cihazlarda 16 KB'lık kayıtları işebilir. TLS yeniden derleme arabelleği (bkz. *nx_secure_tls_session_packet_buffer_set* API **başvurusu)** birlikte çalışabilirlik sorunları riskiyle 16 KB'den küçük bir boyuta ayarlanmış olabilir. Yeniden değerlendirme arabelleğinden daha büyük geçerli bir TLS kaydı alındı ise NetX Secure TLS, TLS oturumunu bir hatayla iptal eder. Genel olarak, arabelleğin her zaman en az 18 KB (şifreleme doldurma için 16 KB TLS kayıt boyutu + 2 KB) olarak ayarlanmış olması ve yalnızca denetimli ayarlarda daha küçük olması gerekir (örneğin uzak konak maksimum TLS kayıt boyutunu garantiler).
   > [!NOTE]
-  > Genel olarak, paket yeniden birleştirme arabelleği asla TLS en fazla kayıt boyutundan küçük olmamalıdır. Ancak, uzak ana bilgisayarın özellikleri iyi bilindiğinde (ör. tamamen kapalı bir sistemde), daha fazla RAM alanı yeniden kazanmak için boyut azaltılabilir.
-- En az sertifika doğrulaması. NetX güvenliği, sertifikanın geçerli ve güvenilir bir sertifika yetkilisi tarafından imzalandığından emin olmak için bir sertifika üzerinde temel X. 509.952 zinciri doğrulaması yapar ve uygulamanın, uzak konağın Top-Level etki alanı adına göre karşılaştırılabilmesi için sertifika ortak adını sağlayabilir. Gerçek zamanlı bir saat varsa, sertifikanın sona erme tarihini doğrulamak için kullanılabilir (bkz. API nx_secure_tls_session_time_function_set). Bununla birlikte, sertifika uzantılarının ve diğer verilerin doğrulanması, uygulama uygulayıcısı 'nın sorumluluğundadır.
-- Yazılım tabanlı şifreleme işlemciyi yoğun bir şekilde kullanır. NetX güvenli yazılım tabanlı şifreleme yordamları performans için iyileştirildi, ancak hedef işlemcinin gücüne bağlı olarak, bu performans çok uzun işlemlere neden olabilir. Donanım tabanlı şifreleme kullanılabilir olduğunda, NetX güvenli TLS 'nin en iyi performansı için kullanılmalıdır.
-- TLS anlaşma kaydı parçalanması desteklenmiyor. Bazı TLS el ile kayıt iletileri çok büyükse, birden çok TLS kaydına ayrılabilir. NetX güvenli TLS Şu anda bunu bir hata olarak değerlendirir. Katıştırılmış sistemler için bellek gereksinimleri, büyük olasılıkla daha büyük bir el sıkışma kayıt iletisi de işlenemeyebilir, ancak sınırlandırma çok büyük sertifika zincirlerini kullanan belirli TLS konaklarıyla iletişim kurarken hatalara yol açabilir.
-- Yerel depoda birden çok sertifika olduğunda, TLS sunucusu dinamik sertifika seçimini desteklemez. 
-- X509 sertifikası KeyUsage gözlemlenmemiş. 
-- ECDH tabanlı ciphersuites desteklenmez. Bunun yerine ECDHE kullanın.
+  > Genel olarak, paket yeniden değerlendirme arabelleği hiçbir zaman TLS maksimum kayıt boyutundan küçük olmayacaktır. Ancak uzak ana bilgisayarın özellikleri iyi biliniyorsa (örneğin, tamamen kapalı bir sistemde) ram alanı kazanmak için boyut azaltabilirsiniz.
+- En düşük sertifika doğrulaması. NetX Secure, sertifikanın güvenilir bir Sertifika Yetkilisi tarafından geçerli ve imzalanmış olduğundan emin olmak için bir sertifika üzerinde temel X.509 zincir doğrulaması gerçekleştirecek ve uzak ana bilgisayarın Top-Level Etki Alanı Adı ile karşılaştıracak uygulama için sertifika Ortak Adı'na sahip olabilir. Gerçek zamanlı bir saat varsa, sertifika sona erme tarihini doğrulamak için kullanılabilir (bkz. API nx_secure_tls_session_time_function_set). Ancak, sertifika uzantılarının ve diğer verilerin doğrulanması uygulama uygulayıcının sorumluluğundadır.
+- Yazılım tabanlı şifreleme yoğun işlemci içerir. NetX Secure yazılım tabanlı şifreleme yordamları performans için iyileştirilmiştir, ancak hedef işlemcinin gücüne bağlı olarak bu performans çok uzun işlemlere neden olabilir. Donanım tabanlı şifreleme kullanılabilir olduğunda NetX Secure TLS'nin en iyi performansı için kullanılmalıdır.
+- TLS El Sıkışma Kaydı parçalanması desteklenmiyor. Bazı TLS el sıkışma kaydı iletileri çok büyükse, bunlar birden çok TLS kaydı arasında bölünüyor olabilir – NetX Secure TLS şu anda bunu bir hata olarak ele alır. Katıştırılmış sistemler için bellek gereksinimleri, büyük el sıkışma kayıt iletisi büyük olasılıkla yine de iş edilemez, ancak sınırlama aşırı büyük sertifika zincirleri kullanan belirli TLS konakları ile iletişim kurarken hatalara neden olabilir.
+- Yerel depoda birden çok sertifika olduğunda TLS sunucusu dinamik sertifika seçimini desteklemez. 
+- X509 Sertifika AnahtarıKusage gözlemlenmez. 
+- ECDH tabanlı şifreler desteklenmiyor. Bunun yerine ECDHE kullanın.

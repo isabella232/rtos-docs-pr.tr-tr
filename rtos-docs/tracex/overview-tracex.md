@@ -1,107 +1,107 @@
 ---
-title: Azure RTOS TraceX 'i anlama
-description: Azure RTOS TraceX, geliştiricilerin gerçek zamanlı sistem olaylarının grafik bir görünümünü sunan ve gerçek zamanlı sistemlerinin davranışını görselleştirmesini ve daha iyi anlamasına olanak tanıyan ana bilgisayar tabanlı çözümleme aracıdır.
+title: TraceX Azure RTOS anlama
+description: Azure RTOS TraceX, geliştiricilere gerçek zamanlı sistem olaylarının grafik görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmelerine ve daha iyi anlamalarına olanak sağlayan Microsoft'un ana bilgisayar tabanlı analiz aracıdır.
 author: philmea
 ms.author: philmea
 ms.date: 5/19/2020
 ms.service: rtos
 ms.topic: overview
-ms.openlocfilehash: 9fd33eec6da69e6dda421a125a2dde5eae93b46d
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 966f3be5ebe34e006067175e422480fbf1ab664bb0ff627d7b01e71036dc5e82
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104828625"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792226"
 ---
-# <a name="overview-of-azure-rtos-tracex"></a>Azure RTOS TraceX 'e genel bakış
+# <a name="overview-of-azure-rtos-tracex"></a>Azure RTOS TraceX'e genel bakış
 
-Azure RTOS TraceX, geliştiricilerin gerçek zamanlı sistem olaylarının grafik bir görünümünü sunan ve gerçek zamanlı sistemlerinin davranışını görselleştirmesini ve daha iyi anlamasına olanak tanıyan ana bilgisayar tabanlı çözümleme aracıdır. Azure RTOS TraceX sayesinde, geliştiriciler standart hata ayıklama araçlarının görünümünden oluşan kesmeler ve bağlam anahtarları gibi sistem olaylarının kullanımını açıkça görebilirler. Bu olayları belirleme ve denetleme ve genel sistem işleminin bağlamında yaptığı oluşumların zamanlamasını belirlemek, geliştiricilerin beklenmedik davranışı bularak programlama sorunlarını çözmelerini ve belirli alanlara daha fazla bilgi vermelerini sağlamak için, uygulama tarafından çalışma zamanında belirlenen arabellek konumu ve boyutu ile hedef sistemdeki bir arabellekte depolanır. Azure RTOS TraceX, yalnızca Azure RTOS ThreadX 'den değil, ancak herhangi bir uygulamadan veya RTOS 'a değil, doğru şekilde oluşturulmuş olan her bir arabelleği işleyebilir. İzleme bilgileri dilediğiniz zaman analiz edilmek üzere konağa yüklenebilir; ya da ya da bir kesme noktası üzerinde. Azure RTOS ThreadX, en son "N" olaylarının sistem arızası veya diğer önemli olay durumunda İnceleme için kullanılabilir olmasını sağlayan bir döngüsel arabellek uygular.
+Azure RTOS TraceX, geliştiricilere gerçek zamanlı sistem olaylarının grafik görünümünü sağlayan ve gerçek zamanlı sistemlerinin davranışını görselleştirmelerine ve daha iyi anlamalarına olanak sağlayan Microsoft'un ana bilgisayar tabanlı analiz aracıdır. Diğer Azure RTOS TraceX ile geliştiriciler, standart hata ayıklama araçlarının görünümü dışında oluşan kesintiler ve bağlam anahtarları gibi sistem olaylarının ortaya çıkmalarını net bir şekilde görebilir. Bu olayları belirleyebilme ve inceleyebilme ve bunların genel sistem işlemi bağlamında ortaya çıkma zamanlamasını belirlemek, geliştiricilerin programlama sorunlarını beklenmeyen davranış bularak çözmesine ve belirli alanları daha fazla araştırmalarına olanak tanımak için izleme bilgileri hedef sistemde arabellekte depolanır ve arabellek konumu ve boyutu çalışma zamanında uygulama tarafından belirlenir. Azure RTOS TraceX, yalnızca Azure RTOS ThreadX'ten değil, herhangi bir uygulama veya RTOS'tan doğru şekilde oluşturulmuş herhangi bir arabelleği işebilir. İzleme bilgileri, analiz için herhangi bir zamanda (son inceleme veya bir kesme noktası) ana bilgisayar üzerine karşıya yüklenebilirsiniz. Azure RTOS ThreadX, sistem arızası veya diğer önemli olaylarda en son "N" olayların inceleme için kullanılabilir olması için olanak sağlayan döngüsel bir arabelleğe sahiptir.
 
-![Azure RTOS TraceX Single-Core görüntüleme](./media/user-guide/screen_shot_33.png)
+![Azure RTOS TraceX Single-Core Görüntüleme](./media/user-guide/screen_shot_33.png)
 
-**TraceX Single-Core görüntüleme**
+**TraceX Single-Core Görüntüleme**
 
-## <a name="key-capabilites"></a>Key özelliklere
+## <a name="key-capabilites"></a>Önemli özellikler
 
-### <a name="azure-rtos-tracex-built-in-system-analysis"></a>Azure RTOS TraceX yerleşik Sistem Analizi
+### <a name="azure-rtos-tracex-built-in-system-analysis"></a>Azure RTOS TraceX yerleşik sistem analizi
 
-Azure RTOS TraceX, TraceX araç çubuğundan tek bir düğme ile kullanılabilen yerleşik sistem analiz raporları sağlar. Bu düğmeler ve raporlar şunları içerir:
+Azure RTOS TraceX, TraceX araç çubuğundan tek bir düğme tıklama ile kullanılabilen yerleşik sistem analizi raporları sağlar. Bu düğmeler ve raporlar şunları içerir:
 
-![Yürütme profili raporu oluştur](./media/overview-tracex/execution-profile-report-button.jpg) Yürütme profili raporu oluştur
+![Yürütme Profili raporu oluşturma](./media/overview-tracex/execution-profile-report-button.jpg) Yürütme Profili raporu oluşturma
 
-![Performans Istatistikleri raporu oluştur](./media/overview-tracex/performance-statistics-report-button.jpg) Performans Istatistikleri raporu oluştur
+![Performans İstatistikleri raporu oluşturma](./media/overview-tracex/performance-statistics-report-button.jpg) Performans İstatistikleri raporu oluşturma
 
-![Iş parçacığı yığını kullanım raporu oluştur](./media/overview-tracex/thread-stack-usage-report-button.jpg) Iş parçacığı yığını kullanım raporu oluştur
+![İş Parçacığı Yığını Kullanımı raporu oluşturma](./media/overview-tracex/thread-stack-usage-report-button.jpg) İş Parçacığı Yığını Kullanımı raporu oluşturma
 
-### <a name="trace-data-collected-by-azure-rtos-threadx"></a>Azure RTOS ThreadX tarafından toplanan izleme verileri
+### <a name="trace-data-collected-by-azure-rtos-threadx"></a>Azure RTOS ThreadX tarafından toplanan verileri izleme
 
-Azure RTOS TraceX, çalışma zamanı sırasında hedef sistemde sistem ve uygulama "olaylarının" bir veritabanını oluşturan Azure RTOS ThreadX ile çalışmak üzere tasarlanmıştır. Bu olaylar şunları içerir:
+Azure RTOS TraceX, çalışma zamanı Azure RTOS hedef sistemde sistem ve uygulama "olayları" veritabanı oluşturur Azure RTOS ThreadX ile çalışacak şekilde tasarlanmıştır. Bu olaylar şunlardır:
 
-* iş parçacığı bağlam geçişleri
+* iş parçacığı bağlam anahtarları
 * preemptions
-* getirilmesi
-* sonlanmaları
-* Sistem kesmeleri
+* Süspansiyon
+* sonlandırmalar
+* sistem kesintileri
 * uygulamaya özgü olaylar
-* Tüm Azure RTOS ThreadX API çağrıları
-* Tüm Azure RTOS NetX API çağrıları
-* Tüm Azure RTOS FileX API çağrıları
-* Tüm Azure RTOS USBX API çağrıları
+* tüm Azure RTOS ThreadX API çağrıları
+* tüm Azure RTOS NetX API çağrıları
+* tüm Azure RTOS FileX API çağrıları
+* tüm Azure RTOS USBX API çağrıları
 * uygulama tanımlı simgeler ve bilgiler
 
-Olaylar, zaman damgalama ve etkin iş parçacığı tanımlama ile program denetimi altında günlüğe kaydedilir, böylece daha sonra uygun zaman dizisinde görüntülenebilirler ve uygun iş parçacığıyla ilişkilendirilir. Olay günlüğü, uygulama programı tarafından dinamik olarak durdurulabilir ve yeniden başlatılabilir, örneğin, bir ilgi alanına rastlandı. Bu, sistemin doğru şekilde gerçekleştirilirken veritabanını bir şekilde ve hedef belleği kullanmaya karşı engeller.
+Olaylar, daha sonra uygun zaman dizisinde görüntülenilebilecek ve uygun iş parçacığıyla ilişkilendirililebilecek şekilde zaman damgası ve etkin iş parçacığı tanımlama ile program denetimi altında günlüğe kaydedilir. Olay günlüğü, örneğin bir ilgi alanıyla karşılaşıldığında uygulama programı tarafından dinamik olarak durdurulmuş ve yeniden başlatılacaktır. Bu, sistem doğru şekilde performans gösterirken veritabanının karmaşık hale gelen ve hedef belleği kullanan bir sistemden kaçınmasını sağlar.
 
-### <a name="azure-rtos-tracex-is-like-a-software-logic-analyzer"></a>Azure RTOS TraceX, bir yazılım mantığı Çözümleyicisi gibidir
+### <a name="azure-rtos-tracex-is-like-a-software-logic-analyzer"></a>Azure RTOS TraceX bir yazılım mantığı çözümleyicisi gibi
 
-Olay günlüğü hedef bellekten konağa yüklendikten sonra, Azure RTOS TraceX olayları, olayları temsil eden bir yatay eksende, olayların dikey eksen üzerinde listelenen çeşitli uygulama iş parçacıkları ve sistem yordamları ile grafik olarak görüntülenir. Azure RTOS TraceX konakta bir "yazılım Logic Analyzer" oluşturur ve sistem olayları görünür hale getirir. Olaylar, ilgili iş parçacığının veya sistem yordamının sağında yer alan yatay zaman çizelgesi üzerindeki oluşum noktasında bulunan renk kodlu simgelerle temsil edilir. Bir olay simgesi seçildiğinde, söz konusu olayla ilgili bilgilerin yanı sıra önceki iki ve sonraki iki olay için de bilgiler görüntülenir. Bu, olay ve bu nesnenin hemen çevredeki olayları hakkında en çabuk bilgilere hızlı, tek tıklamayla erişim sağlar. Azure RTOS TraceX, birçok iş parçacığından oluşan sistemlerin analizini kolaylaştırmak için tek bir yatay satırdaki tüm sistem olaylarını gösteren bir "Özet" ekranı sağlar.
+Olay günlüğü hedef bellekten ana bilgisayarla karşıya yüklendiktan sonra Azure RTOS TraceX olayları, dikey eksende olayların ilişkili olduğu çeşitli uygulama iş parçacıkları ve sistem yordamları ile saati temsil eden yatay eksende grafik olarak görüntüler. Azure RTOS TraceX, konakta bir "yazılım mantığı çözümleyicisi" oluşturur ve sistem olaylarını açıkça görünür hale gelir. Olaylar, ilgili iş parçacığının veya sistem yordamının sağ tarafından yatay zaman çizelgesinde oluşum noktasında bulunan renk kodlu simgelerle temsil eder. Bir olay simgesi seçildiğinde, o olayla ilgili bilgilerin yanı sıra önceki ve sonraki iki olayla ilgili bilgiler görüntülenir. Bu, olay ve onun hemen çevresindeki olaylar hakkında en kısa bilgilere hızlı ve tek tıklamayla erişim sağlar. Azure RTOS TraceX, birçok iş parçacığına sahip sistemlerin analizini basitleştirmek için tüm sistem olaylarını tek bir yatay çizgide gösteren bir "Özet" ekranı sağlar.
 
-### <a name="sequential-view-mode"></a>Sıralı Görünüm modu
+### <a name="sequential-view-mode"></a>Sıralı görünüm modu
 
-Sıralı Görünüm modu, "Sıralı Görünüm" sekmesine tıklanarak seçilir. Bu varsayılan moddur. Bu modda olaylar, aralarında geçen süreden bağımsız olarak, birbirleriyle hemen sonra gösterilir. Ayrıca, görüntü alanının üzerindeki cetveli de göz önünde bulabilirsiniz. İzlemenin başından ilgili olay numarasını gösterir. Bu mod varsayılan moddur ve özellikle sistemde neler olduğuna ilişkin iyi bir genel bakış elde etmek için kullanışlıdır.
+Sıralı görünüm modu, "Sıralı Görünüm" sekmesine tıklayarak seçilir. Bu varsayılan moddur. Bu modda olaylar, aralarında geçen süre ne olursa olsun hemen birbirinin ardından gösterilir. Ayrıca, görüntü alanı üzerindeki cetveli de not alan. İzlemenin başından itibaren göreli olay numarasını gösterir. Bu mod varsayılan moddur ve özellikle sistemde neler olduğu hakkında iyi bir genel bakış elde edin.
 
-![Sıralı Görünüm modu](./media/user-guide/screen_shot_10.png)
+![Sıralı görünüm modu](./media/user-guide/screen_shot_10.png)
 
-**Sıralı Görünüm modu**
+**Sıralı görünüm modu**
 
 ### <a name="time-view-mode"></a>Zaman görünümü modu
 
-Bu modda olaylar, olaylar arasındaki yürütmeyi göstermek için düz bir yeşil çubukla birlikte zaman göreli olarak gösterilir. Bu mod özellikle, geliştiricilerin sistemde daha fazla performans ve/veya yanıt verme için sistem ayarlarını ayarlayabilmesine yardımcı olabilecek, işleme toplu işlemin nerede olduğunu görmek için yararlıdır.
+Bu modda olaylar, olaylar arasında yürütmeyi göstermek için kullanılan düz bir yeşil çubukla göreli olarak gösterilir. Bu mod özellikle sistemde toplu işlemenin nerede olduğunu görmek için kullanışlıdır. Bu mod, geliştiricilerin daha yüksek performans ve/veya yanıt hızı için kendi sistemini ayarlamalarına yardımcı olabilir.
 
-Ayrıca, olay görüntüsüne ait olan cetveli de göz önünde bulabilirsiniz. Bu cetvelde, Azure RTOS ThreadX 'in içindeki olay izleme günlüğü 'nde gösterilen zaman damgasından türetildiği gibi, izlemenin başından itibaren göreli ticks gösterilmektedir. Zaman damgaları çok yakın (Düşük Sıklık süreölçeri) ise, olaylar birlikte çalışır. Buna karşılık, zaman damgaları çok uzakta (yüksek sıklık süreölçeri), olaylar çok uzakta olacaktır. Doğru sıklık zaman damgasını seçmek, zaman göreli görünümü anlamlı hale getirmek için önemli bir konudur.
+Olay görüntüsünde yer alan cetvele de dikkatin. Bu cetvel, ThreadX'in içindeki olay izleme günlüğünde işaret edilen zaman damgasından türetilen, izlemenin başından itibaren göreli Azure RTOS gösterir. Zaman damgaları çok yakınsa (düşük sıklık süreölçeri), olaylar birlikte çalıştır. Buna karşılık, zaman damgaları çok uzaksa (yüksek sıklık süreölçeri), olaylar çok uzak olur. Doğru sıklık zaman damgasını seçmek, zaman göreli görünümünü anlamlı hale açısından önemli bir noktadır.
 
-![Zaman görünümü modu](./media/user-guide/screen_shot_31.png)
+![Zaman Görünümü Modu](./media/user-guide/screen_shot_31.png)
 
-### <a name="system-summary-line"></a>Sistem Özeti satırı
+### <a name="system-summary-line"></a>Sistem özet satırı
 
-Azure RTOS TraceX aynı satırdaki tüm olayları içeren tek bir Özet çizgisi de sağlar. Özet satırı, aşağıda karşılık gelen olay özetinin yanı sıra bağlamın bir özetini içerir. Bu, karmaşık bir sisteme genel bakış görmenizi kolaylaştırır. Özet çubuğu, çok sayıda iş parçacığına sahip olan sistemlerde özellikle faydalıdır. Bu tür bir Özet satırı olmadan, kullanıcının Yürütme bağlamını izlemek için dikey kaydırma çubuğunu kullanarak karmaşık sistem etkileşimlerini izlemesi gerekir.
+Azure RTOS TraceX aynı satırda yer alan tüm olayları içeren tek bir özet satırı da sağlar. Özet satırı, bağlamın bir özetini ve altındaki ilgili olay özetini içerir. Bu, karmaşık bir sisteme genel bakış görmeyi kolaylaştırır. Özet çubuğu özellikle çok sayıda iş parçacığına sahip sistemlerde yararlıdır. Böyle bir özet satırı olmadan, kullanıcının yürütme bağlamını takip etmek için dikey kaydırma çubuğunu kullanarak karmaşık sistem etkileşimlerini izlemesi gerekir.
 
-Azure RTOS TraceX, ekran sol tarafındaki sistem bağlamlarını listeler.
-Belirli bir bağlamda oluşan olaylar, bu bağlamın sağındaki yatay satırda görüntülenir. Bu şekilde Kullanıcı, olayın hangi bağlamdan oluştuğunu kolayca belirleyebilir ve belirli bir bağlamda gerçekleşen tüm olayları görmek için bu bağlam satırını izleyebilir.
+Azure RTOS TraceX, ekranın sol tarafında sistem bağlamlarını listeler.
+Belirli bir bağlamda oluşan olaylar, bu bağlamın sağ tarafından yatay çizgide görüntülenir. Bu şekilde, kullanıcı olayın hangi bağlamın meydana geldiği kolayca tespit edilebilir ve belirli bir bağlamda meydana gelen tüm olayları görmek için bu bağlam çizgilerini takip eder.
 
-![Sistem Özeti satırı](./media/user-guide/screen_shot_32.png)
+![Sistem Özet Satırı](./media/user-guide/screen_shot_32.png)
 
-**Sistem Özeti satırı**
+**Sistem Özet Satırı**
 
-İlk iki bağlam girişi her zaman "kesme" ve "başlatma/boşta" bağlamıdır. "Kesme" bağlamı, kesme hizmeti yordamlarından (ISRS) yapılan tüm sistem olaylarını temsil eder. "Initialize/Idle" bağlamı, Azure RTOS ThreadX içindeki iki bağlamı temsil eder. Tx_application_define sırasında oluşan olaylar "Initialize" olayıdır ve "Initialize/Idle" bağlamında görüntülenir. Sistem boşta kalırsa ve hiçbir olay gerçekleşmeden, zaman görünümünde "çalışıyor" seçeneğini belirten yeşil çubuk "başlatma/boşta" bağlamında çizilir.
+İlk iki bağlam girişi her zaman "Kesme" ve "Başlat/Boşta" bağlamlarıdır. "Kesme" bağlamı, Kesinti Hizmeti Yordamlarından (ISR) yapılan tüm sistem olaylarını temsil eder. "Başlat/Boşta" bağlamı, ThreadX'te Azure RTOS temsil eder. Başlatma sırasında tx_application_define olaylar " Başlat" olaylarıdır ve "Başlat/Boşta" bağlamında görüntülenir. Sistem boşta ise ve bu nedenle hiçbir olay meydana yoksa, zaman görünümünde "Çalışıyor" ifadesini temsil eden yeşil çubuk "Başlat/Boşta" bağlamında çizilir.
 
 ## <a name="methods-of-navigation"></a>Gezinti yöntemleri
 
-Azure RTOS TraceX, geliştiricinin "Ileri" ve "önceki" gezinme düğmelerinin nasıl çalıştığını belirtmesini sağlar.
+Azure RTOS TraceX, geliştiricinin "Sonraki" ve "Önceki" gezinti düğmelerinin nasıl çalışılır olduğunu belirtmelerini sağlar.
 
 ![Gezinti düğmeleri](./media/user-guide/event.png)
 
-"Olay" seçilirse, sonraki/önceki olayda gezinme yapılır. "Bağlam" seçilirse, aynı bağlamdaki sonraki/önceki olayda gezinme yapılır. "Nesne" seçilirse, geçerli nesnenin bir sonraki/önceki olayında (örneğin, belirli bir kuyrukla ilişkili olaylar) gezinme yapılır. "Anahtarlar" seçilirse, bir sonraki/önceki bağlam anahtarında gezinme yapılır. "Aynı KIMLIK" seçilirse, aynı olay KIMLIĞI için bir sonraki/önceki olayda gezinme yapılır.
+"Olay" seçilirse, gezinti sonraki/önceki olayda yapılır. "Bağlam" seçilirse, gezinti aynı bağlamda bir sonraki/önceki olayda yapılır. "Nesne" seçilirse, gezinti geçerli nesnenin sonraki/önceki olayında (örneğin, belirli bir kuyrukla ilişkili olaylar) yapılır. "Anahtarlar" seçilirse, gezinti sonraki/önceki bağlam anahtarında yapılır. "Aynı Kimlik" seçilirse, gezinti aynı olay kimliği için sonraki/önceki olayda yapılır.
 
-### <a name="event-information-display"></a>Olay bilgileri görünümü
+### <a name="event-information-display"></a>Olay bilgileri görüntüleme
 
-Azure RTOS TraceX, bazı 300 olayları hakkında ayrıntılı bilgi sağlar. Bunlar arasında altı adet iç Azure RTOS ThreadX olayı, iki ıSR olayı (Enter ve çıkış), 14 iç Azure RTOS FileX olayları, 42 iç Azure RTOS NetX olayları ve Kullanıcı tanımlı bir olay bulunur. Kalan olaylar doğrudan Azure RTOS ThreadX, Azure RTOS FileX ve Azure RTOS NetX API hizmetlerine karşılık gelir.
-Sıralı veya zaman görüntüleme modunun seçili olmasından bağımsız olarak, görüntüleme alanındaki herhangi bir olay üzerinde bir fare, olayın yakınında ayrıntılı olay bilgilerinin görüntülenmesine neden olur. Demo demo_threadx. trx izleme dosyasındaki 494 olayı üzerinde fare üzerinden fare, burada gösterilmektedir:
+Azure RTOS TraceX bazı 300 olay hakkında ayrıntılı bilgi sağlar. Bunlar altı iç Azure RTOS ThreadX olayı, iki ISR olayı (enter ve çıkış), 14 iç Azure RTOS FileX olayı, 42 iç Azure RTOS NetX olayı ve bir kullanıcı tanımlı olaydır. Kalan olaylar doğrudan Azure RTOS, Azure RTOS FileX ve NetX API Azure RTOS karşılık gelir.
+Sıralı veya zaman görüntüleme modunun seçili olup olmadığı ne olursa olsun, görüntüleme alanında herhangi bir olayın üzerine fareyle yapılan bir fare ile olayın yakınında ayrıntılı olay bilgileri görüntülenir. Tanıtım demo_threadx.trx izleme dosyasındaki olay 494'ü fareyle üzerine bırakma aşağıda gösterilmiştir:
 
-![Mouse-Over daha fazla bilgi görüntüler](./media/user-guide/screen_shot_37.png)
+![Mouse-Over Daha Fazla Bilgi Görüntüler](./media/user-guide/screen_shot_37.png)
 
-**Fare üzerindeyken daha fazla bilgi görüntülenir**
+**Fareyle Üzerine Doğru Daha Fazla Bilgi Görüntülenir**
 
-Her olay, bağlam ve göreli saat ve zaman damgası hakkında standart bilgiler içerir. Bağlam alanı, olayın gerçekleştiği bağlamı gösterir. Yalnızca dört bağlam vardır: iş parçacığı, boşta, ıSR ve başlatma. Bir iş parçacığı bağlamında bir olay gerçekleştiğinde, iş parçacığı adı ve o zaman önceliği yukarıda gösterildiği gibi toplanır ve görüntülenir. Göreli süre, izlemenin başından itibaren Zamanlayıcı onay işaretleri sayısını gösterir. Ham zaman damgası, olayın ham saat kaynağını gösterir. Son olarak, olaya özgü tüm bilgiler görüntülenir.
+Görüntülenen her olay Bağlam ve hem Göreli Saat hem de Zaman Damgası hakkında standart bilgiler içerir. Bağlam alanı, olayın hangi bağlamda olduğunu gösterir. Tam olarak dört bağlam vardır: iş parçacığı, boşta, ISR ve başlatma. Bir olay bir iş parçacığı bağlamında olduğunda, o anda iş parçacığı adı ve önceliği toplanıp yukarıda gösterildiği gibi görüntülenir. Göreli Saat, izlemenin başından itibaren zamanlayıcı saat işaretlerinin göreli sayısını gösterir. Ham Zaman Damgası olayın ham saat kaynağını görüntüler. Son olarak, olaya özgü tüm bilgiler görüntülenir.
 
 ### <a name="zooming-in-and-out"></a>Yakınlaştırma ve uzaklaştırma
 

@@ -1,23 +1,23 @@
 ---
-title: Bölüm 4-Azure RTOS NetX güvenli DTLS hizmetlerinin açıklaması
-description: Bu bölümde, alfabetik sırada listelenen tüm Azure RTOS NetX güvenli DTLS hizmetlerinin açıklaması yer almaktadır.
+title: Bölüm 4 - NetX Azure RTOS DTLS hizmetlerinin açıklaması
+description: Bu bölümde, Tüm NetX Azure RTOS DTLS hizmetlerinin alfabetik sırada listelenmiş bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: e795a5fa35a4590e508c7fe2eec53f5494809657
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 45966e7c8ea9be18bf294e8a7540e7226e803f29ae4f3ad3faaa29e4939c2ed8
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825690"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116801860"
 ---
-# <a name="chapter-4-description-of-azure-rtos-netx-secure-dtls-services"></a>Bölüm 4: Azure RTOS NetX güvenli DTLS hizmetlerinin açıklaması
+# <a name="chapter-4-description-of-azure-rtos-netx-secure-dtls-services"></a>Bölüm 4: NetX Azure RTOS DTLS hizmetlerinin açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX güvenli DTLS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde Tüm NetX Secure DTLS Azure RTOS (aşağıda listelenmiştir) alfabetik sırada bir açıklama yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_SECURE_DISABLE_ERROR_CHECKING** makrodan etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_SECURE_DISABLE_ERROR_CHECKING api hata denetimi devre dışı bırakmak için kullanılan NX_SECURE_DISABLE_ERROR_CHECKING makros undan etkilenmez.
 
 - [nx_secure_dtls_client_session_start](#nx_secure_dtls_client_session_start)
 - [nx_secure_dtls_packet_allocate](#nx_secure_dtls_packet_allocate)
@@ -51,7 +51,7 @@ Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kal�
 
 ## <a name="nx_secure_dtls_client_session_start"></a>nx_secure_dtls_client_session_start
 
-NetX güvenli DTLS Istemci oturumu başlatma
+NetX Güvenli DTLS İstemci Oturumu Başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -64,43 +64,43 @@ UINT nx_secure_dtls_client_session_start(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ağ iletişimleri için belirtilen UDP yuvasını kullanarak, belirtilen IP adresi ve UDP bağlantı noktasındaki sunucuya bağlanan bir DTLS Istemci oturumu başlatır.
+Bu hizmet, ağ iletişimleri için sağlanan UDP yuvasını kullanarak sağlanan IP adresi ve UDP bağlantı noktası üzerinden sunucuya bağlanarak bir DTLS İstemci oturumu başlatır.
 
-Bu hizmet nx_secure_dtls_session_create kullanılarak çağrılmadan önce DTLS oturum denetim bloğunun başlatılmış olması gerekir. Ayrıca, DTLS Istemcisi nx_secure_dtls_session_trusted_certificate_add veya önceden paylaşılan anahtarlar etkin ve yapılandırılmış olarak oturum için en az bir güvenilir CA sertifikası eklenmiş olmasını gerektirir.
+Bu hizmeti nx_secure_dtls_session_create kullanarak çağırmadan önce DTLS oturum nx_secure_dtls_session_create. Ayrıca, DTLS İstemcisi, oturuma en az bir güvenilen CA sertifikasının nx_secure_dtls_session_trusted_certificate_add veya Önceden Paylaşılan Anahtarlar'ın etkinleştirilmesini ve yapılandırılmasını gerektirir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Daha önce başlatılmış olan DTLS oturum yapısına yönelik işaretçi.
-- **udp_socket** Uzak DTLS sunucusuyla ağ iletişimi kurmak için kullanılacak UDP yuvası başlatıldı.
-- **ip_address** Uzak DTLS sunucusunun adresini içeren IP adresi yapısına yönelik işaretçi.
-- **bağlantı noktası** Uzak DTLS sunucusuyla ağ iletişimi kurmak için kullanılacak UDP yuvası başlatıldı.
+- **dtls_session** Daha önce başlatılan bir DTLS Oturumu yapısının işaretçisi.
+- **udp_socket** Uzak DTLS sunucusuyla ağ iletişimleri kurmak için kullanılacak başlatılmış UDP yuvası.
+- **ip_address** Uzak DTLS sunucusunun adresini içeren IP adresi yapısına işaretçi.
+- **bağlantı noktası** Uzak DTLS sunucusuyla ağ iletişimleri kurmak için kullanılacak başlatılmış UDP yuvası.
 - **wait_option** Bağlantı girişimi için askıya alma seçeneği.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sertifikanın oturumun başarıyla atanması.
-- **NX_NOT_CONNECTED** (0x38) sunucuya, belirtilen adreste ve bağlantı noktasında ulaşılamıyor.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) ALıNAN bir TLS/DTLS ileti türü yanlış.
-- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) uzak ana bilgisayar tarafından sağlanmış bir şifre desteklenmez.
-- TLS el sıkışması sırasında **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) ileti işleme başarısız oldu.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) gelen bir ILETI karma Mac denetiminde başarısız oldu.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) temel alınan TCP yuvası gönderme başarısız oldu.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10a) gelen iletide geçersiz uzunluk alanı vardı.
-- **NX_SECURE_TLS_BAD_CIPHERSPEC** (0x10b) gelen bir Changecyaspec iletisi hatalı.
-- **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10c) uzak DTLS sunucusunu tanımlamak Için gelen bir TLS sertifikası kullanılamaz.
-- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10d) uzak ana bilgisayar tarafından sunulan ortak anahtar şifresi desteklenmez.
-- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10e) uzak ana bilgisayar, NETX GÜVENLI DTLS yığını tarafından desteklenen bir ciphersuites belirtti.
-- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) ALıNAN DTLS iletisinin üstbilgisinde bilinmeyen DTLS sürümü vardı.
-- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) ALıNAN DTLS iletisi üstbilgisinde bilinen ancak desteklenmeyen bir DTLS sürümü vardı.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) BIR iç TLS paket ayırması başarısız oldu.
-- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) uzak ana bilgisayar geçersiz bir sertifika sağladı.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) uzak ana bilgisayar bir hatayı BELIRTEN ve TLS oturumunu sonlandıran bir uyarı gönderdi.
-- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13b) ciphersuite tablosundaki BIR girdinin null işlev işaretçisi vardı.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum, yuva veya adres işaretçisi.
+- **NX_SUCCESS** (0x00) Sertifikanın oturuma başarıyla ataması.
+- **NX_NOT_CONNECTED** (0x38) Sunucuya verilen adres ve bağlantı noktası ile ulaşamaz.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE** (0x102) Alınan TLS/DTLS ileti türü yanlış.
+- **NX_SECURE_TLS_UNSUPPORTED_CIPHER** (0x106) Uzak konak tarafından sağlanan bir şifreleme desteklenmiyor.
+- **NX_SECURE_TLS_HANDSHAKE_FAILURE** (0x107) TLS el sıkışması sırasında ileti işleme başarısız oldu.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) Gelen ileti bir karma MAC denetimi başarısız oldu.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Temel alınan bir TCP yuvası gönderme işlemi başarısız oldu.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) Gelen iletinin uzunluk alanı geçersizdi.
+- **NX_SECURE_TLS_BAD_CIPHERSPEC** (0x10B) Gelen bir ChangeCipherSpec iletisi yanlış.
+- **NX_SECURE_TLS_INVALID_SERVER_CERT** (0x10C) Gelen TLS sertifikası, uzak DTLS sunucusunu tanımlamak için kullanılamaz.
+- **NX_SECURE_TLS_UNSUPPORTED_PUBLIC_CIPHER** (0x10D) Uzak konak tarafından sağlanan ortak anahtar şifrelemesi desteklenmez.
+- **NX_SECURE_TLS_NO_SUPPORTED_CIPHERS** (0x10E) Uzak konak NetX Secure DTLS yığını tarafından desteklenen şifreleme olmadığını belirtti.
+- **NX_SECURE_TLS_UNKNOWN_TLS_VERSION** (0x10F) alınan bir DTLS iletisi üst bilgisinde bilinmeyen bir DTLS sürümüne sahipti.
+- **NX_SECURE_TLS_UNSUPPORTED_TLS_VERSION** (0x110) alınan bir DTLS iletisi üst bilgisinde bilinen ancak desteklenmeyen bir DTLS sürümüne sahipti.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) bir iç TLS paket ayırması başarısız oldu.
+- **NX_SECURE_TLS_INVALID_CERTIFICATE** (0x112) Uzak konak geçersiz bir sertifika sağladı.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) Uzak konak bir hata belirten bir uyarı gönderdi ve TLS oturumunu sonlandı.
+- **NX_SECURE_TLS_MISSING_CRYPTO_ROUTINE** (0x13B) Şifreleme tablosuna bir giriş NULL işlev işaretçisine sahipti.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum, yuva veya adres işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -207,7 +207,7 @@ NXD_ADDRESS server_ip;
 
 ## <a name="nx_secure_dtls_packet_allocate"></a>nx_secure_dtls_packet_allocate
 
-NetX güvenli DTLS oturumu için bir paket ayırın
+NetX Güvenli DTLS Oturumu için paket ayırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -220,27 +220,27 @@ UINT  nx_secure_dtls_packet_allocate(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirtilen NX_PACKET_POOL belirtilen etkin DTLS oturumu için bir NX_PACKET ayırır. Bu hizmet, bir DTLS bağlantısı üzerinden gönderilecek veri paketleri ayırmak için uygulama tarafından çağrılmalıdır. Bu hizmet çağrılmadan önce DTLS oturumunun başlatılmış olması gerekir.
+Bu hizmet, belirtilen NX_PACKET DTLS oturumu için belirtilen oturumdan bir NX_PACKET_POOL. Bu hizmet, bir DTLS bağlantısı üzerinden gönderilecek veri paketlerini ayırmak için uygulama tarafından çağrılmalı. Bu hizmet çağrılmadan önce DTLS oturumunun başlatılması gerekir.
 
-Ayrılan paket düzgün bir şekilde başlatılır, böylece DTLS üstbilgi ve altbilgi verileri, paket verileri doldurulduktan sonra eklenebilir. Davranış, *nx_packet_allocate* benzer şekilde benzerdir.
+Paket verileri doldurulduğunda DTLS üst bilgisi ve alt bilgi verileri eklenebilmek için ayrılan paket düzgün bir şekilde başlatılır. Aksi takdirde davranış, ile *nx_packet_allocate.*
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** DTLS oturum örneği işaretçisi.
-- **pool_ptr** Paketin ayırabileceği bir NX_PACKET_POOL işaretçisi.
-- **packet_ptr** Yeni ayrılmış pakete çıkış işaretçisi.
-- **wait_option** Paket ayırması için askıya alma seçeneği.
+- **session_ptr** DTLS Oturumu örneğinin işaretçisi.
+- **pool_ptr** Paketin ayrıl NX_PACKET_POOL bir uygulamanın işaretçisi.
+- **packet_ptr** Yeni ayrılan paketin çıkış işaretçisi.
+- **wait_option** Paket ayırma için askıya alma seçeneği.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı paket ayırması.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) temel alınan paket ayırması başarısız oldu.
-- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) sağlanan DTLS oturumu başlatılmadı.
+- **NX_SUCCESS** (0x00) Başarılı paket ayırma.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) Temel paket ayırma başarısız oldu.
+- **NX_SECURE_TLS_SESSION_UNINITIALIZED** (0x101) Sağlanan DTLS oturumu başlatılmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -267,7 +267,7 @@ the variable packet_ptr.  */
 
 ## <a name="nx_secure_dtls_psk_add"></a>nx_secure_dtls_psk_add
 
-NetX güvenli DTLS oturumuna önceden paylaşılan anahtar ekleme
+NetX Güvenli DTLS Oturumuna Önceden Paylaşılan Anahtar Ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -279,7 +279,7 @@ UINT  nx_secure_dtls_psk_add(NX_SECURE_DTLS_SESSION *session_ptr,
                             hint_length);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir DTLS oturum denetim bloğuna bir önceden paylaşılan anahtar (PSK), kimlik dizesi ve kimlik ipucu ekler. PSK ciphersuites etkin ve kullanıldığında, bir dijital sertifika yerine PSK kullanılır.
 
@@ -347,7 +347,7 @@ UINT  nx_secure_dtls_server_create(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirli bir UDP bağlantı noktasındaki gelen DTLS isteklerini işlemek için bir DTLS sunucusu örneği oluşturur. UDP 'nin durum bilgisiz olması nedeniyle, birden fazla istemciden alınan DTLS istekleri, diğer DTLS oturumları etkinken tek bir bağlantı noktasında gelebilir. Bu nedenle, sunucu etkin oturumları sürdürmek ve gelen iletileri doğru işleyiciye yönlendirmek için gereklidir.
 
@@ -546,7 +546,7 @@ NetX güvenli DTLS sunucusu tarafından kullanılan kaynakları boşaltma
 UINT  nx_secure_dtls_server_delete(NX_SECURE_DTLS_SERVER *server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sunucu tarafından kullanılan iç UDP yuvası dahil olmak üzere bir DTLS sunucu örneğine ayrılan kaynakları boşaltır.
 
@@ -724,7 +724,7 @@ UINT  nx_secure_dtls_server_local_certificate_add(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir DTLS sunucu örneğine yerel sunucu kimlik sertifikası ekler. Diğer bir kimlik doğrulama mekanizması (ör. önceden paylaşılan anahtarlar) kullanılmadığı takdirde, istemcilerin bir DTLS sunucusuna bağlanması için en az bir kimlik sertifikası gereklidir.
 
@@ -829,7 +829,7 @@ UINT  nx_secure_dtls_server_local_certificate_remove(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir DTLS sunucu örneğinden yerel sunucu kimlik sertifikasını kaldırır. Diğer bir kimlik doğrulama mekanizması (ör. önceden paylaşılan anahtarlar) kullanılmadığı takdirde, istemcilerin bir DTLS sunucusuna bağlanması için en az bir kimlik sertifikası gereklidir.
 
@@ -939,7 +939,7 @@ UINT  nx_secure_dtls_server_notify_set(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir DTLS sunucusuna isteğe bağlı bildirim geri çağırma yordamlarını eklemek için kullanılabilir. Yalnızca bir geri çağırma isteniyorsa, geri çağırma parametresi NX_NULL olarak geçirilebilir.
 
@@ -1057,7 +1057,7 @@ UINT  nx_secure_dtls_server_psk_add(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir DTLS sunucu denetim bloğuna bir önceden paylaşılan anahtar (PSK), kimlik dizesi ve kimlik ipucu ekler. PSK ciphersuites etkin ve kullanıldığında, bir dijital sertifika yerine PSK kullanılır.
 
@@ -1115,7 +1115,7 @@ UINT  nx_secure_dtls_server_session_send(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uzak DTLS Istemci konağına, belirlenen DTLS sunucusu oturumu üzerinden bir veri paketi gönderir. Kullanılan oturum, nx_secure_dtls_session_create için sunulan receive_notify geri çağırma yordamında elde edilir.
 
@@ -1281,7 +1281,7 @@ UINT  nx_secure_dtls_server_session_start(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uzak bir DTLS Istemcisi sunucuya bağlanıp bir DTLS bağlantısı talep edildiğinde sunucu tarafı DTLS anlaşmasını gerçekleştirerek bir DTLS sunucu oturumu başlatır.
 
@@ -1474,7 +1474,7 @@ UINT  nx_secure_dtls_server_start(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet bir DTLS sunucusu başlatır. Çağrı geri döndüğünde, sunucu etkindir ve DTLS istemcilerinden gelen istekleri işlemeye başlayacaktır. Sunucu örneği, hizmet *nx_secure_dtls_server_create* yapılandırılmış olmalıdır.
 
@@ -1655,7 +1655,7 @@ Etkin bir NetX güvenli DTLS sunucu örneğini durdur
 UINT  nx_secure_dtls_server_stop(NX_SECURE_DTLS_SERVER *server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, bir DTLS sunucusunun UDP bağlantı noktasını yapılandırma bölümünde dinleme yaptığı ve tüm devam eden DTLS iletişimlerini sıfırlayıp tüm devam eden DTLS oturumlarını sıfırlamasından yanıt vermez.
 
@@ -1829,7 +1829,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_server_trusted_certificate_add"></a>nx_secure_dtls_server_trusted_certificate_add
 
-NetX güvenli DTLS sunucusuna güvenilir bir CA sertifikası ekleme
+NetX Güvenli DTLS Sunucusuna güvenilen CA sertifikası ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1841,31 +1841,31 @@ UINT  nx_secure_dtls_server_trusted_certificate_add(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS sunucu örneğine güvenilir bir CA veya ara CA sertifikası ekler ve tüm iç DTLS sunucusu oturumlarına atanır. Bu yalnızca, *nx_secure_dtls_server_x509_client_verify_configure* kullanılarak X. 509.440 istemci sertifikası kimlik doğrulamasının etkinleştirilmesi durumunda gereklidir. Eklenen sertifika, gelen Client X. 509.440 sertifikalarını doğrulamak için kullanılacaktır.
+Bu hizmet, bir DTLS Sunucusu örneğine güvenilir bir CA veya ara CA sertifikası ekler ve tüm iç DTLS sunucu oturumlarına atanır. Bu yalnızca X.509 İstemci sertifikası kimlik doğrulaması *nx_secure_dtls_server_x509_client_verify_configure.* Eklenen sertifika, gelen İstemci X.509 sertifikalarını doğrulamak için kullanılır.
 
-Cert_id parametresi, sertifika için sayısal, sıfır olmayan bir tanıtıcıdır. Bu, DTLS sunucu deposunda aynı X. 509.440 ortak adına sahip birden çok kimlik sertifikası bulunan olayda kolayca kaldırılmasını veya bu durumda bulunabilmesini sağlar. X. 509.440 sunucu sertifikaları hakkında daha fazla bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na bakın.
+Cert_id parametresi, sertifika için sıfır olmayan sayısal bir tanımlayıcıdır. Bu, DTLS sunucu depolamada aynı X.509 Ortak Adına sahip birden çok kimlik sertifikası olması durumunda sertifikanın kolayca kaldırılmasına veya bulunamasını sağlar. X.509 sunucu sertifikaları hakkında daha fazla bilgi için bkz. NetX Secure TLS Kullanıcı Kılavuzu.
 
 ### <a name="parameters"></a>Parametreler
 
-- **server_ptr** Daha önce oluşturulmuş bir DTLS sunucu örneğine yönelik işaretçi.
-- **sertifika** Daha önce başlatılmış bir X. 509.440 sertifika yapısına yönelik işaretçi.
+- **server_ptr** Daha önce oluşturulmuş bir DTLS Sunucusu örneğinin işaretçisi.
+- **sertifika** Daha önce başlatılan bir X.509 sertifika yapısının işaretçisi.
 - **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS sunucusuna sertifikanın başarıyla eklenmesi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_INVALID_PARAMETERS** (0x4D) BIR sertifika kimliği (0) geçirildi.
+- **NX_SUCCESS** (0x00) DTLS sunucusuna başarılı bir şekilde sertifika ekleme.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_INVALID_PARAMETERS** (0x4D) 0 sertifika kimliği geçirildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
-* Daha kapsamlı bir örnek için bkz. *nx_secure_dtls_server_create* başvurusu.
+*Daha eksiksiz bir *nx_secure_dtls_server_create* için başvuruya bakın.
 
 ```C
 /* Our DTLS Server instance. */
@@ -1931,7 +1931,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_trusted_certificate_remove"></a>nx_secure_dtls_server_trusted_certificate_remove
 
-NetX güvenli DTLS sunucusundan güvenilir bir CA sertifikasını kaldırma
+NetX Güvenli DTLS Sunucusundan güvenilen CA sertifikasını kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1944,30 +1944,30 @@ UINT  nx_secure_dtls_server_trusted_certificate_remove(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS sunucu örneğinden güvenilir bir CA sertifikasını kaldırır. Güvenilen CA sertifikaları yalnızca, *nx_secure_dtls_server_x509_client_verify_configure* çağırarak X. 509.440 istemci sertifikası doğrulamasının etkinleştirildiği DTLS sunucusu için gereklidir.
+Bu hizmet, bir DTLS Sunucusu örneğinden güvenilen CA sertifikasını kaldırır. Güvenilen CA sertifikaları yalnızca X.509 İstemci sertifikası doğrulamasının nx_secure_dtls_server_x509_client_verify_configure çağrısıyla etkinleştirdiği bir DTLS *Sunucusu için* gereklidir.
 
-Kaldırılacak sertifika, X. 509.440 ortak adı ya da *nx_secure_dtls_server_trusted_certificate_add* çağrısında atanan sayısal cert_id tarafından belirlenebilir. Cert_id yalnızca sertifikayı tanımlamak için kullanılır ve uygulama tarafından korunur. Sayısal sertifika tanımlayıcısı yerine ortak ad kullanılırsa, cert_id parametresi 0 olarak ayarlanmalıdır.
+Kaldırılacak sertifika, X.509 Ortak Adı ile veya cert_id çağrısında atanmış olan sayısal *nx_secure_dtls_server_trusted_certificate_add.* Bu cert_id yalnızca sertifikayı tanımlamak için kullanılır ve uygulama tarafından korunur. Sayısal sertifika tanımlayıcısı yerine Ortak Ad kullanılıyorsa, cert_id parametresi 0 olarak ayar olmalıdır.
 
 > [!NOTE]
-> Bir DTLS el sıkışması işlenirken bir sertifikayı kaldırmak beklenmedik davranışa neden olabilir. Sertifikalar kaldırılmadan önce hizmet *nx_secure_dtls_server_stop* çağrılmalıdır.
+> DTLS el sıkışması işlenirken sertifikanın kaldırılması beklenmeyen davranışlara neden olabilir. Sertifikalar *nx_secure_dtls_server_stop* önce hizmetin çağrılsı gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **server_ptr** Daha önce oluşturulmuş bir DTLS sunucu örneğine yönelik işaretçi.
-- **common_name** Kaldırılacak sertifikanın X. 509.440 CommonName. Bu kullanılırsa, cert_id sıfır olarak geçirin.
-- **common_name_length** Bayt cinsinden common_name dize uzunluğu.
-- **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı. Bu kullanılırsa, common_name parametresi için NX_NULL geçirin.
+- **server_ptr** Daha önce oluşturulmuş bir DTLS Sunucusu örneğinin işaretçisi.
+- **common_name** Kaldırlanacak sertifikanın X.509 CommonName. Bu kullanılırsa, cert_id olarak geçiş.
+- **common_name_length** Bayt cinsinden common_name dizenin uzunluğu.
+- **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı. Bu kullanılırsa, NX_NULL parametresi için common_name geçiş.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS sunucusundan sertifikanın başarıyla kaldırılması.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) VERILEN DTLS sunucusunda cert_id veya common_name eşleşen bir sertifika bulunamadı.
+- **NX_SUCCESS** (0x00) DTLS sunucusundan sertifika başarıyla kaldırıldı.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Verilen DTLS sunucusunda cert_id veya common_name eşleşen sertifika bulunamadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2042,7 +2042,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_x509_client_verify_configure"></a>nx_secure_dtls_server_x509_client_verify_configure
 
-İstemci sertifikaları istemek ve doğrulamak için bir NetX güvenli DTLS sunucusu yapılandırma
+İstemci sertifikalarını talep etmek ve doğrulamak için NetX Secure DTLS Sunucusu yapılandırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2054,18 +2054,18 @@ UINT nx_secure_dtls_server_x509_client_verify_configure(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet DTLS Istemci sertifikalarını istemek ve doğrulamak üzere bir DTLS sunucusunu yapılandırır. Bu isteğe bağlı özellik, istemci kimlik doğrulaması için diğer mekanizmaların yerine X. 509.440 sertifikaları istendiğinde kullanılır (örneğin, önceden paylaşılan bir anahtar).
+Bu hizmet, DTLS İstemci sertifikalarını talep etmek ve doğrulamak için bir DTLS Sunucusu yapılandırıyor. Bu isteğe bağlı özellik, diğer mekanizmalar (ör. Önceden Paylaşılan Anahtar) yerine istemci kimlik doğrulaması için X.509 sertifikaları istenebilir.
 
 > [!IMPORTANT]
-> *Bu hizmeti kullanarak istemci sertifikalarını doğrulamak üzere bir DTLS sunucusu yapılandırıldığında, nx_secure_dtls_server_trusted_certificate_add kullanarak sunucuya en az bir güvenilir CA sertifikası eklenmelidir veya istemci sertifikalarını güvenilir depoya doğrulayamayacak olduğundan sunucu tüm gelen istemci bağlantılarını reddeder.*
+> *Bir DTLS Sunucusu bu hizmeti kullanarak istemci sertifikalarını doğrulamak üzere yapılandırıldığında, nx_secure_dtls_server_trusted_certificate_add kullanılarak sunucuya en az bir güvenilen CA sertifikası eklenmiştir; yoksa sunucu, istemci sertifikalarını güvenilir depoya karşı doğrulayamadığı için gelen tüm istemci bağlantılarını reddeder.*
 
-Bu hizmet çağrıldıktan sonra DTLS sunucu örneği (başlatıldıktan sonra) DTLS el sıkışmasının bir parçası olarak istemci sertifikaları ister. İstemcinin bir kimlik sertifikası (ve uygulanabilirse ilişkili sertifika zinciri) ile düzgün şekilde yapılandırıldığı varsayılarak, DTLS sunucusu, istemci sertifikası verilerini işlemek için belleğin ayrılmasını gerektirir. Bu bellek *certs_buffer* parametresi olarak geçirilir.
+Bu hizmeti çağıran DTLS Sunucusu örneği (başlatıldıktan sonra) DTLS el sıkışması kapsamında istemci sertifikaları isteği gönderir. İstemcinin bir kimlik sertifikasıyla (ve uygun olduğunda ilişkili sertifika zinciriyle) düzgün yapılandırıldığında, DTLS Sunucusu istemci sertifika verilerini işlemesi için bellek ayrılır. Bu bellek, certs_buffer *geçirildi.*
 
-Certs_buffer bir DTLS istemcisinden beklenen en büyük sertifika zincirini, her *zaman DTLS sunucusu oturumlarının sayısını* kapsayacak şekilde boyutlandırılmalıdır. Arabellek, bir Istemci sertifika zincirindeki beklenen en fazla sertifika sayısını temsil eden *certs_per_session* parametresi kullanılarak kullanılabilir Oturumlar arasında bölünür. Arabellek Ayrıca, sertifika verilerini ayrıştırmak için kullanılan NX_SECURE_X509_CERT veri yapısına boşluk sağlamalıdır.
+Bu certs_buffer DTLS istemcisinde beklenen en büyük sertifika zincirine uyum sağlayacak şekilde boyutlandırılacak şekilde, *DTLS sunucu oturumlarının sayısıyla aynı olacak şekilde boyutlandırılacaktır.* Arabellek, bir İstemci sertifika zincirinde *beklenen en certs_per_session* sertifika sayısını temsil eden certs_per_session parametresi kullanılarak kullanılabilir oturumlara bölündü. Arabelleğin, sertifika verilerini ayrıştırmak NX_SECURE_X509_CERT veri yapısı için de alan sağlaması gerekir.
 
-Uygun arabellek boyutunu hesaplamak aşağıdaki formül ile yapılabilir:
+Uygun arabellek boyutunun hesaplanması şu formülle yapılabilir:
 
 ```C
 buffer_size = (# of DTLS sessions in server) *
@@ -2075,24 +2075,24 @@ buffer_size = (# of DTLS sessions in server) *
 
 ```
 
-- DTLS oturumlarının sayısı, nx_secure_dtls_server_create iletilen oturum arabelleğinin boyutuna göre belirlenir.
-- certs_per_session, herhangi bir istemci sertifika zincirindeki beklenen en fazla sertifika sayısına ayarlanmalıdır.
-- En büyük beklenen sertifika boyutu uygulamaya, anahtar boyutlarına ve diğer faktörlere bağlıdır, ancak 2KB genellikle yeterlidir.
+- DTLS oturumlarının sayısı, oturum arabelleğine geçirilen oturum arabelleğinin boyutuna nx_secure_dtls_server_create.
+- certs_per_session, herhangi bir istemci sertifika zincirinde beklenen en fazla sertifika sayısına ayar gerekir.
+- Beklenen en büyük sertifika boyutu uygulamaya, anahtar boyutlarına ve diğer faktörlere bağlıdır, ancak genel olarak 2 KB yeterlidir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **server_ptr** Daha önce oluşturulmuş bir DTLS sunucu örneğine yönelik işaretçi.
+- **server_ptr** Daha önce oluşturulmuş bir DTLS Sunucusu örneğinin işaretçisi.
 - **certs_per_session** Her DTLS sunucu oturumuna ayrılacak sertifika sayısı.
 - **certs_buffer** Gelen sertifika verileri için arabellek alanı.
-- **Buffer_size** Sertifika arabelleğinin boyutu.
+- **buffer_size** Sertifika arabelleğinin boyutu.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) X. 509.440 Istemci doğrulamasının başarılı yapılandırması.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_INVALID_PARAMETERS** (0x4D) geçersiz sertifika deposu (DTLSserver örneği başlatılmadı mi?).
+- **NX_SUCCESS** (0x00) X.509 İstemci doğrulamasının başarılı yapılandırması.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_INVALID_PARAMETERS** (0x4D) Geçersiz sertifika deposu (DTLSserver örneği yeni değil mi?).
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2175,7 +2175,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_server_x509_client_verify_disable"></a>nx_secure_dtls_server_x509_client_verify_disable
 
-NetX güvenli DTLS sunucusu için Client X. 509.952 sertifikası doğrulamasını devre dışı bırakır
+NetX Secure DTLS Sunucusu için istemci X.509 sertifika doğrulamasını devre dışı bırakma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2184,23 +2184,23 @@ UINT nx_secure_dtls_server_x509_client_verify_disable(
                            NX_SECURE_DTLS_SERVER *server_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS sunucusunda X. 509.440 Istemci sertifikası doğrulamasını devre dışı bırakır. X. 509.440 Istemci sertifikası doğrulaması etkinleştirilmemişse hizmetin hiçbir etkisi yoktur.
+Bu hizmet, bir DTLS Sunucusunda X.509 İstemci sertifikası doğrulamasını devre dışı bırakıyor. X.509 İstemci sertifikası doğrulaması etkinleştirilmediyse hizmetin hiçbir etkisi olmaz.
 
 > [!NOTE]
-> Etkin bir DTLS sunucu örneğinde istemci kimlik doğrulamasının devre dışı bırakılması öngörülemeyen davranışlara neden olabilir. Sunucu durumunu değiştirmeden önce nx_secure_dtls_server_stop hizmeti çağrılmalıdır.
+> Etkin bir DTLS Sunucusu örneğinde istemci kimlik doğrulamasını devre dışı bırakmak öngörülemeyen bir davranışa neden olabilir. Sunucu nx_secure_dtls_server_stop önce hizmet çağrılır.
 
 ### <a name="parameters"></a>Parametreler
 
-- **server_ptr** Daha önce oluşturulmuş bir DTLS sunucu örneğine yönelik işaretçi.
+- **server_ptr** Daha önce oluşturulmuş bir DTLS Sunucusu örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- X. 509.440 istemci kimlik doğrulamasının başarıyla devre dışı bırakılması **NX_SUCCESS** (0x00).
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
+- **NX_SUCCESS** (0x00) X.509 istemci kimlik doğrulamasının devre dışı bırakılması başarılı.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2289,7 +2289,7 @@ UINT status;
 
 ## <a name="nx_secure_dtls_session_client_info_get"></a>nx_secure_dtls_session_client_info_get
 
-Bir DTLS sunucu oturumundan uzak istemci bilgilerini al
+DTLS Sunucusu oturumundan uzak istemci bilgilerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -2301,24 +2301,24 @@ UINT  nx_secure_dtls_session_client_info_get(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirli bir DTLS sunucusu oturumuna bağlı olan bir DTLS Istemcisiyle ilgili ağ bilgilerini döndürür. Döndürülen bilgiler, uzak istemcinin IP adresinden ve UDP bağlantı noktasından ve istemcinin bağlı olduğu yerel sunucu bağlantı noktasından oluşur.
+Bu hizmet, belirli bir DTLS Sunucusu oturumuna bağlı bir DTLS İstemcisi hakkında ağ bilgilerini döndürür. Döndürülen bilgiler uzak istemcinin IP adresini ve UDP bağlantı noktasının yanı sıra istemcinin bağlı olduğu yerel sunucu bağlantı noktasını içerir.
 
-Genel olarak, DTLS oturum örneği, DTLS bildirim geri çağırma yordamlarından birini çağırmada elde edilen bir işlem olacaktır (örn. connect_notify veya receive_notify geri çağrılar nx_secure_dtls_server_create).
+Genel olarak, DTLS oturum örneği DTLS bildirim geri çağırma yordamlarından birinin çağrılarak elde edilen örnektir (örneğin, connect_notify veya receive_notify geri çağırmaları nx_secure_dtls_server_create).
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Etkin bir DTLS sunucu oturumu örneği işaretçisi.
+- **session_ptr** Etkin bir DTLS sunucusu oturum örneğinin işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) sunucu başarıyla silindi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_INVALID_SOCKET** (0x13) ilişkili UDP yuvası geçerli değil (oturum başlatılmamış mi?).
-- **NX_NOT_CONNECTED** (0x38) UDP yuvası bağlı değil – istemci bağlantısı bırakılmıştı veya henüz kurulmadı.
+- **NX_SUCCESS** (0x00) Sunucunun başarıyla silinmesi.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_INVALID_SOCKET** (0x13) İlişkili UDP yuvası geçerli değil (oturum başlatılmadı?).
+- **NX_NOT_CONNECTED** (0x38) UDP yuvası bağlı değil – istemci bağlantısı bırakıldı veya henüz kurulmadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2485,7 +2485,7 @@ void dtls_server_thread(void)
 
 ## <a name="nx_secure_dtls_session_create"></a>nx_secure_dtls_session_create
 
-NetX güvenli DTLS oturumu oluşturma ve yapılandırma
+NetX Güvenli DTLS Oturumu oluşturma ve yapılandırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2502,44 +2502,44 @@ UINT nx_secure_dtls_session_create(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir DTLS oturumu oluşturur ve yapılandırır. Genel olarak, DTLS sunucu oturumları DTLS sunucu mekanizması (bkz. *nx_secure_dtls_server_create*) ile yönetildiği için bu durum genellikle DTLS istemci oturumları oluşturmak için kullanılır, ancak bir uygulamanın tek bir tek başına DTLS sunucu oturumu örneği oluşturması gereken durumlarda bu hizmet, bu <sup>hizmetin kullanılabileceği durumlar</sup>olabilir.
+Bu hizmet bir DTLS oturumu oluşturur ve yapılandırr. Genellikle, DTLS Sunucusu oturumları DTLS Sunucusu mekanizmasıyla yönetiliyorsa (bkz. *nx_secure_dtls_server_create)* DTLS İstemci oturumları oluşturmak için kullanılır, ancak bir uygulamanın tek bir tek başına DTLS Sunucusu oturum örneği oluşturması gereken örnekler olabilir ve bu durumda bu hizmet <sup>7</sup>kullanılabilir.
 
-Parametreler, bir DTLS oturumunun örneğini oluşturmak için gereken bilgileri ve bellek ayırmayı yapılandırır. Crypto_table parametresi, TLS/DTLS şifrelemesi ve kimlik doğrulaması için gerekli tüm şifreleme yordamlarını içeren bir TLS tablosudur. Metadata_buffer şifreleme kullanıcıları için kullanılır (NetX güvenli TLS kullanıcı kılavuzunda nx_secure_tls_metadata_size_calculate bakın) ve packet_reassembly_buffer, UDP datagramlarını şifre çözme için tamamen bir DTLS kaydına yeniden birleştirmek için kullanılır.
+Parametreler, bir DTLS oturumunun örneğini almak için gereken bilgileri ve bellek ayırmayı yapılandırıyor. Bu crypto_table, TLS/DTLS şifrelemesi ve kimlik doğrulaması için gereken tüm şifreleme yordamlarını içeren bir TLS tablosudur. Şifreleme metadata_buffer şifrelemek için kullanılır (NetX Güvenli TLS Kullanıcı Kılavuzu'nx_secure_tls_metadata_size_calculate'da nx_secure_tls_metadata_size_calculate'a bakın) ve packet_reassembly_buffer, UDP veri birimlerini şifre çözme için eksiksiz bir DTLS kaydı olarak yeniden bir hale almak için kullanılır.
 
-Certs_number ve remote_certificate_buffer, gelen DTLS sunucusu sertifika zincirini depolamak ve işlemek için alan gerektiren DTLS Istemcileri için gereklidir. Arabelleğin bağlanacağı her sunucu için, Sertifika zincirinin beklenen en büyük boyutuna uyum sağlaması gerekir. Arabellek, beklenen sertifika sayısına (certs_number parametresi) bölünür ve ayrıca sertifika başına bir NX_SECURE_X509_CERT yapısını tutabilecek kadar büyük olmalıdır. Arabellek boyutu aşağıdaki formül kullanılarak belirlenebilir:
+Gelen DTLS certs_number remote_certificate_buffer zincirini depolamak ve işlemesi için alana ihtiyaç olan DTLS İstemcileri için gerekli olan certs_number ve yapılandırma bilgileri gereklidir. Arabelleğin bağlanacağı herhangi bir sunucu için sertifika zincirinin beklenen en büyük boyutuna uygun olması gerekir. Arabellek, beklenen sertifika sayısına (certs_number parametresi) bölündü ve ayrıca sertifika başına bir sertifika yapısına sahip NX_SECURE_X509_CERT kadar büyük olmalıdır. Arabellek boyutu aşağıdaki formül kullanılarak belirlenebilirsiniz:
 
 ```C
 remote_certificate_buffer_size = (certs_number) *
                  (maximum cert size + sizeof(NX_SECURE_X509_CERT))
 ```
 
-- certs_number, sunucunun sertifika zincirindeki beklenen en fazla sertifika sayısıdır
-- En büyük sertifika boyutu, kullanılan anahtarların boyutuna ve sertifikadaki bilgilere bağlıdır, ancak 2KB genellikle yeterlidir.
+- certs_number, sunucunun sertifika zincirinde beklenen en fazla sertifika sayısıdır
+- En büyük sertifika boyutu kullanılan anahtarların boyutuna ve sertifikanın bilgilerine bağlıdır, ancak genel olarak 2 KB yeterlidir.
 
-**7** Bu yordam ile DTLS sunucu oturumları oluşturma önerilmez ve bazı sınırlamalar gelir. Birincil sorun, oturumun ek istemci bağlantılarını düzgün bir şekilde işleyememesi gerekir. UDP bağlantısı olmadığından, önceki bir DTLS oturumu hala etkin olduğunda, sunucu oturumunun bir hata ile sonlanmasına neden olacak şekilde sunucunun UDP bağlantı noktasına yasal olarak veri gönderebileceği anlamına gelir.
+**7** Bu yordamla DTLS Sunucusu oturumlarının oluşturulması önerilmez ve bazı sınırlamalarla birlikte gelir. Birincil sorun, oturumun ek istemci bağlantılarını uygun şekilde işlemeyecek olmasıdır. UDP bağlantısız olduğu için ikinci bir istemci, önceki bir DTLS oturumu hala etkin olduğunda sunucunun UDP bağlantı noktasına yasal olarak veri gönderebilir ve bu da sunucu oturumunun bir hatayla bitimini sağlar.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Başlatılmamış DTLS oturum yapısına yönelik işaretçi.
-- **crypto_table** Tüm şifreleme işlemleri için kullanılan TLS/DTLS Şifreleme tablosu yapısına yönelik işaretçi.
+- **dtls_session** Uninitialized DTLS Oturum yapısının işaretçisi.
+- **crypto_table** Tüm şifreleme işlemleri için kullanılan TLS/DTLS şifreleme tablosu yapısının işaretçisi.
 - **crypto_metadata_buffer** Şifreleme işlemi hesaplamaları ve durum bilgileri için arabellek alanı.
 - **crypto_metadata_size** Meta veri arabelleğinin boyutu.
-- **packet_reassembly_buffer** DTLS tarafından, IP verilerini şifre çözme için DTLS kayıtlarına yeniden birleştirmek üzere kullanılan arabellek.
-- **packet_reassembly_buffer_size** Yeniden birleştirme arabelleğinin boyutu. Genellikle 16KB 'den büyük olmalıdır, ancak uygulamaya bağlı olarak daha küçük olabilir.
-- **certs_number** Uzak sunucunun sertifika zincirindeki en fazla beklenen sertifika sayısı.
+- **packet_reassembly_buffer** DTLS tarafından UDP verilerini şifre çözme için DTLS kayıtlarına yeniden bir arada olmak için kullanılan arabellek.
+- **packet_reassembly_buffer_size** Yeniden değerlendirme arabelleğinin boyutu. Genellikle 16 KB'den büyük olmalı, ancak uygulamaya bağlı olarak daha küçük olabilir.
+- **certs_number** Uzak sunucunun sertifika zincirinde beklenen en fazla sertifika sayısı.
 - **remote_certificate_buffer** Gelen sertifika verileri için arabellek alanı.
 - **remote_certificate_buffer_size** Sertifika arabelleğinin boyutu.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı oturum oluşturma.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum veya arabellek işaretçisi.
-- **NX_INVALID_PARAMETERS** (0x4D) paket yeniden birleştirme, sertifikalar veya şifreleme için yeterli arabellek alanı yok.
+- **NX_SUCCESS** (0x00) Oturumun başarıyla oluşturulması.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum veya arabellek işaretçisi.
+- **NX_INVALID_PARAMETERS** (0x4D) Paket yeniden değerlendirme, sertifikalar veya şifreleme için yeterli arabellek alanı yok.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2644,12 +2644,12 @@ NXD_ADDRESS server_ip;
 
 ### <a name="see-also"></a>Ayrıca Bkz.
 
-- nx_secure_dtls_client_session_start, nx_secure_dtls_session_receive,
+- nx_secure_dtls_client_session_start,nx_secure_dtls_session_receive,
 - nx_secure_dtls_session_send
 
 ## <a name="nx_secure_dtls_session_delete"></a>nx_secure_dtls_session_delete
 
-NetX güvenli DTLS oturumu tarafından kullanılan kaynakları boşaltma
+NetX Secure DTLS Oturumu tarafından kullanılan kaynakları serbest bırak
 
 ### <a name="prototype"></a>Prototype
 
@@ -2659,20 +2659,20 @@ UINT nx_secure_dtls_session_delete(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS oturumunu siler ve oluşturulduğu zaman ayrılan kaynakları serbest bırakır.
+Bu hizmet bir DTLS oturumunu serek, oluşturulduğunda ayrılan tüm kaynakları serbest bırakarak.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Daha önce başlatılmış olan DTLS oturum yapısına yönelik işaretçi.
+- **dtls_session** Daha önce başlatılan bir DTLS Oturumu yapısının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) oturumu başarıyla silindi.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum veya arabellek işaretçisi.
+- **NX_SUCCESS** (0x00) Oturum başarıyla silindi.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum veya arabellek işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2781,7 +2781,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_end"></a>nx_secure_dtls_session_end
 
-Etkin bir NetX güvenli DTLS oturumunu kapatma
+Etkin bir NetX Secure DTLS Oturumunu kapatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -2791,28 +2791,28 @@ UINT nx_secure_dtls_session_end(NX_SECURE_DTLS_SESSION *dtls_session,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, uzak konağa bir TLS/DTLS CloseNotify uyarısı göndererek etkin bir DTLS oturumunu sonlandırır. Kullanılan IP adresi ve bağlantı noktası, önceki nx_secure_dtls_session_send çağrısında kullanılan olanlardır.
+Bu hizmet, uzak ana bilgisayara BIR TLS/DTLS CloseNotify uyarısı göndererek etkin bir DTLS oturumunu sonlar. Kullanılan IP adresi ve bağlantı noktası, önceki çağrıda kullanılan ip nx_secure_dtls_session_send.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Daha önce başlatılmış olan DTLS oturum yapısına yönelik işaretçi.
-- **wait_option** Ağ işlemleri için kullanılacak ThreadX bekleme değeri.
+- **dtls_session** Daha önce başlatılan bir DTLS Oturumu yapısının işaretçisi.
+- **wait_option** Ağ işlemleri için kullanmak üzere ThreadX bekleme değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) oturumu başarıyla silindi.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum veya arabellek işaretçisi.
-- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0X111), CloseNotify uyarısı için paket (ler) ayıramadı.
-- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) büyük olasılıkla iç hata – şifreleme yordamı tanınmıyor.
-- Temel alınan UDP gönderimi **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) başarısız oldu.
-- **NX_IP_ADDRESS_ERROR** (0x21) uzak ana bilgisayar IP adresi hatası.
-- **NX_NOT_BOUND** (0x24) temel alınan UDP yuvası, bağlantı noktasına bağlanmadı.
-- **NX_INVALID_PORT** (0x46) geçersiz UDP bağlantı noktası.
+- **NX_SUCCESS** (0x00) Oturum başarıyla silindi.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum veya arabellek işaretçisi.
+- **NX_SECURE_TLS_ALLOCATE_PACKET_FAILED** (0x111) CloseNotify uyarısı için paket ayrılamadı.
+- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) Büyük olasılıkla iç hata – şifreleme yordamı tanınmıyor.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Temel UDP gönderme işlemi başarısız oldu.
+- **NX_IP_ADDRESS_ERROR** ana 0x21 IP adresiyle ilgili hata .
+- **NX_NOT_BOUND** (0x24) Temel ALıNAN UDP yuvası bağlantı noktasına bağlı değil.
+- **NX_INVALID_PORT** (0x46) Geçersiz UDP bağlantı noktası.
 - **NX_PORT_UNAVAILABLE** (0x23) UDP bağlantı noktası kullanılamaz.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -2921,7 +2921,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_local_certificate_add"></a>nx_secure_dtls_session_local_certificate_add
 
-NetX güvenli DTLS oturumuna yerel kimlik sertifikası ekleme
+NetX Secure DTLS Oturumuna yerel kimlik sertifikası ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -2933,31 +2933,31 @@ UINT  nx_secure_dtls_session_local_certificate_add(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir DTLS oturum örneğine yerel kimlik sertifikası ekler. Genel olarak, bu hizmet bir DTLS Istemci oturumunun bir uzak sunucu konağına kimlik sertifikası sağlaması gerektiğinde kullanılacaktır. Bu, DTLS için isteğe bağlı bir yapılandırmadır. bu nedenle, DTLS Istemcileri için genellikle bir sertifika gerekli değildir. Kimlik sertifikası, ilişkili bir özel anahtar gerektirir.
+Bu hizmet bir DTLS Oturumu örneğine yerel kimlik sertifikası ekler. Genel olarak, bir DTLS İstemcisi oturumunun uzak sunucu ana bilgisayarına bir kimlik sertifikası sağlaması gerekirken bu hizmet kullanılır. Bu, DTLS için isteğe bağlı bir yapılandırmadır, bu nedenle DTLS İstemcileri için genellikle bir sertifika gerekmez. Kimlik sertifikası, ilişkili bir özel anahtar gerektirir.
 
-Cert_id parametresi, sertifika için sayısal, sıfır olmayan bir tanıtıcıdır. Bu, DTLS sertifika deposunda aynı X. 509.440 ortak adına sahip birden çok kimlik sertifikası bulunan olayda kolayca kaldırılmasını veya bu durumda bulunabilmesini sağlar. X. 509.440 sertifikaları hakkında daha fazla bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na bakın.
+Cert_id parametresi, sertifika için sıfır olmayan sayısal bir tanımlayıcıdır. Bu, DTLS sertifika depolamada aynı X.509 Ortak Adına sahip birden çok kimlik sertifikası olması durumunda sertifikanın kolayca kaldırılmasına veya bulunamasını sağlar. X.509 sertifikaları hakkında daha fazla bilgi için bkz. NetX Secure TLS Kullanıcı Kılavuzu.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir DTLS oturum örneğine yönelik işaretçi.
-- **sertifika** Daha önce başlatılmış bir X. 509.440 sertifika yapısına yönelik işaretçi.
+- **session_ptr** Daha önce oluşturulmuş bir DTLS Oturumu örneğinin işaretçisi.
+- **sertifika** Daha önce başlatılan bir X.509 sertifika yapısının işaretçisi.
 - **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS oturumunun sertifikasının başarılı bir şekilde eklenmesi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_INVALID_PARAMETERS** (0x4D) BIR sertifika kimliği (0) geçirildi.
+- **NX_SUCCESS** (0x00) DTLS oturumuna başarılı bir şekilde sertifika ekleme.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_INVALID_PARAMETERS** (0x4D) 0 sertifika kimliği geçirildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
-* Daha kapsamlı bir örnek için bkz. *nx_secure_dtls_session_create* başvurusu.
+*Daha eksiksiz bir *nx_secure_dtls_session_create* için başvuruya bakın.
 
 ```C
 /* Our DTLS Server instance. */
@@ -3045,7 +3045,7 @@ status =  nx_secure_dtls_client_session_start(&client_dtls_session,
 
 ## <a name="nx_secure_dtls_session_local_certificate_remove"></a>nx_secure_dtls_session_local_certificate_remove
 
-NetX güvenli DTLS oturumundan yerel kimlik sertifikasını kaldırma
+NetX Secure DTLS Oturumundan yerel kimlik sertifikasını kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3057,34 +3057,34 @@ UINT  nx_secure_dtls_session_local_certificate_remove(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir sertifika KIMLIĞI numarası (sertifika nx_secure_dtls_session_local_certificate_add ile eklendiğinde atanır) veya X. 509.440 CommonName alanı kullanarak bir DTLS oturum örneğinden yerel kimlik sertifikasını kaldırır.
+Bu hizmet, bir sertifika kimliği numarası (sertifika nx_secure_dtls_session_local_certificate_add ile eklenmiştir) veya X.509 CommonName alanını kullanarak DTLS Oturumu örneğinden yerel kimlik sertifikasını kaldırır.
 
-Common_name sertifikayla eşleştirmek için kullanılırsa, cert_id parametresi 0 olarak ayarlanmalıdır. Cert_id kullanılırsa, common_name NX_NULL bir değer geçirmelidir.
+Sertifika common_name için kullanılacaksa, cert_id parametresi 0 olarak ayar olmalıdır. Bu cert_id, common_name değerine NX_NULL.
 
-Cert_id parametresi, sertifika için sayısal, sıfır olmayan bir tanıtıcıdır. Bu, DTLS sertifika deposunda aynı X. 509.440 ortak adına sahip birden çok kimlik sertifikası bulunan olayda kolayca kaldırılmasını veya bu durumda bulunabilmesini sağlar. X. 509.440 sertifikaları hakkında daha fazla bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na bakın.
+Cert_id parametresi, sertifika için sıfır olmayan sayısal bir tanımlayıcıdır. Bu, DTLS sertifika depolamada aynı X.509 Ortak Adına sahip birden çok kimlik sertifikası olması durumunda sertifikanın kolayca kaldırılmasına veya bulunamasını sağlar. X.509 sertifikaları hakkında daha fazla bilgi için bkz. NetX Secure TLS Kullanıcı Kılavuzu.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir DTLS oturum örneğine yönelik işaretçi.
-- **common_name** Eşleştirilecek CommonName dizesinin işaretçisi.
-- **common_name_length** Common_name dizesinin uzunluğu.
+- **session_ptr** Daha önce oluşturulmuş bir DTLS Oturumu örneğinin işaretçisi.
+- **common_name** Eşleşmek için CommonName dizesinin işaretçisi.
+- **common_name_length** Dizenin common_name.
 - **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS oturumundan sertifika başarıyla silindi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) VERILEN DTLS oturumunda cert_id veya common_name eşleşen bir sertifika bulunamadı.
+- **NX_SUCCESS** (0x00) DTLS oturumundan sertifika başarıyla kaldırıldı.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Verilen DTLS oturumunda cert_id veya common_name eşleşen sertifika bulunamadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
-* Daha kapsamlı bir örnek için bkz. *nx_secure_dtls_session_create* başvurusu.
+*Daha eksiksiz bir *nx_secure_dtls_session_create* için başvuruya bakın.
 
 ```C
 
@@ -3178,7 +3178,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_receive"></a>nx_secure_dtls_session_receive
 
-Belirlenen bir NetX güvenli DTLS oturumu üzerinden uygulama verileri alma
+NetX Güvenli DTLS Oturumu üzerinden uygulama verilerini alma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3190,32 +3190,32 @@ UINT nx_secure_dtls_session_receive(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, etkin bir DTLS oturumu tarafından alınan uygulama verilerini döndürür. DTLS oturumu bir DTLS sunucu oturumu (bir DTLS sunucu örneğiyle yönetilen) ya da DTLS Istemci oturumu olabilir. Döndürülen paket, NX_PACKET API hizmetlerinden herhangi biri kullanılarak işlenebilir (daha fazla bilgi için bkz. NetX belgeleri).
+Bu hizmet, etkin bir DTLS Oturumu tarafından alınan uygulama verilerini döndürür. DTLS Oturumu bir DTLS Sunucusu oturumu (DTLS Sunucusu örneği tarafından yönetilen) veya bir DTLS İstemci oturumu olabilir. Döndürülen paket, api hizmetlerinde herhangi bir NX_PACKET işlenebilir (daha fazla bilgi için NetX belgelerine bakın).
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Daha önce başlatılmış olan DTLS oturum yapısına yönelik işaretçi.
-- **packet_ptr_ptr** Dönüş paketi için NX_PACKET işaretçisine yönelik işaretçi.
-- **wait_option** Ağ işlemleri için kullanılacak ThreadX bekleme değeri.
+- **dtls_session** Daha önce başlatılan bir DTLS Oturumu yapısının işaretçisi.
+- **packet_ptr_ptr** Dönüş paketi için NX_PACKET işaretçisi.
+- **wait_option** Ağ işlemleri için kullanmak üzere ThreadX bekleme değeri.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) uygulama veri paketinin başarılı bir şekilde alındı.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum veya paket işaretçisi.
+- **NX_SUCCESS** (0x00) Uygulama veri paketi başarıyla alındı.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum veya paket işaretçisi.
 - **NX_NOT_ENABLED** (0x14) UDP etkin değil.
-- **NX_NOT_BOUND** (0x24) UDP yuvası bağlantı noktasına bağlanmadı.
-- **NX_SECURE_TLS_INVALID_PACKET** (0x104) geçerli bir DTLS kaydı olmayan veri alındı.
-- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) DTLS kaydı düzgün bir şekilde karıştırılıp (şifreleme hatası) başarısız oldu.
-- **NX_SECURE_TLS_PADDING_CHECK_FAILED** (0x12a) şifreleme doldurma denetimi hatası.
-- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) uzak ana bilgisayardan bir uyarı alındı.
-- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE**    (0x102) tanınmayan bir ileti aldı.
-- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10a), geçersiz uzunluğa sahıp bır DTLS kaydı alındı.
-- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) bilinmeyen bir ciphersuite ile karşılaşıldı (iç şifreleme hatasını gösterir).
-- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0x12e) eşleşmeyen DTLS sürümüne sahıp bır DTLS kaydı alındı.
+- **NX_NOT_BOUND** (0x24) UDP yuvası bağlantı noktasına bağlı değil.
+- **NX_SECURE_TLS_INVALID_PACKET** (0x104) geçerli bir DTLS kaydı olan verileri geri aldı.
+- **NX_SECURE_TLS_HASH_MAC_VERIFY_FAILURE** (0x108) DTLS kaydı düzgün karmalanamadı (şifreleme hatası).
+- **NX_SECURE_TLS_PADDING_CHECK_FAILED** (0x12A) Şifreleme doldurma denetimi hatası.
+- **NX_SECURE_TLS_ALERT_RECEIVED** (0x114) uzak konaktan bir uyarıyı geri aldı.
+- **NX_SECURE_TLS_UNRECOGNIZED_MESSAGE_TYPE**    (0x102) Tanınmayan bir ileti aldı.
+- **NX_SECURE_TLS_INCORRECT_MESSAGE_LENGTH** (0x10A) geçersiz uzunlukta bir DTLS kaydını geri aldı.
+- **NX_SECURE_TLS_UNKNOWN_CIPHERSUITE** (0x105) Bilinmeyen bir şifrelemeyle karşılaşıldı (iç şifreleme hatası olduğunu gösterir).
+- **NX_SECURE_TLS_PROTOCOL_VERSION_CHANGED** (0x12E) bir DTLS kaydını eşleşmeyen DTLS sürümüyle geri aldı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3321,7 +3321,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_reset"></a>nx_secure_dtls_session_reset
 
-NetX güvenli DTLS oturum örneğindeki verileri temizleme
+NetX Secure DTLS Oturumu örneğinde verileri temizleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3329,20 +3329,20 @@ NetX güvenli DTLS oturum örneğindeki verileri temizleme
 UINT nx_secure_dtls_session_reset(NX_SECURE_DTLS_SESSION *dtls_session);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS oturumunu sıfırlar, tüm kısa ömürlü şifreleme verilerini temizleyerek yapının yeni bir oturum için yeniden kullanılmasına izin verir. Kalıcı veriler (örn. sertifika depoları) korunur, böylece nx_secure_dtls_session_create tekrar tekrar çağrılmamalıdır.
+Bu hizmet bir DTLS oturumunu sıfırlar, kısa ömürlü tüm şifreleme verilerini temizler ve yapının yeni bir oturum için yeniden kullanılmaktadır. Kalıcı veriler (örn. sertifika depoları) korunur, böylece nx_secure_dtls_session_create tekrar tekrar çağrılmaması gerekir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **dtls_session** Daha önce başlatılmış olan DTLS oturum yapısına yönelik işaretçi.
+- **dtls_session** Daha önce başlatılan bir DTLS Oturumu yapısının işaretçisi.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı oturum sıfırlama.
-- **NX_PTR_ERROR** (0x07) geçersiz oturum veya arabellek işaretçisi.
+- **NX_SUCCESS** (0x00) Oturumun başarıyla sıfırlanır.
+- **NX_PTR_ERROR** (0x07) Geçersiz oturum veya arabellek işaretçisi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3454,7 +3454,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_-session_send"></a>nx_secure_dtls_ session_send
 
-Bir DTLS oturumu üzerinden veri gönderme
+DTLS oturumu üzerinden veri gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3465,26 +3465,26 @@ UINT  nx_secure_dtls_session_send(NX_SECURE_DTLS_SESSION *session_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, belirlenen bir DTLS oturumu üzerinden, belirtilen IP adresi ve bağlantı noktasındaki uzak DTLS ana bilgisayarına bir veri paketi gönderir. Kullanılan oturum, etkin bir DTLS Istemci oturumundur. IP adresi ve bağlantı noktasının durum bilgisiz doğası nedeniyle sağlandığını, ancak genellikle nx_secure_dtls_session_start oturumu başlatmak için kullanılan adresle ve bağlantı noktasıyla eşleşmesi gerektiğini unutmayın.
+Bu hizmet, verilen IP adresi ve bağlantı noktası üzerinden uzak bir DTLS ana bilgisayarına, kurulan bir DTLS Oturumu üzerinden bir veri paketi gönderir. Kullanılan oturum etkin bir DTLS İstemci oturumu. IP adresinin ve bağlantı noktasının UDP'nin durum bilgisiz yapısı nedeniyle sağlanmıştır, ancak genel olarak, udp'de oturumu başlatmak için kullanılan adres ve bağlantı noktasıyla nx_secure_dtls_session_start.
 
-Pakette belirtilen veriler, *nx_secure_dtls_packet_allocate* kullanılarak ayrılması gereken DTLS oturum şifreleme parametreleri ve yordamları kullanılarak şifrelenir ve ardından DTLS oturumunun UDP yuvası üzerinden uzak konağa gönderilir.
+*nx_secure_dtls_packet_allocate* kullanılarak ayrılmış olması gereken pakette sağlanan veriler, DTLS oturum şifreleme parametreleri ve yordamları kullanılarak şifrelenir ve ardından DTLS Oturumunun UDP yuvası üzerinden uzak ana bilgisayara gönderilir.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Etkin bir DTLS istemci oturumu örneği işaretçisi.
-- **packet_ptr** Daha önce ayrılan ve uygulama verileriyle doldurulmuş bir NX_PACKET örneğine yönelik işaretçi.
-- **ip_address** Uzak konağın IP adresini içeren NXD_ADDRESS yapısına yönelik işaretçi.
-- **bağlantı noktası** Uzak konaktaki UDP bağlantı noktası.
+- **session_ptr** Etkin bir DTLS istemci oturumu örneğinin işaretçisi.
+- **packet_ptr** Daha önce ayrılmış NX_PACKET uygulama verileriyle doldurulmuş bir örnek işaretçisi.
+- **ip_address** Uzak ana NXD_ADDRESS IP adresini içeren bir ana bilgisayar yapısına işaretçi.
+- **bağlantı noktası** Uzak konakta UDP bağlantı noktası.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) paketin başarıyla gönderilmesi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) temel alınan UDP gönderme işleminde bir hata oluştu.
+- **NX_SUCCESS** (0x00) Paketin başarılı bir şekilde göndermesi.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_SECURE_TLS_TCP_SEND_FAILED** (0x109) Temel ALıNAN UDP gönderme işlemi sırasında bir hata oluştu.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -3592,7 +3592,7 @@ void application_thread()
 
 ## <a name="nx_secure_dtls_session_trusted_certificate_add"></a>nx_secure_dtls_session_trusted_certificate_add
 
-NetX güvenli DTLS oturumuna güvenilir bir CA sertifikası ekleme
+NetX Güvenli DTLS Oturumuna güvenilen CA sertifikası ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -3604,31 +3604,31 @@ UINT  nx_secure_dtls_session_trusted_certificate_add(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir DTLS oturum örneğine güvenilir bir CA veya ara CA X. 509.440 sertifikası ekler. Alternatif bir kimlik doğrulama mekanizması kullanılmamışsa (ör. önceden paylaşılan anahtarlar), uzak sunucu sertifikalarını doğrulamak için bir DTLS Istemcisi en az bir güvenilen sertifika gerektirir. Güvenilen bir sertifika genellikle özel bir anahtara sahip değildir.
+Bu hizmet, bir DTLS Oturumu örneğine güvenilir bir CA veya ara CA X.509 sertifikası ekler. DTLS İstemcisi, alternatif bir kimlik doğrulama mekanizması kullanılmadıkça (ör. Önceden Paylaşılan Anahtarlar) uzak sunucu sertifikalarını doğrulamak için en az bir güvenilen sertifika gerektirir. Güvenilen sertifikanın genellikle özel anahtarı olmaz.
 
-Cert_id parametresi, sertifika için sayısal, sıfır olmayan bir tanıtıcıdır. Bu, DTLS sertifika deposunda aynı X. 509.440 ortak adına sahip birden çok kimlik sertifikası bulunan olayda kolayca kaldırılmasını veya bu durumda bulunabilmesini sağlar. X. 509.440 sertifikaları hakkında daha fazla bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na bakın.
+Cert_id parametresi, sertifika için sıfır olmayan sayısal bir tanımlayıcıdır. Bu, DTLS sertifika depolamada aynı X.509 Ortak Adına sahip birden çok kimlik sertifikası olması durumunda sertifikanın kolayca kaldırılmasına veya bulunamasını sağlar. X.509 sertifikaları hakkında daha fazla bilgi için bkz. NetX Secure TLS Kullanıcı Kılavuzu.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir DTLS oturum örneğine yönelik işaretçi.
-- **sertifika** Daha önce başlatılmış bir X. 509.440 sertifika yapısına yönelik işaretçi.
+- **session_ptr** Daha önce oluşturulmuş bir DTLS Oturumu örneğinin işaretçisi.
+- **sertifika** Daha önce başlatılan bir X.509 sertifika yapısının işaretçisi.
 - **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı.
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS oturumunun sertifikasının başarılı bir şekilde eklenmesi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_INVALID_PARAMETERS** (0x4D) BIR sertifika kimliği (0) geçirildi.
+- **NX_SUCCESS** (0x00) DTLS oturumuna başarılı bir şekilde sertifika ekleme.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_INVALID_PARAMETERS** (0x4D) 0 sertifika kimliği geçirildi.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
-* Daha kapsamlı bir örnek için bkz. *nx_secure_dtls_session_create* başvurusu.
+*Daha eksiksiz bir *nx_secure_dtls_session_create* için başvuruya bakın.
 
 ```C
 /* Our DTLS Server instance. */
@@ -3714,7 +3714,7 @@ NXD_ADDRESS server_ip;
 
 ## <a name="nx_secure_dtls_session_trusted_certificate_remove"></a>nx_secure_dtls_session_trusted_certificate_remove
 
-NetX güvenli DTLS oturumundan güvenilir bir CA sertifikasını kaldırma
+NetX Güvenli DTLS Oturumundan güvenilen CA sertifikasını kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -3726,35 +3726,35 @@ UINT  nx_secure_dtls_session_trusted_certificate_remove(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir sertifika KIMLIĞI numarası (sertifika nx_secure_dtls_session_trusted_certificate_add ile eklendiğinde atanır) veya X. 509.440 CommonName alanı kullanarak bir DTLS oturum örneğinden güvenilir bir CA sertifikasını kaldırır.
+Bu hizmet, bir sertifika kimliği numarası (sertifika nx_secure_dtls_session_trusted_certificate_add ile eklenmiştir) veya X.509 CommonName alanını kullanarak bir DTLS Oturumu örneğinden güvenilen CA sertifikasını kaldırır.
 
-Common_name sertifikayla eşleştirmek için kullanılırsa, cert_id parametresi 0 olarak ayarlanmalıdır. Cert_id kullanılırsa, common_name NX_NULL bir değer geçirmelidir.
+Sertifika common_name için kullanılacaksa, cert_id parametresi 0 olarak ayar olmalıdır. Bu cert_id, common_name değerine NX_NULL.
 
-Cert_id parametresi, sertifika için sayısal, sıfır olmayan bir tanıtıcıdır. Bu, DTLS sertifika deposunda aynı X. 509.440 ortak adına sahip birden çok kimlik sertifikası bulunan olayda kolayca kaldırılmasını veya bu durumda bulunabilmesini sağlar. X. 509.440 sertifikaları hakkında daha fazla bilgi için NetX güvenli TLS Kullanıcı Kılavuzu 'na bakın.
+Cert_id parametresi, sertifika için sıfır olmayan sayısal bir tanımlayıcıdır. Bu, DTLS sertifika depolamada aynı X.509 Ortak Adına sahip birden çok kimlik sertifikası olması durumunda sertifikanın kolayca kaldırılmasına veya bulunamasını sağlar. X.509 sertifikaları hakkında daha fazla bilgi için bkz. NetX Secure TLS Kullanıcı Kılavuzu.
 
 ### <a name="parameters"></a>Parametreler
 
-- **session_ptr** Daha önce oluşturulmuş bir DTLS oturum örneğine yönelik işaretçi.
-- **common_name** Eşleştirilecek CommonName dizesinin işaretçisi.
-- **common_name_length** Common_name dizesinin uzunluğu.
+- **session_ptr** Daha önce oluşturulmuş bir DTLS Oturumu örneğinin işaretçisi.
+- **common_name** Eşleşmek için CommonName dizesinin işaretçisi.
+- **common_name_length** Dizenin common_name.
 - **cert_id** Bu DTLS sunucusunda bu sertifika için sıfır olmayan sayısal benzersiz tanımlayıcı.
 
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DTLS oturumundan sertifika başarıyla silindi.
-- **NX_PTR_ERROR** (0x07) geçersiz işaretçi geçirildi.
-- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) VERILEN DTLS oturumunda cert_id veya common_name eşleşen bir sertifika bulunamadı.
+- **NX_SUCCESS** (0x00) DTLS oturumundan sertifika başarıyla kaldırıldı.
+- **NX_PTR_ERROR** (0x07) Geçersiz işaretçi geçirildi.
+- **NX_SECURE_TLS_CERTIFICATE_NOT_FOUND** (0x119) Verilen DTLS oturumunda cert_id veya common_name eşleşen sertifika bulunamadı.
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
-* Daha kapsamlı bir örnek için bkz. *nx_secure_dtls_session_create* başvurusu.
+*Daha eksiksiz bir *nx_secure_dtls_session_create* için başvuruya bakın.
 
 ```C
 /* Our DTLS Server instance. */

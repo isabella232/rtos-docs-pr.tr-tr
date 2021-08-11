@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/08/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32288d78ceffb74ab088a1d720dbac657f6d3ed4
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 24b814e7c2b510093b809b70b02d9a11ed39996d114f2306e0993893799453cc
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825493"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791967"
 ---
 # <a name="chapter-2---module-requirements"></a>Bölüm 2-modül gereksinimleri
 
@@ -145,31 +145,31 @@ Aşağıdaki tabloda, Özellikler bit eşlemesinin bir örneği gösterilmektedi
 | 1 | 0<br />1 | MPU koruması yok<br />MPU koruması (Kullanıcı modunun seçili olması gerekir) |
 | 2 | 0<br />1 | Paylaşılan/dış bellek erişimini devre dışı bırak<br />Paylaşılan/dış bellek erişimini etkinleştir |
 | [23-3] | 0 | Ayrılmıştır
-| [31-24] | <br />0x01<br />0x02<br />0x03 | **Derleyici KIMLIĞI**<br />IAR dili<br />ARM<br />GNU |
+| [31-24] | <br />0x01<br />0x02<br />0x03 | **Derleyici Kimliği**<br />ıar<br />ARM<br />Gnu |
 
 
-## <a name="module-linker-control-file"></a>Modül bağlayıcı denetim dosyası
+## <a name="module-linker-control-file"></a>Modül bağlantıcı denetim dosyası
 
-Modül oluşturulurken modül girişi diğer kod bölümünden önce yerleştirilmelidir. Modül, konum bağımsız kod ve veri bölümleriyle oluşturulmalıdır. Bağlantı noktasına özgü örnek bağlayıcı dosyaları [ek](appendix.md).
+Modül hazırken, modülün herhangi bir kod bölümünden önce yerleştirilleri gerekir. Konumdan bağımsız kod ve veri bölümleriyle bir modül inşa edilmiş olması gerekir. Bağlantı noktasına özgü örnek bağlantı noktası dosyaları [ekindedir.](appendix.md)
 
-## <a name="module-threadx-library"></a>Modül ThreadX kitaplığı
+## <a name="module-threadx-library"></a>ThreadX modülü kitaplığı
 
-Her modülün özel, modül merkezli bir ThreadX kitaplığına bağlanması gerekir. Bu kitaplık, yerleşik koddaki ThreadX hizmetlerine erişim sağlar. Erişimin büyük bir çoğunluğu ***txm_ \* . c*** dosyaları aracılığıyla gerçekleştirilir. Aşağıda, ThreadX API işlevi **_tx_thread_relinquish_* _ ( _*_ \_ txm_thread_relinquish. c \* * * *) için modül erişim çağrısının bir örneği verilmiştir.
+Her modülün özel, modül merkezli ThreadX kitaplığına bağlantı oluşturması gerekir. Bu kitaplık yerleşik kodda ThreadX hizmetlerine erişim sağlar. Erişimin çoğu ***\* .c*** dosyaları txm_ gerçekleştirebilirsiniz. Aşağıda, ThreadX API işlevi *_*_* tx_thread_relinquish _ (txm_thread_relinquish.c ile ) için modül erişim _*_ \_ çağrısının bir \* örneği yer alır.
 
 ```c
 (_txm_module_kernel_call_dispatcher)(TXM_THREAD_RELINQUISH_CALL, 0, 0, 0);
 ```
 
-Bu örnekte, Modül Yöneticisi tarafından sağlanan işlev işaretçisi, ***tx_thread_relinquish*** HIZMETIYLE Ilişkili kimlikle Modül Yöneticisi dağıtım işlevini çağırmak için kullanılır. Bu hizmet hiçbir parametre alır.
+Bu örnekte, Modül Yöneticisi tarafından sağlanan işlev işaretçisi, modül yöneticisi hizmetiyle ilişkili kimlikle Module Manager dispatch işlevini ***tx_thread_relinquish*** kullanılır. Bu hizmet hiçbir parametreyi alır.
 
 ## <a name="module-example"></a>Modül örneği
 
-Aşağıda bir modül biçiminde standart ThreadX tanıtımı örneği verilmiştir. Standart ThreadX tanıtımı ve modül gösterimi arasındaki temel farklılıklar şunlardır.
+Aşağıda, bir modül şeklinde standart ThreadX gösteriminin bir örneği ve ardından ve bir örnek ve ardından ve bir modül yer aecektir. Standart ThreadX gösterimi ile modül gösterimi arasındaki temel farklar vardır.
 
-1. ***Tx_api. h** _ ile _ *_txm_module. h_* arasında değişiklik*
-2. **_Txm_module. h 'den_** önceki **#define TXM_MODULE** eklenmesi
-3. ***Main** _ ve _ *tx_application_define** **_demo_module_start_** ile değiştirme
-4. Nesneler yerine ThreadX nesnelerine *işaretçiler* bildirme.
+1. ***tx_api.h** _ yerine _ *_txm_module.h_**
+2.  **_txm_module.h'den önce #define TXM_MODULE ekleme_**
+3. * main _ **ve** _ *tx_application_define** yerine **_demo_module_start_**
+4. Nesnelerin kendileri *yerine* ThreadX nesnelerine işaretçiler bildirerek.
 
 ```c
 /* Specify that this is a module! */
@@ -576,11 +576,11 @@ void thread_6_and_7_entry(ULONG thread_input)
 }
 ```
 
-## <a name="building-modules"></a>Modüller oluşturma
+## <a name="building-modules"></a>ModülLer
 
-Modül oluşturmak kullanılan araç zincirine bağımlıdır. Bkz. bağlantı noktasına özgü örnekler için [ek](appendix.md) . Tüm bağlantı noktalarına yapılan ortak etkinlikler şunlardır.
+Modüller, kullanılan araç zincirine bağlıdır. Bağlantı [noktasına özgü](appendix.md) örnekler için eke bakın. Tüm bağlantı noktaları için ortak etkinlikler aşağıdakileri içerir.
 
 - Modül kitaplığı oluşturma
-- Modül uygulaması oluşturma
+- Modül uygulamasını bina
 
-Her modülün bir **txm_module_preamble** olması gerekir (özellikle modül için kurulum) ve modül kitaplığı (örneğin, **_TXI. a_**).
+Her modülün bir txm_module_preamble **(modül** için özel olarak kurulum) ve modül kitaplığı (örneğin, **_txm.a) olması gerekir._**

@@ -1,21 +1,21 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo BSD Hizmetleri
-description: Bu bölüm, tüm Azure RTOS NetX Duo BSD temel hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - Azure RTOS NetX Duo BSD Services
+description: Bu bölümde Tüm NetX Duo BSD Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: c0aea725fc088c3b563b6fa54338e202b8f58b12
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7a3f9bb39779f3fe3561d2db9a789d3ae86d9741a8256a53a8e78508593eabc9
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826152"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791185"
 ---
-# <a name="chapter-3---azure-rtos-netx-duo-bsd-services"></a>Bölüm 3-Azure RTOS NetX Duo BSD Hizmetleri
+# <a name="chapter-3---azure-rtos-netx-duo-bsd-services"></a>Bölüm 3 - Azure RTOS NetX Duo BSD Services
 
-Bu bölüm, tüm Azure RTOS NetX Duo BSD temel hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde Tüm NetX Duo BSD Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
 ```c
 INT accept(INT sockID, struct sockaddr *ClientAddress, INT *addressLength);

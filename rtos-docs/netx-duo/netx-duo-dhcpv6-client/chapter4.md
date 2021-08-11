@@ -1,89 +1,89 @@
 ---
-title: Bölüm 4-Azure RTOS NetX Duo DHCPv6 Istemci Hizmetleri
-description: Bu bölüm, tüm Azure RTOS NetX Duo DHCPv6 Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 4 - Azure RTOS NetX Duo DHCPv6 İstemci hizmetleri
+description: Bu bölümde tüm NetX Duo DHCPv6 Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 40fbfa7319ca95af65c92b12582d4bbb05005dc0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 6caf943f990f8fe5cbd2cd6139a1253fcaf47dc207141963e31a9e31864ef839
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826074"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791746"
 ---
-# <a name="chapter-4---azure-rtos-netx-duo-dhcpv6-client-services"></a>Bölüm 4-Azure RTOS NetX Duo DHCPv6 Istemci Hizmetleri
+# <a name="chapter-4---azure-rtos-netx-duo-dhcpv6-client-services"></a>Bölüm 4 - Azure RTOS NetX Duo DHCPv6 İstemci hizmetleri
 
-Bu bölüm, tüm Azure RTOS NetX Duo DHCPv6 Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde tüm NetX Duo DHCPv6 Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_dhcpv6_client_create:** *DHCPv6 istemci örneği oluşturma* 
+- **nx_dhcpv6_client_create:** *DHCPv6 İstemci örneği oluşturma* 
 
-- **nx_dhcpv6_client_delete:** *DHCPv6 istemci örneğini silme* 
+- **nx_dhcpv6_client_delete:** *DHCPv6 İstemci örneğini silme* 
 
-- **nx_dhcpv6_create_ client_duid:** *bir DHCPv6 istemcisi DUID oluşturma* 
+- **nx_dhcpv6_create_ client_duid:** *DHCPv6 İstemciSI DUID oluşturma* 
 
-- **nx_dhcpv6 _add_client_ia:** *DHCPv6 istemci kimlik adresı ekleme (IA)* 
+- **nx_dhcpv6 _add_client_ia:** *DHCPv6 İstemci Kimliği Adresi (IA) ekleme* 
 
-- **nx_dhcpv6 _create_client_ia:** (*eski bir DHCPv6 istemci KIMLIK adresi (IA) Ekle)* 
+- **nx_dhcpv6 _create_client_ia:** (*Eski Bir DHCPv6 İstemci Kimliği Adresi (IA) Ekleme)* 
 
-- **nx_dhcpv6_create_client_iana:** *geçici olmayan adresler (IANA) Için DHCPv6 istemci kimliği ilişkilendirmesi oluşturma* 
+- **nx_dhcpv6_create_client_iana:** *Geçici Olmayan Adresler (IANA) için DHCPv6* İstemci Kimliği İlişkisi Oluşturma 
 
-- **nx_dhcpv6_get_client_duid_time_id:** *DHCPv6 istemcisi DUID 'den saat kimliğini alın* 
+- **nx_dhcpv6_get_client_duid_time_id:** *DHCPv6 İstemciSI DUID'den saat kimliğini al* 
 
-- **nx_dhcpv6_client_set_interface:** *DHCPv6 sunucusuyla iletişim için istemci ağ arabirimini ayarlama* 
+- **nx_dhcpv6_client_set_interface:** *DHCPv6 Sunucusu ile iletişim için İstemci ağ arabirimini ayarlama* 
 
-- **nx_dhcpv6_get_IP_address:** *DHCPv6 Istemcisine atanan genel IPv6 adresini al* 
+- **nx_dhcpv6_get_IP_address:** *DHCPv6 istemcisine atanan genel IPv6 adresini al* 
 
-- **nx_dhcpv6_get_lease_time_data:** *istemci genel IPv6 adresi Için T1, T2, geçerli ve tercih edilen yaşam süreleri alın*
+- **nx_dhcpv6_get_lease_time_data:** İstemci genel IPv6 adresi için *T1, T2, geçerli* ve tercih edilen yaşam sürelerini al
 
-- **nx_dhcpv6_get_valid_ip_address_lease_time:** *Adres dizinine göre DHCPv6 istemci IPv6 adresi Için T1, T2, geçerli ve tercih edilen yaşam süreleri alın* 
+- **nx_dhcpv6_get_valid_ip_address_lease_time:** Adres dizinine göre DHCPv6 İstemci IPv6 adresi için *T1, T2,* geçerli ve tercih edilen yaşam sürelerini al 
 
-- **nx_dhcpv6_get_iana_lease_time:** *DHCPv6 Istemcisine kiralanmış kimlik ILIŞKILENDIRMESINDE (IANA) T1 ve T2 alın* 
+- **nx_dhcpv6_get_iana_lease_time:** *Kimlik İlişkisi'nde (IANA) DHCPv6* İstemcisi'ne kiralanan T1 ve T2'leri al 
 
-- **nx_dhcpv6_get_other_option_data:** *belirtilen seçenek verilerini al, örn. etki alanı adı veya saat dilimi sunucusu* 
+- **nx_dhcpv6_get_other_option_data:** Etki alanı adı veya saat dilimi *sunucusu gibi belirtilen seçenek verilerini alma* 
 
-- **nx_dhcpv6_get_DNS_server_address:** *belirtilen dizindeki DNS sunucu ADRESINI DHCPv6 istemci DNS sunucusu listesine al* 
+- **nx_dhcpv6_get_DNS_server_address:** *Belirtilen dizinde DNS Sunucusu adresini DHCPv6 İstemciSI DNS sunucusu listesine alın* 
 
-- **nx_dhcpv6_get_time_accrued:** *genel IPv6 adresi kiralamasının DHCPv6 istemcisine bağladığına yönelik zaman kazanın* 
+- **nx_dhcpv6_get_time_accrued:** Genel IPv6 adresi kirası tahakkuk eden *zaman DHCPv6* İstemcisi'ne bağlandı 
 
-- **nx_dhcpv6_get_time_server_address:** *belirtilen dizindeki saat sunucusu adresini DHCPv6 istemci zamanı sunucu listesine al*
+- **nx_dhcpv6_get_time_server_address:** Belirtilen dizinde Saat *Sunucusu adresini DHCPv6 İstemci Zamanı sunucu listesine alın*
 
-- **nx_dhcpv6_get_valid_ip_address_count:** *DHCPv6 istemcisine atanan IPv6 adresi sayısını Al* 
+- **nx_dhcpv6_get_valid_ip_address_count:** *DHCPv6 İstemcisi'ne atanan IPv6 adreslerinin sayısını al* 
 
-- **nx_dhcpv6_reinitialize:** *DHCPv6 istemci durumu makinesini yeniden başlatmak için DHCPv6 'yi yeniden başlatın ve DHCPv6 protokolünü yeniden çalıştırarak* 
+- **nx_dhcpv6_reinitialize:** DHCPv6 İstemci durumu makinesini yeniden başlatmak ve DHCPv6 protokolünü yeniden çalıştırmak için *DHCPv6'yı yeniden başlatın* 
 
-- **nx_dhcpv6_request_confirm:** *sunucuya bir onaylama isteği gönderin* 
+- **nx_dhcpv6_request_confirm:** *Sunucuya CONFIRM isteği gönderme* 
 
-- **nx_dhcpv6_request_inform_request:** S *BIR BILDIR istek Iletisini sunucuya Sonlandır* 
+- **nx_dhcpv6_request_inform_request:** S *sunucuya bir INFORM REQUEST iletisi sona erer* 
 
-- **nx_dhcpv6_request_release:** *sunucuya bir yayın isteği gönderin* 
+- **nx_dhcpv6_request_release:** *Sunucuya YAYıN isteği gönderme* 
 
-- **nx_dhcpv6_request_option_DNS_server:** *sunucu için Istek iletileri içindeki istemci SEÇENEĞI istek verilerine DNS sunucusu seçeneğini ekleyin* 
+- **nx_dhcpv6_request_option_DNS_server:** *İstek iletisinde İstemci seçeneği istek verilerine DNS sunucusu seçeneğini Sunucuya ekleme* 
 
-- **nx_dhcpv6_request_option_FQDN:** *sunucu için Istek iletileri içindeki istemci SEÇENEĞI istek verilerine FQDN seçeneğini ekleyin* 
+- **nx_dhcpv6_request_option_FQDN:** *sunucuya gönderilen istek iletisinde İstemci seçeneği istek verilerine FQDN seçeneğini ekleyin* 
 
-- **nx_dhcpv6_request_option_domain_name:** *sunucu için Istek iletileri içindeki istemci seçeneği istek verilerine etki alanı adı seçeneğini ekleyin* 
+- **nx_dhcpv6_request_option_domain_name:** *sunucuya gönderilen istek iletisinde İstemci seçeneği istek verilerine etki alanı adı seçeneğini ekleyin* 
 
-- **nx_dhcpv6_request_option_time_server:** *sunucuya istek iletileri Istek iletileri için istemci seçeneğine saat sunucusu seçeneğini ekleyin* 
+- **nx_dhcpv6_request_option_time_server:** *İstek iletisinde İstemci seçeneği istek verilerine sunucuya saat sunucusu seçeneğini ekleyin* 
 
-- **nx_dhcpv6_request_option_timezone:** *sunucuya Istek iletileri iste istemci seçeneği istek verilerine saat dilimi seçeneğini ekleyin* 
+- **nx_dhcpv6_request_option_timezone:** *İstek iletisinde İstemci seçeneği istek verilerine sunucuya saat dilimi seçeneğini ekleyin* 
 
-- **nx_dhcpv6_request_solicit:** *istemci ağındaki (yayın) herhangi BIR sunucuya DHCPv6 istem isteği gönderin* 
+- **nx_dhcpv6_request_solicit:** İstemci ağı (yayın) üzerinde herhangi bir *Sunucuya DHCPv6 SOLICIT isteği gönderme* 
 
-- **nx_dhcpv6_request_solicit_rapid:** *hızlı tamamlama seçenek kümesiyle istemci ağındaki (yayın) herhangi bir sunucuya bir DHCPv6 istek isteği gönderin* 
+- **nx_dhcpv6_request_solicit_rapid:** Hızlı Yürütme seçeneği ayarlanmış şekilde İstemci ağı (yayın) üzerinde herhangi bir Sunucuya *DHCPv6 SOLICIT isteği gönderme* 
 
-- **nx_dhcpv6_resume:** *DHCPv6 istemci işlemesini sürdürür* 
+- **nx_dhcpv6_resume:** *DHCPv6 İstemcisini İşlemeyi Sürdürme* 
 
-- **nx_dhcpv6_start:** *DHCPv6 istemci iş parçacığı görevini başlatın. Bu, DHCPv6 durum makinesinin başlatılmasına eşit değildir ve bir Istem isteği göndermez* 
+- **nx_dhcpv6_start:** *DHCPv6 İstemci iş parçacığı görevini başlatma. Bunun DHCPv6 durum makinesini başlatmaya eşdeğer* olmadığını ve bir SOLICIT isteği göndermez 
 
-- **nx_dhcpv6_stop:** *DHCPv6 istemci iş parçacığı görevini durdur* 
+- **nx_dhcpv6_stop:** *DHCPv6 İstemci iş parçacığı görevini durdurun* 
 
-- **nx_dhcpv6_suspend:** *DHCPv6 istemci iş parçacığı görevini askıya al* 
+- **nx_dhcpv6_suspend:** *DHCPv6 İstemci iş parçacığı görevini askıya alma* 
 
-- **nx_dhcpv6_set_time_accrued:** *Istemci kaydındaki genel istemci IPv6 adresi kirası üzerinde tahakkuk eden süreyi ayarlayın.*
+- **nx_dhcpv6_set_time_accrued:** İstemci kaydında genel İstemci *IPv6 adresi kirası için tahakkuk eden zamanı ayarlayın.*
 
 ## <a name="nx_dhcpv6_client_create"></a>nx_dhcpv6_client_create
 
@@ -105,37 +105,37 @@ UINT  nx_dhcpv6_client_create(NX_DHCPV6 *dhcpv6_ptr,
                                  UINT message_type));
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, geri çağırma işlevleri dahil olmak üzere bir DHCPv6 istemci örneği oluşturur.
+Bu hizmet, geri çağırma işlevlerini içeren bir DHCPv6 istemci örneği oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
 - **dhcpv6_ptr** DHCPv6 denetim bloğu işaretçisi  
 
-- **ip_ptr** Istemci IP örneği işaretçisi  
+- **ip_ptr** İstemci IP örneğine işaretçi  
 
 - **name_ptr** DHCPv6 örneği için ad işaretçisi
 
-- **packet_pool_ptr** Istemci paket havuzu işaretçisi
+- **packet_pool_ptr** İstemci paket havuzu işaretçisi
 
-- **stack_ptr** Istemci yığını belleği işaretçisi
+- **stack_ptr** İstemci yığını belleği işaretçisi
 
-- **stack_size** Istemci yığını bellek boyutu
+- **stack_size** İstemci yığın belleğinin boyutu
 
-- **dhcpv6_state_change_notify** Istemci sunucuya yeni bir DHCPv6 isteği başlattığında çağrılan geri çağırma işlevi işaretçisi
+- **dhcpv6_state_change_notify** İstemci sunucuya yeni bir DHCPv6 isteği başlattığında çağrılan geri çağırma işlevinin işaretçisi
 
-- **dhcpv6_server_error_handler** Istemci sunucudan bir hata durumu aldığında çağrılan geri çağırma işlevi işaretçisi
+- **dhcpv6_server_error_handler** İstemci sunucudan hata durumu aldığında çağrılan geri çağırma işlevinin işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı istemci oluşturma
+- **NX_SUCCESS** (0x00) Başarılı İstemci oluşturma
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_DHCPV6_PARAM_ERROR (0xE93) geçersiz işaretçi girişi
+- NX_DHCPV6_PARAM_ERROR (0xE93) İşaretçi olmayan giriş geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -159,7 +159,7 @@ status =  nx_dhcpv6_client_create(&dhcp_0, &ip_0, "DHCPv6 Client", &pool_0,
 
 ## <a name="nx_dhcpv6_client_delete"></a>nx_dhcpv6_client_delete
 
-DHCPv6 Istemci örneğini silme
+DHCPv6 İstemci örneğini silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -167,23 +167,23 @@ DHCPv6 Istemci örneğini silme
 UINT nx_dhcpv6_client_delete(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, önceden oluşturulmuş bir DHCPv6 istemci örneğini siler.
+Bu hizmet, daha önce oluşturulmuş bir DHCPv6 istemci örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 istemci örneğine işaretçi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı DHCPv6 silme
+- **NX_SUCCESS** (0x00) Başarılı DHCPv6 silme
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_DHCPV6_PARAM_ERROR (0xE93) geçersiz işaretçi girişi
+- NX_DHCPV6_PARAM_ERROR (0xE93) İşaretçi olmayan giriş geçersiz
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -203,7 +203,7 @@ status =  nx_dhcpv6_client_delete(&my_dhcp);
 
 ## <a name="nx_dhcpv6_client_set_interface"></a>nx_dhcpv6_client_set_interface
 
-DHCPv6 için Istemcinin ağ arabirimini ayarlar
+DHCPv6 için İstemcinin Ağ Arabirimini Ayarlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -212,25 +212,25 @@ UINT    nx_dhcpv6_client_set_interface(NX_DHCPV6 *dhcpv6_ptr,
                                        UINT *interface_index);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 sunucuları ile iletişim için Istemcinin ağ arabirimini belirtilen giriş arabirimi dizinine ayarlar.
+Bu hizmet, İstemcinin ağ arabirimini DHCPv6 Sunucularla belirtilen giriş arabirimi dizinine iletişim kurmak için ayarlar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
-- **interface_index** Ağ arabirimini belirten Dizin
+- **interface_index** Ağ arabirimini gösteren dizin
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) arabirimi başarıyla ayarlandı
+- **NX_SUCCESS** (0x00) Arabirimi başarıyla ayarlanmış
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_INVALID_INTERFACE (0x4C) geçersiz arabirim dizin girişi
+- NX_INVALID_INTERFACE (0x4C) Geçersiz arabirim dizini girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -254,7 +254,7 @@ status = nx_dhcpv6_client_set_interface(&dhcp_0, index);
 
 ## <a name="nx_dhcpv6_client_set_destination_address"></a>nx_dhcpv6_client_set_destination_address
 
-DHCPv6 iletisinin gönderileceği hedef adresi ayarlar
+DHCPv6 iletisi gönderilecek hedef adresi ayarlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -263,9 +263,9 @@ UINT nx_dhcpv6_client_set_destination_address(NX_DHCPV6 *dhcpv6_ptr,
                                               NXD_ADDRESS *destination_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 iletisinin gönderileceği hedef adresi ayarlar. Varsayılan olarak ALL_DHCP_Relay_Agents_and_Servers (FF02:: 1:2).
+Bu hizmet, DHCPv6 iletisi gönderilecek hedef adresi ayarlar. Varsayılan olarak ALL_DHCP_Relay_Agents_and_Servers (FF02:: 1:2).
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
@@ -314,7 +314,7 @@ UINT nx_dhcpv6_create_client_duid(NX_DHCPV6 *dhcpv6_ptr,
                                   ULONG time);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, giriş parametreleriyle Istemci DUıD 'sini oluşturur. Zaman girişi sağlanmazsa ve DUID türü bağlantı katmanını zamana göre gösteriyorsa, bu işlev benzersizlik için rastgele bir faktör içeren bir zaman sağlar. Satıcı atanmış (Kurumsal) DUID türleri desteklenmez.
 
@@ -374,7 +374,7 @@ UINT nx_dhcpv6_create_client_ia(NX_DHCPV6 *dhcpv6_ptr,
                                 ULONG valid_lifetime);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet *nx_dhcpv6_add_client_ia* hizmetiyle aynıdır. Istemci kaydını sağlanan parametrelerle doldurarak bir Istemci kimliği Ilişkilendirmesi ekler. En fazla tercih edilen ve geçerli yaşam sürelerini istemek için, bu parametreleri sonsuz olarak ayarlayın. Bir DHCPv6 Istemcisine birden fazla IA eklemek için NX_DHCPV6_MAX_IA_ADDRESS varsayılan değer olan 1 ' den daha yüksek bir değere ayarlayın.
 
@@ -434,7 +434,7 @@ UINT nx_dhcpv6_create_client_iana(NX_DHCPV6 *dhcpv6_ptr,
                                   UINT IA_ident, ULONG T1, ULONG T2);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, sağlanan parametrelerden geçici olmayan bir Istemci kimlik Ilişkisi (ıANA) oluşturur. T1 ve T2 sürelerini DHCPv6 Istemci isteklerinde maksimum (Infinity) olarak ayarlamak için, bu parametreleri NX_DHCPV6_INFINITE_LEASE olarak ayarlayın. 
 
@@ -492,7 +492,7 @@ UINT nx_dhcpv6_add_client_ia(NX_DHCPV6 *dhcpv6_ptr,
                              ULONG valid_lifetime);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemci kaydını sağlanan parametrelerle doldurarak bir Istemci kimliği Ilişkilendirmesi ekler. En fazla tercih edilen ve geçerli yaşam sürelerini istemek için, bu parametreleri sonsuz olarak ayarlayın. Bir DHCPv6 Istemcisine birden fazla IA eklemek için NX_DHCPV6_MAX_IA_ADDRESS varsayılan değer olan 1 ' den daha yüksek bir değere ayarlayın.
 
@@ -552,7 +552,7 @@ Istemci DUıD 'sinden saat KIMLIĞINI alır
 UINT nx_dhcpv6_get_client_duid_time_id(NX_DHCPV6 *dhcpv6_ptr, ULONG *time_id);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemci DUıD 'sinden saat KIMLIĞI alanını alır. Uygulamanın, DHCPv6 Istemci örneğindeki Istemci DUıD 'sini doldurması için *nx_dhcpv6_create_client_duid* çağrısı olması veya bu alan için null değere sahip olması gerekir. Amaç, uygulamanın bu verileri kaydetmesi ve zaman alanı da dahil olmak üzere sunucuya aynı Istemci DUıD 'sini sunmaktır.
 
@@ -601,7 +601,7 @@ UINT nx_dhcpv6_get_IP_address(NX_DHCPV6 *dhcpv6_ptr,
                               NXD_ADDRESS *ip_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin genel IPv6 adresini alır. Istemcinin geçerli bir adresi yoksa bir hata durumu döndürülür. Bir Istemcide birden fazla genel IPv6 adresi varsa, birincil IPv6 adresi döndürülür.
 
@@ -659,7 +659,7 @@ UINT nx_dhcpv6_get_lease_time_data(NX_DHCPV6 *dhcpv6_ptr, ULONG *T1,
                                    ULONG *valid_lifetime);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin genel IA adres saat verilerini alır. Istemci IA adresi durumu geçersizse, zaman verileri sıfır olarak ayarlanır ve başarılı bir tamamlanma durumu döndürülür. Bir Istemcide birden fazla genel IPv6 adresi varsa, birincil IA adres verileri döndürülür.
 
@@ -716,7 +716,7 @@ UINT nx_dhcpv6_get_iana_lease_time(NX_DHCPV6 *dhcpv6_ptr, ULONG *T1,
                                     ULONG *T2);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin Global IA-NA kira süresi verilerini (T1 ve T2) alır. Hiçbir Istemci IA-yok adresinin geçerli bir adres durumu yoksa, zaman verileri sıfır olarak ayarlanır ve başarılı bir tamamlanma durumu döndürülür. Bir Istemcide birden fazla genel IPv6 adresi varsa, birincil IA adres verileri döndürülür.
 
@@ -768,7 +768,7 @@ UINT nx_dhcpv6_get_valid_ip_address_count(NX_DHCPV6 *dhcpv6_ptr,
                                           UINT *address_count);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin geçerli IPv6 adreslerinin sayısını alır. Istemciye geçerli bir IPv6 adresi (atandı) bağlanır ve IP örneğiyle kaydedilir.
 
@@ -815,7 +815,7 @@ UINT nx_dhcpv6_get_valid_ip_address_lease_time(NX_DHCPV6 *dhcpv6_ptr,
                                                ULONG *valid_lifetime);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin IA adresini ve kira verilerini adres dizinine göre alır. Geçersiz bir dizin sağlanırsa veya bu dizindeki IPv6 adresi geçerli değilse, hizmet NX_DHCPV6_IA_ADDRESS_NOT_VALID bir hata durumu döndürür.
 
@@ -878,7 +878,7 @@ UINT nx_dhcpv6_get_DNS_server_address(NX_DHCPV6 *dhcpv6_ptr, UINT index,
                                       NXD_ADDRESS *server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemci listesinde belirtilen dizindeki DNS sunucusu IPv6 adresi verilerini alır. Listede dizin üzerinde bir sunucu adresi yoksa bir hata döndürülür. Dizin, DNS sunucusu listesinin boyutunu aşmayabilir NX_DHCPV6_NUM_DNS_SERVERS Kullanıcı tarafından yapılandırılabilir seçeneği ile belirtilir.
 
@@ -933,7 +933,7 @@ UINT  nx_dhcpv6_get_other_option_data(NX_DHCPV6 *dhcpv6_ptr,
                                       UINT option_code, UCHAR *buffer);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, belirtilen seçenek kodu için DHCPv6 iletisinden DHCPv6 seçenek verilerini alır.
 
@@ -986,25 +986,25 @@ Istemcinin IP adresi kiralamasında tahakkuk eden süreyi alır
 UINT nx_dhcpv6_get_time_accrued(NX_DHCPV6 *dhcpv6_ptr, ULONG *time_accrued);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemcinin IPv6 adresi kiralamasında tahakkuk eden süreyi alır. İşlevi, ilk geçerli adres için Istemciye atanan tüm IPv6 adreslerini denetler. Geçerli adres bulunmazsa, tahakkuk edilen zaman için sıfır değeri döndürülür.
+Bu hizmet, Istemcinin IPv6 adresi kiralamasında tahakkuk eden süreyi alır. İşlevi, ilk geçerli adres için Istemciye atanan tüm IPv6 adreslerini denetler. Geçerli adres bulunamasa, tahakkuk eden zaman için sıfır değeri döndürülür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
-- **time_accrued** IP kiralamasında tahakkuk eden zaman işaretçisi
+- **time_accrued** IP kiralamada tahakkuk eden zaman işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) tahakkuk edilen süre başarıyla alındı
+- **NX_SUCCESS** (0x00) Tahakkuk eden süre başarıyla alındı
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1027,7 +1027,7 @@ status = nx_dhcpv6_get_time_accrued(&dhcp_0, &time_accrued);
 
 ## <a name="nx_dhcpv6_get_time_server_address"></a>nx_dhcpv6_get_time_server_address
 
-Saat sunucusu adresini alır 
+Zaman Sunucusu adresini alma 
 
 ### <a name="prototype"></a>Prototype
 
@@ -1036,27 +1036,27 @@ UINT  nx_dhcpv6_get_time_server_address(NX_DHCPV6 *dhcpv6_ptr, UINT index,
                                         NXD_ADDRESS *server_address);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci listesindeki belirtilen dizindeki saat sunucusu IPv6 adresi verilerini alır. Listede dizin üzerinde bir sunucu adresi yoksa bir hata döndürülür. Dizin, Kullanıcı tarafından yapılandırılabilir seçenek NX_DHCPV6_NUM_TIME_SERVERS tarafından belirtilen zaman sunucu listesinin boyutunu aşamaz.
+Bu hizmet, İstemci listesinde belirtilen dizinde Saat sunucusu IPv6 adresi verilerini verir. Listede dizinde bir sunucu adresi yoksa bir hata döndürülür. Dizin, Zaman Sunucusu listesinin kullanıcı tarafından yapılandırılabilir seçenek tarafından belirtilen boyutunu aşabilir NX_DHCPV6_NUM_TIME_SERVERS.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
-- **Dizin** Saat sunucusu listesinde Dizin
+- **dizin** Zaman Sunucusu listesinde dizin oluşturma
 
 - **server_address** Sunucu adresi arabelleği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) adresi başarıyla alındı
+- **NX_SUCCESS** (0x00) Adresi başarıyla alındı
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1083,7 +1083,7 @@ NXD_ADDRESS server_address;
 
 ## <a name="nx_dhcpv6_reinitialize"></a>nx_dhcpv6_reinitialize
 
-Istemci IP adresini IP tablosundan kaldır
+IP tablosundan İstemci IP adresini kaldırma
 
 ### <a name="prototype"></a>Prototype
 
@@ -1091,28 +1091,28 @@ Istemci IP adresini IP tablosundan kaldır
 UINT nx_dhcpv6_reinitialize(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 durum makinesini yeniden başlatmak ve DHCPv6 protokolünü yeniden çalıştırmak için Istemciyi yeniden başlatır. Istemci daha önce DHPCv6 durum makinesini başlatmadıysanız veya herhangi bir IPv6 adresi atamamışsa bu gerekli değildir. DHCPv6 Istemcisine kaydedilen adresler ve IP örneğiyle kayıtlı olan adreslerin ikisi de temizlenir.
+Bu hizmet, DHCPv6 durum makinesini yeniden başlatmak ve DHCPv6 protokolünü yeniden çalıştırarak İstemciyi yeniden başlatıyor. İstemci daha önce DHPCv6 durum makinesini başlatmamışsa veya herhangi bir IPv6 adresi atanmışsa bu gerekli değildir. DHCPv6 İstemcisi'ne kaydedilen ve IP örneğiyle kaydedilen adreslerin her ikisi de temizlendi.
 
 > [!NOTE]
-> Uygulamanın yine de *nx_dhcpv6_start hizmetini* kullanarak DHCPv6 istemcisini başlatması ve *nx_dhcpv6_request_solicit* çağırarak IPv6 adres ataması isteğine başlaması gerekir.
+> Uygulamanın yine de nx_dhcpv6_start hizmetini kullanarak  DHCPv6 İstemcisini başlatması ve nx_dhcpv6_request_solicit çağırarak IPv6 adresi *ataması isteğini başlatması gerekir.*
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) adresi başarıyla kaldırıldı
+- **NX_SUCCESS** (0x00) Adresi başarıyla kaldırıldı
 
-- **NX_DHCPV6_ALREADY_STARTED** (0xe91) DHCPv6 istemcisi zaten çalışıyor
+- **NX_DHCPV6_ALREADY_STARTED** (0xE91) DHCPv6 İstemcisi zaten çalışıyor
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1132,7 +1132,7 @@ status = nx_dhcpv6_reinitialize(&dhcp_0);
 
 ## <a name="nx_dhcpv6_request_confirm"></a>nx_dhcpv6_request_confirm
 
-Istemcinin onaylama durumunu işleme
+İstemcinin CONFIRM durumunu işleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1140,23 +1140,23 @@ Istemcinin onaylama durumunu işleme
 UINT nx_dhcpv6_request_confirm(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir onaylama isteği gönderir. Sunucudan bir yanıt alınmışsa, DHCPv6 Istemcisi kira parametrelerini alınan verilerle güncelleştirir.
+Bu hizmet bir CONFIRM isteği gönderir. Sunucudan bir yanıt alınıyorsa, DHCPv6 İstemcisi kira parametrelerini alınan verilerle günceller.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) ileti başarıyla gönderildiğini ve işlendiğini onaylayın
+- **NX_SUCCESS** (0x00) CONFIRM iletisi başarıyla gönderildi ve işlendi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1178,7 +1178,7 @@ status = nx_dhcpv6_request_confirm(&dhcp_0);
 
 ## <a name="nx_dhcpv6_request_inform_request"></a>nx_dhcpv6_request_inform_request
 
-Istemcinin BILGI ISTEğI durumunu işle
+İstemcinin INFORM REQUEST durumunu işleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1186,23 +1186,23 @@ Istemcinin BILGI ISTEğI durumunu işle
 UINT nx_dhcpv6_request_inform_request(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir BILGI ISTEğI iletisi gönderir. Bir yanıt alınmışsa, biri alındığında yanıt, geçerli olduğunu ve sunucunun isteği vermiş olduğunu tespit etmek üzere işlenir. Istemci örneği daha sonra gerektiği şekilde sunucu bilgileriyle güncellenir.
+Bu hizmet bir INFORM REQUEST iletisi gönderir. Yanıt alınırsa, Bir yanıt alınırsa, yanıt geçerli olduğunu belirlemek için işlenir ve sunucu isteği verdi. İstemci örneği daha sonra gerektiğinde sunucu bilgileriyle güncelleştirilir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) bildirme isteği iletisi başarıyla oluşturuldu ve işlendi
+- **NX_SUCCESS** (0x00) INFORM REQUEST iletisi başarıyla oluşturuldu ve işlendi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1222,7 +1222,7 @@ status = nx_dhcpv6_request_inform_request(&dhcp_0);
 
 ## <a name="nx_dhcpv6_request_option_dns_server"></a>nx_dhcpv6_request_option_DNS_server
 
-DHCPv6 seçenek isteğine DNS sunucusu ekleme
+DHCPv6 Seçenek isteğine DNS Sunucusu ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1230,23 +1230,23 @@ DHCPv6 seçenek isteğine DNS sunucusu ekleme
 UINT nx_dhcpv6_request_option_DNS_server(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 seçenek isteğine DNS sunucusu bilgilerini isteme seçeneğini ekler. Sunucu yanıtı DNS sunucusu verilerini içeriyorsa, Istemci, bunu yapmak için bir oda varsa, DNS sunucusunu depolayacaktır. Istemcinin depolayabileceği DNS sunucusu sayısı, varsayılan değeri 2 olan yapılandırılabilir seçenek NX_DHCPV6_NUM_DNS_SERVERS belirlenir.
+Bu hizmet, DHCPv6 seçenek isteğine DNS sunucusu bilgileri isteği için seçeneğini ekler. Sunucu yanıtı DNS sunucusu verilerini içerirse, İstemci DNS sunucusunu depolar ve dns sunucusunu depolar. İstemcinin depolay olduğu DNS sunucusu sayısı, varsayılan değeri 2 olan NX_DHCPV6_NUM_DNS_SERVERS yapılandırılabilir seçenek tarafından belirlenir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) DNS sunucusu seçeneği dahildir
+- **NX_SUCCESS** (0x00) DNS sunucusu seçeneği dahil edildi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1265,7 +1265,7 @@ nx_dhcpv6_request_option_DNS_server(&dhcp_0, NX_TRUE);
 
 ## <a name="nx_dhcpv6_request_option_fqdn"></a>nx_dhcpv6_request_option_FQDN
 
-Seçenek istek listesine tam etki alanı adı seçeneği ekleyin
+Seçenek isteği listesine Tam Etki Alanı Adı ekle seçeneği
 
 ### <a name="prototype"></a>Prototype
 
@@ -1274,33 +1274,33 @@ UINT nx_dhcpv6_request_option_FQDN(NX_DHCPV6 *dhcpv6_ptr, UCHAR *domain_name,
 UINT op);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci tam etki alanı adını DHCPv6 seçenek isteğine ekleme seçeneğini ekler. FQDN seçeneği için üç seçenek vardır:
+Bu hizmet, DHCPv6 seçenek isteğine İstemci Tam Etki Alanı Adı ekleme seçeneğini ekler. FQDN seçeneği için üç seçenek vardır:
 
-- NX_DHCPV6_CLIENT_DESIRES_UPDATE_AAAA_RR 0, Istemci tarafından kullanılan FQDN ve adresler için FQDN-IPv6 adres eşlemeyi güncelleştirin.
+- NX_DHCPV6_CLIENT_DESIRES_UPDATE_AAAA_RR 0 İstemci tarafından kullanılan FQDN ve adresler için FQDN'den IPv6'ya adres eşlemesini güncelleştirin.
 
-- NX_DHCPV6_CLIENT_DESIRES_SERVER_DO_DNS_UPDATE 1 Istemci tarafından sunucu tarafından kullanılan FQDN ve adresler için FQDN-IPv6 adres eşlemeyi güncelleştirin.
+- NX_DHCPV6_CLIENT_DESIRES_SERVER_DO_DNS_UPDATE 1 İstemci tarafından sunucuya kullanılan FQDN ve adresler için FQDN'den IPv6'ya adres eşlemesini güncelleştirin.
 
-- NX_DHCPV6_CLIENT_DESIRES_NO_SERVER_DNS_UPDATE 2 sunucunun Istemci adına DNS güncelleştirmesi gerçekleştirmesiz bir Istek.
+- NX_DHCPV6_CLIENT_DESIRES_NO_SERVER_DNS_UPDATE 2 Sunucunun İstemci adına DNS güncelleştirmesi gerçekleştirmesini talep edin.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 - **domain_name** Etki alanı adını tutan dize
 
-- **op** Uygulanacak FQDN seçeneğinin türü (yukarıdaki listeye bakın)
+- **op (op)** Uygulanacak FQDN seçeneğinin türü (yukarıdaki listeye bakın)
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) FQDN seçeneği dahildir
+- **NX_SUCCESS** (0x00) FQDN seçeneği dahil edildi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1320,7 +1320,7 @@ nx_dhcpv6_request_option_FQDN(&dhcp_0, “DHCPv6_Client”,
 
 ## <a name="nx_dhcpv6_request_option_domain_name"></a>nx_dhcpv6_request_option_domain_name
 
-DHCPv6 seçenek isteğine etki alanı adı seçeneği ekleyin
+DHCPv6 seçenek isteğine etki alanı adı seçeneği ekleme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1328,23 +1328,23 @@ DHCPv6 seçenek isteğine etki alanı adı seçeneği ekleyin
 UINT nx_dhcpv6_request_option_domain_name(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci isteği iletilerindeki seçenek isteğine etki alanı adı seçeneğini ekler. Sunucu yanıtı etki alanı adı verileri içeriyorsa, etki alanı adının boyutu, etki alanı adının tutulması için arabellek boyutu içindeyse, Istemci etki alanı adı bilgilerini depolar. Bu arabellek boyutu, varsayılan değer olan 30 baytlık yapılandırılabilir bir seçenektir (NX_DHCPV6_DOMAIN_NAME_BUFFER_SIZE).
+Bu hizmet, İstemci isteği iletisinde seçenek isteğine etki alanı adı seçeneğini ekler. Sunucu yanıtı etki alanı adı verileri içerirse, etki alanı adının boyutu etki alanı adını tutmak için arabellek boyutu içinde ise İstemci etki alanı adı bilgilerini depolar. Bu arabellek boyutu, varsayılan değeri 30 NX_DHCPV6_DOMAIN_NAME_BUFFER_SIZE yapılandırılabilir bir seçenektir (NX_DHCPV6_DOMAIN_NAME_BUFFER_SIZE).
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) etki alanı adı seçenek kümesi
+- **NX_SUCCESS** (0x00) Etki alanı adı seçenek kümesi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1363,7 +1363,7 @@ nx_dhcpv6_request_option_domain_name(&dhcp_0, NX_TRUE);
 
 ## <a name="nx_dhcpv6_request_option_time_server"></a>nx_dhcpv6_request_option_time_server
 
-Saat sunucusu verilerini isteğe bağlı istek olarak ayarla
+Saat sunucusu verilerini isteğe bağlı istek olarak ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1371,25 +1371,25 @@ Saat sunucusu verilerini isteğe bağlı istek olarak ayarla
 UINT nx_dhcpv6_request_option_time_server(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci istek iletilerinin seçenek isteğine zaman sunucusu bilgilerini ekler. Sunucu yanıtı, Tim sunucu verilerini içeriyorsa, Istemci, bunu yapmak için yer aldığında zaman sunucusunu depolayacaktır. Istemcinin depolayabileceği zaman sunucularının sayısı, yapılandırılabilir seçenek tarafından belirlenir
+Bu hizmet, İstemci isteği iletilerinin seçenek isteğine saat sunucusu bilgileri için seçeneğini ekler. Sunucu yanıtı tim sunucusu verilerini içerirse, istemci zaman sunucusunu depolar ve buna yer vardır. İstemcinin depolanabilir sunucu sayısı yapılandırılabilir seçenek tarafından belirlenir
 
-Varsayılan değeri 1 olan _SERVERS NX_DHCPV6_NUM_TIME.
+NX_DHCPV6_NUM_TIME _SERVERS değeri 1 olan bir dosyadır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) saat sunucusu seçeneği eklendi
+- **NX_SUCCESS** (0x00) Sunucu seçeneği eklendi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1408,7 +1408,7 @@ nx_dhcpv6_request_option_time_server(&dhcp_0, NX_TRUE);
 
 ## <a name="nx_dhcpv6_request_option_timezone"></a>nx_dhcpv6_request_option_timezone
 
-Saat dilimi verilerini isteğe bağlı istek olarak ayarla
+Saat dilimi verilerini isteğe bağlı olarak ayarlama
 
 ### <a name="prototype"></a>Prototype
 
@@ -1416,23 +1416,23 @@ Saat dilimi verilerini isteğe bağlı istek olarak ayarla
 UINT nx_dhcpv6_request_option_timezone(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci seçenek isteğine saat dilimi bilgilerini isteme seçeneğini ekler. Sunucu yanıtı saat dilimi verilerini içeriyorsa, saat diliminin boyutu saat dilimini tutmak için arabellek boyutu içindeyse Istemci saat dilimi bilgilerini depolar. Bu arabellek boyutu, varsayılan 10 baytlık bir değere sahip yapılandırılabilir bir seçenektir (NX_DHCPV6_ TIME_ZONE _BUFFER_SIZE).
+Bu hizmet, İstemci seçeneği isteğine saat dilimi bilgileri isteği için seçeneğini ekler. Sunucu yanıtı saat dilimi verilerini içerirse, saat diliminin boyutu saat dilimini tutmak için arabellek boyutu içinde ise İstemci saat dilimi bilgilerini depolar. Bu arabellek boyutu, varsayılan değeri 10 NX_DHCPV6_ TIME_ZONE _BUFFER_SIZE yapılandırılabilir bir seçenektir (NX_DHCPV6_ TIME_ZONE _BUFFER_SIZE).
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) saat dilimi seçeneği eklendi
+- **NX_SUCCESS** (0x00) Saat dilimi seçeneği eklendi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1451,7 +1451,7 @@ nx_dhcpv6_request_option_timezone(&dhcp_0, NX_TRUE);
 
 ## <a name="nx_dhcpv6_request_release"></a>nx_dhcpv6_request_release
 
-DHCPv6 sürüm iletisi gönder
+DHCPv6 RELEASE iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1459,29 +1459,29 @@ DHCPv6 sürüm iletisi gönder
 UINT nx_dhcpv6_request_release(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemci ağına bir sürüm iletisi gönderir. İleti başarıyla gönderilirse, başarılı bir durum döndürülür. Başarılı bir tamamlama, Istemcinin bir yanıt aldığını veya henüz bir IPv6 adresi verildiğini ifade etmez. DHCPv6 Istemci iş parçacığı görevi DHCPv6 sunucusundan yanıt bekler. Bir tane alınmışsa, yanıtın geçerli olduğunu denetler ve verileri Istemci kaydına depolar.
+Bu hizmet, İstemci ağına bir YAYıN iletisi gönderir. İleti başarıyla gönderilirse başarılı bir durum döndürülür. Başarılı bir tamamlama, İstemcinin yanıt aldığı veya henüz bir IPv6 adresi verilmiş olduğu anlamına değildir. DHCPv6 İstemcisi iş parçacığı görevi, bir DHCPv6 Sunucusundan yanıt bekler. Alınan yanıt geçerli olup olmadığını denetler ve verileri İstemci kaydında depolar.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) yayın iletisi başarıyla gönderildi
+- **NX_SUCCESS** (0x00) YAYıN iletisi başarıyla gönderildi
 
-- **NX_DHCPV6_NOT_STARTED** (0xe92) DHCPv6 istemci görevi başlatılmadı
+- **NX_DHCPV6_NOT_STARTED** (0xE92) DHCPv6 İstemci görevi başlamadı
 
-- **NX_DHCPV6_IA_ADDRESS_NOT_VALID** (0xead) adresi istemciye bağlanmadı
+- **NX_DHCPV6_IA_ADDRESS_NOT_VALID** (0xEAD) adresi İstemciye bağlı değil
 
 - **NX_INVALID_INTERFACE** (0x4C) IP adresi tablosunda bulunamadı
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1502,7 +1502,7 @@ status = nx_dhcpv6_request_release(&dhcp_0);
 
 ## <a name="nx_dhcpv6_request_solicit"></a>nx_dhcpv6_request_solicit
 
-Istem iletisi gönder
+SOLICIT iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1510,26 +1510,26 @@ Istem iletisi gönder
 UINT nx_dhcpv6_request_solicit(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ağda bir Istem iletisi gönderir. İleti başarıyla gönderilirse, başarılı bir durum döndürülür. Başarılı bir tamamlama, Istemcinin bir yanıt aldığını veya henüz bir IPv6 adresi verildiğini ifade etmez. DHCPv6 Istemci iş parçacığı görevi DHCPv6 sunucusundan bir yanıt (bir TANıTıM iletisi) bekler. Bir tane alınmışsa, yanıtın geçerli olduğunu denetler, verileri Istemci kaydına depolar ve Istemciyi Istek durumuna yükseltir.
+Bu hizmet ağ üzerinde bir SOLICIT iletisi gönderir. İleti başarıyla gönderilirse başarılı bir durum döndürülür. Başarılı bir tamamlama, İstemcinin yanıt aldığı veya henüz bir IPv6 adresi verilmiş olduğu anlamına değildir. DHCPv6 İstemci iş parçacığı görevi, bir DHCPv6 Sunucusundan bir yanıt (BIR ADVERTISE iletisi) bekler. Yanıt alındı ise yanıtın geçerli olup olmadığını denetler, verileri İstemci kaydına depolar ve İstemciyi REQUEST durumuna yükselter.
 
 > [!NOTE] 
-> Hızlı tamamlama seçeneği ayarlandıysa, geçerli bir sunucu TANıTıM iletisi alırsa DHCPv6 Istemcisi doğrudan bağlantılı duruma geçer. Daha fazla bilgi için bkz. *nx_dhcpv6_request_solicit_rapid* için hizmet açıklaması.
+> Hızlı Yürütme seçeneği ayarlanırsa, DHCPv6 İstemcisi geçerli bir Sunucu ADVERTISE iletisi alırsa doğrudan Bağlı durumuna gider. Diğer ayrıntılar için *bkz. nx_dhcpv6_request_solicit_rapid* hizmet açıklaması.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istem iletisi başarıyla gönderildi
+- **NX_SUCCESS** (0x00) SOLICIT iletisi başarıyla gönderildi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1544,7 +1544,7 @@ status = nx_dhcpv6_request_solicit(&dhcp_0);
 
 ## <a name="nx_dhcpv6_request_solicit_rapid"></a>nx_dhcpv6_request_solicit_rapid
 
-Hızlı tamamlama seçeneğiyle bir Istem iletisi gönderin
+Hızlı Yürütme seçeneğiyle bir SOLICIT iletisi gönderme
 
 ### <a name="prototype"></a>Prototype
 
@@ -1552,23 +1552,23 @@ Hızlı tamamlama seçeneğiyle bir Istem iletisi gönderin
 UINT nx_dhcpv6_request_solicit_rapid(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, ağ üzerinde hızlı tamamlama seçeneği ayarlanmış bir Istem iletisi gönderir. İleti başarıyla gönderilirse, başarılı bir durum döndürülür. Başarılı bir tamamlama, Istemcinin bir yanıt aldığını veya henüz bir IPv6 adresi verildiğini ifade etmez. DHCPv6 Istemci iş parçacığı görevi DHCPv6 sunucusundan bir yanıt (bir TANıTıM iletisi) bekler. Bir tane alınmışsa, yanıtın geçerli olduğunu denetler, verileri Istemci kaydına depolar ve Istemciyi bağlantılı duruma yükseltir.
+Bu hizmet, Ağ üzerinde Hızlı Yürütme seçeneği ayarlanmış bir SOLICIT iletisi gönderir. İleti başarıyla gönderilirse başarılı bir durum döndürülür. Başarılı bir tamamlama, İstemcinin yanıt aldığı veya henüz bir IPv6 adresi verilmiş olduğu anlamına değildir. DHCPv6 İstemci iş parçacığı görevi, bir DHCPv6 Sunucusundan bir yanıt (BIR ADVERTISE iletisi) bekler. Alınan yanıt geçerli olup olmadığını denetler, verileri İstemci kaydına depolar ve İstemciyi BOUND durumuna yükselter.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istem iletisi başarıyla gönderildi
+- **NX_SUCCESS** (0x00) SOLICIT iletisi başarıyla gönderildi
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1590,7 +1590,7 @@ status = nx_dhcpv6_request_solicit_rapid(&dhcp_0);
 
 ## <a name="nx_dhcpv6_resume"></a>nx_dhcpv6_resume
 
-DHCPv6 Istemci görevini sürdürür 
+DHCPv6 İstemci görevini sürdürme 
 
 ### <a name="prototype"></a>Prototype
 
@@ -1598,23 +1598,23 @@ DHCPv6 Istemci görevini sürdürür
 UINT nx_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 Istemci iş parçacığı görevini sürdürür. Geçerli DHCPv6 Istemci durumu işlenecek (örn. bağlanma, Istek)
+Bu hizmet DHCPv6 İstemci iş parçacığı görevini sürdürür. Geçerli DHCPv6 İstemci durumu işlenir (örneğin, Bound, Solicit)
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istemci başarıyla sürdürüldü
+- **NX_SUCCESS** (0x00) İstemcisi başarıyla sürdürıldı
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1635,7 +1635,7 @@ status = nx_dhcpv6_resume(&dhcp_0);
 
 ## <a name="nx_dhcpv6_set_-time_accrued"></a>nx_dhcpv6_set_ time_accrued
 
-Istemcinin IP adresi kirası üzerinde tahakkuk eden süreyi ayarlar
+İstemcinin IP adresi kirası için tahakkuk eden zamanı ayarlar
 
 ### <a name="prototype"></a>Prototype
 
@@ -1644,23 +1644,23 @@ UINT nx_dhcpv6_set_time_accrued(NX_DHCPV6 *dhcpv6_ptr,
                                 ULONG time_accrued);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, Istemcinin genel IP adresi sunucu tarafından atandıktan sonra tahakkuk eden süreyi ayarlar. Bu, yalnızca bir Istemci atanmış bir IPv6 adresine bağlıysa kullanılmalıdır.
+Bu hizmet, sunucu tarafından atandığı için İstemcinin genel IP adresine tahakkuk eden saati ayarlar. Bu yalnızca bir İstemci şu anda atanmış bir IPv6 adresine bağlı ise kullanılmalıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
-- **time_accrued** IP kiralamasında tahakkuk eden saat
+- **time_accrued** IP kiralamada tahakkuk eden süre
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) tahakkuk eden zaman kümesi
+- **NX_SUCCESS** (0x00) Tahakkuk eden süre başarıyla ayarlanmış
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1683,7 +1683,7 @@ status = nx_dhcpv6_set_time_accrued(&dhcp_0, time_accrued);
 
 ## <a name="nx_dhcpv6_start"></a>nx_dhcpv6_start
 
-DHCPv6 Istemci görevini başlatın 
+DHCPv6 İstemcisi görevini başlatma 
 
 ### <a name="prototype"></a>Prototype
 
@@ -1691,25 +1691,25 @@ DHCPv6 Istemci görevini başlatın
 UINT nx_dhcpv6_start(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet DHCPv6 Istemci görevini başlatır ve Istemciyi DHCPv6 protokolünü çalıştırmaya hazırlar. Istemci örneğinin yeterli bilgilere sahip olduğunu doğrular (örneğin, bir Istemci DUıD), DHCPv6 iletilerini göndermek ve almak için UDP yuvasını oluşturup bağlar ve oturum süresini izlemek ve geçerli IPv6 kira süresinin dolması için zamanlayıcıları etkinleştirir.
+Bu hizmet DHCPv6 İstemcisi görevini başlatır ve İstemciyi DHCPv6 protokolünü çalıştırmaya hazırlar. İstemci örneğinin yeterli bilgiye sahip olduğunu doğrular (örneğin, İstemci DUID'si), DHCPv6 iletilerini göndermek ve almak için UDP yuvasını oluşturur ve bağlar ve oturum süresini ve geçerli IPv6 kira süresinin ne zaman sona erer olduğunu izlemek için süreerleri etkinleştirir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istemci başarıyla başlatıldı
+- **NX_SUCCESS** (0x00) İstemcisi başarıyla başlatıldı
 
-- **NX_DHCPV6_MISSING_REQUIRED_OPTIONS** (0xea9) istemcisinde gerekli seçenekler eksik
+- **NX_DHCPV6_MISSING_REQUIRED_OPTIONS** (0xEA9) İstemcide gerekli seçenekler eksik
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1731,7 +1731,7 @@ status = nx_dhcpv6_start(&dhcp_0);
 
 ## <a name="nx_dhcpv6_stop"></a>nx_dhcpv6_stop
 
-DHCPv6 Istemci görevini durdur 
+DHCPv6 İstemcisi görevini durdurma 
 
 ### <a name="prototype"></a>Prototype
 
@@ -1739,26 +1739,26 @@ DHCPv6 Istemci görevini durdur
 UINT nx_dhcpv6_stop(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 Istemci görevini sonlandırır ve yeniden aktarım sayısını, en fazla yeniden aktarım aralığını temizler, oturumu ve Kiralama süre sonu zamanlayıcıları devre dışı bırakır ve DHCPv6 Istemci yuva bağlantı noktasının bağlantısını kaldırır. Istemciyi yeniden başlatmak için, önce herhangi bir DHCPv6 sunucusu ile başka bir oturum başlatmadan önce Istemciyi durdurup isteğe bağlı olarak yeniden başlatmanız gerekir. Daha fazla bilgi için küçük örnek bölümüne bakın.
+Bu hizmet DHCPv6 İstemcisi görevini durdurur, yeniden iletim sayılarını, en fazla yeniden iletim aralıklarını temizler, oturumu ve kira süre sonu sürelerini devre dışı bırakarak DHCPv6 İstemci yuva bağlantı noktasının bağlantı noktasını devre dışı tutar. İstemciyi yeniden başlatmak için, herhangi bir DHCPv6 sunucusuyla başka bir oturum başlatmadan önce istemcinin durdurması ve isteğe bağlı olarak yeniden başlatılması gerekir. Diğer ayrıntılar için Küçük Örnek bölümüne bakın.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istemci başarıyla durduruldu
+- **NX_SUCCESS** (0x00) İstemcisi başarıyla durduruldu
 
-- **NX_DHCPV6_NOT_STARTED** (0xe92) istemci iş parçacığı başlatılmadı
+- **NX_DHCPV6_NOT_STARTED** (0xE92) İstemci iş parçacığı başlamadı
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -1780,7 +1780,7 @@ status = nx_dhcpv6_start(&dhcp_0);
 
 ## <a name="nx_dhcpv6_suspend"></a>nx_dhcpv6_suspend
 
-DHCPv6 Istemci görevini askıya alma 
+DHCPv6 İstemci görevini askıya alma 
 
 ### <a name="prototype"></a>Prototype
 
@@ -1788,25 +1788,25 @@ DHCPv6 Istemci görevini askıya alma
 UINT nx_dhcpv6_suspend(NX_DHCPV6 *dhcpv6_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, DHCPv6 istemci görevini ve işlemin ortasında olduğu tüm istekleri askıya alır. Zamanlayıcılar devre dışı bırakılır ve Istemci durumu çalışmıyor olarak ayarlanır.
+Bu hizmet DHCPv6 istemci görevini ve işlemenin ortasındaki tüm istekleri askıya alır. Süreerler devre dışı bırakılır ve İstemci durumu çalışmıyor olarak ayarlanır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **dhcpv6_ptr** DHCPv6 Istemci örneği işaretçisi
+- **dhcpv6_ptr** DHCPv6 İstemci örneği işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) istemci başarıyla askıya alındı
+- **NX_SUCCESS** (0x00) İstemcisi başarıyla askıya alındı
 
-- **NX_DHCPV6_NOT_STARTED** (0xe92) istemci çalışmıyor, askıya alınamıyor
+- **NX_DHCPV6_NOT_STARTED** (0XE92) İstemcisi çalışmıyor, bu nedenle askıya alınamaz
 
-- NX_PTR_ERROR (0x16) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x16) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) iş parçacığından çağrılmalıdır
+- NX_CALLER_ERROR (0x11) İş parçacığından çağrılmalı
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 

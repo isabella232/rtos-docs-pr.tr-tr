@@ -6,12 +6,12 @@ ms.service: rtos
 ms.topic: article
 ms.date: 5/19/2020
 ms.author: philmea
-ms.openlocfilehash: 05d7fe3df38c7e8a3480c8ea0d4922a109de9ede
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 1a375975ef80cfb7b56466f5d91ed9a0ca00a20a38108e1b81f4fe8e5d85278d
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104827574"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116802212"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-tracex"></a>Bölüm 2-Azure RTOS TraceX yükleme ve kullanımı
 
@@ -23,7 +23,7 @@ Tracex 'yi arayarak veya doğrudan [tracex sayfasına](https://www.microsoft.com
 
 1. Uygulama mağazasındaki TraceX sayfasında, TraceX **'yi yüklemek** için **Al veya Al** düğmesine tıklayın.
 
-1. Tarayıcınız, aşağıdaki şekilde gösterildiği gibi Microsoft Store açmak isteyip istemediğinizi soran bir ileti görüntülenebilir. Varsa, **Aç** düğmesini seçin.
+1. tarayıcınız, aşağıdaki şekilde gösterildiği gibi Microsoft Store açmak isteyip istemediğinizi soran bir ileti görüntülenebilir. Varsa, **Aç** düğmesini seçin.
 ![Trackingex 'ı yüklemek için Aç ' ı seçin.](../guix/media/guix-studio/open-ms-store.png)
 
 1. Yüklemesi tamamlandığında, **Başlat** düğmesini seçin. 

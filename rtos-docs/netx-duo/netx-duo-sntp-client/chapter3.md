@@ -1,48 +1,48 @@
 ---
-title: Bölüm 3-Azure RTOS NetX Duo SNTP Istemci hizmetlerinin açıklaması
-description: Bu bölüm, tüm NetX Duo SNTP Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+title: Bölüm 3 - NetX Duo Azure RTOS SNTP İstemci Hizmetlerinin Açıklaması
+description: Bu bölümde, tüm NetX Duo SNTP İstemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 75b2b878cd084ca1c1cdd1eed4333d303fe32ad6
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 7aee18642e480ec61488515164c8a6816753dca86eb8f6d146ea22d4956e037a
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825745"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116791678"
 ---
-# <a name="chapter-3---description-of-azure-rtos-netx-duo-sntp-client-services"></a>Bölüm 3-Azure RTOS NetX Duo SNTP Istemci hizmetlerinin açıklaması
+# <a name="chapter-3---description-of-azure-rtos-netx-duo-sntp-client-services"></a>Bölüm 3 - NetX Duo Azure RTOS SNTP İstemci Hizmetlerinin Açıklaması
 
-Bu bölüm, tüm Azure RTOS NetX Duo SNTP Istemci hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklamasını içerir.
+Bu bölümde tüm NetX Duo SNTP Azure RTOS hizmetlerinin (aşağıda listelenmiştir) alfabetik sırada bir açıklaması yer almaktadır.
 
-Aşağıdaki API açıklamalarındaki "dönüş değerleri" bölümünde, **kalın** olmayan değerler, API hata denetimini devre dışı bırakmak için kullanılan **NX_DISABLE_ERROR_CHECKING** tanımlanmasından etkilenmez, ancak kalın olmayan değerler tamamen devre dışı bırakılır.
+Aşağıdaki API açıklamalarında yer alan "Dönüş Değerleri" bölümünde, **KALıN**  olmayan değerler tamamen devre dışı bırakılırken, BOLD NX_DISABLE_ERROR_CHECKING API hata denetimlerini devre dışı bırakmak için kullanılan tanımdan etkilenmez.
 
-- **nx_sntp_client_create**: *SNTP istemcisini oluşturma*
-- **nx_sntp_client_delete**: *SNTP istemcisini silme*
-- **nx_sntp_client_get_local_time**: *SNTP istemci yerel saati al*
-- **nx_sntp_client_get_local_time_extended**: *SNTP istemci yerel saati al*
-- **nx_sntp_client_initialize_broadcast**: *istemciyi IPv4 yayını işlemi için başlatın*
-- **nxd_sntp_client_initialize_broadcast**: *IPv6 veya IPv4 yayın işlemi için istemciyi başlatın*
-- **nx_sntp_client_initialize_unicast**: *istemciyi IPv4 tek noktaya yayın işlemi için başlatın*
-- **nxd_sntp_client_initialize_unicast**: *Istemciyi IPv4 veya IPv6 tek noktaya yayın işlemi için başlatın*
-- **nx_sntp_client_receiving_udpates**: *istemci şu anda geçerli SNTP güncelleştirmelerini alıyor*
-- **nx_sntp_client_request_unicast_time**: *doğrudan NTP sunucusuna bir tek noktaya yayın isteği gönderin*
-- **nx_sntp_client_run_broadcast**: *istemciyi yayın modunda çalıştırın*
-- **nx_sntp_client_run_unicast**: *istemciyi tek noktaya yayın modunda çalıştırma*
-- **nx_sntp_client_set_local_time**: *SNTP istemcisinin ilk yerel saatini ayarla*
-- **nx_sntp_client_set_time_update_notify**: *SNTP güncelleştirme geri aramasını ayarlama*
-- **nx_sntp_client_stop**: *SNTP istemci iş parçacığını durdur*
-- **nx_sntp_client_utility_display_date_and_time**: *NTP süresini saniye cinsinden görüntüle*
-- **nx_sntp_client_utility_msecs_to_fraction**: *milisaniyeyi NTP kesir bileşenine dönüştürme*
-- **nx_sntp_client_utility_usecs_to_fraction**: *mikrosaniye 'yi NTP kesir Bileşenine Dönüştür*
-- **nx_sntp_client_utility_fraction_to_usecs**: *NTP kesir bileşenini mikrosaniye olarak dönüştürme*
+- **nx_sntp_client_create:** *SNTP İstemcisi Oluşturma*
+- **nx_sntp_client_delete:** *SNTP İstemcisini Silme*
+- **nx_sntp_client_get_local_time:** *SNTP İstemcisi yerel saati al*
+- **nx_sntp_client_get_local_time_extended:** *SNTP İstemcisi yerel saati al*
+- **nx_sntp_client_initialize_broadcast:** *IPv4 yayın işlemi için İstemci başlatma*
+- **nxd_sntp_client_initialize_broadcast:** *IPv6 veya IPv4 yayın işlemi için İstemci başlatma*
+- **nx_sntp_client_initialize_unicast:** *IPv4 tek noktaya yayın işlemi için İstemci başlatma*
+- **nxd_sntp_client_initialize_unicast:** *IPv4 veya IPv6 tek noktaya* yayın işlemi için İstemci başlatma
+- **nx_sntp_client_receiving_udpates:** İstemci *şu anda geçerli SNTP güncelleştirmeleri alıyor*
+- **nx_sntp_client_request_unicast_time:** Doğrudan *NTP Sunucusuna tek noktaya yayın isteği gönderme*
+- **nx_sntp_client_run_broadcast:** *İstemciyi yayın modunda çalıştırma*
+- **nx_sntp_client_run_unicast:** *İstemciyi tek noktaya yayın modunda çalıştırma*
+- **nx_sntp_client_set_local_time:** *SNTP İstemcisi ilk yerel saati ayarlayın*
+- **nx_sntp_client_set_time_update_notify:** *SNTP güncelleştirme geri aramasını ayarlama*
+- **nx_sntp_client_stop:** *SNTP İstemcisi iş parçacığını durdurun*
+- **nx_sntp_client_utility_display_date_and_time:** *NTP süresi saniye olarak görüntülenir*
+- **nx_sntp_client_utility_msecs_to_fraction:** *Milisaniyeleri NTP kesir bileşenine dönüştürme*
+- **nx_sntp_client_utility_usecs_to_fraction:** *Mikrosaniyeleri NTP kesir bileşenine dönüştürme*
+- **nx_sntp_client_utility_fraction_to_usecs:** *NTP kesir bileşenini mikrosaniyeye dönüştürme*
 
 
 ## <a name="nx_sntp_client_create"></a>nx_sntp_client_create
 
-SNTP Istemcisi oluşturma
+SNTP İstemcisi Oluşturma
 
 ### <a name="prototype"></a>Prototype
 
@@ -59,39 +59,39 @@ VOID (random_number_generator)(struct NX_SNTP_CLIENT_STRUCT
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet bir SNTP Istemci örneği oluşturur.
+Bu hizmet bir SNTP İstemci örneği oluşturur.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr** SNTP Istemci denetim bloğu işaretçisi
+- **client_ptr** SNTP İstemcisi denetim bloğu işaretçisi
 
-- **ip_ptr** Istemci IP örneği işaretçisi
+- **ip_ptr** İstemci IP örneğine işaretçi
 
-- **iface_index** SNTP ağ arabirimine Dizin
+- **iface_index** SNTP ağ arabirimine dizin oluşturma
 
-- **packet_pool_ptr** Istemci paket havuzu işaretçisi
+- **packet_pool_ptr** İstemci paket havuzu işaretçisi
 
-- **leap_second_handler** Uygulama yanıtı için geri çağırma, artık saniye
+- **leap_second_handler** Yaklaşan artık saniyeye uygulama yanıtı için geri çağırma
 
-- **kiss_of_death_handler** Uygulama yanıtı için geri çağırma paketin Kiss 'i alma
+- **kiss_of_death_handler** Ölüm Paketi almaya uygulama yanıtı için geri çağırma
 
-- **random_number_generator** Rastgele sayı Oluşturucu hizmetine geri çağırma
+- **random_number_generator** Rastgele sayı oluşturucu hizmetine geri çağrı
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) Istemci oluşturma başarılı
+- **NX_SUCCESS** (0x00) Başarılı İstemci oluşturma
 
-- **NX_SNTP_INSUFFICIENT_PACKET_PAYLOAD** (0xd2a) geçersiz işaretçi girişi
+- **NX_SNTP_INSUFFICIENT_PACKET_PAYLOAD** (0xD2A) İşaretçi olmayan giriş geçersiz
 
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-- NX_INVALID_INTERFACE (0x4C) geçersiz ağ arabirimi
+- NX_INVALID_INTERFACE (0x4C) Geçersiz ağ arabirimi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -111,7 +111,7 @@ NULL /* no random_number_generator callback */);
 
 ## <a name="nx_sntp_client_delete"></a>nx_sntp_client_delete
 
-Bir SNTP Istemcisini silme
+SNTP İstemcisini Silme
 
 ### <a name="prototype"></a>Prototype
 
@@ -119,23 +119,23 @@ Bir SNTP Istemcisini silme
 UINT nx_sntp_client_delete(NX_SNTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, bir SNTP Istemci örneğini siler.
+Bu hizmet bir SNTP İstemci örneğini siler.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr** SNTP Istemci denetim bloğu işaretçisi
+- **client_ptr** SNTP İstemcisi denetim bloğu işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) Istemci oluşturma başarılı
+- **NX_SUCCESS** (0x00) Başarılı İstemci oluşturma
 
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) geçersiz hizmet çağıranı
+- NX_CALLER_ERROR (0x11) Geçersiz hizmet çağıran
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -152,7 +152,7 @@ status =  nx_sntp_client_delete(&demo_client);
 
 ## <a name="nx_sntp_client_get_local_time"></a>nx_sntp_client_get_local_time
 
-SNTP Istemci yerel saatini al
+SNTP İstemcisi yerel saati al
 
 ### <a name="prototype"></a>Prototype
 
@@ -164,31 +164,31 @@ UINT nx_sntp_client_get_local_time(NX_SNTP_CLIENT *client_ptr ,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, verileri dize ileti biçiminde almak için bir seçenek arabellek işaretçisi girişi ile SNTP Istemci yerel saatini alır.
+Bu hizmet, dize iletisi biçimindeki verileri almak için bir seçenek arabellek işaretçisi girişi ile SNTP İstemcisi yerel saat alır.
 
-Bu hizmet kullanımdan kaldırılmıştır. Geliştiricilerin *nx_sntp_client_get_local_time_extended*() uygulamasına geçirilmesi önerilir.
+Bu hizmet kullanım dışıdır. Geliştiricilerin nx_sntp_client_get_local_time_extended () *geçişleri* teşvik edilecektir.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr** SNTP Istemci denetim bloğu işaretçisi
+- **client_ptr** SNTP İstemcisi denetim bloğu işaretçisi
 
-- **saniyeler** Yerel saat/saniye işaretçisi
+- **saniye** Yerel saat saniye işaretçisi
 
-- **kesir** Yerel zaman kesir bileşeni
+- **kesir** Yerel saat kesir bileşeni
 
-- **arabellek** Zaman verilerini yazmak için arabellek işaretçisi
+- **buffer (arabellek)** Yazma zamanı verilerini arabelleğe alma işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) Istemci oluşturma başarılı
+- **NX_SUCCESS** (0x00) Başarılı İstemci oluşturma
 
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) geçersiz hizmet çağıranı
+- NX_CALLER_ERROR (0x11) Geçersiz hizmet çağıran
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -212,7 +212,7 @@ status =  nx_sntp_client_get_local_time(&demo_client,
 
 ## <a name="nx_sntp_client_get_local_time_extended"></a>nx_sntp_client_get_local_time_extended
 
-Genişletilmiş SNTP Istemcisi yerel saatini al
+Genişletilmiş SNTP İstemcisi yerel saatlerini al
 
 ### <a name="prototype"></a>Prototype
 
@@ -226,33 +226,33 @@ UINT nx_sntp_client_get_local_time_extended(
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, verileri dize ileti biçiminde almak için bir seçenek arabellek işaretçisi girişi ile genişletilmiş SNTP Istemci yerel saatini alır.
+Bu hizmet, dize iletisi biçimindeki verileri almak için bir seçenek arabellek işaretçisi girişi ile genişletilmiş SNTP İstemcisi yerel saat alır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **client_ptr** SNTP Istemci denetim bloğu işaretçisi
+- **client_ptr** SNTP İstemcisi denetim bloğu işaretçisi
 
-- **saniyeler** Yerel saat/saniye işaretçisi
+- **saniye** Yerel saat saniye işaretçisi
 
 - **kesir** Kesir bileşeni işaretçisi
 
-- **arabellek** Zaman verilerini yazmak için arabellek işaretçisi
+- **buffer (arabellek)** Yazma zamanı verilerini arabelleğe alma işaretçisi
 
-- **Buffer_size** Arabellek uzunluğu
+- **buffer_size** Arabellek uzunluğu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) Istemci oluşturma başarılı
+- **NX_SUCCESS** (0x00) Başarılı İstemci oluşturma
 
-- NX_PTR_ERROR (0x07) geçersiz işaretçi girişi
+- NX_PTR_ERROR (0x07) Geçersiz işaretçi girişi
 
-- NX_CALLER_ERROR (0x11) geçersiz hizmet çağıranı
+- NX_CALLER_ERROR (0x11) Geçersiz hizmet çağıran
 
-- NX_SIZE_ERROR (0x09) denetim buffer_size başarısız oldu
+- NX_SIZE_ERROR (0x09) Başarısız buffer_size denetleme
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
 İş Parçacıkları
 
@@ -281,7 +281,7 @@ status =  nx_sntp_client_get_local_time_extended(&demo_client,
 
 ## <a name="nx_sntp_client_initialize_broadcast"></a>nx_sntp_client_initialize_broadcast
 
-Yayın için Istemciyi başlatma işlemi
+Yayın işlemi için İstemciyi başlatma
 
 ### <a name="prototype"></a>Prototype
 
@@ -293,7 +293,7 @@ UINT nx_sntp_client_initialize_broadcast(NX_SNTP_CLIENT *client_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP sunucu IP adresini ayarlayarak ve SNTP başlangıç parametrelerini ve zaman aşımlarını başlatarak, yayın için Istemciyi başlatır. Hem çok noktaya yayın hem de yayın adresleri null değilse, çok noktaya yayın adresi seçilir. Her iki adres null ise bir hata döndürülür. Bu, yalnızca IPv4 sunucu adreslerini destekler.
 
@@ -344,7 +344,7 @@ UINT nxd_sntp_client_initialize_broadcast(NX_SNTP_CLIENT *client_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP sunucu IP adresini ayarlayıp SNTP başlangıç parametrelerini ve zaman aşımlarını başlatarak yayın için Istemciyi başlatır. Hem yayın hem çok noktaya yayın adres işaretçileri null değilse, çok noktaya yayın adresi seçilir. Her iki adres işaretçisi de null ise bir hata döndürülür. Bu, hem IPv4 hem de IPv6 adres türlerini destekler. IPv6 yayını desteklemez, bu nedenle yayın adresi işaretçisi IPv6 olarak ayarlanır, bir hata döndürülür.
 
@@ -403,7 +403,7 @@ UINT nx_sntp_client_initialize_unicast(NX_SNTP_CLIENT * client_ptr,
                                         ULONG unicast_time_server);
 
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP sunucu IP adresini ayarlayarak ve SNTP başlangıç parametrelerini ve zaman aşımlarını başlatarak tek noktaya yayın işlemi için Istemciyi başlatır. Bu, yalnızca IPv4 sunucu adreslerini destekler.
 
@@ -453,7 +453,7 @@ UINT nxd_sntp_client_initialize_unicast(NX_SNTP_CLIENT * client_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP sunucu IP adresini ayarlayıp SNTP başlangıç parametrelerini ve zaman aşımlarını başlatarak tek noktaya yayın işlemi için Istemciyi başlatır. Bu, hem IPv4 hem de IPv6 adres türlerini destekler.
 
@@ -510,7 +510,7 @@ UINT nx_sntp_client_receiving_updates(NX_SNTP_CLIENT *client_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemcinin geçerli SNTP güncelleştirmelerini alıp almadığını gösterir. En uzun süre geçerli bir güncelleştirme olmadan veya birbirini izleyen geçersiz güncelleştirmeler için sınır aşıldıysa, alma durumu false olarak döndürülür. SNTP Istemcisinin hala çalıştığını ve uygulamanın başka bir tek noktaya yayın veya yayın/çok noktaya yayın sunucusu ile SNTP Istemcisini yeniden başlatmasını isterse *nx_sntp_client_stop* HIZMETINI kullanarak SNTP istemcisini durdurması gerekir, başka bir sunucu ile başlatma hizmetlerinden birini kullanarak istemciyi yeniden başlatın.
 
@@ -556,7 +556,7 @@ UINT nx_sntp_client_request_unicast_time(NX_SNTP_CLIENT *client_ptr,
                                                   UINT wait_option);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, uygulamanın bir tek noktaya yayın isteğini, SNTP Istemci iş parçacığı görevinin zaman uyumsuz olarak NTP sunucusuna doğrudan göndermesini sağlar. Bekle seçeneği, yanıt için ne kadar bekleneceğini belirtir. Başarılı olursa, uygulama, en son saati elde etmek için diğer SNTP Istemci hizmetlerini kullanabilir. Daha fazla ayrıntı için bkz. **SNTP zaman uyumsuz tek noktaya yayın istekleri** .
 
@@ -603,7 +603,7 @@ Istemciyi yayın modunda çalıştır
 UINT nx_sntp_client_run_broadcast(NX_SNTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemci, SNTP sunucusundan yayınlar almak için bekleyeceği, yayın modunda başlatılır. Geçerli bir, SNTP iletisi alınmışsa, bir güncelleştirme olmadan maksimum lapken için SNTP istemci zaman aşımı ve alınan birbirini izleyen geçersiz iletilerin sayısı sıfırlanır. Bu limitlerden herhangi biri aşılırsa, SNTP Istemcisi sunucu durumunu geçersiz olarak ayarlar, ancak yine de güncelleştirmeleri almaya bekleyecek. Uygulama, sunucu durumu için SNTP Istemci görevini yoklayabiliyor ve geçersiz SNTP Istemcisini durdurup başka bir SNTP yayın adresiyle yeniden başlatın. Ayrıca tek noktaya yayın SNTP sunucusuna geçiş yapabilir.
 
@@ -647,7 +647,7 @@ Istemciyi tek noktaya yayın modunda çalıştırma
 UINT nx_sntp_client_run_unicast(NX_SNTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, Istemciyi bir zaman güncelleştirmesi için düzenli olarak SNTP sunucusuna bir tek noktaya yayın isteği gönderdiği tek noktaya yayın modunda başlatır. Geçerli bir SNTP iletisi alınmışsa, güncelleştirme olmadan maksimum lapken için SNTP istemci zaman aşımı, ilk yoklama aralığı ve alınan ardışık geçersiz ileti sayısı sıfırlanır. Bu limitlerden herhangi biri aşılırsa, SNTP Istemcisi sunucu durumunu geçersiz olarak ayarlar, ancak yine de yoklama yapar ve güncelleştirmeleri almaya bekler. Uygulama, sunucu durumu için SNTP Istemci görevini yoklayabiliyor ve geçersiz SNTP Istemcisini durdurup başka bir SNTP tek noktaya yayın adresiyle yeniden başlatın. Ayrıca, bir yayın SNTP sunucusuna geçiş yapabilir.
 
@@ -696,7 +696,7 @@ UINT nx_sntp_client_set_local_time(NX_SNTP_CLIENT *client_ptr ,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP Istemci yerel saati ' ni, değer olarak ondalık biçimde (örneğin, saniye ve ' kesir '), onaltılı biçimde bir saniyede yerleştirmek için biçim olan SNTP biçiminde ayarlar. Gerçek zamanlı bir zaman ile (örn. gerçek zamanlı olarak) SNTP Istemci yerel saati 'nin güncelleştirilmesi amaçlanmıştır. SNTP protokolü, yerel saat zamanını ' dritaslağı ' üzerinden tutmak için SNTP zaman güncelleştirmelerine yöneliktir. SNTP sunucu saati güncelleştirmeleri olabilir, ancak uygulama cihazında bağımsız bir zaman Man yoksa, SNTP Istemci yerel saatine tek giriş olarak atanmamıştır.
 
@@ -749,7 +749,7 @@ UINT nx_sntp_client_set_time_update_notify(NX_SNTP_CLIENT *client_ptr,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP Istemcisi geçerli bir saat güncelleştirmesi aldığında uygulamayı bilgilendirmek için geri çağırma işlemini ayarlar. Gerçek SNTP iletisini ve SNTP Istemcisinin yerel saatini (genellikle aynı) NTP biçiminde sağlar. Uygulama, NTP verilerini doğrudan kullanabilir veya *nx_sntp_client_utility_display_date_time hizmetini* arayarak zaman okunabilir biçime dönüştürebilir.
 
@@ -797,7 +797,7 @@ SNTP Istemci iş parçacığını durdur
 UINT nx_sntp_client_stop(NX_SNTP_CLIENT *client_ptr);
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
 Bu hizmet, SNTP Istemci iş parçacığını durduruyor. Sonsuz bir döngüde çalışan SNTP Istemci iş parçacığı görevleri, SNTP istemci durumunun denetimini serbest bırakma ve uygulamaların SNTP Istemcisinde API çağrıları yapmasına izin veren her yinelemede duraklatılır.
 
@@ -815,7 +815,7 @@ Bu hizmet, SNTP Istemci iş parçacığını durduruyor. Sonsuz bir döngüde ç
 
 ### <a name="allowed-from"></a>İzin verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -830,7 +830,7 @@ status =  nx_sntp_client_stop(&demo_client);
 
 ## <a name="nx_sntp_client_utility_display_date_time"></a>nx_sntp_client_utility_display_date_time
 
-NTP saatini tarih ve saat dizesine Dönüştür
+NTP Saat'i Tarih ve Saat dizesine dönüştürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -840,30 +840,30 @@ UINT nx_sntp_client_utility_display_date_time (NX_SNTP_CLIENT
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, SNTP Istemci yerel saatini yıl ay tarih biçimine dönüştürür ve sağlanan arabellekteki tarihi döndürür. NX_SNTP_CURRENT_YEAR geçerli Istemci saatine göre aynı yıl olması gerekir, ancak tanımlanmalıdır.
+Bu hizmet, SNTP İstemcisi yerel saatlerini yıl ay tarih biçimine dönüştürür ve sağlanan arabellekteki tarihi döndürür. NX_SNTP_CURRENT_YEAR, geçerli İstemci saati ile aynı yıl değil, tanımlanmalıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **SNTP Istemcisine client_ptr Işaretçisi**
+- **SNTP İstemcisi client_ptr İşaretçisi**
 
-- **arabellek** Tarihi depolamak için arabelleğin işaretçisi
+- **buffer (arabellek)** Depolama tarihi için arabelleğe işaretçi
 
 - **uzunluk** Giriş arabelleğinin boyutu
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı dönüştürme
+- **NX_SUCCESS** (0x00) Başarılı dönüştürme
 
-- **NX_SNTP_ERROR_CONVERTING_DATETIME** (0xd08) NX_SNTP_CURRENT_YEAR tanımlı değil veya hiçbir yerel istemci zamanı kurulmadı
+- **NX_SNTP_ERROR_CONVERTING_DATETIME** (0xD08) NX_SNTP_CURRENT_YEAR veya hiçbir yerel istemci zamanı kurulmamış
 
-- **NX_SNTP_INVALID_DATETIME_BUFFER** (0xd07) yetersiz arabellek uzunluğu
+- **NX_SNTP_INVALID_DATETIME_BUFFER** (0xD07) Yetersiz arabellek uzunluğu
 
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -880,7 +880,7 @@ status =  nx_sntp_client_utility_display_date_time(client_ptr ,
 
 ## <a name="nx_sntp_client_utility_msecs_to_fraction"></a>nx_sntp_client_utility_msecs_to_fraction
 
-Milisaniyeyi NTP kesir Bileşenine Dönüştür
+Milisaniyeyi NTP kesir bileşenine dönüştürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -890,27 +890,27 @@ UINT nx_sntp_client_utility_msecs_to_fraction (ULONG milliseconds,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet giriş milisaniyesini NTP kesir bileşenine dönüştürür. Bu, SNTP Istemcisinin başlangıç temel saati olan uygulamalarla ve NTP saniyesi/kesir biçiminde değil, kullanılmak üzere tasarlanmıştır. Geçerli bir kesir yapmak için milisaniye sayısı 1000 ' den az olmalıdır.
+Bu hizmet, girdi milisaniyesini NTP kesir bileşenine dönüştürür. SNTP İstemcisi için başlangıç temel süresi olan ancak NTP saniye/kesir biçiminde olmayan uygulamalarla kullanılmak üzere tasarlanmıştır. Geçerli bir kesir yapmak için milisaniye sayısı 1000'den az olmalıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **Dönüştürülecek milisaniye milisaniyesi**
+- **dönüştürülecek milisaniye milisaniye**
 
-- **kesir** Milisaniyeye, kesire dönüştürülmüş işaretçi
+- **kesir** Milisaniye işaretçisi kesir olarak dönüştürülür
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı dönüştürme
+- **NX_SUCCESS** (0x00) Başarılı dönüştürme
 
-- **NX_SNTP_OVERFLOW_ERROR** (0xd32) saati tarihe dönüştürme hatası
+- **NX_SNTP_OVERFLOW_ERROR** (0xD32) Saati tarihe dönüştürme hatası
 
-- NX_SNTP_INVALID_TIME (0xD30) geçersiz SNTP veri girişi
+- NX_SNTP_INVALID_TIME (0xD30) Geçersiz SNTP veri girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -928,7 +928,7 @@ status =  nx_sntp_client_utility_msecs_to_fraction(milliseconds,
 
 ## <a name="nx_sntp_client_utility_usecs_to_fraction"></a>nx_sntp_client_utility_usecs_to_fraction
 
-Mikromikrosaniye bir NTP kesir Bileşenine Dönüştür
+Mikro saniyeleri NTP kesir bileşenine dönüştürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -937,27 +937,27 @@ UINT nx_sntp_client_utility_usecs_to_fraction (ULONG microseconds,
                                                  ULONG *fraction);
 
 ```
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, giriş mikrosaniye 'ni NTP kesir bileşenine dönüştürür. Bu, SNTP Istemcisinin başlangıç temel saati olan uygulamalarla ve NTP saniyesi/kesir biçiminde değil, kullanılmak üzere tasarlanmıştır. Mikrosaniye sayısı, geçerli bir kesir yapmak için 1000000 'den az olmalıdır.
+Bu hizmet, giriş mikro saniyesini NTP kesir bileşenine dönüştürür. SNTP İstemcisi için başlangıç temel süresi olan ancak NTP saniye/kesir biçiminde olmayan uygulamalarla kullanılmak üzere tasarlanmıştır. Geçerli bir kesir yapmak için mikro saniye sayısı 10000000'den az olmalıdır.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **mikrosaniye** Dönüştürülecek mikrosaniye
+- **microseconds** Dönüştürülecek mikrosaniye
 
-- **kesir** Mikrosaniye için bir mikrosaniye işaretçisine işaretçiye dönüştürme
+- **kesir** Mikrosaniye işaretçisi kesir olarak dönüştürülür
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı dönüştürme
+- **NX_SUCCESS** (0x00) Başarılı dönüştürme
 
-- **NX_SNTP_OVERFLOW_ERROR** (0xd32) saati tarihe dönüştürme hatası
+- **NX_SNTP_OVERFLOW_ERROR** (0xD32) Saati tarihe dönüştürme hatası
 
-- NX_SNTP_INVALID_TIME (0xD30) geçersiz SNTP veri girişi
+- NX_SNTP_INVALID_TIME (0xD30) Geçersiz SNTP veri girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 
@@ -974,7 +974,7 @@ status =  nx_sntp_client_utility_msecs_to_fraction(microseconds,
 
 ## <a name="nx_sntp_client_utility_fraction_to_usecs"></a>nx_sntp_client_utility_fraction_to_usecs
 
-NTP kesir bileşenini mikrosaniye olarak dönüştürme
+NTP kesir bileşenini mikrosaniyeye dönüştürme
 
 ### <a name="prototype"></a>Prototype
 
@@ -984,25 +984,25 @@ UINT nx_sntp_client_utility_fraction_to_usecs (ULONG fraction,
 
 ```
 
-### <a name="description"></a>Açıklama
+### <a name="description"></a>Description
 
-Bu hizmet, giriş NTP kesir bileşenini mikrosaniye olarak dönüştürür.
+Bu hizmet, giriş NTP kesir bileşenini mikrosaniyeye dönüştürür.
 
 ### <a name="input-parameters"></a>Giriş Parametreleri
 
-- **Dönüştürülecek kesir kesri**
+- **dönüştürülecek kesir kesir**
 
-- **mikrosaniye** Mikrosaniye 'a dönüştürülen kesir işaretçisi
+- **microseconds** Mikrosaniyeye dönüştürülen kesir işaretçisi
 
 ### <a name="return-values"></a>Dönüş Değerleri
 
-- **NX_SUCCESS** (0x00) başarılı dönüştürme
+- **NX_SUCCESS** (0x00) Başarılı dönüştürme
 
-- NX_SNTP_INVALID_TIME (0xD30) geçersiz SNTP veri girişi
+- NX_SNTP_INVALID_TIME (0xD30) Geçersiz SNTP veri girişi
 
-### <a name="allowed-from"></a>İzin verilen
+### <a name="allowed-from"></a>İzin Verilen
 
-Başlatma, Iş parçacıkları
+Başlatma, İş Parçacıkları
 
 ### <a name="example"></a>Örnek
 

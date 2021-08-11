@@ -1,79 +1,79 @@
 ---
-title: Bölüm 1-Azure RTOS NetX Duo DNS Istemcisine giriş
-description: DNS, etki alanı adlarıyla fiziksel IP adresleri arasında eşleme içeren dağıtılmış bir veritabanı sağlar.
+title: Bölüm 1 - NetX Duo DNS Azure RTOS'ne giriş
+description: DNS, etki alanı adları ile fiziksel IP adresleri arasında eşleme içeren dağıtılmış bir veritabanı sağlar.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 4c07d6e3183d421c637874dcdeff3767554fca78
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: e878d32d6bcf514bb75a76b51e66c4d267b1a5b34f6c4b2df6ab231e5814ffc5
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826026"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792067"
 ---
-# <a name="chapter-1---introduction-to-the-azure-rtos-netx-duo-dns-client"></a>Bölüm 1-Azure RTOS NetX Duo DNS Istemcisine giriş
+# <a name="chapter-1---introduction-to-the-azure-rtos-netx-duo-dns-client"></a>Bölüm 1 - NetX Duo DNS Azure RTOS'ne giriş
 
-DNS, etki alanı adlarıyla fiziksel IP adresleri arasında eşleme içeren dağıtılmış bir veritabanı sağlar. Tüm eşlemeyi içeren Internet 'te tek bir varlık bulunmadığından, veritabanı *dağıtıldı* olarak adlandırılır. Eşlemenin bir kısmını tutan bir varlığa, DNS sunucusu denir. Internet, her biri bir veritabanının alt kümesini içeren çok sayıda DNS sunucusundan oluşur. DNS sunucuları, etki alanı adı eşleme bilgileri için DNS Istemci isteklerini de yalnızca sunucuda istenen eşleme varsa yanıtlar.
+DNS, etki alanı adları ile fiziksel IP adresleri arasında eşleme içeren dağıtılmış bir veritabanı sağlar. İnternet üzerinde tam eşlemeyi *içeren tek* bir varlık olduğundan veritabanı dağıtılmış olarak adlandırılır. Eşlemenin bir bölümünü bulunduran bir varlığa DNS Sunucusu denir. İnternet, her biri veritabanının bir alt kümesini içeren çok sayıda DNS Sunucusu'lardan oluşur. DNS Sunucuları ayrıca etki alanı adı eşleme bilgileri için DNS İstemcisi isteklerine yalnızca istenen eşlemeye sahipse yanıt verir.
 
-NetX Duo için DNS Istemci protokolü, uygulamayı bir veya daha fazla DNS sunucusundan eşleme bilgilerini istemek üzere hizmetlerle birlikte sağlar.
+NetX Duo için DNS İstemcisi protokolü, uygulamaya bir veya daha fazla DNS Sunucusundan eşleme bilgileri talep etmek için hizmetler sağlar.
 
-## <a name="dns-client-setup"></a>DNS Istemcisi kurulumu
+## <a name="dns-client-setup"></a>DNS İstemcisi Kurulumu
 
-Düzgün çalışması için, DNS Istemci paketi bir NetX Duo IP örneğinin zaten oluşturulmuş olmasını gerektirir.
+DNS İstemcisi paketinin düzgün çalışması için netX Duo IP örneğinin önceden oluşturulmuş olması gerekir.
 
-DNS Istemcisini oluşturduktan sonra, uygulamanın DNS Istemcisi tarafından tutulan sunucu listesine bir veya daha fazla DNS sunucusu eklemesi gerekir. Uygulama, DNS sunucuları eklemek için *nxd_dns_server_add* hizmetini kullanır. NetX Duo DNS Istemci hizmeti *nx_dns_server_add* sunucu eklemek için de kullanılabilir. Ancak yalnızca IPv4 adreslerini kabul eder ve geliştiricilerin bunun yerine *nxd_dns_server_add* hizmetini kullanması önerilir.
+DNS İstemcisi'ni oluşturduktan sonra, uygulamanın DNS İstemcisi tarafından bakımı yapılan sunucu listesine bir veya daha fazla DNS sunucusu eklemesi gerekir. Uygulama, DNS sunucuları eklemek için nxd_dns_server_add *kullanır.* NetX Duo DNS İstemcisi hizmeti *nx_dns_server_add* eklemek için de kullanılabilir. Ancak yalnızca IPv4 adreslerini kabul eder ve geliştiricilerin bunun yerine IPv4 *nxd_dns_server_add* kullanılması önerilir.
 
-NX_DNS_IP_GATEWAY_SERVER seçeneği etkinse ve IP örneği ağ geçidi adresi sıfır değilse, IP örneği ağ geçidi, birincil DNS sunucusu olarak otomatik olarak eklenir. DNS sunucusu bilgileri statik olarak bilinmiyorsa, NetX Duo için dinamik ana bilgisayar Yapılandırma Protokolü (DHCP) üzerinden de türetilebilir. Daha fazla bilgi için lütfen NetX Duo DHCP Kullanıcı kılavuzuna bakın.
+Ip NX_DNS_IP_GATEWAY_SERVER etkinse ve IP örneği ağ geçidi adresi sıfır olmayansa, IP örneği ağ geçidi birincil DNS sunucusu olarak otomatik olarak eklenir. DNS sunucusu bilgileri statik olarak bilinmiyorsa, NetX Duo için Dinamik Ana Bilgisayar Yapılandırma Protokolü (DHCP) aracılığıyla da türetilen olabilir. Daha fazla bilgi için lütfen NetX Duo DHCP Kullanıcı Kılavuzu'ne bakın.
 
-DNS Istemcisi, DNS iletilerini iletmek için bir paket havuzu gerektirir. Varsayılan olarak, *nx_dns_create* HIZMETI çağrıldığında DNS istemcisi bu paket havuzunu oluşturur. Yapılandırma seçenekleri NX_DNS_PACKET_PAYLOAD_UNALIGNED ve NX_DNS_PACKET_POOL_SIZE uygulamanın, bu paket havuzunun paket yükünü ve paket havuzu boyutunu (ör. paket sayısı) belirlemesine izin verir. Bu seçenekler, Bölüm Iki kısmında "yapılandırma seçenekleri" bölümünde açıklanmaktadır.
+DNS İstemcisi, DNS iletilerinin iletileceğini bir paket havuzu gerektirir. Varsayılan olarak, DNS İstemcisi bu  paket havuzunu nx_dns_create çağrılsa oluşturur. Yapılandırma seçenekleri NX_DNS_PACKET_PAYLOAD_UNALIGNED NX_DNS_PACKET_POOL_SIZE, uygulamanın sırasıyla bu paket havuzunun paket yükünü ve paket havuzu boyutunu (örneğin paket sayısı) belirlemesine olanak sağlar. Bu seçenekler, Bölüm 2'de "Yapılandırma Seçenekleri" bölümünde açıklanmıştır.
 
-Kendi paket havuzunu oluşturan DNS Istemcisinin bir alternatifi, uygulamanın paket havuzunu oluşturması ve bu hizmeti *nx_dns_packet_pool_set* HIZMETINI kullanarak DNS istemcisinin paket havuzu olarak ayarlaması içindir. Bunu yapmak için NX_DNS_CLIENT_USER_CREATE_PACKET_POOL seçeneğinin tanımlanması gerekir. Bu seçenek ayrıca, *nx_dns_packet_pool_set* için paket havuzu işaretçisi girişi olarak *nx_packet_pool_create* kullanarak daha önce oluşturulmuş bir paket havuzu gerektirir. DNS Istemcisi örneği silindiğinde, artık gerekmiyorsa, uygulama DNS Istemci paket NX_DNS_CLIENT_USER_CREATE_PACKET_POOL havuzunu silmekten sorumludur.
+Kendi paket havuzunu oluşturmak için DNS İstemcisi'nin bir alternatifi, uygulamanın paket havuzunu oluşturması ve bunu nx_dns_packet_pool_set hizmetini kullanarak DNS İstemcisi'nin *paket havuzu olarak ayarlamasıdır.* Bunu yapmak için NX_DNS_CLIENT_USER_CREATE_PACKET_POOL seçeneği tanımlanmalıdır. Bu seçenek ayrıca önceden oluşturulmuş  bir paket havuzunu nx_packet_pool_create için paket havuzu işaretçisi girişi olarak kullanarak *nx_dns_packet_pool_set.* DNS İstemcisi örneği silindiğinde, uygulama artık gerekli olmadığı durumlarda etkin NX_DNS_CLIENT_USER_CREATE_PACKET_POOL DNS İstemcisi paket havuzunu silmekle sorumludur.
 
 > [!NOTE] 
-> NX_DNS_CLIENT_USER_CREATE_PACKET_POOL seçeneğini kullanarak kendi paket havuzunu sağlamayı tercih eden uygulamalar için, paket boyutunun DNS en yüksek maszu boyutunu (512 bayt) ve UDP üst bilgisi, IPv4 veya IPv6 üst bilgisi ve MAC üst bilgisi için Odalar ' ı tutabilecek olması gerekir.
+> NX_DNS_CLIENT_USER_CREATE_PACKET_POOL seçeneğini kullanarak kendi paket havuzunu sağlamayı seçen uygulamalar için, paket boyutunun DNS maksimum en büyük bayt boyutuna (512 bayt) ek olarak UDP üst bilgisi, IPv4 veya IPv6 üst bilgisi ve MAC üst bilgisi için odaları tutabilecek olması gerekir.
 
-## <a name="dns-messages"></a>DNS Iletileri
+## <a name="dns-messages"></a>DNS İletileri
 
-DNS, ana bilgisayar adları ve IP adresleri arasında eşleme almak için çok basit bir mekanizmaya sahiptir. DNS Istemcisi, bir eşleme almak için, ad veya çözümlenmesi gereken IP adresini içeren bir DNS sorgu iletisi hazırlar. İleti daha sonra sunucu listesindeki ilk DNS sunucusuna gönderilir. Sunucuda böyle bir eşleme varsa, istenen eşleme bilgilerini içeren bir DNS yanıt iletisi kullanarak DNS Istemcisine yanıt verir. Sunucu yanıt vermezse, DNS Istemcisi, tüm DNS sunucuları sorgulanana kadar listesinde bir sonraki sunucuyu sorgular. Tüm DNS sunucularından yanıt alınmıyorsa DNS Istemcisinin, DNS iletisini yeniden aktarım mantığı vardır. Bir DNS sorgusunu yeniden gönderme sırasında yeniden iletim zaman aşımı iki katına çıkar. Bu işlem, en fazla iletim zaman aşımı ( *nxd_dns. h* içinde NX_DNS_MAX_RETRANS_TIMEOUT olarak tanımlanır) ulaşılıncaya veya bu sunucudan başarılı bir yanıt alınana kadar devam eder.
+DNS, konak adları ile IP adresleri arasında eşleme elde etmek için çok basit bir mekanizmaya sahiptir. Bir eşleme elde etmek için DNS İstemcisi, çözülmesi gereken adı veya IP adresini içeren bir DNS sorgu iletisi hazırlar. İleti daha sonra sunucu listesinde ilk DNS sunucusuna gönderilir. Sunucuda böyle bir eşleme varsa, istenen eşleme bilgilerini içeren bir DNS yanıt iletisi kullanarak DNS İstemcisine yanıt verir. Sunucu yanıt vermiyorsa, DNS İstemcisi tüm DNS sunucuları sorgulanana kadar listesinde bir sonraki sunucuyu sorgular. Tüm DNS sunucularından yanıt alınamasa, DNS İstemcisi DNS iletiyi yeniden iletim mantığını yeniden deneme mantığına sahip olur. Bir DNS sorgusu yeniden gönderiken, yeniden iletim zaman aşımı iki katına çıkar. Bu işlem en yüksek iletim zaman aşımına *(nxd_dns.h'de* NX_DNS_MAX_RETRANS_TIMEOUT olarak tanımlanır) ulaşıncaya veya sunucudan başarılı bir yanıt alınana kadar devam eder.
 
-NetX Duo DNS Istemcisi, *nxd_dns_host_by_name_get* çağrısında IP adresinin sürümünü belirterek hem IPv6 adres aramalarını (tür aaaa) hem de IPv4 adresi aramalarını (tür A) gerçekleştirebilir. DNS Istemcisi, *nxd_dns_host_by_address_get* kullanarak Web ana bilgisayar adlarını almak için IP ADRESLERININ (PTR sorguları yazın) ters aramalarını gerçekleştirebilir. NetX Duo DNS Istemcisi, eşdeğer hizmetler olan ancak IPv4 ağ iletişimi ile sınırlı olan *nx_dns_host_by_name_get* ve *nx_dns_host_by_address_get* desteklemektedir. Ancak, geliştiriciler mevcut DNS Istemci uygulamalarının *nxd_dns_host_by_name_get* ve *nxd_dns_host_by_address_get* hizmetlerine bağlantı altına alınır.
+NetX Duo DNS İstemcisi, çağrı çağrısında IP adresinin sürümünü belirterek hem IPv6 adres aramaları (AAAA türü) hem de IPv4 adres aramaları (A türü) *nxd_dns_host_by_name_get* gerçekleştirebilirsiniz. DNS İstemcisi, ip adreslerini kullanarak web ana bilgisayar adlarını almak için IP adreslerinin ters aramalarını (PTR sorguları *nxd_dns_host_by_address_get.* NetX Duo DNS İstemcisi, *eşdeğer* nx_dns_host_by_name_get  nx_dns_host_by_address_get ancak IPv4 ağ iletişimi ile sınırlı olan etki alanı ve ağ iletişimini desteklemeye devam ediyor. Ancak, geliştiricilerin mevcut DNS İstemci uygulamalarını nxd_dns_host_by_name_get *ve* *nxd_dns_host_by_address_get* teşvik edilecektir.
 
-DNS mesajlaşma istekleri ve alan yanıtlarını göndermek için UDP protokolünü kullanır. DNS sunucusu, istemcilerden gelen sorgular için 53 numaralı bağlantı noktasını dinler. Bu nedenle, daha önce oluşturulmuş bir IP örneğinde (_ *_nx_ip_create_* *) ***nx_udp_enable** _ hizmeti kullanılarak NETX Duo 'da UDP Hizmetleri etkinleştirilmelidir.
+DNS mesajlaşması, istekleri ve alan yanıtlarını göndermek için UDP protokolünü kullanır. DNS Sunucusu, istemcilerden gelen sorgular için 53 numaralı bağlantı noktasını dinler. Bu nedenle, DAHA önce oluşturulmuş bir IP örneğinde ***nx_udp_enable** _ hizmeti kullanılarak NetX Duo'da UDP hizmetlerinin etkinleştirilmesi gerekir (_*_nx_ip_create_**).
 
-Bu noktada, DNS Istemcisi, uygulamadan gelen istekleri kabul etmeye ve DNS sorguları göndermeye hazır hale gelir.
+Bu noktada DNS İstemcisi, uygulamanın isteklerini kabul etmeye ve DNS sorguları göndermeye hazırdır.
 
-## <a name="extended-dns-resource-record-types"></a>Genişletilmiş DNS kaynak kaydı türleri
+## <a name="extended-dns-resource-record-types"></a>Genişletilmiş DNS Kaynak Kaydı Türleri
 
-NX_DNS_ENABLE_EXTENDED_RR_TYPES etkinleştirilirse NetX Duo DNS Istemcisi aşağıdaki kayıt türü sorgularını de destekler:
+Bu NX_DNS_ENABLE_EXTENDED_RR_TYPES, NetX Duo DNS İstemcisi aşağıdaki kayıt türü sorgularını da destekler:
 
-- CNAME: bir diğer ad için kurallı adı içerir
+- CNAME: Diğer ad için kurallı adı içerir
 - TXT: bir metin dizesi içerir
-- NS: bir yetkili ad sunucusu içerir
-- SOA: bir yetki bölgesinin başlangıcını içerir
-- MX: posta alışverişi için kullanıldı
-- SRV: etki alanı tarafından sunulan hizmet hakkındaki bilgileri içerir
+- NS: yetkili bir ad sunucusu içerir
+- SOA: Bir yetki bölgesi başlangıcını içerir
+- MX: Posta değişimi için kullanılır
+- SRV: Etki alanı tarafından sunulan hizmetle ilgili bilgileri içerir
 
-CNAME ve TXT kayıt türlerinin dışında, uygulamanın DNS veri kaydını almak için 4 baytlık hizalanmış bir arabellek sağlaması gerekir.
+CNAME ve TXT kayıt türleri dışında, uygulamaNıN DNS veri kaydını almak için 4 bayt hizalı bir arabellek sağlamak zorunda olması gerekir.
 
-NetX Duo DNS Istemcisinde, kayıt verileri, arabellek alanının en verimli şekilde kullanılmasını sağlamak için bu şekilde depolanır.
+NetX Duo DNS İstemcisi'ne kayıt verileri, arabellek alanı kullanımını en verimli şekilde yapacak şekilde depolanır.
 
-Sabit uzunlukta bir kayıt arabelleği örneği (tür AAAA kaydı) aşağıda gösterilmiştir:
+Aşağıda sabit uzunlukta (AAAA kaydı türü) bir kayıt arabelleği örneği gösterilmiştir:
 
-![Sabit uzunluktaki kayıt arabelleğini](media/image2.png)
+![Sabit uzunlukta kayıt arabelleği](media/image2.png)
 
-Kayıt türleri değişken veri uzunluğuna sahip olan sorgular için, ana bilgisayar adları değişken uzunlukta olan NS kayıtları gibi, NetX Duo DNS Istemcisi verileri aşağıdaki gibi kaydeder. DNS Istemcisi sorgusunda sağlanan arabellek, sabit uzunluklu verilerin bir alanı ve yapılandırılmamış bellek alanı halinde düzenlenir. Bellek arabelleğinin en üstü 4 baytlık hizalanmış kayıt girişlerine göre düzenlenmiştir. Her kayıt girdisi, IP adresini ve bu IP adresi için değişken uzunluklu verilere yönelik bir işaretçi içerir. Her IP adresi için değişken uzunluklu veri, bellek arabelleğinin sonundan itibaren yapılandırılmamış alan belleğinde depolanır. Art arda her bir kayıt girişinin değişken uzunluğu verileri, önceki kayıt girişleri değişken verilerine bitişik bir sonraki alan belleğine kaydedilir. Bu nedenle, değişken veri, başka bir kayıt girişi ve değişken verileri depolamak için yeterli bellek olmadığından, kayıt girdilerini içeren yapılandırılmış belleğin yapısal alanına doğru bir şekilde ' büyür '.
+Kayıt türleri değişken veri uzunluğuna (ana bilgisayar adları değişken uzunlukta olan NS kayıtları gibi) sahip sorgular için, NetX Duo DNS İstemcisi verileri aşağıdaki gibi kaydeder. DNS İstemcisi sorgusunda sağlanan arabellek sabit uzunluktaki veriler ve yapılandırılmamış bellek alanı olarak düzenlenmiştir. Bellek arabelleğinin üst kısmında 4 bayt hizalı kayıt girdileri düzenlenmiştir. Her kayıt girdisi, BU IP adresi için IP adresini ve değişken uzunluk verilerini gösteren bir işaretçi içerir. Her IP adresi için değişken uzunluğu verileri, bellek arabelleğinin sonundan başlayarak yapılandırılmamış alan belleğinde depolanır. Artak her kayıt girdisi için değişken uzunluğu verileri, önceki kayıt girişleri değişken verileriyle bitişik olan sonraki alan belleğine kaydedilir. Bu nedenle değişken verileri, başka bir kayıt girdisini ve değişken verilerini depolamak için yetersiz bellek olana kadar kayıt girişlerini içeren yapılandırılmış bellek alanına doğru 'büyür'.
 
 Bu, aşağıdaki şekilde gösterilmiştir:
 
 ![Şekil 2](media/image3.png)
 
-DNS etki alanı adı (NS) veri depolama örneği yukarıda gösterilmektedir.
+DNS etki alanı adı (NS) veri depolama örneği yukarıda gösterilmiştir.
 
-NetX Duo DNS Istemci sorguları kayıt depolama biçimini kullanarak, kayıt arabelleğine kaydedilen kayıt sayısını döndürür. Bu bilgiler, uygulamanın kayıt arabelleğindeki NS kayıtlarını ayıklamasına olanak sağlar.
+Kayıt depolama biçimini kullanan NetX Duo DNS İstemcisi sorguları, kayıt arabelleğine kaydedilen kayıt sayısını geri verir. Bu bilgiler, uygulamanın kayıt arabelleğinden NS kayıtlarını ayıklamasını sağlar.
 
-Bu kayıt depolama biçimini kullanarak değişken uzunlukta DNS verilerini depolayan DNS Istemci sorgusunun bir örneği aşağıda gösterilmiştir:
+Aşağıda, bu kayıt depolama biçimini kullanarak değişken uzunluklu DNS verilerini depolar bir DNS İstemcisi sorgusu örneği gösterilmiştir:
 
 ```C
 UINT  _nx_dns_domain_name_server_get(NX_DNS *dns_ptr, 
@@ -83,26 +83,26 @@ UINT  _nx_dns_domain_name_server_get(NX_DNS *dns_ptr,
 ```
 
 
-"DNS Istemci hizmetlerinin açıklaması" başlıklı Bölüm 3 ' te daha fazla ayrıntı bulabilirsiniz.
+"DNS İstemci Hizmetlerinin Açıklaması" bölüm 3'te daha fazla ayrıntı mevcuttur.
 
-## <a name="dns-cache"></a>DNS önbelleği
+## <a name="dns-cache"></a>DNS Önbelleği
 
-NX_DNS_CACHE_ENABLE etkinleştirilirse NetX Duo DNS Istemcisi DNS önbelleği özelliğini destekler. DNS Istemcisini oluşturduktan sonra uygulama, özel DNS önbelleğini ayarlamak için API *nx_dns_cache_initialize ()* çağırabilir. DNS önbelleği özelliğini etkinleştir özelliği, DNS Istemcisi, DNS sorgusu gönderilmeye başlamadan önce DNS önbelleğinden kullanılabilir yanıtı bulacak, kullanılabilir yanıtı bul, doğrudan uygulamaya yanıt döndürür, aksi takdirde DNS Istemcisi DNS sunucusuna sorgu iletisi gönderir ve yanıtı bekler. DNS Istemcisi yanıt iletisini aldığında ve kullanılabilir boş önbellek varsa, DNS Istemcisi yanıtı uygulamaya döndürür ve aynı zamanda yanıtı kaynak kaydı olarak DNS önbelleğine ekler.
+Etkin NX_DNS_CACHE_ENABLE NetX Duo DNS İstemcisi, DNS Önbelleği özelliğini destekler. DNS İstemcisi'ni oluşturdukta, uygulama özel DNS *Önbelleğini ayarlamak için nx_dns_cache_initialize()* API'sini çağırabilirsiniz. DNS Önbelleği özelliğini etkinleştirirse, DNS İstemcisi DNS sorgusu göndermeye başlamadan önce DNS Önbelleği'nin kullanılabilir yanıtını bulur, kullanılabilir yanıtı bulursa doğrudan uygulamaya yanıt verir, aksi takdirde DNS İstemcisi dns sunucusuna sorgu iletisi gönderir ve yanıtı bekler. DNS İstemcisi yanıt iletiyi alır ve kullanılabilir boş önbellek olduğunda, DNS İstemcisi yanıtı uygulamaya döndürür ve yanıtı DNS önbelleğine kaynak kaydı olarak ekler.
 
-Her biri önbellekte bir veri yapısını *NX_DNS_RR* (kaynak kaydı). Kayıtlardaki dizeler (kaynak kaydı adı ve verileri) değişken uzunluktadır, bu nedenle NX_DNS_RR yapısında depolanmaz. Kayıt, dizelerin depolandığı gerçek bellek konumunun işaretçilerini içerir. Dize tablosu ve kayıtlar önbelleği paylaşır. Kayıtlar önbelleğin başından itibaren saklanır ve önbelleğin sonuna doğru artar. Dize tablosu önbelleğin sonundan başlar ve önbelleğin başına doğru artar. Dize tablosundaki her bir dizenin bir uzunluk alanı ve bir sayaç alanı vardır. Dize tablosuna bir dize eklendiğinde, tabloda aynı dize zaten varsa, sayaç değeri artırılır ve dize için bellek ayrılmaz. Önbellekte daha fazla kaynak kaydı veya yeni dize eklenebileceği takdirde önbellek tam olarak değerlendirilir.
+Her biri önbellekte bir *NX_DNS_RR* (Kaynak Kaydı) veri yapısına yanıt verir. Kayıtlar'daki dizeler (kaynak kaydı adı ve verileri) değişken uzunluktadır, bu nedenle NX_DNS_RR depolanmaz. Kayıt, dizelerin depolandığı gerçek bellek konumunun işaretçilerini içerir. Dize tablosu ve Kayıtlar önbelleği paylaşır. Kayıtlar önbelleğin başından depolanır ve önbelleğin sonuna doğru büyür. Dize tablosu önbelleğin sonundan başlar ve önbelleğin başlangıcına doğru büyür. Dize tablosunda yer alan her dizenin bir uzunluk alanı ve bir sayaç alanı vardır. Dize tablosuna bir dize ekleniyorsa, aynı dize tabloda zaten varsa sayaç değeri artırılır ve dize için bellek ayrılır. Önbelleğe başka kaynak kaydı veya yeni dize eklene ise önbellek tam olarak kabul edilir.
 
-## <a name="dns-client-limitations"></a>DNS Istemci sınırlamaları
+## <a name="dns-client-limitations"></a>DNS İstemci sınırlamaları
 
-DNS Istemcisi tek seferde bir DNS isteğini destekler. Önceki DNS isteği tamamlanana kadar başka bir DNS isteği yapmaya çalışan iş parçacıkları geçici olarak engellenir.
+DNS İstemcisi aynı anda bir DNS isteğini destekler. Başka bir DNS isteği yapmaya çalışan iş parçacıkları, önceki DNS isteği tamamlandıktan sonra geçici olarak engellenir.
 
-NetX Duo DNS Istemcisi, ek DNS sorgularını diğer DNS sunucularına iletmek için yetkili yanıtlardan veri kullanmaz.
+NetX Duo DNS İstemcisi, ek DNS sorgularını diğer DNS sunucularına iletmeye yetkili yanıtlardan gelen verileri kullanmaz.
 
-## <a name="dns-rfcs"></a>DNS RFC 'Leri
+## <a name="dns-rfcs"></a>DNS RFC'leri
 
-NetX Duo DNS, aşağıdaki RFC 'lerle uyumludur:
+NetX Duo DNS aşağıdaki RFC'lerle uyumludur:
 
-- RFC1034 ETKI ALANı ADLARı-KAVRAMLAR VE TESISLER
-- RFC1035 ETKI ALANı ADLARı-UYGULAMA VE BELIRTIM
-- RFC1480 ABD etki alanı
-- RFC 2782 hizmetlerin konumunu belirtmek için bir DNS RR (DNS SRV)
-- RFC 3596 DNS uzantıları IP sürüm 6 ' yı destekler
+- RFC1034 ETKI ALANı ADLARı - KAVRAMLAR VE TESISLER
+- RFC1035 ETKI ALANı ADLARı - UYGULAMA VE BELIRTIM
+- RFC1480 ABD Etki Alanı
+- RFC 2782 Hizmetlerin konumunu belirtmek için bir DNS RR (DNS SRV)
+- IP Sürümünü Desteklemek için RFC 3596 DNS Uzantıları 6

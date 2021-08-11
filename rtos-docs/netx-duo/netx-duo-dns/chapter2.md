@@ -1,46 +1,46 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo DNS Istemcisini yükleme ve kullanma
-description: Bu bölümde, Azure RTOS NetX Duo DNS Istemcisinin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+title: Bölüm 2 - NetX Duo DNS Azure RTOS Yükleme ve Kullanma
+description: Bu bölümde NetX Duo DNS İstemcisi'nin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 75b85829f80462015d66e1623b880d5139349ce0
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: d18e6444f13f069347719901b24234aebe04cdc5cd6230212e0781a50ed245d1
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104826999"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116792018"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dns-client"></a>Bölüm 2-Azure RTOS NetX Duo DNS Istemcisini yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-dns-client"></a>Bölüm 2 - NetX Duo DNS Azure RTOS Yükleme ve Kullanma
 
-Bu bölümde, Azure RTOS NetX Duo DNS Istemcisinin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların bir açıklaması yer almaktadır.
+Bu bölümde NetX Duo DNS İstemcisi'nin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS bir açıklama yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX Duo DNS Istemcisi adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Paket, aşağıdaki gibi, bu belgeyi içeren iki kaynak dosya ve bir PDF dosyası içerir:
+NetX Duo DNS İstemcisi sayfasından [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) kullanılabilir. Paket, aşağıdaki gibi iki kaynak dosya ve bu belgeyi içeren bir PDF dosyası içerir:
 
-- **nxd_dns. h** NetX Duo DNS Istemcisi için üst bilgi dosyası
-- **nxd_dns. c** NetX Duo DNS Istemcisi için C kaynak dosyası
-- **nxd_dns.pdf** NetX Duo DNS Istemcisinin PDF açıklaması
+- **nxd_dns.h** NetX Duo DNS İstemcisi için üst bilgi dosyası
+- **nxd_dns.c** NetX Duo DNS İstemcisi için C Kaynak dosyası
+- **nxd_dns.pdf** NetX Duo DNS İstemcisi'nin PDF açıklaması
 
-## <a name="dns-client-installation"></a>DNS Istemcisi yüklemesi
+## <a name="dns-client-installation"></a>DNS İstemcisi Yüklemesi
 
-NetX Duo DNS Istemcisini kullanmak için, *nxd_dns. c* ve *nxd_dns. h* kaynak kodu dosyalarını NETX Duo 'un yüklü olduğu dizine kopyalayın. Örneğin, "*\threadx\arm7\green*" dizininde NETX Duo yüklüyse, *nxd_dns. h* ve *nxd_dns. c* dosyaları bu dizine kopyalanmalıdır.
+NetX Duo DNS İstemcisi'ni kullanmak için *nxd_dns.c* ve *nxd_dns.h* kaynak kod dosyalarını NetX Duo'nın yüklü olduğu dizine kopyalayın. Örneğin,*"\threadx\arm7\green"* dizininde NetX Duo *yüklüyse, nxd_dns.h* ve *nxd_dns.c* dosyalarının bu dizine kopyalanmış olması gerekir.
 
-## <a name="using-the-dns-client"></a>DNS Istemcisini kullanma
+## <a name="using-the-dns-client"></a>DNS İstemcisini Kullanma
 
-NetX Duo DNS Istemcisini kullanmak kolaydır. Temel olarak, uygulama kodu sırasıyla ThreadX ve NetX Duo kullanmak için *tx_api. h* ve *nx_api. h* dahil *nxd_dns.* h içermelidir. *Nxd_dns. h* dahil olduğunda, uygulama kodu daha sonra bu KıLAVUZDA belirtilen DNS işlev çağrılarını yapabilir. Uygulamanın yapı işlemine *nxd_dns. c* eklemesi de gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmelidir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Duo DNS 'i kullanmak için gereklidir.
+NetX Duo DNS İstemcisini kullanmak kolaydır. Temel olarak, ThreadX ve NetX Duo'nxd_dns kullanmak için uygulama kodu *tx_api.h* ve *nx_api.h*'yi içeren *nxd_dns.h'yi* içermesi gerekir. Uygulama *nxd_dns.h* ekli olduktan sonra, uygulama kodu bu kılavuzun devamlarında belirtilen DNS işlev çağrılarını oluşturabilir. Uygulamanın derleme sürecine *nxd_dns.c* de eklemesi gerekir. Bu dosya, diğer uygulama dosyalarıyla aynı şekilde derlenmiş olmalı ve nesne formu uygulamanın dosyalarıyla birlikte bağlanacak. NetX Duo DNS'yi kullanmak için gerekenler bunlardır.
 
 > [!NOTE]
-> DNS, NetX Duo UDP hizmetlerini kullandığından, DNS kullanılmadan önce *nx_udp_enable* çağrısıyla UDP 'nin etkinleştirilmesi gerekir.
+> DNS NetX Duo UDP hizmetlerini kullanıyorsa, DNS'yi kullanmadan önce UDP *nx_udp_enable* çağrısıyla etkinleştirilmelidir.
 
-## <a name="small-example-system-for-netx-duo-dns-client"></a>NetX Duo DNS Istemcisi için küçük örnek sistem 
+## <a name="small-example-system-for-netx-duo-dns-client"></a>NetX Duo DNS İstemcisi için Küçük Örnek Sistem 
 
-NetX Duo DNS Istemcisi, mevcut NetX DNS uygulamalarıyla uyumludur. Eski hizmetlerin listesi ve NetX Duo eşdeğeri aşağıda gösterilmiştir:
+NetX Duo DNS İstemcisi, mevcut NetX DNS uygulamalarıyla uyumludur. Eski hizmetlerin ve NetX Duo eşdeğerlerinin listesi aşağıda gösterilmiştir:
 
-| NetX DNS API hizmeti (yalnızca IPv4) | NetX Duo DNS API hizmeti (IPv4 ve IPv6 desteklenir) |
+| NetX DNS API hizmeti (yalnızca IPv4) | NetX Duo DNS API hizmeti (IPv4 ve IPv6 desteği) |
 |----------------------------------|----------------------------------------------------|
 | nx_dns_host_by_name_get          | nxd_dns_host_by_name_get                           |
 | nx_dns_host_by_address_get       | nxd_dns_host_by_address_get                        |
@@ -48,32 +48,32 @@ NetX Duo DNS Istemcisi, mevcut NetX DNS uygulamalarıyla uyumludur. Eski hizmetl
 | nx_dns_server_add                | nxd_dns_server_add                                 |
 | nx_dns_server_remove             | nxd_dns_server_remove                              |
 
-Daha fazla ayrıntı için, Bölüm 3 ' teki NetX Duo DNS Istemcisi API hizmetlerinin açıklamasına bakın.
+Daha fazla ayrıntı için 3. Bölüm'de NetX Duo DNS İstemci API'si hizmetlerinin açıklamasına bakın.
 
-Bu bölümde sağlanan örnek DNS uygulama programında, *nxd_dns. h* , 6. satırda bulunur. DNS istemcisi uygulamasının DNS Istemcisi için paket havuzu oluşturmasına izin veren NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, 24-26 satırlarında bildirilmiştir. Bu paket havuzu, DNS iletileri göndermek için paket ayırmak üzere kullanılır. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL tanımlanmışsa, 78-98 satırlarında bir paket havuzu oluşturulur. Bu seçenek etkinleştirilmemişse, DNS Istemcisi, paket yükünün ve havuz boyutunun, *nxd_dns. h* içinde yapılandırma parametreleri tarafından ayarlanan ve bu bölümün başka bir yerinde açıklandığı şekilde kendi paket havuzunu oluşturur.
+Bu bölümde sağlanan örnek DNS uygulama programında *nxd_dns.h,* 6. satıra dahil edilir. NX_DNS_CLIENT_USER_CREATE_PACKET_POOL DNS İstemcisi uygulamasının DNS İstemcisi için paket havuzunu oluşturmasını sağlayan paket havuzu, 24-26. satırlarda bildirildi. Bu paket havuzu, DNS iletileri göndermek için paketlerin gönderilmesi için kullanılır. Bu NX_DNS_CLIENT_USER_CREATE_PACKET_POOL, 78-98. satırlarda bir paket havuzu oluşturulur. Bu seçenek etkinleştirilmezse, DNS İstemcisi *nxd_dns.h'de* yapılandırma parametreleri tarafından ayarlanmış ve bu bölümün başka bir yerinde açıklanan paket yüküne ve havuz boyutuna göre kendi paket havuzunu oluşturur.
 
-İç NetX Duo işlemleri için kullanılan Istemci IP örneği için 100-112 satırlarında başka bir paket havuzu oluşturulur. Daha sonra, 115 satırındaki *nx_ip_create* ÇAĞRıSı kullanılarak IP örneği oluşturulur. IP görevinin ve DNS Istemcisinin aynı paket havuzunu paylaşması mümkündür, ancak DNS Istemcisi genellikle IP görevi tarafından gönderilen denetim paketlerinden daha büyük iletiler gönderdiğinden, ayrı paket havuzlarının kullanılması belleğin daha verimli bir şekilde kullanılmasını sağlar.
+dahili NetX Duo işlemleri için kullanılan İstemci IP örneği için 100-112. satırlarda başka bir paket havuzu oluşturulur. Ardından IP örneği, 115. *satırda* nx_ip_create çağrı kullanılarak oluşturulur. IP görevi ve DNS İstemcisi'nin aynı paket havuzunu paylaşması mümkündür, ancak DNS İstemcisi genellikle IP görevi tarafından gönderilen denetim paketlerinden daha büyük iletiler gönderdiğinden, ayrı paket havuzları kullanmak bellek kullanımını daha verimli hale getirir.
 
-ARP ve UDP (IPv4 ağları tarafından kullanılır) sırasıyla 129 ve 141 satırlarında etkindir.
+ARP ve UDP (IPv4 ağları tarafından kullanılır) sırasıyla 129 ve 141. satırlarda etkinleştirilir.
 
 >[!NOTE]
-> Bu demo, 44 satırında belirtilen ve *nx_ip_create* çağrısında kullanılan ' RAM ' sürücüsünü kullanır. Bu RAM sürücüsü NetX Duo kaynak kodu ile dağıtılır. DNS Istemcisini gerçekten çalıştırmak için, uygulamanın DNS sunucusundan paket iletmek ve almak için gerçek fiziksel ağ sürücüsü sağlaması gerekir.
+> Bu tanıtımda, 44. satırda bildirilen 'ram' sürücüsü kullanılır ve bu sürücü *nx_ip_create* kullanılır. Bu ram sürücüsü NetX Duo kaynak koduyla dağıtılır. DNS İstemcisi'ni gerçekten çalıştırmak için uygulamanın, PAKETLERI DNS sunucusundan iletmek ve almak için gerçek bir fiziksel ağ sürücüsü sağlamak zorunda olması gerekir.
 
-*Thread_client_entry* istemci iş parçacığı girişi işlevi *tx_application_define* işlevinin altında tanımlanmıştır. İlk olarak, IP görevi iş parçacığının ağ sürücüsü tarafından başlatılmasına izin vermek için sisteme denetimi yeniden denetler.
+İstemci iş parçacığı giriş *thread_client_entry* işlevi, tx_application_define *tanımlanır.* BAŞLANGıÇTA IP görev iş parçacığının ağ sürücüsü tarafından başlatılmasına izin vermek için denetimi sisteme verir.
 
-Daha sonra, satır 257 ' de DNS Istemcisini oluşturur, 267-278. satırdaki DNS önbelleğini başlatır ve daha önce oluşturulmuş olan paket havuzunu, satırlarda 281-295 olan DNS Istemci örneğine ayarlar. Ardından 297-341 satırlarına DNS sunucusu ekler.
+Ardından 257. satırda DNS İstemcisi oluşturur, 267- 278. satırlarda DNS önbelleğini başlatıyor ve daha önce oluşturulan paket havuzunu 281-295. satırlarda DNS İstemcisi örneğine ayarlar. Ardından 297-341 satırlarında DNS sunucusu ekler.
 
-Örnek programın geri kalanı DNS sorguları yapmak için DNS Istemci hizmetlerini kullanır. Ana bilgisayar IP adresi aramaları 193 ve 207 satırlarında gerçekleştirilir. Bu iki hizmet arasındaki fark *nxd_dns_host_by_name_get* ve *nx_dns_host_by_name_get*, daha önce adres verilerini bir NXD_ADDRESS veri türüne kaydettiğinden, ıkıncı, verileri bir ULONG veri türüne kaydettiğinden. İkincisi, IPv4 ağları ile sınırlıdır, ancak ilki IPv6 veya IPv4 ağlarla birlikte kullanılabilir. Bu yalnızca IP örneği IPv6 için etkinleştirildiğinde mümkündür. IPv6 ağı için IP örneğini etkinleştirme hakkında daha fazla bilgi için bkz. NetX Duo Kullanıcı Kılavuzu.
+Örnek programın geri kalanı DNS sorguları yapmak için DNS İstemcisi hizmetlerini kullanır. Ana bilgisayar IP adresi aramaları 193 ve 207. satırlarda gerçekleştirilir. *nxd_dns_host_by_name_get* ve *nx_dns_host_by_name_get* gibi bu iki hizmet arasındaki fark, önceki hizmette adres verilerini bir NXD_ADDRESS veri türüne kaydederken ikinci hizmet de verileri ULONG veri türüne kaydeder. Daha fazla, IPv4 ağları ile sınırlıyken, önceki IPv6 veya IPv4 ağları ile kullanılabilir. Bu yalnızca IP örneği IPv6 için etkinleştirildiğinde mümkündür. IPv6 ağı için IP örneğini etkinleştirme hakkında daha fazla bilgi için bkz. NetX Duo Kullanıcı Kılavuzu.
 
-Ana bilgisayar IP adresi aramaları için başka bir hizmet, *nx_dns_ipv4_address_by_name_get* satır 464 ' de gösterilmiştir. Bu hizmet, DNS sunucusu yanıtında yalnızca ilk adresin değil, etki alanı adı için bulunan IPv4 adreslerinin tümünü (veya sağlanan arabelleğe sığar) döndüren *nx_dns_host_by_name_get* farklıdır.
+Konak IP adresi aramaları için başka bir hizmet, 464. satırda *nx_dns_ipv4_address_by_name_get.* Bu hizmet, *nx_dns_host_by_name_get* yalnızca DNS Sunucusu yanıtını alan ilk adresi değil, etki alanı adı için bulunan IPv4 adreslerinin hepsini (veya sağlanan arabelleğe sığacak kadar çok) döndüren hizmetten farklıdır.
 
-Benzer şekilde, satır 380 ' de çağrılan *nxd_dns_ipv6_address_by_name_get* hizmeti, yalnızca ilki DEĞIL, DNS istemcisi tarafından bulunan tüm IPv6 adreslerini döndürür.
+Benzer *şekilde, nxd_dns_ipv6_address_by_name_get* 380'de çağrılır ve DNS İstemcisi tarafından bulunan tüm IPv6 adreslerini döndürür.
 
-Ters aramalar (IP adresinden ana bilgisayar adı) 606 (*nx_dns_host_by_address_get*) satırları üzerinde ve 564 ve 588 (*nxd_dns_host_by_address_get*) üzerinde bir kez gerçekleştirilir. *nx_dns_host_by_address_get* yalnızca IPv4 ağlarında çalışır, ancak *Nxd_dns_host_by_address_get* IPv4 veya IPv6 AĞLARıNDA (örn. IP örneği IPv6 için, IPv4 ağları için de etkindir) çalışır.
+Geriye doğru aramalar (IP adresinden ana bilgisayar adı) 606 (*nx_dns_host_by_address_get*) satırlarında ve tekrar 564 ve 588 *.* satırda ( nxd_dns_host_by_address_get). *nx_dns_host_by_address_get* IPv4 ağlarında, *nxd_dns_host_by_address_get* ise IPv4 veya IPv6 ağlarında (örneğin, IP örneği IPv6 ve IPv4 ağları için etkinleştirilir) çalışır.
 
-DNS aramaları, CNAME ve TXT için iki diğer hizmet, giriş etki alanı adı için CNAME ve etki alanı adı verilerini bulacak şekilde sırasıyla 627 ve 649 satırlarında gösterilmiştir. NetX Duo DNS Istemcisi diğer kayıt türleri için benzer hizmetler (örneğin, MX, NS, SRV ve SOA) olarak. NetX Duo DNS Istemcisinde bulunan tüm kayıt türü aramalarının ayrıntılı açıklamaları için bkz. Bölüm 3.
+Giriş etki alanı adı için CNAME ve etki alanı adı verilerini bulmak için sırasıyla 627 ve 649. satırlarda CNAME ve TXT adlı iki DNS araması daha gösterildi. MX, NS, SRV ve SOA gibi diğer kayıt türlerine benzer hizmetler olarak NetX Duo DNS İstemcisi. NetX Duo DNS İstemcisinde kullanılabilen tüm kayıt türü aramalarının ayrıntılı açıklamaları için 3. Bölüm'e bakın.
 
-*Nx_dns_delete* hizmeti kullanılarak, 846. satırdaki DNS istemcisi silindiğinde, DNS istemcisi kendi paket havuzunu oluşturmadığı takdirde DNS istemcisi için paket havuzu silinmez. Aksi takdirde, bu uygulama için daha fazla kullanım yoksa, paket havuzunu silmek uygulamaya çalışır.
+DNS İstemcisi 846. satırda, *nx_dns_delete* hizmeti kullanılarak silindiğinde, DNS İstemcisi kendi paket havuzunu oluşturmadıkça DNS İstemcisi için paket havuzu silinmez. Aksi takdirde, paket havuzunun başka bir kullanımı yoksa, uygulamanın paket havuzunu silmesi gerekir.
 
 ```C
 /* This is a small demo of DNS Client for the high-performance NetX TCP/IP stack. */
@@ -922,38 +922,38 @@ USHORT          host_port;
     return;
 }
 ```
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX için DNS oluşturmaya yönelik birkaç yapılandırma seçeneği vardır. Bu seçenekler *nxd_dns. h* içinde yeniden tanımlanabilir. Aşağıdaki listede her biri ayrıntılı açıklanmıştır:  
+NetX için DNS'yi oluşturabilirsiniz. Bu seçenekler *nxd_dns.h içinde yeniden tanımlandırabilirsiniz.* Aşağıdaki listede her biri ayrıntılı olarak açıklanmaktadır:  
 
-- **NX_DNS_TYPE_OF_SERVICE** DNS UDP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP paket hizmeti için NX_IP_NORMAL olarak tanımlanmıştır.
+- **NX_DNS_TYPE_OF_SERVICE** DNS UDP istekleri için gereken hizmet türü. Varsayılan olarak, bu değer normal IP NX_IP_NORMAL için varsayılan olarak bir değer olarak tanımlanır.
 
-- **NX_DNS_TIME_TO_LIVE** Bir paketin, atılmadan önce geçebilmesi için en fazla yönlendirici sayısını belirtir. Varsayılan değer 0x80 ' dır.
+- **NX_DNS_TIME_TO_LIVE** Bir paketin atmadan önce geçeceği en fazla yönlendirici sayısını belirtir. Varsayılan değer, 0x80.
 
-- **NX_DNS_FRAGMENT_OPTION** Yuva özelliğini giden paketlerin parçalanması için izin vermek veya engellemek üzere ayarlar. Varsayılan değer NX_DONT_FRAGMENT.
+- **NX_DNS_FRAGMENT_OPTION** Yuva özelliğini giden paketlerin parçalanmasına izin verecek veya izin vermayacak şekilde ayarlar. Varsayılan değer, NX_DONT_FRAGMENT.
 
-- **NX_DNS_QUEUE_DEPTH** Yuva alma kuyruğunda depolanacak en fazla paket sayısını ayarlar. Varsayılan değer 5 ' tir.
+- **NX_DNS_QUEUE_DEPTH** Yuva alma kuyruğunda depo için en fazla paket sayısını ayarlar. Varsayılan değer 5'tir.
 
-- **NX_DNS_MAX_SERVERS** Istemci sunucusu listesindeki en fazla DNS sunucusu sayısını belirtir. Varsayılan değer 5 ' tir.
+- **NX_DNS_MAX_SERVERS** İstemci sunucusu listesinde en fazla DNS Sunucusu sayısını belirtir. Varsayılan değer 5'tir.
 
-- **NX_DNS_MESSAGE_MAX** DNS sorguları göndermek için en yüksek DNS iletisi boyutu. Varsayılan değer 512 ' dir ve ayrıca, RFC 1035 bölümünde belirtilen en büyük boyut 2.3.4.
+- **NX_DNS_MESSAGE_MAX** DNS sorguları göndermek için maksimum DNS ileti boyutu. Varsayılan değer, RFC 1035 Bölüm 2.3.4'te belirtilen en büyük boyut olan 512'dir.
 
-- **NX_DNS_PACKET_PAYLOAD_UNALIGNED** Tanımlı değilse, Ethernet, IP (veya IPv6) ve UDP üst bilgilerinin yanı sıra NX_DNS_MESSAGE_MAX tarafından belirtilen en büyük DNS ileti boyutunu içeren Istemci paketi yükünün boyutu. Tanımlanmış olmasına bakılmaksızın, paket yükü 4 bayt hizalı ve NX_DNS_PACKET_PAYLOAD depolanır.
+- **NX_DNS_PACKET_PAYLOAD_UNALIGNED** Tanımlanmamışsa, Ethernet, IP (veya IPv6) ve UDP üst bilgilerini içeren İstemci paket yükünün boyutu ve ağ arabirimi tarafından belirtilen maksimum DNS ileti NX_DNS_MESSAGE_MAX. Tanımlansa da paket yükü, 4 bayt hizalanır ve paket yükü NX_DNS_PACKET_PAYLOAD.
 
-- **NX_DNS_PACKET_POOL_SIZE** NX_DNS_CLIENT_USER_CREATE_PACKET_POOL tanımlanmamışsa DNS sorguları göndermek için Istemci paket havuzunun boyutu. Varsayılan değer, NX_DNS_PACKET_PAYLOAD tarafından tanımlanan yük boyutu 16 paketi için yeterince büyük ve 4 bayt hizalı.
+- **NX_DNS_PACKET_POOL_SIZE** Dns sorguları göndermek için İstemci paket havuzunun boyutu NX_DNS_CLIENT_USER_CREATE_PACKET_POOL tanımlanmamıştır. Varsayılan değer, NX_DNS_PACKET_PAYLOAD tarafından tanımlanan 16 yük boyutu paketi için yeterince büyüktür ve 4 bayt hizalıdır.
 
-- **NX_DNS_MAX_RETRIES** DNS Istemcisinin, başka bir sunucuyu denemeden veya DNS sorgusunu iptal etmeden önce geçerli DNS sunucusunu sorgulayabilmesi için gereken en fazla sayı. Varsayılan değer 3 ' dir.
+- **NX_DNS_MAX_RETRIES** DNS İstemcisi'nin başka bir sunucuyu denmeden veya DNS sorgusunu durdurmadan önce geçerli DNS sunucusunu en fazla kaç kez sorgulayacak? Varsayılan değer 3'tir.
 
-- **NX_DNS_MAX_RETRANS_TIMEOUT** Belirli bir DNS sunucusuna bir DNS sorgusunda en fazla yeniden iletim zaman aşımı. Varsayılan değer 64 saniyedir (64 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_MAX_RETRANS_TIMEOUT** Dns sorgusunda belirli bir DNS sunucusuna en fazla yeniden iletim zaman aşımı. Varsayılan değer 64 saniyedir (64 * NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER** Tanımlandıysa ve Istemci IPv4 ağ geçidi adresi sıfır değilse DNS Istemcisi, IPv4 ağ geçidini Istemcinin birincil DNS sunucusu olarak ayarlar. Varsayılan değer devre dışıdır.
+- **NX_DNS_IP_GATEWAY_AND_DNS_SERVER** Tanımlı ve İstemci IPv4 ağ geçidi adresi sıfır olmayan bir adresse, DNS İstemcisi IPv4 ağ geçidini İstemcinin birincil DNS sunucusu olarak ayarlar. Varsayılan değer devre dışıdır.
 
-- **NX_DNS_PACKET_ALLOCATE_TIMEOUT** Bu, DNS istemci paket havuzundan bir paket ayırma zaman aşımı seçeneğini ayarlar. Varsayılan değer 1 saniyedir (1 * NX_IP_PERIODIC_RATE).
+- **NX_DNS_PACKET_ALLOCATE_TIMEOUT** Bu, BIR paketi DNS istemci paket havuzundan ayrım için zaman aşımı seçeneğini ayarlar. Varsayılan değer 1 saniyedir (1*NX_IP_PERIODIC_RATE).
 
-- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL** Bu, DNS Istemcisinin, uygulamanın DNS Istemci paket havuzunu oluşturmasına ve ayarlamaya izin verir. Varsayılan olarak, bu seçenek devre dışıdır ve DNS Istemcisi *nx_dns_create* içinde kendi paket havuzunu oluşturur.
+- **NX_DNS_CLIENT_USER_CREATE_PACKET_POOL** Bu, DNS İstemcisi'nin uygulamanın DNS İstemcisi paket havuzunu oluşturmasına ve ayarlamasına olanak sağlar. Varsayılan olarak bu seçenek devre dışıdır ve DNS İstemcisi, içinde kendi paket havuzunu *nx_dns_create.*
 
-- **NX_DNS_CLIENT_CLEAR_QUEUE** Bu, yeni bir sorgu göndermeden önce DNS Istemcisinin eski DNS iletilerini alma sırasından temizlemenizi sağlar. Bu paketlerin önceki DNS sorgularından kaldırılması, DNS Istemci yuva kuyruğunun geçerli paketlerin taşmasını ve bırakılmasını engeller.
+- **NX_DNS_CLIENT_CLEAR_QUEUE** Bu, DNS İstemcisi'nin yeni bir sorgu göndermeden önce eski DNS iletilerini alma kuyruğunda temizlemesini sağlar. Bu paketleri önceki DNS sorgularından kaldırmak, DNS İstemcisi yuva kuyruğunda taşma ve geçerli paketlerin bırakmasını önler.
 
-- **NX_DNS_ENABLE_EXTENDED_RR_TYPES** Bu, DNS Istemcisinin içindeki ek DNS kayıt türlerini sorgulamasını sağlar (ör. CNAME, NS, MX, SOA, SRV ve TXT).
+- **NX_DNS_ENABLE_EXTENDED_RR_TYPES** Bu, DNS İstemcisi'nin 'de (CNAME, NS, MX, SOA, SRV ve TXT gibi) ek DNS kayıt türleri üzerinde sorgulamasını sağlar.
 
-- **NX_DNS_CACHE_ENABLE** Bu, DNS Istemcisinin yanıt kayıtlarını DNS önbelleğine depolamasını sağlar.
+- **NX_DNS_CACHE_ENABLE** Bu, DNS İstemcisi'nin yanıt kayıtlarını DNS önbelleğine depolamasını sağlar.

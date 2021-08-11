@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 06/04/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 5b52164911676b68c67da01d698e41c02730e45a
-ms.sourcegitcommit: e3d42e1f2920ec9cb002634b542bc20754f9544e
+ms.openlocfilehash: 5e93d783299448301c4e79a324ccec01473dbcce3fb96d25d7be352384d4fa53
+ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104825588"
+ms.lasthandoff: 08/07/2021
+ms.locfileid: "116796336"
 ---
 # <a name="chapter-2---installation-and-use-of-azure-rtos-netx-pppoe-server"></a>Bölüm 2-Azure RTOS NetX PPPoE sunucusunu yükleme ve kullanma
 
