@@ -127,6 +127,14 @@
           href: netx-duo-http/chapter2.md
         - name: Bölüm 3 - NetX HTTP Hizmetlerinin Açıklaması
           href: netx-duo-http/chapter3.md
+    - name: NetX Duo Iperf kullanıcı kılavuzu
+      items:
+        - name: Bölüm 1 - NetX Duo Iperf'e Giriş
+          href: netx-duo-iperf/chapter1.md
+        - name: Bölüm 2 - Azure NetX Duo Iperf'i yükleme ve kullanma
+          href: netx-duo-iperf/chapter2.md
+        - name: Bölüm 3 - Gösterimi Çalıştırma
+          href: netx-duo-iperf/chapter3.md
     - name: NetX Duo mDNS/DNS-SD kullanıcı kılavuzu
       items:
         - name: Caner. 1 - NetX Duo mDNS/DNS-SD'ye Giriş
@@ -225,69 +233,69 @@
           href: netx-duo-telnet/chapter3.md
     - name: NetX Duo TFTP
       items:
-        - name: Caner. 1 - NetX Duo TFTP'ye Giriş
+        - name: Denetleyebilirsiniz. 1-NetX Duo TFTP 'ye giriş
           href: netx-duo-tftp/chapter1.md
-        - name: Caner. 2 - NetX Duo TFTP'yi yükleme ve kullanma
+        - name: Denetleyebilirsiniz. 2-NetX Duo TFTP 'nin yüklenmesi ve kullanımı
           href: netx-duo-tftp/chapter2.md
-        - name: Caner. 3 - NetX Duo TFTP hizmetlerinin açıklaması
+        - name: Denetleyebilirsiniz. 3-NetX Duo TFTP hizmetlerinin açıklaması
           href: netx-duo-tftp/chapter3.md
-    - name: NetX Duo Web HTTP ve HTTPS kullanıcı kılavuzu
+    - name: NetX Duo Web HTTP ve HTTPS Kullanıcı Kılavuzu
       items:
-        - name: Caner. 1 - NetX Duo HTTP ve HTTPS'ye Giriş
+        - name: Denetleyebilirsiniz. 1-NetX Duo HTTP ve HTTPS 'ye giriş
           href: netx-duo-web-http/chapter1.md
-        - name: Caner. 2 - NetX Duo HTTP ve HTTPS yükleme ve kullanımı
+        - name: Denetleyebilirsiniz. 2-NetX Duo HTTP ve HTTPS yüklemesi ve kullanımı
           href: netx-duo-web-http/chapter2.md
-        - name: Caner. 3 - HTTP hizmetlerinin açıklaması
+        - name: Denetleyebilirsiniz. 3-HTTP hizmetlerinin açıklaması
           href: netx-duo-web-http/chapter3.md
-    - name: NetX Secure DTLS kullanıcı kılavuzu
+    - name: NetX güvenli DTLS Kullanıcı Kılavuzu
       items:
-        - name: Caner. 1 - NetX Secure DTLS'ye Giriş
+        - name: Denetleyebilirsiniz. 1-NetX güvenli DTLS 'ye giriş
           href: netx-secure-dtls/chapter1.md
-        - name: Caner. 2 - NetX Secure DTLS'nin yüklenmesi ve kullanımı
+        - name: Denetleyebilirsiniz. 2-NetX güvenli DTLS yükleme ve kullanma
           href: netx-secure-dtls/chapter2.md
-        - name: Caner. 3 - NetX Secure DTLS'nin işlevsel açıklaması
+        - name: Denetleyebilirsiniz. 3-NetX güvenli DTLS 'nin işlevsel açıklaması
           href: netx-secure-dtls/chapter3.md
-        - name: Caner. 4 - NetX Secure DTLS hizmetlerinin açıklaması
+        - name: Denetleyebilirsiniz. 4-NetX güvenli DTLS hizmetlerinin açıklaması
           href: netx-secure-dtls/chapter4.md
-        - name: App. A - NetX Secure DTLS dönüş/hata kodları
+        - name: Uygulamanızda. A-NetX güvenli DTLS dönüş/hata kodları
           href: netx-secure-dtls/appendix-a.md
-    - name: NetX Secure TLS kullanıcı kılavuzu
+    - name: NetX güvenli TLS Kullanıcı Kılavuzu
       items:
-        - name: Caner. 1 - NetX Secure'e Giriş
+        - name: Denetleyebilirsiniz. 1-NetX 'e giriş
           href: netx-secure-tls/chapter1.md
-        - name: Caner. 2 - NetX Secure'i yükleme ve kullanma
+        - name: Denetleyebilirsiniz. 2-NetX güvenli yükleme ve kullanımı
           href: netx-secure-tls/chapter2.md
-        - name: Caner. 3 - NetX Secure'in işlevsel açıklaması
+        - name: Denetleyebilirsiniz. 3-NetX güvenliği için işlevsel açıklama
           href: netx-secure-tls/chapter3.md
-        - name: Caner. 4 - NetX Secure hizmetlerinin açıklaması
+        - name: Denetleyebilirsiniz. 4-NetX güvenli hizmetlerinin açıklaması
           href: netx-secure-tls/chapter4.md
-        - name: App. A - NetX Secure dönüş/hata kodları
+        - name: Uygulamanızda. A-NetX güvenli dönüş/hata kodları
           href: netx-secure-tls/appendix-a.md
 - name: NetX Duo deposu
   href: 'https://github.com/azure-rtos/netxduo'
 - name: İlgili hizmetler
   items:
-    - name: IoT için Defender - RTOS (önizleme)
+    - name: IoT için Defender-RTOS (Önizleme)
       href: 'https://docs.microsoft.com/azure/defender-for-iot/iot-security-azure-rtos'
 - name: Microsoft Azure RTOS bileşenleri
   items:
-    - name: Microsoft Azure RTOS
+    - name: Microsoft Azure RTO 'LAR
       href: ../index.yml
     - name: ThreadX
       href: ../threadx/index.yml
-    - name: ThreadX Modülleri
+    - name: ThreadX modülleri
       href: ../threadx-modules/index.yml
     - name: NetX Duo
       href: ../netx-duo/index.yml
     - name: NetX
       href: ../netx/index.yml
-    - name: GUIX
+    - name: GUX
       href: ../guix/index.yml
-    - name: FileX
+    - name: Dosya x
       href: ../filex/index.yml
     - name: LevelX
       href: ../levelx/index.yml
     - name: USBX
       href: ../usbx/index.yml
-    - name: TraceX
+    - name: Trackingex
       href: ../tracex/index.yml

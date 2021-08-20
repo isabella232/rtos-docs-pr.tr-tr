@@ -1,62 +1,62 @@
 ---
-title: Bölüm 2-Azure RTOS NetX Duo MQTT istemcisini yükleme ve kullanma
-description: Bu bölüm, NetX Duo MQTT Istemci bileşeninin yüklenmesi, kurulumu ve kullanımı ile ilgili çeşitli sorunların açıklamasını içerir.
+title: Bölüm 2 - NetX Duo MQTT Azure RTOS yükleme ve kullanma
+description: Bu bölümde NetX Duo MQTT Client bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili çeşitli sorunların açıklaması yer almaktadır.
 author: philmea
 ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: faf9d84b8b2bce12a99a72198a396b121055a8eef975349f53833a180092e0a3
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: 4e27a6738456a90f3d708789f51b0471868c6f9e
+ms.sourcegitcommit: 4842f4cfe9e31b3ac59059f43e598eb70faebc8f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116797543"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122601319"
 ---
-# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-mqtt-client"></a>Bölüm 2-Azure RTOS NetX Duo MQTT istemcisini yükleme ve kullanma
+# <a name="chapter-2---installation-and-use-of-azure-rtos-netx-duo-mqtt-client"></a>Bölüm 2 - NetX Duo MQTT Azure RTOS yükleme ve kullanma
 
-Bu bölümde, Azure RTOS NetX Duo MQTT istemci bileşeni yükleme, kurulum ve kullanımı ile ilgili çeşitli sorunların açıklaması yer almaktadır.
+Bu bölümde NetX Duo MQTT istemci bileşeninin yüklenmesi, kurulumu ve kullanımıyla ilgili Azure RTOS sorunların açıklaması yer almaktadır.
 
-## <a name="product-distribution"></a>Ürün dağıtımı
+## <a name="product-distribution"></a>Ürün Dağıtımı
 
-NetX Duo için MQTT Istemcisi, adresinde bulunabilir [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) . Paket iki kaynak dosyası, bir içerme dosyası ve bu belgeyi içeren bir dosyayı aşağıdaki gibi içerir:
+NetX Duo için MQTT İstemcisi'ne şu bağlantıdan [https://github.com/azure-rtos/netxduo](https://github.com/azure-rtos/netxduo) bakabilirsiniz: . Paket, biri dahil olan iki kaynak dosyayı ve bu belgeyi içeren bir dosyayı içerir:
 
-- **nxd_mqtt_client. h** NetX Duo için MQTT Istemcisi üst bilgi dosyası
-- **nxd_mqtt_client. c** NetX Duo için MQTT Istemcisi için C kaynak dosyası
-- **nxd_mqtt_client.pdf** NetX Duo için MQTT Istemcisinin açıklaması
-- **demo_mqtt_client. c** NetX Duo MQTT gösterimi
+- **nxd_mqtt_client.h** NetX Duo için MQTT İstemcisi üst bilgi dosyası
+- **nxd_mqtt_client.c** NetX Duo için MQTT İstemcisi için C Kaynak dosyası
+- **nxd_mqtt_client.pdf** NetX Duo için MQTT İstemcisi Açıklaması
+- **demo_mqtt_client.c** NetX Duo MQTT gösterimi
 
-## <a name="mqtt-client-installation"></a>MQTT Istemci yüklemesi
+## <a name="mqtt-client-installation"></a>MQTT İstemcisi Yüklemesi
 
-NetX Duo için MQTT Istemcisini kullanmak istiyorsanız, daha önce bahsedilen dağıtımın tamamı NetX Duo 'un yüklü olduğu dizine kopyalanmalıdır. Örneğin, "*\threadx\arm7\green*" dizininde NETX Duo yüklüyse, NETX Duo MQTT istemcisinin *nxd_mqtt_client. h* ve *nxd_mqtt_client. c* ' nin bu dizine kopyalanması gerekir.
+NetX Duo için MQTT İstemcisi'nin kullanılamı için, daha önce bahsedilen dağıtımın tamamı NetX Duo'nın yüklü olduğu dizine kopyalanır. Örneğin,*"\threadx\arm7\green"* dizinine NetX Duo yüklüyse NetX Duo MQTT Client için *nxd_mqtt_client.h* ve *nxd_mqtt_client.c* dizininin bu dizine kopyalanmış olması gerekir.
 
-## <a name="using-mqtt-client"></a>MQTT Istemcisini kullanma
+## <a name="using-mqtt-client"></a>MQTT İstemcisini Kullanma
 
-NetX Duo için MQTT Istemcisini kullanmak kolaydır. Temel olarak, uygulama kodu *nxd_mqtt_client.* h ve *tx_api* . h ve *nx_api. h* Içermelidir. Bu, sırasıyla threadx ve NETX Duo kullanmak için. MQTT Istemci üst bilgi dosyaları eklendikten sonra, uygulama kodu daha sonra bu kılavuzun ilerleyen kısımlarında açıklanan MQTT hizmetlerini kullanabilir. Uygulama, yapı işlemine *nxd_mqtt_client. c* de içermelidir. Bu dosyalar, diğer uygulama dosyalarıyla aynı şekilde derlenmesi gerekir ve nesne formu, uygulamanın dosyalarıyla birlikte bağlanmalıdır. Bu, NetX Duo MQTT Istemcisini kullanmak için gereklidir.
+NetX Duo için MQTT İstemcisi'nin kullanımı kolaydır. Temel olarak, ThreadX ve NetX Duo'tx_api kullanmak için uygulama kodu *tx_api.h* ve nx_api.h 'yi içeren *nxd_mqtt_client.h'yi* içermesi gerekir.  MQTT İstemcisi üst bilgi dosyaları dahil edildiktan sonra, uygulama kodu bu kılavuzun devamlarında açıklanan MQTT hizmetlerini kullanabilir. Uygulamanın derleme sürecinde *nxd_mqtt_client.c'yi* de içermesi gerekir. Bu dosyaların diğer uygulama dosyalarıyla aynı şekilde derlenmiş olması ve nesne formunun uygulamanın dosyalarıyla birlikte bağlantılı olması gerekir. NetX Duo MQTT Client'ı kullanmak için gerekenler bunlardır.
 
-## <a name="using-mqtt-client-with-netx-secure-tls"></a>NetX güvenli TLS ile MQTT Istemcisini kullanma
+## <a name="using-mqtt-client-with-netx-secure-tls"></a>NetX Secure TLS ile MQTT İstemcisi Kullanma
 
-MQTT istemcisini NetX güvenli TLS modülü ile birlikte kullanmak için, uygulama NetX güvenli TLS modülünün yüklü olması ve *nx_secure_tls_api. h* ve *nx_crypto. h* içermelidir. MQTT kitaplığı, tanımlı ***NX_SECURE_ENABLE*** simgesiyle oluşturulmalıdır.
+MQTT istemcisini NetX Secure TLS modülüyle kullanmak için, uygulamada NetX Secure TLS modülü yüklü olmalı ve *nx_secure_tls_api.h* ile nx_crypto.h modülünü *içermesi gerekir.* MQTT kitaplığı, tanımlandığı gibi simgesiyle ***NX_SECURE_ENABLE*** gerekir.
 
-## <a name="configuration-options"></a>Yapılandırma seçenekleri
+## <a name="configuration-options"></a>Yapılandırma Seçenekleri
 
-NetX Duo için MQTT istemcisi oluşturmaya yönelik birkaç yapılandırma seçeneği vardır. Aşağıda, her birinin ayrıntılı olarak açıklandığı tüm seçeneklerin bir listesi verilmiştir. Varsayılan değerler listelenir, ancak *nxd_mqtt_client. h* 'ye dahil etmeden önce yeniden tanımlanabilir.
+NetX Duo için MQTT istemcisinin birkaç yapılandırma seçeneği vardır. Aşağıda, her biri ayrıntılı olarak açıklanan tüm seçeneklerin listesi ve ardından velanmıştır. Varsayılan değerler listelenir, ancak nxd_mqtt_client.h eklenmeden *önce yeniden tanımlandır.*
 
-- **NX_DISABLE_ERROR_CHECKING**: tanımlı, bu seçenek temel MQTT istemci hata denetimini kaldırır. Genellikle uygulamanın hata ayıklaması yapıldıktan sonra kullanılır.
-- **NX_SECURE_ENABLE**: TANıMLı, MQTT istemcisi TLS desteğiyle oluşturulmuştur.
-Bu sembolün tanımlanması için NetX güvenli TLS modülünün yüklenmesi gerekir.
-*NX_SECURE_ENABLE* varsayılan olarak etkinleştirilmemiştir. * *
-- **NXD_MQTT_REQUIRE_TLS**: tanımlı, uygulamanın MQTT aracısına bağlanmak için TLS kullanması gerekir. Bu özellik için *NX_SECURE_ENABLE* tanımlanmalıdır. Varsayılan olarak, bu simge tanımlı değildir.
-- **NXD_MQTT_MAXIMUM_TRANSMIT_QUEUE_DEPTH**: TANıMLı, MQTT iletme sırası derinliği etkin. Pozitif tamsayı olmalıdır.
-- **NXD_MQTT_MAX_TOPIC_NAME_LENGTH**: kullanım dışı.
-- **NXD_MQTT_MAX_MESSAGE_LENGTH**: kullanım dışı.
-- **NXD_MQTT_KEEPALIVE_TIMER_RATE**: threadx Zamanlayıcı işaretleri içinde MQTT Zamanlayıcı hızını tanımlar. Bu süreölçer, son MQTT denetimi iletisinin gönderilme zamanından sonraki süreyi izlemek için kullanılır ve canlı tutma süresi dolmadan önce bir MQTT PINGREQ iletisi gönderir. Bu süreölçer, istemci, etkin tut zamanlayıcı değeri kümesiyle aracıya bağlanırsa etkinleştirilir. Varsayılan değer, tek saniyelik bir Zamanlayıcı olan TX_TIMER_TICKS_PER_SECOND.
-- **NXD_MQTT_PING_TIMEOUT_DELAY**: MQTT istemcisinin, MQTT pingreq gönderildikten sonra ARACıDAN pingyanıt beklediği süreyi tanımlar. Bu zaman aşımı gecikmesinden sonra herhangi bir PINGYANıT alınmadığında, istemci aracıyı yanıt vermeyen olarak değerlendirir ve aracının aracısıyla bağlantısını keser. Varsayılan PING zaman aşımı gecikmesi, bir saniye olan TX_TIMER_TICKS_PER_SECOND.
-- **NXD_MQTT_SOCKET_TIMEOUT**: süreölçer onay işaretleri 'nde MQTT sunucusundan bağlantı kesilirken TCP yuvası bağlantı kesme çağrısında zaman aşımını tanımlar. Varsayılan değer NX_WAIT_FOREVER.
+- **NX_DISABLE_ERROR_CHECKING:** Tanımlandığı gibi, bu seçenek temel MQTT istemci hata denetimlerini kaldırır. Genellikle uygulama hata ayıklandıktan sonra kullanılır.
+- **NX_SECURE_ENABLE:** Tanımlı, MQTT İstemcisi TLS desteğiyle yerleşiktir.
+Bu simgenin tanımlanması için NetX Secure TLS modülünün yüklü olması gerekir.
+*NX_SECURE_ENABLE* varsayılan olarak etkin değildir.**
+- **NXD_MQTT_REQUIRE_TLS:** Tanımlı, uygulamanın MQTT aracıya bağlanmak için TLS kullanması gerekir. Bu özellik için *NX_SECURE_ENABLE* gerekir. Varsayılan olarak, bu simge tanımlanmamıştır.
+- **NXD_MQTT_MAXIMUM_TRANSMIT_QUEUE_DEPTH:** Tanımlı, MQTT aktarım kuyruğu derinliği etkindir. Pozitif tamsayı olmalıdır.
+- **NXD_MQTT_MAX_TOPIC_NAME_LENGTH:** Kullanım dışı.
+- **NXD_MQTT_MAX_MESSAGE_LENGTH:** Kullanım dışı.
+- **NXD_MQTT_KEEPALIVE_TIMER_RATE:** ThreadX zamanlayıcı tıklarında MQTT zamanlayıcı oranını tanımlar. Bu süreölçer, son MQTT denetim iletisi gönderilmeden bu yana geçen zamanı izlemek için kullanılır ve canlı tutma süresinin dolmadan önce bir MQTT PINGREQ iletisi gönderir. İstemci aracıya etkin tutma süreölçeri değer kümesiyle bağlanırsa bu zamanlayıcı etkinleştirilir. Varsayılan değer, TX_TIMER_TICKS_PER_SECOND saniyelik süreölçer olan varsayılan değerdir.
+- **NXD_MQTT_PING_TIMEOUT_DELAY:** MQTT istemcisinin MQTT PINGREQ'yi gönderdikten sonra aracıdan PINGRESP için bekleyeceği zamanı tanımlar. Bu zaman aşımı gecikmesi sonrasında pingRESP alınmazsa, istemci aracıyı yanıt vermiyor olarak kabul eder ve kendisiyle aracı bağlantısını keser. Varsayılan PING zaman aşımı gecikmesi TX_TIMER_TICKS_PER_SECOND bir saniyedir.
+- **NXD_MQTT_SOCKET_TIMEOUT:** Zamanlayıcı saat işaretlerindeki MQTT sunucusuyla bağlantı kesileri sırasında TCP yuvası bağlantı kesme çağrısında zaman out(zaman) tanımlar. Varsayılan değer, NX_WAIT_FOREVER.
 
 ## <a name="sample-mqtt-program"></a>Örnek MQTT programı
 
-Aşağıdaki program basit bir MQTT uygulamasını göstermektedir. Kolaylık olması için, dönüş kodlarının başarılı olduğu varsayılır, bu nedenle başka bir hata denetimi yapılmaz.
+Aşağıdaki program basit bir MQTT uygulamasını göstermektedir. Kolaylık olması için dönüş kodlarının başarılı olduğu varsayılır, bu nedenle başka hata denetimi yapılmaz.
 
 ```c
 #define LOCAL_SERVER_ADDRESS (IP_ADDRESS(192, 168, 1, 81))
