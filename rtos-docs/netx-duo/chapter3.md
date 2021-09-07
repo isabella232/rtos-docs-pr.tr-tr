@@ -6,12 +6,12 @@ ms.author: philmea
 ms.date: 05/19/2020
 ms.topic: article
 ms.service: rtos
-ms.openlocfilehash: 32af483db1f97b45bfe3d334b8c79d984dedc8470a37ce1d4164331549b6954c
-ms.sourcegitcommit: 93d716cf7e3d735b18246d659ec9ec7f82c336de
+ms.openlocfilehash: c96e6e422ea570085f5d7c6aeaaaa697a2393b5e
+ms.sourcegitcommit: 20a136b06a25e31bbde718b4d12a03ddd8db9051
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/07/2021
-ms.locfileid: "116789057"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123552390"
 ---
 # <a name="chapter-3---functional-components-of-azure-rtos-netx-duo"></a>Bölüm 3 - NetX Duo Azure RTOS İşlevsel Bileşenleri
 
@@ -26,11 +26,11 @@ NetX Duo uygulaması içinde beş tür program yürütme vardır: başlatma, uyg
 
 ### <a name="initialization"></a>Başlatma
 
-Başka bir NetX Duo **nx_system_initialize** çağrılmadan önce hizmet * nx_system_initialize _ çağrısı gerekir. Sistem başlatma, ThreadX _ tx_application_define **_işlevinden_* veya uygulama iş parçacıklarından çağrılebilir.
+Başka bir NetX Duo **nx_system_initialize** çağrılmadan önce hizmet * nx_system_initialize _ çağrılmalı. Sistem başlatma, ThreadX _ tx_application_define **_işlevinden_* veya uygulama iş parçacıklarından çağrılebilir.
 
 ***nx_system_initialize** _ döndürdikten sonra sistem paket havuzları ve IP örnekleri oluşturmak için hazırdır. BIR IP örneği oluşturmak için varsayılan paket havuzu gerekli olduğundan, IP örneği oluşturmadan önce en az bir NetX Duo paket havuzu mevcut olması gerekir. Paket havuzları ve IP örnekleri oluşturma, ThreadX başlatma işlevinden _ *_tx_application_define_** ve uygulama iş parçacıklarından izin verilir.
 
-Dahili olarak, bir IP örneği oluşturma iki bölümde yapılır: İlk bölüm, çağrıyı yapanın bağlamından veya tx_application_define iş parçacığının bağlamından yapılır.  Buna IP veri yapısını ayarlama ve iç IP iş parçacığı da dahil olmak üzere çeşitli IP kaynakları oluşturma dahildir. İkinci bölüm, iç IP iş parçacığından ilk yürütme sırasında gerçekleştirilir. BURADA, IP oluşturmanın ilk bölümü sırasında sağlanan ağ sürücüsüne ilk çağrılır. İç IP iş parçacığından ağ sürücüsünün çağrılarak sürücünün başlatma işlemi sırasında I/O gerçekleştirmesi ve askıya alınmasına olanak sağlar.
+Dahili olarak, bir IP örneği oluşturma iki bölümde yapılır: İlk bölüm, çağrıyı yapanın bağlamından veya ***tx_application_define*** iş parçacığının bağlamından yapılır. Buna IP veri yapısını ayarlama ve iç IP iş parçacığı da dahil olmak üzere çeşitli IP kaynakları oluşturma dahildir. İkinci bölüm, iç IP iş parçacığından ilk yürütme sırasında gerçekleştirilir. BURADA IP oluşturmanın ilk bölümü sırasında sağlanan ağ sürücüsüne ilk çağrılır. İç IP iş parçacığından ağ sürücüsünün çağrılarak sürücünün başlatma işlemi sırasında I/O gerçekleştirmesi ve askıya alınmasına olanak sağlar.
 
 Ağ sürücüsü başlatma işlemeden döndüğünde IP oluşturma işlemi tamamlanır.
 
@@ -41,9 +41,9 @@ NetX Duo'da IPv6'yı başlatma için birkaç ek NetX Duo hizmeti gerekir. Bunlar
 
 ### <a name="application-interface-calls"></a>Uygulama Arabirimi Çağrıları
 
-Uygulama çağrıları büyük ölçüde ThreadX RTOS altında çalışan uygulama iş parçacıklarından yapılır. Ancak, bazı başlatma, oluşturma ve etkinleştirme hizmetleri ***tx_application_define.*** [Bölüm 4 - NetX Duo Services'Azure RTOS](chapter4.md) açıklaması'nın "İzin VerilenLer" bölümleri, her NetX Duo hizmetinin hangi hizmetlerden çağrıl çağrıl olduğunu belirtmektedir.
+Uygulama çağrıları büyük ölçüde ThreadX RTOS altında çalışan uygulama iş parçacıklarından yapılır. Ancak, bazı başlatma, oluşturma ve etkinleştirme hizmetleri ***tx_application_define.*** [Bölüm 4 - NetX Duo Services'Azure RTOS](chapter4.md) açıklaması'nın "İzin VerilenLer" bölümleri, her netx Duo hizmetinin hangi hizmetlerden çağrıla olduğunu belirtmektedir.
 
-Çoğu durumda, sağlama sağlamaları hesaplama gibi yoğun etkinlikler, diğer iş parçacıklarının IP örneğine erişimini engellemeden çağıran iş parçacığının bağlamında yapılır. Örneğin, iletimde UDP sağlama sayısı hesaplaması*nx_udp_socket_send _ hizmeti içinde, temel ALıNAN IP gönderme işlevi çağrıldan önce gerçekleştirilir. Alınan bir pakette UDP sağlama toplam değeri, uygulama *_iş parçacığında yürütülen_* _ nx_udp_socket_receive * hizmette hesaplanır. Bu, düşük öncelikli iş parçacıklarında yoğun sağlamam hesaplaması nedeniyle yüksek öncelikli iş parçacıklarının ağ isteklerinin duraklamasını önlemeye yardımcı olur.
+Çoğu durumda, sağlama sağlamaları gibi yoğun iş parçacıklarını işleme işlemi, diğer iş parçacıklarının IP örneğine erişimini engellemeden çağrıyı yapılan iş parçacığı bağlamında yapılır. Örneğin, iletimde UDP sağlama sayısı hesaplaması*nx_udp_socket_send _ hizmeti içinde, temel ALıNAN IP gönderme işlevi çağrıldan önce gerçekleştirilir. Alınan bir pakette UDP sağlama toplam değeri, uygulama *_iş parçacığında yürütülen_* _ nx_udp_socket_receive * hizmette hesaplanır. Bu, düşük öncelikli iş parçacıklarında yoğun sağlamam hesaplaması nedeniyle yüksek öncelikli iş parçacıklarının ağ isteklerinin duraklamasını önlemeye yardımcı olur.
 
 IP adresleri ve bağlantı noktası numaraları gibi değerler, konak bayt sırasına göre API'lere geçirildi. Dahili olarak bu değerler de konak bayt sırasına göre depolanır. Bu, geliştiricilerin değerleri bir hata ayıklayıcısı aracılığıyla kolayca görüntülemelerini sağlar. Bu değerler iletim için bir çerçevede programlanmışsa, ağ baytı sırasına dönüştürülür.
 
@@ -51,14 +51,14 @@ IP adresleri ve bağlantı noktası numaraları gibi değerler, konak bayt sıra
 
 Daha önce belirtildiği gibi, NetX Duo'daki her IP örneğinin kendi iş parçacığı vardır. İç IP iş parçacığının öncelik ve yığın boyutu, nx_ip_create ***tanımlanır.*** İç IP iş parçacığı yürütmeye hazır modda oluşturulur. IP iş parçacığı, çağıran iş parçacığından daha yüksek önceliğe sahipse, IP oluşturma çağrısının içinde önme oluşabilir.
 
-İç IP iş parçacığının giriş noktası , _ veya iç ***işlevinde nx_ip_thread_entry.*** İlk kez, iç IP iş parçacığı ilk olarak uygulamaya özgü ağ sürücüsüne üç çağrı yapmadan oluşan ağ sürücüsü başlatmayı tamamlar. İlk çağrı, ağ sürücüsünü IP örneğine eklemek ve ardından ağ sürücüsünün başlatma işleminin üzerinden geçerek bir başlatma çağrısı yapmaktır. Ağ sürücüsü başlatmadan döndükten sonra (donanımın düzgün şekilde ayarlanmış olması beklerken askıya alabilir), iç IP iş parçacığı bağlantıyı etkinleştirmek için ağ sürücüsünü yeniden arar. Ağ sürücüsü bağlantı etkinleştirme çağrısından döndüğünde, iç IP iş parçacığı bu IP örneği için işlemesi gereken çeşitli olaylar için sonsuza kadar döngü denetimi girer. Bu döngüde işlenen olaylar ertelenmiş IP paketi alımı, IP paket parçası derlemesi, ICMP ping işleme, IGMP işleme, TCP paket kuyruğu işleme, TCP düzenli işleme, IP parçası derleme zaman aşımı ve IGMP düzenli işlemeyi içerir. Olaylar adres çözümleme etkinliklerini de içerir; IPv4'te ARP paket işleme ve ARP düzenli işleme, IPv6'da Yinelenen Adres Algılama, Yönlendirici İsteneni ve Komşu Bulma.
+İç IP iş parçacığının giriş noktası , _ veya iç ***işlevinde nx_ip_thread_entry.*** İlk kez, iç IP iş parçacığı ilk olarak uygulamaya özgü ağ sürücüsüne üç çağrı yapmadan oluşan ağ sürücüsü başlatmayı tamamlar. İlk çağrı, ağ sürücüsünü IP örneğine eklemek ve ardından ağ sürücüsünün başlatma işleminin üzerinden geçerek bir başlatma çağrısı yapmaktır. Ağ sürücüsü başlatmadan döndükten sonra (donanımın düzgün şekilde ayarlanmış olması beklerken askıya alabilir), iç IP iş parçacığı bağlantıyı etkinleştirmek için ağ sürücüsünü yeniden arar. Ağ sürücüsü bağlantı etkinleştirme çağrısından döndükten sonra, iç IP iş parçacığı bu IP örneği için işlemesi gereken çeşitli olaylar için sonsuza kadar döngü denetimi girer. Bu döngüde işlenen olaylar ertelenmiş IP paketi alımı, IP paket parçası derlemesi, ICMP ping işleme, IGMP işleme, TCP paket kuyruğu işleme, TCP düzenli işleme, IP parçası derleme zaman aşımı ve IGMP düzenli işlemeyi içerir. Olaylar adres çözümleme etkinliklerini de içerir; IPv4'te ARP paket işleme ve ARP düzenli işleme, IPv6'da Yinelenen Adres Algılama, Yönlendirici İsteneni ve Komşu Bulma.
 
 > [!CAUTION]
-> *Geri çağırmaları dinleme ve bağlantıyı kesme de dahil olmak üzere NetX Duo geri çağırma işlevleri, özgün çağıran iş parçacığından değil, iç IP iş parçacığından çağrılır. Uygulama herhangi bir NetX Duo geri çağırma işlevinin içinde askıya almama özeni gösterir.*
+> *Geri çağırmaları dinleme ve bağlantıyı kesme de dahil olmak üzere NetX Duo geri çağırma işlevleri, özgün çağıran iş parçacığından değil, iç IP iş parçacığından çağrılır. Uygulama herhangi bir NetX Duo geri çağırma işlevinin içinde askıya almama özen gösterir.*
 
 ### <a name="ip-periodic-timers"></a>IP Düzenli Süre süreleri
 
-Her IP örneği için kullanılan iki ThreadX düzenli süreer vardır. İlki ARP, IGMP, TCP zaman aşımı için bir saniyelik süreölçerdir ve aynı zamanda IP parçası yeniden birleşebilir işlemeyi de destekler. İkinci zamanlayıcı, TCP yeniden iletim zaman aşımını ve IPv6 ile ilgili işlemleri başlatmak için 100 m'lık bir zamanlayıcıdır.
+Her IP örneği için kullanılan iki ThreadX düzenli süreer vardır. İlki ARP, IGMP, TCP zaman aşımı için bir saniyelik süreölçerdir ve aynı zamanda IP parçası yeniden birleşebilir işlemeyi de sağlar. İkinci zamanlayıcı, TCP yeniden iletim zaman aşımını ve IPv6 ile ilgili işlemleri başlatmak için 100ms zamanlayıcıdır.
 
 ### <a name="network-driver"></a>Ağ Sürücüsü
 
@@ -66,11 +66,11 @@ NetX Duo'daki her IP örneğinin birincil arabirimi vardır ve bu arabirim, nx_i
 
 Çok girişli bir sistem için, IP örneğinin her biri ilgili arabirim için bu görevleri gerçekleştiren ilişkili bir ağ sürücüsüne sahip birden çok arabirimi vardır.
 
-Ağ sürücüsünün medyada oluşan zaman uyumsuz olayları da işlemesi gerekir. Medyadan gelen zaman uyumsuz olaylar paket alımını, paket iletimini tamamlamayı ve durum değişikliklerini içerir. NetX Duo, ağ sürücüsüne çeşitli olayları işlemek için çeşitli erişim işlevleri sağlar. Bu işlevler, ağ sürücüsünün kesinti hizmeti yordamı kısmından çağrılarak tasarlanmıştır. IPv4 ağları için, ağ sürücüsü alınan tüm ARP paketlerini iç ***işleve _nx_arp_packet_deferred_receive*** iletmesi gerekir. Tüm RARP paketleri , _ iç işlevine *** _nx_rarp_packet_deferred_receive** ilet gerekir. IP paketleri için iki seçenek vardır. IP paketlerinin hızlı bir şekilde sevk edilmesi gerekirse, gelen IP paketleri hemen işleme için _ *_ _nx_ip_packet_receive_* _ adresine iletildi. Bu, IP paketlerinin işlenmesinde NetX Duo performansını büyük ölçüde artırır. Aksi takdirde, IP paketlerini _ _ nx_ip_packet_deferred_receive * adresine iletmenin yapılması gerekir.** Bu hizmet, IP paketini ertelenen işleme kuyruğuna, daha sonra iç IP iş parçacığı tarafından işleyiciye yer verir ve bu da en az ISR işleme süresiyle sonuç verir.
+Ağ sürücüsünün medyada oluşan zaman uyumsuz olayları da işlemesi gerekir. Medyadan gelen zaman uyumsuz olaylar paket alımını, paket iletimini tamamlamayı ve durum değişikliklerini içerir. NetX Duo, ağ sürücüsüne çeşitli olayları işlemek için çeşitli erişim işlevleri sağlar. Bu işlevler, ağ sürücüsünün kesinti hizmeti yordamı kısmından çağrılarak tasarlanmıştır. IPv4 ağları için, ağ sürücüsü alınan tüm ARP paketlerini iç ***işleve _nx_arp_packet_deferred_receive*** iletmesi gerekir. Tüm RARP paketleri , _ iç işlevi için ***_nx_rarp_packet_deferred_receive** ilet gerekir. IP paketleri için iki seçenek vardır. IP paketlerinin hızlı bir şekilde sevk edilmesi gerekirse, gelen IP paketleri hemen işleme için _ *_ _nx_ip_packet_receive_* _ adresine ilet gerekir. Bu, IP paketlerinin işlenmesinde NetX Duo performansını büyük ölçüde artırır. Aksi takdirde, IP paketlerini _ _ nx_ip_packet_deferred_receive * adresine iletmenin yapılması gerekir.** Bu hizmet, IP paketini ertelenen işleme kuyruğuna, daha sonra iç IP iş parçacığı tarafından işleyiciye yer verir ve bu da en az ISR işleme süresiyle sonuç verir.
 
 Ağ sürücüsü, IP iş parçacığı bağlamının dışında çalışması için kesme işlemini erteleyebilirsiniz. Bu modda, ISR gerekli bilgileri kaydetmeli, _nx_ip_driver_deferred_processing iç işlevini ***çağırarak*** kesme denetleyicisini kabul eder. Bu hizmet, kesintiye neden olan olayın işlemini tamamlamak için IP iş parçacığına cihaz sürücüsüne bir geri arama zamanlaması konusunda bilgi verir.
 
-Bazı ağ denetleyicileri, değerli CPU kaynaklarını tüketmeden donanımda TCP/IP üst bilgi sağlama işlemi ve doğrulama gerçekleştirebilirsiniz. Donanım özelliği özelliğine sahip olan NetX Duo, derleme zamanında çeşitli yazılım sağlamam hesaplamasını etkinleştirmeye veya devre dışı bırakmaya ek olarak çalışma zamanında sağlamam hesaplamasını açma veya kapatma seçenekleri sunar. Cihaz sürücüsü donanım özellikleriyle ilgili IP katmanıyla iletişim kurabilirse. NetX Duo ağ Azure RTOS yazma hakkında daha ayrıntılı bilgi için bkz. Bölüm [5 - NetX Duo](chapter5.md) Ağ Sürücüleri.
+Bazı ağ denetleyicileri, değerli CPU kaynaklarını tüketmeden donanımda TCP/IP üst bilgi sağlama ve doğrulama gerçekleştirebilirsiniz. Donanım özelliği özelliğine sahip olan NetX Duo, derleme zamanında çeşitli yazılım sağlamam hesaplamasını etkinleştirme veya devre dışı bırakma seçeneklerinin yanı sıra, cihaz sürücüsünün donanım özellikleriyle ilgili IP katmanıyla iletişim kura biliyorsa çalışma zamanında sağlamam hesaplamasını açma veya kapatma seçenekleri sağlar. NetX Duo ağ Azure RTOS yazma hakkında daha ayrıntılı bilgi için Bkz. Bölüm [5 - NetX Duo](chapter5.md) Ağ Sürücüleri.
 
 ### <a name="multihome-support"></a>Birden Çok Giriş Desteği
 
@@ -87,7 +87,7 @@ Birincil arabirim, IP örneği listesinde sıfır dizinine sahiptir. IP örneği
 
 IP örneğinin etkin olduğu TCP, UDP, ICMP ve IGMP gibi tüm üst katman protokol hizmetleri tüm bağlı cihazlar tarafından kullanılabilir.
 
-Çoğu durumda, NetX Duo bir paket iletilirken en iyi kaynak adresini belirler. Kaynak adres seçimi, hedef adresi temel alan bir seçimdir. NetX Duo hizmetleri, uygulamaların, hedef adres tarafından en uygun olanı belirlenemezseniz belirli bir kaynak adresi belirtmesine olanak sağlayacak şekilde eklenir. Örneğin, birden çok girişli sistemde bir uygulamanın bir paketi IPv4 yayınına veya çok noktaya yayın hedef adreslerine göndermesi gerekir.
+Çoğu durumda, NetX Duo bir paket iletilirken en iyi kaynak adresini belirler. Kaynak adres seçimi, hedef adresi temel alan bir seçimdir. NetX Duo hizmetleri, uygulamaların hedef adres tarafından en uygun olanı belirlenemezseniz belirli bir kaynak adresi belirtmesine olanak sağlayacak şekilde eklenir. Örneğin, birden çok girişli sistemde bir uygulamanın bir paketi IPv4 yayınına veya çok noktaya yayın hedef adreslerine göndermesi gerekir.
 
 Çok girişli uygulamalar geliştirmeye yönelik hizmetler aşağıdakileri içerir:
 
@@ -117,511 +117,511 @@ IP örneğinin etkin olduğu TCP, UDP, ICMP ve IGMP gibi tüm üst katman protok
 - *nxd_ip_raw_packet_source_send*
 - *nxd_udp_socket_source_send*
 
-Bu hizmetler [NetX Duo Services açıklamasında daha ayrıntılı olarak açıklanmıştır.](chapter4.md)
+Bu hizmetler [NetX Duo hizmetlerinin açıklaması](chapter4.md)bölümünde daha ayrıntılı olarak açıklanmıştır.
 
-### <a name="loopback-interface"></a>Geri Döngü Arabirimi
+### <a name="loopback-interface"></a>Geri döngü arabirimi
 
-Geri döngü arabirimi, fiziksel bağlantının bağlı olduğu özel bir ağ arabirimidir. Geri döngü arabirimi, uygulamaların IPv4 geri döngü adresi 127.0.0.1'i kullanarak iletişim kurmasına  olanak sağlar. Mantıksal geri döngü arabiriminden yararlanmak için, uygulamanın NX_DISABLE_LOOPBACK_INTERFACE emin olun.
+Geri döngü arabirimi, bağlı bir fiziksel bağlantısı olmayan özel bir ağ arabirimidir. Geri döngü arabirimi, mantıksal bir geri döngü arabirimini kullanmak Için 127.0.0.1 IPv4 geri döngü adresini kullanarak iletişim kurmasına izin verir, yapılandırılabilir seçeneğinin ***NX_DISABLE_LOOPBACK_INTERFACE*** ayarlanmamış olduğundan emin olun.
 
-### <a name="interface-control-blocks"></a>Arabirim Denetim Blokları
+### <a name="interface-control-blocks"></a>Arabirim denetim blokları
 
-IP örneğinde arabirim denetim bloklarının sayısı, fiziksel arabirim sayısıdır (***NX_MAX_PHYSICAL_INTERFACES** _) ve etkinleştirildiyse geri döngü arabirimidir. Toplam arabirim sayısı __*_ ve **NX_MAX_IP_INTERFACES tanımlanır.
+IP örneğindeki arabirim denetim bloklarının sayısı, fiziksel arabirimlerin sayısıdır (***NX_MAX_PHYSICAL_INTERFACES** _ tarafından tanımlanır) ve etkinse geri döngü arabirimi. Toplam arabirim sayısı _ *_NX_MAX_IP_INTERFACES_* * içinde tanımlanır.
 
-## <a name="protocol-layering"></a>Protokol Katmanlama
+## <a name="protocol-layering"></a>Protokol katmanlama
 
-NetX Duo tarafından uygulanan TCP/IP katmanlı bir protokoldür ve bu da daha karmaşık protokollerin temel alınan daha basit protokoller üzerine inşa edile bir protokol olduğu anlamına gelir. TCP/IP'de en düşük katman protokolü *bağlantı düzeyindedir* ve ağ sürücüsü tarafından ele alınan bir protokoldür. Bu düzey genellikle Ethernet'e yöneliktir, ancak fiber, seri veya neredeyse tüm fiziksel medyalar da olabilir.
+NetX Duo tarafından uygulanan TCP/IP katmanlı bir protokoldür, bu da daha karmaşık protokollerin daha basit alt protokollerin üzerine derlendiği anlamına gelir. TCP/IP 'de, en düşük katman Protokolü *bağlantı düzeyindedir* ve ağ sürücüsü tarafından işlenir. Bu düzey genellikle Ethernet 'e yöneliktir, ancak fiber, seri veya neredeyse herhangi bir fiziksel medya olabilir.
 
-Bağlantı katmanının üzerinde ağ katmanı *yer ağına yer verir.* TCP/IP'de bu, ağ genelinde en iyi çabayla basit paketleri göndermekten ve almakla sorumlu olan IP'dir. ICMP ve IGMP gibi yönetim türü protokoller, gönderme ve alma için IP'ye bağlı olsalar bile genellikle ağ katmanları olarak kategorilere ayrılmıştır.
+Bağlantı katmanının en üstünde *ağ katmanı* bulunur. TCP/IP 'de, bu IP 'nin basit paketleri (en iyi çabayla) ağ genelinde gönderilmesinin ve almamasından sorumlu olan IP 'dir. ICMP ve ıGMP gibi yönetim türü protokoller, genellikle IP 'yi gönderme ve alma için kullandıkları halde ağ katmanları olarak kategorize edilir.
 
-Aktarım *katmanı,* ağ katmanının üzerinde yer almaktadır. Bu katman, ağ üzerinde konaklar arasında veri akışını yönetmekle sorumludur. NetX Duo tarafından desteklenen iki tür taşıma hizmeti vardır: UDP ve TCP. UDP hizmetleri iki konak arasında bağlantısız bir şekilde veri göndermek ve almak için en iyi çabayı sunarken, TCP iki konak varlığı arasında güvenilir bağlantı odaklı hizmet sağlar.
+*Aktarım katmanı* , ağ katmanının üzerine oturduğu. Bu katman, ağ üzerindeki konaklar arasında veri akışını yönetmekten sorumludur. NetX Duo: UDP ve TCP tarafından desteklenen iki tür aktarım hizmeti vardır. UDP Hizmetleri, iki ana bilgisayar arasında bağlantısız bir şekilde verileri en iyi şekilde gönderme ve alma olanağı sağlarken, TCP iki konak varlık arasında güvenilir bir bağlantı yönelimli hizmet sağlar.
 
-Bu katman gerçek ağ veri paketlerine yansıtıldı. TCP/IP'de her katman üst bilgi olarak adlandırılan bir bilgi bloğu içerir. Bir üst bilgi ile verileri (ve muhtemelen protokol bilgilerini) çevreleyen bu teknik genellikle veri kapsülleme olarak adlandırılan bir tekniktir. Şekil 1'de NetX Duo katmanlama örneği ve Şekil 2'de gönderilen UDP verileri için elde edilen veri kapsüllemesi yer almaktadır.
+Bu katman, gerçek ağ veri paketlerine yansıtılır. TCP/IP içindeki her katman, üst bilgi olarak adlandırılan bir bilgi bloğu içerir. Bu verilere (ve muhtemelen protokol bilgilerine) sahip bir üst bilgi içeren bu teknik genellikle veri kapsülleme olarak adlandırılır. Şekil 1 ' de NetX Duo katmanlama örneği gösterilmektedir ve Şekil 2 gönderilen UDP verileri için elde edilen veri kapsüllemesini gösterir.
 
-![Protokol Katmanlama](./media/user-guide/image12.jpg)
+![Protokol katmanlama](./media/user-guide/image12.jpg)
 
-**ŞEKIL 1. Protokol Katmanlama**
+**ŞEKIL 1. Protokol katmanlama**
 
-## <a name="packet-pools"></a>Paket Havuzları
+## <a name="packet-pools"></a>Paket havuzları
 
-Paketlerin hızlı ve belirlenimci bir şekilde belirlenmesi, gerçek zamanlı ağ uygulamalarında her zaman bir zorlukdur. NetX Duo, sabit boyutlu ağ paketlerinin birden çok havuzu oluşturma ve yönetme olanağı sağlar.
+Paketleri hızlı ve belirleyici bir şekilde ayırmak, gerçek zamanlı ağ uygulamalarında her zaman zorluk sergilemektir. NetX Duo, bu şekilde, birden çok sabit boyutlu ağ paketi havuzu oluşturma ve yönetme olanağı sağlar.
 
-NetX Duo paket havuzları sabit boyutlu bellek bloklarından oluşan olduğundan, hiçbir zaman iç parçalanma sorunu oluşturmaz. Elbette parçalanma, doğası gereği belirlenemeyen davranışlara neden olur. Ayrıca NetX Duo paketini ayırmak ve serbest bırakma süresi, basit bağlantılı liste işlemesi sağlar. Ayrıca paket ayırma ve ayırma işlemleri kullanılabilir listenin başında yapılır. Bu, mümkün olan en hızlı bağlantılı liste işlemeyi sağlar.
+NetX Duo Paket havuzları sabit boyutlu bellek blokları içerdiğinden, hiçbir iç parçalama sorunu yoktur. Tabii ki parçalama, doğal olarak belirleyici olmayan davranışa neden olur. Ayrıca, bir NetX Duo paket miktarını ayırmak ve serbest bırakmak için gereken süre basit bağlantılı liste işleme. Ayrıca, paket ayırma ve ayırmayı kaldırma, kullanılabilir listenin başında yapılır. Bu, mümkün olan en hızlı bağlantılı liste işlemesini sağlar.
 
-![UDP Veri Kapsüllemesi](./media/user-guide/image13.png)
+![UDP veri kapsülleme](./media/user-guide/image13.png)
 
-**ŞEKIL 2. UDP Veri Kapsüllemesi**
+**ŞEKIL 2. UDP veri kapsülleme**
 
-Esneklik eksikliği genellikle sabit boyutlu paket havuzlarının temel dezavantajıdır. En kötü durum gelen paketi de işleyecek en uygun paket yükü boyutunu belirlemek zor bir görevdir. NetX Duo paketleri, paket zincirleme olarak adlandırılan isteğe bağlı bir özellikle bu sorunu ele almaktadır. Gerçek bir ağ paketi, birbirine bağlı bir veya daha fazla NetX Duo paketinden olabilir. Ayrıca, paket üst bilgisi paketin üst kısmında bir işaretçi bulundurrarak. Ek protokoller eklendiklerine göre bu işaretçi geriye doğru taşınır ve yeni üst bilgi doğrudan verilerin önüne yazılır. Esnek paket teknolojisi olmadan, yığının başka bir arabellek ayırması ve verileri yeni üst bilgiyle yeni bir arabelleğe kopyalaması gerekir ve bu da yoğun bir işlemdir.
+Esneklik olmaması genellikle sabit boyutlu paket havuzlarının başlıca dezavantajıdır. Büyük/küçük harfe gelen paketi de işleyen en iyi paket yükü boyutunun belirlenmesi zor bir görevdir. NetX Duo paketleri, bu sorunu paket zincirleme adlı isteğe bağlı bir özellikle ele maktadır. Gerçek bir ağ paketi, birbirine bağlı bir veya daha fazla NetX Duo paketi yapılabilir. Ayrıca, paket üst bilgisi paketin en üstüne bir işaretçi tutar. Ek protokoller eklendikçe, bu işaretçi geriye doğru taşınır ve yeni üst bilgi doğrudan verilerin önüne yazılır. Esnek paket teknolojisi olmadan, yığının başka bir arabellek ayırması ve verileri yeni bir üst bilgiyle, yoğun işleme alan yeni bir arabelleğe kopyalaması gerekir.
 
-Belirli bir paket havuzu için her paket yükü boyutu sabit olduğu için, yük boyutundan büyük uygulama verileri birbirine zincirlenmiş birden çok paket gerektirir. Bir paketi kullanıcı verileriyle doldururken, uygulama tarafından ***nx_packet_data_append.*** Bu hizmet uygulama verilerini bir pakete taşır. Bir paketin kullanıcı verilerini tutmak için yeterli olduğu durumlarda, kullanıcı verilerini depolamak için ek paketler ayrılır. Paket zinciri kullanmak için, sürücünün zincirlenmiş paketlere alalı veya zincirli paketlerden aktaranı olması gerekir.
+Her paket yükü boyutu belirli bir paket havuzu için düzeltildiğinden, yük boyutundan daha büyük olan uygulama verileri birlikte birden çok paket zincirleme gerektirir. Bir paketi kullanıcı verileriyle doldururken, uygulama hizmeti ***nx_packet_data_append*** kullanacaktır. Bu hizmet uygulama verilerini bir pakete taşıtur. Bir paketin Kullanıcı verilerini tutmak için yeterli olmadığı durumlarda, Kullanıcı verilerini depolamak için ek paketler ayrılır. Paket zincirlemesini kullanmak için, sürücünün zincirleme paketlere alabilmesi ya da bu paketten iletim yapabilmesi gerekir.
 
-Paket zincirleme özelliğini kullanması gerek kullanmayan katıştırılmış sistemlerde, paket zincirleme mantığını kaldırmak için NetX Duo kitaplığı ***NX_DISABLE_PACKET_CHAIN** _ ile birlikte kullanılabilir. IP parçalanması ve yeniden değerlendirme özelliğinin zincirleme paket özelliğini kullanması gerektirebilirsiniz. Bu nedenle _*_NX_DISABLE_PACKET_CHAIN_*_ _ *_NX_DISABLE_FRAGMENTATION_** da tanımlanmalıdır. 
+Paket zincirleme özelliğini kullanması gerekmeyen ekli sistemler için, NetX Duo kitaplığı, paket zincirleme mantığını kaldırmak için ***NX_DISABLE_PACKET_CHAIN** _ ile oluşturulabilir. IP parçalama ve yeniden birleştirme özelliğinin zincirleme paket özelliğini kullanmak zorunda olabileceğini unutmayın. Bu nedenle _*_NX_DISABLE_PACKET_CHAIN_*_ tanımlanması _ *_NX_DISABLE_FRAGMENTATION_** için de tanımlanmalıdır. 
 
-Her NetX Duo paket bellek havuzu genel bir kaynaktır. NetX Duo, paket havuzlarının nasıl kullanıldıklarına hiçbir kısıtlama uygulamaz. 
+Her NetX Duo paket bellek havuzu, genel bir kaynaktır. NetX Duo, paket havuzlarının nasıl kullanılbileceğine ilişkin bir kısıtlama yoktur. 
 
-### <a name="packet-pool-memory-area"></a>Paket Havuzu Bellek Alanı
+### <a name="packet-pool-memory-area"></a>Paket havuzu bellek alanı
 
-Paket havuzunun bellek alanı oluşturma sırasında belirtilir. ThreadX ve NetX Duo nesnelerinin diğer bellek alanlarında olduğu gibi, hedefin adres alanı içinde herhangi bir yerde yer alıyor olabilir. 
+Paket havuzu için bellek alanı oluşturma sırasında belirtilir. ThreadX ve NetX Duo nesneleri için diğer bellek alanları gibi, hedefin adres alanındaki herhangi bir yerde bulunabilir. 
 
-Uygulamaya verdiği önemli esneklik nedeniyle bu önemli bir özelliktir. Örneğin, bir iletişim ürününün ağ arabellekleri için yüksek hızlı bir bellek alanına sahip olduğunu varsayalım. Bu bellek alanı, NetX Duo paket bellek havuzuna dönüştürerek kolayca kullanılabilir.
+Bu, uygulamaya verdiği önemli esneklik nedeniyle önemli bir özelliktir. Örneğin, bir iletişim ürününün ağ arabellekleri için yüksek hızlı bellek alanı olduğunu varsayalım. Bu bellek alanı, bir NetX Duo paket bellek havuzunda yapılarak kolayca kullanılır.
 
-### <a name="creating-packet-pools"></a>Paket Havuzları Oluşturma
+### <a name="creating-packet-pools"></a>Paket havuzları oluşturma
 
-Paket havuzları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. NetX Duo uygulamasında paket bellek havuzu sayısıyla ilgili bir sınır yoktur.
+Paket havuzları, başlatma sırasında veya çalışma zamanı sırasında uygulama iş parçacıkları tarafından oluşturulur. Bir NetX Duo uygulamasındaki paket belleği havuzlarının sayısında sınır yoktur.
 
-### <a name="dual-packet-pool"></a>Çift Paket Havuzu
+### <a name="dual-packet-pool"></a>Çift paket havuzu
 
-Genellikle varsayılan IP paket havuzunun yük boyutu, ağ arabirimi MTU'suna kadar çerçeve boyutuna yetecek kadar büyüktür. Normal işlem sırasında IP iş parçacığının ARP, TCP denetim iletileri, IGMP iletileri, ICMPv6 iletileri gibi iletiler göndermesi gerekir. Bu iletiler, IP örneğinde varsayılan paket havuzundan ayrılan paketleri kullanır. Paket havuzu için kullanılabilir bellek miktarının sınırlı olduğu bellek kısıtlı bir sistemde, tek bir paket havuzu kullanmak (MTU boyutuna uygun büyük yük boyutuna sahip) en uygun çözüm olmayabilir. NetX Duo, uygulamanın yük boyutunun daha küçük olduğu bir yardımcı paket havuzu yüklemesini sağlar. Yardımcı paket havuzu yüklendikten sonra IP yardımcı iş parçacığı, ilettiği iletinin boyutuna bağlı olarak paketleri varsayılan paket havuzundan veya yardımcı havuzdan ayırır. Yardımcı paket havuzu için 200 baytlık bir yük boyutu, IP yardımcı iş parçacığının ilettiği iletilerin çoğuyla çalışır.
+Genellikle varsayılan IP paket havuzunun yük boyutu, ağ arabirimi MTU 'SU için çerçeve boyutunu karşılayacak kadar büyüktür. Normal işlem sırasında, IP iş parçacığının ARP, TCP denetim iletileri, ıGMP iletileri, ICMPv6 iletileri gibi iletileri gönderebilmesi gerekir. Bu iletiler IP örneğindeki varsayılan paket havuzundan ayrılan paketleri kullanır. Paket havuzu için kullanılabilir bellek miktarının sınırlı olduğu, tek bir paket havuzunun kullanılması (MTU boyutuyla eşleşmesi için büyük yük boyutu ile) en iyi çözüm olmayabilir. NetX Duo, uygulamanın yük boyutunun daha küçük olduğu bir yardımcı paket havuzu yüklemesine olanak tanır. Yardımcı paket havuzu yüklendikten sonra, ileten iletinin boyutuna bağlı olarak, IP Yardımcısı iş parçacığı paketleri varsayılan paket havuzundan ya da yardımcı havuzdan ayırır. Bir yardımcı paket havuzu için, 200 baytlık yük boyutu, IP Yardımcısı iş parçacığının ilettiği birçok ileti ile çalışır.
 
-Varsayılan olarak NetX Duo kitaplığı çift paket havuzu etkinleştirilmeden hazır edilmiştir. Özelliği etkinleştirmek için kitaplığı * NX_DUAL_PACKET_POOL_ENABLE **_** tanımlı olarak derleme. Daha sonra yardımcı paket havuzu _,*_ veya **nx_ip_auxiliary_packet_pool_set.
+Varsayılan olarak NetX Duo kitaplığı, çift paket havuzu etkinleştirilmeksizin oluşturulur. Özelliği etkinleştirmek için, kitaplığı ***NX_DUAL_PACKET_POOL_ENABLE** _ tanımlı ile derleyin. Daha sonra yardımcı paket havuzu _ *_nx_ip_auxiliary_packet_pool_set_* * çağırarak ayarlanabilir.
 
-Ayrıca, birden fazla paket havuzu oluşturma seçeneği de vardır. Örneğin, beklenen ileti boyutları için en uygun yük boyutuna sahip bir iletme paketi havuzu oluşturulur. Sürücüde yük boyutu sürücü MTU'su olarak ayarlanmış bir alma paket havuzu oluşturulur çünkü alınan paketlerin boyutunu tahmin etmek mümkün değil.
+Ayrıca, birden fazla paket havuzu oluşturma seçeneği de mevcuttur. Örneğin, beklenen ileti boyutları için en iyi yük boyutuyla bir iletme paketi havuzu oluşturulur. Alınan paketlerin boyutunu tahmin edememesi nedeniyle, bir alma paketi havuzu sürücü MTU olarak ayarlanan yük boyutu olan sürücüde oluşturulur.
 
-### <a name="packet-header-nx_packet"></a>Paket Üst Bilgisi NX_PACKET   
-Varsayılan olarak, NetX Duo paket üst bilgilerini paket yükü alanından hemen önce yer alır. Paket bellek havuzu temelde paket yükünden hemen sonra gelen üst bilgiler olan bir paket dizisidir. Paket üst bilgisi (***NX_PACKET***) ve paket havuzunun düzeni Şekil 3'te görüntülanmıştır.
+### <a name="packet-header-nx_packet"></a>Paket üst bilgisi NX_PACKET   
+Varsayılan olarak, NetX Duo paket üst bilgisini paket yük alanından hemen önce koyar. Paket bellek havuzu temel olarak bir dizi paket (üst bilgiler), ardından paket yükünün hemen ardından gelir. Paket üst bilgisi (***NX_PACKET***) ve paket havuzunun düzeni şekil 3 ' te gösterilmiştir.
 
-Sıfır kopyalama işlemi gerçekleştirebilecek ağ cihazları sürücüsü için, genellikle paket yükü alanı başlangıç adresi DMA mantığına programlanır. Bazı DMA altyapılarının yük alanında hizalama gereksinimi vardır. Yük alanı başlangıç adresinin DMA altyapısı veya önbellek işlemi için düzgün bir şekilde hizalanması için kullanıcı, 'de ***NX_PACKET_ALIGNMENT.***
+Sıfır kopyalama işlemi gerçekleştirebilecek ağ cihazları sürücüsü için genellikle paket yük alanının başlangıç adresi DMA mantığıyla programlanabilir. Belirli DMA altyapılarının yük alanında hizalama gereksinimi vardır. Yük alanının başlangıç adresini DMA altyapısı veya önbellek işlemi için doğru şekilde hizalamak için, Kullanıcı symbol ***NX_PACKET_ALIGNMENT*** tanımlayabilir.
 
 > [!WARNING]
-> *Bir paketin iletimi tamamlandığında ağ **sürücüsünün nx_packet_transmit_release** işlevini kullanması önemlidir. Bu işlev, paketin kullanılabilir havuza geri yerleştirilmeden önce tcp çıkış kuyruğuna parçası olmadığını denetler.*
+> *Bir paketin iletimi tamamlandığında, ağ sürücüsünün **nx_packet_transmit_release** işlevini kullanması önemlidir. Bu işlev, paketin kullanılabilir havuza gerçekten geri yerleştirilmesi için bir TCP çıkış sırasının parçası olmadığından emin olup olmadığını denetler.*
 
-![Paket Üst Bilgisi ve Paket Havuzu Düzeni](./media/user-guide/image14.jpg)
+![Paket üst bilgisi ve paket havuzu düzeni](./media/user-guide/image14.jpg)
 
-**ŞEKIL 3. Paket Üst Bilgisi ve Paket Havuzu Düzeni**
+**ŞEKIL 3. Paket üst bilgisi ve paket havuzu düzeni**
 
-Paket üst bilgisi alanları aşağıdaki gibi tanımlanır. Bu tablonun, tablo yapısında yer alan tüm üyelerin kapsamlı *NX_PACKET* unutmayın.
+Paket üstbilgisinin alanları aşağıdaki gibi tanımlanır. Bu tablonun *NX_PACKET* yapısındaki tüm üyelerin kapsamlı bir listesi olmadığına unutmayın.
 
 |Paket üst bilgisi | Amaç |
 |---|---|
-|***nx_packet_pool_owner***|Bu alan, bu belirli paketin sahibi olan paket havuzunu işaret eder. Paket yayınlanmışsa, bu belirli havuza serbest bırakılır. Her paketin içindeki havuz sahipliğiyle, bir veri biriminin birden çok paket havuzundan birden çok pakete yayılması mümkündür.|
-|***nx_packet_next** _|Bu alan, aynı çerçeve içindeki bir sonraki pakete işaret eder. NULL ise çerçevenin parçası olan ek paketler yoktur. Bu alan, tüm paketin yeniden yayılmadığı sürece parçalanmış paketleri tutmak için de kullanılır. _ *_NX_DISABLE_PACKET_CHAIN_* * tanımlanmışsa kaldırılır.|
-|***nx_packet_last** _|Bu alan, aynı ağ paketi içindeki son paketi işaret eder. NULL ise, bu paket tüm ağ paketini temsil eder. _ *_NX_DISABLE_PACKET_CHAIN_* * tanımlanmışsa Bu alan kaldırılır.|
-|***nx_packet_length** _| Bu alan, tüm ağ paketindeki toplam bayt sayısını (_nx_packet_next * üyesi tarafından birlikte zincirleme tüm paketlerin toplam bayt sayısı dahil) içerir.|
-|***nx_packet_ip_interface***| Bu alan, arabirim sürücüsü tarafından alındığında pakete atanan arabirim denetim bloğu ve giden paketler için NetX Duo tarafından kullanılır. Arabirim denetim bloğu; ağ adresi, MAC adresi, IP adresi ve bağlantı etkin ve fiziksel eşleme gibi arabirim durumu gibi arabirimi tanımlar.|
-|***nx_packet_data_start** _| Bu alan, bu paketin fiziksel yük alanının başlangıcını gösterir. NX_PACKET üst bilgisini hemen takip etmek zorunda değildir, ancak bu, _ *_nx_packet_pool_create_** hizmeti için varsayılandır.|
-|***nx_packet_data_end** _|Bu alan, bu paketin fiziksel yük alanının sonuna işaret eder. Bu alan ile _nx_packet_data_start * alanı arasındaki fark, yük boyutunu temsil eder.|
-|***nx_packet_prepend_ptr** _|Bu alan paket verilerinin, paket yükü alanındaki mevcut paket verilerinin önüne (varsa) protokol üstbilgisi veya gerçek veriler eklendiğini gösterir. _Nx_packet_data_start * işaretçisi konumundan büyük veya buna eşit ve *nx_packet_append_ptr* işaretçisinden küçük veya buna eşit olmalıdır.|
+|***nx_packet_pool_owner***|Bu alan, bu paketin sahibi olan paket havuzunu belirtir. Paket serbest bırakılana kadar bu havuza serbest bırakıldı. Her paketin içindeki havuz sahipliğiyle, bir veri biriminin birden çok paket havuzundan birden çok pakete yayması mümkündür.|
+|***nx_packet_next** _|Bu alan, aynı çerçeve içindeki sonraki paketi gösterir. NULL ise, çerçevenin parçası olan ek paket yoktur. Bu alan, paketin tamamı yeniden derlenene kadar parçalanmış paketleri tutmak için de kullanılır. _*NX_DISABLE_PACKET_CHAIN **tanımlanırsa kaldırılır.|
+|***nx_packet_last** _|Bu alan, aynı ağ paketi içindeki son paketi belirtir. NULL ise, bu paket tüm ağ paketini temsil eder. Bu alan , _*_NX_DISABLE_PACKET_CHAIN_**tanımlanırsa kaldırılır.|
+|***nx_packet_length** _| Bu alan, ağ paketinin tamamına üye tarafından zincirlenmiş tüm paketlerde yer alan tüm baytların toplamı da dahil olmak üzere toplam bayt _nx_packet_next içerir.|
+|***nx_packet_ip_interface***| Bu alan, arabirim sürücüsü tarafından alınan pakete ve giden paketler için NetX Duo tarafından atanan arabirim denetim bloğu olur. Arabirim denetim bloğu; ağ adresi, MAC adresi, IP adresi ve bağlantı etkin ve gerekli fiziksel eşleme gibi arabirim durumu gibi arabirimi açıklar.|
+|***nx_packet_data_start** _| Bu alan, bu paketin fiziksel yük alanı başlangıcını belirtir. NX_PACKET üst bilgisinde hemen takip etmek zorunda değildir, ancak _ nx_packet_pool_create * hizmeti için *_varsayılan_* değerdir.|
+|***nx_packet_data_end** _|Bu alan, bu paketin fiziksel yük alanını belirtir. Bu alan ile _nx_packet_data_start* alanı arasındaki fark yük boyutunu temsil eder.|
+|***nx_packet_prepend_ptr** _|Bu alan, paket yükü alanında var olan paket verileri (varsa) önüne protokol üst bilgisi veya gerçek veriler olarak paket verisi eklenmiştir. Bu değer, _nx_packet_data_start* işaretçisi konumunun üzerinde veya ona eşit ve işaretçi işaretçisine *eşit veya nx_packet_append_ptr* gerekir.|
 > [!CAUTION]
-> *NETX Duo, performans nedenleriyle iletim için NETX Duo hizmetlerine geçirildiğinde, önüne işaretçisinin uzun sözcük hizalı adrese işaret ettiğini varsayar.*
+> *Performansla ilgili nedenlerden dolayı NetX Duo, paket iletim için NetX Duo hizmetlerine geçiriken, ön uç işaretçisinin uzun sözcükle hizalanmış adrese işaret ediyor olduğunu varsayıyor.*
 
 | Paket üst bilgisi | Amaç |
 |---|---|
-|***nx_packet_append_ptr** _|Bu alan, şu anda paket yükü alanındaki verilerin sonunu işaret eder. _Nx_packet_prepend_ptr * ve nx_packet_data_end tarafından işaret edilen bellek konumu arasında olmalıdır *.* Bu alan ile *nx_packet_prepend_ptr* alanı arasındaki fark, bu paketteki veri miktarını temsil eder.|
-|***nx_packet_packet_pad** _|Bu alanlar, istenen hizalama gereksinimini elde etmek için 4 baytlık sözcüklerdeki doldurma uzunluğunu tanımlar. _*_NX_PACKET_HEADER_PAD_*_ tanımlanmamışsa Bu alan kaldırılır. Alternatif olarak, _nx_packet_header_pad tanımlamak yerine _*_NX_PACKET_ALIGNMENT_*_ kullanılabilir. *|
+|***nx_packet_append_ptr** _|Bu alan, şu anda paket yükü alanında bulunan verilerin sonuna belirtir. _nx_packet_prepend_ptr* tarafından işaret eden bellek konumu ile *nx_packet_data_end.* Bu alan ile veri alanı *nx_packet_prepend_ptr* bu pakette yer alan veri miktarını temsil eder.|
+|***nx_packet_packet_pad** _|Bu alanlar, istenen hizalama gereksinimini elde etmek için doldurma uzunluğunu 4 bayt sözcüklerle tanımlar. Bu alan, _*_NX_PACKET_HEADER_PAD_*_ kaldırılır. Alternatif olarak _*_NX_PACKET_ALIGNMENT_*_ tanımlama yerine _nx_packet_header_pad.*|
 
-### <a name="packet-header-offsets"></a>Paket üst bilgisi uzaklıkları
+### <a name="packet-header-offsets"></a>Paket Üst Bilgisi Uzaklıkları
 
-Paket üst bilgisi boyutu, üst bilgi boyutuna uyum sağlamak için yeterli yer sağlamak üzere tanımlanır. ***Nx_packet_allocate*** hizmeti bir paket ayırmak ve belirtilen paket türüne göre paketteki preppointer 'ı ayarlaması için kullanılır. Paket türü NetX Duo protokolünü, protokol verilerinin önüne (UDP, TCP veya ıCMP gibi) eklemek için gereken sapmayı söyler.
+Paket üst bilgisi boyutu, üst bilgi boyutuna yetecek kadar alan sağlayacak şekilde tanımlanır. Nx_packet_allocate  hizmeti bir paket ayırmak için kullanılır ve pakette ön uç işaretçisini belirtilen paket türüne göre ayarlar. Paket türü, protokol verisi önüne protokol üst bilgisi (UDP, TCP veya ICMP gibi) eklemek için gereken uzaklığı NetX Duo'ya söyler.
 
-Aşağıdaki türler, paketteki IP üstbilgisini ve fiziksel katman (Ethernet) üst bilgisini hesaba çekmek için NetX Duo içinde tanımlanmıştır. İkinci durumda, gereken 4 baytlık hizalamasının dikkate alınması 16 bayt olarak kabul edilir. IPv4 paketleri, uygulamaların IPv4 ağları için paket ayırmasını sağlamak üzere NetX Duo içinde hala tanımlanmıştır. NetX Duo kitaplığı IPv6 etkin ise, genel paket türleri (örneğin, NX_IP_PACKET) IPv6 sürümüne eşlenir. NetX Duo kitaplığı IPv6 etkin olmadan derlenmişse, bu genel paket türleri IPv4 sürümüne eşlenir.
+Pakette IP üst bilgisi ve fiziksel katman (Ethernet) üst bilgisi dikkate alınarak NetX Duo'da aşağıdaki türler tanımlanmıştır. İkinci durumda, gerekli 4 bayt hizalamayı dikkate alarak 16 bayt olduğu varsayılır. IPv4 paketleri, uygulamaların IPv4 ağlarına paket ayırması için NetX Duo'da hala tanımlanmıştır. NetX Duo kitaplığı IPv6 etkin olarak etkinleştirilmiş olarak etkinleştirilmişse, genel paket türlerinin (NX_IP_PACKET gibi) IPv6 sürümüyle eşlenmiş olduğunu unutmayın. NetX Duo Kitaplığı IPv6 etkin olmadan etkinleştirilmişse, bu genel paket türleri IPv4 sürümüne eşlenmiş.
 
-Aşağıdaki tabloda IPv6 etkin olarak tanımlanan semboller gösterilmektedir:
+Aşağıdaki tabloda IPv6 etkin olarak tanımlanan semboller yer alır:
 
-|**Paket türü** |**Değer** |
+|**Paket Türü** |**Değer** |
 |---|---|
 |NX_IPv6_PACKET (NX_IP_PACKET) | 0x38 |
 |NX_UDPv6_PACKET (NX_UDP_PACKET) |0x40 |
-|NX_TCPv6_PACKET (NX_TCP_PACKET) |0x4C |
+|NX_TCPv6_PACKET (NX_TCP_PACKET) |0x4c |
 |NX_IPv4_PACKET |0x24 |
-|NX_IPv4_UDP_PACKET |0x2C |
+|NX_IPv4_UDP_PACKET |0x2c |
 |NX_IPv4_TCP_PACKET |0x38 |
 
-Aşağıdaki tabloda IPv6 devre dışı olarak tanımlanan semboller gösterilmektedir:
+Aşağıdaki tabloda, IPv6 devre dışı bırakılmış olarak tanımlanan semboller yer alır:
 
-|**Paket türü** |**Değer** |
+|**Paket Türü** |**Değer** |
 |---|---|
 |NX_IPv4_PACKET (NX_IP_PACKET) |0x24 |
-|NX_IPv4_UDP_PACKET (NX_UDP_PACKET) |0x2C |
+|NX_IPv4_UDP_PACKET (NX_UDP_PACKET) |0x2c |
 |NX_IPv4_TCP_PACKET (NX_TCP_PACKET) |0x38 |
 
-*NX_IPSEC_ENABLE* tanımlanmışsa bu değerlerin değişdiğine unutmayın. IPSec kullanan uygulama için, daha fazla bilgi için NetX Duo IPSec Kullanıcı Kılavuzu 'na bakın.
+Bu değerlerin tanımlandığı *NX_IPSEC_ENABLE* unutmayın. IPsec kullanan uygulama için daha fazla bilgi için NetX Duo IPsec Kullanıcı Kılavuzu'ne bakın.
 
-### <a name="pool-capacity"></a>Havuz kapasitesi
+### <a name="pool-capacity"></a>Havuz Kapasitesi
 
-Bir paket havuzundaki paketlerin sayısı, yük boyutunun bir işlevidir ve paket havuzu oluşturma hizmeti için sağlanan bellek alanındaki toplam bayt sayısıdır. Havuzun kapasitesi, paket boyutu (NX_PACKET üst bilgisinin boyutu, yük boyutu ve doğru hizalama) sağlanan bellek alanındaki toplam bayt sayısına bölünerek hesaplanır.
+Paket havuzudaki paket sayısı, yük boyutuna ve paket havuzu oluşturma hizmetine sağlanan bellek alanında yer alan toplam bayt sayısına sahip bir işlevdir. Havuzun kapasitesi, paket boyutu (NX_PACKET üst bilgi boyutu, yük boyutu ve uygun hizalama dahil) sağlanan bellek alanında toplam bayt sayısına bölünerek hesaplanır.
 
-### <a name="payload-area-alignment"></a>Yük alanı hizalaması
+### <a name="payload-area-alignment"></a>Yük Alanı Hizalaması
 
-NetX Duo 'daki paket havuzu tasarımı sıfır kopyalamayı destekler. Cihaz sürücüsü düzeyinde sürücü, yük alanını doğrudan veri alımı için arabellek tanımlayıcılara atayabilecektir. Bazen DMA altyapısı veya önbellek eşitleme mekanizması, yük alanının başlangıç adresinin belirli bir hizalama gereksinimine sahip olmasını gerektirir. Bu, ***NX_PACKET_ALIGNMENT*** içindeki istenen hizalama gereksinimini (bayt cinsinden) tanımlayarak elde edilebilir. Bir paket havuzu oluştururken, yük alanının başlangıç adresi bu değere hizalanır. Varsayılan olarak, başlangıç adresi 4 bayt hizalı olur.
-
-### <a name="thread-suspension"></a>İş parçacığı askıya alma
-
-Uygulama iş parçacıkları, boş bir havuzdan paket beklerken askıya alabilir. Havuza bir paket döndürüldüğünde, askıya alınan iş parçacığına Bu paket verilir ve devam edilir.
-
-Aynı paket havuzunda birden çok iş parçacığı askıya alınırsa, askıya alındığı sırada (FıFO) sürdürülür.
-
-### <a name="pool-statistics-and-errors"></a>Havuz Istatistikleri ve hataları
-
-Etkinleştirilirse, NetX Duo paket yönetimi yazılımı, uygulama için yararlı olabilecek çeşitli istatistik ve hataları izler. Paket havuzları için aşağıdaki istatistikler ve hata raporları korunur:
-
-- Havuzdaki toplam paket sayısı
-- Havuzdaki ücretsiz paketler
-- Toplam paket ayırmaları
-- Havuz boş ayırma Istekleri
-- Havuz boş ayırma getirilmesi
-- Geçersiz paket yayınları
-
-Bu istatistik ve hata raporlarının tümü, havuzdaki toplam ve ücretsiz paket sayısı dışında, ***NX_DISABLE_PACKET_INFO** _ tanımlanmadığı sürece NETX Duo kitaplığı 'nda yerleşiktir. Bu veriler, _ *_nx_packet_pool_info_get_** hizmeti ile uygulama tarafından kullanılabilir.
-
-### <a name="packet-pool-control-block-nx_packet_pool"></a>Paket havuzu denetim bloğu NX_PACKET_POOL
-
-Her paket bellek havuzunun özellikleri denetim bloğunda bulunur. Bu havuz, bağlantılı ücretsiz paketlerin listesi, serbest paket sayısı ve bu havuzdaki paketlerin yük boyutu gibi yararlı bilgiler içerir. Bu yapı ***nx_api. h*** dosyasında tanımlanmıştır.
-
-Paket havuzu denetim blokları bellekte herhangi bir yerde bulunabilir, ancak herhangi bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
-
-## <a name="ipv4-protocol"></a>IPv4 protokolü
-
-NetX Duo 'un Internet Protokolü (IP) bileşeni, Internet üzerinde IPv4 paketleri göndermekten ve alınmasından sorumludur. NetX Duo sürümünde, temel alınan ağ sürücüsünden yararlanarak, son olarak TCP, UDP, ıCMP ve ıGMP iletileri gönderme ve alma işleminden sorumlu bileşendir.
-
-NetX Duo hem IPv4 protokolünü (RFC 791) hem de IPv6 protokolünü (RFC 2460) destekler. Bu bölümde IPv4 açıklanır. IPv6, sonraki bölümde ele alınmıştır.
-
-### <a name="ipv4-addresses"></a>IPv4 adresleri
-
-Internet üzerindeki her konağın, IP adresi olarak adlandırılan benzersiz bir 32 bit tanımlayıcısı vardır. Şekil 4 ' te açıklandığı gibi beş IPv4 adresi sınıfı vardır. Beş IPv4 adresi sınıfının aralıkları aşağıdaki gibidir:
-
-|Sınıf|Aralık|
-|---|---|
-|A |0.0.0.0 127.255.255.255|
-|B |128.0.0.0 to 191.255.255.255|
-|C |192.0.0.0 to 223.255.255.255|
-|D |224.0.0.0 ile 239.255.255.255 arası|
-|E |240.0.0.0 to 247.255.255.255|
-
-![IPv4 adresi yapısının diyagramı.](./media/user-guide/ipv4-address-structure.png)
-
-### <a name="figure-4-ipv4-address-structure"></a>ŞEKIL 4. IPv4 adresi yapısı
-
-Ayrıca üç tür adres belirtimi vardır: *tek noktaya* yayın, *yayın* ve *çok noktaya yayın*. Tek noktaya yayın adresleri, Internet 'teki belirli bir konağı tanımlayan IPv4 adresleridir. Tek noktaya yayın adresleri bir kaynak ya da hedef IPv4 adresi olabilir. Bir yayın adresi, belirli bir ağ veya alt ağ üzerindeki tüm Konakları tanımlar ve yalnızca hedef adres olarak kullanılabilir. Yayın adresleri, adres kümesinin ana bilgisayar KIMLIĞI kısmı olacak şekilde belirtilir. Çok noktaya yayın adresleri (sınıf D) Internet 'te dinamik bir konaklar grubu belirtir. Çok noktaya yayın grubunun üyeleri her istediklerinde katılabilir ve bırakabilir.
-
-> [!IMPORTANT]
-> *Yalnızca IPv4 üzerinden UDP gibi bağlantısız protokoller yayın ve çok noktaya yayın grubunun sınırlı yayın özelliğini kullanabilir.*
-
-> [!IMPORTANT]
-> * Makro *IP_address* , ***nx_api. h** _ içinde tanımlanmıştır. Bir nokta yerine virgüller kullanarak IPv4 adreslerinin kolay belirtime olanak sağlar. Örneğin, _IP_ADDRESS (128, 0, 0, 0) * Şekil 4 ' te gösterilen ilk sınıf B adresini belirtir. *
-
-### <a name="ipv4-gateway-address"></a>IPv4 ağ geçidi adresi
-
-Ağ geçitleri, ağları üzerinde yerel etki alanı dışındaki hedeflere giden paketleri geçirmeye yardımcı olur. Her düğüm, bir sonraki atlamanın, komşlarından biri olan veya önceden programlanmış bir statik yönlendirme tablosu aracılığıyla gönderileceği bir bilgi içerir. Ancak, bu yaklaşımlar başarısız olursa düğüm, paketi hedefine yönlendirme hakkında daha fazla bilgi sahibi olan varsayılan ağ geçidine iletir. Varsayılan ağ geçidinin IP örneğine bağlı fiziksel arabirimlerden biri aracılığıyla doğrudan erişilebilir olması gerektiğini unutmayın. Uygulama, IPv4 varsayılan ağ geçidi adresini yapılandırmak için ***nx_ip_gateway_address_set** _ öğesini çağırır. Geçerli IPv4 ağ geçidi ayarlarını almak için hizmet _*_nx_ip_gateway_address_get_*_ kullanın. Uygulama ağ geçidi ayarını temizlemek için _ *_nx_ip_gateway_address_clear_** hizmetini kullanır.
-
-### <a name="ipv4-header"></a>IPv4 üst bilgisi
-
-Herhangi bir IPv4 paketinin Internet üzerinden gönderilmesi için bir IPv4 üst bilgisine sahip olması gerekir. Daha yüksek düzey protokoller (UDP, TCP, ıCMP veya ıGMP) bir paket göndermek için IP bileşenini çağırdığınızda, IPv4 iletme modülü verilerin önüne bir IPv4 üst bilgisi koyar. Buna karşılık, ağdan IP paketleri alındığında, IP bileşeni, üst düzey protokollere teslim etmeden önce, IPv4 üst bilgisini paketten kaldırır. Şekil 5 ' te IP üstbilgisinin biçimi gösterilmektedir.
-
-![IPv4 üst bilgi biçimi](./media/user-guide/ipv4-header-format.png)
-
-### <a name="figure-5-ipv4-header-format"></a>ŞEKIL 5. IPv4 üst bilgi biçimi
-
-> [!IMPORTANT]
-> *TCP/IP uygulamasındaki tüm üstbilgilerin **Big endian** biçimde olması beklenir. Bu biçimde, sözcüğün en önemli baytı en düşük bayt adresinde bulunur. Örneğin, 4 bit sürümü ve IP üstbilgisinin 4 bitlik üstbilgi uzunluğu üstbilginin ilk baytında bulunmalıdır.*
-
-IPv4 üstbilgisinin alanları aşağıdaki gibi tanımlanır:
-
-|IPv4 &nbsp; üst bilgisi &nbsp; alanı |Amaç |
-|---|---|
-|***4 bit sürümü*** |Bu alan, bu üst bilginin temsil ettiği IP sürümünü içerir. NetX Duo 'un desteklediği IP sürüm 4 için, bu alanın değeri 4 ' tür. |
-|***4 bit üst bilgi uzunluğu*** |Bu alan, IP üstbilgisindeki 32 bitlik sözcüklerin sayısını belirtir. Hiçbir seçenek sözcüğü yoksa, bu alanın değeri 5 ' tir. |
-|***8 bit hizmet türü (TOS)*** |Bu alan, bu IP paketi için istenen hizmetin türünü belirtir. Geçerli istekler şunlardır:<br />-Normal: 0x00 <br />-Minimum gecikme: 0x00<br />-En fazla veri: 0x08<br />-En yüksek güvenilirlik: 0x04<br />-Minimum maliyet: 0x02 |
-|***16 bit Toplam uzunluk*** |Bu alan IP üst bilgisi dahil olmak üzere bayt cinsinden IP veri biriminin toplam uzunluğunu içerir. Bir IP veri birimi, TCP/IP Interneti üzerinde bulunan temel bilgi birimidir. Verilerin yanı sıra bir hedef ve kaynak adresi içerir. 16 bit alan bir IP veri biriminin en büyük boyutu 65.535 bayttır.|
-|***16 bit tanımlama*** |Alan, bir konaktan gönderilen her IP veri birimini benzersiz şekilde tanımlamak için kullanılan bir sayıdır. Bu sayı genellikle bir IP veri birimi gönderildikten sonra artırılır. Alınan IP paket parçalarının montajı özellikle yararlıdır.|
-|***3 bit bayrak*** |Bu alan IP parçalama bilgilerini içerir. Bit 14 "parçalara ayırma" bitidir. Bu bit ayarlandıysa, giden IP datagramı parçalanmaz. Bit 13, "daha fazla parça" bitidir. Bu bit ayarlandıysa, daha fazla parça vardır. Bu bit açık ise, IP paketinin son parçadır.|
-|***13 bit parça kayması*** |Bu alan, parça kaydırmasına ait 13 bit üst ' i içerir. Bu nedenle, parça uzaklıklarla yalnızca 8 baytlık sınırlarda izin verilir. Parçalanmış bir IP veri biriminin ilk parçası "daha fazla parça" bit kümesine sahip olur ve 0 ' ın bir uzaklığa sahip olur.|
-|***8 bit yaşam süresi (TTL)*** |Bu alan, bu veri biriminin geçebileceği yönlendirici sayısını içerir ve bu da veri biriminin ömrünü temel olarak sınırlandırır.|
-|***8 bit protokol***|Bu alan, hangi protokolün IP datagramı kullandığını belirtir. Geçerli protokollerin ve bunların değerlerinin listesi aşağıda verilmiştir:<br />- ICMP: 0x01 <br />- IGMP: 0x02<br />- TCP: 0X06<br />- UDP: 0X11 |
-|***16 bit sağlamaları*** |Bu alan yalnızca IP üst bilgisini kapsayan 16 bit sağlama sağlamalarını içerir. IP yükünü üst düzey protokollerde ek sağlama sağlamaları vardır. |
-|***32 bit kaynak IP adresi*** |Bu alan gönderenin IP adresini içerir ve her zaman bir konak adresidir. |
-|***32 bit hedef IP adresi*** |Bu alan, adres bir yayın veya çok noktaya yayın adresi ise alıcı veya alıcıların IP adresini içerir. |
-
-### <a name="creating-ip-instances"></a>IP Örnekleri Oluşturma
-
-IP örnekleri başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. Uygulama yalnızca IPv6 ağları kullanmayı hedeflese bile, ilk IPv4 adresi, ağ maskesi, varsayılan paket havuzu, medya sürücüsü ve iç IP iş parçacığının bellek ve önceliği ***nx_ip_create*** hizmeti tarafından tanımlanır. Uygulama, IP örneğini IPv4 adresi geçersiz bir adrese (0.0.0.0) ayarlanmış şekilde başlatıyorsa, arabirim adresinin daha sonra el ile yapılandırma, RARP veya DHCP ya da benzer protokoller aracılığıyla çözülecek olduğu varsayılır.
-
-Birden çok ağ arabirimine sahip sistemler için birincil arabirim * nx_ip_create _ **çağrılır.** Her ek arabirim ,* veya **çağrısıyla aynı IP _örneğine nx_ip_interface_attach._ Bu hizmet, ağ arabirimi (IP adresi, ağ maskesi gibi) hakkında bilgileri arabirim denetim bloğunda depolar ve sürücü örneğini IP örneğinde arabirim denetim bloğuyla ilişkilendirmektedir. Sürücü bir veri paketi aldığında, IP alma mantığına iletmeden önce arabirim NX_PACKET veri yapısında depolaması gerekir. Arabirim eklemeden önce bir IP örneğinin önceden oluşturulmuş olması gerektiğini unutmayın.
-
-IPv6 hizmetleri * nx_ip_create _ **çağrısı nx_ip_create.** IPv6 hizmetlerini kullanmak isteyen uygulamaların IPv6'yı başlatmak için _ *_nx_ipv6_enable_** çağrısında olması gerekir.
-
-IPv6 ağın bir IP örneğinde yer alan her arabirimin birden çok IPv6 genel adresi olabilir. Cihaz, IPv6 adres ataması için DHCPv6 kullanmaya ek olarak Durum Bilgisiz Adres Otomatik Yapılandırması da kullanabilir. Bu bölümün ilerleyen bölümlerindeki "IP Denetim Bloğu" ve "IPv6 Adres Çözümlemesi" bölümlerinde daha fazla bilgi edinebilirsiniz.
-
-### <a name="ip-send"></a>IP Gönderme
-
-NetX Duo'daki IP gönderme işlemi çok kolaylaştırılmıştır. Pakette ön uç işaretçisi, IP üst bilgisine uyum sağlayacak şekilde geriye doğru taşınır. IP üst bilgisi tamamlanır (çağrı protokolü katmanı tarafından belirtilen tüm seçeneklerle birlikte), IP sağlama sayısı satır içinde hesaplanır (yalnızca IPv4 paketleri için) ve paket ilişkili ağ sürücüsüne sevk edilir. Ayrıca giden parçalanma, IP gönderme işleminin içinde de eşgüdüm sağlar.
-
-IPv4 için, hedef IP adresi için fiziksel eşleme gerekirse NetX Duo ARP isteklerini başlatıyor. IPv6, IPv6-address-tophysical-address eşlemesi için Komşu Bulma kullanır.
-
-> [!NOTE]
-> *IPv4 bağlantısı için, IP adresi çözümlemesi (fiziksel eşleme) gerektiren paketler, kuyruğa alınan paket sayısı ARP kuyruk derinliğini (NX_ARP_MAX_QUEUE_DEPTH simgesiyle tanımlanır) aşana kadar ARP kuyruğunda kuyruğa eklenir. Kuyruk derinliğine ulaşıldı ise NetX Duo, kuyrukta en eski paketi kaldırır ve kuyrukta kalan paketler için adres çözümlemesini beklemeye devam eder. Öte yandan, bir ARP girişi çözümlenmezse, ARP girdisi üzerinde bekleyen paketler ARP girdisi zaman aşımına karşı serbest bıraktır.*
-
-NetX Duo, birden çok ağ arabirimine sahip sistemler için hedef IP adresine göre bir arabirim seçer. Aşağıdaki yordam seçim işlemi için geçerlidir:
-
-1. Gönderen bir giden arabirim belirtirse ve arabirim geçerli ise, bu arabirimi kullanın.
-2. Hedef adres IPv4 yayını veya çok noktaya yayın ise, ilk etkin fiziksel arabirim kullanılır.
-3. Hedef adres statik yönlendirme tablosunda bulunursa, ağ geçidiyle ilişkili arabirim kullanılır.
-4. Hedef bağlantıda ise, bağlantı arabirimi kullanılır.
-5. Hedef adres bir bağlantı yerel adresi ise (169.254.0.0/16), ilk geçerli arabirim kullanılır.
-6. Varsayılan ağ geçidi yapılandırılmışsa, paketi iletmek için varsayılan ağ geçidiyle ilişkili arabirimi kullanın.
-7. Son olarak, geçerli arabirim IP adreslerinden biri bağlantı yerel adresi (169.254.0.0/16) ise, bu arabirim iletim için kaynak adres olarak kullanılır.
-8. Yukarıdakilerin hepsi başarısız olursa çıkış paketi bırakılır.
-
-### <a name="ip-receive"></a>IP Alma
-
-IP alma işlemesi ağ sürücüsünden veya iç IP iş parçacığından çağrılır (ertelenen alınan paket kuyruğunda paketlerin iş için). IP alma işlemi protokol alanını inceler ve paketi uygun protokol bileşenine göndermeyi çalışır. Paket gerçekten gönderlanmadan önce, ip üst bilgisi, ip üst bilgisini geçerek ön uç işaretçisi ekılarak kaldırılır.
-
-IP alma işlemi ayrıca parçalı IP paketlerini algılar ve parçalanma etkinse bunları yeniden bir hale almak için gerekli adımları gerçekleştirir. Parçalanma gerekli ancak etkinleştirilmemişse paket bırakılır.
-
-NetX Duo, pakette belirtilen arabirime göre uygun ağ arabirimini belirler. Paket arabirimi NULL ise, NetX Duo varsayılan olarak birincil arabirimdir. Bu, eski NetX Duo Ethernet sürücüleriyle uyumluluğu garanti etmek için yapılır.
-
-### <a name="raw-ip-send"></a>Ham IP Gönderme
-
-Ham IP paketi, NetX Duo tarafından doğrudan desteklenmemektedir (ve işlenmemektedir) üst katman protokol yükünü içeren bir IP çerçevesidir. Ham paket, geliştiricilerin kendi IP tabanlı uygulamalarını tanımlamalarına olanak sağlar. Bir uygulama, ham IP paketi işleme nxd_ip_raw_packet_send hizmette etkinleştirildiyse **,*** nxd_ip_raw_packet_send _ hizmetini kullanarak ham _*_IP nx_ip_raw_packet_enabled_*_ gönderebilir. Bir IPv6 ağına tek noktaya yayın paketi iletilirken NetX Duo, hedef adrese bağlı olarak paketleri göndermek için en iyi kaynak IPv6 adresini otomatik olarak belirler. Ancak hedef adres bir çok noktaya yayın (veya IPv4 için yayın) adresi ise, NetX Duo varsayılan olarak ilk (birincil) arabirimdir. Bu nedenle, bu tür paketleri ikincil arabirimlere göndermek için uygulama, giden paket için nx_ip_raw_packet_source_send kaynak adresini belirtmek üzere _ *_nx_ip_raw_packet_source_send_** hizmetini kullanmalıdır.
-
-### <a name="raw-ip-receive"></a>Ham IP Alma
-
-Ham IP paketi işleme etkinleştirildiyse, uygulama * nx_ip_raw_packet_receive _ **hizmeti** aracılığıyla ham IP paketleri alır. Tüm gelen paketler IP üst bilgisinde belirtilen protokole göre işlenir. Protokol UDP, TCP, IGMP veya ICMP'yi belirtirse, NetX Duo paket protokol türü için uygun işleyiciyi kullanarak paketi işler. Protokol bu protokollerden biri değilse ve ham IP alma etkinse, gelen paket uygulamanın nx_ip_raw_packet_receive * hizmeti aracılığıyla bunu almalarını bekleyen ham paket _*_kuyruğuna_* eklenir. Ayrıca, uygulama iş parçacıkları ham IP paketi beklerken isteğe bağlı bir zaman aşımı ile askıya alabilir. Ham paket kuyruğunda kuyruğa alına paket sayısı sınırlıdır. En büyük değer , varsayılan değeri **20 NX_IP_RAW_MAX_QUEUE_DEPTH**_* içinde tanımlanır. Bir uygulama , _ nx_ip_raw_receive_queue_max_set * hizmetini *_çağırarak maksimum_* değeri değiştirebilir.
-
-Alternatif olarak, NetX Duo kitaplığı ***NX_ENABLE_IP_RAW_PACKET_FILTER* ile de NX_ENABLE_IP_RAW_PACKET_FILTER.** Bu işlem modunda, uygulama işlanmamış protokol türüne sahip bir paket her alınğında çağrılan bir geri çağırma işlevi sağlar. IP alma mantığı, paketi kullanıcı tanımlı ham paket alma filtresi yordamına iletir. Filtre yordamı, ham paketin gelecekteki işlemler için tutulup tutulup tutulmay kararını verir. Geri çağırma yordamından dönüş değeri, paketin ham paket alma filtresi tarafından işlenmiş olup olmadığını gösterir. Paket geri çağırma işlevi tarafından işlenirse, uygulama paketle tamam olduktan sonra paket serbest bırak gerekir. Aksi takdirde Paketin serbest bırakılmasından NetX Duo sorumludur. Ham paket **_nx_ip_raw_packet_filter_set_** kullanma hakkında daha fazla bilgi için aşağıdaki ayrıntılara bakın.
-
-> [!NOTE]
-> *NetX Duo için BSD sarmalayıcı işlevi, BSD ham yuvalarını işlemek için ham paket filtresi işlevini kullanır. Bu nedenle, BSD sarmalayıcıda ham yuvayı desteklemek için NetX Duo kitaplığı ***NX_ENABLE_IP_RAW_PACKET_FILTER** _ tanımlı ile oluşturmalı ve uygulama kendi ham paket filtresini yüklemek için _*_nx_ip_raw_packet_filter_set_*_ kullanma functions._
-
-### <a name="default-packet-pool"></a>Varsayılan Paket Havuzu
-
-Oluşturma sırasında her IP örneğine varsayılan bir paket havuzu verilir. Bu paket havuzu ARP, RARP, ICMP, IGMP, çeşitli TCP denetim paketleri (SYN, ACK ve diğer), Komşu Bulma, Yönlendirici Bulma ve Yinelenen Adres Algılama için paket ayırmak için kullanılır. NetX Duo'ya bir paket ayırması gereken varsayılan paket havuzu boşsa NetX Duo'nın belirli bir işlemi durdurması gerekir ve mümkünse bir hata iletisi döndürür.
-
-### <a name="ip-helper-thread"></a>IP Yardımcı İş Parçacığı
-
-Her IP örneğinin bir yardımcı iş parçacığı vardır. Bu iş parçacığı, ertelenen tüm paket işleme ve tüm düzenli işlemlerin işlenmesinden sorumludur. IP yardımcı iş parçacığı, ***nx_ip_create.*** İş parçacığına yığını ve önceliği burada verilir. IP yardımcı iş parçacığında ilk işlemenin, IP oluşturma hizmetiyle ilişkili ağ sürücüsü başlatma işlemini tamamlamak olduğunu unutmayın. Ağ sürücüsü başlatma işlemi tamamlandıktan sonra yardımcı iş parçacığı, paket ve düzenli istekleri işlemeye yarayan sonsuz bir döngü başlatır.
-
-> [!IMPORTANT]
-> *IP yardımcı iş parçacığında açıklanamayan bir davranış görülürse, IP oluşturma hizmeti sırasında yığın boyutunu artırmak ilk hata ayıklama adımıdır. Yığın çok küçükse, IP yardımcı iş parçacığı büyük olasılıkla belleğin üzerine yazılabilir ve bu da olağan dışı sorunlara neden olabilir.*
+NetX Duo'da paket havuzu tasarımı sıfır kopyayı destekler. Cihaz sürücüsü düzeyinde, sürücü yük alanı doğrudan veri alımı için arabellek tanımlayıcılarına atayabilecektir. Bazen DMA altyapısı veya önbellek eşitleme mekanizması, yük alanı başlangıç adresinin belirli bir hizalama gereksinimine sahip olması gerekir. Bu, istenen hizalama gereksinimini (bayt cinsinden) içinde tanımlayarak ***NX_PACKET_ALIGNMENT.*** Bir paket havuzu oluştururken, yük alanı başlangıç adresi bu değere hizalanır. Varsayılan olarak, başlangıç adresi 4 bayt hizalıdır.
 
 ### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma
 
-Uygulama iş parçacıkları ham IP paketlerini almaya çalışırken askıya alabilir. Ham bir paket alındıktan sonra, yeni paket askıya alınan ilk iş parçacığına verilir ve bu iş parçacığı devam eder. Paket almaya giden NetX Duo hizmetlerinin hepsi isteğe bağlı bir askıya alma zaman aşımına neden olur. Bir paket alınca veya zaman aşımı sona erdiğinde, uygulama iş parçacığı uygun tamamlanma durumuyla devam eder.
+Uygulama iş parçacıkları, boş bir havuzdan paket beklerken askıya alabilir. Havuza bir paket döndürüldü, askıya alınan iş parçacığına bu paket verilir ve devam eder.
 
-### <a name="ip-statistics-and-errors"></a>IP İstatistikleri ve Hataları
+Aynı paket havuzunda birden çok iş parçacığı askıya alınırsa, askıya alındıklarına (FIFO) göre devam ederler.
 
-Etkinleştirilirse NetX Duo, uygulama için yararlı olacak çeşitli istatistikleri ve hataları takip eder. Her IP örneği için aşağıdaki istatistikler ve hata raporları korunur:
+### <a name="pool-statistics-and-errors"></a>Havuz İstatistikleri ve Hataları
 
-- Gönderilen Toplam IP Paketleri
-- Gönderilen Toplam IP Bayt Sayısı
-- Alınan Toplam IP Paketleri
-- Alınan Toplam IP Bayt Sayısı
-- Toplam IP Geçersiz Paketleri
-- Bırakılan Toplam IP Alma Paketleri
-- Toplam IP alma sağlama toplamı hataları
-- Bırakılan toplam IP gönderme paketi sayısı
-- Toplam gönderilen IP parçacık
-- Toplam alınan IP parçacığı sayısı
+Etkinleştirilirse, NetX Duo paket yönetim yazılımı uygulama için yararlı olan çeşitli istatistikleri ve hataları takip eder. Paket havuzları için aşağıdaki istatistikler ve hata raporları korunur:
 
-Bu istatistik ve hata raporlarının hepsi, ***nx_ip_info_get*** hizmeti ile uygulama tarafından kullanılabilir.
+- Havuzdaki Toplam Paket Sayısı
+- Havuza Ücretsiz Paketler
+- Toplam Paket Ayırma sayısı
+- Havuz Boş Ayırma İstekleri
+- Havuz Boş Ayırma Askıya Almaları
+- Geçersiz Paket Sürümü
 
-### <a name="ip-control-block-nx_ip"></a>IP denetim bloğu NX_IP
+Havuzdaki toplam ve ücretsiz paket sayısı dışındaki tüm bu istatistikler ve hata raporları, * NX_DISABLE_PACKET_INFO _ tanımlanmamışsa NetX Duo **kitaplığında** yerleşik olarak yer alır. Bu veriler uygulama için *___* nx_packet_pool_info_get * hizmetiyle kullanılabilir.
 
-Her bir IP örneğinin özellikleri denetim bloğunda bulunur. Her ağ cihazının IP adresleri ve ağ maskeleri, bir komşu IP ve fiziksel donanım adresi eşleme tablosu gibi yararlı bilgiler içerir. Bu yapı, ***nx_api. h** _file tanımlanmıştır. IPv6 etkinleştirilirse, bir IPv6 adresi dizisi de içerir. bu sayı, Kullanıcı tarafından yapılandırılabilir seçenek _ *_NX_MAX_IPV6_ADDRESSES_* * ile belirtilir. Varsayılan değer, her fiziksel ağ arabiriminin üç IPv6 adresine sahip olmasına izin verir.
+### <a name="packet-pool-control-block-nx_packet_pool"></a>Paket Havuzu Denetim Bloğu NX_PACKET_POOL
 
-IP örneği denetim blokları bellekte herhangi bir yerde bulunabilir, ancak her bir işlevin kapsamı dışında tanımlayarak denetimin genel bir yapıyı engellemesini sağlamak yaygın olarak kullanılır.
+Her paket bellek havuzunun özellikleri denetim bloğunda bulunur. Bu, bağlantılı boş paket listesi, boş paket sayısı ve bu havuza gelen paketlerin yük boyutu gibi yararlı bilgiler içerir. Bu yapı, ***nx_api.h dosyasında*** tanımlanır.
 
-### <a name="static-ipv4-routing"></a>Statik IPv4 yönlendirmesi
+Paket havuzu denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline geldi.
 
-Statik yönlendirme özelliği, bir uygulamanın ağ dışı hedef IP adresleri için bir IPv4 ağı ve sonraki atlama adresi belirlemesine izin verir. Statik yönlendirme etkinse NetX Duo, göndermek üzere paketin hedef adresiyle eşleşen bir giriş için statik yönlendirme tablosunda arama yapar. Hiçbir eşleşme bulunmazsa NetX Duo fiziksel arabirimlerin listesini arar ve hedef IP adresine ve ağ maskesine göre bir kaynak IP adresi ve sonraki atlama adresi seçer. Hedef, IP örneğine bağlı ağ sürücülerinin herhangi bir IP adresi ile eşleşmiyorsa, NetX Duo varsayılan ağ geçidine doğrudan bağlı bir arabirim seçer ve arabirimin IP adresini kaynak adresi olarak ve varsayılan ağ geçidini sonraki atlama olarak kullanır.
+## <a name="ipv4-protocol"></a>IPv4 Protokolü
 
-Girdiler, sırasıyla ***nx_ip_static_route_add** _ ve _ *_nx_ip_static_route_delete_** Hizmetleri kullanılarak statik yönlendirme tablosuna eklenebilir ve kaldırılabilir. Statik yönlendirmeyi kullanmak için, konak uygulamanın NX_ENABLE_IP_STATIC_ROUTING tanımlayarak bu özelliği etkinleştirmesi gerekir ***.***
+NetX Duo'nın İnternet Protokolü (IP) bileşeni, İnternet'te IPv4 paketleri göndermekten ve almakla sorumludur. NetX Duo'da, temel ağ sürücüsünü kullanarak TCP, UDP, ICMP ve IGMP iletilerini göndermek ve almak son olarak bileşendir.
 
-> [!NOTE]
-> *Statik yönlendirme tablosuna bir giriş eklenirken NetX Duo, tabloda zaten belirtilen hedef adresi için eşleşen bir giriş olup olmadığını denetler. Varsa, ağ maskesinde daha küçük ağ (daha uzun ön ek) ile giriş için tercih verir.*
+NetX Duo hem IPv4 protokolünü (RFC 791) hem de IPv6 protokolünü (RFC 2460) destekler. Bu bölümde IPv4 ele almaktadır. IPv6 bir sonraki bölümde ele alınmıştır.
 
-### <a name="ipv4-forwarding"></a>IPv4 Iletme
+### <a name="ipv4-addresses"></a>IPv4 Adresleri
 
-Gelen IPv4 paketi bu düğüme yönelik değildir ve IPv4 iletme özelliği etkinse, NetX Duo, paketi diğer arabirimler üzerinden iletmeyi dener.  
+İnternet'te her ana bilgisayar, IP adresi olarak adlandırılan benzersiz bir 32 bit tanımlayıcıya sahip olur. Şekil 4'te açıklandığı gibi beş IPv4 adresi sınıfı vardır. Beş IPv4 adres sınıfı aralığı aşağıdaki gibidir:
 
-### <a name="ip-fragmentation"></a>IP parçalanması
+|Sınıf|Aralık|
+|---|---|
+|A |0.0.0.0 - 127.255.255.255|
+|B |128.0.0.0 - 191.255.255.255|
+|C |192.0.0.0 - 223.255.255.255|
+|D |224.0.0.0 - 239.255.255.255|
+|E |240.0.0.0 - 247.255.255.255|
 
-Ağ aygıtı, giden paketlerin boyutuyla sınırlı olabilir. Bu sınıra en fazla iletim birimi (MTU) denir. IP MTU, bir bağlantı katmanı sürücüsünün IP paketi fragmenting olmadan aktarabileceği en büyük IP çerçeve boyutudur. Bir cihaz sürücüsü başlatma aşaması sırasında, sürücü modülünün IP MTU boyutunu hizmet nx_ip_interface_mtu_set aracılığıyla yapılandırması gerekir ***.***
+![IPv4 Adres Yapısı diyagramı.](./media/user-guide/ipv4-address-structure.png)
 
-Önerilmese de, uygulama cihaz tarafından desteklenen temeldeki IP MTU değerinden daha büyük veri birimleri oluşturabilir. Bu IP veri birimini iletmeden önce, IP katmanı bu paketleri parçalara ayıramalıdır. Parçalanmış IP çerçevelerini alırken, alıcı uç, aynı parçalama KIMLIĞI olan tüm parçalanmış IP çerçevelerini depolamalıdır ve bunları sırayla yeniden birleştirmek zorunda olmalıdır. IP alma mantığı orijinal IP çerçevesini zaman içinde geri yüklemek için tüm parçaları toplayaamadığında tüm parçalar serbest bırakılır. Bu, bu tür paket kaybını tespit etmek ve buradan kurtarmak için üst katman protokolüne sahiptir.
+### <a name="figure-4-ipv4-address-structure"></a>ŞEKIL 4. IPv4 Adres Yapısı
 
-IP parçalanması hem IPv4 hem de IPv6 paketlerine uygulanır.
-
-IP parçalama ve yeniden birleştirme işlemini desteklemek için, sistem tasarımcısının ***nx_ip_fragment_enable*** hizmetini kullanarak NETX Duo 'daki IP parçalama özelliğini etkinleştirmesi gerekir. Bu özellik etkinleştirilmemişse, gelen parçalanmış IP paketlerinin yanı sıra ağ sürücüsünün MTU değerini aşan paketler de atılır.
-
-> [!NOTE]
-> * NetX Duo kitaplığı oluşturulurken, IP parçalanma mantığı ***NX_DISABLE_FRAGMENTATION** _ tanımlanarak tamamen kaldırılabilir. Bunun yapılması NetX Duo kod boyutunu azaltmaya yardımcı olur. Bu durumda, hem IPv4 hem de IPv6 parçalama/yeniden birleştirme işlevlerinin disabled._ olduğunu unutmayın.
-
-> [!NOTE]
-> ***NX_DISABLE_CHAINED_PACKET** TANıMLANMıŞSA, IP parçalanması devre dışı bırakılmalıdır.*
-
-> [!NOTE]
-> *Bir IPv6 ağında, veri biriminin boyutu minimum MTU boyutunu aşarsa, yönlendiriciler bir veri birimini parçalara vermez. Bu nedenle, kaynak ve hedef arasındaki en düşük MTU değerini tespit etmek ve IP veri birimi boyutunun yol MTU değerini aşmadığından emin olmak için gönderen cihaza kadar olur. NetX Duo sürümünde, IPv6 yolu MTU Keşfi, **NX_ENABLE_IPV6_PATH_MTU_DISCOVERY** tanımlı simgesiyle NETX Duo kitaplığı oluşturarak etkinleştirilebilir.*
-
-## <a name="address-resolution-protocol-arp-in-ipv4"></a>IPv4 'de Adres Çözümleme Protokolü (ARP)
-
-Adres Çözümleme Protokolü (ARP), 32 bitlik IPv4 adreslerini temel alınan fiziksel ortamlardan (RFC 826) dinamik olarak eşleştirmekten sorumludur. Ethernet en yaygın fiziksel medyadır ve 48 bit adreslerini destekler. ARP gereksinimi, ***nx_ip_create** _ hizmetine sağlanan ağ sürücüsüne göre belirlenir. Fiziksel eşleme gerekliyse, ağ sürücüsünün sürücü arabirimini düzgün şekilde yapılandırmak için _ *_nx_interface_address_mapping_needed_** hizmetini kullanması gerekir.
-
-### <a name="arp-enable"></a>ARP etkinleştir
-
-ARP 'nin düzgün çalışması için öncelikle ***nx_arp_enable*** hizmeti ile uygulama tarafından etkinleştirilmesi gerekir. Bu hizmet, ARP etkinleştirme hizmetine sağlanan bellekten bir ARP önbelleği alanı oluşturma da dahil olmak üzere, ARP işleme için çeşitli veri yapıları ayarlar.
-
-### <a name="arp-cache"></a>ARP önbelleği
-
-ARP önbelleği, iç ARP eşleme veri yapılarının bir dizisi olarak görüntülenebilir. Her iç yapı, bir IP adresi ile fiziksel bir donanım adresi arasındaki ilişkiyi koruma kapasitesine sahiptir. Ayrıca, her veri yapısının birden fazla bağlantılı listenin parçası olması için bağlantı işaretçileri vardır.
-
-Uygulama, ARP tablosunda eşleme varsa, "**nx_arp_ip_address_find** _ hizmetini kullanarak donanım Mac adresı sağlayarak ARP ÖNBELLEĞINDEN bir IP adresi arayabilir. Benzer şekilde, _ *_nx_arp_hardware_address_find_** hizmeti belırlı bir IP adresı için Mac adresini döndürür.
-
-### <a name="arp-dynamic-entries"></a>ARP dinamik girdileri
-
-Varsayılan olarak, ARP etkinleştirme hizmeti, tüm girişleri kullanılabilir dinamik ARP girişleri listesindeki ARP önbelleğine koyar. Eşlenmemiş bir IP adresine gönderilen istek algılandığında NetX Duo tarafından bu listeden dinamik bir ARP girişi ayrılır. Ayırma işleminden sonra ARP girdisi ayarlanır ve fiziksel medyaya bir ARP isteği gönderilir.
-
-Ayrıca, hizmet ***nx_arp_dynamic_entry_set*** bir dinamik giriş de oluşturulabilir.
+Ayrıca üç tür adres belirtimleri de vardır: *tek noktaya yayın,* *yayın* ve çok *noktaya yayın.* Tek noktaya yayın adresleri, İnternet'te belirli bir ana bilgisayarı tanımlayacak IPv4 adresleridir. Tek noktaya yayın adresleri bir kaynak veya hedef IPv4 adresi olabilir. Yayın adresi belirli bir ağ veya alt ağ üzerinde tüm konakları tanımlar ve yalnızca hedef adres olarak kullanılabilir. Yayın adresleri, adresin ana bilgisayar kimliği kısmının olanlar olarak ayarlanmış olmasıyla belirtilir. Çok noktaya yayın adresleri (Sınıf D), internet üzerinde dinamik bir konak grubu belirtir. Çok noktaya yayın grubunun üyeleri her zaman katılarak ayrıllar.
 
 > [!IMPORTANT]
-> *Tüm dinamik ARP girişleri kullanımda ise, en az kullanılan ARP girişi yeni bir eşleme ile değiştirilmiştir.*
+> *Yalnızca IPv4 üzerinden UDP gibi bağlantısız protokoller yayın ve çok noktaya yayın grubunun sınırlı yayın özelliğini kullanılabilir.*
 
-### <a name="arp-static-entries"></a>ARP statik girdileri
+> [!IMPORTANT]
+> *Makro *IP_ADDRESS* ***nx_api.h _ içinde** tanımlanır. Nokta yerine virgül kullanarak IPv4 adreslerinin kolayca belirtimlerini sağlar. Örneğin, _IP_ADDRESS(128,0,0,0)* Şekil 4'te gösterilen birinci sınıf B adresini belirtir.*
 
-Uygulama, ***nx_arp_static_entry_create** _Service kullanarak statik ARP eşlemesi de ayarlayabilir. Bu hizmet, dinamik ARP giriş listesinden bir ARP girişi ayırır ve uygulama tarafından sağlanan eşleme bilgilerini kullanarak statik listeye koyar. Statik ARP girdileri yeniden kullanım veya yaşlandırma uygulanmaz. Uygulama, hizmet _*_nx_arp_static_entry_delete_*_ kullanarak statik bir girişi silebilir. ARP tablosundaki tüm statik girişleri kaldırmak için uygulama, _ *_nx_arp_static_entries_delete_* * hizmetini kullanabilir.
+### <a name="ipv4-gateway-address"></a>IPv4 Ağ Geçidi Adresi
 
-### <a name="automatic-arp-entry"></a>Otomatik ARP girdisi
+Ağ geçitleri, ağlarında bulunan konakların yerel etki alanı dışındaki hedeflere giden paketleri iletmelerine yardımcı olur. Her düğüm, hedef komşularından biri veya önceden programlanmış statik yönlendirme tablosu aracılığıyla gönderilecek sonraki atlama hakkında bilgi sahibidir. Ancak bu yaklaşımlar başarısız olursa, düğümün paketi varsayılan ağ geçidine iletmesi gerekir ve bu da paketi hedefine yönlendirme konusunda daha fazla bilgiye sahip olur. Varsayılan ağ geçidine IP örneğine bağlı fiziksel arabirimlerden biri aracılığıyla doğrudan erişilebilir olması gerektiğini unutmayın. Uygulama, IPv4 nx_ip_gateway_address_set ağ **geçidi** adresini yapılandırmak için * nx_ip_gateway_address_set _ çağrısı yapıyor. Geçerli IPv4 _*_nx_ip_gateway_address_get_*_ almak için hizmet sunucusunu kullanın. Uygulama, ağ geçidi ayarını *_temizlemek nx_ip_gateway_address_clear_* _ nx_ip_gateway_address_clear * hizmetini kullanacağız.
 
-NetX Duo, ARP isteğine eş yanıtlardan sonra eşin IP/MAC eşlemesini kaydeder. NetX Duo, ağ üzerinden gelen istenmeyen ARP isteklerine göre eş IP/MAC adresi eşlemesini kaydeden otomatik ARP girişi özelliğini de uygular. Bu özellik ARP tablosunun, bu ARP isteği/yanıt döngüsünü ilerlemek için gereken gecikmeyi azaltarak, eş bilgilerle doldurulmasını sağlar. Ancak, otomatik ARP 'yi etkinleştirme ile ilgili diğer taraf ARP tablosunun, yerel bağlantı üzerinde çok sayıda düğüm bulunan meşgul bir ağda hızlı bir şekilde doldurulmasına yol açacağından, bu durum sonunda ARP girişi değişikliği gerçekleşmektedir.
+### <a name="ipv4-header"></a>IPv4 Üst Bilgisi
 
-Bu özellik varsayılan olarak etkindir. Devre dışı bırakmak için, NetX Duo kitaplığı tanımlı ***NX_DISABLE_ARP_AUTO_ENTRY*** simgesiyle derlenmiş olmalıdır.</p>
+Herhangi bir IPv4 paketinin İnternet'te gönderilene bir IPv4 üst bilgisi olması gerekir. Daha üst düzey protokoller (UDP, TCP, ICMP veya IGMP) bir paket göndermek için IP bileşenini çağırsa, IPv4 iletme modülü verilerin önüne bir IPv4 üst bilgisi yer alır. Buna karşılık, IP paketleri ağdan alınarak, IP bileşeni daha üst düzey protokollere teslimten önce paketten IPv4 üst bilgisini kaldırır. Şekil 5'te IP üst bilgisi biçimi görüntülenir.
 
-### <a name="arp-messages"></a>ARP Iletileri
+![IPv4 Üst Bilgi Biçimi](./media/user-guide/ipv4-header-format.png)
 
-Daha önce belirtildiği gibi, IP görevi bir IP adresi için eşlemenin gerekli olduğunu algıladığında bir ARP istek iletisi gönderilir. ARP istekleri, karşılık gelen bir ARP yanıtı alınana kadar düzenli aralıklarla (her ***NX_ARP_UPDATE_RATE** _ saniyede) gönderilir. ARP denemesi terk edilmeden önce toplam _ *_NX_ARP_MAXIMUM_RETRIES_** ARP isteği yapılır. Bir ARP yanıtı alındığında, ilişkili fiziksel adres bilgileri önbellekte olan ARP girişinde depolanır.
+### <a name="figure-5-ipv4-header-format"></a>ŞEKIL 5. IPv4 Üst Bilgi Biçimi
 
-NetX Duo, çok ana sistemler için, belirtilen hedef adrese göre ARP isteklerinin ve yanıtlarının gönderileceği arabirimi belirler.
+> [!IMPORTANT]
+> *TCP/IP uygulamasındaki tüm üst big endian **beklenir.** Bu biçimde, sözcüğün en önemli bayt en düşük bayt adreste yer almaktadır. Örneğin, IP üst bilgisi 4 bit sürümü ve 4 bit üst bilgi uzunluğu üst bilginin ilk baytı üzerinde yer alalır.*
 
-> [!NOTE]
-> *NetX Duo ARP yanıtı beklerken giden IP paketleri sıraya alınır. Kuyruğa alınan giden IP paketlerinin sayısı, sabit **NX_ARP_MAX_QUEUE_DEPTH** tarafından tanımlanır.*
+IPv4 üst bilgisi alanları aşağıdaki gibi tanımlanır:
 
-NetX Duo Ayrıca yerel IPv4 ağındaki diğer düğümlerden gelen ARP isteklerine yanıt verir. ARP isteğini alan arabirimin geçerli IP adresiyle eşleşen bir dış ARP isteği yapıldığında NetX Duo, geçerli fiziksel adresi içeren bir ARP yanıt iletisi oluşturur.
-
-Ethernet ARP isteklerinin ve yanıtlarının biçimleri Şekil 6 ' da gösterilir ve aşağıda açıklanmıştır.
-
-| **İstek/yanıt &nbsp; alanı**         | **Amaç**            |
-| ---------------------------------- | ---------------------- |
-| ***Ethernet hedef adresi*** | Bu 6 baytlık alan ARP yanıtının hedef adresini içerir ve ARP istekleri için bir yayındır (tümü). Bu alan, ağ sürücüsü tarafından ayarlanır. 
-| ***Ethernet kaynak adresi***      | Bu 6 baytlık alan, ARP isteği veya yanıtı göndericisinin adresini içerir ve ağ sürücüsü tarafından ayarlanır. |
-| ***Çerçeve türü*** | Bu 2 baytlık alan, mevcut Ethernet çerçevesinin türünü ve ARP istekleri ve yanıtları için 0x0806 ' ya eşittir. Bu, ağ sürücüsünün ayarlamaktan sorumlu olduğu son alandır. |
-| ***Donanım türü*** | Bu 2 baytlık alan, Ethernet için 0x0001 olan donanım türünü içerir. |
-| ***Protokol türü*** | Bu 2 baytlık alan, IP adresleri için 0x0800 olan protokol türünü içerir. |
-| ***Donanım boyutu*** | Bu 1 baytlık alan, Ethernet adresleri için 6 olan donanım adresi boyutunu içerir. |
-
-![ARP paket biçiminin diyagramı.](./media/user-guide/arp-packet-format.png)
-
-**ŞEKIL 6. ARP paket biçimi**
-
-| İstek/yanıt &nbsp; alanı | Amaç |
+|IPv4 &nbsp; Üst Bilgi &nbsp; Alanı |Amaç |
 |---|---|
-| ***Protokol boyutu*** | Bu 1 baytlık alan, IP adresleri için 4 olan IP adresi boyutunu içerir. |
-| ***İşlem kodu*** | Bu 2 baytlık alan, bu ARP paketinin işlemini içerir. Bir ARP yanıtı, 0x0002 değeri ile temsil edilirken, 0x0001 değeri ile bir ARP isteği belirtilir. |
-| ***Gönderici Ethernet adresi*** | Bu 6 baytlık alan, gönderenin Ethernet adresini içerir. |
-| ***Gönderenin IP adresi*** | Bu 4 baytlık alan gönderenin IP adresini içerir. |
-| ***Hedef Ethernet adresi*** | Bu 6 baytlık alan, hedefin Ethernet adresini içerir. |
-| ***Hedef IP adresi*** | Bu 4 baytlık alan, hedefin IP adresini içerir. |
+|***4 bit sürüm*** |Bu alan, bu üst bilginin temsil ettiği IP sürümünü içerir. NetX Duo'nın desteklediği IP sürüm 4 için bu alanın değeri 4'dür. |
+|***4 bit üst bilgi uzunluğu*** |Bu alan, IP üst bilgisinde 32 bit sözcük sayısını belirtir. Seçenek sözcükleri yoksa bu alanın değeri 5'tir. |
+|***8 bit hizmet türü (TOS)*** |Bu alan, bu IP paketi için istenen hizmet türünü belirtir. Geçerli istekler aşağıdaki gibidir:<br />- Normal: 0x00 <br />- En Düşük Gecikme: 0x00<br />- Maksimum Veri: 0x08<br />- Maksimum Güvenilirlik: 0x04<br />- Minimum Maliyet: 0x02 |
+|***16 bit toplam uzunluk*** |Bu alan, IP üst bilgisi dahil olmak üzere IP veri biriminin bayt cinsinden toplam uzunluğunu içerir. IP veri birimi, TCP/IP İnterneti üzerinde bulunan temel bilgi birimidir. Verilere ek olarak bir hedef ve kaynak adresi içerir. 16 bitlik bir alan olduğundan IP veri biriminin en büyük boyutu 65.535 bayttır.|
+|***16 bit tanımlama*** |alanı, bir konaktan gönderilen her IP veri birimini benzersiz olarak tanımlamak için kullanılan bir sayıdır. Bu sayı genellikle bir IP veri birimi gönderildikten sonra artırılır. Özellikle alınan IP paketi parçalarının birleştirilmesinde yararlıdır.|
+|***3 bit bayraklar*** |Bu alan IP parçalanma bilgilerini içerir. Bit 14, "parçalama" bitidir. Bu bit ayarlanırsa giden IP veri birimi parçalanmaz. Bit 13, "daha fazla parça" bitidir. Bu bit ayarlanırsa daha fazla parça vardır. Bu bit netse, bu IP paketinin son parçasıdır.|
+|***13 bit parça uzaklığı*** |Bu alan, parça uzaklığının üst 13 bitlerini içerir. Bu nedenle, parça uzaklıklarına yalnızca 8 bayt sınırlarda izin verilir. Parçalı BIR IP veri biriminin ilk parçası "daha fazla parça" bit kümesine ve 0 uzaklığına sahip olur.|
+|***8 bit yaşam süresi (TTL)*** |Bu alan, bu veri biriminin geçeceği yönlendirici sayısını içerir ve bu da temelde veri biriminin ömrünü sınırlar.|
+|***8 bit protokol***|Bu alan, IP veri birimini hangi protokolün kullanmakta olduğunu belirtir. Aşağıda geçerli protokollerin ve bunların değerlerinin listesi ve liste yer almaktadır:<br />-ICMP: 0x01 <br />-IGMP: 0x02<br />-TCP: 0X06<br />-UDP: 0X11 |
+|***16 bit sağlama toplamı*** |Bu alan, yalnızca IP üstbilgisini kapsayan 16 bit sağlama toplamını içerir. IP yükünü kapsayan üst düzey protokollerde ek sağlama toplamı vardır. |
+|***32-bit kaynak IP adresi*** |Bu alan, gönderenin IP adresini içerir ve her zaman bir ana bilgisayar adresidir. |
+|***32-bit hedef IP adresi*** |Bu alan, adres bir yayın veya çok noktaya yayın adresi ise alıcı veya alıcıların IP adresini içerir. |
+
+### <a name="creating-ip-instances"></a>IP örnekleri oluşturma
+
+IP örnekleri, başlatma sırasında veya çalışma zamanı sırasında uygulama iş parçacıkları tarafından oluşturulur. İlk IPv4 adresi, ağ maskesi, varsayılan paket havuzu, medya sürücüsü ve iç IP iş parçacığının belleği ve önceliği, uygulama yalnızca IPv6 ağlarını kullanmayı amaçladığında bile ***nx_ip_create*** hizmeti tarafından tanımlanır. Uygulama, IP örneğini IPv4 adresi ile geçersiz bir adrese (0.0.0.0) ayarlandıysa, arabirim adresinin daha sonra, RARP aracılığıyla ya da DHCP veya benzer protokoller aracılığıyla el ile yapılandırma ile çözüledüğü varsayılır.
+
+Birden çok ağ arabirimine sahip sistemler için, ***nx_ip_create** _ çağrılırken birincil arabirim atanır. Her ek arabirim _ *_nx_ip_interface_attach_* * ÇAĞıRARAK aynı IP örneğine bağlanabilir. Bu hizmet, arabirim denetim bloğunda ağ arabirimi (IP adresi, ağ maskesi gibi) hakkındaki bilgileri depolar ve sürücü örneğini IP örneğindeki arabirim denetim bloğu ile ilişkilendirir. Sürücü bir veri paketi aldığından, IP alma mantığına iletmeden önce arabirim bilgilerini NX_PACKET yapıda depolaması gerekir. Herhangi bir arabirim iliştirmeden önce bir IP örneğinin oluşturulması gerekir.
+
+IPv6 Hizmetleri, ***nx_ip_create** _ çağrıldıktan sonra başlatılmaz. IPv6 hizmetlerini kullanmak isteyen uygulamalar, IPv6 'Yı başlatmak için _ *_nx_ipv6_enable_** hizmetini çağırmalıdır.
+
+IPv6 ağında, bir IP örneğindeki her arabirim birden fazla IPv6 genel adresine sahip olabilir. IPv6 adres ataması için DHCPv6 kullanmanın yanı sıra, bir cihaz durum bilgisiz adres otomatik yapılandırması da kullanabilir. Daha sonra bu bölümün ilerleyen kısımlarında "IP denetim bloğu" ve "IPv6 adres çözümlemesi" bölümlerinde daha fazla bilgi bulunmaktadır.
+
+### <a name="ip-send"></a>IP gönderme
+
+NetX Duo 'da IP gönderme işlemi çok basitleştirilmiştir. Paketteki önüne işaretçisi, IP üst bilgisine uyacak şekilde geriye taşınır. IP üstbilgisi tamamlandı (çağıran protokol katmanı tarafından belirtilen tüm seçeneklerle), IP sağlama toplamı satır içinde hesaplanır (yalnızca IPv4 paketleri için) ve paket ilişkili ağ sürücüsüne gönderilir. Ayrıca, giden parçalanma IP gönderme işlemi içinden de koordine edilir.
+
+IPv4 için NetX Duo, hedef IP adresi için fiziksel eşleme gerekliyse ARP istekleri başlatır. IPv6, IPv6 adresi-tofiziksel adres eşlemesi için komşu bulmayı kullanır.
 
 > [!NOTE]
-> *ARP istekleri ve yanıtları Ethernet düzeyindeki paketlerdir. Diğer tüm TCP/IP paketleri bir IP paket üstbilgisiyle kapsüllenir.*
+> *IPv4 bağlantısı için, sıraya alınan paket sayısı ARP kuyruğu derinliğini (sembol **NX_ARP_MAX_QUEUE_DEPTH** tarafından tanımlanır) aşana kadar IP adresi çözümlemesi (yani fiziksel eşleme) GEREKTIREN paketler ARP kuyruğunda sıraya alınır. Sıra derinliğine ulaşıldığında NetX Duo kuyruktaki en eski paketi kaldırır ve kalan paketlerin sıraya alındığı adres çözümlemesini beklemeye devam eder. Öte yandan, bir ARP girdisi çözümlenmezse ARP girişinde bekleyen paketler ARP giriş zaman aşımı üzerine serbest bırakılır.*
+
+Birden çok ağ arabirimine sahip sistemler için NetX Duo, hedef IP adresini temel alan bir arabirim seçer. Aşağıdaki yordam seçim işlemi için geçerlidir:
+
+1. Gönderen bir giden arabirim belirtiyorsa ve arabirim geçerliyse, bu arabirimi kullanın.
+2. Bir hedef adres IPv4 yayını veya çok noktaya yayın ise, ilk etkin fiziksel arabirim kullanılır.
+3. Hedef adres statik yönlendirme tablosunda bulunursa, ağ geçidiyle ilişkili arabirim kullanılır.
+4. Hedef bağlantıalıyorsa, bağlantı bağlantısı arabirimi kullanılır.
+5. Hedef adres bir bağlantı yerel adresidir (169.254.0.0/16), ilk geçerli arabirim kullanılır.
+6. Varsayılan ağ geçidi yapılandırılmışsa, paketi aktarmak için varsayılan ağ geçidiyle ilişkili arabirimi kullanın.
+7. Son olarak, geçerli arabirim IP adresinden biri bağlantı-yerel adres (169.254.0.0/16) ise, bu arabirim iletim için kaynak adresi olarak kullanılır.
+8. Yukarıdaki tüm hata oluştuğunda çıkış paketi bırakılır.
+
+### <a name="ip-receive"></a>IP alma
+
+IP alma işlemi ağ sürücüsünden veya iç IP iş parçacığından (ertelenmiş alınan paket sırasındaki paketleri işlemek için) çağrılır. IP alma işlemi protokol alanını inceler ve paketi uygun protokol bileşenine gönderme girişiminde bulunur. Paket gerçekten gönderilmeden önce IP üstbilgisi, IP üstbilgisinin ötesinde önüne işaretçisinin ilerleyerek kaldırılır.
+
+IP alma işlemi, parçalanmış IP paketlerini de algılar ve parçalama etkinse bunları yeniden birleştirmek için gerekli adımları gerçekleştirir. Parçalama gerekliyse ancak etkinleştirilmemişse, paket bırakılır.
+
+NetX Duo, pakette belirtilen arabirime bağlı olarak uygun ağ arabirimini belirler. Paket arabirimi NULL ise NetX Duo varsayılan olarak birincil arabirime ayarlanır. Bu, eski NetX Duo Ethernet sürücüleriyle uyumluluğu güvence altına almak için yapılır.
+
+### <a name="raw-ip-send"></a>Ham IP gönderme
+
+Ham IP paketi, NetX Duo tarafından doğrudan desteklenmeyen (ve işlenen) üst katman protokol yükünün bulunduğu bir IP çerçevesidir. Ham paket, geliştiricilerin kendi IP tabanlı uygulamalarını tanımlamasına olanak tanır. Bir uygulama, _*_nx_ip_raw_packet_enabled_*_ HIZMETIYLE ham IP paket işleme etkinleştirildiyse, doğrudan ***nxd_ip_raw_packet_send** _ hizmetini kullanarak ham IP paketleri gönderebilir. NetX Duo, bir tek noktaya yayın paketini bir IPv6 ağına iletirken, hedef adrese göre, paketleri üzerine göndermek için kullanılacak en iyi kaynak IPv6 adresini otomatik olarak belirler. Hedef adres bir çok noktaya yayın (veya IPv4 için yayın) adresi ise, NetX Duo varsayılan olarak ilk (birincil) arabirime ayarlanır. Bu nedenle, bu tür paketleri ikincil arabirimlerde göndermek için, uygulamanın, giden paket için kullanılacak kaynak adresini belirtmek üzere _ *_nx_ip_raw_packet_source_send_** hizmetini kullanması gerekir.
+
+### <a name="raw-ip-receive"></a>Ham IP alma
+
+Ham IP paket işleme etkinse, uygulama, ***nx_ip_raw_packet_receive** _ hizmeti aracılığıyla ham IP paketleri alabilir. Tüm gelen paketler, IP üstbilgisinde belirtilen protokole göre işlenir. Protokol UDP, TCP, ıGMP veya ıCMP belirtiyorsa, NetX Duo paket protokol türü için uygun işleyiciyi kullanarak paketi işleymeyecektir. Protokol Bu protokollerden biri değilse ve ham IP alma etkinleştirilmişse, gelen paket, uygulamanın _*_nx_ip_raw_packet_receive_** hizmeti aracılığıyla almasını bekleyen ham paket kuyruğuna yerleştirilir. Ayrıca, uygulama iş parçacıkları bir ham IP paketini beklerken isteğe bağlı bir zaman aşımı ile askıya alabilir. Ham paket kuyruğunda sıraya alınabilen paketlerin sayısı sınırlıdır. En büyük değer_, varsayılan değeri 20 olan * NX_IP_RAW_MAX_QUEUE_DEPTH tanımlanmıştır. Uygulama, _ *_nx_ip_raw_receive_queue_max_set_** hizmetini çağırarak maksimum değeri değiştirebilir.
+
+Alternatif olarak, NetX Duo Kitaplığı ***NX_ENABLE_IP_RAW_PACKET_FILTER *** ile oluşturulmuş olabilir. Bu işlem modunda, uygulama, işlenmemiş bir protokol türüne sahip bir paket alındığında çağrılan bir geri çağırma işlevi sağlar. IP alma mantığı, paketi Kullanıcı tanımlı ham paket alma filtresi yordamına iletir. Filtre yordamı, ham paketin gelecekteki işlem için tutulup tutulmayacağını belirler. Geri çağırma yordamlarından gelen dönüş değeri, paketin ham paket alma filtresi tarafından işlenip işlenmediğini belirtir. Paket geri çağırma işlevi tarafından işlenirse, paket ile uygulama yapıldıktan sonra paketin yayımlanması gerekir. Aksi halde, NetX Duo, paketin serbest bırakılmasından sorumludur. Ham paket filtresi işlevinin kullanımı hakkında daha fazla bilgi için **_nx_ip_raw_packet_filter_set_** başvurun.
 
 > [!NOTE]
-> *TCP/IP uygulamasındaki tüm ARP iletilerinin **Big endian** biçimde olması beklenir. Bu biçimde, sözcüğün en önemli baytı en düşük bayt adresinde bulunur.*
+> * NetX Duo için BSD sarmalayıcı işlevi, BSD ham yuvalarını işlemek için ham paket filtre işlevine dayanır. Bu nedenle, BSD sarmalayıcısında ham yuvayı desteklemek için, NetX Duo Kitaplığı ***NX_ENABLE_IP_RAW_PACKET_FILTER** _ tanımlı ile oluşturulmalıdır ve uygulamanın kendi ham paket filtresini yüklemek için _*_nx_ip_raw_packet_filter_set_*_ kullanmamalıdır Functions._
 
-### <a name="arp-aging"></a>ARP eskime
+### <a name="default-packet-pool"></a>Varsayılan paket havuzu
 
-NetX, otomatik dinamik ARP girişi geçersiz doğrulamasını destekler. ***NX_ARP_EXPIRATION_RATE** _, belırlenen bir IP adresinin fiziksel eşlemenin geçerli kaldığı saniye sayısını belirtir. Süre dolduktan sonra ARP girişi ARP önbelleğinden kaldırılır. Karşılık gelen IP adresine gönderme denemesi, yeni bir ARP isteğine neden olur. _ *_NX_ARP_EXPIRATION_RATE_** değerini sıfıra ayarlamak, varsayılan yapılandırma olan ARP eskimesini devre dışı bırakır.
+Her IP örneğine oluşturma sırasında varsayılan bir paket havuzu verilir. Bu paket havuzu, ARP, RARP, ıCMP, ıGMP, çeşitli TCP denetim paketleri (SYN, ACK, vb.), komşu bulma, yönlendirici bulma ve yinelenen adres algılama için paket ayırmak üzere kullanılır. NetX Duo bir paket ayırması gerektiğinde varsayılan paket havuzu boşsa, NetX Duo belirli bir işlemi iptal etmek zorunda kalabilir ve mümkünse bir hata mesajı döndürür.
 
-### <a name="arp-defend"></a>ARP savun
+### <a name="ip-helper-thread"></a>IP Yardımcısı Iş parçacığı
 
-Bir ARP isteği veya ARP yanıt paketi alındığında ve gönderici aynı IP adresine sahip olduğunda ve bu düğümün IP adresiyle çakışıyorsa, NetX Duo, bu adres için bir savunma olarak bir ARP isteği gönderir. Çakışma ARP paketi 10 saniye içinde birden çok kez alınmışsa NetX Duo daha fazla savunma paketi göndermez. Varsayılan Aralık 10 saniye, ***NX_ARP_DEFEND_INTERVAL** _ tarafından yeniden tanımlanabilir. Bu davranış, RFC5227 (c) üzerinde belirtilen ilkeyi izler. Windows XP arp bildirisini arp araştırması için bir yanıt olarak yoksaydığından, kullanıcı, arp yanıtını ek erteleme olarak göndermek için _ *_NX_ARP_DEFEND_BY_REPLY_** tanımlayabilir.
+Her bir IP örneğinin bir yardımcı iş parçacığı vardır. Bu iş parçacığı, tüm ertelenmiş paket işlemlerini ve tüm düzenli işlemleri işlemekten sorumludur. IP Yardımcısı iş parçacığı ***nx_ip_create oluşturulur.*** Burada iş parçacığına yığın ve öncelik verilir. IP Yardımcısı iş parçacığındaki ilk işleme, IP oluşturma hizmeti ile ilişkili ağ sürücüsü başlatma işlemini bitirebileceğinizi unutmayın. Ağ sürücüsü başlatma işlemi tamamlandıktan sonra, yardımcı iş parçacığı paket ve düzenli istekleri işlemek için sonsuz bir döngü başlatır.
 
-### <a name="arp-statistics-and-errors"></a>ARP Istatistikleri ve hataları
+> [!IMPORTANT]
+> *IP Yardımcısı iş parçacığı içinde açıklanamayan davranış görüolduysa, IP oluşturma hizmeti sırasında yığın boyutunun artırılması ilk hata ayıklama adımıdır. Yığın çok küçükse, IP Yardımcısı iş parçacığı muhtemelen belleğin üzerine yazılmasına neden olabilir ve bu da olağan dışı sorunlara yol açabilir.*
 
-Etkinleştirilirse, NetX Duo ARP yazılımı, uygulama için yararlı olabilecek çeşitli istatistik ve hataları izler. Aşağıdaki istatistikler ve hata raporları her IP 'nin ARP işlemleri için tutulur:
+### <a name="thread-suspension"></a>İş parçacığı askıya alma
 
-- Gönderilen toplam ARP Isteği sayısı
-- Alınan toplam ARP Isteği sayısı
-- Gönderilen toplam ARP yanıtı 
-- Alınan toplam ARP yanıtı 
-- Toplam ARP dinamik girişleri 
-- Toplam ARP statik girişleri 
-- Toplam ARP eski girdileri 
-- Toplam ARP geçersiz Iletileri 
+Ham IP paketleri alınmaya çalışılırken uygulama iş parçacıkları askıya alabilir. Bir ham paket alındıktan sonra yeni paket, askıya alınan ilk iş parçacığına verilir ve bu iş parçacığı sürdürülür. Paketleri almak için NetX Duo Hizmetleri, isteğe bağlı askıya alma zaman aşımına uğradı. Bir paket alındığında veya zaman aşımı süresi dolduğunda, uygulama iş parçacığı uygun tamamlanma durumuyla sürdürülür.
 
-Bu istatistik ve hata raporlarının tümü, ***nx_arp_info_get*** hizmeti ile uygulama tarafından kullanılabilir.
+### <a name="ip-statistics-and-errors"></a>IP Istatistikleri ve hataları
 
-## <a name="reverse-address-resolution-protocol-rarp-in-ipv4"></a>IPv4 'de ters Adres Çözümleme Protokolü (RARP)
+Etkinleştirilirse NetX Duo, uygulama için yararlı olabilecek çeşitli istatistik ve hataları izler. Her IP örneği için aşağıdaki istatistikler ve hata raporları korunur:
 
-Ters Adres Çözümleme Protokolü (RARP), konağın 32 bit IP adreslerinin (RFC 903) ağ atamasını istemek için protokoldür. Bu, bir RARP isteği aracılığıyla yapılır ve bir ağ üyesi bir RARP yanıtında ana bilgisayar ağ arabirimine bir IP adresi atalana kadar düzenli olarak devam eder. Uygulama, sıfır IP adresine sahip hizmet ***nx_ip_create*** bir IP örneği oluşturur. RARP uygulama tarafından etkinleştirilmişse, ağ sunucusundan, sıfır IP adresine sahip arabirim aracılığıyla erişilebilen bir IP adresi istemek için RARP protokolünü kullanabilir.
+- Toplam gönderilen IP paketi sayısı
+- Toplam gönderilen IP bayt
+- Toplam alınan IP paketi sayısı
+- Toplam alınan IP bayt sayısı
+- Toplam IP geçersiz paket sayısı
+- Bırakılan toplam IP alma paketi sayısı
+- Toplam IP Alma Sağlama Toplamı Hataları
+- Bırakılan Toplam IP Gönderme Paketleri
+- Gönderilen Toplam IP Parçaları
+- Alınan Toplam IP Parçaları
 
-### <a name="rarp-enable"></a>RARP etkinleştir
+Bu istatistiklerin ve hata raporlarının hepsi uygulamanın nx_ip_info_get ***kullanılabilir.***
 
-RARP 'yi kullanmak için, uygulamanın IP adresi sıfır olan IP örneğini oluşturması ve ardından hizmet ***nx_rarp_enable*** kullanarak RARP 'yi etkinleştirmesi gerekir. Çoklu giriş sistemlerinde, IP örneğiyle ilişkilendirilmiş en az bir ağ cihazının IP adresi sıfır olmalıdır. RARP işleme, ağ tarafından atanan IP adresi ile geçerli bir RARP yanıtı alınana kadar bir IP adresi gerektiren NetX Duo sistemine yönelik olarak RARP istek iletileri gönderir. Bu noktada, RARP işleme tamamlanmıştır.
+### <a name="ip-control-block-nx_ip"></a>IP Denetim Bloğu NX_IP
 
-RARP etkinleştirildikten sonra, tüm arabirim adresleri çözümlendikten sonra otomatik olarak devre dışıdır. Uygulama, Service ***nx_rarp_disable*** kullanarak RARP 'yi sonlandırmayı zorlayabilir.
+Her IP örneğinin özellikleri denetim bloğunda bulunur. Her ağ aygıtının IP adresleri ve ağ maskeleri gibi yararlı bilgiler ile komşu IP ve fiziksel donanım adresi eşlemesi tablosu içerir. Bu yapı ***nx_api.h _file.** IPv6 etkinse, aynı zamanda bir IPv6 adresi dizisi içerir; bu sayı , kullanıcı tarafından yapılandırılabilir __*_ NX_MAX_IPV6_ADDRESSES ** tarafından belirtilir. Varsayılan değer, her fiziksel ağ arabiriminin üç IPv6 adresine sahip olduğunu gösterir.
 
-### <a name="rarp-request"></a>RARP Isteği
+IP örneği denetim blokları bellekte herhangi bir yerde yer alıyor olabilir, ancak en yaygın olarak denetim bloğu herhangi bir işlevin kapsamı dışında tanımlayarak genel bir yapı haline gelmektedir.
 
-Bir RARP istek paketinin biçimi, [Şekil 6](#arp-messages)' da gösterilen ARP paketiyle neredeyse aynıdır. Tek fark, çerçeve türü alanı 0x8035 ve *Işlem kodu* alanı 3 ' tür ve bır RARP isteği tanımlayarak 3 ' tür. Daha önce belirtildiği gibi, RARP istekleri düzenli aralıklarla (her ***NX_RARP_UPDATE_RATE*** saniyede), ağ atanmış IP adresine sahıp bır RARP yanıtı alınana kadar gönderilir.
+### <a name="static-ipv4-routing"></a>Statik IPv4 Yönlendirme
 
-> [!NOTE]
-> *TCP/IP uygulamasındaki tüm RARP iletilerinin **Big endian** biçimde olması beklenir. Bu biçimde, sözcüğün en önemli baytı en düşük bayt adresinde bulunur.*
+Statik yönlendirme özelliği, bir uygulamanın belirli ağ dışı hedef IP adresleri için bir IPv4 ağı ve sonraki atlama adresi belirtmesini sağlar. Statik yönlendirme etkinse NetX Duo, gönderilecek paketin hedef adresiyle eşleşen bir giriş için statik yönlendirme tablosunda arama gönderir. Eşleşme yoksa NetX Duo, fiziksel arabirimler listesinde arama ve hedef IP adresi ile ağ maskesine göre bir kaynak IP adresi ve sonraki atlama adresi seçer. Hedef, IP örneğine bağlı ağ sürücülerinin IP adreslerinden herhangi biri ile eşlen yoksa NetX Duo, varsayılan ağ geçidine doğrudan bağlı bir arabirim seçer ve kaynak adres olarak arabirimin IP adresini, sonraki atlama olarak da varsayılan ağ geçidini kullanır.
 
-### <a name="rarp-reply"></a>RARP yanıtı
-
-RARP yanıt iletileri ağdan alınır ve bu konak için ağ tarafından atanan IP adresini içerir. Bir RARP yanıt paketinin biçimi, Şekil 6 ' da gösterilen ARP paketiyle neredeyse aynıdır. Tek fark, çerçeve türü alanı 0x8035 ' dir ve *Işlem kodu* alanı, BIR RARP yanıtı atayan 4 ' tür. Aldıktan sonra IP adresi IP örneğinde ayarlanır, düzenli olarak RARP isteği devre dışıdır ve IP örneği artık normal ağ işlemleri için hazırdır.
-
-Çok ana konaklar için IP adresi, isteyen ağ arabirimine uygulanır. Hala bir IP adresi ataması isteğinde bulunan başka ağ arabirimleri varsa, tüm Arabirim IP adresi istekleri çözümlenene kadar düzenli RARP hizmeti devam eder.
+Girdiler sırasıyla * nx_ip_static_route_add _ ve _ **nx_ip_static_route_delete*** hizmetleri kullanılarak statik *_yönlendirme tablosundan_* eklenebilir ve kaldırılabilir. Statik yönlendirmeyi kullanmak için konak uygulamanın bu özelliği etkinleştirmesi gerekir. Bu özellik, ***NX_ENABLE_IP_STATIC_ROUTING.***
 
 > [!NOTE]
-> *Uygulama, RARP işlemesi tamamlanana kadar IP örneğini kullanmamalıdır. **Nx_ip_status_check** , uygulamalar tarafından RARP tamamlanmasını beklemek için kullanılabilir. Çoklu giriş sistemlerinde, bu arabirim üzerinde RARP işlemesi tamamlanana kadar uygulama istekte bulunan arabirimini kullanmamalıdır. İkincil cihazdaki IP adresinin durumu **nx_ip_interface_status_check** hizmetiyle denetlenebilir.*
+> *NetX Duo, statik yönlendirme tablosuna bir giriş eklerken tabloda zaten belirtilen hedef adres için eşleşen bir giriş olduğunu denetler. Varsa, ağ maskesinde daha küçük ağ (daha uzun ön ek) olan girişe tercih verir.*
 
-### <a name="rarp-statistics-and-errors"></a>RARP Istatistikleri ve hataları
+### <a name="ipv4-forwarding"></a>IPv4 İ iletme
 
-Etkinleştirilirse, NetX Duo RARP yazılımı, uygulama için yararlı olabilecek çeşitli istatistik ve hataları izler. Her IP 'nin RARP işlemesi için aşağıdaki istatistikler ve hata raporları korunur:
+Gelen IPv4 paketi bu düğümü hedeflenemdiyse ve IPv4 iletme özelliği etkinse, NetX Duo paketi diğer arabirimler aracılığıyla iletmeye çalışır.  
 
-- Gönderilen toplam RARP Isteği
-- Toplam alınan RARP yanıtı
-- Toplam RARP geçersiz Ileti
+### <a name="ip-fragmentation"></a>IP Parçalanması
 
-Bu istatistik ve hata raporlarının tümü, ***nx_rarp_info_get*** hizmeti ile uygulama tarafından kullanılabilir.
+Ağ cihazı giden paketlerin boyutuna göre sınırlara sahip olabilir. Bu sınır, maksimum iletim birimi (MTU) olarak adlandırılan bir sınırdır. IP MTU, bir bağlantı katmanı sürücüsünün IP paketini parçalanmadan ilettiği en büyük IP çerçevesi boyutudur. Bir cihaz sürücüsünü başlatma aşamasında, sürücü modülünün IP MTU boyutunu hizmet sunucusu üzerinden ***nx_ip_interface_mtu_set.***
 
-## <a name="internet-control-message-protocol-icmp"></a>Internet Denetim Iletisi Protokolü (ıCMP)
+Önerilmez, ancak uygulama, cihaz tarafından desteklenen temel IP MTU'suna göre daha büyük veri birimleri üretebilir. Bu TÜR BIR IP veri birimini iletmeden önce IP katmanının bu paketleri parçalanması gerekir. Parçalı IP çerçeveleri alırken, alıcı uç aynı parçalanma kimliğine sahip tüm parçalanmış IP çerçevelerini depolamalı ve bunları sırayla yeniden değerlendirebilir. IP alma mantığı özgün IP çerçevesini zamanda geri yüklemek için tüm parçaları topalamazsa, tüm parçalar serbest olur. Bu tür bir paket kaybını algılamak ve bu durumdan kurtarmak üst katman protokolüne göredir.
 
-IPv4 için Internet Denetim Iletisi Protokolü (ıCMP), IP ağ üyeleri arasında hata ve denetim bilgilerini geçirme ile sınırlıdır. IPv6 için Internet Denetim Iletisi Protokolü (Icmpv6) Ayrıca hata ve denetim bilgilerini işler ve yinelenen adres algılama (BABACıĞıM) ve durum bilgisiz adresi otomatik yapılandırması gibi adres çözümleme protokolleri için gereklidir.
+IP parçalanması hem IPv4 hem de IPv6 paketleri için geçerlidir.
 
-Diğer çoğu uygulama katmanının (örn. TCP/IP) iletileri, ıCMP ve ICMPv6 iletileri, ıCMP (veya ICMPv6) protokolü atamasının bulunduğu bir IP üstbilgisiyle kapsüllenir.
-
-### <a name="icmp-statistics-and-errors"></a>ICMP Istatistikleri ve hataları
-
-Etkinleştirilirse NetX Duo, uygulama için yararlı olabilecek birkaç ıCMP istatistiğini ve hatasını izler. Her IP 'nin ıCMP işlemi için aşağıdaki istatistikler ve hata raporları korunur: 
-
-- Gönderilen toplam ıCMP pingi  
-- Toplam ıCMP ping zaman aşımları 
-- Askıya alınan toplam ıCMP ping Iş parçacığı 
-- Alınan toplam ıCMP ping yanıtı 
-- Toplam ıCMP sağlama toplamı hatası 
-- Toplam ıCMP Işlenmemiş Ileti 
-
-Bu istatistik ve hata raporlarının tümü, ***nx_icmp_info_get*** hizmeti ile uygulama tarafından kullanılabilir.
-
-## <a name="icmpv4-services-in-netx-duo"></a>NetX Duo 'da Icmpv4 Hizmetleri
-
-### <a name="icmpv4-enable"></a>ICMPv4 etkinleştir
-
-ICMPv4 iletilerinin NetX Duo tarafından işlenebilmesi için, uygulamanın, Icmpv4 işlemesini etkinleştirmek üzere ***nx_icmp_enable*** hizmetini çağırması gerekir. Bu işlem yapıldıktan sonra uygulama, ping istekleri ve alan gelen ping paketleri verebilir.  
-
-### <a name="icmpv4-echo-request"></a>ICMPv4 yankı Isteği
-
-Yankı isteği, ana bilgisayar IP adresi tarafından tanımlanan şekilde ağ üzerinde belirli bir düğümün varlığını denetlemek için kullanılan bir Icmpv4 iletisi türüdür. Popüler ping komutu, ıCMP yankı isteği/Yankı Yanıtı iletileri kullanılarak uygulanır. Belirli bir konak mevcutsa, ağ yığını ping isteğini ve ping yanıtı ile yanıtları işler. Şekil 7 ' de, Icmpv4 ping iletisi biçimi ayrıntılı olarak gösterilmiştir.
-
-![ICMPv4 ping Iletisi](./media/user-guide/icmpv4-ping-message.png)  
-
-**ŞEKIL 7. ICMPv4 ping Iletisi**
+IP parçalanması ve yeniden değerlendirme işlemi desteklemek için sistem tasarımcısının NetX Duo'da IP parçalanma özelliğini nx_ip_fragment_enable ***gerekir.*** Bu özellik etkinleştirilmezse, gelen parçalanmış IP paketleri ve ağ sürücüsünün MTU'suna aşan paketler atılır.
 
 > [!NOTE]
-> *TCP/IP uygulamasındaki tüm Icmpv4 iletilerinin **Big endian** biçimde olması beklenir. Bu biçimde, sözcüğün en önemli baytı en düşük bayt adresinde bulunur.*
+> *NETX Duo kitaplığını oluşturmada ***** NX_DISABLE_FRAGMENTATION _ tanımlayarak IP Parçalanması mantığı tamamen kaldırılabilir. Bunu yapmak NetX Duo'nın kod boyutunu azaltmaya yardımcı olur. Bu durumda, hem IPv4 hem de IPv6 parçalanma/yeniden değerlendirme işlevlerinin disabled._
 
-Aşağıda, Icmpv4 üst bilgi biçimi açıklanmaktadır:
+> [!NOTE]
+> *Ip **NX_DISABLE_CHAINED_PACKET** tanımlanmışsa IP parçalanması devre dışı bırakılmıştır.*
+
+> [!NOTE]
+> *Bir IPv6 ağına, veri biriminin boyutu en düşük MTU boyutunu aşarsa yönlendiriciler bir veri birimini parçalamaz. Bu nedenle, kaynak ve hedef arasındaki en düşük MTU'nun belirlenmesi ve IP veri birimi boyutunun MTU yolunu aşmaması gönderen cihaza bağlı olur. NetX Duo'da IPv6 PATH MTU bulma özelliği, tanımlanan simgeye sahip NetX Duo **NX_ENABLE_IPV6_PATH_MTU_DISCOVERY** etkinleştirilebilir.*
+
+## <a name="address-resolution-protocol-arp-in-ipv4"></a>IPv4'te Adres Çözümleme Protokolü (ARP)
+
+Adres Çözümleme Protokolü (ARP), 32 bit IPv4 adreslerini temel alınan fiziksel medya (RFC 826) adreslerine dinamik olarak eşlemeden sorumludur. Ethernet en tipik fiziksel medyadır ve 48 bit adresleri destekler. ARP ihtiyacı * nx_ip_create _ hizmetine sağlanan **ağ sürücüsü** tarafından belirlenir. Fiziksel eşleme gerekli ise, ağ sürücüsünün sürücü arabirimini düzgün yapılandırmak için _ *_nx_interface_address_mapping_needed_** hizmetini kullanması gerekir.
+
+### <a name="arp-enable"></a>ARP Etkinleştirme
+
+ARP'nin düzgün çalışması için önce uygulama tarafından nx_arp_enable ***etkinleştirilmesi*** gerekir. Bu hizmet, ARP etkinleştirme hizmetine sağlanan bellekten ARP önbellek alanı oluşturma da dahil olmak üzere ARP işleme için çeşitli veri yapıları ayarlar.
+
+### <a name="arp-cache"></a>ARP Önbelleği
+
+ARP önbelleği, iç ARP eşleme veri yapılarının dizisi olarak görünüme sahip olabilir. Her iç yapı, bir IP adresi ile fiziksel donanım adresi arasındaki ilişkiyi koruyabilirsiniz. Ayrıca, her veri yapısında bağlantı işaretçileri vardır, bu nedenle birden çok bağlantılı liste olabilir.
+
+Uygulama, eşleme ARP tablosunda mevcutsa **,** hizmet * nx_arp_ip_address_find _ kullanarak donanım MAC adresi serek ARP önbelleğinden bir IP adresine bakabilirsiniz. Benzer şekilde, _ *_nx_arp_hardware_address_find_** hizmeti belirli bir IP adresi için MAC adresini döndürür.
+
+### <a name="arp-dynamic-entries"></a>ARP Dinamik Girişleri
+
+Varsayılan olarak, ARP etkinleştirme hizmeti ARP önbelleğine tüm girişleri kullanılabilir dinamik ARP girdileri listesine yer ayarlar. Eşlenmemiş bir IP adresine istek gönder algılandığında NetX Duo tarafından bu listeden dinamik bir ARP girişi ayrılır. Ayırmadan sonra ARP girişi ayarlanır ve fiziksel medyaya bir ARP isteği gönderilir.
+
+Dinamik bir giriş, hizmeti tarafından da ***nx_arp_dynamic_entry_set.***
+
+> [!IMPORTANT]
+> *Tüm dinamik ARP girişleri kullanılıyorsa, en son kullanılan ARP girişi yeni bir eşlemeyle değiştirilir.*
+
+### <a name="arp-static-entries"></a>ARP Statik Girişleri
+
+Uygulama ayrıca * ağ eşlemesini kullanarak statik ARP **eşlemesi nx_arp_static_entry_create _service.** Bu hizmet, dinamik ARP giriş listesinden bir ARP girişi ayırır ve uygulama tarafından sağlanan eşleme bilgileriyle statik listeye yer alır. Statik ARP girişleri yeniden kullanılabilir veya eskime durumuna tabi değildir. Uygulama, statik bir girişi silmek için _*_nx_arp_static_entry_delete._*_ Uygulama, ARP tablosunda yer alan tüm statik girişleri kaldırmak için _* nx_arp_static_entries_delete **_hizmetini_ kullanabilir.
+
+### <a name="automatic-arp-entry"></a>Otomatik ARP Girişi
+
+NetX Duo, ARP isteğine eş yanıt verdikten sonra eş ip/MAC eşlemesini kaydeder. NetX Duo ayrıca ağdan gelen istenmeyen ARP isteklerini temel alan eş IP/MAC adresi eşlemesini kaydeden otomatik ARP giriş özelliğini de uygulamaya alır. Bu özellik, ARP tablosu eş bilgileriyle doldurularak ARP isteği/yanıt döngüsünde geçen gecikme süresinin azaltılmasına olanak sağlar. Ancak otomatik ARP'nin etkinleştirilmenin dezavantajı, ARP tablosu meşgul bir ağ üzerinde yerel bağlantıda çok sayıda düğümle hızla doldurulma eğiliminde olmasıdır ve bu da sonunda ARP girişinin değiştirilmesine neden olur.
+
+Bu özellik varsayılan olarak etkindir. Bunu devre dışı bırakmak için NetX Duo kitaplığı, tanımlanan simgeyle ***NX_DISABLE_ARP_AUTO_ENTRY*** gerekir.</p>
+
+### <a name="arp-messages"></a>ARP İletileri
+
+Daha önce belirtildiği gibi, IP görevi bir IP adresi için eşleme gerektiğini algılayan bir ARP istek iletisi gönderilir. ARP istekleri, karşılık gelen bir ARP yanıtı **alınana kadar** düzenli aralıklarla (her * NX_ARP_UPDATE_RATE _ saniye) gönderilir. ARP girişimi *_NX_ARP_MAXIMUM_RETRIES_* önce toplam _ NX_ARP_MAXIMUM_RETRIES * ARP istekleri yapılır. Bir ARP yanıtı alınca, ilişkili fiziksel adres bilgileri önbellekte yer alan ARP girdisinde depolanır.
+
+Çoklu ana bilgisayar sistemleri için NetX Duo, belirtilen hedef adrese göre ARP isteklerinin ve yanıtların gönderilecek arabirimini belirler.
+
+> [!NOTE]
+> *NetX Duo ARP yanıtını beklerken giden IP paketleri kuyruğa eklenir. Kuyruğa alınan giden IP paketlerinin sayısı, **NX_ARP_MAX_QUEUE_DEPTH.***
+
+NetX Duo ayrıca yerel IPv4 ağının diğer düğümlerinden gelen ARP isteklerine yanıt verir. ARP isteğini alan arabirimin geçerli IP adresiyle eşleşen bir dış ARP isteği yapılırsa, NetX Duo geçerli fiziksel adresi içeren bir ARP yanıt iletisi derlemez.
+
+Ethernet ARP isteklerinin ve yanıtlarının biçimleri Şekil 6'da gösterilmiştir ve aşağıda açıklanmıştır.
+
+| **İstek/Yanıt &nbsp; Alanı**         | **Amaç**            |
+| ---------------------------------- | ---------------------- |
+| ***Ethernet Hedef Adresi*** | Bu 6 bayt alanı ARP yanıtının hedef adresini içerir ve ARP istekleri için bir yayındır (hepsi). Bu alan ağ sürücüsü tarafından ayardır. 
+| ***Ethernet Kaynak Adresi***      | Bu 6 bayt alanı, ARP isteğini veya yanıtını gönderenin adresini içerir ve ağ sürücüsü tarafından ayarlanır. |
+| ***Çerçeve Türü*** | Bu 2 bayt alanı, mevcut Ethernet çerçevesinin türünü içerir ve ARP istekleri ve yanıtları için bu, mevcut Ethernet çerçevesine 0x0806. Bu, ağ sürücüsünün ayarlamadan sorumlu olduğu son alandır. |
+| ***Donanım Türü*** | Bu 2 bayt alanı, Ethernet'e uygun olan 0x0001 türünü içerir. |
+| ***Protokol Türü*** | Bu 2-byte alanı, IP adresleri için 0x0800 protokol türünü içerir. |
+| ***Donanım Boyutu*** | Bu 1 bayt alanı, Ethernet adresleri için 6 olan donanım adresi boyutunu içerir. |
+
+![ARP Paket Biçimi diyagramı.](./media/user-guide/arp-packet-format.png)
+
+**ŞEKIL 6. ARP Paket Biçimi**
+
+| İstek/Yanıt &nbsp; Alanı | Amaç |
+|---|---|
+| ***Protokol Boyutu*** | Bu 1 bayt alanı, IP adresleri için 4 olan IP adresi boyutunu içerir. |
+| ***İşlem Kodu*** | Bu 2 bayt alanı bu ARP paketi için işlemi içerir. ARP isteği, 0x0001 değeriyle belirtilirken, ARP yanıtı 0x0002. |
+| ***Gönderen Ethernet Adresi*** | Bu 6 bayt alanı gönderenin Ethernet adresini içerir. |
+| ***Gönderen IP Adresi*** | Bu 4 bayt alanı gönderenin IP adresini içerir. |
+| ***Hedef Ethernet Adresi*** | Bu 6 bayt alanı hedefin Ethernet adresini içerir. |
+| ***Hedef IP Adresi*** | Bu 4 bayt alanı hedefin IP adresini içerir. |
+
+> [!NOTE]
+> *ARP istekleri ve yanıtları Ethernet düzeyinde paketlerdir. Diğer tüm TCP/IP paketleri bir IP paket üst bilgisi tarafından kapsüllanır.*
+
+> [!NOTE]
+> *TCP/IP uygulamasındaki tüm ARP iletilerinin aynı biçimde **big endian** beklenir. Bu biçimde, sözcüğün en önemli bayt en düşük bayt adreste yer almaktadır.*
+
+### <a name="arp-aging"></a>ARP Eskime
+
+NetX, otomatik dinamik ARP girişi geçersiz kılınma özelliğini destekler. ***NX_ARP_EXPIRATION_RATE** _ fiziksel eşlemeye kurulan bir IP adresinin geçerli kalma saniye sayısını belirtir. Süre dolsa da ARP girişi ARP önbelleğinden kaldırılır. Karşılık gelen IP adresine bir sonraki gönderme girişimi yeni bir ARP isteğine neden olur. _ *_NX_ARP_EXPIRATION_RATE_** değerinin sıfır olarak ayarlanıyor olması, varsayılan yapılandırma olan ARP eskime özelliğini devre dışı bırakır.
+
+### <a name="arp-defend"></a>ARP Savunması
+
+Bir ARP isteği veya ARP yanıt paketi alınca ve gönderen bu düğümün IP adresiyle çakışan aynı IP adresine sahip olduğunda, NetX Duo bu adres için savunma olarak bir ARP isteği gönderir. Çakışma ARP paketi 10 saniyede birden çok kez alındıktan sonra NetX Duo daha fazla savunma paketi göndermez. Varsayılan 10 saniyelik aralık * NX_ARP_DEFEND_INTERVAL **_.** Bu davranış, RFC5227'nin 2.4(c) tarihinde belirtilen ilkeyi izler. XP Windows ARP araştırmasını yanıt olarak ARP duyurusunu yoksaysa da, kullanıcı ARP yanıtını ek savunma olarak göndermek için _ *_NX_ARP_DEFEND_BY_REPLY_** tanımlayabilir.
+
+### <a name="arp-statistics-and-errors"></a>ARP İstatistikleri ve Hataları
+
+Etkinleştirilirse, NetX Duo ARP yazılımı uygulama için yararlı olan çeşitli istatistikleri ve hataları takip eder. Her IP'nin ARP işlemesi için aşağıdaki istatistikler ve hata raporları korunur:
+
+- Gönderilen Toplam ARP İsteği Sayısı
+- Alınan Toplam ARP İsteği Sayısı
+- Gönderilen Toplam ARP Yanıtları 
+- Alınan Toplam ARP Yanıtları 
+- Toplam ARP Dinamik Girdisi 
+- Toplam ARP Statik Girdileri 
+- Toplam ARP Eski Girdisi 
+- Toplam ARP Geçersiz İleti sayısı 
+
+Bu istatistiklerin ve hata raporlarının hepsi uygulamanın nx_arp_info_get ***kullanılabilir.***
+
+## <a name="reverse-address-resolution-protocol-rarp-in-ipv4"></a>IPv4'te Ters Adres Çözümleme Protokolü (RARP)
+
+Ters Adres Çözümleme Protokolü (RARP), ana bilgisayar 32 bit IP adreslerinin (RFC 903) ağ ataması isteğinde gerçekleştirilen protokoldür. Bu bir RARP isteği aracılığıyla yapılır ve bir ağ üyesi RARP yanıtta konak ağ arabirimine bir IP adresi atana kadar düzenli aralıklarla devam eder. Uygulama, hizmet tarafından sıfır IP ***nx_ip_create*** ip örneği oluşturur. UYGULAMA RARP'yi etkinleştirdiyse, sıfır IP adresine sahip olan arabirim üzerinden erişilebilen ağ sunucusundan bir IP adresi isteğinde etmek için RARP protokolünü kullanabilir.
+
+### <a name="rarp-enable"></a>RARP Etkinleştirme
+
+RARP'yi kullanmak için, uygulamanın IP örneğini sıfır IP adresiyle oluşturması ve ardından raRP'yi etkinleştirmek için ***nx_rarp_enable.*** Birden çok girişli sistemlerde, IP örneğiyle ilişkili en az bir ağ cihazı sıfır IP adresine sahip olmalıdır. RARP işlemi, ağ tarafından belirlenen IP adresiyle geçerli bir RARP yanıtı alınana kadar NetX Duo sistemi için düzenli aralıklarla BIR IP adresi gerektiren RARP istek iletileri gönderir. Bu noktada, RARP işleme tamamlanır.
+
+RARP etkinleştirildikten sonra, tüm arabirim adresleri çözümlendikten sonra otomatik olarak devre dışı bırakılır. Uygulama, rarp'ı hizmeti kullanarak sonlandırmaya ***zor*** nx_rarp_disable.
+
+### <a name="rarp-request"></a>RARP İsteği
+
+RaRP istek paketinin biçimi, Şekil 6'da gösterilen ARP [paketiyle neredeyse aynıdır.](#arp-messages) Tek fark, çerçeve türü alanı 0x8035 ve  İşlem Kodu alanı 3'tür ve raRP isteği belirterek. Daha önce belirtildiği gibi, ağ tarafından atanan IP adresiyle bir RARP ***yanıtı alınana kadar*** RARP istekleri düzenli aralıklarla (her NX_RARP_UPDATE_RATE saniye) gönderilir.
+
+> [!NOTE]
+> *TCP/IP uygulamasındaki tüm RARP iletilerinin aynı biçimde **big endian** beklenir. Bu biçimde, sözcüğün en önemli bayt en düşük bayt adreste yer almaktadır.*
+
+### <a name="rarp-reply"></a>RARP Yanıtı
+
+RARP yanıt iletileri ağdan alınarak bu ana bilgisayar için ağ tarafından atanan IP adresini içerir. RaRP yanıt paketinin biçimi, Şekil 6'da gösterilen ARP paketiyle neredeyse aynıdır. Tek fark, çerçeve türü alanı 0x8035 ve  İşlem Kodu alanı 4'tür ve bu da RARP yanıtını gösterir. Alındıktan sonra, IP adresi IP örneğinde ayar, düzenli RARP isteği devre dışı bırakılır ve IP örneği artık normal ağ işlemi için hazırdır.
+
+Birden çok ana bilgisayar için IP adresi, istekte olan ağ arabirimine uygulanır. IP adresi ataması isteğinde olan başka ağ arabirimleri varsa, tüm arabirim IP adresi istekleri çözümlenene kadar düzenli RARP hizmeti devam eder.
+
+> [!NOTE]
+> *RARP işlemesi tamamlandıktan sonra uygulama IP örneğini kullanmaz. Uygulama **nx_ip_status_check** RARP tamamlanmasını beklemek için uygulamalar tarafından kullanılabilir. Birden çok girişli sistemlerde, raRP işlemesi bu arabirimde tamam olana kadar uygulama, istekte bulunduran arabirimi kullanmaz. İkincil cihaz ip adresinin durumu, nx_ip_interface_status_check **denetlenir.***
+
+### <a name="rarp-statistics-and-errors"></a>RARP İstatistikleri ve Hataları
+
+Etkinleştirilirse NetX Duo RARP yazılımı, uygulama için yararlı olan çeşitli istatistikleri ve hataları takip eder. Her IP'nin RARP işlemesi için aşağıdaki istatistikler ve hata raporları korunur:
+
+- Gönderilen Toplam RARP İsteği Sayısı
+- Alınan Toplam RARP Yanıtları
+- Toplam RARP Geçersiz İleti sayısı
+
+Bu istatistiklerin ve hata raporlarının hepsi uygulamanın nx_rarp_info_get ***kullanılabilir.***
+
+## <a name="internet-control-message-protocol-icmp"></a>İnternet Denetim İletisi Protokolü (ICMP)
+
+IPv4 için İnternet Denetim İletisi Protokolü (ICMP), IP ağ üyeleri arasında hata ve denetim bilgilerini geçirmeyle sınırlıdır. IPv6 için İnternet Denetim İletisi Protokolü (ICMPv6) hata ve denetim bilgilerini de işlemektedir ve Yinelenen Adres Algılama (ELE) ve durum bilgisi olmayan adres otomatik yapılandırma gibi adres çözümleme protokolleri için gereklidir.
+
+Diğer çoğu uygulama katmanı (örneğin, TCP/IP) iletileri gibi ICMP ve ICMPv6 iletileri de ICMP (veya ICMPv6) protokol ataması ile bir IP üst bilgisi tarafından kapsüllanır.
+
+### <a name="icmp-statistics-and-errors"></a>ICMP İstatistikleri ve Hataları
+
+Etkinleştirilirse NetX Duo, uygulama için yararlı olan çeşitli ICMP istatistiklerini ve hatalarını takip eder. Her IP'nin ICMP işlemesi için aşağıdaki istatistikler ve hata raporları korunur: 
+
+- Gönderilen Toplam ICMP Ping'i  
+- Toplam ICMP Ping Zaman Aşımı Sayısı 
+- Toplam ICMP Ping İş Parçacığı Askıya Alındı 
+- Alınan Toplam ICMP Ping Yanıtları 
+- Toplam ICMP Sağlama Toplamı Hataları 
+- Toplam ICMP İşsiz İleti sayısı 
+
+Tüm bu istatistikler ve hata raporları, uygulamanın nx_icmp_info_get ***kullanılabilir.***
+
+## <a name="icmpv4-services-in-netx-duo"></a>NetX Duo'da ICMPv4 Hizmetleri
+
+### <a name="icmpv4-enable"></a>ICMPv4 Etkinleştirme
+
+ICMPv4 iletilerinin NetX Duo tarafından işlenmeden önce, uygulamanın ICMPv4 ***işlemeyi etkinleştirmek için nx_icmp_enable*** hizmetine çağrı göndermesi gerekir. Bu yapıldıktan sonra, uygulama ping istekleri ve alan gelen ping paketleri gönderebilir.  
+
+### <a name="icmpv4-echo-request"></a>ICMPv4 Yankı İsteği
+
+Yankı isteği, genellikle ana bilgisayar IP adresiyle tanımlanan ağ üzerinde belirli bir düğümün varlığını kontrol etmek için kullanılan bir ICMPv4 ileti t t dir. Popüler ping komutu ICMP yankı isteği/yankı yanıt iletileri kullanılarak uygulanır. Belirli bir ana bilgisayar varsa, ağ yığını ping isteğini ve yanıtlarını bir ping yanıtıyla işler. Şekil 7'de ICMPv4 ping iletisi biçimi ayrıntılı olarak açık ve açık bir şekilde açık ve açık bir şekilde ve bu bilgiler yer alır.
+
+![ICMPv4 Ping İletisi](./media/user-guide/icmpv4-ping-message.png)  
+
+**ŞEKIL 7. ICMPv4 Ping İletisi**
+
+> [!NOTE]
+> *TCP/IP uygulamasındaki tüm ICMPv4 iletilerinin aynı biçimde **big endian** beklenir. Bu biçimde, sözcüğün en önemli bayt en düşük bayt adreste yer almaktadır.*
+
+Aşağıda ICMPv4 üst bilgi biçimi açıklanmıştır:
 
 |Üst bilgi alanı |Amaç |
 |---|---|
@@ -856,20 +856,20 @@ IPv6 üst bilgisi, IPv4 başlığından değiştirildi. Bir paket ayrılırken, 
 |Sürüm |IP sürümü için 4 bit alan. IPv6 ağlarında, bu alandaki değer 6 olmalıdır; IPv4 ağları için 4 olması gerekir.|
 |Trafik Sınıfı |trafik sınıfı bilgilerini depolayan 8 bit alan. Bu alan NetX Duo tarafından kullanılmaz.|
 |Flow Etiketin |bir paketin ilişkilendirildiği akışı benzersiz bir şekilde tanımlamak için 20 bit alan. Sıfır değeri, paketin belirli bir akışa ait olmadığını gösterir. Bu alan, IPv4 içindeki *TOS* alanının yerini alır.|
-|Yük Uzunluğu |IPv6 temel üst bilgisini takip eden IPv6 paketinin bayt cinsinden veri miktarını belirten 16 bit alan. Bu, kapsüllene tüm protokol üst bilgilerini ve verilerini içerir.|
-|Sonraki Üst Bilgi | IPv6 temel üst bilgisinde yer alan uzantı üst bilgisi türünü belirten 8 bitlik alan. Bu alan, IPv4'te Protokol alanını değiştirir.|
-|Atlama Sınırı |Paketin geçişine izin verilen yönlendirici sayısını sınırlayan 8 bitlik alan. Bu alan, *IPv4'te TTL* alanını değiştirir.|
-|Kaynak Adres |Gönderenin IPv6 adresini depolar 128 bit alan.|
-|Hedef Adres |Hedefin IPv6 adresini alan 128 bitlik alan.|
+|Yük uzunluğu |IPv6 temel üst bilgisini izleyen IPv6 paketinin baytdaki veri miktarını belirten 16 bit alan. Bu, tüm kapsüllenmiş protokol üstbilgilerini ve verileri içerir.|
+|Sonraki üst bilgi | IPv6 temel üst bilgisini izleyen uzantı üstbilgisinin türünü gösteren 8 bit alan. Bu alan, IPv4 içindeki *protokol* alanını değiştirir.|
+|Atlama sınırı |paketin geçmesine izin verilen yönlendirici sayısını sınırlayan 8 bitlik alan. Bu alan IPv4 içindeki *TTL* alanını değiştirir.|
+|Kaynak adres |Gönderenin IPv6 adresini depolayan 128 bitlik alan.|
+|Hedef adres |Hedefin IPv6 adresini hedefleyen 128 bitlik alan.|
 
-### <a name="enabling-ipv6-in-netx-duo"></a>NetX Duo'da IPv6'yı etkinleştirme    
-IPv6 varsayılan olarak NetX Duo'da etkindir. _nx_user.h* içinde yapılandırılabilir ***NX_DISABLE_IPV6** _ seçeneği tanımlanmamışsa IPv6 hizmetleri NetX Duo'da etkinleştirilir. Bu ***NX_DISABLE_IPV6,*** NetX Duo yalnızca IPv4 hizmetleri sunar ve IPv6 ile ilgili tüm modüller ve hizmetler NetX Duo kitaplığında yerleşik olarak yer alan bir hizmet değildir.
+### <a name="enabling-ipv6-in-netx-duo"></a>NetX Duo 'da IPv6 'Yı etkinleştirme    
+Varsayılan olarak IPv6, NetX Duo içinde etkindir. _Nx_user. h * içindeki yapılandırılabilir "**NX_DISABLE_IPV6** _ seçeneği tanımlı değilse, NETX Duo 'da IPv6 Hizmetleri etkinleştirilir. ***NX_DISABLE_IPV6*** tanımlanmışsa NETX Duo yalnızca IPv4 hizmetleri sunar ve IPv6 ile ilgili tüm modüller ve hizmetler NETX Duo kitaplığında yerleşik değildir.
 
-Aşağıdaki hizmet, uygulamaların cihaz IPv6 adresini yapılandırmaları için sağlanmıştır: ***nxd_ipv6_address_set***
+Aşağıdaki hizmet uygulamaların cihaz IPv6 adresini yapılandırması için verilmiştir: ***nxd_ipv6_address_set***
 
-Sistem, cihazın IPv6 adreslerini el ile ayarlamaya ek olarak Durum Bilgisiz Adres Otomatik Yapılandırması da kullanabilir. Bu seçeneği kullanmak için uygulamanın cihazda IPv6 **nxd_ipv6_enable** başlatmak için * nxd_ipv6_enable _ çağrısında olması gerekir. Buna ek olarak, NetX Duo'ya Yönlendirici İsteneni, Komşu Bulma _*_ve_*_ Yinelenen Adres Algılama gibi hizmetleri gerçekleştirmesine olanak sağlayan ICMPv6 hizmetleri nxd_icmp_enable çağrılarak başlatılabilir. IPv4 _*_nx_icmp_enable_*_ ICMP'nin başlatı olduğunu unutmayın. _*_nxd_icmp_enable_*_ IPv4 ve IPv6 için ICMP hizmetlerini başlatır. Sistemin ICMPv6 hizmetlerine ihtiyacı yoksa,** ICMPv6 modülünün sisteme bağlı nx_icmp_enable * için _ nx_icmp_enable * kullanılabilir.
+Cihazın IPv6 adreslerini el ile ayarlamaya ek olarak, sistem durum bilgisi Içermeyen adres otomatik yapılandırması da kullanabilir. Bu seçeneği kullanmak için, uygulamanın, cihazda IPv6 hizmetlerini başlatması için ***nxd_ipv6_enable** _ çağrısı gerekir. Ayrıca, NetX Duo 'un yönlendirici bağlantısı, komşu bulma ve yinelenen adres algılama gibi hizmetleri gerçekleştirmesini sağlayan _*_nxd_icmp_enable_*_ çağırarak ICMPv6 Hizmetleri başlatılmalıdır. _*_Nx_icmp_enable_*_ yalnızca IPv4 HIZMETLERI için ICMP başlayacağını unutmayın. _*_nxd_icmp_enable_*_ hem IPv4 hem de ıPV6 için ICMP hizmetlerini başlatır. Sistemde ICMPv6 Hizmetleri gerekmiyorsa _ *_nx_icmp_enable_**, ICMPv6 modülünün sisteme bağlı olmaması için kullanılabilir.
 
-Aşağıdaki örnek, tipik bir NetX Duo IPv6 başlatma yordamını gösterir.
+Aşağıdaki örnek, tipik bir NetX Duo IPv6 başlatma yordamını göstermektedir.
 
 ```c
 /* Assume ip_0 has been created and IPv4 services (such as ARP,
@@ -906,29 +906,29 @@ status = nxd_ipv6_address_set(&ip_0, SECONDARY_INTERFACE,
                               &ip_address, 64, NX_NULL);
 ```                              
 
-Üst katman protokolleri (TCP ve UDP gibi) IPv6 başlamadan önce veya başladıktan sonra etkinleştirilebilir.
+Üst katman protokolleri (TCP ve UDP gibi), IPv6 başlatılmadan önce veya sonra etkinleştirilebilir.
 
 > [!IMPORTANT]  
-> *IPv6 hizmetleri yalnızca IP iş parçacığı başlatıldıktan ve cihaz etkinleştirildikten sonra kullanılabilir.*
+> *IPv6 Hizmetleri yalnızca IP iş parçacığı başlatıldıktan ve cihaz etkinleştirildikten sonra kullanılabilir.*
 
-Arabirim etkinleştirildikten sonra (yani arabirim cihazı sürücüsü veri göndermeye ve almaya hazır olur ve geçerli bir bağlantı yerel adresi elde edilir), cihaz şu yöntemlerden birini kullanarak genel IPv6 adreslerini elde edebilirsiniz:
+Arabirim etkinleştirildikten sonra (yani, arabirim cihaz sürücüsü veri göndermeye ve almaya hazırsa ve geçerli bir bağlantı yerel adresi edinildikten sonra), cihaz genel IPv6 adreslerini şu yöntemlerden biriyle alabilir:
 
-- Durum Bilgisiz Adres Otomatik Yapılandırması;  
+- Durum bilgisiz adres otomatik yapılandırması;  
 - El ile IPv6 adresi yapılandırması;  
-- DHCPv6 aracılığıyla adres yapılandırması (isteğe bağlı DHCPv6 paketi ile)
+- DHCPv6 aracılığıyla adres yapılandırması (isteğe bağlı DHCPv6 paketiyle)
 
-İlk iki yöntem aşağıda açıklanmıştır. 3. yöntem (DHCPv6) DHCP paketinde açıklanmıştır.
+İlk iki yöntem aşağıda açıklanmıştır. 3. Yöntem (DHCPv6), DHCP paketinde açıklanmıştır.
 
-### <a name="stateless-address-autoconfiguration-using-router-solicitation"></a>YönlendiriciYi Kullanarak Durum Bilgisiz Adres Otomatik Yapılandırması      
-NetX Duo cihazları, ön ek bilgileri temin eden bir yönlendirici ile bir IPv6 ağına bağlanıldığında arabirimlerini otomatik olarak yapılandırabilirsiniz. Durum Bilgisiz Adres Otomatik Yapılandırması gerektiren cihazlar yönlendirici istek (RS) iletileri gönderir. Ağ üzerinde yönlendiriciler, istenmeyen yönlendirici tanıtım (RA) iletileriyle yanıt verir. RA iletileri, bir bağlantıyla ilişkili ağ adreslerini tanımlamak için ön ekleri tanıtıyor. Cihazlar daha sonra cihazın bağlı olduğu ağ için benzersiz bir tanımlayıcı üretir. Adres, ön ek ve benzersiz tanımlayıcısı birleştirerek oluşturulur. RA iletilerini alırken bu şekilde, konaklar IP adreslerini üretir. Yönlendiriciler düzenli aralıklarla istenmeyen RA iletileri de gönderebilir. 
+### <a name="stateless-address-autoconfiguration-using-router-solicitation"></a>Yönlendirici bağlantısı kullanılarak durum bilgisiz adres otomatik yapılandırması      
+NetX Duo cihazları, ön ek bilgileri sağlayan bir yönlendiriciyle IPv6 ağına bağlanıldığında arabirimlerini otomatik olarak yapılandırabilir. Durum bilgisi olmayan adres otomatik yapılandırması gerektiren cihazlar Yönlendirici isteme (RS) iletileri gönderir. Ağdaki yönlendiriciler, istenen yönlendirici tanıtımı (RA) iletileriyle yanıt verir. RA iletileri bir bağlantıyla ilişkili ağ adreslerini tanımlayan önekleri tanıtır. Cihazlar daha sonra cihazın eklendiği ağ için benzersiz bir tanımlayıcı oluşturur. Adres, öneki ve benzersiz tanımlayıcısını birleştirerek oluşturulur. RA iletilerinin alınması bu şekilde ana bilgisayarlar kendi IP adreslerini oluşturur. Yönlendiriciler, düzenli olarak istenmeyen RA iletileri de gönderebilir. 
 
 > [!WARNING]
-> *NetX Duo, bir uygulamanın çalışma zamanında Durum Bilgileri Olmayan Adres Otomatik Yapılandırmayı etkinleştirmesini veya devre dışı bırakmasını sağlar. Bu özelliği etkinleştirmek için NetX Duo kitaplığının tanımlanmış bir NX_IPV6_STATELESS_AUTOCONFIG_CONTROL **gerekir.** Bu özellik etkinleştirildikten sonra, uygulamalar IPv6 **durum nxd_ipv6_stateless_address_autoconfigure_enable*** otomatik nxd_ipv6_stateless_address_autocofigure_disable etkinleştirmek veya devre dışı bırakmak için uygulama ve uygulamaları kullanabilir.
+> *NETX Duo, bir uygulamanın çalışma zamanında durum bilgisiz adres otomatik yapılandırmasını etkinleştirmesine veya devre dışı bırakmasına izin verir Bu özelliği etkinleştirmek için NetX Duo kitaplığı tanımlı **NX_IPV6_STATELESS_AUTOCONFIG_CONTROL** ile derlenmelidir. Bu özellik etkinleştirildikten sonra, uygulamalar, IPv6 durum bilgisiz adresi otomatik yapılandırması 'nı etkinleştirmek veya devre dışı bırakmak için **nxd_ipv6_stateless_address_autoconfigure_enable** ve **nxd_ipv6_stateless_address_autocofigure_disable** kullanabilir*.
 
-### <a name="manual-ipv6-address-configuration"></a>El ile IPv6 Adresi Yapılandırması     
-Belirli bir IPv6 adresi gerekirse, uygulama bir ***IPv6 nxd_ipv6_address_set*** el ile yapılandırmak için IPv6 adresini kullanabilir. Bir ağ arabiriminin birden çok IPv6 adresi olabilir. Ancak, bir sistemde Durum Bilgisiz Adres Otomatik Yapılandırması aracılığıyla veya El ile Yapılandırma aracılığıyla alınan IPv6 adreslerinin toplam sayısının , değerini ***NX_MAX_IPV6_ADDRESSES.***
+### <a name="manual-ipv6-address-configuration"></a>El ile IPv6 adres yapılandırması     
+Belirli bir IPv6 adresi gerekliyse, uygulama bir IPv6 adresini el ile yapılandırmak için ***nxd_ipv6_address_set*** kullanabilir. Ağ arabirimi birden çok IPv6 adresine sahip olabilir. Ancak, bir sistemdeki toplam IPv6 adresi sayısının durum bilgisiz adres otomatik yapılandırması aracılığıyla elde edilen veya el Ile yapılandırma aracılığıyla ***NX_MAX_IPV6_ADDRESSES*** aşılamadığını aklınızda bulundurun.
 
-Aşağıdaki örnekte, bir genel adresi birincil arabirimde (cihaz 0) el ile yapılandırma adımları ip_0:
+Aşağıdaki örnek, ip_0 içinde birincil arabirimde (cihaz 0) genel bir adresin el ile nasıl yapılandırılacağını göstermektedir:
 
 ```c
 NXD_ADDRESS global_address;
@@ -939,7 +939,7 @@ global_address.nxd_ip_address.v6[2] = 0x00000000;
 global_address.nxd_ip_address.v6[3] = 0x0000ABCD;
 ```
 
-Konak daha sonra bu adresi genel IP adresi olarak atamak için aşağıdaki NetX Duo hizmetini çağırarak:
+Daha sonra ana bilgisayar, bu adresi genel IP adresi olarak atamak için aşağıdaki NetX Duo hizmetini çağırır:
 
 ```c
 status = nxd_ipv6_address_set(&ip_0, 0,  
@@ -947,38 +947,38 @@ status = nxd_ipv6_address_set(&ip_0, 0,
                               NX_NULL);
 ```
 
-### <a name="duplicate-address-detection-dad"></a>Yinelenen Adres Algılama (MİS)    
-Sistem IPv6 adresini yapılandırdikten sonra *adres,ATIVE olarak işaretlenir.* RFC 4862'de açıklanan Yinelenen Adres Algılama (TAMAM) etkinse NetX Duo hedef olarak bu geçici adresle birlikte otomatik olarak komşu istek (NS) iletileri gönderir. Ağ üzerinde bu NS iletilerine verilen süre içinde yanıt veren konak yoksa, adresin yerel bağlantıda benzersiz olduğu varsayılır ve durum VALID durumuna geçişler. Bu noktada uygulama iletişim için bu IP adresini kullanmaya başlayabilir.  
+### <a name="duplicate-address-detection-dad"></a>Yinelenen adres algılama (BABACıĞıM)    
+Bir sistem, IPv6 adresini yapılandırdıktan sonra, adres *belirsiz* olarak işaretlenir. RFC 4862 ' de açıklanan yinelenen adres algılama (BABACıĞıM) etkinleştirilirse, NetX Duo, bu belirsiz adresle hedef olarak komşu bağlantısı (NS) iletilerini otomatik olarak gönderir. Ağ üzerinde hiçbir ana bilgisayar belirli bir süre içinde bu NS iletilerine yanıt vermezse, adresin yerel bağlantı üzerinde benzersiz olduğu varsayılır ve durumu GEÇERLI duruma ayarlanır. Bu noktada, uygulamanın bu IP adresini iletişim için kullanmaya başlayabiliriz.  
 
-THELI işlevi, ICMPv6 modülünün bir parçasıdır. Bu nedenle, yeni yapılandırılan bir adresin GEÇMİS IŞLEMINI geçemeden önce uygulamanın ICMPv6 hizmetlerini etkinleştirmesi gerekir. Alternatif olarak, NETX Duo kitaplığı derlemeortamında nx_user (NX_DISABLE_IPV6_DAD.h olarak tanımlanır) * NX_DISABLE_IPV6_DAD _ seçeneği tanımlayarak DAHİÇ işlemi _*_kapatabilirsiniz._*_ THEIL işlemi sırasında _*_NX_IPV6_DAD_TRANSMITS_*_ parametresi, adresin benzersiz olduğunu belirlemeye yanıt almadan NetX Duo tarafından gönderilen NS iletilerinin sayısını belirler. Varsayılan olarak ve RFC 4862 tarafından önerilen _ *_NX_IPV6_DAD_TRANSMITS_** değeri 3 olarak ayarlanır. Bu simgenin sıfır olarak ayarlanıyor olması, ZAMANI devre dışı bırakır.
+Baba işlevselliği, ICMPv6 modülünün bir parçasıdır. Bu nedenle, yeni yapılandırılmış bir adresin BABACıĞıM işlem üzerinden gidebilmesi için uygulamanın ICMPv6 hizmetlerini etkinleştirmesi gerekir. Alternatif olarak, baba işlemi NetX Duo kitaplık derleme ortamında ***NX_DISABLE_IPV6_DAD** _ seçeneği tanımlanarak kapatılmış olabilir ( _*_nx_user. h_*_ olarak tanımlanır). BABACıĞıM işlemi sırasında, _*_NX_IPV6_DAD_TRANSMITS_*_ parametresi NETX Duo tarafından gönderilen NS iletilerinin sayısını, adresin benzersiz olduğunu belirleyen bir yanıt almadan belirler. Varsayılan olarak, RFC 4862, _ *_NX_IPV6_DAD_TRANSMITS_** 3 ' te ayarlanır. Bu sembolün sıfıra ayarlanması, BABACıĞıM 'ı devre dışı bırakır.
 
-Uygulama bir IPv6 adresi atarken ICMPv6 veya THEI etkin değilse, TAMAMI gerçekleştirilecek değildir ve NetX Duo, IPv6 adresinin durumunu hemen VALID olarak ayarlar.
+Uygulama bir IPv6 adresi atarken ICMPv6 veya BABACıĞıM etkinleştirilmemişse, BABACıĞıM gerçekleştirilmez ve NetX Duo, IPv6 adresinin durumunu hemen GEÇERLI olarak ayarlar.
 
-NetX Duo, yerel ve/veya genel adresi geçerli olana kadar IPv6 ağına bağlanamaz. Geçerli bir adres alındıktan sonra NetX Duo, gelen paketin hedef adresini yapılandırılmış IPv6 adresi veya etkin çok noktaya yayın adresiyle eşleşmeye çalışır. Eşleşme bulunamasa paket bırakılır. 
+NetX Duo, bağlantısı yerel ve/veya genel adresi geçerli olana kadar IPv6 ağı üzerinde iletişim kuramıyor. Geçerli bir adres alındıktan sonra NetX Duo, yapılandırılmış IPv6 adresinden veya etkin bir çok noktaya yayın adresinden birine karşı gelen bir paketin hedef adresini eşleştirmeye çalışır. Eşleşme bulunmazsa paket bırakılır. 
 
 > [!WARNING]  
-> *GEÇİCİ işlem sırasında, iletilen ND NS paketlerinin sayısı ***NX_IPV6_DAD_TRANSMITS** tarafından tanımlanır. Varsayılan değer 3'tir ve varsayılan olarak her BIR NS iletisi arasında bir saniyelik bir gecikme _vardır. Bu nedenle, BIR IPv6_ adresi atandıktan sonra (ve bunun yinelenen bir adres olmadığını varsayarak), IP adresinin VALID durumda ve iletişim için hazır olması yaklaşık 3 saniyelik gecikme olur.
+> * BABACıĞıM işlemi sırasında, aktarılacak baba paketleri sayısı ***NX_IPV6_DAD_TRANSMITS** tarafından tanımlanmıştır _, varsayılan olarak 3 ' e ayarlanır ve varsayılan olarak her bir baba iletisi gönderilirken ikinci bir gecikme vardır. Bu nedenle, BABACıĞıM özellikli bir sistemde, bir IPv6 adresi atandıktan sonra (ve bunun yinelenen bir adres olmadığı varsayılarak), IP adresi GEÇERLI bir durumda ve iletişim için hazır olmak üzere yaklaşık 3 saniyelik gecikme vardır._
 
-Sistemde IPv6 adresleri değiştiriken uygulamalar bildirim almak istiyor olabilir. IPv6 adres değişikliği bildirimi özelliğini etkinleştirmek için NetX Duo kitaplığı tanımlandığı gibi **simgesiyle NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY** gerekir. Özellik etkinleştirildikten sonra, uygulamalar geri çağırma işlevini nxd_ipv6_address_change_notify **_yükleyebilir._**
+Uygulamalar, sistemdeki IPv6 adresleri değiştirildiğinde bildirim almak isteyebilir. IPv6 adres değişikliği bildirim özelliğini etkinleştirmek için, NetX Duo kitaplığı tanımlı **NX_ENABLE_IPV6_ADDRESS_CHANGE_NOTIFY** sembol ile oluşturulmalıdır. Özellik etkinleştirildikten sonra, uygulamalar **_nxd_ipv6_address_change_notify_** hizmetini kullanarak geri çağırma işlevini yükleyebiliriz.
 
-Bir IPv6 adresi değiştirildi veya geçersiz hale geldi mi, kullanıcı tarafından sağlanan geri çağırma işlevi aşağıdaki bilgilerle çağrılır:
+Bir IPv6 adresi değiştirildikten veya geçersiz olduktan sonra, Kullanıcı tarafından sağlanan geri çağırma işlevi aşağıdaki bilgilerle çağrılır:
 
 | İşlev  | Açıklama  |
 |---|---|
-|ip_ptr |IP örneğinin işaretçisi|
-|interface_index |Bu IPv6 adresinin ilişkili olduğu ağ arabirimine dizin oluşturma
-|ipv6_addr_index |IPv6 adres tablosu dizini|
-|ipv6_address |Dört ULONG tamsayısı dizisi şeklinde IPv6 adresinin işaretçisi. Pv6 adresleri konak bayt sırasına göre sunulmuştur.|
+|ip_ptr |IP örneğine yönelik işaretçi|
+|interface_index |Bu IPv6 adresinin ilişkilendirildiği ağ arabiriminin dizini
+|ipv6_addr_index |IPv6 adresi tablosunun dizini|
+|ipv6_address |Dört ULONG tamsayının dizisi biçiminde IPv6 adresine yönelik işaretçi. Pv6 adresleri, ana bilgisayar bayt düzeninde sunulur.|
 
-### <a name="ipv6-multicast-support-in-netx-duo"></a>NetX Duo'da IPv6 Çok Noktaya Yayın Desteği      
-Çok noktaya yayın adresleri, internet üzerinde dinamik bir konak grubu belirtir. Çok noktaya yayın grubunun üyeleri her zaman katılarak ayrıl olabilir. NetX Duo, IP çok noktaya yayın özelliği gerektiren Yinelenen Adres Algılama, Komşu Bulma ve Yönlendirici Bulma dahil olmak üzere çeşitli ICMPv6 protokolleri kullanır. Bu nedenle NetX Duo, temel alınan cihaz sürücüsünün çok noktaya yayın işlemlerini desteklemesi beklemektedir.
+### <a name="ipv6-multicast-support-in-netx-duo"></a>NetX Duo 'Da IPv6 çok noktaya yayın desteği      
+Çok noktaya yayın adresleri Internet 'teki bir dinamik konaklar grubunu belirtir. Çok noktaya yayın grubunun üyeleri her istediklerinde katılabilir ve bırakabilir. NetX Duo, yinelenen adres algılama, komşu bulma ve IP çok noktaya yayın yeteneği gerektiren yönlendirici bulma dahil olmak üzere çeşitli ICMPv6 protokolleri uygular. Bu nedenle NetX Duo, temel alınan aygıt sürücüsünün çok noktaya yayın işlemlerini desteklemesini bekler.
 
-NetX Duo'nın çok noktaya yayın grubuna katılması veya gruptan ayrılması  (tüm düğümler için çok noktaya yayın adresi ve istenmeyen düğüm çok noktaya yayın adresi gibi) için cihaz sürücüsüne çok noktaya yayın mac adresi eklemesi veya bırakması için bir sürücü komutu verir. Çok noktaya yayın adresine katılmak için sürücü komutu ***NX_LINK_MULTICAST_JOIN** _. NetX Duo, çok noktaya yayın adresi bırakmak için _* sürücü komutunu _**NX_LINK_MULTICAST_LEAVE_ sağlar. ICMPv6 protokolünün düzgün çalışması için cihaz sürücüsünün bu iki komutu uygulaması gerekir.
+NetX Duo bir çok noktaya yayın grubuna (örneğin, tüm düğüm çok noktaya yayın adresi ve *istek-düğüm* çok noktaya yayın adresi) katılması veya ayrılması gerektiğinde, bir çok noktaya yayın MAC adresine katılması veya bu adresi bırakmak için aygıt sürücüsüne bir sürücü komutu yayınlar. Çok noktaya yayın adresine katılma için sürücü komutu ***NX_LINK_MULTICAST_JOIN** _. NetX Duo, çok noktaya yayın adresini bırakmak için _ *_NX_LINK_MULTICAST_LEAVE_* * sürücü komutunu yayınlar. ICMPv6 protokollerinin düzgün çalışması için aygıt sürücüsünün bu iki komutu uygulaması gerekir.
 
-Uygulamalar, bir IPv6 çok noktaya yayın grubuna ***nxd_ipv6_multicast_interface_join* hizmetini kullanarak katılabilir.** Bu hizmet, çok noktaya yayın adresini IP yığınına kaydettiriyor ve ardından IPv6 çok noktaya yayın adresinin belirtilen cihaz sürücüsüne bilgi verir. Uygulamalar, çok noktaya yayın grubundan ayrılmak için hizmet ***nxd_ipv6_multicast_interface_leave.***
+Uygulamalar, ***nxd_ipv6_multicast_interface_join *** hizmetini kullanarak bir IPv6 çok noktaya yayın grubuna katılabilir. Bu hizmet, çok noktaya yayın adresini IP yığınına kaydeder ve ardından IPv6 çok noktaya yayın adresinin belirtilen cihaz sürücüsüne bildirir. Bir çok noktaya yayın grubunu bırakmak için, uygulamalar hizmeti ***nxd_ipv6_multicast_interface_leave kullanır.***
 
 ### <a name="neighbor-discovery-nd"></a>Komşu Bulma (ND)    
-Komşu Bulma, fiziksel adresleri IPv6 adreslerine (genel adres veya bağlantı yerel adresi) eşlemek için IPv6 ağlarında bir protokoldür. Bu eşleme, Komşu Bulma Önbelleğinde (ND Önbelleği) korunur. ND işlemi, IPv4'te ARP işleminin eşdeğeridir ve ND Önbelleği de ARP tablosuna benzer. Bir IPv6 düğümü, Komşu Bulma (ND) protokolünü kullanarak komşusunun MAC adresini edinebilirsiniz. Tüm düğümler için istekte bulunulan çok noktaya yayın adresine bir komşu istek (NS) iletisi gönderir ve karşılık gelen komşu tanıtım (NA) iletisi bekler. Bu işlemle alınan MAC adresi ND Önbelleği'ne depolanır.
+Komşu bulma, IPv6 ağlarındaki fiziksel adresleri IPv6 adresleriyle (genel adres veya bağlantı-yerel adres) eşlemek için IPv6 ağlarında bir protokoldür. Bu eşleme, komşu bulma önbelleğinde (ND Cache) tutulur. ND işlemi, ARP işleminin IPv4 olarak eşdeğeridir ve ND önbelleği ARP tablosuna benzerdir. Bir IPv6 düğümü, komşu bulma (ND) protokolünü kullanarak komşunuzun MAC adresini elde edebilir. Tüm düğüm talep düğümü çok noktaya yayın adresine bir komşu bağlantısı (NS) iletisi gönderir ve karşılık gelen bir komşu tanıtım tanıtımı (NA) iletisini bekler. Bu işlem aracılığıyla elde edilen MAC adresi ND önbelleğinde depolanır.
 
 Her IP örneğinin bir ND önbelleği vardır. ND önbelleği, bir giriş dizisi olarak tutulur. Dizinin boyutu, _ *_nx_user. h_* * içinde ***NX_IPV6_NEIGHBOR_CACHE_SIZE** _ seçeneği ayarlanarak derleme zamanında tanımlanır. Bir IP örneğine bağlı olan tüm arabirimlerin aynı ND önbelleğini paylaştığından emin olmanız gerektiğini unutmayın.
 
@@ -1078,7 +1078,7 @@ NetX Duo'da aşağıdaki ICMPv6 hata iletileri de kullanılabilir:
 
 ## <a name="user-datagram-protocol-udp"></a>Kullanıcı Veri Birimi Protokolü (UDP)
 
-Kullanıcı Veri Birimi Protokolü (UDP), ağ üyeleri arasında en basit veri aktarımı formunu sağlar (RFC 768). UDP veri paketleri bir ağ üyesinden diğerine en iyi çabayla gönderilir; Örneğin, paket alıcısı tarafından onay için yerleşik bir mekanizma yoktur. Ayrıca, UDP paketi göndermek için önceden bağlantı kurulmasına gerek olmaz. Bu nedenle, UDP paket iletimi çok verimlidir.
+Kullanıcı Veri Birimi Protokolü (UDP), ağ üyeleri arasında en basit veri aktarımı formunu sağlar (RFC 768). UDP veri paketleri en iyi çabayla bir ağ üyesinden diğerine gönderilir; Örneğin, paket alıcısı tarafından onay için yerleşik bir mekanizma yoktur. Ayrıca, UDP paketi göndermek için önceden bağlantı kurulmasına gerek olmaz. Bu nedenle, UDP paket iletimi çok verimlidir.
 
 NetX uygulamalarını NetX Duo'ya alan geliştiriciler için NetX ile NetX Duo arasındaki UDP işlevselliğinde yalnızca birkaç temel değişiklik vardır. Bunun nedeni, IPv6'nın öncelikli olarak temel IP katmanıyla ilgili olup olmadığını belirlemektir. Tüm NetX Duo UDP hizmetleri IPv4 veya IPv6 bağlantısı için kullanılabilir.
 
@@ -1099,10 +1099,10 @@ Aşağıda UDP üst bilgisi biçimi açıklanmıştır:
 |**16 bit kaynak bağlantı noktası numarası** |Bu alan, UDP paketinin gönderildiği bağlantı noktasını içerir. Geçerli UDP bağlantı noktaları 1 ile 0xFFFF. |
 |**16 bit hedef bağlantı noktası numarası** |Bu alan, paketin gönderildiği UDP bağlantı noktasını içerir. Geçerli UDP bağlantı noktaları 1 ile 0xFFFF. |
 |**16 bit UDP uzunluğu** |Bu alan, UDP üst bilgisi boyutu da dahil olmak üzere UDP paketinde bayt sayısını içerir. |
-|**16 bit UDP sağlamaları** |Bu alan UDP üst bilgisi, paket veri alanı ve sahte IP üst bilgisi de dahil olmak üzere paket için 16 bit sağlama toplamlarını içerir. |
+|**16 bit UDP sağlamaları** |Bu alan UDP üst bilgisi, paket veri alanı ve sahte IP üst bilgisi dahil olmak üzere paket için 16 bit sağlama toplamlarını içerir. |
 
 ### <a name="udp-enable"></a>UDP Etkinleştirme   
-UDP paket iletiminin mümkün olması için önce uygulamanın nx_udp_enable ***çağırarak UDP'yi etkinleştirmesi*** gerekir. Etkinleştirildikten sonra, uygulama UDP paketlerini gönderebilir ve almakta serbesttir.  
+UDP paket iletiminin mümkün olması için önce uygulamanın nx_udp_enable çağırarak ***UDP'yi etkinleştirmesi*** gerekir. Etkinleştirildikten sonra, uygulama UDP paketleri gönderebilir ve almakta serbesttir.  
 
 ### <a name="udp-socket-create"></a>UDP Yuva Oluşturma    
 UDP yuvaları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. İlk hizmet türü, yaşam süresi ve kuyruk derinliği, hizmet tarafından nx_udp_socket_create ***tanımlanır.*** Bir uygulamanın UDP yuvalarının sayısıyla ilgili bir sınır yoktur.
@@ -1116,16 +1116,16 @@ UDP sağlama sayısı alıcı tarafından hesaplanan sağlama sayısı ile eşle
 
 IPv4 ağına UDP sağlama verileri isteğe bağlıdır. NetX Duo, bir uygulamanın yuva başına UDP sağlama sayısı hesaplamasını etkinleştirmesini veya devre dışı bırakmasını sağlar. Varsayılan olarak UDP yuva sağlama verileri mantığı etkindir. Uygulama , * nx_udp_socket_checksum_disable _ hizmetini çağırarak belirli bir UDP yuvası için **sağlama nx_udp_socket_checksum_disable** devre dışı bırakabilirsiniz. Ancak, IPv6 ağına UDP sağlama verileri zorunludur. Bu nedenle, hizmet _ *_nx_udp_socket_checksum_disable_** IPv6 ağı üzerinden bir paket gönderirken UDP sağlama sayısı mantığını devre dışı bırakmaz.
 
-Bazı Ethernet denetleyicileri, UDP sağlamalarını çalışır şekilde oluşturabiliyor. Sistem donanım sağlama sağlamaları hesaplama özelliğini kullanıyorsa, NetX Duo kitaplığı sağlama sağlama mantığı olmadan da kullanılabilir. UDP yazılım sağlamalarını devre dışı bırakmak için NetX Duo kitaplığının tanımlanmış şu sembollerle inşa edilmiş olması gerekir: ***NX_DISABLE_UDP_TX_CHECKSUM** _ ve NX_DISABLE_UDP_RX_CHECKSUM (Bölüm _*_2'de_*_ açıklanmıştır). Yapılandırma seçenekleri NetX Duo'dan UDP sağlama kümesi mantığını tamamen kaldırırken _ *_nx_udp_socket_checksum_disable_** hizmeti çağrılması, uygulamanın yuva başına IPv4 UDP sağlama tamamı işlemeyi devre dışı bırakmasını sağlar.
+Bazı Ethernet denetleyicileri, UDP sağlamalarını çalışır şekilde oluşturabiliyor. Sistem donanım sağlama sağlamaları hesaplama özelliğini kullanıyorsa, NetX Duo kitaplığı sağlama sağlama mantığı olmadan da kullanılabilir. UDP yazılım sağlamalarını devre dışı bırakmak için NetX Duo kitaplığının tanımlanmış şu sembollerle inşa edilmiş olması gerekir: ***NX_DISABLE_UDP_TX_CHECKSUM** _ _*_ve NX_DISABLE_UDP_RX_CHECKSUM_*_ (Bölüm 2'de açıklanmıştır). Yapılandırma seçenekleri, _ *_nx_udp_socket_checksum_disable_** hizmetini çağırarak uygulamanın yuva başına IPv4 UDP sağlama tamamı işlemeyi devre dışı bırakmasını sağlarken NetX Duo'dan UDP sağlama sağlamaları mantığını tamamen kaldırır.
 
 ### <a name="udp-ports-and-binding"></a>UDP Bağlantı Noktaları ve Bağlama      
-UDP bağlantı noktası, UDP protokolünde mantıksal bir uç noktasıdır. NetX Duo'daki UDP bileşeninde 1 ila 1 arasında geçerli 65.535 bağlantı noktası 0xFFFF. UDP verilerini göndermek veya almak için uygulamanın önce bir UDP yuvası oluşturması ve ardından istenen bağlantı noktasına bağlaması gerekir. Bir UDP yuvasını bir bağlantı noktasına bağlamanın ardından uygulama bu yuvada veri gönderebilir ve bu verileri alır.
+UDP bağlantı noktası, UDP protokolünde mantıksal bir uç noktasıdır. NetX Duo'daki UDP bileşeninde 1 ile 1 arasında geçerli 65.535 bağlantı noktası 0xFFFF. UDP verilerini göndermek veya almak için uygulamanın önce bir UDP yuvası oluşturması ve ardından istenen bağlantı noktasına bağlaması gerekir. Bir UDP yuvasını bir bağlantı noktasına bağlamanın ardından uygulama bu yuvada veri gönderebilir ve bu verileri alır.
 
 ### <a name="udp-fast-pathtrade"></a>UDP Hızlı Yolu&trade;   
-UDP Hızlı &trade; Yolu, NetX Duo UDP uygulaması aracılığıyla düşük paket ek yükü yolunun adıdır. UDP paketi göndermek için yalnızca birkaç işlev çağrısı gerekir: ***nx_udp_socket_send** _, _*_nx_ip_packet_send_*_ ve ağ sürücüsüne yapılan son çağrı. _*_nx_udp_socket_send_*_ NetX Duo'da mevcut NetX uygulamaları için kullanılabilir ve yalnızca IPv4 paketleri için geçerlidir. Ancak tercih edilen yöntem aşağıda ele alınarak _ *_nxd_udp_socket_send_** hizmetini kullanmaktır. UDP paket alımında, UDP paketi uygun UDP yuva alma kuyruğuna yerleştirilir veya ağ sürücüsünün alma kesme işlemeden gelen tek bir işlev çağrısında askıya alınmış bir uygulama iş parçacığına teslim edilir. UDP paketlerini göndermek ve almak için yüksek oranda iyileştirilmiş bu mantık, UDP Hızlı Yol teknolojisinin özüdür.  
+UDP Hızlı &trade; Yolu, NetX Duo UDP uygulaması aracılığıyla düşük paket ek yükü yolunun adıdır. UDP paketi göndermek için yalnızca birkaç işlev çağrısı gerekir: ***nx_udp_socket_send** _, _*_nx_ip_packet_send_*_ ve ağ sürücüsüne son çağrı. _*_nx_udp_socket_send_*_ NetX Duo'da mevcut NetX uygulamaları için kullanılabilir ve yalnızca IPv4 paketleri için geçerlidir. Ancak tercih edilen yöntem, aşağıda ele alınan _ *_nxd_udp_socket_send_** hizmetini kullanmaktır. UDP paket alımında, UDP paketi uygun UDP yuva alma kuyruğuna yerleştirilir veya ağ sürücüsünün alma kesme işlemeden gelen tek bir işlev çağrısında askıya alınmış bir uygulama iş parçacığına teslim edilir. UDP paketlerini göndermek ve almak için yüksek oranda iyileştirilmiş bu mantık, UDP Hızlı Yol teknolojisinin özüdür.  
 
 ### <a name="udp-packet-send"></a>UDP Paket Gönderme    
-IPv6 veya IPv4 ağları üzerinden UDP verileri gönderme, * nxd_udp_socket_send _ işlevi **çağrılarak** kolayca gerçek olur. Çağıran, ip sürümünü NXD_ADDRESS parametresinin _nx_ip_version* alanında ayarlaması gerekir. NetX Duo, hedef IPv4/IPv6 adresine göre iletilen UDP paketleri için en iyi kaynak adresi belirler. Bu hizmet, paket verilerinin önüne bir UDP üst bilgisi yer alır ve bunu iç IP gönderme yordamını kullanarak ağa gönderir. Tüm UDP paket iletimleri hemen işlendiğinden, UDP paketleri gönderirken iş parçacığı askıya alınmaz. 
+IPv6 veya IPv4 ağları üzerinden UDP verileri gönderme, * nxd_udp_socket_send _ işlevi **çağrılarak** kolayca dolar. Çağıranın, ip sürümünü _nx_ip_version parametresinin _nx_ip_version* alanında NXD_ADDRESS ayarlaması gerekir. NetX Duo, hedef IPv4/IPv6 adresine göre iletilen UDP paketleri için en iyi kaynak adresi belirler. Bu hizmet, paket verilerinin önüne bir UDP üst bilgisi yer alır ve bunu iç IP gönderme yordamını kullanarak ağa gönderir. Tüm UDP paket iletimleri hemen işlendiğinden, UDP paketleri gönderirken iş parçacığı askıya alınmaz. 
 
 Çok noktaya yayın veya yayın hedefleri için, NetX Duo cihazında seçilecek birden çok IP adresi varsa uygulamanın kaynak IP adresini belirtmesi gerekir. Bu, aşağıdaki hizmetlerle ***nxd_udp_socket_source_send.***
 
@@ -1133,7 +1133,7 @@ IPv6 veya IPv4 ağları üzerinden UDP verileri gönderme, * nxd_udp_socket_send
 > *Çok **nx_udp_socket_send** veya yayın paketlerinin iletildiğinde kullanılırsa,* ilk etkinleştirilmiş arabirimin IP adresi kaynak adresi olarak kullanılır.
 
 > [!NOTE] 
-> Bu yuva için UDP sağlama toplama mantığı etkinleştirilmişse, sağlama toplama işlemi, UDP veya IP veri yapılarına erişimi engellemeden, çağırma iş parçacığı *bağlamında gerçekleştirilir.* 
+> Bu yuva için UDP sağlama toplama mantığı etkinleştirilirse, sağlama toplama işlemi, UDP veya IP veri yapılarına erişimi engellemeden, çağırma iş parçacığı *bağlamında gerçekleştirilir.* 
 
 > [!WARNING]    
 > *Bu yapıda bulunan UDP yükü NX_PACKET uzun sözcük sınırında yer al olmalıdır. Uygulamanın UDP, IP ve* fiziksel medya üst bilgilerini yer aldığı NetX Duo için ön uç işaretçisi ile veri başlatma işaretçisi arasında yeterli alan bırakması gerekir.
@@ -1143,154 +1143,154 @@ Uygulama iş parçacıkları, belirli bir yuvadan udp paketleri almak için ***n
 
 UDP alma paketi işlemesi (genellikle ağ sürücüsünün alma kesme işleyicisi tarafından çağrılır), paketi UDP yuvasının alma kuyruğuna yerleştirmekten veya paketi bekleyen ilk askıya alınmış iş parçacığına teslim etmekten sorumludur. Paket kuyruğa alınıyorsa, alma işlemi yuvayla ilişkili en yüksek alma kuyruğu derinliğini de denetler. Yeni kuyruğa alınan bu paket kuyruk derinliğini aşarsa kuyrukta en eski paket atılır.
 
-### <a name="udp-receive-notify"></a>UDP Alma Bildirimi   
-Uygulama iş parçacığının birden fazla yuvadan alınan verileri işlemesi gerekirse, ***nx_udp_socket_receive_notify*** işlevi kullanılmalıdır. Bu işlev yuva için bir alma paketi geri çağırma işlevini kaydedmektedir. Yuvada bir paket alınan her zaman, geri çağırma işlevi yürütülür.
+### <a name="udp-receive-notify"></a>UDP alma bildirimi   
+Uygulama iş parçacığının birden fazla yuvada alınan verileri işlemesi gerekiyorsa ***nx_udp_socket_receive_notify*** işlevi kullanılmalıdır. Bu işlev, yuva için bir alma paketi geri çağırma işlevi kaydeder. Yuvada her bir paket alındığında geri çağırma işlevi yürütülür.
 
-Geri çağırma işlevinin içeriği applicationspecific'tir; ancak, büyük olasılıkla işleme iş parçacığına bir paketin artık karşılık gelen yuvada kullanılabilir olduğunu bildirmek için mantık içerir.
+Geri çağırma işlevinin içerikleri, applicationspecific; Ancak büyük olasılıkla işleme iş parçacığını, ilgili yuvada artık kullanılabilir olduğunu bildirmek için mantık içerebilir.
 
-### <a name="peer-address-and-port"></a>Eş Adresi ve Bağlantı Noktası   
-Bir UDP paketi alırken, uygulama gönderenin IP adresini ve bağlantı noktası numarasını bulmak için bir hizmet ***nx_udp_packet_info_extract.*** Başarılı bir geri dönüşte, bu hizmet gönderenin IP adresi, gönderenin bağlantı noktası numarası ve paketin üzerinden alınarak alınan yerel arabirim hakkında bilgi sağlar.  
+### <a name="peer-address-and-port"></a>Eş adresi ve bağlantı noktası   
+Bir UDP paketi alındığında, uygulama, hizmet ***nx_udp_packet_info_extract*** kullanarak gönderenin IP adresini ve bağlantı noktası numarasını bulabilir. Başarılı bir geri döndüğünüzde, bu hizmet gönderenin IP adresi, gönderenin bağlantı noktası numarası ve paketin alındığı yerel arabirim hakkındaki bilgileri sağlar.  
 
-### <a name="thread-suspension"></a>İş ParçacığıNı Askıya Alma   
-Daha önce belirtildiği gibi, uygulama iş parçacıkları belirli bir UDP bağlantı noktası üzerinde BIR UDP paketi almaya çalışırken askıya alabilir. Bu bağlantı noktası üzerinde bir paket alındıktan sonra, askıya alınan ilk iş parçacığına verilir ve bu iş parçacığı daha sonra devam eder. Çoğu NetX Duo hizmeti için kullanılabilen bir özellik olan UDP alma paketi askıya alınarak isteğe bağlı bir zaman aşımı sağlanır.  
+### <a name="thread-suspension"></a>İş parçacığı askıya alma   
+Daha önce belirtildiği gibi, uygulama iş parçacıkları belirli bir UDP bağlantı noktasında UDP paketi alınmaya çalışılırken askıya alabilir. Bu bağlantı noktasında bir paket alındıktan sonra, bu, askıya alınan ilk iş parçacığına verilir ve bu iş parçacığı daha sonra sürdürülür. Çok sayıda NetX Duo hizmeti için kullanılabilen bir UDP alma paketi üzerinde askıya alma sırasında isteğe bağlı bir zaman aşımı kullanılabilir.  
 
-### <a name="udp-socket-statistics-and-errors"></a>UDP Yuva İstatistikleri ve Hataları     
-Etkinleştirilirse, NetX Duo UDP yuva yazılımı uygulama için yararlı olan çeşitli istatistikleri ve hataları takip eder. Her IP/UDP örneği için aşağıdaki istatistikler ve hata raporları korunur:
+### <a name="udp-socket-statistics-and-errors"></a>UDP yuvası Istatistikleri ve hataları     
+Etkinleştirilirse, NetX Duo UDP yuva yazılımı, uygulama için yararlı olabilecek çeşitli istatistik ve hataları izler. Her IP/UDP örneği için aşağıdaki istatistikler ve hata raporları korunur:
 
-- Gönderilen Toplam UDP Paketleri  
-- Gönderilen Toplam UDP Bayt Sayısı  
-- Alınan Toplam UDP Paketleri   
-- Alınan Toplam UDP Bayt Sayısı  
-- Toplam UDP Geçersiz Paketleri  
-- Bırakılan Toplam UDP Alma Paketleri  
-- Toplam UDP Alma Sağlama Toplamı Hataları  
-- Gönderilen UDP Yuva Paketleri  
-- Gönderilen UDP Yuva Baytları  
-- Alınan UDP Yuva Paketleri   
-- Alınan UDP Yuva Baytları  
-- Kuyruğa Alınan UDP Yuva Paketleri  
-- Bırakılan UDP Yuva Alma Paketleri  
-- UDP Yuva Sağlama Sayısı Hataları  
+- Gönderilen toplam UDP paketi sayısı  
+- Gönderilen toplam UDP bayt sayısı  
+- Alınan toplam UDP paketi sayısı   
+- Alınan toplam UDP bayt sayısı  
+- Toplam UDP geçersiz paket sayısı  
+- Bırakılan toplam UDP alma paketi sayısı  
+- Toplam UDP alma sağlama toplamı hatası  
+- Gönderilen UDP soket paketleri  
+- Gönderilen UDP yuva baytları  
+- Alınan UDP soket paketleri   
+- Alınan UDP yuva baytları  
+- Sıraya alınan UDP yuvası paketleri  
+- Bırakılan UDP yuvası alma paketleri  
+- UDP yuva sağlama toplamı hataları  
 
-Tüm bu istatistikler ve hata raporları, tüm UDP yuvaları üzerinde UDP istatistikleri için ***nx_udp_info_get** _ hizmeti ve belirtilen UDP yuvasında UDP istatistikleri için _ *_nx_udp_socket_info_get_** hizmeti ile uygulama tarafından kullanılabilir.
+Bu istatistik ve hata raporlarının tümü, tüm UDP yuvaları üzerinden UDP istatistikleri amassed için ***nx_udp_info_get** _ hizmeti ve belirtilen UDP yuvasında UDP istatistikleri için _ *_nx_udp_socket_info_get_** hizmeti ile birlikte kullanılabilir.
 
-### <a name="udp-socket-control-block-nx_udp_socket"></a>UDP Yuva Denetim Bloğu NX_UDP_SOCKET
-Her UDP yuvanın özellikleri, ilişkili NX_UDP_SOCKET bulunur. IP veri yapısı bağlantısı, gönderme ve alma yolları için ağ arabirimi, bağlı bağlantı noktası ve alma paketi kuyruğu gibi yararlı bilgiler içerir. Bu yapı, ***nx_api.h dosyasında*** tanımlanır.
+### <a name="udp-socket-control-block-nx_udp_socket"></a>UDP yuva denetim bloğu NX_UDP_SOCKET
+Her UDP yuvasının özellikleri, ilişkili NX_UDP_SOCKET denetim bloğunda bulunur. IP veri yapısına bağlantı, gönderme ve alma yolları için ağ arabirimi, bağlantı noktası ve alma paketi kuyruğu gibi yararlı bilgiler içerir. Bu yapı ***nx_api. h*** dosyasında tanımlanmıştır.
 
 ## <a name="transmission-control-protocol-tcp"></a>İletim Denetimi Protokolü (TCP)
 
-İletim Denetimi Protokolü (TCP), iki ağ üyesi (RFC 793) arasında güvenilir akış veri aktarımı sağlar. Bir ağ üyesinden gönderilen tüm veriler, alıcı üye tarafından doğrulanır ve onaylanır. Ayrıca, iki üyenin herhangi bir veri aktarımından önce bir bağlantı kurmış olması gerekir. Tüm bu sonuçlar güvenilir veri aktarımına neden olur; ancak, daha önce açıklanan UDP veri aktarımından çok daha fazla ek yük gerektirir.
+Iletim Denetim Protokolü (TCP) iki ağ üyesi arasında güvenilir akış veri aktarımı sağlar (RFC 793). Bir ağ üyesinden gönderilen tüm veriler, alıcı üye tarafından doğrulanır ve onaylanır. Ayrıca, iki üyenin herhangi bir veri aktarımından önce bir bağlantı oluşturmuş olması gerekir. Tüm bu sonuçlar güvenilir veri aktarımına sahiptir; Ancak, daha önce açıklanan UDP veri aktarımından daha fazla ek yük gerektirir.
 
-Burada da önemli olan, IPv6'nın temel IP katmanıyla ilgili olduğu için NetX ile NetX Duo arasındaki TCP protokolü API hizmetlerindeki hiçbir değişiklik yoktur. Tüm NetX Duo TCP hizmetleri IPv4 veya IPv6 bağlantıları için kullanılabilir.
+Aksi belirtilmedikçe, TCP protokolü API hizmetlerinde NetX ve NetX Duo arasında hiçbir değişiklik yoktur, çünkü IPv6 birincil olarak temel alınan IP katmanıyla ilgilidir. Tüm NetX Duo TCP hizmetleri, IPv4 veya IPv6 bağlantıları için kullanılabilir.
 
-### <a name="tcp-header"></a>TCP Üst Bilgisi   
-İletimde, TCP üst bilgisi kullanıcıdan gelen verilerin önüne yerleştirilir. Alımın ardından TCP üst bilgisi gelen paketten kaldırılır ve yalnızca kullanıcı verileri uygulama için kullanılabilir olur. TCP, paketleri göndermek ve almak için IP protokolünü kullanır; bu, paket ağ üzerindeyken TCP üst bilgisi önünde bir IP üst bilgisi olduğu anlamına gelir. Şekil 13'te TCP üst bilgisi biçimi görüntülenir.
+### <a name="tcp-header"></a>TCP üst bilgisi   
+İletim sırasında TCP üstbilgisi, kullanıcıdan verilerin önüne yerleştirilir. Alma sırasında TCP üstbilgisi, gelen paketten kaldırılır ve yalnızca uygulamanın kullanabildiği Kullanıcı verileri bırakılır. TCP, paket ağda olduğunda TCP üst bilgisinin önünde bir IP üstbilgisi olduğu anlamına gelen paketleri göndermek ve almak için IP protokolünü kullanır. Şekil 13, TCP üstbilgisinin biçimini gösterir.
 
-![TCP üst bilgisi biçiminin diyagramı.](./media/user-guide/image22.png)
+![TCP üst bilgi biçiminin diyagramı.](./media/user-guide/image22.png)
 
-### <a name="figure-13-tcp-header"></a>ŞEKIL 13. TCP Üst Bilgisi
+### <a name="figure-13-tcp-header"></a>ŞEKIL 13. TCP üst bilgisi
 
-Tcp üst bilgisi biçimi aşağıda açıklanmıştır:
+Aşağıda TCP üst bilgi biçimi açıklanmaktadır:
 
-|Üst Bilgi &nbsp; Alanı |Amaç |
+|Üst bilgi &nbsp; alanı |Amaç |
 |------|------|
-| **16 bit kaynak bağlantı noktası numarası** | Bu alan, TCP paketinin gönderildiği bağlantı noktasını içerir. Geçerli TCP bağlantı noktaları 1 ile 0xFFFF. |
-| **16 bit hedef bağlantı noktası** | Bu alan, paketin gönderildiği TCP bağlantı noktasını içerir. Geçerli TCP bağlantı noktaları 1 ile 0xFFFF. |
-| **32 bit sıra numarası** | Bu alan, bağlantının bu ucundan gönderilen verilerin sıra numarasını içerir. Özgün dizi, iki TCP düğümü arasındaki ilk bağlantı sırası sırasında oluşturulur. Bu noktadan yapılan her veri aktarımı, gönderilen bayt miktarına göre sıra numarasının bir artışıyla sonuç verir. |
-| **32 bit onay numarası** | Bu alan, bağlantının bu tarafında alınan son bayta karşılık gelen sıra numarasını içerir. Bu, daha önce gönderilen verilerin bağlantının diğer ucundan başarıyla alınıp alına olmadığını belirlemek için kullanılır. |
-| **4 bit üst bilgi uzunluğu** | Bu alan, TCP üst bilgisinde 32 bit sözcük sayısını içerir. TCP üst bilgisinde seçenek yoksa bu alan 5'tir. |
-| **6 bit kod bitleri** |Bu alan, bağlantıyla ilişkili çeşitli denetim bilgilerini göstermek için kullanılan altı farklı kod biti içerir. Denetim bitleri şu şekilde tanımlanır: <br - BR (21): Acil veri önceden<\> br \> - ACK (20): Onay numarası geçerli<br \> - PSH (19): Bu verileri anında işleme<br \> - RST (18): Bağlantıyı sıfırlama<br - SYN (17): Dizi numaralarını eşitleme (bağlantı kurmak için \> kullanılır)<br \> - FIN (16): Gönderenin aktarım işlemi tamamlandı (bağlantıyı kapatmak için kullanılır) |
-|**16 bit pencere** |Bu alan akış denetimi için kullanılır. Bu, yuvanın şu anda aldırılana bayt miktarını içerir. Bu temel olarak akış denetimi için kullanılır. Gönderici, gönderilecek verilerin alıcının tanıtıldı penceresine sığacak olduğundan emin olmakla sorumludur. |
-|**16 bit TCP sağlamaları** |Bu alan TCP üst bilgisi, paket veri alanı ve sözde IP üst bilgisi dahil olmak üzere paket için 16 bit sağlama toplamlarını içerir. |
-|**16 bit acil işaretçi** |Bu alan, acil verilerin son bayta pozitif uzaklığını içerir. Bu alan yalnızca üst bilgide SATıR kodu biti ayarlanmışsa geçerlidir. |
+| **16 bit kaynak bağlantı noktası numarası** | Bu alan, TCP paketinin gönderilme bağlantı noktasını içerir. Geçerli TCP bağlantı noktaları 1 ile 0xFFFF arasında değişir. |
+| **16 bit hedef bağlantı noktası** | Bu alan, paketin gönderildiği TCP bağlantı noktasını içerir. Geçerli TCP bağlantı noktaları 1 ile 0xFFFF arasında değişir. |
+| **32-bit sıra numarası** | Bu alan, bağlantının bu sonundan gönderilen verilerin sıra numarasını içerir. Özgün sıra, iki TCP düğümü arasındaki ilk bağlantı sırası sırasında oluşturulur. Bu noktadan her veri aktarımı, gönderilen toplam bayt sayısına göre sıra numarası artışını elde ediyor. |
+| **32-bit onay numarası** | Bu alan, bağlantının bu tarafında alınan son bayta karşılık gelen sıra numarasını içerir. Bu, daha önce gönderilen verilerin bağlantının diğer ucundan başarıyla alındığını belirlemekte kullanılır. |
+| **4 bit üst bilgi uzunluğu** | Bu alan, TCP üstbilgisindeki 32 bitlik sözcüklerin sayısını içerir. TCP üstbilgisinde bir seçenek yoksa, bu alan 5 ' tir. |
+| **6 bit kod bitleri** |Bu alan, bağlantıyla ilişkili çeşitli denetim bilgilerini belirtmek için kullanılan altı farklı kod bitini içerir. Denetim bitleri şu şekilde tanımlanır: <br \> -URG (21): acil veri ön eki<br \> -ACK (20): onay numarası geçerli<br- \> PSH (19): bu verileri hemen işle<br- \> RST (18): bağlantıyı sıfırlayın<br- \> SYN (17): işlem numaralarını eşitler (bağlantı kurmak için kullanılır) <br \> -FIN (16): gönderici iletim ile tamamlandı (bağlantıyı kapatmak için kullanılır) |
+|**16 bit pencere** |Bu alan akış denetimi için kullanılır. Bu, yuvanın Şu anda alabileceği bayt miktarını içerir. Bu temel olarak Flow denetimi için kullanılır. Gönderen verilerin alıcının tanıtılan penceresine sığdırmasını sağlamaktan gönderici sorumludur. |
+|**16 bit TCP sağlama toplamı** |Bu alan, paket için TCP üst bilgisi, paket veri alanı ve sözde IP üstbilgisi dahil olmak üzere 16 bit sağlama toplamı içerir. |
+|**16 bit acil işaretçi** |Bu alan, acil verilerin son baytının pozitif sapmasını içerir. Bu alan yalnızca üst bilgide URG kod biti ayarlandıysa geçerlidir. |
 
 > [!NOTE]  
-> *TCP/IP uygulamasındaki tüm üst big endian beklenir.  Bu biçimde, sözcüğün en önemli bayt en düşük bayt adreste yer almaktadır.*
+> *TCP/IP uygulamasındaki tüm üstbilgilerin **Big endian** biçimde olması beklenir. Bu biçimde, sözcüğün en önemli baytı en düşük bayt adresinde bulunur*.
 
-### <a name="tcp-enable"></a>TCP Etkinleştirme       
-TCP bağlantıları ve paket iletimleri mümkün olmadan önce, uygulamanın önce tcp'yi nx_tcp_enable ***etkinleştirmesi*** gerekir. Etkinleştirildikten sonra uygulamanın tüm TCP hizmetlerine erişimi ücretsizdir.  
+### <a name="tcp-enable"></a>TCP etkinleştirme       
+TCP bağlantıları ve paket aktarımları mümkün olmadan önce, uygulamanın öncelikle ***nx_tcp_enable*** HIZMETINI çağırarak TCP 'yi etkinleştirmesi gerekir. Etkinleştirildikten sonra, uygulama tüm TCP hizmetlerine erişmeye ücretsizdir.  
 
-### <a name="tcp-socket-create"></a>TCP Yuvası Oluşturma    
-TCP yuvaları başlatma sırasında veya uygulama iş parçacıkları tarafından çalışma zamanı sırasında oluşturulur. İlk hizmet türü, yaşam süresi ve pencere boyutu, nx_tcp_socket_create ***tanımlanır.*** Bir uygulamanın TCP yuvalarının sayısıyla ilgili bir sınır yoktur.  
+### <a name="tcp-socket-create"></a>TCP yuvası oluşturma    
+TCP yuvaları, başlatma sırasında veya çalışma zamanı sırasında uygulama iş parçacıkları tarafından oluşturulur. Hizmetin başlangıç türü, yaşam süresi ve pencere boyutu ***nx_tcp_socket_create*** hizmeti tarafından tanımlanır. Bir uygulamadaki TCP yuvaları sayısında sınır yoktur.  
 
-### <a name="tcp-checksum"></a>TCP SağlamaLarı     
-TCP, IP sahte üst bilgisini (kaynak IP adresi, hedef IP adresi ve protokol/uzunluk IP sözcüğünden oluşan), TCP üst bilgisini ve TCP paket verilerini kapsayan 16 bitlik tamamlayıcı sağlama toplamlarını belirtir. IPv4 ve IPv6 TCP paket üst bilgisi sağlamaları arasındaki tek fark, kaynak ve hedef IP adreslerinin IPv4'te 32 bit ve IPv6'da 128 bit olmasıdır. 
+### <a name="tcp-checksum"></a>TCP sağlama toplamı     
+TCP, IP sahte üstbilgisini (kaynak IP adresi, hedef IP adresi ve protokol/uzunluk IP sözcükten oluşan), TCP üstbilgisini ve TCP paketi verilerini içeren bir 16 bit tamamlama toplamı belirtir. IPv4 ve IPv6 TCP paket üst bilgisi sağlama toplamı arasındaki tek fark, kaynak ve hedef IP adreslerinin IPv6 'da IPv4 ve 128 bit içinde 32 bitleridir. 
 
-Bazı ağ denetleyicileri donanımda TCP sağlama sağlamaları hesaplama ve doğrulama gerçekleştirebilirsiniz. Bu tür sistemlerde, uygulamalar çalışma zamanı ek yükünü azaltmak için mümkün olduğunca donanım sağlama sağlama mantığı kullanmak istiyor olabilir. Uygulamalar, * NX_DISABLE_TCP_TX_CHECKSUM _ ve _* değer ** tanımlayarak NetX Duo kitaplığından TCP sağlama grubu **hesaplama** mantığını derleme zamanında tamamen _devre dışı NX_DISABLE_TCP_RX_CHECKSUM._ Bu şekilde, TCP sağlama sağlama kodu içinde derlenmiş değildir. Ancak isteğe bağlı NetX Duo IPsec paketi yüklüyse ve TCP bağlantısının güvenli bir kanaldan geçmesi gerekirse dikkatli olunması gerekir. Bu durumda, TCP bağlantısına ait paketlerde bulunan veriler zaten şifrelenir ve ağ sürücüsünde bulunan çoğu donanım TCP sağlama toplama modülü şifrelenmiş TCP yükünden doğru sağlama toplama değeri oluşturamaz.
+Bazı ağ denetleyicileri donanımda TCP sağlama toplamı hesaplaması ve doğrulaması gerçekleştirebilir. Uygulamalar, bu tür sistemler için, çalışma zamanı yükünü azaltmak için mümkün olduğunca donanım sağlama mantığını kullanmak isteyebilir. Uygulamalar, ***NX_DISABLE_TCP_TX_CHECKSUM** _ ve _ *_NX_DISABLE_TCP_RX_CHECKSUM_* * tanımlayarak derleme zamanında NETX Duo kitaplığından tamamen TCP sağlama toplamı hesaplama mantığını devre dışı bırakabilir. Bu şekilde, TCP sağlama toplamı kodu ' de derlenmez. Ancak, isteğe bağlı NetX Duo IPSec paketi yüklüyse ve TCP bağlantısının güvenli bir kanaldan geçiş yapması gerekebilmelidir, bunlardan biri dikkatli olmalıdır. Bu durumda, TCP bağlantısına ait olan paketlerdeki veriler zaten şifrelenmiştir ve ağ sürücüsünde bulunan donanım TCP sağlama toplamı modülleri, şifrelenmiş TCP yükünden doğru sağlama toplamı değeri üretemiyor.
 
-Bu sorunu gidermek için uygulama, kitaplıkta tcp sağlama süresi mantığını tutmalı ve arabirim özelliği özelliğini kullansa gerekmektedir. Arabirim özelliği etkinleştirildiğinde, sürücü sağlama toplam değerini de hesap tanıyorsa TCP modülü TCP sağlama toplamlarını düzgün bir şekilde nasıl işley bilir:
+Bu sorunu gidermek için, uygulama TCP sağlama toplamı mantığını kitaplıkta tutar ve arabirim yetenek özelliğini kullanır. Arabirim özelliği özelliği etkinken, TCP modülü, sürücü sağlama toplamı değerini de hesaplabiliyorsa, TCP sağlama toplamını nasıl doğru şekilde işleyeceğinizi bilir:
 
-1) TCP paketi IPSec işlemine bağlı değilse, ağ arabirimi donanımı sağlama toplamını hesaplamayabilir. Bu nedenle TCP modülü sağlama toplamını hesaplama girişiminde bulunmaz;
+1) TCP paketi IPsec işlemine tabi yoksa, ağ arabirimi donanımı sağlama toplamlarını hesaplar. Bu nedenle TCP modülü sağlama toplamlarını hesaplamayı denemez;
 
-2) IPSec paketi yüklüyse ve TCP paketi IPSec işlemine tabidir, TCP modülü, paketi IPSec katmanına göndermeden önce yazılımda sağlama toplamını hesaplar.
+2) IPsec paketi yüklüyse ve TCP paketi IPsec sürecine tabiyse, TCP modülü paketi IPsec katmanına göndermeden önce yazılımda sağlama toplamlarını hesaplar.
 
 ### <a name="tcp-port"></a>TCP Bağlantı Noktası     
-TCP bağlantı noktası, TCP protokolünde bir mantıksal bağlantı noktasıdır. NetX Duo TCP bileşeninde, 1 ile 0xFFFF arasında 65.535 geçerli bağlantı noktası vardır. Bir bağlantı noktasındaki verilerin diğer hedef bağlantı noktalarına gönderilebileceği UDP 'nin aksine, bir TCP bağlantı noktasının başka bir belirli TCP bağlantı noktasına bağlı olması ve yalnızca bu bağlantı kurulduğu zaman, bağlantıyı oluşturan iki bağlantı noktası arasında olması gerekir.
+TCP bağlantı noktası, TCP protokolünde bir mantıksal bağlantı noktasıdır. NetX Duo'daki TCP bileşeninde 1 ila 1 arasında geçerli 65.535 bağlantı noktası 0xFFFF. Bir bağlantı noktası üzerinden diğer hedef bağlantı noktalarına veri gönderilemenin mümkün olduğu UDP'den farklı olarak, bir TCP bağlantı noktası başka bir tcp bağlantı noktasına bağlanır ve yalnızca bu bağlantı kurulup herhangi bir veri aktarımı edekler ve yalnızca bağlantıyı yapan iki bağlantı noktası arasında yer alır.
 
 > [!IMPORTANT]
-> *TCP bağlantı noktaları UDP bağlantı noktalarından tamamen ayrıdır; örn. UDP bağlantı noktası numarası 1, TCP bağlantı noktası numarası 1 ile hiçbir ilişkiye sahip değildir*.
+> *TCP bağlantı noktaları UDP bağlantı noktalarından tamamen ayrıdır; örneğin, 1 numaralı UDP* bağlantı noktasının 1 numaralı TCP bağlantı noktasıyla hiçbir ilişkisi yoktur.
 
-### <a name="client-server-model"></a>Client-Server modeli     
-Veri aktarımı için TCP kullanmak üzere iki TCP yuvası arasında bir bağlantı kurulması gerekir. Bağlantının kurulması, istemci-sunucu düzeyinde yapılır. Bağlantının istemci tarafı bağlantıyı başlatan tarafdayken, sunucu tarafı herhangi bir işlem yapılmadan önce istemci bağlantı isteklerini bekler.
+### <a name="client-server-model"></a>Client-Server Modeli     
+Veri aktarımı için TCP kullanmak üzere, önce iki TCP yuvası arasında bir bağlantı kurulacak. Bağlantının kurulması istemci-sunucu olarak yapılır. Bağlantının istemci tarafı bağlantıyı başlatan taraftır, sunucu tarafı ise herhangi bir işlem yapılmadan önce istemci bağlantı isteklerini bekler.
 
 > [!IMPORTANT]
-> *Çok kaynaklı cihazlarda, NetX Duo bağlantı için kullanılacak kaynak adresini ve bağlantının hedef IP adresine göre sonraki atlama adresini otomatik olarak belirler. TCP, tek noktaya yayın (örneğin, yayın olmayan) hedef adreslerine paket göndermeye sınırlı olduğundan, NetX Duo kaynak IPv6 adresini seçmek için bir "ipucu" gerektirmez*.
+> *Çoklu giriş cihazları için NetX Duo, bağlantı için kaynak adresi ve bağlantının hedef IP adresine göre sonraki atlama adresini otomatik olarak belirler. TCP, paketleri tek* noktaya yayın (örneğin, yayın dışı) hedef adreslere göndermekle sınırlı olduğundan, NetX Duo kaynak IPv6 adresini seçmek için bir "ipucu" gerektirmez.
 
-### <a name="tcp-socket-state-machine"></a>TCP yuva durumu makinesi      
-İki TCP yuvası (bir istemci ve bir sunucu) arasındaki bağlantı karmaşıktır ve bir durum makinesi halinde yönetilir. Her TCP yuvası kapalı bir durumda başlar. Bağlantı olayları aracılığıyla her bir yuvanın durum makinesi, TCP 'deki veri aktarımının toplu olarak gerçekleştiği, kurulan duruma geçirilir. Bağlantının bir tarafı artık veri göndermek istediğinde, bağlantısını keser. Diğer tarafın bağlantısı kesildiğinde, TCP yuvası kapalı duruma geri döner. Bu işlem, bir TCP istemcisi ve sunucusu bir bağlantı kurup her kapatışınızda yinelenir. Şekil 14 ' te TCP durum makinesinin çeşitli durumları gösterilmektedir.
+### <a name="tcp-socket-state-machine"></a>TCP Yuva Durumu Makinesi      
+İki TCP yuvası (bir istemci ve bir sunucu) arasındaki bağlantı karmaşıktır ve durum makinesiyle yönetilir. Her TCP yuvası KAPALI durumda başlar. Bağlantı olayları aracılığıyla her yuvanın durum makinesi, TCP'de toplu veri aktarımının bulunduğu ESTABLISHED durumuna geçirilir. Bağlantının bir tarafı artık veri göndermek isterse bağlantının bağlantısı kesi. Diğer taraf bağlantı kesildikten sonra TCP yuvası kapatılan durumuna döner. Tcp istemcisi ve sunucusu bir bağlantıyı her kurduğunda ve kapatıyorken bu işlem yineler. Şekil 14'te TCP durum makinesinin çeşitli durumları gösterir.
 
-### <a name="tcp-client-connection"></a>TCP Istemci bağlantısı       
-Daha önce belirtildiği gibi, TCP bağlantısının istemci tarafı bir TCP sunucusuna bağlantı isteği başlatır. Bir bağlantı isteğinin yapılabilmesi için, istemci IP örneğinde TCP 'nin etkinleştirilmesi gerekir. Ayrıca, istemci TCP yuvasının daha sonra ***nx_tcp_socket_create** _ hizmeti ile oluşturulması ve _ *_nx_tcp_client_socket_bind_** hizmeti aracılığıyla bir bağlantı noktasına bağlanması gerekir.
+### <a name="tcp-client-connection"></a>TCP İstemci Bağlantısı       
+Daha önce belirtildiği gibi, TCP bağlantısının istemci tarafı bir TCP sunucusuna bağlantı isteği başlatıyor. Bağlantı isteği gelemeden önce istemci IP örneğinde TCP'nin etkinleştirilmesi gerekir. Ayrıca, istemci TCP yuvası daha sonra * nx_tcp_socket_create _ hizmetiyle **oluşturulacak** ve _ nx_tcp_client_socket_bind * hizmeti aracılığıyla bir *_bağlantı noktasına_* bağlanacak.
 
-İstemci yuvası bağlandıktan sonra, bir TCP sunucusuyla bağlantı kurmak için ***nxd_tcp_client_socket_connect*** hizmeti kullanılır. Bir bağlantı denemesi başlatmak için yuvanın kapalı durumda olması gerektiğini aklınızda olun. Bağlantı kurma, NetX Duo ile başlar ve sonra bağlantı isteğinin kabul edildiğini belirten bir SYN ACK paketini sunucudan geri bekler. SYN ACK alındıktan sonra NetX Duo bir ACK paketiyle yanıt verir ve istemci yuvasını belırlenen duruma yükseltir.
+İstemci yuvası bağlandıktan sonra, ***nxd_tcp_client_socket_connect*** hizmeti TCP sunucusuyla bağlantı kurmak için kullanılır. Bağlantı denemesi başlatmak için yuvanın KAPALI durumda olması gerektiğini unutmayın. Bağlantının kurulması, NetX Duo'nun bir SYN paketi vermesi ve sunucudan syn ACK paketi beklemesi ile başlar. Bu da bağlantı isteğinin kabul olduğunu gösterir. SYN ACK alındıktan sonra NetX Duo bir ACK paketiyle yanıt verir ve istemci yuvayı ESTABLISHED durumuna yükselter.
 
 ![TCP durum makinesinin durumlarının diyagramı.](./media/user-guide/image24.png)   
 
-**ŞEKIL 14. TCP durum makinesinin durumları**
+**ŞEKIL 14. TCP Durum Makinesi durumları**
 
 
 > [!WARNING]
-> *Uygulamalar IPv4 ve ıPV6 TCP bağlantıları için **nxd_tcp_client_socket_connect** kullanmalıdır. Uygulamalar IPv4 TCP bağlantıları için **nx_tcp_client_socket_connect** kullanmaya devam edebilir, ancak **nx_tcp_client_socket_connect** sonunda kullanım dışı olacağı için geliştiricilerin **nxd_tcp_client_socket_connect** kullanmaları önerilir*.
+> *Uygulamalar, **IPv4 nxd_tcp_client_socket_connect** IPv6 TCP bağlantıları için bir ağ arabirimi kullansın. Uygulamalar, IPv4 TCP **nx_tcp_client_socket_connect*** için nx_tcp_client_socket_connect kullanmaya devam eder, ancak sonunda nxd_tcp_client_socket_connect kullanım dışı nx_tcp_client_socket_connect geliştiricilerin bu bağlantıları kullanmaları teşvik edilecektir.
 
-*Benzer şekilde, **nxd_tcp_socket_peer_info_get** ıPV4 veya IPv6 TCP bağlantılarıyla da çalışır. Ancak, **nx_tcp_socket_peer_info_get** eski uygulamalar için hala kullanılabilir. Geliştiricilerin öne geçmek **nxd_tcp_socket_peer_info_get** kullanmaları önerilir*.
+*Benzer şekilde, **nxd_tcp_socket_peer_info_get** IPv4 veya IPv6 TCP bağlantılarıyla çalışır. Ancak, **nx_tcp_socket_peer_info_get** eski uygulamalar için hala kullanılabilir. Geliştiricilerin, daha  sonra nxd_tcp_socket_peer_info_get kullanmaları teşvik edilecektir.*
 
-### <a name="tcp-client-disconnection"></a>TCP Istemcisi bağlantısı kesilmesi    
-Bağlantıyı kapatmak ***nx_tcp_socket_disconnect*** çağırarak gerçekleştirilir. Askıya alma belirtilmemişse, istemci yuvası sunucu yuvasına bir RST paketi gönderir ve yuvayı kapalı duruma koyar. Aksi takdirde, askıya alma isteniyorsa, tam TCP bağlantı kesme protokolü aşağıdaki gibi gerçekleştirilir: 
+### <a name="tcp-client-disconnection"></a>TCP İstemci bağlantısının kesilmesi    
+Bağlantının kapatılması, ***nx_tcp_socket_disconnect.*** Askıya alma belirtilmezse, istemci yuvası sunucu yuvasına bir RST paketi gönderir ve yuvayı KAPALI durumuna gönderir. Aksi takdirde, bir askıya alma istenecekse, tam TCP bağlantı kesme protokolü aşağıdaki gibi gerçekleştirilir: 
 
-- Sunucu daha önce bir bağlantı kesme isteği başlatmışsa (istemci soketi bir FIN paketi zaten aldıysa, bir ACK ile yanıtladı ve kapatma bekleme durumundaysa), NetX Duo istemci TCP yuvası durumunu son ACK durumuna yükseltir ve bir FIN paketi gönderir. Ardından, bağlantıyı kesmeden ve kapalı durumu girerek sunucudan bir ACK 'i bekler.
+- Sunucu daha önce bir bağlantı kesme isteği başlattı ise (istemci yuvası zaten bir FIN paketi aldı, ACK ile yanıt verdi ve CLOSE WAIT durumda), NetX Duo istemci TCP yuva durumunu LAST ACK durumuna yükselter ve bir FIN paketi gönderir. Ardından bağlantıyı kesmeyi tamamlamadan ve KAPALI durumuna girmeden önce sunucudan bir ACK bekler.
 
-- Öte yandan istemci, bir bağlantı kesme isteği başlatmakta (sunucu bağlantısı kesilmemiştir ve yuva hala kurulu durumdaysa), NetX Duo bağlantı kesmeyi başlatmak için bir FIN paketi gönderir ve bağlantı kesmeyi tamamlamadan ve yuvayı kapalı bir duruma yerleştirerek sunucudan bir FIN ve bir ACK alıp almamayı bekler.
+- Öte yandan, bağlantı kesme isteğini başlatan ilk istemci istemci ise (sunucu bağlantısı kesildi ve yuva hala ESTABLISHED durumda), NetX Duo bağlantıyı başlatmak için bir FIN paketi gönderir ve bağlantıyı tamamladıktan ve yuvayı KAPALI bir durumda yerleştirmeden önce sunucudan BIR FIN ve ACK almak için bekler.
 
-Yuva iletme kuyruğunda hala paketler varsa, NetX Duo, paketlerin onaylanılmasına izin vermek için belirtilen zaman aşımı süresini askıya alır. Zaman aşımı süresi dolarsa NetX Duo, istemci yuvasının iletim sırasını boşaltır. 
+Yuva iletme kuyruğunda hala paketler varsa NetX Duo, paketlerin kabul askıya alınması için belirtilen zaman aşımını askıya alır. Zaman aşımı süresi dolsa NetX Duo, istemci yuvasının iletme kuyruğundan boşaltılır. 
 
-İstemci yuvasıyla bağlantı noktasının bağlantısını kesmek için uygulama ***nx_tcp_client_socket_unbind*** çağırır. Yuva, bağlantı noktası yayınlanmadan önce kapalı durumda veya bağlantısının kesilmesi (örneğin, SÜRELI bekleme durumu) işleminde olmalıdır; Aksi takdirde bir hata döndürülür.
+Uygulama, bağlantı noktasını istemci yuvasından çıkararak ***nx_tcp_client_socket_unbind.*** Yuva kapatılan bir durumda veya bağlantı noktası serbest bırakılamadan önce bağlantıyı kesme sürecinde (yani TIMED WAIT durumu) olması gerekir; aksi takdirde bir hata döndürülür.
 
-Son olarak, uygulama artık istemci yuvasına ihtiyaç duymuyorsa, yuvasını silmek için ***nx_tcp_socket_delete*** çağırır.
+Son olarak, uygulamanın artık istemci yuvasına ihtiyacı yoksa, ***yuvayı nx_tcp_socket_delete*** için uygulama çağrılır.
 
-### <a name="tcp-server-connection"></a>TCP sunucusu bağlantısı      
-TCP bağlantısının sunucu tarafı pasif olur; Yani, sunucu bir istemcinin bağlantı isteği başlatmasını bekler. İstemci bağlantısını kabul etmek için, önce TCP **nx_tcp_enable** _ HIZMETINI çağırarak IP örneğinde TCP 'nin etkinleştirilmesi gerekir. Daha sonra, uygulamanın _ *_nx_tcp_socket_create_** hizmetini kullanarak bir TCP yuvası oluşturması gerekir.  
+### <a name="tcp-server-connection"></a>TCP Sunucusu Bağlantısı      
+TCP bağlantısının sunucu tarafı pasiftir; Diğer bir ifadeyle, sunucu bir istemcinin bağlantı isteğini başlatması için bekler. bir istemci bağlantısını kabul etmek için, TCP ilk olarak * nx_tcp_enable _ hizmeti çağrılarak IP **örneğinde etkinleştirilmelidir.** Ardından, uygulamanın _ nx_tcp_socket_create * hizmetini kullanarak bir TCP *_yuvası_* oluşturması gerekir.  
 
-Sunucu yuvası, bağlantı isteklerini dinlemek için de ayarlanmalıdır. Bu, ***nx_tcp_server_socket_listen*** hizmeti kullanılarak elde edilir. Bu hizmet, sunucu yuvasını dınleme durumuna koyar ve belirtilen sunucu bağlantı noktasını yuvaya bağlar.
+Sunucu yuvasının bağlantı isteklerini dinlemek için de ayarlanmış olması gerekir. Bu, nx_tcp_server_socket_listen ***hizmeti kullanılarak*** elde edilir. Bu hizmet sunucu yuvayı LISTEN durumuna yer verir ve belirtilen sunucu bağlantı noktasını yuvaya bağlar.
 
 > [!NOTE] 
-> *Bir yuva dinleme geri çağırma yordamı ayarlamak için, uygulama **nx_tcp_server_socket_listen** hizmetinin tcp_listen_callback bağımsız değişkeni için uygun geri çağırma işlevini belirtir. Bu uygulama geri çağırma işlevi, bu sunucu bağlantı noktasında her yeni bağlantı istendiğinde NetX Duo tarafından yürütülür. Geri çağırmada işlem uygulama denetimi altında.*
+> *Yuva dinleme geri çağırma yordamını ayarlamak için uygulama, nx_tcp_server_socket_listen hizmetinin tcp_listen_callback için **uygun geri çağırma işlevini** belirtir. Bu uygulama geri çağırma işlevi daha sonra bu sunucu bağlantı noktası üzerinde yeni bir bağlantı isten her istensin NetX Duo tarafından yürütülür. Geri çağırmada işlem uygulama denetimi altındadır.*
 
-İstemci bağlantı isteklerini kabul etmek için, uygulama ***nx_tcp_server_socket_accept** _ hizmetini çağırır. Sunucu yuvası, bir dınleme durumunda ya da SYN ALıNDı durumunda olmalıdır (yani, sunucu dınleme durumunda ve bağlantı isteyen bir istemciden bir SYN paketi aldı), kabul etme hizmetini çağırmak için. _ *_Nx_tcp_server_socket_accept_** öğesinden başarılı bir dönüş durumu, bağlantının ayarlandığını ve sunucu yuvasının kurulu durumda olduğunu gösterir.
+Uygulama, istemci bağlantı isteklerini kabul etmek için ***** nx_tcp_server_socket_accept _ hizmetini çağırıyor. Sunucu yuvası, dinleme veya SYN RECEIVED (SYN RECEIVED) durumda (yani sunucu LISTEN durumda ve bağlantı isteğinde olan istemciden bir SYN paketi aldı) kabul hizmetini çağıran bir SYN paketine sahip olması gerekir. *___* nx_tcp_server_socket_accept * kaynağından başarılı bir dönüş durumu, bağlantının ayar olduğunu ve sunucu yuvasının ESTABLISHED durumunda olduğunu gösterir.
 
-Sunucu yuvasının geçerli bir bağlantısı olduktan sonra, ek istemci bağlantı istekleri listen_queue_size tarafından belirtilen derinliğe kadar sıraya alınır *ve*  * **nx_tcp_server_socket_listen** _ hizmetine geçirilir. Bir sunucu bağlantı noktasında sonraki bağlantıları işlemek için, uygulama _ *_nx_tcp_server_socket_relisten_** öğesini kullanılabilir bir yuva (yani kapalı durumda olan bir yuva) ile çağırmalıdır. Yuva ile ilişkili önceki bağlantı artık tamamlanıp ve yuva kapalı durumdaysa aynı sunucu yuvasının kullanılabileceğini unutmayın.
+Sunucu yuvasının geçerli bir bağlantısı olduktan sonra, ek istemci bağlantısı istekleri listen_queue_size tarafından belirtilen derinliğe kadar kuyruğa nx_tcp_server_socket_listen _  * **hizmetine** geçiriliyor. Bir sunucu bağlantı noktası üzerinde sonraki bağlantıları işlemesi için, uygulamanın kullanılabilir bir yuvayla (yani KAPALI durumdaki bir yuva) _ *_nx_tcp_server_socket_relisten_** çağrısında olması gerekir. Yuvayla ilişkilendirilmiş önceki bağlantı artık bitti ve yuva KAPALI durumda olursa aynı sunucu yuvasının kullanıla bile olduğunu unutmayın.
 
-### <a name="tcp-server-disconnection"></a>TCP sunucusu bağlantısının kesilmesi     
-Bağlantıyı kapatmak ***nx_tcp_socket_disconnect*** çağırarak gerçekleştirilir. Askıya alma belirtilmemişse, sunucu yuvası istemci yuvasına bir RST paketi gönderir ve yuvayı kapalı duruma koyar. Aksi takdirde, askıya alma isteniyorsa, tam TCP bağlantı kesme protokolü aşağıdaki gibi gerçekleştirilir:
+### <a name="tcp-server-disconnection"></a>TCP Sunucusu Bağlantısını Kesme     
+Bağlantının kapatılması, ***nx_tcp_socket_disconnect.*** Askıya alma belirtilmezse, sunucu yuvası istemci yuvasına bir RST paketi gönderir ve yuvayı KAPALI durumuna gönderir. Aksi takdirde, bir askıya alma istenecekse, tam TCP bağlantı kesme protokolü aşağıdaki gibi gerçekleştirilir:
 
-- İstemci daha önce bir bağlantı kesme isteği başlatmışsa (sunucu yuvası zaten bir FIN paketi aldıysa, bir ACK ile yanıtladı ve kapatma bekleme durumundaysa), NetX Duo TCP yuva durumunu son ACK durumuna yükseltir ve bir FIN paketi gönderir. Ardından, bağlantıyı kesmeden ve kapalı durumu girerek istemciden bir ACK 'i bekler.
+- İstemci daha önce bir bağlantı kesme isteği başlattı ise (sunucu yuvası zaten bir FIN paketi aldı, ACK ile yanıt verdi ve CLOSE WAIT durumda), NetX Duo TCP yuva durumunu LAST ACK durumuna yükselter ve bir FIN paketi gönderir. Ardından bağlantıyı kesmeyi tamamlamadan ve KAPALI durumuna girmeden önce istemciden bir ACK bekler.
 
-- Öte yandan sunucu, bir bağlantı kesme isteği başlatmakta (istemcinin bağlantısı kesilmemiştir ve yuva hala kurulu durumdaysa), NetX Duo bağlantı kesmeyi başlatmak için bir FIN paketi gönderir ve bağlantı kesmeyi tamamlamadan ve yuvayı kapalı bir duruma yerleştirerek istemciden bir el ile onay alıp almamayı bekler.
+- Diğer taraftan, bağlantı kesme isteğini ilk başlatan sunucu ise (istemci bağlantısı kesildi ve yuva hala ESTABLISHED durumda), NetX Duo bağlantıyı başlatmak için bir FIN paketi gönderir ve bağlantıyı tamamladıktan ve yuvayı KAPALI durumuna yerleştirmeden önce istemciden BIR FIN ve ACK almak için bekler.
 
-Yuva iletme kuyruğunda hala paketler varsa, NetX Duo bu paketlerin onaylanılmasına izin vermek için belirtilen zaman aşımı süresini askıya alır. Zaman aşımı süresi dolarsa NetX Duo, sunucu yuvasının iletim sırasını temizler.
+Yuva iletme kuyruğunda hala paketler varsa, NetX Duo bu paketlerin kabul askıya alınması için belirtilen zaman aşımını askıya alır. Zaman aşımı süresi dolsa NetX Duo, sunucu yuvasının iletme kuyruğundan boşaltıyor.
 
-Bağlantı kesme işlemi tamamlandıktan ve sunucu yuvası kapalı durumdaysa, Bu yuvanın sunucu bağlantı noktasıyla ilişkilendirmesini sonlandırmak için uygulamanın ***nx_tcp_server_socket_unaccept** _ hizmetini çağırması gerekir. _*_Nx_tcp_socket_disconnect_*_ veya _*_nx_tcp_server_socket_accept_*_ bir hata durumu döndürmesi durumunda bile bu hizmetin uygulama tarafından çağrılması gerekir. _*_Nx_tcp_server_socket_unaccept_*_ çağrıldıktan sonra, yuva istemci veya sunucu yuvası olarak kullanılabilir veya artık gerekmiyorsa silinebilir. Aynı sunucu bağlantı noktasında başka bir istemci bağlantısını kabul etmeniz isteniyorsa, bu yuvada _ *_nx_tcp_server_socket_relisten_** hizmeti çağrılmalıdır.
+Bağlantı kesme işlemi tamamlandıktan ve sunucu yuvası KAPALI durumda olduktan sonra, uygulamanın bu yuvanın sunucu bağlantı noktasıyla olan ilişkilendirmeyi sona nx_tcp_server_socket_unaccept **_** hizmetini çağırmış olması gerekir. Hata durumu döndürürken bu hizmetin uygulama tarafından _*_çağrıl nx_tcp_socket_disconnect_*_ _*_nx_tcp_server_socket_accept_*_ gerektiğini unutmayın. Yuva _*_nx_tcp_server_socket_unaccept_*_ sonra yuva istemci veya sunucu yuvası olarak kullanılabilir, hatta artık gerekli olmadığı sürece silinebilir. Aynı sunucu bağlantı noktası üzerinde başka bir istemci bağlantısı kabul etmek istenirse, _ *_nx_tcp_server_socket_relisten_** hizmeti bu yuvada çağrılır.
 
-Aşağıdaki kod segmenti tipik bir TCP sunucusunun kullandığı çağrıların dizisini gösterir:
+Aşağıdaki kod kesimi tipik bir TCP sunucusunun kullandığı çağrı dizisini gösterir:
 
 ```c
 /* Set up a previously created TCP socket to
@@ -1319,31 +1319,31 @@ while(1)
 }
 ```
 
-### <a name="mss-validation"></a>, Bu doğrulama      
-En büyük kesim boyutu (Bu), TCP ana bilgisayarının, temel alınan IP katmanı tarafından parçalanmadan alabileceği en yüksek bayt miktarıdır. TCP bağlantı kurma aşaması sırasında, gönderenin, alıcının alt bileşenlerinden daha büyük bir TCP veri segmenti göndermemesi için kendi TCP sahip olduğu değeri her iki sona erer. NetX Duo TCP modülü, bir bağlantı kurmadan önce, eşin tanıtılan bir değeri isteğe bağlı olarak doğrular. Varsayılan olarak NetX Duo bu tür bir denetimi etkinleştirmez. En az bir NetX Duo kitaplığı oluştururken ve en düşük değer _*_NX_TCP_MSS_MINIMUM_*_ tanımlanmak için, bu, bir, ve bu doğrulamayı gerçekleştirmek isteyen uygulamalar ***NX_ENABLE_TCP_MSS_CHECK** _ tanımlar. _ *_NX_TCP_MSS_MINIMUM_** altındaki, bu değerleri IÇEREN gelen TCP bağlantıları bırakılır.
+### <a name="mss-validation"></a>MSS Doğrulaması      
+En Büyük Kesim Boyutu (MSS), bir TCP ana bilgisayarının temel ALıNAN IP katmanı tarafından parçalanmadan aldırıla maksimum bayt miktarıdır. TCP bağlantısı kurulması aşamasında her iki uç da kendi TCP MSS değerini değiştirmektedir, böylece gönderen alıcının MSS değerinden daha büyük bir TCP veri kesimi göndermez. NetX Duo TCP modülü, bağlantı kurmadan önce isteğe bağlı olarak eş tarafından tanıtılan MSS değerini doğrular. Varsayılan olarak NetX Duo böyle bir denetimi etkinleştirmez. MSS doğrulaması gerçekleştirmek isteyen uygulamalar NetX Duo **NX_ENABLE_TCP_MSS_CHECK** oluşturmada * NX_ENABLE_TCP_MSS_CHECK _ tanımlamalı ve en düşük değer _*_NX_TCP_MSS_MINIMUM._*_ _ NX_TCP_MSS_MINIMUM * altında MSS *_değerlerine sahip_* gelen TCP bağlantıları bırakılır.
 
-### <a name="stop-listening-on-a-server-port"></a>Sunucu bağlantı noktasında dinlemeyi durdur    
-Uygulama, daha önce ***nx_tcp_server_socket_listen** _ hizmeti çağrısıyla belirtilen bir sunucu bağlantı noktasındaki istemci bağlantı isteklerini dinlemek isterse, uygulama yalnızca _ *_nx_tcp_server_socket_unlisten_** hizmetini çağırır. Bu hizmet, bir bağlantıyı kapalı durumunda geri bekleyen bir yuva koyar ve sıraya alınan istemci bağlantı isteği paketlerini serbest bırakır. 
+### <a name="stop-listening-on-a-server-port"></a>Sunucu Bağlantı Noktası Üzerinde Dinlemeyi Durdurma    
+Uygulama artık * nx_tcp_server_socket_listen _ hizmetine yapılan bir çağrıyla belirtilen bir sunucu bağlantı noktası üzerinde istemci bağlantı isteklerini dinlemek isterse, uygulama yalnızca _ **nx_tcp_server_socket_unlisten****_hizmetini_* çağırarak. Bu hizmet, bağlantı için bekleyen tüm yuvaları KAPATILI durumuna döndürür ve kuyruğa alınan tüm istemci bağlantı isteği paketlerini serbest bırakmıştır. 
 
-### <a name="tcp-window-size"></a>TCP pencere boyutu   
-Bağlantının kurulum ve veri aktarımı aşamaları sırasında, her bağlantı noktası işleyebileceği veri miktarını rapor edebilir ve bu, pencere boyutu olarak adlandırılır. Veriler alınıp işlendiğinde, bu pencere boyutu dinamik olarak ayarlanır. TCP 'de, gönderici yalnızca alıcının penceresine sığan veri miktarı gönderebilir. Esas olarak pencere boyutu, bağlantının her yönünde veri aktarımı için akış denetimi sağlar.   
+### <a name="tcp-window-size"></a>TCP Pencere Boyutu   
+Bağlantının hem kurulum hem de veri aktarımı aşamaları sırasında, her bağlantı noktası işleyenin pencere boyutu olarak adlandırılan veri miktarını raporlar. Veriler alınarak işlendikten sonra bu pencere boyutu dinamik olarak ayarlanır. TCP'de bir gönderici yalnızca alıcının penceresine sığacak miktarda veri gönderebilir. Pencere boyutu, bağlantının her yönünde veri aktarımı için akış denetimi sağlar.   
 
-### <a name="tcp-packet-send"></a>TCP paketi gönderme     
-TCP verilerinin gönderilmesi ***nx_tcp_socket_send*** işlevi çağırarak kolayca gerçekleştirilir. Aktarılan verilerin boyutu, yuvanın sahip olduğu değerin veya geçerli eş alma penceresi boyutunun (hangisi daha küçükse) daha büyükse, iletim için en az (örneğin, eş alma penceresi) olan verileri, TCP iç mantığını kapatır. Bu hizmet daha sonra paketin önünde (sağlama toplamı hesaplaması dahil) bir TCP üst bilgisi oluşturur. Alıcının pencere boyutu sıfır değilse, çağıran alıcının pencere boyutunu dolduracağı kadar veri gönderir. Alma penceresi sıfır olursa, çağıran, bu paketin gönderilmesi için alıcının pencere boyutunun yeterince artırılmasına izin verebilir ve bu işlemin boyutunu bekleyebilir. Belirli bir zamanda, aynı yuva üzerinden veri gönderilmeye çalışılırken birden çok iş parçacığı askıya alabilir. 
+### <a name="tcp-packet-send"></a>TCP Paket Gönderme     
+TCP verilerini göndermek, nx_tcp_socket_send ***işlevi çağrılarak kolayca*** gerçekleştirebilirsiniz. İletilen verilerin boyutu yuvanın MSS değerinden veya geçerli eş alma penceresi boyutundan büyükse (hangisi daha küçükse), TCP iç mantığı iletim için en düşük değere (MSS, eş alma Penceresi) sığan verileri atlar. Bu hizmet daha sonra paketin önünde bir TCP üst bilgisi (sağlama toplam hesaplaması dahil) derler. Alıcının pencere boyutu sıfıra yakınsa, çağıranı alıcı pencere boyutunu doldurmak için mümkün olan en fazla veri gönderir. Alma penceresi sıfır olursa, çağıranı askıya alabilir ve alıcının pencere boyutunun bu paketin göndernebilecek kadar artmasını bekleyebilir. Herhangi bir zamanda, aynı yuva üzerinden veri göndermeye çalışırken birden çok iş parçacığı askıya alabilir. 
 
 > [!WARNING]  
-> *NX_PACKET yapısında bulunan TCP verileri uzun bir sözcük sınırında bulunmalıdır. Buna ek olarak, TCP, IP ve fiziksel medya üstbilgilerini yerleştirmek için önüne işaretçisi ve veri başlangıç işaretçisi arasında yeterli alan olması gerekir*.
+> *Bu yapıda bulunan TCP NX_PACKET uzun sözcük sınırında yer ala olmalıdır. Ayrıca, TCP, IP ve fiziksel* medya üst bilgilerini yer için ön uç işaretçisi ile veri başlatma işaretçisi arasında yeterli alan olmalıdır.
 
-### <a name="tcp-packet-retransmit"></a>TCP paketi yeniden aktarım      
-Daha önce gönderilen TCP paketleri, bağlantının diğer tarafından bir ACK döndürülünceye kadar dahili olarak depolanır. Aktarılan veriler zaman aşımı süresi içinde onaylanmazsa, depolanan paket yeniden gönderilir ve sonraki zaman aşımı süresi ayarlanır. Bir ACK alındığında, iç aktarım sırasındaki onay numarası kapsamındaki tüm paketler son olarak serbest bırakılır.  
+### <a name="tcp-packet-retransmit"></a>TCP Paketi Yeniden Iletim      
+Önceden iletilen TCP paketleri aslında bağlantının diğer tarafından bir ACK döndürülene kadar dahili olarak depolanır. İletilen veriler zaman aşımı süresi içinde onaylanmazsa, depolanan paket yeniden gönderilir ve sonraki zaman aşımı süresi ayarlanır. Bir ACK geldiğinde, iç iletme kuyruğunda onay numarası kapsamındaki tüm paketler son olarak serbest bırakıldı.  
 
 > [!WARNING]   
-> Uygulama, nx_tcp_socket_send() işleviyle birlikte döndürdikten sonra paketi yeniden *kullanmamalıdır veya paketin NX_SUCCESS. İletilen paket, veriler diğer uç tarafından onaylandıktan* sonra NetX Duo iç işleme tarafından serbest bırakıldı.
+> Uygulama, nx_tcp_socket_send() işleviyle birlikte döndürdikten sonra paketi yeniden kullanmamalıdır veya *NX_SUCCESS. İletilen paket, veriler diğer uç tarafından onaylandıktan* sonra NetX Duo iç işleme tarafından serbest bırakıldı.
 
 ### <a name="tcp-keepalive"></a>TCP Keepalive     
-TCP Sürekliliği özelliği, bir yuvanın uygun sonlandırma olmadan eş bağlantısının kesilip kesilmemesi (örneğin, eş kilitlenmesi) veya belirli ağ izleme tesislerinin uzun süre boşta kalma süresiyle bağlantıyı sonlandırmasını önlemesini sağlar. TCP Keepalive, düzenli aralıklarla verisi olan bir TCP çerçevesi göndererek çalışır ve dizi numarası geçerli dizi numarasından bir küçük olarak ayarlanır. Bu tür TCP Keepalive çerçevesini alan alıcı, hala canlıysa geçerli sıra numarası için bir ACK ile yanıtlar. Bu, süreklilik işlemini tamamlar.  
+TCP Keepalive özelliği, bir yuvanın uygun sonlandırma olmadan eş bağlantısının kesilip kesilmemesi (örneğin, eş kilitlenmesi) veya belirli ağ izleme olanaklarının uzun süre boşta kalma süresiyle bağlantıyı sonlandırmasını önlemesini sağlar. TCP Keepalive, düzenli aralıklarla verisi olan bir TCP çerçevesi göndererek çalışır ve dizi numarası geçerli dizi numarasından bir küçük olarak ayarlanır. Bu tür TCP Keepalive çerçevesini alan alıcı, hala canlıysa geçerli sıra numarası için bir ACK ile yanıtlar. Bu, süreklilik işlemini tamamlar.  
 
-Varsayılan olarak, tutma özelliği etkin değildir. Bu özelliği kullanmak için NetX Duo kitaplığı * NX_ENABLE_TCP_KEEPALIVE **_** tanımlı olarak hazırlanmalıdır. _ *_NX_TCP_KEEPALIVE_INITIAL_** simgesi, tutma çerçevesinin başlatıldığı saniye sayısını belirtir.  
+Varsayılan olarak, keepalive özelliği etkin değildir. Bu özelliği kullanmak için NetX Duo kitaplığı * NX_ENABLE_TCP_KEEPALIVE **_** tanımlı olarak eklanmalıdır. _ *_NX_TCP_KEEPALIVE_INITIAL_** simgesi, tutma çerçevesinin başlatıldığı saniye sayısını belirtir.  
 
 ### <a name="tcp-packet-receive"></a>TCP Paketi Alma   
 TCP alma paketi işleme (IP yardımcı iş parçacığından çağrılır) çeşitli bağlantı ve bağlantı kesme eylemlerini işlemenin yanı sıra onay iletme işleminin işlenmesinden sorumludur. Ayrıca, TCP alma paketi işleme, alma verilerine sahip paketleri uygun TCP yuvasının alma kuyruğuna yerleştirmekten veya paketi bekleyen ilk askıya alınmış iş parçacığına teslim etmekten sorumludur.
@@ -1384,7 +1384,88 @@ Etkinleştirilirse, NetX Duo TCP yuva yazılımı uygulama için yararlı olan �
 - TCP Yuva İletme Penceresi Boyutu    
 - TCP Yuvası Alma Penceresi Boyutu    
 
-Tüm bu istatistikler ve hata raporları, toplam TCP istatistikleri için * nx_tcp_info_get _ hizmeti ve yuva **başına** TCP istatistikleri için _ *_nx_tcp_socket_info_get_** hizmeti ile uygulamada kullanılabilir.
+Tüm bu istatistikler ve hata raporları, toplam TCP istatistikleri için * nx_tcp_info_get _ hizmeti **ve** yuva başına TCP istatistikleri için _ *_nx_tcp_socket_info_get_** hizmeti ile uygulamada kullanılabilir.
 
 ### <a name="tcp-socket-control-block-nx_tcp_socket"></a>TCP Yuva Denetim Bloğu NX_TCP_SOCKET      
-Her TCP yuvasının özellikleri, IP *veri* yapısına bağlantı, ağ bağlantı arabirimi, bağlı bağlantı noktası ve alma paket kuyruğu gibi yararlı bilgiler içeren ilişkili NX_TCP_SOCKET denetim bloğunda bulunur. Bu yapı, ***nx_api.h dosyasında*** tanımlanır.
+Her TCP yuvasının özellikleri, IP *veri* yapısına bağlantı, ağ bağlantı arabirimi, bağlı bağlantı noktası ve alma paketi kuyruğu gibi yararlı bilgiler içeren ilişkili NX_TCP_SOCKET denetim bloğunda bulunur. Bu yapı, ***nx_api.h dosyasında*** tanımlanır.
+
+## <a name="tcpip-offload"></a>TCP/IP Boşaltma
+Bu özellik, NetX Duo'ya donanım üzerinde TCP/IP hizmeti sunan ağ arabirimi kartını desteklemesini sağlar. Bazı WiFi modülleri modülde TCP/IP işleme sunar ve MCU'da uygulamalar, TCP/IP yığınına erişmek için API'ler aracılığıyla paketleri gönderir ve alır. Bu özellik etkinleştirildiğinde, geliştiriciler yerel NetX Duo uygulamalarını doğrudan çalıştırabilirsiniz.
+
+TCP/IP yük boşaltma özelliğini etkinleştirmek için NetX Duo ile birlikte ve `NX_ENABLE_TCPIP_OFFLOAD` `NX_ENABLE_INTERFACE_CAPABILITY` tanımlanmalıdır.
+
+### <a name="tcpip-offload-handler"></a>TCP/IP Yük Boşaltma İşleyicisi
+NetX Duo, TCP veya UDP yuva işlemlerini işlemek için bir geri çağırma işlevi aracılığıyla ağ sürücüsüyle iletişim kurar. Geri çağırma işlevi içinde `NX_INTERFACE_STRUCT` tanımlanır. Ağ sürücüsünün sürücü komutu sırasında TCP/IP geri çağırma işlevini `NX_LINK_ENABLE` ayarlaması gerekir. TCP/IP geri çağırma işlevinin prototipi aşağıdaki gibidir.
+
+``` C
+UINT (*nx_interface_tcpip_offload_handler)(struct NX_IP_STRUCT *ip_ptr,
+                                           struct NX_INTERFACE_STRUCT *interface_ptr,
+                                           VOID *socket_ptr, UINT operation, NX_PACKET *packet_ptr,
+                                           NXD_ADDRESS *local_ip, NXD_ADDRESS *remote_ip,
+                                           UINT local_port, UINT *remote_port, UINT wait_option);
+```
+Parametrelerin açıklaması.
+* `ip_ptr` - IP örneğine işaretçi
+* `interface_ptr` - Arabirim işaretçisi
+* `socket_ptr` - veya `NX_TCP_SOCKET` `NX_UDP_SOCKET` işaretçisi değerine bağlıdır `operation`
+* `operation` - Geçerli işlev çağrısının işlemi. Değerler aşağıda olduğu gibi tanımlanmıştır
+``` C
+#define NX_TCPIP_OFFLOAD_TCP_CLIENT_SOCKET_CONNECT  0
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_LISTEN   1
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_ACCEPT   2
+#define NX_TCPIP_OFFLOAD_TCP_SERVER_SOCKET_UNLISTEN 3
+#define NX_TCPIP_OFFLOAD_TCP_SOCKET_DISCONNECT      4
+#define NX_TCPIP_OFFLOAD_TCP_SOCKET_SEND            5
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_BIND            6
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_UNBIND          7
+#define NX_TCPIP_OFFLOAD_UDP_SOCKET_SEND            8
+```
+* `packet_ptr` - Paket işaretçisi. değeri veya olduğunda `operation` `TCP_SOCKET_SEND` ayarlanır `UDP_SOCKET_SEND`
+* `local_ip` - Yerel IP adresi işaretçisi. Değer şu olduğunda `operation` ayarlanır: `UDP_SOCKET_SEND`
+* `remote_ip` - Uzak IP adresi işaretçisi. değeri veya olduğunda `operation` `TCP_CLIENT_SOCKET_CONNECT` `UDP_SOCKET_SEND` ayarlanır. İşlem `TCP_SERVER_SOCKET_ACCEPT` olduğunda, bu değer geri çağırma işlevi tarafından döndürülmeli
+* `local_port` - Yerel bağlantı noktası. Değer , `operation` , `TCP_CLIENT_SOCKET_CONNECT` veya UDP olduğunda `TCP_SERVER_SOCKET_LISTEN` `TCP_SERVER_SOCKET_ACCEPT` `TCP_SERVER_SOCKET_UNLISTEN` ayarlanır
+* `remote_port` - Uzak bağlantı noktası. değeri veya olduğunda `operation` `TCP_CLIENT_SOCKET_CONNECT` `UDP_SOCKET_SEND` ayarlanır. İşlem `TCP_SERVER_SOCKET_ACCEPT` olduğunda, bu değer geri çağırma işlevi tarafından döndürülmeli
+* `wait_option` - Tıklar içinde bekleme seçeneği. Değer tüm işlemler için ayarlanır
+
+### <a name="tcpip-offload-context"></a>TCP/IP Yük Boşaltma Bağlamı
+`NX_TCP_SOCKET`TCP/IP yük boşaltma sürücüsü tarafından kullanılacak yapıya bir işaretçi eklenir.
+```
+typedef struct NX_TCP_SOCKET_STRUCT
+{
+    // ...
+
+    /* This pointer is designed to be accessed by TCP/IP offload directly.  */
+    VOID *nx_tcp_socket_tcpip_offload_context;
+} NX_TCP_SOCKET;
+```
+
+`NX_UDP_SOCKET`TCP/IP yük boşaltma sürücüsü tarafından kullanılacak yapıya bir işaretçi eklenir.
+```
+typedef struct NX_UDP_SOCKET_STRUCT
+{
+    // ...
+
+    /* This pointer is designed to be accessed by TCP/IP offload directly.  */
+    VOID *nx_udp_socket_tcpip_offload_context;
+} NX_UDP_SOCKET;
+```
+
+### <a name="apis-for-tcpip-offload-network-driver"></a>TCP/IP Yük Boşaltma Ağ Sürücüsü API'leri
+``` C
+/* Invoked when TCP packet is receive or connection error.  */
+VOID _nx_tcp_socket_driver_packet_receive(NX_TCP_SOCKET *socket_ptr, NX_PACKET *packet_ptr);
+
+/* Invoked when TCP connection is establish.  */
+UINT _nx_tcp_socket_driver_establish(NX_TCP_SOCKET *socket_ptr, NX_INTERFACE *interface_ptr, UINT remote_port);
+
+/* Invoked when UDP packet is receive.  */
+VOID _nx_udp_socket_driver_packet_receive(NX_UDP_SOCKET *socket_ptr, NX_PACKET *packet_ptr,
+                                          NXD_ADDRESS *local_ip, NXD_ADDRESS *remote_ip, UINT remote_port);
+```
+### <a name="tcpip-offload-driver"></a>TCP/IP Yük Boşaltma Sürücüsü
+Her IP arabirimi için bir sürücü işlevi gerekir. NetX Duo sürücü işlevlerini geliştirme hakkında daha fazla bilgi için [5.](chapter5.md#tcpip-offload-driver-guidance) Bölüm'e bakın.
+
+### <a name="tcpip-offload-known-limitations"></a>TCP/IP Yük Boşaltma Bilinen Sınırlamaları
+- Yalnızca TCP ve UDP yuvaları de destekler
+- DHCP genellikle NetX Duo tarafından değil, az kullanılan TCP/IP yığınıyla yapılır
+- Altta yer alan TCP/IP yığınına ilişkin diğer sınırlamalar
